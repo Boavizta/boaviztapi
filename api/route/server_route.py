@@ -1,9 +1,9 @@
 from flask import Blueprint
 
-server_api = Blueprint('server_impacts', __name__, url_prefix='/server')
+server_api = Blueprint('server_api', __name__, url_prefix='/v1/server')
 
 
-@server_api.route('/v1/server/ref-data')
+@server_api.route('/ref-data')
 def server_impact_ref_data():
     # TODO: returns the closest server impact in the referenced data of Boavizta
     return {}
