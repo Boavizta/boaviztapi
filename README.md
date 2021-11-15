@@ -4,7 +4,7 @@ Giving access to BOAVIZTA referenced datas and methodologies trought a RESTful A
 
 ## Objective
 
-As part of Boavizta's desire to improve the quality of the measurement of the environmental impacts of ICTs in organizations, this project aims to give access to the group's work to as many people as possible in an automated and industrialized way.  
+As part of Boavizta's desire to improve the quality of the measurement of the environmental impacts of ICTs in organizations, this project aims at giving access to the group's work to as many people as possible in an automated and industrialized way.  
 
 The various data and methodologies integrated by Boavizta are aggregated and made available via an API. 
 
