@@ -9,7 +9,7 @@ def server_impact_ref_data():
     return {}
 
 
-@server_api.route('/v1/server/bottom-up')
+@server_api.route('/bottom-up')
 def server_impact_bottom_up():
     # TODO: returns the server impact with the bottom-up methodology
     return {}
