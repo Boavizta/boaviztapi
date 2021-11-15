@@ -1,7 +1,6 @@
 from flask import Flask
 from api.route.server_route import server_api
 
-
 app = Flask(__name__)
 app.register_blueprint(server_api)
 
