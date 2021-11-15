@@ -15,7 +15,7 @@ def server_impact_bottom_up():
     return {}
 
 
-@server_api.route('/v1/server')
+@server_api.route('/')
 def server_impact_auto():
     # TODO: returns the server impact with the best methodology
     return {}
