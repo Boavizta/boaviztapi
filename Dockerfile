@@ -1,18 +1,10 @@
-# Using lightweight alpine image
-FROM python:3.6-alpine
+FROM python:3.7-slim-buster
 
-# Installing packages
-RUN apk update
-RUN pip install --no-cache-dir pipenv
+WORKDIR /app
 
-# Defining working directory and adding source code
-WORKDIR /usr/src/app
-COPY Pipfile Pipfile.lock bootstrap.sh ./
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
 COPY . .
 
-# Install API dependencies
-RUN pipenv install
-
-# Start app
-EXPOSE 5000
-ENTRYPOINT ["/usr/src/app/bootstrap.sh"]
+CMD [ "python", "-m" , "flask", "run", "--host=0.0.0.0"]

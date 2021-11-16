@@ -1,4 +1,7 @@
-from flask import Blueprint
+from flask import Blueprint, request
+
+from api.model.server import server_mapper
+from api.service.server_impact.bottom_up.bottom_up import bottom_up_server
 
 server_api = Blueprint('server_api', __name__, url_prefix='/v1/server')
 
@@ -9,10 +12,13 @@ def server_impact_ref_data():
     return {}
 
 
-@server_api.route('/bottom-up')
+@server_api.route('/bottom-up', methods=['POST'])
 def server_impact_bottom_up():
-    # TODO: returns the server impact with the bottom-up methodology
-    return {}
+    # create server object
+    server = server_mapper(request.json)
+    # apply bottom_up methodology
+    res = bottom_up_server(server)
+    return res
 
 
 @server_api.route('/')

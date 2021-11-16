@@ -1,14 +1,13 @@
 from marshmallow import Schema, fields
 
+
 @property
 class Impact:
-    def __init__(self, method, total, manufacturing, use, error_ratio):
-        self.method = method
-        self.error_ratio = error_ratio
-        self.use = use
-        self.manufacturing = manufacturing
-        self.total = total
-        super().__init__()
+    def __init__(self):
+        pass
+
+    def add_total(self, quantity):
+        self.total += quantity
 
 
 @property
