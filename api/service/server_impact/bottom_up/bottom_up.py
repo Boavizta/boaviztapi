@@ -1,45 +1,60 @@
-from api.model.impacts import Impact
-from impact_factor import impact_factor
+from api.model.impacts import Impact, Impacts
+from .impact_factor import impact_factor
+
+_default_impacts_code = {"gwp", "pe", "adp"}
 
 
-def bottom_up_server(server):
-    # TODO construct impacts object
-    gwp = Impact()
-    adp = Impact()
-    ep = Impact()
+def bottom_up_server(server, impact_codes=None):
+    if impact_codes is None:
+        impact_codes = _default_impacts_code
+    # init impacts object
+    impacts_list = {}
+    for impact_code in impact_codes:
+        impacts_list[impact_code] = Impact()
 
     cpu = manufacture_CPU(server)
-    gwp.add_total(cpu.get("gwp"))
-    adp.add_total(cpu.get("adp"))
-    ep.add_total(cpu.get("ep"))
+    for impact_code in impact_codes:
+        impacts_list[impact_code].add_total(cpu.get(impact_code))
 
     ram = manufacture_RAM(server)
-    gwp.add_total(ram.get("gwp"))
-    adp.add_total(ram.get("adp"))
-    ep.add_total(ram.get("ep"))
+    for impact_code in impact_codes:
+        impacts_list[impact_code].add_total(ram.get(impact_code))
 
     ssd = manufacture_SSD(server)
-    gwp.add_total(ssd.get("gwp"))
-    adp.add_total(ssd.get("adp"))
-    ep.add_total(ssd.get("ep"))
+    for impact_code in impact_codes:
+        impacts_list[impact_code].add_total(ssd.get(impact_code))
 
     hdd = manufacture_HDD(server)
-    gwp.add_total(hdd.get("gwp"))
-    adp.add_total(hdd.get("adp"))
-    ep.add_total(hdd.get("ep"))
+    for impact_code in impact_codes:
+        impacts_list[impact_code].add_total(hdd.get(impact_code))
 
     motherboard = manufacture_motherboard(server)
-    manufacture_power_supply(server)
-    server_assembly(server)
+    for impact_code in impact_codes:
+        impacts_list[impact_code].add_total(motherboard.get(impact_code))
+
+    power_supply = manufacture_power_supply(server)
+    for impact_code in impact_codes:
+        impacts_list[impact_code].add_total(power_supply.get(impact_code))
+
+    server_assembly = manufacture_server_assembly()
+    for impact_code in impact_codes:
+        impacts_list[impact_code].add_total(server_assembly.get(impact_code))
 
     if server.type == "rack":
-        manufacture_rack(server)
+        rack = manufacture_rack()
+        for impact_code in impact_codes:
+            impacts_list[impact_code].add_total(rack.get(impact_code))
     elif server.type == "blade":
-        manufacture_blade(server)
+        blade = manufacture_blade()
+        for impact_code in impact_codes:
+            impacts_list[impact_code].add_total(blade.get(impact_code))
     # Default blade
     else:
-        manufacture_blade(server)
-    pass
+        blade = manufacture_blade()
+        for impact_code in impact_codes:
+            impacts_list[impact_code].add_total(blade.get(impact_code))
+
+    return Impacts(impacts_list, hypothesis="not implemented")
 
 
 def manufacture_CPU(server):
@@ -208,7 +223,8 @@ def manufacture_motherboard(server):
 def manufacture_power_supply(server):
     power_supply_number = server.power_supply_number if server.power_supply_number is not None else \
         get_power_supply_number(server)
-    power_supply_weight = server.power_supply_weight
+    power_supply_weight = server.power_supply_weight if server.power_supply_number is not None else \
+        get_power_supply_weight(server)
 
     power_supply_gwp_impact = impact_factor["power_supply_unit"]["gwp"]["impact"]
     power_supply_pe_impact = impact_factor["power_supply_unit"]["pe"]["impact"]
@@ -230,7 +246,11 @@ def get_power_supply_number(server):
     return 2
 
 
-def server_assembly():
+def get_power_supply_weight(server):
+    return 20
+
+
+def manufacture_server_assembly():
     server_assembly_gwp_impact = impact_factor["power_supply_unit"]["gwp"]["impact"]
     server_assembly_pe_impact = impact_factor["power_supply_unit"]["pe"]["impact"]
     server_assembly_adp_impact = impact_factor["power_supply_unit"]["adp"]["impact"]
@@ -265,7 +285,7 @@ def manufacture_blade():
     manufacture_blade_pe_impact = (1 / 16) * blade_slots_pe_impact + blade_pe_impact
     manufacture_blade_adp_impact = (1 / 16) * blade_slots_adp_impact + blade_adp_impact
 
-    rack_impacts = {"gwp": manufacture_blade_gwp_impact, "pe": manufacture_blade_pe_impact,
-                    "adp": manufacture_blade_adp_impact}
+    blade_impacts = {"gwp": manufacture_blade_gwp_impact, "pe": manufacture_blade_pe_impact,
+                     "adp": manufacture_blade_adp_impact}
 
-    return rack_impacts
+    return blade_impacts

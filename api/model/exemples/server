@@ -1,0 +1,25 @@
+{
+"model":{
+   "brand": "Dell",
+   "name": "XP3",
+   "type": "rack"
+},
+"configuration": {
+    "CPU":{
+        "number": 3,
+        "die": 0.245
+    },
+    "RAM":{
+        "capacity": 32,
+        "quantity": 4,
+        "die": 1.79
+    },
+    "SSD":{
+        "capacity": 500,
+        "quantity": 4,
+        "die": 50.6
+    },
+    "HDD":{
+        "number": 5
+    }
+}}
