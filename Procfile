@@ -1,1 +1,1 @@
-web: flask run -h "0.0.0.0" -p 80
+web: cd api && flask run -h "0.0.0.0" -p 80
