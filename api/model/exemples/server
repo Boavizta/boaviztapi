@@ -9,7 +9,7 @@
     "CPU":{
         "number": 3,
         "die": 0.245,
-        "brand": "Intel",
+        "manufacturer": "Intel",
         "model": "",
         "cpu_family":
     },
@@ -17,20 +17,21 @@
         "capacity": 32,
         "quantity": 4,
         "die": 1.79,
-        "brand": "Corsaire",
-        "model": ""
+        "manufacturer": "Corsaire",
+        "model": "",
+        "Constructeur": "Samsung"
     },
     "SSD":{
         "capacity": 500,
         "quantity": 4,
         "die": 50.6,
-        "brand": "Samsung",
+        "manufacturer": "Samsung",
         "model": ""
         
     },
     "HDD":{
         "number": 5,
-        "brand": "Samsung",
+        "manufacturer": "Samsung",
         "model": ""
     }
 }}
