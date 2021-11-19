@@ -132,8 +132,8 @@ def get_ram_capacity(server):
 
 def manufacture_SSD(server, impact_codes):
     ssd_capacity = server.ssd_capacity if server.cpu_number is not None else get_ssd_strip_quantity(server)
-    ssd_storage_density = server.ssd if server.cpu_die is not None else get_ssd_storage_density(server)
-    ssd_number = server.ram_capacity if server.cpu_number is not None else get_ssd_capacity(server)
+    ssd_storage_density = server.ssd_die if server.cpu_die is not None else get_ssd_storage_density(server)
+    ssd_number = server.ssd_quantity if server.cpu_number is not None else get_ssd_capacity(server)
 
     manufacture_ssd_impacts = {}
 
