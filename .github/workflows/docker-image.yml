@@ -27,7 +27,7 @@ jobs:
       run: docker build . --file Dockerfile --tag my-image-name:latest
       
     - name : tag the Docker image
-      run: docker tag ghcr.io/Boavizta/tools-api:latest ghcr.io/Boavizta/tools-api:$(date +%s)
+      run: docker tag ghcr.io/boavizta/tools-api:latest ghcr.io/boavizta/tools-api:$(date +%s)
       
     - name: Push images 
       run: docker push -a ghcr.io/Boavizta/tools-api
