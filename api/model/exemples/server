@@ -2,24 +2,35 @@
 "model":{
    "brand": "Dell",
    "name": "XP3",
-   "type": "rack"
+   "type": "rack",
+   "year": 2020
 },
 "configuration": {
     "CPU":{
         "number": 3,
-        "die": 0.245
+        "die": 0.245,
+        "brand": "Intel",
+        "model": "",
+        "cpu_family":
     },
     "RAM":{
         "capacity": 32,
         "quantity": 4,
-        "die": 1.79
+        "die": 1.79,
+        "brand": "Corsaire",
+        "model": ""
     },
     "SSD":{
         "capacity": 500,
         "quantity": 4,
-        "die": 50.6
+        "die": 50.6,
+        "brand": "Samsung",
+        "model": ""
+        
     },
     "HDD":{
-        "number": 5
+        "number": 5,
+        "brand": "Samsung",
+        "model": ""
     }
 }}
