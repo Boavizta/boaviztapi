@@ -30,4 +30,4 @@ jobs:
       run: docker tag ghcr.io/boavizta/tools-api:latest ghcr.io/boavizta/tools-api:$(date +%s)
       
     - name: Push images 
-      run: docker push -a ghcr.io/Boavizta/tools-api
+      run: docker push -a ghcr.io/boavizta/tools-api
