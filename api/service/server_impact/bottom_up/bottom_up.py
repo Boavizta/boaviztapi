@@ -12,73 +12,65 @@ def bottom_up_server(server, impact_codes=None):
     for impact_code in impact_codes:
         impacts_list[impact_code] = Impact()
 
-    cpu = manufacture_CPU(server)
+    cpu = manufacture_CPU(server, impact_codes)
     for impact_code in impact_codes:
         impacts_list[impact_code].add_total(cpu.get(impact_code))
 
-    ram = manufacture_RAM(server)
+    ram = manufacture_RAM(server, impact_codes)
     for impact_code in impact_codes:
         impacts_list[impact_code].add_total(ram.get(impact_code))
 
-    ssd = manufacture_SSD(server)
+    ssd = manufacture_SSD(server, impact_codes)
     for impact_code in impact_codes:
         impacts_list[impact_code].add_total(ssd.get(impact_code))
 
-    hdd = manufacture_HDD(server)
+    hdd = manufacture_HDD(server, impact_codes)
     for impact_code in impact_codes:
         impacts_list[impact_code].add_total(hdd.get(impact_code))
 
-    motherboard = manufacture_motherboard(server)
+    motherboard = manufacture_motherboard(impact_codes)
     for impact_code in impact_codes:
         impacts_list[impact_code].add_total(motherboard.get(impact_code))
 
-    power_supply = manufacture_power_supply(server)
+    power_supply = manufacture_power_supply(server, impact_codes)
     for impact_code in impact_codes:
         impacts_list[impact_code].add_total(power_supply.get(impact_code))
 
-    server_assembly = manufacture_server_assembly()
+    server_assembly = manufacture_server_assembly(impact_codes)
     for impact_code in impact_codes:
         impacts_list[impact_code].add_total(server_assembly.get(impact_code))
 
     if server.type == "rack":
-        rack = manufacture_rack()
+        rack = manufacture_rack(impact_codes)
         for impact_code in impact_codes:
             impacts_list[impact_code].add_total(rack.get(impact_code))
     elif server.type == "blade":
-        blade = manufacture_blade()
+        blade = manufacture_blade(impact_codes)
         for impact_code in impact_codes:
             impacts_list[impact_code].add_total(blade.get(impact_code))
     # Default blade
     else:
-        blade = manufacture_blade()
+        blade = manufacture_blade(impact_codes)
         for impact_code in impact_codes:
             impacts_list[impact_code].add_total(blade.get(impact_code))
 
     return Impacts(impacts_list, hypothesis="not implemented")
 
 
-def manufacture_CPU(server):
+def manufacture_CPU(server, impact_codes):
     cpu_core_number = server.cpu_number if server.cpu_number is not None else get_cpu_core_number(server)
     die_size_per_core = server.cpu_die if server.cpu_die is not None else get_cpu_die(server)
     cpu_number = server.cpu_number if server.cpu_number is not None else get_cpu_number(server)
+    manufacture_cpu_impact = {}
 
-    cpu_die_gwp_impact = impact_factor["cpu"]["gwp"]["die_impact"]
-    cpu_gwp_impact = impact_factor["cpu"]["gwp"]["impact"]
+    for impact_code in impact_codes:
+        cpu_die_impact = impact_factor["cpu"][impact_code]["die_impact"]
+        cpu_impact = impact_factor["cpu"][impact_code]["impact"]
 
-    cpu_die_pe_impact = impact_factor["cpu"]["pe"]["die_impact"]
-    cpu_pe_impact = impact_factor["cpu"]["pe"]["impact"]
+        impact_manufacture_cpu = \
+            cpu_number * ((cpu_core_number * die_size_per_core + 0.491) * cpu_die_impact + cpu_impact)
 
-    cpu_die_adp_impact = impact_factor["cpu"]["adp"]["die_impact"]
-    cpu_adp_impact = impact_factor["cpu"]["adp"]["impact"]
-
-    gwp_manufacture_cpu = \
-        cpu_number * ((cpu_core_number * die_size_per_core + 0.491) * cpu_die_gwp_impact + cpu_gwp_impact)
-    pe_manufacture_cpu = \
-        cpu_number * ((cpu_core_number * die_size_per_core + 0.491) * cpu_die_pe_impact + cpu_pe_impact)
-    adp_manufacture_cpu = \
-        cpu_number * ((cpu_core_number * die_size_per_core + 0.491) * cpu_die_adp_impact + cpu_adp_impact)
-
-    manufacture_cpu_impact = {"gwp": gwp_manufacture_cpu, "pe": pe_manufacture_cpu, "adp": adp_manufacture_cpu}
+        manufacture_cpu_impact[impact_code] = impact_manufacture_cpu
 
     return manufacture_cpu_impact
 
@@ -101,28 +93,21 @@ def get_cpu_number(server):
     return 2
 
 
-def manufacture_RAM(server):
+def manufacture_RAM(server, impact_codes):
     ram_strip_quantity = server.ram_strip_quantity if server.cpu_number is not None else get_ram_strip_quantity(server)
     ram_storage_density = server.cpu_die if server.cpu_die is not None else get_ram_storage_density(server)
     ram_capacity = server.ram_capacity if server.cpu_number is not None else get_ram_capacity(server)
 
-    ram_die_gwp_impact = impact_factor["ram"]["gwp"]["die_impact"]
-    ram_gwp_impact = impact_factor["ram"]["gwp"]["impact"]
+    manufacture_ram_impact = {}
 
-    ram_die_pe_impact = impact_factor["ram"]["pe"]["die_impact"]
-    ram_pe_impact = impact_factor["ram"]["pe"]["impact"]
+    for impact_code in impact_codes:
+        ram_die_impact = impact_factor["ram"][impact_code]["die_impact"]
+        ram_impact = impact_factor["ram"][impact_code]["impact"]
 
-    ram_die_adp_impact = impact_factor["ram"]["adp"]["die_impact"]
-    ram_adp_impact = impact_factor["ram"]["adp"]["impact"]
+        impact_manufacture_ram = \
+            ram_strip_quantity * ((ram_capacity / ram_storage_density) * ram_die_impact + ram_impact)
 
-    gwp_manufacture_ram = \
-        ram_strip_quantity * ((ram_capacity / ram_storage_density) * ram_die_gwp_impact + ram_gwp_impact)
-    pe_manufacture_ram = \
-        ram_strip_quantity * ((ram_capacity / ram_storage_density) * ram_die_pe_impact + ram_pe_impact)
-    adp_manufacture_ram = \
-        ram_strip_quantity * ((ram_capacity / ram_storage_density) * ram_die_adp_impact + ram_adp_impact)
-
-    manufacture_ram_impact = {"gwp": gwp_manufacture_ram, "pe": pe_manufacture_ram, "adp": adp_manufacture_ram}
+        manufacture_ram_impact[impact_code] = impact_manufacture_ram
 
     return manufacture_ram_impact
 
@@ -145,28 +130,21 @@ def get_ram_capacity(server):
     return 32
 
 
-def manufacture_SSD(server):
+def manufacture_SSD(server, impact_codes):
     ssd_capacity = server.ssd_capacity if server.cpu_number is not None else get_ssd_strip_quantity(server)
     ssd_storage_density = server.ssd if server.cpu_die is not None else get_ssd_storage_density(server)
     ssd_number = server.ram_capacity if server.cpu_number is not None else get_ssd_capacity(server)
 
-    ssd_die_gwp_impact = impact_factor["ssd"]["gwp"]["die_impact"]
-    ssd_disk_gwp_impact = impact_factor["ssd"]["gwp"]["impact"]
+    manufacture_ssd_impacts = {}
 
-    ssd_die_pe_impact = impact_factor["ssd"]["pe"]["die_impact"]
-    ssd_pe_impact = impact_factor["ssd"]["pe"]["impact"]
+    for impact_code in impact_codes:
+        ssd_die_impact = impact_factor["ssd"][impact_code]["die_impact"]
+        ssd_disk_impact = impact_factor["ssd"][impact_code]["impact"]
 
-    ssd_die_adp_impact = impact_factor["ssd"]["adp"]["die_impact"]
-    ssd_adp_impact = impact_factor["ssd"]["adp"]["impact"]
+        impact_manufacture_ssd = \
+            ssd_number * ((ssd_capacity / ssd_storage_density) * ssd_die_impact + ssd_disk_impact)
 
-    gwp_manufacture_ssd = \
-        ssd_number * ((ssd_capacity / ssd_storage_density) * ssd_die_gwp_impact + ssd_disk_gwp_impact)
-    pe_manufacture_ssd = \
-        ssd_number * ((ssd_capacity / ssd_storage_density) * ssd_die_pe_impact + ssd_pe_impact)
-    adp_manufacture_ssd = \
-        ssd_number * ((ssd_capacity / ssd_storage_density) * ssd_die_adp_impact + ssd_adp_impact)
-
-    manufacture_ssd_impacts = {"gwp": gwp_manufacture_ssd, "pe": pe_manufacture_ssd, "adp": adp_manufacture_ssd}
+        manufacture_ssd_impacts[impact_code] = impact_manufacture_ssd
 
     return manufacture_ssd_impacts
 
@@ -189,18 +167,15 @@ def get_ssd_capacity(server):
     return 1000
 
 
-def manufacture_HDD(server):
+def manufacture_HDD(server, impact_codes):
     hdd_drive_number = server.hdd_number if server.hdd_number is not None else get_hdd_number(server)
 
-    hdd_gwp_impact = impact_factor["hdd"]["gwp"]["impact"]
-    hdd_pe_impact = impact_factor["hdd"]["pe"]["impact"]
-    hdd_adp_impact = impact_factor["hdd"]["adp"]["impact"]
+    manufacture_hdd_impacts = {}
 
-    manufacture_hdd_gwp = hdd_drive_number * hdd_gwp_impact
-    manufacture_hdd_pe = hdd_drive_number * hdd_pe_impact
-    manufacture_hdd_adp = hdd_drive_number * hdd_adp_impact
-
-    manufacture_hdd_impacts = {"gwp": manufacture_hdd_gwp, "pe": manufacture_hdd_pe, "adp": manufacture_hdd_adp}
+    for impact_code in impact_codes:
+        hdd_disk_impact = impact_factor["hdd"][impact_code]["impact"]
+        impact_manufacture_hdd = hdd_drive_number * hdd_disk_impact
+        manufacture_hdd_impacts[impact_code] = impact_manufacture_hdd
 
     return manufacture_hdd_impacts
 
@@ -209,33 +184,28 @@ def get_hdd_number(server):
     return 2
 
 
-def manufacture_motherboard(server):
-    motherboard_gwp_impact = impact_factor["motherboard"]["gwp"]["impact"]
-    motherboard_pe_impact = impact_factor["motherboard"]["pe"]["impact"]
-    motherboard_adp_impact = impact_factor["motherboard"]["adp"]["impact"]
+def manufacture_motherboard(impact_codes):
+    manufacture_motherboard_impacts = {}
 
-    manufacture_motherboard_impacts = {"gwp": motherboard_gwp_impact, "pe": motherboard_pe_impact,
-                                       "adp": motherboard_adp_impact}
+    for impact_code in impact_codes:
+        motherboard_impact = impact_factor["motherboard"][impact_code]["impact"]
+        manufacture_motherboard_impacts[impact_code] = motherboard_impact
 
     return manufacture_motherboard_impacts
 
 
-def manufacture_power_supply(server):
+def manufacture_power_supply(server, impact_codes):
     power_supply_number = server.power_supply_number if server.power_supply_number is not None else \
         get_power_supply_number(server)
     power_supply_weight = server.power_supply_weight if server.power_supply_number is not None else \
         get_power_supply_weight(server)
 
-    power_supply_gwp_impact = impact_factor["power_supply_unit"]["gwp"]["impact"]
-    power_supply_pe_impact = impact_factor["power_supply_unit"]["pe"]["impact"]
-    power_supply_adp_impact = impact_factor["power_supply_unit"]["adp"]["impact"]
+    manufacture_power_supply_impacts = {}
 
-    manufacture_power_supply_gwp = power_supply_number * power_supply_weight * power_supply_gwp_impact
-    manufacture_power_supply_pe = power_supply_number * power_supply_weight * power_supply_pe_impact
-    manufacture_power_supply_adp = power_supply_number * power_supply_weight * power_supply_adp_impact
-
-    manufacture_power_supply_impacts = {"gwp": manufacture_power_supply_gwp, "pe": manufacture_power_supply_pe,
-                                        "adp": manufacture_power_supply_adp}
+    for impact_code in impact_codes:
+        power_supply_impact = impact_factor["power_supply_unit"][impact_code]["impact"]
+        manufacture_power_supply_gwp = power_supply_number * power_supply_weight * power_supply_impact
+        manufacture_power_supply_impacts[impact_code] = manufacture_power_supply_gwp
 
     return manufacture_power_supply_impacts
 
@@ -250,42 +220,36 @@ def get_power_supply_weight(server):
     return 20
 
 
-def manufacture_server_assembly():
-    server_assembly_gwp_impact = impact_factor["power_supply_unit"]["gwp"]["impact"]
-    server_assembly_pe_impact = impact_factor["power_supply_unit"]["pe"]["impact"]
-    server_assembly_adp_impact = impact_factor["power_supply_unit"]["adp"]["impact"]
+def manufacture_server_assembly(impact_codes):
 
-    server_assembly_impacts = {"gwp": server_assembly_gwp_impact, "pe": server_assembly_pe_impact,
-                               "adp": server_assembly_adp_impact}
+    server_assembly_impacts = {}
+
+    for impact_code in impact_codes:
+        server_assembly_gwp_impact = impact_factor["power_supply_unit"][impact_code]["impact"]
+        server_assembly_impacts[impact_code] = server_assembly_gwp_impact
 
     return server_assembly_impacts
 
 
-def manufacture_rack():
-    manufacture_rack_gwp_impact = impact_factor["rack_server"]["gwp"]["impact"]
-    manufacture_rack_pe_impact = impact_factor["rack_server"]["pe"]["impact"]
-    manufacture_rack_adp_impact = impact_factor["rack_server"]["adp"]["impact"]
+def manufacture_rack(impact_codes):
 
-    rack_impacts = {"gwp": manufacture_rack_gwp_impact, "pe": manufacture_rack_pe_impact,
-                    "adp": manufacture_rack_adp_impact}
+    rack_impacts = {}
+
+    for impact_code in impact_codes:
+        manufacture_rack_impact = impact_factor["rack_server"][impact_code]["impact"]
+        rack_impacts[impact_code] = manufacture_rack_impact
 
     return rack_impacts
 
 
-def manufacture_blade():
-    blade_slots_gwp_impact = impact_factor["blade_16_slots"]["gwp"]["impact"]
-    blade_slots_pe_impact = impact_factor["blade_16_slots"]["pe"]["impact"]
-    blade_slots_adp_impact = impact_factor["blade_16_slots"]["adp"]["impact"]
+def manufacture_blade(impact_codes):
 
-    blade_gwp_impact = impact_factor["blade_server"]["gwp"]["impact"]
-    blade_pe_impact = impact_factor["blade_server"]["pe"]["impact"]
-    blade_adp_impact = impact_factor["blade_server"]["adp"]["impact"]
+    blade_impacts = {}
 
-    manufacture_blade_gwp_impact = (1 / 16) * blade_slots_gwp_impact + blade_gwp_impact
-    manufacture_blade_pe_impact = (1 / 16) * blade_slots_pe_impact + blade_pe_impact
-    manufacture_blade_adp_impact = (1 / 16) * blade_slots_adp_impact + blade_adp_impact
-
-    blade_impacts = {"gwp": manufacture_blade_gwp_impact, "pe": manufacture_blade_pe_impact,
-                     "adp": manufacture_blade_adp_impact}
+    for impact_code in impact_codes:
+        blade_slots_impact = impact_factor["blade_16_slots"][impact_code]["impact"]
+        blade_impact = impact_factor["blade_server"][impact_code]["impact"]
+        manufacture_blade_gwp_impact = (1 / 16) * blade_slots_impact + blade_impact
+        blade_impacts[impact_code] = manufacture_blade_gwp_impact
 
     return blade_impacts
