@@ -16,9 +16,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       
-      # Log into github registry    
-    - name: Log into registry
-      run: ${{ github.token }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin  
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}  
        
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:latest
