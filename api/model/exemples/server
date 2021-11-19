@@ -6,14 +6,14 @@
    "year": 2020
 },
 "configuration": {
-    "CPU":{
+    "cpu":{
         "number": 3,
         "die": 0.245,
         "manufacturer": "Intel",
         "model": "",
         "cpu_family":
     },
-    "RAM":{
+    "ram":{
         "capacity": 32,
         "quantity": 4,
         "die": 1.79,
@@ -21,7 +21,7 @@
         "model": "",
         "Constructeur": "Samsung"
     },
-    "SSD":{
+    "ssd":{
         "capacity": 500,
         "quantity": 4,
         "die": 50.6,
@@ -29,7 +29,7 @@
         "model": ""
         
     },
-    "HDD":{
+    "hdd":{
         "number": 5,
         "manufacturer": "Samsung",
         "model": ""
