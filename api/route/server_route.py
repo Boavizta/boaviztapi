@@ -20,7 +20,7 @@ def server_impact_bottom_up():
     server = server_mapper(request.json)
     # apply bottom_up methodology
     impacts = bottom_up_server(server).to_json()
-    return json.dumps(impacts)
+    return impacts
 
 
 @server_api.route('/', methods=['POST'])

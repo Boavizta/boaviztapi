@@ -44,6 +44,7 @@ def bottom_up_server(server, impact_codes=None):
         rack = manufacture_rack(impact_codes)
         for impact_code in impact_codes:
             impacts_list[impact_code].add_total(rack.get(impact_code))
+
     elif server.type == "blade":
         blade = manufacture_blade(impact_codes)
         for impact_code in impact_codes:
@@ -58,7 +59,7 @@ def bottom_up_server(server, impact_codes=None):
 
 
 def manufacture_CPU(server, impact_codes):
-    cpu_core_number = server.cpu_number if server.cpu_number is not None else get_cpu_core_number(server)
+    cpu_core_number = server.cpu_core_number if server.cpu_core_number is not None else get_cpu_core_number(server)
     die_size_per_core = server.cpu_die if server.cpu_die is not None else get_cpu_die(server)
     cpu_number = server.cpu_number if server.cpu_number is not None else get_cpu_number(server)
     manufacture_cpu_impact = {}
@@ -84,7 +85,7 @@ def get_cpu_die(server):
 def get_cpu_core_number(server):
     # TODO bring intelligence
     # Mean from the dataset
-    return 13
+    return 24
 
 
 def get_cpu_number(server):
@@ -94,9 +95,9 @@ def get_cpu_number(server):
 
 
 def manufacture_RAM(server, impact_codes):
-    ram_strip_quantity = server.ram_strip_quantity if server.cpu_number is not None else get_ram_strip_quantity(server)
-    ram_storage_density = server.cpu_die if server.cpu_die is not None else get_ram_storage_density(server)
-    ram_capacity = server.ram_capacity if server.cpu_number is not None else get_ram_capacity(server)
+    ram_strip_quantity = server.ram_strip_quantity if server.ram_strip_quantity is not None else get_ram_strip_quantity(server)
+    ram_storage_density = server.ram_die if server.ram_die is not None else get_ram_storage_density(server)
+    ram_capacity = server.ram_capacity if server.ram_capacity is not None else get_ram_capacity(server)
 
     manufacture_ram_impact = {}
 
@@ -131,9 +132,9 @@ def get_ram_capacity(server):
 
 
 def manufacture_SSD(server, impact_codes):
-    ssd_capacity = server.ssd_capacity if server.cpu_number is not None else get_ssd_strip_quantity(server)
-    ssd_storage_density = server.ssd_die if server.cpu_die is not None else get_ssd_storage_density(server)
-    ssd_number = server.ssd_quantity if server.cpu_number is not None else get_ssd_capacity(server)
+    ssd_capacity = server.ssd_capacity if server.ssd_capacity is not None else get_ssd_strip_quantity(server)
+    ssd_storage_density = server.ssd_die if server.ssd_die is not None else get_ssd_storage_density(server)
+    ssd_number = server.ssd_quantity if server.ssd_quantity is not None else get_ssd_capacity(server)
 
     manufacture_ssd_impacts = {}
 
@@ -213,11 +214,11 @@ def manufacture_power_supply(server, impact_codes):
 def get_power_supply_number(server):
     # TODO bring intelligence
     # Randomly chosen
-    return 2
+    return 1
 
 
 def get_power_supply_weight(server):
-    return 20
+    return 10
 
 
 def manufacture_server_assembly(impact_codes):

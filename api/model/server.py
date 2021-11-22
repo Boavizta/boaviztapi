@@ -12,6 +12,7 @@ class Server:
 
         self.cpu_number = None
         self.cpu_die = None
+        self.cpu_core_number = None
 
         self.ram_capacity = None
         self.ram_strip_quantity = None
@@ -41,6 +42,7 @@ def server_mapper(server_dto):
         if server_dto.get("configuration").get("cpu") is not None:
             server.cpu_number = server_dto.get("configuration").get("cpu").get("number")
             server.cpu_die = server_dto.get("configuration").get("cpu").get("die")
+            server.cpu_core_number = server_dto.get("configuration").get("cpu").get("core_number")
         if server_dto.get("configuration").get("ram") is not None:
             server.ram_capacity = server_dto.get("configuration").get("ram").get("capacity")
             server.ram_strip_quantity = server_dto.get("configuration").get("ram").get("quantity")

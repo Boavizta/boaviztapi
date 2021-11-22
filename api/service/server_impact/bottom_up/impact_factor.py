@@ -1,8 +1,8 @@
 impact_factor = {
     "cpu": {
         "gwp": {
-            "die_impact": 9.14,
-            "impact": 1.97
+            "die_impact": 1.97,
+            "impact": 9.14
         },
         "pe": {
             "die_impact": 26.50,
