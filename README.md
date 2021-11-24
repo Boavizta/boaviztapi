@@ -12,7 +12,7 @@ In the interest of transparency and scientific popularization, the opening of th
 
 ## Architecture
 
-The system is developed in layers according to a bottom-up principle. The first layer implemented is equipment, starting with the servers (MVP). The second layer is the measurement of the impact of digital services or systems. The measurement of the global impact is currently outside the scope. 
+The system is developed in micro-services layers according to a bottom-up principle. The first layer implemented is equipment, starting with the servers (MVP). The second layer is the measurement of the impact of digital services or systems. The measurement of the global impact is currently outside the scope. 
 
 ## Technos
 
