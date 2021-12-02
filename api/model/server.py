@@ -18,8 +18,8 @@ class PowerSupply(BaseModel):
 class Disk(BaseModel):
     units: Optional[int] = None
     type: Optional[str] = None
-    capacity: Optional[str] = None
-    density: Optional[str] = None
+    capacity: Optional[int] = None
+    density: Optional[float] = None
     manufacturer: Optional[str] = None
     manufacture_date: Optional[str] = None
     model: Optional[str] = None
