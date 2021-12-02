@@ -29,3 +29,7 @@ The system is developed in micro-services layers according to a bottom-up princi
 ```pip3 install -r requirements.txt``` 
 
 ```flask run```
+
+## Project test
+
+```pytest -v``` 
