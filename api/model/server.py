@@ -21,7 +21,7 @@ class Disk(BaseModel):
     capacity: Optional[str] = None
     density: Optional[str] = None
     manufacturer: Optional[str] = None
-    manuf_date: Optional[str] = None
+    manufacture_date: Optional[str] = None
     model: Optional[str] = None
 
 
@@ -31,7 +31,7 @@ class Ram(BaseModel):
     density: Optional[float] = None
     process: Optional[float] = None
     manufacturer: Optional[str] = None
-    manufacturer_date: Optional[str] = None
+    manufacture_date: Optional[str] = None
     model: Optional[str] = None
     integrator: Optional[str] = None
 
