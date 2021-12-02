@@ -27,10 +27,11 @@ class Disk(BaseModel):
 
 class Ram(BaseModel):
     units: Optional[int] = None
-    capacity: Optional[str] = None
-    density: Optional[str] = None
+    capacity: Optional[int] = None
+    density: Optional[float] = None
+    process: Optional[float] = None
     manufacturer: Optional[str] = None
-    manuf_date: Optional[str] = None
+    manufacturer_date: Optional[str] = None
     model: Optional[str] = None
     integrator: Optional[str] = None
 

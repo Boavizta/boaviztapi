@@ -1,13 +1,13 @@
-manufacturer,architecture,storage_density
-Samsung,30nm,0.00625
-Samsung,25nm,0.01250
-Samsung,20nm,0.01750
-Samsung,18nm,0.02375
-SK hynix,30nm,0.00750
-SK hynix,26nm,0.01000
-SK hynix,21nm,0.01313
-SK hynix,21nm,0.01875
-Micron,30nm,0.00750
-Micron,30nm,0.00875
-Micron,20nm,0.01125
-Micron,20nm,0.01125
+manufacturer,process,density
+Samsung,30,0.00625
+Samsung,25,0.01250
+Samsung,20,0.01750
+Samsung,18,0.02375
+SK hynix,30,0.00750
+SK hynix,26,0.01000
+SK hynix,21,0.01313
+SK hynix,21,0.01875
+Micron,30,0.00750
+Micron,30,0.00875
+Micron,20,0.01125
+Micron,20,0.01125
