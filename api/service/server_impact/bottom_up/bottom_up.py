@@ -12,14 +12,18 @@ _default_impacts_code = {"gwp", "pe", "adp"}
 
 # Data
 _cpu_df = pd.read_csv('./api/service/server_impact/bottom_up/cpu.csv')
-# _ram_df = pd.read_csv('ram.csv')
+_ram_df = pd.read_csv('./api/service/server_impact/bottom_up/ram.csv')
 # _ssd_df = pd.read_csv('ssd.csv')
 
 
 # Constants
 DEFAULT_CPU_UNITS = 2
-DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
+DEFAULT_CPU_DIE_SIZE_PER_CORE = 24.5
 DEFAULT_CPU_CORE_UNITS = 24
+
+DEFAULT_RAM_UNITS = 2
+DEFAULT_RAM_CAPACITY = 32
+DEFAULT_RAM_DENSITY = 0.625
 
 
 def bottom_up_server(server, impact_codes=None):
@@ -39,11 +43,12 @@ def bottom_up_server(server, impact_codes=None):
             ram = manufacture_ram(server, impact_codes)
             for impact_code in impact_codes:
                 impacts_list[impact_code].add_total(ram.get(impact_code))
-    #
-    # ssd = manufacture_SSD(server, impact_codes)
-    # for impact_code in impact_codes:
-    #     impacts_list[impact_code].add_total(ssd.get(impact_code))
-    #
+
+        # if server.configuration.disk:
+        #     ssd = manufacture_SSD(server, impact_codes)
+        #     for impact_code in impact_codes:
+        #         impacts_list[impact_code].add_total(ssd.get(impact_code))
+
     # hdd = manufacture_HDD(server, impact_codes)
     # for impact_code in impact_codes:
     #     impacts_list[impact_code].add_total(hdd.get(impact_code))
@@ -116,10 +121,15 @@ def smart_complete_data_cpu(cpu: Cpu) -> Cpu:
                 core_units=int(sub['core_units'])
             )
         else:
+            sub['_scope3'] = sub[['core_units', 'die_size_per_core']].apply(lambda x: x[0] * x[1])
+            sub = sub.sort_values(by='_scope3', ascending=False)
+            row = sub.iloc[0]
+            die_size_per_core = float(row['die_size_per_core'])
+            core_units = int(row['core_units'])
             return Cpu(
                 units=cpu.units if cpu.units else DEFAULT_CPU_UNITS,
-                die_size_per_core=float(sub['die_size_per_core'].max()),
-                core_units=int(sub['core_units'].max())
+                die_size_per_core=die_size_per_core,
+                core_units=core_units
             )
 
 
@@ -140,44 +150,59 @@ def manufacture_cpu(server: Server, impact_codes: Set[str]) -> dict:
 
 
 def smart_complete_data_ram(ram: Ram) -> Ram:
-    pass
+    if ram.capacity and ram.density:
+        return ram
+    else:
+        sub = _ram_df
+
+        if ram.manufacturer:
+            sub = sub[sub['manufacturer'] == ram.manufacturer]
+
+        if ram.process:
+            sub = sub[sub['process'] == ram.process]
+
+        if len(sub) == 0 or len(sub) == len(_cpu_df):
+            return Ram(
+                units=ram.units if ram.units else DEFAULT_RAM_UNITS,
+                capacity=ram.capacity if ram.capacity else DEFAULT_RAM_CAPACITY,
+                density=ram.density if ram.density else DEFAULT_RAM_DENSITY
+            )
+        elif len(sub) == 1:
+            return Ram(
+                units=ram.units if ram.units else DEFAULT_RAM_UNITS,
+                capacity=ram.capacity if ram.capacity else DEFAULT_RAM_CAPACITY,
+                density=float(sub['density'])
+            )
+        else:
+            capacity = ram.capacity if ram.capacity else DEFAULT_RAM_CAPACITY
+            sub['_scope3'] = sub['density'].apply(lambda x: capacity / x)
+            sub = sub.sort_values(by='_scope3', ascending=False)
+            density = float(sub.iloc[0].density)
+            return Ram(
+                units=ram.units if ram.units else DEFAULT_RAM_UNITS,
+                capacity=capacity,
+                density=density
+            )
 
 
 def manufacture_ram(server: Server, impact_codes: Set[str]) -> dict:
-    ram_strip_quantity = server.ram_strip_quantity if server.ram_strip_quantity is not None else get_ram_strip_quantity(server)
-    ram_storage_density = server.ram_die if server.ram_die is not None else get_ram_storage_density(server)
-    ram_capacity = server.ram_capacity if server.ram_capacity is not None else get_ram_capacity(server)
+    ram_corrected = []
+    for ram_obj in server.configuration.ram:
+        ram_corrected.append(smart_complete_data_ram(ram_obj))
+    server.configuration.ram = ram_corrected
 
     manufacture_ram_impact = {}
+    for ram_obj in ram_corrected:
+        for impact_code in impact_codes:
+            ram_die_impact = impact_factor["ram"][impact_code]["die_impact"]
+            ram_impact = impact_factor["ram"][impact_code]["impact"]
 
-    for impact_code in impact_codes:
-        ram_die_impact = impact_factor["ram"][impact_code]["die_impact"]
-        ram_impact = impact_factor["ram"][impact_code]["impact"]
+            impact_manufacture_ram = \
+                ram_obj.units * ((ram_obj.capacity / ram_obj.density) * ram_die_impact + ram_impact)
 
-        impact_manufacture_ram = \
-            ram_strip_quantity * ((ram_capacity / ram_storage_density) * ram_die_impact + ram_impact)
-
-        manufacture_ram_impact[impact_code] = impact_manufacture_ram
+            manufacture_ram_impact[impact_code] = manufacture_ram_impact.get(impact_code, 0) + impact_manufacture_ram
 
     return manufacture_ram_impact
-
-
-def get_ram_strip_quantity(server):
-    # TODO bring intelligence
-    # Randomly chosen
-    return 2
-
-
-def get_ram_storage_density(server):
-    # TODO bring intelligence
-    # Default value from the methodology
-    return 1.79
-
-
-def get_ram_capacity(server):
-    # TODO bring intelligence
-    # Randomly chosen
-    return 32
 
 
 def manufacture_SSD(server, impact_codes):
