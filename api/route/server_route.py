@@ -25,11 +25,8 @@ def server_impact_ref_data(server: Server):
 
 @server_api.route('/bottom-up', methods=['POST'])
 @validate()
-def server_impact_bottom_up(server: Server):
-    # create server object
-    # server = server_mapper(request.json)
-    # apply bottom_up methodology
-    impacts = bottom_up_server(server).to_json()
+def server_impact_bottom_up(body: Server):
+    impacts = bottom_up_server(body).to_json()
     return impacts
 
 
