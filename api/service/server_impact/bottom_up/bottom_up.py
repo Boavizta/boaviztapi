@@ -245,7 +245,7 @@ def smart_complete_data_ssd(ssd: Disk) -> Disk:
             )
 
 
-def manufacture_ssd(server, impact_codes):
+def manufacture_ssd(server: Server, impact_codes: Set[str]) -> dict:
     disk_ids = []
     ssd_corrected = []
     for i, disk in enumerate(server.configuration.disk):
@@ -271,21 +271,16 @@ def manufacture_ssd(server, impact_codes):
     return manufacture_ssd_impacts
 
 
-def manufacture_hdd(server, impact_codes):
-    hdd_drive_number = server.hdd_number if server.hdd_number is not None else get_hdd_number(server)
+def manufacture_hdd(server: Server, impact_codes: Set[str]) -> dict:
+    hdd_drive_number = sum([1 for disk in server.configuration.disk if disk.type.lower() == 'hdd'])
 
     manufacture_hdd_impacts = {}
-
     for impact_code in impact_codes:
         hdd_disk_impact = impact_factor["hdd"][impact_code]["impact"]
         impact_manufacture_hdd = hdd_drive_number * hdd_disk_impact
         manufacture_hdd_impacts[impact_code] = impact_manufacture_hdd
 
     return manufacture_hdd_impacts
-
-
-def get_hdd_number(server):
-    return 2
 
 
 def manufacture_motherboard(impact_codes):
