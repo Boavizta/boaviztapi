@@ -296,7 +296,7 @@ def manufacture_motherboard(impact_codes: Set[str]) -> dict:
     return manufacture_motherboard_impacts
 
 
-def manufacture_power_supply(server: Server, impact_codes):
+def manufacture_power_supply(server: Server, impact_codes: Set[str]):
     power_supply_number = server.configuration.power_supply.units \
         if server.configuration.power_supply.units is not None else \
         DEFAULT_POWER_SUPPLY_NUMBER
@@ -314,7 +314,7 @@ def manufacture_power_supply(server: Server, impact_codes):
     return manufacture_power_supply_impacts
 
 
-def manufacture_server_assembly(impact_codes):
+def manufacture_server_assembly(impact_codes: Set[str]):
 
     server_assembly_impacts = {}
 
@@ -325,7 +325,7 @@ def manufacture_server_assembly(impact_codes):
     return server_assembly_impacts
 
 
-def manufacture_rack(impact_codes):
+def manufacture_rack(impact_codes: Set[str]):
 
     rack_impacts = {}
 
@@ -336,7 +336,7 @@ def manufacture_rack(impact_codes):
     return rack_impacts
 
 
-def manufacture_blade(impact_codes):
+def manufacture_blade(impact_codes: Set[str]):
 
     blade_impacts = {}
 
