@@ -271,24 +271,6 @@ def manufacture_ssd(server, impact_codes):
     return manufacture_ssd_impacts
 
 
-def get_ssd_strip_quantity(server):
-    # TODO bring intelligence
-    # Randomly chosen
-    return 2
-
-
-def get_ssd_storage_density(server):
-    # TODO bring intelligence
-    # Default value from the methodology
-    return 50.6
-
-
-def get_ssd_capacity(server):
-    # TODO bring intelligence
-    # Randomly chosen
-    return 1000
-
-
 def manufacture_hdd(server, impact_codes):
     hdd_drive_number = server.hdd_number if server.hdd_number is not None else get_hdd_number(server)
 
