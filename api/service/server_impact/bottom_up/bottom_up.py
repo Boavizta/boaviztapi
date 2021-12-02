@@ -204,24 +204,6 @@ def manufacture_ram(server: Server, impact_codes: Set[str]) -> dict:
     return manufacture_ram_impact
 
 
-def get_ram_strip_quantity(server):
-    # TODO bring intelligence
-    # Randomly chosen
-    return 2
-
-
-def get_ram_storage_density(server):
-    # TODO bring intelligence
-    # Default value from the methodology
-    return 1.79
-
-
-def get_ram_capacity(server):
-    # TODO bring intelligence
-    # Randomly chosen
-    return 32
-
-
 def manufacture_SSD(server, impact_codes):
     ssd_capacity = server.ssd_capacity if server.ssd_capacity is not None else get_ssd_strip_quantity(server)
     ssd_storage_density = server.ssd_die if server.ssd_die is not None else get_ssd_storage_density(server)
