@@ -1,4 +1,4 @@
-manufacturer,generation,year,process,die_size,num_cores,die_size_per_core
+manufacturer,family,manufacture_date,process,die_size,core_units,die_size_per_core
 Intel,Skylake,2017,14,694,28,24.8
 Intel,Skylake,2017,14,485,18,26.9
 Intel,Skylake,2017,14,325,10,32.5
