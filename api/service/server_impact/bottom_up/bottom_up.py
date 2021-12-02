@@ -1,7 +1,14 @@
+import pandas as pd
+
 from api.model.impacts import Impact, Impacts
 from .impact_factor import impact_factor
 
 _default_impacts_code = {"gwp", "pe", "adp"}
+
+# Data
+_cpu_df = pd.read_csv('cpu.csv')
+_ram_df = pd.read_csv('ram.csv')
+_ssd_df = pd.read_csv('ssd.csv')
 
 
 def bottom_up_server(server, impact_codes=None):
