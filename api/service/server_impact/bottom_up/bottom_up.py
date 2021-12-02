@@ -29,8 +29,8 @@ DEFAULT_SSD_UNITS = 2
 DEFAULT_SSD_CAPACITY = 1000
 DEFAULT_SSD_DENSITY = 48.5
 
-DEFAULT_POWER_SUPPLY_NUMBER = 1
-DEFAULT_POWER_SUPPLY_WEIGHT = 1
+DEFAULT_POWER_SUPPLY_NUMBER = 2
+DEFAULT_POWER_SUPPLY_WEIGHT = 2.99
 
 
 def bottom_up_server(server, impact_codes=None):
@@ -60,32 +60,32 @@ def bottom_up_server(server, impact_codes=None):
             for impact_code in impact_codes:
                 impacts_list[impact_code].add_total(hdd.get(impact_code))
 
-    # motherboard = manufacture_motherboard(impact_codes)
-    # for impact_code in impact_codes:
-    #     impacts_list[impact_code].add_total(motherboard.get(impact_code))
-    #
-    # power_supply = manufacture_power_supply(server, impact_codes)
-    # for impact_code in impact_codes:
-    #     impacts_list[impact_code].add_total(power_supply.get(impact_code))
-    #
-    # server_assembly = manufacture_server_assembly(impact_codes)
-    # for impact_code in impact_codes:
-    #     impacts_list[impact_code].add_total(server_assembly.get(impact_code))
-    #
-    # if server.type == "rack":
-    #     rack = manufacture_rack(impact_codes)
-    #     for impact_code in impact_codes:
-    #         impacts_list[impact_code].add_total(rack.get(impact_code))
-    #
-    # elif server.type == "blade":
-    #     blade = manufacture_blade(impact_codes)
-    #     for impact_code in impact_codes:
-    #         impacts_list[impact_code].add_total(blade.get(impact_code))
-    # # Default blade
-    # else:
-    #     blade = manufacture_blade(impact_codes)
-    #     for impact_code in impact_codes:
-    #         impacts_list[impact_code].add_total(blade.get(impact_code))
+    motherboard = manufacture_motherboard(impact_codes)
+    for impact_code in impact_codes:
+        impacts_list[impact_code].add_total(motherboard.get(impact_code))
+
+    power_supply = manufacture_power_supply(server, impact_codes)
+    for impact_code in impact_codes:
+        impacts_list[impact_code].add_total(power_supply.get(impact_code))
+
+    server_assembly = manufacture_server_assembly(impact_codes)
+    for impact_code in impact_codes:
+        impacts_list[impact_code].add_total(server_assembly.get(impact_code))
+
+    if server.model.type == "rack":
+        rack = manufacture_rack(impact_codes)
+        for impact_code in impact_codes:
+            impacts_list[impact_code].add_total(rack.get(impact_code))
+
+    elif server.model.type == "blade":
+        blade = manufacture_blade(impact_codes)
+        for impact_code in impact_codes:
+            impacts_list[impact_code].add_total(blade.get(impact_code))
+    # Default blade
+    else:
+        blade = manufacture_blade(impact_codes)
+        for impact_code in impact_codes:
+            impacts_list[impact_code].add_total(blade.get(impact_code))
 
     return Impacts(impacts_list, hypothesis="not implemented")
 

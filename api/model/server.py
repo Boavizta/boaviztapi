@@ -12,7 +12,7 @@ class ModelServer(BaseModel):
 
 class PowerSupply(BaseModel):
     units: Optional[int] = None
-    unit_weight: Optional[str] = None
+    unit_weight: Optional[float] = None
 
 
 class Disk(BaseModel):

@@ -1,17 +1,17 @@
 manufacturer,family,manufacture_date,process,die_size,core_units,die_size_per_core
-Intel,Skylake,2017,14,694,28,24.8
-Intel,Skylake,2017,14,485,18,26.9
-Intel,Skylake,2017,14,325,10,32.5
-Intel,Coffee Lake,2017,14,149,6,24.8
-Intel,Coffee Lake,2017,14,174,8,21.8
-Intel,broadwell,2014,14,456,24,19.0
-Intel,broadwell,2014,14,306,14,21.9
-Intel,broadwell,2014,14,246,10,24.6
-Intel,Haswell,2013,22,622,18,34.6
-Intel,Ivy Bridge,2011,22,160,4,40.0
-Intel,Ivy Bridge,2011,22,257,6,42.8
-Intel,Ivy Bridge,2011,22,341,10,34.1
-Intel,Ivy Bridge,2011,22,541,15,36.1
-Intel,Sandy Bridge,2010,32,216,4,54.0
-Intel,Kaby Lake,2017,,126,4,31.5
-AMD,Zen,2017,,212.77,8,26.59625
+Intel,Skylake,2017,14,694,28,0.248
+Intel,Skylake,2017,14,485,18,0.269
+Intel,Skylake,2017,14,325,10,0.325
+Intel,Coffee Lake,2017,14,149,6,0.248
+Intel,Coffee Lake,2017,14,174,8,0.218
+Intel,broadwell,2014,14,456,24,0.19
+Intel,broadwell,2014,14,306,14,0.219
+Intel,broadwell,2014,14,246,10,0.246
+Intel,Haswell,2013,22,622,18,0.346
+Intel,Ivy Bridge,2011,22,160,4,0.400
+Intel,Ivy Bridge,2011,22,257,6,0.428
+Intel,Ivy Bridge,2011,22,341,10,0.341
+Intel,Ivy Bridge,2011,22,541,15,0.361
+Intel,Sandy Bridge,2010,32,216,4,0.540
+Intel,Kaby Lake,2017,,126,4,0.315
+AMD,Zen,2017,,212.77,8,0.2659625
