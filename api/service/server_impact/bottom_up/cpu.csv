@@ -1,0 +1,17 @@
+manufacturer,generation,year,process,die_size,num_cores,die_size_per_core
+Intel,Skylake,2017,14,694,28,24.8
+Intel,Skylake,2017,14,485,18,26.9
+Intel,Skylake,2017,14,325,10,32.5
+Intel,Coffee Lake,2017,14,149,6,24.8
+Intel,Coffee Lake,2017,14,174,8,21.8
+Intel,broadwell,2014,14,456,24,19.0
+Intel,broadwell,2014,14,306,14,21.9
+Intel,broadwell,2014,14,246,10,24.6
+Intel,Haswell,2013,22,622,18,34.6
+Intel,Ivy Bridge,2011,22,160,4,40.0
+Intel,Ivy Bridge,2011,22,257,6,42.8
+Intel,Ivy Bridge,2011,22,341,10,34.1
+Intel,Ivy Bridge,2011,22,541,15,36.1
+Intel,Sandy Bridge,2010,32,216,4,54.0
+Intel,Kaby Lake,2017,,126,4,31.5
+AMD,Zen,2017,,212.77,8,26.59625
