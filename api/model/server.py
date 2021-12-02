@@ -6,7 +6,7 @@ from typing import Optional, List
 class ModelServer(BaseModel):
     manufacturer: Optional[str] = None 
     name: Optional[str] = None 
-    type_: Optional[str] = None 
+    type: Optional[str] = None
     year: Optional[str] = None
 
 
@@ -17,7 +17,7 @@ class PowerSupply(BaseModel):
 
 class Disk(BaseModel):
     units: Optional[str] = None
-    type_: Optional[str] = None
+    type: Optional[str] = None
     capacity: Optional[str] = None
     density: Optional[str] = None
     manufacturer: Optional[str] = None
