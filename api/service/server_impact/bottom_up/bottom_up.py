@@ -29,6 +29,9 @@ DEFAULT_SSD_UNITS = 2
 DEFAULT_SSD_CAPACITY = 1000
 DEFAULT_SSD_DENSITY = 48.5
 
+DEFAULT_POWER_SUPPLY_NUMBER = 1
+DEFAULT_POWER_SUPPLY_WEIGHT = 1
+
 
 def bottom_up_server(server, impact_codes=None):
     if impact_codes is None:
@@ -283,7 +286,7 @@ def manufacture_hdd(server: Server, impact_codes: Set[str]) -> dict:
     return manufacture_hdd_impacts
 
 
-def manufacture_motherboard(impact_codes):
+def manufacture_motherboard(impact_codes: Set[str]) -> dict:
     manufacture_motherboard_impacts = {}
 
     for impact_code in impact_codes:
@@ -293,30 +296,22 @@ def manufacture_motherboard(impact_codes):
     return manufacture_motherboard_impacts
 
 
-def manufacture_power_supply(server, impact_codes):
-    power_supply_number = server.power_supply_number if server.power_supply_number is not None else \
-        get_power_supply_number(server)
-    power_supply_weight = server.power_supply_weight if server.power_supply_number is not None else \
-        get_power_supply_weight(server)
+def manufacture_power_supply(server: Server, impact_codes):
+    power_supply_number = server.configuration.power_supply.units \
+        if server.configuration.power_supply.units is not None else \
+        DEFAULT_POWER_SUPPLY_NUMBER
+
+    power_supply_weight = server.configuration.power_supply.unit_weight \
+        if server.configuration.power_supply.unit_weight is not None else \
+        DEFAULT_POWER_SUPPLY_WEIGHT
 
     manufacture_power_supply_impacts = {}
-
     for impact_code in impact_codes:
         power_supply_impact = impact_factor["power_supply_unit"][impact_code]["impact"]
         manufacture_power_supply_gwp = power_supply_number * power_supply_weight * power_supply_impact
         manufacture_power_supply_impacts[impact_code] = manufacture_power_supply_gwp
 
     return manufacture_power_supply_impacts
-
-
-def get_power_supply_number(server):
-    # TODO bring intelligence
-    # Randomly chosen
-    return 1
-
-
-def get_power_supply_weight(server):
-    return 10
 
 
 def manufacture_server_assembly(impact_codes):
