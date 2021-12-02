@@ -120,10 +120,15 @@ def smart_complete_data_cpu(cpu: Cpu) -> Cpu:
                 core_units=int(sub['core_units'])
             )
         else:
+            sub['_scope3'] = sub[['core_units', 'die_size_per_core']].apply(lambda x: x[0] * x[1])
+            sub = sub.sort_values(by='_scope3', ascending=False)
+            row = sub.iloc[0]
+            die_size_per_core = float(row['die_size_per_core'])
+            core_units = int(row['core_units'])
             return Cpu(
                 units=cpu.units if cpu.units else DEFAULT_CPU_UNITS,
-                die_size_per_core=float(sub['die_size_per_core'].max()),
-                core_units=int(sub['core_units'].max())
+                die_size_per_core=die_size_per_core,
+                core_units=core_units
             )
 
 
