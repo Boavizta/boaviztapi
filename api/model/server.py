@@ -11,12 +11,12 @@ class ModelServer(BaseModel):
 
 
 class PowerSupply(BaseModel):
-    units: Optional[str] = None
+    units: Optional[int] = None
     unit_weight: Optional[str] = None
 
 
 class Disk(BaseModel):
-    units: Optional[str] = None
+    units: Optional[int] = None
     type: Optional[str] = None
     capacity: Optional[str] = None
     density: Optional[str] = None
@@ -26,7 +26,7 @@ class Disk(BaseModel):
 
 
 class Ram(BaseModel):
-    units: Optional[str] = None
+    units: Optional[int] = None
     capacity: Optional[str] = None
     density: Optional[str] = None
     manufacturer: Optional[str] = None
@@ -36,13 +36,15 @@ class Ram(BaseModel):
 
 
 class Cpu(BaseModel):
-    units: Optional[str] = None
-    core_units: Optional[str] = None
-    die_size: Optional[str] = None
+    units: Optional[int] = None
+    core_units: Optional[int] = None
+    die_size: Optional[float] = None
+    die_size_per_core: Optional[float] = None
+    process: Optional[float] = None
     manufacturer: Optional[str] = None
-    manuf_date: Optional[str] = None
+    manufacture_date: Optional[str] = None
     model: Optional[str] = None
-    cpu_family: Optional[str] = None
+    family: Optional[str] = None
 
 
 class ConfigurationServer(BaseModel):
@@ -53,8 +55,8 @@ class ConfigurationServer(BaseModel):
 
 
 class Server(BaseModel):
-    model: ModelServer
-    configuration: ConfigurationServer
+    model: Optional[ModelServer] = None
+    configuration: Optional[ConfigurationServer] = None
 
     add_method: Optional[str] = None
     add_date: Optional[str] = None

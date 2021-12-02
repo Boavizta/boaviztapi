@@ -1,7 +1,25 @@
+import os
+
+from typing import Set
+
+import pandas as pd
+
 from api.model.impacts import Impact, Impacts
+from api.model.server import Server, Cpu, Ram
 from .impact_factor import impact_factor
 
 _default_impacts_code = {"gwp", "pe", "adp"}
+
+# Data
+_cpu_df = pd.read_csv('./api/service/server_impact/bottom_up/cpu.csv')
+# _ram_df = pd.read_csv('ram.csv')
+# _ssd_df = pd.read_csv('ssd.csv')
+
+
+# Constants
+DEFAULT_CPU_UNITS = 2
+DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
+DEFAULT_CPU_CORE_UNITS = 24
 
 
 def bottom_up_server(server, impact_codes=None):
@@ -12,89 +30,120 @@ def bottom_up_server(server, impact_codes=None):
     for impact_code in impact_codes:
         impacts_list[impact_code] = Impact()
 
-    cpu = manufacture_CPU(server, impact_codes)
-    for impact_code in impact_codes:
-        impacts_list[impact_code].add_total(cpu.get(impact_code))
-
-    ram = manufacture_RAM(server, impact_codes)
-    for impact_code in impact_codes:
-        impacts_list[impact_code].add_total(ram.get(impact_code))
-
-    ssd = manufacture_SSD(server, impact_codes)
-    for impact_code in impact_codes:
-        impacts_list[impact_code].add_total(ssd.get(impact_code))
-
-    hdd = manufacture_HDD(server, impact_codes)
-    for impact_code in impact_codes:
-        impacts_list[impact_code].add_total(hdd.get(impact_code))
-
-    motherboard = manufacture_motherboard(impact_codes)
-    for impact_code in impact_codes:
-        impacts_list[impact_code].add_total(motherboard.get(impact_code))
-
-    power_supply = manufacture_power_supply(server, impact_codes)
-    for impact_code in impact_codes:
-        impacts_list[impact_code].add_total(power_supply.get(impact_code))
-
-    server_assembly = manufacture_server_assembly(impact_codes)
-    for impact_code in impact_codes:
-        impacts_list[impact_code].add_total(server_assembly.get(impact_code))
-
-    if server.type == "rack":
-        rack = manufacture_rack(impact_codes)
-        for impact_code in impact_codes:
-            impacts_list[impact_code].add_total(rack.get(impact_code))
-
-    elif server.type == "blade":
-        blade = manufacture_blade(impact_codes)
-        for impact_code in impact_codes:
-            impacts_list[impact_code].add_total(blade.get(impact_code))
-    # Default blade
-    else:
-        blade = manufacture_blade(impact_codes)
-        for impact_code in impact_codes:
-            impacts_list[impact_code].add_total(blade.get(impact_code))
+    if server.configuration:
+        if server.configuration.cpu:
+            cpu = manufacture_cpu(server, impact_codes)
+            for impact_code in impact_codes:
+                impacts_list[impact_code].add_total(cpu.get(impact_code))
+        if server.configuration.ram:
+            ram = manufacture_ram(server, impact_codes)
+            for impact_code in impact_codes:
+                impacts_list[impact_code].add_total(ram.get(impact_code))
+    #
+    # ssd = manufacture_SSD(server, impact_codes)
+    # for impact_code in impact_codes:
+    #     impacts_list[impact_code].add_total(ssd.get(impact_code))
+    #
+    # hdd = manufacture_HDD(server, impact_codes)
+    # for impact_code in impact_codes:
+    #     impacts_list[impact_code].add_total(hdd.get(impact_code))
+    #
+    # motherboard = manufacture_motherboard(impact_codes)
+    # for impact_code in impact_codes:
+    #     impacts_list[impact_code].add_total(motherboard.get(impact_code))
+    #
+    # power_supply = manufacture_power_supply(server, impact_codes)
+    # for impact_code in impact_codes:
+    #     impacts_list[impact_code].add_total(power_supply.get(impact_code))
+    #
+    # server_assembly = manufacture_server_assembly(impact_codes)
+    # for impact_code in impact_codes:
+    #     impacts_list[impact_code].add_total(server_assembly.get(impact_code))
+    #
+    # if server.type == "rack":
+    #     rack = manufacture_rack(impact_codes)
+    #     for impact_code in impact_codes:
+    #         impacts_list[impact_code].add_total(rack.get(impact_code))
+    #
+    # elif server.type == "blade":
+    #     blade = manufacture_blade(impact_codes)
+    #     for impact_code in impact_codes:
+    #         impacts_list[impact_code].add_total(blade.get(impact_code))
+    # # Default blade
+    # else:
+    #     blade = manufacture_blade(impact_codes)
+    #     for impact_code in impact_codes:
+    #         impacts_list[impact_code].add_total(blade.get(impact_code))
 
     return Impacts(impacts_list, hypothesis="not implemented")
 
 
-def manufacture_CPU(server, impact_codes):
-    cpu_core_number = server.cpu_core_number if server.cpu_core_number is not None else get_cpu_core_number(server)
-    die_size_per_core = server.cpu_die if server.cpu_die is not None else get_cpu_die(server)
-    cpu_number = server.cpu_number if server.cpu_number is not None else get_cpu_number(server)
-    manufacture_cpu_impact = {}
+def smart_complete_data_cpu(cpu: Cpu) -> Cpu:
+    # We have all the data required
+    if cpu.die_size_per_core and cpu.core_units:
+        return cpu
 
+    elif cpu.die_size and cpu.core_units:
+        cpu.die_size_per_core = cpu.die_size / cpu.core_units
+        return cpu
+
+    # Let's infer the data
+    else:
+        sub = _cpu_df
+
+        if cpu.manufacturer:
+            sub = sub[sub['manufacturer'] == cpu.manufacturer]
+
+        if cpu.family:
+            sub = sub[sub['family'] == cpu.family]
+
+        if cpu.manufacture_date:
+            sub = sub[sub['manufacture_date'] == cpu.manufacture_date]
+
+        if cpu.process:
+            sub = sub[sub['process'] == cpu.process]
+
+        if len(sub) == 0 or len(sub) == len(_cpu_df):
+            return Cpu(
+                units=DEFAULT_CPU_UNITS,
+                die_size_per_core=DEFAULT_CPU_DIE_SIZE_PER_CORE,
+                core_units=DEFAULT_CPU_CORE_UNITS
+            )
+        elif len(sub) == 1:
+            return Cpu(
+                units=cpu.units if cpu.units else DEFAULT_CPU_UNITS,
+                die_size_per_core=float(sub['die_size_per_core']),
+                core_units=int(sub['core_units'])
+            )
+        else:
+            return Cpu(
+                units=cpu.units if cpu.units else DEFAULT_CPU_UNITS,
+                die_size_per_core=float(sub['die_size_per_core'].max()),
+                core_units=int(sub['core_units'].max())
+            )
+
+
+def manufacture_cpu(server: Server, impact_codes: Set[str]) -> dict:
+    cpu_corrected = smart_complete_data_cpu(server.configuration.cpu)
+    server.configuration.cpu = cpu_corrected
+
+    manufacture_cpu_impact = dict()
     for impact_code in impact_codes:
         cpu_die_impact = impact_factor["cpu"][impact_code]["die_impact"]
         cpu_impact = impact_factor["cpu"][impact_code]["impact"]
 
-        impact_manufacture_cpu = \
-            cpu_number * ((cpu_core_number * die_size_per_core + 0.491) * cpu_die_impact + cpu_impact)
+        impact_manufacture_cpu = cpu_corrected.units \
+            * ((cpu_corrected.core_units * cpu_corrected.die_size_per_core + 0.491) * cpu_die_impact + cpu_impact)
 
         manufacture_cpu_impact[impact_code] = impact_manufacture_cpu
-
     return manufacture_cpu_impact
 
 
-def get_cpu_die(server):
-    # TODO bring intelligence
-    # default value from the methodology
-    return 0.245
+def smart_complete_data_ram(ram: Ram) -> Ram:
+    pass
 
 
-def get_cpu_core_number(server):
-    # TODO bring intelligence
-    # Mean from the dataset
-    return 24
-
-
-def get_cpu_number(server):
-    # TODO bring intelligence
-    # Randomly chosen
-    return 2
-
-
-def manufacture_RAM(server, impact_codes):
+def manufacture_ram(server: Server, impact_codes: Set[str]) -> dict:
     ram_strip_quantity = server.ram_strip_quantity if server.ram_strip_quantity is not None else get_ram_strip_quantity(server)
     ram_storage_density = server.ram_die if server.ram_die is not None else get_ram_storage_density(server)
     ram_capacity = server.ram_capacity if server.ram_capacity is not None else get_ram_capacity(server)
