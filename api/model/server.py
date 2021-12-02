@@ -61,3 +61,7 @@ class Server(BaseModel):
 
     add_method: Optional[str] = None
     add_date: Optional[str] = None
+
+
+if __name__ == '__main__':
+    print(Server.schema_json(indent=2))
