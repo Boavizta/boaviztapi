@@ -18,12 +18,12 @@ _ram_df = pd.read_csv('./api/service/server_impact/bottom_up/ram.csv')
 
 # Constants
 DEFAULT_CPU_UNITS = 2
-DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
+DEFAULT_CPU_DIE_SIZE_PER_CORE = 24.5
 DEFAULT_CPU_CORE_UNITS = 24
 
 DEFAULT_RAM_UNITS = 2
 DEFAULT_RAM_CAPACITY = 32
-DEFAULT_RAM_DENSITY = 1.79
+DEFAULT_RAM_DENSITY = 0.625
 
 
 def bottom_up_server(server, impact_codes=None):
@@ -43,11 +43,12 @@ def bottom_up_server(server, impact_codes=None):
             ram = manufacture_ram(server, impact_codes)
             for impact_code in impact_codes:
                 impacts_list[impact_code].add_total(ram.get(impact_code))
-    #
-    # ssd = manufacture_SSD(server, impact_codes)
-    # for impact_code in impact_codes:
-    #     impacts_list[impact_code].add_total(ssd.get(impact_code))
-    #
+
+        # if server.configuration.disk:
+        #     ssd = manufacture_SSD(server, impact_codes)
+        #     for impact_code in impact_codes:
+        #         impacts_list[impact_code].add_total(ssd.get(impact_code))
+
     # hdd = manufacture_HDD(server, impact_codes)
     # for impact_code in impact_codes:
     #     impacts_list[impact_code].add_total(hdd.get(impact_code))
