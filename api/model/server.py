@@ -2,6 +2,8 @@ import json
 from pydantic import BaseModel
 from typing import Optional, List
 
+from api.model.impacts import Impact
+
 
 class ModelServer(BaseModel):
     manufacturer: Optional[str] = None 
@@ -13,6 +15,7 @@ class ModelServer(BaseModel):
 class PowerSupply(BaseModel):
     units: Optional[int] = None
     unit_weight: Optional[float] = None
+    _impacts: List[Impact] = None
 
 
 class Disk(BaseModel):
@@ -23,6 +26,7 @@ class Disk(BaseModel):
     manufacturer: Optional[str] = None
     manufacture_date: Optional[str] = None
     model: Optional[str] = None
+    _impacts: List[Impact] = None
 
 
 class Ram(BaseModel):
@@ -34,6 +38,7 @@ class Ram(BaseModel):
     manufacture_date: Optional[str] = None
     model: Optional[str] = None
     integrator: Optional[str] = None
+    _impacts: List[Impact] = None
 
 
 class Cpu(BaseModel):
@@ -46,6 +51,15 @@ class Cpu(BaseModel):
     manufacture_date: Optional[str] = None
     model: Optional[str] = None
     family: Optional[str] = None
+    _impacts: List[Impact] = None
+
+
+class MotherBoard(BaseModel):
+    _impacts: List[Impact] = None
+
+
+class Assembly(BaseModel):
+    _impacts: List[Impact] = None
 
 
 class ConfigurationServer(BaseModel):
@@ -53,11 +67,13 @@ class ConfigurationServer(BaseModel):
     ram: Optional[List[Ram]] = None
     disk: Optional[List[Disk]] = None
     power_supply: Optional[PowerSupply] = None
+    _motherboard: [MotherBoard] = None
 
 
 class Server(BaseModel):
     model: Optional[ModelServer] = None
     configuration: Optional[ConfigurationServer] = None
+    _impact_assembly: List[Impact] = None
 
     add_method: Optional[str] = None
     add_date: Optional[str] = None
