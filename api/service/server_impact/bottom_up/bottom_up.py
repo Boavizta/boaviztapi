@@ -1,6 +1,4 @@
-import os
-
-from typing import Set
+from typing import Set, Optional
 
 import pandas as pd
 
@@ -18,7 +16,7 @@ _ssd_df = pd.read_csv('./api/service/server_impact/bottom_up/ssd.csv')
 
 # Constants
 DEFAULT_CPU_UNITS = 2
-DEFAULT_CPU_DIE_SIZE_PER_CORE = 24.5
+DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
 DEFAULT_CPU_CORE_UNITS = 24
 
 DEFAULT_RAM_UNITS = 2
@@ -33,7 +31,7 @@ DEFAULT_POWER_SUPPLY_NUMBER = 2
 DEFAULT_POWER_SUPPLY_WEIGHT = 2.99
 
 
-def bottom_up_server(server, impact_codes=None):
+def bottom_up_server(server: Server, impact_codes: Optional[Set[str]] = None):
     if impact_codes is None:
         impact_codes = _default_impacts_code
     # init impacts object
