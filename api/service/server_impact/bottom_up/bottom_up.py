@@ -1,11 +1,9 @@
-import os
-
-from typing import Set
+from typing import Set, Optional
 
 import pandas as pd
 
 from api.model.impacts import Impact, Impacts
-from api.model.server import Server, Cpu, Ram
+from api.model.server import Server, Cpu, Ram, Disk
 from .impact_factor import impact_factor
 
 _default_impacts_code = {"gwp", "pe", "adp"}
@@ -13,20 +11,27 @@ _default_impacts_code = {"gwp", "pe", "adp"}
 # Data
 _cpu_df = pd.read_csv('./api/service/server_impact/bottom_up/cpu.csv')
 _ram_df = pd.read_csv('./api/service/server_impact/bottom_up/ram.csv')
-# _ssd_df = pd.read_csv('ssd.csv')
+_ssd_df = pd.read_csv('./api/service/server_impact/bottom_up/ssd.csv')
 
 
 # Constants
 DEFAULT_CPU_UNITS = 2
-DEFAULT_CPU_DIE_SIZE_PER_CORE = 24.5
+DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
 DEFAULT_CPU_CORE_UNITS = 24
 
 DEFAULT_RAM_UNITS = 2
 DEFAULT_RAM_CAPACITY = 32
 DEFAULT_RAM_DENSITY = 0.625
 
+DEFAULT_SSD_UNITS = 2
+DEFAULT_SSD_CAPACITY = 1000
+DEFAULT_SSD_DENSITY = 48.5
 
-def bottom_up_server(server, impact_codes=None):
+DEFAULT_POWER_SUPPLY_NUMBER = 2
+DEFAULT_POWER_SUPPLY_WEIGHT = 2.99
+
+
+def bottom_up_server(server: Server, impact_codes: Optional[Set[str]] = None):
     if impact_codes is None:
         impact_codes = _default_impacts_code
     # init impacts object
@@ -44,41 +49,41 @@ def bottom_up_server(server, impact_codes=None):
             for impact_code in impact_codes:
                 impacts_list[impact_code].add_total(ram.get(impact_code))
 
-        # if server.configuration.disk:
-        #     ssd = manufacture_SSD(server, impact_codes)
-        #     for impact_code in impact_codes:
-        #         impacts_list[impact_code].add_total(ssd.get(impact_code))
+        if server.configuration.disk:
+            ssd = manufacture_ssd(server, impact_codes)
+            for impact_code in impact_codes:
+                impacts_list[impact_code].add_total(ssd.get(impact_code))
 
-    # hdd = manufacture_HDD(server, impact_codes)
-    # for impact_code in impact_codes:
-    #     impacts_list[impact_code].add_total(hdd.get(impact_code))
-    #
-    # motherboard = manufacture_motherboard(impact_codes)
-    # for impact_code in impact_codes:
-    #     impacts_list[impact_code].add_total(motherboard.get(impact_code))
-    #
-    # power_supply = manufacture_power_supply(server, impact_codes)
-    # for impact_code in impact_codes:
-    #     impacts_list[impact_code].add_total(power_supply.get(impact_code))
-    #
-    # server_assembly = manufacture_server_assembly(impact_codes)
-    # for impact_code in impact_codes:
-    #     impacts_list[impact_code].add_total(server_assembly.get(impact_code))
-    #
-    # if server.type == "rack":
-    #     rack = manufacture_rack(impact_codes)
-    #     for impact_code in impact_codes:
-    #         impacts_list[impact_code].add_total(rack.get(impact_code))
-    #
-    # elif server.type == "blade":
-    #     blade = manufacture_blade(impact_codes)
-    #     for impact_code in impact_codes:
-    #         impacts_list[impact_code].add_total(blade.get(impact_code))
-    # # Default blade
-    # else:
-    #     blade = manufacture_blade(impact_codes)
-    #     for impact_code in impact_codes:
-    #         impacts_list[impact_code].add_total(blade.get(impact_code))
+            hdd = manufacture_hdd(server, impact_codes)
+            for impact_code in impact_codes:
+                impacts_list[impact_code].add_total(hdd.get(impact_code))
+
+    motherboard = manufacture_motherboard(impact_codes)
+    for impact_code in impact_codes:
+        impacts_list[impact_code].add_total(motherboard.get(impact_code))
+
+    power_supply = manufacture_power_supply(server, impact_codes)
+    for impact_code in impact_codes:
+        impacts_list[impact_code].add_total(power_supply.get(impact_code))
+
+    server_assembly = manufacture_server_assembly(impact_codes)
+    for impact_code in impact_codes:
+        impacts_list[impact_code].add_total(server_assembly.get(impact_code))
+
+    if server.model.type == "rack":
+        rack = manufacture_rack(impact_codes)
+        for impact_code in impact_codes:
+            impacts_list[impact_code].add_total(rack.get(impact_code))
+
+    elif server.model.type == "blade":
+        blade = manufacture_blade(impact_codes)
+        for impact_code in impact_codes:
+            impacts_list[impact_code].add_total(blade.get(impact_code))
+    # Default blade
+    else:
+        blade = manufacture_blade(impact_codes)
+        for impact_code in impact_codes:
+            impacts_list[impact_code].add_total(blade.get(impact_code))
 
     return Impacts(impacts_list, hypothesis="not implemented")
 
@@ -165,7 +170,7 @@ def smart_complete_data_ram(ram: Ram) -> Ram:
             return Ram(
                 units=ram.units if ram.units else DEFAULT_RAM_UNITS,
                 capacity=ram.capacity if ram.capacity else DEFAULT_RAM_CAPACITY,
-                density=ram.density if ram.density else DEFAULT_RAM_DENSITY
+                density=DEFAULT_RAM_DENSITY
             )
         elif len(sub) == 1:
             return Ram(
@@ -205,48 +210,72 @@ def manufacture_ram(server: Server, impact_codes: Set[str]) -> dict:
     return manufacture_ram_impact
 
 
-def manufacture_SSD(server, impact_codes):
-    ssd_capacity = server.ssd_capacity if server.ssd_capacity is not None else get_ssd_strip_quantity(server)
-    ssd_storage_density = server.ssd_die if server.ssd_die is not None else get_ssd_storage_density(server)
-    ssd_number = server.ssd_quantity if server.ssd_quantity is not None else get_ssd_capacity(server)
+def smart_complete_data_ssd(ssd: Disk) -> Disk:
+    if ssd.capacity and ssd.density:
+        return ssd
+    else:
+        sub = _ssd_df
+
+        if ssd.manufacturer:
+            sub = sub[sub['manufacturer'] == ssd.manufacturer]
+
+        if len(sub) == 0 or len(sub) == len(_cpu_df):
+            return Disk(
+                units=ssd.units if ssd.units else DEFAULT_SSD_UNITS,
+                type='ssd',
+                capacity=ssd.capacity if ssd.capacity else DEFAULT_SSD_CAPACITY,
+                density=ssd.density if ssd.density else DEFAULT_RAM_DENSITY
+            )
+        elif len(sub) == 1:
+            return Disk(
+                units=ssd.units if ssd.units else DEFAULT_SSD_UNITS,
+                type='ssd',
+                capacity=ssd.capacity if ssd.capacity else DEFAULT_SSD_CAPACITY,
+                density=float(sub['density'])
+            )
+        else:
+            capacity = ssd.capacity if ssd.capacity else DEFAULT_SSD_CAPACITY
+            sub['_scope3'] = sub['density'].apply(lambda x: capacity / x)
+            sub = sub.sort_values(by='_scope3', ascending=False)
+            density = float(sub.iloc[0].density)
+            return Disk(
+                units=ssd.units if ssd.units else DEFAULT_RAM_UNITS,
+                type='ssd',
+                capacity=capacity,
+                density=density
+            )
+
+
+def manufacture_ssd(server: Server, impact_codes: Set[str]) -> dict:
+    disk_ids = []
+    ssd_corrected = []
+    for i, disk in enumerate(server.configuration.disk):
+        if disk.type.lower() == 'ssd':
+            ssd_corrected.append(smart_complete_data_ssd(disk))
+            disk_ids.append(i)
+
+    # Replace SSDs
+    for i in sorted(disk_ids, reverse=True):
+        del server.configuration.disk[i]
+    server.configuration.disk += ssd_corrected
 
     manufacture_ssd_impacts = {}
+    for ssd in ssd_corrected:
+        for impact_code in impact_codes:
+            ssd_die_impact = impact_factor["ssd"][impact_code]["die_impact"]
+            ssd_disk_impact = impact_factor["ssd"][impact_code]["impact"]
 
-    for impact_code in impact_codes:
-        ssd_die_impact = impact_factor["ssd"][impact_code]["die_impact"]
-        ssd_disk_impact = impact_factor["ssd"][impact_code]["impact"]
+            impact_manufacture_ssd = \
+                ssd.units * ((ssd.capacity / ssd.density) * ssd_die_impact + ssd_disk_impact)
 
-        impact_manufacture_ssd = \
-            ssd_number * ((ssd_capacity / ssd_storage_density) * ssd_die_impact + ssd_disk_impact)
-
-        manufacture_ssd_impacts[impact_code] = impact_manufacture_ssd
-
+            manufacture_ssd_impacts[impact_code] = impact_manufacture_ssd
     return manufacture_ssd_impacts
 
 
-def get_ssd_strip_quantity(server):
-    # TODO bring intelligence
-    # Randomly chosen
-    return 2
-
-
-def get_ssd_storage_density(server):
-    # TODO bring intelligence
-    # Default value from the methodology
-    return 50.6
-
-
-def get_ssd_capacity(server):
-    # TODO bring intelligence
-    # Randomly chosen
-    return 1000
-
-
-def manufacture_HDD(server, impact_codes):
-    hdd_drive_number = server.hdd_number if server.hdd_number is not None else get_hdd_number(server)
+def manufacture_hdd(server: Server, impact_codes: Set[str]) -> dict:
+    hdd_drive_number = sum([1 for disk in server.configuration.disk if disk.type.lower() == 'hdd'])
 
     manufacture_hdd_impacts = {}
-
     for impact_code in impact_codes:
         hdd_disk_impact = impact_factor["hdd"][impact_code]["impact"]
         impact_manufacture_hdd = hdd_drive_number * hdd_disk_impact
@@ -255,11 +284,7 @@ def manufacture_HDD(server, impact_codes):
     return manufacture_hdd_impacts
 
 
-def get_hdd_number(server):
-    return 2
-
-
-def manufacture_motherboard(impact_codes):
+def manufacture_motherboard(impact_codes: Set[str]) -> dict:
     manufacture_motherboard_impacts = {}
 
     for impact_code in impact_codes:
@@ -269,14 +294,16 @@ def manufacture_motherboard(impact_codes):
     return manufacture_motherboard_impacts
 
 
-def manufacture_power_supply(server, impact_codes):
-    power_supply_number = server.power_supply_number if server.power_supply_number is not None else \
-        get_power_supply_number(server)
-    power_supply_weight = server.power_supply_weight if server.power_supply_number is not None else \
-        get_power_supply_weight(server)
+def manufacture_power_supply(server: Server, impact_codes: Set[str]):
+    power_supply_number = server.configuration.power_supply.units \
+        if server.configuration.power_supply.units is not None else \
+        DEFAULT_POWER_SUPPLY_NUMBER
+
+    power_supply_weight = server.configuration.power_supply.unit_weight \
+        if server.configuration.power_supply.unit_weight is not None else \
+        DEFAULT_POWER_SUPPLY_WEIGHT
 
     manufacture_power_supply_impacts = {}
-
     for impact_code in impact_codes:
         power_supply_impact = impact_factor["power_supply_unit"][impact_code]["impact"]
         manufacture_power_supply_gwp = power_supply_number * power_supply_weight * power_supply_impact
@@ -285,17 +312,7 @@ def manufacture_power_supply(server, impact_codes):
     return manufacture_power_supply_impacts
 
 
-def get_power_supply_number(server):
-    # TODO bring intelligence
-    # Randomly chosen
-    return 1
-
-
-def get_power_supply_weight(server):
-    return 10
-
-
-def manufacture_server_assembly(impact_codes):
+def manufacture_server_assembly(impact_codes: Set[str]):
 
     server_assembly_impacts = {}
 
@@ -306,7 +323,7 @@ def manufacture_server_assembly(impact_codes):
     return server_assembly_impacts
 
 
-def manufacture_rack(impact_codes):
+def manufacture_rack(impact_codes: Set[str]):
 
     rack_impacts = {}
 
@@ -317,7 +334,7 @@ def manufacture_rack(impact_codes):
     return rack_impacts
 
 
-def manufacture_blade(impact_codes):
+def manufacture_blade(impact_codes: Set[str]):
 
     blade_impacts = {}
 

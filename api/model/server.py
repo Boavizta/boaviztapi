@@ -12,16 +12,16 @@ class ModelServer(BaseModel):
 
 class PowerSupply(BaseModel):
     units: Optional[int] = None
-    unit_weight: Optional[str] = None
+    unit_weight: Optional[float] = None
 
 
 class Disk(BaseModel):
     units: Optional[int] = None
     type: Optional[str] = None
-    capacity: Optional[str] = None
-    density: Optional[str] = None
+    capacity: Optional[int] = None
+    density: Optional[float] = None
     manufacturer: Optional[str] = None
-    manuf_date: Optional[str] = None
+    manufacture_date: Optional[str] = None
     model: Optional[str] = None
 
 
@@ -31,7 +31,7 @@ class Ram(BaseModel):
     density: Optional[float] = None
     process: Optional[float] = None
     manufacturer: Optional[str] = None
-    manufacturer_date: Optional[str] = None
+    manufacture_date: Optional[str] = None
     model: Optional[str] = None
     integrator: Optional[str] = None
 
@@ -61,3 +61,7 @@ class Server(BaseModel):
 
     add_method: Optional[str] = None
     add_date: Optional[str] = None
+
+
+if __name__ == '__main__':
+    print(Server.schema_json(indent=2))
