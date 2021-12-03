@@ -1,6 +1,4 @@
-import os
-
-from typing import Set
+from typing import Set, Optional
 
 import pandas as pd
 
@@ -33,7 +31,7 @@ DEFAULT_POWER_SUPPLY_NUMBER = 2
 DEFAULT_POWER_SUPPLY_WEIGHT = 2.99
 
 
-def bottom_up_server(server, impact_codes=None):
+def bottom_up_server(server: Server, impact_codes: Optional[Set[str]] = None):
     if impact_codes is None:
         impact_codes = _default_impacts_code
     # init impacts object
