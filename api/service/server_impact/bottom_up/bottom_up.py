@@ -64,54 +64,7 @@ def bottom_up_server(server: Server, impact_codes: Optional[Set[str]] = None) ->
     return server
 
 
-def smart_complete_data_cpu(cpu: Cpu) -> Cpu:
-    # We have all the data required
-    if cpu.die_size_per_core and cpu.core_units:
-        return cpu
 
-    elif cpu.die_size and cpu.core_units:
-        cpu.die_size_per_core = cpu.die_size / cpu.core_units
-        return cpu
-
-    # Let's infer the data
-    else:
-        sub = _cpu_df
-
-        if cpu.manufacturer:
-            sub = sub[sub['manufacturer'] == cpu.manufacturer]
-
-        if cpu.family:
-            sub = sub[sub['family'] == cpu.family]
-
-        if cpu.manufacture_date:
-            sub = sub[sub['manufacture_date'] == cpu.manufacture_date]
-
-        if cpu.process:
-            sub = sub[sub['process'] == cpu.process]
-
-        if len(sub) == 0 or len(sub) == len(_cpu_df):
-            return Cpu(
-                units=DEFAULT_CPU_UNITS,
-                die_size_per_core=DEFAULT_CPU_DIE_SIZE_PER_CORE,
-                core_units=DEFAULT_CPU_CORE_UNITS
-            )
-        elif len(sub) == 1:
-            return Cpu(
-                units=cpu.units if cpu.units else DEFAULT_CPU_UNITS,
-                die_size_per_core=float(sub['die_size_per_core']),
-                core_units=int(sub['core_units'])
-            )
-        else:
-            sub['_scope3'] = sub[['core_units', 'die_size_per_core']].apply(lambda x: x[0] * x[1])
-            sub = sub.sort_values(by='_scope3', ascending=False)
-            row = sub.iloc[0]
-            die_size_per_core = float(row['die_size_per_core'])
-            core_units = int(row['core_units'])
-            return Cpu(
-                units=cpu.units if cpu.units else DEFAULT_CPU_UNITS,
-                die_size_per_core=die_size_per_core,
-                core_units=core_units
-            )
 
 
 def manufacture_cpu(server: Server, impact_codes: Set[str]):

@@ -1,9 +1,15 @@
 from typing import Optional
 
+import pandas as pd
 from pydantic import BaseModel
+
+_cpu_df = pd.read_csv('./cpu.csv')
+_ram_df = pd.read_csv('./ram.csv')
+_ssd_df = pd.read_csv('./ssd.csv')
 
 
 class ComponentCPU(BaseModel):
+
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "die_impact": 1.97,
@@ -19,6 +25,9 @@ class ComponentCPU(BaseModel):
         },
         "constant_core_impact": 0.491
     }
+
+    DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
+    DEFAULT_CPU_CORE_UNITS = 24
 
     core_units: Optional[int] = None
     die_size: Optional[float] = None
@@ -47,6 +56,48 @@ class ComponentCPU(BaseModel):
         cpu_impact = self.IMPACT_FACTOR_DICT['adp']['impact']
         return (self.core_units * self.die_size_per_core + core_impact) * cpu_die_impact + cpu_impact
 
+    def smart_complete_data(self):
+        # We have all the data required
+        if self.die_size_per_core and self.core_units:
+            return
+
+        elif self.die_size and self.core_units:
+            self.die_size_per_core = self.die_size / self.core_units
+            return
+
+        # Let's infer the data
+        else:
+            sub = _cpu_df
+
+            if self.manufacturer:
+                sub = sub[sub['manufacturer'] == self.manufacturer]
+
+            if self.family:
+                sub = sub[sub['family'] == self.family]
+
+            if self.manufacture_date:
+                sub = sub[sub['manufacture_date'] == self.manufacture_date]
+
+            if self.process:
+                sub = sub[sub['process'] == self.process]
+
+            if len(sub) == 0 or len(sub) == len(_cpu_df):
+                self.die_size_per_core = self.DEFAULT_CPU_DIE_SIZE_PER_CORE
+                self.core_units = self.DEFAULT_CPU_CORE_UNITS
+
+            elif len(sub) == 1:
+                self.die_size_per_core = float(sub['die_size_per_core'])
+                self.core_units = int(sub['core_units'])
+
+            else:
+                sub['_scope3'] = sub[['core_units', 'die_size_per_core']].apply(lambda x: x[0] * x[1])
+                sub = sub.sort_values(by='_scope3', ascending=False)
+                row = sub.iloc[0]
+                die_size_per_core = float(row['die_size_per_core'])
+                core_units = int(row['core_units'])
+                self.die_size_per_core = die_size_per_core
+                self.core_units = core_units
+
 
 class ComponentRAM(BaseModel):
     IMPACT_FACTOR_DICT = {
@@ -63,6 +114,9 @@ class ComponentRAM(BaseModel):
             "impact": 1.69E-03
         }
     }
+
+    DEFAULT_RAM_CAPACITY = 32
+    DEFAULT_RAM_DENSITY = 0.625
 
     capacity: Optional[int] = None
     density: Optional[float] = None
@@ -86,6 +140,34 @@ class ComponentRAM(BaseModel):
         ram_die_impact = self.IMPACT_FACTOR_DICT['adp']['die_impact']
         ram_impact = self.IMPACT_FACTOR_DICT['adp']['impact']
         return (self.capacity / self.density) * ram_die_impact + ram_impact
+
+    def smart_complete_data(self):
+        if self.capacity and self.density:
+            return
+        else:
+            sub = _ram_df
+
+            if self.manufacturer:
+                sub = sub[sub['manufacturer'] == self.manufacturer]
+
+            if self.process:
+                sub = sub[sub['process'] == self.process]
+
+            if len(sub) == 0 or len(sub) == len(_cpu_df):
+                self.capacity = self.capacity if self.capacity else self.DEFAULT_RAM_CAPACITY
+                self.density = self.DEFAULT_RAM_DENSITY
+
+            elif len(sub) == 1:
+                self.capacity = self.capacity if self.capacity else self.DEFAULT_RAM_CAPACITY
+                self.density = float(sub['density'])
+
+            else:
+                capacity = self.capacity if self.capacity else self.DEFAULT_RAM_CAPACITY
+                sub['_scope3'] = sub['density'].apply(lambda x: self.capacity / x)
+                sub = sub.sort_values(by='_scope3', ascending=False)
+                density = float(sub.iloc[0].density)
+                self.capacity = capacity
+                self.density = density
 
 
 class ComponentHDD(BaseModel):
@@ -133,6 +215,9 @@ class ComponentSSD(BaseModel):
         }
     }
 
+    DEFAULT_SSD_CAPACITY = 1000
+    DEFAULT_SSD_DENSITY = 48.5
+
     capacity: Optional[int] = None
     density: Optional[float] = None
     manufacturer: Optional[str] = None
@@ -154,6 +239,31 @@ class ComponentSSD(BaseModel):
         ssd_impact = self.IMPACT_FACTOR_DICT['adp']['impact']
         return (self.capacity / self.density) * ssd_die_impact + ssd_impact
 
+    def smart_complete_data_ssd(self):
+        if self.capacity and self.density:
+            return
+        else:
+            sub = _ssd_df
+
+            if self.manufacturer:
+                sub = sub[sub['manufacturer'] == self.manufacturer]
+
+            if len(sub) == 0 or len(sub) == len(_cpu_df):
+                self.capacity = self.capacity if self.capacity else self.DEFAULT_SSD_CAPACITY
+                self.density = self.density if self.density else self.DEFAULT_SSD_DENSITY
+
+            elif len(sub) == 1:
+                self.capacity = self.capacity if self.capacity else self.DEFAULT_SSD_CAPACITY
+                self.density = float(sub['density'])
+
+            else:
+                capacity = self.capacity if self.capacity else self.DEFAULT_SSD_CAPACITY
+                sub['_scope3'] = sub['density'].apply(lambda x: capacity / x)
+                sub = sub.sort_values(by='_scope3', ascending=False)
+                density = float(sub.iloc[0].density)
+                self.capacity = capacity
+                self.density = density
+
 
 class PowerSupply(BaseModel):
     IMPACT_FACTOR_DICT = {
@@ -167,6 +277,9 @@ class PowerSupply(BaseModel):
             "impact": 8.30E-03
         }
     }
+
+    DEFAULT_POWER_SUPPLY_NUMBER = 2
+    DEFAULT_POWER_SUPPLY_WEIGHT = 2.99
 
     unit_weight: Optional[float] = None
 
@@ -184,6 +297,11 @@ class PowerSupply(BaseModel):
         power_supply_weight = self.unit_weight
         power_supply_impact = self.IMPACT_FACTOR_DICT['adp']['impact']
         return power_supply_weight * power_supply_impact
+
+    def smart_complete_data_power_supply(self):
+        self.unit_weight = self.unit_weight \
+            if self.unit_weight is not None else \
+            self.DEFAULT_POWER_SUPPLY_WEIGHT
 
 
 class MotherBoard(BaseModel):
