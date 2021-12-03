@@ -26,8 +26,9 @@ def server_impact_ref_data(body: Server):
 @validate()
 def server_impact_bottom_up(body: Server):
     input_ = copy(body)
-    impacts = bottom_up_server(body).to_json()
-    return {'impacts': impacts, 'enriched_data': body.dict()}
+    server_impacts = bottom_up_server(body)
+    return format_output(input_, server_impacts)
+    # return {'impacts': impacts, 'enriched_data': server_impacts.dict()}
 
 
 @server_api.route('/', methods=['POST'])

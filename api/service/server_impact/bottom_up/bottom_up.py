@@ -31,38 +31,35 @@ DEFAULT_POWER_SUPPLY_NUMBER = 2
 DEFAULT_POWER_SUPPLY_WEIGHT = 2.99
 
 
-def bottom_up_server(server: Server, impact_codes: Optional[Set[str]] = None):
+def bottom_up_server(server: Server, impact_codes: Optional[Set[str]] = None) -> Server:
     if impact_codes is None:
         impact_codes = _default_impacts_code
-    # init impacts object
 
     if server.configuration:
         if server.configuration.cpu:
-            cpu = manufacture_cpu(server, impact_codes)
+            manufacture_cpu(server, impact_codes)
         if server.configuration.ram:
-            ram = manufacture_ram(server, impact_codes)
+            manufacture_ram(server, impact_codes)
 
         if server.configuration.disk:
-            ssd = manufacture_ssd(server, impact_codes)
-            hdd = manufacture_hdd(server, impact_codes)
+            manufacture_ssd(server, impact_codes)
+            manufacture_hdd(server, impact_codes)
 
-    motherboard = manufacture_motherboard(server, impact_codes)
+    manufacture_motherboard(server, impact_codes)
 
+    manufacture_power_supply(server, impact_codes)
 
-    power_supply = manufacture_power_supply(server, impact_codes)
-
-
-    server_assembly = manufacture_server_assembly(server, impact_codes)
+    manufacture_server_assembly(server, impact_codes)
 
     if server.model.type == "rack":
-        rack = manufacture_rack(impact_codes)
+        manufacture_rack(server, impact_codes)
 
     elif server.model.type == "blade":
-        blade = manufacture_blade(impact_codes)
+        manufacture_blade(server, impact_codes)
 
     # Default blade
     else:
-        blade = manufacture_blade(impact_codes)
+        manufacture_blade(server, impact_codes)
 
     return server
 
@@ -245,7 +242,7 @@ def manufacture_ssd(server: Server, impact_codes: Set[str]):
                 disk._impacts.append(Impact(type=impact_code, value=impact_manufacture_ssd))
 
 
-def manufacture_hdd(server: Server, impact_codes: Set[str]) -> dict:
+def manufacture_hdd(server: Server, impact_codes: Set[str]):
     hdd_drive_number = sum([1 for disk in server.configuration.disk if disk.type.lower() == 'hdd'])
 
     for disk in server.configuration.disk:
@@ -274,40 +271,26 @@ def manufacture_power_supply(server: Server, impact_codes: Set[str]):
 
     for impact_code in impact_codes:
         power_supply_impact = impact_factor["power_supply_unit"][impact_code]["impact"]
-        manufacture_power_supply_gwp = power_supply_number * power_supply_weight * power_supply_impact
-        server.configuration.power_supply._impacts.append(ty)
+        manufacture_power_supply = power_supply_number * power_supply_weight * power_supply_impact
+        server.configuration.power_supply._impacts.append(Impact(type=impact_code, value=manufacture_power_supply))
 
 
-def manufacture_server_assembly(impact_codes: Set[str]):
-
-    server_assembly_impacts = {}
-
+def manufacture_server_assembly(server: Server, impact_codes: Set[str]):
     for impact_code in impact_codes:
-        server_assembly_gwp_impact = impact_factor["power_supply_unit"][impact_code]["impact"]
-        server_assembly_impacts[impact_code] = server_assembly_gwp_impact
-
-    return server_assembly_impacts
+        server_assembly_impact = impact_factor["power_supply_unit"][impact_code]["impact"]
+        server._impact_assembly.append(Impact(type=impact_code, value=server_assembly_impact))
 
 
-def manufacture_rack(impact_codes: Set[str]):
-
-    rack_impacts = {}
-
+def manufacture_rack(server: Server, impact_codes: Set[str]):
     for impact_code in impact_codes:
         manufacture_rack_impact = impact_factor["rack_server"][impact_code]["impact"]
-        rack_impacts[impact_code] = manufacture_rack_impact
-
-    return rack_impacts
+        server._impact_server_type.append(manufacture_rack_impact)
 
 
-def manufacture_blade(impact_codes: Set[str]):
-
-    blade_impacts = {}
+def manufacture_blade(server: Server, impact_codes: Set[str]):
 
     for impact_code in impact_codes:
         blade_slots_impact = impact_factor["blade_16_slots"][impact_code]["impact"]
         blade_impact = impact_factor["blade_server"][impact_code]["impact"]
-        manufacture_blade_gwp_impact = (1 / 16) * blade_slots_impact + blade_impact
-        blade_impacts[impact_code] = manufacture_blade_gwp_impact
-
-    return blade_impacts
+        manufacture_blade_impact = (1 / 16) * blade_slots_impact + blade_impact
+        server._impact_server_type.append(manufacture_blade_impact)

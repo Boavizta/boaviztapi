@@ -58,10 +58,6 @@ class MotherBoard(BaseModel):
     _impacts: List[Impact] = None
 
 
-class Assembly(BaseModel):
-    _impacts: List[Impact] = None
-
-
 class ConfigurationServer(BaseModel):
     cpu: Optional[Cpu] = None
     ram: Optional[List[Ram]] = None
@@ -74,9 +70,19 @@ class Server(BaseModel):
     model: Optional[ModelServer] = None
     configuration: Optional[ConfigurationServer] = None
     _impact_assembly: List[Impact] = None
+    _impact_server_type: List[Impact] = None
 
     add_method: Optional[str] = None
     add_date: Optional[str] = None
+
+    def iter_components(self) -> List[BaseModel]:
+        components = []
+        components.append(self.configuration.cpu)
+        components += self.configuration.ram
+        components += self.configuration.disk
+        components.append(self.configuration.power_supply)
+        components.append(self.configuration._motherboard)
+        return components
 
 
 if __name__ == '__main__':
