@@ -3,9 +3,10 @@ from typing import Optional
 import pandas as pd
 from pydantic import BaseModel
 
-_cpu_df = pd.read_csv('./cpu.csv')
-_ram_df = pd.read_csv('./ram.csv')
-_ssd_df = pd.read_csv('./ssd.csv')
+
+_cpu_df = pd.read_csv('./api/model/cpu.csv')
+_ram_df = pd.read_csv('./api/model/ram.csv')
+_ssd_df = pd.read_csv('./api/model/ssd.csv')
 
 
 class ComponentCPU(BaseModel):
@@ -198,6 +199,9 @@ class ComponentHDD(BaseModel):
     def impact_adp(self) -> float:
         return self.IMPACT_FACTOR_DICT['adp']['impact']
 
+    def smart_complete_data(self):
+        pass
+
 
 class ComponentSSD(BaseModel):
     IMPACT_FACTOR_DICT = {
@@ -239,7 +243,7 @@ class ComponentSSD(BaseModel):
         ssd_impact = self.IMPACT_FACTOR_DICT['adp']['impact']
         return (self.capacity / self.density) * ssd_die_impact + ssd_impact
 
-    def smart_complete_data_ssd(self):
+    def smart_complete_data(self):
         if self.capacity and self.density:
             return
         else:
@@ -265,7 +269,7 @@ class ComponentSSD(BaseModel):
                 self.density = density
 
 
-class PowerSupply(BaseModel):
+class ComponentPowerSupply(BaseModel):
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 24.30
@@ -298,13 +302,13 @@ class PowerSupply(BaseModel):
         power_supply_impact = self.IMPACT_FACTOR_DICT['adp']['impact']
         return power_supply_weight * power_supply_impact
 
-    def smart_complete_data_power_supply(self):
+    def smart_complete_data(self):
         self.unit_weight = self.unit_weight \
             if self.unit_weight is not None else \
             self.DEFAULT_POWER_SUPPLY_WEIGHT
 
 
-class MotherBoard(BaseModel):
+class ComponentMotherBoard(BaseModel):
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 66.10
@@ -326,8 +330,11 @@ class MotherBoard(BaseModel):
     def impact_adp(self) -> float:
         return self.IMPACT_FACTOR_DICT['adp']['impact']
 
+    def smart_complete_data(self):
+        pass
 
-class Rack(BaseModel):
+
+class ComponentRack(BaseModel):
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 150.00
@@ -349,8 +356,11 @@ class Rack(BaseModel):
     def impact_adp(self) -> float:
         return self.IMPACT_FACTOR_DICT['adp']['impact']
 
+    def smart_complete_data(self):
+        pass
 
-class Blade(BaseModel):
+
+class ComponentBlade(BaseModel):
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact_blade_server": 30.90,
@@ -375,8 +385,11 @@ class Blade(BaseModel):
     def impact_adp(self) -> float:
         return self.IMPACT_FACTOR_DICT['adp']['impact']
 
+    def smart_complete_data(self):
+        pass
 
-class Assembly(BaseModel):
+
+class ComponentAssembly(BaseModel):
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 6.68
@@ -397,3 +410,6 @@ class Assembly(BaseModel):
 
     def impact_adp(self) -> float:
         return self.IMPACT_FACTOR_DICT['adp']['impact']
+
+    def smart_complete_data(self):
+        pass

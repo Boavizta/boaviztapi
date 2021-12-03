@@ -3,6 +3,8 @@ from pydantic import BaseModel
 from typing import Optional, List
 
 from api.model.impacts import Impact
+from .component import ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, ComponentPowerSupply, \
+    ComponentMotherBoard, ComponentAssembly, ComponentRack, ComponentBlade
 
 
 class ModelServer(BaseModel):
@@ -15,7 +17,6 @@ class ModelServer(BaseModel):
 class PowerSupply(BaseModel):
     units: Optional[int] = None
     unit_weight: Optional[float] = None
-    _impacts: List[Impact] = None
 
 
 class Disk(BaseModel):
@@ -26,7 +27,6 @@ class Disk(BaseModel):
     manufacturer: Optional[str] = None
     manufacture_date: Optional[str] = None
     model: Optional[str] = None
-    _impacts: List[Impact] = None
 
 
 class Ram(BaseModel):
@@ -38,7 +38,6 @@ class Ram(BaseModel):
     manufacture_date: Optional[str] = None
     model: Optional[str] = None
     integrator: Optional[str] = None
-    _impacts: List[Impact] = None
 
 
 class Cpu(BaseModel):
@@ -51,11 +50,6 @@ class Cpu(BaseModel):
     manufacture_date: Optional[str] = None
     model: Optional[str] = None
     family: Optional[str] = None
-    _impacts: List[Impact] = None
-
-
-class MotherBoard(BaseModel):
-    _impacts: List[Impact] = None
 
 
 class ConfigurationServer(BaseModel):
@@ -63,25 +57,39 @@ class ConfigurationServer(BaseModel):
     ram: Optional[List[Ram]] = None
     disk: Optional[List[Disk]] = None
     power_supply: Optional[PowerSupply] = None
-    _motherboard: [MotherBoard] = None
 
 
 class Server(BaseModel):
     model: Optional[ModelServer] = None
     configuration: Optional[ConfigurationServer] = None
-    _impact_assembly: List[Impact] = None
-    _impact_server_type: List[Impact] = None
 
     add_method: Optional[str] = None
     add_date: Optional[str] = None
 
-    def iter_components(self) -> List[BaseModel]:
+    def get_component_list(self) -> List[BaseModel]:
         components = []
-        components.append(self.configuration.cpu)
-        components += self.configuration.ram
-        components += self.configuration.disk
-        components.append(self.configuration.power_supply)
-        components.append(self.configuration._motherboard)
+        components += [ComponentCPU(**self.configuration.cpu.dict()) for _ in range(self.configuration.cpu.units)]
+
+        for ram in self.configuration.ram:
+            for _ in range(ram.units):
+                components.append(ComponentRAM(**ram.dict()))
+
+        for disk in self.configuration.disk:
+            if disk.type == 'ssd':
+                for _ in range(disk.units):
+                    components.append(ComponentSSD(**disk.dict()))
+            if disk.type == 'hdd':
+                for _ in range(disk.units):
+                    components.append(ComponentHDD(**disk.dict()))
+
+        components += [ComponentPowerSupply(**self.configuration.power_supply.dict())
+                       for _ in range(self.configuration.power_supply.units)]
+        components.append(ComponentMotherBoard())
+        components.append(ComponentAssembly())
+        if self.model.type == 'rack':
+            components.append(ComponentRack())
+        elif self.model.type == 'blade':
+            components.append(ComponentBlade())
         return components
 
 

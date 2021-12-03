@@ -1,5 +1,3 @@
-from api.model.impacts import Impact, Impacts
-
 import pandas as pd
 import re
 import os
