@@ -2,6 +2,10 @@ import json
 from pydantic import BaseModel
 from typing import Optional, List
 
+from api.model.impacts import Impact
+from .component import ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, ComponentPowerSupply, \
+    ComponentMotherBoard, ComponentAssembly, ComponentRack, ComponentBlade
+
 
 class ModelServer(BaseModel):
     manufacturer: Optional[str] = None 
@@ -61,6 +65,32 @@ class Server(BaseModel):
 
     add_method: Optional[str] = None
     add_date: Optional[str] = None
+
+    def get_component_list(self) -> List[BaseModel]:
+        components = []
+        components += [ComponentCPU(**self.configuration.cpu.dict()) for _ in range(self.configuration.cpu.units)]
+
+        for ram in self.configuration.ram:
+            for _ in range(ram.units):
+                components.append(ComponentRAM(**ram.dict()))
+
+        for disk in self.configuration.disk:
+            if disk.type == 'ssd':
+                for _ in range(disk.units):
+                    components.append(ComponentSSD(**disk.dict()))
+            if disk.type == 'hdd':
+                for _ in range(disk.units):
+                    components.append(ComponentHDD(**disk.dict()))
+
+        components += [ComponentPowerSupply(**self.configuration.power_supply.dict())
+                       for _ in range(self.configuration.power_supply.units)]
+        components.append(ComponentMotherBoard())
+        components.append(ComponentAssembly())
+        if self.model.type == 'rack':
+            components.append(ComponentRack())
+        elif self.model.type == 'blade':
+            components.append(ComponentBlade())
+        return components
 
 
 if __name__ == '__main__':
