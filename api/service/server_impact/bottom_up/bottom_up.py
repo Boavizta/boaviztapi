@@ -18,7 +18,7 @@ _ssd_df = pd.read_csv('./api/service/server_impact/bottom_up/ssd.csv')
 
 # Constants
 DEFAULT_CPU_UNITS = 2
-DEFAULT_CPU_DIE_SIZE_PER_CORE = 24.5
+DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
 DEFAULT_CPU_CORE_UNITS = 24
 
 DEFAULT_RAM_UNITS = 2
