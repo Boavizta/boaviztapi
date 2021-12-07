@@ -13,23 +13,3 @@ In the interest of transparency and scientific popularization, the opening of th
 ## Architecture
 
 The system is developed in micro-services layers according to a bottom-up principle. The first layer implemented is equipment, starting with the servers (MVP). The second layer is the measurement of the impact of digital services or systems. The measurement of the global impact is currently outside the scope. 
-
-## Technos
-
-* Flask 2.0.2
-* Python >= 3.6
-
-## Coding convention
-
-[PEP8](https://www.python.org/dev/peps/pep-0008/)
-
-## Project first Install & run
-```python3 -m venv venv``` 
-
-```pip3 install -r requirements.txt``` 
-
-```flask run```
-
-## Project test
-
-```pytest -v``` 

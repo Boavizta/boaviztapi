@@ -1,15 +1,35 @@
+from abc import abstractmethod
 from typing import Optional
 
 import pandas as pd
 from pydantic import BaseModel
 
 
-_cpu_df = pd.read_csv('./api/model/cpu.csv')
-_ram_df = pd.read_csv('./api/model/ram.csv')
-_ssd_df = pd.read_csv('./api/model/ssd.csv')
+_cpu_df = pd.read_csv('./api/model/components/cpu.csv')
+_ram_df = pd.read_csv('./api/model/components/ram.csv')
+_ssd_df = pd.read_csv('./api/model/components/ssd.csv')
 
 
-class ComponentCPU(BaseModel):
+class Component(BaseModel):
+
+    @abstractmethod
+    def impact_gwp(self) -> float:
+        pass
+
+    @abstractmethod
+    def impact_pe(self) -> float:
+        pass
+
+    @abstractmethod
+    def impact_adp(self) -> float:
+        pass
+
+    @abstractmethod
+    def smart_complete_data(self):
+        pass
+
+
+class ComponentCPU(Component):
 
     IMPACT_FACTOR_DICT = {
         "gwp": {
@@ -100,7 +120,7 @@ class ComponentCPU(BaseModel):
                 self.core_units = core_units
 
 
-class ComponentRAM(BaseModel):
+class ComponentRAM(Component):
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "die_impact": 2.20,
@@ -171,7 +191,7 @@ class ComponentRAM(BaseModel):
                 self.density = density
 
 
-class ComponentHDD(BaseModel):
+class ComponentHDD(Component):
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 31.10
@@ -203,7 +223,7 @@ class ComponentHDD(BaseModel):
         pass
 
 
-class ComponentSSD(BaseModel):
+class ComponentSSD(Component):
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "die_impact": 2.20,
@@ -269,7 +289,7 @@ class ComponentSSD(BaseModel):
                 self.density = density
 
 
-class ComponentPowerSupply(BaseModel):
+class ComponentPowerSupply(Component):
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 24.30
@@ -308,7 +328,7 @@ class ComponentPowerSupply(BaseModel):
             self.DEFAULT_POWER_SUPPLY_WEIGHT
 
 
-class ComponentMotherBoard(BaseModel):
+class ComponentMotherBoard(Component):
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 66.10
@@ -334,7 +354,7 @@ class ComponentMotherBoard(BaseModel):
         pass
 
 
-class ComponentRack(BaseModel):
+class ComponentRack(Component):
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 150.00
@@ -360,7 +380,7 @@ class ComponentRack(BaseModel):
         pass
 
 
-class ComponentBlade(BaseModel):
+class ComponentBlade(Component):
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact_blade_server": 30.90,
@@ -389,7 +409,7 @@ class ComponentBlade(BaseModel):
         pass
 
 
-class ComponentAssembly(BaseModel):
+class ComponentAssembly(Component):
     IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 6.68
