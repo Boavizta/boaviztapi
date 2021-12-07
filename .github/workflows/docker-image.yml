@@ -24,7 +24,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}  
        
     - name: Build the api Docker image
-      run: docker build --file Dockerfile --tag ghcr.io/boavizta/tools-api:latest
+      run: docker build . --file Dockerfile --tag ghcr.io/boavizta/tools-api:latest
       
     - name : tag api Docker image
       run: docker tag ghcr.io/boavizta/tools-api:latest ghcr.io/boavizta/tools-api:$(date +%s)
@@ -36,7 +36,7 @@ jobs:
       run: cd docs
 
     - name: Build doc the Docker image
-      run: docker build --file Dockerfile --tag ghcr.io/boavizta/tools-doc:latest
+      run: docker build . --file Dockerfile --tag ghcr.io/boavizta/tools-doc:latest
 
     - name: tag doc the Docker image
       run: docker tag ghcr.io/boavizta/tools-doc:latest ghcr.io/boavizta/tools-doc:$(date +%s)
