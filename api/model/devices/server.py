@@ -1,9 +1,18 @@
 from pydantic import BaseModel
 from typing import Optional, List
 
-from API.api.model.components.component import ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
-    ComponentPowerSupply, \
-    ComponentMotherBoard, ComponentAssembly, ComponentRack, ComponentBlade, Component
+from api.model.components.component import (
+    ComponentCPU,
+    ComponentRAM,
+    ComponentSSD,
+    ComponentHDD,
+    ComponentPowerSupply,
+    ComponentMotherBoard,
+    ComponentAssembly,
+    ComponentRack,
+    ComponentBlade,
+    Component
+)
 
 
 class ModelServer(BaseModel):
