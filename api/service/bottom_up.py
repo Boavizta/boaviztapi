@@ -1,6 +1,6 @@
 from typing import Set, Optional, List
 
-from API.api.model.components.component import Component
+from api.model.components.component import Component
 
 _default_impacts_code = {"gwp", "pe", "adp"}
 
