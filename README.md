@@ -16,7 +16,7 @@ The system is developed in micro-services layers according to a bottom-up princi
 
 ## Installation
 
-Create a virtual environment with and activate it.
+Create a virtual environment and activate it.
 
 ```bash
 python3 -m venv venv
@@ -33,7 +33,7 @@ pip install -r requirements.txt
 
 ### Launch development API server
 
-Development server uses [uvicorn](https://www.uvicorn.org/) and [fastapi](https://fastapi.tiangolo.com/) and you can launch either with a python script or `uvicorn` CLI.
+Development server uses [uvicorn](https://www.uvicorn.org/) and [fastapi](https://fastapi.tiangolo.com/), you can launch either with a python script or with the `uvicorn` CLI.
 
 ```bash
 python3 main.py
@@ -48,7 +48,6 @@ uvicorn main:app --host=localhost --port 5000
 ### API Swagger
 
 Once API server is launched API swagger is available at [http://localhost:5000/docs](http://localhost:5000/docs).
-
 
 ### Launch using docker container
 
