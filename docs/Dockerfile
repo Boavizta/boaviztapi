@@ -1,7 +1,11 @@
-FROM python:3.8
-COPY . /Documentation/
-WORKDIR /Documentation/
+FROM python:3.7-slim-buster
+
 RUN pip install mkdocs
 RUN pip install mkdocs-render-swagger-plugin
+
+COPY . /docs/
+WORKDIR /docs/
+
 EXPOSE 8080
-CMD ["mkdocs", "serve"]
+
+ENTRYPOINT ["mkdocs", "serve"]
