@@ -1,17 +1,37 @@
+from abc import abstractmethod
 from typing import Optional
 
 import pandas as pd
 from pydantic import BaseModel
 
 
-_cpu_df = pd.read_csv('./api/model/cpu.csv')
-_ram_df = pd.read_csv('./api/model/ram.csv')
-_ssd_df = pd.read_csv('./api/model/ssd.csv')
+_cpu_df = pd.read_csv('./api/model/components/cpu.csv')
+_ram_df = pd.read_csv('./api/model/components/ram.csv')
+_ssd_df = pd.read_csv('./api/model/components/ssd.csv')
 
 
-class ComponentCPU(BaseModel):
+class Component(BaseModel):
 
-    IMPACT_FACTOR_DICT = {
+    @abstractmethod
+    def impact_gwp(self) -> float:
+        pass
+
+    @abstractmethod
+    def impact_pe(self) -> float:
+        pass
+
+    @abstractmethod
+    def impact_adp(self) -> float:
+        pass
+
+    @abstractmethod
+    def smart_complete_data(self):
+        pass
+
+
+class ComponentCPU(Component):
+
+    _IMPACT_FACTOR_DICT = {
         "gwp": {
             "die_impact": 1.97,
             "impact": 9.14
@@ -27,8 +47,8 @@ class ComponentCPU(BaseModel):
         "constant_core_impact": 0.491
     }
 
-    DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
-    DEFAULT_CPU_CORE_UNITS = 24
+    _DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
+    _DEFAULT_CPU_CORE_UNITS = 24
 
     core_units: Optional[int] = None
     die_size: Optional[float] = None
@@ -40,21 +60,21 @@ class ComponentCPU(BaseModel):
     family: Optional[str] = None
 
     def impact_gwp(self) -> float:
-        core_impact = self.IMPACT_FACTOR_DICT['constant_core_impact']
-        cpu_die_impact = self.IMPACT_FACTOR_DICT['gwp']['die_impact']
-        cpu_impact = self.IMPACT_FACTOR_DICT['gwp']['impact']
+        core_impact = self._IMPACT_FACTOR_DICT['constant_core_impact']
+        cpu_die_impact = self._IMPACT_FACTOR_DICT['gwp']['die_impact']
+        cpu_impact = self._IMPACT_FACTOR_DICT['gwp']['impact']
         return (self.core_units * self.die_size_per_core + core_impact) * cpu_die_impact + cpu_impact
 
     def impact_pe(self) -> float:
-        core_impact = self.IMPACT_FACTOR_DICT['constant_core_impact']
-        cpu_die_impact = self.IMPACT_FACTOR_DICT['pe']['die_impact']
-        cpu_impact = self.IMPACT_FACTOR_DICT['pe']['impact']
+        core_impact = self._IMPACT_FACTOR_DICT['constant_core_impact']
+        cpu_die_impact = self._IMPACT_FACTOR_DICT['pe']['die_impact']
+        cpu_impact = self._IMPACT_FACTOR_DICT['pe']['impact']
         return (self.core_units * self.die_size_per_core + core_impact) * cpu_die_impact + cpu_impact
 
     def impact_adp(self) -> float:
-        core_impact = self.IMPACT_FACTOR_DICT['constant_core_impact']
-        cpu_die_impact = self.IMPACT_FACTOR_DICT['adp']['die_impact']
-        cpu_impact = self.IMPACT_FACTOR_DICT['adp']['impact']
+        core_impact = self._IMPACT_FACTOR_DICT['constant_core_impact']
+        cpu_die_impact = self._IMPACT_FACTOR_DICT['adp']['die_impact']
+        cpu_impact = self._IMPACT_FACTOR_DICT['adp']['impact']
         return (self.core_units * self.die_size_per_core + core_impact) * cpu_die_impact + cpu_impact
 
     def smart_complete_data(self):
@@ -83,8 +103,8 @@ class ComponentCPU(BaseModel):
                 sub = sub[sub['process'] == self.process]
 
             if len(sub) == 0 or len(sub) == len(_cpu_df):
-                self.die_size_per_core = self.DEFAULT_CPU_DIE_SIZE_PER_CORE
-                self.core_units = self.DEFAULT_CPU_CORE_UNITS
+                self.die_size_per_core = self._DEFAULT_CPU_DIE_SIZE_PER_CORE
+                self.core_units = self._DEFAULT_CPU_CORE_UNITS
 
             elif len(sub) == 1:
                 self.die_size_per_core = float(sub['die_size_per_core'])
@@ -100,8 +120,8 @@ class ComponentCPU(BaseModel):
                 self.core_units = core_units
 
 
-class ComponentRAM(BaseModel):
-    IMPACT_FACTOR_DICT = {
+class ComponentRAM(Component):
+    _IMPACT_FACTOR_DICT = {
         "gwp": {
             "die_impact": 2.20,
             "impact": 5.22
@@ -116,8 +136,8 @@ class ComponentRAM(BaseModel):
         }
     }
 
-    DEFAULT_RAM_CAPACITY = 32
-    DEFAULT_RAM_DENSITY = 0.625
+    _DEFAULT_RAM_CAPACITY = 32
+    _DEFAULT_RAM_DENSITY = 0.625
 
     capacity: Optional[int] = None
     density: Optional[float] = None
@@ -128,18 +148,18 @@ class ComponentRAM(BaseModel):
     integrator: Optional[str] = None
 
     def impact_gwp(self) -> float:
-        ram_die_impact = self.IMPACT_FACTOR_DICT['gwp']['die_impact']
-        ram_impact = self.IMPACT_FACTOR_DICT['gwp']['impact']
+        ram_die_impact = self._IMPACT_FACTOR_DICT['gwp']['die_impact']
+        ram_impact = self._IMPACT_FACTOR_DICT['gwp']['impact']
         return (self.capacity / self.density) * ram_die_impact + ram_impact
 
     def impact_pe(self) -> float:
-        ram_die_impact = self.IMPACT_FACTOR_DICT['pe']['die_impact']
-        ram_impact = self.IMPACT_FACTOR_DICT['pe']['impact']
+        ram_die_impact = self._IMPACT_FACTOR_DICT['pe']['die_impact']
+        ram_impact = self._IMPACT_FACTOR_DICT['pe']['impact']
         return (self.capacity / self.density) * ram_die_impact + ram_impact
 
     def impact_adp(self) -> float:
-        ram_die_impact = self.IMPACT_FACTOR_DICT['adp']['die_impact']
-        ram_impact = self.IMPACT_FACTOR_DICT['adp']['impact']
+        ram_die_impact = self._IMPACT_FACTOR_DICT['adp']['die_impact']
+        ram_impact = self._IMPACT_FACTOR_DICT['adp']['impact']
         return (self.capacity / self.density) * ram_die_impact + ram_impact
 
     def smart_complete_data(self):
@@ -155,15 +175,15 @@ class ComponentRAM(BaseModel):
                 sub = sub[sub['process'] == self.process]
 
             if len(sub) == 0 or len(sub) == len(_cpu_df):
-                self.capacity = self.capacity if self.capacity else self.DEFAULT_RAM_CAPACITY
-                self.density = self.DEFAULT_RAM_DENSITY
+                self.capacity = self.capacity if self.capacity else self._DEFAULT_RAM_CAPACITY
+                self.density = self._DEFAULT_RAM_DENSITY
 
             elif len(sub) == 1:
-                self.capacity = self.capacity if self.capacity else self.DEFAULT_RAM_CAPACITY
+                self.capacity = self.capacity if self.capacity else self._DEFAULT_RAM_CAPACITY
                 self.density = float(sub['density'])
 
             else:
-                capacity = self.capacity if self.capacity else self.DEFAULT_RAM_CAPACITY
+                capacity = self.capacity if self.capacity else self._DEFAULT_RAM_CAPACITY
                 sub['_scope3'] = sub['density'].apply(lambda x: self.capacity / x)
                 sub = sub.sort_values(by='_scope3', ascending=False)
                 density = float(sub.iloc[0].density)
@@ -171,8 +191,8 @@ class ComponentRAM(BaseModel):
                 self.density = density
 
 
-class ComponentHDD(BaseModel):
-    IMPACT_FACTOR_DICT = {
+class ComponentHDD(Component):
+    _IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 31.10
         },
@@ -191,20 +211,20 @@ class ComponentHDD(BaseModel):
     model: Optional[str] = None
 
     def impact_gwp(self) -> float:
-        return self.IMPACT_FACTOR_DICT['gwp']['impact']
+        return self._IMPACT_FACTOR_DICT['gwp']['impact']
 
     def impact_pe(self) -> float:
-        return self.IMPACT_FACTOR_DICT['pe']['impact']
+        return self._IMPACT_FACTOR_DICT['pe']['impact']
 
     def impact_adp(self) -> float:
-        return self.IMPACT_FACTOR_DICT['adp']['impact']
+        return self._IMPACT_FACTOR_DICT['adp']['impact']
 
     def smart_complete_data(self):
         pass
 
 
-class ComponentSSD(BaseModel):
-    IMPACT_FACTOR_DICT = {
+class ComponentSSD(Component):
+    _IMPACT_FACTOR_DICT = {
         "gwp": {
             "die_impact": 2.20,
             "impact": 6.34
@@ -219,8 +239,8 @@ class ComponentSSD(BaseModel):
         }
     }
 
-    DEFAULT_SSD_CAPACITY = 1000
-    DEFAULT_SSD_DENSITY = 48.5
+    _DEFAULT_SSD_CAPACITY = 1000
+    _DEFAULT_SSD_DENSITY = 48.5
 
     capacity: Optional[int] = None
     density: Optional[float] = None
@@ -229,18 +249,18 @@ class ComponentSSD(BaseModel):
     model: Optional[str] = None
 
     def impact_gwp(self) -> float:
-        ssd_die_impact = self.IMPACT_FACTOR_DICT['gwp']['die_impact']
-        ssd_impact = self.IMPACT_FACTOR_DICT['gwp']['impact']
+        ssd_die_impact = self._IMPACT_FACTOR_DICT['gwp']['die_impact']
+        ssd_impact = self._IMPACT_FACTOR_DICT['gwp']['impact']
         return (self.capacity / self.density) * ssd_die_impact + ssd_impact
 
     def impact_pe(self) -> float:
-        ssd_die_impact = self.IMPACT_FACTOR_DICT['pe']['die_impact']
-        ssd_impact = self.IMPACT_FACTOR_DICT['pe']['impact']
+        ssd_die_impact = self._IMPACT_FACTOR_DICT['pe']['die_impact']
+        ssd_impact = self._IMPACT_FACTOR_DICT['pe']['impact']
         return (self.capacity / self.density) * ssd_die_impact + ssd_impact
 
     def impact_adp(self) -> float:
-        ssd_die_impact = self.IMPACT_FACTOR_DICT['adp']['die_impact']
-        ssd_impact = self.IMPACT_FACTOR_DICT['adp']['impact']
+        ssd_die_impact = self._IMPACT_FACTOR_DICT['adp']['die_impact']
+        ssd_impact = self._IMPACT_FACTOR_DICT['adp']['impact']
         return (self.capacity / self.density) * ssd_die_impact + ssd_impact
 
     def smart_complete_data(self):
@@ -253,15 +273,15 @@ class ComponentSSD(BaseModel):
                 sub = sub[sub['manufacturer'] == self.manufacturer]
 
             if len(sub) == 0 or len(sub) == len(_cpu_df):
-                self.capacity = self.capacity if self.capacity else self.DEFAULT_SSD_CAPACITY
-                self.density = self.density if self.density else self.DEFAULT_SSD_DENSITY
+                self.capacity = self.capacity if self.capacity else self._DEFAULT_SSD_CAPACITY
+                self.density = self.density if self.density else self._DEFAULT_SSD_DENSITY
 
             elif len(sub) == 1:
-                self.capacity = self.capacity if self.capacity else self.DEFAULT_SSD_CAPACITY
+                self.capacity = self.capacity if self.capacity else self._DEFAULT_SSD_CAPACITY
                 self.density = float(sub['density'])
 
             else:
-                capacity = self.capacity if self.capacity else self.DEFAULT_SSD_CAPACITY
+                capacity = self.capacity if self.capacity else self._DEFAULT_SSD_CAPACITY
                 sub['_scope3'] = sub['density'].apply(lambda x: capacity / x)
                 sub = sub.sort_values(by='_scope3', ascending=False)
                 density = float(sub.iloc[0].density)
@@ -269,8 +289,8 @@ class ComponentSSD(BaseModel):
                 self.density = density
 
 
-class ComponentPowerSupply(BaseModel):
-    IMPACT_FACTOR_DICT = {
+class ComponentPowerSupply(Component):
+    _IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 24.30
         },
@@ -282,34 +302,34 @@ class ComponentPowerSupply(BaseModel):
         }
     }
 
-    DEFAULT_POWER_SUPPLY_NUMBER = 2
-    DEFAULT_POWER_SUPPLY_WEIGHT = 2.99
+    _DEFAULT_POWER_SUPPLY_NUMBER = 2
+    _DEFAULT_POWER_SUPPLY_WEIGHT = 2.99
 
     unit_weight: Optional[float] = None
 
     def impact_gwp(self) -> float:
         power_supply_weight = self.unit_weight
-        power_supply_impact = self.IMPACT_FACTOR_DICT['gwp']['impact']
+        power_supply_impact = self._IMPACT_FACTOR_DICT['gwp']['impact']
         return power_supply_weight * power_supply_impact
 
     def impact_pe(self) -> float:
         power_supply_weight = self.unit_weight
-        power_supply_impact = self.IMPACT_FACTOR_DICT['pe']['impact']
+        power_supply_impact = self._IMPACT_FACTOR_DICT['pe']['impact']
         return power_supply_weight * power_supply_impact
 
     def impact_adp(self) -> float:
         power_supply_weight = self.unit_weight
-        power_supply_impact = self.IMPACT_FACTOR_DICT['adp']['impact']
+        power_supply_impact = self._IMPACT_FACTOR_DICT['adp']['impact']
         return power_supply_weight * power_supply_impact
 
     def smart_complete_data(self):
         self.unit_weight = self.unit_weight \
             if self.unit_weight is not None else \
-            self.DEFAULT_POWER_SUPPLY_WEIGHT
+            self._DEFAULT_POWER_SUPPLY_WEIGHT
 
 
-class ComponentMotherBoard(BaseModel):
-    IMPACT_FACTOR_DICT = {
+class ComponentMotherBoard(Component):
+    _IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 66.10
         },
@@ -322,20 +342,20 @@ class ComponentMotherBoard(BaseModel):
     }
 
     def impact_gwp(self) -> float:
-        return self.IMPACT_FACTOR_DICT['gwp']['impact']
+        return self._IMPACT_FACTOR_DICT['gwp']['impact']
 
     def impact_pe(self) -> float:
-        return self.IMPACT_FACTOR_DICT['pe']['impact']
+        return self._IMPACT_FACTOR_DICT['pe']['impact']
 
     def impact_adp(self) -> float:
-        return self.IMPACT_FACTOR_DICT['adp']['impact']
+        return self._IMPACT_FACTOR_DICT['adp']['impact']
 
     def smart_complete_data(self):
         pass
 
 
-class ComponentRack(BaseModel):
-    IMPACT_FACTOR_DICT = {
+class ComponentRack(Component):
+    _IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 150.00
         },
@@ -348,20 +368,20 @@ class ComponentRack(BaseModel):
     }
 
     def impact_gwp(self) -> float:
-        return self.IMPACT_FACTOR_DICT['gwp']['impact']
+        return self._IMPACT_FACTOR_DICT['gwp']['impact']
 
     def impact_pe(self) -> float:
-        return self.IMPACT_FACTOR_DICT['pe']['impact']
+        return self._IMPACT_FACTOR_DICT['pe']['impact']
 
     def impact_adp(self) -> float:
-        return self.IMPACT_FACTOR_DICT['adp']['impact']
+        return self._IMPACT_FACTOR_DICT['adp']['impact']
 
     def smart_complete_data(self):
         pass
 
 
-class ComponentBlade(BaseModel):
-    IMPACT_FACTOR_DICT = {
+class ComponentBlade(Component):
+    _IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact_blade_server": 30.90,
             "impact_blade_16_slots": 880.00
@@ -377,20 +397,20 @@ class ComponentBlade(BaseModel):
     }
 
     def impact_gwp(self) -> float:
-        return self.IMPACT_FACTOR_DICT['gwp']['impact']
+        return self._IMPACT_FACTOR_DICT['gwp']['impact']
 
     def impact_pe(self) -> float:
-        return self.IMPACT_FACTOR_DICT['pe']['impact']
+        return self._IMPACT_FACTOR_DICT['pe']['impact']
 
     def impact_adp(self) -> float:
-        return self.IMPACT_FACTOR_DICT['adp']['impact']
+        return self._IMPACT_FACTOR_DICT['adp']['impact']
 
     def smart_complete_data(self):
         pass
 
 
-class ComponentAssembly(BaseModel):
-    IMPACT_FACTOR_DICT = {
+class ComponentAssembly(Component):
+    _IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 6.68
         },
@@ -403,13 +423,13 @@ class ComponentAssembly(BaseModel):
     }
 
     def impact_gwp(self) -> float:
-        return self.IMPACT_FACTOR_DICT['gwp']['impact']
+        return self._IMPACT_FACTOR_DICT['gwp']['impact']
 
     def impact_pe(self) -> float:
-        return self.IMPACT_FACTOR_DICT['pe']['impact']
+        return self._IMPACT_FACTOR_DICT['pe']['impact']
 
     def impact_adp(self) -> float:
-        return self.IMPACT_FACTOR_DICT['adp']['impact']
+        return self._IMPACT_FACTOR_DICT['adp']['impact']
 
     def smart_complete_data(self):
         pass

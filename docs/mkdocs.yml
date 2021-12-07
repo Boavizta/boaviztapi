@@ -1,0 +1,23 @@
+site_name: DOC BOAVIZTA TOOLS
+dev_addr: '0.0.0.0:8080'
+plugins:
+    - render_swagger
+
+nav:
+    - Home: index.md
+    - Introduction:
+        - Collaborate: /
+        - Usefull ressources: introduction/usefull_ressources.md
+    - Methodologies:
+          - Boavizta server Bottom-Up: methodo/server-bottom-up.md
+          - Boavizta database: methodo/referenced-data.md
+    - Concepts :
+        - Components: concepts/component.md
+        - Smart complete: concepts/smart-complete.md
+        - Device: concepts/devices.md
+    - API :
+        - component route : API/component.md
+        - server route : API/server.md
+
+
+theme: readthedocs

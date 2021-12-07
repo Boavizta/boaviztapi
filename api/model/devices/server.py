@@ -1,10 +1,18 @@
-import json
 from pydantic import BaseModel
 from typing import Optional, List
 
-from api.model.impacts import Impact
-from .component import ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, ComponentPowerSupply, \
-    ComponentMotherBoard, ComponentAssembly, ComponentRack, ComponentBlade
+from api.model.components.component import (
+    ComponentCPU,
+    ComponentRAM,
+    ComponentSSD,
+    ComponentHDD,
+    ComponentPowerSupply,
+    ComponentMotherBoard,
+    ComponentAssembly,
+    ComponentRack,
+    ComponentBlade,
+    Component
+)
 
 
 class ModelServer(BaseModel):
@@ -66,7 +74,7 @@ class Server(BaseModel):
     add_method: Optional[str] = None
     add_date: Optional[str] = None
 
-    def get_component_list(self) -> List[BaseModel]:
+    def get_component_list(self) -> List[Component]:
         components = []
         components += [ComponentCPU(**self.configuration.cpu.dict()) for _ in range(self.configuration.cpu.units)]
 

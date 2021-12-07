@@ -14,22 +14,50 @@ In the interest of transparency and scientific popularization, the opening of th
 
 The system is developed in micro-services layers according to a bottom-up principle. The first layer implemented is equipment, starting with the servers (MVP). The second layer is the measurement of the impact of digital services or systems. The measurement of the global impact is currently outside the scope. 
 
-## Technos
+## Installation
 
-* Flask 2.0.2
-* Python >= 3.6
+Create a virtual environment with and activate it.
 
-## Coding convention
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
-[PEP8](https://www.python.org/dev/peps/pep-0008/)
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install project requirements.
 
-## Project first Install & run
-```python3 -m venv venv``` 
+```bash
+pip install -r requirements.txt
+```
 
-```pip3 install -r requirements.txt``` 
+## Usage
 
-```flask run```
+### Launch development API server
 
-## Project test
+Development server uses [uvicorn](https://www.uvicorn.org/) and [fastapi](https://fastapi.tiangolo.com/) and you can launch either with a python script or `uvicorn` CLI.
 
-```pytest -v``` 
+```bash
+python3 main.py
+```
+
+OR
+
+```bash
+uvicorn main:app --host=localhost --port 500
+```
+
+### API Swagger
+
+Once API server is launched API swagger is available at [http://localhost:5000/docs](http://localhost:5000/docs).
+
+
+### Launch using docker container
+
+TODO
+
+## Contributing
+
+TODO
+
+## License
+
+TODO
