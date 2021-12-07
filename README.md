@@ -42,7 +42,7 @@ python3 main.py
 OR
 
 ```bash
-uvicorn main:app --host=localhost --port 500
+uvicorn main:app --host=localhost --port 5000
 ```
 
 ### API Swagger
