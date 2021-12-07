@@ -1,8 +1,22 @@
-from app import app
+from fastapi.testclient import TestClient
+
+from main import app
+
+client = TestClient(app)
+
+
+def test_complete_cpu():
+    res = client.post('/v1/component/cpu', data={
+        "units": 2,
+        "core_units": 24,
+        "die_size_per_core": 0.245
+    })
+
+    assert True
 
 
 def test_complete_server():
-    res = app.post('/v1/server/bottom-up', data={{
+    res = client.post('/v1/server/bottom-up', data={
         "model": {
         },
         "configuration": {
@@ -21,7 +35,6 @@ def test_complete_server():
                     "units": 4,
                     "capacity": 16,
                     "density": 1.79,
-
                 }
             ],
             "disk": [
@@ -41,22 +54,22 @@ def test_complete_server():
                 "unit_weight": 10
             }
         }
-    }})
+    })
     assert True
 
 
 def test_empty_config_server():
-    res = app.post('/v1/server/bottom-up', data={{
+    res = client.post('/v1/server/bottom-up', data={
         "model": {
         },
         "configuration": {
         }
-    }})
+    })
     assert True
 
 
 def test_partial_server_1():
-    res = app.post('/v1/server/bottom-up', data={{
+    res = client.post('/v1/server/bottom-up', data={
         "model": {
         },
         "configuration": {
@@ -84,12 +97,12 @@ def test_partial_server_1():
                 }
             ]
         }
-    }})
+    })
     assert True
 
 
 def test_partial_server_2():
-    res = app.post('/v1/server/bottom-up', data={{
+    res = client.post('/v1/server/bottom-up', data={
         "model": {
         },
         "configuration": {
@@ -123,5 +136,5 @@ def test_partial_server_2():
                 "unit_weight": 10
             }
         }
-    }})
+    })
     assert True
