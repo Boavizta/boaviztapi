@@ -1,1 +1,1 @@
-web: cd api && flask run -h "0.0.0.0" -p 80
+web: cd api && uvicorn main:app --host "0.0.0.0" --port 5000
