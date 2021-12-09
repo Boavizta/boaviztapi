@@ -184,7 +184,7 @@ class ComponentRAM(Component):
 
             else:
                 capacity = self.capacity if self.capacity else self._DEFAULT_RAM_CAPACITY
-                sub['_scope3'] = sub['density'].apply(lambda x: self.capacity / x)
+                sub['_scope3'] = sub['density'].apply(lambda x: capacity / x)
                 sub = sub.sort_values(by='_scope3', ascending=False)
                 density = float(sub.iloc[0].density)
                 self.capacity = capacity
@@ -397,13 +397,16 @@ class ComponentBlade(Component):
     }
 
     def impact_gwp(self) -> float:
-        return self._IMPACT_FACTOR_DICT['gwp']['impact']
+        return (self._IMPACT_FACTOR_DICT['gwp']['impact_blade_16_slots']/16) \
+               + self._IMPACT_FACTOR_DICT['gwp']['impact_blade_server']
 
     def impact_pe(self) -> float:
-        return self._IMPACT_FACTOR_DICT['pe']['impact']
+        return (self._IMPACT_FACTOR_DICT['pe']['impact_blade_16_slots']/16) \
+               + self._IMPACT_FACTOR_DICT['pe']['impact_blade_server']
 
     def impact_adp(self) -> float:
-        return self._IMPACT_FACTOR_DICT['adp']['impact']
+        return (self._IMPACT_FACTOR_DICT['adp']['impact_blade_16_slots']/16) \
+               + self._IMPACT_FACTOR_DICT['adp']['impact_blade_server']
 
     def smart_complete_data(self):
         pass

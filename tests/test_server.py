@@ -45,7 +45,7 @@ def test_complete_config_server():
             }
         }
     })
-    assert res, {
+    assert res.json() == {
         "gwp": 1117.0,
         "pe": 15153.0,
         "adp": 0.254
@@ -55,7 +55,7 @@ def test_complete_config_server():
 def test_empty_config_server():
     res = client.post('/v1/server/bottom-up', json={
     })
-    assert res, {
+    assert res.json() == {
         "gwp": 3292.0,
         "pe": 41821.0,
         "adp": 0.234
@@ -103,7 +103,7 @@ def test_dell_r740_server():
                     }
             }
     })
-    assert res, {
+    assert res.json() == {
         "gwp": 970.0,
         "pe": 12896.0,
         "adp": 0.149
@@ -140,7 +140,7 @@ def test_partial_server_1():
             ]
         }
     })
-    assert res, {
+    assert res.json() == {
         "gwp": 1295.0,
         "pe": 16669.0,
         "adp": 0.151
@@ -183,7 +183,7 @@ def test_partial_server_2():
             }
         }
     })
-    assert res, {
+    assert res.json() == {
         "gwp": 1323.0,
         "pe": 17953.0,
         "adp": 0.259
@@ -210,7 +210,7 @@ def test_partial_server_3():
             }
         }
     })
-    assert res, {
+    assert res.json() == {
         "gwp": 903.0,
         "pe": 12706.0,
         "adp": 0.242
