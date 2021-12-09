@@ -51,6 +51,7 @@ Once API server is launched API swagger is available at [http://localhost:5000/d
 
 ### Launch using docker container
 ```bash
+echo "<TOKEN>" | sudo docker login ghcr.io --username <USERNAME> --password-stdin
 docker run ghcr.io/boavizta/tools-api:latest
 ```
 
