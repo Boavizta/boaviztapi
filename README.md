@@ -50,8 +50,9 @@ uvicorn main:app --host=localhost --port 5000
 Once API server is launched API swagger is available at [http://localhost:5000/docs](http://localhost:5000/docs).
 
 ### Launch using docker container
-
-TODO
+```bash
+docker run ghcr.io/boavizta/tools-api:latest
+```
 
 ## Contributing
 

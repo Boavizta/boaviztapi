@@ -5,13 +5,24 @@ If a needed data is not given, the system complete it with the closest component
 When several component correspond the maximum impact is given.
 
 
+
+### Process
+
+The user send data concerning the server components.
+
+Matching components are found by the characteristics send by the user. ```FIND()```
+
+Default data are always the maximizing data (in terms of impacts)
+
+
 ```
-IF component IS complete
-    MEASURE with the data sent
-ELSE IF FIND(component) == 0
-    MEASURE with default data (max)
-ELSE IF FIND(component) == 1
-    MEASURE with the found component
-ELSE IF FIND(component) > 1
-    MEASURE with found component with the maximum impact
+FOREACH COMPONENTS
+   IF component IS complete
+       DO NOTHING
+   ELSE IF FIND(component) == 0
+       USE DEFAULT DATA 
+   ELSE IF FIND(component) == 1
+      USE FOUND COMPONENT
+   ELSE IF FIND(component) > 1
+       USE FOUND MAXIMIZING COMPONENT
 ```
