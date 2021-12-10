@@ -59,6 +59,12 @@ docker run ghcr.io/boavizta/tools-api:latest
 
 TODO
 
+## Dev Server
+
+Documentation : http://149.202.185.115/
+API : http://149.202.185.115:5000
+
+
 ## License
 
 TODO
