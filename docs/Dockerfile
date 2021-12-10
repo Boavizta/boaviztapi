@@ -4,7 +4,7 @@ RUN pip install mkdocs
 RUN pip install mkdocs-render-swagger-plugin
 
 WORKDIR /docs
-COPY . .
+COPY /docs .
 
 
 EXPOSE 8080
