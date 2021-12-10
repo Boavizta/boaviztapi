@@ -100,7 +100,7 @@ The die size in unknown but some component's characteristic are given so specifi
         ],
         "power_supply":
         {
-            "units": 2,
+            "units": 2
         }
     }
 }
