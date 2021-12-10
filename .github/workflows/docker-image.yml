@@ -36,7 +36,7 @@ jobs:
       run: docker push -a ghcr.io/boavizta/tools-api
 
     - name: Build doc the Docker image
-      run: docker build . --file docs/Dockerfile --tag ghcr.io/boavizta/tools-doc:latest
+      run: docker build docs --file docs/Dockerfile --tag ghcr.io/boavizta/tools-doc:latest
 
     - name: Tag doc the Docker image
       run: docker tag ghcr.io/boavizta/tools-doc:latest ghcr.io/boavizta/tools-doc:$(date +%s)
