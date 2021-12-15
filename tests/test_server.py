@@ -6,7 +6,7 @@ client = TestClient(app)
 
 
 def test_complete_config_server():
-    res = client.post('/v1/server/bottom-up', json={
+    res = client.post('/v1/server/bottom-up?verbose=false', json={
         "model": {
         },
         "configuration": {
@@ -53,7 +53,7 @@ def test_complete_config_server():
 
 
 def test_empty_config_server():
-    res = client.post('/v1/server/bottom-up', json={
+    res = client.post('/v1/server/bottom-up?verbose=false', json={
     })
     assert res.json() == {
         "gwp": 3292.0,
@@ -63,7 +63,7 @@ def test_empty_config_server():
 
 
 def test_dell_r740_server():
-    res = client.post('/v1/server/bottom-up', json={
+    res = client.post('/v1/server/bottom-up?verbose=false', json={
         "model":
             {
                 "manufacturer": "Dell",
@@ -111,7 +111,7 @@ def test_dell_r740_server():
 
 
 def test_partial_server_1():
-    res = client.post('/v1/server/bottom-up', json={
+    res = client.post('/v1/server/bottom-up?verbose=false', json={
         "model": {
         },
         "configuration": {
@@ -148,7 +148,7 @@ def test_partial_server_1():
 
 
 def test_partial_server_2():
-    res = client.post('/v1/server/bottom-up', json={
+    res = client.post('/v1/server/bottom-up?verbose=false', json={
         "model": {
         },
         "configuration": {
@@ -191,7 +191,7 @@ def test_partial_server_2():
 
 
 def test_partial_server_3():
-    res = client.post('/v1/server/bottom-up', json={
+    res = client.post('/v1/server/bottom-up?verbose=false', json={
         "model": {
         },
         "configuration": {

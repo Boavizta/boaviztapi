@@ -4,13 +4,14 @@ from typing import Optional
 import pandas as pd
 from pydantic import BaseModel
 
-
 _cpu_df = pd.read_csv('./api/model/components/cpu.csv')
 _ram_df = pd.read_csv('./api/model/components/ram.csv')
 _ssd_df = pd.read_csv('./api/model/components/ssd.csv')
 
 
 class Component(BaseModel):
+    hash: int = None
+    TYPE: str = None
 
     @abstractmethod
     def impact_gwp(self) -> float:
@@ -28,8 +29,20 @@ class Component(BaseModel):
     def smart_complete_data(self):
         pass
 
+    def __iter__(self):
+        for attr, value in self.__dict__.items():
+            yield attr, value
+
+    def __hash__(self):
+        return hash((type(self),) + tuple(self.__dict__.values()))
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.hash = self.__hash__()
+
 
 class ComponentCPU(Component):
+    TYPE = "CPU"
 
     _IMPACT_FACTOR_DICT = {
         "gwp": {
@@ -121,6 +134,8 @@ class ComponentCPU(Component):
 
 
 class ComponentRAM(Component):
+    TYPE = "RAM"
+
     _IMPACT_FACTOR_DICT = {
         "gwp": {
             "die_impact": 2.20,
@@ -192,6 +207,8 @@ class ComponentRAM(Component):
 
 
 class ComponentHDD(Component):
+    TYPE = "HDD"
+
     _IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 31.10
@@ -224,6 +241,8 @@ class ComponentHDD(Component):
 
 
 class ComponentSSD(Component):
+    TYPE = "SSD"
+
     _IMPACT_FACTOR_DICT = {
         "gwp": {
             "die_impact": 2.20,
@@ -290,6 +309,7 @@ class ComponentSSD(Component):
 
 
 class ComponentPowerSupply(Component):
+    TYPE = "POWER_SUPPLY"
     _IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 24.30
@@ -329,6 +349,7 @@ class ComponentPowerSupply(Component):
 
 
 class ComponentMotherBoard(Component):
+    TYPE = "MOTHERBOARD"
     _IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 66.10
@@ -355,6 +376,8 @@ class ComponentMotherBoard(Component):
 
 
 class ComponentRack(Component):
+    TYPE = "RACK"
+
     _IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 150.00
@@ -381,6 +404,8 @@ class ComponentRack(Component):
 
 
 class ComponentBlade(Component):
+    TYPE = "BLADE"
+
     _IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact_blade_server": 30.90,
@@ -397,15 +422,15 @@ class ComponentBlade(Component):
     }
 
     def impact_gwp(self) -> float:
-        return (self._IMPACT_FACTOR_DICT['gwp']['impact_blade_16_slots']/16) \
+        return (self._IMPACT_FACTOR_DICT['gwp']['impact_blade_16_slots'] / 16) \
                + self._IMPACT_FACTOR_DICT['gwp']['impact_blade_server']
 
     def impact_pe(self) -> float:
-        return (self._IMPACT_FACTOR_DICT['pe']['impact_blade_16_slots']/16) \
+        return (self._IMPACT_FACTOR_DICT['pe']['impact_blade_16_slots'] / 16) \
                + self._IMPACT_FACTOR_DICT['pe']['impact_blade_server']
 
     def impact_adp(self) -> float:
-        return (self._IMPACT_FACTOR_DICT['adp']['impact_blade_16_slots']/16) \
+        return (self._IMPACT_FACTOR_DICT['adp']['impact_blade_16_slots'] / 16) \
                + self._IMPACT_FACTOR_DICT['adp']['impact_blade_server']
 
     def smart_complete_data(self):
@@ -413,6 +438,8 @@ class ComponentBlade(Component):
 
 
 class ComponentAssembly(Component):
+    TYPE = "ASSEMBLY"
+
     _IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 6.68

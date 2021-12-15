@@ -1,5 +1,5 @@
 import string
-from abc import abstractmethod, ABC
+from abc import abstractmethod
 
 import pandas as pd
 
