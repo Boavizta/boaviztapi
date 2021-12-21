@@ -1,8 +1,6 @@
-import copy
 from typing import Set, Optional, List
 
 from api.model.components.component import Component
-from api.service.verbose import verbose_component
 
 _default_impacts_code = {"gwp", "pe", "adp"}
 

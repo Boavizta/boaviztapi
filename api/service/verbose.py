@@ -37,8 +37,9 @@ def verbose_components(input_components: List[Component], complete_components: L
                                        **verbose_component(component, matching_complete_component)}
 
     for item in json_output:
-        for impact in json_output[item]["impacts"]:
-            json_output[item]["impacts"][impact] = json_output[item]["impacts"][impact] * json_output[item]["unit"]
+        json_output[item]["impacts"]["gwp"] =  round(json_output[item]["impacts"]["gwp"] * json_output[item]["unit"], 0)
+        json_output[item]["impacts"]["pe"] = round(json_output[item]["impacts"]["pe"] * json_output[item]["unit"], 0)
+        json_output[item]["impacts"]["adp"] = round(json_output[item]["impacts"]["adp"] * json_output[item]["unit"], 3)
 
     return json_output
 
@@ -61,7 +62,7 @@ def verbose_component(input_component: Component, complete_component: Component)
             else:
                 json_output[attr]["status"] = "MODIFY"
 
-    json_output["impacts"] = {"gwp": round(complete_component.impact_gwp(), 0),
-                              "pe": round(complete_component.impact_pe(), 0),
-                              "adp": round(complete_component.impact_adp(), 3)}
+    json_output["impacts"] = {"gwp": complete_component.impact_gwp(),
+                              "pe": complete_component.impact_pe(),
+                              "adp": complete_component.impact_adp()}
     return json_output

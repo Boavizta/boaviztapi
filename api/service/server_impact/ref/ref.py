@@ -1,8 +1,5 @@
 import pandas as pd
 import re
-import os
-
-
 
 def ref_data_server(server):
     database_file = "./api/service/server_impact/ref/boavizta-data-us.csv"
