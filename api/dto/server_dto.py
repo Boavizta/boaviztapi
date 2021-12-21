@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional, List
-from api.DTO.component_DTO import Cpu, Ram, Disk, PowerSupply
+from api.dto.component_dto import Cpu, Ram, Disk, PowerSupply
 
 from api.model.components.component import (
     ComponentCPU,
@@ -8,8 +8,6 @@ from api.model.components.component import (
     ComponentSSD,
     ComponentHDD,
     ComponentPowerSupply,
-    ComponentMotherBoard,
-    ComponentAssembly,
     ComponentRack,
     ComponentBlade,
     Component
