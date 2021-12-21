@@ -127,7 +127,7 @@ class ComponentCPU(Component):
                 self.core_units = int(sub['core_units'])
 
             else:
-                sub['_scope3'] = sub[['core_units', 'die_size_per_core']].apply(lambda x: x[0] * x[1])
+                sub['_scope3'] = sub[['core_units', 'die_size_per_core']].apply(lambda x: x[0] * x[1], axis=1)
                 sub = sub.sort_values(by='_scope3', ascending=False)
                 row = sub.iloc[0]
                 die_size_per_core = float(row['die_size_per_core'])
