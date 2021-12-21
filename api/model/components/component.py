@@ -115,6 +115,9 @@ class ComponentCPU(Component):
             if self.process:
                 sub = sub[sub['process'] == self.process]
 
+            if self.core_units:
+                sub = sub[sub['process'] == self.core_units]
+
             if len(sub) == 0 or len(sub) == len(_cpu_df):
                 self.die_size_per_core = self._DEFAULT_CPU_DIE_SIZE_PER_CORE
                 self.core_units = self._DEFAULT_CPU_CORE_UNITS

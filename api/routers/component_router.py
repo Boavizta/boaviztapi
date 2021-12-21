@@ -20,7 +20,7 @@ def cpu_impact_bottom_up(cpu: ComponentCPU, verbose: bool = True):
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(cpu, completed_cpu)}
+                  "verbose": verbose_component(completed_cpu, cpu)}
     return result
 
 
@@ -31,7 +31,7 @@ def ram_impact_bottom_up(ram: ComponentRAM, verbose: bool = True):
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(ram, completed_ram)}
+                  "verbose": verbose_component(completed_ram, ram)}
     return result
 
 
@@ -42,7 +42,7 @@ def ssd_impact_bottom_up(ssd: ComponentSSD, verbose: bool = True):
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(ssd, completed_ssd)}
+                  "verbose": verbose_component(completed_ssd, ssd)}
     return result
 
 
@@ -53,7 +53,7 @@ def hdd_impact_bottom_up(hdd: ComponentHDD, verbose: bool = True):
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(hdd, completed_hdd)}
+                  "verbose": verbose_component(completed_hdd, hdd)}
     return result
 
 
@@ -64,7 +64,7 @@ def motherboard_impact_bottom_up(motherboard: ComponentMotherBoard, verbose: boo
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(motherboard, completed_motherboard)}
+                  "verbose": verbose_component(completed_motherboard, motherboard)}
     return result
 
 
@@ -75,7 +75,7 @@ def power_supply_impact_bottom_up(power_supply: ComponentPowerSupply, verbose: b
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(power_supply, completed_power_supply)}
+                  "verbose": verbose_component(completed_power_supply, power_supply)}
     return result
 
 
@@ -86,7 +86,7 @@ def rack_impact_bottom_up(rack: ComponentRack, verbose: bool = True):
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(rack, completed_rack)}
+                  "verbose": verbose_component(completed_rack, rack)}
     return result
 
 
@@ -97,5 +97,5 @@ def blade_impact_bottom_up(blade: ComponentBlade, verbose: bool = True):
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(blade, completed_blade)}
+                  "verbose": verbose_component(completed_blade, blade)}
     return result

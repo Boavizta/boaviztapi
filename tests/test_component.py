@@ -6,7 +6,7 @@ client = TestClient(app)
 
 
 def test_complete_cpu():
-    res = client.post('/v1/component/cpu', json={
+    res = client.post('/v1/component/cpu?verbose=false', json={
         "core_units": 12,
         "die_size_per_core": 0.245
     })
@@ -19,7 +19,7 @@ def test_complete_cpu():
 
 
 def test_empty_cpu():
-    res = client.post('/v1/component/cpu', json={
+    res = client.post('/v1/component/cpu?verbose=false', json={
     })
 
     assert res.json() == {
@@ -30,7 +30,7 @@ def test_empty_cpu():
 
 
 def test_complete_ram():
-    res = client.post('/v1/component/ram', json={
+    res = client.post('/v1/component/ram?verbose=false', json={
         "units": 12,
         "capacity": 32,
         "density": 1.79
@@ -44,7 +44,7 @@ def test_complete_ram():
 
 
 def test_empty_ram():
-    res = client.post('/v1/component/ram', json={
+    res = client.post('/v1/component/ram?verbose=false', json={
     })
 
     assert res.json() == {
@@ -55,7 +55,7 @@ def test_empty_ram():
 
 
 def test_complete_ssd():
-    res = client.post('/v1/component/ssd', json={
+    res = client.post('/v1/component/ssd?verbose=false', json={
         "capacity": 400,
         "density": 50.6
     })
@@ -68,7 +68,7 @@ def test_complete_ssd():
 
 
 def test_empty_ssd():
-    res = client.post('/v1/component/ssd', json={
+    res = client.post('/v1/component/ssd?verbose=false', json={
     })
 
     assert res.json() == {

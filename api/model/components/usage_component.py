@@ -6,7 +6,7 @@ import pandas as pd
 from api.model.components.component import Component
 from typing import Optional
 
-_electricity_emission_factors_df = pd.read_csv('./api/model/components/carbon-intensity-electricity.csv')
+_electricity_emission_factors_df = pd.read_csv('./api/model/components/usage_impact_factors.csv')
 
 
 class UsageComponent(Component):
@@ -30,11 +30,11 @@ class UsageComponent(Component):
 
     @abstractmethod
     def impact_pe(self) -> float:
-        raise self.yearly_electrical_consumption * self.life_duration * self.carbon_intensity
+        return self.yearly_electrical_consumption * self.life_duration * self.primary_emission_factor
 
     @abstractmethod
-    def impact_adp(self) -> float:
-        raise NotImplementedError
+    def impact_adp(self):
+        return NotImplementedError
 
     @abstractmethod
     def smart_complete_data(self):

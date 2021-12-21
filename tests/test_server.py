@@ -56,9 +56,9 @@ def test_empty_config_server():
     res = client.post('/v1/server/bottom-up?verbose=false', json={
     })
     assert res.json() == {
-        "gwp": 3292.0,
-        "pe": 41821.0,
-        "adp": 0.234
+        "gwp": 3142.0,
+        "pe": 39621.0,
+        "adp": 0.214
     }
 
 
@@ -184,9 +184,9 @@ def test_partial_server_2():
         }
     })
     assert res.json() == {
-        "gwp": 1323.0,
-        "pe": 17953.0,
-        "adp": 0.259
+        "gwp": 1375.0,
+        "pe": 18593.0,
+        "adp": 0.261
     }
 
 
