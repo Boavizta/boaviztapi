@@ -3,7 +3,7 @@ from typing import List
 
 from pydantic import BaseModel
 
-from api.model.usage import Usage
+from api.model.components.usage import Usage
 from api.model.components.component import Component, ComponentCPU, ComponentSSD, ComponentRAM, ComponentPowerSupply, \
     ComponentMotherBoard, ComponentAssembly, ComponentRack
 

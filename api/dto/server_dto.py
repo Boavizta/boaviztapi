@@ -13,7 +13,7 @@ from api.model.components.component import (
     Component
 )
 from api.model.devices.device import Model, Server
-from api.model.usage import Usage
+from api.model.components.usage import Usage, UsageServer
 
 
 class ConfigurationServer(BaseModel):
@@ -79,8 +79,8 @@ class ServerDTO(BaseModel):
             model.manufacturer = self.model.manufacturer
         return model
 
-    def get_usage(self) -> Usage:
-        usage = Usage()
+    def get_usage(self) -> UsageServer:
+        usage = UsageServer()
         if self.usage:
             usage.usage_location = self.usage.usage_location
             usage.idle_ratio = self.usage.idle_ratio

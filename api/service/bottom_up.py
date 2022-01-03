@@ -17,11 +17,13 @@ def bottom_up_device(device: Device, impact_codes: Optional[Set[str]] = None) ->
         },
         'pe': {
             'manufacture': round(device.impact_manufacture_pe(), 0),
-            'use': round(device.impact_use_pe(), 0)
+            'use': "Not Implemented"
+            # 'use': round(device.impact_use_pe(), 0)
         },
         'adp': {
             'manufacture': round(device.impact_manufacture_adp(), 3),
-            'use': round(device.impact_use_adp(), 3)
+            'use': "Not Implemented"
+            # 'use': round(device.impact_use_adp(), 3)
         },
     }
     return impacts

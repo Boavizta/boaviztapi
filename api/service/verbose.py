@@ -1,6 +1,5 @@
 from api.model.components.component import Component
 from api.model.devices.device import Device
-from api.model.usage import Usage
 
 
 def verbose_device(complete_device: Device, input_device: Device):
@@ -34,7 +33,6 @@ def verbose_device(complete_device: Device, input_device: Device):
 
         matching_component = None
         for item in input_components:
-            print(complete_component)
             if complete_component.hash == item.hash:
                 matching_component = item
                 break
