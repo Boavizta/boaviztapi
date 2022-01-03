@@ -13,6 +13,7 @@ from api.model.components.component import (
     Component
 )
 from api.model.devices.device import Model, Server
+from api.model.usage import Usage
 
 
 class ConfigurationServer(BaseModel):
@@ -32,6 +33,7 @@ class ModelServer(BaseModel):
 class ServerDTO(BaseModel):
     model: Optional[ModelServer] = None
     configuration: Optional[ConfigurationServer] = None
+    usage: Optional[Usage] = None
 
     add_method: Optional[str] = None
     add_date: Optional[str] = None
@@ -77,10 +79,27 @@ class ServerDTO(BaseModel):
             model.manufacturer = self.model.manufacturer
         return model
 
+    def get_usage(self) -> Usage:
+        usage = Usage()
+        if self.usage:
+            usage.usage_location = self.usage.usage_location
+            usage.idle_ratio = self.usage.idle_ratio
+            usage.idle_power = self.usage.idle_power
+            usage.yearly_electrical_consumption = self.usage.yearly_electrical_consumption
+            usage.max_power = self.usage.max_power
+            usage.workload_ratio = self.usage.workload_ratio
+            usage.life_duration = self.usage.life_duration
+
+            usage.adp_factor = self.usage.adp_factor
+            usage.pe_factor = self.usage.pe_factor
+            usage.gwp_factor = self.usage.gwp_factor
+        return usage
+
     def to_device(self) -> Server:
         server = Server()
         server.model = self.get_model()
         server.config_components = self.get_component_list()
+        server.usage = self.get_usage()
         return server
 
 

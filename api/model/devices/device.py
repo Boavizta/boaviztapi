@@ -3,8 +3,9 @@ from typing import List
 
 from pydantic import BaseModel
 
+from api.model.usage import Usage
 from api.model.components.component import Component, ComponentCPU, ComponentSSD, ComponentRAM, ComponentPowerSupply, \
-    ComponentMotherBoard, ComponentAssembly, ComponentRack, ComponentBlade
+    ComponentMotherBoard, ComponentAssembly, ComponentRack
 
 
 class Model(BaseModel):
@@ -15,19 +16,31 @@ class Model(BaseModel):
 
 class Device(BaseModel):
     config_components: List[Component] = None
-    # usage_component: UsageComponent = None
     model: Model = None
+    usage: Usage = None
 
     @abstractmethod
-    def impact_gwp(self) -> float:
+    def impact_manufacture_gwp(self) -> float:
         pass
 
     @abstractmethod
-    def impact_pe(self) -> float:
+    def impact_manufacture_pe(self) -> float:
         pass
 
     @abstractmethod
-    def impact_adp(self) -> float:
+    def impact_manufacture_adp(self) -> float:
+        pass
+
+    @abstractmethod
+    def impact_use_gwp(self) -> float:
+        pass
+
+    @abstractmethod
+    def impact_use_pe(self) -> float:
+        pass
+
+    @abstractmethod
+    def impact_use_adp(self) -> float:
         pass
 
     @abstractmethod
@@ -36,21 +49,34 @@ class Device(BaseModel):
 
 
 class Server(Device):
+
     _DEFAULT_POWER_SUPPLY_NUMBER = 2
     _DEFAULT_CPU_NUMBER = 2
     _DEFAULT_SSD_NUMBER = 1
     _DEFAULT_RAM_NUMBER = 24
 
-    def impact_gwp(self) -> float:
+    def impact_manufacture_gwp(self) -> float:
         return sum([item.impact_gwp() for item in self.config_components])
 
-    def impact_pe(self) -> float:
+    def impact_manufacture_pe(self) -> float:
         return sum([item.impact_pe() for item in self.config_components])
 
-    def impact_adp(self) -> float:
+    def impact_manufacture_adp(self) -> float:
         return sum([item.impact_adp() for item in self.config_components])
 
+    def impact_use_gwp(self) -> float:
+        return self.usage.impact_gwp()
+
+    def impact_use_pe(self) -> float:
+        return self.usage.impact_pe()
+
+    def impact_use_adp(self) -> float:
+        return self.usage.impact_adp()
+
     def smart_complete_data(self):
+
+        self.usage.smart_complete_data()
+
         if not self.config_components:
             self.config_components = self.get_default_configuration_component_list()
         else:

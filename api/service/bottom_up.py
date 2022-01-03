@@ -11,9 +11,18 @@ def bottom_up_device(device: Device, impact_codes: Optional[Set[str]] = None) ->
     device.smart_complete_data()
 
     impacts = {
-        'gwp': round(device.impact_gwp(), 0),
-        'pe': round(device.impact_pe(), 0),
-        'adp': round(device.impact_adp(), 3)
+        'gwp': {
+            'manufacture': round(device.impact_manufacture_gwp(), 0),
+            'use': round(device.impact_use_gwp(), 0)
+        },
+        'pe': {
+            'manufacture': round(device.impact_manufacture_pe(), 0),
+            'use': round(device.impact_use_pe(), 0)
+        },
+        'adp': {
+            'manufacture': round(device.impact_manufacture_adp(), 3),
+            'use': round(device.impact_use_adp(), 3)
+        },
     }
     return impacts
 
@@ -21,8 +30,17 @@ def bottom_up_device(device: Device, impact_codes: Optional[Set[str]] = None) ->
 def bottom_up_component(component: Component, impact_codes: Optional[Set[str]] = None) -> dict:
     component.smart_complete_data()
     impacts = {
-        'gwp': round(component.impact_gwp(), 0),
-        'pe': round(component.impact_pe(), 0),
-        'adp': round(component.impact_adp(), 3)
+        'gwp': {
+            'manufacture': round(component.impact_gwp(), 0),
+            'use': "not implemented"
+        },
+        'pe': {
+            'manufacture': round(component.impact_gwp(), 0),
+            'use': "not implemented"
+        },
+        'adp': {
+            'manufacture': round(component.impact_gwp(), 0),
+            'use': "not implemented"
+        },
     }
     return impacts

@@ -4,9 +4,9 @@ from typing import Optional
 import pandas as pd
 from pydantic import BaseModel
 
-_cpu_df = pd.read_csv('./api/model/components/cpu.csv')
-_ram_df = pd.read_csv('./api/model/components/ram.csv')
-_ssd_df = pd.read_csv('./api/model/components/ssd.csv')
+_cpu_df = pd.read_csv('./data/components/cpu_manufacture.csv')
+_ram_df = pd.read_csv('./data/components/ram_manufacture.csv')
+_ssd_df = pd.read_csv('./data/components/ssd_manufacture.csv')
 
 
 class Component(BaseModel):
@@ -62,6 +62,9 @@ class ComponentCPU(Component):
 
     _DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
     _DEFAULT_CPU_CORE_UNITS = 24
+    _DEFAULT_CPU_TDP = 0
+    _DEFAULT_CPU_IDLE = 0
+    _DEFAULT_CPU_WORKLOAD = 50
 
     core_units: Optional[int] = None
     die_size: Optional[float] = None
@@ -91,7 +94,6 @@ class ComponentCPU(Component):
         return (self.core_units * self.die_size_per_core + core_impact) * cpu_die_impact + cpu_impact
 
     def smart_complete_data(self):
-        # We have all the data required
         if self.die_size_per_core and self.core_units:
             return
 
