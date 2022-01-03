@@ -33,7 +33,7 @@ class ModelServer(BaseModel):
 class ServerDTO(BaseModel):
     model: Optional[ModelServer] = None
     configuration: Optional[ConfigurationServer] = None
-    usage: Optional[Usage] = None
+    usage: Optional[UsageServer] = None
 
     add_method: Optional[str] = None
     add_date: Optional[str] = None
