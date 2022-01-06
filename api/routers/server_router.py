@@ -3,9 +3,9 @@ import copy
 from fastapi import APIRouter
 
 from api.dto.server_dto import ServerDTO
+from api.service.archetype import find_archetype, get_server_archetype, complete_with_archetype
 from api.service.verbose import verbose_device
 from api.service.bottom_up import bottom_up_device
-from api.service.ref_data import ref_server
 
 server_router = APIRouter(
     prefix='/v1/server',
@@ -13,10 +13,9 @@ server_router = APIRouter(
 )
 
 
-@server_router.post('/ref-data')
-def server_impact_ref_data(client_server_dto: ServerDTO, verbose: bool = True):
-    server = ref_server(server_dto=client_server_dto)
-
+@server_router.post('/archetype')
+def server_impact_ref_data(archetype: str, verbose: bool = True):
+    server = get_server_archetype(archetype)
     completed_server = copy.deepcopy(server)
 
     impacts = bottom_up_device(device=completed_server)
@@ -33,6 +32,10 @@ def server_impact_ref_data(client_server_dto: ServerDTO, verbose: bool = True):
 def server_impact_bottom_up(server_dto: ServerDTO, verbose: bool = True):
     server = server_dto.to_device()
     completed_server = copy.deepcopy(server)
+
+    if server.model.archetype:
+        server_archetype = get_server_archetype(server.model.archetype)
+        completed_server = complete_with_archetype(server_archetype, completed_server)
 
     impacts = bottom_up_device(device=completed_server)
     result = impacts
