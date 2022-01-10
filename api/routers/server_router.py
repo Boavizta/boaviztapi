@@ -3,7 +3,7 @@ import copy
 from fastapi import APIRouter
 
 from api.dto.server_dto import ServerDTO
-from api.service.archetype import find_archetype, get_server_archetype, complete_with_archetype
+from api.service.archetype import find_archetype, get_server_archetype, complete_with_archetype, get_server_achetype_lst
 from api.service.verbose import verbose_device
 from api.service.bottom_up import bottom_up_device
 
@@ -11,6 +11,23 @@ server_router = APIRouter(
     prefix='/v1/server',
     tags=['server']
 )
+
+
+@server_router.get('/get_archetype')
+def server_get_achetype(archetype: str):
+    server = get_server_archetype(archetype)
+    if not server:
+        result = {"server_archtype": "Not found"}
+    else:
+        result = {"server_archtype": server}
+    return result
+
+
+
+@server_router.get('/all_archetype')
+def server_get_all_achetype_name():
+    return get_server_achetype_lst()
+
 
 
 @server_router.post('/archetype')

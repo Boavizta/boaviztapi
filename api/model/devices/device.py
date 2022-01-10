@@ -9,10 +9,8 @@ from api.model.components.component import Component, ComponentCPU, ComponentSSD
 
 
 class Model(BaseModel):
-    def __init__(self, *args, **kwargs):
-        super().__init__(args, kwargs)
-        self.archetype = None
-
+        
+    archetype: str = None
     name: str = None
     manufacturer: str = None
     year: int = None

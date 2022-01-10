@@ -2,7 +2,7 @@
         "model":
             {
                 "manufacturer": null,
-                "name": "medium",
+                "name": "high",
                 "type": "blade",
                 "year": 2021
             },
@@ -37,4 +37,4 @@
                         "unit_weight": 2.99
                     }
             }
-    })
+}

@@ -76,6 +76,8 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+api/service/server_impact/ref/jupyter_data.ipynb
+api/service/server_impact/ref/__pycache__
 
 # IPython
 profile_default/
