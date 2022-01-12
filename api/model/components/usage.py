@@ -12,47 +12,35 @@ _electricity_emission_factors_df = pd.read_csv('./data/electricity/usage_impact_
 class Usage(Component):
     TYPE = "USAGE"
 
-    max_power: Optional[float] = None
-    idle_power: Optional[float] = None
     yearly_electrical_consumption: Optional[float] = None
-    life_duration: Optional[int] = None
+    year_use_time: Optional[int] = None
     usage_location: Optional[str] = None
-    idle_ratio: Optional[float] = None
-    workload_ratio: Optional[float] = None
 
     gwp_factor: Optional[float] = None
     pe_factor: Optional[float] = None
     adp_factor: Optional[float] = None
 
     _DEFAULT_USAGE_LOCATION = "EU27+1"
-    _DEFAULT_LIFE_DURATION = None
-    _DEFAULT_IDLE_RATIO = None
-    _DEFAULT_IDLE_PERCENTAGE_MAX_POWER = None
-    _DEFAULT_MEDIUM_WORKLOAD = None
-    _DEFAULT_MAX_POWER = None
+    _DEFAULT_YEAR_USE_TIME = 1
 
     @abstractmethod
     def impact_gwp(self) -> float:
-        return self.yearly_electrical_consumption * self.life_duration * self.gwp_factor
+        return self.yearly_electrical_consumption * self.year_use_time * self.gwp_factor
 
     @abstractmethod
     def impact_pe(self) -> float:
-        return self.yearly_electrical_consumption * self.life_duration * self.pe_factor
+        return self.yearly_electrical_consumption * self.year_use_time * self.pe_factor
 
     @abstractmethod
     def impact_adp(self):
-        return self.yearly_electrical_consumption * self.life_duration * self.adp_factor
+        return self.yearly_electrical_consumption * self.year_use_time * self.adp_factor
+
+    @abstractmethod
+    def get_electrical_consumption(self):
+        pass
 
     @abstractmethod
     def smart_complete_data(self):
-
-        if self.max_power is None:
-            self.max_power = self._DEFAULT_MAX_POWER
-        if self.idle_power is None:
-            self.idle_power = self._DEFAULT_IDLE_PERCENTAGE_MAX_POWER * self.max_power
-
-        if self.idle_ratio is None:
-            self.idle_ratio = self._DEFAULT_IDLE_RATIO
 
         if self.usage_location is None:
             self.usage_location = self._DEFAULT_USAGE_LOCATION
@@ -62,12 +50,8 @@ class Usage(Component):
             if len(sub) == 0:
                 self.usage_location = self._DEFAULT_USAGE_LOCATION
 
-        if self.life_duration is None:
-            self.life_duration = self._DEFAULT_LIFE_DURATION
-        if self.idle_ratio is None:
-            self.idle_ratio = self._DEFAULT_IDLE_RATIO
-        if self.workload_ratio is None:
-            self.workload_ratio = self._DEFAULT_MEDIUM_WORKLOAD
+        if self.year_use_time is None:
+            self.year_use_time = self._DEFAULT_YEAR_USE_TIME
 
         if self.gwp_factor is None:
             sub = _electricity_emission_factors_df
@@ -84,13 +68,12 @@ class Usage(Component):
             sub = sub[sub['code'] == self.usage_location]
             self.adp_factor = float(sub['adp_emission_factor'])
 
+        if self.yearly_electrical_consumption is None:
+            self.yearly_electrical_consumption = self.get_electrical_consumption()
+
 
 class UsageServer(Usage):
-    _DEFAULT_LIFE_DURATION = 5
-    _DEFAULT_IDLE_RATIO = 10 / 100  # DELL R740 ratio
-    _DEFAULT_IDLE_PERCENTAGE_MAX_POWER = 40 / 100  # DELL R740 ratio
-    _DEFAULT_MEDIUM_WORKLOAD = 50 / 100  # DELL R740 ratio
-    _DEFAULT_MAX_POWER = 510  # DELL R740 ratio in Watt
+    # TODO: Set default workload ratio and corresponding power of DELL R740 LCA
 
     def impact_gwp(self) -> float:
         return super().impact_gwp()
@@ -101,9 +84,29 @@ class UsageServer(Usage):
     def impact_adp(self):
         return super().impact_adp()
 
+    def get_electrical_consumption(self):
+        # TODO : Apply server usage formula according to #21
+        pass
+
     def smart_complete_data(self):
+        # TODO : Set default value of workload ratio and corresponding power if not set
         super().smart_complete_data()
 
-        if self.yearly_electrical_consumption is None:
-            self.yearly_electrical_consumption = round((((self.max_power * (1 - self.idle_ratio) * self.workload_ratio) +
-                                                   (self.idle_ratio * self.idle_power)) / 1000) * 365 * 24, 0)
+
+class UsageCloud(Usage):
+
+    def impact_gwp(self) -> float:
+        return super().impact_gwp()
+
+    def impact_pe(self) -> float:
+        return super().impact_pe()
+
+    def impact_adp(self):
+        return super().impact_adp()
+
+    def get_electrical_consumption(self):
+        # TODO : Apply cloud formula according to #29
+        pass
+
+    def smart_complete_data(self):
+        super().smart_complete_data()

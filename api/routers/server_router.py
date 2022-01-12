@@ -3,7 +3,7 @@ import copy
 from fastapi import APIRouter
 
 from api.dto.server_dto import ServerDTO
-from api.service.archetype import find_archetype, get_server_archetype, complete_with_archetype, get_server_achetype_lst
+from api.service.archetype import get_server_archetype
 from api.service.verbose import verbose_device
 from api.service.bottom_up import bottom_up_device
 
@@ -13,24 +13,8 @@ server_router = APIRouter(
 )
 
 
-@server_router.get('/get_archetype')
-def server_get_achetype(archetype: str):
-    server = get_server_archetype(archetype)
-    if not server:
-        result = {"server_archtype": "Not found"}
-    else:
-        result = {"server_archtype": server}
-    return result
-
-
-
-@server_router.get('/all_archetype')
-def server_get_all_achetype_name():
-    return get_server_achetype_lst()
-
-
-
-@server_router.post('/archetype')
+@server_router.post('/archetype',
+                    description="Get the impact of a server archetype given in parameter")
 def server_impact_ref_data(archetype: str, verbose: bool = True):
     server = get_server_archetype(archetype)
     completed_server = copy.deepcopy(server)
@@ -45,14 +29,18 @@ def server_impact_ref_data(archetype: str, verbose: bool = True):
     return result
 
 
-@server_router.post('/bottom-up')
+@server_router.post('/',
+                    description="Default route, return the impact of a given Server")
 def server_impact_bottom_up(server_dto: ServerDTO, verbose: bool = True):
     server = server_dto.to_device()
     completed_server = copy.deepcopy(server)
 
+    """""
+    TODO : implement input server completion with archetype model
     if server.model.archetype:
-        server_archetype = get_server_archetype(server.model.archetype)
+        server_archetype = get_server_archetype_lst(server.model.archetype)
         completed_server = complete_with_archetype(server_archetype, completed_server)
+    """
 
     impacts = bottom_up_device(device=completed_server)
     result = impacts
@@ -62,3 +50,20 @@ def server_impact_bottom_up(server_dto: ServerDTO, verbose: bool = True):
                   "verbose": verbose_device(complete_device=completed_server, input_device=server)}
 
     return result
+
+
+@server_router.get('/get_archetype',
+                   description="Return the description of an archetype given in parameter")
+def server_get_archetype(archetype: str):
+    server = get_server_archetype(archetype)
+    if not server:
+        result = {"server_archetype": "Not found"}
+    else:
+        result = {"server_archetype": server}
+    return result
+
+
+@server_router.get('/all_archetype',
+                   description="Get the name of all available server archetype")
+def server_get_all_archetype_name():
+    return get_server_achetype_lst()

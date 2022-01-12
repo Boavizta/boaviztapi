@@ -13,7 +13,7 @@ from api.model.components.component import (
     Component
 )
 from api.model.devices.device import Model, Server
-from api.model.components.usage import Usage, UsageServer
+from api.model.components.usage import UsageServer
 
 
 class ConfigurationServer(BaseModel):
@@ -83,13 +83,7 @@ class ServerDTO(BaseModel):
         usage = UsageServer()
         if self.usage:
             usage.usage_location = self.usage.usage_location
-            usage.idle_ratio = self.usage.idle_ratio
-            usage.idle_power = self.usage.idle_power
             usage.yearly_electrical_consumption = self.usage.yearly_electrical_consumption
-            usage.max_power = self.usage.max_power
-            usage.workload_ratio = self.usage.workload_ratio
-            usage.life_duration = self.usage.life_duration
-
             usage.adp_factor = self.usage.adp_factor
             usage.pe_factor = self.usage.pe_factor
             usage.gwp_factor = self.usage.gwp_factor
