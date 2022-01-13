@@ -82,13 +82,16 @@ class ServerDTO(BaseModel):
         return model
 
     def get_usage(self) -> UsageServer:
-        return self.usage
+        if self.usage is None:
+            return UsageServer()
+        else:
+            return self.usage
 
     def to_device(self) -> Server:
         server = Server()
         server.model = self.get_model()
         server.config_components = self.get_component_list()
-        server.usage = self.get_usage()
+        server.usage = self.get_usage() 
         return server
 
 

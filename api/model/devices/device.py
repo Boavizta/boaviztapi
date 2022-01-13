@@ -77,7 +77,8 @@ class Server(Device):
 
     def smart_complete_data(self):
 
-        self.usage.smart_complete_data()
+        if self.usage is not None:
+            self.usage.smart_complete_data()
 
         if not self.config_components:
             self.config_components = self.get_default_configuration_component_list()
