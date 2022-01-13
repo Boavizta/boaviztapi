@@ -80,7 +80,7 @@ class UsageServer(Usage):
 
     _DEFAULT_WORKLOAD = {"100": {"time": (3.6/24), "power": 1.0},
                          "50": {"time": (13.2/24), "power": 369/510},
-                         "10": {"time": (13.2/24), "power": 261/510},
+                         "10": {"time": (4.8/24), "power": 261/510},
                          "idle": {"time": (2.4/24), "power": 201/510},
                          "off": {"time": 0., "power": 0.}
                          }
