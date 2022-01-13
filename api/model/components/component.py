@@ -5,6 +5,7 @@ import pandas as pd
 from pydantic import BaseModel
 
 _cpu_df = pd.read_csv('./data/components/cpu_manufacture.csv')
+_cpu_df['manufacture_date'] = _cpu_df['manufacture_date'].astype(str)   # Convert date column to string
 _ram_df = pd.read_csv('./data/components/ram_manufacture.csv')
 _ssd_df = pd.read_csv('./data/components/ssd_manufacture.csv')
 
@@ -62,9 +63,6 @@ class ComponentCPU(Component):
 
     _DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
     _DEFAULT_CPU_CORE_UNITS = 24
-    _DEFAULT_CPU_TDP = 0
-    _DEFAULT_CPU_IDLE = 0
-    _DEFAULT_CPU_WORKLOAD = 50
 
     core_units: Optional[int] = None
     die_size: Optional[float] = None
