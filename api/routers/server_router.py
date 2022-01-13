@@ -37,7 +37,8 @@ def server_impact_bottom_up(server_dto: ServerDTO, verbose: bool = True):
 
     if server.model.archetype:
         server_archetype = get_server_archetype(server.model.archetype)
-        completed_server = complete_with_archetype(completed_server, server_archetype)
+        completed_server = complete_with_archetype(
+            completed_server, server_archetype)
 
     impacts = bottom_up_device(device=completed_server)
     result = impacts

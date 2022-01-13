@@ -91,7 +91,7 @@ class ServerDTO(BaseModel):
         server = Server()
         server.model = self.get_model()
         server.config_components = self.get_component_list()
-        server.usage = self.get_usage() 
+        server.usage = self.get_usage()
         return server
 
 

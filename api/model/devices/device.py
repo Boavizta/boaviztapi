@@ -9,7 +9,7 @@ from api.model.components.component import Component, ComponentCPU, ComponentSSD
 
 
 class Model(BaseModel):
-        
+
     archetype: str = None
     name: str = None
     manufacturer: str = None
