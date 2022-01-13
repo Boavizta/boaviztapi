@@ -37,7 +37,7 @@ class Usage(Component):
         return self.yearly_electrical_consumption * self.year_use_time * self.adp_factor
 
     @abstractmethod
-    def get_electrical_consumption(self):
+    def get_yearly_electrical_consumption(self):
         pass
 
     @abstractmethod
@@ -69,6 +69,10 @@ class Usage(Component):
             sub = sub[sub['code'] == self.usage_location]
             self.adp_factor = float(sub['adp_emission_factor'])
 
+    def __hash__(self) -> int:
+        # TODO: TO ENHANCE
+        return 0
+
 
 class UsageServer(Usage):
     # TODO: Set default workload ratio and corresponding power of DELL R740 LCA
@@ -81,8 +85,8 @@ class UsageServer(Usage):
                          "off": {"time": 0., "power": 0.}
                          }
 
-    workload: Dict = None
-    max_power: float = None
+    max_power: Optional[float] = None
+    workload: Optional[Dict[str, Dict[str, float]]] = None
 
     def impact_gwp(self) -> float:
         return super().impact_gwp()
@@ -93,11 +97,11 @@ class UsageServer(Usage):
     def impact_adp(self):
         return super().impact_adp()
 
-    def get_electrical_consumption(self):
-        electrical_consumption = 0
+    def get_yearly_electrical_consumption(self) -> float:
+        year_electrical_consumption = 0
         for values in self.workload.values():
-            electrical_consumption += values["time"] * values["power"]
-        return electrical_consumption
+            year_electrical_consumption += values["time"] * 24 * 365 * values["power"] * self.max_power
+        return year_electrical_consumption / 1000
 
     def smart_complete_data(self):
         # TODO : Set default value of workload ratio and corresponding power if not set
@@ -108,7 +112,7 @@ class UsageServer(Usage):
             if self.workload is None:
                 self.workload = self._DEFAULT_WORKLOAD
 
-            self.yearly_electrical_consumption = self.get_electrical_consumption()
+            self.yearly_electrical_consumption = self.get_yearly_electrical_consumption()
 
 
 class UsageCloud(Usage):
@@ -122,7 +126,7 @@ class UsageCloud(Usage):
     def impact_adp(self):
         return super().impact_adp()
 
-    def get_electrical_consumption(self):
+    def get_yearly_electrical_consumption(self):
         # TODO : Apply cloud formula according to #29
         pass
 
