@@ -2,11 +2,12 @@ from abc import abstractmethod
 
 import pandas as pd
 
-from typing import Optional
+from typing import Dict, Optional
 
 from api.model.components.component import Component
 
-_electricity_emission_factors_df = pd.read_csv('./data/electricity/usage_impact_factors.csv')
+_electricity_emission_factors_df = pd.read_csv(
+    './data/electricity/usage_impact_factors.csv')
 
 
 class Usage(Component):
@@ -68,12 +69,20 @@ class Usage(Component):
             sub = sub[sub['code'] == self.usage_location]
             self.adp_factor = float(sub['adp_emission_factor'])
 
-        if self.yearly_electrical_consumption is None:
-            self.yearly_electrical_consumption = self.get_electrical_consumption()
-
 
 class UsageServer(Usage):
     # TODO: Set default workload ratio and corresponding power of DELL R740 LCA
+    _DEFAULT_MAX_POWER = 510
+
+    _DEFAULT_WORKLOAD = {"100": {"time": (3.6/24), "power": 1.0},
+                         "50": {"time": (13.2/24), "power": 369/510},
+                         "10": {"time": (13.2/24), "power": 261/510},
+                         "idle": {"time": (2.4/24), "power": 201/510},
+                         "off": {"time": 0., "power": 0.}
+                         }
+
+    workload: Dict = None
+    max_power: float = None
 
     def impact_gwp(self) -> float:
         return super().impact_gwp()
@@ -85,12 +94,21 @@ class UsageServer(Usage):
         return super().impact_adp()
 
     def get_electrical_consumption(self):
-        # TODO : Apply server usage formula according to #21
-        pass
+        electrical_consumption = 0
+        for values in self.workload.values():
+            electrical_consumption += values["time"] * values["power"]
+        return electrical_consumption
 
     def smart_complete_data(self):
         # TODO : Set default value of workload ratio and corresponding power if not set
         super().smart_complete_data()
+        if self.yearly_electrical_consumption is None:
+            if self.max_power is None:
+                self.max_power = self._DEFAULT_MAX_POWER
+            if self.workload is None:
+                self.workload = self._DEFAULT_WORKLOAD
+
+            self.yearly_electrical_consumption = self.get_electrical_consumption()
 
 
 class UsageCloud(Usage):

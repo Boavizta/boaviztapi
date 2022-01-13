@@ -80,14 +80,7 @@ class ServerDTO(BaseModel):
         return model
 
     def get_usage(self) -> UsageServer:
-        usage = UsageServer()
-        if self.usage:
-            usage.usage_location = self.usage.usage_location
-            usage.yearly_electrical_consumption = self.usage.yearly_electrical_consumption
-            usage.adp_factor = self.usage.adp_factor
-            usage.pe_factor = self.usage.pe_factor
-            usage.gwp_factor = self.usage.gwp_factor
-        return usage
+        return self.usage
 
     def to_device(self) -> Server:
         server = Server()
