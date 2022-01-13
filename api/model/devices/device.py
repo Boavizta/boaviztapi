@@ -76,12 +76,10 @@ class Server(Device):
         return self.usage.impact_adp()
 
     def smart_complete_data(self):
-        print("IN SMART COMPLETE DATA")
 
         self.usage.smart_complete_data()
 
         if not self.config_components:
-            print("not self.config_components")
             self.config_components = self.get_default_configuration_component_list()
         else:
             self.config_components.append(ComponentMotherBoard())
@@ -95,19 +93,15 @@ class Server(Device):
 
             for item in self.config_components:
                 if type(item) == type(ComponentCPU):
-                    print("type: {} res: {}".format(type(item), ComponentCPU))
                     cpu = True
                 elif type(item) == type(ComponentRAM):
-                    print("type: {} res: {}".format(type(item), ComponentRAM))
                     ram = True
                 elif type(item) == type(ComponentSSD):
-                    print("type: {} res: {}".format(type(item), ComponentSSD))
+                    # TODO: SSD OR HDD
                     ssd = True
                 elif type(item) == type(ComponentPowerSupply):
-                    print("type: {} res: {}".format(type(item), ComponentPowerSupply))
                     power_supply = True
                 elif type(item) == type(ComponentRack) or type(item) == type(ComponentBlade):
-                    print("type: {} res: {}".format(type(item), ComponentRack))
                     rack_blade = True
 
             if not cpu:

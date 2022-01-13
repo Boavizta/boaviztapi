@@ -3,7 +3,7 @@ import copy
 from fastapi import APIRouter
 
 from api.dto.server_dto import ServerDTO
-from api.service.archetype import get_server_archetype
+from api.service.archetype import get_server_archetype, get_server_archetype_lst
 from api.service.verbose import verbose_device
 from api.service.bottom_up import bottom_up_device
 
@@ -66,4 +66,4 @@ def server_get_archetype(archetype: str):
 @server_router.get('/all_archetype',
                    description="Get the name of all available server archetype")
 def server_get_all_archetype_name():
-    return get_server_achetype_lst()
+    return get_server_archetype_lst()
