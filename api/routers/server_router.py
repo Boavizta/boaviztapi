@@ -13,8 +13,8 @@ server_router = APIRouter(
 )
 
 
-@server_router.post('/archetype',
-                    description="Get the impact of a server archetype given in parameter")
+@server_router.get('/model',
+                   description="Get the impact of a server by the model name given in parameter")
 def server_impact_ref_data(archetype: str, verbose: bool = True):
     server = get_server_archetype(archetype)
     completed_server = copy.deepcopy(server)
@@ -50,6 +50,7 @@ def server_impact_bottom_up(server_dto: ServerDTO, verbose: bool = True):
     return result
 
 
+"""
 @server_router.get('/get_archetype',
                    description="Return the description of an archetype given in parameter")
 def server_get_archetype(archetype: str):
@@ -59,9 +60,10 @@ def server_get_archetype(archetype: str):
     else:
         result = {"server_archetype": server}
     return result
+"""
 
 
-@server_router.get('/all_archetype',
-                   description="Get the name of all available server archetype")
+@server_router.get('/all_default_models',
+                   description="Get the name of all available servers with a known configuration")
 def server_get_all_archetype_name():
     return get_server_archetype_lst()
