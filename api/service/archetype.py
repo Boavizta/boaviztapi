@@ -1,3 +1,4 @@
+import sre_parse
 from typing import Union
 
 from api.dto.server_dto import ServerDTO
@@ -30,7 +31,16 @@ def complete_with_archetype(server: Server, archetype_server: Server) -> Server:
     set the missing server components of server from its archetype
     ? set the missing attributes of components ?
     """
-    pass
+    lst_id = set()
+    for i,component in server.config_components:
+        for j,component_to_remove in enumerate(archetype_server.config_components):
+            if component.TYPE == component_to_remove.TYPE:
+                lst_id.add(j)
+    for index in sorted(list(lst_id), reverse = True):
+        del archetype_server.config_components[index]
+    archetype_server.config_components += server.config_components
+
+    return archetype_server
 
 
 def find_archetype(server_dto: ServerDTO) -> Server:
