@@ -5,11 +5,11 @@ from pydantic import BaseModel
 
 from api.model.components.usage import Usage
 from api.model.components.component import Component, ComponentCPU, ComponentSSD, ComponentRAM, ComponentPowerSupply, \
-    ComponentMotherBoard, ComponentAssembly, ComponentRack
+    ComponentMotherBoard, ComponentAssembly, ComponentRack, ComponentBlade
 
 
 class Model(BaseModel):
-        
+
     archetype: str = None
     name: str = None
     manufacturer: str = None
@@ -76,10 +76,12 @@ class Server(Device):
         return self.usage.impact_adp()
 
     def smart_complete_data(self):
+        print("IN SMART COMPLETE DATA")
 
         self.usage.smart_complete_data()
 
         if not self.config_components:
+            print("not self.config_components")
             self.config_components = self.get_default_configuration_component_list()
         else:
             self.config_components.append(ComponentMotherBoard())
@@ -92,15 +94,20 @@ class Server(Device):
             rack_blade = False
 
             for item in self.config_components:
-                if type(item).__name__ == "ComponentCPU":
+                if type(item) == type(ComponentCPU):
+                    print("type: {} res: {}".format(type(item), ComponentCPU))
                     cpu = True
-                elif type(item).__name__ == "ComponentRAM":
+                elif type(item) == type(ComponentRAM):
+                    print("type: {} res: {}".format(type(item), ComponentRAM))
                     ram = True
-                elif type(item).__name__ == "ComponentSSD":
+                elif type(item) == type(ComponentSSD):
+                    print("type: {} res: {}".format(type(item), ComponentSSD))
                     ssd = True
-                elif type(item).__name__ == "ComponentPowerSupply":
+                elif type(item) == type(ComponentPowerSupply):
+                    print("type: {} res: {}".format(type(item), ComponentPowerSupply))
                     power_supply = True
-                elif type(item).__name__ == "ComponentRack" or type(item).__name__ == "ComponentBlade":
+                elif type(item) == type(ComponentRack) or type(item) == type(ComponentBlade):
+                    print("type: {} res: {}".format(type(item), ComponentRack))
                     rack_blade = True
 
             if not cpu:
