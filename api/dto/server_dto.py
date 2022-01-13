@@ -28,6 +28,7 @@ class ModelServer(BaseModel):
     name: Optional[str] = None
     type: Optional[str] = None
     year: Optional[str] = None
+    archetype: Optional[str] = None
 
 
 class ServerDTO(BaseModel):
@@ -77,6 +78,7 @@ class ServerDTO(BaseModel):
             model.name = self.model.name
             model.year = self.model.year
             model.manufacturer = self.model.manufacturer
+            model.archetype = self.model.archetype
         return model
 
     def get_usage(self) -> UsageServer:

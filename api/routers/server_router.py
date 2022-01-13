@@ -3,7 +3,7 @@ import copy
 from fastapi import APIRouter
 
 from api.dto.server_dto import ServerDTO
-from api.service.archetype import get_server_archetype, get_server_archetype_lst
+from api.service.archetype import get_server_archetype, get_server_archetype_lst, complete_with_archetype
 from api.service.verbose import verbose_device
 from api.service.bottom_up import bottom_up_device
 
@@ -35,12 +35,9 @@ def server_impact_bottom_up(server_dto: ServerDTO, verbose: bool = True):
     server = server_dto.to_device()
     completed_server = copy.deepcopy(server)
 
-    """""
-    TODO : implement input server completion with archetype model
     if server.model.archetype:
         server_archetype = get_server_archetype_lst(server.model.archetype)
-        completed_server = complete_with_archetype(server_archetype, completed_server)
-    """
+        completed_server = complete_with_archetype(completed_server, server_archetype)
 
     impacts = bottom_up_device(device=completed_server)
     result = impacts
