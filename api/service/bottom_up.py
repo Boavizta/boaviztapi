@@ -35,11 +35,11 @@ def bottom_up_component(component: Component, impact_codes: Optional[Set[str]] =
             'use': "not implemented"
         },
         'pe': {
-            'manufacture': round(component.impact_gwp(), 0),
+            'manufacture': round(component.impact_pe(), 0),
             'use': "not implemented"
         },
         'adp': {
-            'manufacture': round(component.impact_gwp(), 0),
+            'manufacture': round(component.impact_adp(), 0),
             'use': "not implemented"
         },
     }
