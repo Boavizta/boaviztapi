@@ -1,5 +1,6 @@
 # Tools-API ![run-tests](https://github.com/Boavizta/Tools-API/actions/workflows/run-tests.yml/badge.svg)
 
+
 Giving access to BOAVIZTA referenced datas and methodologies trought a RESTful API
 
 ## Objective
@@ -8,11 +9,17 @@ As part of Boavizta's desire to improve the quality of the measurement of the en
 
 The various data and methodologies integrated by Boavizta are aggregated and made available via an API. 
 
-In the interest of transparency and scientific popularization, the opening of the code, the versioning of the impact factors and the documentation of the project are critical points. 
-
-## Architecture
+In the interest of transparency and scientific popularization, the opening of the code, the versioning of the impact factors and the documentation of the project are critical points.
 
 The system is developed in micro-services layers according to a bottom-up principle. The first layer implemented is equipment, starting with the servers (MVP). The second layer is the measurement of the impact of digital services or systems. The measurement of the global impact is currently outside the scope. 
+
+## Test it yourself
+
+* Test the API : TODO
+
+* Dev documentation server : http://149.202.185.115/
+
+* Dev API server: http://149.202.185.115:5000
 
 ## Installation
 
@@ -51,19 +58,12 @@ Once API server is launched API swagger is available at [http://localhost:5000/d
 
 ### Launch using docker container
 ```bash
-echo "<TOKEN>" | sudo docker login ghcr.io --username <USERNAME> --password-stdin
 docker run ghcr.io/boavizta/tools-api:latest
 ```
 
 ## Contributing
 
-TODO
-
-## Dev Server
-
-Documentation : http://149.202.185.115/
-API : http://149.202.185.115:5000
-
+See [contributing.md](./CONTRIBUTING.md)
 
 ## License
 
