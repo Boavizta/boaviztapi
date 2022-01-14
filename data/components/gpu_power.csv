@@ -1,0 +1,8 @@
+Manufacturer,Name,GPU Memory (in GB),GPU TDP L1 (in Watts),Released,GPUWatt Idle,GPUWatt 10%,GPUWatt 50%,GPUWatt 100%,Comment
+NVIDIA,Tesla M60,8,300,"Aug 30th, 2015",35,95,226,306,Power consumption estimated based on CPU ratios
+NVIDIA,T4,8,70,"Sep 13th, 2018",8,22,53,71,Power consumption estimated based on CPU ratios
+AMD,Radeon Pro V520,16,225,"Dec 1st, 2020",26,72,169,229,Power consumption estimated based on CPU ratios
+NVIDIA,Tesla K80,24,300,"Nov 17th, 2014",35,95,226,306,Power consumption estimated based on CPU ratios
+NVIDIA,Tesla V100,32,300,"Jun 21st, 2017",35,95,226,306,Power consumption estimated based on CPU ratios
+NVIDIA,Tesla A100,40,400,"May 14th, 2020",46,127,301,407,Power consumption estimated based on CPU ratios
+NVIDIA,K520,4,225,"Jul 23rd, 2013",26,72,169,229,
