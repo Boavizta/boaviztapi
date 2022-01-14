@@ -1,4 +1,4 @@
-# Tools-API
+# Tools-API ![run-tests](https://github.com/Boavizta/Tools-API/actions/workflows/run-tests.yml/badge.svg)
 
 Giving access to BOAVIZTA referenced datas and methodologies trought a RESTful API
 
