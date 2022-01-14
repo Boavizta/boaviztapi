@@ -12,9 +12,18 @@ def test_complete_cpu():
     })
 
     assert res.json() == {
-        "gwp": 16.0,
-        "pe": 247.0,
-        "adp": 0.02
+        "gwp": {
+            "manufacture": 16.0,
+            "use": "not implemented"
+        },
+        "pe": {
+            "manufacture": 247.0,
+            "use": "not implemented"
+        },
+        "adp": {
+            "manufacture": 0.02,
+            "use": "not implemented"
+        }
     }
 
 
@@ -23,9 +32,18 @@ def test_empty_cpu():
     })
 
     assert res.json() == {
-        "gwp": 22.0,
-        "pe": 325.0,
-        "adp": 0.02
+        "gwp": {
+            "manufacture": 22.0,
+            "use": "not implemented"
+        },
+        "pe": {
+            "manufacture": 325.0,
+            "use": "not implemented"
+        },
+        "adp": {
+            "manufacture": 0.02,
+            "use": "not implemented"
+        }
     }
 
 
@@ -37,9 +55,18 @@ def test_complete_ram():
     })
 
     assert res.json() == {
-        "gwp": 45.0,
-        "pe": 562.0,
-        "adp": 0.003
+        "gwp": {
+            "manufacture": 45.0,
+            "use": "not implemented"
+        },
+        "pe": {
+            "manufacture": 562.0,
+            "use": "not implemented"
+        },
+        "adp": {
+            "manufacture": 0.003,
+            "use": "not implemented"
+        }
     }
 
 
@@ -48,9 +75,18 @@ def test_empty_ram():
     })
 
     assert res.json() == {
-        "gwp": 118.0,
-        "pe": 1472.0,
-        "adp": 0.005
+        "gwp": {
+            "manufacture": 118.0,
+            "use": "not implemented"
+        },
+        "pe": {
+            "manufacture": 1472.0,
+            "use": "not implemented"
+        },
+        "adp": {
+            "manufacture": 0.005,
+            "use": "not implemented"
+        }
     }
 
 
@@ -61,9 +97,18 @@ def test_complete_ssd():
     })
 
     assert res.json() == {
-        "gwp": 24.0,
-        "pe": 293.0,
-        "adp": 0.001
+        "gwp": {
+            "manufacture": 24.0,
+            "use": "not implemented"
+        },
+        "pe": {
+            "manufacture": 293.0,
+            "use": "not implemented"
+        },
+        "adp": {
+            "manufacture": 0.001,
+            "use": "not implemented"
+        },
     }
 
 
@@ -72,7 +117,16 @@ def test_empty_ssd():
     })
 
     assert res.json() == {
-        "gwp": 52.0,
-        "pe": 640.0,
-        "adp": 0.002
+        "gwp": {
+            "manufacture": 52.0,
+            "use": "not implemented"
+        },
+        "pe": {
+            "manufacture": 640.0,
+            "use": "not implemented"
+        },
+        "adp": {
+            "manufacture": 0.002,
+            "use": "not implemented"
+        },
     }

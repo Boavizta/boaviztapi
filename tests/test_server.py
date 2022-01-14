@@ -6,7 +6,7 @@ client = TestClient(app)
 
 
 def test_complete_config_server():
-    res = client.post('/v1/server/bottom-up?verbose=false', json={
+    res = client.post('/v1/server/?verbose=false', json={
         "model": {
         },
         "configuration": {
@@ -46,72 +46,118 @@ def test_complete_config_server():
         }
     })
     assert res.json() == {
-        "gwp": 1117.0,
-        "pe": 15153.0,
-        "adp": 0.254
+        "gwp": {
+            "manufacture": 1117.0,
+            "use": 696.0
+        },
+        "pe": {
+            "manufacture": 15153.0,
+            "use": "Not Implemented"
+        },
+        "adp": {
+            "manufacture": 0.254,
+            "use": "Not Implemented"
+        }
     }
 
 
 def test_empty_config_server():
-    res = client.post('/v1/server/bottom-up?verbose=false', json={
+    res = client.post('/v1/server/?verbose=false', json={
     })
     assert res.json() == {
-        "gwp": 3142.0,
-        "pe": 39621.0,
-        "adp": 0.214
+        "gwp": {
+            "manufacture": 3142.0,
+            "use": 696.0
+        },
+        "pe": {
+            "manufacture": 39621.0,
+            "use": "Not Implemented"
+        },
+        "adp": {
+            "manufacture": 0.214,
+            "use": "Not Implemented"
+        }
     }
 
 
 def test_dell_r740_server():
-    res = client.post('/v1/server/bottom-up?verbose=false', json={
-        "model":
-            {
-                "manufacturer": "Dell",
-                "name": "R740",
-                "type": "rack",
-                "year": 2020
-            },
-        "configuration":
-            {
-                "cpu":
-                    {
-                        "units": 2,
-                        "core_units": 24,
-                        "die_size_per_core": 0.245
-                    },
-                "ram":
-                    [
-                        {
-                            "units": 12,
-                            "capacity": 32,
-                            "density": 1.79
-                        }
-                    ],
-                "disk":
-                    [
-                        {
-                            "units": 1,
-                            "type": "ssd",
-                            "capacity": 400,
-                            "density": 50.6
-                        }
-                    ],
-                "power_supply":
-                    {
-                        "units": 2,
-                        "unit_weight": 2.99
-                    }
-            }
-    })
+    res = client.post('/v1/server/?verbose=false', json={
+      "model":
+      {
+        "manufacturer": "Dell",
+        "name": "R740",
+        "type": "rack",
+        "year": 2020
+      },
+      "configuration":
+      {
+        "cpu":
+        {
+          "units": 2,
+          "core_units": 24,
+          "die_size_per_core": 0.245
+        },
+        "ram":
+        [
+          {
+            "units": 12,
+            "capacity": 32,
+            "density": 1.79
+          }
+        ],
+        "disk":
+        [
+          {
+            "units": 1,
+            "type": "ssd",
+            "capacity": 400,
+            "density": 50.6
+          }
+        ],
+        "power_supply":
+        {
+          "units": 2,
+          "unit_weight": 2.99
+        }
+      },
+      "usage": {
+        "100": {
+          "time": 0.15,
+          "power": 1.0
+        },
+        "50": {
+          "time": 0.55,
+          "power": 0.7235
+        },
+        "10": {
+          "time": 0.2,
+          "power": 0.5118
+        },
+        "idle": {
+          "time": 0.1,
+          "power": 0.3941
+        }
+      }
+    }
+    )
     assert res.json() == {
-        "gwp": 970.0,
-        "pe": 12896.0,
-        "adp": 0.149
+        "gwp": {
+            "manufacture": 970.0,
+            "use": 696.0
+        },
+        "pe": {
+            "manufacture": 12896.0,
+            "use": "Not Implemented"
+        },
+        "adp": {
+            "manufacture": 0.149,
+            "use": "Not Implemented"
+        }
     }
 
 
 def test_partial_server_1():
-    res = client.post('/v1/server/bottom-up?verbose=false', json={
+    res = client.post('/v1/server/?verbose=false', json={
         "model": {
         },
         "configuration": {
@@ -141,14 +187,23 @@ def test_partial_server_1():
         }
     })
     assert res.json() == {
-        "gwp": 1295.0,
-        "pe": 16669.0,
-        "adp": 0.151
+        "gwp": {
+            "manufacture": 1295.0,
+            "use": 696.0
+        },
+        "pe": {
+            "manufacture": 16669.0,
+            "use": "Not Implemented"
+        },
+        "adp": {
+            "manufacture": 0.151,
+            "use": "Not Implemented"
+        }
     }
 
 
 def test_partial_server_2():
-    res = client.post('/v1/server/bottom-up?verbose=false', json={
+    res = client.post('/v1/server/?verbose=false', json={
         "model": {
         },
         "configuration": {
@@ -184,14 +239,23 @@ def test_partial_server_2():
         }
     })
     assert res.json() == {
-        "gwp": 1375.0,
-        "pe": 18593.0,
-        "adp": 0.261
+        "gwp": {
+            "manufacture": 1375.0,
+            "use": 696.0
+        },
+        "pe": {
+            "manufacture": 18593.0,
+            "use": "Not Implemented"
+        },
+        "adp": {
+            "manufacture": 0.261,
+            "use": "Not Implemented"
+        }
     }
 
 
 def test_partial_server_3():
-    res = client.post('/v1/server/bottom-up?verbose=false', json={
+    res = client.post('/v1/server/?verbose=false', json={
         "model": {
         },
         "configuration": {
@@ -211,7 +275,16 @@ def test_partial_server_3():
         }
     })
     assert res.json() == {
-        "gwp": 903.0,
-        "pe": 12706.0,
-        "adp": 0.242
+        "gwp": {
+            "manufacture": 903.0,
+            "use": 696.0
+        },
+        "pe": {
+            "manufacture": 12706.0,
+            "use": "Not Implemented"
+        },
+        "adp": {
+            "manufacture": 0.242,
+            "use": "Not Implemented"
+        }
     }
