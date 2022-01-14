@@ -12,6 +12,7 @@ with open("README.md", "r") as fh:
 setup(name='Tools-API',
       version='0.0.1',
       packages=find_packages(),
+      include_package_data=True,
       description="Giving access to BOAVIZTA referenced datas and methodologies trought a RESTful API ",
       use_pipfile=True,
       long_description=long_description,
@@ -29,7 +30,5 @@ setup(name='Tools-API',
           "License :: TODO",
           "Operating System :: OS Independent",
       ],
-      extra_require={
-      },
       python_requires='>=3.7',
       entry_points=''' ''')

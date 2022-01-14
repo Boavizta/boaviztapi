@@ -1,13 +1,14 @@
+import os
 from abc import abstractmethod
 
 import pandas as pd
 
 from typing import Dict, Optional
 
+from api.model.components import data_dir
 from api.model.components.component import Component
 
-_electricity_emission_factors_df = pd.read_csv(
-    './data/electricity/usage_impact_factors.csv')
+_electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electricity/usage_impact_factors.csv'))
 
 
 class Usage(Component):

@@ -1,13 +1,17 @@
+import os
 from abc import abstractmethod
+from os.path import join
 from typing import Optional
 
 import pandas as pd
 from pydantic import BaseModel
 
-_cpu_df = pd.read_csv('./data/components/cpu_manufacture.csv')
+from api.model.components import data_dir
+
+_cpu_df = pd.read_csv(os.path.join(data_dir, 'components/cpu_manufacture.csv'))
+_ram_df = pd.read_csv(os.path.join(data_dir, 'components/ram_manufacture.csv'))
+_ssd_df = pd.read_csv(os.path.join(data_dir, 'components/ssd_manufacture.csv'))
 _cpu_df['manufacture_date'] = _cpu_df['manufacture_date'].astype(str)   # Convert date column to string
-_ram_df = pd.read_csv('./data/components/ram_manufacture.csv')
-_ssd_df = pd.read_csv('./data/components/ssd_manufacture.csv')
 
 
 class Component(BaseModel):
