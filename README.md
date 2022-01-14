@@ -23,17 +23,11 @@ The system is developed in micro-services layers according to a bottom-up princi
 
 ## Installation
 
-Create a virtual environment and activate it.
+Install dependencies and create a python virtual environment.
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install project requirements.
-
-```bash
-pip install -r requirements.txt
+$ pipenv install -d 
+$ pipenv shell
 ```
 
 ## Usage
@@ -64,6 +58,10 @@ docker run ghcr.io/boavizta/tools-api:latest
 ## Contributing
 
 See [contributing.md](./CONTRIBUTING.md)
+
+You can run the tests with `pytest` once in the virtual env.
+
+You can build a source distribution (installable with pip) with `python setup.py sdist`.
 
 ## License
 
