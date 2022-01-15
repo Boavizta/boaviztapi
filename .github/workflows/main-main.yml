@@ -16,12 +16,11 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.9'
-    - name: Install pipenv
-      run: |
-        sudo apt install -y pipenv
-    - name: Install dependencies
-      run: |
-        pipenv install -d
-    - name: Test with pytest
-      run: |
-        pipenv run pytest
+    - name: Install dependecies
+      uses: VaultVulp/action-pipenv@v2.0.1
+      with:
+        command: install -d # Install all dependencies, including development ones
+    - name: Test
+      uses: VaultVulp/action-pipenv@v2.0.1
+      with:
+        command: run pytest
