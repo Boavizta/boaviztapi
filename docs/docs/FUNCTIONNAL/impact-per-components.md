@@ -15,7 +15,7 @@ with:
 |cpumanuf_baseadp|kgSbeq|2.04E-02|
 |cpumanuf_basepe|MJ|156.00|
 
-**The following variables can be [smart-complete](../concepts/smart-complete.md)**
+**The following variables can be [smart-complete](smart-complete.md)**
 
 * cpu<sub>units<sub></sub></sub>
 * cpu<sub>core<sub>units</sub></sub>
@@ -37,7 +37,7 @@ With
 |rammanuf_baseadp|kgSbeq|1.69E-03|
 |rammanuf_basepe|MJ|74.00|
 
-**The following variables can be [smart-complete](../concepts/smart-complete.md)**
+**The following variables can be [smart-complete](smart-complete.md)**
 
 * ram<sub>units</sub>
 * ram<sub>density</sub>
@@ -59,7 +59,7 @@ With:
 |ssdmanuf_baseadp|kgSbeq|5.63E-04|
 |ssdmanuf_basepe|MJ|76.90|
 
-**The following variables can be [smart-complete](../concepts/smart-complete.md)**
+**The following variables can be [smart-complete](smart-complete.md)**
 
 * ssd<sub>units</sub>
 * ssd<sub>size</sub>
@@ -78,7 +78,7 @@ With:
 |hddmanuf_unitadp|kgSbeq|2.50E-04|
 |hddmanuf_unitpe|MJ|276.00|
 
-**The following variables can be [smart-complete](../concepts/smart-complete.md)**
+**The following variables can be [smart-complete](smart-complete.md)**
 
 * hdd<sub>units</sub>
 
@@ -95,7 +95,7 @@ With :
 |psumanuf_weightadp|kgSbeq/kg|8.30E-03|
 |psumanuf_weightpe|MJ/kg|352.00|
 
-**The following variables can be [smart-complete](../concepts/smart-complete.md)**
+**The following variables can be [smart-complete](smart-complete.md)**
 
 * psu<sub>units</sub>
 * psu<sub>unit<sub>weight</sub>
