@@ -1,13 +1,18 @@
 FROM python:3.7-slim-buster
 
-WORKDIR /app
+ARG VERSION
 
-# Install dependencies
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+RUN apt-get update -qq 
 
-COPY . .
+WORKDIR /opt/app
+
+# Python 3 surrogate unicode handling
+# @see https://click.palletsprojects.com/en/7.x/python3/
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
+COPY dist/Tools-API-$VERSION.tar.gz ./
+RUN pip3 install Tools-API-$VERSION.tar.gz
 
 EXPOSE 5000
-
-ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]
+ENTRYPOINT ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "5000"]
