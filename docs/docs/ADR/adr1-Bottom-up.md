@@ -1,19 +1,22 @@
-# Decision record template (by Michael Nygard)
-
-# Title
+# Bottom-up
 
 ## Status
 
-What is the status, such as proposed, accepted, rejected, deprecated, superseded, etc.?
+- ACCEPTED : [X]
+- IMPLEMENTED: [X]
+- DEPRECATED: [ ]
+
 
 ## Context
 
-What is the issue that we're seeing that is motivating this decision or change?
+Issue : #2 & #6
+
+The impact of a device is the aggregation of the impact of its components in a bottom-up approach.
 
 ## Decision
 
-What is the change that we're proposing and/or doing?
+Initial implementation
 
 ## Consequences
 
-What becomes easier or more difficult to do because of this change?
+Each additional impacting elements of a device must be represented has a component (i.e. usage)

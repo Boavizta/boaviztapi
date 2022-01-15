@@ -2,12 +2,11 @@
 
 A component is the smallest element of the api. It is an abstract object which 
 can represent either a physical component (CPU, RAM, SSD, ...), or an actions (assembly, transport, usage, ...).
-They each have one to several impacts and a specific use-phase. 
-Only manufacture is implemented for now.
+They are characterised by one to several impacts (gwp, pe and adp for now).
 
 ## Example
 
 * CPU
 * SSD
-* Electricity Usage
-* Fuel backup
+* Assembly
+* [Usage](usage.md)

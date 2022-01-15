@@ -1,4 +1,4 @@
-# Tools-API ![run-tests](https://github.com/Boavizta/Tools-API/actions/workflows/run-tests.yml/badge.svg)
+# Tools-API ![dev](https://github.com/Boavizta/Tools-API/actions/workflows/run-tests.yml/badge.svg)
 
 
 Giving access to BOAVIZTA referenced datas and methodologies trought a RESTful API
@@ -37,13 +37,13 @@ $ pipenv shell
 Development server uses [uvicorn](https://www.uvicorn.org/) and [fastapi](https://fastapi.tiangolo.com/), you can launch either with a python script or with the `uvicorn` CLI.
 
 ```bash
-python3 main.py
+$ python3 main.py
 ```
 
 OR
 
 ```bash
-uvicorn main:app --host=localhost --port 5000
+$ uvicorn api.main:app --host=localhost --port 5000
 ```
 
 ### API Swagger
@@ -52,7 +52,7 @@ Once API server is launched API swagger is available at [http://localhost:5000/d
 
 ### Launch using docker container
 ```bash
-docker run ghcr.io/boavizta/tools-api:latest
+$ docker run ghcr.io/boavizta/tools-api:latest
 ```
 
 ## Contributing

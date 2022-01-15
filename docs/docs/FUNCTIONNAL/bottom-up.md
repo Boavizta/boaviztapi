@@ -2,8 +2,8 @@
 
 ## Documentation
 
-The bottom-up methodology measures impacts of devices (**only servers for now**) by aggregating the impact of each of its component. 
-The bottom-up measure only the impact of the **manufacturing phase (scope 3)**
+The bottom-up methodology measures the manufacture impacts of devices (**only servers for now**) by aggregating the impact of each of its component. 
+
 
 ### Variable components impacts
 
@@ -23,6 +23,9 @@ The impact of fixed component are set by default
 * POWER SUPPLY
 * MANUFACTURE ASSEMBLY
 
+### Particular components impacts
+
+* [USAGE](usage.md)
 
 ## Ressources
 

@@ -5,21 +5,26 @@ plugins:
 
 nav:
     - Home: index.md
-    - Introduction:
-        - Collaborate: introduction/collaborate.md
+    - INTRODUCTION:
         - Usefull ressources: introduction/usefull_ressources.md
-    - Concepts:
-        - Components: concepts/component.md
-        - Smart complete: concepts/smart-complete.md
-        - Device: concepts/devices.md
-    - Strategies:
-          - Boavizta database: strategies/referenced-data.md
-          - Boavizta Bottom-Up: strategies/bottom-up.md
-          - Bottom-Up per components: strategies/per-components.md
-          - Bottom-Up per devices: strategies/per-device.md
-    - API :
-        - Component route: API/component_route.md
-        - Server route: API/server_route.md
-        - Swagger : API/swagger.md
+    - TRY IT YOURSELF:
+        - DEMO : swagger.md
+    - FUNCTIONNAL DOCUMENTATION:
+        - Components: FUNCTIONNAL/component.md
+        - Smart complete: FUNCTIONNAL/smart-complete.md
+        - Device: FUNCTIONNAL/devices.md
+        - Boavizta database: FUNCTIONNAL/referenced-data.md
+        - Boavizta Bottom-Up: FUNCTIONNAL/bottom-up.md
+        - Bottom-Up per components: FUNCTIONNAL/impact-per-components.md
+        - Bottom-Up per devices: FUNCTIONNAL/impact-per-device.md
+        - Usage: FUNCTIONNAL/usage.md
+        - Verbose: FUNCTIONNAL/verbose.md
+    - HOW TO USE THE API :
+        - Component route: HOW TO/component_route.md
+        - Server route: HOW TO/server_route.md
+    - ARCHITECTURAL DECISIONS RECORDS (ADR) :
+        - ADR1: ADR/adr1-Bottom-up.md
+        - ADR2: ADR/adr2-Alway-return-something.md
+        - Template: ADR/adr-template.md
 
 theme: readthedocs

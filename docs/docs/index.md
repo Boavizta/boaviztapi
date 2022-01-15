@@ -13,8 +13,3 @@ It also organizes the co-construction of expert and updated resources under open
 These "commons" cover digital infrastructures and services, and allow full life cycle / multi-criteria assessments.
 
 This is the documentation of Boavizta IT / digital environmental impacts calculation engine.
-
-## Theoretical architecture
-
-![](assets/theoretical_architecture.png)
-

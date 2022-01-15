@@ -1,4 +1,4 @@
-#Components
+#Impacts per Components
 
 ## CPU
 
@@ -149,3 +149,7 @@ With :
 |assemblymanufgwp|kgCO2eq|6.68|
 |assemblymanufadp|kgSbeq|1.41E-06|
 |assemblymanufpe|MJ|68.60|
+
+## Usage
+
+see [Usage](usage.md)

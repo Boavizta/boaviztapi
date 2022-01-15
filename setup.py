@@ -4,16 +4,16 @@ from setuptools import setup, find_packages
 
 py_version = sys.version_info[:2]
 if py_version < (3, 7):
-    raise Exception("Tools-API requires Python >= 3.7.")
+    raise Exception("api requires Python >= 3.7.")
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setup(name='Tools-API',
+setup(name='api',
       version='0.0.1',
       packages=find_packages(),
       include_package_data=True,
-      description="Giving access to BOAVIZTA referenced datas and methodologies trought a RESTful API ",
+      description="Giving access to BOAVIZTA referenced datas and methodologies trought a RESTful api ",
       use_pipfile=True,
       long_description=long_description,
       long_description_content_type="text/markdown",
