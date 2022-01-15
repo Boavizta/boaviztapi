@@ -1,3 +1,4 @@
 exclude tests/*
 include Pipfile
+include Pipfile.lock
 graft api/data
