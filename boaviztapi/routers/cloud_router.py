@@ -1,5 +1,5 @@
 import copy
-from api.model.components.usage import UsageCloud
+from boaviztapi.model.components.usage import UsageCloud
 
 from fastapi import APIRouter
 

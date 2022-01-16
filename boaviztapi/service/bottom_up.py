@@ -1,7 +1,7 @@
 from typing import Set, Optional, List
 
-from api.model.components.component import Component
-from api.model.devices.device import Device
+from boaviztapi.model.components.component import Component
+from boaviztapi.model.devices.device import Device
 
 _default_impacts_code = {"gwp", "pe", "adp"}
 

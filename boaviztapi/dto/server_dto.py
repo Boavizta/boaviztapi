@@ -1,8 +1,8 @@
 from pydantic import BaseModel
 from typing import Optional, List
-from api.dto.component_dto import Cpu, Ram, Disk, PowerSupply
+from boaviztapi.dto.component_dto import Cpu, Ram, Disk, PowerSupply
 
-from api.model.components.component import (
+from boaviztapi.model.components.component import (
     ComponentCPU,
     ComponentRAM,
     ComponentSSD,
@@ -12,8 +12,8 @@ from api.model.components.component import (
     ComponentBlade,
     Component
 )
-from api.model.devices.device import Model, Server
-from api.model.components.usage import UsageServer
+from boaviztapi.model.devices.device import Model, Server
+from boaviztapi.model.components.usage import UsageServer
 
 
 class ConfigurationServer(BaseModel):

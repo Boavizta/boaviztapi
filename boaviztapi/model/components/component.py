@@ -6,7 +6,7 @@ from typing import Optional
 import pandas as pd
 from pydantic import BaseModel
 
-from api.model.components import data_dir
+from boaviztapi.model.components import data_dir
 
 _cpu_df = pd.read_csv(os.path.join(data_dir, 'components/cpu_manufacture.csv'))
 _ram_df = pd.read_csv(os.path.join(data_dir, 'components/ram_manufacture.csv'))

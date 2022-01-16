@@ -15,4 +15,4 @@ COPY dist/Tools-API-$VERSION.tar.gz ./
 RUN pip3 install Tools-API-$VERSION.tar.gz
 
 EXPOSE 5000
-ENTRYPOINT ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "5000"]
+ENTRYPOINT ["uvicorn", "boaviztapi.main:app", "--host", "0.0.0.0", "--port", "5000"]

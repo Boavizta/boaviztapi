@@ -3,8 +3,8 @@ from typing import List
 
 from pydantic import BaseModel
 
-from api.model.components.usage import Usage
-from api.model.components.component import Component, ComponentCPU, ComponentSSD, ComponentRAM, ComponentPowerSupply, \
+from boaviztapi.model.components.usage import Usage
+from boaviztapi.model.components.component import Component, ComponentCPU, ComponentSSD, ComponentRAM, ComponentPowerSupply, \
     ComponentMotherBoard, ComponentAssembly, ComponentRack
 
 

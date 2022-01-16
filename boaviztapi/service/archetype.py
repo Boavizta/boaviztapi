@@ -1,8 +1,7 @@
-import sre_parse
 from typing import Union
 
-from api.dto.server_dto import ServerDTO
-from api.model.devices.device import Server
+from boaviztapi.dto.server_dto import ServerDTO
+from boaviztapi.model.devices.device import Server
 import os
 
 known_server_directory = './data/devices/server'

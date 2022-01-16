@@ -1,6 +1,5 @@
 # Tools-API ![dev](https://github.com/Boavizta/Tools-API/actions/workflows/run-tests.yml/badge.svg)
 
-
 Giving access to BOAVIZTA referenced datas and methodologies trought a RESTful API
 
 ## Objective
@@ -11,7 +10,7 @@ The various data and methodologies integrated by Boavizta are aggregated and mad
 
 In the interest of transparency and scientific popularization, the opening of the code, the versioning of the impact factors and the documentation of the project are critical points.
 
-The system is developed in micro-services layers according to a bottom-up principle. The first layer implemented is equipment, starting with the servers (MVP). The second layer is the measurement of the impact of digital services or systems. The measurement of the global impact is currently outside the scope. 
+The system is developed in layers according to a bottom-up principle. The first layer implemented is equipment, starting with the servers (MVP). The second layer is the measurement of the impact of digital services or systems. The measurement of the global impact is currently outside the scope. 
 
 ## Test it yourself
 
@@ -21,45 +20,49 @@ The system is developed in micro-services layers according to a bottom-up princi
 
 * Dev API server: http://149.202.185.115:5000
 
-## Installation
+## Setup project locally with pipenv
+
+### Setup pipenv
+
+Install pipenv globally
+```bash
+$ sudo pip3 install pipenv
+```
 
 Install dependencies and create a python virtual environment.
-
 ```bash
 $ pipenv install -d 
 $ pipenv shell
 ```
 
-## Usage
+### Launch a development server
 
-### Launch development API server
+**Once in the pipenv environment**
 
-Development server uses [uvicorn](https://www.uvicorn.org/) and [fastapi](https://fastapi.tiangolo.com/), you can launch either with a python script or with the `uvicorn` CLI.
-
-```bash
-$ python3 main.py
-```
-
-OR
+Development server uses [uvicorn](https://www.uvicorn.org/) and [fastapi](https://fastapi.tiangolo.com/), you can launch development server with the `uvicorn` CLI.
 
 ```bash
-$ uvicorn api.main:app --host=localhost --port 5000
+$ uvicorn boaviztapi.main:app --host=localhost --port 5000
 ```
+You can run the tests with `pytest`.
 
 ### API Swagger
 
 Once API server is launched API swagger is available at [http://localhost:5000/docs](http://localhost:5000/docs).
 
-### Launch using docker container
+## Install using docker container
 ```bash
-$ docker run ghcr.io/boavizta/tools-api:latest
+$ docker run ghcr.io/boavizta/boaviztapi:latest
+```
+
+## Install using pip package
+```bash
+$ pip3 install boaviztapi
 ```
 
 ## Contributing
 
 See [contributing.md](./CONTRIBUTING.md)
-
-You can run the tests with `pytest` once in the virtual env.
 
 You can build a source distribution (installable with pip) with `python setup.py sdist`.
 

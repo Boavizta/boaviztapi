@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
-from api.routers.component_router import component_router
-from api.routers.server_router import server_router
+from boaviztapi.routers.component_router import component_router
+from boaviztapi.routers.server_router import server_router
 
 app = FastAPI()
 

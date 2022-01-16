@@ -2,10 +2,10 @@ import copy
 
 from fastapi import APIRouter
 
-from api.model.components.component import ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
+from boaviztapi.model.components.component import ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
     ComponentMotherBoard, ComponentPowerSupply, ComponentRack, ComponentBlade
-from api.service.bottom_up import bottom_up_component
-from api.service.verbose import verbose_component
+from boaviztapi.service.bottom_up import bottom_up_component
+from boaviztapi.service.verbose import verbose_component
 
 component_router = APIRouter(
     prefix='/v1/component',

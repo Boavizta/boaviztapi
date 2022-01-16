@@ -2,10 +2,10 @@ import copy
 
 from fastapi import APIRouter
 
-from api.dto.server_dto import ServerDTO
-from api.service.archetype import get_server_archetype, get_server_archetype_lst, complete_with_archetype
-from api.service.verbose import verbose_device
-from api.service.bottom_up import bottom_up_device
+from boaviztapi.dto.server_dto import ServerDTO
+from boaviztapi.service.archetype import get_server_archetype, get_server_archetype_lst, complete_with_archetype
+from boaviztapi.service.verbose import verbose_device
+from boaviztapi.service.bottom_up import bottom_up_device
 
 server_router = APIRouter(
     prefix='/v1/server',

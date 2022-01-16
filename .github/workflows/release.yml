@@ -6,14 +6,11 @@ on:
 
 jobs:
 
-  docker-build:
+  build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
-    - name: GitHub Action for pytest
-      uses: cclauss/GitHub-Action-for-pytest@0.5.0
 
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v1
@@ -22,11 +19,27 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Install dependecies
+      uses: VaultVulp/action-pipenv@v2.0.1
+      with:
+        command: install -d # Install all dependencies, including development ones
+
+    - name: Build the pip package
+      run: python3 setup.py sdist
+
+    - name: push pip package
+      run: python3 -m twine upload --repository pypi --username __token__ --password ${{ secrets.DAVID_PYPI_TOKEN }} dist/*
+
     - name: Build the api Docker image
       run: docker build --build-arg VERSION=$(python setup.py --version) . --file Dockerfile --tag ghcr.io/boavizta/tools-api:latest
 
     - name : Tag api Docker image
-      run: docker tag ghcr.io/boavizta/tools-api:latest ghcr.io/boavizta/tools-api:$(date +%s)
+      run: docker tag ghcr.io/boavizta/tools-api:latest ghcr.io/boavizta/tools-api:$(python setup.py --version)
 
     - name: Push api images
       run: docker push -a ghcr.io/boavizta/tools-api
@@ -35,7 +48,7 @@ jobs:
       run: docker build docs --file docs/Dockerfile --tag ghcr.io/boavizta/tools-doc:latest
 
     - name: Tag doc the Docker image
-      run: docker tag ghcr.io/boavizta/tools-doc:latest ghcr.io/boavizta/tools-doc:$(date +%s)
+      run: docker tag ghcr.io/boavizta/tools-doc:latest ghcr.io/boavizta/tools-doc:$(python setup.py --version)
 
     - name: Push doc images
       run: docker push -a ghcr.io/boavizta/tools-doc
