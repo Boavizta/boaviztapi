@@ -1,1 +1,1 @@
-!!swagger openAPI.json!!
+!!swagger openapi.json!!
