@@ -4,7 +4,9 @@ from boaviztapi.dto.server_dto import ServerDTO
 from boaviztapi.model.devices.device import Server
 import os
 
-known_server_directory = './data/devices/server'
+from boaviztapi.service import data_dir
+
+known_server_directory = os.path.join(data_dir, 'devices/server')
 
 # for the name of the variables : known || profile || archetype
 servers = []

@@ -1,8 +1,11 @@
 import copy
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Body, Query
 
 from boaviztapi.dto.server_dto import ServerDTO
+from boaviztapi.routers.openapi_doc.descriptions import server_impact_by_model_description, \
+    all_default_model_description, server_impact_by_config_description
+from boaviztapi.routers.openapi_doc.examples import server_configuration_examples
 from boaviztapi.service.archetype import get_server_archetype, get_server_archetype_lst, complete_with_archetype
 from boaviztapi.service.verbose import verbose_device
 from boaviztapi.service.bottom_up import bottom_up_device
@@ -14,8 +17,8 @@ server_router = APIRouter(
 
 
 @server_router.get('/model',
-                   description="Get the impact of a server by the model name given in parameter")
-def server_impact_ref_data(archetype: str, verbose: bool = True):
+                   description=server_impact_by_model_description)
+def server_impact_by_model(archetype: str = Query(None, example="dellR740"), verbose: bool = True):
     server = get_server_archetype(archetype)
     completed_server = copy.deepcopy(server)
 
@@ -30,8 +33,9 @@ def server_impact_ref_data(archetype: str, verbose: bool = True):
 
 
 @server_router.post('/',
-                    description="Default route, return the impact of a given Server")
-def server_impact_bottom_up(server_dto: ServerDTO, verbose: bool = True):
+                    description=server_impact_by_config_description)
+def server_impact_by_config(server_dto: ServerDTO = Body(None, example=server_configuration_examples["DellR740"]),
+                            verbose: bool = True):
     server = server_dto.to_device()
     completed_server = copy.deepcopy(server)
 
@@ -50,20 +54,7 @@ def server_impact_bottom_up(server_dto: ServerDTO, verbose: bool = True):
     return result
 
 
-"""
-@server_router.get('/get_archetype',
-                   description="Return the description of an archetype given in parameter")
-def server_get_archetype(archetype: str):
-    server = get_server_archetype(archetype)
-    if not server:
-        result = {"server_archetype": "Not found"}
-    else:
-        result = {"server_archetype": server}
-    return result
-"""
-
-
 @server_router.get('/all_default_models',
-                   description="Get the name of all available servers with a known configuration")
+                   description=all_default_model_description)
 def server_get_all_archetype_name():
     return get_server_archetype_lst()

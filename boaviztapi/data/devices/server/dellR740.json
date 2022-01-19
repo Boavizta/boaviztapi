@@ -38,6 +38,8 @@
     }
   },
   "usage": {
+    "max_power": 510,
+    "year_use_time": 3,
     "100": {
       "time": 0.15,
       "power": 1.0
