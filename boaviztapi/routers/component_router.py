@@ -1,9 +1,12 @@
 import copy
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Body
 
 from boaviztapi.model.components.component import ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
     ComponentMotherBoard, ComponentPowerSupply, ComponentRack, ComponentBlade
+from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
+    hdd_description, motherboard_description, power_supply_description, rack_description, blade_description
+from boaviztapi.routers.openapi_doc.examples import components_examples
 from boaviztapi.service.bottom_up import bottom_up_component
 from boaviztapi.service.verbose import verbose_component
 
@@ -13,8 +16,9 @@ component_router = APIRouter(
 )
 
 
-@component_router.post('/cpu')
-def cpu_impact_bottom_up(cpu: ComponentCPU, verbose: bool = True):
+@component_router.post('/cpu',
+                       description=cpu_description)
+def cpu_impact_bottom_up(cpu: ComponentCPU = Body(None, example=components_examples["cpu"]), verbose: bool = True):
     completed_cpu = copy.deepcopy(cpu)
     impacts = bottom_up_component(component=completed_cpu)
     result = impacts
@@ -24,8 +28,9 @@ def cpu_impact_bottom_up(cpu: ComponentCPU, verbose: bool = True):
     return result
 
 
-@component_router.post('/ram')
-def ram_impact_bottom_up(ram: ComponentRAM, verbose: bool = True):
+@component_router.post('/ram',
+                       description=ram_description)
+def ram_impact_bottom_up(ram: ComponentRAM = Body(None, example=components_examples["ram"]), verbose: bool = True):
     completed_ram = copy.deepcopy(ram)
     impacts = bottom_up_component(component=completed_ram)
     result = impacts
@@ -35,8 +40,9 @@ def ram_impact_bottom_up(ram: ComponentRAM, verbose: bool = True):
     return result
 
 
-@component_router.post('/ssd')
-def ssd_impact_bottom_up(ssd: ComponentSSD, verbose: bool = True):
+@component_router.post('/ssd',
+                       description=ssd_description)
+def ssd_impact_bottom_up(ssd: ComponentSSD = Body(None, example=components_examples["ssd"]), verbose: bool = True):
     completed_ssd = copy.deepcopy(ssd)
     impacts = bottom_up_component(component=completed_ssd)
     result = impacts
@@ -46,8 +52,9 @@ def ssd_impact_bottom_up(ssd: ComponentSSD, verbose: bool = True):
     return result
 
 
-@component_router.post('/hdd')
-def hdd_impact_bottom_up(hdd: ComponentHDD, verbose: bool = True):
+@component_router.post('/hdd',
+                       description=hdd_description)
+def hdd_impact_bottom_up(hdd: ComponentHDD = Body(None, example=components_examples["hdd"]), verbose: bool = True):
     completed_hdd = copy.deepcopy(hdd)
     impacts = bottom_up_component(component=completed_hdd)
     result = impacts
@@ -57,8 +64,10 @@ def hdd_impact_bottom_up(hdd: ComponentHDD, verbose: bool = True):
     return result
 
 
-@component_router.post('/motherboard')
-def motherboard_impact_bottom_up(motherboard: ComponentMotherBoard, verbose: bool = True):
+@component_router.post('/motherboard',
+                       description=motherboard_description)
+def motherboard_impact_bottom_up(motherboard: ComponentMotherBoard
+                                 = Body(None, example=components_examples["motherboard"]), verbose: bool = True):
     completed_motherboard = copy.deepcopy(motherboard)
     impacts = bottom_up_component(component=completed_motherboard)
     result = impacts
@@ -68,8 +77,10 @@ def motherboard_impact_bottom_up(motherboard: ComponentMotherBoard, verbose: boo
     return result
 
 
-@component_router.post('/power-supply')
-def power_supply_impact_bottom_up(power_supply: ComponentPowerSupply, verbose: bool = True):
+@component_router.post('/power_supply',
+                       description=power_supply_description)
+def power_supply_impact_bottom_up(power_supply: ComponentPowerSupply =
+                                  Body(None, example=components_examples["power_supply"]), verbose: bool = True):
     completed_power_supply = copy.deepcopy(power_supply)
     impacts = bottom_up_component(component=completed_power_supply)
     result = impacts
@@ -79,8 +90,9 @@ def power_supply_impact_bottom_up(power_supply: ComponentPowerSupply, verbose: b
     return result
 
 
-@component_router.post('/rack')
-def rack_impact_bottom_up(rack: ComponentRack, verbose: bool = True):
+@component_router.post('/rack',
+                       description=rack_description)
+def rack_impact_bottom_up(rack: ComponentRack = Body(None, example=components_examples["rack"]), verbose: bool = True):
     completed_rack = copy.deepcopy(rack)
     impacts = bottom_up_component(component=completed_rack)
     result = impacts
@@ -90,8 +102,10 @@ def rack_impact_bottom_up(rack: ComponentRack, verbose: bool = True):
     return result
 
 
-@component_router.post('/blade')
-def blade_impact_bottom_up(blade: ComponentBlade, verbose: bool = True):
+@component_router.post('/blade',
+                       description=blade_description)
+def blade_impact_bottom_up(blade: ComponentBlade = Body(None, example=components_examples["blade"]),
+                           verbose: bool = True):
     completed_blade = copy.deepcopy(blade)
     impacts = bottom_up_component(component=completed_blade)
     result = impacts

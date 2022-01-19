@@ -14,7 +14,7 @@ The system is developed in layers according to a bottom-up principle. The first 
 
 ## :fast_forward: Test it yourself
 
-* Test the API : TODO
+* Test the API (on local environment only) :http://localhost:5000/doc
 
 * Dev documentation server : http://149.202.185.115/
 

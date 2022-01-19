@@ -1,6 +1,6 @@
 # Component route
 
-## Minimum server input
+## Minimum component input
 
 You can send an empty component :
 
@@ -72,7 +72,7 @@ In this case, only default value are used.
 ``` json
 {           
     "capacity": 32,
-    "manufacturer": "Samsung"
+    "manufacturer": "Samsung",
     "process": 30.0
 }
 ```
