@@ -13,12 +13,13 @@ pandas = '*'
 mkdocs = '*'
 mkdocs-render-swagger-plugin = '*'
 pytest = '*'
+atomicwrites = "*"
 httpx = '*'
 pytest-asyncio = '*'
 requests = '*'
 setuptools-pipfile = "==0.4.1"
 twine = "==3.2.0"
-atomicwrites = "*"
+bump2version = "==1.0.1"
 
 [requires]
 python_version = "3.8"

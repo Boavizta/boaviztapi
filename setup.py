@@ -1,6 +1,7 @@
 import sys
 
 from setuptools import setup, find_packages
+from boaviztapi import __version__
 
 py_version = sys.version_info[:2]
 if py_version < (3, 7):
@@ -10,7 +11,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='boaviztapi',
-      version='0.0.1',
+      version=__version__,
       packages=find_packages(),
       include_package_data=True,
       description="Giving access to BOAVIZTA referenced datas and methodologies trought a RESTful api ",
