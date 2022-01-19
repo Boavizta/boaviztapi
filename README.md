@@ -2,7 +2,7 @@
 
 Giving access to BOAVIZTA referenced datas and methodologies trought a RESTful API
 
-## Objective
+## :dart: Objective
 
 As part of Boavizta's desire to improve the quality of the measurement of the environmental impacts of ICTs in organizations, this project aims at giving access to the group's work to as many people as possible in an automated and industrialized way.  
 
@@ -12,7 +12,7 @@ In the interest of transparency and scientific popularization, the opening of th
 
 The system is developed in layers according to a bottom-up principle. The first layer implemented is equipment, starting with the servers (MVP). The second layer is the measurement of the impact of digital services or systems. The measurement of the global impact is currently outside the scope. 
 
-## Test it yourself
+## :fast_forward: Test it yourself
 
 * Test the API : TODO
 
@@ -20,7 +20,7 @@ The system is developed in layers according to a bottom-up principle. The first 
 
 * Dev API server: http://149.202.185.115:5000
 
-## Setup project locally with pipenv
+## :computer: Setup project locally with pipenv
 
 ### Setup pipenv
 
@@ -50,23 +50,23 @@ You can run the tests with `pytest`.
 
 Once API server is launched API swagger is available at [http://localhost:5000/docs](http://localhost:5000/docs).
 
-## Install using docker container
+## :whale: Install using docker container
 ```bash
 $ docker run ghcr.io/boavizta/boaviztapi:latest
 ```
 
-## Install using pip package
+## 📦 Install using pip package
 ```bash
 $ pip3 install boaviztapi
 ```
 
-## Contributing
+## :woman: Contributing
 
 See [contributing.md](./CONTRIBUTING.md)
 
 You can build a source distribution (installable with pip) with `python setup.py sdist`.
 
-## Versionning
+## :one: Versionning
 
 We use [Semantic Versioning 2.0.0](https://semver.org/)
 
@@ -76,6 +76,6 @@ We use [Semantic Versioning 2.0.0](https://semver.org/)
 | MINOR       | version when you add functionality in a backwards compatible manner  | ```make minor```  |
 | PATCH       | version when you make backwards compatible bug fixes                 | ```make patch```  |
 
-## License
+## :scroll: License
 
 TODO
