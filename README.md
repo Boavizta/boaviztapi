@@ -66,6 +66,16 @@ See [contributing.md](./CONTRIBUTING.md)
 
 You can build a source distribution (installable with pip) with `python setup.py sdist`.
 
+## Versionning
+
+We use [Semantic Versioning 2.0.0](https://semver.org/)
+
+|    Type     | Description                                                          |    Command        |
+| :---        |    :----:                                                            |              ---: |
+| MAJOR       | version when you make incompatible API changes                       | ```make major```  |
+| MINOR       | version when you add functionality in a backwards compatible manner  | ```make minor```  |
+| PATCH       | version when you make backwards compatible bug fixes                 | ```make patch```  |
+
 ## License
 
 TODO
