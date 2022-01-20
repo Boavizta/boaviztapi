@@ -1,4 +1,4 @@
-name: Publish relase (Docker & Pip)
+name: Publish release (Docker & Pip)
 
 on:
   push:
