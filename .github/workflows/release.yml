@@ -1,8 +1,8 @@
 name: Publish release (Docker & Pip)
 
 on:
-  push:
-    branches: [ main ]
+  release:
+    types: [published]
 
 jobs:
 
