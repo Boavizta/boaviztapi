@@ -32,6 +32,7 @@ def my_schema():
                     "* 🔨 Manufacture (GWP, PE, ADP). The total impact is given.",
 
         routes=app.routes,
+        servers=app.servers,
     )
     app.openapi_schema = openapi_schema
     return app.openapi_schema

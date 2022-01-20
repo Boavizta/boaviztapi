@@ -8,7 +8,7 @@ nav:
     - INTRODUCTION:
         - Usefull ressources: introduction/usefull_ressources.md
     - TRY IT YOURSELF:
-        - DEMO : swagger.md
+        - DEMO : http://149.202.161.61:5000/docs
     - FUNCTIONNAL DOCUMENTATION:
         - Components: FUNCTIONNAL/component.md
         - Smart complete: FUNCTIONNAL/smart-complete.md
