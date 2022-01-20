@@ -11,8 +11,8 @@ WORKDIR /opt/app
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
-COPY dist/boaviztapi-test-$VERSION.tar.gz ./
-RUN pip3 install boaviztapi-test-$VERSION.tar.gz
+COPY dist/boaviztapi-$VERSION.tar.gz ./
+RUN pip3 install boaviztapi-$VERSION.tar.gz
 
 EXPOSE 5000
 ENTRYPOINT ["uvicorn", "boaviztapi.main:app", "--host", "0.0.0.0", "--port", "5000"]

@@ -10,7 +10,7 @@ if py_version < (3, 7):
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setup(name='boaviztapi-test',
+setup(name='boaviztapi',
       version=__version__,
       packages=find_packages(),
       include_package_data=True,

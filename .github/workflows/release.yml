@@ -47,19 +47,19 @@ jobs:
       run: pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.DAVID_PYPI_TOKEN }} dist/*
 
     - name: Build the api Docker image
-      run: docker build --build-arg VERSION=$(python setup.py --version) . --file Dockerfile --tag ghcr.io/da-ekchajzer/boaviztapi:latest
+      run: docker build --build-arg VERSION=$(python setup.py --version) . --file Dockerfile --tag ghcr.io/boaviztapi/boaviztapi:latest
 
     - name : Tag api Docker image
-      run: docker tag ghcr.io/da-ekchajzer/boaviztapi:latest ghcr.io/da-ekchajzer/boaviztapi:$(python setup.py --version)
+      run: docker tag ghcr.io/boaviztapi/boaviztapi:latest ghcr.io/boaviztapi/boaviztapi:$(python setup.py --version)
 
     - name: Push api images
-      run: docker push -a ghcr.io/da-ekchajzer/boaviztapi
+      run: docker push -a ghcr.io/dboaviztapi/boaviztapi
 
     - name: Build doc the Docker image
-      run: docker build docs --file docs/Dockerfile --tag ghcr.io/da-ekchajzer/boaviztapi-doc:latest
+      run: docker build docs --file docs/Dockerfile --tag ghcr.io/boaviztapi/boaviztapi-doc:latest
 
     - name: Tag doc the Docker image
-      run: docker tag ghcr.io/da-ekchajzer/boaviztapi-doc:latest ghcr.io/da-ekchajzer/boaviztapi-doc:$(python setup.py --version)
+      run: docker tag ghcr.io/boaviztapi/boaviztapi-doc:latest ghcr.io/boaviztapi/boaviztapi-doc:$(python setup.py --version)
 
     - name: Push doc images
-      run: docker push -a ghcr.io/da-ekchajzer/boaviztapi-doc
+      run: docker push -a ghcr.io/boaviztapi/boaviztapi-doc
