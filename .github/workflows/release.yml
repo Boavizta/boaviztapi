@@ -41,10 +41,10 @@ jobs:
         pipenv install --dev
 
     - name: Build the pip package
-      run: python3 setup.py sdist
+      run: pipenv setup.py sdist
 
     - name: push pip package
-      run: python3 -m twine upload --repository pypi --username __token__ --password ${{ secrets.DAVID_PYPI_TOKEN }} dist/*
+      run: pipenv -m twine upload --repository pypi --username __token__ --password ${{ secrets.DAVID_PYPI_TOKEN }} dist/*
 
     - name: Build the api Docker image
       run: docker build --build-arg VERSION=$(python setup.py --version) . --file Dockerfile --tag ghcr.io/boavizta/tools-api:latest
