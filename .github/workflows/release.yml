@@ -1,8 +1,8 @@
 name: Publish relase (Docker & Pip)
 
 on:
-  release:
-    types: [published]
+  push:
+    branches: [ main ]
 
 jobs:
 
