@@ -1,0 +1,28 @@
+{
+        "model":
+            {
+                "name": "medium",
+                "type": "blade",
+                "year": 2021
+            },
+        "configuration":
+            {
+                "ram":
+                    [
+                        {
+                            "units": 24,
+                            "capacity": 32,
+                            "density": 1.79
+                        }
+                    ],
+                "disk":
+                    [
+                        {
+                            "units": 2,
+                            "type": "ssd",
+                            "capacity": 400,
+                            "density": 50.6
+                        }
+                    ]
+            }
+    }

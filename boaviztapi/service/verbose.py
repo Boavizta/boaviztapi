@@ -5,10 +5,6 @@ from boaviztapi.model.devices.device import Device
 def verbose_device(complete_device: Device, input_device: Device):
     json_output = {}
 
-    # if complete_device.usage:
-    #     complete_device.config_components.append(complete_device.usage)
-    #     input_device.config_components.append(input_device.usage)
-
     input_components = input_device.config_components
     complete_components = complete_device.config_components
 

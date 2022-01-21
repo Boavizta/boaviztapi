@@ -12,26 +12,24 @@ known_server_directory = os.path.join(data_dir, 'devices/server')
 servers = []
 
 
-def get_server_archetype_lst() -> list:
-    known_devices_lst = os.listdir(known_server_directory)
+def get_server_archetype_lst(path=known_server_directory) -> list:
+    known_devices_lst = os.listdir(path)
     return [file_name.split(".")[0] for file_name in known_devices_lst]
 
 
-def get_server_archetype(archetype_name: str) -> Union[Server, bool]:
-    known_devices_lst = get_server_archetype_lst()
+def get_server_archetype(archetype_name: str, path=known_server_directory) -> Union[Server, bool]:
+    known_devices_lst = get_server_archetype_lst(path=path)
     for device_name in known_devices_lst:
         if archetype_name == device_name:
             known_server = ServerDTO.parse_file(
-                known_server_directory + '/' + device_name + ".json").to_device()
+                path + '/' + device_name + ".json").to_device()
             return known_server
     return False
 
 
 def complete_with_archetype(server: Server, archetype_server: Server) -> Server:
     """
-    TODO #1
     set the missing server components of server from its archetype
-    ? set the missing attributes of components ?
     """
     lst_id = set()
     for component in server.config_components:

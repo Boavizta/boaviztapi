@@ -1,3 +1,4 @@
+import hashlib
 import os
 from abc import abstractmethod
 from typing import Optional
@@ -14,7 +15,7 @@ _cpu_df['manufacture_date'] = _cpu_df['manufacture_date'].astype(str)   # Conver
 
 
 class Component(BaseModel):
-    hash: int = None
+    hash: str = None
     TYPE: str = None
 
     @abstractmethod
@@ -38,7 +39,8 @@ class Component(BaseModel):
             yield attr, value
 
     def __hash__(self):
-        return hash((type(self),) + tuple(self.__dict__.values()))
+        object_fingerprint = bytes(((type(self),) + tuple(self.__dict__.values())).__str__(), encoding='utf8')
+        return hashlib.sha256(object_fingerprint).hexdigest()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -328,7 +330,6 @@ class ComponentPowerSupply(Component):
         }
     }
 
-    _DEFAULT_POWER_SUPPLY_NUMBER = 2
     _DEFAULT_POWER_SUPPLY_WEIGHT = 2.99
 
     unit_weight: Optional[float] = None
