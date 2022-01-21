@@ -11,7 +11,7 @@ from boaviztapi.model.components import data_dir
 _cpu_df = pd.read_csv(os.path.join(data_dir, 'components/cpu_manufacture.csv'))
 _ram_df = pd.read_csv(os.path.join(data_dir, 'components/ram_manufacture.csv'))
 _ssd_df = pd.read_csv(os.path.join(data_dir, 'components/ssd_manufacture.csv'))
-_cpu_df['manufacture_date'] = _cpu_df['manufacture_date'].astype(str)   # Convert date column to string
+_cpu_df['manufacture_date'] = _cpu_df['manufacture_date'].astype(str)  # Convert date column to string
 
 
 class Component(BaseModel):
@@ -382,66 +382,62 @@ class ComponentMotherBoard(Component):
         pass
 
 
-class ComponentRack(Component):
-    TYPE = "RACK"
-
+class ComponentCase(Component):
+    TYPE = "CASE"
+    case_type: str = None
     _IMPACT_FACTOR_DICT = {
-        "gwp": {
-            "impact": 150.00
+        "rack": {
+            "gwp": {
+                "impact": 150.00
+            },
+            "pe": {
+                "impact": 2200.00
+            },
+            "adp": {
+                "impact": 2.02E-02
+            }
         },
-        "pe": {
-            "impact": 2200.00
-        },
-        "adp": {
-            "impact": 2.02E-02
+        "blade": {
+            "gwp": {
+                "impact_blade_server": 30.90,
+                "impact_blade_16_slots": 880.00
+            },
+            "pe": {
+                "impact_blade_server": 435.00,
+                "impact_blade_16_slots": 12700.00
+            },
+            "adp": {
+                "impact_blade_server": 6.72E-04,
+                "impact_blade_16_slots": 4.32E-01
+            }
         }
+
     }
 
     def impact_gwp(self) -> float:
-        return self._IMPACT_FACTOR_DICT['gwp']['impact']
+        if self.case_type == "blade":
+            return (self._IMPACT_FACTOR_DICT['blade']['gwp']['impact_blade_16_slots'] / 16) \
+                   + self._IMPACT_FACTOR_DICT['blade']['gwp']['impact_blade_server']
+        else:
+            return self._IMPACT_FACTOR_DICT['rack']['gwp']['impact']
 
     def impact_pe(self) -> float:
-        return self._IMPACT_FACTOR_DICT['pe']['impact']
+        if self.case_type == "blade":
+            return (self._IMPACT_FACTOR_DICT['blade']['pe']['impact_blade_16_slots'] / 16) \
+                   + self._IMPACT_FACTOR_DICT['blade']['pe']['impact_blade_server']
+        else:
+            return self._IMPACT_FACTOR_DICT['rack']['pe']['impact']
 
     def impact_adp(self) -> float:
-        return self._IMPACT_FACTOR_DICT['adp']['impact']
+        if self.case_type == "blade":
+            return (self._IMPACT_FACTOR_DICT['blade']['adp']['impact_blade_16_slots'] / 16) \
+                   + self._IMPACT_FACTOR_DICT['blade']['adp']['impact_blade_server']
+        else:
+            return self._IMPACT_FACTOR_DICT['rack']['adp']['impact']
 
     def smart_complete_data(self):
-        pass
-
-
-class ComponentBlade(Component):
-    TYPE = "BLADE"
-
-    _IMPACT_FACTOR_DICT = {
-        "gwp": {
-            "impact_blade_server": 30.90,
-            "impact_blade_16_slots": 880.00
-        },
-        "pe": {
-            "impact_blade_server": 435.00,
-            "impact_blade_16_slots": 12700.00
-        },
-        "adp": {
-            "impact_blade_server": 6.72E-04,
-            "impact_blade_16_slots": 4.32E-01
-        }
-    }
-
-    def impact_gwp(self) -> float:
-        return (self._IMPACT_FACTOR_DICT['gwp']['impact_blade_16_slots'] / 16) \
-               + self._IMPACT_FACTOR_DICT['gwp']['impact_blade_server']
-
-    def impact_pe(self) -> float:
-        return (self._IMPACT_FACTOR_DICT['pe']['impact_blade_16_slots'] / 16) \
-               + self._IMPACT_FACTOR_DICT['pe']['impact_blade_server']
-
-    def impact_adp(self) -> float:
-        return (self._IMPACT_FACTOR_DICT['adp']['impact_blade_16_slots'] / 16) \
-               + self._IMPACT_FACTOR_DICT['adp']['impact_blade_server']
-
-    def smart_complete_data(self):
-        pass
+        if self.case_type is None:
+            self.case_type = "rack"
 
 
 class ComponentAssembly(Component):

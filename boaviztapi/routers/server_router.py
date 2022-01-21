@@ -33,7 +33,7 @@ def server_impact_by_model(archetype: str = Query(None, example="dellR740"), ver
     return result
 
 
-@server_router.get('/bottom-up',
+@server_router.post('/bottom-up',
                    description="LEGACY ROUTE NAME")
 @server_router.post('/',
                     description=server_impact_by_config_description)

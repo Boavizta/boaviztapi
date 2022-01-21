@@ -40,6 +40,11 @@ def complete_with_archetype(server: Server, archetype_server: Server) -> Server:
         del archetype_server.config_components[index]
     archetype_server.config_components += server.config_components
 
+    for attr, value in server.usage.__iter__():
+        if attr != "TYPE" and attr != "hash":
+            if value is not None:
+                setattr(archetype_server.usage, attr, value)
+
     return archetype_server
 
 

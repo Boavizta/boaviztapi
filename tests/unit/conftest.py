@@ -2,7 +2,7 @@ import pytest
 
 from boaviztapi.dto.server_dto import ServerDTO
 from boaviztapi.model.components.component import ComponentRAM, ComponentSSD, ComponentHDD, ComponentAssembly, \
-    ComponentBlade, ComponentRack, ComponentMotherBoard, ComponentPowerSupply, ComponentCPU
+    ComponentCase, ComponentMotherBoard, ComponentPowerSupply, ComponentCPU
 from tests.unit import data_dir
 
 
@@ -22,13 +22,20 @@ def incomplete_server():
 
 
 @pytest.fixture(scope="function")
-def completed_server():
+def completed_server_with_default():
     completed_server = ServerDTO.parse_file(data_dir + "/devices/server/incomplete.json").to_device()
     completed_server.smart_complete_data()
     return completed_server
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
+def completed_server_with_dellr740():
+    completed_server_with_dellr740 = \
+        ServerDTO.parse_file(data_dir + "/devices/server/completed_server_with_dellr740.json").to_device()
+    return completed_server_with_dellr740
+
+
+@pytest.fixture(scope="function")
 def complete_cpu():
     return ComponentCPU.parse_obj({
         "core_units": 12,
@@ -36,12 +43,12 @@ def complete_cpu():
     })
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def empty_cpu():
     return ComponentCPU.parse_obj({})
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def incomplete_cpu():
     return ComponentCPU.parse_obj({
         "core_units": 12,
@@ -50,7 +57,7 @@ def incomplete_cpu():
     })
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def complete_ram():
     return ComponentRAM.parse_obj({
         "units": 12,
@@ -59,12 +66,12 @@ def complete_ram():
     })
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def empty_ram():
     return ComponentRAM.parse_obj({})
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def incomplete_ram():
     return ComponentRAM.parse_obj({
         "manufacturer": "Samsung",
@@ -72,7 +79,7 @@ def incomplete_ram():
     })
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def complete_ssd():
     return ComponentSSD.parse_obj({
         "capacity": 400,
@@ -80,19 +87,19 @@ def complete_ssd():
     })
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def empty_ssd():
     return ComponentSSD.parse_obj({})
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def incomplete_ssd():
     return ComponentSSD.parse_obj({
         "manufacturer": "Samsung"
     })
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def hdd():
     return ComponentHDD.parse_obj({})
 
@@ -102,27 +109,29 @@ def assembly():
     return ComponentAssembly.parse_obj({})
 
 
-@pytest.fixture(scope="session")
-def blade():
-    return ComponentBlade.parse_obj({})
+@pytest.fixture(scope="function")
+def empty_case():
+    return ComponentCase.parse_obj({})
 
 
-@pytest.fixture(scope="session")
-def rack():
-    return ComponentRack.parse_obj({})
+@pytest.fixture(scope="function")
+def blade_case():
+    case = ComponentCase.parse_obj({})
+    case.case_type = "blade"
+    return case
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def motherboard():
     return ComponentMotherBoard.parse_obj({})
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def empty_power_supply():
     return ComponentPowerSupply.parse_obj({})
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def complete_power_supply():
     return ComponentPowerSupply.parse_obj({
         "unit_weight": 2

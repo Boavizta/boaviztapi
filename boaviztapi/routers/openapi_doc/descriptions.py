@@ -9,8 +9,8 @@ server_impact_by_model_description = "# ✔️Server impacts from model name\n" 
                                      "attribute \n " \
                                      "### 📋 Model name\n" \
                                      "You can have a list of available server models names [here](" \
-                                     "#/server/server_get_all_archetype_name_v1_server_all_default_models_get)\n "\
-                                     "\n### 🧮 Measure\n"\
+                                     "#/server/server_get_all_archetype_name_v1_server_all_default_models_get)\n " \
+                                     "\n### 🧮 Measure\n" \
                                      "The impacts is the sum of the components impacts"
 
 server_impact_by_config_description = "# ✔️Server impacts from configuration\n" \
@@ -27,8 +27,8 @@ server_impact_by_config_description = "# ✔️Server impacts from configuration
                                       "specify in the model object. In case an archetype is specified, " \
                                       "all missing data are retrieve from the archetype. You can have a list of " \
                                       "available archetype's server models [here](" \
-                                      "#/server/server_get_all_archetype_name_v1_server_all_default_models_get)\n "\
-                                      "\n### 🧮 Measure\n"\
+                                      "#/server/server_get_all_archetype_name_v1_server_all_default_models_get)\n " \
+                                      "\n### 🧮 Measure\n" \
                                       "The impacts is the sum of the components impacts"
 
 all_default_model_description = "# ✔️Get all the available server models\n" \
@@ -41,19 +41,19 @@ components_description = "### 💡 Smart complete\n" \
                          "If set at true, show the the values used for each attribute" \
                          "*Components have no units since they represent a single instance of a component.*"
 
-default_calculation = "\n### 🧮 Measure\n"\
+default_calculation = "\n### 🧮 Measure\n" \
                       "The impacts values are set by default"
 
 cpu_description = "# ✔️CPU impact from configuration\n" + components_description + \
-                  "\n### 🧮 Measure\n"\
+                  "\n### 🧮 Measure\n" \
                   "<h3>cpu<sub>manuf<sub><em>criteria</em></sub></sub> = ( " \
                   "cpu<sub>core<sub>units</sub></sub> x cpu<sub>diesize</sub> + 0," \
                   "491 ) x cpu<sub>manuf_die<sub><em>criteria</em></sub></sub> + " \
                   "cpu<sub>manuf_base<sub><em>criteria</em></sub></sub></h3> "
 
-ssd_description = "# ✔️SSD impact from configuration\n" + components_description+ \
-                  "\n### 🧮 Measure\n"\
-                  "<h3>ssd<sub>manuf<sub><em>criteria</em></sub></sub> =  ( ssd<sub>size</sub> "\
+ssd_description = "# ✔️SSD impact from configuration\n" + components_description + \
+                  "\n### 🧮 Measure\n" \
+                  "<h3>ssd<sub>manuf<sub><em>criteria</em></sub></sub> =  ( ssd<sub>size</sub> " \
                   "ssd<sub>density</sub> ) x ssd<sub>manuf_die<sub><em>criteria</em></sub></sub> + " \
                   "ssd<sub>manuf_base<sub><em>criteria</em></sub></sub></h3> "
 
@@ -66,11 +66,9 @@ ram_description = "# ✔️RAM impact from configuration\n" + components_descrip
                   "ram<sub>manuf_base<sub><em>criteria</em></sub></sub> </h3> "
 
 motherboard_description = "# ✔️Motherboard impact from configuration\n" + components_description + default_calculation
-power_supply_description = "# ✔️Power supply impact from configuration\n" + components_description  + \
+power_supply_description = "# ✔️Power supply impact from configuration\n" + components_description + \
                            "\n### 🧮 Measure\n" + \
                            "<h3>psu<sub>manuf<sub><em>criteria</em></sub></sub> = psu<sub>unit<sub>weight</sub></sub>" \
                            " x psu<sub>manuf_weight<sub><em>criteria</em></sub></sub></h3> "
 
-rack_description = "# ✔️RAM impact from configuration\n" + components_description + default_calculation
-blade_description = "# ✔️RAM impact from configuration\n" + components_description + default_calculation
-
+case_description = "# ✔ Case impact from configuration\n" + components_description + default_calculation

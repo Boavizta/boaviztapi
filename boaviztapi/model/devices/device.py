@@ -3,13 +3,12 @@ from typing import List
 
 from pydantic import BaseModel
 
-from boaviztapi.model.components.usage import Usage
-from boaviztapi.model.components.component import Component, ComponentCPU, ComponentSSD, ComponentRAM, ComponentPowerSupply, \
-    ComponentMotherBoard, ComponentAssembly, ComponentRack
+from boaviztapi.model.components.usage import Usage, UsageServer
+from boaviztapi.model.components.component import Component, ComponentCPU, ComponentSSD, ComponentRAM, \
+    ComponentPowerSupply, ComponentMotherBoard, ComponentAssembly, ComponentCase
 
 
 class Model(BaseModel):
-
     archetype: str = None
     name: str = None
     manufacturer: str = None
@@ -49,13 +48,23 @@ class Device(BaseModel):
     def smart_complete_data(self):
         pass
 
+    def __eq__(self, other):
+        self.config_components.sort(key=lambda x: x.hash, reverse=True)
+        other.config_components.sort(key=lambda x: x.hash, reverse=True)
+        if self.config_components.__eq__(other.config_components) \
+                and self.model.__eq__(other.model) \
+                and self.usage.__eq__(other.usage):
+            return True
+        return False
+
 
 class Server(Device):
-
     _DEFAULT_POWER_SUPPLY_NUMBER = 2
     _DEFAULT_CPU_NUMBER = 2
     _DEFAULT_SSD_NUMBER = 1
     _DEFAULT_RAM_NUMBER = 24
+
+    usage: UsageServer = None
 
     def impact_manufacture_gwp(self) -> float:
         return sum([item.impact_gwp() for item in self.config_components])
@@ -90,7 +99,7 @@ class Server(Device):
             ram = False
             ssd = False
             power_supply = False
-            rack_blade = False
+            case = False
 
             for item in self.config_components:
                 if type(item).__name__ == "ComponentCPU":
@@ -102,8 +111,8 @@ class Server(Device):
                     ssd = True
                 elif type(item).__name__ == "ComponentPowerSupply":
                     power_supply = True
-                elif type(item).__name__ == "ComponentRack" or type(item).__name__ == "ComponentBlade":
-                    rack_blade = True
+                elif type(item).__name__ == "ComponentCase":
+                    case = True
 
             if not cpu:
                 self.config_components += [*self.get_default_cpu()]
@@ -113,8 +122,8 @@ class Server(Device):
                 self.config_components += [*self.get_default_ssd()]
             if not power_supply:
                 self.config_components += [*self.get_default_power_supply()]
-            if not rack_blade:
-                self.config_components += [ComponentRack()]
+            if not case:
+                self.config_components += [ComponentCase()]
 
         for item in self.config_components:
             item.smart_complete_data()
