@@ -19,3 +19,5 @@ def test_get_server_archetype_dellr740(dell_r740):
 
 def test_complete_with_archetype_empty(dell_r740, empty_server):
     assert complete_with_archetype(empty_server, dell_r740) == dell_r740
+
+
