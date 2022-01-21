@@ -4,10 +4,6 @@ from boaviztapi.service.archetype import get_server_archetype_lst, get_server_ar
 from tests.unit import data_dir
 
 
-def test_get_device_archetype_lst():
-    assert get_server_archetype_lst(path=os.path.join(data_dir, 'devices/server')) == ['completed_server_with_dellr740', 'dellR740', 'incomplete']
-
-
 def test_get_server_archetype_none():
     assert not get_server_archetype("nothing", path=os.path.join(data_dir, 'devices/server'))
 
