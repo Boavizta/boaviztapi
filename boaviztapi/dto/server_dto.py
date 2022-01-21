@@ -8,8 +8,7 @@ from boaviztapi.model.components.component import (
     ComponentSSD,
     ComponentHDD,
     ComponentPowerSupply,
-    ComponentRack,
-    ComponentBlade,
+    ComponentCase,
     Component
 )
 from boaviztapi.model.devices.device import Model, Server
@@ -66,9 +65,9 @@ class ServerDTO(BaseModel):
 
         if self.model:
             if self.model.type == "blade":
-                components.append(ComponentBlade())
-            if self.model.type == "rack":
-                components.append(ComponentRack())
+                components.append(ComponentCase(case_type="blade"))
+            elif self.model.type == "rack":
+                components.append(ComponentCase(case_type="rack"))
 
         return components
 

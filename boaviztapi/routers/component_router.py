@@ -3,9 +3,9 @@ import copy
 from fastapi import APIRouter, Body
 
 from boaviztapi.model.components.component import ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
-    ComponentMotherBoard, ComponentPowerSupply, ComponentRack, ComponentBlade
+    ComponentMotherBoard, ComponentPowerSupply, ComponentCase
 from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
-    hdd_description, motherboard_description, power_supply_description, rack_description, blade_description
+    hdd_description, motherboard_description, power_supply_description, case_description
 from boaviztapi.routers.openapi_doc.examples import components_examples
 from boaviztapi.service.bottom_up import bottom_up_component
 from boaviztapi.service.verbose import verbose_component
@@ -90,26 +90,14 @@ def power_supply_impact_bottom_up(power_supply: ComponentPowerSupply =
     return result
 
 
-@component_router.post('/rack',
-                       description=rack_description)
-def rack_impact_bottom_up(rack: ComponentRack = Body(None, example=components_examples["rack"]), verbose: bool = True):
-    completed_rack = copy.deepcopy(rack)
-    impacts = bottom_up_component(component=completed_rack)
+@component_router.post('/case',
+                       description=case_description)
+def case_impact_bottom_up(case: ComponentCase = Body(None, example=components_examples["case"]),
+                          verbose: bool = True):
+    completed_case = copy.deepcopy(case)
+    impacts = bottom_up_component(component=completed_case)
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(completed_rack, rack)}
-    return result
-
-
-@component_router.post('/blade',
-                       description=blade_description)
-def blade_impact_bottom_up(blade: ComponentBlade = Body(None, example=components_examples["blade"]),
-                           verbose: bool = True):
-    completed_blade = copy.deepcopy(blade)
-    impacts = bottom_up_component(component=completed_blade)
-    result = impacts
-    if verbose:
-        result = {"impacts": impacts,
-                  "verbose": verbose_component(completed_blade, blade)}
+                  "verbose": verbose_component(completed_case, case)}
     return result

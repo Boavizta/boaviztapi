@@ -6,7 +6,8 @@ from boaviztapi.dto.server_dto import ServerDTO
 from boaviztapi.routers.openapi_doc.descriptions import server_impact_by_model_description, \
     all_default_model_description, server_impact_by_config_description
 from boaviztapi.routers.openapi_doc.examples import server_configuration_examples
-from boaviztapi.service.archetype import get_server_archetype, get_server_archetype_lst, complete_with_archetype
+from boaviztapi.service.archetype import get_server_archetype, complete_with_archetype, \
+    get_server_archetype_lst
 from boaviztapi.service.verbose import verbose_device
 from boaviztapi.service.bottom_up import bottom_up_device
 
@@ -32,7 +33,7 @@ def server_impact_by_model(archetype: str = Query(None, example="dellR740"), ver
     return result
 
 
-@server_router.get('/bottom-up',
+@server_router.post('/bottom-up',
                    description="LEGACY ROUTE NAME")
 @server_router.post('/',
                     description=server_impact_by_config_description)
