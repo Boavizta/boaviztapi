@@ -1,15 +1,14 @@
-from fastapi.testclient import TestClient
+import pytest
+from httpx import AsyncClient
 
 from boaviztapi.main import app
+pytest_plugins = ('pytest_asyncio',)
 
-client = TestClient(app)
 
-
-def test_complete_cpu():
-    res = client.post('/v1/component/cpu?verbose=false', json={
-        "core_units": 12,
-        "die_size_per_core": 0.245
-    })
+@pytest.mark.asyncio
+async def test_complete_cpu():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/component/cpu?verbose=false', json={"core_units": 12, "die_size_per_core": 0.245})
 
     assert res.json() == {
         "gwp": {
@@ -27,9 +26,10 @@ def test_complete_cpu():
     }
 
 
-def test_empty_cpu():
-    res = client.post('/v1/component/cpu?verbose=false', json={
-    })
+@pytest.mark.asyncio
+async def test_empty_cpu():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/component/cpu?verbose=false', json={})
 
     assert res.json() == {
         "gwp": {
@@ -47,12 +47,10 @@ def test_empty_cpu():
     }
 
 
-def test_complete_ram():
-    res = client.post('/v1/component/ram?verbose=false', json={
-        "units": 12,
-        "capacity": 32,
-        "density": 1.79
-    })
+@pytest.mark.asyncio
+async def test_complete_ram():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/component/ram?verbose=false', json={"units": 12, "capacity": 32, "density": 1.79})
 
     assert res.json() == {
         "gwp": {
@@ -70,9 +68,10 @@ def test_complete_ram():
     }
 
 
-def test_empty_ram():
-    res = client.post('/v1/component/ram?verbose=false', json={
-    })
+@pytest.mark.asyncio
+async def test_empty_ram():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/component/ram?verbose=false', json={})
 
     assert res.json() == {
         "gwp": {
@@ -90,11 +89,10 @@ def test_empty_ram():
     }
 
 
-def test_complete_ssd():
-    res = client.post('/v1/component/ssd?verbose=false', json={
-        "capacity": 400,
-        "density": 50.6
-    })
+@pytest.mark.asyncio
+async def test_complete_ssd():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/component/ssd?verbose=false', json={"capacity": 400, "density": 50.6})
 
     assert res.json() == {
         "gwp": {
@@ -112,9 +110,10 @@ def test_complete_ssd():
     }
 
 
-def test_empty_ssd():
-    res = client.post('/v1/component/ssd?verbose=false', json={
-    })
+@pytest.mark.asyncio
+async def test_empty_ssd():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/component/ssd?verbose=false', json={})
 
     assert res.json() == {
         "gwp": {
