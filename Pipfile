@@ -8,6 +8,7 @@ pydantic = '*'
 fastapi = '*'
 uvicorn = '*'
 pandas = '*'
+aiofile = '*'
 
 [dev-packages]
 mkdocs = '*'
