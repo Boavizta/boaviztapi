@@ -1,5 +1,8 @@
 from typing import Union
 
+from aiofile import async_open
+from pydantic.parse import load_str_bytes
+
 from boaviztapi.dto.server_dto import ServerDTO
 from boaviztapi.model.devices.device import Server
 import os
@@ -17,13 +20,12 @@ def get_server_archetype_lst(path=known_server_directory) -> list:
     return [file_name.split(".")[0] for file_name in known_devices_lst]
 
 
-def get_server_archetype(archetype_name: str, path=known_server_directory) -> Union[Server, bool]:
+async def get_server_archetype(archetype_name: str, path=known_server_directory) -> Union[Server, bool]:
     known_devices_lst = get_server_archetype_lst(path=path)
     for device_name in known_devices_lst:
         if archetype_name == device_name:
-            known_server = ServerDTO.parse_file(
-                path + '/' + device_name + ".json").to_device()
-            return known_server
+            async with async_open(path + '/' + device_name + ".json", 'rb') as afp:
+                return ServerDTO.parse_obj(load_str_bytes(await afp.read())).to_device()
     return False
 
 
