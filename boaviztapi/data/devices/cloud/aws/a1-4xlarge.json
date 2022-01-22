@@ -1,0 +1,50 @@
+{
+  "model":
+  {
+    "manufacturer": "AMAZON",
+    "name": "a1-4xlarge",
+    "type": "rack",
+    "year": 2020
+  },
+  "configuration":
+  {
+    "cpu":
+    {
+      "units": 2,
+      "core_units": 24,
+      "die_size_per_core": 0.245
+    },
+    "ram":
+    [
+      {
+        "units": 12,
+        "capacity": 32,
+        "density": 1.79
+      }
+    ],
+    "disk":
+    [
+      {
+        "units": 1,
+        "type": "ssd",
+        "capacity": 400,
+        "density": 50.6
+      }
+    ],
+    "power_supply":
+    {
+      "units": 2,
+      "unit_weight": 2.99
+    }
+  },
+  "usage": {
+    "max_power": 510,
+    "use_time": 3,
+    "workload": {
+      "50": {
+        "time": 1,
+        "power": 0.7235
+      }
+    }
+  }
+}

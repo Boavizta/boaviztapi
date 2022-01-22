@@ -7,7 +7,7 @@ from boaviztapi.routers.openapi_doc.descriptions import server_impact_by_model_d
     all_default_model_description, server_impact_by_config_description
 from boaviztapi.routers.openapi_doc.examples import server_configuration_examples
 from boaviztapi.service.archetype import get_server_archetype, complete_with_archetype, \
-    get_server_archetype_lst
+    get_device_archetype_lst
 from boaviztapi.service.verbose import verbose_device
 from boaviztapi.service.bottom_up import bottom_up_device
 
@@ -60,4 +60,4 @@ def server_impact_by_config(server_dto: ServerDTO = Body(None, example=server_co
 @server_router.get('/all_default_models',
                    description=all_default_model_description)
 def server_get_all_archetype_name():
-    return get_server_archetype_lst()
+    return get_device_archetype_lst()
