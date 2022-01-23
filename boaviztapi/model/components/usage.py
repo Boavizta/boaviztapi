@@ -14,8 +14,11 @@ _electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electrici
 class Usage(Component):
     TYPE = "USAGE"
 
-    yearly_electrical_consumption: Optional[float] = None
-    year_use_time: Optional[int] = None
+    years_use_time: Optional[float] = None
+    days_use_time: Optional[float] = None
+    hours_use_time: Optional[float] = None
+
+    hours_electrical_consumption: Optional[float] = None
     usage_location: Optional[str] = None
 
     gwp_factor: Optional[float] = None
@@ -27,19 +30,23 @@ class Usage(Component):
 
     @abstractmethod
     def impact_gwp(self) -> float:
-        return self.yearly_electrical_consumption * self.year_use_time * self.gwp_factor
+        return self.hours_electrical_consumption * self.get_duration_hours() * self.gwp_factor
 
     @abstractmethod
     def impact_pe(self) -> float:
-        return self.yearly_electrical_consumption * self.year_use_time * self.pe_factor
+        return self.hours_electrical_consumption * self.get_duration_hours() * self.pe_factor
 
     @abstractmethod
     def impact_adp(self):
-        return self.yearly_electrical_consumption * self.year_use_time * self.adp_factor
+        return self.hours_electrical_consumption * self.get_duration_hours() * self.adp_factor
 
     @abstractmethod
-    def get_yearly_electrical_consumption(self):
+    def get_hours_electrical_consumption(self):
         pass
+
+    @abstractmethod
+    def get_duration_hours(self) -> float:
+        return (self.hours_use_time or 0) + ((self.days_use_time or 0) * 24) + ((self.years_use_time or 0) * 365 * 24)
 
     @abstractmethod
     def smart_complete_data(self):
@@ -52,8 +59,8 @@ class Usage(Component):
             if len(sub) == 0:
                 self.usage_location = self._DEFAULT_USAGE_LOCATION
 
-        if self.year_use_time is None:
-            self.year_use_time = self._DEFAULT_YEAR_USE_TIME
+        if self.years_use_time is None and self.days_use_time is None and self.hours_use_time is None:
+            self.years_use_time = self._DEFAULT_YEAR_USE_TIME
 
         if self.gwp_factor is None:
             sub = _electricity_emission_factors_df
@@ -79,10 +86,10 @@ class UsageServer(Usage):
     # TODO: Set default workload ratio and corresponding power of DELL R740 LCA
     _DEFAULT_MAX_POWER = 510
 
-    _DEFAULT_WORKLOAD = {"100": {"time": (3.6/24), "power": 1.0},
-                         "50": {"time": (13.2/24), "power": 369/510},
-                         "10": {"time": (4.8/24), "power": 261/510},
-                         "idle": {"time": (2.4/24), "power": 201/510},
+    _DEFAULT_WORKLOAD = {"100": {"time": (3.6 / 24), "power": 1.0},
+                         "50": {"time": (13.2 / 24), "power": 369 / 510},
+                         "10": {"time": (4.8 / 24), "power": 261 / 510},
+                         "idle": {"time": (2.4 / 24), "power": 201 / 510},
                          "off": {"time": 0., "power": 0.}
                          }
 
@@ -98,26 +105,27 @@ class UsageServer(Usage):
     def impact_adp(self):
         return super().impact_adp()
 
-    def get_yearly_electrical_consumption(self) -> float:
-        year_electrical_consumption = 0
+    def get_hours_electrical_consumption(self) -> float:
+        hours_electrical_consumption = 0
         for values in self.workload.values():
-            year_electrical_consumption += values["time"] * 24 * 365 * values["power"] * self.max_power
-        return year_electrical_consumption / 1000
+            hours_electrical_consumption += values["time"] * values["power"] * self.max_power
+        return hours_electrical_consumption / 1000
 
     def smart_complete_data(self):
-        # TODO : Set default value of workload ratio and corresponding power if not set
         super().smart_complete_data()
-        if self.yearly_electrical_consumption is None:
+        if self.hours_electrical_consumption is None:
             if self.max_power is None:
                 self.max_power = self._DEFAULT_MAX_POWER
             if self.workload is None:
                 self.workload = self._DEFAULT_WORKLOAD
 
-            self.yearly_electrical_consumption = self.get_yearly_electrical_consumption()
+            self.hours_electrical_consumption = self.get_hours_electrical_consumption()
+
+    def get_duration_hours(self) -> float:
+        return super().get_duration_hours()
 
 
 class UsageCloud(UsageServer):
-
     instance_per_server: Optional[int] = None
 
     def impact_gwp(self) -> float:
@@ -131,3 +139,6 @@ class UsageCloud(UsageServer):
 
     def smart_complete_data(self):
         super().smart_complete_data()
+
+    def get_duration_hours(self) -> float:
+        return super().get_duration_hours()
