@@ -148,22 +148,21 @@ class Server(Device):
 
 class CloudInstance(Server):
     usage: UsageCloud = None
-    ratio_of_a_server: float = None
 
     def impact_manufacture_gwp(self) -> float:
-        return super().impact_manufacture_gwp() / self.ratio_of_a_server
+        return super().impact_manufacture_gwp() / self.usage.instance_per_server
 
     def impact_manufacture_pe(self) -> float:
-        return super().impact_manufacture_pe() / self.ratio_of_a_server
+        return super().impact_manufacture_pe() / self.usage.instance_per_server
 
     def impact_manufacture_adp(self) -> float:
-        return super().impact_manufacture_adp() / self.ratio_of_a_server
+        return super().impact_manufacture_adp() / self.usage.instance_per_server
 
     def impact_use_gwp(self) -> float:
-        return super().impact_use_gwp() / self.ratio_of_a_server
+        return super().impact_use_gwp() / self.usage.instance_per_server
 
     def impact_use_pe(self) -> float:
-        return super().impact_use_pe() / self.ratio_of_a_server
+        return super().impact_use_pe() / self.usage.instance_per_server
 
     def impact_use_adp(self) -> float:
-        return super().impact_use_adp() / self.ratio_of_a_server
+        return super().impact_use_adp() / self.usage.instance_per_server

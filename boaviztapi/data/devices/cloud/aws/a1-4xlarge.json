@@ -38,6 +38,7 @@
     }
   },
   "usage": {
+    "instance_per_server": 6,
     "max_power": 510,
     "use_time": 3,
     "workload": {

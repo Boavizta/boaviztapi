@@ -1,6 +1,6 @@
 from typing import Union
 
-from boaviztapi.dto.server_dto import ServerDTO
+from boaviztapi.dto.server_dto import ServerDTO, CloudDTO
 from boaviztapi.model.devices.device import Server, Device, CloudInstance
 import os
 
@@ -16,6 +16,7 @@ def get_device_archetype_lst(path=known_server_directory) -> list:
 
 
 def complete_with_archetype(device: Device, archetype_device: Device) -> Device:
+    # TODO: this method should have a recursive way of treating attribute for complex attribute (object and dictionary)
     """
     set the missing server components of server from its archetype
     """
@@ -51,8 +52,8 @@ def get_cloud_instance_archetype(archetype_name: str, provider, path=known_insta
     known_cloud_instance_lst = get_device_archetype_lst(os.path.join(path, provider))
     for device_name in known_cloud_instance_lst:
         if archetype_name == device_name:
-            known_server = CloudInstance.parse_file(
-                path + '/' + provider + '/' + device_name + ".json")
+            known_server = CloudDTO.parse_file(
+                path + '/' + provider + '/' + device_name + ".json").to_device()
             return known_server
     return False
 

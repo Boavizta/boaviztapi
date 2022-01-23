@@ -116,7 +116,9 @@ class UsageServer(Usage):
             self.yearly_electrical_consumption = self.get_yearly_electrical_consumption()
 
 
-class UsageCloud(Usage):
+class UsageCloud(UsageServer):
+
+    instance_per_server: Optional[int] = None
 
     def impact_gwp(self) -> float:
         return super().impact_gwp()
@@ -126,10 +128,6 @@ class UsageCloud(Usage):
 
     def impact_adp(self):
         return super().impact_adp()
-
-    def get_yearly_electrical_consumption(self):
-        # TODO : Apply cloud formula according to #29
-        pass
 
     def smart_complete_data(self):
         super().smart_complete_data()

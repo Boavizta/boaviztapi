@@ -66,6 +66,7 @@ ram_description = "# ✔️RAM impact from configuration\n" + components_descrip
                   "ram<sub>manuf_base<sub><em>criteria</em></sub></sub> </h3> "
 
 motherboard_description = "# ✔️Motherboard impact from configuration\n" + components_description + default_calculation
+
 power_supply_description = "# ✔️Power supply impact from configuration\n" + components_description + \
                            "\n### 🧮 Measure\n" + \
                            "<h3>psu<sub>manuf<sub><em>criteria</em></sub></sub> = psu<sub>unit<sub>weight</sub></sub>" \
