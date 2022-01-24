@@ -1,6 +1,11 @@
 import os
 
+
+from boaviztapi.service.archetype import get_device_archetype_lst, get_server_archetype, complete_with_archetype
+from tests.unit import data_dir
+
 import pytest
+
 
 from boaviztapi.service.archetype import get_server_archetype, complete_with_archetype
 from tests.unit import data_dir

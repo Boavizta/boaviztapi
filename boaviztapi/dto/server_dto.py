@@ -11,8 +11,8 @@ from boaviztapi.model.components.component import (
     ComponentCase,
     Component
 )
-from boaviztapi.model.devices.device import Model, Server
-from boaviztapi.model.components.usage import UsageServer
+from boaviztapi.model.devices.device import Model, Server, CloudInstance
+from boaviztapi.model.components.usage import UsageServer, UsageCloud
 
 
 class ConfigurationServer(BaseModel):
@@ -88,6 +88,17 @@ class ServerDTO(BaseModel):
 
     def to_device(self) -> Server:
         server = Server()
+        server.model = self.get_model()
+        server.config_components = self.get_component_list()
+        server.usage = self.get_usage()
+        return server
+
+
+class CloudDTO(ServerDTO):
+    usage: Optional[UsageCloud] = None
+
+    def to_device(self) -> CloudInstance:
+        server = CloudInstance()
         server.model = self.get_model()
         server.config_components = self.get_component_list()
         server.usage = self.get_usage()

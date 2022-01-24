@@ -3,7 +3,7 @@ from typing import List
 
 from pydantic import BaseModel
 
-from boaviztapi.model.components.usage import Usage, UsageServer
+from boaviztapi.model.components.usage import Usage, UsageServer, UsageCloud
 from boaviztapi.model.components.component import Component, ComponentCPU, ComponentSSD, ComponentRAM, \
     ComponentPowerSupply, ComponentMotherBoard, ComponentAssembly, ComponentCase
 
@@ -144,3 +144,25 @@ class Server(Device):
         components = [*self.get_default_cpu(), *self.get_default_ssd(), *self.get_default_ram(),
                       *self.get_default_power_supply(), ComponentMotherBoard(), ComponentAssembly()]
         return components
+
+
+class CloudInstance(Server):
+    usage: UsageCloud = None
+
+    def impact_manufacture_gwp(self) -> float:
+        return super().impact_manufacture_gwp() / self.usage.instance_per_server
+
+    def impact_manufacture_pe(self) -> float:
+        return super().impact_manufacture_pe() / self.usage.instance_per_server
+
+    def impact_manufacture_adp(self) -> float:
+        return super().impact_manufacture_adp() / self.usage.instance_per_server
+
+    def impact_use_gwp(self) -> float:
+        return super().impact_use_gwp() / self.usage.instance_per_server
+
+    def impact_use_pe(self) -> float:
+        return super().impact_use_pe() / self.usage.instance_per_server
+
+    def impact_use_adp(self) -> float:
+        return super().impact_use_adp() / self.usage.instance_per_server

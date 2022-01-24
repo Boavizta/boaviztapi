@@ -1,14 +1,18 @@
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from boaviztapi import __version__
+from boaviztapi.routers import cloud_router
 
 from boaviztapi.routers.component_router import component_router
 from boaviztapi.routers.server_router import server_router
+from boaviztapi.routers.cloud_router import cloud_router
 
 app = FastAPI()
 
 app.include_router(server_router)
 app.include_router(component_router)
+app.include_router(cloud_router)
+
 
 if __name__ == '__main__':
     import uvicorn

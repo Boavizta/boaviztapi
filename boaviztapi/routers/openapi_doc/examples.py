@@ -84,3 +84,11 @@ components_examples = {
     },
     "case": {"case_type": "rack"},
 }
+
+cloud_usage_example = {
+    "1": {
+        "year_use_time": 2,
+        "usage_location": "FRA"
+    }
+}
+
