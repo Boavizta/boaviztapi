@@ -53,7 +53,7 @@ jobs:
       run: docker tag ghcr.io/boaviztapi/boaviztapi:latest ghcr.io/boaviztapi/boaviztapi:$(python setup.py --version)
 
     - name: Push api images
-      run: docker push -a ghcr.io/dboaviztapi/boaviztapi
+      run: docker push -a ghcr.io/boaviztapi/boaviztapi
 
     - name: Build doc the Docker image
       run: docker build docs --file docs/Dockerfile --tag ghcr.io/boaviztapi/boaviztapi-doc:latest
