@@ -1,7 +1,12 @@
 from typing import Union
 
-from boaviztapi.dto.server_dto import ServerDTO, CloudDTO
-from boaviztapi.model.devices.device import Server, Device, CloudInstance
+
+from aiofile import async_open
+from pydantic.parse import load_str_bytes
+
+from boaviztapi.dto.server_dto import ServerDTO
+from boaviztapi.model.devices.device import Server
+
 import os
 
 from boaviztapi.service import data_dir
@@ -37,7 +42,7 @@ def complete_with_archetype(device: Device, archetype_device: Device) -> Device:
     return archetype_device
 
 
-def get_server_archetype(archetype_name: str, path=known_server_directory) -> Union[Server, bool]:
+async def get_server_archetype(archetype_name: str, path=known_server_directory) -> Union[Server, bool]:
     known_server_lst = get_device_archetype_lst(path=path)
     for device_name in known_server_lst:
         if archetype_name == device_name:

@@ -19,8 +19,8 @@ server_router = APIRouter(
 
 @server_router.get('/model',
                    description=server_impact_by_model_description)
-def server_impact_by_model(archetype: str = Query(None, example="dellR740"), verbose: bool = True):
-    server = get_server_archetype(archetype)
+async def server_impact_by_model(archetype: str = Query(None, example="dellR740"), verbose: bool = True):
+    server = await get_server_archetype(archetype)
     completed_server = copy.deepcopy(server)
 
     impacts = bottom_up_device(device=completed_server)
@@ -37,13 +37,13 @@ def server_impact_by_model(archetype: str = Query(None, example="dellR740"), ver
                    description="LEGACY ROUTE NAME")
 @server_router.post('/',
                     description=server_impact_by_config_description)
-def server_impact_by_config(server_dto: ServerDTO = Body(None, example=server_configuration_examples["DellR740"]),
+async def server_impact_by_config(server_dto: ServerDTO = Body(None, example=server_configuration_examples["DellR740"]),
                             verbose: bool = True):
     server = server_dto.to_device()
     completed_server = copy.deepcopy(server)
 
     if server.model.archetype:
-        server_archetype = get_server_archetype(server.model.archetype)
+        server_archetype = await get_server_archetype(server.model.archetype)
         completed_server = complete_with_archetype(
             completed_server, server_archetype)
 
@@ -59,5 +59,5 @@ def server_impact_by_config(server_dto: ServerDTO = Body(None, example=server_co
 
 @server_router.get('/all_default_models',
                    description=all_default_model_description)
-def server_get_all_archetype_name():
+async def server_get_all_archetype_name():
     return get_device_archetype_lst()

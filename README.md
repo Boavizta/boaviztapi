@@ -1,4 +1,4 @@
-# BOAVIZTAPI [![Python tests main](https://github.com/Boavizta/Tools-API/actions/workflows/main-main.yml/badge.svg?branch=main)](https://github.com/Boavizta/Tools-API/actions/workflows/main-main.yml)
+# BOAVIZTAPI [![Python tests main](https://github.com/Boavizta/Tools-API/actions/workflows/main-main.yml/badge.svg)](https://github.com/Boavizta/Tools-API/actions/workflows/main-main.yml)
 
 Giving access to BOAVIZTA referenced datas and methodologies trought a RESTful API
 

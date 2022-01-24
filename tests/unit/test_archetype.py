@@ -1,19 +1,26 @@
 import os
 
+
 from boaviztapi.service.archetype import get_device_archetype_lst, get_server_archetype, complete_with_archetype
 from tests.unit import data_dir
 
-
-def test_get_device_archetype_lst():
-    assert get_device_archetype_lst(path=os.path.join(data_dir, 'devices/server')) == ['completed_server_with_dellr740', 'dellR740', 'incomplete']
+import pytest
 
 
-def test_get_server_archetype_none():
-    assert not get_server_archetype("nothing", path=os.path.join(data_dir, 'devices/server'))
+from boaviztapi.service.archetype import get_server_archetype, complete_with_archetype
+from tests.unit import data_dir
+
+pytest_plugins = ('pytest_asyncio',)
 
 
-def test_get_server_archetype_dellr740(dell_r740):
-    assert get_server_archetype("dellR740", path=os.path.join(data_dir, 'devices/server')) == dell_r740
+@pytest.mark.asyncio
+async def test_get_server_archetype_none():
+    assert not await get_server_archetype("nothing", path=os.path.join(data_dir, 'devices/server'))
+
+
+@pytest.mark.asyncio
+async def test_get_server_archetype_dellr740(dell_r740):
+    assert await get_server_archetype("dellR740", path=os.path.join(data_dir, 'devices/server')) == dell_r740
 
 
 def test_complete_with_archetype_empty(dell_r740, empty_server):
