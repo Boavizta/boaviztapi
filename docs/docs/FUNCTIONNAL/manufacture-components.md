@@ -1,4 +1,6 @@
-#Impacts per Components
+# Manufacture impacts per Components
+
+We describe here the equations and datas used to measure the manufacture impacts of each component.
 
 ## CPU
 
@@ -100,13 +102,13 @@ With :
 * psu<sub>units</sub>
 * psu<sub>unit<sub>weight</sub>
 
-## Enclosure
+## Enclosure or Case
 
-*Rack server:*
+*For rack server:*
 
 <h6>enclosure<sub>manuf<sub><em>criteria</em></sub></sub> = rack<sub>manuf<sub><em>criteria</em></sub></sub></h6>
 
-*Blade server:*
+*For blade server:*
 
 <h6>enclosure<sub>manuf<sub><em>criteria</em></sub></sub> = blade<sub>manuf<sub><em>criteria</em></sub></sub> + blade_enclosure<sub>manuf<sub><em>criteria</em></sub></sub> / 16</h6>
 
@@ -141,7 +143,6 @@ With :
 
 ## Assembly
 
-
 <h6>assembly<sub>manuf<sub><em>criteria</em></sub></sub></h6>
 
 |Constante|Unité|Valeur|
@@ -149,6 +150,7 @@ With :
 |assemblymanufgwp|kgCO2eq|6.68|
 |assemblymanufadp|kgSbeq|1.41E-06|
 |assemblymanufpe|MJ|68.60|
+
 
 ## Usage
 

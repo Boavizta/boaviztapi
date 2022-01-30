@@ -1,6 +1,8 @@
 # Component route
 
-## Minimum component input
+Component routes only measure the manufacture impacts.
+
+## Minimal component input
 
 You can send an empty component :
 
@@ -14,9 +16,7 @@ In this case, only default value are used.
 
 *Components have no units since they represent a single instance of a component.*
 
-## CPU
-
-```/v1/component/cpu```
+## ```/v1/component/cpu```
 
 ``` json
 {
@@ -33,12 +33,10 @@ In this case, only default value are used.
    "manufacture_date": 2017
 }
 ```
-*Incomplete CPU, die-size will be retreive with the cpu family and manufacture date*
+*Incomplete CPU, die-size will be retrieved with the cpu family and manufacture date*
 
 
-## SSD
-
-```/v1/component/ssd```
+## ```/v1/component/ssd```
 
 ``` json
 {
@@ -57,9 +55,7 @@ In this case, only default value are used.
 *Incomplete SSD, die-size will be retrieved with the manufacturer name*
 
 
-## RAM
-
-```/v1/component/ssd```
+##```/v1/component/ram```
 
 ``` json
 {
@@ -79,9 +75,8 @@ In this case, only default value are used.
 *Incomplete RAM, die-size will be retrieved with the manufacturer name and the process*
 
 
-## HDD
+## ```/v1/component/hdd```
 
-```/v1/component/hdd```
 
 ``` json
 {}
@@ -89,9 +84,7 @@ In this case, only default value are used.
 *HDD impacts have a default value*
 
 
-## Motherboard
-
-```/v1/component/motherboard```
+## ```/v1/component/motherboard```
 
 ``` json
 {}
@@ -99,9 +92,7 @@ In this case, only default value are used.
 *motherboard impacts have a default value*
 
 
-## Power supply
-
-```/v1/component/power_supply```
+## ```/v1/component/power_supply```
 
 ``` json
 {
@@ -111,22 +102,23 @@ In this case, only default value are used.
 *All needed information are sent*
 
 
-## rack
-
-```/v1/component/rack```
+## ```/v1/component/case```
 
 ``` json
-{}
+{
+  "case_type": "rack"
+}
 ```
 *rack impacts have a default value*
 
-
-## blade
-
-```/v1/component/blade```
+``` json
+{
+  "case_type": "blade"
+}
+```
+*blade impacts have a default value*
 
 ``` json
 {}
 ```
-*blade impacts have a default value*
-
+*case_type will be set to rack by default*

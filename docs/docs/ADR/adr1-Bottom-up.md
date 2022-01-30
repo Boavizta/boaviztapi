@@ -11,7 +11,7 @@
 
 Issue : #2 & #6
 
-The impact of a device is the aggregation of the impact of its components in a bottom-up approach.
+The manufacture impacts of a device is the aggregation of the impacts of its components in a bottom-up approach.
 
 ## Decision
 

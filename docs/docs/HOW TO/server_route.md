@@ -1,8 +1,18 @@
-# Server bottom-up route
+# Server route
 
-```/v1/server/bottom-up```
+##```/v1/server/```
 
-## Minimum server input
+A server input is composed of 3 different objects : ```model```, ```configuration```, ```usage```
+
+``` json
+{
+"model":{},
+"configuration":{},
+"usage":{}
+}
+```
+
+### Minimal server input
 
 You can send an empty server :
 
@@ -10,22 +20,35 @@ You can send an empty server :
 {}
 ```
 
+or 
+
+``` json
+{
+"model":{},
+"configuration":{},
+"usage":{}
+}
+```
+
 In this case, only default value are used.
 
-## Recommended input
+### Configuration
 
-The Dell R740 is a good example of a well-defined server input. 
+#### Minimal configuration
+
+If the any of those following components aren't sent, a default component will be added to the configuration.
+
+* 1 CPU
+* 1 RAM
+* 1 SSD - TO MODIFY
+
+#### Complete input
+
+The Dell R740 is a good example of a well-defined server configuration input. 
 Specific needed data are sent (in particular the die size) to apply the bottom-up methodology.
 
 ``` json
 {
-    "model":
-    {
-        "manufacturer": "Dell",
-        "name": "R740",
-        "type": "rack",
-        "year": 2020
-    },
     "configuration":
     {
         "cpu":
@@ -59,20 +82,13 @@ Specific needed data are sent (in particular the die size) to apply the bottom-u
     }
 }
 ```
-*Dell R740 object*
 
+#### Incomplete input
 
-## Usual type of input
-
-The die size in unknown but some component's characteristic are given so specific die size can be retrieved by the API
+The die size in unknown but some component's attributes are given so specific die size can be retrieved by the API
 
 ``` json
 {
-    "model":
-    {
-        "type": "rack",
-        "year": 2020
-    },
     "configuration":
     {
         "cpu":
@@ -105,3 +121,11 @@ The die size in unknown but some component's characteristic are given so specifi
     }
 }
 ```
+
+#### Usage
+
+See [usage](usage.md)
+
+##```/v1/server/model```
+
+See [archetypes documentation](../FUNCTIONNAL/archetypes.md#using-archetype-in-model-routes)

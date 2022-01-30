@@ -8,20 +8,25 @@ nav:
     - INTRODUCTION:
         - Usefull ressources: introduction/usefull_ressources.md
     - TRY IT YOURSELF:
-        - DEMO : http://149.202.161.61:5000/docs
+        - DEMO : http://api.boavizta.org:5000/docs
     - FUNCTIONNAL DOCUMENTATION:
+        - Boavizta database: FUNCTIONNAL/boavizta-bdd.md
         - Components: FUNCTIONNAL/component.md
-        - Smart complete: FUNCTIONNAL/smart-complete.md
         - Device: FUNCTIONNAL/devices.md
-        - Boavizta database: FUNCTIONNAL/referenced-data.md
-        - Boavizta Bottom-Up: FUNCTIONNAL/bottom-up.md
-        - Bottom-Up per components: FUNCTIONNAL/impact-per-components.md
-        - Bottom-Up per devices: FUNCTIONNAL/impact-per-device.md
-        - Usage: FUNCTIONNAL/usage.md
+        - Manufacture methodology: FUNCTIONNAL/manufacture_methodology.md
+        - Manufacture per components: FUNCTIONNAL/manufacture-components.md
+        - Manufacture per devices: FUNCTIONNAL/manufacture_devices.md
+        - Usage methodology: FUNCTIONNAL/usage.md
+        - Smart complete: FUNCTIONNAL/smart-complete.md
+        - Archetypes: FUNCTIONNAL/archetypes.md
         - Verbose: FUNCTIONNAL/verbose.md
     - HOW TO USE THE API :
         - Component route: HOW TO/component_route.md
+        - Model: HOW TO/model.md
+        - Configuration: HOW TO/configuration.md
+        - Usage: HOW TO/usage.md
         - Server route: HOW TO/server_route.md
+        - Cloud route: HOW TO/cloud_route.md
     - ARCHITECTURAL DECISIONS RECORDS (ADR) :
         - ADR1: ADR/adr1-Bottom-up.md
         - ADR2: ADR/adr2-Alway-return-something.md

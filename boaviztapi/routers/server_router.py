@@ -1,8 +1,10 @@
 import copy
+import os
 
 from fastapi import APIRouter, Body, Query
 
 from boaviztapi.dto.server_dto import ServerDTO
+from boaviztapi.routers import data_dir
 from boaviztapi.routers.openapi_doc.descriptions import server_impact_by_model_description, \
     all_default_model_description, server_impact_by_config_description
 from boaviztapi.routers.openapi_doc.examples import server_configuration_examples
@@ -34,11 +36,11 @@ async def server_impact_by_model(archetype: str = Query(None, example="dellR740"
 
 
 @server_router.post('/bottom-up',
-                   description="LEGACY ROUTE NAME")
+                    description="LEGACY ROUTE NAME for *Server Impact By Config* ")
 @server_router.post('/',
                     description=server_impact_by_config_description)
 async def server_impact_by_config(server_dto: ServerDTO = Body(None, example=server_configuration_examples["DellR740"]),
-                            verbose: bool = True):
+                                  verbose: bool = True):
     server = server_dto.to_device()
     completed_server = copy.deepcopy(server)
 
@@ -60,4 +62,4 @@ async def server_impact_by_config(server_dto: ServerDTO = Body(None, example=ser
 @server_router.get('/all_default_models',
                    description=all_default_model_description)
 async def server_get_all_archetype_name():
-    return get_device_archetype_lst()
+    return get_device_archetype_lst(os.path.join(data_dir, 'devices/server'))
