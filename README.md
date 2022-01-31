@@ -14,11 +14,11 @@ The system is developed in layers according to a bottom-up principle. The first 
 
 ## :fast_forward: Test it yourself
 
-* Test the API : http://149.202.161.61:5000/docs
+* Test the API : http://api.boavizta.org:5000/docs
 
-* Dev documentation server : http://149.202.161.61/
+* Dev documentation server : http://api.boavizta.org/
 
-* Dev API server: http://149.202.161.61:5000
+* Dev API server: http://api.boavizta.org:5000
 
 ## :computer: Setup project locally with pipenv
 
