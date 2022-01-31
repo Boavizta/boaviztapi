@@ -2,12 +2,12 @@
 
 The API should always send back an impact independently on the completeness of the descriptive data of a component.
 If a needed data is not given, the system complete it with the closest component data found in the database or by a default value. 
-When several components correspond, the maximum impact is given.
+When several components' data correspond, the data maximising the impact of the component is given.
 
 
 ### Process
 
-The user send data concerning the server components.
+The user send data concerning the component.
 
 Matching components are found by the characteristics send by the user. ```FIND()```
 

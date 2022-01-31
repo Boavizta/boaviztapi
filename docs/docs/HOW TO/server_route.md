@@ -36,7 +36,7 @@ In this case, only default value are used.
 
 #### Minimal configuration
 
-If the any of those following components aren't sent, a default component will be added to the configuration.
+If any of those following components aren't sent, a default component will be added to the configuration.
 
 * 1 CPU
 * 1 RAM

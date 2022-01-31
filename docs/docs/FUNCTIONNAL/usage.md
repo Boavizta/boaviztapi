@@ -1,14 +1,14 @@
 # Usage impacts
 
-Usage impacts are measured only at device level from usage configuration. Only GWP is implemented for now due to missing emissions factors for "pe" and "adp".
+Usage impacts are measured only at device level from usage configuration. Only GWP is implemented for now due to missing emissions factors for PE and ADP.
 
-Usage impact is measured by multiplying a **duration**, an **impact factor**, and an **electrical consumption** :
+Usage impacts are measured by multiplying a **duration**, an **impact factor**, and an **electrical consumption** :
 
 ```impact = electrical_consumption*duration*impact_factor```
 
 ## Duration
 
-Different from manufacture impacts, usage impacts are measured for a specific time duration given by the user.
+Different from manufacture impacts, **usage impacts are measured for a specific time duration** given by the user.
 The API handles three different time units :
 
 | time unit |
@@ -19,7 +19,7 @@ The API handles three different time units :
 
 In the general case, when duration is not given, the impact is measured for a year.
 
-*Note* : units are cumulative, if multiple units are used, they are summed.
+*Note : units are cumulative, if multiple units are used, they are summed.*
 
 ### Example
 
@@ -76,7 +76,7 @@ Taking the following load segmentation :
 
 Power per load is expressed as a ratio of ```max_power```.
 
-*max_power= 510*
+*max_power = 510*
 
 | LOAD      | high (100%)  | medium (50%)  | low (10%)  | idle   |  off  |
 |-----------|--------------|---------------|------------|------  |-------|
@@ -84,7 +84,7 @@ Power per load is expressed as a ratio of ```max_power```.
 
 ##### Time ratio per load
 
-Time per load is expressed as a time ratio. It doesn't matter the duration nor the units since the ratio can be extrapolated to any duration. It will be extrapolated to the duration given by the user or by the default duration.
+Time per load is expressed as a time ratio. It doesn't matter the duration nor the units since the ratio can be extrapolated to any duration.
 
 | LOAD      | high (100%)  | medium (50%)  | low (10%)  | idle |  off  |
 |-----------|--------------|---------------|------------|------|-------|
@@ -113,4 +113,4 @@ LCA of Dell r740 : [https://www.delltechnologies.com/asset/en-us/products/server
 ### Link with archetype
 
 If you don't have the power per load or the time per load, it can be smart-completed with default values or completed from an [archetype](archetypes.md).
-You can override only one of the two items (time or power).
+Only one of the two items (time or power) can be overridden.

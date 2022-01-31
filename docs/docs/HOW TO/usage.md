@@ -70,7 +70,7 @@ If you give your own electrical impact factor, the api will use it.
 
 You can use the device location instead of giving an electrical impact factor.
 
-```usage_location``` attribute describe the usage country as a trigram (usually the first three letter of the country).
+```usage_location``` attribute describe the usage country. The country is represented as as trigram (usually the first three letter of the country).
 
 By default, ```usage_location``` is set as ```EU27+1``` (Europe of the 27 + England)
 
@@ -96,12 +96,12 @@ If unknown, ```hours_electrical_consumption``` can be retrieved with a ```worklo
 
 Workload is an object segmented into one to many loads. 
 
-A load is described by a quantity of resource usage. Each load has :
+A load is a quantity of resource usage. Each load has :
 
 * A ```time``` : ratio of time when the device is running at this load. 
 * A ```power```: power consumption at this load. **Express as a ratio of ```max_power```**
 
-*note : the sum of the ```time``` of all the loads must by 1 so that no moment of usage is excluded.*
+*note : the sum of the ```time``` attributes of all the loads must be 1*
 
 ### Incomplete workload
 

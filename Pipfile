@@ -12,9 +12,9 @@ aiofile = '*'
 
 [dev-packages]
 mkdocs = '*'
-mkdocs-render-swagger-plugin = '*'
 pytest = '*'
 atomicwrites = "*"
+mkdocs-material = "*"
 httpx = '*'
 pytest-asyncio = '*'
 requests = '*'

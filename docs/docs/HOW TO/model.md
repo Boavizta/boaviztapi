@@ -17,7 +17,7 @@ Each device can have a ```model``` object.
 
 ## Metadata 
 
-Metadata are descriptive attributes not used in the calculation or completion process.
+Metadata are descriptive attributes. They are not used in the impact calculation process.
 This type of attribute are not used for now in the api but could be used to implement search process.
 
 * ```manufacturer```

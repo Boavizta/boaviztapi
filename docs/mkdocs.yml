@@ -7,8 +7,7 @@ nav:
     - Home: index.md
     - INTRODUCTION:
         - Usefull ressources: introduction/usefull_ressources.md
-    - TRY IT YOURSELF:
-        - DEMO : http://api.boavizta.org:5000/docs
+    - TRY IT YOURSELF: http://api.boavizta.org:5000/docs
     - FUNCTIONNAL DOCUMENTATION:
         - Boavizta database: FUNCTIONNAL/boavizta-bdd.md
         - Components: FUNCTIONNAL/component.md
@@ -32,4 +31,4 @@ nav:
         - ADR2: ADR/adr2-Alway-return-something.md
         - Template: ADR/adr-template.md
 
-theme: readthedocs
+theme: material

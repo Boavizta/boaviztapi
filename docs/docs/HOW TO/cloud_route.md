@@ -35,29 +35,27 @@ In this case, default value from ```instance_type``` are used
 
 ### Usage
 
-```usage``` for cloud instances are particular. Most of the needed attributes a pre-registered in the ```instance_type```.
+```usage``` for cloud instances are particular. Most of the needed attributes are pre-registered in the ```instance_type```.
 You should only set :
 
-* ```usage_location``` with the location of the instance. 
-
-By default, ```usage_location``` is set as ```EU27+1``` (Europe of the 27 + England)
+* ```usage_location``` with the location of the instance - *By default, ```usage_location``` is set as ```EU27+1``` (Europe of the 27 + England)*
 
 
-* Duration :
+
+* Duration - *By default, 1 hour is used.*
     - ```hours_use_time```
     - ```days_use_time```
-    - ```years_use_time``` 
+    - ```years_use_time```
+
   
-By default, 1 hour is used.
-  
-* ```time``` per load for :
+* ```time``` per load for - *By default, we will consider the instance running at 50% all the duration*
     - 10%
     - 50%
     - 100%
     - idle
+
   
-By default, we will consider the instance running at 50% all the duration
-  
+### Example
 
 ```json
 {

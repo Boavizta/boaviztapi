@@ -15,7 +15,7 @@ Each route returning impacts can also return a verbose object if query parameter
 
 2 - For each of the attributes the value sent by the user (```input_value```), the value used (```used_value```) and the status of the value (```status```). Three cases :
     
-* **SET** : The user sent no value, a value is set
+* **SET** : The user sent no value, a value was set
     
 ```json
 "attribute" : {
@@ -25,7 +25,7 @@ Each route returning impacts can also return a verbose object if query parameter
 }
 ```
 
-* **UNCHANGED** : The user sent a value, the value isn't modify
+* **UNCHANGED** : The user sent a value, the value wasn't modify
   
 ```json
 "attribute" : {
@@ -35,7 +35,7 @@ Each route returning impacts can also return a verbose object if query parameter
 }
 ```
   
-* **CHANGED**: The user sent a value, the value is modified
+* **CHANGED**: The user sent a value, the value was modified
   
 ```json
 "attribute" : {
@@ -45,7 +45,7 @@ Each route returning impacts can also return a verbose object if query parameter
 }
 ```
 
-# Example
+## Example
 
 **Input**
 ```json
