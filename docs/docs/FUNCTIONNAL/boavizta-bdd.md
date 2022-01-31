@@ -22,3 +22,6 @@ The data is gathered from :
 * [Lexmark](https://csr.lexmark.com)
 * [Seagate](https://www.seagate.com/fr/fr/global-citizenship/product-sustainability/)
 
+## Data integration
+
+For now BOAVIZTA Database isn't integrated in BOAVIZTAPI

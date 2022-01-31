@@ -5,7 +5,8 @@ server_configuration_examples = {
                 "manufacturer": "Dell",
                 "name": "R740",
                 "type": "rack",
-                "year": 2020
+                "year": 2020,
+                "archetype": "dellR740"
             },
         "configuration":
             {
@@ -40,7 +41,9 @@ server_configuration_examples = {
             },
         "usage": {
             "max_power": 510,
-            "year_use_time": 3,
+            "years_use_time": 1,
+            "days_use_time": 1,
+            "hours_use_time": 1,
             "workload": {
                 "100": {
                     "time": 0.15,
@@ -87,8 +90,21 @@ components_examples = {
 
 cloud_usage_example = {
     "1": {
-        "year_use_time": 2,
-        "usage_location": "FRA"
+        "hours_use_time": 2,
+        "usage_location": "FRA",
+        "workload": {
+            '10': {
+                'time': 0
+            },
+            '50': {
+                'time': 1
+            },
+            '100': {
+                'time': 0
+            },
+            'idle': {
+                'time': 0
+            }
+        }
     }
 }
-
