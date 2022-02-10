@@ -1,7 +1,7 @@
 ## Smart complete : Components
 
 The API should always send back an impact independently on the completeness of the descriptive data of a component.
-If a needed data is not given, the system complete it with the closest component data found in the database or by a default value. 
+If a needed data is not given, the system completes it with the closest component data found in the database or by a default value. 
 When several components' data correspond, the data maximising the impact of the component is given.
 
 
