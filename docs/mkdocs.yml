@@ -1,34 +1,39 @@
-site_name: DOC BOAVIZTA TOOLS
+site_name: Boavizta API documentation
 dev_addr: '0.0.0.0:8080'
 plugins:
     - render_swagger
 
+markdown_extensions:
+    - attr_list
+    - md_in_html
+      
+
 nav:
-    - Home: index.md
-    - INTRODUCTION:
-        - Usefull ressources: introduction/usefull_ressources.md
-    - TRY IT YOURSELF: http://api.boavizta.org:5000/docs
-    - FUNCTIONNAL DOCUMENTATION:
-        - Boavizta database: FUNCTIONNAL/boavizta-bdd.md
-        - Components: FUNCTIONNAL/component.md
-        - Device: FUNCTIONNAL/devices.md
-        - Manufacture methodology: FUNCTIONNAL/manufacture_methodology.md
-        - Manufacture per components: FUNCTIONNAL/manufacture-components.md
-        - Manufacture per devices: FUNCTIONNAL/manufacture_devices.md
-        - Usage methodology: FUNCTIONNAL/usage.md
-        - Smart complete: FUNCTIONNAL/smart-complete.md
-        - Archetypes: FUNCTIONNAL/archetypes.md
-        - Verbose: FUNCTIONNAL/verbose.md
-    - HOW TO USE THE API :
-        - Component route: HOW TO/component_route.md
-        - Model: HOW TO/model.md
-        - Configuration: HOW TO/configuration.md
-        - Usage: HOW TO/usage.md
-        - Server route: HOW TO/server_route.md
-        - Cloud route: HOW TO/cloud_route.md
-    - ARCHITECTURAL DECISIONS RECORDS (ADR) :
-        - ADR1: ADR/adr1-Bottom-up.md
-        - ADR2: ADR/adr2-Alway-return-something.md
-        - Template: ADR/adr-template.md
+    - Introduction: index.md 
+    - Getting started:
+        - Try the API (OpenAPI): http://api.boavizta.org:5000/docs
+        - Get the impacts of a server: getting_started/single_server.md
+    - Explanations:
+        - Boavizta database: Explanations/boavizta-db.md
+        - Components: Explanations/component.md
+        - Device: Explanations/devices.md
+        - Manufacture methodology: Explanations/manufacture_methodology.md
+        - Manufacture per components: Explanations/manufacture-components.md
+        - Manufacture per devices: Explanations/manufacture_devices.md
+        - Usage methodology: Explanations/usage.md
+        - Smart complete: Explanations/smart-complete.md
+        - Archetypes: Explanations/archetypes.md
+        - Verbose: Explanations/verbose.md
+        - Useful resources: Explanations/useful_resources.md
+    - Reference:
+        - Component route: Reference/component_route.md
+        - Model: Reference/model.md
+        - Configuration: Reference/configuration.md
+        - Usage: Reference/usage.md
+        - Server route: Reference/server_route.md
+        - Cloud route: Reference/cloud_route.md
+        - Architecture decisions records (ADRs) :
+            - Bottom up methodology: ADR/adr1-Bottom-up.md
+            - Always return something: ADR/adr2-Alway-return-something.md    
 
 theme: material
