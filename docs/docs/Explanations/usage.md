@@ -90,7 +90,7 @@ Time per load is expressed as a time ratio. It doesn't matter the duration nor t
 | ---------- | ----------- | ------------ | --------- | ---- | --- |
 | Time_ratio | 0.15        | 0.55         | 0.2       | 0.1  | 0   |
 
-_note : the sum of time ratio par load must be 1._
+_note : the sum of time ratio per load must be 1._
 
 ##### Equation
 
@@ -114,4 +114,4 @@ LCA of Dell r740 : [https://www.delltechnologies.com/asset/en-us/products/server
 ### Link with archetype
 
 If you don't have the power per load or the time per load, it can be smart-completed with default values or completed from an [archetype](archetypes.md).
-Only one of the two items (time or power) can be overridden.
+Both time or power can be completed.

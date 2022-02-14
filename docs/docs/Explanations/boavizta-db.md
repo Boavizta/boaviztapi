@@ -24,4 +24,4 @@ The data is gathered from :
 
 ## Data integration
 
-⚠ For now, Boavizta API is _not_ directly integrated with Boavizta database. The API uses its own copy of the Boavizta dataset.
+⚠ For now, Boavizta API is _not_ integrated with Boavizta database since the API do not use manufactures declarations.

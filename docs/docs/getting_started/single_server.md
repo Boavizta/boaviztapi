@@ -14,7 +14,7 @@ Query:
 ```bash
 # Query the data for `dellR740`
 curl -X 'GET' \
-  'http://api.boavizta.org:5000/v1/server/model?archetype=dellR740' \
+  'http://api.boavizta.org:5000/v1/server/model?archetype=dellR740&verbose=false' \
   -H 'accept: application/json'
 ```
 
@@ -37,9 +37,9 @@ Results:
 }
 ```
 
-## Get the impacts of all the components of a server
+## Get the values used to measure the impacts of each component
 
-This is the same query as before. However you add the `verbose=true` flag to get the detail impact of each of its components.
+This is the same query as before. However, you add the `verbose=true` flag to get the impacts of each of its components and the value of the attributes used for the calculation.
 
 Query:
 
@@ -50,10 +50,11 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-It returns the impacts (gwp, pe, adp):
+It returns :
 
-- at the server level (global cumulated impacts)
-- for each component (like RAM, CPU, SSD a.s.o)
+- The impacts (gwp, pe, adp) at the server level (global cumulated impacts)
+- The impacts (gwp, pe, adp) for each component (like RAM, CPU, SSD a.s.o)
+- The value of the attributes used for the calculation for each component (i.e. the detailed configuration)
 
 ```json
 {
