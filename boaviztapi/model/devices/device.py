@@ -142,7 +142,7 @@ class Server(Device):
 
     def get_default_configuration_component_list(self) -> List[Component]:
         components = [*self.get_default_cpu(), *self.get_default_ssd(), *self.get_default_ram(),
-                      *self.get_default_power_supply(), ComponentMotherBoard(), ComponentAssembly()]
+                      *self.get_default_power_supply(), ComponentMotherBoard(), ComponentAssembly(), ComponentCase()]
         return components
 
 

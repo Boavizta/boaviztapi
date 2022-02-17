@@ -69,15 +69,15 @@ async def test_empty_config_server():
         res = await ac.post('/v1/server/?verbose=false', json={})
     assert res.json() == {
         "gwp": {
-            "manufacture": 3142.0,
+            "manufacture": 3292.0,
             "use": 696.0
         },
         "pe": {
-            "manufacture": 39621.0,
+            "manufacture": 41821.0,
             "use": "Not Implemented"
         },
         "adp": {
-            "manufacture": 0.214,
+            "manufacture": 0.234,
             "use": "Not Implemented"
         }
     }
