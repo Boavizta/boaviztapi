@@ -26,16 +26,29 @@ def complete_with_archetype(device: Device, archetype_device: Device) -> Device:
         for i, component_to_remove in enumerate(archetype_device.config_components):
             if component.TYPE == component_to_remove.TYPE:
                 lst_id.add(i)
+
     for index in sorted(list(lst_id), reverse=True):
         del archetype_device.config_components[index]
     archetype_device.config_components += device.config_components
 
     for attr, value in device.usage.__iter__():
         if attr != "TYPE" and attr != "hash":
-            if value is not None:
+            if type(value) is dict:
+                setattr(archetype_device.usage, attr, recursive_dict_complete(value,
+                                                                              getattr(archetype_device.usage, attr)))
+            elif value is not None:
                 setattr(archetype_device.usage, attr, value)
 
     return archetype_device
+
+
+def recursive_dict_complete(dict1, dict2):
+    for attr, value in dict1.items():
+        if type(value) is dict:
+            dict2[attr] = recursive_dict_complete(value, dict2[attr])
+        elif value is not None:
+            dict2[attr] = value
+    return dict2
 
 
 async def get_server_archetype(archetype_name: str, path=known_server_directory) -> Union[Server, bool]:
