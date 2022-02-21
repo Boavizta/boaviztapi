@@ -151,6 +151,13 @@ def incomplete_usage():
 
 
 @pytest.fixture(scope="function")
+def complete_usage():
+    complete_usage = CloudDTO.parse_file(data_dir + "/devices/cloud/complete_usage.json").to_device()
+    complete_usage.usage
+    return complete_usage
+
+
+@pytest.fixture(scope="function")
 def cloud_instance_1_completed():
     cloud_instance_1_completed = \
         CloudDTO.parse_file(data_dir + "/devices/cloud/cloud_instance_1_completed.json").to_device()
