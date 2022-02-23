@@ -15,3 +15,11 @@ Intel,Ivy Bridge,2011,22,541,15,0.361
 Intel,Sandy Bridge,2010,32,216,4,0.540
 Intel,Kaby Lake,2017,,126,4,0.315
 AMD,Zen,2017,,212.77,8,0.2659625
+Annapurna Labs,Graviton,unknown,16,unknown,16,unknown
+Intel,Cascade Lake,2019,14,unknown,24,unknown
+AMD,ROME,unknown,7,unknown,48,unknown
+Annapurna Labs,Graviton2,unknown,7,unknown,64,
+Intel,Skylake,unknown,14,unknown,24,unknown
+AMD,Naple,unknown,14,unknown,24,unknown
+Intel,Ice Lake,unknown,10,unknown,32,unknown
+Intel,Skylake,unknown,14,unknown,12,unknown

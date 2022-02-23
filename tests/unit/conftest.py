@@ -1,6 +1,6 @@
 import pytest
 
-from boaviztapi.dto.server_dto import ServerDTO
+from boaviztapi.dto.server_dto import ServerDTO, CloudDTO
 from boaviztapi.model.components.component import ComponentRAM, ComponentSSD, ComponentHDD, ComponentAssembly, \
     ComponentCase, ComponentMotherBoard, ComponentPowerSupply, ComponentCPU
 from tests.unit import data_dir
@@ -136,3 +136,29 @@ def complete_power_supply():
     return ComponentPowerSupply.parse_obj({
         "unit_weight": 2
     })
+
+
+@pytest.fixture(scope="function")
+def cloud_instance_1():
+    cloud_server = CloudDTO.parse_file(data_dir + "/devices/cloud/cloud_instance_1.json").to_device()
+    return cloud_server
+
+
+@pytest.fixture(scope="function")
+def incomplete_usage():
+    incomplete_usage = CloudDTO.parse_file(data_dir + "/devices/cloud/incomplete_usage.json").to_device()
+    return incomplete_usage
+
+
+@pytest.fixture(scope="function")
+def complete_usage():
+    complete_usage = CloudDTO.parse_file(data_dir + "/devices/cloud/complete_usage.json").to_device()
+    complete_usage.usage
+    return complete_usage
+
+
+@pytest.fixture(scope="function")
+def cloud_instance_1_completed():
+    cloud_instance_1_completed = \
+        CloudDTO.parse_file(data_dir + "/devices/cloud/cloud_instance_1_completed.json").to_device()
+    return cloud_instance_1_completed

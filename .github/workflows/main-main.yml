@@ -36,3 +36,7 @@ jobs:
     - name: Run test suite
       run: |
         pipenv run pytest
+
+    - name: Run test suite
+        run: |
+          pipenv run pytest

@@ -1,9 +1,5 @@
 import os
 
-
-from boaviztapi.service.archetype import get_device_archetype_lst, get_server_archetype, complete_with_archetype
-from tests.unit import data_dir
-
 import pytest
 
 
@@ -29,3 +25,7 @@ def test_complete_with_archetype_empty(dell_r740, empty_server):
 
 def test_complete_with_archetype_incomplete(dell_r740, incomplete_server, completed_server_with_dellr740):
     assert complete_with_archetype(incomplete_server, dell_r740) == completed_server_with_dellr740
+
+
+def test_complete_with_archetype_partial_usage(incomplete_usage, cloud_instance_1, cloud_instance_1_completed):
+    assert complete_with_archetype(incomplete_usage, cloud_instance_1) == cloud_instance_1_completed

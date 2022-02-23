@@ -34,7 +34,30 @@ def test_verbose_component_case(empty_case, blade_case):
         'impacts': {'adp': 0.028, 'gwp': 86.0, 'pe': 1229.0}}
 
 
+def test_verbose_usage(incomplete_usage, complete_usage):
+    complete_usage.usage.smart_complete_data()
+    assert verbose_component(complete_usage.usage, incomplete_usage.usage) == {
+        'adp_factor': {'input_value': None, 'status': 'SET', 'used_value': 0.0},
+        'gwp_factor': {'input_value': None, 'status': 'SET', 'used_value': 0.226},
+        'hours_electrical_consumption': {'input_value': None, 'status': 'SET', 'used_value': 0.368985},
+        'hours_use_time': {'input_value': None, 'status': 'SET', 'used_value': 1.0},
+        'impacts': {'adp': 0.0, 'gwp': 0.0, 'pe': 0.0},
+        'instance_per_server': {'input_value': None, 'status': 'SET', 'used_value': 4},
+        'max_power': {'input_value': None, 'status': 'SET', 'used_value': 510.0},
+        'pe_factor': {'input_value': None, 'status': 'SET', 'used_value': 0.0},
+        'usage_location': {'input_value': None, 'status': 'SET', 'used_value': 'EU27+1'}, 'workload': {
+            '10': {'power': {'input_value': None, 'status': 'SET', 'used_value': 0.6},
+                   'time': {'input_value': 0.4, 'status': 'MODIFY', 'used_value': 0.0}},
+            '100': {'power': {'input_value': None, 'status': 'SET', 'used_value': 1.0},
+                    'time': {'input_value': 0.2, 'status': 'MODIFY', 'used_value': 0.0}},
+            '50': {'power': {'input_value': None, 'status': 'SET', 'used_value': 0.7235},
+                   'time': {'input_value': 0.2, 'status': 'MODIFY', 'used_value': 1.0}},
+            'idle': {'power': {'input_value': None, 'status': 'SET', 'used_value': 0.02},
+                     'time': {'input_value': 0.2, 'status': 'MODIFY', 'used_value': 0.0}}}}
+
+
 def test_verbose_device_server_1(empty_server, dell_r740):
+    dell_r740.usage.smart_complete_data()
     assert verbose_device(dell_r740, empty_server) == {
         'CPU-1': {
             'unit': 2, 'hash': '5f75d18d9165b04381f24cb2130b62f756d266c45080982334585931482398ad',
@@ -55,7 +78,24 @@ def test_verbose_device_server_1(empty_server, dell_r740):
         'CASE-1': {'case_type': {'input_value': None, 'status': 'SET', 'used_value': 'rack'},
                    'hash': '083dcd17f9997756af73de7c61f0cf2986b25075ad00bbf7c07e08cc80a2183f',
                    'impacts': {'adp': 0.02, 'gwp': 150.0, 'pe': 2200.0},
-                   'unit': 1}}
+                   'unit': 1},
+        'USAGE-1': {'adp_factor': {'input_value': None, 'status': 'SET', 'used_value': 0.0},
+                    'gwp_factor': {'input_value': None, 'status': 'SET', 'used_value': 0.226},
+                    'hash': 0, 'hours_electrical_consumption': {'input_value': None, 'status': 'SET',
+                                                                'used_value': 0.35174445000000004},
+                    'impacts': {'adp': 0.0, 'gwp': 696.0, 'pe': 0.0},
+                    'max_power': {'input_value': None, 'status': 'SET', 'used_value': 510.0},
+                    'pe_factor': {'input_value': None, 'status': 'SET', 'used_value': 0.0}, 'unit': 1,
+                    'usage_location': {'input_value': None, 'status': 'SET', 'used_value': 'EU27+1'}, 'workload': {
+                '10': {'power': {'input_value': None, 'status': 'SET', 'used_value': 0.5118},
+                       'time': {'input_value': None, 'status': 'SET', 'used_value': 0.2}},
+                '100': {'power': {'input_value': None, 'status': 'SET', 'used_value': 1.0},
+                        'time': {'input_value': None, 'status': 'SET', 'used_value': 0.15}},
+                '50': {'power': {'input_value': None, 'status': 'SET', 'used_value': 0.7235},
+                       'time': {'input_value': None, 'status': 'SET', 'used_value': 0.55}},
+                'idle': {'power': {'input_value': None, 'status': 'SET', 'used_value': 0.3941},
+                         'time': {'input_value': None, 'status': 'SET', 'used_value': 0.1}}},
+                    'years_use_time': {'input_value': None, 'status': 'SET', 'used_value': 1}}}
 
 
 def test_verbose_device_server_2(incomplete_server, completed_server_with_default):
@@ -82,4 +122,22 @@ def test_verbose_device_server_2(incomplete_server, completed_server_with_defaul
                   'impacts': {'gwp': 44.0, 'pe': 650.0, 'adp': 0.04}},
         'POWER_SUPPLY-1': {'unit': 2, 'hash': 'be84aabaaac41126e1bd93ec3c10b355c6c7534cf9e3d7337cef9d6d0bb116c6',
                            'unit_weight': {'input_value': None, 'used_value': 2.99, 'status': 'SET'},
-                           'impacts': {'gwp': 146.0, 'pe': 2104.0, 'adp': 0.05}}}
+                           'impacts': {'gwp': 146.0, 'pe': 2104.0, 'adp': 0.05}},
+        'USAGE-1': {'adp_factor': {'input_value': None, 'status': 'SET', 'used_value': 0.0},
+                    'gwp_factor': {'input_value': None, 'status': 'SET', 'used_value': 0.226}, 'hash': 0,
+                    'hours_electrical_consumption': {'input_value': None, 'status': 'SET', 'used_value': 0.35175},
+                    'impacts': {'adp': 0.0, 'gwp': 696.0, 'pe': 0.0},
+                    'max_power': {'input_value': None, 'status': 'SET', 'used_value': 510},
+                    'pe_factor': {'input_value': None, 'status': 'SET', 'used_value': 0.0}, 'unit': 1,
+                    'usage_location': {'input_value': None, 'status': 'SET', 'used_value': 'EU27+1'}, 'workload': {
+                '10': {'power': {'input_value': None, 'status': 'SET', 'used_value': 0.5117647058823529},
+                       'time': {'input_value': None, 'status': 'SET', 'used_value': 0.19999999999999998}},
+                '100': {'power': {'input_value': None, 'status': 'SET', 'used_value': 1.0},
+                        'time': {'input_value': None, 'status': 'SET', 'used_value': 0.15}},
+                '50': {'power': {'input_value': None, 'status': 'SET', 'used_value': 0.7235294117647059},
+                       'time': {'input_value': None, 'status': 'SET', 'used_value': 0.5499999999999999}},
+                'idle': {'power': {'input_value': None, 'status': 'SET', 'used_value': 0.3941176470588235},
+                         'time': {'input_value': None, 'status': 'SET', 'used_value': 0.09999999999999999}},
+                'off': {'power': {'input_value': None, 'status': 'SET', 'used_value': 0.0},
+                        'time': {'input_value': None, 'status': 'SET', 'used_value': 0.0}}},
+                    'years_use_time': {'input_value': None, 'status': 'SET', 'used_value': 1}}}
