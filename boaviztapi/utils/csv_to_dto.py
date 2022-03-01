@@ -7,13 +7,14 @@ def make_dto(csv_file_path, json_path):
 
     for rows in csv_reader:
         obj = {}
-        json_file = open(json_path + "/" + rows["model.name"], 'w', encoding='utf-8')
+        json_file = open(json_path + "/" + rows["model.name"] + ".json", 'w', encoding='utf-8')
         for attribute in rows:
             value = rows[attribute]
-            if value is None:
+            if value == "" or value is None:
                 continue
             names = attribute.split('.')
             nested_set(obj, names, value)
+        obj = set_list(obj)
         json_file.write(json.dumps(obj))
 
 
@@ -24,8 +25,17 @@ def nested_set(dic, keys, value):
     dic[keys[-1]] = value
 
 
-_csv_file_path = '../data/devices/cloud/aws/AWS EC2 Carbon Footprint Dataset - Boavizta API Dataset.csv'
-_json_path = './json_test/'
+def set_list(obj):
+    if obj.get("configuration") is not None:
+        if obj.get("configuration").get("disk"):
+            obj["configuration"]["disk"] = [obj["configuration"]["disk"]]
+        if obj.get("configuration").get("ram"):
+            obj["configuration"]["ram"] = [obj["configuration"]["ram"]]
+    return obj
+
+
+_csv_file_path = '../data/devices/cloud/aws/source/AWS EC2 Carbon Footprint Dataset - Boavizta API Dataset.csv'
+_json_path = '../data/devices/cloud/aws'
 
 if __name__ == '__main__':
     make_dto(_csv_file_path, _json_path)

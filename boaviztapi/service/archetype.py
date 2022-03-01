@@ -1,4 +1,5 @@
 from typing import Union
+from pathlib import Path
 
 from boaviztapi.dto.server_dto import ServerDTO, CloudDTO
 from boaviztapi.model.devices.device import Server, Device, CloudInstance
@@ -13,7 +14,7 @@ known_instances_directory = os.path.join(data_dir, 'devices/cloud')
 
 def get_device_archetype_lst(path=known_server_directory) -> list:
     known_devices_lst = os.listdir(path)
-    return [file_name.split(".")[0] for file_name in known_devices_lst]
+    return [Path(file_name).stem for file_name in known_devices_lst]
 
 
 def complete_with_archetype(device: Device, archetype_device: Device) -> Device:
