@@ -42,7 +42,7 @@ You should only set :
 
 
 
-* Duration - *By default, 1 hour is used.*
+* Duration - *By default, 1 year is used.*
     - ```hours_use_time```
     - ```days_use_time```
     - ```years_use_time```
