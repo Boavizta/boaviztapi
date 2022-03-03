@@ -50,7 +50,8 @@ async def test_complete_config_server():
     assert res.json() == {
         "gwp": {
             "manufacture": 1117.0,
-            "use": 696.0
+            "use": 696.38058
+            # "use": 696.0 - no rounding until #43 isn't implemented
         },
         "pe": {
             "manufacture": 15153.0,
@@ -70,7 +71,8 @@ async def test_empty_config_server():
     assert res.json() == {
         "gwp": {
             "manufacture": 3292.0,
-            "use": 696.0
+            "use": 696.38058
+            # "use": 696.0 - no rounding until #43 isn't implemented
         },
         "pe": {
             "manufacture": 41821.0,
@@ -148,7 +150,8 @@ async def test_dell_r740_server():
     assert res.json() == {
         "gwp": {
             "manufacture": 970.0,
-            "use": 696.0
+            "use": 696.38058
+            # "use": 696.0 - no rounding until #43 isn't implemented
         },
         "pe": {
             "manufacture": 12896.0,
@@ -196,7 +199,8 @@ async def test_partial_server_1():
     assert res.json() == {
         "gwp": {
             "manufacture": 1295.0,
-            "use": 696.0
+            "use": 696.38058
+            # "use": 696.0 - no rounding until #43 isn't implemented
         },
         "pe": {
             "manufacture": 16669.0,
@@ -250,7 +254,7 @@ async def test_partial_server_2():
     assert res.json() == {
         "gwp": {
             "manufacture": 1375.0,
-            "use": 696.0
+            "use": 696.38058
         },
         "pe": {
             "manufacture": 18593.0,
@@ -288,7 +292,8 @@ async def test_partial_server_3():
     assert res.json() == {
         "gwp": {
             "manufacture": 903.0,
-            "use": 696.0
+            "use": 696.38058
+            # "use": 696.0 - no rounding until #43 isn't implemented
         },
         "pe": {
             "manufacture": 12706.0,
