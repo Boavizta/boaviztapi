@@ -180,12 +180,101 @@ It returns :
 }
 ```
 
-### Retrieve the impacts of a _custom_ server
+## Retrieve the impacts of a _custom_ server
 
 In this query, you refer to a _standard_ server, but provide a specific configuration of the machine (like extra RAM).
 
 The API returns impacts, updated to reflect your _own_ server configuration.
 
+Query : 
+
 ```bash
-To be continued....
+curl -X 'POST' \
+  'http://api.boavizta.org:5000/v1/server/?verbose=true' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "model": {
+    "manufacturer": "Dell",
+    "name": "My-Dell740",
+    "type": "rack",
+    "year": 2020,
+    "archetype": "dellR740"
+  },
+  "configuration": {
+    "cpu": {
+      "units": 2,
+      "core_units": 24,
+      "die_size_per_core": 0.245
+    },
+    "ram": [
+      {
+        "units": 12,
+        "capacity": 32,
+        "density": 1.79
+      }
+    ],
+    "disk": [
+      {
+        "units": 2,
+        "type": "ssd",
+        "capacity": 400,
+        "density": 50.6
+      }
+    ],
+    "power_supply": {
+      "units": 2,
+      "unit_weight": 2.99
+    }
+  },
+  "usage": {
+    "max_power": 510,
+    "years_use_time": 1,
+    "days_use_time": 1,
+    "hours_use_time": 1,
+    "workload": {
+      "10": {
+        "time": 0.2,
+        "power": 0.5118
+      },
+      "50": {
+        "time": 0.55,
+        "power": 0.7235
+      },
+      "100": {
+        "time": 0.15,
+        "power": 1
+      },
+      "idle": {
+        "time": 0.1,
+        "power": 0.3941
+      }
+    }
+  }
+}'
+```
+
+* A server is sent with a custom [configuration](../Reference/configuration.md) and [usage](../Reference/usage.md) characteristics
+
+* ```"archetype": "dellR740"``` will replace all missing value with values from Boavizta's database dellR740
+
+Result :
+
+```json
+{
+  "impacts": {
+    "gwp": {
+      "manufacture": 994,
+      "use": 698
+    },
+    "pe": {
+      "manufacture": 13189,
+      "use": "Not Implemented"
+    },
+    "adp": {
+      "manufacture": 0.15,
+      "use": "Not Implemented"
+    }
+  }
+}
 ```

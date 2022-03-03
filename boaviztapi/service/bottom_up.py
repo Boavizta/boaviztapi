@@ -12,7 +12,7 @@ def bottom_up_device(device: Device, impact_codes: Optional[Set[str]] = None) ->
 
     impacts = {
         'gwp': {
-            'manufacture': device.impact_manufacture_gwp(),
+            'manufacture': round(device.impact_manufacture_gwp()),
             'use': device.impact_use_gwp()  # no rounding until #43 isn't implemented
         },
         'pe': {
