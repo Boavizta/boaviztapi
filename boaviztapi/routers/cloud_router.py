@@ -23,7 +23,7 @@ cloud_router = APIRouter(
 @cloud_router.post('/aws',
                    description=cloud_aws_description)
 def instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=cloud_usage_example["1"]),
-                          instance_type: str = Query(None, example="a1-4xlarge"), verbose: bool = True):
+                          instance_type: str = Query(None, example="a1.4xlarge"), verbose: bool = True):
     cloud_instance = CloudInstance()
 
     cloud_instance.usage = cloud_usage
@@ -45,7 +45,7 @@ def instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=cloud_usa
     return result
 
 
-@cloud_router.get('/all_aws_instances',
+@cloud_router.get('/aws/all_instances',
                   description=all_default_aws_instances)
 async def server_get_all_archetype_name():
     return get_device_archetype_lst(os.path.join(data_dir, 'devices/cloud/aws'))

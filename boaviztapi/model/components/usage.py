@@ -126,7 +126,7 @@ class UsageServer(Usage):
 
 
 class UsageCloud(UsageServer):
-    instance_per_server: Optional[int] = None
+    instance_per_server: Optional[float] = None
 
     def impact_gwp(self) -> float:
         return super().impact_gwp()

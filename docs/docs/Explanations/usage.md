@@ -17,7 +17,7 @@ The API handles three different time units :
 | DAYS      |
 | YEARS     |
 
-In the general case, when duration is not given, the impact is measured for a year.
+In the general case, when duration is not given, the impact is measured for 1 year.
 
 _Note : units are cumulative, if multiple units are used, they are summed._
 
