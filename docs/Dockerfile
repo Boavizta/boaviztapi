@@ -4,6 +4,7 @@ WORKDIR /docs
 
 RUN pip install mkdocs
 RUN pip install mkdocs-render-swagger-plugin
+RUN pip install mkdocs-material
 
 COPY . .
 
