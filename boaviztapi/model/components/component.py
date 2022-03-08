@@ -2,7 +2,7 @@ import hashlib
 import os
 from abc import abstractmethod
 from typing import Optional
-
+import boaviztapi.util.roundit as rd
 import pandas as pd
 from pydantic import BaseModel
 
@@ -19,15 +19,15 @@ class Component(BaseModel):
     TYPE: str = None
 
     @abstractmethod
-    def impact_gwp(self) -> float:
+    def impact_gwp(self) -> (float, int):
         pass
 
     @abstractmethod
-    def impact_pe(self) -> float:
+    def impact_pe(self) -> (float, int):
         pass
 
     @abstractmethod
-    def impact_adp(self) -> float:
+    def impact_adp(self) -> (float, int):
         pass
 
     @abstractmethod
@@ -78,23 +78,26 @@ class ComponentCPU(Component):
     model: Optional[str] = None
     family: Optional[str] = None
 
-    def impact_gwp(self) -> float:
+    def impact_gwp(self) -> (float, int):
         core_impact = self._IMPACT_FACTOR_DICT['constant_core_impact']
         cpu_die_impact = self._IMPACT_FACTOR_DICT['gwp']['die_impact']
         cpu_impact = self._IMPACT_FACTOR_DICT['gwp']['impact']
-        return (self.core_units * self.die_size_per_core + core_impact) * cpu_die_impact + cpu_impact
+        significant_figures=rd.min_significant_figures(self.die_size_per_core,core_impact,cpu_die_impact,cpu_impact)
+        return (self.core_units * self.die_size_per_core + core_impact) * cpu_die_impact + cpu_impact, significant_figures
 
-    def impact_pe(self) -> float:
+    def impact_pe(self) -> (float, int):
         core_impact = self._IMPACT_FACTOR_DICT['constant_core_impact']
         cpu_die_impact = self._IMPACT_FACTOR_DICT['pe']['die_impact']
         cpu_impact = self._IMPACT_FACTOR_DICT['pe']['impact']
-        return (self.core_units * self.die_size_per_core + core_impact) * cpu_die_impact + cpu_impact
+        significant_figures=rd.min_significant_figures(self.die_size_per_core,core_impact,cpu_die_impact,cpu_impact)
+        return (self.core_units * self.die_size_per_core + core_impact) * cpu_die_impact + cpu_impact,significant_figures
 
-    def impact_adp(self) -> float:
+    def impact_adp(self) -> (float, int):
         core_impact = self._IMPACT_FACTOR_DICT['constant_core_impact']
         cpu_die_impact = self._IMPACT_FACTOR_DICT['adp']['die_impact']
         cpu_impact = self._IMPACT_FACTOR_DICT['adp']['impact']
-        return (self.core_units * self.die_size_per_core + core_impact) * cpu_die_impact + cpu_impact
+        significant_figures=rd.min_significant_figures(self.die_size_per_core,core_impact,cpu_die_impact,cpu_impact)
+        return (self.core_units * self.die_size_per_core + core_impact) * cpu_die_impact + cpu_impact, significant_figures
 
     def smart_complete_data(self):
         if self.die_size_per_core and self.core_units:
@@ -170,20 +173,23 @@ class ComponentRAM(Component):
     model: Optional[str] = None
     integrator: Optional[str] = None
 
-    def impact_gwp(self) -> float:
+    def impact_gwp(self) -> (float, int):
         ram_die_impact = self._IMPACT_FACTOR_DICT['gwp']['die_impact']
         ram_impact = self._IMPACT_FACTOR_DICT['gwp']['impact']
-        return (self.capacity / self.density) * ram_die_impact + ram_impact
+        significant_figure = rd.min_significant_figures(self.density, ram_die_impact, ram_impact)
+        return ((self.capacity / self.density) * ram_die_impact + ram_impact, significant_figure)
 
-    def impact_pe(self) -> float:
+    def impact_pe(self) -> (float, int):
         ram_die_impact = self._IMPACT_FACTOR_DICT['pe']['die_impact']
         ram_impact = self._IMPACT_FACTOR_DICT['pe']['impact']
-        return (self.capacity / self.density) * ram_die_impact + ram_impact
+        significant_figure = rd.min_significant_figures(self.density, ram_die_impact, ram_impact)
+        return (self.capacity / self.density) * ram_die_impact + ram_impact, significant_figure
 
-    def impact_adp(self) -> float:
+    def impact_adp(self) -> (float, int):
         ram_die_impact = self._IMPACT_FACTOR_DICT['adp']['die_impact']
         ram_impact = self._IMPACT_FACTOR_DICT['adp']['impact']
-        return (self.capacity / self.density) * ram_die_impact + ram_impact
+        significant_figure = rd.min_significant_figures(self.density, ram_die_impact, ram_impact)
+        return ((self.capacity / self.density) * ram_die_impact + ram_impact, significant_figure)
 
     def smart_complete_data(self):
         if self.capacity and self.density:
@@ -235,14 +241,14 @@ class ComponentHDD(Component):
     manufacture_date: Optional[str] = None
     model: Optional[str] = None
 
-    def impact_gwp(self) -> float:
-        return self._IMPACT_FACTOR_DICT['gwp']['impact']
+    def impact_gwp(self) -> (float, int):
+        return self._IMPACT_FACTOR_DICT['gwp']['impact'], 4
 
-    def impact_pe(self) -> float:
-        return self._IMPACT_FACTOR_DICT['pe']['impact']
+    def impact_pe(self) -> (float, int):
+        return self._IMPACT_FACTOR_DICT['pe']['impact'], 3
 
-    def impact_adp(self) -> float:
-        return self._IMPACT_FACTOR_DICT['adp']['impact']
+    def impact_adp(self) -> (float, int):
+        return self._IMPACT_FACTOR_DICT['adp']['impact'], 3
 
     def smart_complete_data(self):
         pass
@@ -275,20 +281,23 @@ class ComponentSSD(Component):
     manufacture_date: Optional[str] = None
     model: Optional[str] = None
 
-    def impact_gwp(self) -> float:
+    def impact_gwp(self) -> (float, int):
         ssd_die_impact = self._IMPACT_FACTOR_DICT['gwp']['die_impact']
         ssd_impact = self._IMPACT_FACTOR_DICT['gwp']['impact']
-        return (self.capacity / self.density) * ssd_die_impact + ssd_impact
+        significant_figure = rd.min_significant_figures(self.density, ssd_impact, ssd_die_impact)
+        return (self.capacity / self.density) * ssd_die_impact + ssd_impact, significant_figure
 
-    def impact_pe(self) -> float:
+    def impact_pe(self) -> (float, int):
         ssd_die_impact = self._IMPACT_FACTOR_DICT['pe']['die_impact']
         ssd_impact = self._IMPACT_FACTOR_DICT['pe']['impact']
-        return (self.capacity / self.density) * ssd_die_impact + ssd_impact
+        significant_figure = rd.min_significant_figures(self.density, ssd_impact, ssd_die_impact)
+        return (self.capacity / self.density) * ssd_die_impact + ssd_impact, significant_figure
 
-    def impact_adp(self) -> float:
+    def impact_adp(self) -> (float, int):
         ssd_die_impact = self._IMPACT_FACTOR_DICT['adp']['die_impact']
         ssd_impact = self._IMPACT_FACTOR_DICT['adp']['impact']
-        return (self.capacity / self.density) * ssd_die_impact + ssd_impact
+        significant_figure = rd.min_significant_figures(self.density, ssd_impact, ssd_die_impact)
+        return (self.capacity / self.density) * ssd_die_impact + ssd_impact, significant_figure
 
     def smart_complete_data(self):
         if self.capacity and self.density:
@@ -334,20 +343,20 @@ class ComponentPowerSupply(Component):
 
     unit_weight: Optional[float] = None
 
-    def impact_gwp(self) -> float:
+    def impact_gwp(self) -> (float, int):
         power_supply_weight = self.unit_weight
         power_supply_impact = self._IMPACT_FACTOR_DICT['gwp']['impact']
-        return power_supply_weight * power_supply_impact
+        return power_supply_weight * power_supply_impact, 4
 
-    def impact_pe(self) -> float:
+    def impact_pe(self) -> (float, int):
         power_supply_weight = self.unit_weight
         power_supply_impact = self._IMPACT_FACTOR_DICT['pe']['impact']
-        return power_supply_weight * power_supply_impact
+        return power_supply_weight * power_supply_impact, 3
 
-    def impact_adp(self) -> float:
+    def impact_adp(self) -> (float, int):
         power_supply_weight = self.unit_weight
         power_supply_impact = self._IMPACT_FACTOR_DICT['adp']['impact']
-        return power_supply_weight * power_supply_impact
+        return power_supply_weight * power_supply_impact, 3
 
     def smart_complete_data(self):
         self.unit_weight = self.unit_weight \
@@ -369,14 +378,14 @@ class ComponentMotherBoard(Component):
         }
     }
 
-    def impact_gwp(self) -> float:
-        return self._IMPACT_FACTOR_DICT['gwp']['impact']
+    def impact_gwp(self) -> (float, int):
+        return self._IMPACT_FACTOR_DICT['gwp']['impact'], 4
 
-    def impact_pe(self) -> float:
-        return self._IMPACT_FACTOR_DICT['pe']['impact']
+    def impact_pe(self) -> (float, int):
+        return self._IMPACT_FACTOR_DICT['pe']['impact'], 3
 
-    def impact_adp(self) -> float:
-        return self._IMPACT_FACTOR_DICT['adp']['impact']
+    def impact_adp(self) -> (float, int):
+        return self._IMPACT_FACTOR_DICT['adp']['impact'], 3
 
     def smart_complete_data(self):
         pass
@@ -392,6 +401,7 @@ class ComponentCase(Component):
             },
             "pe": {
                 "impact": 2200.00
+
             },
             "adp": {
                 "impact": 2.02E-02
@@ -414,26 +424,32 @@ class ComponentCase(Component):
 
     }
 
-    def impact_gwp(self) -> float:
+    def impact_gwp(self) -> (float, int):
         if self.case_type == "blade":
-            return (self._IMPACT_FACTOR_DICT['blade']['gwp']['impact_blade_16_slots'] / 16) \
-                   + self._IMPACT_FACTOR_DICT['blade']['gwp']['impact_blade_server']
+            impact_blade_16_slots = self._IMPACT_FACTOR_DICT['blade']['gwp']['impact_blade_16_slots']
+            impact_blade_server = self._IMPACT_FACTOR_DICT['blade']['gwp']['impact_blade_server']
+            sigfig = rd.min_significant_figures(impact_blade_16_slots, impact_blade_server)
+            return (impact_blade_16_slots / 16) + impact_blade_server, sigfig
         else:
-            return self._IMPACT_FACTOR_DICT['rack']['gwp']['impact']
+            return self._IMPACT_FACTOR_DICT['rack']['gwp']['impact'], 5
 
-    def impact_pe(self) -> float:
+    def impact_pe(self) -> (float, int):
         if self.case_type == "blade":
-            return (self._IMPACT_FACTOR_DICT['blade']['pe']['impact_blade_16_slots'] / 16) \
-                   + self._IMPACT_FACTOR_DICT['blade']['pe']['impact_blade_server']
+            impact_blade_16_slots = self._IMPACT_FACTOR_DICT['blade']['pe']['impact_blade_16_slots']
+            impact_blade_server = self._IMPACT_FACTOR_DICT['blade']['pe']['impact_blade_server']
+            sigfig = rd.min_significant_figures(impact_blade_16_slots, impact_blade_server)
+            return (impact_blade_16_slots / 16) + impact_blade_server, sigfig
         else:
-            return self._IMPACT_FACTOR_DICT['rack']['pe']['impact']
+            return self._IMPACT_FACTOR_DICT['rack']['pe']['impact'], 4
 
-    def impact_adp(self) -> float:
+    def impact_adp(self) -> (float, int):
         if self.case_type == "blade":
-            return (self._IMPACT_FACTOR_DICT['blade']['adp']['impact_blade_16_slots'] / 16) \
-                   + self._IMPACT_FACTOR_DICT['blade']['adp']['impact_blade_server']
+            impact_blade_16_slots = self._IMPACT_FACTOR_DICT['blade']['adp']['impact_blade_16_slots']
+            impact_blade_server = self._IMPACT_FACTOR_DICT['blade']['adp']['impact_blade_server']
+            sigfig = rd.min_significant_figures(impact_blade_16_slots, impact_blade_server)
+            return (impact_blade_16_slots / 16) + impact_blade_server, sigfig
         else:
-            return self._IMPACT_FACTOR_DICT['rack']['adp']['impact']
+            return self._IMPACT_FACTOR_DICT['rack']['adp']['impact'], 3
 
     def smart_complete_data(self):
         if self.case_type is None:
@@ -446,23 +462,25 @@ class ComponentAssembly(Component):
     _IMPACT_FACTOR_DICT = {
         "gwp": {
             "impact": 6.68
+
         },
         "pe": {
             "impact": 68.60
+
         },
         "adp": {
             "impact": 1.41E-06
         }
     }
 
-    def impact_gwp(self) -> float:
-        return self._IMPACT_FACTOR_DICT['gwp']['impact']
+    def impact_gwp(self) -> (float, int):
+        return self._IMPACT_FACTOR_DICT['gwp']['impact'], 3
 
-    def impact_pe(self) -> float:
-        return self._IMPACT_FACTOR_DICT['pe']['impact']
+    def impact_pe(self) -> (float, int):
+        return self._IMPACT_FACTOR_DICT['pe']['impact'], 3
 
-    def impact_adp(self) -> float:
-        return self._IMPACT_FACTOR_DICT['adp']['impact']
+    def impact_adp(self) -> (float, int):
+        return self._IMPACT_FACTOR_DICT['adp']['impact'], 3
 
     def smart_complete_data(self):
         pass

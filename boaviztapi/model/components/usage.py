@@ -2,6 +2,7 @@ import os
 from abc import abstractmethod
 
 import pandas as pd
+import boaviztapi.util.roundit as rd
 
 from typing import Dict, Optional
 
@@ -13,6 +14,7 @@ _electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electrici
 
 class Usage(Component):
     TYPE = "USAGE"
+    DEFAULT_SIG_FIGURES: int = 3
 
     years_use_time: Optional[float] = None
     days_use_time: Optional[float] = None
@@ -29,16 +31,16 @@ class Usage(Component):
     _DEFAULT_YEAR_USE_TIME = 1
 
     @abstractmethod
-    def impact_gwp(self) -> float:
-        return self.hours_electrical_consumption * self.get_duration_hours() * self.gwp_factor
+    def impact_gwp(self) -> (float, int):
+        return self.hours_electrical_consumption * self.get_duration_hours() * self.gwp_factor, self.DEFAULT_SIG_FIGURES
 
     @abstractmethod
-    def impact_pe(self) -> float:
-        return self.hours_electrical_consumption * self.get_duration_hours() * self.pe_factor
+    def impact_pe(self) -> (float, int):
+        return self.hours_electrical_consumption * self.get_duration_hours() * self.pe_factor, self.DEFAULT_SIG_FIGURES
 
     @abstractmethod
-    def impact_adp(self):
-        return self.hours_electrical_consumption * self.get_duration_hours() * self.adp_factor
+    def impact_adp(self) -> (float, int):
+        return self.hours_electrical_consumption * self.get_duration_hours() * self.adp_factor, self.DEFAULT_SIG_FIGURES
 
     @abstractmethod
     def get_hours_electrical_consumption(self):
@@ -96,14 +98,14 @@ class UsageServer(Usage):
     max_power: Optional[float] = None
     workload: Optional[Dict[str, Dict[str, float]]] = None
 
-    def impact_gwp(self) -> float:
-        return super().impact_gwp()
+    def impact_gwp(self) -> (float, int):
+        return super().impact_gwp()[0], 3
 
-    def impact_pe(self) -> float:
-        return super().impact_pe()
+    def impact_pe(self) -> (float, int):
+        return super().impact_pe()[0], 3
 
-    def impact_adp(self):
-        return super().impact_adp()
+    def impact_adp(self) -> (float, int):
+        return super().impact_adp()[0], 3
 
     def get_hours_electrical_consumption(self) -> float:
         hours_electrical_consumption = 0
@@ -128,14 +130,14 @@ class UsageServer(Usage):
 class UsageCloud(UsageServer):
     instance_per_server: Optional[float] = None
 
-    def impact_gwp(self) -> float:
-        return super().impact_gwp()
+    def impact_gwp(self) -> (float, int):
+        return super().impact_gwp(), super().DEFAULT_SIG_FIGURES
 
-    def impact_pe(self) -> float:
-        return super().impact_pe()
+    def impact_pe(self) -> (float, int):
+        return super().impact_pe(), super().DEFAULT_SIG_FIGURES
 
-    def impact_adp(self):
-        return super().impact_adp()
+    def impact_adp(self)-> (float, int):
+        return super().impact_adp(), super().DEFAULT_SIG_FIGURES
 
     def smart_complete_data(self):
         super().smart_complete_data()
