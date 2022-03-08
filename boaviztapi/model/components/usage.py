@@ -2,7 +2,6 @@ import os
 from abc import abstractmethod
 
 import pandas as pd
-import boaviztapi.util.roundit as rd
 
 from typing import Dict, Optional
 
@@ -11,10 +10,10 @@ from boaviztapi.model.components.component import Component
 
 _electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electricity/usage_impact_factors.csv'))
 
+DEFAULT_SIG_FIGURES: int = 3
 
 class Usage(Component):
     TYPE = "USAGE"
-    DEFAULT_SIG_FIGURES: int = 3
 
     years_use_time: Optional[float] = None
     days_use_time: Optional[float] = None
@@ -32,15 +31,15 @@ class Usage(Component):
 
     @abstractmethod
     def impact_gwp(self) -> (float, int):
-        return self.hours_electrical_consumption * self.get_duration_hours() * self.gwp_factor, self.DEFAULT_SIG_FIGURES
+        return self.hours_electrical_consumption * self.get_duration_hours() * self.gwp_factor, DEFAULT_SIG_FIGURES
 
     @abstractmethod
     def impact_pe(self) -> (float, int):
-        return self.hours_electrical_consumption * self.get_duration_hours() * self.pe_factor, self.DEFAULT_SIG_FIGURES
+        return self.hours_electrical_consumption * self.get_duration_hours() * self.pe_factor, DEFAULT_SIG_FIGURES
 
     @abstractmethod
     def impact_adp(self) -> (float, int):
-        return self.hours_electrical_consumption * self.get_duration_hours() * self.adp_factor, self.DEFAULT_SIG_FIGURES
+        return self.hours_electrical_consumption * self.get_duration_hours() * self.adp_factor, DEFAULT_SIG_FIGURES
 
     @abstractmethod
     def get_hours_electrical_consumption(self):
@@ -131,13 +130,13 @@ class UsageCloud(UsageServer):
     instance_per_server: Optional[float] = None
 
     def impact_gwp(self) -> (float, int):
-        return super().impact_gwp(), super().DEFAULT_SIG_FIGURES
+        return super().impact_gwp()
 
     def impact_pe(self) -> (float, int):
-        return super().impact_pe(), super().DEFAULT_SIG_FIGURES
+        return super().impact_pe()
 
     def impact_adp(self)-> (float, int):
-        return super().impact_adp(), super().DEFAULT_SIG_FIGURES
+        return super().impact_adp()
 
     def smart_complete_data(self):
         super().smart_complete_data()
