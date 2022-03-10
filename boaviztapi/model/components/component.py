@@ -2,7 +2,7 @@ import hashlib
 import os
 from abc import abstractmethod
 from typing import Optional
-import boaviztapi.util.roundit as rd
+import boaviztapi.service.roundit as rd
 import pandas as pd
 from pydantic import BaseModel
 

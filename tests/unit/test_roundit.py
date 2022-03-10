@@ -1,4 +1,4 @@
-import boaviztapi.util.roundit as rd
+import boaviztapi.service.roundit as rd
 
 
 def test_sigfig_():

@@ -12,6 +12,7 @@ _electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electrici
 
 DEFAULT_SIG_FIGURES: int = 3
 
+
 class Usage(Component):
     TYPE = "USAGE"
 
@@ -84,7 +85,7 @@ class Usage(Component):
 
 
 class UsageServer(Usage):
-    # TODO: Set default workload ratio and corresponding power of DELL R740 LCA
+    # TODO: Set dfault workload ratio and corresponding power of DELL R740 LCA
     _DEFAULT_MAX_POWER = 510
 
     _DEFAULT_WORKLOAD = {"100": {"time": (3.6 / 24), "power": 1.0},
@@ -135,7 +136,7 @@ class UsageCloud(UsageServer):
     def impact_pe(self) -> (float, int):
         return super().impact_pe()
 
-    def impact_adp(self)-> (float, int):
+    def impact_adp(self) -> (float, int):
         return super().impact_adp()
 
     def smart_complete_data(self):
