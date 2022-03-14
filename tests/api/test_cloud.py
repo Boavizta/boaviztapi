@@ -30,17 +30,19 @@ async def test_complete_usage():
 
     assert res.json() == {
         "gwp": {
-            "manufacture": 565.0,
-            "use": 0.00560505  # no rounding until #43 isn't implemented
-
+            "manufacture": 560.0,
+            "use": 0.0056,
+            "unit": "kgCO2eq"
         },
         "pe": {
-            "manufacture": 7720.0,
-            "use": "Not Implemented"
+            "manufacture": 7700.0,
+            "use": "Not Implemented",
+            "unit": "MJ"
         },
         "adp": {
-            "manufacture": 0.102,
-            "use": "Not Implemented"
+            "manufacture": 0.1,
+            "use": "Not Implemented",
+            "unit": "kgSbeq"
         }
     }
 
@@ -52,15 +54,18 @@ async def test_default_usage():
 
     assert res.json() == {
         "gwp": {
-            "manufacture": 565.0,
-            "use": 100.8786708  # no rounding until #43 isn't implemented
+            "manufacture": 560.0,
+            "use": 100,
+            "unit": "kgCO2eq"
         },
         "pe": {
-            "manufacture": 7720.0,
-            "use": "Not Implemented"
+            "manufacture": 7700.0,
+            "use": "Not Implemented",
+            "unit": "MJ"
         },
         "adp": {
-            "manufacture": 0.102,
-            "use": "Not Implemented"
+            "manufacture": 0.1,
+            "use": "Not Implemented",
+            "unit": "kgSbeq"
         }
     }

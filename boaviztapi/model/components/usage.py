@@ -10,6 +10,8 @@ from boaviztapi.model.components.component import Component
 
 _electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electricity/usage_impact_factors.csv'))
 
+DEFAULT_SIG_FIGURES: int = 3
+
 
 class Usage(Component):
     TYPE = "USAGE"
@@ -29,16 +31,16 @@ class Usage(Component):
     _DEFAULT_YEAR_USE_TIME = 1
 
     @abstractmethod
-    def impact_gwp(self) -> float:
-        return self.hours_electrical_consumption * self.get_duration_hours() * self.gwp_factor
+    def impact_gwp(self) -> (float, int):
+        return self.hours_electrical_consumption * self.get_duration_hours() * self.gwp_factor, DEFAULT_SIG_FIGURES
 
     @abstractmethod
-    def impact_pe(self) -> float:
-        return self.hours_electrical_consumption * self.get_duration_hours() * self.pe_factor
+    def impact_pe(self) -> (float, int):
+        return self.hours_electrical_consumption * self.get_duration_hours() * self.pe_factor, DEFAULT_SIG_FIGURES
 
     @abstractmethod
-    def impact_adp(self):
-        return self.hours_electrical_consumption * self.get_duration_hours() * self.adp_factor
+    def impact_adp(self) -> (float, int):
+        return self.hours_electrical_consumption * self.get_duration_hours() * self.adp_factor, DEFAULT_SIG_FIGURES
 
     @abstractmethod
     def get_hours_electrical_consumption(self):
@@ -83,7 +85,7 @@ class Usage(Component):
 
 
 class UsageServer(Usage):
-    # TODO: Set default workload ratio and corresponding power of DELL R740 LCA
+    # TODO: Set dfault workload ratio and corresponding power of DELL R740 LCA
     _DEFAULT_MAX_POWER = 510
 
     _DEFAULT_WORKLOAD = {"100": {"time": (3.6 / 24), "power": 1.0},
@@ -96,14 +98,14 @@ class UsageServer(Usage):
     max_power: Optional[float] = None
     workload: Optional[Dict[str, Dict[str, float]]] = None
 
-    def impact_gwp(self) -> float:
-        return super().impact_gwp()
+    def impact_gwp(self) -> (float, int):
+        return super().impact_gwp()[0], 3
 
-    def impact_pe(self) -> float:
-        return super().impact_pe()
+    def impact_pe(self) -> (float, int):
+        return super().impact_pe()[0], 3
 
-    def impact_adp(self):
-        return super().impact_adp()
+    def impact_adp(self) -> (float, int):
+        return super().impact_adp()[0], 3
 
     def get_hours_electrical_consumption(self) -> float:
         hours_electrical_consumption = 0
@@ -128,13 +130,13 @@ class UsageServer(Usage):
 class UsageCloud(UsageServer):
     instance_per_server: Optional[float] = None
 
-    def impact_gwp(self) -> float:
+    def impact_gwp(self) -> (float, int):
         return super().impact_gwp()
 
-    def impact_pe(self) -> float:
+    def impact_pe(self) -> (float, int):
         return super().impact_pe()
 
-    def impact_adp(self):
+    def impact_adp(self) -> (float, int):
         return super().impact_adp()
 
     def smart_complete_data(self):

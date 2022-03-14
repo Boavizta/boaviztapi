@@ -21,27 +21,27 @@ class Device(BaseModel):
     usage: Usage = None
 
     @abstractmethod
-    def impact_manufacture_gwp(self) -> float:
+    def impact_manufacture_gwp(self) -> (float, int):
         pass
 
     @abstractmethod
-    def impact_manufacture_pe(self) -> float:
+    def impact_manufacture_pe(self) -> (float, int):
         pass
 
     @abstractmethod
-    def impact_manufacture_adp(self) -> float:
+    def impact_manufacture_adp(self) -> (float, int):
         pass
 
     @abstractmethod
-    def impact_use_gwp(self) -> float:
+    def impact_use_gwp(self) -> (float, int):
         pass
 
     @abstractmethod
-    def impact_use_pe(self) -> float:
+    def impact_use_pe(self) -> (float, int):
         pass
 
     @abstractmethod
-    def impact_use_adp(self) -> float:
+    def impact_use_adp(self) -> (float, int):
         pass
 
     @abstractmethod
@@ -66,22 +66,31 @@ class Server(Device):
 
     usage: UsageServer = None
 
-    def impact_manufacture_gwp(self) -> float:
-        return sum([item.impact_gwp() for item in self.config_components])
+    def impact_manufacture_gwp(self) -> (float, int):
+        impacts = [item.impact_gwp() for item in self.config_components]
+        sum_impacts = sum(item[0] for item in impacts)
+        significant_figure = min(item[1] for item in impacts)
+        return sum_impacts, significant_figure
 
-    def impact_manufacture_pe(self) -> float:
-        return sum([item.impact_pe() for item in self.config_components])
+    def impact_manufacture_pe(self) -> (float, int):
+        impacts = [item.impact_pe() for item in self.config_components]
+        sum_impacts = sum(item[0] for item in impacts)
+        significant_figure = min(item[1] for item in impacts)
+        return sum_impacts, significant_figure
 
-    def impact_manufacture_adp(self) -> float:
-        return sum([item.impact_adp() for item in self.config_components])
+    def impact_manufacture_adp(self) -> (float, int):
+        impacts = [item.impact_adp() for item in self.config_components]
+        sum_impacts = sum(item[0] for item in impacts)
+        significant_figure = min(item[1] for item in impacts)
+        return sum_impacts, significant_figure
 
-    def impact_use_gwp(self) -> float:
+    def impact_use_gwp(self) -> (float, int):
         return self.usage.impact_gwp()
 
-    def impact_use_pe(self) -> float:
+    def impact_use_pe(self) -> (float, int):
         return self.usage.impact_pe()
 
-    def impact_use_adp(self) -> float:
+    def impact_use_adp(self) -> (float, int):
         return self.usage.impact_adp()
 
     def smart_complete_data(self):
@@ -149,20 +158,20 @@ class Server(Device):
 class CloudInstance(Server):
     usage: UsageCloud = None
 
-    def impact_manufacture_gwp(self) -> float:
-        return super().impact_manufacture_gwp() / self.usage.instance_per_server
+    def impact_manufacture_gwp(self) -> (float, int):
+        return super().impact_manufacture_gwp()[0] / self.usage.instance_per_server, super().impact_manufacture_gwp()[1]
 
-    def impact_manufacture_pe(self) -> float:
-        return super().impact_manufacture_pe() / self.usage.instance_per_server
+    def impact_manufacture_pe(self) -> (float, int):
+        return super().impact_manufacture_pe()[0] / self.usage.instance_per_server, super().impact_manufacture_gwp()[1]
 
-    def impact_manufacture_adp(self) -> float:
-        return super().impact_manufacture_adp() / self.usage.instance_per_server
+    def impact_manufacture_adp(self) -> (float, int):
+        return super().impact_manufacture_adp()[0] / self.usage.instance_per_server, super().impact_manufacture_gwp()[1]
 
-    def impact_use_gwp(self) -> float:
-        return super().impact_use_gwp() / self.usage.instance_per_server
+    def impact_use_gwp(self) -> (float, int):
+        return super().impact_use_gwp()[0] / self.usage.instance_per_server, super().impact_manufacture_gwp()[1]
 
-    def impact_use_pe(self) -> float:
-        return super().impact_use_pe() / self.usage.instance_per_server
+    def impact_use_pe(self) -> (float, int):
+        return super().impact_use_pe()[0] / self.usage.instance_per_server, super().impact_manufacture_gwp()[1]
 
-    def impact_use_adp(self) -> float:
-        return super().impact_use_adp() / self.usage.instance_per_server
+    def impact_use_adp(self) -> (float, int):
+        return super().impact_use_adp()[0] / self.usage.instance_per_server, super().impact_manufacture_gwp()[1]
