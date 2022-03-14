@@ -2,7 +2,7 @@ from typing import Set, Optional
 
 from boaviztapi.model.components.component import Component
 from boaviztapi.model.devices.device import Device
-import boaviztapi.service.roundit as rd
+import boaviztapi.utils.roundit as rd
 
 _default_impacts_code = {"gwp", "pe", "adp"}
 

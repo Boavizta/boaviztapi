@@ -1,6 +1,6 @@
 from boaviztapi.model.components.component import Component
 from boaviztapi.model.devices.device import Device
-import boaviztapi.service.roundit as rd
+import boaviztapi.utils.roundit as rd
 
 
 def verbose_device(complete_device: Device, input_device: Device):
