@@ -111,17 +111,8 @@ class ComponentCPU(Component):
         else:
             sub = _cpu_df
 
-            if self.manufacturer:
-                sub = sub[sub['manufacturer'] == self.manufacturer]
-
             if self.family:
                 sub = sub[sub['family'] == self.family]
-
-            if self.manufacture_date:
-                sub = sub[sub['manufacture_date'] == self.manufacture_date]
-
-            if self.process:
-                sub = sub[sub['process'] == self.process]
 
             if self.core_units:
                 sub = sub[sub['process'] == self.core_units]

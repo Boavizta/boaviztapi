@@ -11,7 +11,6 @@ Intel,Skylake,2017,14,325,10,0.325,https://en.wikichip.org/wiki/intel/microarchi
 Intel,Skylake,2017,14,325,8,0.40625,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
 Intel,Skylake,2017,14,325,6,0.5416666667,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
 Intel,Skylake,2017,14,325,4,0.8125,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
-Intel,Coffee Lake,2017,14,unknown,2,unknown,
 Intel,Coffee Lake,2017,14,126,4,0.315,https://en.wikichip.org/wiki/intel/microarchitectures/coffee_lake
 Intel,Coffee Lake,2017,14,149,6,0.248,https://en.wikichip.org/wiki/intel/microarchitectures/coffee_lake
 Intel,Coffee Lake,2017,14,174,8,0.218,https://en.wikichip.org/wiki/intel/microarchitectures/coffee_lakee
@@ -26,7 +25,6 @@ Intel,Broadwell,2014,14,246,10,0.246,https://en.wikichip.org/wiki/intel/microarc
 Intel,Broadwell,2014,14,246,8,0.3075,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
 Intel,Broadwell,2014,14,246,6,0.41,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
 Intel,Broadwell,2014,14,182,4,0.455,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
-Intel,Broadwell,2014,14,unknown,2,unknown,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
 Intel,Haswell,2013,22,622,18,0.346,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
 Intel,Haswell,2013,22,622,16,0.38875,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
 Intel,Haswell,2013,22,622,14,0.4442857143,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
@@ -34,17 +32,12 @@ Intel,Haswell,2013,22,622,12,0.5183333333,https://en.wikichip.org/wiki/intel/mic
 Intel,Haswell,2013,22,622,10,0.622,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
 Intel,Haswell,2013,22,356,8,0.445,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
 Intel,Haswell,2013,22,356,6,0.5933333333,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
-Intel,Haswell,2013,22,unknown,4,unknown,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
-Intel,Haswell,2013,22,unknown,2,unknown,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
 Intel,Ivy Bridge,2011,22,160,4,0.400,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client)
 Intel,Ivy Bridge,2011,22,257,6,0.428,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client))
 Intel,Ivy Bridge,2011,22,341,10,0.341,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client)
 Intel,Ivy Bridge,2011,22,541,15,0.361,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client)
 Intel,Sandy Bridge,2010,32,216,4,0.540,https://en.wikichip.org/wiki/intel/microarchitectures/sandy_bridge_(client)
-Intel,Sandy Bridge,2010,32,unknown,2,unknown,https://en.wikichip.org/wiki/intel/microarchitectures/sandy_bridge_(client)
 Intel,Kaby Lake,2017,14,126,4,0.315,https://en.wikichip.org/wiki/intel/microarchitectures/kaby_lake
-Intel,Kaby Lake,2017,14,unknown,2,unknown,https://en.wikichip.org/wiki/intel/microarchitectures/kaby_lake
-Amd,Zen,2017,7,unknown,8,unknown,
 Amd,Zen2,2019,7,74,4,0.185,https://www.techarp.com/computer/amd-zen-3-tech-report/
 Amd,Zen2,2019,7,74,6,0.1233333333,https://www.techarp.com/computer/amd-zen-3-tech-report/
 Amd,Zen2,2019,7,74,8,0.0925,https://www.techarp.com/computer/amd-zen-3-tech-report/
@@ -58,31 +51,4 @@ Amd,Zen3,2020,7,81,16,0.050625,https://www.techarp.com/computer/amd-zen-3-tech-r
 Amd,Zen3,2020,7,81,24,0.03375,https://www.techarp.com/computer/amd-zen-3-tech-report/
 Amd,Zen3,2020,7,81,24,0.03375,https://www.techarp.com/computer/amd-zen-3-tech-report/
 Amd,Zen3,2020,7,81,32,0.0253125,https://www.techarp.com/computer/amd-zen-3-tech-report/
-Annapurna Labs,Graviton,2018,16,unknown,16,unknown,
 Annapurna Labs,Graviton2,2019,7,457,64,0.07140625,https://en.wikichip.org/wiki/annapurna_labs/alpine/alc12b00
-Intel,Ice Lake,2021,10,unknown,8,unknown,
-Intel,Ice Lake,2021,10,unknown,10,unknown,
-Intel,Ice Lake,2021,10,unknown,12,unknown,
-Intel,Ice Lake,2021,10,unknown,16,unknown,
-Intel,Ice Lake,2021,10,unknown,18,unknown,
-Intel,Ice Lake,2021,10,unknown,20,unknown,
-Intel,Ice Lake,2021,10,unknown,24,unknown,
-Intel,Ice Lake,2021,10,unknown,26,unknown,
-Intel,Ice Lake,2021,10,unknown,28,unknown,
-Intel,Ice Lake,2021,10,unknown,32,unknown,
-Intel,Cascade Lake,2019,14,unknown,56,unknown,
-Intel,Cascade Lake,2019,14,unknown,48,unknown,
-Intel,Cascade Lake,2019,14,unknown,32,unknown,
-Intel,Cascade Lake,2019,14,unknown,28,unknown,
-Intel,Cascade Lake,2019,14,unknown,26,unknown,
-Intel,Cascade Lake,2019,14,unknown,24,unknown,
-Intel,Cascade Lake,2019,14,unknown,22,unknown,
-Intel,Cascade Lake,2019,14,unknown,20,unknown,
-Intel,Cascade Lake,2019,14,unknown,18,unknown,
-Intel,Cascade Lake,2019,14,unknown,16,unknown,
-Intel,Cascade Lake,2019,14,unknown,12,unknown,
-Intel,Cascade Lake,2019,14,unknown,10,unknown,
-Intel,Cascade Lake,2019,14,unknown,8,unknown,
-Intel,Cascade Lake,2019,14,unknown,6,unknown,
-Intel,Cascade Lake,2019,14,unknown,4,unknown,
-Intel,Cascade Lake,2019,14,unknown,2,unknown,
