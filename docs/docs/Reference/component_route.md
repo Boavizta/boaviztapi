@@ -30,10 +30,9 @@ In this case, only default value are used.
 {
    "core_units": 24,
    "family": "Skylake",
-   "manufacture_date": 2017
 }
 ```
-*Incomplete CPU, die-size will be retrieved with the cpu family and manufacture date*
+*Incomplete CPU, die-size will be retrieved with the cpu family and core_units*
 
 
 ## ```/v1/component/ssd```
@@ -48,7 +47,7 @@ In this case, only default value are used.
 
 ``` json
 {
-   "core_units": 24,
+   "capacity": 500,
    "manufacturer": "Samsung",
 }
 ```
