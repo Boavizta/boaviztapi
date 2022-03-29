@@ -2,6 +2,7 @@ import pytest
 from httpx import AsyncClient
 
 from boaviztapi.main import app
+
 pytest_plugins = ('pytest_asyncio',)
 
 
@@ -14,12 +15,12 @@ async def test_complete_cpu():
         "gwp": {
             "manufacture": 15.9,
             "use": "not implemented",
-            "unit" : "kgCO2eq"
+            "unit": "kgCO2eq"
         },
         "pe": {
             "manufacture": 247,
             "use": "not implemented",
-            "unit":"MJ"
+            "unit": "MJ"
         },
         "adp": {
             "manufacture": 0.020,
@@ -27,6 +28,7 @@ async def test_complete_cpu():
             "unit": "kgSbeq"
         }
     }
+
 
 @pytest.mark.asyncio
 async def test_complete_cpu_verbose():
@@ -52,6 +54,7 @@ async def test_complete_cpu_verbose():
             }
         },
         "verbose": {
+            "units": 1,
             "core_units": {
                 "input_value": 12,
                 "status": "UNCHANGED",
@@ -63,12 +66,13 @@ async def test_complete_cpu_verbose():
                 "used_value": 0.245
             },
             "impacts": {
-                "adp": {"value" : 0.02, "unit" : "kgSbeq"},
-                "gwp": {"value" :15.9, "unit" : "kgCO2eq"},
-                "pe": {"value" : 247.0, "unit" : "MJ"}
+                "adp": {"value": 0.02, "unit": "kgSbeq"},
+                "gwp": {"value": 15.9, "unit": "kgCO2eq"},
+                "pe": {"value": 247.0, "unit": "MJ"}
             }
         }
     }
+
 
 @pytest.mark.asyncio
 async def test_complete_cpu_with_low_precision():
@@ -79,12 +83,12 @@ async def test_complete_cpu_with_low_precision():
         "gwp": {
             "manufacture": 10.0,
             "use": "not implemented",
-            "unit" : "kgCO2eq"
+            "unit": "kgCO2eq"
         },
         "pe": {
             "manufacture": 200.0,
             "use": "not implemented",
-            "unit":"MJ"
+            "unit": "MJ"
         },
         "adp": {
             "manufacture": 0.02,
@@ -92,6 +96,7 @@ async def test_complete_cpu_with_low_precision():
             "unit": "kgSbeq"
         }
     }
+
 
 @pytest.mark.asyncio
 async def test_empty_cpu():
@@ -102,15 +107,40 @@ async def test_empty_cpu():
         "gwp": {
             "manufacture": 21.7,
             "use": "not implemented",
-            "unit" : "kgCO2eq"
+            "unit": "kgCO2eq"
         },
         "pe": {
             "manufacture": 325.0,
             "use": "not implemented",
-            "unit":"MJ"
+            "unit": "MJ"
         },
         "adp": {
             "manufacture": 0.020,
+            "use": "not implemented",
+            "unit": "kgSbeq"
+        }
+    }
+
+
+@pytest.mark.asyncio
+async def test_multiple_cpu():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/component/cpu?verbose=false', json={
+            "units": 3, "core_units": 12, "die_size_per_core": 0.245})
+
+    assert res.json() == {
+        "gwp": {
+            "manufacture": 47.7,
+            "use": "not implemented",
+            "unit": "kgCO2eq"
+        },
+        "pe": {
+            "manufacture": 741.0,
+            "use": "not implemented",
+            "unit": "MJ"
+        },
+        "adp": {
+            "manufacture": 0.061,
             "use": "not implemented",
             "unit": "kgSbeq"
         }
@@ -124,17 +154,17 @@ async def test_complete_ram():
 
     assert res.json() == {
         "gwp": {
-            "manufacture": 45.0,
+            "manufacture": 530.0,
             "use": "not implemented",
             "unit": "kgCO2eq"
         },
         "pe": {
-            "manufacture": 560.0,
+            "manufacture": 6700.0,
             "use": "not implemented",
             "unit": "MJ"
         },
         "adp": {
-            "manufacture": 0.0028,
+            "manufacture": 0.034,
             "use": "not implemented",
             "unit": "kgSbeq"
         }
@@ -212,6 +242,7 @@ async def test_empty_ssd():
             "unit": "kgSbeq"
         },
     }
+
 
 @pytest.mark.asyncio
 async def test_empty_blade():

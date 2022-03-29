@@ -2,8 +2,8 @@ import copy
 
 from fastapi import APIRouter, Body
 
-from boaviztapi.model.components.component import ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
-    ComponentMotherBoard, ComponentPowerSupply, ComponentCase
+from boaviztapi.dto.component_dto import Cpu, Ram, Disk, PowerSupply, MotherBoard, Case
+from boaviztapi.model.components.component import ComponentMotherBoard, ComponentCase
 from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
     hdd_description, motherboard_description, power_supply_description, case_description
 from boaviztapi.routers.openapi_doc.examples import components_examples
@@ -18,86 +18,98 @@ component_router = APIRouter(
 
 @component_router.post('/cpu',
                        description=cpu_description)
-async def cpu_impact_bottom_up(cpu: ComponentCPU = Body(None, example=components_examples["cpu"]), verbose: bool = True):
-    completed_cpu = copy.deepcopy(cpu)
-    impacts = bottom_up_component(component=completed_cpu)
+async def cpu_impact_bottom_up(cpu: Cpu = Body(None, example=components_examples["cpu"]), verbose: bool = True):
+    component_cpu = cpu.to_component()
+    completed_cpu = copy.deepcopy(component_cpu)
+    impacts = bottom_up_component(component=component_cpu, units=cpu.units or 1)
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(completed_cpu, cpu)}
+                  "verbose": verbose_component(completed_cpu, component_cpu, units=cpu.units or 1)}
     return result
 
 
 @component_router.post('/ram',
                        description=ram_description)
-async def ram_impact_bottom_up(ram: ComponentRAM = Body(None, example=components_examples["ram"]), verbose: bool = True):
-    completed_ram = copy.deepcopy(ram)
-    impacts = bottom_up_component(component=completed_ram)
+async def ram_impact_bottom_up(ram: Ram = Body(None, example=components_examples["ram"]),
+                               verbose: bool = True):
+    component_ram = ram.to_component()
+    completed_ram = copy.deepcopy(component_ram)
+    impacts = bottom_up_component(component=component_ram, units=ram.units or 1)
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(completed_ram, ram)}
+                  "verbose": verbose_component(completed_ram, component_ram, units=ram.units or 1)}
     return result
 
 
 @component_router.post('/ssd',
                        description=ssd_description)
-async def ssd_impact_bottom_up(ssd: ComponentSSD = Body(None, example=components_examples["ssd"]), verbose: bool = True):
-    completed_ssd = copy.deepcopy(ssd)
-    impacts = bottom_up_component(component=completed_ssd)
+async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examples["ssd"]),
+                                verbose: bool = True):
+    disk.type = "ssd"
+    component_disk = disk.to_component()
+    completed_disk = copy.deepcopy(component_disk)
+    impacts = bottom_up_component(component=completed_disk, units=disk.units or 1)
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(completed_ssd, ssd)}
+                  "verbose": verbose_component(completed_disk, component_disk, units=disk.units or 1)}
     return result
 
 
 @component_router.post('/hdd',
                        description=hdd_description)
-async def hdd_impact_bottom_up(hdd: ComponentHDD = Body(None, example=components_examples["hdd"]), verbose: bool = True):
-    completed_hdd = copy.deepcopy(hdd)
-    impacts = bottom_up_component(component=completed_hdd)
+async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examples["hdd"]),
+                                verbose: bool = True):
+    disk.type = "hdd"
+    disk_component = disk.to_component()
+    completed_disk = copy.deepcopy(disk_component)
+    impacts = bottom_up_component(component=completed_disk, units=disk.units or 1)
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(completed_hdd, hdd)}
+                  "verbose": verbose_component(completed_disk, disk_component, units=disk.units or 1)}
     return result
 
 
 @component_router.post('/motherboard',
                        description=motherboard_description)
-async def motherboard_impact_bottom_up(motherboard: ComponentMotherBoard
-                                 = Body(None, example=components_examples["motherboard"]), verbose: bool = True):
-    completed_motherboard = copy.deepcopy(motherboard)
-    impacts = bottom_up_component(component=completed_motherboard)
+async def motherboard_impact_bottom_up(motherboard: MotherBoard
+                                       = Body(None, example=components_examples["motherboard"]), verbose: bool = True):
+    component_motherboard = motherboard.to_component()
+    completed_motherboard = copy.deepcopy(component_motherboard)
+    impacts = bottom_up_component(component=completed_motherboard, units=disk.units or 1)
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(completed_motherboard, motherboard)}
+                  "verbose": verbose_component(completed_motherboard, completed_motherboard, units=disk.units or 1)}
     return result
 
 
 @component_router.post('/power_supply',
                        description=power_supply_description)
-async def power_supply_impact_bottom_up(power_supply: ComponentPowerSupply =
-                                  Body(None, example=components_examples["power_supply"]), verbose: bool = True):
-    completed_power_supply = copy.deepcopy(power_supply)
-    impacts = bottom_up_component(component=completed_power_supply)
+async def power_supply_impact_bottom_up(power_supply: PowerSupply =
+                                        Body(None, example=components_examples["power_supply"]), verbose: bool = True):
+    component_power_supply = power_supply.to_component()
+    completed_power_supply = copy.deepcopy(component_power_supply)
+    impacts = bottom_up_component(component=completed_power_supply, units=power_supply.units or 1)
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(completed_power_supply, power_supply)}
+                  "verbose": verbose_component(completed_power_supply, component_power_supply, units=power_supply.units or 1)}
     return result
 
 
 @component_router.post('/case',
                        description=case_description)
-async def case_impact_bottom_up(case: ComponentCase = Body(None, example=components_examples["case"]),
-                          verbose: bool = True):
-    completed_case = copy.deepcopy(case)
-    impacts = bottom_up_component(component=completed_case)
+async def case_impact_bottom_up(case: Case = Body(None, example=components_examples["case"]),
+                                verbose: bool = True):
+    component_case = case.to_component()
+    completed_case = copy.deepcopy(component_case)
+    impacts = bottom_up_component(component=completed_case, units=case.units or 1)
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(completed_case, case)}
+                  "verbose": verbose_component(completed_case, component_case, units=case.units or 1)}
     return result

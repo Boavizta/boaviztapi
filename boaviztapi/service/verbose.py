@@ -44,15 +44,24 @@ def verbose_device(complete_device: Device, input_device: Device):
                                                            input_component=matching_component)}
 
     for item in json_output:
-        json_output[item]["impacts"]["gwp"] = {'value':json_output[item]["impacts"]["gwp"]['value'] * json_output[item]["unit"], 'unit':json_output[item]["impacts"]["gwp"]['unit']}
-        json_output[item]["impacts"]["pe"] = {'value':json_output[item]["impacts"]["pe"]['value'] * json_output[item]["unit"], 'unit':json_output[item]["impacts"]["gwp"]['unit']}
-        json_output[item]["impacts"]["adp"] = {'value':json_output[item]["impacts"]["adp"]['value'] * json_output[item]["unit"], 'unit':json_output[item]["impacts"]["gwp"]['unit']}
+        json_output[item]["impacts"]["gwp"] = {
+            'value': json_output[item]["impacts"]["gwp"]['value'] * json_output[item]["unit"],
+            'unit': json_output[item]["impacts"]["gwp"]['unit']}
+        json_output[item]["impacts"]["pe"] = {
+            'value': json_output[item]["impacts"]["pe"]['value'] * json_output[item]["unit"],
+            'unit': json_output[item]["impacts"]["gwp"]['unit']}
+        json_output[item]["impacts"]["adp"] = {
+            'value': json_output[item]["impacts"]["adp"]['value'] * json_output[item]["unit"],
+            'unit': json_output[item]["impacts"]["gwp"]['unit']}
 
     return json_output
 
 
-def verbose_component(complete_component: Component, input_component: Component):
+def verbose_component(complete_component: Component, input_component: Component, units: int = None):
     json_output = {}
+
+    if units:
+        json_output["units"] = units
 
     for attr, value in complete_component.__iter__():
         if type(value) is dict:
@@ -65,15 +74,15 @@ def verbose_component(complete_component: Component, input_component: Component)
             json_output[attr]["used_value"] = value
             json_output[attr]["status"] = get_status(json_output[attr]["used_value"], json_output[attr]["input_value"])
 
-    json_output["impacts"] = {"gwp":{
-                                    "value": rd.round_to_sigfig(*complete_component.impact_gwp()),
-                                    "unit": "kgCO2eq"},
-                              "pe": {
-                                  "value": rd.round_to_sigfig(*complete_component.impact_pe()),
-                        "unit": "MJ"},
-                              "adp": {"value": rd.round_to_sigfig(*complete_component.impact_adp()),
-                                      "unit": "kgSbeq"},
-                                      }
+    json_output["impacts"] = {"gwp": {
+        "value": rd.round_to_sigfig(*complete_component.impact_gwp()),
+        "unit": "kgCO2eq"},
+        "pe": {
+            "value": rd.round_to_sigfig(*complete_component.impact_pe()),
+            "unit": "MJ"},
+        "adp": {"value": rd.round_to_sigfig(*complete_component.impact_adp()),
+                "unit": "kgSbeq"},
+    }
     return json_output
 
 

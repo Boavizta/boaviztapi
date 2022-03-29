@@ -35,8 +35,6 @@ async def server_impact_by_model(archetype: str = Query(None, example="dellR740"
     return result
 
 
-@server_router.post('/bottom-up',
-                    description="LEGACY ROUTE NAME for *Server Impact By Config* ")
 @server_router.post('/',
                     description=server_impact_by_config_description)
 async def server_impact_by_config(server_dto: ServerDTO = Body(None, example=server_configuration_examples["DellR740"]),

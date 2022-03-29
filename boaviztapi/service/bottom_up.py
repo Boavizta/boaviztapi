@@ -31,22 +31,26 @@ def bottom_up_device(device: Device, impact_codes: Optional[Set[str]] = None) ->
     return impacts
 
 
-def bottom_up_component(component: Component, impact_codes: Optional[Set[str]] = None) -> dict:
+def bottom_up_component(component: Component, units: int = 1, impact_codes: Optional[Set[str]] = None) -> dict:
     component.smart_complete_data()
+    gwp = component.impact_gwp()
+    pe = component.impact_pe()
+    adp = component.impact_adp()
+
     impacts = {
         'gwp': {
-            'manufacture': rd.round_to_sigfig(*component.impact_gwp()),
+            'manufacture': rd.round_to_sigfig(gwp[0]*units, gwp[1]),
             'use': "not implemented",
             'unit': "kgCO2eq"
 
         },
         'pe': {
-            'manufacture': rd.round_to_sigfig(*component.impact_pe()),
+            'manufacture': rd.round_to_sigfig(pe[0]*units, pe[1]),
             'use': "not implemented",
             'unit': "MJ"
         },
         'adp': {
-            'manufacture': rd.round_to_sigfig(*component.impact_adp()),
+            'manufacture': rd.round_to_sigfig(adp[0]*units, adp[1]),
             'use': "not implemented",
             'unit': "kgSbeq"
         },
