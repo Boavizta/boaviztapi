@@ -7,7 +7,7 @@
 
 ---
 
-An API to access [Boavizta](https://boavizta.cmakers.io/) environmental footprint [reference data](https://github.com/Boavizta/environmental-footprint-data).
+An API to access [Boavizta's](https://boavizta.cmakers.io/) methodologies and footprint [reference data](https://github.com/Boavizta/environmental-footprint-data).
 
 See the [documentation](http://api.boavizta.org/) for API usage and methodology.
 
