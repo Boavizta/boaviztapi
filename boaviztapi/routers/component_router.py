@@ -3,7 +3,6 @@ import copy
 from fastapi import APIRouter, Body
 
 from boaviztapi.dto.component_dto import Cpu, Ram, Disk, PowerSupply, MotherBoard, Case
-from boaviztapi.model.components.component import ComponentMotherBoard, ComponentCase
 from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
     hdd_description, motherboard_description, power_supply_description, case_description
 from boaviztapi.routers.openapi_doc.examples import components_examples
@@ -21,7 +20,7 @@ component_router = APIRouter(
 async def cpu_impact_bottom_up(cpu: Cpu = Body(None, example=components_examples["cpu"]), verbose: bool = True):
     component_cpu = cpu.to_component()
     completed_cpu = copy.deepcopy(component_cpu)
-    impacts = bottom_up_component(component=component_cpu, units=cpu.units or 1)
+    impacts = bottom_up_component(component=completed_cpu, units=cpu.units or 1)
     result = impacts
     if verbose:
         result = {"impacts": impacts,
@@ -35,7 +34,7 @@ async def ram_impact_bottom_up(ram: Ram = Body(None, example=components_examples
                                verbose: bool = True):
     component_ram = ram.to_component()
     completed_ram = copy.deepcopy(component_ram)
-    impacts = bottom_up_component(component=component_ram, units=ram.units or 1)
+    impacts = bottom_up_component(component=completed_ram, units=ram.units or 1)
     result = impacts
     if verbose:
         result = {"impacts": impacts,
@@ -79,11 +78,11 @@ async def motherboard_impact_bottom_up(motherboard: MotherBoard
                                        = Body(None, example=components_examples["motherboard"]), verbose: bool = True):
     component_motherboard = motherboard.to_component()
     completed_motherboard = copy.deepcopy(component_motherboard)
-    impacts = bottom_up_component(component=completed_motherboard, units=disk.units or 1)
+    impacts = bottom_up_component(component=completed_motherboard, units=motherboard.units or 1)
     result = impacts
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_component(completed_motherboard, completed_motherboard, units=disk.units or 1)}
+                  "verbose": verbose_component(completed_motherboard, completed_motherboard, units=motherboard.units or 1)}
     return result
 
 

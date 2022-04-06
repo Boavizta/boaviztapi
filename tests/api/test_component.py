@@ -148,6 +148,49 @@ async def test_multiple_cpu():
 
 
 @pytest.mark.asyncio
+async def test_incomplete_cpu_verbose():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/component/cpu?verbose=true', json={
+            "core_units": 24, "family": "Skylake", "manufacture_date": 2017})
+
+    assert res.json() == {
+        "impacts": {
+            "adp": {
+                "manufacture": 0.02,
+                "unit": "kgSbeq",
+                "use": "not implemented"
+            },
+            "gwp": {
+                "manufacture": 21.7,
+                "unit": "kgCO2eq",
+                "use": "not implemented"
+            },
+            "pe": {
+                "manufacture": 325.0,
+                "unit": "MJ",
+                "use": "not implemented"
+            }
+        },
+        'verbose': {'core_units': {'input_value': 24,
+                                   'status': 'UNCHANGED',
+                                   'used_value': 24},
+                    'die_size_per_core': {'input_value': None,
+                                          'status': 'SET',
+                                          'used_value': 0.245},
+                    'family': {'input_value': 'Skylake',
+                               'status': 'UNCHANGED',
+                               'used_value': 'Skylake'},
+                    'impacts': {'adp': {'unit': 'kgSbeq', 'value': 0.02},
+                                'gwp': {'unit': 'kgCO2eq', 'value': 21.7},
+                                'pe': {'unit': 'MJ', 'value': 325.0}},
+                    'manufacture_date': {'input_value': '2017',
+                                         'status': 'UNCHANGED',
+                                         'used_value': '2017'},
+                    'units': 1
+                    }
+    }
+
+@pytest.mark.asyncio
 async def test_complete_ram():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ram?verbose=false', json={"units": 12, "capacity": 32, "density": 1.79})
