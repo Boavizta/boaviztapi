@@ -1,0 +1,39 @@
+{
+  "model":
+  {
+    "name": "hyper-converged-medium-storage",
+    "type": "blade",
+    "year": "2021"
+  },
+  "configuration":
+  {
+    "cpu":
+    {
+      "units": 2,
+      "core_units": 24,
+      "family": "Ice Lake"
+    },
+    "ram":
+    [
+      {
+        "units": 12,
+        "capacity": 128,
+        "density": 1.79
+      }
+    ],
+    "disk":
+    [
+      {
+        "units": 24,
+        "type": "ssd",
+        "capacity": 1920,
+        "density": 50.6
+      }
+    ],
+    "power_supply":
+    {
+      "units": 2,
+      "unit_weight": 2.99
+    }
+  }
+}
