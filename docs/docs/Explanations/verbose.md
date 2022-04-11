@@ -84,24 +84,33 @@ Each route returning impacts can also return a verbose object if query parameter
 
 **Verbose**
 ```json
-"verbose": {
+ "verbose": {
     "CPU-1": {
       "unit": 2,
-      "hash": "c8c7d224967280c8cb4cb95bfc1727e68645f38154310d2f8091170915f49464",
+      "hash": "5f75d18d9165b04381f24cb2130b62f756d266c45080982334585931482398ad",
       "core_units": {
-        "input_value": null,
+        "input_value": 24,
         "used_value": 24,
-        "status": "SET"
+        "status": "UNCHANGED"
       },
       "die_size_per_core": {
-        "input_value": null,
+        "input_value": 0.245,
         "used_value": 0.245,
-        "status": "SET"
+        "status": "UNCHANGED"
       },
       "impacts": {
-        "gwp": 44,
-        "pe": 650,
-        "adp": 0.04
+        "gwp": {
+          "value": 43.4,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 650,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.04,
+          "unit": "kgCO2eq"
+        }
       }
     },
     "RAM-1": {
@@ -118,42 +127,69 @@ Each route returning impacts can also return a verbose object if query parameter
         "status": "UNCHANGED"
       },
       "impacts": {
-        "gwp": 540,
-        "pe": 6744,
-        "adp": 0.036
+        "gwp": {
+          "value": 540,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 6720,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.0336,
+          "unit": "kgCO2eq"
+        }
       }
     },
     "SSD-1": {
       "unit": 1,
-      "hash": "cb269039943b145f924c394acd2f665c10b23bddf954428af81bd8eccaff3d6a",
+      "hash": "41514f07d8fa09207407a0693c20b7647cba1751e658999a51b4c003fc032c91",
       "capacity": {
-        "input_value": null,
-        "used_value": 1000,
-        "status": "SET"
+        "input_value": 400,
+        "used_value": 400,
+        "status": "UNCHANGED"
       },
       "density": {
-        "input_value": null,
-        "used_value": 48.5,
-        "status": "SET"
+        "input_value": 50.6,
+        "used_value": 50.6,
+        "status": "UNCHANGED"
       },
       "impacts": {
-        "gwp": 52,
-        "pe": 640,
-        "adp": 0.002
+        "gwp": {
+          "value": 24,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 293,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.0011,
+          "unit": "kgCO2eq"
+        }
       }
     },
     "POWER_SUPPLY-1": {
       "unit": 2,
-      "hash": "be84aabaaac41126e1bd93ec3c10b355c6c7534cf9e3d7337cef9d6d0bb116c6",
+      "hash": "cdb1c15f77554bf77b8d8ccc2094af7ed72a8a19ff3f0fd0a9909ecacec06428",
       "unit_weight": {
-        "input_value": null,
+        "input_value": 2.99,
         "used_value": 2.99,
-        "status": "SET"
+        "status": "UNCHANGED"
       },
       "impacts": {
-        "gwp": 146,
-        "pe": 2104,
-        "adp": 0.05
+        "gwp": {
+          "value": 145.32,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 2100,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.0496,
+          "unit": "kgCO2eq"
+        }
       }
     },
     "CASE-1": {
@@ -165,27 +201,167 @@ Each route returning impacts can also return a verbose object if query parameter
         "status": "UNCHANGED"
       },
       "impacts": {
-        "gwp": 150,
-        "pe": 2200,
-        "adp": 0.02
+        "gwp": {
+          "value": 150,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 2200,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.0202,
+          "unit": "kgCO2eq"
+        }
       }
     },
     "MOTHERBOARD-1": {
       "unit": 1,
       "hash": "3a31a8fbd4b871719831ef11af93eefbb1c2afc0f62d850a31fb5475aac9336e",
       "impacts": {
-        "gwp": 66,
-        "pe": 836,
-        "adp": 0.004
+        "gwp": {
+          "value": 66.1,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 836,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.00369,
+          "unit": "kgCO2eq"
+        }
       }
     },
     "ASSEMBLY-1": {
       "unit": 1,
       "hash": "8bfe70a2b59691c050865455cc9cf1b561ec702e7cf930c1026a490964bbd364",
       "impacts": {
-        "gwp": 7,
-        "pe": 69,
-        "adp": 0
+        "gwp": {
+          "value": 6.68,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 68.6,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.00000141,
+          "unit": "kgCO2eq"
+        }
+      }
+    },
+    "USAGE-1": {
+      "unit": 1,
+      "hash": 0,
+      "years_use_time": {
+        "input_value": 1,
+        "used_value": 1,
+        "status": "UNCHANGED"
+      },
+      "days_use_time": {
+        "input_value": 1,
+        "used_value": 1,
+        "status": "UNCHANGED"
+      },
+      "hours_use_time": {
+        "input_value": 1,
+        "used_value": 1,
+        "status": "UNCHANGED"
+      },
+      "hours_electrical_consumption": {
+        "input_value": null,
+        "used_value": 0.35174445000000004,
+        "status": "SET"
+      },
+      "usage_location": {
+        "input_value": null,
+        "used_value": "EEE",
+        "status": "SET"
+      },
+      "gwp_factor": {
+        "input_value": null,
+        "used_value": 0.38,
+        "status": "SET"
+      },
+      "pe_factor": {
+        "input_value": null,
+        "used_value": 12.874,
+        "status": "SET"
+      },
+      "adp_factor": {
+        "input_value": null,
+        "used_value": 6.42e-8,
+        "status": "SET"
+      },
+      "max_power": {
+        "input_value": 510,
+        "used_value": 510,
+        "status": "UNCHANGED"
+      },
+      "workload": {
+        "10": {
+          "time": {
+            "input_value": 0.2,
+            "used_value": 0.2,
+            "status": "UNCHANGED"
+          },
+          "power": {
+            "input_value": 0.5118,
+            "used_value": 0.5118,
+            "status": "UNCHANGED"
+          }
+        },
+        "50": {
+          "time": {
+            "input_value": 0.55,
+            "used_value": 0.55,
+            "status": "UNCHANGED"
+          },
+          "power": {
+            "input_value": 0.7235,
+            "used_value": 0.7235,
+            "status": "UNCHANGED"
+          }
+        },
+        "100": {
+          "time": {
+            "input_value": 0.15,
+            "used_value": 0.15,
+            "status": "UNCHANGED"
+          },
+          "power": {
+            "input_value": 1,
+            "used_value": 1,
+            "status": "UNCHANGED"
+          }
+        },
+        "idle": {
+          "time": {
+            "input_value": 0.1,
+            "used_value": 0.1,
+            "status": "UNCHANGED"
+          },
+          "power": {
+            "input_value": 0.3941,
+            "used_value": 0.3941,
+            "status": "UNCHANGED"
+          }
+        }
+      },
+      "impacts": {
+        "gwp": {
+          "value": 1170,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 39800,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.000198,
+          "unit": "kgCO2eq"
+        }
       }
     }
   }

@@ -29,22 +29,10 @@ async def test_complete_usage():
         })
 
     assert res.json() == {
-        "gwp": {
-            "manufacture": 560.0,
-            "use": 0.0056,
-            "unit": "kgCO2eq"
-        },
-        "pe": {
-            "manufacture": 7700.0,
-            "use": "Not Implemented",
-            "unit": "MJ"
-        },
-        "adp": {
-            "manufacture": 0.1,
-            "use": "Not Implemented",
-            "unit": "kgSbeq"
-        }
-    }
+        'adp': {'manufacture': 0.1, 'unit': 'kgSbeq', 'use': 5e-09},
+        'gwp': {'manufacture': 560.0, 'unit': 'kgCO2eq', 'use': 0.01},
+        'pe': {'manufacture': 7700.0, 'unit': 'MJ', 'use': 1.2}}
+
 
 @pytest.mark.asyncio
 async def test_default_usage():
@@ -52,20 +40,6 @@ async def test_default_usage():
         res = await ac.post('/v1/cloud/aws?instance_type=a1.4xlarge&verbose=false', json={
         })
 
-    assert res.json() == {
-        "gwp": {
-            "manufacture": 560.0,
-            "use": 100,
-            "unit": "kgCO2eq"
-        },
-        "pe": {
-            "manufacture": 7700.0,
-            "use": "Not Implemented",
-            "unit": "MJ"
-        },
-        "adp": {
-            "manufacture": 0.1,
-            "use": "Not Implemented",
-            "unit": "kgSbeq"
-        }
-    }
+    assert res.json() == {'adp': {'manufacture': 0.1, 'unit': 'kgSbeq', 'use': 2.9e-05},
+                          'gwp': {'manufacture': 560.0, 'unit': 'kgCO2eq', 'use': 170.0},
+                          'pe': {'manufacture': 7700.0, 'unit': 'MJ', 'use': 5700.0}}

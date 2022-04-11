@@ -8,7 +8,7 @@ from typing import Dict, Optional
 from boaviztapi.model.components import data_dir
 from boaviztapi.model.components.component import Component
 
-_electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electricity/usage_impact_factors.csv'))
+_electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electricity/electricity_impact_factors.csv'))
 
 DEFAULT_SIG_FIGURES: int = 3
 
@@ -27,7 +27,7 @@ class Usage(Component):
     pe_factor: Optional[float] = None
     adp_factor: Optional[float] = None
 
-    _DEFAULT_USAGE_LOCATION = "EU27+1"
+    _DEFAULT_USAGE_LOCATION = "EEE"
     _DEFAULT_YEAR_USE_TIME = 1
 
     @abstractmethod
@@ -77,7 +77,7 @@ class Usage(Component):
         if self.adp_factor is None:
             sub = _electricity_emission_factors_df
             sub = sub[sub['code'] == self.usage_location]
-            self.adp_factor = float(sub['adp_emission_factor'])
+            self.adp_factor = float(sub['adpe_emission_factor'])
 
     def __hash__(self) -> int:
         # TODO: TO ENHANCE

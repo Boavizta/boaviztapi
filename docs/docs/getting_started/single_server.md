@@ -22,17 +22,20 @@ Results:
 
 ```json
 {
-  "gwp": {
-    "manufacture": 970,
-    "use": 696
+  "gwp":{
+    "manufacture":970.0,
+    "use":1170.0,
+    "unit":"kgCO2eq"
   },
-  "pe": {
-    "manufacture": 12896,
-    "use": "Not Implemented"
+  "pe":{
+    "manufacture":13000.0,
+    "use":39700.0,
+    "unit":"MJ"
   },
-  "adp": {
-    "manufacture": 0.149,
-    "use": "Not Implemented"
+  "adp":{
+    "manufacture":0.15,
+    "use":0.000198,
+    "unit":"kgSbeq"
   }
 }
 ```
@@ -56,20 +59,23 @@ It returns :
 - The impacts (gwp, pe, adp) for each component (like RAM, CPU, SSD a.s.o)
 - The value of the attributes used for the calculation for each component (i.e. the detailed configuration)
 
-```json
+```JSON
 {
   "impacts": {
     "gwp": {
-      "manufacture": 970,
-      "use": 696
+      "manufacture": 970.0,
+      "use": 1170.0,
+      "unit": "kgCO2eq"
     },
     "pe": {
-      "manufacture": 12896,
-      "use": "Not Implemented"
+      "manufacture": 13000.0,
+      "use": 39700.0,
+      "unit": "MJ"
     },
     "adp": {
-      "manufacture": 0.149,
-      "use": "Not Implemented"
+      "manufacture": 0.15,
+      "use": 0.000198,
+      "unit": "kgSbeq"
     }
   },
   "verbose": {
@@ -87,9 +93,18 @@ It returns :
         "status": "UNCHANGED"
       },
       "impacts": {
-        "gwp": 44,
-        "pe": 650,
-        "adp": 0.04
+        "gwp": {
+          "value": 43.4,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 650.0,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.04,
+          "unit": "kgCO2eq"
+        }
       }
     },
     "RAM-1": {
@@ -106,9 +121,18 @@ It returns :
         "status": "UNCHANGED"
       },
       "impacts": {
-        "gwp": 540,
-        "pe": 6744,
-        "adp": 0.036
+        "gwp": {
+          "value": 540.0,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 6720.0,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.0336,
+          "unit": "kgCO2eq"
+        }
       }
     },
     "SSD-1": {
@@ -125,9 +149,18 @@ It returns :
         "status": "UNCHANGED"
       },
       "impacts": {
-        "gwp": 24,
-        "pe": 293,
-        "adp": 0.001
+        "gwp": {
+          "value": 24.0,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 293.0,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.0011,
+          "unit": "kgCO2eq"
+        }
       }
     },
     "POWER_SUPPLY-1": {
@@ -139,9 +172,18 @@ It returns :
         "status": "UNCHANGED"
       },
       "impacts": {
-        "gwp": 146,
-        "pe": 2104,
-        "adp": 0.05
+        "gwp": {
+          "value": 145.32,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 2100.0,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.0496,
+          "unit": "kgCO2eq"
+        }
       }
     },
     "CASE-1": {
@@ -153,27 +195,157 @@ It returns :
         "status": "UNCHANGED"
       },
       "impacts": {
-        "gwp": 150,
-        "pe": 2200,
-        "adp": 0.02
+        "gwp": {
+          "value": 150.0,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 2200.0,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.0202,
+          "unit": "kgCO2eq"
+        }
       }
     },
     "MOTHERBOARD-1": {
       "unit": 1,
       "hash": "3a31a8fbd4b871719831ef11af93eefbb1c2afc0f62d850a31fb5475aac9336e",
       "impacts": {
-        "gwp": 66,
-        "pe": 836,
-        "adp": 0.004
+        "gwp": {
+          "value": 66.1,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 836.0,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.00369,
+          "unit": "kgCO2eq"
+        }
       }
     },
     "ASSEMBLY-1": {
       "unit": 1,
       "hash": "8bfe70a2b59691c050865455cc9cf1b561ec702e7cf930c1026a490964bbd364",
       "impacts": {
-        "gwp": 7,
-        "pe": 69,
-        "adp": 0
+        "gwp": {
+          "value": 6.68,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 68.6,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 1.41e-06,
+          "unit": "kgCO2eq"
+        }
+      }
+    },
+    "USAGE-1": {
+      "unit": 1,
+      "hash": 0,
+      "years_use_time": {
+        "input_value": null,
+        "used_value": 1,
+        "status": "SET"
+      },
+      "hours_electrical_consumption": {
+        "input_value": null,
+        "used_value": 0.35174445000000004,
+        "status": "SET"
+      },
+      "usage_location": {
+        "input_value": null,
+        "used_value": "EEE",
+        "status": "SET"
+      },
+      "gwp_factor": {
+        "input_value": null,
+        "used_value": 0.38,
+        "status": "SET"
+      },
+      "pe_factor": {
+        "input_value": null,
+        "used_value": 12.874,
+        "status": "SET"
+      },
+      "adp_factor": {
+        "input_value": null,
+        "used_value": 6.42e-08,
+        "status": "SET"
+      },
+      "max_power": {
+        "input_value": 510.0,
+        "used_value": 510.0,
+        "status": "UNCHANGED"
+      },
+      "workload": {
+        "100": {
+          "time": {
+            "input_value": 0.15,
+            "used_value": 0.15,
+            "status": "UNCHANGED"
+          },
+          "power": {
+            "input_value": 1.0,
+            "used_value": 1.0,
+            "status": "UNCHANGED"
+          }
+        },
+        "50": {
+          "time": {
+            "input_value": 0.55,
+            "used_value": 0.55,
+            "status": "UNCHANGED"
+          },
+          "power": {
+            "input_value": 0.7235,
+            "used_value": 0.7235,
+            "status": "UNCHANGED"
+          }
+        },
+        "10": {
+          "time": {
+            "input_value": 0.2,
+            "used_value": 0.2,
+            "status": "UNCHANGED"
+          },
+          "power": {
+            "input_value": 0.5118,
+            "used_value": 0.5118,
+            "status": "UNCHANGED"
+          }
+        },
+        "idle": {
+          "time": {
+            "input_value": 0.1,
+            "used_value": 0.1,
+            "status": "UNCHANGED"
+          },
+          "power": {
+            "input_value": 0.3941,
+            "used_value": 0.3941,
+            "status": "UNCHANGED"
+          }
+        }
+      },
+      "impacts": {
+        "gwp": {
+          "value": 1170.0,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 39700.0,
+          "unit": "kgCO2eq"
+        },
+        "adp": {
+          "value": 0.000198,
+          "unit": "kgCO2eq"
+        }
       }
     }
   }
@@ -262,19 +434,20 @@ Result :
 
 ```json
 {
-  "impacts": {
-    "gwp": {
-      "manufacture": 994,
-      "use": 698
-    },
-    "pe": {
-      "manufacture": 13189,
-      "use": "Not Implemented"
-    },
-    "adp": {
-      "manufacture": 0.15,
-      "use": "Not Implemented"
-    }
+  "gwp": {
+    "manufacture": 990.0,
+    "use": 1170.0,
+    "unit": "kgCO2eq"
+  },
+  "pe": {
+    "manufacture": 13000.0,
+    "use": 39800.0,
+    "unit": "MJ"
+  },
+  "adp": {
+    "manufacture": 0.15,
+    "use": 0.000198,
+    "unit": "kgSbeq"
   }
 }
 ```
