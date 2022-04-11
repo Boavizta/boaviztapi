@@ -105,11 +105,11 @@ Each route returning impacts can also return a verbose object if query parameter
         },
         "pe": {
           "value": 650,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.04,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -133,11 +133,11 @@ Each route returning impacts can also return a verbose object if query parameter
         },
         "pe": {
           "value": 6720,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.0336,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -161,11 +161,11 @@ Each route returning impacts can also return a verbose object if query parameter
         },
         "pe": {
           "value": 293,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.0011,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -184,11 +184,11 @@ Each route returning impacts can also return a verbose object if query parameter
         },
         "pe": {
           "value": 2100,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.0496,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -207,11 +207,11 @@ Each route returning impacts can also return a verbose object if query parameter
         },
         "pe": {
           "value": 2200,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.0202,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -225,11 +225,11 @@ Each route returning impacts can also return a verbose object if query parameter
         },
         "pe": {
           "value": 836,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.00369,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -243,11 +243,11 @@ Each route returning impacts can also return a verbose object if query parameter
         },
         "pe": {
           "value": 68.6,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.00000141,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -356,11 +356,11 @@ Each route returning impacts can also return a verbose object if query parameter
         },
         "pe": {
           "value": 39800,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.000198,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     }

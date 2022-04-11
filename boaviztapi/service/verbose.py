@@ -46,13 +46,13 @@ def verbose_device(complete_device: Device, input_device: Device):
     for item in json_output:
         json_output[item]["impacts"]["gwp"] = {
             'value': json_output[item]["impacts"]["gwp"]['value'] * json_output[item]["unit"],
-            'unit': json_output[item]["impacts"]["gwp"]['unit']}
+            'unit': "kgCO2eq"}
         json_output[item]["impacts"]["pe"] = {
             'value': json_output[item]["impacts"]["pe"]['value'] * json_output[item]["unit"],
-            'unit': json_output[item]["impacts"]["gwp"]['unit']}
+            'unit': "MJ"}
         json_output[item]["impacts"]["adp"] = {
             'value': json_output[item]["impacts"]["adp"]['value'] * json_output[item]["unit"],
-            'unit': json_output[item]["impacts"]["gwp"]['unit']}
+            'unit': "kgSbeq"}
 
     return json_output
 

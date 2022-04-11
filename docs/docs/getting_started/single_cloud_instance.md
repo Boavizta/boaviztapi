@@ -151,11 +151,11 @@ Response :
         },
         "pe": {
           "value": 325.0,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.02,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -179,11 +179,11 @@ Response :
         },
         "pe": {
           "value": 24000.0,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.0784,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -202,11 +202,11 @@ Response :
         },
         "pe": {
           "value": 2100.0,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.0496,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -225,11 +225,11 @@ Response :
         },
         "pe": {
           "value": 2200.0,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.0202,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -243,11 +243,11 @@ Response :
         },
         "pe": {
           "value": 836.0,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.00369,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -261,11 +261,11 @@ Response :
         },
         "pe": {
           "value": 68.6,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 1.41e-06,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -289,11 +289,11 @@ Response :
         },
         "pe": {
           "value": 640.0,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.0019,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     },
@@ -397,11 +397,11 @@ Response :
         },
         "pe": {
           "value": 39200.0,
-          "unit": "kgCO2eq"
+          "unit": "MJ"
         },
         "adp": {
           "value": 0.000196,
-          "unit": "kgCO2eq"
+          "unit": "kgSbeq"
         }
       }
     }
