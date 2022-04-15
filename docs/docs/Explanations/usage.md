@@ -36,21 +36,42 @@ will be converted in **8785** hours (`1+1*24+1*24*365`).
 Impacts factor depends on the `usage_location` (country in a trigram format) of the device. `usage_location` can be defined by the user. By default, medium european mix is used.
 Users can give their own impact factors in case it has been provided by their electricity provider.
 
-### GWP
+### GWP - Global warming potential factor
 
-_What_ : GWP impact is measured with the **carbon intensity factor**
+_What_ : The amount of CO2eq. emitted per kwh of final energy production
 
-_Source_ : https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy.html (BP)
+_Source_ : 
+
+* For Europe (2019) : https://www.sciencedirect.com/science/article/pii/S0306261921012149
+* For the rest of the world (2011) : BASE IMPACT ADEME 
 
 _Unit_ : kgCO2e/kWh
 
-### PE
+### PE - Primary energy factor
 
-NOT IMPLEMENTED
+_What_ : The amount of primary energy consumed to produce 1 kWh of final energy (electricity in ICT use phase)
+
+_Source_ : 
+
+PE impact factor are not available in open access. 
+We use the consumption of fossil resources per kwh (APDf/kwh) per country and extrapolate this consumption to renewable energy :
+
+```PE/kwh = ADPf/kwh / (1-%RenewableEnergyInMix)```
+
+* %RenewableEnergyInMix (2016) : 'https://en.wikipedia.org/wiki/List_of_countries_by_renewable_electricity_production from IRENA
+* ADPf (2011): BASE IMPACT ADEME
+
+_Unit_ : MJ/kWh
 
 ### ADP
 
-NOT IMPLEMENTED
+_What_ :  The amount of mineral and metalic resources consumed per kwh of final energy production
+
+_Source_ : 
+
+* ADP (2011) : BASE IMPACT ADEME 
+
+_Unit_ : KgSbeq/kWh
 
 ## Electrical consumption
 

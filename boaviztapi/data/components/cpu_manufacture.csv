@@ -37,6 +37,18 @@ Intel,Ivy Bridge,2011,22,257,6,0.428,https://en.wikichip.org/wiki/intel/microarc
 Intel,Ivy Bridge,2011,22,341,10,0.341,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client)
 Intel,Ivy Bridge,2011,22,541,15,0.361,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client)
 Intel,Sandy Bridge,2010,32,216,4,0.540,https://en.wikichip.org/wiki/intel/microarchitectures/sandy_bridge_(client)
+Intel,Ice Lake,2021,10,370,8,0.430,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,370,10,0.370,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,370,12,0.308,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,370,16,0.231,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,505,18,0.281,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,505,20,0.253,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,505,24,0.210,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,505,26,0.194,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,505,28,0.180,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,640,32,0.200,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,640,36,0.178,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,640,38,0.168,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
 Intel,Kaby Lake,2017,14,126,4,0.315,https://en.wikichip.org/wiki/intel/microarchitectures/kaby_lake
 Amd,Zen2,2019,7,74,4,0.185,https://www.techarp.com/computer/amd-zen-3-tech-report/
 Amd,Zen2,2019,7,74,6,0.123,https://www.techarp.com/computer/amd-zen-3-tech-report/

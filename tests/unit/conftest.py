@@ -3,6 +3,7 @@ import pytest
 from boaviztapi.dto.server_dto import ServerDTO, CloudDTO
 from boaviztapi.model.components.component import ComponentRAM, ComponentSSD, ComponentHDD, ComponentAssembly, \
     ComponentCase, ComponentMotherBoard, ComponentPowerSupply, ComponentCPU
+from boaviztapi.model.components.usage import UsageServer
 from tests.unit import data_dir
 
 
@@ -153,7 +154,6 @@ def incomplete_usage():
 @pytest.fixture(scope="function")
 def complete_usage():
     complete_usage = CloudDTO.parse_file(data_dir + "/devices/cloud/complete_usage.json").to_device()
-    complete_usage.usage
     return complete_usage
 
 
@@ -162,3 +162,17 @@ def cloud_instance_1_completed():
     cloud_instance_1_completed = \
         CloudDTO.parse_file(data_dir + "/devices/cloud/cloud_instance_1_completed.json").to_device()
     return cloud_instance_1_completed
+
+
+@pytest.fixture(scope="function")
+def french_mix_1_kw():
+    return UsageServer.parse_obj({
+        "usage_location": "FRA",
+        "hours_electrical_consumption": 1
+    })
+
+
+@pytest.fixture(scope="function")
+def empty_usage():
+    return UsageServer.parse_obj({
+    })

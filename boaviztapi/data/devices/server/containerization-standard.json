@@ -1,0 +1,39 @@
+{
+  "model":
+  {
+    "name": "containerization-standard",
+    "type": "blade",
+    "year": "2021"
+  },
+  "configuration":
+  {
+    "cpu":
+    {
+      "units": 2,
+      "core_units": 28,
+      "die_size_per_core": "Ice Lake"
+    },
+    "ram":
+    [
+      {
+        "units": 8,
+        "capacity": 128,
+        "density": 1.79
+      }
+    ],
+    "disk":
+    [
+      {
+        "units": 3,
+        "type": "ssd",
+        "capacity": 7680,
+        "density": 50.6
+      }
+    ],
+    "power_supply":
+    {
+      "units": 2,
+      "unit_weight": 2.99
+    }
+  }
+}

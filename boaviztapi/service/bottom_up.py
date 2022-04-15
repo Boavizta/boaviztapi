@@ -19,12 +19,12 @@ def bottom_up_device(device: Device, impact_codes: Optional[Set[str]] = None) ->
         },
         'pe': {
             'manufacture': rd.round_to_sigfig(*device.impact_manufacture_pe()),
-            'use': "Not Implemented",
+            'use': rd.round_to_sigfig(*device.impact_use_pe()),
             'unit': "MJ"
         },
         'adp': {
             'manufacture': rd.round_to_sigfig(*device.impact_manufacture_adp()),
-            'use': "Not Implemented",
+            'use': rd.round_to_sigfig(*device.impact_use_adp()),
             'unit': "kgSbeq"
         },
     }
