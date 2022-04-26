@@ -9,7 +9,7 @@
 
 An API to access [Boavizta's](https://boavizta.cmakers.io/) methodologies and footprint [reference data](https://github.com/Boavizta/environmental-footprint-data).
 
-See the [documentation](http://api.boavizta.org/) for API usage and methodology.
+See the [documentation](https://doc.api.boavizta.org/) for API usage and methodology.
 
 [![Python tests main](https://github.com/Boavizta/Tools-API/actions/workflows/main-main.yml/badge.svg)](https://github.com/Boavizta/Tools-API/actions/workflows/main-main.yml)
 
@@ -25,11 +25,11 @@ The system is developed in layers according to a bottom-up principle. The first 
 
 ## :fast_forward: Test it yourself (no installation)
 
-* See the OpenAPI specification: <http://api.boavizta.org:5000/docs>
+* See the OpenAPI specification: <https://api.boavizta.org/docs>
 
-* [Documentation](http://api.boavizta.org/)
+* [Documentation](https://doc.api.boavizta.org/)
 
-* Access the demo API: <http://api.boavizta.org:5000>
+* Access the demo API: <http://api.boavizta.org>
 
 ## Run a local instance
 
