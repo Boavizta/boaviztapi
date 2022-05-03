@@ -2,7 +2,7 @@
 
 ![Boavizta earth](assets/boavizta-earth.png){align=left width="250"}
 
-Try [accessing the demo API](http://api.boavizta.org:5000/docs) or follow a [a short tutorial](getting_started/single_server.md) to get started and retrieve impact data.
+Try [accessing the demo API](https://api.boavizta.org/docs) or follow a [a short tutorial](getting_started/single_server.md) to get started and retrieve impact data.
 
 Read the [explanations](Explanations/boavizta-db.md) section to get information about the source of data, the details of the methodology and theoretical model.
 
