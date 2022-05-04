@@ -24,7 +24,7 @@ def my_schema():
         title="BOAVIZTAPI - DEMO",
         version=__version__,
         description="# 🎯 Retrieving the impacts of digital elements\n"
-                    "This is a quick demo, to see full documentation [click here](http://api.boavizta.org) \n"
+                    "This is a quick demo, to see full documentation [click here](https://doc.api.boavizta.org) \n"
                     "## ➡️Server router \n"
                     "### Server routers support the following impacts: \n"
                     "| Impact | 🔨 Manufacture | 🔌 Usage |\n"
