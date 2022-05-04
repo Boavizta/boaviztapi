@@ -29,7 +29,7 @@ The system is developed in layers according to a bottom-up principle. The first 
 
 * [Documentation](https://doc.api.boavizta.org/)
 
-* Access the demo API: <http://api.boavizta.org>
+* Access the demo API: <https://api.boavizta.org>
 
 ## Run a local instance
 
@@ -81,7 +81,7 @@ You can run the tests with `pytest`.
 
 ### OpenAPI specification (Swagger)
 
-Once API server is launched API swagger is available at [http://localhost:5000/docs](http://localhost:5000/docs).
+Once API server is launched API swagger is available at [httsp://localhost:5000/docs](https://localhost:5000/docs).
 
 
 ## :woman: Contributing

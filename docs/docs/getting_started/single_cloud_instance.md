@@ -4,7 +4,7 @@ This page presents basic queries that can be used to retrieve impacts of cloud i
 
 You use `curl` in command line to query Boavizta demo (public) API.
 
-💡 _You can format the results by using jq (`curl -X 'GET' 'http://api.boavizta.org:5000/v1/cloud/aws/all_instances' | jq`)_
+💡 _You can format the results by using jq (`curl -X 'GET' 'https://api.boavizta.org/v1/cloud/aws/all_instances' | jq`)_
 
 ## Get the list of available instance types
 
@@ -14,7 +14,7 @@ Query:
 ```bash
 # Query the available aws instances
 curl -X 'GET' \
-  'http://api.boavizta.org:5000/v1/cloud/aws/all_instances' \
+  'https://api.boavizta.org/v1/cloud/aws/all_instances' \
   -H 'accept: application/json'
 ```
 
@@ -46,7 +46,7 @@ Query:
 ```bash
 # Query the data for `r6g.medium` with default usage value
 curl -X 'POST' \
-  'http://api.boavizta.org:5000/v1/cloud/aws?instance_type=r6g.medium&verbose=false' \
+  'https://api.boavizta.org/v1/cloud/aws?instance_type=r6g.medium&verbose=false' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{}'
@@ -83,7 +83,7 @@ Query :
 ```bash
 # Query the data for `r6g.medium` with default usage value
 curl -X 'POST' \
-  'http://api.boavizta.org:5000/v1/cloud/aws?instance_type=r6g.medium&verbose=true' \
+  'https://api.boavizta.org/v1/cloud/aws?instance_type=r6g.medium&verbose=true' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{}'
@@ -420,7 +420,7 @@ Query:
 ```bash
 # Query the data for `r6g.medium` with custom usage value
 curl -X 'POST' \
-  'http://api.boavizta.org:5000/v1/cloud/aws?instance_type=r6g.medium&verbose=false' \
+  'https://api.boavizta.org/v1/cloud/aws?instance_type=r6g.medium&verbose=false' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
