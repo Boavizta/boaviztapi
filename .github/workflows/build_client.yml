@@ -43,5 +43,6 @@ jobs:
           sleep 5
           ss -lnpt
           docker ps
+          docker logs boaviztapi
           wget http://127.0.0.1:5000/openapi.json
           docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g python -o /local/python-client
