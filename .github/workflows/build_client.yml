@@ -38,15 +38,17 @@ jobs:
           python3 setup.py sdist
           docker build --build-arg VERSION=$(python setup.py --version) . --file Dockerfile --tag boaviztapi:latest
           docker run -p "5000:5000" --name=boaviztapi -tid boaviztapi:latest
+      - name: Get logs from the API container in case of a failure
+        run: |
+          docker logs boaviztapi
       - name: Get the openapi.json definition and generate the code
         run: |
-          docker ps
-          docker logs boaviztapi
           wget http://127.0.0.1:5000/openapi.json
           docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g python -o /local/boavizta-api-sdk --package-name boavizta-api-sdk
       - name: Build the pip package and push it
         run: |
           cd boavizta-api-sdk
           sudo chown -R $(whoami) *
+          ls -la
           python3 setup.py sdist
           pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.DAVID_PYPI_TOKEN }} dist/*
