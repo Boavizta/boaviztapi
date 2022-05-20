@@ -31,7 +31,8 @@ jobs:
       - name: Install requirements
         run: |
           sudo apt update -y
-          sudo apt install docker.io containerd runc wget -y
+          sudo apt install docker.io containerd runc wget python3-pip -y
+          pip3 install pipenv
       - name: Run the API locally
         run: |
           python3 setup.py sdist
