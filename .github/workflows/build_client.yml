@@ -35,7 +35,7 @@ jobs:
       - name: Run the API locally
         run: |
           python3 setup.py sdist
-          docker build --build-arg "${API_VERSION}" . --file Dockerfile --tag boaviztapi:latest
+          docker build --build-arg "${VERSION}" . --file Dockerfile --tag boaviztapi:latest
           docker run -p "5000:5000" --name=boaviztapi -tid boaviztapi:latest
       - name: Get the openapi.json definition
         run: |
