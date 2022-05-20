@@ -47,8 +47,8 @@ jobs:
           docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g python -o /local/boavizta-api-sdk --package-name boavizta-api-sdk
       - name: Build the pip package and push it
         run: |
+          sudo chown -R $(whoami) boavizta-api-sdk
           cd boavizta-api-sdk
-          sudo chown -R $(whoami) *
           ls -la
           python3 setup.py sdist
           pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.DAVID_PYPI_TOKEN }} dist/*
