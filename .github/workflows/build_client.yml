@@ -22,7 +22,9 @@ jobs:
     name: build_python_client_sdk
     runs-on: ubuntu-latest
     steps:
-      - name: Install dependencies (awxkit)
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install python dependencies
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
