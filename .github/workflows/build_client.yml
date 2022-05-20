@@ -32,7 +32,7 @@ jobs:
         run: |
           sudo apt update -y
           sudo apt install docker.io containerd runc wget python3-pip -y
-          pip3 install pipenv
+          pip3 install pipenv twine
       - name: Run the API locally
         run: |
           python3 setup.py sdist
