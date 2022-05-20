@@ -1,0 +1,48 @@
+name: build_client_sdk
+
+on:
+  push:
+    branches: [ dev ]
+    paths-ignore:
+      - 'docs_src/**'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - 'CITATION'
+      - 'book.toml'
+      - 'CONTRIBUTING.md'
+  pull_request:
+    branches: [ dev ]
+
+env:
+  CARGO_TERM_COLOR: always
+  VERSION: "0.42"
+
+jobs:
+  build:
+    name: build_python_client_sdk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install python dependencies
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install requirements
+        run: |
+          sudo apt update -y
+          sudo apt install docker.io containerd runc wget python3-pip iproute2 -y
+          pip3 install pipenv twine
+      - name: Run the API locally
+        run: |
+          python3 setup.py sdist
+          docker build --build-arg VERSION=$(python setup.py --version) . --file Dockerfile --tag boaviztapi:latest
+          docker run -p "5000:5000" --name=boaviztapi -tid boaviztapi:latest
+      - name: Get the openapi.json definition
+        run: |
+          sleep 5
+          ss -lnpt
+          docker ps
+          docker logs boaviztapi
+          wget http://127.0.0.1:5000/openapi.json
+          docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g python -o /local/python-client
