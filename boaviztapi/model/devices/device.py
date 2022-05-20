@@ -67,31 +67,31 @@ class Server(Device):
     usage: UsageServer = None
 
     def impact_manufacture_gwp(self) -> (float, int):
-        impacts = [item.impact_gwp() for item in self.config_components]
+        impacts = [item.impact_manufacture_gwp() for item in self.config_components]
         sum_impacts = sum(item[0] for item in impacts)
         significant_figure = min(item[1] for item in impacts)
         return sum_impacts, significant_figure
 
     def impact_manufacture_pe(self) -> (float, int):
-        impacts = [item.impact_pe() for item in self.config_components]
+        impacts = [item.impact_manufacture_pe() for item in self.config_components]
         sum_impacts = sum(item[0] for item in impacts)
         significant_figure = min(item[1] for item in impacts)
         return sum_impacts, significant_figure
 
     def impact_manufacture_adp(self) -> (float, int):
-        impacts = [item.impact_adp() for item in self.config_components]
+        impacts = [item.impact_manufacture_adp() for item in self.config_components]
         sum_impacts = sum(item[0] for item in impacts)
         significant_figure = min(item[1] for item in impacts)
         return sum_impacts, significant_figure
 
     def impact_use_gwp(self) -> (float, int):
-        return self.usage.impact_gwp()
+        return self.usage.impact_manufacture_gwp()
 
     def impact_use_pe(self) -> (float, int):
-        return self.usage.impact_pe()
+        return self.usage.impact_manufacture_pe()
 
     def impact_use_adp(self) -> (float, int):
-        return self.usage.impact_adp()
+        return self.usage.impact_manufacture_adp()
 
     def smart_complete_data(self):
 

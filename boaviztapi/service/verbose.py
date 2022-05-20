@@ -75,12 +75,12 @@ def verbose_component(complete_component: Component, input_component: Component,
             json_output[attr]["status"] = get_status(json_output[attr]["used_value"], json_output[attr]["input_value"])
 
     json_output["impacts"] = {"gwp": {
-        "value": rd.round_to_sigfig(*complete_component.impact_gwp()),
+        "value": rd.round_to_sigfig(*complete_component.impact_manufacture_gwp()),
         "unit": "kgCO2eq"},
         "pe": {
-            "value": rd.round_to_sigfig(*complete_component.impact_pe()),
+            "value": rd.round_to_sigfig(*complete_component.impact_manufacture_pe()),
             "unit": "MJ"},
-        "adp": {"value": rd.round_to_sigfig(*complete_component.impact_adp()),
+        "adp": {"value": rd.round_to_sigfig(*complete_component.impact_manufacture_adp()),
                 "unit": "kgSbeq"},
     }
     return json_output

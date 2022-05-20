@@ -5,16 +5,18 @@ import pandas as pd
 
 from typing import Dict, Optional
 
+from pydantic import BaseModel
+
 from boaviztapi.model.components import data_dir
-from boaviztapi.model.components.component import Component
 
 _electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electricity/electricity_impact_factors.csv'))
 
 DEFAULT_SIG_FIGURES: int = 3
 
 
-class Usage(Component):
+class Usage(BaseModel):
     TYPE = "USAGE"
+    hash: str = None
 
     years_use_time: Optional[float] = None
     days_use_time: Optional[float] = None
@@ -31,15 +33,15 @@ class Usage(Component):
     _DEFAULT_YEAR_USE_TIME = 1
 
     @abstractmethod
-    def impact_gwp(self) -> (float, int):
+    def impact_manufacture_gwp(self) -> (float, int):
         return self.hours_electrical_consumption * self.get_duration_hours() * self.gwp_factor, DEFAULT_SIG_FIGURES
 
     @abstractmethod
-    def impact_pe(self) -> (float, int):
+    def impact_manufacture_pe(self) -> (float, int):
         return self.hours_electrical_consumption * self.get_duration_hours() * self.pe_factor, DEFAULT_SIG_FIGURES
 
     @abstractmethod
-    def impact_adp(self) -> (float, int):
+    def impact_manufacture_adp(self) -> (float, int):
         return self.hours_electrical_consumption * self.get_duration_hours() * self.adp_factor, DEFAULT_SIG_FIGURES
 
     @abstractmethod
@@ -79,9 +81,16 @@ class Usage(Component):
             sub = sub[sub['code'] == self.usage_location]
             self.adp_factor = float(sub['adpe_emission_factor'])
 
-    def __hash__(self) -> int:
-        # TODO: TO ENHANCE
-        return 0
+    def __iter__(self):
+        for attr, value in self.__dict__.items():
+            yield attr, value
+
+    def __hash__(self):
+        return "0"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.hash = self.__hash__()
 
 
 class UsageServer(Usage):
@@ -98,14 +107,14 @@ class UsageServer(Usage):
     max_power: Optional[float] = None
     workload: Optional[Dict[str, Dict[str, float]]] = None
 
-    def impact_gwp(self) -> (float, int):
-        return super().impact_gwp()[0], 3
+    def impact_manufacture_gwp(self) -> (float, int):
+        return super().impact_manufacture_gwp()[0], 3
 
-    def impact_pe(self) -> (float, int):
-        return super().impact_pe()[0], 3
+    def impact_manufacture_pe(self) -> (float, int):
+        return super().impact_manufacture_pe()[0], 3
 
-    def impact_adp(self) -> (float, int):
-        return super().impact_adp()[0], 3
+    def impact_manufacture_adp(self) -> (float, int):
+        return super().impact_manufacture_adp()[0], 3
 
     def get_hours_electrical_consumption(self) -> float:
         hours_electrical_consumption = 0
@@ -130,14 +139,35 @@ class UsageServer(Usage):
 class UsageCloud(UsageServer):
     instance_per_server: Optional[float] = None
 
-    def impact_gwp(self) -> (float, int):
-        return super().impact_gwp()
+    def impact_manufacture_gwp(self) -> (float, int):
+        return super().impact_manufacture_gwp()
 
-    def impact_pe(self) -> (float, int):
-        return super().impact_pe()
+    def impact_manufacture_pe(self) -> (float, int):
+        return super().impact_manufacture_pe()
 
-    def impact_adp(self) -> (float, int):
-        return super().impact_adp()
+    def impact_manufacture_adp(self) -> (float, int):
+        return super().impact_manufacture_adp()
+
+    def smart_complete_data(self):
+        super().smart_complete_data()
+
+    def get_duration_hours(self) -> float:
+        return super().get_duration_hours()
+
+
+class UsageComponent(Usage):
+
+    def get_hours_electrical_consumption(self):
+        return super().get_hours_electrical_consumption()
+
+    def impact_manufacture_gwp(self) -> (float, int):
+        return super().impact_manufacture_gwp()
+
+    def impact_manufacture_pe(self) -> (float, int):
+        return super().impact_manufacture_pe()
+
+    def impact_manufacture_adp(self) -> (float, int):
+        return super().impact_manufacture_adp()
 
     def smart_complete_data(self):
         super().smart_complete_data()

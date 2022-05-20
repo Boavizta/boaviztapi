@@ -33,9 +33,9 @@ def bottom_up_device(device: Device, impact_codes: Optional[Set[str]] = None) ->
 
 def bottom_up_component(component: Component, units: int = 1, impact_codes: Optional[Set[str]] = None) -> dict:
     component.smart_complete_data()
-    gwp = component.impact_gwp()
-    pe = component.impact_pe()
-    adp = component.impact_adp()
+    gwp = component.impact_manufacture_gwp()
+    pe = component.impact_manufacture_pe()
+    adp = component.impact_manufacture_adp()
 
     impacts = {
         'gwp': {
