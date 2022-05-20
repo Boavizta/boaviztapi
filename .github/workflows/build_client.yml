@@ -28,6 +28,7 @@ jobs:
           python-version: '3.x'
       - name: Install requirements
         run: |
+          sudo apt update -y
           sudo apt install docker.io containerd wget -y
       - name: Run the API locally
         run: |
