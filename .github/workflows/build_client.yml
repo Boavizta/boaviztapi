@@ -40,6 +40,7 @@ jobs:
           docker run -p "5000:5000" --name=boaviztapi -tid boaviztapi:latest
       - name: Get the openapi.json definition
         run: |
+          sleep 5
           ss -lnpt
           docker ps
           wget http://127.0.0.1:5000/openapi.json
