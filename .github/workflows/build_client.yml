@@ -40,5 +40,6 @@ jobs:
           docker run -p "5000:5000" --name=boaviztapi -tid boaviztapi:latest
       - name: Get the openapi.json definition
         run: |
+          sleep 3
           wget http://localhost:5000/openapi.json
           docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g python -o /local/python-client
