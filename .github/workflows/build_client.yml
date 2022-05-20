@@ -2,7 +2,7 @@ name: build_client_sdk
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ feat/build_client_sdk ]
     paths-ignore:
       - 'docs_src/**'
       - 'README.md'
@@ -11,7 +11,7 @@ on:
       - 'book.toml'
       - 'CONTRIBUTING.md'
   pull_request:
-    branches: [ dev ]
+    branches: [ feat/build_client_sdk ]
 
 env:
   CARGO_TERM_COLOR: always
