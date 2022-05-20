@@ -41,6 +41,5 @@ jobs:
       - name: Get the openapi.json definition
         run: |
           ss -lnpt
-          sleep 3
-          wget http://localhost:5000/openapi.json
+          wget http://127.0.0.1:5000/openapi.json
           docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g python -o /local/python-client
