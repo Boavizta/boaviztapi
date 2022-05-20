@@ -31,7 +31,7 @@ jobs:
       - name: Install requirements
         run: |
           sudo apt update -y
-          sudo apt install docker.io containerd runc wget python3-pip -y
+          sudo apt install docker.io containerd runc wget python3-pip iproute2 -y
           pip3 install pipenv twine
       - name: Run the API locally
         run: |
@@ -40,6 +40,7 @@ jobs:
           docker run -p "5000:5000" --name=boaviztapi -tid boaviztapi:latest
       - name: Get the openapi.json definition
         run: |
+          ss -lnpt
           sleep 3
           wget http://localhost:5000/openapi.json
           docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g python -o /local/python-client
