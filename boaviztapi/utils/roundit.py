@@ -1,6 +1,7 @@
 import math
 from decimal import Decimal
 
+DEFAULT_SIG_FIGURES = 3
 
 
 def significant_number(x):

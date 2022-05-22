@@ -48,14 +48,14 @@ class Usage(BaseModel):
             sub = _electricity_emission_factors_df
             sub = sub[sub['code'] == self.usage_location]
             self.adp_factor = float(sub['adpe_emission_factor'])
-        return self.gwp_factor
+        return self.adp_factor
 
     def get_pe_factor(self):
         if not self.pe_factor:
             sub = _electricity_emission_factors_df
             sub = sub[sub['code'] == self.usage_location]
             self.pe_factor = float(sub['pe_emission_factor'])
-        return self.gwp_factor
+        return self.pe_factor
 
     def get_usage_location(self):
         if not self.usage_location:
@@ -69,8 +69,10 @@ class Usage(BaseModel):
 
     def get_years_use_time(self):
         if not self.years_use_time:
-            if self.get_hours_use_time() == 0 and self.get_days_use_time() == 0:
+            if self.get_hours_use_time() and self.get_days_use_time():
                 self.years_use_time = self._DEFAULT_YEAR_USE_TIME
+            else:
+                self.years_use_time = 0
         return self.years_use_time
 
     def get_hours_use_time(self):
@@ -90,7 +92,7 @@ class Usage(BaseModel):
                 pass  # Apply consumption profile 2 time_per_workload
             else:
                 self.hours_electrical_consumption = 0
-        return self.hours_electrical_consumption
+        return self.hours_electrical_consumption / 1000  # in kwh
 
     def get_time_per_workload(self):
         if not self.time_per_workload:
@@ -98,15 +100,14 @@ class Usage(BaseModel):
         return self.time_per_workload
 
     def get_duration_hours(self) -> float:
-        return (self.get_hours_use_time() or 0) + \
-               ((self.get_days_use_time() or 0) * 24) + \
-               ((self.get_years_use_time() or 0) * 365 * 24)
+        return (self.get_hours_use_time()) + \
+               ((self.get_days_use_time()) * 24) + \
+               ((self.get_years_use_time()) * 365 * 24)
 
     def get_consumption_profile(self, model):
         return None
 
     def __hash__(self) -> int:
-        # TODO: TO ENHANCE
         return 0
 
 

@@ -9,6 +9,7 @@ from boaviztapi.model.components.component import Component, ComponentCPU, Compo
 
 DEFAULT_SIG_FIGURES: int = 3
 
+
 class Model(BaseModel):
     archetype: str = None
     name: str = None

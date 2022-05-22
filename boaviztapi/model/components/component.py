@@ -19,7 +19,7 @@ class Component(BaseModel):
     hash: str = None
     TYPE: str = None
     _IMPACT_FACTOR_DICT: dict = None
-    usage: Usage = Usage()
+    usage: Usage = None
 
     def __iter__(self):
         for attr, value in self.__dict__.items():
@@ -50,15 +50,15 @@ class Component(BaseModel):
 
     @abstractmethod
     def impact_use_gwp(self) -> (float, int):
-        pass
+        return self.usage.get_hours_electrical_consumption() * self.usage.get_duration_hours() * self.usage.get_gwp_factor(), rd.DEFAULT_SIG_FIGURES
 
     @abstractmethod
     def impact_use_pe(self) -> (float, int):
-        pass
+        return self.usage.get_hours_electrical_consumption() * self.usage.get_duration_hours() * self.usage.get_pe_factor(), rd.DEFAULT_SIG_FIGURES
 
     @abstractmethod
     def impact_use_adp(self) -> (float, int):
-        pass
+        return self.usage.get_hours_electrical_consumption() * self.usage.get_duration_hours() * self.usage.get_adp_factor(), rd.DEFAULT_SIG_FIGURES
 
 
 class ComponentCPU(Component):
@@ -83,7 +83,7 @@ class ComponentCPU(Component):
     _DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
     _DEFAULT_CPU_CORE_UNITS = 24
 
-    usage: UsageCPU = UsageCPU()
+    usage: UsageCPU = None
 
     core_units: Optional[int] = None
     die_size: Optional[float] = None
@@ -129,27 +129,14 @@ class ComponentCPU(Component):
 
         return self.die_size_per_core
 
-    def get_family(self): # skylake
+    def get_family(self):
         if not self.family:
-            # TODO : find family from name
-            # if return nothing set family to None > 50% return null
-            # from name = "Intel Xeon Platinium 3432"
-            # from name = "xeon Platinium 3432"
-            # from name = "Intel Xeon Platinium 3432"
-            # from name = "Intel Xeon Platinium"
-            # from name = "intel Xeon Platinium 3432"
-            self.family = None
+            pass # TODO : find family from name
         return self.family
 
-    def get_model_name(self): # Game de produit : xeon platinium, ...
+    def get_model_name(self):
         if not self.model_name:
             pass  # TODO : get model name from name
-            # if return nothing set model_name to None
-            # from name = "Intel Xeon Platinium 3432"
-            # from name = "xeon Platinium 3432"
-            # from name = "Xeon Platinium"
-            # from name = "Platinium"
-            # from name = "intel Xeon Platinium 3432"
             self.model_name = None
         return self.model_name
 
@@ -178,13 +165,13 @@ class ComponentCPU(Component):
         return (self.get_core_units() * self.get_die_size_per_core() + core_impact) * cpu_die_impact + cpu_impact, significant_figures
 
     def impact_use_gwp(self) -> (float, int):
-        return "not implemented"
+        return super().impact_use_gwp()
 
     def impact_use_pe(self) -> (float, int):
-        return "not implemented"
+        return super().impact_use_pe()
 
     def impact_use_adp(self) -> (float, int):
-        return "not implemented"
+        return super().impact_use_adp()
 
 
 class ComponentRAM(Component):

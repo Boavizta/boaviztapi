@@ -1,15 +1,26 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, Dict
 
 from boaviztapi.model.components.component import ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
     ComponentPowerSupply, ComponentMotherBoard, ComponentCase
+from boaviztapi.model.usage.usage import Usage
 
 
-class Model(BaseModel):
-    manufacturer: Optional[str] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
-    year: Optional[str] = None
+class UsageComponent(BaseModel):
+    years_use_time: Optional[float] = None
+    days_use_time: Optional[float] = None
+    hours_use_time: Optional[float] = None
+
+    hours_electrical_consumption: Optional[float] = None
+    time_per_workload: Optional[Dict[str, float]] = None
+
+    usage_location: Optional[str] = None
+    gwp_factor: Optional[float] = None
+    pe_factor: Optional[float] = None
+    adp_factor: Optional[float] = None
+
+    def to_usage(self) -> Usage:
+        return Usage(**self.dict())
 
 
 class PowerSupply(BaseModel):
@@ -62,7 +73,11 @@ class Cpu(BaseModel):
     family: Optional[str] = None
     name: Optional[str] = None
 
+    usage: Optional[UsageComponent] = None
+
     def to_component(self):
+        if self.usage == None:
+            self.usage = UsageComponent()
         return ComponentCPU(**self.dict())
 
 

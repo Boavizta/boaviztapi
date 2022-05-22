@@ -103,7 +103,3 @@ class CloudDTO(ServerDTO):
         server.config_components = self.get_component_list()
         server.usage = self.get_usage()
         return server
-
-
-if __name__ == '__main__':
-    print(Server.schema_json(indent=2))
