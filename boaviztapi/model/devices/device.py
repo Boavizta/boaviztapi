@@ -3,10 +3,11 @@ from typing import List
 
 from pydantic import BaseModel
 
-from boaviztapi.model.components.usage import Usage, UsageServer, UsageCloud
+from boaviztapi.model.usage.usage import Usage, UsageServer, UsageCloud
 from boaviztapi.model.components.component import Component, ComponentCPU, ComponentSSD, ComponentRAM, \
     ComponentPowerSupply, ComponentMotherBoard, ComponentAssembly, ComponentCase
 
+DEFAULT_SIG_FIGURES: int = 3
 
 class Model(BaseModel):
     archetype: str = None
@@ -20,33 +21,10 @@ class Device(BaseModel):
     model: Model = None
     usage: Usage = None
 
-    @abstractmethod
-    def impact_manufacture_gwp(self) -> (float, int):
-        pass
-
-    @abstractmethod
-    def impact_manufacture_pe(self) -> (float, int):
-        pass
-
-    @abstractmethod
-    def impact_manufacture_adp(self) -> (float, int):
-        pass
-
-    @abstractmethod
-    def impact_use_gwp(self) -> (float, int):
-        pass
-
-    @abstractmethod
-    def impact_use_pe(self) -> (float, int):
-        pass
-
-    @abstractmethod
-    def impact_use_adp(self) -> (float, int):
-        pass
-
-    @abstractmethod
-    def smart_complete_data(self):
-        pass
+    def get_config_components(self):
+        if not self.config_components:
+            self.config_components = []
+        return self.config_components
 
     def __eq__(self, other):
         self.config_components.sort(key=lambda x: x.hash, reverse=True)
@@ -57,6 +35,30 @@ class Device(BaseModel):
             return True
         return False
 
+    @abstractmethod
+    def impact_manufacture_gwp(self) -> (float, int):
+        pass
+
+    @abstractmethod
+    def impact_manufacture_pe(self) -> (float, int):
+        pass
+
+    @abstractmethod
+    def impact_manufacture_adp(self) -> (float, int):
+        pass
+
+    @abstractmethod
+    def impact_use_gwp(self) -> (float, int):
+        pass
+
+    @abstractmethod
+    def impact_use_pe(self) -> (float, int):
+        pass
+
+    @abstractmethod
+    def impact_use_adp(self) -> (float, int):
+        pass
+
 
 class Server(Device):
     _DEFAULT_POWER_SUPPLY_NUMBER = 2
@@ -64,40 +66,9 @@ class Server(Device):
     _DEFAULT_SSD_NUMBER = 1
     _DEFAULT_RAM_NUMBER = 24
 
-    usage: UsageServer = None
+    usage: UsageServer = UsageServer()
 
-    def impact_manufacture_gwp(self) -> (float, int):
-        impacts = [item.impact_gwp() for item in self.config_components]
-        sum_impacts = sum(item[0] for item in impacts)
-        significant_figure = min(item[1] for item in impacts)
-        return sum_impacts, significant_figure
-
-    def impact_manufacture_pe(self) -> (float, int):
-        impacts = [item.impact_pe() for item in self.config_components]
-        sum_impacts = sum(item[0] for item in impacts)
-        significant_figure = min(item[1] for item in impacts)
-        return sum_impacts, significant_figure
-
-    def impact_manufacture_adp(self) -> (float, int):
-        impacts = [item.impact_adp() for item in self.config_components]
-        sum_impacts = sum(item[0] for item in impacts)
-        significant_figure = min(item[1] for item in impacts)
-        return sum_impacts, significant_figure
-
-    def impact_use_gwp(self) -> (float, int):
-        return self.usage.impact_gwp()
-
-    def impact_use_pe(self) -> (float, int):
-        return self.usage.impact_pe()
-
-    def impact_use_adp(self) -> (float, int):
-        return self.usage.impact_adp()
-
-    def smart_complete_data(self):
-
-        if self.usage is not None:
-            self.usage.smart_complete_data()
-
+    def get_config_components(self):
         if not self.config_components:
             self.config_components = self.get_default_configuration_component_list()
         else:
@@ -134,8 +105,7 @@ class Server(Device):
             if not case:
                 self.config_components += [ComponentCase()]
 
-        for item in self.config_components:
-            item.smart_complete_data()
+        return self.config_components
 
     def get_default_cpu(self) -> List[Component]:
         return [ComponentCPU() for _ in range(self._DEFAULT_CPU_NUMBER)]
@@ -154,9 +124,36 @@ class Server(Device):
                       *self.get_default_power_supply(), ComponentMotherBoard(), ComponentAssembly(), ComponentCase()]
         return components
 
+    def impact_manufacture_gwp(self) -> (float, int):
+        impacts = [item.impact_manufacture_gwp() for item in self.config_components]
+        sum_impacts = sum(item[0] for item in impacts)
+        significant_figure = min(item[1] for item in impacts)
+        return sum_impacts, significant_figure
+
+    def impact_manufacture_pe(self) -> (float, int):
+        impacts = [item.impact_manufacture_pe() for item in self.config_components]
+        sum_impacts = sum(item[0] for item in impacts)
+        significant_figure = min(item[1] for item in impacts)
+        return sum_impacts, significant_figure
+
+    def impact_manufacture_adp(self) -> (float, int):
+        impacts = [item.impact_manufacture_adp() for item in self.config_components]
+        sum_impacts = sum(item[0] for item in impacts)
+        significant_figure = min(item[1] for item in impacts)
+        return sum_impacts, significant_figure
+
+    def impact_use_gwp(self) -> (float, int):
+        return self.usage.get_hours_electrical_consumption() * self.usage.get_duration_hours() * self.usage.get_gwp_factor(), DEFAULT_SIG_FIGURES
+
+    def impact_use_pe(self) -> (float, int):
+        return self.usage.get_hours_electrical_consumption() * self.usage.get_duration_hours() * self.usage.get_pe_factor(), DEFAULT_SIG_FIGURES
+
+    def impact_use_adp(self) -> (float, int):
+        return self.usage.get_hours_electrical_consumption() * self.usage.get_duration_hours() * self.usage.get_adp_factor(), DEFAULT_SIG_FIGURES
+
 
 class CloudInstance(Server):
-    usage: UsageCloud = None
+    usage: UsageCloud = UsageCloud()
 
     def impact_manufacture_gwp(self) -> (float, int):
         return super().impact_manufacture_gwp()[0] / self.usage.instance_per_server, super().impact_manufacture_gwp()[1]

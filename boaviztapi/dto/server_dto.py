@@ -12,7 +12,7 @@ from boaviztapi.model.components.component import (
     Component
 )
 from boaviztapi.model.devices.device import Model, Server, CloudInstance
-from boaviztapi.model.components.usage import UsageServer, UsageCloud
+from boaviztapi.model.usage.usage import UsageServer, UsageCloud
 
 
 class ConfigurationServer(BaseModel):

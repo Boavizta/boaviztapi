@@ -5,12 +5,12 @@ import boaviztapi.utils.roundit as rd
 
 def verbose_device(complete_device: Device, input_device: Device):
     json_output = {}
+    if complete_device.usage:
+        json_output["USAGE"] = {**verbose_usage(complete_device=complete_device,
+                                                input_device=input_device)}
 
     input_components = input_device.config_components
     complete_components = complete_device.config_components
-
-    input_components.append(input_device.usage)
-    complete_components.append(complete_device.usage)
 
     for complete_component in complete_components:
         component_type = complete_component.TYPE
@@ -57,13 +57,47 @@ def verbose_device(complete_device: Device, input_device: Device):
     return json_output
 
 
+def verbose_usage(complete_device, input_device):
+    json_output = {"unit": 1}
+
+    for attr, value in complete_device.usage.__iter__():
+        if type(value) is dict:
+            json_output[attr] = \
+                recursive_dict_verbose(value,
+                                       {} if getattr(input_device.usage, attr) is None else getattr(input_device.usage, attr))
+        elif value is not None and attr != "TYPE" and attr != "hash":
+            json_output[attr] = {}
+            json_output[attr]["input_value"] = getattr(input_device.usage, attr, None)
+            json_output[attr]["used_value"] = value
+            json_output[attr]["status"] = get_status(json_output[attr]["used_value"], json_output[attr]["input_value"])
+
+    gwp_use = complete_device.impact_use_gwp()
+    pe_use = complete_device.impact_use_pe()
+    adp_use = complete_device.impact_use_adp()
+
+    json_output["impacts"] = {"gwp": {
+        "value": gwp_use if gwp_use == "not implemented" else rd.round_to_sigfig(gwp_use[0], gwp_use[1]),
+        "unit": "kgCO2eq"},
+        "pe": {
+            "value": pe_use if pe_use == "not implemented" else rd.round_to_sigfig(pe_use[0], pe_use[1]),
+            "unit": "MJ"},
+        "adp": {"value": adp_use if adp_use == "not implemented" else rd.round_to_sigfig(adp_use[0], adp_use[1]),
+                "unit": "kgSbeq"},
+    }
+    return json_output
+
+
 def verbose_component(complete_component: Component, input_component: Component, units: int = None):
     json_output = {}
-
+    if complete_component.usage:
+        json_output["USAGE"] = {**verbose_usage(complete_device=complete_component,
+                                                input_device=input_component)}
     if units:
         json_output["units"] = units
 
     for attr, value in complete_component.__iter__():
+        if attr == "usage":
+            continue
         if type(value) is dict:
             json_output[attr] = \
                 recursive_dict_verbose(value,
@@ -75,12 +109,12 @@ def verbose_component(complete_component: Component, input_component: Component,
             json_output[attr]["status"] = get_status(json_output[attr]["used_value"], json_output[attr]["input_value"])
 
     json_output["impacts"] = {"gwp": {
-        "value": rd.round_to_sigfig(*complete_component.impact_gwp()),
+        "value": rd.round_to_sigfig(*complete_component.impact_manufacture_gwp()),
         "unit": "kgCO2eq"},
         "pe": {
-            "value": rd.round_to_sigfig(*complete_component.impact_pe()),
+            "value": rd.round_to_sigfig(*complete_component.impact_manufacture_pe()),
             "unit": "MJ"},
-        "adp": {"value": rd.round_to_sigfig(*complete_component.impact_adp()),
+        "adp": {"value": rd.round_to_sigfig(*complete_component.impact_manufacture_adp()),
                 "unit": "kgSbeq"},
     }
     return json_output

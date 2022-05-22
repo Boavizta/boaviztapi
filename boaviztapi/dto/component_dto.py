@@ -52,14 +52,15 @@ class Ram(BaseModel):
 
 class Cpu(BaseModel):
     units: Optional[int] = None
+
     core_units: Optional[int] = None
     die_size: Optional[float] = None
     die_size_per_core: Optional[float] = None
-    process: Optional[float] = None
     manufacturer: Optional[str] = None
-    manufacture_date: Optional[str] = None
-    model: Optional[str] = None
+    model_name: Optional[str] = None
+    model_id: Optional[str] = None
     family: Optional[str] = None
+    name: Optional[str] = None
 
     def to_component(self):
         return ComponentCPU(**self.dict())

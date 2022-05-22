@@ -8,8 +8,6 @@ _default_impacts_code = {"gwp", "pe", "adp"}
 
 
 def bottom_up_device(device: Device, impact_codes: Optional[Set[str]] = None) -> dict:
-    # Smart complete data
-    device.smart_complete_data()
 
     impacts = {
         'gwp': {
@@ -32,26 +30,28 @@ def bottom_up_device(device: Device, impact_codes: Optional[Set[str]] = None) ->
 
 
 def bottom_up_component(component: Component, units: int = 1, impact_codes: Optional[Set[str]] = None) -> dict:
-    component.smart_complete_data()
-    gwp = component.impact_gwp()
-    pe = component.impact_pe()
-    adp = component.impact_adp()
+    gwp_manuf = component.impact_manufacture_gwp()
+    pe_manuf = component.impact_manufacture_pe()
+    adp_manuf = component.impact_manufacture_adp()
+
+    gwp_use = component.impact_use_gwp()
+    pe_use = component.impact_use_pe()
+    adp_use = component.impact_use_adp()
 
     impacts = {
         'gwp': {
-            'manufacture': rd.round_to_sigfig(gwp[0]*units, gwp[1]),
-            'use': "not implemented",
+            'manufacture': rd.round_to_sigfig(gwp_manuf[0]*units, gwp_manuf[1]),
+            'use': gwp_use if gwp_use == "not implemented" else rd.round_to_sigfig(gwp_use[0]*units, gwp_use[1]),
             'unit': "kgCO2eq"
-
         },
         'pe': {
-            'manufacture': rd.round_to_sigfig(pe[0]*units, pe[1]),
-            'use': "not implemented",
+            'manufacture': rd.round_to_sigfig(pe_manuf[0]*units, pe_manuf[1]),
+            'use': pe_use if pe_use == "not implemented" else rd.round_to_sigfig(pe_use[0]*units, pe_use[1]),
             'unit': "MJ"
         },
         'adp': {
-            'manufacture': rd.round_to_sigfig(adp[0]*units, adp[1]),
-            'use': "not implemented",
+            'manufacture': rd.round_to_sigfig(adp_manuf[0]*units, adp_manuf[1]),
+            'use': adp_use if adp_use == "not implemented" else rd.round_to_sigfig(adp_use[0]*units, adp_use[1]),
             'unit': "kgSbeq"
         },
     }
