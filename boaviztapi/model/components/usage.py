@@ -32,15 +32,15 @@ class Usage(Component):
 
     @abstractmethod
     def impact_gwp(self) -> (float, int):
-        return self.hours_electrical_consumption * self.get_duration_hours() * self.gwp_factor, DEFAULT_SIG_FIGURES
+        return (self.hours_electrical_consumption / 1000) * self.get_duration_hours() * self.gwp_factor, DEFAULT_SIG_FIGURES
 
     @abstractmethod
     def impact_pe(self) -> (float, int):
-        return self.hours_electrical_consumption * self.get_duration_hours() * self.pe_factor, DEFAULT_SIG_FIGURES
+        return (self.hours_electrical_consumption / 1000) * self.get_duration_hours() * self.pe_factor, DEFAULT_SIG_FIGURES
 
     @abstractmethod
     def impact_adp(self) -> (float, int):
-        return self.hours_electrical_consumption * self.get_duration_hours() * self.adp_factor, DEFAULT_SIG_FIGURES
+        return (self.hours_electrical_consumption / 1000) * self.get_duration_hours() * self.adp_factor, DEFAULT_SIG_FIGURES
 
     @abstractmethod
     def get_hours_electrical_consumption(self):
@@ -111,7 +111,7 @@ class UsageServer(Usage):
         hours_electrical_consumption = 0
         for values in self.workload.values():
             hours_electrical_consumption += values["time"] * values["power"] * self.max_power
-        return hours_electrical_consumption / 1000
+        return hours_electrical_consumption
 
     def smart_complete_data(self):
         super().smart_complete_data()

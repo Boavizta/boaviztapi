@@ -255,6 +255,6 @@ async def test_custom_usage_1():
             }
         })
     assert res.json() == {
-        'adp': {'manufacture': 0.23, 'unit': 'kgSbeq', 'use': 0.000427},
-        'gwp': {'manufacture': 3300.0, 'unit': 'kgCO2eq', 'use': 861},
-        'pe': {'manufacture': 42000.0, 'unit': 'MJ', 'use': 99200}}
+        'adp': {'manufacture': 0.23, 'unit': 'kgSbeq', 'use': 4.27e-7},
+        'gwp': {'manufacture': 3300.0, 'unit': 'kgCO2eq', 'use': 0.861},
+        'pe': {'manufacture': 42000.0, 'unit': 'MJ', 'use': 99.2}}
