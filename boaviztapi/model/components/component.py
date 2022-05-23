@@ -49,16 +49,19 @@ class Component(BaseModel):
         pass
 
     @abstractmethod
-    def impact_use_gwp(self) -> (float, int):
-        return self.usage.get_hours_electrical_consumption() * self.usage.get_duration_hours() * self.usage.get_gwp_factor(), rd.DEFAULT_SIG_FIGURES
+    def impact_use_gwp(self, model=None) -> (float, int):
+        return self.usage.get_hours_electrical_consumption(
+            model) * self.usage.get_duration_hours() * self.usage.get_gwp_factor(), rd.DEFAULT_SIG_FIGURES
 
     @abstractmethod
-    def impact_use_pe(self) -> (float, int):
-        return self.usage.get_hours_electrical_consumption() * self.usage.get_duration_hours() * self.usage.get_pe_factor(), rd.DEFAULT_SIG_FIGURES
+    def impact_use_pe(self, model=None) -> (float, int):
+        return self.usage.get_hours_electrical_consumption(
+            model) * self.usage.get_duration_hours() * self.usage.get_pe_factor(), rd.DEFAULT_SIG_FIGURES
 
     @abstractmethod
-    def impact_use_adp(self) -> (float, int):
-        return self.usage.get_hours_electrical_consumption() * self.usage.get_duration_hours() * self.usage.get_adp_factor(), rd.DEFAULT_SIG_FIGURES
+    def impact_use_adp(self, model=None) -> (float, int):
+        return self.usage.get_hours_electrical_consumption(
+            model) * self.usage.get_duration_hours() * self.usage.get_adp_factor(), rd.DEFAULT_SIG_FIGURES
 
 
 class ComponentCPU(Component):
@@ -82,6 +85,8 @@ class ComponentCPU(Component):
 
     _DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
     _DEFAULT_CPU_CORE_UNITS = 24
+    _DEFAULT_CPU_FAMILY = "skylake"
+    _DEFAULT_MODEL_FAMILY = "xeon platinium"
 
     usage: UsageCPU = None
 
@@ -131,13 +136,16 @@ class ComponentCPU(Component):
 
     def get_family(self):
         if not self.family:
-            pass # TODO : find family from name
+            pass  # TODO : find family from name
+            if not self.family:
+                self.family = self._DEFAULT_CPU_FAMILY
         return self.family
 
     def get_model_name(self):
         if not self.model_name:
             pass  # TODO : get model name from name
-            self.model_name = None
+            if not self.model_name:
+                self.model_name = self._DEFAULT_MODEL_FAMILY
         return self.model_name
 
     def impact_manufacture_gwp(self) -> (float, int):
@@ -146,7 +154,8 @@ class ComponentCPU(Component):
         cpu_impact = self._IMPACT_FACTOR_DICT['gwp']['impact']
         significant_figures = \
             rd.min_significant_figures(self.get_die_size_per_core(), core_impact, cpu_die_impact, cpu_impact)
-        return (self.get_core_units() * self.get_die_size_per_core() + core_impact) * cpu_die_impact + cpu_impact, significant_figures
+        return (
+                           self.get_core_units() * self.get_die_size_per_core() + core_impact) * cpu_die_impact + cpu_impact, significant_figures
 
     def impact_manufacture_pe(self) -> (float, int):
         core_impact = self._IMPACT_FACTOR_DICT['constant_core_impact']
@@ -154,7 +163,8 @@ class ComponentCPU(Component):
         cpu_impact = self._IMPACT_FACTOR_DICT['pe']['impact']
         significant_figures = rd.min_significant_figures(self.get_die_size_per_core(), core_impact, cpu_die_impact,
                                                          cpu_impact)
-        return (self.get_core_units() * self.get_die_size_per_core() + core_impact) * cpu_die_impact + cpu_impact, significant_figures
+        return (
+                           self.get_core_units() * self.get_die_size_per_core() + core_impact) * cpu_die_impact + cpu_impact, significant_figures
 
     def impact_manufacture_adp(self) -> (float, int):
         core_impact = self._IMPACT_FACTOR_DICT['constant_core_impact']
@@ -162,16 +172,26 @@ class ComponentCPU(Component):
         cpu_impact = self._IMPACT_FACTOR_DICT['adp']['impact']
         significant_figures = rd.min_significant_figures(self.get_die_size_per_core(), core_impact, cpu_die_impact,
                                                          cpu_impact)
-        return (self.get_core_units() * self.get_die_size_per_core() + core_impact) * cpu_die_impact + cpu_impact, significant_figures
+        return (
+                           self.get_core_units() * self.get_die_size_per_core() + core_impact) * cpu_die_impact + cpu_impact, significant_figures
 
-    def impact_use_gwp(self) -> (float, int):
-        return super().impact_use_gwp()
+    def impact_use_gwp(self, model=None) -> (float, int):
+        model = None
+        if not self.usage.hours_electrical_consumption:
+            model = self.get_model_name()
+        return super().impact_use_gwp(model)
 
-    def impact_use_pe(self) -> (float, int):
-        return super().impact_use_pe()
+    def impact_use_pe(self, model=None) -> (float, int):
+        model = None
+        if not self.usage.hours_electrical_consumption:
+            model = self.get_model_name()
+        return super().impact_use_pe(model)
 
-    def impact_use_adp(self) -> (float, int):
-        return super().impact_use_adp()
+    def impact_use_adp(self, model=None) -> (float, int):
+        model = None
+        if not self.usage.hours_electrical_consumption:
+            model = self.get_model_name()
+        return super().impact_use_adp(model)
 
 
 class ComponentRAM(Component):
@@ -247,13 +267,13 @@ class ComponentRAM(Component):
         significant_figure = rd.min_significant_figures(self.get_density(), ram_die_impact, ram_impact)
         return (self.get_capacity() / self.get_density()) * ram_die_impact + ram_impact, significant_figure
 
-    def impact_use_gwp(self) -> (float, int):
+    def impact_use_gwp(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_pe(self) -> (float, int):
+    def impact_use_pe(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_adp(self) -> (float, int):
+    def impact_use_adp(self, model=None) -> (float, int):
         return "not implemented"
 
 
@@ -293,13 +313,13 @@ class ComponentHDD(Component):
     def impact_manufacture_adp(self) -> (float, int):
         return self._IMPACT_FACTOR_DICT['adp']['impact'], 3
 
-    def impact_use_gwp(self) -> (float, int):
+    def impact_use_gwp(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_pe(self) -> (float, int):
+    def impact_use_pe(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_adp(self) -> (float, int):
+    def impact_use_adp(self, model=None) -> (float, int):
         return "not implemented"
 
 
@@ -374,13 +394,13 @@ class ComponentSSD(Component):
         significant_figure = rd.min_significant_figures(self.get_density(), ssd_impact, ssd_die_impact)
         return (self.get_capacity() / self.get_density()) * ssd_die_impact + ssd_impact, significant_figure
 
-    def impact_use_gwp(self) -> (float, int):
+    def impact_use_gwp(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_pe(self) -> (float, int):
+    def impact_use_pe(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_adp(self) -> (float, int):
+    def impact_use_adp(self, model=None) -> (float, int):
         return "not implemented"
 
 
@@ -422,13 +442,13 @@ class ComponentPowerSupply(Component):
         power_supply_impact = self._IMPACT_FACTOR_DICT['adp']['impact']
         return power_supply_weight * power_supply_impact, 3
 
-    def impact_use_gwp(self) -> (float, int):
+    def impact_use_gwp(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_pe(self) -> (float, int):
+    def impact_use_pe(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_adp(self) -> (float, int):
+    def impact_use_adp(self, model=None) -> (float, int):
         return "not implemented"
 
 
@@ -455,13 +475,13 @@ class ComponentMotherBoard(Component):
     def impact_manufacture_adp(self) -> (float, int):
         return self._IMPACT_FACTOR_DICT['adp']['impact'], 3
 
-    def impact_use_gwp(self) -> (float, int):
+    def impact_use_gwp(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_pe(self) -> (float, int):
+    def impact_use_pe(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_adp(self) -> (float, int):
+    def impact_use_adp(self, model=None) -> (float, int):
         return "not implemented"
 
 
@@ -530,13 +550,13 @@ class ComponentCase(Component):
         else:
             return self._IMPACT_FACTOR_DICT['rack']['adp']['impact'], 3
 
-    def impact_use_gwp(self) -> (float, int):
+    def impact_use_gwp(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_pe(self) -> (float, int):
+    def impact_use_pe(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_adp(self) -> (float, int):
+    def impact_use_adp(self, model=None) -> (float, int):
         return "not implemented"
 
 
@@ -566,11 +586,11 @@ class ComponentAssembly(Component):
     def impact_manufacture_adp(self) -> (float, int):
         return self._IMPACT_FACTOR_DICT['adp']['impact'], 3
 
-    def impact_use_gwp(self) -> (float, int):
+    def impact_use_gwp(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_pe(self) -> (float, int):
+    def impact_use_pe(self, model=None) -> (float, int):
         return "not implemented"
 
-    def impact_use_adp(self) -> (float, int):
+    def impact_use_adp(self, model=None) -> (float, int):
         return "not implemented"

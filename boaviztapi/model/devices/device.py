@@ -66,8 +66,16 @@ class Server(Device):
     _DEFAULT_CPU_NUMBER = 2
     _DEFAULT_SSD_NUMBER = 1
     _DEFAULT_RAM_NUMBER = 24
+    _DEFAULT_PROFILE_NAME = "default"
 
     usage: UsageServer = UsageServer()
+
+    profile_name: str = None
+
+    def get_profile_name(self):
+        if not self.profile_name:
+            self.profile_name = self._DEFAULT_PROFILE_NAME
+        return self.profile_name
 
     def get_config_components(self):
         if not self.config_components:
@@ -144,32 +152,58 @@ class Server(Device):
         return sum_impacts, significant_figure
 
     def impact_use_gwp(self) -> (float, int):
-        return self.usage.get_hours_electrical_consumption() * self.usage.get_duration_hours() * self.usage.get_gwp_factor(), DEFAULT_SIG_FIGURES
+        profile = None
+        if not self.usage.hours_electrical_consumption:
+            profile = self.get_profile_name()
+        return self.usage.get_hours_electrical_consumption(profile) * self.usage.get_duration_hours() * self.usage.get_gwp_factor(), DEFAULT_SIG_FIGURES
 
     def impact_use_pe(self) -> (float, int):
-        return self.usage.get_hours_electrical_consumption() * self.usage.get_duration_hours() * self.usage.get_pe_factor(), DEFAULT_SIG_FIGURES
+        profile = None
+        if not self.usage.hours_electrical_consumption:
+            profile = self.get_profile_name()
+        return self.usage.get_hours_electrical_consumption(profile) * self.usage.get_duration_hours() * self.usage.get_pe_factor(), DEFAULT_SIG_FIGURES
 
     def impact_use_adp(self) -> (float, int):
-        return self.usage.get_hours_electrical_consumption() * self.usage.get_duration_hours() * self.usage.get_adp_factor(), DEFAULT_SIG_FIGURES
+        profile = None
+        if not self.usage.hours_electrical_consumption:
+            profile = self.get_profile_name()
+        return self.usage.get_hours_electrical_consumption(profile) * self.usage.get_duration_hours() * self.usage.get_adp_factor(), DEFAULT_SIG_FIGURES
 
 
 class CloudInstance(Server):
     usage: UsageCloud = UsageCloud()
 
+    _DEFAULT_PROFILE_NAME = "a1"
+
     def impact_manufacture_gwp(self) -> (float, int):
-        return super().impact_manufacture_gwp()[0] / self.usage.instance_per_server, super().impact_manufacture_gwp()[1]
+        return super().impact_manufacture_gwp()[0] / self.usage.get_instance_per_server(), \
+               super().impact_manufacture_gwp()[1]
 
     def impact_manufacture_pe(self) -> (float, int):
-        return super().impact_manufacture_pe()[0] / self.usage.instance_per_server, super().impact_manufacture_gwp()[1]
+        return super().impact_manufacture_pe()[0] / self.usage.get_instance_per_server(), \
+               super().impact_manufacture_gwp()[1]
 
     def impact_manufacture_adp(self) -> (float, int):
-        return super().impact_manufacture_adp()[0] / self.usage.instance_per_server, super().impact_manufacture_gwp()[1]
+        return super().impact_manufacture_adp()[0] / self.usage.get_instance_per_server(), \
+               super().impact_manufacture_gwp()[1]
 
     def impact_use_gwp(self) -> (float, int):
-        return super().impact_use_gwp()[0] / self.usage.instance_per_server, super().impact_manufacture_gwp()[1]
+        profile = None
+        if not self.usage.hours_electrical_consumption:
+            profile = self.get_profile_name()
+        return super(profile).impact_use_gwp()[0] / self.usage.get_instance_per_server(), \
+               super(profile).impact_manufacture_gwp()[1]
 
     def impact_use_pe(self) -> (float, int):
-        return super().impact_use_pe()[0] / self.usage.instance_per_server, super().impact_manufacture_gwp()[1]
+        profile = None
+        if not self.usage.hours_electrical_consumption:
+            profile = self.get_profile_name()
+        return super(profile).impact_use_pe()[0] / self.usage.get_instance_per_server(), \
+               super(profile).impact_manufacture_gwp()[1]
 
     def impact_use_adp(self) -> (float, int):
-        return super().impact_use_adp()[0] / self.usage.instance_per_server, super().impact_manufacture_gwp()[1]
+        profile = None
+        if not self.usage.hours_electrical_consumption:
+            profile = self.get_profile_name()
+        return super(profile).impact_use_adp()[0] / self.usage.get_instance_per_server(), \
+               super(profile).impact_manufacture_gwp()[1]
