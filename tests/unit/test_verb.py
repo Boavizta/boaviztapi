@@ -51,7 +51,7 @@ def test_verbose_usage(incomplete_usage, complete_usage):
         'hours_electrical_consumption': {
             'input_value': None,
             'status': 'SET',
-            'used_value': 0.368985},
+            'used_value':  368.985},
         'hours_use_time': {'input_value': None,
                            'status': 'SET',
                            'used_value': 1.0},
@@ -165,7 +165,7 @@ def test_verbose_device_server_1(empty_server, dell_r740):
                     'hash': 0,
                     'hours_electrical_consumption': {'input_value': None,
                                                      'status': 'SET',
-                                                     'used_value': 0.35174445000000004},
+                                                     'used_value': 351.74445000000004},
                     'impacts': {
                         'adp': {'unit': 'kgSbeq', 'value': 0.000198},
                         'gwp': {'unit': 'kgCO2eq', 'value': 1170.0},
@@ -278,7 +278,7 @@ def test_verbose_device_server_2(incomplete_server, completed_server_with_defaul
              'hash': 0,
              'hours_electrical_consumption': {'input_value': None,
                                               'status': 'SET',
-                                              'used_value': 0.35175},
+                                              'used_value': 351.75},
              'impacts': {'adp': {'unit': 'kgSbeq', 'value': 0.000198},
                          'gwp': {'unit': 'kgCO2eq', 'value': 1170.0},
                          'pe': {'unit': 'MJ', 'value': 39700.0}},
