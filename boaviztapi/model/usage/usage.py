@@ -110,7 +110,6 @@ class Usage(BaseModel):
                ((self.get_days_use_time()) * 24) + \
                ((self.get_years_use_time()) * 365 * 24)
 
-    @abstractmethod
     def get_consumption_profile(self, profile: str = None, _profiles_file=None) -> ConsumptionProfile:
         if not self.consumption_profile:
             _profiles_file = pd.read_csv(os.path.join(_profiles_file))
