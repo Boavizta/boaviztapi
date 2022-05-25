@@ -86,7 +86,7 @@ class ComponentCPU(Component):
     _DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
     _DEFAULT_CPU_CORE_UNITS = 24
     _DEFAULT_CPU_FAMILY = "skylake"
-    _DEFAULT_MODEL_FAMILY = "xeon platinium"
+    _DEFAULT_MODEL_NAME = "xeon platinum"
 
     usage: UsageCPU = None
 
