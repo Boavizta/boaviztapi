@@ -96,7 +96,6 @@ class Server(Device):
                 elif type(item).__name__ == "ComponentRAM":
                     ram = True
                 elif type(item).__name__ == "ComponentSSD":
-                    # TODO: SSD OR HDD
                     ssd = True
                 elif type(item).__name__ == "ComponentPowerSupply":
                     power_supply = True
