@@ -49,7 +49,10 @@ jobs:
       - name: Build the pip package and push it
         run: |
           sudo chown -R $(whoami) boaviztapi-sdk
+          SDK_VERSION=$(grep __version__ boaviztapi/__init__.py | cut -d "'" -f 2)
           cd boaviztapi-sdk
+          sed -i "s/^VERSION.*/VERSION = ${SDK_VERSION}/" setup.py
+          sed -i "s/^    long_description=.*/long_description='Python SDK for boaviztAPI'/" setup.py
           ls -la
           python3 setup.py sdist
-          pipenv run twine upload --repository pypi --username _ --password _ dist/*
+          pipenv run twine upload --repository pypi --username __token__ --password ${BPETIT_SECRET_PYPI_TOKEN} dist/*
