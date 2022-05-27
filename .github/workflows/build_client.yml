@@ -2,7 +2,9 @@ name: build_client_sdk
 
 on:
   push:
-    branches: [ feat/build_client_sdk ]
+    branches: [ main, dev ]
+    tags:
+      - '*'
     paths-ignore:
       - 'docs_src/**'
       - 'README.md'
@@ -10,12 +12,9 @@ on:
       - 'CITATION'
       - 'book.toml'
       - 'CONTRIBUTING.md'
-  pull_request:
-    branches: [ feat/build_client_sdk ]
 
 env:
   CARGO_TERM_COLOR: always
-  VERSION: "0.42"
 
 jobs:
   build:
@@ -36,7 +35,8 @@ jobs:
       - name: Run the API locally
         run: |
           python3 setup.py sdist
-          docker build --build-arg VERSION=$(python setup.py --version) . --file Dockerfile --tag boaviztapi:latest
+          API_VERSION=$(python setup.py --version)
+          docker build --build-arg VERSION=${API_VERSION} . --file Dockerfile --tag boaviztapi:latest
           docker run -p "5000:5000" --name=boaviztapi -tid boaviztapi:latest
       - name: Get logs from the API container in case of a failure
         run: |
@@ -49,7 +49,7 @@ jobs:
       - name: Build the pip package and push it
         run: |
           sudo chown -R $(whoami) boaviztapi-sdk
-          SDK_VERSION=$(grep __version__ boaviztapi/__init__.py | cut -d "'" -f 2)
+          SDK_VERSION=${API_VERSION}
           cd boaviztapi-sdk
           sed -i "s/^VERSION.*/VERSION = \"${SDK_VERSION}\"/" setup.py
           sed -i "s/^    long_description=.*/long_description='Python SDK for boaviztAPI'/" setup.py
