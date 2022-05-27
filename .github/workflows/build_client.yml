@@ -55,6 +55,5 @@ jobs:
           sed -i "s/^    long_description=.*/long_description='Python SDK for boaviztAPI'/" setup.py
           sed -i 's/    #.*//' setup.py
           sed -i 's/    """.*//' setup.py
-          ls -la
           python3 setup.py sdist
           pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.BPETIT_SECRET_PYPI_TOKEN }} dist/*
