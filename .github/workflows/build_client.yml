@@ -57,4 +57,4 @@ jobs:
           sed -i 's/    """.*//' setup.py
           ls -la
           python3 setup.py sdist
-          pipenv run twine upload --repository pypi --username __token__ --password ${BPETIT_SECRET_PYPI_TOKEN} dist/*
+          pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.BPETIT_SECRET_PYPI_TOKEN }} dist/*
