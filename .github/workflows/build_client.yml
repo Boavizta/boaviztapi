@@ -30,7 +30,7 @@ jobs:
       - name: Install requirements
         run: |
           sudo apt update -y
-          sudo apt install docker.io containerd runc wget python3-pip iproute2 -y
+          sudo apt install docker.io containerd runc wget python3-pip -y
           pip3 install pipenv twine
       - name: Run the API locally
         run: |
