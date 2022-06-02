@@ -6,9 +6,12 @@ on:
     tags:
       - '*'
     paths-ignore:
-      - 'docs_src/**'
+      - 'docs/**'
+      - 'test/**'
       - 'README.md'
       - 'CHANGELOG.md'
+      - 'LICENSE'
+      - 'Dockerfile'
       - 'CITATION'
       - 'book.toml'
       - 'CONTRIBUTING.md'
