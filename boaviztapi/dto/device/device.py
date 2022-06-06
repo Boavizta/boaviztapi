@@ -5,11 +5,8 @@ from boaviztapi.dto.usage import UsageServer, UsageCloud
 from boaviztapi.dto import BaseDTO
 
 
-class ConfigurationServer(BaseDTO):
-    cpu: Optional[CPU] = None
-    ram: Optional[List[RAM]] = None
-    disk: Optional[List[Disk]] = None
-    power_supply: Optional[PowerSupply] = None
+class DeviceDTO(BaseDTO):
+    pass
 
 
 class ModelServer(BaseDTO):
@@ -20,7 +17,14 @@ class ModelServer(BaseDTO):
     archetype: Optional[str] = None
 
 
-class Server(BaseDTO):
+class ConfigurationServer(BaseDTO):
+    cpu: Optional[CPU] = None
+    ram: Optional[List[RAM]] = None
+    disk: Optional[List[Disk]] = None
+    power_supply: Optional[PowerSupply] = None
+
+
+class Server(DeviceDTO):
     model: Optional[ModelServer] = None
     configuration: Optional[ConfigurationServer] = None
     usage: Optional[UsageServer] = None

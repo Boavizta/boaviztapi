@@ -1,1 +1,1 @@
-from .server import Server, Cloud
+from .device import DeviceDTO, Server, Cloud
