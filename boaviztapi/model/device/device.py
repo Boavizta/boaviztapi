@@ -1,12 +1,49 @@
 from abc import abstractmethod
-from typing import List
+from typing import List, Tuple
 
 from pydantic import BaseModel
 
 from boaviztapi.model.usage.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
 from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM
+from boaviztapi.dto.device import DeviceDTO
 
 DEFAULT_SIG_FIGURES: int = 3
+
+NumberSignificantFigures = Tuple[float, int]
+
+
+class Device:
+
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def impact_manufacture_gwp(self) -> (float, int):
+        pass
+
+    @abstractmethod
+    def impact_manufacture_pe(self) -> (float, int):
+        pass
+
+    @abstractmethod
+    def impact_manufacture_adp(self) -> (float, int):
+        pass
+
+    @abstractmethod
+    def impact_use_gwp(self) -> (float, int):
+        pass
+
+    @abstractmethod
+    def impact_use_pe(self) -> (float, int):
+        pass
+
+    @abstractmethod
+    def impact_use_adp(self) -> (float, int):
+        pass
+
+    @classmethod
+    def from_dto(cls, device: DeviceDTO) -> 'Device':
+        pass
 
 
 class Model(BaseModel):
