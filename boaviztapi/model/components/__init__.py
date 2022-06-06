@@ -1,3 +1,9 @@
-import os
-
-data_dir = os.path.join(os.path.dirname(__file__), '../../data')
+from .component import Component
+from .cpu import ComponentCPU
+from .ram import ComponentRAM
+from .hdd import ComponentHDD
+from .ssd import ComponentSSD
+from .motherboard import ComponentMotherboard
+from .power_supply import ComponentPowerSupply
+from .case import ComponentCase
+from .assembly import ComponentAssembly
