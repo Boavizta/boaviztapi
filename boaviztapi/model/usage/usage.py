@@ -113,7 +113,7 @@ class ModelUsageServer(ModelUsage):
     def __init__(self, /, **kwargs):
         super().__init__(**kwargs)
 
-        self._other_consumption_ratio = self.DEFAULT_OTHER_CONSUMPTION_RATIO
+        self.__other_consumption_ratio = self.DEFAULT_OTHER_CONSUMPTION_RATIO
 
         for attr, val in kwargs.items():
             if val is not None:
@@ -121,11 +121,11 @@ class ModelUsageServer(ModelUsage):
 
     @property
     def other_consumption_ratio(self) -> float:
-        return self._other_consumption_ratio
+        return self.__other_consumption_ratio
 
     @other_consumption_ratio.setter
     def other_consumption_ratio(self, value: float) -> None:
-        self._other_consumption_ratio = value
+        self.__other_consumption_ratio = value
 
 
 class ModelUsageCloud(ModelUsageServer):
@@ -134,7 +134,7 @@ class ModelUsageCloud(ModelUsageServer):
     def __init__(self, /, **kwargs):
         super().__init__(**kwargs)
 
-        self._instance_per_server = self.DEFAULT_INSTANCE_PER_SERVER
+        self.__instance_per_server = self.DEFAULT_INSTANCE_PER_SERVER
 
         for attr, val in kwargs.items():
             if val is not None:
@@ -142,8 +142,8 @@ class ModelUsageCloud(ModelUsageServer):
 
     @property
     def instance_per_server(self) -> int:
-        return self._instance_per_server
+        return self.__instance_per_server
 
     @instance_per_server.setter
     def instance_per_server(self, value: int) -> None:
-        self._instance_per_server = value
+        self.__instance_per_server = value
