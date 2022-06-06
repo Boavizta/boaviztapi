@@ -2,7 +2,7 @@ import pandas as pd
 
 from typing import Dict, Union
 
-from boaviztapi.dto.usage import Usage
+from boaviztapi.dto.usage import Usage, UsageServer, UsageCloud
 
 
 _electricity_emission_factors_df = pd.read_csv('./boaviztapi/data/electricity/electricity_impact_factors.csv')
@@ -102,6 +102,8 @@ class ModelUsage:
             self.__hours_electrical_consumption = 0
         return self.__hours_electrical_consumption / 1000  # in kwh
 
+    # TODO: Implement impact methods in usage class
+
     @classmethod
     def from_dto(cls, usage: Usage):
         return cls(**usage.dict())
@@ -127,6 +129,10 @@ class ModelUsageServer(ModelUsage):
     def other_consumption_ratio(self, value: float) -> None:
         self.__other_consumption_ratio = value
 
+    @classmethod
+    def from_dto(cls, usage_server: UsageServer):
+        return cls(**usage_server.dict())
+
 
 class ModelUsageCloud(ModelUsageServer):
     DEFAULT_INSTANCE_PER_SERVER = 1
@@ -147,3 +153,7 @@ class ModelUsageCloud(ModelUsageServer):
     @instance_per_server.setter
     def instance_per_server(self, value: int) -> None:
         self.__instance_per_server = value
+
+    @classmethod
+    def from_dto(cls, usage_cloud: UsageCloud):
+        return cls(**usage_cloud.dict())
