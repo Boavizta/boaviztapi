@@ -1,14 +1,13 @@
-from typing import Set, Optional
+from typing import Union, Tuple
 
-from boaviztapi.model.components.component import Component
+from boaviztapi.model.components import Component
 from boaviztapi.model.devices.device import Device
 import boaviztapi.utils.roundit as rd
 
 _default_impacts_code = {"gwp", "pe", "adp"}
 
 
-def bottom_up_device(device: Device, impact_codes: Optional[Set[str]] = None) -> dict:
-
+def bottom_up_device(device: Device) -> dict:
     impacts = {
         'gwp': {
             'manufacture': rd.round_to_sigfig(*device.impact_manufacture_gwp()),
@@ -29,30 +28,36 @@ def bottom_up_device(device: Device, impact_codes: Optional[Set[str]] = None) ->
     return impacts
 
 
-def bottom_up_component(component: Component, units: int = 1, impact_codes: Optional[Set[str]] = None) -> dict:
-    gwp_manuf = component.impact_manufacture_gwp()
-    pe_manuf = component.impact_manufacture_pe()
-    adp_manuf = component.impact_manufacture_adp()
-
-    gwp_use = component.impact_use_gwp()
-    pe_use = component.impact_use_pe()
-    adp_use = component.impact_use_adp()
-
+def bottom_up_component(component: Component, units: int = 1) -> dict:
     impacts = {
         'gwp': {
-            'manufacture': rd.round_to_sigfig(gwp_manuf[0]*units, gwp_manuf[1]),
-            'use': gwp_use if gwp_use == "not implemented" else rd.round_to_sigfig(gwp_use[0]*units, gwp_use[1]),
+            'manufacture': get_component_impact(component, 'manufacture', 'gwp', units),
+            'use': get_component_impact(component, 'use', 'pe', units),
             'unit': "kgCO2eq"
         },
         'pe': {
-            'manufacture': rd.round_to_sigfig(pe_manuf[0]*units, pe_manuf[1]),
-            'use': pe_use if pe_use == "not implemented" else rd.round_to_sigfig(pe_use[0]*units, pe_use[1]),
+            'manufacture': get_component_impact(component, 'manufacture', 'pe', units),
+            'use': get_component_impact(component, 'use', 'pe', units),
             'unit': "MJ"
         },
         'adp': {
-            'manufacture': rd.round_to_sigfig(adp_manuf[0]*units, adp_manuf[1]),
-            'use': adp_use if adp_use == "not implemented" else rd.round_to_sigfig(adp_use[0]*units, adp_use[1]),
+            'manufacture': get_component_impact(component, 'manufacture', 'adp', units),
+            'use': get_component_impact(component, 'use', 'adp', units),
             'unit': "kgSbeq"
         },
     }
     return impacts
+
+
+def get_component_impact(component: Component,
+                         phase: str,
+                         impact_type: str,
+                         units: int) -> Union[Tuple[float, int], str]:
+    try:
+        impact_function = component.__getattribute__(f'impact_{phase}_{impact_type}')
+        impact, significant_figures = impact_function()
+        units_impact = impact * units
+        return rd.round_to_sigfig(units_impact, significant_figures)
+    except (AttributeError, NotImplementedError):
+        pass
+    return 'not implemented'
