@@ -1,160 +1,152 @@
-import os
-from abc import abstractmethod
-
 import pandas as pd
 
-from typing import Dict, Optional, Union
+from typing import Dict, Union
 
-from pydantic import BaseModel
-
-from boaviztapi.model.components import data_dir
-from boaviztapi.model.usage.consumption_profile import ConsumptionProfile
-
-_electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electricity/electricity_impact_factors.csv'))
-
-_cpu_profile_file = os.path.join(data_dir, 'consumption_profile/cpu/cpu_profile.csv')
-_cloud_profile_file = os.path.join(data_dir, 'consumption_profile/cloud/cpu_profile.csv')
-_server_profile_file = os.path.join(data_dir, 'consumption_profile/server/server_profile.csv')
+from boaviztapi.dto.usage_dto import UsageDTO
 
 
-class Usage(BaseModel):
-    TYPE = "USAGE"
-    hash: str = None
+_electricity_emission_factors_df = pd.read_csv('./boaviztapi/data/electricity/electricity_impact_factors.csv')
 
-    _DEFAULT_USAGE_LOCATION = "EEE"
-    _DEFAULT_YEAR_USE_TIME = 1
-    _DEFAULT_WORKLOAD = 50.
+_cpu_profile_file = './boaviztapi/data/consumption_profile/cpu/cpu_profile.csv'
+_cloud_profile_file = './boaviztapi/data/consumption_profile/cloud/cpu_profile.csv'
+_server_profile_file = './boaviztapi/data/consumption_profile/server/server_profile.csv'
 
-    years_use_time: Optional[float] = None
-    days_use_time: Optional[float] = None
-    hours_use_time: Optional[float] = None
 
-    hours_electrical_consumption: Optional[float] = None
-    workload: Optional[Union[Dict[str, float], float]] = None
-    consumption_profile: ConsumptionProfile = None
+class Usage:
+    DEFAULT_USAGE_LOCATION = "EEE"
+    DEFAULT_USE_TIME_IN_HOURS = 24 * 365
+    DEFAULT_WORKLOAD = 50.
 
-    usage_location: Optional[str] = None
-    gwp_factor: Optional[float] = None
-    pe_factor: Optional[float] = None
-    adp_factor: Optional[float] = None
+    _DAYS_IN_HOURS = 24
+    _YEARS_IN_HOURS = 24 * 365
 
-    def get_gwp_factor(self):
-        if not self.gwp_factor:
-            sub = _electricity_emission_factors_df
-            sub = sub[sub['code'] == self.get_usage_location()]
-            self.gwp_factor = float(sub['gwp_emission_factor'])
-        return self.gwp_factor
+    def __init__(self, /, **kwargs):
+        self._hours_electrical_consumption = self.DEFAULT_USE_TIME_IN_HOURS
+        self._workload = self.DEFAULT_WORKLOAD
+        self._usage_location = self.DEFAULT_USAGE_LOCATION
+        self._hours_use_time = self.DEFAULT_USE_TIME_IN_HOURS
 
-    def get_adp_factor(self):
-        if not self.adp_factor:
-            sub = _electricity_emission_factors_df
-            sub = sub[sub['code'] == self.usage_location]
-            self.adp_factor = float(sub['adpe_emission_factor'])
-        return self.adp_factor
-
-    def get_pe_factor(self):
-        if not self.pe_factor:
-            sub = _electricity_emission_factors_df
-            sub = sub[sub['code'] == self.usage_location]
-            self.pe_factor = float(sub['pe_emission_factor'])
-        return self.pe_factor
-
-    def get_usage_location(self):
-        if not self.usage_location:
-            self.usage_location = self._DEFAULT_USAGE_LOCATION
-        else:
-            sub = _electricity_emission_factors_df
-            sub = sub[sub['code'] == self.usage_location]
-            if len(sub) == 0:
-                self.usage_location = self._DEFAULT_USAGE_LOCATION
-        return self.usage_location
-
-    def get_years_use_time(self):
-        if not self.years_use_time:
-            if (self.get_hours_use_time() == 0) and (self.get_days_use_time() == 0):
-                self.years_use_time = self._DEFAULT_YEAR_USE_TIME
-            else:
-                self.years_use_time = 0
-        return self.years_use_time
-
-    def get_hours_use_time(self):
-        if not self.hours_use_time:
-            self.hours_use_time = 0
-        return self.hours_use_time
-
-    def get_days_use_time(self):
-        if not self.days_use_time:
-            self.days_use_time = 0
-        return self.days_use_time
-
-    def get_hours_electrical_consumption(self, profile: Optional[str] = None):
-        if not self.hours_electrical_consumption:
-            if isinstance(self.get_workload(), float):
-                self.hours_electrical_consumption = \
-                    self.get_consumption_profile(profile).workload_to_power(self.get_workload())
-            elif isinstance(self.get_consumption_profile(profile), Dict):
-                self.hours_electrical_consumption = \
-                    self.get_consumption_profile(profile).workloads_to_power(self.get_workload())
-            else:
-                self.hours_electrical_consumption = 0
-
-        return self.hours_electrical_consumption / 1000  # in kwh
-
-    def get_workload(self) -> Union[Dict[str, float], float]:
-        if not self.workload:
-            self.workload = self._DEFAULT_WORKLOAD
-        return self.workload
-
-    def get_duration_hours(self) -> float:
-        return (self.get_hours_use_time()) + \
-               ((self.get_days_use_time()) * 24) + \
-               ((self.get_years_use_time()) * 365 * 24)
-
-    def get_consumption_profile(self, profile: str = None, _profiles_file=None) -> ConsumptionProfile:
-        if not self.consumption_profile:
-            _profiles_file = pd.read_csv(os.path.join(_profiles_file))
-            sub = _profiles_file
-            sub = sub[sub['profile_name'] == profile]
-            row = sub.iloc[0]
-
-            self.consumption_profile = ConsumptionProfile()
-            self.consumption_profile.param = []  # TODO fill param with rows elements
-
-        return self.consumption_profile
+        for attr, val in kwargs.items():
+            if val is not None:
+                self.__setattr__(attr, val)
 
     def __hash__(self) -> int:
         return 0
 
+    @property
+    def hours_use_time(self) -> float:
+        return self._hours_use_time
+
+    @hours_use_time.setter
+    def hours_use_time(self, value: float) -> None:
+        self._hours_use_time = value
+
+    @property
+    def days_use_time(self) -> float:
+        return self.hours_use_time / self._DAYS_IN_HOURS
+
+    @days_use_time.setter
+    def days_use_time(self, value: float) -> None:
+        self.hours_use_time = value * self._DAYS_IN_HOURS
+
+    @property
+    def years_use_time(self):
+        return self.hours_use_time / self._YEARS_IN_HOURS
+
+    @years_use_time.setter
+    def years_use_time(self, value: float) -> None:
+        self._hours_use_time = value * self._YEARS_IN_HOURS
+
+    @property
+    def usage_location(self) -> str:
+        return self._usage_location
+
+    @usage_location.setter
+    def usage_location(self, value: str) -> None:
+        sub = _electricity_emission_factors_df
+        sub = sub[sub['code'] == value]
+        if len(sub) == 0:
+            self._usage_location = self._DEFAULT_USAGE_LOCATION
+        else:
+            self._usage_location = value
+
+    @property
+    def gwp_factor(self) -> float:
+        sub = _electricity_emission_factors_df
+        sub = sub[sub['code'] == self.usage_location]
+        return float(sub['gwp_emission_factor'])
+
+    @property
+    def adp_factor(self) -> float:
+        sub = _electricity_emission_factors_df
+        sub = sub[sub['code'] == self.usage_location]
+        return float(sub['adpe_emission_factor'])
+
+    @property
+    def pe_factor(self) -> float:
+        sub = _electricity_emission_factors_df
+        sub = sub[sub['code'] == self.usage_location]
+        return float(sub['pe_emission_factor'])
+
+    @property
+    def workload(self) -> Union[Dict[str, float], float]:
+        return self._workload
+
+    @workload.setter
+    def workload(self, value: Union[Dict[str, float], float]) -> None:
+        self._workload = value
+
+    def get_duration_hours(self) -> float:
+        return self.hours_use_time
+
+    @property
+    def hours_electrical_consumption(self) -> float:
+        if not self._hours_electrical_consumption:
+            self._hours_electrical_consumption = 0
+        return self._hours_electrical_consumption / 1000  # in kwh
+
+    @classmethod
+    def from_usage_dto(cls, usage_dto: UsageDTO):
+        return cls(**usage_dto.dict())
+
 
 class UsageServer(Usage):
-    _DEFAULT_OTHER_CONSUMPTION_RATIO = 0.33
+    DEFAULT_OTHER_CONSUMPTION_RATIO = 0.33
 
-    other_consumption_ratio: Optional[float] = None
+    def __init__(self, /, **kwargs):
+        super().__init__(**kwargs)
 
-    def get_other_consumption_ratio(self):
-        if not self.other_consumption_ratio:
-            self.other_consumption_ratio = self._DEFAULT_OTHER_CONSUMPTION_RATIO
-        return self.other_consumption_ratio
+        self._other_consumption_ratio = self.DEFAULT_OTHER_CONSUMPTION_RATIO
 
-    def get_consumption_profile(self, profile: str = None, _profiles_file=None) -> ConsumptionProfile:
-        return super().get_consumption_profile(profile, _server_profile_file)
+        for attr, val in kwargs.items():
+            if val is not None:
+                self.__setattr__(attr, val)
+
+    @property
+    def other_consumption_ratio(self) -> float:
+        return self._other_consumption_ratio
+
+    @other_consumption_ratio.setter
+    def other_consumption_ratio(self, value: float) -> None:
+        self._other_consumption_ratio = value
 
 
 class UsageCloud(UsageServer):
-    _DEFAULT_INSTANCE_PER_SERVER = 1
+    DEFAULT_INSTANCE_PER_SERVER = 1
 
-    instance_per_server: Optional[float] = None
+    def __init__(self, /, **kwargs):
+        super().__init__(**kwargs)
 
-    def get_instance_per_server(self):
-        if not self.instance_per_server:
-            self.instance_per_server = self._DEFAULT_INSTANCE_PER_SERVER
-        return self.instance_per_server
+        self._instance_per_server = self.DEFAULT_INSTANCE_PER_SERVER
 
-    def get_consumption_profile(self, profile: str = None, _profiles_file=None) -> ConsumptionProfile:
-        return super().get_consumption_profile(profile, _cloud_profile_file)
+        for attr, val in kwargs.items():
+            if val is not None:
+                self.__setattr__(attr, val)
 
+    @property
+    def instance_per_server(self) -> int:
+        return self._instance_per_server
 
-class UsageCPU(Usage):
-    def get_consumption_profile(self, profile: str = None, _profiles_file=None) -> ConsumptionProfile:
-        return super().get_consumption_profile(profile, _cpu_profile_file)
-
+    @instance_per_server.setter
+    def instance_per_server(self, value: int) -> None:
+        self._instance_per_server = value
