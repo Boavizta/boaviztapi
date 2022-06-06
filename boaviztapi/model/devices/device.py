@@ -4,8 +4,7 @@ from typing import List
 from pydantic import BaseModel
 
 from boaviztapi.model.usage.usage import Usage, UsageServer, UsageCloud
-from boaviztapi.model.components.component import Component, ComponentCPU, ComponentSSD, ComponentRAM, \
-    ComponentPowerSupply, ComponentMotherBoard, ComponentAssembly, ComponentCase
+from boaviztapi.model.components import Component, ComponentCPU, ComponentRAM
 
 DEFAULT_SIG_FIGURES: int = 3
 
@@ -21,6 +20,9 @@ class Device(BaseModel):
     config_components: List[Component] = None
     model: Model = None
     usage: Usage = None
+
+    class Config:
+        arbitrary_types_allowed = True
 
     def get_config_components(self):
         if not self.config_components:
