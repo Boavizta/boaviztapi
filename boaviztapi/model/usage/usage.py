@@ -66,7 +66,7 @@ class ModelUsage:
         sub = _electricity_emission_factors_df
         sub = sub[sub['code'] == value]
         if len(sub) == 0:
-            self._usage_location = self._DEFAULT_USAGE_LOCATION
+            self._usage_location = self.DEFAULT_USAGE_LOCATION
         else:
             self._usage_location = value
 
@@ -106,11 +106,11 @@ class ModelUsage:
         return self._hours_electrical_consumption / 1000  # in kwh
 
     @classmethod
-    def from_usage_dto(cls, usage_dto: UsageDTO):
-        return cls(**usage_dto.dict())
+    def from_dto(cls, usage: Usage):
+        return cls(**usage.dict())
 
 
-class ModelUsageServer(Usage):
+class ModelUsageServer(ModelUsage):
     DEFAULT_OTHER_CONSUMPTION_RATIO = 0.33
 
     def __init__(self, /, **kwargs):
@@ -131,7 +131,7 @@ class ModelUsageServer(Usage):
         self._other_consumption_ratio = value
 
 
-class ModelUsageCloud(UsageServer):
+class ModelUsageCloud(ModelUsageServer):
     DEFAULT_INSTANCE_PER_SERVER = 1
 
     def __init__(self, /, **kwargs):
