@@ -30,9 +30,6 @@ class ModelUsage:
             if val is not None:
                 self.__setattr__(attr, val)
 
-    def __hash__(self) -> int:
-        return 0
-
     @property
     def hours_use_time(self) -> float:
         return self.__hours_use_time
