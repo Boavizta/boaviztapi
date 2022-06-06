@@ -1,8 +1,8 @@
 from typing import Tuple
 
 import boaviztapi.utils.roundit as rd
-from boaviztapi.model.components.component import Component, NumberSignificantFigures
-from boaviztapi.dto.components import Disk
+from boaviztapi.model.component.component import Component, NumberSignificantFigures
+from boaviztapi.dto.component import Disk
 
 
 class ComponentSSD(Component):

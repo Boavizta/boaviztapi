@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional, List
 
-from boaviztapi.dto.components import CPU, RAM, Disk, PowerSupply
+from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply
 from boaviztapi.dto.usage_dto import UsageServerDTO, UsageCloudDTO
 from boaviztapi.dto import BaseDTO
 

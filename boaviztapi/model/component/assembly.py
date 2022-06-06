@@ -1,7 +1,7 @@
 from typing import Any
 
 import boaviztapi.utils.roundit as rd
-from boaviztapi.model.components.component import Component, NumberSignificantFigures
+from boaviztapi.model.component.component import Component, NumberSignificantFigures
 
 
 class ComponentAssembly(Component):

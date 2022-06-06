@@ -2,7 +2,7 @@ from typing import Optional
 
 import pandas as pd
 
-from boaviztapi.dto.components import ComponentDTO
+from boaviztapi.dto.component import ComponentDTO
 
 
 _ram_df = pd.read_csv('./boaviztapi/data/components/ram_manufacture.csv')

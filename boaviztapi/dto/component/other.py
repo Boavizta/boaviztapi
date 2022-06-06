@@ -1,6 +1,6 @@
 from typing import Optional
 
-from boaviztapi.dto.components import ComponentDTO
+from boaviztapi.dto.component import ComponentDTO
 
 
 class PowerSupply(ComponentDTO):

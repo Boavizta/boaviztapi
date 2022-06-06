@@ -1,7 +1,7 @@
 import pytest
 
 from boaviztapi.dto.server_dto import ServerDTO, CloudDTO
-from boaviztapi.model.components.component import ComponentRAM, ComponentSSD, ComponentHDD, ComponentAssembly, \
+from boaviztapi.model.component.component import ComponentRAM, ComponentSSD, ComponentHDD, ComponentAssembly, \
     ComponentCase, ComponentMotherBoard, ComponentPowerSupply, ComponentCPU
 from boaviztapi.model.usage.usage import UsageServer
 from tests.unit import data_dir

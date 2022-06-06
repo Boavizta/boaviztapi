@@ -2,11 +2,11 @@ from typing import Type
 
 from fastapi import APIRouter, Body
 
-from boaviztapi.dto.components import ComponentDTO, CPU, RAM, Disk, PowerSupply, Motherboard, Case
-from boaviztapi.dto.components.cpu import smart_complete_cpu
-from boaviztapi.dto.components.ram import smart_complete_ram
-from boaviztapi.dto.components.disk import smart_complete_disk_ssd
-from boaviztapi.model.components import Component, ComponentCPU, ComponentRAM, ComponentHDD, ComponentSSD, \
+from boaviztapi.dto.component import ComponentDTO, CPU, RAM, Disk, PowerSupply, Motherboard, Case
+from boaviztapi.dto.component.cpu import smart_complete_cpu
+from boaviztapi.dto.component.ram import smart_complete_ram
+from boaviztapi.dto.component.disk import smart_complete_disk_ssd
+from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, ComponentHDD, ComponentSSD, \
     ComponentPowerSupply, ComponentMotherboard, ComponentCase
 from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
     hdd_description, motherboard_description, power_supply_description, case_description

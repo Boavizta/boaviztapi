@@ -1,6 +1,6 @@
 from typing import Union, Tuple
 
-from boaviztapi.model.components import Component
+from boaviztapi.model.component import Component
 from boaviztapi.model.devices.device import Device
 import boaviztapi.utils.roundit as rd
 

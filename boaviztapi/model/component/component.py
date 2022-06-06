@@ -2,7 +2,7 @@ import hashlib
 from abc import abstractmethod, ABC
 from typing import Tuple
 
-from boaviztapi.dto.components import ComponentDTO
+from boaviztapi.dto.component import ComponentDTO
 
 NumberSignificantFigures = Tuple[float, int]
 

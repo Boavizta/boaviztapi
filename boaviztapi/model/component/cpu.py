@@ -3,8 +3,8 @@ from typing import Tuple
 import pandas as pd
 
 import boaviztapi.utils.roundit as rd
-from boaviztapi.model.components.component import Component, NumberSignificantFigures
-from boaviztapi.dto.components import CPU
+from boaviztapi.model.component.component import Component, NumberSignificantFigures
+from boaviztapi.dto.component import CPU
 
 
 class ComponentCPU(Component):

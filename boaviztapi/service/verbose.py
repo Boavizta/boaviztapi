@@ -1,4 +1,4 @@
-from boaviztapi.model.components.component import Component
+from boaviztapi.model.component.component import Component
 from boaviztapi.model.devices.device import Device
 import boaviztapi.utils.roundit as rd
 

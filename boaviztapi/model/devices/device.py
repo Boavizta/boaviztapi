@@ -4,7 +4,7 @@ from typing import List
 from pydantic import BaseModel
 
 from boaviztapi.model.usage.usage import Usage, UsageServer, UsageCloud
-from boaviztapi.model.components import Component, ComponentCPU, ComponentRAM
+from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM
 
 DEFAULT_SIG_FIGURES: int = 3
 

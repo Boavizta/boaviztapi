@@ -1,52 +1,50 @@
 import boaviztapi.utils.roundit as rd
-from boaviztapi.model.components.component import Component, NumberSignificantFigures
-from boaviztapi.dto.components import PowerSupply
+from boaviztapi.model.component.component import Component, NumberSignificantFigures
+from boaviztapi.dto.component import Disk
 
 
-class ComponentPowerSupply(Component):
+class ComponentHDD(Component):
 
-    DEFAULT_POWER_SUPPLY_WEIGHT = 2.99
+    __DISK_TYPE = 'hdd'
+
+    DEFAULT_HDD_CAPACITY = 500
 
     IMPACT_FACTOR = {
         'gwp': {
-            'impact': 24.30
+            'impact': 31.10
         },
         'pe': {
-            'impact': 352.00
+            'impact': 276.00
         },
         'adp': {
-            'impact': 8.30E-03
+            'impact': 2.50E-04
         }
     }
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.__weight = self.DEFAULT_POWER_SUPPLY_WEIGHT
+        self.__capacity = self.DEFAULT_HDD_CAPACITY
 
         for attr, val in kwargs.items():
             if val is not None:
                 self.__setattr__(attr, val)
 
     @property
-    def weight(self) -> float:
-        return self.__weight
+    def capacity(self) -> int:
+        return self.__capacity
 
-    @weight.setter
-    def weight(self, value: float) -> None:
-        self.__weight = value
+    @capacity.setter
+    def capacity(self, value: int) -> None:
+        self.__capacity = value
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')
 
     def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
-        power_supply_impact = self.IMPACT_FACTOR[impact_type]['impact']
-        impact = self.__compute_impact_manufacture(power_supply_impact)
-        sign_figures = rd.min_significant_figures(power_supply_impact)
-        return impact, sign_figures
-
-    def __compute_impact_manufacture(self, power_supply_impact: float) -> float:
-        return self.weight * power_supply_impact
+        impact = self.IMPACT_FACTOR[impact_type]['impact']
+        significant_figures = rd.min_significant_figures(impact)
+        return impact, significant_figures
 
     def impact_manufacture_pe(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('pe')
@@ -64,5 +62,7 @@ class ComponentPowerSupply(Component):
         raise NotImplementedError
 
     @classmethod
-    def from_dto(cls, power_supply: PowerSupply) -> 'ComponentPowerSupply':
-        return cls(**power_supply.dict())
+    def from_dto(cls, disk: Disk) -> 'ComponentHDD':
+        if disk.type.lower() != cls.__DISK_TYPE:
+            raise ValueError(f'wrong disk type, expect `{cls.__DISK_TYPE}`, got `{disk.type}`')
+        return cls(**disk.dict())
