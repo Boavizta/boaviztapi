@@ -3,7 +3,7 @@ from typing import Optional, Union, Dict
 from boaviztapi.dto import BaseDTO
 
 
-class UsageDTO(BaseDTO):
+class Usage(BaseDTO):
     years_use_time: Optional[float] = None
     days_use_time: Optional[float] = None
     hours_use_time: Optional[float] = None
@@ -17,9 +17,9 @@ class UsageDTO(BaseDTO):
     adp_factor: Optional[float] = None
 
 
-class UsageServerDTO(UsageDTO):
+class UsageServer(Usage):
     other_consumption_ratio: Optional[float] = None
 
 
-class UsageCloudDTO(UsageServerDTO):
+class UsageCloud(UsageServer):
     instance_per_server: Optional[int] = None

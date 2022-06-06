@@ -1,8 +1,8 @@
 from typing import Union
 from pathlib import Path
 
-from boaviztapi.dto.server_dto import ServerDTO, CloudDTO
-from boaviztapi.model.devices.device import Server, Device, CloudInstance
+from boaviztapi.dto.device import Server, Cloud
+from boaviztapi.model.device import Device, DeviceServer, DeviceCloudInstance
 
 import os
 
@@ -56,24 +56,24 @@ async def get_server_archetype(archetype_name: str, path=known_server_directory)
     known_server_lst = get_device_archetype_lst(path=path)
     for device_name in known_server_lst:
         if archetype_name == device_name:
-            known_server = ServerDTO.parse_file(
+            known_server = Server.parse_file(
                 path + '/' + device_name + ".json").to_device()
             return known_server
     return False
 
 
 def get_cloud_instance_archetype(archetype_name: str, provider, path=known_instances_directory) \
-        -> Union[CloudInstance, bool]:
+        -> Union[DeviceCloudInstance, bool]:
     known_cloud_instance_lst = get_device_archetype_lst(os.path.join(path, provider))
     for device_name in known_cloud_instance_lst:
         if archetype_name == device_name:
-            known_server = CloudDTO.parse_file(
+            known_server = Cloud.parse_file(
                 path + '/' + provider + '/' + device_name + ".json").to_device()
             return known_server
     return False
 
 
-def find_archetype(server_dto: ServerDTO) -> Server:
+def find_archetype(server_dto: Server) -> Server:
     """
     TODO find the closer archetype by name, year, brand, config, ..
     """

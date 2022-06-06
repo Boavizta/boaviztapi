@@ -1,8 +1,7 @@
-from pydantic import BaseModel
 from typing import Optional, List
 
 from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply
-from boaviztapi.dto.usage_dto import UsageServerDTO, UsageCloudDTO
+from boaviztapi.dto.usage import UsageServer, UsageCloud
 from boaviztapi.dto import BaseDTO
 
 
@@ -21,11 +20,11 @@ class ModelServer(BaseDTO):
     archetype: Optional[str] = None
 
 
-class ServerDTO(BaseDTO):
+class Server(BaseDTO):
     model: Optional[ModelServer] = None
     configuration: Optional[ConfigurationServer] = None
-    usage: Optional[UsageServerDTO] = None
+    usage: Optional[UsageServer] = None
 
 
-class CloudDTO(ServerDTO):
-    usage: Optional[UsageCloudDTO] = None
+class Cloud(Server):
+    usage: Optional[UsageCloud] = None

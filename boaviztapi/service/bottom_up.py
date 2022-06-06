@@ -1,7 +1,7 @@
 from typing import Union, Tuple
 
 from boaviztapi.model.component import Component
-from boaviztapi.model.devices.device import Device
+from boaviztapi.model.device import Device
 import boaviztapi.utils.roundit as rd
 
 _default_impacts_code = {"gwp", "pe", "adp"}

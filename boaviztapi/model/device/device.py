@@ -3,7 +3,7 @@ from typing import List
 
 from pydantic import BaseModel
 
-from boaviztapi.model.usage.usage import Usage, UsageServer, UsageCloud
+from boaviztapi.model.usage.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
 from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM
 
 DEFAULT_SIG_FIGURES: int = 3
@@ -19,7 +19,7 @@ class Model(BaseModel):
 class Device(BaseModel):
     config_components: List[Component] = None
     model: Model = None
-    usage: Usage = None
+    usage: ModelUsage = None
 
     class Config:
         arbitrary_types_allowed = True
@@ -63,14 +63,14 @@ class Device(BaseModel):
         pass
 
 
-class Server(Device):
+class DeviceServer(Device):
     _DEFAULT_POWER_SUPPLY_NUMBER = 2
     _DEFAULT_CPU_NUMBER = 2
     _DEFAULT_SSD_NUMBER = 1
     _DEFAULT_RAM_NUMBER = 24
     _DEFAULT_PROFILE_NAME = "default"
 
-    usage: UsageServer = UsageServer()
+    usage: ModelUsageServer = ModelUsageServer()
 
     profile_name: str = None
 
@@ -171,8 +171,8 @@ class Server(Device):
         return self.usage.get_hours_electrical_consumption(profile) * self.usage.get_duration_hours() * self.usage.get_adp_factor(), DEFAULT_SIG_FIGURES
 
 
-class CloudInstance(Server):
-    usage: UsageCloud = UsageCloud()
+class DeviceCloudInstance(DeviceServer):
+    usage: ModelUsageCloud = ModelUsageCloud()
 
     _DEFAULT_PROFILE_NAME = "a1"
 

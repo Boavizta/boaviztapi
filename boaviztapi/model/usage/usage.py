@@ -2,7 +2,7 @@ import pandas as pd
 
 from typing import Dict, Union
 
-from boaviztapi.dto.usage_dto import UsageDTO
+from boaviztapi.dto.usage import Usage
 
 
 _electricity_emission_factors_df = pd.read_csv('./boaviztapi/data/electricity/electricity_impact_factors.csv')
@@ -12,7 +12,7 @@ _cloud_profile_file = './boaviztapi/data/consumption_profile/cloud/cpu_profile.c
 _server_profile_file = './boaviztapi/data/consumption_profile/server/server_profile.csv'
 
 
-class Usage:
+class ModelUsage:
     DEFAULT_USAGE_LOCATION = "EEE"
     DEFAULT_USE_TIME_IN_HOURS = 24 * 365
     DEFAULT_WORKLOAD = 50.
@@ -110,7 +110,7 @@ class Usage:
         return cls(**usage_dto.dict())
 
 
-class UsageServer(Usage):
+class ModelUsageServer(Usage):
     DEFAULT_OTHER_CONSUMPTION_RATIO = 0.33
 
     def __init__(self, /, **kwargs):
@@ -131,7 +131,7 @@ class UsageServer(Usage):
         self._other_consumption_ratio = value
 
 
-class UsageCloud(UsageServer):
+class ModelUsageCloud(UsageServer):
     DEFAULT_INSTANCE_PER_SERVER = 1
 
     def __init__(self, /, **kwargs):

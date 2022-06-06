@@ -3,7 +3,7 @@ import os
 
 from fastapi import APIRouter, Body, Query
 
-from boaviztapi.dto.server_dto import ServerDTO
+from boaviztapi.dto.device import Server
 from boaviztapi.routers import data_dir
 from boaviztapi.routers.openapi_doc.descriptions import server_impact_by_model_description, \
     all_default_model_description, server_impact_by_config_description
@@ -37,7 +37,7 @@ async def server_impact_by_model(archetype: str = Query(None, example="dellR740"
 
 @server_router.post('/',
                     description=server_impact_by_config_description)
-async def server_impact_by_config(server_dto: ServerDTO = Body(None, example=server_configuration_examples["DellR740"]),
+async def server_impact_by_config(server_dto: Server = Body(None, example=server_configuration_examples["DellR740"]),
                                   verbose: bool = True):
     server = server_dto.to_device()
     completed_server = copy.deepcopy(server)

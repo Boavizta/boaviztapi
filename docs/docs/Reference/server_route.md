@@ -1,4 +1,4 @@
-# Server route
+# DeviceServer route
 
 ##```/v1/server/```
 
