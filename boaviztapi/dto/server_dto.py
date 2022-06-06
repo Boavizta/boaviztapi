@@ -1,28 +1,19 @@
 from pydantic import BaseModel
 from typing import Optional, List
-from boaviztapi.dto.component_dto import Cpu, Ram, Disk, PowerSupply
 
-from boaviztapi.model.components.component import (
-    ComponentCPU,
-    ComponentRAM,
-    ComponentSSD,
-    ComponentHDD,
-    ComponentPowerSupply,
-    ComponentCase,
-    Component
-)
-from boaviztapi.model.devices.device import Model, Server, CloudInstance
-from boaviztapi.model.usage.usage import UsageServer, UsageCloud
+from boaviztapi.dto.components import CPU, RAM, Disk, PowerSupply
+from boaviztapi.dto.usage_dto import UsageServerDTO, UsageCloudDTO
+from boaviztapi.dto import BaseDTO
 
 
-class ConfigurationServer(BaseModel):
-    cpu: Optional[Cpu] = None
-    ram: Optional[List[Ram]] = None
+class ConfigurationServer(BaseDTO):
+    cpu: Optional[CPU] = None
+    ram: Optional[List[RAM]] = None
     disk: Optional[List[Disk]] = None
     power_supply: Optional[PowerSupply] = None
 
 
-class ModelServer(BaseModel):
+class ModelServer(BaseDTO):
     manufacturer: Optional[str] = None
     name: Optional[str] = None
     type: Optional[str] = None
@@ -30,76 +21,11 @@ class ModelServer(BaseModel):
     archetype: Optional[str] = None
 
 
-class ServerDTO(BaseModel):
+class ServerDTO(BaseDTO):
     model: Optional[ModelServer] = None
     configuration: Optional[ConfigurationServer] = None
-    usage: Optional[UsageServer] = None
-
-    add_method: Optional[str] = None
-    add_date: Optional[str] = None
-
-    def get_component_list(self) -> List[Component]:
-        components = []
-        if self.configuration:
-            if self.configuration.cpu:
-                components += [ComponentCPU(**self.configuration.cpu.dict())
-                               for _ in range(self.configuration.cpu.units)]
-
-            if self.configuration.ram:
-                for ram in self.configuration.ram:
-                    for _ in range(ram.units):
-                        components.append(ComponentRAM(**ram.dict()))
-
-            if self.configuration.disk:
-                for disk in self.configuration.disk:
-                    if disk.type == 'ssd':
-                        for _ in range(disk.units):
-                            components.append(ComponentSSD(**disk.dict()))
-                    if disk.type == 'hdd':
-                        for _ in range(disk.units):
-                            components.append(ComponentHDD(**disk.dict()))
-
-            if self.configuration.power_supply:
-                components += [ComponentPowerSupply(**self.configuration.power_supply.dict())
-                               for _ in range(self.configuration.power_supply.units)]
-
-        if self.model:
-            if self.model.type == "blade":
-                components.append(ComponentCase(case_type="blade"))
-            elif self.model.type == "rack":
-                components.append(ComponentCase(case_type="rack"))
-
-        return components
-
-    def get_model(self) -> Model:
-        model = Model()
-        if self.model:
-            model.name = self.model.name
-            model.year = self.model.year
-            model.manufacturer = self.model.manufacturer
-            model.archetype = self.model.archetype
-        return model
-
-    def get_usage(self) -> UsageServer:
-        if self.usage is None:
-            return UsageServer()
-        else:
-            return self.usage
-
-    def to_device(self) -> Server:
-        server = Server()
-        server.model = self.get_model()
-        server.config_components = self.get_component_list()
-        server.usage = self.get_usage()
-        return server
+    usage: Optional[UsageServerDTO] = None
 
 
 class CloudDTO(ServerDTO):
-    usage: Optional[UsageCloud] = None
-
-    def to_device(self) -> CloudInstance:
-        server = CloudInstance()
-        server.model = self.get_model()
-        server.config_components = self.get_component_list()
-        server.usage = self.get_usage()
-        return server
+    usage: Optional[UsageCloudDTO] = None
