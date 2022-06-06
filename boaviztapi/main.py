@@ -1,12 +1,20 @@
+import os
+
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
+from mangum import Mangum
 from boaviztapi import __version__
 
 from boaviztapi.routers.component_router import component_router
 from boaviztapi.routers.server_router import server_router
 from boaviztapi.routers.cloud_router import cloud_router
 
-app = FastAPI()
+# Serverless frameworks adds a 'stage' prefix to the route used to serve applications
+# We have to manage it to expose openapi doc on aws.
+stage = os.environ.get('STAGE', None)
+openapi_prefix = f"/{stage}" if stage else "/"
+app = FastAPI(openapi_prefix=openapi_prefix) # Here is the magic
+# app = FastAPI()
 
 app.include_router(server_router)
 app.include_router(cloud_router)
@@ -16,6 +24,7 @@ if __name__ == '__main__':
     import uvicorn
 
     uvicorn.run('main:app', host='localhost', port=5000, reload=True, debug=True)
+
 
 
 @app.on_event("startup")
@@ -50,4 +59,8 @@ def my_schema():
         servers=app.servers,
     )
     app.openapi_schema = openapi_schema
+    
     return app.openapi_schema
+
+# Wrapper for aws/lambda serverless app
+handler = Mangum(app)
