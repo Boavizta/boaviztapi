@@ -21,10 +21,10 @@ class ModelUsage:
     _YEARS_IN_HOURS = 24 * 365
 
     def __init__(self, /, **kwargs):
-        self._hours_electrical_consumption = self.DEFAULT_USE_TIME_IN_HOURS
-        self._workload = self.DEFAULT_WORKLOAD
-        self._usage_location = self.DEFAULT_USAGE_LOCATION
-        self._hours_use_time = self.DEFAULT_USE_TIME_IN_HOURS
+        self.__hours_electrical_consumption = self.DEFAULT_USE_TIME_IN_HOURS
+        self.__workload = self.DEFAULT_WORKLOAD
+        self.__usage_location = self.DEFAULT_USAGE_LOCATION
+        self.__hours_use_time = self.DEFAULT_USE_TIME_IN_HOURS
 
         for attr, val in kwargs.items():
             if val is not None:
@@ -35,11 +35,11 @@ class ModelUsage:
 
     @property
     def hours_use_time(self) -> float:
-        return self._hours_use_time
+        return self.__hours_use_time
 
     @hours_use_time.setter
     def hours_use_time(self, value: float) -> None:
-        self._hours_use_time = value
+        self.__hours_use_time = value
 
     @property
     def days_use_time(self) -> float:
@@ -55,20 +55,20 @@ class ModelUsage:
 
     @years_use_time.setter
     def years_use_time(self, value: float) -> None:
-        self._hours_use_time = value * self._YEARS_IN_HOURS
+        self.__hours_use_time = value * self._YEARS_IN_HOURS
 
     @property
     def usage_location(self) -> str:
-        return self._usage_location
+        return self.__usage_location
 
     @usage_location.setter
     def usage_location(self, value: str) -> None:
         sub = _electricity_emission_factors_df
         sub = sub[sub['code'] == value]
         if len(sub) == 0:
-            self._usage_location = self.DEFAULT_USAGE_LOCATION
+            self.__usage_location = self.DEFAULT_USAGE_LOCATION
         else:
-            self._usage_location = value
+            self.__usage_location = value
 
     @property
     def gwp_factor(self) -> float:
@@ -90,20 +90,20 @@ class ModelUsage:
 
     @property
     def workload(self) -> Union[Dict[str, float], float]:
-        return self._workload
+        return self.__workload
 
     @workload.setter
     def workload(self, value: Union[Dict[str, float], float]) -> None:
-        self._workload = value
+        self.__workload = value
 
     def get_duration_hours(self) -> float:
         return self.hours_use_time
 
     @property
     def hours_electrical_consumption(self) -> float:
-        if not self._hours_electrical_consumption:
-            self._hours_electrical_consumption = 0
-        return self._hours_electrical_consumption / 1000  # in kwh
+        if not self.__hours_electrical_consumption:
+            self.__hours_electrical_consumption = 0
+        return self.__hours_electrical_consumption / 1000  # in kwh
 
     @classmethod
     def from_dto(cls, usage: Usage):
