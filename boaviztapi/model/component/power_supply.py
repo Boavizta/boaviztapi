@@ -20,7 +20,7 @@ class ComponentPowerSupply(Component):
     }
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__()
 
         self.__weight = self.DEFAULT_POWER_SUPPLY_WEIGHT
 

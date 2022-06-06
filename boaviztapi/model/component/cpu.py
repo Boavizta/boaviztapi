@@ -32,7 +32,7 @@ class ComponentCPU(Component):
     }
 
     def __init__(self, /, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__()
 
         self.__core_units = self.DEFAULT_CPU_CORE_UNITS
         self.__die_size_per_core = self.DEFAULT_CPU_DIE_SIZE_PER_CORE

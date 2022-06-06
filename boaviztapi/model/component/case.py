@@ -38,7 +38,7 @@ class ComponentCase(Component):
     }
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__()
 
         self.__case_type = self.DEFAULT_CASE_TYPE
 

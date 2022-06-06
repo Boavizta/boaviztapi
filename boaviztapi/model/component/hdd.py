@@ -22,7 +22,7 @@ class ComponentHDD(Component):
     }
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__()
 
         self.__capacity = self.DEFAULT_HDD_CAPACITY
 

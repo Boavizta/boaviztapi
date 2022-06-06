@@ -28,7 +28,7 @@ class ComponentRAM(Component):
     }
 
     def __init__(self, /, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__()
 
         self.__capacity = self.DEFAULT_RAM_CAPACITY
         self.__density = self.DEFAULT_RAM_DENSITY

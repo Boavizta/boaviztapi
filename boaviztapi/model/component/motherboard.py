@@ -18,7 +18,7 @@ class ComponentMotherboard(Component):
     }
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__()
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')

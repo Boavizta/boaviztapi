@@ -9,16 +9,12 @@ NumberSignificantFigures = Tuple[float, int]
 
 class Component:
 
-    def __init__(self, /, **kwargs):
-        self.hash = self.__hash__()
+    def __init__(self):
+        pass
 
     def __iter__(self):
         for attr, value in self.__dict__.items():
             yield attr, value
-
-    def __hash__(self):
-        object_fingerprint = bytes(((type(self),) + tuple(self.__dict__.values())).__str__(), encoding='utf8')
-        return hashlib.sha256(object_fingerprint).hexdigest()
 
     @abstractmethod
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
