@@ -51,9 +51,9 @@ jobs:
           docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g python -o /local/boaviztapi_sdk --package-name boaviztapi_sdk
       - name: Build the pip package and push it
         run: |
-          sudo chown -R $(whoami) boaviztapi-sdk
+          sudo chown -R $(whoami) boaviztapi_sdk
           SDK_VERSION=${API_VERSION}
-          cd boaviztapi-sdk
+          cd boaviztapi_sdk
           sed -i "s/^VERSION.*/VERSION = \"${SDK_VERSION}\"/" setup.py
           sed -i "s/^    long_description=.*/long_description='Python SDK for boaviztAPI'/" setup.py
           sed -i 's/    #.*//' setup.py
