@@ -29,9 +29,9 @@ class DeviceServer(Device):
 
     def __init__(self, /, **kwargs):
         super().__init__(**kwargs)
-        self.__name = None
-        self.__manufacturer = None
-        self.__manufacture_year = None
+        self.__name = None                  # TODO: Set default name
+        self.__manufacturer = None          # TODO: Set default manufacturer
+        self.__manufacture_year = None      # TODO: Set default manufacture year
         self.__cpu_list = [self.DEFAULT_COMPONENT_CPU] * self.DEFAULT_NUMBER_CPU
         self.__ram_list = [self.DEFAULT_COMPONENT_RAM] * self.DEFAULT_NUMBER_RAM
         self.__disk_list = [self.DEFAULT_COMPONENT_DISK] * self.DEFAULT_NUMBER_DISK

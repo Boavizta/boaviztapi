@@ -94,15 +94,15 @@ class ComponentCPU(Component):
     def model_range(self, value: str) -> None:
         self.__model_range = value
 
-    @property
-    def name(self):
-        # TODO: Maybe we don't need this getter?
-        raise NotImplementedError
-
-    @name.setter
-    def name(self, value: str) -> None:
-        # TODO: Implement cpu name parser into (manufacture, family, model_range)
-        raise NotImplementedError
+    # @property
+    # def name(self):
+    #     # TODO: Maybe we don't need this getter?
+    #     raise NotImplementedError
+    #
+    # @name.setter
+    # def name(self, value: str) -> None:
+    #     # TODO: Implement cpu name parser into (manufacture, family, model_range)
+    #     raise NotImplementedError
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')
@@ -143,3 +143,12 @@ class ComponentCPU(Component):
     @classmethod
     def from_dto(cls, cpu: CPU) -> 'ComponentCPU':
         return cls(**cpu.dict())
+
+    def to_dto(self, original_cpu: CPU) -> CPU:
+        cpu = CPU()
+        for attr, val in original_cpu.dict().items():
+            if hasattr(self, f'__{attr}'):
+                cpu.__setattr__(attr, self.__getattribute__(attr))
+            else:
+                cpu.__setattr__(attr, original_cpu.__getattribute__(attr))
+        return cpu

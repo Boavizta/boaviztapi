@@ -91,3 +91,12 @@ class ComponentRAM(Component):
     @classmethod
     def from_dto(cls, ram: RAM) -> 'ComponentRAM':
         return cls(**ram.dict())
+
+    def to_dto(self, original_ram: RAM) -> RAM:
+        ram = RAM()
+        for attr, val in original_ram.dict().items():
+            if hasattr(self, f'__{attr}'):
+                ram.__setattr__(attr, self.__getattribute__(attr))
+            else:
+                ram.__setattr__(attr, original_ram.__getattribute__(attr))
+        return ram

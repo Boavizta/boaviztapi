@@ -46,3 +46,6 @@ class ComponentMotherboard(Component):
     @classmethod
     def from_dto(cls, motherboard: Motherboard) -> 'ComponentMotherboard':
         return cls()
+
+    def to_dto(self, original_disk: Motherboard) -> Motherboard:
+        return original_disk

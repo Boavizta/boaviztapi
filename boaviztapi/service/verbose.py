@@ -1,6 +1,7 @@
-from boaviztapi.model.component.component import Component
-from boaviztapi.model.device import Device
 import boaviztapi.utils.roundit as rd
+from boaviztapi.model.device import Device
+from boaviztapi.model.component import Component
+from boaviztapi.dto.component import ComponentDTO
 
 
 def verbose_device(complete_device: Device, input_device: Device):
@@ -40,8 +41,8 @@ def verbose_device(complete_device: Device, input_device: Device):
         json_output[component_name]["hash"] = complete_component.hash
 
         json_output[component_name] = {**json_output[component_name],
-                                       **verbose_component(complete_component=complete_component,
-                                                           input_component=matching_component)}
+                                       **verbose_component(output_component_dto=complete_component,
+                                                           input_component_dto=matching_component)}
 
     for item in json_output:
         json_output[item]["impacts"]["gwp"] = {
@@ -87,35 +88,43 @@ def verbose_usage(complete_device, input_device):
     return json_output
 
 
-def verbose_component(complete_component: Component, input_component: Component, units: int = None):
+def verbose_component(component: Component,
+                      input_component_dto: ComponentDTO,
+                      output_component_dto: ComponentDTO,
+                      units: int = None):
     json_output = {}
-    if complete_component.usage:
-        json_output["USAGE"] = {**verbose_usage(complete_device=complete_component,
-                                                input_device=input_component)}
+    # TODO: Reimplement usage verbose
+    # if output_component.usage:
+    #     json_output["USAGE"] = {**verbose_usage(complete_device=output_component,
+    #                                             input_device=input_component)}
     if units:
         json_output["units"] = units
 
-    for attr, value in complete_component.__iter__():
+    for attr, value in output_component_dto.__iter__():
         if attr == "usage":
             continue
         if type(value) is dict:
-            json_output[attr] = \
-                recursive_dict_verbose(value,
-                                       {} if getattr(input_component, attr) is None else getattr(input_component, attr))
+            json_output[attr] = recursive_dict_verbose(
+                value, {} if getattr(input_component_dto, attr) is None else getattr(input_component_dto, attr)
+            )
         elif value is not None and attr != "TYPE" and attr != "hash":
             json_output[attr] = {}
-            json_output[attr]["input_value"] = getattr(input_component, attr, None)
+            json_output[attr]["input_value"] = getattr(input_component_dto, attr, None)
             json_output[attr]["used_value"] = value
             json_output[attr]["status"] = get_status(json_output[attr]["used_value"], json_output[attr]["input_value"])
 
-    json_output["impacts"] = {"gwp": {
-        "value": rd.round_to_sigfig(*complete_component.impact_manufacture_gwp()),
-        "unit": "kgCO2eq"},
+    json_output["impacts"] = {
+        "gwp": {
+            "value": rd.round_to_sigfig(*component.impact_manufacture_gwp()),
+            "unit": "kgCO2eq"
+        },
         "pe": {
-            "value": rd.round_to_sigfig(*complete_component.impact_manufacture_pe()),
+            "value": rd.round_to_sigfig(*component.impact_manufacture_pe()),
             "unit": "MJ"},
-        "adp": {"value": rd.round_to_sigfig(*complete_component.impact_manufacture_adp()),
-                "unit": "kgSbeq"},
+        "adp": {
+            "value": rd.round_to_sigfig(*component.impact_manufacture_adp()),
+            "unit": "kgSbeq"
+        },
     }
     return json_output
 
@@ -133,8 +142,8 @@ def recursive_dict_verbose(dict1, dict2):
     return json_output
 
 
-def get_status(usedt_value, input_value):
-    if usedt_value == input_value:
+def get_status(used_value, input_value):
+    if used_value == input_value:
         return "UNCHANGED"
     elif input_value is None:
         return "SET"

@@ -1,4 +1,4 @@
-from abc import abstractmethod, ABC
+from abc import abstractmethod
 from typing import Tuple
 
 from boaviztapi.dto.component import ComponentDTO
@@ -40,5 +40,9 @@ class Component:
         raise NotImplementedError
 
     @classmethod
-    def from_dto(cls, arg: ComponentDTO) -> 'Component':
+    def from_dto(cls, component_dto: ComponentDTO) -> 'Component':
+        raise NotImplementedError
+
+    @abstractmethod
+    def to_dto(self, original_component: ComponentDTO) -> ComponentDTO:
         raise NotImplementedError

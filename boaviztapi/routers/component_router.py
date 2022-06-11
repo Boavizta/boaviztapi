@@ -27,23 +27,29 @@ async def cpu_impact_bottom_up(cpu: CPU = Body(None, example=components_examples
     completed_cpu = smart_complete_cpu(cpu)
     return await component_impact_bottom_up(
         input_component_dto=cpu,
-        output_component_dto=completed_cpu,
+        smart_complete_component_dto=completed_cpu,
         component_class=ComponentCPU,
         verbose=verbose
     )
 
 
 async def component_impact_bottom_up(input_component_dto: ComponentDTO,
-                                     output_component_dto: ComponentDTO,
+                                     smart_complete_component_dto: ComponentDTO,
                                      component_class: Type[Component],
                                      verbose: bool) -> dict:
-    component_cpu = component_class.from_dto(output_component_dto)
-    impacts = bottom_up_component(component=component_cpu, units=input_component_dto.units or 1)
-    result = impacts
-    # if verbose:
-    #     result = {"impacts": impacts,
-    #               "verbose": verbose_component(output_component_dto, input_component_dto, units=cpu.units or 1)}
-    return result
+    component = component_class.from_dto(smart_complete_component_dto)
+    impacts = bottom_up_component(component=component, units=input_component_dto.units or 1)
+    if verbose:
+        return {
+            "impacts": impacts,
+            "verbose": verbose_component(
+                component=component,
+                input_component_dto=input_component_dto,
+                output_component_dto=component.to_dto(smart_complete_component_dto),
+                units=input_component_dto.units or 1
+            )
+        }
+    return impacts
 
 
 @component_router.post('/ram',
@@ -52,7 +58,7 @@ async def ram_impact_bottom_up(ram: RAM = Body(None, example=components_examples
     completed_ram = smart_complete_ram(ram)
     return await component_impact_bottom_up(
         input_component_dto=ram,
-        output_component_dto=completed_ram,
+        smart_complete_component_dto=completed_ram,
         component_class=ComponentRAM,
         verbose=verbose
     )
@@ -65,7 +71,7 @@ async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examp
     competed_ssd = smart_complete_disk_ssd(disk)
     return await component_impact_bottom_up(
         input_component_dto=disk,
-        output_component_dto=competed_ssd,
+        smart_complete_component_dto=competed_ssd,
         component_class=ComponentSSD,
         verbose=verbose
     )
@@ -78,7 +84,7 @@ async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examp
     completed_hdd = disk.copy()
     return await component_impact_bottom_up(
         input_component_dto=disk,
-        output_component_dto=completed_hdd,
+        smart_complete_component_dto=completed_hdd,
         component_class=ComponentHDD,
         verbose=verbose
     )
@@ -92,7 +98,7 @@ async def motherboard_impact_bottom_up(
     completed_motherboard = motherboard.copy()
     return await component_impact_bottom_up(
         input_component_dto=motherboard,
-        output_component_dto=completed_motherboard,
+        smart_complete_component_dto=completed_motherboard,
         component_class=ComponentMotherboard,
         verbose=verbose
     )
@@ -106,7 +112,7 @@ async def power_supply_impact_bottom_up(
     completed_power_supply = power_supply.copy()
     return await component_impact_bottom_up(
         input_component_dto=power_supply,
-        output_component_dto=completed_power_supply,
+        smart_complete_component_dto=completed_power_supply,
         component_class=ComponentPowerSupply,
         verbose=verbose
     )
@@ -118,7 +124,7 @@ async def case_impact_bottom_up(case: Case = Body(None, example=components_examp
     completed_case = case.copy()
     return await component_impact_bottom_up(
         input_component_dto=case,
-        output_component_dto=completed_case,
+        smart_complete_component_dto=completed_case,
         component_class=ComponentCase,
         verbose=verbose
     )

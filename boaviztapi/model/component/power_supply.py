@@ -22,19 +22,19 @@ class ComponentPowerSupply(Component):
     def __init__(self, **kwargs):
         super().__init__()
 
-        self.__weight = self.DEFAULT_POWER_SUPPLY_WEIGHT
+        self.__unit_weight = self.DEFAULT_POWER_SUPPLY_WEIGHT
 
         for attr, val in kwargs.items():
             if val is not None:
                 self.__setattr__(attr, val)
 
     @property
-    def weight(self) -> float:
-        return self.__weight
+    def unit_weight(self) -> float:
+        return self.__unit_weight
 
-    @weight.setter
-    def weight(self, value: float) -> None:
-        self.__weight = value
+    @unit_weight.setter
+    def unit_weight(self, value: float) -> None:
+        self.__unit_weight = value
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')
@@ -46,7 +46,7 @@ class ComponentPowerSupply(Component):
         return impact, sign_figures
 
     def __compute_impact_manufacture(self, power_supply_impact: float) -> float:
-        return self.weight * power_supply_impact
+        return self.unit_weight * power_supply_impact
 
     def impact_manufacture_pe(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('pe')
@@ -66,3 +66,12 @@ class ComponentPowerSupply(Component):
     @classmethod
     def from_dto(cls, power_supply: PowerSupply) -> 'ComponentPowerSupply':
         return cls(**power_supply.dict())
+
+    def to_dto(self, original_power_supply: PowerSupply) -> PowerSupply:
+        power_supply = PowerSupply()
+        for attr, val in original_power_supply.dict().items():
+            if hasattr(self, f'__{attr}'):
+                power_supply.__setattr__(attr, self.__getattribute__(attr))
+            else:
+                power_supply.__setattr__(attr, original_power_supply.__getattribute__(attr))
+        return power_supply

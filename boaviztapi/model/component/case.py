@@ -105,3 +105,12 @@ class ComponentCase(Component):
     @classmethod
     def from_dto(cls, case: Case) -> 'ComponentCase':
         return cls(**case.dict())
+
+    def to_dto(self, original_case: Case) -> Case:
+        case = Case()
+        for attr, val in original_case.dict().items():
+            if hasattr(self, f'__{attr}'):
+                case.__setattr__(attr, self.__getattribute__(attr))
+            else:
+                case.__setattr__(attr, original_case.__getattribute__(attr))
+        return case

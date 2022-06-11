@@ -93,3 +93,12 @@ class ComponentSSD(Component):
         if disk.type.lower() != cls.__DISK_TYPE:
             raise ValueError(f'wrong disk type, expect `{cls.__DISK_TYPE}`, got `{disk.type}`')
         return cls(**disk.dict())
+
+    def to_dto(self, original_disk: Disk) -> Disk:
+        disk = Disk()
+        for attr, val in original_disk.dict().items():
+            if hasattr(self, f'__{attr}'):
+                disk.__setattr__(attr, self.__getattribute__(attr))
+            else:
+                disk.__setattr__(attr, original_disk.__getattribute__(attr))
+        return disk
