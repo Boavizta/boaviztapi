@@ -1,10 +1,11 @@
-from typing import Union, Tuple
+from typing import Union, Tuple, Optional
 
 from boaviztapi.model.component import Component
 from boaviztapi.model.device import Device
 import boaviztapi.utils.roundit as rd
 
-_default_impacts_code = {"gwp", "pe", "adp"}
+
+NOT_IMPLEMENTED = 'not implemented'
 
 
 def bottom_up_device(device: Device) -> dict:
@@ -31,18 +32,18 @@ def bottom_up_device(device: Device) -> dict:
 def bottom_up_component(component: Component, units: int = 1) -> dict:
     impacts = {
         'gwp': {
-            'manufacture': get_component_impact(component, 'manufacture', 'gwp', units),
-            'use': get_component_impact(component, 'use', 'pe', units),
+            'manufacture': get_component_impact(component, 'manufacture', 'gwp', units) or NOT_IMPLEMENTED,
+            'use': get_component_impact(component, 'use', 'pe', units) or NOT_IMPLEMENTED,
             'unit': "kgCO2eq"
         },
         'pe': {
-            'manufacture': get_component_impact(component, 'manufacture', 'pe', units),
-            'use': get_component_impact(component, 'use', 'pe', units),
+            'manufacture': get_component_impact(component, 'manufacture', 'pe', units) or NOT_IMPLEMENTED,
+            'use': get_component_impact(component, 'use', 'pe', units) or NOT_IMPLEMENTED,
             'unit': "MJ"
         },
         'adp': {
-            'manufacture': get_component_impact(component, 'manufacture', 'adp', units),
-            'use': get_component_impact(component, 'use', 'adp', units),
+            'manufacture': get_component_impact(component, 'manufacture', 'adp', units) or NOT_IMPLEMENTED,
+            'use': get_component_impact(component, 'use', 'adp', units) or NOT_IMPLEMENTED,
             'unit': "kgSbeq"
         },
     }
@@ -52,7 +53,7 @@ def bottom_up_component(component: Component, units: int = 1) -> dict:
 def get_component_impact(component: Component,
                          phase: str,
                          impact_type: str,
-                         units: int) -> Union[Tuple[float, int], str]:
+                         units: int) -> Optional[float]:
     try:
         impact_function = component.__getattribute__(f'impact_{phase}_{impact_type}')
         impact, significant_figures = impact_function()
@@ -60,4 +61,3 @@ def get_component_impact(component: Component,
         return rd.round_to_sigfig(units_impact, significant_figures)
     except (AttributeError, NotImplementedError):
         pass
-    return 'not implemented'
