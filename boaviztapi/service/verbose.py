@@ -2,16 +2,17 @@ import boaviztapi.utils.roundit as rd
 from boaviztapi.model.device import Device
 from boaviztapi.model.component import Component
 from boaviztapi.dto.component import ComponentDTO
+from boaviztapi.dto.device import DeviceDTO
 
 
-def verbose_device(complete_device: Device, input_device: Device):
+def verbose_device(input_device_dto: DeviceDTO, output_device_dto: DeviceDTO):
     json_output = {}
-    if complete_device.usage:
-        json_output["USAGE"] = {**verbose_usage(complete_device=complete_device,
-                                                input_device=input_device)}
+    # if complete_device.usage:
+    #     json_output["USAGE"] = {**verbose_usage(complete_device=complete_device,
+    #                                             input_device=input_device)}
 
-    input_components = input_device.config_components
-    complete_components = complete_device.config_components
+    input_components = input_device_dto.config_components
+    complete_components = output_device_dto.config_components
 
     for complete_component in complete_components:
         component_type = complete_component.TYPE
@@ -47,14 +48,16 @@ def verbose_device(complete_device: Device, input_device: Device):
     for item in json_output:
         json_output[item]["impacts"]["gwp"] = {
             'value': json_output[item]["impacts"]["gwp"]['value'] * json_output[item]["unit"],
-            'unit': "kgCO2eq"}
+            'unit': "kgCO2eq"
+        }
         json_output[item]["impacts"]["pe"] = {
             'value': json_output[item]["impacts"]["pe"]['value'] * json_output[item]["unit"],
-            'unit': "MJ"}
+            'unit': "MJ"
+        }
         json_output[item]["impacts"]["adp"] = {
             'value': json_output[item]["impacts"]["adp"]['value'] * json_output[item]["unit"],
-            'unit': "kgSbeq"}
-
+            'unit': "kgSbeq"
+        }
     return json_output
 
 

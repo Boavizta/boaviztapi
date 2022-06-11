@@ -39,7 +39,7 @@ def instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=cloud_usa
 
     if verbose:
         result = {"impacts": impacts,
-                  "verbose": verbose_device(complete_device=completed_instance, input_device=cloud_instance)}
+                  "verbose": verbose_device(output_device_dto=completed_instance, input_device_dto=cloud_instance)}
 
     return result
 
