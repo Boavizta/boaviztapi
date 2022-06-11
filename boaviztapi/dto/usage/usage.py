@@ -3,13 +3,19 @@ from typing import Optional, Union, Dict
 from boaviztapi.dto import BaseDTO
 
 
+class WorkloadUnit(BaseDTO):
+    time_ratio: Optional[float] = None
+    power_ratio: Optional[float] = None
+    power: Optional[float] = None
+
+
 class Usage(BaseDTO):
     years_use_time: Optional[float] = None
     days_use_time: Optional[float] = None
     hours_use_time: Optional[float] = None
 
     hours_electrical_consumption: Optional[float] = None
-    workload: Optional[Union[Dict[str, float], float]] = None
+    workload: Optional[Dict[str, WorkloadUnit]] = None
 
     usage_location: Optional[str] = None
     gwp_factor: Optional[float] = None
