@@ -1,1 +1,2 @@
-from .device import Device, DeviceServer, DeviceCloudInstance
+from .device import Device
+from .server import DeviceServer, DeviceCloudInstance
