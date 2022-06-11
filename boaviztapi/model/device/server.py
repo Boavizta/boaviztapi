@@ -6,7 +6,7 @@ from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, Co
     ComponentPowerSupply, ComponentCase, ComponentMotherboard, ComponentAssembly
 from boaviztapi.model.device.device import Device, NumberSignificantFigures
 from boaviztapi.dto.component import ComponentDTO
-from boaviztapi.dto.device import Server, Cloud
+from boaviztapi.dto.device.device import Server, Cloud, ModelServer, ConfigurationServer
 
 
 class DeviceServer(Device):
@@ -162,6 +162,45 @@ class DeviceServer(Device):
 
     def impact_use_adp(self) -> NumberSignificantFigures:
         raise NotImplementedError
+
+    def to_dto(self, original_server: Server) -> Server:
+        return Server(
+            model=ModelServer(
+                manufacturer=self.__manufacturer or original_server.model.manufacturer,
+                name=self.__name or original_server.model.name,
+                type=self.__case.case_type or original_server.model.type,
+                year=self.__manufacture_year or original_server.model.year,
+                archetype=original_server.model.archetype
+            ),
+            configuration=ConfigurationServer(
+                cpu=self.merge_component_units(self.cpu, original_server.configuration.cpu),
+                ram=self.merge_component_units(self.ram, original_server.configuration.ram),
+                disk=self.merge_component_units(self.disk, original_server.configuration.disk),
+                power_supply=self.merge_component_units(self.power_supply, original_server.configuration.power_supply),
+                # TODO: We need the motherboard, assembly
+            ),
+            usage=original_server.usage
+        )
+
+    @staticmethod
+    def merge_component_units(components: Union[Component, List[Component]],
+                              components_dto: Union[ComponentDTO, List[ComponentDTO]]) \
+            -> Union[ComponentDTO, List[ComponentDTO]]:
+        component_id_map = {}
+        for compo in components:
+            component_id_map[compo.id] = [compo] + component_id_map.get(compo.id, [])
+
+        if isinstance(components_dto, list):
+            res = []
+            for compo_dto in components_dto:
+                compo = component_id_map[compo_dto.__id][0]
+                new_compo_dto = compo.to_dto(compo_dto)
+                new_compo_dto.units = len(component_id_map[compo_dto.__id])
+                res.append(new_compo_dto)
+        else:
+            res = components[0].to_dto(components_dto)
+            res.units = len(component_id_map[components_dto.__id])
+        return res
 
     @classmethod
     def from_dto(cls, server: Server) -> 'DeviceServer':
