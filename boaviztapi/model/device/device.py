@@ -14,28 +14,32 @@ class Device:
 
     @abstractmethod
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def impact_manufacture_pe(self) -> NumberSignificantFigures:
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def impact_manufacture_adp(self) -> NumberSignificantFigures:
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def impact_use_gwp(self) -> NumberSignificantFigures:
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def impact_use_pe(self) -> NumberSignificantFigures:
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def impact_use_adp(self) -> NumberSignificantFigures:
-        pass
+        raise NotImplementedError
+
+    @abstractmethod
+    def to_dto(self, original_device: DeviceDTO) -> DeviceDTO:
+        raise NotImplementedError
 
     @classmethod
     def from_dto(cls, device: DeviceDTO) -> 'Device':
-        pass
+        raise NotImplementedError
