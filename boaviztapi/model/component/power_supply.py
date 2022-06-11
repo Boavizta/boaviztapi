@@ -65,7 +65,7 @@ class ComponentPowerSupply(Component):
 
     @classmethod
     def from_dto(cls, power_supply: PowerSupply) -> 'ComponentPowerSupply':
-        return cls(**power_supply.dict())
+        return cls(**power_supply.dict(include_id=True))
 
     def to_dto(self, original_power_supply: PowerSupply) -> PowerSupply:
         power_supply = PowerSupply()

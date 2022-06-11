@@ -32,7 +32,7 @@ class ComponentCPU(Component):
     }
 
     def __init__(self, /, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
 
         self.__core_units = self.DEFAULT_CPU_CORE_UNITS
         self.__die_size_per_core = self.DEFAULT_CPU_DIE_SIZE_PER_CORE
@@ -142,7 +142,7 @@ class ComponentCPU(Component):
 
     @classmethod
     def from_dto(cls, cpu: CPU) -> 'ComponentCPU':
-        return cls(**cpu.dict())
+        return cls(**cpu.dict(include_id=True))
 
     def to_dto(self, original_cpu: CPU) -> CPU:
         cpu = CPU()
@@ -152,3 +152,13 @@ class ComponentCPU(Component):
             else:
                 cpu.__setattr__(attr, original_cpu.__getattribute__(attr))
         return cpu
+
+
+if __name__ == '__main__':
+    cpu_dto_1 = CPU(family='Coffee Lake')
+    print(cpu_dto_1.dict())
+    cpu_dto_2 = CPU(family='Coffee Lake')
+    print(cpu_dto_2.__id)
+    # cpu_1 = ComponentCPU.from_dto(cpu_dto_1)
+    # cpu_2 = ComponentCPU.from_dto(cpu_dto_2)
+

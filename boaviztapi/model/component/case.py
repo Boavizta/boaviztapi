@@ -104,7 +104,7 @@ class ComponentCase(Component):
 
     @classmethod
     def from_dto(cls, case: Case) -> 'ComponentCase':
-        return cls(**case.dict())
+        return cls(**case.dict(include_id=True))
 
     def to_dto(self, original_case: Case) -> Case:
         case = Case()

@@ -90,7 +90,7 @@ class ComponentRAM(Component):
 
     @classmethod
     def from_dto(cls, ram: RAM) -> 'ComponentRAM':
-        return cls(**ram.dict())
+        return cls(**ram.dict(include_id=True))
 
     def to_dto(self, original_ram: RAM) -> RAM:
         ram = RAM()

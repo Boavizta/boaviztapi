@@ -92,7 +92,7 @@ class ComponentSSD(Component):
     def from_dto(cls, disk: Disk) -> 'ComponentSSD':
         if disk.type.lower() != cls.__DISK_TYPE:
             raise ValueError(f'wrong disk type, expect `{cls.__DISK_TYPE}`, got `{disk.type}`')
-        return cls(**disk.dict())
+        return cls(**disk.dict(include_id=True))
 
     def to_dto(self, original_disk: Disk) -> Disk:
         disk = Disk()
