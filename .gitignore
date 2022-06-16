@@ -136,3 +136,7 @@ dmypy.json
 # IDE
 .idea/
 .vscode/
+
+# Serverless
+.serverless
+node_modules
