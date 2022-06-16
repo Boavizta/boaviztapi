@@ -1,0 +1,49 @@
+service: boavizta-api
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: eu-west-1
+  stage: ${opt:stage, "dev"}
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    layer:
+      name: boavizta-api-layer
+      description: Boavizta API
+      compatibleRuntimes:
+        - python3.8
+
+functions:
+  app:
+    package:
+      include:
+        - "boaviztapi/**"
+      exclude:
+        - "requirements.txt"
+        - "package.json"
+        - "package-lock.json"
+        - ".serverless/**"
+        - ".virtualenv/**"
+        - "node_modules/**"
+        - "docs/**"
+        - "tests/**"
+    handler: boaviztapi.main.handler
+    environment:
+      STAGE: ${self:provider.stage}
+    layers:
+      - { Ref: PythonRequirementsLambdaLayer }
+    events:
+      - http:
+          method: get
+          path: /
+      - http:
+          method: any
+          path: /{proxy+}

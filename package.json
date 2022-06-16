@@ -1,0 +1,8 @@
+{
+    "name": "my-awesome-app",
+    "version": "1.0.0",
+    "author": "<YOUR_NAME>",
+    "dependencies": {
+        "serverless-python-requirements": "^5.0.1"
+    }
+}
