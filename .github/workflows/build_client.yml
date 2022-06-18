@@ -2,7 +2,6 @@ name: build_client_sdk
 
 on:
   push:
-    branches: [ main, dev ]
     tags:
       - '*'
     paths-ignore:
