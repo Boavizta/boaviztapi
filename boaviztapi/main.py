@@ -88,7 +88,7 @@ async def welcom_page():
             <h3 align="center">See our github repository : <a href="https://github.com/Boavizta/boaviztapi">LINK</a></h2>
             <h3 align="center">See OpenAPI specs (swagger) : <a href="https://api.boavizta.org/docs#/">LINK</a></h2>
             <h3 align="center">See our complete documentation : <a href="https://doc.api.boavizta.org/">LINK</a></h2>
-            <h3 align="center">See the other resources a of Boavizta : <a href="https://boavizta.org/">LINK</a> </h2>
+            <h3 align="center">See the other resources of Boavizta : <a href="https://boavizta.org/">LINK</a> </h2>
         </body>
     </html>
     """
