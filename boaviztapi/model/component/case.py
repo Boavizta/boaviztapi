@@ -1,6 +1,7 @@
 from typing import Tuple
 
 import boaviztapi.utils.roundit as rd
+from boaviztapi.model.boattribute import Boattribute, Status
 from boaviztapi.model.component.component import Component, NumberSignificantFigures
 from boaviztapi.dto.component import Case
 
@@ -40,19 +41,22 @@ class ComponentCase(Component):
     def __init__(self, **kwargs):
         super().__init__()
 
-        self.__case_type = self.DEFAULT_CASE_TYPE
+        self.__case_type = Boattribute(value=None, status=Status.NONE, unit="none")
 
         for attr, val in kwargs.items():
-            if val is not None:
+            if val is not None and hasattr(self, f'_ComponentCase__{attr}'):
                 self.__setattr__(attr, val)
 
     @property
     def case_type(self) -> str:
-        return self.__case_type
+        if self.__case_type.value is None:
+            self.__case_type.value = self.DEFAULT_CASE_TYPE
+            self.__case_type.status = Status.DEFAULT
+        return self.__case_type.value
 
     @case_type.setter
     def case_type(self, value: str) -> None:
-        self.__case_type = value
+        self.__case_type.value = value
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')
@@ -102,14 +106,10 @@ class ComponentCase(Component):
     def impact_use_adp(self) -> NumberSignificantFigures:
         raise NotImplementedError
 
-    @classmethod
-    def from_dto(cls, case: Case) -> 'ComponentCase':
-        return cls(**case.dict(include_id=True))
-
     def to_dto(self, original_case: Case) -> Case:
         case = Case()
         for attr, val in original_case.dict().items():
-            if hasattr(self, f'__{attr}'):
+            if hasattr(self, f'_ComponentCase__{attr}'):
                 case.__setattr__(attr, self.__getattribute__(attr))
             else:
                 case.__setattr__(attr, original_case.__getattribute__(attr))

@@ -1,3 +1,4 @@
+import os
 from typing import Optional
 
 import pandas as pd
@@ -5,7 +6,7 @@ import pandas as pd
 from boaviztapi.dto.component import ComponentDTO
 
 
-_ram_df = pd.read_csv('./boaviztapi/data/components/ram_manufacture.csv')
+_ram_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/ram_manufacture.csv'))
 
 
 class RAM(ComponentDTO):

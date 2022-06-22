@@ -1,6 +1,7 @@
 from typing import Tuple
 
 import boaviztapi.utils.roundit as rd
+from boaviztapi.model.boattribute import Boattribute, Status
 from boaviztapi.model.component.component import Component, NumberSignificantFigures
 from boaviztapi.dto.component import Disk
 
@@ -30,28 +31,34 @@ class ComponentSSD(Component):
     def __init__(self, **kwargs):
         super().__init__()
 
-        self.__capacity = self.DEFAULT_SSD_CAPACITY
-        self.__density = self.DEFAULT_SSD_DENSITY
+        self.__capacity = Boattribute(value=None, status=Status.NONE, unit="Go")
+        self.__density = Boattribute(value=None, status=Status.NONE, unit="Go/cm2")
 
         for attr, val in kwargs.items():
-            if val is not None:
+            if val is not None and hasattr(self, f'_ComponentSSD__{attr}'):
                 self.__setattr__(attr, val)
 
     @property
     def capacity(self) -> int:
-        return self.__capacity
+        if self.__capacity.value is None:
+            self.__capacity.value = self.DEFAULT_SSD_CAPACITY
+            self.__capacity.status = Status.DEFAULT
+        return self.__capacity.value
 
     @capacity.setter
     def capacity(self, value: int) -> None:
-        self.__capacity = value
+        self.__capacity.value = value
 
     @property
     def density(self) -> float:
-        return self.__density
+        if self.__density.value is None:
+            self.__density.value = self.DEFAULT_SSD_DENSITY
+            self.__density.status = Status.DEFAULT
+        return self.__density.value
 
     @density.setter
     def density(self, value: float) -> None:
-        self.__density = value
+        self.__density.value = value
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')
@@ -88,16 +95,10 @@ class ComponentSSD(Component):
     def impact_use_adp(self, model=None) -> NumberSignificantFigures:
         raise NotImplementedError
 
-    @classmethod
-    def from_dto(cls, disk: Disk) -> 'ComponentSSD':
-        if disk.type.lower() != cls.__DISK_TYPE:
-            raise ValueError(f'wrong disk type, expect `{cls.__DISK_TYPE}`, got `{disk.type}`')
-        return cls(**disk.dict(include_id=True))
-
     def to_dto(self, original_disk: Disk) -> Disk:
         disk = Disk()
         for attr, val in original_disk.dict().items():
-            if hasattr(self, f'__{attr}'):
+            if hasattr(self, f'_ComponentSSD__{attr}'):
                 disk.__setattr__(attr, self.__getattribute__(attr))
             else:
                 disk.__setattr__(attr, original_disk.__getattribute__(attr))

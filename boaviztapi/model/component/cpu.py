@@ -1,14 +1,12 @@
 from typing import Tuple
 
-import pandas as pd
-
 import boaviztapi.utils.roundit as rd
 from boaviztapi.model.component.component import Component, NumberSignificantFigures
 from boaviztapi.dto.component import CPU
+from boaviztapi.model.boattribute import Boattribute, Status
 
 
 class ComponentCPU(Component):
-
     DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
     DEFAULT_CPU_CORE_UNITS = 24
     DEFAULT_CPU_MANUFACTURER = 'Intel'
@@ -34,33 +32,38 @@ class ComponentCPU(Component):
     def __init__(self, /, **kwargs):
         super().__init__(**kwargs)
 
-        self.__core_units = self.DEFAULT_CPU_CORE_UNITS
-        self.__die_size_per_core = self.DEFAULT_CPU_DIE_SIZE_PER_CORE
-
-        # TODO: keep these attributes if need in the consumption profile selection?
-        self.__manufacturer = self.DEFAULT_CPU_MANUFACTURER
-        self.__family = self.DEFAULT_CPU_FAMILY
-        self.__model_range = self.DEFAULT_MODEL_RANGE
+        self.__core_units = Boattribute(value=None, status=Status.NONE, unit="none")
+        self.__die_size_per_core = Boattribute(value=None, status=Status.NONE, unit="mm2")
+        self.__model_range = Boattribute(value=None, status=Status.NONE, unit="none")
+        self.__manufacturer = Boattribute(value=None, status=Status.NONE, unit="..")
+        self.__model_range = Boattribute(value=None, status=Status.NONE, unit="none")
+        self.__family = Boattribute(value=None, status=Status.NONE, unit="none")
 
         for attr, val in kwargs.items():
-            if val is not None:
+            if val is not None and hasattr(self, f'_ComponentCPU__{attr}'):
                 self.__setattr__(attr, val)
 
     @property
     def core_units(self) -> int:
-        return self.__core_units
+        if self.__core_units.value is None:
+            self.__core_units.value = self.DEFAULT_CPU_CORE_UNITS
+            self.__core_units.status = Status.DEFAULT
+        return self.__core_units.value
 
     @core_units.setter
     def core_units(self, value: int) -> None:
-        self.__core_units = value
+        self.__core_units.value = value
 
     @property
     def die_size_per_core(self) -> float:
-        return self.__die_size_per_core
+        if self.__die_size_per_core.value is None:
+            self.__die_size_per_core.value = self.DEFAULT_CPU_DIE_SIZE_PER_CORE
+            self.__die_size_per_core.status = Status.DEFAULT
+        return self.__die_size_per_core.value
 
     @die_size_per_core.setter
     def die_size_per_core(self, value: float) -> None:
-        self.__die_size_per_core = value
+        self.__die_size_per_core.value = value
 
     @property
     def die_size(self) -> float:
@@ -68,31 +71,37 @@ class ComponentCPU(Component):
 
     @die_size.setter
     def die_size(self, value: float) -> None:
-        self.__die_size_per_core = value / self.core_units
+        self.__die_size_per_core.value = value / self.core_units
 
     @property
     def manufacturer(self) -> str:
-        return self.__manufacturer
+        if self.__manufacturer.value is None:
+            self.__manufacturer.value = self.DEFAULT_CPU_MANUFACTURER
+            self.__manufacturer.status = Status.DEFAULT
+        return self.__manufacturer.value
 
     @manufacturer.setter
     def manufacturer(self, value: str) -> None:
-        self.__manufacturer = value
+        self.__manufacturer.value = value
 
     @property
     def family(self) -> str:
-        return self.__family
+        return self.__family.value
 
     @family.setter
     def family(self, value: str) -> None:
-        self.__family = value
+        self.__family.value = value
 
     @property
     def model_range(self) -> str:
-        return self.__model_range
+        if self.__model_range.value is None:
+            self.__model_range.value = self.DEFAULT_MODEL_RANGE
+            self.__model_range.status = Status.DEFAULT
+        return self.__model_range.value
 
     @model_range.setter
     def model_range(self, value: str) -> None:
-        self.__model_range = value
+        self.__model_range.value = value
 
     # @property
     # def name(self):
@@ -140,25 +149,11 @@ class ComponentCPU(Component):
     def impact_use_adp(self) -> NumberSignificantFigures:
         raise NotImplementedError
 
-    @classmethod
-    def from_dto(cls, cpu: CPU) -> 'ComponentCPU':
-        return cls(**cpu.dict(include_id=True))
-
     def to_dto(self, original_cpu: CPU) -> CPU:
         cpu = CPU()
         for attr, val in original_cpu.dict().items():
-            if hasattr(self, f'__{attr}'):
+            if hasattr(self, f'_ComponentCPU__{attr}'):
                 cpu.__setattr__(attr, self.__getattribute__(attr))
             else:
                 cpu.__setattr__(attr, original_cpu.__getattribute__(attr))
         return cpu
-
-
-if __name__ == '__main__':
-    cpu_dto_1 = CPU(family='Coffee Lake')
-    print(cpu_dto_1.dict())
-    cpu_dto_2 = CPU(family='Coffee Lake')
-    print(cpu_dto_2.__id)
-    # cpu_1 = ComponentCPU.from_dto(cpu_dto_1)
-    # cpu_2 = ComponentCPU.from_dto(cpu_dto_2)
-

@@ -1,11 +1,12 @@
+import os
 from typing import Optional
 
 import pandas as pd
 
 from boaviztapi.dto.component import ComponentDTO
+import os
 
-
-_cpu_df = pd.read_csv('./boaviztapi/data/components/cpu_manufacture.csv')
+_cpu_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/cpu_manufacture.csv'))
 
 
 class CPU(ComponentDTO):

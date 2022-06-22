@@ -1,4 +1,7 @@
+import json
+
 import boaviztapi.utils.roundit as rd
+from boaviztapi.model.boattribute import Status
 from boaviztapi.model.device import Device
 from boaviztapi.model.component import Component
 from boaviztapi.dto.component import ComponentDTO
@@ -92,8 +95,6 @@ def verbose_usage(complete_device, input_device):
 
 
 def verbose_component(component: Component,
-                      input_component_dto: ComponentDTO,
-                      output_component_dto: ComponentDTO,
                       units: int = None):
     json_output = {}
     # TODO: Reimplement usage verbose
@@ -103,18 +104,11 @@ def verbose_component(component: Component,
     if units:
         json_output["units"] = units
 
-    for attr, value in output_component_dto.__iter__():
+    for attr, val in component.__iter__():
         if attr == "usage":
             continue
-        if type(value) is dict:
-            json_output[attr] = recursive_dict_verbose(
-                value, {} if getattr(input_component_dto, attr) is None else getattr(input_component_dto, attr)
-            )
-        elif value is not None and attr != "TYPE" and attr != "hash":
-            json_output[attr] = {}
-            json_output[attr]["input_value"] = getattr(input_component_dto, attr, None)
-            json_output[attr]["used_value"] = value
-            json_output[attr]["status"] = get_status(json_output[attr]["used_value"], json_output[attr]["input_value"])
+        if val.status != Status.NONE:
+            json_output[attr.rsplit('__', 1)[1]] = val
 
     json_output["impacts"] = {
         "gwp": {
@@ -130,25 +124,3 @@ def verbose_component(component: Component,
         },
     }
     return json_output
-
-
-def recursive_dict_verbose(dict1, dict2):
-    json_output = {}
-    for attr, value in dict1.items():
-        if type(value) is dict:
-            json_output[attr] = recursive_dict_verbose(value, dict2.get(attr, {}))
-        elif value is not None:
-            json_output[attr] = {}
-            json_output[attr]["input_value"] = dict2.get(attr)
-            json_output[attr]["used_value"] = value
-            json_output[attr]["status"] = get_status(json_output[attr]["used_value"], json_output[attr]["input_value"])
-    return json_output
-
-
-def get_status(used_value, input_value):
-    if used_value == input_value:
-        return "UNCHANGED"
-    elif input_value is None:
-        return "SET"
-    else:
-        return "MODIFY"

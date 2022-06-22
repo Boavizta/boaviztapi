@@ -1,4 +1,5 @@
 import boaviztapi.utils.roundit as rd
+from boaviztapi.model.boattribute import Boattribute, Status
 from boaviztapi.model.component.component import Component, NumberSignificantFigures
 from boaviztapi.dto.component import PowerSupply
 
@@ -22,19 +23,22 @@ class ComponentPowerSupply(Component):
     def __init__(self, **kwargs):
         super().__init__()
 
-        self.__unit_weight = self.DEFAULT_POWER_SUPPLY_WEIGHT
+        self.__unit_weight = Boattribute(value=None, status=Status.NONE, unit="Kg")
 
         for attr, val in kwargs.items():
-            if val is not None:
+            if val is not None and hasattr(self, f'_ComponentPowerSupply__{attr}'):
                 self.__setattr__(attr, val)
 
     @property
     def unit_weight(self) -> float:
-        return self.__unit_weight
+        if self.__unit_weight.value is None:
+            self.__unit_weight.value = self.DEFAULT_POWER_SUPPLY_WEIGHT
+            self.__unit_weight.status = Status.DEFAULT
+        return self.__unit_weight.value
 
     @unit_weight.setter
     def unit_weight(self, value: float) -> None:
-        self.__unit_weight = value
+        self.__unit_weight.value = value
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')
@@ -63,14 +67,10 @@ class ComponentPowerSupply(Component):
     def impact_use_adp(self, model=None) -> NumberSignificantFigures:
         raise NotImplementedError
 
-    @classmethod
-    def from_dto(cls, power_supply: PowerSupply) -> 'ComponentPowerSupply':
-        return cls(**power_supply.dict(include_id=True))
-
     def to_dto(self, original_power_supply: PowerSupply) -> PowerSupply:
         power_supply = PowerSupply()
         for attr, val in original_power_supply.dict().items():
-            if hasattr(self, f'__{attr}'):
+            if hasattr(self, f'_ComponentPowerSupply__{attr}'):
                 power_supply.__setattr__(attr, self.__getattribute__(attr))
             else:
                 power_supply.__setattr__(attr, original_power_supply.__getattribute__(attr))

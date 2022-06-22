@@ -1,3 +1,4 @@
+import os
 from typing import Optional
 
 import pandas as pd
@@ -5,7 +6,7 @@ import pandas as pd
 from boaviztapi.dto.component import ComponentDTO
 
 
-_ssd_df = pd.read_csv('./boaviztapi/data/components/ssd_manufacture.csv')
+_ssd_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/ssd_manufacture.csv'))
 
 
 class Disk(ComponentDTO):

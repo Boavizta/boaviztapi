@@ -43,9 +43,5 @@ class ComponentAssembly(Component):
     def impact_use_adp(self, model=None) -> NumberSignificantFigures:
         raise NotImplementedError
 
-    @classmethod
-    def from_dto(cls, arg: Any) -> 'ComponentAssembly':
-        return cls()
-
     def to_dto(self, original_assembly: Any) -> Any:
         return original_assembly
