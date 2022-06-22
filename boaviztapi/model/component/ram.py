@@ -9,6 +9,7 @@ from boaviztapi.model.component.component import Component, NumberSignificantFig
 
 
 class ComponentRAM(Component):
+    NAME = "RAM"
 
     DEFAULT_RAM_CAPACITY = 32
     DEFAULT_RAM_DENSITY = 0.625
@@ -29,7 +30,7 @@ class ComponentRAM(Component):
     }
 
     def __init__(self, /, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
 
         self.__capacity = Boattribute(value=None, status=Status.NONE, unit="Go")
         self.__density = Boattribute(value=None, status=Status.NONE, unit="Go/cm2")

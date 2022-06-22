@@ -5,6 +5,7 @@ from boaviztapi.dto.component import PowerSupply
 
 
 class ComponentPowerSupply(Component):
+    NAME = "POWER_SUPPLY"
 
     DEFAULT_POWER_SUPPLY_WEIGHT = 2.99
 
@@ -21,7 +22,7 @@ class ComponentPowerSupply(Component):
     }
 
     def __init__(self, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
 
         self.__unit_weight = Boattribute(value=None, status=Status.NONE, unit="Kg")
 

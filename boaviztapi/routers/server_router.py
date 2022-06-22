@@ -5,6 +5,7 @@ from typing import Type
 from fastapi import APIRouter, Body, Query
 
 from boaviztapi.dto.device import DeviceDTO, Server
+from boaviztapi.dto.device.device import smart_complete_server
 from boaviztapi.model.device import Device, DeviceServer
 from boaviztapi.routers import data_dir
 from boaviztapi.routers.openapi_doc.descriptions import server_impact_by_model_description, \
@@ -59,7 +60,8 @@ async def server_impact_from_configuration(
     # if server.model.archetype:
     #     server_archetype = await get_server_archetype(server.model.archetype)
     #     completed_server = complete_with_archetype(completed_server, server_archetype)
-    completed_server = server.copy()
+    completed_server = smart_complete_server(copy.deepcopy(server))
+
     return await server_impact(
         input_device_dto=server,
         smart_complete_device_dto=completed_server,
@@ -72,12 +74,11 @@ async def server_impact(input_device_dto: DeviceDTO,
                         smart_complete_device_dto: DeviceDTO,
                         device_class: Type[Device],
                         verbose: bool) -> dict:
-    device = device_class.from_dto(smart_complete_device_dto)
+    device = device_class.from_dto(smart_complete_device_dto, input_device_dto)
     impacts = bottom_up_device(device=device)
     if verbose:
         return {
             "impacts": impacts,
-            "verbose": verbose_device(input_device_dto=input_device_dto,
-                                      output_device_dto=device.to_dto(smart_complete_device_dto))
+            "verbose": verbose_device(device)
         }
     return impacts

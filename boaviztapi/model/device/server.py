@@ -10,7 +10,6 @@ from boaviztapi.dto.device.device import Server, Cloud, ModelServer, Configurati
 
 
 class DeviceServer(Device):
-
     DEFAULT_COMPONENT_CPU = ComponentCPU()
     DEFAULT_NUMBER_CPU = 2
 
@@ -29,55 +28,33 @@ class DeviceServer(Device):
 
     def __init__(self, /, **kwargs):
         super().__init__(**kwargs)
-        self.__name = None                  # TODO: Set default name
-        self.__manufacturer = None          # TODO: Set default manufacturer
-        self.__manufacture_year = None      # TODO: Set default manufacture year
-        self.__cpu_list = [self.DEFAULT_COMPONENT_CPU] * self.DEFAULT_NUMBER_CPU
-        self.__ram_list = [self.DEFAULT_COMPONENT_RAM] * self.DEFAULT_NUMBER_RAM
-        self.__disk_list = [self.DEFAULT_COMPONENT_DISK] * self.DEFAULT_NUMBER_DISK
-        self.__power_supply_list = [self.DEFAULT_COMPONENT_POWER_SUPPLY] * self.DEFAULT_NUMBER_POWER_SUPPLY
-        self.__case = self.DEFAULT_COMPONENT_CASE
-        self.__motherboard = self.DEFAULT_COMPONENT_MOTHERBOARD
-        self.__assembly = self.DEFAULT_COMPONENT_ASSEMBLY
+        self.__cpu = None
+        self.__ram_list = None
+        self.__disk_list = None
+        self.__power_supply = None
+        self.__case = None
+        self.__motherboard = None
+        self.__assembly = None
 
         for attr, val in kwargs.items():
             if val is not None:
                 self.__setattr__(attr, val)
 
     @property
-    def name(self) -> str:
-        return self.__name
-
-    @name.setter
-    def name(self, value: str) -> None:
-        self.__name = value
-
-    @property
-    def manufacturer(self) -> str:
-        return self.__manufacturer
-
-    @manufacturer.setter
-    def manufacturer(self, value: str) -> None:
-        self.__manufacturer = value
-
-    @property
-    def manufacture_year(self) -> str:
-        return self.__manufacture_year
-
-    @manufacture_year.setter
-    def manufacture_year(self, value: str) -> None:
-        self.__manufacture_year = value
-
-    @property
-    def cpu(self) -> List[ComponentCPU]:
-        return self.__cpu_list
+    def cpu(self) -> ComponentCPU:
+        if self.__cpu is None:
+            self.__cpu = self.DEFAULT_COMPONENT_CPU
+            self.__cpu.units = self.DEFAULT_NUMBER_CPU
+        return self.__cpu
 
     @cpu.setter
     def cpu(self, value: List[ComponentCPU]) -> None:
-        self.__cpu_list = value
+        self.__cpu = value
 
     @property
     def ram(self) -> List[ComponentRAM]:
+        if self.__ram_list is None:
+            self.__ram_list = [self.DEFAULT_COMPONENT_RAM] * self.DEFAULT_NUMBER_RAM
         return self.__ram_list
 
     @ram.setter
@@ -86,6 +63,8 @@ class DeviceServer(Device):
 
     @property
     def disk(self) -> List[Union[ComponentSSD, ComponentHDD]]:
+        if self.__disk_list is None:
+            self.__disk_list = [self.DEFAULT_COMPONENT_DISK] * self.DEFAULT_NUMBER_DISK
         return self.__disk_list
 
     @disk.setter
@@ -93,15 +72,20 @@ class DeviceServer(Device):
         self.__disk_list = value
 
     @property
-    def power_supply(self) -> List[ComponentPowerSupply]:
-        return self.__power_supply_list
+    def power_supply(self) -> ComponentPowerSupply:
+        if self.__power_supply is None:
+            self.__power_supply = self.DEFAULT_COMPONENT_POWER_SUPPLY
+            self.__power_supply.units = self.DEFAULT_NUMBER_POWER_SUPPLY
+        return self.__power_supply
 
     @power_supply.setter
     def power_supply(self, value: List[ComponentPowerSupply]) -> None:
-        self.__power_supply_list = value
+        self.__power_supply = value
 
     @property
     def case(self) -> ComponentCase:
+        if self.__case is None:
+            self.__case = self.DEFAULT_COMPONENT_CASE
         return self.__case
 
     @case.setter
@@ -118,6 +102,8 @@ class DeviceServer(Device):
 
     @property
     def motherboard(self) -> ComponentMotherboard:
+        if self.__motherboard is None:
+            self.__motherboard = self.DEFAULT_COMPONENT_MOTHERBOARD
         return self.__motherboard
 
     @motherboard.setter
@@ -126,6 +112,8 @@ class DeviceServer(Device):
 
     @property
     def assembly(self) -> ComponentAssembly:
+        if self.__assembly is None:
+            self.__assembly = self.DEFAULT_COMPONENT_ASSEMBLY
         return self.__assembly
 
     @assembly.setter
@@ -134,19 +122,19 @@ class DeviceServer(Device):
 
     @property
     def components(self) -> List[Component]:
-        return self.cpu + self.ram + self.disk + self.power_supply + [self.case] + [self.motherboard] + [self.assembly]
-
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
-        return self.__impact_manufacture('gwp')
+        return [self.assembly] + [self.cpu] + self.ram + self.disk + [self.power_supply] + [self.case] + [self.motherboard]
 
     def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
         impacts = []
-        significant_figures = [None]
+        significant_figures = []
         for component in self.components:
             impact, sign_fig = getattr(component, f'impact_manufacture_{impact_type}')()
             impacts.append(impact)
             significant_figures.append(sign_fig)
         return sum(impacts), min(significant_figures)
+
+    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+        return self.__impact_manufacture('gwp')
 
     def impact_manufacture_pe(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('pe')
@@ -166,10 +154,6 @@ class DeviceServer(Device):
     def to_dto(self, original_server: Server) -> Server:
         return Server(
             model=ModelServer(
-                manufacturer=self.__manufacturer or original_server.model.manufacturer,
-                name=self.__name or original_server.model.name,
-                type=self.__case.case_type or original_server.model.type,
-                year=self.__manufacture_year or original_server.model.year,
                 archetype=original_server.model.archetype
             ),
             configuration=ConfigurationServer(
@@ -177,7 +161,6 @@ class DeviceServer(Device):
                 ram=self.merge_component_units(self.ram, original_server.configuration.ram),
                 disk=self.merge_component_units(self.disk, original_server.configuration.disk),
                 power_supply=self.merge_component_units(self.power_supply, original_server.configuration.power_supply),
-                # TODO: We need the motherboard, assembly
             ),
             usage=original_server.usage
         )
@@ -203,32 +186,45 @@ class DeviceServer(Device):
         return res
 
     @classmethod
-    def from_dto(cls, server: Server) -> 'DeviceServer':
-        cpu_list = cls.duplicate_component_on_units(server.configuration.cpu)
-        ram_list = cls.duplicate_component_on_units(server.configuration.ram)
-        disk_list = cls.duplicate_component_on_units(server.configuration.disk)
-        power_supply_list = cls.duplicate_component_on_units(server.configuration.power_supply)
-        return cls(
-            name=server.model.name,
-            manufacturer=server.model.manufacturer,
-            manufacture_year=server.model.year,
-            cpu=cpu_list,
+    def from_dto(cls, server_complete: Server, server_input: Server) -> 'DeviceServer':
+        cpu, ram_list, disk_list, power_supply, case_type = None, None, None, None, None
+
+        if server_complete.configuration is not None:
+            if server_complete.configuration.cpu is not None:
+                cpu = ComponentCPU.from_dto(server_complete.configuration.cpu, server_input.configuration.cpu)
+
+            if server_complete.configuration.ram is not None:
+                ram_list = []
+                for complete_ram, input_ram in zip(server_complete.configuration.ram,
+                                                   server_input.configuration.ram):
+                    ram_list.append(ComponentRAM.from_dto(complete_ram, input_ram))
+
+            if server_complete.configuration.disk is not None:
+                disk_list = []
+                for complete_disk, input_disk in zip(server_complete.configuration.disk,
+                                                     server_input.configuration.disk):
+                    if input_disk.type.lower() == "ssd":
+                        disk_list.append(ComponentSSD.from_dto(complete_disk, input_disk))
+                    elif input_disk.type.lower() == "hdd":
+                        disk_list.append(ComponentHDD.from_dto(complete_disk, input_disk))
+
+            if server_complete.configuration.power_supply is not None:
+                power_supply = ComponentPowerSupply.from_dto(server_complete.configuration.power_supply,
+                                                             server_input.configuration.power_supply)
+        if server_complete.model is not None and server_complete.model.type is not None:
+            case_type = server_complete.model.type
+
+        serv = cls(
+            cpu=cpu,
             ram=ram_list,
             disk=disk_list,
-            power_supply=power_supply_list,
-            case_type=server.model.type
+            power_supply=power_supply,
+            case_type=case_type
         )
 
-    @staticmethod
-    def duplicate_component_on_units(component_dto: Union[ComponentDTO, List[ComponentDTO]]) -> List[ComponentDTO]:
-        if not isinstance(component_dto, list):
-            component_dto = [component_dto]
-        res = []
-        for component_unit in component_dto:
-            units = getattr(component_unit, 'units') or 1
-            for _ in range(units):
-                res.append(component_unit)
-        return res
+        serv._set_states_from_input(server_input)
+
+        return serv
 
 
 class DeviceCloudInstance(DeviceServer):

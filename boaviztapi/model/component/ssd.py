@@ -7,6 +7,7 @@ from boaviztapi.dto.component import Disk
 
 
 class ComponentSSD(Component):
+    NAME = "SSD"
 
     __DISK_TYPE = 'ssd'
 
@@ -29,7 +30,7 @@ class ComponentSSD(Component):
     }
 
     def __init__(self, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
 
         self.__capacity = Boattribute(value=None, status=Status.NONE, unit="Go")
         self.__density = Boattribute(value=None, status=Status.NONE, unit="Go/cm2")

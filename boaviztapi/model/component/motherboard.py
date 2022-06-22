@@ -6,6 +6,7 @@ from boaviztapi.dto.component import Motherboard
 
 
 class ComponentMotherboard(Component):
+    NAME = "MOTHERBOARD"
 
     IMPACT_FACTOR = {
         'gwp': {
@@ -20,7 +21,7 @@ class ComponentMotherboard(Component):
     }
 
     def __init__(self, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')

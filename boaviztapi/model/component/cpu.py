@@ -7,6 +7,8 @@ from boaviztapi.model.boattribute import Boattribute, Status
 
 
 class ComponentCPU(Component):
+    NAME = "CPU"
+
     DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
     DEFAULT_CPU_CORE_UNITS = 24
     DEFAULT_CPU_MANUFACTURER = 'Intel'

@@ -44,5 +44,4 @@ def smart_complete_cpu(cpu: CPU) -> CPU:
             row = sub.iloc[0]
             cpu_.die_size_per_core = float(row['die_size_per_core'])
             cpu_.core_units = int(row['core_units'])
-
     return cpu_

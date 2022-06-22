@@ -5,6 +5,7 @@ from boaviztapi.dto.component import Disk
 
 
 class ComponentHDD(Component):
+    NAME = "HDD"
 
     __DISK_TYPE = 'hdd'
 
@@ -23,7 +24,7 @@ class ComponentHDD(Component):
     }
 
     def __init__(self, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
 
         self.__capacity = Boattribute(value=None, status=Status.NONE, unit="Go")
 

@@ -5,6 +5,9 @@ from boaviztapi.model.component.component import Component, NumberSignificantFig
 
 
 class ComponentAssembly(Component):
+
+    NAME = "ASSEMBLY"
+
     IMPACT_FACTOR = {
         'gwp': {
             'impact': 6.68
@@ -18,7 +21,7 @@ class ComponentAssembly(Component):
     }
 
     def __init__(self, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')

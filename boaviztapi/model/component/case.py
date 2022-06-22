@@ -8,6 +8,8 @@ from boaviztapi.dto.component import Case
 
 class ComponentCase(Component):
 
+    NAME = "CASE"
+
     DEFAULT_CASE_TYPE = 'rack'
 
     IMPACT_FACTOR = {
@@ -39,7 +41,7 @@ class ComponentCase(Component):
     }
 
     def __init__(self, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
 
         self.__case_type = Boattribute(value=None, status=Status.NONE, unit="none")
 

@@ -6,8 +6,7 @@ from pydantic import BaseModel
 
 class BaseDTO(BaseModel):
     """
-    BaseDTO is simple BaseModel object with an extra field `_id` that is not included by default in object dumps.
-    The field `__id` is invisible for the end user, but it can be dumped using `.dict(include_id=True)` method.
+    BaseDTO is simple BaseModel object
     """
 
     def __init__(self, **kwargs):

@@ -37,6 +37,7 @@ async def cpu_impact_bottom_up(cpu: CPU = Body(None, example=components_examples
                        description=ram_description)
 async def ram_impact_bottom_up(ram: RAM = Body(None, example=components_examples["ram"]), verbose: bool = True):
     completed_ram = smart_complete_ram(ram)
+
     return await component_impact_bottom_up(
         input_component_dto=ram,
         smart_complete_component_dto=completed_ram,
@@ -116,14 +117,11 @@ async def component_impact_bottom_up(input_component_dto: ComponentDTO,
                                      component_class: Type[Component],
                                      verbose: bool) -> dict:
     component = component_class.from_dto(smart_complete_component_dto, input_component_dto)
-    impacts = bottom_up_component(component=component, units=input_component_dto.units or 1)
+    impacts = bottom_up_component(component=component)
 
     if verbose:
         return {
             "impacts": impacts,
-            "verbose": verbose_component(
-                component=component,
-                units=input_component_dto.units or 1
-            )
+            "verbose": verbose_component(component=component)
         }
     return impacts

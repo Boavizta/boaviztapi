@@ -1,66 +1,19 @@
 import json
 
 import boaviztapi.utils.roundit as rd
-from boaviztapi.model.boattribute import Status
+from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.device import Device
 from boaviztapi.model.component import Component
-from boaviztapi.dto.component import ComponentDTO
-from boaviztapi.dto.device import DeviceDTO
 
 
-def verbose_device(input_device_dto: DeviceDTO, output_device_dto: DeviceDTO):
+def verbose_device(device: Device):
     json_output = {}
     # if complete_device.usage:
     #     json_output["USAGE"] = {**verbose_usage(complete_device=complete_device,
     #                                             input_device=input_device)}
+    for component in device.components:
+        json_output[component.NAME] = verbose_component(component)
 
-    input_components = input_device_dto.config_components
-    complete_components = output_device_dto.config_components
-
-    for complete_component in complete_components:
-        component_type = complete_component.TYPE
-        done = False
-        i = 1
-
-        while True:
-            component_name = component_type + "-" + str(i)
-            if json_output.get(component_name) is None:
-                json_output[component_name] = {}
-                json_output[component_name]["unit"] = 1
-                break
-            elif complete_component.hash == json_output[component_name].get("hash"):
-                json_output[component_name]["unit"] += 1
-                done = True
-                break
-            i += 1
-        if done:
-            continue
-
-        matching_component = None
-        for item in input_components:
-            if complete_component.hash == item.hash:
-                matching_component = item
-                break
-
-        json_output[component_name]["hash"] = complete_component.hash
-
-        json_output[component_name] = {**json_output[component_name],
-                                       **verbose_component(output_component_dto=complete_component,
-                                                           input_component_dto=matching_component)}
-
-    for item in json_output:
-        json_output[item]["impacts"]["gwp"] = {
-            'value': json_output[item]["impacts"]["gwp"]['value'] * json_output[item]["unit"],
-            'unit': "kgCO2eq"
-        }
-        json_output[item]["impacts"]["pe"] = {
-            'value': json_output[item]["impacts"]["pe"]['value'] * json_output[item]["unit"],
-            'unit': "MJ"
-        }
-        json_output[item]["impacts"]["adp"] = {
-            'value': json_output[item]["impacts"]["adp"]['value'] * json_output[item]["unit"],
-            'unit': "kgSbeq"
-        }
     return json_output
 
 
@@ -71,7 +24,8 @@ def verbose_usage(complete_device, input_device):
         if type(value) is dict:
             json_output[attr] = \
                 recursive_dict_verbose(value,
-                                       {} if getattr(input_device.usage, attr) is None else getattr(input_device.usage, attr))
+                                       {} if getattr(input_device.usage, attr) is None else getattr(input_device.usage,
+                                                                                                    attr))
         elif value is not None and attr != "TYPE" and attr != "hash":
             json_output[attr] = {}
             json_output[attr]["input_value"] = getattr(input_device.usage, attr, None)
@@ -94,17 +48,17 @@ def verbose_usage(complete_device, input_device):
     return json_output
 
 
-def verbose_component(component: Component,
-                      units: int = None):
-    json_output = {}
+def verbose_component(component: Component):
+    json_output = {"units": component.units}
+
     # TODO: Reimplement usage verbose
     # if output_component.usage:
     #     json_output["USAGE"] = {**verbose_usage(complete_device=output_component,
     #                                             input_device=input_component)}
-    if units:
-        json_output["units"] = units
 
     for attr, val in component.__iter__():
+        if not isinstance(val, Boattribute):
+            continue
         if attr == "usage":
             continue
         if val.status != Status.NONE:
@@ -112,14 +66,14 @@ def verbose_component(component: Component,
 
     json_output["impacts"] = {
         "gwp": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_gwp()),
+            "value": rd.round_to_sigfig(*component.impact_manufacture_gwp())*component.units,
             "unit": "kgCO2eq"
         },
         "pe": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_pe()),
+            "value": rd.round_to_sigfig(*component.impact_manufacture_pe())*component.units,
             "unit": "MJ"},
         "adp": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_adp()),
+            "value": rd.round_to_sigfig(*component.impact_manufacture_adp())*component.units,
             "unit": "kgSbeq"
         },
     }

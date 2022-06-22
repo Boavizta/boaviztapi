@@ -8,21 +8,21 @@ import boaviztapi.utils.roundit as rd
 NOT_IMPLEMENTED = 'not implemented'
 
 
-def bottom_up_component(component: Component, units: int = 1) -> dict:
+def bottom_up_component(component: Component) -> dict:
     impacts = {
         'gwp': {
-            'manufacture': get_model_impact(component, 'manufacture', 'gwp', units) or NOT_IMPLEMENTED,
-            'use': get_model_impact(component, 'use', 'pe', units) or NOT_IMPLEMENTED,
+            'manufacture': get_model_impact(component, 'manufacture', 'gwp', component.units) or NOT_IMPLEMENTED,
+            'use': get_model_impact(component, 'use', 'pe', component.units) or NOT_IMPLEMENTED,
             'unit': "kgCO2eq"
         },
         'pe': {
-            'manufacture': get_model_impact(component, 'manufacture', 'pe', units) or NOT_IMPLEMENTED,
-            'use': get_model_impact(component, 'use', 'pe', units) or NOT_IMPLEMENTED,
+            'manufacture': get_model_impact(component, 'manufacture', 'pe', component.units) or NOT_IMPLEMENTED,
+            'use': get_model_impact(component, 'use', 'pe', component.units) or NOT_IMPLEMENTED,
             'unit': "MJ"
         },
         'adp': {
-            'manufacture': get_model_impact(component, 'manufacture', 'adp', units) or NOT_IMPLEMENTED,
-            'use': get_model_impact(component, 'use', 'adp', units) or NOT_IMPLEMENTED,
+            'manufacture': get_model_impact(component, 'manufacture', 'adp', component.units) or NOT_IMPLEMENTED,
+            'use': get_model_impact(component, 'use', 'adp', component.units) or NOT_IMPLEMENTED,
             'unit': "kgSbeq"
         },
     }
