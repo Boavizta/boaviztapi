@@ -1,9 +1,8 @@
 import pandas as pd
 
-from typing import Dict, Union
 
 from boaviztapi.dto.usage import Usage, UsageServer, UsageCloud
-
+from boaviztapi.model.boattribute import Boattribute, Status
 
 _electricity_emission_factors_df = pd.read_csv('./boaviztapi/data/electricity/electricity_impact_factors.csv')
 
@@ -21,92 +20,123 @@ class ModelUsage:
     _YEARS_IN_HOURS = 24 * 365
 
     def __init__(self, /, **kwargs):
-        self.__hours_electrical_consumption = self.DEFAULT_USE_TIME_IN_HOURS
-        self.__workload = self.DEFAULT_WORKLOAD
-        self.__usage_location = self.DEFAULT_USAGE_LOCATION
-        self.__hours_use_time = self.DEFAULT_USE_TIME_IN_HOURS
+
+        self._hours_electrical_consumption = Boattribute(value=None, status=Status.NONE, unit="W")
+        self._workload = None
+        self._usage_location = Boattribute(value=None, status=Status.NONE, unit="CodSP3 - NCS Country Codes - NATO")
+        self._adp_factor = Boattribute(value=None, status=Status.NONE, unit="..")
+        self._gwp_factor = Boattribute(value=None, status=Status.NONE, unit="..")
+        self._pe_factor = Boattribute(value=None, status=Status.NONE, unit="..")
+
+        self._use_time = Boattribute(value=None, status=Status.NONE, unit="hours")
 
         for attr, val in kwargs.items():
             if val is not None:
                 self.__setattr__(attr, val)
 
-    @property
-    def hours_use_time(self) -> float:
-        return self.__hours_use_time
+        if "days_use_time" in kwargs or "hours_use_time" in kwargs or "years_use_time" in kwargs:
 
-    @hours_use_time.setter
-    def hours_use_time(self, value: float) -> None:
-        self.__hours_use_time = value
+            self.use_time = (kwargs.pop('hours_use_time') or 0) + \
+                            (kwargs.pop('days_use_time') or 0) * self._DAYS_IN_HOURS + \
+                            (kwargs.pop('years_use_time') or 0) * self._YEARS_IN_HOURS
 
-    @property
-    def days_use_time(self) -> float:
-        return self.hours_use_time / self._DAYS_IN_HOURS
+            self._use_time.status = Status.INPUT
 
-    @days_use_time.setter
-    def days_use_time(self, value: float) -> None:
-        self.hours_use_time = value * self._DAYS_IN_HOURS
+    def __iter__(self):
+        for attr, value in self.__dict__.items():
+            yield attr, value
 
     @property
-    def years_use_time(self):
-        return self.hours_use_time / self._YEARS_IN_HOURS
+    def use_time(self) -> float:
+        if self._use_time.value is None:
+            self._use_time.value = self.DEFAULT_USE_TIME_IN_HOURS
+            self._use_time.status = Status.DEFAULT
+        return self._use_time.value
 
-    @years_use_time.setter
-    def years_use_time(self, value: float) -> None:
-        self.__hours_use_time = value * self._YEARS_IN_HOURS
+    @use_time.setter
+    def use_time(self, value: float) -> None:
+        self._use_time.value = value
 
     @property
     def usage_location(self) -> str:
-        return self.__usage_location
+        if self._usage_location.value is None:
+            self._usage_location.value = self.DEFAULT_USAGE_LOCATION
+            self._usage_location.status = Status.DEFAULT
+        return self._usage_location.value
 
     @usage_location.setter
     def usage_location(self, value: str) -> None:
         sub = _electricity_emission_factors_df
         sub = sub[sub['code'] == value]
         if len(sub) == 0:
-            self.__usage_location = self.DEFAULT_USAGE_LOCATION
+            self._usage_location.value = self.DEFAULT_USAGE_LOCATION
+            self._usage_location.status = Status.DEFAULT
         else:
-            self.__usage_location = value
+            self._usage_location.value = value
+            self._usage_location.status = Status.INPUT
 
     @property
     def gwp_factor(self) -> float:
-        sub = _electricity_emission_factors_df
-        sub = sub[sub['code'] == self.usage_location]
-        return float(sub['gwp_emission_factor'])
+        if self._gwp_factor.value is None:
+            sub = _electricity_emission_factors_df
+            sub = sub[sub['code'] == self.usage_location]
+            self._gwp_factor.value = float(sub['gwp_emission_factor'])
+            self._gwp_factor.status = Status.DEFAULT
+        return self._gwp_factor.value
 
     @property
     def adp_factor(self) -> float:
-        sub = _electricity_emission_factors_df
-        sub = sub[sub['code'] == self.usage_location]
-        return float(sub['adpe_emission_factor'])
+        if self._adp_factor.value is None:
+            sub = _electricity_emission_factors_df
+            sub = sub[sub['code'] == self.usage_location]
+            self._adp_factor.value = float(sub['adpe_emission_factor'])
+            self._adp_factor.status = Status.DEFAULT
+        return self._adp_factor.value
 
     @property
     def pe_factor(self) -> float:
-        sub = _electricity_emission_factors_df
-        sub = sub[sub['code'] == self.usage_location]
-        return float(sub['pe_emission_factor'])
+        if self._pe_factor.value is None:
+            sub = _electricity_emission_factors_df
+            sub = sub[sub['code'] == self.usage_location]
+            self._pe_factor.value = float(sub['pe_emission_factor'])
+            self._pe_factor.status = Status.DEFAULT
+        return self._pe_factor.value
 
-    @property
-    def workload(self) -> Union[Dict[str, float], float]:
-        return self.__workload
+    @gwp_factor.setter
+    def gwp_factor(self, value):
+        self._gwp_factor.value = value
 
-    @workload.setter
-    def workload(self, value: Union[Dict[str, float], float]) -> None:
-        self.__workload = value
+    @adp_factor.setter
+    def adp_factor(self, value):
+        self._adp_factor.value = value
 
-    def get_duration_hours(self) -> float:
-        return self.hours_use_time
+    @pe_factor.setter
+    def pe_factor(self, value):
+        self._pe_factor.value = value
 
     @property
     def hours_electrical_consumption(self) -> float:
-        if not self.__hours_electrical_consumption:
-            self.__hours_electrical_consumption = 0
-        return self.__hours_electrical_consumption / 1000  # in kwh
+        if self._hours_electrical_consumption.value is None:
+            self._hours_electrical_consumption.value = 0
+            self._hours_electrical_consumption.status = Status.DEFAULT
+        return self._hours_electrical_consumption.value
 
-    # TODO: Implement impact methods in usage class
+    @hours_electrical_consumption.setter
+    def hours_electrical_consumption(self, value):
+        self._hours_electrical_consumption.value = value
 
-    @classmethod
-    def from_dto(cls, usage: Usage):
-        return cls(**usage.dict())
+    def _set_states_from_input(self, input_component_dto):
+        for attr, val in input_component_dto.dict().items():
+            if hasattr(self, f'_{attr}') and \
+                    isinstance(self.__getattribute__(f'_{attr}'), Boattribute):
+                if self.__getattribute__(f'_{attr}').value is None:
+                    self.__getattribute__(f'_{attr}').status = Status.NONE
+                elif val is not None and val != self.__getattribute__(f'_{attr}').value:
+                    self.__getattribute__(f'_{attr}').status = Status.CHANGED
+                elif val is None and self.__getattribute__(f'_{attr}') is not None:
+                    self.__getattribute__(f'_{attr}').status = Status.COMPLETED
+                elif val == self.__getattribute__(f'_{attr}').value:
+                    self.__getattribute__(f'_{attr}').status = Status.INPUT
 
 
 class ModelUsageServer(ModelUsage):
@@ -115,7 +145,7 @@ class ModelUsageServer(ModelUsage):
     def __init__(self, /, **kwargs):
         super().__init__(**kwargs)
 
-        self.__other_consumption_ratio = self.DEFAULT_OTHER_CONSUMPTION_RATIO
+        self._other_consumption_ratio = Boattribute(value=None, status=Status.NONE, unit="ratio /1")
 
         for attr, val in kwargs.items():
             if val is not None:
@@ -123,15 +153,20 @@ class ModelUsageServer(ModelUsage):
 
     @property
     def other_consumption_ratio(self) -> float:
-        return self.__other_consumption_ratio
+        if self._other_consumption_ratio.value is None:
+            self._other_consumption_ratio.value = self.DEFAULT_OTHER_CONSUMPTION_RATIO
+            self._other_consumption_ratio.status = Status.DEFAULT
+        return self._other_consumption_ratio.value
 
     @other_consumption_ratio.setter
     def other_consumption_ratio(self, value: float) -> None:
-        self.__other_consumption_ratio = value
+        self._other_consumption_ratio.value = value
 
     @classmethod
-    def from_dto(cls, usage_server: UsageServer):
-        return cls(**usage_server.dict())
+    def from_dto(cls, usage_server_complete: UsageServer, usage_server_input: UsageServer):
+        usage_ = cls(**usage_server_complete.dict())
+        usage_._set_states_from_input(usage_server_input)
+        return usage_
 
 
 class ModelUsageCloud(ModelUsageServer):

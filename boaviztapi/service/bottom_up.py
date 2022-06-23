@@ -39,6 +39,7 @@ def get_model_impact(model: Union[Component, Device],
         units_impact = impact * units
         return rd.round_to_sigfig(units_impact, significant_figures)
     except (AttributeError, NotImplementedError):
+        print(model.__getattribute__(f'impact_{phase}_{impact_type}')())
         pass
 
 

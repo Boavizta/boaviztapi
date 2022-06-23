@@ -5,6 +5,7 @@ from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.device import DeviceDTO
 from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.component import Component
+from boaviztapi.model.usage import ModelUsage
 
 NumberSignificantFigures = Tuple[float, int]
 
@@ -12,7 +13,16 @@ NumberSignificantFigures = Tuple[float, int]
 class Device:
 
     def __init__(self, /, **kwargs):
+        self._usage = None
         pass
+
+    @property
+    def usage(self) -> ModelUsage:
+        return self._usage
+
+    @usage.setter
+    def usage(self, value: int) -> None:
+        self._usage = value
 
     @property
     def components(self) -> List[Component]:
