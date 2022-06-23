@@ -1,7 +1,7 @@
 from typing import Union
 from pathlib import Path
 
-from boaviztapi.dto.device import Server, Cloud
+from boaviztapi.dto.device import Server, Cloud, DeviceDTO
 from boaviztapi.model.device import Device, DeviceServer, DeviceCloudInstance
 
 import os
@@ -17,30 +17,10 @@ def get_device_archetype_lst(path=known_server_directory) -> list:
     return [Path(file_name).stem for file_name in known_devices_lst]
 
 
-def complete_with_archetype(device: Device, archetype_device: Device) -> Device:
+def complete_with_archetype(device: DeviceDTO, archetype_device: DeviceDTO) -> dict:
     # TODO: this method should have a recursive way of treating attribute for complex attribute (object and dictionary)
-    """
-    set the missing server components of server from its archetype
-    """
-    lst_id = set()
-    for component in device.config_components:
-        for i, component_to_remove in enumerate(archetype_device.config_components):
-            if component.TYPE == component_to_remove.TYPE:
-                lst_id.add(i)
-
-    for index in sorted(list(lst_id), reverse=True):
-        del archetype_device.config_components[index]
-    archetype_device.config_components += device.config_components
-
-    for attr, value in device.usage.__iter__():
-        if attr != "TYPE" and attr != "hash":
-            if type(value) is dict:
-                setattr(archetype_device.usage, attr, recursive_dict_complete(value,
-                                                                              getattr(archetype_device.usage, attr)))
-            elif value is not None:
-                setattr(archetype_device.usage, attr, value)
-
-    return archetype_device
+    archetype_dict = recursive_dict_complete(device.dict(), archetype_device.dict())
+    return archetype_dict
 
 
 def recursive_dict_complete(dict1, dict2):
@@ -57,18 +37,18 @@ async def get_server_archetype(archetype_name: str, path=known_server_directory)
     for device_name in known_server_lst:
         if archetype_name == device_name:
             known_server = Server.parse_file(
-                path + '/' + device_name + ".json").to_device()
+                path + '/' + device_name + ".json")
             return known_server
     return False
 
 
 def get_cloud_instance_archetype(archetype_name: str, provider, path=known_instances_directory) \
-        -> Union[DeviceCloudInstance, bool]:
+        -> Union[Cloud, bool]:
     known_cloud_instance_lst = get_device_archetype_lst(os.path.join(path, provider))
     for device_name in known_cloud_instance_lst:
         if archetype_name == device_name:
             known_server = Cloud.parse_file(
-                path + '/' + provider + '/' + device_name + ".json").to_device()
+                path + '/' + provider + '/' + device_name + ".json")
             return known_server
     return False
 

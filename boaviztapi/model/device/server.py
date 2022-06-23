@@ -1,5 +1,7 @@
 from typing import List, Union
 
+from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply
+from boaviztapi.dto.usage import UsageServer
 from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
     ComponentPowerSupply, ComponentCase, ComponentMotherboard, ComponentAssembly
 from boaviztapi.model.device.device import Device, NumberSignificantFigures
@@ -170,42 +172,42 @@ class DeviceServer(Device):
 
     @classmethod
     def from_dto(cls, server_complete: Server, server_input: Server) -> 'DeviceServer':
-        cpu, ram_list, disk_list, power_supply, case_type, usage = None, None, None, None, None, None
+        cpu, ram_list, disk_list, power_supply, case, usage = None, None, None, None, None, None
 
         if server_complete.configuration is not None:
             if server_complete.configuration.cpu is not None:
-                cpu = ComponentCPU.from_dto(server_complete.configuration.cpu, server_input.configuration.cpu)
+                cpu = ComponentCPU.from_dto(server_complete.configuration.cpu, server_input.configuration.cpu or CPU())
 
             if server_complete.configuration.ram is not None:
                 ram_list = []
                 for complete_ram, input_ram in zip(server_complete.configuration.ram,
-                                                   server_input.configuration.ram):
+                                                   server_input.configuration.ram or [RAM()]*len(server_complete.configuration.ram)):
                     ram_list.append(ComponentRAM.from_dto(complete_ram, input_ram))
 
             if server_complete.configuration.disk is not None:
                 disk_list = []
                 for complete_disk, input_disk in zip(server_complete.configuration.disk,
-                                                     server_input.configuration.disk):
-                    if input_disk.type.lower() == "ssd":
+                                                     server_input.configuration.disk or [Disk()]*len(server_complete.configuration.ram)):
+                    if complete_disk.type.lower() == "ssd":
                         disk_list.append(ComponentSSD.from_dto(complete_disk, input_disk))
-                    elif input_disk.type.lower() == "hdd":
+                    elif complete_disk.type.lower() == "hdd":
                         disk_list.append(ComponentHDD.from_dto(complete_disk, input_disk))
 
             if server_complete.configuration.power_supply is not None:
                 power_supply = ComponentPowerSupply.from_dto(server_complete.configuration.power_supply,
-                                                             server_input.configuration.power_supply)
+                                                             server_input.configuration.power_supply or PowerSupply())
         if server_complete.model is not None and server_complete.model.type is not None:
-            case_type = server_complete.model.type
+            case = ComponentCase.from_dto(server_complete.model.type, server_input.model.type or "rack")
 
         if server_complete.usage is not None:
-            usage = ModelUsageServer().from_dto(server_complete.usage, server_input.usage)
+            usage = ModelUsageServer().from_dto(server_complete.usage, server_input.usage or UsageServer())
 
         serv = cls(
             cpu=cpu,
             ram=ram_list,
             disk=disk_list,
             power_supply=power_supply,
-            case_type=case_type,
+            case=case,
             usage=usage
         )
 

@@ -56,11 +56,13 @@ async def server_impact_from_configuration(
         server: Server = Body(None, example=server_configuration_examples["DellR740"]),
         verbose: bool = True
 ):
-    # TODO: Reimplement archetype with Server (DTO) object
-    # if server.model.archetype:
-    #     server_archetype = await get_server_archetype(server.model.archetype)
-    #     completed_server = complete_with_archetype(completed_server, server_archetype)
-    completed_server = smart_complete_server(copy.deepcopy(server))
+    server_archetyped = None
+    if server.model is not None and server.model.archetype is not None:
+        server_archetype = await get_server_archetype(server.model.archetype)
+        if server_archetype:
+            server_archetyped = Server(**complete_with_archetype(server, server_archetype))
+
+    completed_server = smart_complete_server(server_archetyped or copy.deepcopy(server))
 
     return await server_impact(
         input_device_dto=server,

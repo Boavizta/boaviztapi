@@ -7,7 +7,6 @@ from boaviztapi.dto.component import Case
 
 
 class ComponentCase(Component):
-
     NAME = "CASE"
 
     DEFAULT_CASE_TYPE = 'rack'
@@ -44,7 +43,6 @@ class ComponentCase(Component):
         super().__init__(**kwargs)
 
         self.__case_type = Boattribute(value=None, status=Status.NONE, unit="none")
-
         for attr, val in kwargs.items():
             if val is not None and hasattr(self, f'_ComponentCase__{attr}'):
                 self.__setattr__(attr, val)
@@ -66,8 +64,10 @@ class ComponentCase(Component):
     def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
         if self.case_type == 'rack':
             return self.__impact_manufacture_rack(impact_type)
-        elif self.__case_type == 'blade':
+        elif self.case_type == 'blade':
             return self.__impact_manufacture_blade(impact_type)
+        else:
+            return self.__impact_manufacture_rack(impact_type)
 
     def __impact_manufacture_rack(self, impact_type: str) -> NumberSignificantFigures:
         impact = self.IMPACT_FACTOR['rack'][impact_type]['impact']
@@ -108,6 +108,14 @@ class ComponentCase(Component):
     def impact_use_adp(self) -> NumberSignificantFigures:
         raise NotImplementedError
 
+    @classmethod
+    def from_dto(cls, completed_component_rack: str,
+                 input_component_rack: str = "rack") -> 'ComponentCase':
+        component = cls()
+        component.case_type = completed_component_rack
+        component._set_states_from_input(input_component_rack)
+        return component
+
     def to_dto(self, original_case: Case) -> Case:
         case = Case()
         for attr, val in original_case.dict().items():
@@ -116,3 +124,13 @@ class ComponentCase(Component):
             else:
                 case.__setattr__(attr, original_case.__getattribute__(attr))
         return case
+
+    def _set_states_from_input(self, input_case):
+        if self.__case_type.value is None:
+            self.__case_type.status = Status.NONE
+        elif input_case is not None and input_case != self.__case_type.value:
+            self.__case_type.status = Status.CHANGED
+        elif input_case is None and self.__case_type is not None:
+            self.__case_type.status = Status.COMPLETED
+        elif input_case == self.__case_type.value:
+            self.__case_type.status = Status.INPUT

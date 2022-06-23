@@ -48,7 +48,7 @@ class ModelUsage:
 
     @property
     def use_time(self) -> float:
-        if self._use_time.value is None:
+        if self._use_time.value == 0 or self._use_time.value is None:
             self._use_time.value = self.DEFAULT_USE_TIME_IN_HOURS
             self._use_time.status = Status.DEFAULT
         return self._use_time.value
