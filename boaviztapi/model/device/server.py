@@ -5,7 +5,7 @@ from boaviztapi.dto.usage import UsageServer
 from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
     ComponentPowerSupply, ComponentCase, ComponentMotherboard, ComponentAssembly
 from boaviztapi.model.device.device import Device, NumberSignificantFigures
-from boaviztapi.dto.device.device import Server, Cloud
+from boaviztapi.dto.device.device import Server, Cloud, ConfigurationServer, ModelServer
 from boaviztapi.model.usage import ModelUsageServer
 
 
@@ -175,6 +175,9 @@ class DeviceServer(Device):
         cpu, ram_list, disk_list, power_supply, case, usage = None, None, None, None, None, None
 
         if server_complete.configuration is not None:
+            if server_input.configuration is None:
+                server_input.configuration = ConfigurationServer()
+
             if server_complete.configuration.cpu is not None:
                 cpu = ComponentCPU.from_dto(server_complete.configuration.cpu, server_input.configuration.cpu or CPU())
 
@@ -197,7 +200,9 @@ class DeviceServer(Device):
                 power_supply = ComponentPowerSupply.from_dto(server_complete.configuration.power_supply,
                                                              server_input.configuration.power_supply or PowerSupply())
         if server_complete.model is not None and server_complete.model.type is not None:
-            case = ComponentCase.from_dto(server_complete.model.type, server_input.model.type or "rack")
+            if server_input.model is None:
+                server_input.model = ModelServer()
+            case = ComponentCase.from_dto(server_complete.model.type, server_input.model.type or None)
 
         if server_complete.usage is not None:
             usage = ModelUsageServer().from_dto(server_complete.usage, server_input.usage or UsageServer())
