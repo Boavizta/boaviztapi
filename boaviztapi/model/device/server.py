@@ -1,12 +1,13 @@
+from abc import ABC
 from typing import List, Union
 
 from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply
-from boaviztapi.dto.usage import UsageServer
+from boaviztapi.dto.usage import UsageServer, UsageCloud
 from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
     ComponentPowerSupply, ComponentCase, ComponentMotherboard, ComponentAssembly
 from boaviztapi.model.device.device import Device, NumberSignificantFigures
 from boaviztapi.dto.device.device import Server, Cloud, ConfigurationServer, ModelServer
-from boaviztapi.model.usage import ModelUsageServer
+from boaviztapi.model.usage import ModelUsageServer, ModelUsageCloud
 
 
 class DeviceServer(Device):
@@ -148,7 +149,7 @@ class DeviceServer(Device):
     def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
         impacts = impact_factor * (self.usage.hours_electrical_consumption / 1000) \
-                                       * self.usage.use_time
+                  * self.usage.use_time
 
         return impacts, 1
 
@@ -184,13 +185,15 @@ class DeviceServer(Device):
             if server_complete.configuration.ram is not None:
                 ram_list = []
                 for complete_ram, input_ram in zip(server_complete.configuration.ram,
-                                                   server_input.configuration.ram or [RAM()]*len(server_complete.configuration.ram)):
+                                                   server_input.configuration.ram or [RAM()] * len(
+                                                       server_complete.configuration.ram)):
                     ram_list.append(ComponentRAM.from_dto(complete_ram, input_ram))
 
             if server_complete.configuration.disk is not None:
                 disk_list = []
                 for complete_disk, input_disk in zip(server_complete.configuration.disk,
-                                                     server_input.configuration.disk or [Disk()]*len(server_complete.configuration.ram)):
+                                                     server_input.configuration.disk or [Disk()] * len(
+                                                         server_complete.configuration.ram)):
                     if complete_disk.type.lower() == "ssd":
                         disk_list.append(ComponentSSD.from_dto(complete_disk, input_disk))
                     elif complete_disk.type.lower() == "hdd":
@@ -221,29 +224,59 @@ class DeviceServer(Device):
         return serv
 
 
-class DeviceCloudInstance(DeviceServer):
+class DeviceCloudInstance(DeviceServer, ABC):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+    @property
+    def usage(self) -> ModelUsageCloud:
+        if self._usage is None:
+            self._usage = ModelUsageCloud()
+        return self._usage
+
+    @usage.setter
+    def usage(self, value: ModelUsageCloud) -> None:
+        self._usage = value
+
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
-        raise NotImplementedError
+        impact, sign_fig = super().impact_manufacture_gwp()
+        return (impact / self.usage.instance_per_server), sign_fig
 
     def impact_manufacture_pe(self) -> NumberSignificantFigures:
-        raise NotImplementedError
+        impact, sign_fig = super().impact_manufacture_pe()
+        return (impact / self.usage.instance_per_server), sign_fig
 
     def impact_manufacture_adp(self) -> NumberSignificantFigures:
-        raise NotImplementedError
+        impact, sign_fig = super().impact_manufacture_adp()
+        return (impact / self.usage.instance_per_server), sign_fig
 
     def impact_use_gwp(self) -> NumberSignificantFigures:
-        raise NotImplementedError
+        impact, sign_fig = super().impact_use_gwp()
+        return (impact / self.usage.instance_per_server), sign_fig
 
     def impact_use_pe(self) -> NumberSignificantFigures:
-        raise NotImplementedError
+        impact, sign_fig = super().impact_use_pe()
+        return (impact / self.usage.instance_per_server), sign_fig
 
     def impact_use_adp(self) -> NumberSignificantFigures:
-        raise NotImplementedError
+        impact, sign_fig = super().impact_use_adp()
+        return (impact / self.usage.instance_per_server), sign_fig
 
     @classmethod
-    def from_dto(cls, cloud: Cloud) -> 'DeviceCloudInstance':
-        pass
+    def from_dto(cls, instance_complete: Cloud, instance_input: Cloud) -> 'DeviceCloudInstance':
+        server = super().from_dto(instance_complete, instance_input)
+        usage = None
+        if instance_complete.usage is not None:
+            usage = ModelUsageCloud().from_dto(instance_complete.usage, instance_input.usage or UsageCloud())
+
+        cloud_instance = cls(
+            cpu=server.cpu,
+            ram=server.ram,
+            disk=server.disk,
+            power_supply=server.power_supply,
+            case=server.case,
+            usage=usage
+        )
+
+        return cloud_instance

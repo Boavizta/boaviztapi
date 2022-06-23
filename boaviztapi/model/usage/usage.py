@@ -190,5 +190,5 @@ class ModelUsageCloud(ModelUsageServer):
         self.__instance_per_server = value
 
     @classmethod
-    def from_dto(cls, usage_cloud: UsageCloud):
-        return cls(**usage_cloud.dict())
+    def from_dto(cls, usage_cloud_complete: UsageCloud, usage_cloud_input: UsageCloud):
+        return super().from_dto(usage_cloud_complete, usage_cloud_input)

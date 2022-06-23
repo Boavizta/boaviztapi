@@ -42,7 +42,7 @@ async def get_server_archetype(archetype_name: str, path=known_server_directory)
     return False
 
 
-def get_cloud_instance_archetype(archetype_name: str, provider, path=known_instances_directory) \
+async def get_cloud_instance_archetype(archetype_name: str, provider, path=known_instances_directory) \
         -> Union[Cloud, bool]:
     known_cloud_instance_lst = get_device_archetype_lst(os.path.join(path, provider))
     for device_name in known_cloud_instance_lst:

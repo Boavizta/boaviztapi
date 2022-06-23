@@ -3,10 +3,13 @@ import os
 
 from fastapi import APIRouter, Query, Body
 
+from boaviztapi.dto.device import Cloud
+from boaviztapi.dto.device.device import smart_complete_server
 from boaviztapi.model.device import DeviceCloudInstance
 from boaviztapi.routers import data_dir
 from boaviztapi.routers.openapi_doc.descriptions import cloud_aws_description, all_default_aws_instances
 from boaviztapi.routers.openapi_doc.examples import cloud_usage_example
+from boaviztapi.routers.server_router import server_impact
 from boaviztapi.service.archetype import complete_with_archetype, get_cloud_instance_archetype, \
     get_device_archetype_lst
 from boaviztapi.service.bottom_up import bottom_up_device
@@ -21,27 +24,24 @@ cloud_router = APIRouter(
 
 @cloud_router.post('/aws',
                    description=cloud_aws_description)
-def instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=cloud_usage_example["1"]),
-                          instance_type: str = Query(None, example="a1.4xlarge"), verbose: bool = True):
-    cloud_instance = DeviceCloudInstance()
-
+async def instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=cloud_usage_example["1"]),
+                                instance_type: str = Query(None, example="a1.4xlarge"), verbose: bool = True):
+    cloud_instance = Cloud()
     cloud_instance.usage = cloud_usage
-
-    # Setting empty config on behalf of the user
-    cloud_instance.config_components = []
-
     completed_instance = copy.deepcopy(cloud_instance)
-    instance_archetype = get_cloud_instance_archetype(instance_type, "aws")
-    completed_instance = complete_with_archetype(completed_instance, instance_archetype)
 
-    impacts = bottom_up_device(device=completed_instance)
-    result = impacts
+    instance_archetype = await get_cloud_instance_archetype(instance_type, "aws")
+    if instance_archetype:
+        completed_instance = Cloud(**complete_with_archetype(completed_instance, instance_archetype))
+        completed_instance = smart_complete_server(completed_instance)
 
-    if verbose:
-        result = {"impacts": impacts,
-                  "verbose": verbose_device(output_device_dto=completed_instance, input_device_dto=cloud_instance)}
-
-    return result
+        return await server_impact(
+            input_device_dto=cloud_instance,
+            smart_complete_device_dto=completed_instance,
+            device_class=DeviceCloudInstance,
+            verbose=verbose
+        )
+    return {f'{instance_type} is not referenced has an aws instance'}
 
 
 @cloud_router.get('/aws/all_instances',
