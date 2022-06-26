@@ -1,7 +1,5 @@
 from typing import Tuple
 
-import pandas as pd
-
 import boaviztapi.utils.roundit as rd
 from boaviztapi.dto.component import RAM
 from boaviztapi.model.boattribute import Boattribute, Status

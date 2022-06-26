@@ -1,6 +1,5 @@
 from abc import abstractmethod
 from typing import Tuple
-from uuid import UUID
 
 from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.model.boattribute import Status, Boattribute

@@ -5,6 +5,7 @@ from fastapi import APIRouter, Query, Body
 
 from boaviztapi.dto.device import Cloud
 from boaviztapi.dto.device.device import smart_complete_server
+from boaviztapi.dto.usage import UsageCloud
 from boaviztapi.model.device import DeviceCloudInstance
 from boaviztapi.routers import data_dir
 from boaviztapi.routers.openapi_doc.descriptions import cloud_aws_description, all_default_aws_instances
@@ -12,9 +13,6 @@ from boaviztapi.routers.openapi_doc.examples import cloud_usage_example
 from boaviztapi.routers.server_router import server_impact
 from boaviztapi.service.archetype import complete_with_archetype, get_cloud_instance_archetype, \
     get_device_archetype_lst
-from boaviztapi.service.bottom_up import bottom_up_device
-from boaviztapi.service.verbose import verbose_device
-from boaviztapi.dto.usage import UsageCloud
 
 cloud_router = APIRouter(
     prefix='/v1/cloud',
