@@ -1,7 +1,6 @@
 from abc import abstractmethod
-from typing import Tuple, Union, List
+from typing import Tuple, List
 
-from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.device import DeviceDTO
 from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.component import Component

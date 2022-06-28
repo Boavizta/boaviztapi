@@ -1,9 +1,9 @@
 from typing import Tuple
 
 import boaviztapi.utils.roundit as rd
-from boaviztapi.model.component.component import Component, NumberSignificantFigures
 from boaviztapi.dto.component import CPU
 from boaviztapi.model.boattribute import Boattribute, Status
+from boaviztapi.model.component.component import Component, NumberSignificantFigures
 
 
 class ComponentCPU(Component):

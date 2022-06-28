@@ -1,11 +1,8 @@
-from typing import Union
+import os
 from pathlib import Path
+from typing import Union
 
 from boaviztapi.dto.device import Server, Cloud, DeviceDTO
-from boaviztapi.model.device import Device, DeviceServer, DeviceCloudInstance
-
-import os
-
 from boaviztapi.service import data_dir
 
 known_server_directory = os.path.join(data_dir, 'devices/server')
@@ -57,3 +54,4 @@ def find_archetype(server_dto: Server) -> Server:
     """
     TODO find the closer archetype by name, year, brand, config, ..
     """
+    pass
