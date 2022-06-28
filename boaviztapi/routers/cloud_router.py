@@ -1,7 +1,7 @@
 import copy
 import os
 
-from fastapi import APIRouter, Query, Body
+from fastapi import APIRouter, Query, Body, HTTPException
 
 from boaviztapi.dto.device import Cloud
 from boaviztapi.dto.device.device import smart_complete_server
@@ -12,8 +12,6 @@ from boaviztapi.routers.openapi_doc.examples import cloud_usage_example
 from boaviztapi.routers.server_router import server_impact
 from boaviztapi.service.archetype import complete_with_archetype, get_cloud_instance_archetype, \
     get_device_archetype_lst
-from boaviztapi.service.bottom_up import bottom_up_device
-from boaviztapi.service.verbose import verbose_device
 from boaviztapi.dto.usage import UsageCloud
 
 cloud_router = APIRouter(
@@ -31,18 +29,19 @@ async def instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=clo
     completed_instance = copy.deepcopy(cloud_instance)
 
     instance_archetype = await get_cloud_instance_archetype(instance_type, "aws")
-    if instance_archetype:
-        completed_instance = Cloud(**complete_with_archetype(completed_instance, instance_archetype))
-        completed_instance = smart_complete_server(completed_instance)
 
-        return await server_impact(
-            input_device_dto=cloud_instance,
-            smart_complete_device_dto=completed_instance,
-            device_class=DeviceCloudInstance,
-            verbose=verbose
-        )
-    return {f'{instance_type} is not referenced has an aws instance'}
+    if not instance_archetype:
+        raise HTTPException(status_code=404, detail=f"{instance_type} not found")
 
+    completed_instance = Cloud(**complete_with_archetype(completed_instance, instance_archetype))
+    completed_instance = smart_complete_server(completed_instance)
+
+    return await server_impact(
+        input_device_dto=cloud_instance,
+        smart_complete_device_dto=completed_instance,
+        device_class=DeviceCloudInstance,
+        verbose=verbose
+    )
 
 @cloud_router.get('/aws/all_instances',
                   description=all_default_aws_instances)

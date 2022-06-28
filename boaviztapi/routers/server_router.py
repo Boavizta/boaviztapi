@@ -2,7 +2,7 @@ import copy
 import os
 from typing import Type
 
-from fastapi import APIRouter, Body, Query
+from fastapi import APIRouter, Body, Query, HTTPException
 
 from boaviztapi.dto.device import DeviceDTO, Server
 from boaviztapi.dto.device.device import smart_complete_server
@@ -49,17 +49,18 @@ async def server_get_all_archetype_name():
 async def server_impact_from_model(archetype: str = Query(None, example="dellR740"), verbose: bool = True):
     server = Server()
     server_archetype = await get_server_archetype(archetype)
-    if server_archetype:
-        server_archetyped = Server(**complete_with_archetype(server, server_archetype))
-        completed_server = smart_complete_server(server_archetyped)
+    if not server_archetype:
+        raise HTTPException(status_code=404, detail=f"{archetype} not found")
 
-        return await server_impact(
-            input_device_dto=server,
-            smart_complete_device_dto=completed_server,
-            device_class=DeviceServer,
-            verbose=verbose
-        )
-    return {f'{archetype} is not referenced has an archetype'}
+    server_archetyped = Server(**complete_with_archetype(server, server_archetype))
+    completed_server = smart_complete_server(server_archetyped)
+
+    return await server_impact(
+        input_device_dto=server,
+        smart_complete_device_dto=completed_server,
+        device_class=DeviceServer,
+        verbose=verbose
+    )
 
 
 @server_router.post('/',
