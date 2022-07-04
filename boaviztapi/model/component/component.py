@@ -2,7 +2,10 @@ from abc import abstractmethod
 from typing import Tuple
 
 from boaviztapi.dto.component import ComponentDTO
+from boaviztapi.dto.usage.usage import UsageComponent
 from boaviztapi.model.boattribute import Status, Boattribute
+from boaviztapi.model.usage import ModelUsage
+from boaviztapi.model.usage.usage import ModelUsageComponent
 
 NumberSignificantFigures = Tuple[float, int]
 
@@ -13,12 +16,19 @@ class Component:
 
     def __init__(self, **kwargs):
         self._units = None
-        if 'units' in kwargs:
-            self._units = kwargs.pop('units')
+        self._usage = None
 
     def __iter__(self):
         for attr, value in self.__dict__.items():
             yield attr, value
+
+    @property
+    def usage(self) -> ModelUsage:
+        return self._usage
+
+    @usage.setter
+    def usage(self, value: int) -> None:
+        self._usage = value
 
     @property
     def units(self) -> int:
@@ -58,6 +68,12 @@ class Component:
     def from_dto(cls, completed_component_dto: ComponentDTO, input_component_dto: ComponentDTO = ComponentDTO()) -> 'Component':
         component = cls(**completed_component_dto.dict())
         component._set_states_from_input(input_component_dto)
+
+        usage = None
+        if completed_component_dto.usage is not None:
+            usage = ModelUsageComponent().from_dto(completed_component_dto.usage, input_component_dto.usage or UsageComponent())
+        component.usage = usage or ModelUsageComponent()
+
         return component
 
     @abstractmethod

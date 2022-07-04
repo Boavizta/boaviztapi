@@ -1,7 +1,7 @@
 import pandas as pd
 
-
 from boaviztapi.dto.usage import Usage, UsageServer, UsageCloud
+from boaviztapi.dto.usage.usage import UsageComponent
 from boaviztapi.model.boattribute import Boattribute, Status
 
 _electricity_emission_factors_df = pd.read_csv('./boaviztapi/data/electricity/electricity_impact_factors.csv')
@@ -14,6 +14,7 @@ _server_profile_file = './boaviztapi/data/consumption_profile/server/server_prof
 class ModelUsage:
     DEFAULT_USAGE_LOCATION = "EEE"
     DEFAULT_USE_TIME_IN_HOURS = 24 * 365
+    DEFAULT_LIFE_TIME_IN_HOURS = 24 * 365 * 3  # 3 years
     DEFAULT_WORKLOAD = 50.
 
     _DAYS_IN_HOURS = 24
@@ -29,18 +30,22 @@ class ModelUsage:
         self._pe_factor = Boattribute(value=None, status=Status.NONE, unit="..")
 
         self._use_time = Boattribute(value=None, status=Status.NONE, unit="hours")
+        self._life_time = Boattribute(value=None, status=Status.NONE, unit="hours")
 
         for attr, val in kwargs.items():
             if val is not None:
                 self.__setattr__(attr, val)
 
         if "days_use_time" in kwargs or "hours_use_time" in kwargs or "years_use_time" in kwargs:
-
             self.use_time = (kwargs.pop('hours_use_time') or 0) + \
                             (kwargs.pop('days_use_time') or 0) * self._DAYS_IN_HOURS + \
                             (kwargs.pop('years_use_time') or 0) * self._YEARS_IN_HOURS
 
             self._use_time.status = Status.INPUT
+
+        if "years_life_time" in kwargs:
+            self.life_time = kwargs.pop('years_use_time') * self._YEARS_IN_HOURS
+            self._life_time.status = Status.INPUT
 
     def __iter__(self):
         for attr, value in self.__dict__.items():
@@ -56,6 +61,17 @@ class ModelUsage:
     @use_time.setter
     def use_time(self, value: float) -> None:
         self._use_time.value = value
+
+    @property
+    def life_time(self) -> float:
+        if self._life_time.value == 0 or self._life_time.value is None:
+            self._life_time.value = self.DEFAULT_LIFE_TIME_IN_HOURS
+            self._life_time.status = Status.DEFAULT
+        return self._life_time.value
+
+    @life_time.setter
+    def life_time(self, value: float) -> None:
+        self._life_time.value = value
 
     @property
     def usage_location(self) -> str:
@@ -141,6 +157,7 @@ class ModelUsage:
 
 class ModelUsageServer(ModelUsage):
     DEFAULT_OTHER_CONSUMPTION_RATIO = 0.33
+    DEFAULT_LIFE_TIME_IN_HOURS = 24 * 365 * 3  # 3 years
 
     def __init__(self, /, **kwargs):
         super().__init__(**kwargs)
@@ -171,6 +188,7 @@ class ModelUsageServer(ModelUsage):
 
 class ModelUsageCloud(ModelUsageServer):
     DEFAULT_INSTANCE_PER_SERVER = 1
+    DEFAULT_LIFE_TIME_IN_HOURS = 24 * 365 * 2  # 2 years
 
     def __init__(self, /, **kwargs):
         super().__init__(**kwargs)
@@ -192,3 +210,14 @@ class ModelUsageCloud(ModelUsageServer):
     @classmethod
     def from_dto(cls, usage_cloud_complete: UsageCloud, usage_cloud_input: UsageCloud):
         return super().from_dto(usage_cloud_complete, usage_cloud_input)
+
+
+class ModelUsageComponent(ModelUsage):
+    def __init__(self, /, **kwargs):
+        super().__init__(**kwargs)
+
+    @classmethod
+    def from_dto(cls, usage_component_complete: UsageComponent, usage_component_input: UsageComponent):
+        usage_ = cls(**usage_component_complete.dict())
+        usage_._set_states_from_input(usage_component_input)
+        return usage_

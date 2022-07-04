@@ -11,6 +11,7 @@ from boaviztapi.routers import data_dir
 from boaviztapi.routers.openapi_doc.descriptions import cloud_aws_description, all_default_aws_instances
 from boaviztapi.routers.openapi_doc.examples import cloud_usage_example
 from boaviztapi.routers.server_router import server_impact
+from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import complete_with_archetype, get_cloud_instance_archetype, \
     get_device_archetype_lst
 
@@ -23,7 +24,8 @@ cloud_router = APIRouter(
 @cloud_router.post('/aws',
                    description=cloud_aws_description)
 async def instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=cloud_usage_example["1"]),
-                                instance_type: str = Query(None, example="a1.4xlarge"), verbose: bool = True):
+                                instance_type: str = Query(None, example="a1.4xlarge"), verbose: bool = True,
+                                allocation: Allocation = Allocation.TOTAL):
     cloud_instance = Cloud()
     cloud_instance.usage = cloud_usage
     completed_instance = copy.deepcopy(cloud_instance)
@@ -40,7 +42,8 @@ async def instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=clo
         input_device_dto=cloud_instance,
         smart_complete_device_dto=completed_instance,
         device_class=DeviceCloudInstance,
-        verbose=verbose
+        verbose=verbose,
+        allocation=allocation
     )
 
 

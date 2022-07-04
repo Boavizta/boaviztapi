@@ -14,6 +14,8 @@ class Usage(BaseDTO):
     days_use_time: Optional[float] = None
     hours_use_time: Optional[float] = None
 
+    year_life_time: Optional[float] = None
+
     hours_electrical_consumption: Optional[float] = None
     workload: Optional[Dict[str, WorkloadUnit]] = None
 
@@ -29,3 +31,7 @@ class UsageServer(Usage):
 
 class UsageCloud(UsageServer):
     instance_per_server: Optional[int] = None
+
+
+class UsageComponent(BaseDTO):
+    year_life_time: Optional[float] = None
