@@ -27,24 +27,19 @@ def smart_mapper_ram(ram_dto: RAM) -> ComponentRAM:
 
     ram_component.units = ram_dto.units
 
-    if ram_dto.capacity is not None:
-        ram_component.capacity.value = ram_dto.capacity
-        ram_component.capacity.status = Status.INPUT
-
     ram_component.usage = smart_mapper_usage(ram_dto.usage or Usage())
 
-    if ram_dto.density is None:
+    if ram_dto.density is not None:
+        ram_component.density.value = ram_dto.density
+        ram_component.density.status = Status.INPUT
+    else:
         sub = _ram_df
 
         if ram_dto.manufacturer is not None:
             sub = sub[sub['manufacturer'] == ram_dto.manufacturer]
-            ram_component.manufacturer.value = ram_dto.manufacturer
-            ram_component.manufacturer.status = Status.INPUT
 
         if ram_dto.process is not None:
             sub = sub[sub['process'] == ram_dto.process]
-            ram_component.process.value = ram_dto.process
-            ram_component.process.status = Status.INPUT
 
         if len(sub) == 0 or len(sub) == len(_ram_df):
             pass
@@ -61,4 +56,17 @@ def smart_mapper_ram(ram_dto: RAM) -> ComponentRAM:
             ram_component.density.status = Status.COMPLETED
             ram_component.density.source = row['manufacturer']
 
+    if ram_dto.capacity is not None:
+        ram_component.capacity.value = ram_dto.capacity
+        ram_component.capacity.status = Status.INPUT
+
+    if ram_dto.manufacturer is not None:
+        ram_component.manufacturer.value = ram_dto.manufacturer
+        ram_component.manufacturer.status = Status.INPUT
+
+    if ram_dto.process is not None:
+        ram_component.process.value = ram_dto.process
+        ram_component.process.status = Status.INPUT
+
     return ram_component
+

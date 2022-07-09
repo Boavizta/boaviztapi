@@ -41,18 +41,13 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
     else:
         sub = _cpu_df
         if cpu_dto.family is not None:
-
             tmp = sub[sub['family'] == cpu_dto.family]
             if len(tmp) > 0:
-                cpu_component.family.value = cpu_dto.family
-                cpu_component.family.status = Status.INPUT
                 sub = tmp.copy()
 
         if cpu_dto.core_units is not None:
             tmp = sub[sub['core_units'] == cpu_dto.core_units]
             if len(tmp) > 0:
-                cpu_component.core_units.value = cpu_dto.core_units
-                cpu_component.core_units.status = Status.INPUT
                 sub = tmp.copy()
 
         if len(sub) == 0 or len(sub) == len(_cpu_df):
@@ -67,16 +62,26 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
             row = sub.iloc[0]
 
             cpu_component.die_size_per_core.value = float(row['die_size_per_core'])
-            if cpu_dto.die_size_per_core != cpu_component.die_size_per_core.value:
-                cpu_component.die_size_per_core.status = Status.CHANGED
-            else:
-                cpu_component.die_size_per_core.status = Status.COMPLETED
             cpu_component.die_size_per_core.source = row['Source']
 
-            if cpu_dto.die_size_per_core != cpu_component.die_size_per_core.value:
-                cpu_component.core_units.status = Status.CHANGED
+            if cpu_dto.die_size_per_core is None:
+                cpu_component.die_size_per_core.status = Status.COMPLETED
             else:
-                cpu_component.core_units.status = Status.COMPLETED
+                cpu_component.die_size_per_core.status = Status.CHANGED
+
             cpu_component.core_units.value = int(row['core_units'])
             cpu_component.core_units.source = row['Source']
+
+            if cpu_dto.core_units is None:
+                cpu_component.core_units.status = Status.COMPLETED
+            else:
+                cpu_component.core_units.status = Status.CHANGED
+
+    if cpu_dto.family is not None:
+        cpu_component.family.value = cpu_dto.family
+        cpu_component.family.status = Status.INPUT
+    if cpu_dto.core_units is not None:
+        cpu_component.core_units.value = cpu_dto.core_units
+        cpu_component.core_units.status = Status.INPUT
+
     return cpu_component

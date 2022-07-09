@@ -39,7 +39,6 @@
   },
   "usage": {
     "max_power": 510,
-    "year_use_time": 3,
     "workload": {
       "100": {
         "time": 0.15,

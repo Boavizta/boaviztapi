@@ -3,6 +3,7 @@ from typing import Optional, List
 from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply
 from boaviztapi.dto.component.cpu import smart_mapper_cpu
 from boaviztapi.dto.component.disk import smart_mapper_ssd
+from boaviztapi.dto.component.other import mapper_power_supply
 from boaviztapi.dto.component.ram import smart_mapper_ram
 from boaviztapi.dto.usage import UsageServer, UsageCloud
 from boaviztapi.dto import BaseDTO
@@ -54,14 +55,16 @@ def smart_mapper_server(server_dto: Server) -> DeviceServer:
                 if disk_dto.type.lower() == "ssd":
                     complete_disk.append(smart_mapper_ssd(disk_dto))
             server_model.disk = complete_disk
+        if server_dto.configuration.power_supply is not None:
+            server_model.power_supply = mapper_power_supply(server_dto.configuration.power_supply)
 
     if server_dto.model is not None and server_dto.model.type is not None:
         server_model.case = ComponentCase()
-        server_model.case.case_type.value = server_dto.model.type
-        server_model.case.case_type.status = Status.INPUT
+        if server_dto.model.type == "rack" or server_dto.model.type == "blade":
+            server_model.case.case_type.value = server_dto.model.type
+            server_model.case.case_type.status = Status.INPUT
 
-    if server_dto.usage is not None:
-        server_model.usage = smart_mapper_usage_server(server_dto.usage)
+    server_model.usage = smart_mapper_usage_server(server_dto.usage)
 
     return server_model
 

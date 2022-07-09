@@ -55,8 +55,8 @@ def smart_mapper_usage(usage_dto: Usage) -> ModelUsage:
 
     if usage_dto.hours_use_time is not None or usage_dto.days_use_time is not None or usage_dto.years_use_time is not None:
         usage_model.use_time.value = (usage_dto.hours_use_time or 0) + \
-                                     (usage_dto.days_use_time or 0) + \
-                                     (usage_dto.years_use_time or 0)
+                                     (usage_dto.days_use_time or 0) * 24 + \
+                                     (usage_dto.years_use_time or 0) * 24 * 365
 
         usage_model.use_time.status = Status.INPUT
 

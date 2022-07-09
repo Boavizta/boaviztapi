@@ -1,4 +1,5 @@
 import copy
+import json
 import os
 from typing import Type
 
@@ -53,12 +54,10 @@ async def server_impact_from_model(archetype: str = Query(None, example="dellR74
 async def server_impact_from_configuration(
         server: Server = Body(None, example=server_configuration_examples["DellR740"]),
         verbose: bool = True, allocation: Allocation = Allocation.TOTAL):
-
     if server.model is not None and server.model.archetype is not None:
         server_archetype = await get_server_archetype(server.model.archetype)
         if server_archetype:
             server = Server(**complete_with_archetype(server, server_archetype))
-            print(server)
 
     completed_server = smart_mapper_server(server)
 
@@ -71,7 +70,6 @@ async def server_impact_from_configuration(
 
 async def server_impact(device: Device,
                         verbose: bool, allocation: Allocation) -> dict:
-
     impacts = bottom_up_device(device=device, allocation=allocation)
     if verbose:
         return {
