@@ -1,12 +1,11 @@
-from typing import Type
-
 from fastapi import APIRouter, Body
 
-from boaviztapi.dto.component import ComponentDTO, CPU, RAM, Disk, PowerSupply, Motherboard, Case
-from boaviztapi.dto.component.cpu import smart_complete_cpu
-from boaviztapi.dto.component.ram import smart_complete_ram
-from boaviztapi.dto.component.disk import smart_complete_disk_ssd
-from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, ComponentHDD, ComponentSSD, \
+from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply, Motherboard, Case
+from boaviztapi.dto.component.cpu import smart_mapper_cpu
+from boaviztapi.dto.component.other import mapper_motherboard, mapper_power_supply, mapper_case
+from boaviztapi.dto.component.ram import smart_mapper_ram
+from boaviztapi.dto.component.disk import smart_mapper_ssd, mapper_hdd
+from boaviztapi.model.component import Component, ComponentRAM, ComponentHDD, ComponentSSD, \
     ComponentPowerSupply, ComponentMotherboard, ComponentCase
 from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
     hdd_description, motherboard_description, power_supply_description, case_description
@@ -14,7 +13,6 @@ from boaviztapi.routers.openapi_doc.examples import components_examples
 from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.bottom_up import bottom_up_component
 from boaviztapi.service.verbose import verbose_component
-
 
 component_router = APIRouter(
     prefix='/v1/component',
@@ -27,11 +25,11 @@ component_router = APIRouter(
 async def cpu_impact_bottom_up(cpu: CPU = Body(None, example=components_examples["cpu"]),
                                verbose: bool = True,
                                allocation: Allocation = Allocation.TOTAL):
-    completed_cpu = smart_complete_cpu(cpu)
+
+    component = smart_mapper_cpu(cpu)
+
     return await component_impact_bottom_up(
-        input_component_dto=cpu,
-        smart_complete_component_dto=completed_cpu,
-        component_class=ComponentCPU,
+        component=component,
         verbose=verbose,
         allocation=allocation
     )
@@ -42,12 +40,11 @@ async def cpu_impact_bottom_up(cpu: CPU = Body(None, example=components_examples
 async def ram_impact_bottom_up(ram: RAM = Body(None, example=components_examples["ram"]),
                                verbose: bool = True,
                                allocation: Allocation = Allocation.TOTAL):
-    completed_ram = smart_complete_ram(ram)
+
+    completed_ram = smart_mapper_ram(ram)
 
     return await component_impact_bottom_up(
-        input_component_dto=ram,
-        smart_complete_component_dto=completed_ram,
-        component_class=ComponentRAM,
+        component=completed_ram,
         verbose=verbose,
         allocation=allocation
     )
@@ -59,11 +56,10 @@ async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examp
                                 verbose: bool = True,
                                 allocation: Allocation = Allocation.TOTAL):
     disk.type = "ssd"
-    competed_ssd = smart_complete_disk_ssd(disk)
+    competed_ssd = smart_mapper_ssd(disk)
+
     return await component_impact_bottom_up(
-        input_component_dto=disk,
-        smart_complete_component_dto=competed_ssd,
-        component_class=ComponentSSD,
+        component=competed_ssd,
         verbose=verbose,
         allocation=allocation
     )
@@ -75,11 +71,10 @@ async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examp
                                 verbose: bool = True,
                                 allocation: Allocation = Allocation.TOTAL):
     disk.type = "hdd"
-    completed_hdd = disk.copy()
+    component = mapper_hdd(disk)
+
     return await component_impact_bottom_up(
-        input_component_dto=disk,
-        smart_complete_component_dto=completed_hdd,
-        component_class=ComponentHDD,
+        component=component,
         verbose=verbose,
         allocation=allocation
     )
@@ -90,11 +85,11 @@ async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examp
 async def motherboard_impact_bottom_up(
         motherboard: Motherboard = Body(None, example=components_examples["motherboard"]),
         verbose: bool = True, allocation: Allocation = Allocation.TOTAL):
-    completed_motherboard = motherboard.copy()
+
+    completed_motherboard = mapper_motherboard(motherboard)
+
     return await component_impact_bottom_up(
-        input_component_dto=motherboard,
-        smart_complete_component_dto=completed_motherboard,
-        component_class=ComponentMotherboard,
+        component=completed_motherboard,
         verbose=verbose,
         allocation=allocation
     )
@@ -105,11 +100,11 @@ async def motherboard_impact_bottom_up(
 async def power_supply_impact_bottom_up(
         power_supply: PowerSupply = Body(None, example=components_examples["power_supply"]),
         verbose: bool = True, allocation: Allocation = Allocation.TOTAL):
-    completed_power_supply = power_supply.copy()
+
+    completed_power_supply = mapper_power_supply(power_supply)
+
     return await component_impact_bottom_up(
-        input_component_dto=power_supply,
-        smart_complete_component_dto=completed_power_supply,
-        component_class=ComponentPowerSupply,
+        component=completed_power_supply,
         verbose=verbose,
         allocation=allocation
     )
@@ -120,21 +115,19 @@ async def power_supply_impact_bottom_up(
 async def case_impact_bottom_up(case: Case = Body(None, example=components_examples["case"]),
                                 verbose: bool = True,
                                 allocation: Allocation = Allocation.TOTAL):
-    completed_case = case.copy()
+
+    completed_case = mapper_case(case)
+
     return await component_impact_bottom_up(
-        input_component_dto=case,
-        smart_complete_component_dto=completed_case,
-        component_class=ComponentCase,
+        component=completed_case,
         verbose=verbose,
         allocation=allocation
     )
 
 
-async def component_impact_bottom_up(input_component_dto: ComponentDTO,
-                                     smart_complete_component_dto: ComponentDTO,
-                                     component_class: Type[Component],
-                                     verbose: bool,  allocation: Allocation) -> dict:
-    component = component_class.from_dto(smart_complete_component_dto, input_component_dto)
+async def component_impact_bottom_up(component: Component,
+                                     verbose: bool, allocation: Allocation) -> dict:
+
     impacts = bottom_up_component(component=component, allocation=allocation)
 
     if verbose:

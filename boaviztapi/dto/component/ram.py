@@ -4,7 +4,10 @@ from typing import Optional
 import pandas as pd
 
 from boaviztapi.dto.component import ComponentDTO
-
+from boaviztapi.dto.usage import Usage
+from boaviztapi.dto.usage.usage import smart_mapper_usage
+from boaviztapi.model.boattribute import Status
+from boaviztapi.model.component import ComponentRAM
 
 _ram_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/ram_manufacture.csv'))
 
@@ -19,24 +22,43 @@ class RAM(ComponentDTO):
     integrator: Optional[str] = None
 
 
-def smart_complete_ram(ram: RAM) -> RAM:
-    ram_ = ram.copy()
-    if ram_.density is None:
+def smart_mapper_ram(ram_dto: RAM) -> ComponentRAM:
+    ram_component = ComponentRAM()
+
+    ram_component.units = ram_dto.units
+
+    if ram_dto.capacity is not None:
+        ram_component.capacity.value = ram_dto.capacity
+        ram_component.capacity.status = Status.INPUT
+
+    ram_component.usage = smart_mapper_usage(ram_dto.usage or Usage())
+
+    if ram_dto.density is None:
         sub = _ram_df
 
-        if ram_.manufacturer is not None:
-            sub = sub[sub['manufacturer'] == ram_.manufacturer]
+        if ram_dto.manufacturer is not None:
+            sub = sub[sub['manufacturer'] == ram_dto.manufacturer]
+            ram_component.manufacturer.value = ram_dto.manufacturer
+            ram_component.manufacturer.status = Status.INPUT
 
-        if ram_.process is not None:
-            sub = sub[sub['process'] == ram_.process]
+        if ram_dto.process is not None:
+            sub = sub[sub['process'] == ram_dto.process]
+            ram_component.process.value = ram_dto.process
+            ram_component.process.status = Status.INPUT
 
         if len(sub) == 0 or len(sub) == len(_ram_df):
             pass
         elif len(sub) == 1:
-            ram_.density = float(sub['density'])
+            ram_component.density.value = float(sub['density'])
+            ram_component.density.status = Status.COMPLETED
+            ram_component.density.source = sub['manufacturer']
         else:
             sub['_scope3'] = sub['density'].apply(lambda x: x)
             sub = sub.sort_values(by='_scope3', ascending=True)
-            density = float(sub.iloc[0].density)
-            ram_.density = density
-    return ram_
+            row = sub.iloc[0]
+
+            ram_component.density.value = float(row['density'])
+            ram_component.density.status = Status.COMPLETED
+            ram_component.density.source = row['manufacturer']
+
+    return ram_component

@@ -37,9 +37,8 @@ def get_model_impact(model: Union[Component, Device],
     try:
         impact_function = model.__getattribute__(f'impact_{phase}_{impact_type}')
         impact, significant_figures = impact_function()
-
         if phase == "manufacture":
-            impact = allocate(impact, allocation_type, model.usage.use_time, model.usage.life_time)
+            impact = allocate(impact, allocation_type, model.usage.use_time.value, model.usage.life_time.value)
 
         units_impact = impact * units
         return rd.round_to_sigfig(units_impact, significant_figures)

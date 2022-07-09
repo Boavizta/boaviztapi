@@ -1,12 +1,9 @@
 from abc import ABC
 from typing import List, Union
 
-from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply
-from boaviztapi.dto.usage import UsageServer, UsageCloud
 from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
     ComponentPowerSupply, ComponentCase, ComponentMotherboard, ComponentAssembly
 from boaviztapi.model.device.device import Device, NumberSignificantFigures
-from boaviztapi.dto.device.device import Server, Cloud, ConfigurationServer, ModelServer
 from boaviztapi.model.usage import ModelUsageServer, ModelUsageCloud
 
 
@@ -148,8 +145,7 @@ class DeviceServer(Device):
 
     def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
-        impacts = impact_factor * (self.usage.hours_electrical_consumption / 1000) \
-                  * self.usage.use_time
+        impacts = impact_factor.value * (self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
 
         return impacts, 1
 
@@ -170,58 +166,6 @@ class DeviceServer(Device):
 
     def impact_use_adp(self) -> NumberSignificantFigures:
         return self.__impact_usage('adp')
-
-    @classmethod
-    def from_dto(cls, server_complete: Server, server_input: Server) -> 'DeviceServer':
-        cpu, ram_list, disk_list, power_supply, case, usage = None, None, None, None, None, None
-
-        if server_complete.configuration is not None:
-            if server_input.configuration is None:
-                server_input.configuration = ConfigurationServer()
-
-            if server_complete.configuration.cpu is not None:
-                cpu = ComponentCPU.from_dto(server_complete.configuration.cpu, server_input.configuration.cpu or CPU())
-
-            if server_complete.configuration.ram is not None:
-                ram_list = []
-                for complete_ram, input_ram in zip(server_complete.configuration.ram,
-                                                   server_input.configuration.ram or [RAM()] * len(
-                                                       server_complete.configuration.ram)):
-                    ram_list.append(ComponentRAM.from_dto(complete_ram, input_ram))
-
-            if server_complete.configuration.disk is not None:
-                disk_list = []
-                for complete_disk, input_disk in zip(server_complete.configuration.disk,
-                                                     server_input.configuration.disk or [Disk()] * len(
-                                                         server_complete.configuration.ram)):
-                    if complete_disk.type.lower() == "ssd":
-                        disk_list.append(ComponentSSD.from_dto(complete_disk, input_disk))
-                    elif complete_disk.type.lower() == "hdd":
-                        disk_list.append(ComponentHDD.from_dto(complete_disk, input_disk))
-
-            if server_complete.configuration.power_supply is not None:
-                power_supply = ComponentPowerSupply.from_dto(server_complete.configuration.power_supply,
-                                                             server_input.configuration.power_supply or PowerSupply())
-        if server_complete.model is not None and server_complete.model.type is not None:
-            if server_input.model is None:
-                server_input.model = ModelServer()
-            case = ComponentCase.from_dto(server_complete.model.type, server_input.model.type or None)
-
-        if server_complete.usage is not None:
-            usage = ModelUsageServer().from_dto(server_complete.usage, server_input.usage or UsageServer())
-
-        serv = cls(
-            cpu=cpu,
-            ram=ram_list,
-            disk=disk_list,
-            power_supply=power_supply,
-            case=case,
-            usage=usage
-        )
-
-        serv._set_states_from_input(server_input)
-
-        return serv
 
 
 class DeviceCloudInstance(DeviceServer, ABC):
@@ -262,21 +206,3 @@ class DeviceCloudInstance(DeviceServer, ABC):
     def impact_use_adp(self) -> NumberSignificantFigures:
         impact, sign_fig = super().impact_use_adp()
         return (impact / self.usage.instance_per_server), sign_fig
-
-    @classmethod
-    def from_dto(cls, instance_complete: Cloud, instance_input: Cloud) -> 'DeviceCloudInstance':
-        server = super().from_dto(instance_complete, instance_input)
-        usage = None
-        if instance_complete.usage is not None:
-            usage = ModelUsageCloud().from_dto(instance_complete.usage, instance_input.usage or UsageCloud())
-
-        cloud_instance = cls(
-            cpu=server.cpu,
-            ram=server.ram,
-            disk=server.disk,
-            power_supply=server.power_supply,
-            case=server.case,
-            usage=usage
-        )
-
-        return cloud_instance

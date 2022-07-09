@@ -1,4 +1,3 @@
-import json
 
 import boaviztapi.utils.roundit as rd
 from boaviztapi.model.boattribute import Status, Boattribute
@@ -23,7 +22,7 @@ def verbose_usage(device: Device):
         if not isinstance(val, Boattribute):
             continue
         if val.status != Status.NONE:
-            json_output[attr[1:]] = val
+            json_output[attr] = val.to_json()
 
     json_output["impacts"] = {
         "gwp": {
@@ -48,7 +47,7 @@ def verbose_component(component: Component):
         if not isinstance(val, Boattribute):
             continue
         if val.status != Status.NONE:
-            json_output[attr.rsplit('__', 1)[1]] = val
+            json_output[attr] = val.to_json()
 
     json_output["impacts"] = {
         "gwp": {

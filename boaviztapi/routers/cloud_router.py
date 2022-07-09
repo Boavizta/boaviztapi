@@ -4,7 +4,6 @@ import os
 from fastapi import APIRouter, Query, Body, HTTPException
 
 from boaviztapi.dto.device import Cloud
-from boaviztapi.dto.device.device import smart_complete_server
 from boaviztapi.dto.usage import UsageCloud
 from boaviztapi.model.device import DeviceCloudInstance
 from boaviztapi.routers import data_dir

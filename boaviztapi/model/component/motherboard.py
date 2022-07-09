@@ -1,8 +1,6 @@
-from typing import Any
 
 import boaviztapi.utils.roundit as rd
 from boaviztapi.model.component.component import Component, NumberSignificantFigures
-from boaviztapi.dto.component import Motherboard
 
 
 class ComponentMotherboard(Component):
@@ -45,6 +43,3 @@ class ComponentMotherboard(Component):
 
     def impact_use_adp(self, model=None) -> NumberSignificantFigures:
         raise NotImplementedError
-
-    def to_dto(self, original_disk: Motherboard) -> Motherboard:
-        return original_disk

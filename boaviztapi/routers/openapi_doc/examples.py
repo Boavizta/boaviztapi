@@ -72,7 +72,7 @@ components_examples = {
         "manufacture_date": 2017
     },
     "ssd": {
-        "core_units": 24,
+        "capacity": 24,
         "manufacturer": "Samsung",
     },
     "ram": {

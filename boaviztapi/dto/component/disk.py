@@ -4,7 +4,9 @@ from typing import Optional
 import pandas as pd
 
 from boaviztapi.dto.component import ComponentDTO
-
+from boaviztapi.dto.usage.usage import smart_mapper_usage, Usage
+from boaviztapi.model.boattribute import Status
+from boaviztapi.model.component import ComponentSSD, ComponentHDD
 
 _ssd_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/ssd_manufacture.csv'))
 
@@ -18,23 +20,51 @@ class Disk(ComponentDTO):
     model: Optional[str] = None
 
 
-def smart_complete_disk_ssd(disk: Disk) -> Disk:
-    disk_ = disk.copy()
-    if disk.type.lower() == 'ssd':
+def smart_mapper_ssd(disk_dto: Disk) -> ComponentSSD:
+    disk_component = ComponentSSD()
+
+    disk_component.usage = smart_mapper_usage(disk_dto.usage or Usage())
+    disk_component.units = disk_dto.units
+
+    if disk_dto.type == 'ssd':
+        if disk_dto.capacity is not None:
+            disk_component.capacity.value = disk_dto.capacity
+            disk_component.capacity.status = Status.INPUT
+
         sub = _ssd_df
 
-        if disk_.manufacturer is not None:
-            sub = sub[sub['manufacturer'] == disk_.manufacturer]
+        if disk_dto.manufacturer is not None:
+            sub = sub[sub['manufacturer'] == disk_dto.manufacturer]
+            disk_component.manufacturer.value = disk_dto.manufacturer
+            disk_component.manufacturer.status = Status.INPUT
 
         if len(sub) == 0 or len(sub) == len(_ssd_df):
             pass
         elif len(sub) == 1:
-            disk_.density = float(sub['density'])
+            disk_component.density.value = float(sub['density'])
+            disk_component.density.status = Status.COMPLETED
+            disk_component.density.source = sub['manufacturer']
         else:
-            if disk_.capacity is not None:
-                capacity = disk_.capacity
+            if disk_dto.capacity is not None:
+                capacity = disk_dto.capacity
                 sub['_scope3'] = sub['density'].apply(lambda x: capacity / x)
                 sub = sub.sort_values(by='_scope3', ascending=False)
-                density = float(sub.iloc[0].density)
-                disk_.density = density
-    return disk_
+                row = sub.iloc[0]
+
+                density = float(row["density"])
+                disk_component.density.value = density
+                disk_component.density.status = Status.COMPLETED
+                disk_component.density.source = row["manufacturer"]
+
+    return disk_component
+
+
+def mapper_hdd(disk_dto: Disk) -> ComponentHDD:
+    disk_component = ComponentHDD()
+
+    disk_component.usage = smart_mapper_usage(disk_dto.usage or Usage())
+    disk_component.units = disk_dto.units
+
+    disk_component.capacity.value = disk_dto.value
+
+    return disk_component

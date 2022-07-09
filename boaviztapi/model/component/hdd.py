@@ -1,7 +1,6 @@
 import boaviztapi.utils.roundit as rd
 from boaviztapi.model.boattribute import Boattribute, Status
 from boaviztapi.model.component.component import Component, NumberSignificantFigures
-from boaviztapi.dto.component import Disk
 
 
 class ComponentHDD(Component):
@@ -26,22 +25,7 @@ class ComponentHDD(Component):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.__capacity = Boattribute(value=None, status=Status.NONE, unit="Go")
-
-        for attr, val in kwargs.items():
-            if val is not None and hasattr(self, f'_ComponentHDD__{attr}'):
-                self.__setattr__(attr, val)
-
-    @property
-    def capacity(self) -> int:
-        if self.__capacity.value is None:
-            self.__capacity.value = self.DEFAULT_HDD_CAPACITY
-            self.__capacity.status = Status.DEFAULT
-        return self.__capacity.value
-
-    @capacity.setter
-    def capacity(self, value: int) -> None:
-        self.__capacity.value = value
+        self.capacity = Boattribute(value=None, status=Status.NONE, unit="Go", default=self.DEFAULT_HDD_CAPACITY)
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')
@@ -65,12 +49,3 @@ class ComponentHDD(Component):
 
     def impact_use_adp(self, model=None) -> NumberSignificantFigures:
         raise NotImplementedError
-
-    def to_dto(self, original_disk: Disk) -> Disk:
-        disk = Disk()
-        for attr, val in original_disk.dict().items():
-            if hasattr(self, f'_ComponentHDD__{attr}'):
-                disk.__setattr__(attr, self.__getattribute__(attr))
-            else:
-                disk.__setattr__(attr, original_disk.__getattribute__(attr))
-        return disk
