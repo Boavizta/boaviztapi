@@ -36,6 +36,7 @@ async def server_impact_from_model(archetype: str = Query(None, example="dellR74
                                    allocation: Allocation = Allocation.TOTAL):
     server = Server()
     server_archetype = await get_server_archetype(archetype)
+
     if not server_archetype:
         raise HTTPException(status_code=404, detail=f"{archetype} not found")
 
@@ -54,6 +55,7 @@ async def server_impact_from_model(archetype: str = Query(None, example="dellR74
 async def server_impact_from_configuration(
         server: Server = Body(None, example=server_configuration_examples["DellR740"]),
         verbose: bool = True, allocation: Allocation = Allocation.TOTAL):
+
     if server.model is not None and server.model.archetype is not None:
         server_archetype = await get_server_archetype(server.model.archetype)
         if server_archetype:

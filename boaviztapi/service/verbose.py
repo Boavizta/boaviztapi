@@ -8,7 +8,15 @@ from boaviztapi.model.component import Component
 def verbose_device(device: Device):
     json_output = {}
     for component in device.components:
-        json_output[component.NAME] = verbose_component(component)
+        if f"{component.NAME}-1" in json_output:
+            i = 2
+            while f"{component.NAME}-{i}" in device.components:
+                i += 1
+            key = f"{component.NAME}-{i}"
+        else:
+            key = f"{component.NAME}-1"
+
+        json_output[key] = verbose_component(component)
 
     json_output["USAGE"] = verbose_usage(device)
 
