@@ -19,6 +19,8 @@ class Component:
 
     @property
     def usage(self) -> ModelUsage:
+        if self._usage is None:
+            self._usage = ModelUsage()
         return self._usage
 
     @usage.setter

@@ -42,7 +42,6 @@ def get_model_impact(model: Union[Component, Device],
             impact = allocate(impact, allocation_type, model.usage.use_time.value, model.usage.life_time.value)
 
         units_impact = impact * units
-
         return rd.round_to_sigfig(units_impact, significant_figures)
     except (AttributeError, NotImplementedError):
         pass

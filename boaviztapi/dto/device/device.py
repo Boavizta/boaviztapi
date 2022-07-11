@@ -51,6 +51,8 @@ def smart_mapper_server(server_dto: Server) -> DeviceServer:
         if server_dto.configuration.disk is not None:
             complete_disk = []
             for disk_dto in server_dto.configuration.disk:
+                if disk_dto.type is None:
+                    disk_dto.type = "ssd"
                 if disk_dto.type.lower() == "ssd":
                     complete_disk.append(smart_mapper_ssd(disk_dto))
                 elif disk_dto.type.lower() == "hdd":

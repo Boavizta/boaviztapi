@@ -62,28 +62,49 @@ def smart_mapper_usage(usage_dto: Usage) -> ModelUsage:
         usage_model.use_time.status = Status.INPUT
 
     if usage_dto.usage_location is not None:
-
         sub = _electricity_emission_factors_df
         sub = sub[sub['code'] == usage_dto.usage_location]
         if len(sub) == 0:
             pass
         else:
+
             usage_model.usage_location.value = usage_dto.usage_location
             usage_model.usage_location.status = Status.INPUT
-
     return usage_model
 
 
 def smart_mapper_usage_server(usage_dto: UsageServer) -> ModelUsageServer:
-    usage = smart_mapper_usage(usage_dto)
-    usage_server_model = ModelUsageServer()
+    usage_model_server = ModelUsageServer()
 
-    for attr, val in usage.__iter__():
-        if isinstance(val, Boattribute):
-            usage_server_model.__getattribute__(attr).__setattr__("val", val)
+    if usage_dto.hours_electrical_consumption is not None:
+        usage_model_server.hours_electrical_consumption.value = usage_dto.hours_electrical_consumption
+        usage_model_server.hours_electrical_consumption.status = Status.INPUT
+
+    if usage_dto.workload is not None:
+        pass  # TODO
+
+    if usage_dto.year_life_time is not None:
+        usage_model_server.life_time.value = usage_dto.year_life_time
+        usage_model_server.life_time.status = Status.INPUT
+
+    if usage_dto.hours_use_time is not None or usage_dto.days_use_time is not None or usage_dto.years_use_time is not None:
+        usage_model_server.use_time.value = (usage_dto.hours_use_time or 0) + \
+                                     (usage_dto.days_use_time or 0) * 24 + \
+                                     (usage_dto.years_use_time or 0) * 24 * 365
+
+        usage_model_server.use_time.status = Status.INPUT
+
+    if usage_dto.usage_location is not None:
+        sub = _electricity_emission_factors_df
+        sub = sub[sub['code'] == usage_dto.usage_location]
+        if len(sub) == 0:
+            pass
+        else:
+            usage_model_server.usage_location.value = usage_dto.usage_location
+            usage_model_server.usage_location.status = Status.INPUT
 
     if usage_dto.other_consumption_ratio is not None:
-        usage_server_model.other_consumption_ratio.value = usage_dto.other_consumption_ratio
-        usage_server_model.other_consumption_ratio.status = Status.INPUT
+        usage_model_server.other_consumption_ratio.value = usage_dto.other_consumption_ratio
+        usage_model_server.other_consumption_ratio.status = Status.INPUT
 
-    return usage_server_model
+    return usage_model_server

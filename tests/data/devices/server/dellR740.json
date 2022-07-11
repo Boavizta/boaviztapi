@@ -37,26 +37,5 @@
       "unit_weight": 2.99
     }
   },
-  "usage": {
-    "max_power": 510,
-    "year_use_time": 3,
-    "workload": {
-      "100": {
-        "time": 0.15,
-        "power": 1.0
-      },
-      "50": {
-        "time": 0.55,
-        "power": 0.7235
-      },
-      "10": {
-        "time": 0.2,
-        "power": 0.5118
-      },
-      "idle": {
-        "time": 0.1,
-        "power": 0.3941
-      }
-    }
-  }
+  "usage": {}
 }
