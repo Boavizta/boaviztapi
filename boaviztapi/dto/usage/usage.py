@@ -3,7 +3,7 @@ from typing import Optional, Dict
 import pandas as pd
 
 from boaviztapi.dto import BaseDTO
-from boaviztapi.model.boattribute import Status
+from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.usage import ModelUsage, ModelUsageServer
 
 _electricity_emission_factors_df = pd.read_csv('./boaviztapi/data/electricity/electricity_impact_factors.csv')
@@ -78,7 +78,8 @@ def smart_mapper_usage_server(usage_dto: UsageServer) -> ModelUsageServer:
     usage_server_model = ModelUsageServer()
 
     for attr, val in usage.__iter__():
-        usage_server_model.__setattr__(attr, val)
+        if isinstance(val, Boattribute):
+            usage_server_model.__getattribute__(attr).__setattr__("val", val)
 
     if usage_dto.other_consumption_ratio is not None:
         usage_server_model.other_consumption_ratio.value = usage_dto.other_consumption_ratio

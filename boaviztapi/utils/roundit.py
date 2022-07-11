@@ -8,6 +8,8 @@ def significant_number(x):
     """
     Determine the number of significant figures for x
     """
+    if x == 0:
+        return 1
     int_part = int(abs(x))
     if int_part == 0:
         x = remove_unsignificant_zeros(x)

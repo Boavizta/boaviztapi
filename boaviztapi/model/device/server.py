@@ -5,6 +5,7 @@ from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, Co
     ComponentPowerSupply, ComponentCase, ComponentMotherboard, ComponentAssembly
 from boaviztapi.model.device.device import Device, NumberSignificantFigures
 from boaviztapi.model.usage import ModelUsageServer, ModelUsageCloud
+import boaviztapi.utils.roundit as rd
 
 
 class DeviceServer(Device):
@@ -53,7 +54,8 @@ class DeviceServer(Device):
     @property
     def ram(self) -> List[ComponentRAM]:
         if self._ram_list is None:
-            self._ram_list = [self.DEFAULT_COMPONENT_RAM] * self.DEFAULT_NUMBER_RAM
+            self.DEFAULT_COMPONENT_RAM.units = self.DEFAULT_NUMBER_RAM
+            self._ram_list = [self.DEFAULT_COMPONENT_RAM]
         return self._ram_list
 
     @ram.setter
@@ -63,7 +65,8 @@ class DeviceServer(Device):
     @property
     def disk(self) -> List[Union[ComponentSSD, ComponentHDD]]:
         if self._disk_list is None:
-            self._disk_list = [self.DEFAULT_COMPONENT_DISK] * self.DEFAULT_NUMBER_DISK
+            self.DEFAULT_COMPONENT_DISK.units = self.DEFAULT_NUMBER_DISK
+            self._disk_list = [self.DEFAULT_COMPONENT_DISK]
         return self._disk_list
 
     @disk.setter
@@ -139,15 +142,18 @@ class DeviceServer(Device):
         significant_figures = []
         for component in self.components:
             impact, sign_fig = getattr(component, f'impact_manufacture_{impact_type}')()
-            impacts.append(impact)
+            impacts.append(impact*component.units)
             significant_figures.append(sign_fig)
         return sum(impacts), min(significant_figures)
 
     def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
         impacts = impact_factor.value * (self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
+        sig_fig = self.__compute_significant_numbers(impact_factor.value)
+        return impacts, sig_fig
 
-        return impacts, 1
+    def __compute_significant_numbers(self, impact_factor: float) -> int:
+        return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value, impact_factor)
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')

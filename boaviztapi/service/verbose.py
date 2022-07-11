@@ -10,7 +10,7 @@ def verbose_device(device: Device):
     for component in device.components:
         if f"{component.NAME}-1" in json_output:
             i = 2
-            while f"{component.NAME}-{i}" in device.components:
+            while f"{component.NAME}-{i}" in json_output:
                 i += 1
             key = f"{component.NAME}-{i}"
         else:

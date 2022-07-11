@@ -14,12 +14,13 @@ class ModelUsage:
     DEFAULT_USE_TIME_IN_HOURS = 24 * 365
     DEFAULT_LIFE_TIME_IN_HOURS = 24 * 365 * 3  # 3 years
     DEFAULT_WORKLOAD = 50.
+    DEFAULT_POWER_CONSUMPTION = 0
 
     _DAYS_IN_HOURS = 24
     _YEARS_IN_HOURS = 24 * 365
 
     def __init__(self, /, **kwargs):
-        self.hours_electrical_consumption = Boattribute(value=None, status=Status.NONE, unit="W", default=0)
+        self.hours_electrical_consumption = Boattribute(value=None, status=Status.NONE, unit="W", default=self.DEFAULT_POWER_CONSUMPTION)
         self.workload = None
         self.usage_location = Boattribute(value=None, status=Status.NONE, unit="CodSP3 - NCS Country Codes - NATO",
                                           default=self.DEFAULT_USAGE_LOCATION)
@@ -49,6 +50,7 @@ class ModelUsage:
 class ModelUsageServer(ModelUsage):
     DEFAULT_OTHER_CONSUMPTION_RATIO = 0.33
     DEFAULT_LIFE_TIME_IN_HOURS = 24 * 365 * 3  # 3 years
+    DEFAULT_POWER_CONSUMPTION = 300 # 300 watt
 
     def __init__(self, /, **kwargs):
         super().__init__(**kwargs)
