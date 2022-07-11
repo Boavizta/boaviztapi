@@ -34,7 +34,7 @@ class Boattribute:
         self._value = value
 
     def to_json(self):
-        json = {"value": self._value, "unit": self.unit, "status": self.status, "source": self.source}
+        json = {"value": self._value, "unit": self.unit, "status": self.status.value, "source": self.source}
         return json
 
 

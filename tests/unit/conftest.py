@@ -7,21 +7,22 @@ from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, ComponentCase, \
     ComponentMotherboard, ComponentPowerSupply, ComponentAssembly
 from boaviztapi.model.device import DeviceServer
+from boaviztapi.model.usage import ModelUsageServer
 from tests.unit import data_dir
 
 
 # MODEL
 
 @pytest.fixture(scope="function")
-def dell_r740_model():
+def dell_r740_model(rack_case_model, complete_cpu_model, complete_ram_model, complete_ssd_model, complete_power_supply_model):
     server = DeviceServer()
 
-    server.case = rack_case_model()
-    server.cpu = complete_cpu_model()
-    server.ram = [complete_ram_model()]
-    server.disk = [complete_ssd_model()]
+    server.case = rack_case_model
+    server.cpu = complete_cpu_model
+    server.ram = [complete_ram_model]
+    server.disk = [complete_ssd_model]
     server.power_supply = complete_power_supply_model
-    server.usage = UsageServer()
+    server.usage = ModelUsageServer()
 
     return server
 
@@ -32,27 +33,27 @@ def empty_server_model():
 
 
 @pytest.fixture(scope="function")
-def incomplete_server_model():
+def incomplete_server_model(rack_case_model, complete_ram_model_2, complete_ssd_model):
     server = DeviceServer()
 
-    server.case = rack_case_model()
-    server.ram = [complete_ram_model_2()]
-    server.disk = [complete_ssd_model()]
-    server.usage = UsageServer()
+    server.case = rack_case_model
+    server.ram = [complete_ram_model_2]
+    server.disk = [complete_ssd_model]
+    server.usage = ModelUsageServer()
 
     return server
 
 
 @pytest.fixture(scope="function")
-def completed_server_with_dellr740_model():
+def completed_server_with_dellr740_model(rack_case_model, complete_cpu_model, complete_ram_model_2, complete_ssd_model_2, complete_power_supply_model):
     server = DeviceServer()
 
-    server.case = rack_case_model()
-    server.cpu = complete_cpu_model()
-    server.ram = [complete_ram_model_2()]
-    server.disk = [complete_ssd_model_2()]
+    server.case = rack_case_model
+    server.cpu = complete_cpu_model
+    server.ram = [complete_ram_model_2]
+    server.disk = [complete_ssd_model_2]
     server.power_supply = complete_power_supply_model
-    server.usage = UsageServer()
+    server.usage = ModelUsageServer()
 
     return server
 

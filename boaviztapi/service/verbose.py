@@ -1,4 +1,3 @@
-
 import boaviztapi.utils.roundit as rd
 from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.device import Device
@@ -51,23 +50,23 @@ def verbose_usage(device: Device):
 def verbose_component(component: Component):
     json_output = {"units": component.units}
 
+    json_output["impacts"] = {
+        "gwp": {
+            "value": rd.round_to_sigfig(*component.impact_manufacture_gwp()) * component.units,
+            "unit": "kgCO2eq"
+        },
+        "pe": {
+            "value": rd.round_to_sigfig(*component.impact_manufacture_pe()) * component.units,
+            "unit": "MJ"},
+        "adp": {
+            "value": rd.round_to_sigfig(*component.impact_manufacture_adp()) * component.units,
+            "unit": "kgSbeq"
+        },
+    }
     for attr, val in component.__iter__():
         if not isinstance(val, Boattribute):
             continue
         if val.status != Status.NONE:
             json_output[attr] = val.to_json()
 
-    json_output["impacts"] = {
-        "gwp": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_gwp())*component.units,
-            "unit": "kgCO2eq"
-        },
-        "pe": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_pe())*component.units,
-            "unit": "MJ"},
-        "adp": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_adp())*component.units,
-            "unit": "kgSbeq"
-        },
-    }
     return json_output

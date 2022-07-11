@@ -57,22 +57,7 @@ class ModelUsageServer(ModelUsage):
     def __init__(self, /, **kwargs):
         super().__init__(**kwargs)
 
-        self._other_consumption_ratio = Boattribute(value=None, status=Status.NONE, unit="ratio /1")
-
-        for attr, val in kwargs.items():
-            if val is not None:
-                self.__setattr__(attr, val)
-
-    @property
-    def other_consumption_ratio(self) -> float:
-        if self._other_consumption_ratio.value is None:
-            self._other_consumption_ratio.value = self.DEFAULT_OTHER_CONSUMPTION_RATIO
-            self._other_consumption_ratio.status = Status.DEFAULT
-        return self._other_consumption_ratio.value
-
-    @other_consumption_ratio.setter
-    def other_consumption_ratio(self, value: float) -> None:
-        self._other_consumption_ratio.value = value
+        self.other_consumption_ratio = Boattribute(value=None, status=Status.NONE, unit="ratio /1")
 
 
 class ModelUsageCloud(ModelUsageServer):
@@ -81,20 +66,7 @@ class ModelUsageCloud(ModelUsageServer):
 
     def __init__(self, /, **kwargs):
         super().__init__(**kwargs)
-
-        self.__instance_per_server = self.DEFAULT_INSTANCE_PER_SERVER
-
-        for attr, val in kwargs.items():
-            if val is not None:
-                self.__setattr__(attr, val)
-
-    @property
-    def instance_per_server(self) -> int:
-        return self.__instance_per_server
-
-    @instance_per_server.setter
-    def instance_per_server(self, value: int) -> None:
-        self.__instance_per_server = value
+        self.instance_per_server = Boattribute(value=None, status=Status.NONE, unit="", default=self.DEFAULT_INSTANCE_PER_SERVER)
 
 
 def default_impact_factor(args):
