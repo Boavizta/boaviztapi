@@ -1,12 +1,14 @@
+import os
+
 import pandas as pd
 
 from boaviztapi.model.boattribute import Boattribute, Status
 
-_electricity_emission_factors_df = pd.read_csv('./boaviztapi/data/electricity/electricity_impact_factors.csv')
+_electricity_emission_factors_df = pd.read_csv(os.path.join(os.path.dirname(__file__),'../../data/electricity/electricity_impact_factors.csv'))
 
-_cpu_profile_file = './boaviztapi/data/consumption_profile/cpu/cpu_profile.csv'
-_cloud_profile_file = './boaviztapi/data/consumption_profile/cloud/cpu_profile.csv'
-_server_profile_file = './boaviztapi/data/consumption_profile/server/server_profile.csv'
+_cpu_profile_path = os.path.join(os.path.dirname(__file__), '../../data/consumption_profile/cpu/cpu_profile.csv')
+_cloud_profile_path = os.path.join(os.path.dirname(__file__), '../../data/consumption_profile/cloud/cpu_profile.csv')
+_server_profile_path = os.path.join(os.path.dirname(__file__), '../../data/consumption_profile/server/server_profile.csv')
 
 
 class ModelUsage:

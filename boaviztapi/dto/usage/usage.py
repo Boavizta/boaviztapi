@@ -1,3 +1,4 @@
+import os
 from typing import Optional, Dict
 
 import pandas as pd
@@ -6,7 +7,7 @@ from boaviztapi.dto import BaseDTO
 from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.usage import ModelUsage, ModelUsageServer
 
-_electricity_emission_factors_df = pd.read_csv('./boaviztapi/data/electricity/electricity_impact_factors.csv')
+_electricity_emission_factors_df = pd.read_csv(os.path.join(os.path.dirname(__file__),'../../data/electricity/electricity_impact_factors.csv'))
 
 
 class WorkloadUnit(BaseDTO):
