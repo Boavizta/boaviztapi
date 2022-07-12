@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class Boattribute:
-    def __init__(self, /, **kwargs):
+    def __init__(self, **kwargs):
 
         self._value = None
         self.unit = None

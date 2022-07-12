@@ -9,7 +9,7 @@ NumberSignificantFigures = Tuple[float, int]
 
 class Device:
 
-    def __init__(self, /, **kwargs):
+    def __init__(self, **kwargs):
         self._usage = None
         pass
 

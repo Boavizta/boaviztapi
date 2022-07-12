@@ -26,7 +26,7 @@ class ComponentRAM(Component):
         }
     }
 
-    def __init__(self, /, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         self.process = Boattribute(value=None, status=Status.NONE, unit="none", default="TODO")

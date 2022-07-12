@@ -25,7 +25,7 @@ class DeviceServer(Device):
     DEFAULT_COMPONENT_MOTHERBOARD = ComponentMotherboard()
     DEFAULT_COMPONENT_ASSEMBLY = ComponentAssembly()
 
-    def __init__(self, /, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._cpu = None
         self._ram_list = None

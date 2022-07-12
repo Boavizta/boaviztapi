@@ -30,7 +30,7 @@ class ComponentCPU(Component):
         'constant_core_impact': 0.491
     }
 
-    def __init__(self, /, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         self.core_units = Boattribute(value=None, status=Status.NONE, unit="none", default=self.DEFAULT_CPU_CORE_UNITS)
