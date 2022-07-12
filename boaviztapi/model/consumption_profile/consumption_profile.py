@@ -1,34 +1,113 @@
-from abc import abstractmethod, ABC
-from pydantic import BaseModel
+import math
+from typing import Dict, Optional, List, Tuple
+
+import numpy as np
+import pandas as pd
+from scipy.optimize import curve_fit
+
+from boaviztapi.model.boattribute import Boattribute, Status
+
+_cpu_profile_consumption_df = pd.read_csv('./boaviztapi/data/consumption_profile/cpu/cpu_profile.csv')
 
 
-class Workload(BaseModel):
+class ConsumptionProfileModel:
     pass
 
 
-class ConsumptionProfile(BaseModel):
-    coefs: dict
+class CPUConsumptionProfileModel(ConsumptionProfileModel):
+    DEFAULT_CPU_MODEL_RANGE = 'Xeon Platinum'
+    DEFAULT_WORKLOADS = None
 
-    @abstractmethod
-    def workload_to_power(self, workload: float):
-        pass
+    _DEFAULT_MODEL_PARAMS = {
+        'a': 342.4,
+        'b': 0.0347,
+        'c': 36.89,
+        'd': -16.40
+    }
+    _DEFAULT_MODEL_BOUNDS = (
+        [0, 0, 0, -math.inf],
+        [math.inf, math.inf, math.inf, math.inf]
+    )
+    _MODEL_PARAM_NAME = ['a', 'b', 'c', 'd']
 
-    @abstractmethod
-    def workloads_to_power(self, workload: Workload):
-        pass
+    def __init__(self):
+        self.cpu_manufacturer = Boattribute(
+            status=Status.NONE
+        )
+        self.cpu_model_range = Boattribute(
+            status=Status.NONE,
+            default=self.DEFAULT_CPU_MODEL_RANGE
+        )
+        self.workloads = Boattribute(
+            status=Status.NONE,
+            default=self.DEFAULT_WORKLOADS
+        )
 
-    @abstractmethod
-    def to_json(self):
-        pass
+    @property
+    def list_workloads(self) -> Tuple[List[float], List[float]]:
+        load = [item['load'] for item in self.workloads.value]
+        power = [item['power'] for item in self.workloads.value]
+        return load, power
+
+    def compute_consumption_profile_model(self) -> Dict[str, float]:
+        base_model = self.lookup_consumption_profile()
+
+        if base_model is None:
+            base_model = self._DEFAULT_MODEL_PARAMS
+
+        if self.workloads is None:
+            return base_model
+
+        final_model = self.__compute_model_adaptation(base_model)
+        return final_model
+
+    def lookup_consumption_profile(self) -> Optional[Dict[str, float]]:
+        sub = _cpu_profile_consumption_df
+
+        if self.cpu_manufacturer is not None:
+            tmp = sub[sub['manufacturer'] == self.cpu_manufacturer]
+            if len(tmp) > 0:
+                sub = tmp.copy()
+
+        if self.cpu_model_range is not None:
+            tmp = sub[sub['model_range'] == self.cpu_model_range]
+            if len(tmp) > 0:
+                sub = tmp.copy()
+
+        if len(sub) == 1:
+            row = sub.iloc[0]
+            return {
+                'a': row.a,
+                'b': row.b,
+                'c': row.c,
+                'd': row.d,
+            }
+
+    def __compute_model_adaptation(self, base_model: Dict[str, float]) -> Dict[str, float]:
+        base_model_list = self.__model_dict_to_list(base_model)
+        x_data, y_data = self.list_workloads
+        popt, _ = curve_fit(f=self.__log_model,
+                            xdata=x_data,
+                            ydata=y_data,
+                            p0=base_model_list,
+                            bounds=self._DEFAULT_MODEL_BOUNDS)
+        return self.__model_list_to_dict(popt.tolist())
+
+    def __model_dict_to_list(self, model: Dict[str, float]) -> List[float]:
+        return [model[model_name] for model_name in self._MODEL_PARAM_NAME]
+
+    def __model_list_to_dict(self, model: List[float]) -> Dict[str, float]:
+        return {model_name: param for model_name, param in zip(self._MODEL_PARAM_NAME, model)}
+
+    @staticmethod
+    def __log_model(x: float, a: float, b: float, c: float, d: float) -> float:
+        return a * np.log(b * (x + c)) + d
 
 
-class CPUConsumptionProfile(ConsumptionProfile):
-
-    def workloads_to_power(self, workload: Workload):
-        pass
-
-    def to_json(self):
-        pass
-
-    def workload_to_power(self, workload: float):
-        pass
+if __name__ == '__main__':
+    cpm = CPUConsumptionProfileModel()
+    cpm.workloads.value = [
+        {'load': 0., 'power': 58.},
+        {'load': 100., 'power': 618.}
+    ]
+    print(cpm.compute_consumption_profile_model())
