@@ -1,0 +1,79 @@
+name: build_client_sdk
+
+on:
+  push:
+    tags:
+      - '*'
+    paths-ignore:
+      - 'docs/**'
+      - 'test/**'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - 'LICENSE'
+      - 'Dockerfile'
+      - 'CITATION'
+      - 'book.toml'
+      - 'CONTRIBUTING.md'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    name: build_rust_client_sdk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+          #- name: Install rust dependencies
+          #  uses: actions/setup-rust@v2
+          #  with:
+          #    rust-version: '3.x'
+      - name: Install requirements
+        run: |
+          sudo apt update -y
+          sudo apt install docker.io containerd runc wget python3 python3-pip -y
+          pip3 install pipenv twine
+      - name: Run the API locally
+        run: |
+          python3 setup.py sdist
+          API_VERSION=$(cat boaviztapi/__init__.py | cut -d "'" -f 2)
+          echo "API_VERSION=${API_VERSION}" >> $GITHUB_ENV
+          docker build --build-arg VERSION=${API_VERSION} . --file Dockerfile --tag boaviztapi:latest
+          docker run -p "5000:5000" --name=boaviztapi -tid boaviztapi:latest
+      - name: Get logs from the API container in case of a failure
+        run: |
+          docker logs boaviztapi
+      - name: Get the openapi.json definition and generate the code
+        run: |
+          while [[ ! $(docker ps | grep boaviztapi) ]]; do sleep 1; echo "Waiting for BoaviztAPI container to boot"; done
+          wget http://127.0.0.1:5000/openapi.json
+          docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g rust -o /local/boaviztapi_sdk --package-name boaviztapi_sdk
+      - name: Feed credentials for cargo
+        run: |
+          echo ${CARGO_}
+      - name: Build the crate and push it
+        run: |
+          sudo chown -R $(whoami) boaviztapi_sdk 
+          #SDK_VERSION=${{ env.API_VERSION }}
+          #echo "SDK_VERSION == ${SDK_VERSION}"
+          cd boaviztapi_sdk
+          #sed -i "s/^version.*/version = \"${SDK_VERSION}\"/" Cargo.toml
+          sed -i "s/^authors.*/authors = [\"Boavizta contributors contact@boavizta.org\"]/" Cargo.toml
+          sed -i "s/features.*/features = [\"json\", \"multipart\", \"rustls-tls\"]" Cargo.toml
+      - uses: katyo/publish-crates@v1
+        with:
+          registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+          dry-run: true
+          #- name: Build the pip package and push it
+          #  run: |
+          #    sudo chown -R $(whoami) boaviztapi_sdk
+          #    SDK_VERSION=${{ env.API_VERSION }}
+          #    echo "SDK_VERSION == ${SDK_VERSION}"
+          #    cd boaviztapi_sdk
+          #    sed -i "s/^VERSION.*/VERSION = \"${SDK_VERSION}\"/" setup.py
+          #    sed -i "s/^    long_description=.*/long_description='rust SDK for boaviztAPI'/" setup.py
+          #    sed -i 's/    #.*//' setup.py
+          #    sed -i 's/    """.*//' setup.py
+          #    rust3 setup.py sdist
+          #    pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.BPETIT_SECRET_PYPI_TOKEN }} dist/*
