@@ -21,7 +21,7 @@ class Usage(BaseDTO):
     days_use_time: Optional[float] = None
     hours_use_time: Optional[float] = None
 
-    year_life_time: Optional[float] = None
+    years_life_time: Optional[float] = None
 
     hours_electrical_consumption: Optional[float] = None
     workload: Optional[Dict[str, WorkloadUnit]] = None
@@ -50,8 +50,8 @@ def smart_mapper_usage(usage_dto: Usage) -> ModelUsage:
     if usage_dto.workload is not None:
         pass  # TODO
 
-    if usage_dto.year_life_time is not None:
-        usage_model.life_time.value = usage_dto.year_life_time
+    if usage_dto.years_life_time is not None:
+        usage_model.life_time.value = usage_dto.years_life_time * 24 * 365
         usage_model.life_time.status = Status.INPUT
 
     if usage_dto.hours_use_time is not None or usage_dto.days_use_time is not None or usage_dto.years_use_time is not None:
@@ -83,8 +83,8 @@ def smart_mapper_usage_server(usage_dto: UsageServer) -> ModelUsageServer:
     if usage_dto.workload is not None:
         pass  # TODO
 
-    if usage_dto.year_life_time is not None:
-        usage_model_server.life_time.value = usage_dto.year_life_time
+    if usage_dto.years_life_time is not None:
+        usage_model_server.life_time.value = usage_dto.years_life_time * 24 * 365
         usage_model_server.life_time.status = Status.INPUT
 
     if usage_dto.hours_use_time is not None or usage_dto.days_use_time is not None or usage_dto.years_use_time is not None:
