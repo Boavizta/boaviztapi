@@ -66,6 +66,7 @@ jobs:
           #  with:
           #    command: clippy
           cargo build
+          cargo clippy
       - uses: katyo/publish-crates@v1
         with:
           registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
