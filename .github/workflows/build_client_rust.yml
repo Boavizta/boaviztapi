@@ -49,7 +49,7 @@ jobs:
         run: |
           while [[ ! $(docker ps | grep boaviztapi) ]]; do sleep 1; echo "Waiting for BoaviztAPI container to boot"; done
           wget http://127.0.0.1:5000/openapi.json
-          docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g rust -o /local/boaviztapi_sdk --package-name boaviztapi_sdk
+          docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli:v6.0.0 generate -i /local/openapi.json -g rust -o /local/boaviztapi_sdk --package-name boaviztapi_sdk
       - name: Feed credentials for cargo
         run: |
           echo ${CARGO_}
