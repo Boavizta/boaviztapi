@@ -61,7 +61,16 @@ jobs:
           cd boaviztapi_sdk
           #sed -i "s/^version.*/version = \"${SDK_VERSION}\"/" Cargo.toml
           sed -i "s/^authors.*/authors = [\"Boavizta contributors contact@boavizta.org\"]/" Cargo.toml
+          # Configure `reqwest` to use rustls-tls instead of native dependency on OpenSSL
+          sed -i "/^\[dependencies.reqwest\].*/a default-features = false" Cargo.toml
           sed -i "s/^features.*/features = [\"json\", \"multipart\", \"rustls-tls\"]/" Cargo.toml
+          # Rename variables
+          echo "⚠ Rename the field \`TYPE`` into \`usage_type\` to comply with Rust naming conventions"
+          echo "⚠ This is really a hacky workaround that we should remove when the code generation is fixed" 
+          sed -i "s/pub TYPE: Option<String>,/pub usage_type: Option<String>,/" src/models/usage_cloud.rs
+          sed -i "s/TYPE: None,/usage_type: None,/" src/models/usage_cloud.rs
+          sed -i "s/pub TYPE: Option<String>,/pub usage_type: Option<String>,/" src/models/usage_server.rs
+          sed -i "s/TYPE: None,/usage_type: None,/" src/models/usage_server.rs
           #- uses: actions-rs/cargo@v1
           #  with:
           #    command: clippy
@@ -72,15 +81,4 @@ jobs:
           registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
           dry-run: true
           path: './boaviztapi_sdk'
-          #- name: Build the pip package and push it
-          #  run: |
-          #    sudo chown -R $(whoami) boaviztapi_sdk
-          #    SDK_VERSION=${{ env.API_VERSION }}
-          #    echo "SDK_VERSION == ${SDK_VERSION}"
-          #    cd boaviztapi_sdk
-          #    sed -i "s/^VERSION.*/VERSION = \"${SDK_VERSION}\"/" setup.py
-          #    sed -i "s/^    long_description=.*/long_description='rust SDK for boaviztAPI'/" setup.py
-          #    sed -i 's/    #.*//' setup.py
-          #    sed -i 's/    """.*//' setup.py
-          #    rust3 setup.py sdist
-          #    pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.BPETIT_SECRET_PYPI_TOKEN }} dist/*
+          
