@@ -59,8 +59,8 @@ jobs:
           #SDK_VERSION=${{ env.API_VERSION }}
           #echo "SDK_VERSION == ${SDK_VERSION}"
           cd boaviztapi_sdk
-          # Force a minor hardcoded version to test a publication
-          sed -i "s/^version.*/version = \"0.0.1\"/" Cargo.toml
+          # Force a minor hardcoded version to test a publication         
+          sed -i "0,/^version.*/s/^version.*/version = \"0.0.1\"/" Cargo.toml
           sed -i "s/^authors.*/authors = [\"Boavizta contributors contact@boavizta.org\"]/" Cargo.toml
           # Configure `reqwest` to use rustls-tls instead of native dependency on OpenSSL
           sed -i "/^\[dependencies.reqwest\].*/a default-features = false" Cargo.toml
