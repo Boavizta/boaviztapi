@@ -42,7 +42,7 @@ def verbose_usage(device: Device):
         "adp": {
             "value": rd.round_to_sigfig(*device.impact_use_adp()),
             "unit": "kgSbeq"
-        },
+        }
     }
     return json_output
 

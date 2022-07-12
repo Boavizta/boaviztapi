@@ -21,4 +21,3 @@ def test_usage_server_empty_usage(empty_usage_dto):
     assert get_model_impact(server, 'use', 'pe') == 33800.0
     assert get_model_impact(server, 'use', 'adp') == 0.000169
     assert get_model_impact(server, 'use', 'gwp') == 1000.0
-
