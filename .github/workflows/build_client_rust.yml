@@ -2,8 +2,10 @@ name: build_client_sdk
 
 on:
   push:
-    tags:
-      - '*'
+    branch:
+      - 'feat/build_client_sdk_rust'
+    #tags:
+    #  - '*'
     paths-ignore:
       - 'docs/**'
       - 'test/**'
