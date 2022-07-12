@@ -27,6 +27,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
       - name: Install requirements
         run: |
           sudo apt update -y
@@ -62,9 +65,7 @@ jobs:
           #- uses: actions-rs/cargo@v1
           #  with:
           #    command: clippy
-      - uses: actions-rs/cargo@v1
-        with:
-          command: build
+          cargo build
       - uses: katyo/publish-crates@v1
         with:
           registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
