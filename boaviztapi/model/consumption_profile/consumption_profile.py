@@ -94,10 +94,10 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         return self.__model_list_to_dict(popt.tolist())
 
     def __model_dict_to_list(self, model: Dict[str, float]) -> List[float]:
-        return [model[model_name] for model_name in self._MODEL_PARAM_NAME]
+        return [model[param_name] for param_name in self._MODEL_PARAM_NAME]
 
     def __model_list_to_dict(self, model: List[float]) -> Dict[str, float]:
-        return {model_name: param for model_name, param in zip(self._MODEL_PARAM_NAME, model)}
+        return {param_name: param for param_name, param in zip(self._MODEL_PARAM_NAME, model)}
 
     @staticmethod
     def __log_model(x: float, a: float, b: float, c: float, d: float) -> float:
