@@ -85,13 +85,22 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
 
     def __compute_model_adaptation(self, base_model: Dict[str, float]) -> Dict[str, float]:
         base_model_list = self.__model_dict_to_list(base_model)
+        bounds = self.__adapt_model_bounds(base_model_list)
         x_data, y_data = self.list_workloads
         popt, _ = curve_fit(f=self.__log_model,
                             xdata=x_data,
                             ydata=y_data,
                             p0=base_model_list,
-                            bounds=self._DEFAULT_MODEL_BOUNDS)
+                            bounds=bounds)
         return self.__model_list_to_dict(popt.tolist())
+
+    def __adapt_model_bounds(self, base_model_list: List[float]) -> Tuple[List[float], List[float]]:
+        default_lower_bounds, default_upper_bounds = self._DEFAULT_MODEL_BOUNDS
+        lower_bounds, upper_bounds = [], []
+        for lower_b, upper_b, model_param in zip(default_lower_bounds, default_upper_bounds, base_model_list):
+            lower_bounds.append(max(lower_b, model_param - abs(0.5 * model_param)))
+            upper_bounds.append(min(upper_b, model_param + abs(1.5 * model_param)))
+        return lower_bounds, upper_bounds
 
     def __model_dict_to_list(self, model: Dict[str, float]) -> List[float]:
         return [model[param_name] for param_name in self._MODEL_PARAM_NAME]
