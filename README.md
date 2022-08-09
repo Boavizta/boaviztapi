@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://boavizta.org/media/site/d84925bc94-1642413712/boavizta-logo-4.png" width="100">
+    <img src="https://raw.githubusercontent.com/Boavizta/boaviztapi/dev/boavizta-logo-4.png" width="100">
 </p>
 <h1 align="center">
   Boavizta API
@@ -15,7 +15,7 @@ See the [documentation](https://doc.api.boavizta.org/) for API usage and methodo
 
 ## :dart: Objective
 
-As part of Boavizta's desire to improve the quality of the measurement of the environmental impacts of ICTs in organizations, this project aims at giving access to the group's work to as many people as possible in an automated and industrialized way.  
+As part of Boavizta's desire to improve the quality of the measurement of the environmental impacts of ICTs in organizations, this project aims at giving access to the group's work to as many people as possible in an automated and industrialized way.
 
 The various data and methodologies integrated by Boavizta are aggregated and made available via an API.
 
@@ -63,7 +63,7 @@ $ sudo pip3 install pipenv
 Install dependencies and create a python virtual environment.
 
 ```bash
-$ pipenv install -d 
+$ pipenv install -d
 $ pipenv shell
 ```
 
