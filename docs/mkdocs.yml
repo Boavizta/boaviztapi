@@ -17,15 +17,23 @@ nav:
 
     - Explanations:
         - Boavizta database: Explanations/boavizta-db.md
-        - Components: Explanations/component.md
-        - Device: Explanations/devices.md
         - Manufacture methodology: Explanations/manufacture_methodology.md
-        - Manufacture per components: Explanations/manufacture-components.md
-        - Manufacture per devices: Explanations/manufacture_devices.md
         - Usage methodology: Explanations/usage.md
-        - Smart complete: Explanations/smart-complete.md
+        - Complete: Explanations/complete.md
         - Archetypes: Explanations/archetypes.md
         - Verbose: Explanations/verbose.md
+        - Components:
+              - cpu: Explanations/components/cpu.md
+              - ssd: Explanations/components/ssd.md
+              - ram: Explanations/components/ram.md
+              - motherboard: Explanations/components/motherboard.md
+              - hdd: Explanations/components/hdd.md
+              - assembly: Explanations/components/assembly.md
+              - case: Explanations/components/case.md
+              - power supply: Explanations/components/power_supply.md
+        - Devices:
+              - server: Explanations/devices/server.md
+              - cloud instances: Explanations/devices/cloud.md
         - Useful resources: Explanations/useful_resources.md
     - Reference:
         - Component route: Reference/component_route.md

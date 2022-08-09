@@ -1,7 +1,13 @@
 # Device
 
-A device is a set a components. 
-It's impacts are the aggregation of the impacts of its components. 
-They can be characterized by a model which describes the device with meta-data's (manufacture date, name, brands, ...).
-Their usage is characterized by a usage component.
+A devices are characterized by set of components and a usage.
+
+It's manufacture impacts are the aggregation of the impacts of its components. 
+
+Devices can be characterized by a model which describes the device with meta-data's (manufacture date, name, brands, ...).
+
+## Available devices
+
+* [Server](devices/cloud.md)
+* [Cloud instances](devices/server.md)
 

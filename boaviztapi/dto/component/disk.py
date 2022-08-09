@@ -16,7 +16,6 @@ class Disk(ComponentDTO):
     capacity: Optional[int] = None
     density: Optional[float] = None
     manufacturer: Optional[str] = None
-    manufacture_date: Optional[str] = None
     model: Optional[str] = None
 
 

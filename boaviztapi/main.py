@@ -13,7 +13,7 @@ from boaviztapi.routers.cloud_router import cloud_router
 from boaviztapi.routers.utils_router import utils_router
 
 app = FastAPI()
-print(os.getenv("ALLOWED_ORIGINS", []))
+
 origins = os.getenv("ALLOWED_ORIGINS", [])
 
 app.add_middleware(

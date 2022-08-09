@@ -1,34 +1,51 @@
 # MANUFACTURE METHODOLOGY
 
-Manufacture impacts are measured at components and device level. 
-**The total impacts of manufacture is returned independently on the use duration.**
+Manufacture impacts are measured at components and device level with a bottom-up approach.
 
-## Documentation
+## Allocation
 
-We use a bottom-up methodology to measure the manufacture impacts of devices by aggregating the impacts of each of their components. 
+Manufacture impacts can be reported with several allocation strategies.
+
+### Hover the lifecycle
+
+```Allocation: TOTAL```
+
+The total manufacturing impacts are reported independently of the usage.
+
+```manufacture_impact = total_impact```
+
+### Hover a specific duration 
+
+```Allocation: LINEAR```
+
+The manufacturing impacts is linearly distributed hover the life duration of the devices.
+The impacts are reported hover the usage duration.
+
+```manufacture_impact = total_impact * (usage_duration/life_duration)```
 
 
-### Variable components impacts
+## Variable components impacts
 
-The impact of variable components are proportional to the die size of their chips
+The impact of variable components are evaluated from the components characteristics.
 
-* CPU
-* RAM
-* DISK (SSD)
+* [CPU](components/cpu.md)
+* [RAM](components/ram.md)
+* [DISK (SSD)](components/ssd.md)
 
 
-### Fixed components impacts
+## Fixed components impacts
 
 The impact of fixed component are set by default
 
-* DISK (HDD)
-* MOTHERBOARD
-* POWER SUPPLY
-* MANUFACTURE ASSEMBLY
+* [DISK (HDD)](components/hdd.md)
+* [MOTHERBOARD](components/motherboard.md)
+* [POWER SUPPLY](components/power_supply.md)
+* [ASSEMBLY](components/assembly.md)
 
-### Particular components impacts
 
-* [USAGE](usage.md)
+## Device impacts
+
+Device impacts is evaluated from the sum of the impacts of its components. Other treatments can be applied depending on the device.
 
 ## Resources
 

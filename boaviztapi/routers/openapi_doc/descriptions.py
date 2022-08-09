@@ -1,21 +1,21 @@
 server_impact_by_model_description = "# ✔️Server impacts from model name\n" \
-                                     "Retrieve the impacts of a given server name (archetype).\n"\
+                                     "Retrieve the impacts of a given server.md name (archetype).\n"\
                                      "### 📋 Model\n" \
-                                     "Uses the [classic server impacts router](" \
-                                     "#/server/server_impact_by_config_v1_server__post) with a pre-registered model \n" \
+                                     "Uses the [classic server.md impacts router](" \
+                                     "#/server.md/server_impact_by_config_v1_server__post) with a pre-registered model \n" \
                                      "### 👄 Verbose\n" \
                                      "If set at true, shows the impacts of each components and the value used for each " \
                                      "attributes \n " \
                                      "### 📋 Model name\n" \
-                                     "You can have a list of available server models names [here](" \
-                                     "#/server/server_get_all_archetype_name_v1_server_all_default_models_get)\n " \
+                                     "You can have a list of available server.md models names [here](" \
+                                     "#/server.md/server_get_all_archetype_name_v1_server_all_default_models_get)\n " \
                                      "\n### 🧮 Measure\n" \
                                      "🔨 Manufacture impacts are the sum of the pre-registered components impacts\n\n" \
                                      "🔌 Usage impacts are measured based on the electrical consumption of the " \
                                      "pre-registered model for a year "
 
 server_impact_by_config_description = "# ✔️Server impacts from configuration\n" \
-                                      "Retrieve the impacts of a given server configuration.\n" \
+                                      "Retrieve the impacts of a given server.md configuration.\n" \
                                       "### 💡 Smart complete\n" \
                                       "All missing components and components attributes are retrieve with the closest available values. If no data are " \
                                       "available default maximizing data are used\n " \
@@ -23,11 +23,11 @@ server_impact_by_config_description = "# ✔️Server impacts from configuration
                                       "If set at true, shows the impacts of each components and the value used for each " \
                                       "attributes \n " \
                                       "### 📋 Archetype\n" \
-                                      "An archetype is a pre-registered server model. An ```archetype``` can be " \
+                                      "An archetype is a pre-registered server.md model. An ```archetype``` can be " \
                                       "specify in the model object. In case an archetype is specified, " \
                                       "all missing data are retrieve from the archetype. You can have a list of " \
-                                      "available archetype's server models [here](" \
-                                      "#/server/server_get_all_archetype_name_v1_server_all_default_models_get)\n " \
+                                      "available archetype's server.md models [here](" \
+                                      "#/server.md/server_get_all_archetype_name_v1_server_all_default_models_get)\n " \
                                       "\n### ⏲ Duration\n" \
                                       "Usage impacts are given for a specific time duration. Duration can be given in :\n" \
                                       "| time unit | Usage parameter |\n" \
@@ -44,8 +44,8 @@ server_impact_by_config_description = "# ✔️Server impacts from configuration
                                       "* an **impact factor** (```gwp_factor```, ```pe_factor```, ```adp_factor```) - retrieve with ```usage_location``` if not given\n\n" \
                                       "* an **electrical consumption** (```hours_electrical_consumption```) - retrieve with ```workload``` if not given"
 
-all_default_model_description = "# ✔️Get all the available server models\n" \
-                                "Return the name of all pre-registered server models"
+all_default_model_description = "# ✔️Get all the available server.md models\n" \
+                                "Return the name of all pre-registered server.md models"
 
 components_description = "### 💡 Smart complete\n" \
                          "All missing data are retrieve with the closest available values. If no data are " \
@@ -102,7 +102,7 @@ cloud_aws_description = "# ✔️AWS instance impacts from instance type and usa
                         "| YEARS | ```years_use_time``` |\n" \
                         "*Note* : units are cumulative\n" \
                         "### 🧮 Measure \n" \
-                        "🔨 Manufacture impacts are the sum of the pre-registered components impacts divided by the number of instances host in the physicall server\n\n" \
+                        "🔨 Manufacture impacts are the sum of the pre-registered components impacts divided by the number of instances host in the physicall server.md\n\n" \
                         "🔌 Usage impacts are measured by multiplying :\n" \
                         "* a **duration**\n\n" \
                         "* an **impact factor** (```gwp_factor```, ```pe_factor```, ```adp_factor```) - retrieve with ```usage_location``` if not given\n\n" \

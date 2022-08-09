@@ -6,7 +6,6 @@ Archetype can be used :
 
 * To create profiles for device with pre-recorded configuration components and usage. *For example : a high performance server.*
 
-
 * To pre-record real devices *For example : dellr740*
 
 
@@ -22,7 +21,6 @@ You can retrieve the impacts of a specific archetype by specifying its name in t
 
 You can specify an archetype in the model of a device when you send a device to the api.
 When doing so, missing data are retrieved from the archetype instead of default data.
-
 
 ### Example
 
