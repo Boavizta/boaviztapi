@@ -1,19 +1,18 @@
 import os
-from typing import Optional, Dict
+from typing import Optional, Union, List
 
 import pandas as pd
 
 from boaviztapi.dto import BaseDTO
-from boaviztapi.model.boattribute import Status, Boattribute
+from boaviztapi.model.boattribute import Status
 from boaviztapi.model.usage import ModelUsage, ModelUsageServer
 
 _electricity_emission_factors_df = pd.read_csv(os.path.join(os.path.dirname(__file__),'../../data/electricity/electricity_impact_factors.csv'))
 
 
-class WorkloadUnit(BaseDTO):
-    time_ratio: Optional[float] = None
-    power_ratio: Optional[float] = None
-    power: Optional[float] = None
+class WorkloadTime(BaseDTO):
+    load: float = None
+    time: float = None
 
 
 class Usage(BaseDTO):
@@ -24,7 +23,7 @@ class Usage(BaseDTO):
     year_life_time: Optional[float] = None
 
     hours_electrical_consumption: Optional[float] = None
-    workload: Optional[Dict[str, WorkloadUnit]] = None
+    workload: Optional[Union[float, List[WorkloadTime]]] = None
 
     usage_location: Optional[str] = None
     gwp_factor: Optional[float] = None
@@ -42,6 +41,10 @@ class UsageCloud(UsageServer):
 
 def smart_mapper_usage(usage_dto: Usage) -> ModelUsage:
     usage_model = ModelUsage()
+
+    if usage_dto.workload is not None:
+        usage_model.workload.value = usage_dto.workload
+        usage_model.workload.status = Status.INPUT
 
     if usage_dto.hours_electrical_consumption is not None:
         usage_model.hours_electrical_consumption.value = usage_dto.hours_electrical_consumption

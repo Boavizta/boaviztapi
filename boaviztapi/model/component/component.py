@@ -1,6 +1,7 @@
 from abc import abstractmethod
 from typing import Tuple
 
+from boaviztapi.model.consumption_profile.consumption_profile import ConsumptionProfileModel
 from boaviztapi.model.usage import ModelUsage
 
 NumberSignificantFigures = Tuple[float, int]
@@ -12,6 +13,7 @@ class Component:
     def __init__(self, **kwargs):
         self._units = None
         self._usage = None
+        self._consumption_profile = None
 
     def __iter__(self):
         for attr, value in self.__dict__.items():

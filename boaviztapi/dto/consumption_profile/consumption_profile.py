@@ -1,22 +1,24 @@
-from typing import List, Tuple, Optional
+from typing import List
 
 import pandas as pd
-from rapidfuzz import process, fuzz
 
 from boaviztapi.dto import BaseDTO
 from boaviztapi.dto.component import CPU
+from boaviztapi.dto.component.cpu import attributes_from_cpu_name
+from boaviztapi.model.boattribute import Status
+from boaviztapi.model.component import ComponentCPU
 from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
 
 _cpu_index = pd.read_csv('./boaviztapi/data/components/cpu_index.csv')
 
 
-class Workload:
+class WorkloadPower(BaseDTO):
     load: float = None
     power: float = None
 
 
 class ConsumptionProfile(BaseDTO):
-    workload: List[Workload] = None
+    workload: List[WorkloadPower] = None
 
     class Config:
         arbitrary_types_allowed = True
@@ -26,48 +28,36 @@ class ConsumptionProfileCPU(ConsumptionProfile):
     cpu: CPU = None
 
 
-def smart_mapper_consumption_profile_cpu(cp_cpu_dto: ConsumptionProfileCPU) -> CPUConsumptionProfileModel:
-    cpu_manufacturer, cpu_sub_name = parse(cp_cpu_dto.cpu.name)
-    sub = _cpu_index
-    if cpu_manufacturer is None:
-        name_list = list(sub.sub_model_name.unique())
-    else:
-        name_list = list(sub[sub['manufacturer'] == cpu_manufacturer].sub_model_name.unique())
-    result = fuzzymatch(cpu_sub_name, name_list)
-    if result is not None:
-        model_range = sub[sub['sub_model_name'] == result[0]].iloc[0].model_range
-    else:
-        model_range = None
-
-    cpu_consumption_profile = CPUConsumptionProfileModel()
-    cpu_consumption_profile.cpu_manufacturer.value = cpu_manufacturer
-    cpu_consumption_profile.cpu_model_range.value = model_range
-    return cpu_consumption_profile
+def mapper_cp(cp_dto: ConsumptionProfile) -> CPUConsumptionProfileModel:
+    cp = CPUConsumptionProfileModel()
+    cp.workloads.value = cp_dto.workload
+    cp.workloads.status = Status.INPUT
+    return cp
 
 
-def parse(cpu_name: str) -> Tuple[str, str]:
-    vendor_list = ["intel", "amd", "arm"]  # every string in lowercase
-    vendor_erased = None
-    for vendor in vendor_list:
-        if vendor in cpu_name:
-            cpu_name.replace(vendor, '')
-            vendor_erased = vendor
-            return vendor, cpu_name.replace(vendor, '')
-    return None, cpu_name
+def mapper_cp_cpu(cp_dto: ConsumptionProfileCPU) -> (CPUConsumptionProfileModel, ComponentCPU):
 
+    cpu = ComponentCPU()
+    manufacturer, model_range, family = None, None, None
 
-def fuzzymatch(cpu_name_to_match: str, cpu_name_list: list) -> Optional[Tuple[str, float, int]]:
-    foo = process.extractOne(cpu_name_to_match, cpu_name_list, scorer=fuzz.WRatio)
-    if foo is not None:
-        return foo if foo[1] > 88.0 else None
+    if cp_dto.cpu.name is not None:
+        manufacturer, model_range, family = attributes_from_cpu_name(cp_dto.cpu.name)
 
+    if cp_dto.cpu.manufacturer is not None:
+        cpu.manufacturer.value = cp_dto.cpu.manufacturer
+        cpu.manufacturer.status = Status.INPUT
+    elif manufacturer is not None:
+        cpu.manufacturer.value = manufacturer
+        cpu.manufacturer.status = Status.COMPLETED
 
-if __name__ == '__main__':
-    cp_cpu = ConsumptionProfileCPU(cpu=CPU(name="Intel Xeon W-2155"))
-    cp_model = smart_mapper_consumption_profile_cpu(cp_cpu)
+    if cp_dto.cpu.model_range is not None:
+        cpu.model_range = cp_dto.cpu.model_range
+        cpu.model_range.status = Status.INPUT
+    elif model_range is not None:
+        cpu.model_range.value = model_range
+        cpu.model_range.status = Status.COMPLETED
 
-    print(cp_model.cpu_manufacturer.value)
-    print(cp_model.cpu_model_range.value)
+    return mapper_cp(cp_dto), cpu
 
 # Intel Pentium Gold G5500T
 # Intel Xeon Platinum 8253

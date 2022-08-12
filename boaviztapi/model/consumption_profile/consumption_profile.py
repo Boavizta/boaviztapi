@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import curve_fit
 
+from boaviztapi.dto.usage.usage import WorkloadTime
 from boaviztapi.model.boattribute import Boattribute, Status
 
 _cpu_profile_consumption_df = pd.read_csv('./boaviztapi/data/consumption_profile/cpu/cpu_profile.csv')
@@ -12,6 +13,29 @@ _cpu_profile_consumption_df = pd.read_csv('./boaviztapi/data/consumption_profile
 
 class ConsumptionProfileModel:
     pass
+
+
+def lookup_consumption_profile(cpu_manufacturer, cpu_model_range) -> Optional[Dict[str, float]]:
+    sub = _cpu_profile_consumption_df
+
+    if cpu_manufacturer is not None:
+        tmp = sub[sub['manufacturer'] == cpu_manufacturer]
+        if len(tmp) > 0:
+            sub = tmp.copy()
+
+    if cpu_model_range is not None:
+        tmp = sub[sub['model_range'] == cpu_model_range]
+        if len(tmp) > 0:
+            sub = tmp.copy()
+
+    if len(sub) == 1:
+        row = sub.iloc[0]
+        return {
+            'a': row.a,
+            'b': row.b,
+            'c': row.c,
+            'd': row.d,
+        }
 
 
 class CPUConsumptionProfileModel(ConsumptionProfileModel):
@@ -31,26 +55,23 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
     _MODEL_PARAM_NAME = ['a', 'b', 'c', 'd']
 
     def __init__(self):
-        self.cpu_manufacturer = Boattribute(
-            status=Status.NONE
-        )
-        self.cpu_model_range = Boattribute(
-            status=Status.NONE,
-            default=self.DEFAULT_CPU_MODEL_RANGE
-        )
         self.workloads = Boattribute(
             status=Status.NONE,
             default=self.DEFAULT_WORKLOADS
         )
+        self.params = Boattribute(
+            status=Status.NONE,
+            default=self._DEFAULT_MODEL_PARAMS
+        )
 
     @property
     def list_workloads(self) -> Tuple[List[float], List[float]]:
-        load = [item['load'] for item in self.workloads.value]
-        power = [item['power'] for item in self.workloads.value]
+        load = [item.load for item in self.workloads.value]
+        power = [item.power for item in self.workloads.value]
         return load, power
 
-    def compute_consumption_profile_model(self) -> Dict[str, float]:
-        base_model = self.lookup_consumption_profile()
+    def compute_consumption_profile_model(self, cpu_manufacturer, cpu_model_range) -> Dict[str, float]:
+        base_model = lookup_consumption_profile(cpu_manufacturer, cpu_model_range)
 
         if base_model is None:
             base_model = self._DEFAULT_MODEL_PARAMS
@@ -59,29 +80,20 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
             return base_model
 
         final_model = self.__compute_model_adaptation(base_model)
-        return final_model
 
-    def lookup_consumption_profile(self) -> Optional[Dict[str, float]]:
-        sub = _cpu_profile_consumption_df
+        self.params.value = final_model
+        self.params.status = Status.COMPLETED
 
-        if self.cpu_manufacturer is not None:
-            tmp = sub[sub['manufacturer'] == self.cpu_manufacturer]
-            if len(tmp) > 0:
-                sub = tmp.copy()
+        return self.params.value
 
-        if self.cpu_model_range is not None:
-            tmp = sub[sub['model_range'] == self.cpu_model_range]
-            if len(tmp) > 0:
-                sub = tmp.copy()
+    def apply_consumption_profile(self, x: float):
+        return self.__log_model(x, self.params.value['a'], self.params.value['b'], self.params.value['c'], self.params.value['d'])
 
-        if len(sub) == 1:
-            row = sub.iloc[0]
-            return {
-                'a': row.a,
-                'b': row.b,
-                'c': row.c,
-                'd': row.d,
-            }
+    def apply_multiple_workloads(self, workloads: List[WorkloadTime]):
+        total = 0
+        for workload in workloads:
+            total += workload.time * self.apply_consumption_profile(workload.load)
+        return total
 
     def __compute_model_adaptation(self, base_model: Dict[str, float]) -> Dict[str, float]:
         base_model_list = self.__model_dict_to_list(base_model)

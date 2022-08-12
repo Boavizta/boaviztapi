@@ -3,6 +3,7 @@ from typing import Tuple
 import boaviztapi.utils.roundit as rd
 from boaviztapi.model.boattribute import Boattribute, Status
 from boaviztapi.model.component.component import Component, NumberSignificantFigures
+from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
 
 
 class ComponentCPU(Component):
@@ -41,7 +42,7 @@ class ComponentCPU(Component):
                                         default=self.DEFAULT_CPU_MANUFACTURER)
         self.family = Boattribute(value=None, status=Status.NONE, unit="none", default=self.DEFAULT_CPU_FAMILY)
 
-    # @property
+    # @property j_;,bg  q²D w wWA²²"
     # def name(self):
     #     # TODO: Maybe we don't need this getter?
     #     raise NotImplementedError
@@ -54,9 +55,27 @@ class ComponentCPU(Component):
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')
 
+    def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
+        impact_factor = getattr(self.usage, f'{impact_type}_factor')
+        if self.usage.hours_electrical_consumption.status == Status.NONE and self.usage.workload is not None:
+            cp = CPUConsumptionProfileModel()
+            cp.compute_consumption_profile_model(cpu_manufacturer=self.manufacturer,
+                                                 cpu_model_range=self.model_range)
+            if self.usage.workload is dict:
+                self.usage.hours_electrical_consumption.value = cp.apply_multiple_workloads(self.usage.workload)
+                self.usage.hours_electrical_consumption.status = Status.COMPLETED
+            elif self.usage.workload is float:
+                self.usage.hours_electrical_consumption.value = cp.apply_consumption_profile(self.usage.workload)
+                self.usage.hours_electrical_consumption.status = Status.COMPLETED
+
+        impacts = impact_factor.value * (
+                self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
+        sig_fig = self.__compute_significant_numbers_usage(impact_factor.value)
+        return impacts, sig_fig
+
     def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
         core_impact, cpu_die_impact, cpu_impact = self.__get_impact_constants(impact_type)
-        sign_figures = self.__compute_significant_numbers(core_impact, cpu_die_impact, cpu_impact)
+        sign_figures = self.__compute_significant_numbers_manuf(core_impact, cpu_die_impact, cpu_impact)
         impact = self.__compute_impact_manufacture(core_impact, cpu_die_impact, cpu_impact)
         return impact, sign_figures
 
@@ -66,8 +85,12 @@ class ComponentCPU(Component):
         cpu_impact = self.IMPACT_FACTOR[impact_type]['impact']
         return core_impact, cpu_die_impact, cpu_impact
 
-    def __compute_significant_numbers(self, core_impact: float, cpu_die_impact: float, cpu_impact: float) -> int:
+    def __compute_significant_numbers_manuf(self, core_impact: float, cpu_die_impact: float, cpu_impact: float) -> int:
         return rd.min_significant_figures(self.die_size_per_core.value, core_impact, cpu_die_impact, cpu_impact)
+
+    def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
+        return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value,
+                                          impact_factor)
 
     def __compute_impact_manufacture(self, core_impact: float, cpu_die_impact: float, cpu_impact: float) -> float:
         return (self.core_units.value * self.die_size_per_core.value + core_impact) * cpu_die_impact + cpu_impact

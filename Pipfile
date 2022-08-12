@@ -12,6 +12,7 @@ aiofile = '*'
 numpy = "*"
 scipy = "*"
 rapidfuzz = "*"
+curve-fit = "*"
 
 [dev-packages]
 mkdocs = '*'
