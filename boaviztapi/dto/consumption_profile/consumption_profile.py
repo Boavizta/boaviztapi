@@ -58,22 +58,3 @@ def mapper_cp_cpu(cp_dto: ConsumptionProfileCPU) -> (CPUConsumptionProfileModel,
         cpu.model_range.status = Status.COMPLETED
 
     return mapper_cp(cp_dto), cpu
-
-# Intel Pentium Gold G5500T
-# Intel Xeon Platinum 8253
-# Intel Core i7-5650U
-# Intel Xeon D-1533N
-# Intel Xeon W-2155
-# AMD EPYC 7352
-# AMD EPYC 7713P
-# intel Xeon Minister of Ecology isn't good enough
-# Intel Core i75650U
-# Intel Xeon D 1533N
-# Intel Xeon W 2155
-# AMD-EPYC 7352
-# Intel xeon-Gold 6244
-# Intel Pentium Gold G5500T
-# Intel Xeon Platinum 8253
-# Intel Core i7-5650U
-# Intel Xeon D-1533N
-# Intel Xeon W-2155
