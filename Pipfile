@@ -9,10 +9,14 @@ fastapi = '*'
 uvicorn = '*'
 pandas = '*'
 aiofile = '*'
+<<<<<<< HEAD
 numpy = "*"
 scipy = "*"
 rapidfuzz = "*"
 curve-fit = "*"
+=======
+rapidfuzz = '*'
+>>>>>>> feat/fuzzy_match_components
 
 [dev-packages]
 mkdocs = '*'

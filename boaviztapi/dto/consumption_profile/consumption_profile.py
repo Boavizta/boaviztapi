@@ -30,8 +30,8 @@ class ConsumptionProfileCPU(ConsumptionProfile):
 
 def mapper_cp(cp_dto: ConsumptionProfile) -> CPUConsumptionProfileModel:
     cp = CPUConsumptionProfileModel()
-    cp.workloads.value = cp_dto.workload
-    cp.workloads.status = Status.INPUT
+    cp.power_workloads.value = cp_dto.workload
+    cp.power_workloads.status = Status.INPUT
     return cp
 
 

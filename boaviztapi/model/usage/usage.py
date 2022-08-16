@@ -21,9 +21,9 @@ class ModelUsage:
     _DAYS_IN_HOURS = 24
     _YEARS_IN_HOURS = 24 * 365
 
-    def __init__(self, /, **kwargs):
+    def __init__(self, **kwargs):
         self.hours_electrical_consumption = Boattribute(value=None, status=Status.NONE, unit="W", default=self.DEFAULT_POWER_CONSUMPTION)
-        self.workload = Boattribute(value=None, status=Status.NONE, default=None)
+        self.time_workload = Boattribute(value=None, status=Status.NONE, default=self.DEFAULT_WORKLOAD, unit="%")
         self.usage_location = Boattribute(value=None, status=Status.NONE, unit="CodSP3 - NCS Country Codes - NATO",
                                           default=self.DEFAULT_USAGE_LOCATION)
         self.adp_factor = Boattribute(value=None, status=Status.NONE, unit="kgCO2e/kWh",
@@ -54,7 +54,7 @@ class ModelUsageServer(ModelUsage):
     DEFAULT_LIFE_TIME_IN_HOURS = 24 * 365 * 3  # 3 years
     DEFAULT_POWER_CONSUMPTION = 300 # 300 watt
 
-    def __init__(self, /, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         self.other_consumption_ratio = Boattribute(value=None, status=Status.NONE, unit="ratio /1")
@@ -64,7 +64,7 @@ class ModelUsageCloud(ModelUsageServer):
     DEFAULT_INSTANCE_PER_SERVER = 1
     DEFAULT_LIFE_TIME_IN_HOURS = 24 * 365 * 2  # 2 years
 
-    def __init__(self, /, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.instance_per_server = Boattribute(value=None, status=Status.NONE, unit="", default=self.DEFAULT_INSTANCE_PER_SERVER)
 

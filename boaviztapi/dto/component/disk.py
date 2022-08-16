@@ -7,6 +7,7 @@ from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.usage.usage import smart_mapper_usage, Usage
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import ComponentSSD, ComponentHDD
+from boaviztapi.utils.fuzzy_match import fuzzymatch_attr_from_pdf
 
 _ssd_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/ssd_manufacture.csv'))
 
@@ -25,14 +26,12 @@ def smart_mapper_ssd(disk_dto: Disk) -> ComponentSSD:
 
     disk_component.usage = smart_mapper_usage(disk_dto.usage or Usage())
     disk_component.units = disk_dto.units
+    corrected_manufacturer = None
 
     if disk_dto.type == 'ssd':
         if disk_dto.capacity is not None:
             disk_component.capacity.value = disk_dto.capacity
             disk_component.capacity.status = Status.INPUT
-        if disk_dto.manufacturer is not None:
-            disk_component.manufacturer.value = disk_dto.manufacturer
-            disk_component.manufacturer.status = Status.INPUT
 
         if disk_dto.density is not None:
             disk_component.density.value = disk_dto.density
@@ -40,7 +39,8 @@ def smart_mapper_ssd(disk_dto: Disk) -> ComponentSSD:
         else:
             sub = _ssd_df
             if disk_dto.manufacturer is not None:
-                sub = sub[sub['manufacturer'] == disk_dto.manufacturer]
+                corrected_manufacturer = fuzzymatch_attr_from_pdf(disk_dto.manufacturer, "manufacturer", sub)
+                sub = sub[sub['manufacturer'] == corrected_manufacturer]
 
             if len(sub) == 0 or len(sub) == len(_ssd_df):
                 pass
@@ -59,6 +59,14 @@ def smart_mapper_ssd(disk_dto: Disk) -> ComponentSSD:
                     disk_component.density.value = density
                     disk_component.density.status = Status.COMPLETED
                     disk_component.density.source = row["manufacturer"]
+
+        if disk_dto.manufacturer is not None and corrected_manufacturer is not None:
+            if corrected_manufacturer != disk_dto.manufacturer:
+                disk_component.manufacturer.value = corrected_manufacturer
+                disk_component.manufacturer.status = Status.CHANGED
+            else:
+                disk_component.manufacturer.value = disk_dto.manufacturer
+                disk_component.manufacturer.status = Status.INPUT
 
     return disk_component
 

@@ -12,7 +12,7 @@ def bottom_up_component(component: Component, allocation: Allocation) -> dict:
     impacts = {
         'gwp': {
             'manufacture': get_model_impact(component, 'manufacture', 'gwp', component.units, allocation) or NOT_IMPLEMENTED,
-            'use': get_model_impact(component, 'use', 'pe', component.units) or NOT_IMPLEMENTED,
+            'use': get_model_impact(component, 'use', 'gwp', component.units) or NOT_IMPLEMENTED,
             'unit': "kgCO2eq"
         },
         'pe': {
@@ -39,7 +39,7 @@ def get_model_impact(model: Union[Component, Device],
         impact, significant_figures = impact_function()
 
         if phase == "manufacture":
-            impact = allocate(impact, allocation_type, model.usage.use_time.value, model.usage.life_time.value)
+            impact = allocate(impact, allocation_type, model.usage)
 
         units_impact = impact * units
         return rd.round_to_sigfig(units_impact, significant_figures)

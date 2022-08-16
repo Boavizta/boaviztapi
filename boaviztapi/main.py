@@ -1,5 +1,10 @@
+import json
+import os
+
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
+from fastapi.middleware.cors import CORSMiddleware
+
 from boaviztapi import __version__
 
 from boaviztapi.routers.component_router import component_router
@@ -10,6 +15,14 @@ from boaviztapi.routers.utils_router import utils_router
 
 app = FastAPI()
 
+origins = os.getenv("ALLOWED_ORIGINS", [])
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.include_router(server_router)
 app.include_router(cloud_router)
 app.include_router(component_router)
@@ -18,6 +31,7 @@ app.include_router(consumption_profile)
 
 if __name__ == '__main__':
     import uvicorn
+
 
     uvicorn.run('main:app', host='localhost', port=5000, reload=True, debug=True)
 

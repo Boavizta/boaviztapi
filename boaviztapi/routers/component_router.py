@@ -5,8 +5,7 @@ from boaviztapi.dto.component.cpu import smart_mapper_cpu
 from boaviztapi.dto.component.other import mapper_motherboard, mapper_power_supply, mapper_case
 from boaviztapi.dto.component.ram import smart_mapper_ram
 from boaviztapi.dto.component.disk import smart_mapper_ssd, mapper_hdd
-from boaviztapi.model.component import Component, ComponentRAM, ComponentHDD, ComponentSSD, \
-    ComponentPowerSupply, ComponentMotherboard, ComponentCase
+from boaviztapi.model.component import Component
 from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
     hdd_description, motherboard_description, power_supply_description, case_description
 from boaviztapi.routers.openapi_doc.examples import components_examples

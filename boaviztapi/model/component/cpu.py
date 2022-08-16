@@ -31,7 +31,7 @@ class ComponentCPU(Component):
         'constant_core_impact': 0.491
     }
 
-    def __init__(self, /, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         self.core_units = Boattribute(value=None, status=Status.NONE, unit="none", default=self.DEFAULT_CPU_CORE_UNITS)
@@ -42,30 +42,24 @@ class ComponentCPU(Component):
                                         default=self.DEFAULT_CPU_MANUFACTURER)
         self.family = Boattribute(value=None, status=Status.NONE, unit="none", default=self.DEFAULT_CPU_FAMILY)
 
-    # @property j_;,bg  q²D w wWA²²"
-    # def name(self):
-    #     # TODO: Maybe we don't need this getter?
-    #     raise NotImplementedError
-    #
-    # @name.setter
-    # def name(self, value: str) -> None:
-    #     # TODO: Implement cpu name parser into (manufacture, family, model_range)
-    #     raise NotImplementedError
-
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')
 
     def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
-        if self.usage.hours_electrical_consumption.status == Status.NONE and self.usage.workload is not None:
+        print(f'{impact_type}_factor')
+        if self.usage.hours_electrical_consumption.status == Status.NONE and self.usage.time_workload.status != Status.NONE:
             cp = CPUConsumptionProfileModel()
             cp.compute_consumption_profile_model(cpu_manufacturer=self.manufacturer,
                                                  cpu_model_range=self.model_range)
-            if self.usage.workload is dict:
-                self.usage.hours_electrical_consumption.value = cp.apply_multiple_workloads(self.usage.workload)
+
+            if type(self.usage.time_workload.value) == float:
+                self.usage.hours_electrical_consumption.value = cp.apply_consumption_profile(
+                    self.usage.time_workload.value)
                 self.usage.hours_electrical_consumption.status = Status.COMPLETED
-            elif self.usage.workload is float:
-                self.usage.hours_electrical_consumption.value = cp.apply_consumption_profile(self.usage.workload)
+            else:
+                self.usage.hours_electrical_consumption.value = cp.apply_multiple_workloads(
+                    self.usage.time_workload.value)
                 self.usage.hours_electrical_consumption.status = Status.COMPLETED
 
         impacts = impact_factor.value * (
@@ -102,10 +96,10 @@ class ComponentCPU(Component):
         return self.__impact_manufacture('adp')
 
     def impact_use_gwp(self) -> NumberSignificantFigures:
-        raise NotImplementedError
+        return self.__impact_usage('gwp')
 
     def impact_use_pe(self) -> NumberSignificantFigures:
-        raise NotImplementedError
+        return self.__impact_usage('pe')
 
     def impact_use_adp(self) -> NumberSignificantFigures:
-        raise NotImplementedError
+        return self.__impact_usage('adp')

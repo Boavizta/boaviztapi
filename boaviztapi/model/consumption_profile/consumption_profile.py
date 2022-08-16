@@ -55,9 +55,10 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
     _MODEL_PARAM_NAME = ['a', 'b', 'c', 'd']
 
     def __init__(self):
-        self.workloads = Boattribute(
+        self.power_workloads = Boattribute(
             status=Status.NONE,
-            default=self.DEFAULT_WORKLOADS
+            default=self.DEFAULT_WORKLOADS,
+            unit="workload_rate:W"
         )
         self.params = Boattribute(
             status=Status.NONE,
@@ -66,8 +67,8 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
 
     @property
     def list_workloads(self) -> Tuple[List[float], List[float]]:
-        load = [item.load for item in self.workloads.value]
-        power = [item.power for item in self.workloads.value]
+        load = [item.load for item in self.power_workloads.value]
+        power = [item.power for item in self.power_workloads.value]
         return load, power
 
     def compute_consumption_profile_model(self, cpu_manufacturer, cpu_model_range) -> Dict[str, float]:
@@ -76,7 +77,7 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         if base_model is None:
             base_model = self._DEFAULT_MODEL_PARAMS
 
-        if self.workloads is None:
+        if self.power_workloads.value is None:
             return base_model
 
         final_model = self.__compute_model_adaptation(base_model)
@@ -89,9 +90,9 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
     def apply_consumption_profile(self, x: float):
         return self.__log_model(x, self.params.value['a'], self.params.value['b'], self.params.value['c'], self.params.value['d'])
 
-    def apply_multiple_workloads(self, workloads: List[WorkloadTime]):
+    def apply_multiple_workloads(self, time_workload: List[WorkloadTime]):
         total = 0
-        for workload in workloads:
+        for workload in time_workload:
             total += workload.time * self.apply_consumption_profile(workload.load)
         return total
 
@@ -118,7 +119,7 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
 
 if __name__ == '__main__':
     cpm = CPUConsumptionProfileModel()
-    cpm.workloads.value = [
+    cpm.power_workloads.value = [
         {'load': 0., 'power': 58.},
         {'load': 100., 'power': 618.}
     ]
