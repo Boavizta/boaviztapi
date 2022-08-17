@@ -1,5 +1,5 @@
 import os
-from typing import Optional, Dict
+from typing import Optional, Dict, List, Union
 
 import pandas as pd
 
@@ -7,13 +7,13 @@ from boaviztapi.dto import BaseDTO
 from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.usage import ModelUsage, ModelUsageServer
 
-_electricity_emission_factors_df = pd.read_csv(os.path.join(os.path.dirname(__file__),'../../data/electricity/electricity_impact_factors.csv'))
+_electricity_emission_factors_df = pd.read_csv(os.path.join(os.path.dirname(__file__),'../../data/electricity'
+                                                                                      '/electricity_impact_factors.csv'))
 
 
-class WorkloadUnit(BaseDTO):
-    time_ratio: Optional[float] = None
-    power_ratio: Optional[float] = None
-    power: Optional[float] = None
+class WorkloadTime(BaseDTO):
+    time_percentage: float = None
+    load_percentage: float = None
 
 
 class Usage(BaseDTO):
@@ -24,7 +24,7 @@ class Usage(BaseDTO):
     year_life_time: Optional[float] = None
 
     hours_electrical_consumption: Optional[float] = None
-    workload: Optional[Dict[str, WorkloadUnit]] = None
+    time_workload: Optional[Union[float, List[WorkloadTime]]] = None
 
     usage_location: Optional[str] = None
     gwp_factor: Optional[float] = None
@@ -43,12 +43,18 @@ class UsageCloud(UsageServer):
 def smart_mapper_usage(usage_dto: Usage) -> ModelUsage:
     usage_model = ModelUsage()
 
+    if usage_dto.time_workload is not None:
+        usage_model.time_workload.value = usage_dto.time_workload
+        if type(usage_dto.time_workload) == float:
+            usage_model.time_workload.unit = "%"
+        else:
+            usage_model.time_workload.unit = "(time_percentage:%, load_percentage: %)"
+
+        usage_model.time_workload.status = Status.INPUT
+
     if usage_dto.hours_electrical_consumption is not None:
         usage_model.hours_electrical_consumption.value = usage_dto.hours_electrical_consumption
         usage_model.hours_electrical_consumption.status = Status.INPUT
-
-    if usage_dto.workload is not None:
-        pass  # TODO
 
     if usage_dto.year_life_time is not None:
         usage_model.life_time.value = usage_dto.year_life_time

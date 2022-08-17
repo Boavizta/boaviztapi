@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import curve_fit
 
+from boaviztapi.dto.usage.usage import WorkloadTime
 from boaviztapi.model.boattribute import Boattribute, Status
 
 _cpu_profile_consumption_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/consumption_profile/cpu/cpu_profile.csv'))
@@ -13,6 +14,29 @@ _cpu_profile_consumption_df = pd.read_csv(os.path.join(os.path.dirname(__file__)
 
 class ConsumptionProfileModel:
     pass
+
+
+def lookup_consumption_profile(cpu_manufacturer: str = None, cpu_model_range: str = None) -> Optional[Dict[str, float]]:
+    sub = _cpu_profile_consumption_df
+
+    if cpu_manufacturer is not None:
+        tmp = sub[sub['manufacturer'] == cpu_manufacturer]
+        if len(tmp) > 0:
+            sub = tmp.copy()
+
+    if cpu_model_range is not None:
+        tmp = sub[sub['model_range'] == cpu_model_range]
+        if len(tmp) > 0:
+            sub = tmp.copy()
+
+    if len(sub) == 1:
+        row = sub.iloc[0]
+        return {
+            'a': row.a,
+            'b': row.b,
+            'c': row.c,
+            'd': row.d,
+        }
 
 
 class CPUConsumptionProfileModel(ConsumptionProfileModel):
@@ -44,48 +68,35 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
 
     @property
     def list_workloads(self) -> Tuple[List[float], List[float]]:
-        print(self.workloads.value)
         load = [item.load for item in self.workloads.value]
         power = [item.power for item in self.workloads.value]
         return load, power
 
+    def apply_consumption_profile(self, load_percentage: float) -> float:
+        return self.__log_model(load_percentage, self.params.value['a'], self.params.value['b'], self.params.value['c'],
+                                self.params.value['d'])
+
+    def apply_multiple_workloads(self, time_workload: List[WorkloadTime]) -> float:
+        total = 0
+        for workload in time_workload:
+            total += (workload.time_percentage / 100) * self.apply_consumption_profile(workload.load_percentage)
+        return total
+
     def compute_consumption_profile_model(self, cpu_manufacturer: str = None, cpu_model_range: str = None) -> Union[Dict[str, float], None]:
-        model = self.lookup_consumption_profile(cpu_manufacturer, cpu_model_range)
+        model = lookup_consumption_profile(cpu_manufacturer, cpu_model_range)
 
         if model is None:
             self.params.value = self._DEFAULT_MODEL_PARAMS
             self.params.status = Status.DEFAULT
             return self._DEFAULT_MODEL_PARAMS
 
-        if self.workloads is not None:
+        if self.workloads.status != Status.NONE:
             model = self.__compute_model_adaptation(model)
 
         self.params.value = model
         self.params.status = Status.COMPLETED
 
         return model
-
-    def lookup_consumption_profile(self,  cpu_manufacturer: str = None, cpu_model_range: str = None) -> Optional[Dict[str, float]]:
-        sub = _cpu_profile_consumption_df
-
-        if cpu_manufacturer is not None:
-            tmp = sub[sub['manufacturer'] == cpu_manufacturer]
-            if len(tmp) > 0:
-                sub = tmp.copy()
-
-        if cpu_model_range is not None:
-            tmp = sub[sub['model_range'] == cpu_model_range]
-            if len(tmp) > 0:
-                sub = tmp.copy()
-
-        if len(sub) == 1:
-            row = sub.iloc[0]
-            return {
-                'a': row.a,
-                'b': row.b,
-                'c': row.c,
-                'd': row.d,
-            }
 
     def __compute_model_adaptation(self, base_model: Dict[str, float]) -> Dict[str, float]:
         base_model_list = self.__model_dict_to_list(base_model)

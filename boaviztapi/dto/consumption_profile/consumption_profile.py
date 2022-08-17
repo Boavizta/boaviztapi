@@ -13,8 +13,8 @@ _cpu_index = pd.read_csv('./boaviztapi/data/components/cpu_index.csv')
 
 
 class WorkloadPower(BaseDTO):
-    load: float = None
-    power: float = None
+    load_percentage: float = None
+    power_watt: float = None
 
 
 class ConsumptionProfile(BaseDTO):

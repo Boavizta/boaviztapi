@@ -2,6 +2,8 @@ import boaviztapi.utils.roundit as rd
 from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.device import Device
 from boaviztapi.model.component import Component
+from boaviztapi.service.allocation import Allocation
+from boaviztapi.service.bottom_up import get_model_impact, NOT_IMPLEMENTED
 
 
 def verbose_device(device: Device):
@@ -22,7 +24,7 @@ def verbose_device(device: Device):
     return json_output
 
 
-def verbose_usage(device: Device):
+def verbose_usage(device: [Device, Component]):
     json_output = {}
 
     for attr, val in device.usage.__iter__():
@@ -33,17 +35,18 @@ def verbose_usage(device: Device):
 
     json_output["impacts"] = {
         "gwp": {
-            "value": rd.round_to_sigfig(*device.impact_use_gwp()),
+            "value": get_model_impact(device, 'use', 'gwp', 1, Allocation.TOTAL) or NOT_IMPLEMENTED,
             "unit": "kgCO2eq"
         },
         "pe": {
-            "value": rd.round_to_sigfig(*device.impact_use_pe()),
+            "value": get_model_impact(device, 'use', 'pe', 1, Allocation.TOTAL) or NOT_IMPLEMENTED,
             "unit": "MJ"},
         "adp": {
-            "value": rd.round_to_sigfig(*device.impact_use_adp()),
+            "value": get_model_impact(device, 'use', 'adp', 1, Allocation.TOTAL) or NOT_IMPLEMENTED,
             "unit": "kgSbeq"
         }
     }
+
     return json_output
 
 
@@ -68,5 +71,5 @@ def verbose_component(component: Component):
             continue
         if val.status != Status.NONE:
             json_output[attr] = val.to_json()
-
+    json_output["USAGE"] = verbose_usage(component)
     return json_output
