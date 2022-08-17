@@ -1,3 +1,4 @@
+import os
 from typing import List
 
 import pandas as pd
@@ -9,7 +10,7 @@ from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import ComponentCPU
 from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
 
-_cpu_index = pd.read_csv('./boaviztapi/data/components/cpu_index.csv')
+_cpu_index = os.path.join(os.path.dirname(__file__), '../../data/components/cpu_index.csv')
 
 
 class WorkloadPower(BaseDTO):
