@@ -86,9 +86,6 @@ def smart_mapper_usage_server(usage_dto: UsageServer) -> ModelUsageServer:
         usage_model_server.hours_electrical_consumption.value = usage_dto.hours_electrical_consumption
         usage_model_server.hours_electrical_consumption.status = Status.INPUT
 
-    if usage_dto.workload is not None:
-        pass  # TODO
-
     if usage_dto.years_life_time is not None:
         usage_model_server.life_time.value = usage_dto.years_life_time * 24 * 365
         usage_model_server.life_time.status = Status.INPUT

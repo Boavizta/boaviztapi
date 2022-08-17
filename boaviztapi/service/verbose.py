@@ -71,5 +71,8 @@ def verbose_component(component: Component):
             continue
         if val.status != Status.NONE:
             json_output[attr] = val.to_json()
-    json_output["USAGE"] = verbose_usage(component)
+
+    if get_model_impact(component, 'use', 'gwp', 1, Allocation.TOTAL):
+        json_output["USAGE"] = verbose_usage(component)
+
     return json_output
