@@ -1,5 +1,6 @@
 import math
-from typing import Dict, Optional, List, Tuple
+import os
+from typing import Dict, Optional, List, Tuple, Union
 
 import numpy as np
 import pandas as pd
@@ -7,7 +8,7 @@ from scipy.optimize import curve_fit
 
 from boaviztapi.model.boattribute import Boattribute, Status
 
-_cpu_profile_consumption_df = pd.read_csv('./boaviztapi/data/consumption_profile/cpu/cpu_profile.csv')
+_cpu_profile_consumption_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/consumption_profile/cpu/cpu_profile.csv'))
 
 
 class ConsumptionProfileModel:
@@ -31,46 +32,49 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
     _MODEL_PARAM_NAME = ['a', 'b', 'c', 'd']
 
     def __init__(self):
-        self.cpu_manufacturer = Boattribute(
-            status=Status.NONE
-        )
-        self.cpu_model_range = Boattribute(
-            status=Status.NONE,
-            default=self.DEFAULT_CPU_MODEL_RANGE
-        )
         self.workloads = Boattribute(
             status=Status.NONE,
-            default=self.DEFAULT_WORKLOADS
+            default=self.DEFAULT_WORKLOADS,
+            unit="workload_rate:W"
+        )
+        self.params = Boattribute(
+            status=Status.NONE,
+            default=self._DEFAULT_MODEL_PARAMS
         )
 
     @property
     def list_workloads(self) -> Tuple[List[float], List[float]]:
-        load = [item['load'] for item in self.workloads.value]
-        power = [item['power'] for item in self.workloads.value]
+        print(self.workloads.value)
+        load = [item.load for item in self.workloads.value]
+        power = [item.power for item in self.workloads.value]
         return load, power
 
-    def compute_consumption_profile_model(self) -> Dict[str, float]:
-        base_model = self.lookup_consumption_profile()
+    def compute_consumption_profile_model(self, cpu_manufacturer: str = None, cpu_model_range: str = None) -> Union[Dict[str, float], None]:
+        model = self.lookup_consumption_profile(cpu_manufacturer, cpu_model_range)
 
-        if base_model is None:
-            base_model = self._DEFAULT_MODEL_PARAMS
+        if model is None:
+            self.params.value = self._DEFAULT_MODEL_PARAMS
+            self.params.status = Status.DEFAULT
+            return self._DEFAULT_MODEL_PARAMS
 
-        if self.workloads is None:
-            return base_model
+        if self.workloads is not None:
+            model = self.__compute_model_adaptation(model)
 
-        final_model = self.__compute_model_adaptation(base_model)
-        return final_model
+        self.params.value = model
+        self.params.status = Status.COMPLETED
 
-    def lookup_consumption_profile(self) -> Optional[Dict[str, float]]:
+        return model
+
+    def lookup_consumption_profile(self,  cpu_manufacturer: str = None, cpu_model_range: str = None) -> Optional[Dict[str, float]]:
         sub = _cpu_profile_consumption_df
 
-        if self.cpu_manufacturer is not None:
-            tmp = sub[sub['manufacturer'] == self.cpu_manufacturer]
+        if cpu_manufacturer is not None:
+            tmp = sub[sub['manufacturer'] == cpu_manufacturer]
             if len(tmp) > 0:
                 sub = tmp.copy()
 
-        if self.cpu_model_range is not None:
-            tmp = sub[sub['model_range'] == self.cpu_model_range]
+        if cpu_model_range is not None:
+            tmp = sub[sub['model_range'] == cpu_model_range]
             if len(tmp) > 0:
                 sub = tmp.copy()
 
@@ -119,4 +123,4 @@ if __name__ == '__main__':
         {'load': 0., 'power': 58.},
         {'load': 100., 'power': 618.}
     ]
-    print(cpm.compute_consumption_profile_model())
+    print(cpm.compute_consumption_profile_model("intel", "Xeon E5"))
