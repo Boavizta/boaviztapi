@@ -9,6 +9,7 @@ fastapi = '*'
 uvicorn = '*'
 pandas = '*'
 aiofile = '*'
+rapidfuzz = '*'
 
 [dev-packages]
 mkdocs = '*'

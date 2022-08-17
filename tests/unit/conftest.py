@@ -1,3 +1,6 @@
+import os
+
+import pandas as pd
 import pytest
 
 from boaviztapi.dto.component import CPU, RAM, Disk, Case, Motherboard, PowerSupply
@@ -14,7 +17,8 @@ from tests.unit import data_dir
 # MODEL
 
 @pytest.fixture(scope="function")
-def dell_r740_model(rack_case_model, complete_cpu_model, complete_ram_model, complete_ssd_model, complete_power_supply_model):
+def dell_r740_model(rack_case_model, complete_cpu_model, complete_ram_model, complete_ssd_model,
+                    complete_power_supply_model):
     server = DeviceServer()
 
     server.case = rack_case_model
@@ -45,7 +49,8 @@ def incomplete_server_model(rack_case_model, complete_ram_model_2, complete_ssd_
 
 
 @pytest.fixture(scope="function")
-def completed_server_with_dellr740_model(rack_case_model, complete_cpu_model, complete_ram_model_2, complete_ssd_model_2, complete_power_supply_model):
+def completed_server_with_dellr740_model(rack_case_model, complete_cpu_model, complete_ram_model_2,
+                                         complete_ssd_model_2, complete_power_supply_model):
     server = DeviceServer()
 
     server.case = rack_case_model
@@ -406,3 +411,18 @@ def french_mix_1_kw_dto():
 def empty_usage_dto():
     return UsageServer.parse_obj({
     })
+
+
+@pytest.fixture(scope="function")
+def cpu_dataframe():
+    return pd.read_csv(data_dir + "/csv_components/cpu_manufacture.csv")
+
+
+@pytest.fixture(scope="function")
+def ram_dataframe():
+    return pd.read_csv(data_dir + "/csv_components/ram_manufacture.csv")
+
+
+@pytest.fixture(scope="function")
+def ssd_dataframe():
+    return pd.read_csv(data_dir + "/csv_components/ssd_manufacture.csv")
