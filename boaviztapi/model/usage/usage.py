@@ -23,7 +23,8 @@ class ModelUsage:
 
     def __init__(self, **kwargs):
         self.hours_electrical_consumption = Boattribute(value=None, status=Status.NONE, unit="W", default=self.DEFAULT_POWER_CONSUMPTION)
-        self.workload = None
+        self.time_workload = Boattribute(value=None, status=Status.NONE, default=self.DEFAULT_WORKLOAD)
+        self.consumption_profile = None
         self.usage_location = Boattribute(value=None, status=Status.NONE, unit="CodSP3 - NCS Country Codes - NATO",
                                           default=self.DEFAULT_USAGE_LOCATION)
         self.adp_factor = Boattribute(value=None, status=Status.NONE, unit="kgCO2e/kWh",
