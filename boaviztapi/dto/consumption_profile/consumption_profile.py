@@ -51,7 +51,7 @@ def mapper_cp_cpu(cp_dto: ConsumptionProfileCPU) -> (CPUConsumptionProfileModel,
         cpu.manufacturer.status = Status.COMPLETED
 
     if cp_dto.cpu.model_range is not None:
-        cpu.model_range = cp_dto.cpu.model_range
+        cpu.model_range.value = cp_dto.cpu.model_range
         cpu.model_range.status = Status.INPUT
     elif model_range is not None:
         cpu.model_range.value = model_range
