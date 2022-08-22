@@ -68,8 +68,8 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
 
     @property
     def list_workloads(self) -> Tuple[List[float], List[float]]:
-        load = [item.load for item in self.workloads.value]
-        power = [item.power for item in self.workloads.value]
+        load = [item.load_percentage for item in self.workloads.value]
+        power = [item.power_watt for item in self.workloads.value]
         return load, power
 
     def apply_consumption_profile(self, load_percentage: float) -> float:
@@ -86,17 +86,20 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         model = lookup_consumption_profile(cpu_manufacturer, cpu_model_range)
 
         if model is None:
-            self.params.value = self._DEFAULT_MODEL_PARAMS
-            self.params.status = Status.DEFAULT
-            return self._DEFAULT_MODEL_PARAMS
+            if self.workloads.status != Status.NONE:
+                self.params.value = self.__compute_model_adaptation(self._DEFAULT_MODEL_PARAMS)
+                self.params.status = Status.COMPLETED
+            else:
+                self.params.value = self._DEFAULT_MODEL_PARAMS
+                self.params.status = Status.DEFAULT
+        else:
+            if self.workloads.status != Status.NONE:
+                model = self.__compute_model_adaptation(model)
 
-        if self.workloads.status != Status.NONE:
-            model = self.__compute_model_adaptation(model)
+            self.params.value = model
+            self.params.status = Status.COMPLETED
 
-        self.params.value = model
-        self.params.status = Status.COMPLETED
-
-        return model
+        return self.params.value
 
     def __compute_model_adaptation(self, base_model: Dict[str, float]) -> Dict[str, float]:
         base_model_list = self.__model_dict_to_list(base_model)
