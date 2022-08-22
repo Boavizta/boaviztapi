@@ -9,34 +9,12 @@ from scipy.optimize import curve_fit
 from boaviztapi.dto.usage.usage import WorkloadTime
 from boaviztapi.model.boattribute import Boattribute, Status
 
-_cpu_profile_consumption_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/consumption_profile/cpu/cpu_profile.csv'))
+_cpu_profile_consumption_df = pd.read_csv(os.path.join(os.path.dirname(__file__),
+                                                       '../../data/consumption_profile/cpu/cpu_profile.csv'))
 
 
 class ConsumptionProfileModel:
     pass
-
-
-def lookup_consumption_profile(cpu_manufacturer: str = None, cpu_model_range: str = None) -> Optional[Dict[str, float]]:
-    sub = _cpu_profile_consumption_df
-
-    if cpu_manufacturer is not None:
-        tmp = sub[sub['manufacturer'] == cpu_manufacturer]
-        if len(tmp) > 0:
-            sub = tmp.copy()
-
-    if cpu_model_range is not None:
-        tmp = sub[sub['model_range'] == cpu_model_range]
-        if len(tmp) > 0:
-            sub = tmp.copy()
-
-    if len(sub) == 1:
-        row = sub.iloc[0]
-        return {
-            'a': row.a,
-            'b': row.b,
-            'c': row.c,
-            'd': row.d,
-        }
 
 
 class CPUConsumptionProfileModel(ConsumptionProfileModel):
@@ -73,8 +51,13 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         return load, power
 
     def apply_consumption_profile(self, load_percentage: float) -> float:
-        return self.__log_model(load_percentage, self.params.value['a'], self.params.value['b'], self.params.value['c'],
-                                self.params.value['d'])
+        return self.__log_model(
+            load_percentage,
+            self.params.value['a'],
+            self.params.value['b'],
+            self.params.value['c'],
+            self.params.value['d']
+        )
 
     def apply_multiple_workloads(self, time_workload: List[WorkloadTime]) -> float:
         total = 0
@@ -82,8 +65,9 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
             total += (workload.time_percentage / 100) * self.apply_consumption_profile(workload.load_percentage)
         return total
 
-    def compute_consumption_profile_model(self, cpu_manufacturer: str = None, cpu_model_range: str = None) -> Union[Dict[str, float], None]:
-        model = lookup_consumption_profile(cpu_manufacturer, cpu_model_range)
+    def compute_consumption_profile_model(self, cpu_manufacturer: str = None, cpu_model_range: str = None) \
+            -> Union[Dict[str, float], None]:
+        model = self.lookup_consumption_profile(cpu_manufacturer, cpu_model_range)
 
         if model is None:
             if self.workloads.status != Status.NONE:
@@ -130,11 +114,28 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
     def __log_model(x: float, a: float, b: float, c: float, d: float) -> float:
         return a * np.log(b * (x + c)) + d
 
+    @staticmethod
+    def lookup_consumption_profile(
+            cpu_manufacturer: str = None,
+            cpu_model_range: str = None
+    ) -> Optional[Dict[str, float]]:
+        sub = _cpu_profile_consumption_df
 
-if __name__ == '__main__':
-    cpm = CPUConsumptionProfileModel()
-    cpm.workloads.value = [
-        {'load': 0., 'power': 58.},
-        {'load': 100., 'power': 618.}
-    ]
-    print(cpm.compute_consumption_profile_model("intel", "Xeon E5"))
+        if cpu_manufacturer is not None:
+            tmp = sub[sub['manufacturer'] == cpu_manufacturer]
+            if len(tmp) > 0:
+                sub = tmp.copy()
+
+        if cpu_model_range is not None:
+            tmp = sub[sub['model_range'] == cpu_model_range]
+            if len(tmp) > 0:
+                sub = tmp.copy()
+
+        if len(sub) == 1:
+            row = sub.iloc[0]
+            return {
+                'a': row.a,
+                'b': row.b,
+                'c': row.c,
+                'd': row.d,
+            }
