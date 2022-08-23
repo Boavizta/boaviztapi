@@ -97,6 +97,7 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
 
 
 def attributes_from_cpu_name(cpu_name: str) -> [str, str, str]:
+    cpu_name = cpu_name.lower()
     manufacturer, cpu_sub_name = parse(cpu_name)
     sub = _cpu_index
     if manufacturer is None:
@@ -125,5 +126,6 @@ def parse(cpu_name: str) -> Tuple[str, str]:
 
 def fuzzymatch(cpu_name_to_match: str, cpu_name_list: list) -> Optional[Tuple[str, float, int]]:
     foo = process.extractOne(cpu_name_to_match, cpu_name_list, scorer=fuzz.WRatio)
+    print(foo)
     if foo is not None:
         return foo if foo[1] > 88.0 else None
