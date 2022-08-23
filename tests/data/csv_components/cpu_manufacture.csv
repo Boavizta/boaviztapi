@@ -1,0 +1,66 @@
+manufacturer,family,manufacture_date,process,die_size,core_units,die_size_per_core,Source
+Intel,Skylake,2017,14,694,28,0.248,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
+Intel,Skylake,2017,14,694,24,0.289,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
+Intel,Skylake,2017,14,694,22,0.315,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
+Intel,Skylake,2017,14,694,20,0.347,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
+Intel,Skylake,2017,14,485,18,0.269,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
+Intel,Skylake,2017,14,485,16,0.303125,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
+Intel,Skylake,2017,14,485,14,0.3464285714,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
+Intel,Skylake,2017,14,485,12,0.404,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
+Intel,Skylake,2017,14,325,10,0.325,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
+Intel,Skylake,2017,14,325,8,0.40625,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
+Intel,Skylake,2017,14,325,6,0.541,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
+Intel,Skylake,2017,14,325,4,0.8125,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)
+Intel,Coffee Lake,2017,14,126,4,0.315,https://en.wikichip.org/wiki/intel/microarchitectures/coffee_lake
+Intel,Coffee Lake,2017,14,149,6,0.248,https://en.wikichip.org/wiki/intel/microarchitectures/coffee_lake
+Intel,Coffee Lake,2017,14,174,8,0.218,https://en.wikichip.org/wiki/intel/microarchitectures/coffee_lakee
+Intel,Broadwell,2014,14,456,24,0.19,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client)
+Intel,Broadwell,2014,14,456,22,0.207,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
+Intel,Broadwell,2014,14,456,20,0.228,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
+Intel,Broadwell,2014,14,456,18,0.253,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
+Intel,Broadwell,2014,14,456,16,0.285,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
+Intel,Broadwell,2014,14,306,14,0.219,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
+Intel,Broadwell,2014,14,306,12,0.255,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
+Intel,Broadwell,2014,14,246,10,0.246,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
+Intel,Broadwell,2014,14,246,8,0.3075,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
+Intel,Broadwell,2014,14,246,6,0.41,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
+Intel,Broadwell,2014,14,182,4,0.455,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
+Intel,Haswell,2013,22,622,18,0.346,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
+Intel,Haswell,2013,22,622,16,0.388,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
+Intel,Haswell,2013,22,622,14,0.444,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
+Intel,Haswell,2013,22,622,12,0.518,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
+Intel,Haswell,2013,22,622,10,0.622,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
+Intel,Haswell,2013,22,356,8,0.445,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
+Intel,Haswell,2013,22,356,6,0.593,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
+Intel,Ivy Bridge,2011,22,160,4,0.400,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client)
+Intel,Ivy Bridge,2011,22,257,6,0.428,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client))
+Intel,Ivy Bridge,2011,22,341,10,0.341,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client)
+Intel,Ivy Bridge,2011,22,541,15,0.361,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client)
+Intel,Sandy Bridge,2010,32,216,4,0.540,https://en.wikichip.org/wiki/intel/microarchitectures/sandy_bridge_(client)
+Intel,Ice Lake,2021,10,370,8,0.430,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,370,10,0.370,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,370,12,0.308,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,370,16,0.231,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,505,18,0.281,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,505,20,0.253,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,505,24,0.210,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,505,26,0.194,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,505,28,0.180,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,640,32,0.200,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,640,36,0.178,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Ice Lake,2021,10,640,38,0.168,https://semianalysis.com/intel-icelake-server-die-size-floorplan-inefficiencies-revealed/
+Intel,Kaby Lake,2017,14,126,4,0.315,https://en.wikichip.org/wiki/intel/microarchitectures/kaby_lake
+Amd,Zen2,2019,7,74,4,0.185,https://www.techarp.com/computer/amd-zen-3-tech-report/
+Amd,Zen2,2019,7,74,6,0.123,https://www.techarp.com/computer/amd-zen-3-tech-report/
+Amd,Zen2,2019,7,74,8,0.0925,https://www.techarp.com/computer/amd-zen-3-tech-report/
+Amd,Zen2,2019,7,74,12,0.062,https://www.techarp.com/computer/amd-zen-3-tech-report/
+Amd,Zen2,2019,7,74,16,0.046,https://www.techarp.com/computer/amd-zen-3-tech-report/
+Amd,Zen2,2019,7,74,24,0.031,https://www.techarp.com/computer/amd-zen-3-tech-report/
+Amd,Zen3,2020,7,81,6,0.135,https://www.techarp.com/computer/amd-zen-3-tech-report/
+Amd,Zen3,2020,7,81,8,0.101,https://www.techarp.com/computer/amd-zen-3-tech-report/
+Amd,Zen3,2020,7,81,12,0.0675,https://www.techarp.com/computer/amd-zen-3-tech-report/
+Amd,Zen3,2020,7,81,16,0.051,https://www.techarp.com/computer/amd-zen-3-tech-report/
+Amd,Zen3,2020,7,81,24,0.033,https://www.techarp.com/computer/amd-zen-3-tech-report/
+Amd,Zen3,2020,7,81,24,0.033,https://www.techarp.com/computer/amd-zen-3-tech-report/
+Amd,Zen3,2020,7,81,32,0.025,https://www.techarp.com/computer/amd-zen-3-tech-report/
+Annapurna Labs,Graviton2,2019,7,457,64,0.0714,https://en.wikichip.org/wiki/annapurna_labs/alpine/alc12b00
