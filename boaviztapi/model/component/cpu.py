@@ -54,7 +54,7 @@ class ComponentCPU(Component):
 
     def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
-        if self.usage.hours_electrical_consumption.status == Status.NONE and self.usage.time_workload.status != Status.NONE:
+        if not self.usage.hours_electrical_consumption.is_set() and self.usage.time_workload.is_set():
             self.usage.consumption_profile = CPUConsumptionProfileModel()
             self.usage.consumption_profile.compute_consumption_profile_model(cpu_manufacturer=self.manufacturer.value,
                                                                              cpu_model_range=self.model_range.value)

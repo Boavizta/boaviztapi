@@ -37,6 +37,27 @@ class Boattribute:
         json = {"value": self._value, "unit": self.unit, "status": self.status.value, "source": self.source}
         return json
 
+    def is_set(self):
+        return self.status != Status.NONE
+
+    def is_none(self):
+        return self.status == Status.NONE
+
+    def is_input(self):
+        return self.status == Status.INPUT
+
+    def is_default(self):
+        return self.status == Status.DEFAULT
+
+    def is_completed(self):
+        return self.status == Status.COMPLETED
+
+    def is_changed(self):
+        return self.status == Status.CHANGED
+
+    def is_archetype(self):
+        return self.status == Status.ARCHETYPE
+
 
 class Status(Enum):
     NONE = "NONE"
