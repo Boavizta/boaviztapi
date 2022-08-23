@@ -1,6 +1,7 @@
-from typing import Optional
+from typing import Optional, Tuple
 
 import pandas as pd
+from rapidfuzz import fuzz, process
 
 from boaviztapi.dto.component import ComponentDTO
 import os
@@ -11,6 +12,7 @@ from boaviztapi.model.component import ComponentCPU
 from boaviztapi.utils.fuzzy_match import fuzzymatch_attr_from_pdf
 
 _cpu_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/cpu_manufacture.csv'))
+_cpu_index = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/cpu_index.csv'))
 
 
 class CPU(ComponentDTO):
@@ -92,3 +94,36 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
         cpu_component.core_units.status = Status.INPUT
 
     return cpu_component
+
+
+def attributes_from_cpu_name(cpu_name: str) -> [str, str, str]:
+    manufacturer, cpu_sub_name = parse(cpu_name)
+    sub = _cpu_index
+    if manufacturer is None:
+        name_list = list(sub.sub_model_name.unique())
+    else:
+        name_list = list(sub[sub['manufacturer'] == manufacturer].sub_model_name.unique())
+    result = fuzzymatch(cpu_sub_name, name_list)
+    if result is not None:
+        model_range = sub[sub['sub_model_name'] == result[0]].iloc[0].model_range
+        family = sub[sub['sub_model_name'] == result[0]].iloc[0].family
+    else:
+        model_range = None
+        family = None
+
+    return manufacturer, model_range, family
+
+
+def parse(cpu_name: str) -> Tuple[str, str]:
+    vendor_list = ["intel", "amd", "arm"]  # every string in lowercase
+    for vendor in vendor_list:
+        if vendor in cpu_name:
+            cpu_name.replace(vendor, '')
+            return vendor, cpu_name.replace(vendor, '')
+    return None, cpu_name
+
+
+def fuzzymatch(cpu_name_to_match: str, cpu_name_list: list) -> Optional[Tuple[str, float, int]]:
+    foo = process.extractOne(cpu_name_to_match, cpu_name_list, scorer=fuzz.WRatio)
+    if foo is not None:
+        return foo if foo[1] > 88.0 else None

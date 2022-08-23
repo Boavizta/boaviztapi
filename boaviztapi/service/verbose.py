@@ -3,7 +3,7 @@ from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.device import Device
 from boaviztapi.model.component import Component
 from boaviztapi.service.allocation import Allocation
-from boaviztapi.service.bottom_up import NOT_IMPLEMENTED, get_model_impact
+from boaviztapi.service.bottom_up import get_model_impact, NOT_IMPLEMENTED
 
 
 def verbose_device(device: Device):
@@ -46,6 +46,7 @@ def verbose_usage(device: [Device, Component]):
             "unit": "kgSbeq"
         }
     }
+
     return json_output
 
 
@@ -71,5 +72,7 @@ def verbose_component(component: Component):
         if val.status != Status.NONE:
             json_output[attr] = val.to_json()
 
-    json_output["USAGE"] = verbose_usage(component)
+    if get_model_impact(component, 'use', 'gwp', 1, Allocation.TOTAL):
+        json_output["USAGE"] = verbose_usage(component)
+
     return json_output
