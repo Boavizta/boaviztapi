@@ -31,9 +31,15 @@ class ComponentSSD(Component):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.manufacturer = Boattribute(value=None, status=Status.NONE, unit="none")
-        self.capacity = Boattribute(value=None, status=Status.NONE, unit="Go", default=self.DEFAULT_SSD_CAPACITY)
-        self.density = Boattribute(value=None, status=Status.NONE, unit="Go/cm2", default=self.DEFAULT_SSD_DENSITY)
+        self.manufacturer = Boattribute(unit="none")
+        self.capacity = Boattribute(
+            unit="GB",
+            default=self.DEFAULT_SSD_CAPACITY
+        )
+        self.density = Boattribute(
+            unit="GB/cm2",
+            default=self.DEFAULT_SSD_DENSITY
+        )
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')

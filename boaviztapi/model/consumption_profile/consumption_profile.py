@@ -35,14 +35,10 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
 
     def __init__(self):
         self.workloads = Boattribute(
-            status=Status.NONE,
             default=self.DEFAULT_WORKLOADS,
             unit="workload_rate:W"
         )
-        self.params = Boattribute(
-            status=Status.NONE,
-            default=self._DEFAULT_MODEL_PARAMS
-        )
+        self.params = Boattribute(default=self._DEFAULT_MODEL_PARAMS)
 
     @property
     def list_workloads(self) -> Tuple[List[float], List[float]]:

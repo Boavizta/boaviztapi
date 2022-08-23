@@ -5,8 +5,8 @@ class Boattribute:
     def __init__(self, **kwargs):
 
         self._value = None
-        self.unit = None
-        self.status = None
+        self.unit = "none"
+        self.status = Status.NONE
         self.source = None
         self.default = None
         self.args = None
