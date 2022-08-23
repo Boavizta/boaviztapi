@@ -5,8 +5,8 @@ class Boattribute:
     def __init__(self, **kwargs):
 
         self._value = None
-        self.unit = None
-        self.status = None
+        self.unit = "none"
+        self.status = Status.NONE
         self.source = None
         self.default = None
         self.args = None
@@ -36,6 +36,27 @@ class Boattribute:
     def to_json(self):
         json = {"value": self._value, "unit": self.unit, "status": self.status.value, "source": self.source}
         return json
+
+    def is_set(self):
+        return self.status != Status.NONE
+
+    def is_none(self):
+        return self.status == Status.NONE
+
+    def is_input(self):
+        return self.status == Status.INPUT
+
+    def is_default(self):
+        return self.status == Status.DEFAULT
+
+    def is_completed(self):
+        return self.status == Status.COMPLETED
+
+    def is_changed(self):
+        return self.status == Status.CHANGED
+
+    def is_archetype(self):
+        return self.status == Status.ARCHETYPE
 
 
 class Status(Enum):
