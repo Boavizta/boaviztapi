@@ -18,7 +18,7 @@ Components configuration are never sent by the user but pre-recorded as an [arch
 
 ## Usage impact
 
-
+Usage impact of cloud instance are measured only from its [consumption profile](../consumption_profile.md).
 
 ## Resources
 

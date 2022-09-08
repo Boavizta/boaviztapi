@@ -54,4 +54,9 @@ with:
 
 ## Usage impact
 
-Both power consumption and consumption profile are implemented.
+Both [power consumption](../usage/elec_conso.md) and [consumption profile](../consumption_profile.md) are implemented.
+
+
+## Consumption profile
+
+The consumption profile depends on the cpu model range. By default we use the consumption profile of **Xeon Platinium**.

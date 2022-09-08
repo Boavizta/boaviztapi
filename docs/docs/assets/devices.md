@@ -8,6 +8,6 @@ Devices can be characterized by a model which describes the device with meta-dat
 
 ## Available devices
 
-* [Server](devices/cloud.md)
-* [Cloud instances](devices/server.md)
+* [Server](../Explanations/devices/cloud.md)
+* [Cloud instances](../Explanations/devices/server.md)
 

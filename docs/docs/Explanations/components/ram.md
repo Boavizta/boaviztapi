@@ -39,4 +39,10 @@ With
 
 ## Usage impact
 
-Only power consumption is implemented.
+Both [power consumption](../usage/elec_conso.md) and [consumption profile](../consumption_profile.md) are implemented.
+
+## Consumption profile
+
+The consumption profile depends on the quantity of ram :
+
+**power_consumption = x * qtGB**

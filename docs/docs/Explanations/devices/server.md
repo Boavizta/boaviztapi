@@ -17,4 +17,4 @@ The following component are [completed](complete.md) with the default characteri
 
 ## Usage impact
 
-Both power consumption and consumption profile are implemented.
+Both [power consumption](../usage/elec_conso.md) and [consumption profile](../consumption_profile.md) are implemented.

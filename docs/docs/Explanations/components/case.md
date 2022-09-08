@@ -2,11 +2,11 @@
 
 ## Characteristics
 
-| Name       | Unit | Default value | Description                 | Example |
-|------------|------|---------------|-----------------------------|---------|
-| units      | None | 1             | power supply quantity       | 2       |
-| usage      | None | See Usage     | See usage                   | ..      |
-| case_type  | None | rack          | weight of the power supply  | blade   |
+| Name       | Unit | Default value | Description                       | Example |
+|------------|------|---------------|-----------------------------------|---------|
+| units      | None | 1             | power supply quantity             | 2       |
+| usage      | None | See Usage     | See usage                         | ..      |
+| case_type  | None | rack          | Type of enclosure (blade or rack) | blade   |
 
 ## Manufacture impact
 

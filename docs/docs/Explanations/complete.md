@@ -5,5 +5,5 @@ To achieve this principle, the API will complete the missing attributes in a req
 
 The completion strategy is given for each component.
 
-Devices have minimal components. They are completed if not given in the request. Default component's characteristics are given.
-Default configuration is given for each devices.
+Devices have minimal required components. If not given in the request a component with default characteristics is used.
+Default configurations are given for each device.
