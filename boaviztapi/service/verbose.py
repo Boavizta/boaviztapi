@@ -30,7 +30,7 @@ def verbose_usage(device: [Device, Component]):
     for attr, val in device.usage.__iter__():
         if not isinstance(val, Boattribute):
             continue
-        if val.status != Status.NONE:
+        if val.is_set():
             json_output[attr] = val.to_json()
 
     json_output["impacts"] = {
@@ -69,7 +69,7 @@ def verbose_component(component: Component):
     for attr, val in component.__iter__():
         if not isinstance(val, Boattribute):
             continue
-        if val.status != Status.NONE:
+        if val.is_set():
             json_output[attr] = val.to_json()
 
     if get_model_impact(component, 'use', 'gwp', 1, Allocation.TOTAL):

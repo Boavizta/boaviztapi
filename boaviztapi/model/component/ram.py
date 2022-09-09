@@ -10,6 +10,8 @@ class ComponentRAM(Component):
 
     DEFAULT_RAM_CAPACITY = 32
     DEFAULT_RAM_DENSITY = 0.625
+    DEFAULT_RAM_PROCESS = 30
+    DEFAULT_RAM_MANUFACTURER = "Samsung"
 
     IMPACT_FACTOR = {
         'gwp': {
@@ -29,10 +31,16 @@ class ComponentRAM(Component):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.process = Boattribute(value=None, status=Status.NONE, unit="none", default="TODO")
-        self.manufacturer = Boattribute(value=None, status=Status.NONE, unit="none", default="None")
-        self.capacity = Boattribute(value=None, status=Status.NONE, unit="Go", default=self.DEFAULT_RAM_CAPACITY)
-        self.density = Boattribute(value=None, status=Status.NONE, unit="Go/cm2", default=self.DEFAULT_RAM_DENSITY)
+        self.process = Boattribute(default=self.DEFAULT_RAM_PROCESS)
+        self.manufacturer = Boattribute(default=self.DEFAULT_RAM_MANUFACTURER)
+        self.capacity = Boattribute(
+            unit="GB",
+            default=self.DEFAULT_RAM_CAPACITY
+        )
+        self.density = Boattribute(
+            unit="GB/cm2",
+            default=self.DEFAULT_RAM_DENSITY
+        )
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')

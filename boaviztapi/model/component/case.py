@@ -42,7 +42,7 @@ class ComponentCase(Component):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.case_type = Boattribute(value=None, status=Status.NONE, unit="none", default=self.DEFAULT_CASE_TYPE)
+        self.case_type = Boattribute(default=self.DEFAULT_CASE_TYPE)
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')

@@ -25,7 +25,7 @@ class ComponentHDD(Component):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.capacity = Boattribute(value=None, status=Status.NONE, unit="Go", default=self.DEFAULT_HDD_CAPACITY)
+        self.capacity = Boattribute(unit="GB", default=self.DEFAULT_HDD_CAPACITY)
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')

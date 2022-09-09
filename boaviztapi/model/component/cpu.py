@@ -33,14 +33,14 @@ class ComponentCPU(Component):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
-        self.core_units = Boattribute(value=None, status=Status.NONE, unit="none", default=self.DEFAULT_CPU_CORE_UNITS)
-        self.die_size_per_core = Boattribute(value=None, status=Status.NONE, unit="cm2",
-                                             default=self.DEFAULT_CPU_DIE_SIZE_PER_CORE)
-        self.model_range = Boattribute(value=None, status=Status.NONE, unit="none", default=self.DEFAULT_MODEL_RANGE)
-        self.manufacturer = Boattribute(value=None, status=Status.NONE, unit="none",
-                                        default=self.DEFAULT_CPU_MANUFACTURER)
-        self.family = Boattribute(value=None, status=Status.NONE, unit="none", default=self.DEFAULT_CPU_FAMILY)
+        self.core_units = Boattribute(default=self.DEFAULT_CPU_CORE_UNITS)
+        self.die_size_per_core = Boattribute(
+            unit="mm2",
+            default=self.DEFAULT_CPU_DIE_SIZE_PER_CORE
+        )
+        self.model_range = Boattribute(default=self.DEFAULT_MODEL_RANGE)
+        self.manufacturer = Boattribute(default=self.DEFAULT_CPU_MANUFACTURER)
+        self.family = Boattribute(default=self.DEFAULT_CPU_FAMILY)
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')
@@ -53,7 +53,7 @@ class ComponentCPU(Component):
 
     def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
-        if self.usage.hours_electrical_consumption.status == Status.NONE and self.usage.time_workload.status != Status.NONE:
+        if not self.usage.hours_electrical_consumption.is_set() and self.usage.time_workload.is_set():
             self.usage.consumption_profile = CPUConsumptionProfileModel()
             self.usage.consumption_profile.compute_consumption_profile_model(cpu_manufacturer=self.manufacturer.value,
                                                                              cpu_model_range=self.model_range.value)

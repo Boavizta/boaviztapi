@@ -23,8 +23,10 @@ class ComponentPowerSupply(Component):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.unit_weight = Boattribute(value=None, status=Status.NONE, unit="Kg",
-                                       default=self.DEFAULT_POWER_SUPPLY_WEIGHT)
+        self.unit_weight = Boattribute(
+            unit="kg",
+            default=self.DEFAULT_POWER_SUPPLY_WEIGHT
+        )
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')
