@@ -31,7 +31,28 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
 
     cpu_component.units = cpu_dto.units
 
-    corrected_family = cpu_dto.family
+    if cpu_dto.name is not None:
+        manufacturer, model_range, family = attributes_from_cpu_name(cpu_dto.name)
+        if manufacturer is not None:
+            cpu_dto.manufacturer = manufacturer
+            cpu_component.manufacturer.value = manufacturer
+            cpu_component.manufacturer.status = Status.COMPLETED
+        if model_range is not None:
+            cpu_dto.model_range = model_range
+            cpu_component.model_range.value = model_range
+            cpu_component.model_range.status = Status.COMPLETED
+        if family is not None:
+            cpu_dto.family = family
+            cpu_component.family.value = family
+            cpu_component.family.status = Status.COMPLETED
+
+    if cpu_dto.family is not None and cpu_component.family.status != Status.COMPLETED:
+        cpu_component.family.value = cpu_dto.family
+        cpu_component.family.status = Status.INPUT
+
+    if cpu_dto.core_units is not None:
+        cpu_component.core_units.value = cpu_dto.core_units
+        cpu_component.core_units.status = Status.INPUT
 
     if cpu_dto.die_size_per_core is not None:
         cpu_component.die_size_per_core.value = cpu_dto.die_size_per_core
@@ -45,8 +66,7 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
     else:
         sub = _cpu_df
         if cpu_dto.family is not None:
-            corrected_family = fuzzymatch_attr_from_pdf(cpu_dto.family, "family", sub)
-            tmp = sub[sub['family'] == corrected_family]
+            tmp = sub[sub['family'] == cpu_dto.family]
             if len(tmp) > 0:
                 sub = tmp.copy()
 
@@ -81,17 +101,6 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
                 cpu_component.core_units.status = Status.COMPLETED
             else:
                 cpu_component.core_units.status = Status.CHANGED
-
-    if cpu_dto.family is not None and corrected_family is not None:
-        if corrected_family != cpu_dto.family:
-            cpu_component.family.value = corrected_family
-            cpu_component.family.status = Status.CHANGED
-        else:
-            cpu_component.family.value = cpu_dto.family
-            cpu_component.family.status = Status.INPUT
-    if cpu_dto.core_units is not None:
-        cpu_component.core_units.value = cpu_dto.core_units
-        cpu_component.core_units.status = Status.INPUT
 
     return cpu_component
 
