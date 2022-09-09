@@ -4,9 +4,9 @@ This page presents basic queries that can be used to retrieve impacts of cloud i
 
 You use `curl` in command line to query Boavizta demo (public) API.
 
-💡 _You can format the results by using jq (`curl -X 'GET' 'https://api.boavizta.org/v1/cloud/aws/all_instances' | jq`)_
+💡 _You can format the results by using jq (`curl -X 'GET' 'http://localhost:5000/v1/component/cpu' | jq`)_
 
-## Get the list of available instance types
+## Get the impacts from cpu name
 
 This query return the list of available aws instances 
 

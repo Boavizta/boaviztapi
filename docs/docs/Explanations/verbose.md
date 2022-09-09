@@ -100,12 +100,12 @@ For each attribute used in the evaluation process we return :
 * Its **value**
 * Its **unit**
 * Its **status** :
-  * **INPUT** : the value have been given by the user
-  * **COMPLETED** : the value have set by the API according to user inputs 
-  * **DEFAULT** : the default value have been set by the API
-  * **CHANGED** : the value have given by the user have been changed by the API
-  * **ARCHETYPE** : the default value have been set by the API from the archetype
-* The source of data in case the data have been COMPLETED or CHANGED and sometimes when the default value come from a secondary source.
+     * **INPUT** : the value have been given by the user
+     * **COMPLETED** : the value have set by the API according to user inputs 
+     * **DEFAULT** : the default value have been set by the API
+     * **CHANGED** : the value have given by the user have been changed by the API
+     * **ARCHETYPE** : the default value have been set by the API from the archetype
+* The **source** of data in case the data have been COMPLETED or CHANGED and sometimes when the default value come from a secondary source.
 
 ```json
 "gwp_factor": {
