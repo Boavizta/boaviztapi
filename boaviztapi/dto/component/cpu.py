@@ -66,7 +66,8 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
     else:
         sub = _cpu_df
         if cpu_dto.family is not None:
-            tmp = sub[sub['family'] == cpu_dto.family]
+            corrected_family = fuzzymatch_attr_from_pdf(cpu_dto.family, "family", sub)
+            tmp = sub[sub['family'] == corrected_family]
             if len(tmp) > 0:
                 sub = tmp.copy()
 
