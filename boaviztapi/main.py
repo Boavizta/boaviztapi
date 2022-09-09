@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from boaviztapi import __version__
 
 from boaviztapi.routers.component_router import component_router
+from boaviztapi.routers.consumption_profile_router import consumption_profile
 from boaviztapi.routers.server_router import server_router
 from boaviztapi.routers.cloud_router import cloud_router
 from boaviztapi.routers.utils_router import utils_router
@@ -26,6 +27,7 @@ app.include_router(server_router)
 app.include_router(cloud_router)
 app.include_router(component_router)
 app.include_router(utils_router)
+app.include_router(consumption_profile)
 
 if __name__ == '__main__':
     import uvicorn

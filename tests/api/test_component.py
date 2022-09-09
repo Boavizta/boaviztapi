@@ -44,13 +44,7 @@ async def test_complete_cpu_verbose():
                                       'pe': {'manufacture': 247.0,
                                              'unit': 'MJ',
                                              'use': 'not implemented'}},
-                          'verbose': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                                    'value': 'not implemented'},
-                                                            'gwp': {'unit': 'kgCO2eq',
-                                                                    'value': 'not implemented'},
-                                                            'pe': {'unit': 'MJ',
-                                                                   'value': 'not implemented'}}},
-                                      'core_units': {'source': None,
+                          'verbose': {'core_units': {'source': None,
                                                      'status': 'INPUT',
                                                      'unit': 'none',
                                                      'value': 12},
@@ -152,13 +146,7 @@ async def test_incomplete_cpu_verbose():
                                       'pe': {'manufacture': 353.0,
                                              'unit': 'MJ',
                                              'use': 'not implemented'}},
-                          'verbose': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                                    'value': 'not implemented'},
-                                                            'gwp': {'unit': 'kgCO2eq',
-                                                                    'value': 'not implemented'},
-                                                            'pe': {'unit': 'MJ',
-                                                                   'value': 'not implemented'}}},
-                                      'core_units': {'source': None,
+                          'verbose': {'core_units': {'source': None,
                                                      'status': 'INPUT',
                                                      'unit': 'none',
                                                      'value': 24},
@@ -175,6 +163,40 @@ async def test_incomplete_cpu_verbose():
                                                   'gwp': {'unit': 'kgCO2eq', 'value': 23.8},
                                                   'pe': {'unit': 'MJ', 'value': 353.0}},
                                       'units': 1}}
+
+@pytest.mark.asyncio
+async def test_incomplete_cpu_verbose_2():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/component/cpu?verbose=true', json={
+            "core_units": 24, "family": "skylak", "manufacture_date": 2017})
+
+    assert res.json() == {'impacts': {'adp': {'manufacture': 0.02,
+                                              'unit': 'kgSbeq',
+                                              'use': 'not implemented'},
+                                      'gwp': {'manufacture': 23.8,
+                                              'unit': 'kgCO2eq',
+                                              'use': 'not implemented'},
+                                      'pe': {'manufacture': 353.0,
+                                             'unit': 'MJ',
+                                             'use': 'not implemented'}},
+                          'verbose': {'core_units': {'source': None,
+                                                     'status': 'INPUT',
+                                                     'unit': 'none',
+                                                     'value': 24},
+                                      'die_size_per_core': {'source': {
+                                          '1': 'https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)'},
+                                                            'status': 'COMPLETED',
+                                                            'unit': 'mm2',
+                                                            'value': 0.289},
+                                      'family': {'source': None,
+                                                 'status': 'CHANGED',
+                                                 'unit': 'none',
+                                                 'value': 'Skylake'},
+                                      'impacts': {'adp': {'unit': 'kgSbeq', 'value': 0.02},
+                                                  'gwp': {'unit': 'kgCO2eq', 'value': 23.8},
+                                                  'pe': {'unit': 'MJ', 'value': 353.0}},
+                                      'units': 1}}
+
 
 
 @pytest.mark.asyncio

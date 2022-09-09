@@ -3,9 +3,6 @@ from boaviztapi.service.verbose import verbose_component, verbose_device
 
 def test_verbose_component_cpu_1(complete_cpu_model):
     assert verbose_component(complete_cpu_model) == {
-        'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq', 'value': 'not implemented'},
-                              'gwp': {'unit': 'kgCO2eq', 'value': 'not implemented'},
-                              'pe': {'unit': 'MJ', 'value': 'not implemented'}}},
         'core_units': {'source': None, 'status': 'INPUT', 'unit': 'none', 'value': 24},
         'die_size_per_core': {'source': None,
                               'status': 'INPUT',
@@ -19,9 +16,6 @@ def test_verbose_component_cpu_1(complete_cpu_model):
 
 def test_verbose_component_cpu_2(incomplete_cpu_model):
     assert verbose_component(incomplete_cpu_model) == {
-        'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq', 'value': 'not implemented'},
-                              'gwp': {'unit': 'kgCO2eq', 'value': 'not implemented'},
-                              'pe': {'unit': 'MJ', 'value': 'not implemented'}}},
         'core_units': {'source': None, 'status': 'INPUT', 'unit': 'none', 'value': 12},
         'die_size_per_core': {'source': None,
                               'status': 'COMPLETED',
@@ -39,9 +33,6 @@ def test_verbose_component_cpu_2(incomplete_cpu_model):
 
 def test_verbose_component_ram(complete_ram_model):
     assert verbose_component(complete_ram_model) == {
-        'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq', 'value': 'not implemented'},
-                              'gwp': {'unit': 'kgCO2eq', 'value': 'not implemented'},
-                              'pe': {'unit': 'MJ', 'value': 'not implemented'}}},
         'capacity': {'source': None, 'status': 'INPUT', 'unit': 'Go', 'value': 32},
         'density': {'source': None,
                     'status': 'INPUT',
@@ -55,9 +46,6 @@ def test_verbose_component_ram(complete_ram_model):
 
 def test_verbose_component_ssd(empty_ssd_model):
     assert verbose_component(empty_ssd_model) == {
-        'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq', 'value': 'not implemented'},
-                              'gwp': {'unit': 'kgCO2eq', 'value': 'not implemented'},
-                              'pe': {'unit': 'MJ', 'value': 'not implemented'}}},
         'capacity': {'source': None, 'status': 'DEFAULT', 'unit': 'Go', 'value': 1000},
         'density': {'source': None,
                     'status': 'DEFAULT',
@@ -71,9 +59,6 @@ def test_verbose_component_ssd(empty_ssd_model):
 
 def test_verbose_component_power_supply(empty_power_supply_model):
     assert verbose_component(empty_power_supply_model) == {
-        'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq', 'value': 'not implemented'},
-                              'gwp': {'unit': 'kgCO2eq', 'value': 'not implemented'},
-                              'pe': {'unit': 'MJ', 'value': 'not implemented'}}},
         'impacts': {'adp': {'unit': 'kgSbeq', 'value': 0.025},
                     'gwp': {'unit': 'kgCO2eq', 'value': 72.7},
                     'pe': {'unit': 'MJ', 'value': 1050.0}},
@@ -86,9 +71,6 @@ def test_verbose_component_power_supply(empty_power_supply_model):
 
 def test_verbose_component_case(blade_case_model):
     assert verbose_component(blade_case_model) == {
-        'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq', 'value': 'not implemented'},
-                              'gwp': {'unit': 'kgCO2eq', 'value': 'not implemented'},
-                              'pe': {'unit': 'MJ', 'value': 'not implemented'}}},
         'case_type': {'source': None,
                       'status': 'INPUT',
                       'unit': 'none',
@@ -101,32 +83,17 @@ def test_verbose_component_case(blade_case_model):
 
 def test_verbose_device_server_1(incomplete_server_model):
     assert verbose_device(incomplete_server_model) == {
-        'ASSEMBLY-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                     'value': 'not implemented'},
-                                             'gwp': {'unit': 'kgCO2eq',
-                                                     'value': 'not implemented'},
-                                             'pe': {'unit': 'MJ',
-                                                    'value': 'not implemented'}}},
+        'ASSEMBLY-1': {
                        'impacts': {'adp': {'unit': 'kgSbeq', 'value': 1.41e-06},
                                    'gwp': {'unit': 'kgCO2eq', 'value': 6.68},
                                    'pe': {'unit': 'MJ', 'value': 68.6}},
                        'units': 1},
-        'CASE-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                 'value': 'not implemented'},
-                                         'gwp': {'unit': 'kgCO2eq',
-                                                 'value': 'not implemented'},
-                                         'pe': {'unit': 'MJ',
-                                                'value': 'not implemented'}}},
+        'CASE-1': {
                    'impacts': {'adp': {'unit': 'kgSbeq', 'value': 0.0202},
                                'gwp': {'unit': 'kgCO2eq', 'value': 150.0},
                                'pe': {'unit': 'MJ', 'value': 2200.0}},
                    'units': 1},
-        'CPU-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                'value': 'not implemented'},
-                                        'gwp': {'unit': 'kgCO2eq',
-                                                'value': 'not implemented'},
-                                        'pe': {'unit': 'MJ',
-                                               'value': 'not implemented'}}},
+        'CPU-1': {
                   'core_units': {'source': None,
                                  'status': 'DEFAULT',
                                  'unit': 'none',
@@ -139,22 +106,12 @@ def test_verbose_device_server_1(incomplete_server_model):
                               'gwp': {'unit': 'kgCO2eq', 'value': 43.4},
                               'pe': {'unit': 'MJ', 'value': 650.0}},
                   'units': 2},
-        'MOTHERBOARD-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                        'value': 'not implemented'},
-                                                'gwp': {'unit': 'kgCO2eq',
-                                                        'value': 'not implemented'},
-                                                'pe': {'unit': 'MJ',
-                                                       'value': 'not implemented'}}},
+        'MOTHERBOARD-1': {
                           'impacts': {'adp': {'unit': 'kgSbeq', 'value': 0.00369},
                                       'gwp': {'unit': 'kgCO2eq', 'value': 66.1},
                                       'pe': {'unit': 'MJ', 'value': 836.0}},
                           'units': 1},
-        'POWER_SUPPLY-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                         'value': 'not implemented'},
-                                                 'gwp': {'unit': 'kgCO2eq',
-                                                         'value': 'not implemented'},
-                                                 'pe': {'unit': 'MJ',
-                                                        'value': 'not implemented'}}},
+        'POWER_SUPPLY-1': {
                            'impacts': {'adp': {'unit': 'kgSbeq', 'value': 0.05},
                                        'gwp': {'unit': 'kgCO2eq', 'value': 145.4},
                                        'pe': {'unit': 'MJ', 'value': 2100.0}},
@@ -163,12 +120,7 @@ def test_verbose_device_server_1(incomplete_server_model):
                                            'unit': 'Kg',
                                            'value': 2.99},
                            'units': 2},
-        'RAM-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                'value': 'not implemented'},
-                                        'gwp': {'unit': 'kgCO2eq',
-                                                'value': 'not implemented'},
-                                        'pe': {'unit': 'MJ',
-                                               'value': 'not implemented'}}},
+        'RAM-1': {
                   'capacity': {'source': None,
                                'status': 'INPUT',
                                'unit': 'Go',
@@ -181,12 +133,7 @@ def test_verbose_device_server_1(incomplete_server_model):
                               'gwp': {'unit': 'kgCO2eq', 'value': 1080.0},
                               'pe': {'unit': 'MJ', 'value': 13440.0}},
                   'units': 24},
-        'SSD-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                'value': 'not implemented'},
-                                        'gwp': {'unit': 'kgCO2eq',
-                                                'value': 'not implemented'},
-                                        'pe': {'unit': 'MJ',
-                                               'value': 'not implemented'}}},
+        'SSD-1': {
                   'capacity': {'source': None,
                                'status': 'INPUT',
                                'unit': 'Go',
@@ -206,32 +153,17 @@ def test_verbose_device_server_1(incomplete_server_model):
 
 def test_verbose_device_server_2(dell_r740_model):
     assert verbose_device(dell_r740_model) == {
-        'ASSEMBLY-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                     'value': 'not implemented'},
-                                             'gwp': {'unit': 'kgCO2eq',
-                                                     'value': 'not implemented'},
-                                             'pe': {'unit': 'MJ',
-                                                    'value': 'not implemented'}}},
+        'ASSEMBLY-1': {
                        'impacts': {'adp': {'unit': 'kgSbeq', 'value': 1.41e-06},
                                    'gwp': {'unit': 'kgCO2eq', 'value': 6.68},
                                    'pe': {'unit': 'MJ', 'value': 68.6}},
                        'units': 1},
-        'CASE-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                 'value': 'not implemented'},
-                                         'gwp': {'unit': 'kgCO2eq',
-                                                 'value': 'not implemented'},
-                                         'pe': {'unit': 'MJ',
-                                                'value': 'not implemented'}}},
+        'CASE-1': {
                    'impacts': {'adp': {'unit': 'kgSbeq', 'value': 0.0202},
                                'gwp': {'unit': 'kgCO2eq', 'value': 150.0},
                                'pe': {'unit': 'MJ', 'value': 2200.0}},
                    'units': 1},
-        'CPU-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                'value': 'not implemented'},
-                                        'gwp': {'unit': 'kgCO2eq',
-                                                'value': 'not implemented'},
-                                        'pe': {'unit': 'MJ',
-                                               'value': 'not implemented'}}},
+        'CPU-1': {
                   'core_units': {'source': None,
                                  'status': 'INPUT',
                                  'unit': 'none',
@@ -244,22 +176,12 @@ def test_verbose_device_server_2(dell_r740_model):
                               'gwp': {'unit': 'kgCO2eq', 'value': 43.4},
                               'pe': {'unit': 'MJ', 'value': 650.0}},
                   'units': 2},
-        'MOTHERBOARD-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                        'value': 'not implemented'},
-                                                'gwp': {'unit': 'kgCO2eq',
-                                                        'value': 'not implemented'},
-                                                'pe': {'unit': 'MJ',
-                                                       'value': 'not implemented'}}},
+        'MOTHERBOARD-1': {
                           'impacts': {'adp': {'unit': 'kgSbeq', 'value': 0.00369},
                                       'gwp': {'unit': 'kgCO2eq', 'value': 66.1},
                                       'pe': {'unit': 'MJ', 'value': 836.0}},
                           'units': 1},
-        'POWER_SUPPLY-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                         'value': 'not implemented'},
-                                                 'gwp': {'unit': 'kgCO2eq',
-                                                         'value': 'not implemented'},
-                                                 'pe': {'unit': 'MJ',
-                                                        'value': 'not implemented'}}},
+        'POWER_SUPPLY-1': {
                            'impacts': {'adp': {'unit': 'kgSbeq', 'value': 0.05},
                                        'gwp': {'unit': 'kgCO2eq', 'value': 145.4},
                                        'pe': {'unit': 'MJ', 'value': 2100.0}},
@@ -268,12 +190,7 @@ def test_verbose_device_server_2(dell_r740_model):
                                            'unit': 'Kg',
                                            'value': 2.99},
                            'units': 2},
-        'RAM-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                'value': 'not implemented'},
-                                        'gwp': {'unit': 'kgCO2eq',
-                                                'value': 'not implemented'},
-                                        'pe': {'unit': 'MJ',
-                                               'value': 'not implemented'}}},
+        'RAM-1': {
                   'capacity': {'source': None,
                                'status': 'INPUT',
                                'unit': 'Go',
@@ -286,12 +203,7 @@ def test_verbose_device_server_2(dell_r740_model):
                               'gwp': {'unit': 'kgCO2eq', 'value': 540.0},
                               'pe': {'unit': 'MJ', 'value': 6720.0}},
                   'units': 12},
-        'SSD-1': {'USAGE': {'impacts': {'adp': {'unit': 'kgSbeq',
-                                                'value': 'not implemented'},
-                                        'gwp': {'unit': 'kgCO2eq',
-                                                'value': 'not implemented'},
-                                        'pe': {'unit': 'MJ',
-                                               'value': 'not implemented'}}},
+        'SSD-1': {
                   'capacity': {'source': None,
                                'status': 'INPUT',
                                'unit': 'Go',

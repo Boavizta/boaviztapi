@@ -1,0 +1,1139 @@
+sub_model_name,family,model_range,model_id,nb_core,manufacturer,
+gold 5122,skylake,xeon gold,,,intel,xeon gold gold 5122
+gold 6142,skylake,xeon gold,,,intel,xeon gold gold 6142
+platinum 8153,skylake,xeon platinum,,,intel,xeon platinum platinum 8153
+gold 6138,skylake,xeon gold,,,intel,xeon gold gold 6138
+platinum 8156,skylake,xeon platinum,,,intel,xeon platinum platinum 8156
+gold 6148,skylake,xeon gold,,,intel,xeon gold gold 6148
+gold 5120t,skylake,xeon gold,,,intel,xeon gold gold 5120t
+platinum 8158,skylake,xeon platinum,,,intel,xeon platinum platinum 8158
+platinum 8176,skylake,xeon platinum,,,intel,xeon platinum platinum 8176
+gold 6136,skylake,xeon gold,,,intel,xeon gold gold 6136
+gold 6150,skylake,xeon gold,,,intel,xeoneon platinum platinum 8158 gold gold 6150
+platinum 8160,skylake,xeon platinum,,,intel,xeon platinum platinum 8160
+silver 4116,skylake,xeon silver,,,intel,xeon silver silver 4116
+gold 6152,skylake,xeon gold,,,intel,xeon gold gold 6152
+gold 6130,skylake,xeon gold,,,intel,xeon gold gold 6130
+gold 6128,skylake,xeon gold,,,intel,xeon gold gold 6128
+gold 5118,skylake,xeon gold,,,intel,xeon gold gold 5118
+platinum 8164,skylake,xeon platinum,,,intel,xeon platinum platinum 8164
+gold 6134,skylake,xeon gold,,,intel,xeon gold gold 6134
+gold 6126,skylake,xeon gold,,,intel,xeon gold gold 6126
+gold 5120,skylake,xeon gold,,,intel,xeon gold gold 5120
+platinum 8168,skylake,xeon platinum,,,intel,xeon platinum platinum 8168
+gold 5115,skylake,xeon gold,,,intel,xeon gold gold 5115
+gold 6154,skylake,xeon gold,,,intel,xeon gold gold 6154
+gold 6140,skylake,xeon gold,,,intel,xeon gold gold 6140
+platinum 8170,skylake,xeon platinum,,,intel,xeon platinum platinum 8170
+platinum 8180,skylake,xeon platinum,,,intel,xeon platinum platinum 8180
+silver 4109t,skylake,xeon silver,,,intel,xeon silver silver 4109t
+bronze 3106,skylake,xeon bronze,,,intel,xeon bronze bronze 3106
+silver 4114,skylake,xeon silver,,,intel,xeon silver silver 4114
+gold 6132,skylake,xeon gold,,,intel,xeon gold gold 6132
+silver 4112,skylake,xeon silver,,,intel,xeon silver silver 4112
+gold 6138t,skylake,xeon gold,,,intel,xeon gold gold 6138t
+platinum 8160t,skylake,xeon platinum,,,intel,xeon platinum platinum 8160t
+silver 4108,skylake,xeon silver,,,intel,xeon silver silver 4108
+gold 6142f,skylake,xeon gold,,,intel,xeon gold gold 6142f
+gold 6130t,skylake,xeon gold,,,intel,xeon gold gold 6130t
+gold 6138f,skylake,xeon gold,,,intel,xeon gold gold 6138f
+bronze 3104,skylake,xeon bronze,,,intel,xeon bronze bronze 3104
+platinum 8160f,skylake,xeon platinum,,,intel,xeon platinum platinum 8160f
+silver 4110,skylake,xeon silver,,,intel,xeon silver silver 4110
+gold 6130f,skylake,xeon gold,,,intel,xeon gold gold 6130f
+gold 6126t,skylake,xeon gold,,,intel,xeon gold gold 6126t
+gold 6126f,skylake,xeon gold,,,intel,xeon gold gold 6126f
+gold 6148f,skylake,xeon gold,,,intel,xeon gold gold 6148f
+gold 6146,skylake,xeon gold,,,intel,xeon gold gold 6146
+gold 6144,skylake,xeon gold,,,intel,xeon gold gold 6144
+platinum 8176f,skylake,xeon platinum,,,intel,xeon platinum platinum 8176f
+silver 4116t,skylake,xeon silver,,,intel,xeon silver silver 4116t
+silver 4114t,skylake,xeon silver,,,intel,xeon silver silver 4114t
+gold 5119t,skylake,xeon gold,,,intel,xeon gold gold 5119t
+gold 6138p,skylake,xeon gold,,,intel,xeon gold gold 6138p
+w-2133,skylake,xeon w,,,intel,xeon w w-2133
+w-2155,skylake,xeon w,,,intel,xeon w w-2155
+w-2123,skylake,xeon w,,,intel,xeon w w-2123
+w-2145,skylake,xeon w,,,intel,xeon w w-2145
+w-2125,skylake,xeon w,,,intel,xeon w w-2125
+w-2135,skylake,xeon w,,,intel,xeon w w-2135
+w-2195,skylake,xeon w,,,intel,xeon w w-2195
+w-2175,skylake,xeon w,,,intel,xeon w w-2175
+d-2141i,skylake,xeon d,,,intel,xeon d d-2141i
+d-2177nt,skylake,xeon d,,,intel,xeon d d-2177nt
+d-2161i,skylake,xeon d,,,intel,xeon d d-2161i
+d-2143it,skylake,xeon d,,,intel,xeon d d-2143it
+d-2146nt,skylake,xeon d,,,intel,xeon d d-2146nt
+d-2145nt,skylake,xeon d,,,intel,xeon d d-2145nt
+d-2123it,skylake,xeon d,,,intel,xeon d d-2123it
+d-2173it,skylake,xeon d,,,intel,xeon d d-2173it
+d-2187nt,skylake,xeon d,,,intel,xeon d d-2187nt
+d-2142it,skylake,xeon d,,,intel,xeon d d-2142it
+d-2163it,skylake,xeon d,,,intel,xeon d d-2163it
+d-2183it,skylake,xeon d,,,intel,xeon d d-2183it
+d-2166nt,skylake,xeon d,,,intel,xeon d d-2166nt
+e3-1240l v5,skylake,xeon e3,,,intel,xeon e3 e3-1240l v5
+e3-1235l v5,skylake,xeon e3,,,intel,xeon e3 e3-1235l v5
+e3-1280 v5,skylake,xeon e3,,,intel,xeon e3 e3-1280 v5
+e3-1220 v5,skylake,xeon e3,,,intel,xeon e3 e3-1220 v5
+e3-1230 v5,skylake,xeon e3,,,intel,xeon e3 e3-1230 v5
+e3-1245 v5,skylake,xeon e3,,,intel,xeon e3 e3-1245 v5
+e3-1270 v5,skylake,xeon e3,,,intel,xeon e3 e3-1270 v5
+e3-1225 v5,skylake,xeon e3,,,intel,xeon e3 e3-1225 v5
+e3-1260l v5,skylake,xeon e3,,,intel,xeon e3 e3-1260l v5
+e3-1240 v5,skylake,xeon e3,,,intel,xeon e3 e3-1240 v5
+e3-1275 v5,skylake,xeon e3,,,intel,xeon e3 e3-1275 v5
+e3-1565l v5,skylake,xeon e3,,,intel,xeon e3 e3-1565l v5
+e3-1585l v5,skylake,xeon e3,,,intel,xeon e3 e3-1585l v5
+e3-1585 v5,skylake,xeon e3,,,intel,xeon e3 e3-1585 v5
+c232,skylake,chipsets,,,intel,chipsets c232
+c236,skylake,chipsets,,,intel,chipsets c236
+8124m,skylake,xeon platinum,,,intel,xeon platinum 8124m
+8175m,skylake,xeon platinum,,,intel,xeon platinum 8175m
+8176m,skylake,xeon platinum,,,intel,xeon platinum 8176m
+8151,skylake,xeon platinum,,,intel,xeon platinum 8151
+w-3175x,skylake,xeon w,,,intel,xeon w w-3175x
+i9-9920x,skylake,core i9,,,intel,core i9 i9-9920x
+i9-9980xe,skylake,core i9,,,intel,core i9 i9-9980xe
+i9-9940x,skylake,core i9,,,intel,core i9 i9-9940x
+i9-9900x,skylake,core i9,,,intel,core i9 i9-9900x
+i9-9960x,skylake,core i9,,,intel,core i9 i9-9960x
+i7-9800x,skylake,core i7,,,intel,core i7 i7-9800x
+i9-9820x,skylake,core i9,,,intel,core i9 i9-9820x
+i9-7940x,skylake,core i9,,,intel,core i9 i9-7940x
+i9-7980xe,skylake,core i9,,,intel,core i9 i9-7980xe
+i9-7960x,skylake,core i9,,,intel,core i9 i9-7960x
+i9-7920x,skylake,core i9,,,intel,core i9 i9-7920x
+i7-7800x,skylake,core i7,,,intel,core i7 i7-7800x
+i9-7900x,skylake,core i9,,,intel,core i9 i9-7900x
+i7-7820x,skylake,core i7,,,intel,core i7 i7-7820x
+i7-6785r,skylake,core i7,,,intel,core i7 i7-6785r
+i7-6700,skylake,core i7,,,intel,core i7 i7-6700
+i7-6700t,skylake,core i7,,,intel,core i7 i7-6700t
+i7-6700k,skylake,core i7,,,intel,core i7 i7-6700k
+i5-6685r,skylake,core i5,,,intel,core i5 i5-6685r
+i5-6585r,skylake,core i5,,,intel,core i5 i5-6585r
+i5-6402p,skylake,core i5,,,intel,core i5 i5-6402p
+i5-6500t,skylake,core i5,,,intel,core i5 i5-6500t
+i5-6500,skylake,core i5,,,intel,core i5 i5-6500
+i5-6400,skylake,core i5,,,intel,core i5 i5-6400
+i5-6400t,skylake,core i5,,,intel,core i5 i5-6400t
+i5-6600,skylake,core i5,,,intel,core i5 i5-6600
+i5-6600t,skylake,core i5,,,intel,core i5 i5-6600t
+i5-6600k,skylake,core i5,,,intel,core i5 i5-6600k
+i3-6098p,skylake,core i3,,,intel,core i3 i3-6098p
+i3-6300,skylake,core i3,,,intel,core i3 i3-6300
+i3-6320,skylake,core i3,,,intel,core i3 i3-6320
+i3-6100t,skylake,core i3,,,intel,core i3 i3-6100t
+i3-6100,skylake,core i3,,,intel,core i3 i3-6100
+i3-6300t,skylake,core i3,,,intel,core i3 i3-6300t
+e3-1545m,skylake,xeon e3,,,intel,xeon e3 e3-1545m
+e3-1515m,skylake,xeon e3,,,intel,xeon e3 e3-1515m
+e3-1575m,skylake,xeon e3,,,intel,xeon e3 e3-1575m
+e3-1535m,skylake,xeon e3,,,intel,xeon e3 e3-1535m
+e3-1505m,skylake,xeon e3,,,intel,xeon e3 e3-1505m
+i7-6660u,skylake,core i7,,,intel,core i7 i7-6660u
+i7-6970hq,skylake,core i7,,,intel,core i7 i7-6970hq
+i7-6770hq,skylake,core i7,,,intel,core i7 i7-6770hq
+i7-6870hq,skylake,core i7,,,intel,core i7 i7-6870hq
+i7-6820hq,skylake,core i7,,,intel,core i7 i7-6820hq
+i7-6560u,skylake,core i7,,,intel,core i7 i7-6560u
+i7-6650u,skylake,core i7,,,intel,core i7 i7-6650u
+i7-6500u,skylake,core i7,,,intel,core i7 i7-6500u
+i7-6600u,skylake,core i7,,,intel,core i7 i7-6600u
+i7-6820hk,skylake,core i7,,,intel,core i7 i7-6820hk
+i7-6700hq,skylake,core i7,,,intel,core i7 i7-6700hq
+i7-6920hq,skylake,core i7,,,intel,core i7 i7-6920hq
+i7-6567u,skylake,core i7,,,intel,core i7 i7-6567u
+i5-6350hq,skylake,core i5,,,intel,core i5 i5-6350hq
+i5-6360u,skylake,core i5,,,intel,core i5 i5-6360u
+i5-6260u,skylake,core i5,,,intel,core i5 i5-6260u
+i5-6287u,skylake,core i5,,,intel,core i5 i5-6287u
+i5-6267u,skylake,core i5,,,intel,core i5 i5-6267u
+i5-6200u,skylake,core i5,,,intel,core i5 i5-6200u
+i5-6300u,skylake,core i5,,,intel,core i5 i5-6300u
+i5-6440hq,skylake,core i5,,,intel,core i5 i5-6440hq
+i5-6300hq,skylake,core i5,,,intel,core i5 i5-6300hq
+i3-6006u,skylake,core i3,,,intel,core i3 i3-6006u
+i3-6157u,skylake,core i3,,,intel,core i3 i3-6157u
+i3-6167u,skylake,core i3,,,intel,core i3 i3-6167u
+i3-6100u,skylake,core i3,,,intel,core i3 i3-6100u
+i3-6100h,skylake,core i3,,,intel,core i3 i3-6100h
+m3-6y30,skylake,core m3,,,intel,core m3 m3-6y30
+m5-6y57,skylake,core m5,,,intel,core m5 m5-6y57
+m7-6y75,skylake,core m7,,,intel,core m7 m7-6y75
+m5-6y54,skylake,core m5,,,intel,core m5 m5-6y54
+4405y,skylake,,,,intel,
+4405u,skylake,,,,intel,
+3955u,skylake,,,,intel,
+3855u,skylake,,,,intel,
+2170b,skylake,,,,intel,
+8171m,skylake,,,,intel,
+gold 5122,sandybridge,xeon gold,,,intel,xeon gold gold 5122
+gold 6142,sandybridge,xeon gold,,,intel,xeon gold gold 6142
+platinum 8153,sandybridge,xeon platinum,,,intel,xeon platinum platinum 8153
+gold 6138,sandybridge,xeon gold,,,intel,xeon gold gold 6138
+platinum 8156,sandybridge,xeon platinum,,,intel,xeon platinum platinum 8156
+gold 6148,sandybridge,xeon gold,,,intel,xeon gold gold 6148
+gold 5120t,sandybridge,xeon gold,,,intel,xeon gold gold 5120t
+platinum 8158,sandybridge,xeon platinum,,,intel,xeon platinum platinum 8158
+platinum 8176,sandybridge,xeon platinum,,,intel,xeon platinum platinum 8176
+gold 6136,sandybridge,xeon gold,,,intel,xeon gold gold 6136
+gold 6150,sandybridge,xeon gold,,,intel,xeon gold gold 6150
+platinum 8160,sandybridge,xeon platinum,,,intel,xeon platinum platinum 8160
+silver 4116,sandybridge,xeon silver,,,intel,xeon silver silver 4116
+gold 6152,sandybridge,xeon gold,,,intel,xeon gold gold 6152
+gold 6130,sandybridge,xeon gold,,,intel,xeon gold gold 6130
+gold 6128,sandybridge,xeon gold,,,intel,xeon gold gold 6128
+gold 5118,sandybridge,xeon gold,,,intel,xeon gold gold 5118
+platinum 8164,sandybridge,xeon platinum,,,intel,xeon platinum platinum 8164
+gold 6134,sandybridge,xeon gold,,,intel,xeon gold gold 6134
+gold 6126,sandybridge,xeon gold,,,intel,xeon gold gold 6126
+gold 5120,sandybridge,xeon gold,,,intel,xeon gold gold 5120
+platinum 8168,sandybridge,xeon platinum,,,intel,xeon platinum platinum 8168
+gold 5115,sandybridge,xeon gold,,,intel,xeon gold gold 5115
+gold 6154,sandybridge,xeon gold,,,intel,xeon gold gold 6154
+gold 6140,sandybridge,xeon gold,,,intel,xeon gold gold 6140
+platinum 8170,sandybridge,xeon platinum,,,intel,xeon platinum platinum 8170
+platinum 8180,sandybridge,xeon platinum,,,intel,xeon platinum platinum 8180
+silver 4109t,sandybridge,xeon silver,,,intel,xeon silver silver 4109t
+bronze 3106,sandybridge,xeon bronze,,,intel,xeon bronze bronze 3106
+silver 4114,sandybridge,xeon silver,,,intel,xeon silver silver 4114
+gold 6132,sandybridge,xeon gold,,,intel,xeon gold gold 6132
+silver 4112,sandybridge,xeon silver,,,intel,xeon silver silver 4112
+gold 6138t,sandybridge,xeon gold,,,intel,xeon gold gold 6138t
+platinum 8160t,sandybridge,xeon platinum,,,intel,xeon platinum platinum 8160t
+silver 4108,sandybridge,xeon silver,,,intel,xeon silver silver 4108
+gold 6142f,sandybridge,xeon gold,,,intel,xeon gold gold 6142f
+gold 6130t,sandybridge,xeon gold,,,intel,xeon gold gold 6130t
+gold 6138f,sandybridge,xeon gold,,,intel,xeon gold gold 6138f
+bronze 3104,sandybridge,xeon bronze,,,intel,xeon bronze bronze 3104
+platinum 8160f,sandybridge,xeon platinum,,,intel,xeon platinum platinum 8160f
+silver 4110,sandybridge,xeon silver,,,intel,xeon silver silver 4110
+gold 6130f,sandybridge,xeon gold,,,intel,xeon gold gold 6130f
+gold 6126t,sandybridge,xeon gold,,,intel,xeon gold gold 6126t
+gold 6126f,sandybridge,xeon gold,,,intel,xeon gold gold 6126f
+gold 6148f,sandybridge,xeon gold,,,intel,xeon gold gold 6148f
+gold 6146,sandybridge,xeon gold,,,intel,xeon gold gold 6146
+gold 6144,sandybridge,xeon gold,,,intel,xeon gold gold 6144
+platinum 8176f,sandybridge,xeon platinum,,,intel,xeon platinum platinum 8176f
+silver 4116t,sandybridge,xeon silver,,,intel,xeon silver silver 4116t
+silver 4114t,sandybridge,xeon silver,,,intel,xeon silver silver 4114t
+gold 5119t,sandybridge,xeon gold,,,intel,xeon gold gold 5119t
+gold 6138p,sandybridge,xeon gold,,,intel,xeon gold gold 6138p
+w-2133,sandybridge,xeon w,,,intel,xeon w w-2133
+w-2155,sandybridge,xeon w,,,intel,xeon w w-2155
+w-2123,sandybridge,xeon w,,,intel,xeon w w-2123
+w-2145,sandybridge,xeon w,,,intel,xeon w w-2145
+w-2125,sandybridge,xeon w,,,intel,xeon w w-2125
+w-2135,sandybridge,xeon w,,,intel,xeon w w-2135
+w-2195,sandybridge,xeon w,,,intel,xeon w w-2195
+w-2175,sandybridge,xeon w,,,intel,xeon w w-2175
+d-2141i,sandybridge,xeon d,,,intel,xeon d d-2141i
+d-2177nt,sandybridge,xeon d,,,intel,xeon d d-2177nt
+d-2161i,sandybridge,xeon d,,,intel,xeon d d-2161i
+d-2143it,sandybridge,xeon d,,,intel,xeon d d-2143it
+d-2146nt,sandybridge,xeon d,,,intel,xeon d d-2146nt
+d-2145nt,sandybridge,xeon d,,,intel,xeon d d-2145nt
+d-2123it,sandybridge,xeon d,,,intel,xeon d d-2123it
+d-2173it,sandybridge,xeon d,,,intel,xeon d d-2173it
+d-2187nt,sandybridge,xeon d,,,intel,xeon d d-2187nt
+d-2142it,sandybridge,xeon d,,,intel,xeon d d-2142it
+d-2163it,sandybridge,xeon d,,,intel,xeon d d-2163it
+d-2183it,sandybridge,xeon d,,,intel,xeon d d-2183it
+d-2166nt,sandybridge,xeon d,,,intel,xeon d d-2166nt
+e3-1240l v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1240l v5
+e3-1235l v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1235l v5
+e3-1280 v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1280 v5
+e3-1220 v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1220 v5
+e3-1230 v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1230 v5
+e3-1245 v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1245 v5
+e3-1270 v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1270 v5
+e3-1225 v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1225 v5
+e3-1260l v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1260l v5
+e3-1240 v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1240 v5
+e3-1275 v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1275 v5
+e3-1565l v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1565l v5
+e3-1585l v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1585l v5
+e3-1585 v5,sandybridge,xeon e3,,,intel,xeon e3 e3-1585 v5
+c232,sandybridge,,,,intel,
+c236,sandybridge,,,,intel,
+8124m,sandybridge,,,,intel,
+8175m,sandybridge,,,,intel,
+8176m,sandybridge,,,,intel,
+8151,sandybridge,,,,intel,
+w-3175x,sandybridge,xeon w,,,intel,xeon w w-3175x
+i9-9920x,sandybridge,core i9,,,intel,core i9 i9-9920x
+i9-9980xe,sandybridge,core i9,,,intel,core i9 i9-9980xe
+i9-9940x,sandybridge,core i9,,,intel,core i9 i9-9940x
+i9-9900x,sandybridge,core i9,,,intel,core i9 i9-9900x
+i9-9960x,sandybridge,core i9,,,intel,core i9 i9-9960x
+i7-9800x,sandybridge,core i7,,,intel,core i7 i7-9800x
+i9-9820x,sandybridge,core i9,,,intel,core i9 i9-9820x
+i9-7940x,sandybridge,core i9,,,intel,core i9 i9-7940x
+i9-7980xe,sandybridge,core i9,,,intel,core i9 i9-7980xe
+i9-7960x,sandybridge,core i9,,,intel,core i9 i9-7960x
+i9-7920x,sandybridge,core i9,,,intel,core i9 i9-7920x
+i7-7800x,sandybridge,core i7,,,intel,core i7 i7-7800x
+i9-7900x,sandybridge,core i9,,,intel,core i9 i9-7900x
+i7-7820x,sandybridge,core i7,,,intel,core i7 i7-7820x
+i7-6785r,sandybridge,core i7,,,intel,core i7 i7-6785r
+i7-6700,sandybridge,core i7,,,intel,core i7 i7-6700
+i7-6700t,sandybridge,core i7,,,intel,core i7 i7-6700t
+i7-6700k,sandybridge,core i7,,,intel,core i7 i7-6700k
+i5-6685r,sandybridge,core i5,,,intel,core i5 i5-6685r
+i5-6585r,sandybridge,core i5,,,intel,core i5 i5-6585r
+i5-6402p,sandybridge,core i5,,,intel,core i5 i5-6402p
+i5-6500t,sandybridge,core i5,,,intel,core i5 i5-6500t
+i5-6500,sandybridge,core i5,,,intel,core i5 i5-6500
+i5-6400,sandybridge,core i5,,,intel,core i5 i5-6400
+i5-6400t,sandybridge,core i5,,,intel,core i5 i5-6400t
+i5-6600,sandybridge,core i5,,,intel,core i5 i5-6600
+i5-6600t,sandybridge,core i5,,,intel,core i5 i5-6600t
+i5-6600k,sandybridge,core i5,,,intel,core i5 i5-6600k
+i3-6098p,sandybridge,core i3,,,intel,core i3 i3-6098p
+i3-6300,sandybridge,core i3,,,intel,core i3 i3-6300
+i3-6320,sandybridge,core i3,,,intel,core i3 i3-6320
+i3-6100t,sandybridge,core i3,,,intel,core i3 i3-6100t
+i3-6100,sandybridge,core i3,,,intel,core i3 i3-6100
+i3-6300t,sandybridge,core i3,,,intel,core i3 i3-6300t
+e3-1545m,sandybridge,xeon e3,,,intel,xeon e3 e3-1545m
+e3-1515m,sandybridge,xeon e3,,,intel,xeon e3 e3-1515m
+e3-1575m,sandybridge,xeon e3,,,intel,xeon e3 e3-1575m
+e3-1535m,sandybridge,xeon e3,,,intel,xeon e3 e3-1535m
+e3-1505m,sandybridge,xeon e3,,,intel,xeon e3 e3-1505m
+i7-6660u,sandybridge,core i7,,,intel,core i7 i7-6660u
+i7-6970hq,sandybridge,core i7,,,intel,core i7 i7-6970hq
+i7-6770hq,sandybridge,core i7,,,intel,core i7 i7-6770hq
+i7-6870hq,sandybridge,core i7,,,intel,core i7 i7-6870hq
+i7-6820hq,sandybridge,core i7,,,intel,core i7 i7-6820hq
+i7-6560u,sandybridge,core i7,,,intel,core i7 i7-6560u
+i7-6650u,sandybridge,core i7,,,intel,core i7 i7-6650u
+i7-6500u,sandybridge,core i7,,,intel,core i7 i7-6500u
+i7-6600u,sandybridge,core i7,,,intel,core i7 i7-6600u
+i7-6820hk,sandybridge,core i7,,,intel,core i7 i7-6820hk
+i7-6700hq,sandybridge,core i7,,,intel,core i7 i7-6700hq
+i7-6920hq,sandybridge,core i7,,,intel,core i7 i7-6920hq
+i7-6567u,sandybridge,core i7,,,intel,core i7 i7-6567u
+i5-6350hq,sandybridge,core i5,,,intel,core i5 i5-6350hq
+i5-6360u,sandybridge,core i5,,,intel,core i5 i5-6360u
+i5-6260u,sandybridge,core i5,,,intel,core i5 i5-6260u
+i5-6287u,sandybridge,core i5,,,intel,core i5 i5-6287u
+i5-6267u,sandybridge,core i5,,,intel,core i5 i5-6267u
+i5-6200u,sandybridge,core i5,,,intel,core i5 i5-6200u
+i5-6300u,sandybridge,core i5,,,intel,core i5 i5-6300u
+i5-6440hq,sandybridge,core i5,,,intel,core i5 i5-6440hq
+i5-6300hq,sandybridge,core i5,,,intel,core i5 i5-6300hq
+i3-6006u,sandybridge,core i3,,,intel,core i3 i3-6006u
+i3-6157u,sandybridge,core i3,,,intel,core i3 i3-6157u
+i3-6167u,sandybridge,core i3,,,intel,core i3 i3-6167u
+i3-6100u,sandybridge,core i3,,,intel,core i3 i3-6100u
+i3-6100h,sandybridge,core i3,,,intel,core i3 i3-6100h
+m3-6y30,sandybridge,core m3,,,intel,core m3 m3-6y30
+m5-6y57,sandybridge,core m5,,,intel,core m5 m5-6y57
+m7-6y75,sandybridge,core m7,,,intel,core m7 m7-6y75
+m5-6y54,sandybridge,core m5,,,intel,core m5 m5-6y54
+4405y,sandybridge,,,,intel,
+4405u,sandybridge,,,,intel,
+3955u,sandybridge,,,,intel,
+3855u,sandybridge,,,,intel,
+2170b,sandybridge,,,,intel,
+8171m,sandybridge,,,,intel,
+e7-4809 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-4809 v2
+e7-8880l v2,ivybridge,xeon e7,,,intel,xeon e7 e7-8880l v2
+e7-8880 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-8880 v2
+e7-4820 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-4820 v2
+e7-8890 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-8890 v2
+e7-8891 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-8891 v2
+e7-2850 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-2850 v2
+e7-4830 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-4830 v2
+e7-8893 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-8893 v2
+e7-2870 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-2870 v2
+e7-4850 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-4850 v2
+e7-2880 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-2880 v2
+e7-2890 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-2890 v2
+e7-4860 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-4860 v2
+e7-4870 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-4870 v2
+e7-4890 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-4890 v2
+e7-8850 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-8850 v2
+e7-8857 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-8857 v2
+e7-8870 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-8870 v2
+e7-4880 v2,ivybridge,xeon e7,,,intel,xeon e7 e7-4880 v2
+e3-1290 v2,ivybridge,xeon e3,,,intel,xeon e3 e3-1290 v2
+e3-1230 v2,ivybridge,xeon e3,,,intel,xeon e3 e3-1230 v2
+e3-1225 v2,ivybridge,xeon e3,,,intel,xeon e3 e3-1225 v2
+e3-1280 v2,ivybridge,xeon e3,,,intel,xeon e3 e3-1280 v2
+e3-1220 v2,ivybridge,xeon e3,,,intel,xeon e3 e3-1220 v2
+e3-1275 v2,ivybridge,xeon e3,,,intel,xeon e3 e3-1275 v2
+e3-1220l v2,ivybridge,xeon e3,,,intel,xeon e3 e3-1220l v2
+e3-1270 v2,ivybridge,xeon e3,,,intel,xeon e3 e3-1270 v2
+e3-1265l v2,ivybridge,xeon e3,,,intel,xeon e3 e3-1265l v2
+e3-1245 v2,ivybridge,xeon e3,,,intel,xeon e3 e3-1245 v2
+e3-1240 v2,ivybridge,xeon e3,,,intel,xeon e3 e3-1240 v2
+e5-2640 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2640 v2
+e5-2680 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2680 v2
+e5-4640 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-4640 v2
+e5-4650 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-4650 v2
+e5-4657l v2,ivybridge,xeon e5,,,intel,xeon e5 e5-4657l v2
+e5-2690 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2690 v2
+e5-2643 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2643 v2
+e5-2650 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2650 v2
+e5-2650l v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2650l v2
+e5-2695 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2695 v2
+e5-2660 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2660 v2
+e5-4607 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-4607 v2
+e5-2667 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2667 v2
+e5-2697 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2697 v2
+e5-4610 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-4610 v2
+e5-2603 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2603 v2
+e5-2670 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2670 v2
+e5-4620 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-4620 v2
+e5-4627 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-4627 v2
+e5-2609 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2609 v2
+e5-1620 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-1620 v2
+e5-2687w v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2687w v2
+e5-1650 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-1650 v2
+e5-2620 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2620 v2
+e5-1660 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-1660 v2
+e5-2630 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2630 v2
+e5-2630l v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2630l v2
+e5-2637 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2637 v2
+e5-4603 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-4603 v2
+e5-2420 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2420 v2
+e5-2440 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2440 v2
+e5-2403 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2403 v2
+e5-2430 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2430 v2
+e5-2450 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2450 v2
+e5-2430l v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2430l v2
+e5-2450l v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2450l v2
+e5-2470 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2470 v2
+e5-2407 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2407 v2
+e5-2651 v2,ivybridge,xeon e5,,,intel,xeon e5 e5-2651 v2
+3245,ivybridge,,,,intel,
+i5-3340,ivybridge,core i5,,,intel,core i5 i5-3340
+i5-3340s,ivybridge,core i5,,,intel,core i5 i5-3340s
+i3-3250,ivybridge,core i3,,,intel,core i3 i3-3250
+i3-3250t,ivybridge,core i3,,,intel,core i3 i3-3250t
+i3-3245,ivybridge,core i3,,,intel,core i3 i3-3245
+i3-3210,ivybridge,core i3,,,intel,core i3 i3-3210
+i3-3225,ivybridge,core i3,,,intel,core i3 i3-3225
+i5-3350p,ivybridge,core i5,,,intel,core i5 i5-3350p
+i5-3330s,ivybridge,core i5,,,intel,core i5 i5-3330s
+i5-3330,ivybridge,core i5,,,intel,core i5 i5-3330
+i3-3240t,ivybridge,core i3,,,intel,core i3 i3-3240t
+i3-3240,ivybridge,core i3,,,intel,core i3 i3-3240
+i3-3220t,ivybridge,core i3,,,intel,core i3 i3-3220t
+i3-3220,ivybridge,core i3,,,intel,core i3 i3-3220
+i5-3475s,ivybridge,core i5,,,intel,core i5 i5-3475s
+i5-3570s,ivybridge,core i5,,,intel,core i5 i5-3570s
+i5-3570,ivybridge,core i5,,,intel,core i5 i5-3570
+i5-3470t,ivybridge,core i5,,,intel,core i5 i5-3470t
+i5-3470,ivybridge,core i5,,,intel,core i5 i5-3470
+i5-3470s,ivybridge,core i5,,,intel,core i5 i5-3470s
+i5-3450,ivybridge,core i5,,,intel,core i5 i5-3450
+i5-3450s,ivybridge,core i5,,,intel,core i5 i5-3450s
+i5-3550,ivybridge,core i5,,,intel,core i5 i5-3550
+i5-3550s,ivybridge,core i5,,,intel,core i5 i5-3550s
+i5-3570k,ivybridge,core i5,,,intel,core i5 i5-3570k
+i5-3570t,ivybridge,core i5,,,intel,core i5 i5-3570t
+i7-3770k,ivybridge,core i7,,,intel,core i7 i7-3770k
+i7-3770s,ivybridge,core i7,,,intel,core i7 i7-3770s
+i7-3770t,ivybridge,core i7,,,intel,core i7 i7-3770t
+i7-3770,ivybridge,core i7,,,intel,core i7 i7-3770
+g2030t,ivybridge,pantium g,,,intel,pantium g g2030t
+g2120t,ivybridge,pantium g,,,intel,pantium g g2120t
+g2140,ivybridge,pantium g,,,intel,pantium g g2140
+g2030,ivybridge,pantium g,,,intel,pantium g g2030
+g2130,ivybridge,pantium g,,,intel,pantium g g2130
+g2010,ivybridge,pantium g,,,intel,pantium g g2010
+g2020,ivybridge,pantium g,,,intel,pantium g g2020
+g2020t,ivybridge,pantium g,,,intel,pantium g g2020t
+g2120,ivybridge,pantium g,,,intel,pantium g g2120
+g2100t,ivybridge,pantium g,,,intel,pantium g g2100t
+g1630,ivybridge,pantium g,,,intel,pantium g g1630
+g1620t,ivybridge,pantium g,,,intel,pantium g g1620t
+g1610t,ivybridge,pantium g,,,intel,pantium g g1610t
+g1610,ivybridge,pantium g,,,intel,pantium g g1610
+g1620,ivybridge,pantium g,,,intel,pantium g g1620
+i7-3940xm,ivybridge,core i7,,,intel,core i7 i7-3940xm
+i7-3920xm,ivybridge,core i7,,,intel,core i7 i7-3920xm
+i5-3437u,ivybridge,core i5,,,intel,core i5 i5-3437u
+i7-3687u,ivybridge,core i7,,,intel,core i7 i7-3687u
+i5-3340m,ivybridge,core i5,,,intel,core i5 i5-3340m
+i5-3380m,ivybridge,core i5,,,intel,core i5 i5-3380m
+i7-3540m,ivybridge,core i7,,,intel,core i7 i7-3540m
+i7-3537u,ivybridge,core i7,,,intel,core i7 i7-3537u
+i5-3337u,ivybridge,core i5,,,intel,core i5 i5-3337u
+i5-3230m,ivybridge,core i5,,,intel,core i5 i5-3230m
+i3-3227u,ivybridge,core i3,,,intel,core i3 i3-3227u
+i3-3130m,ivybridge,core i3,,,intel,core i3 i3-3130m
+i5-3230m,ivybridge,core i5,,,intel,core i5 i5-3230m
+i7-3689y,ivybridge,core i7,,,intel,core i7 i7-3689y
+i5-3439y,ivybridge,core i5,,,intel,core i5 i5-3439y
+i5-3339y,ivybridge,core i5,,,intel,core i5 i5-3339y
+i3-3229y,ivybridge,core i3,,,intel,core i3 i3-3229y
+i7-3840qm,ivybridge,core i7,,,intel,core i7 i7-3840qm
+i7-3632qm,ivybridge,core i7,,,intel,core i7 i7-3632qm
+i3-3120m,ivybridge,core i3,,,intel,core i3 i3-3120m
+i7-3635qm,ivybridge,core i7,,,intel,core i7 i7-3635qm
+i7-3630qm,ivybridge,core i7,,,intel,core i7 i7-3630qm
+i7-3632qm,ivybridge,core i7,,,intel,core i7 i7-3632qm
+i7-3740qm,ivybridge,core i7,,,intel,core i7 i7-3740qm
+i3-3110m,ivybridge,core i3,,,intel,core i3 i3-3110m
+i3-3217u,ivybridge,core i3,,,intel,core i3 i3-3217u
+i5-3427u,ivybridge,core i5,,,intel,core i5 i5-3427u
+i5-3317u,ivybridge,core i5,,,intel,core i5 i5-3317u
+i5-3210m,ivybridge,core i5,,,intel,core i5 i5-3210m
+i7-3667u,ivybridge,core i7,,,intel,core i7 i7-3667u
+i5-3360m,ivybridge,core i5,,,intel,core i5 i5-3360m
+i7-3517u,ivybridge,core i7,,,intel,core i7 i7-3517u
+i7-3520m,ivybridge,core i7,,,intel,core i7 i7-3520m
+i5-3210m,ivybridge,core i5,,,intel,core i5 i5-3210m
+i5-3320m,ivybridge,core i5,,,intel,core i5 i5-3320m
+i7-3720qm,ivybridge,core i7,,,intel,core i7 i7-3720qm
+i7-3610qm,ivybridge,core i7,,,intel,core i7 i7-3610qm
+i7-3615qm,ivybridge,core i7,,,intel,core i7 i7-3615qm
+i7-3612qm,ivybridge,core i7,,,intel,core i7 i7-3612qm
+i7-3820qm,ivybridge,core i7,,,intel,core i7 i7-3820qm
+i7-3612qm,ivybridge,core i7,,,intel,core i7 i7-3612qm
+2127u,ivybridge,,,,intel,
+2030m,ivybridge,,,,intel,
+2129y,ivybridge,,,,intel,
+2117u,ivybridge,,,,intel,
+2020m,ivybridge,,,,intel,
+a1018,ivybridge,,,,intel,
+1017u,ivybridge,,,,intel,
+1005m,ivybridge,,,,intel,
+1019y,ivybridge,,,,intel,
+1020m,ivybridge,,,,intel,
+1037u,ivybridge,,,,intel,
+1000m,ivybridge,,,,intel,
+1007u,ivybridge,,,,intel,
+e7-8860 v3,haswell,xeon e7,,,intel,xeon e7 e7-8860 v3
+e3-1230 v3,haswell,xeon e3,,,intel,xeon e3 e3-1230 v3
+e3-1240 v3,haswell,xeon e3,,,intel,xeon e3 e3-1240 v3
+e3-1270 v3,haswell,xeon e3,,,intel,xeon e3 e3-1270 v3
+e3-1280 v3,haswell,xeon e3,,,intel,xeon e3 e3-1280 v3
+e3-1225 v3,haswell,xeon e3,,,intel,xeon e3 e3-1225 v3
+e3-1220l v3,haswell,xeon e3,,,intel,xeon e3 e3-1220l v3
+e3-1245 v3,haswell,xeon e3,,,intel,xeon e3 e3-1245 v3
+e3-1265l v3,haswell,xeon e3,,,intel,xeon e3 e3-1265l v3
+e3-1275 v3,haswell,xeon e3,,,intel,xeon e3 e3-1275 v3
+e3-1285 v3,haswell,xeon e3,,,intel,xeon e3 e3-1285 v3
+e3-1285l v3,haswell,xeon e3,,,intel,xeon e3 e3-1285l v3
+e3-1275l v3,haswell,xeon e3,,,intel,xeon e3 e3-1275l v3
+e3-1241 v3,haswell,xeon e3,,,intel,xeon e3 e3-1241 v3
+e3-1231 v3,haswell,xeon e3,,,intel,xeon e3 e3-1231 v3
+e3-1240l v3,haswell,xeon e3,,,intel,xeon e3 e3-1240l v3
+e3-1286 v3,haswell,xeon e3,,,intel,xeon e3 e3-1286 v3
+e3-1286l v3,haswell,xeon e3,,,intel,xeon e3 e3-1286l v3
+e3-1276 v3,haswell,xeon e3,,,intel,xeon e3 e3-1276 v3
+e3-1281 v3,haswell,xeon e3,,,intel,xeon e3 e3-1281 v3
+e3-1246 v3,haswell,xeon e3,,,intel,xeon e3 e3-1246 v3
+e3-1271 v3,haswell,xeon e3,,,intel,xeon e3 e3-1271 v3
+e3-1226 v3,haswell,xeon e3,,,intel,xeon e3 e3-1226 v3
+e5-2666 v3,haswell,xeon e5,,,intel,xeon e5 e5-2666 v3
+e5-2676 v3,haswell,xeon e5,,,intel,xeon e5 e5-2676 v3
+e7-8867 v3,haswell,xeon e7,,,intel,xeon e7 e7-8867 v3
+e7-8870 v3,haswell,xeon e7,,,intel,xeon e7 e7-8870 v3
+e7-8880 v3,haswell,xeon e7,,,intel,xeon e7 e7-8880 v3
+e7-8880l v3,haswell,xeon e7,,,intel,xeon e7 e7-8880l v3
+e7-4809 v3,haswell,xeon e7,,,intel,xeon e7 e7-4809 v3
+e7-8890 v3,haswell,xeon e7,,,intel,xeon e7 e7-8890 v3
+e7-4820 v3,haswell,xeon e7,,,intel,xeon e7 e7-4820 v3
+e7-8891 v3,haswell,xeon e7,,,intel,xeon e7 e7-8891 v3
+e7-4830 v3,haswell,xeon e7,,,intel,xeon e7 e7-4830 v3
+e7-4850 v3,haswell,xeon e7,,,intel,xeon e7 e7-4850 v3
+e7-8893 v3,haswell,xeon e7,,,intel,xeon e7 e7-8893 v3
+e5-2695 v3,haswell,xeon e5,,,intel,xeon e5 e5-2695 v3
+e5-2697 v3,haswell,xeon e5,,,intel,xeon e5 e5-2697 v3
+e5-2698 v3,haswell,xeon e5,,,intel,xeon e5 e5-2698 v3
+e5-2699 v3,haswell,xeon e5,,,intel,xeon e5 e5-2699 v3
+e5-2683 v3,haswell,xeon e5,,,intel,xeon e5 e5-2683 v3
+e5-2690 v3,haswell,xeon e5,,,intel,xeon e5 e5-2690 v3
+e5-2650 v3,haswell,xeon e5,,,intel,xeon e5 e5-2650 v3
+e5-2660 v3,haswell,xeon e5,,,intel,xeon e5 e5-2660 v3
+e5-2609 v3,haswell,xeon e5,,,intel,xeon e5 e5-2609 v3
+e5-2680 v3,haswell,xeon e5,,,intel,xeon e5 e5-2680 v3
+e5-2670 v3,haswell,xeon e5,,,intel,xeon e5 e5-2670 v3
+e5-1630 v3,haswell,xeon e5,,,intel,xeon e5 e5-1630 v3
+e5-1650 v3,haswell,xeon e5,,,intel,xeon e5 e5-1650 v3
+e5-2687w v3,haswell,xeon e5,,,intel,xeon e5 e5-2687w v3
+e5-2643 v3,haswell,xeon e5,,,intel,xeon e5 e5-2643 v3
+e5-1660 v3,haswell,xeon e5,,,intel,xeon e5 e5-1660 v3
+e5-1680 v3,haswell,xeon e5,,,intel,xeon e5 e5-1680 v3
+e5-2650l v3,haswell,xeon e5,,,intel,xeon e5 e5-2650l v3
+e5-2620 v3,haswell,xeon e5,,,intel,xeon e5 e5-2620 v3
+e5-2623 v3,haswell,xeon e5,,,intel,xeon e5 e5-2623 v3
+e5-1620 v3,haswell,xeon e5,,,intel,xeon e5 e5-1620 v3
+e5-2630 v3,haswell,xeon e5,,,intel,xeon e5 e5-2630 v3
+e5-2630l v3,haswell,xeon e5,,,intel,xeon e5 e5-2630l v3
+e5-2637 v3,haswell,xeon e5,,,intel,xeon e5 e5-2637 v3
+e5-2640 v3,haswell,xeon e5,,,intel,xeon e5 e5-2640 v3
+e5-2603 v3,haswell,xeon e5,,,intel,xeon e5 e5-2603 v3
+e5-2667 v3,haswell,xeon e5,,,intel,xeon e5 e5-2667 v3
+e5-4640 v3,haswell,xeon e5,,,intel,xeon e5 e5-4640 v3
+e5-4650 v3,haswell,xeon e5,,,intel,xeon e5 e5-4650 v3
+e5-4655 v3,haswell,xeon e5,,,intel,xeon e5 e5-4655 v3
+e5-4660 v3,haswell,xeon e5,,,intel,xeon e5 e5-4660 v3
+e5-4667 v3,haswell,xeon e5,,,intel,xeon e5 e5-4667 v3
+e5-4669 v3,haswell,xeon e5,,,intel,xeon e5 e5-4669 v3
+e5-4610 v3,haswell,xeon e5,,,intel,xeon e5 e5-4610 v3
+e5-4620 v3,haswell,xeon e5,,,intel,xeon e5 e5-4620 v3
+e5-4627 v3,haswell,xeon e5,,,intel,xeon e5 e5-4627 v3
+e3-1220 v3,haswell,xeon e3,,,intel,xeon e3 e3-1220 v3
+e3-1230l v3,haswell,xeon e3,,,intel,xeon e3 e3-1230l v3
+i7-4785t,haswell,core i7,,,intel,core i7 i7-4785t
+i7-4790,haswell,core i7,,,intel,core i7 i7-4790
+i7-4790s,haswell,core i7,,,intel,core i7 i7-4790s
+i7-4790t,haswell,core i7,,,intel,core i7 i7-4790t
+i7-4771,haswell,core i7,,,intel,core i7 i7-4771
+i7-4770k,haswell,core i7,,,intel,core i7 i7-4770k
+i7-4770t,haswell,core i7,,,intel,core i7 i7-4770t
+i7-4770s,haswell,core i7,,,intel,core i7 i7-4770s
+i7-4770,haswell,core i7,,,intel,core i7 i7-4770
+i7-4765t,haswell,core i7,,,intel,core i7 i7-4765t
+i5-4460s,haswell,core i5,,,intel,core i5 i5-4460s
+i5-4460,haswell,core i5,,,intel,core i5 i5-4460
+i5-4590t,haswell,core i5,,,intel,core i5 i5-4590t
+i5-4460t,haswell,core i5,,,intel,core i5 i5-4460t
+i5-4590s,haswell,core i5,,,intel,core i5 i5-4590s
+i5-4590,haswell,core i5,,,intel,core i5 i5-4590
+i5-4690,haswell,core i5,,,intel,core i5 i5-4690
+i5-4690s,haswell,core i5,,,intel,core i5 i5-4690s
+i5-4690t,haswell,core i5,,,intel,core i5 i5-4690t
+i5-4440,haswell,core i5,,,intel,core i5 i5-4440
+i5-4440s,haswell,core i5,,,intel,core i5 i5-4440s
+i5-4670t,haswell,core i5,,,intel,core i5 i5-4670t
+i5-4670s,haswell,core i5,,,intel,core i5 i5-4670s
+i5-4670k,haswell,core i5,,,intel,core i5 i5-4670k
+i5-4670,haswell,core i5,,,intel,core i5 i5-4670
+i5-4570t,haswell,core i5,,,intel,core i5 i5-4570t
+i5-4570s,haswell,core i5,,,intel,core i5 i5-4570s
+i5-4570,haswell,core i5,,,intel,core i5 i5-4570
+i5-4430s,haswell,core i5,,,intel,core i5 i5-4430s
+i5-4430,haswell,core i5,,,intel,core i5 i5-4430
+i3-4170,haswell,core i3,,,intel,core i3 i3-4170
+i3-4370t,haswell,core i3,,,intel,core i3 i3-4370t
+i3-4170t,haswell,core i3,,,intel,core i3 i3-4170t
+i3-4360t,haswell,core i3,,,intel,core i3 i3-4360t
+i3-4370,haswell,core i3,,,intel,core i3 i3-4370
+i3-4160t,haswell,core i3,,,intel,core i3 i3-4160t
+i3-4160,haswell,core i3,,,intel,core i3 i3-4160
+i3-4150,haswell,core i3,,,intel,core i3 i3-4150
+i3-4150t,haswell,core i3,,,intel,core i3 i3-4150t
+i3-4350,haswell,core i3,,,intel,core i3 i3-4350
+i3-4350t,haswell,core i3,,,intel,core i3 i3-4350t
+i3-4360,haswell,core i3,,,intel,core i3 i3-4360
+i3-4340,haswell,core i3,,,intel,core i3 i3-4340
+i3-4330t,haswell,core i3,,,intel,core i3 i3-4330t
+i3-4330,haswell,core i3,,,intel,core i3 i3-4330
+i3-4130t,haswell,core i3,,,intel,core i3 i3-4130t
+i3-4130,haswell,core i3,,,intel,core i3 i3-4130
+g3460t,haswell,pantium g,,,intel,pantium g g3460t
+g3470,haswell,pantium g,,,intel,pantium g g3470
+g3260,haswell,pantium g,,,intel,pantium g g3260
+g3260t,haswell,pantium g,,,intel,pantium g g3260t
+g3250,haswell,pantium g,,,intel,pantium g g3250
+g3460,haswell,pantium g,,,intel,pantium g g3460
+g3250t,haswell,pantium g,,,intel,pantium g g3250t
+g3450t,haswell,pantium g,,,intel,pantium g g3450t
+g3258,haswell,pantium g,,,intel,pantium g g3258
+g3450,haswell,pantium g,,,intel,pantium g g3450
+g3440,haswell,pantium g,,,intel,pantium g g3440
+g3440t,haswell,pantium g,,,intel,pantium g g3440t
+g3240,haswell,pantium g,,,intel,pantium g g3240
+g3240t,haswell,pantium g,,,intel,pantium g g3240t
+g3430,haswell,pantium g,,,intel,pantium g g3430
+g3420t,haswell,pantium g,,,intel,pantium g g3420t
+g3420,haswell,pantium g,,,intel,pantium g g3420
+g3220t,haswell,pantium g,,,intel,pantium g g3220t
+g3220,haswell,pantium g,,,intel,pantium g g3220
+g1850,haswell,pantium g,,,intel,pantium g g1850
+g1840,haswell,pantium g,,,intel,pantium g g1840
+g1840t,haswell,pantium g,,,intel,pantium g g1840t
+g1820t,haswell,pantium g,,,intel,pantium g g1820t
+g1820,haswell,pantium g,,,intel,pantium g g1820
+g1830,haswell,pantium g,,,intel,pantium g g1830
+i7-4940mx,haswell,core i7,,,intel,core i7 i7-4940mx
+i7-4930mx,haswell,core i7,,,intel,core i7 i7-4930mx
+i7-4720hq,haswell,core i7,,,intel,core i7 i7-4720hq
+i7-4722hq,haswell,core i7,,,intel,core i7 i7-4722hq
+i7-4578u,haswell,core i7,,,intel,core i7 i7-4578u
+i7-4510u,haswell,core i7,,,intel,core i7 i7-4510u
+i7-4712mq,haswell,core i7,,,intel,core i7 i7-4712mq
+i7-4712hq,haswell,core i7,,,intel,core i7 i7-4712hq
+i7-4710mq,haswell,core i7,,,intel,core i7 i7-4710mq
+i7-4710hq,haswell,core i7,,,intel,core i7 i7-4710hq
+i7-4610m,haswell,core i7,,,intel,core i7 i7-4610m
+i7-4910mq,haswell,core i7,,,intel,core i7 i7-4910mq
+i7-4810mq,haswell,core i7,,,intel,core i7 i7-4810mq
+i7-4600m,haswell,core i7,,,intel,core i7 i7-4600m
+i7-4610y,haswell,core i7,,,intel,core i7 i7-4610y
+i7-4600u,haswell,core i7,,,intel,core i7 i7-4600u
+i7-4550u,haswell,core i7,,,intel,core i7 i7-4550u
+i7-4650u,haswell,core i7,,,intel,core i7 i7-4650u
+i7-4500u,haswell,core i7,,,intel,core i7 i7-4500u
+i7-4558u,haswell,core i7,,,intel,core i7 i7-4558u
+i7-4900mq,haswell,core i7,,,intel,core i7 i7-4900mq
+i7-4800mq,haswell,core i7,,,intel,core i7 i7-4800mq
+i7-4702mq,haswell,core i7,,,intel,core i7 i7-4702mq
+i7-4702hq,haswell,core i7,,,intel,core i7 i7-4702hq
+i7-4700hq,haswell,core i7,,,intel,core i7 i7-4700hq
+i7-4700mq,haswell,core i7,,,intel,core i7 i7-4700mq
+i5-4210h,haswell,core i5,,,intel,core i5 i5-4210h
+i5-4278u,haswell,core i5,,,intel,core i5 i5-4278u
+i5-4308u,haswell,core i5,,,intel,core i5 i5-4308u
+i5-4210u,haswell,core i5,,,intel,core i5 i5-4210u
+i5-4220y,haswell,core i5,,,intel,core i5 i5-4220y
+i5-4260u,haswell,core i5,,,intel,core i5 i5-4260u
+i5-4210m,haswell,core i5,,,intel,core i5 i5-4210m
+i5-4310m,haswell,core i5,,,intel,core i5 i5-4310m
+i5-4340m,haswell,core i5,,,intel,core i5 i5-4340m
+i5-4310u,haswell,core i5,,,intel,core i5 i5-4310u
+i5-4360u,haswell,core i5,,,intel,core i5 i5-4360u
+i5-4302y,haswell,core i5,,,intel,core i5 i5-4302y
+i5-4300y,haswell,core i5,,,intel,core i5 i5-4300y
+i5-4210y,haswell,core i5,,,intel,core i5 i5-4210y
+i5-4202y,haswell,core i5,,,intel,core i5 i5-4202y
+i5-4200m,haswell,core i5,,,intel,core i5 i5-4200m
+i5-4300m,haswell,core i5,,,intel,core i5 i5-4300m
+i5-4300u,haswell,core i5,,,intel,core i5 i5-4300u
+i5-4200h,haswell,core i5,,,intel,core i5 i5-4200h
+i5-4330m,haswell,core i5,,,intel,core i5 i5-4330m
+i5-4350u,haswell,core i5,,,intel,core i5 i5-4350u
+i5-4250u,haswell,core i5,,,intel,core i5 i5-4250u
+i5-4200u,haswell,core i5,,,intel,core i5 i5-4200u
+i5-4200y,haswell,core i5,,,intel,core i5 i5-4200y
+i5-4258u,haswell,core i5,,,intel,core i5 i5-4258u
+i5-4288u,haswell,core i5,,,intel,core i5 i5-4288u
+i3-4025u,haswell,core i3,,,intel,core i3 i3-4025u
+i3-4030u,haswell,core i3,,,intel,core i3 i3-4030u
+i3-4110m,haswell,core i3,,,intel,core i3 i3-4110m
+i3-4120u,haswell,core i3,,,intel,core i3 i3-4120u
+i3-4030y,haswell,core i3,,,intel,core i3 i3-4030y
+i3-4020y,haswell,core i3,,,intel,core i3 i3-4020y
+i3-4012y,haswell,core i3,,,intel,core i3 i3-4012y
+i3-4100m,haswell,core i3,,,intel,core i3 i3-4100m
+i3-4000m,haswell,core i3,,,intel,core i3 i3-4000m
+i3-4005u,haswell,core i3,,,intel,core i3 i3-4005u
+i3-4010u,haswell,core i3,,,intel,core i3 i3-4010u
+i3-4100u,haswell,core i3,,,intel,core i3 i3-4100u
+i3-4010y,haswell,core i3,,,intel,core i3 i3-4010y
+i3-4158u,haswell,core i3,,,intel,core i3 i3-4158u
+3560m,haswell,,,,intel,
+3558u,haswell,,,,intel,
+3561y,haswell,,,,intel,
+3556u,haswell,,,,intel,
+3560y,haswell,,,,intel,
+3550m,haswell,,,,intel,
+2970m,haswell,,,,intel,
+2981u,haswell,,,,intel,
+2961y,haswell,,,,intel,
+2957u,haswell,,,,intel,
+2955u,haswell,,,,intel,
+2980u,haswell,,,,intel,
+2950m,haswell,,,,intel,
+e-2124g,coffeelake,pantium g,,,intel,pantium g e-2124g
+e-2146g,coffeelake,pantium g,,,intel,pantium g e-2146g
+e-2176g,coffeelake,pantium g,,,intel,pantium g e-2176g
+e-2136,coffeelake,,,,intel,
+e-2134,coffeelake,,,,intel,
+e-2144g,coffeelake,pantium g,,,intel,pantium g e-2144g
+e-2174g,coffeelake,pantium g,,,intel,pantium g e-2174g
+e-2186g,coffeelake,pantium g,,,intel,pantium g e-2186g
+e-2126g,coffeelake,pantium g,,,intel,pantium g e-2126g
+e-2124,coffeelake,,,,intel,
+e-2226g,coffeelake,pantium g,,,intel,pantium g e-2226g
+e-2234,coffeelake,,,,intel,
+e-2236,coffeelake,,,,intel,
+e-2244g,coffeelake,pantium g,,,intel,pantium g e-2244g
+e-2274g,coffeelake,pantium g,,,intel,pantium g e-2274g
+e-2246g,coffeelake,pantium g,,,intel,pantium g e-2246g
+e-2224,coffeelake,,,,intel,
+e-2224g,coffeelake,pantium g,,,intel,pantium g e-2224g
+e-2288g,coffeelake,pantium g,,,intel,pantium g e-2288g
+e-2278g,coffeelake,pantium g,,,intel,pantium g e-2278g
+e-2286g,coffeelake,pantium g,,,intel,pantium g e-2286g
+e-2276g,coffeelake,pantium g,,,intel,pantium g e-2276g
+core i7-8700b,coffeelake,core i7,,,intel,core i7 core i7-8700b
+i9-9900ks,coffeelake,core i9,,,intel,core i9 i9-9900ks
+i9-9900t,coffeelake,core i9,,,intel,core i9 i9-9900t
+i9-9900,coffeelake,core i9,,,intel,core i9 i9-9900
+i9-9900kf,coffeelake,core i9,,,intel,core i9 i9-9900kf
+i9-9900k,coffeelake,core i9,,,intel,core i9 i9-9900k
+i7-9700t,coffeelake,core i7,,,intel,core i7 i7-9700t
+i7-9700f,coffeelake,core i7,,,intel,core i7 i7-9700f
+i7-9700,coffeelake,core i7,,,intel,core i7 i7-9700
+i7-9700kf,coffeelake,core i7,,,intel,core i7 i7-9700kf
+i7-9700k,coffeelake,core i7,,,intel,core i7 i7-9700k
+i7-8086k,coffeelake,core i7,,,intel,core i7 i7-8086k
+i7-8700t,coffeelake,core i7,,,intel,core i7 i7-8700t
+i7-8700,coffeelake,core i7,,,intel,core i7 i7-8700
+i7-8700k,coffeelake,core i7,,,intel,core i7 i7-8700k
+i7-8700,coffeelake,core i7,,,intel,core i7 i7-8700
+i5-9500t,coffeelake,core i5,,,intel,core i5 i5-9500t
+i5-9600t,coffeelake,core i5,,,intel,core i5 i5-9600t
+i5-9500f,coffeelake,core i5,,,intel,core i5 i5-9500f
+i5-9600,coffeelake,core i5,,,intel,core i5 i5-9600
+i5-9500,coffeelake,core i5,,,intel,core i5 i5-9500
+i5-9400t,coffeelake,core i5,,,intel,core i5 i5-9400t
+i5-9400,coffeelake,core i5,,,intel,core i5 i5-9400
+i5-9400f,coffeelake,core i5,,,intel,core i5 i5-9400f
+i5-9600kf,coffeelake,core i5,,,intel,core i5 i5-9600kf
+i5-9600k,coffeelake,core i5,,,intel,core i5 i5-9600k
+i5-8500,coffeelake,core i5,,,intel,core i5 i5-8500
+i5-8400,coffeelake,core i5,,,intel,core i5 i5-8400
+i5-8500t,coffeelake,core i5,,,intel,core i5 i5-8500t
+i5-8400t,coffeelake,core i5,,,intel,core i5 i5-8400t
+i5-8500,coffeelake,core i5,,,intel,core i5 i5-8500
+i5-8600t,coffeelake,core i5,,,intel,core i5 i5-8600t
+i5-8600,coffeelake,core i5,,,intel,core i5 i5-8600
+i5-8600k,coffeelake,core i5,,,intel,core i5 i5-8600k
+i5-8400,coffeelake,core i5,,,intel,core i5 i5-8400
+i3-9350k,coffeelake,core i3,,,intel,core i3 i3-9350k
+i3-9100f,coffeelake,core i3,,,intel,core i3 i3-9100f
+i3-9100,coffeelake,core i3,,,intel,core i3 i3-9100
+i3-9100t,coffeelake,core i3,,,intel,core i3 i3-9100t
+i3-9300t,coffeelake,core i3,,,intel,core i3 i3-9300t
+i3-9300,coffeelake,core i3,,,intel,core i3 i3-9300
+i3-9320,coffeelake,core i3,,,intel,core i3 i3-9320
+i3-9350kf,coffeelake,core i3,,,intel,core i3 i3-9350kf
+i3-8100t,coffeelake,core i3,,,intel,core i3 i3-8100t
+i3-8300t,coffeelake,core i3,,,intel,core i3 i3-8300t
+i3-8300,coffeelake,core i3,,,intel,core i3 i3-8300
+i3-8100,coffeelake,core i3,,,intel,core i3 i3-8100
+i3-8350k,coffeelake,core i3,,,intel,core i3 i3-8350k
+g5600t,coffeelake,pantium g,,,intel,pantium g g5600t
+g5420t,coffeelake,pantium g,,,intel,pantium g g5420t
+g5420,coffeelake,pantium g,,,intel,pantium g g5420
+g5620,coffeelake,pantium g,,,intel,pantium g g5620
+g5600,coffeelake,pantium g,,,intel,pantium g g5600
+g5400,coffeelake,pantium g,,,intel,pantium g g5400
+g5400t,coffeelake,pantium g,,,intel,pantium g g5400t
+g5500t,coffeelake,pantium g,,,intel,pantium g g5500t
+g5500,coffeelake,pantium g,,,intel,pantium g g5500
+g4930t,coffeelake,pantium g,,,intel,pantium g g4930t
+g4950,coffeelake,pantium g,,,intel,pantium g g4950
+g4930,coffeelake,pantium g,,,intel,pantium g g4930
+g4900t,coffeelake,pantium g,,,intel,pantium g g4900t
+g4920,coffeelake,pantium g,,,intel,pantium g g4920
+g4900,coffeelake,pantium g,,,intel,pantium g g4900
+e-2286m,coffeelake,,,,intel,
+e-2276m,coffeelake,,,,intel,
+e-2186m,coffeelake,,,,intel,
+e-2176m,coffeelake,,,,intel,
+i9-9880h,coffeelake,core i9,,,intel,core i9 i9-9880h
+i9-9980hk,coffeelake,core i9,,,intel,core i9 i9-9980hk
+i9-8950hk,coffeelake,core i9,,,intel,core i9 i9-8950hk
+i7-9850h,coffeelake,core i7,,,intel,core i7 i7-9850h
+i7-9750hf,coffeelake,core i7,,,intel,core i7 i7-9750hf
+i7-9750h,coffeelake,core i7,,,intel,core i7 i7-9750h
+i7-8557u,coffeelake,core i7,,,intel,core i7 i7-8557u
+i7-8569u,coffeelake,core i7,,,intel,core i7 i7-8569u
+i7-8559u,coffeelake,core i7,,,intel,core i7 i7-8559u
+i7-8750h,coffeelake,core i7,,,intel,core i7 i7-8750h
+i7-8700b,coffeelake,core i7,,,intel,core i7 i7-8700b
+i7-8850h,coffeelake,core i7,,,intel,core i7 i7-8850h
+i5-9400h,coffeelake,core i5,,,intel,core i5 i5-9400h
+i5-9300h,coffeelake,core i5,,,intel,core i5 i5-9300h
+i5-9300hf,coffeelake,core i5,,,intel,core i5 i5-9300hf
+i5-8260u,coffeelake,core i5,,,intel,core i5 i5-8260u
+i5-8257u,coffeelake,core i5,,,intel,core i5 i5-8257u
+i5-8279u,coffeelake,core i5,,,intel,core i5 i5-8279u
+i5-8269u,coffeelake,core i5,,,intel,core i5 i5-8269u
+i5-8259u,coffeelake,core i5,,,intel,core i5 i5-8259u
+i5-8500b,coffeelake,core i5,,,intel,core i5 i5-8500b
+i5-8400b,coffeelake,core i5,,,intel,core i5 i5-8400b
+i5-8400h,coffeelake,core i5,,,intel,core i5 i5-8400h
+i5-8300h,coffeelake,core i5,,,intel,core i5 i5-8300h
+i3-8140u,coffeelake,core i3,,,intel,core i3 i3-8140u
+i3-8100b,coffeelake,core i3,,,intel,core i3 i3-8100b
+i3-8100h,coffeelake,core i3,,,intel,core i3 i3-8100h
+i3-8109u,coffeelake,core i3,,,intel,core i3 i3-8109u
+qm370,coffeelake,,,,intel,
+hm370,coffeelake,,,,intel,
+cm246,coffeelake,,,,intel,
+d-1533n,broadwell,xeon d,,,intel,xeon d d-1533n
+d-1513n,broadwell,xeon d,,,intel,xeon d d-1513n
+d-1543n,broadwell,xeon d,,,intel,xeon d d-1543n
+d-1523n,broadwell,xeon d,,,intel,xeon d d-1523n
+d-1553n,broadwell,xeon d,,,intel,xeon d d-1553n
+d-1520,broadwell,xeon d,,,intel,xeon d d-1520
+d-1540,broadwell,xeon d,,,intel,xeon d d-1540
+d-1528,broadwell,xeon d,,,intel,xeon d d-1528
+d-1541,broadwell,xeon d,,,intel,xeon d d-1541
+d-1539,broadwell,xeon d,,,intel,xeon d d-1539
+d-1518,broadwell,xeon d,,,intel,xeon d d-1518
+d-1521,broadwell,xeon d,,,intel,xeon d d-1521
+d-1531,broadwell,xeon d,,,intel,xeon d d-1531
+d-1529,broadwell,xeon d,,,intel,xeon d d-1529
+d-1548,broadwell,xeon d,,,intel,xeon d d-1548
+d-1527,broadwell,xeon d,,,intel,xeon d d-1527
+d-1537,broadwell,xeon d,,,intel,xeon d d-1537
+d-1559,broadwell,xeon d,,,intel,xeon d d-1559
+d-1577,broadwell,xeon d,,,intel,xeon d d-1577
+d-1571,broadwell,xeon d,,,intel,xeon d d-1571
+d-1557,broadwell,xeon d,,,intel,xeon d d-1557
+d-1567,broadwell,xeon d,,,intel,xeon d d-1567
+e7-8890 v4,broadwell,xeon e7,,,intel,xeon e7 e7-8890 v4
+e7-8893 v4,broadwell,xeon e7,,,intel,xeon e7 e7-8893 v4
+e7-8880 v4,broadwell,xeon e7,,,intel,xeon e7 e7-8880 v4
+e7-4830 v4,broadwell,xeon e7,,,intel,xeon e7 e7-4830 v4
+e7-8860 v4,broadwell,xeon e7,,,intel,xeon e7 e7-8860 v4
+e7-4809 v4,broadwell,xeon e7,,,intel,xeon e7 e7-4809 v4
+e7-8870 v4,broadwell,xeon e7,,,intel,xeon e7 e7-8870 v4
+e7-4820 v4,broadwell,xeon e7,,,intel,xeon e7 e7-4820 v4
+e7-8891 v4,broadwell,xeon e7,,,intel,xeon e7 e7-8891 v4
+e7-8867 v4,broadwell,xeon e7,,,intel,xeon e7 e7-8867 v4
+e7-4850 v4,broadwell,xeon e7,,,intel,xeon e7 e7-4850 v4
+e7-8894 v4,broadwell,xeon e7,,,intel,xeon e7 e7-8894 v4
+e5-2687w v4,broadwell,xeon e5,,,intel,xeon e5 e5-2687w v4
+e5-2695 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2695 v4
+e5-2690 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2690 v4
+e5-2699 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2699 v4
+e5-2650l v4,broadwell,xeon e5,,,intel,xeon e5 e5-2650l v4
+e5-2698 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2698 v4
+e5-2660 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2660 v4
+e5-2680 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2680 v4
+e5-2697 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2697 v4
+e5-2683 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2683 v4
+e5-2650 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2650 v4
+e5-2697a v4,broadwell,xeon e5,,,intel,xeon e5 e5-2697a v4
+e5-1660 v4,broadwell,xeon e5,,,intel,xeon e5 e5-1660 v4
+e5-2620 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2620 v4
+e5-1630 v4,broadwell,xeon e5,,,intel,xeon e5 e5-1630 v4
+e5-2630l v4,broadwell,xeon e5,,,intel,xeon e5 e5-2630l v4
+e5-2667 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2667 v4
+e5-2643 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2643 v4
+e5-2623 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2623 v4
+e5-2609 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2609 v4
+e5-2630 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2630 v4
+e5-1620 v4,broadwell,xeon e5,,,intel,xeon e5 e5-1620 v4
+e5-1680 v4,broadwell,xeon e5,,,intel,xeon e5 e5-1680 v4
+e5-2637 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2637 v4
+e5-2603 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2603 v4
+e5-2640 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2640 v4
+e5-1650 v4,broadwell,xeon e5,,,intel,xeon e5 e5-1650 v4
+e5-4627 v4,broadwell,xeon e5,,,intel,xeon e5 e5-4627 v4
+e5-4610 v4,broadwell,xeon e5,,,intel,xeon e5 e5-4610 v4
+e5-4620 v4,broadwell,xeon e5,,,intel,xeon e5 e5-4620 v4
+e5-4660 v4,broadwell,xeon e5,,,intel,xeon e5 e5-4660 v4
+e5-4640 v4,broadwell,xeon e5,,,intel,xeon e5 e5-4640 v4
+e5-4669 v4,broadwell,xeon e5,,,intel,xeon e5 e5-4669 v4
+e5-4667 v4,broadwell,xeon e5,,,intel,xeon e5 e5-4667 v4
+e5-4655 v4,broadwell,xeon e5,,,intel,xeon e5 e5-4655 v4
+e5-4650 v4,broadwell,xeon e5,,,intel,xeon e5 e5-4650 v4
+e5-2699a v4,broadwell,xeon e5,,,intel,xeon e5 e5-2699a v4
+e3-1265l v4,broadwell,xeon e3,,,intel,xeon e3 e3-1265l v4
+e3-1285l v4,broadwell,xeon e3,,,intel,xeon e3 e3-1285l v4
+e3-1285 v4,broadwell,xeon e3,,,intel,xeon e3 e3-1285 v4
+d1517,broadwell,pantium d,,,intel,pantium d d1517
+d1508,broadwell,pantium d,,,intel,pantium d d1508
+d1519,broadwell,pantium d,,,intel,pantium d d1519
+d1509,broadwell,pantium d,,,intel,pantium d d1509
+d1507,broadwell,pantium d,,,intel,pantium d d1507
+e5-2686 v4,broadwell,xeon e5,,,intel,xeon e5 e5-2686 v4
+i7-5775r,broadwell,core i7,,,intel,core i7 i7-5775r
+i7-5775c,broadwell,core i7,,,intel,core i7 i7-5775c
+i5-5575r,broadwell,core i5,,,intel,core i5 i5-5575r
+i5-5675r,broadwell,core i5,,,intel,core i5 i5-5675r
+i5-5675c,broadwell,core i5,,,intel,core i5 i5-5675c
+i7-5700hq,broadwell,core i7,,,intel,core i7 i7-5700hq
+i7-5750hq,broadwell,core i7,,,intel,core i7 i7-5750hq
+i7-5850hq,broadwell,core i7,,,intel,core i7 i7-5850hq
+i7-5950hq,broadwell,core i7,,,intel,core i7 i7-5950hq
+i7-5650u,broadwell,core i7,,,intel,core i7 i7-5650u
+i7-5600u,broadwell,core i7,,,intel,core i7 i7-5600u
+i7-5500u,broadwell,core i7,,,intel,core i7 i7-5500u
+i7-5550u,broadwell,core i7,,,intel,core i7 i7-5550u
+i7-5557u,broadwell,core i7,,,intel,core i7 i7-5557u
+i5-5350h,broadwell,core i5,,,intel,core i5 i5-5350h
+i5-5300u,broadwell,core i5,,,intel,core i5 i5-5300u
+i5-5250u,broadwell,core i5,,,intel,core i5 i5-5250u
+i5-5257u,broadwell,core i5,,,intel,core i5 i5-5257u
+i5-5287u,broadwell,core i5,,,intel,core i5 i5-5287u
+i5-5350u,broadwell,core i5,,,intel,core i5 i5-5350u
+i5-5200u,broadwell,core i5,,,intel,core i5 i5-5200u
+i3-5015u,broadwell,core i3,,,intel,core i3 i3-5015u
+i3-5020u,broadwell,core i3,,,intel,core i3 i3-5020u
+i3-5005u,broadwell,core i3,,,intel,core i3 i3-5005u
+i3-5010u,broadwell,core i3,,,intel,core i3 i3-5010u
+i3-5157u,broadwell,core i3,,,intel,core i3 i3-5157u
+m-5y51,broadwell,,,,intel,
+m-5y10c,broadwell,,,,intel,
+m-5y71,broadwell,,,,intel,
+m-5y10c,broadwell,,,,intel,
+m-5y71,broadwell,,,,intel,
+m-5y31,broadwell,,,,intel,
+m-5y10,broadwell,,,,intel,
+m-5y70,broadwell,,,,intel,
+m-5y10a,broadwell,,,,intel,
+3825u,broadwell,,,,intel,
+3805u,broadwell,,,,intel,
+3765u,broadwell,,,,intel,
+3215u,broadwell,,,,intel,
+3205u,broadwell,,,,intel,
+3755u,broadwell,,,,intel,
+gold 6244,cascadelake,xeon gold,,,intel,xeon gold gold 6244
+gold 6212u,cascadelake,xeon gold,,,intel,xeon gold gold 6212u
+gold 6240,cascadelake,xeon gold,,,intel,xeon gold gold 6240
+gold 5218,cascadelake,xeon gold,,,intel,xeon gold gold 5218
+platinum 8253,cascadelake,xeon platinum,,,intel,xeon platinum platinum 8253
+gold 6230,cascadelake,xeon gold,,,intel,xeon gold gold 6230
+gold 5222,cascadelake,xeon gold,,,intel,xeon gold gold 5222
+gold 6238t,cascadelake,xeon gold,,,intel,xeon gold gold 6238t
+gold 6248,cascadelake,xeon gold,,,intel,xeon gold gold 6248
+platinum 8256,cascadelake,xeon platinum,,,intel,xeon platinum platinum 8256
+gold 6252,cascadelake,xeon gold,,,intel,xeon gold gold 6252
+platinum 8260,cascadelake,xeon platinum,,,intel,xeon platinum platinum 8260
+gold 6242,cascadelake,xeon gold,,,intel,xeon gold gold 6242
+platinum 8276,cascadelake,xeon platinum,,,intel,xeon platinum platinum 8276
+gold 6240y,cascadelake,xeon gold,,,intel,xeon gold gold 6240y
+platinum 8276l,cascadelake,xeon platinum,,,intel,xeon platinum platinum 8276l
+silver 4209t,cascadelake,xeon silver,,,intel,xeon silver silver 4209t
+platinum 8280l,cascadelake,xeon platinum,,,intel,xeon platinum platinum 8280l
+gold 5217,cascadelake,xeon gold,,,intel,xeon gold gold 5217
+silver 4210,cascadelake,xeon silver,,,intel,xeon silver silver 4210
+platinum 8260l,cascadelake,xeon platinum,,,intel,xeon platinum platinum 8260l
+gold 5218n,cascadelake,xeon gold,,,intel,xeon gold gold 5218n
+gold 6230n,cascadelake,xeon gold,,,intel,xeon gold gold 6230n
+silver 4214,cascadelake,xeon silver,,,intel,xeon silver silver 4214
+gold 6226,cascadelake,xeon gold,,,intel,xeon gold gold 6226
+gold 6254,cascadelake,xeon gold,,,intel,xeon gold gold 6254
+silver 4214y,cascadelake,xeon silver,,,intel,xeon silver silver 4214y
+gold 5220,cascadelake,xeon gold,,,intel,xeon gold gold 5220
+platinum 8280,cascadelake,xeon platinum,,,intel,xeon platinum platinum 8280
+gold 6238l,cascadelake,xeon gold,,,intel,xeon gold gold 6238l
+platinum 8260y,cascadelake,xeon platinum,,,intel,xeon platinum platinum 8260y
+gold 5218b,cascadelake,xeon gold,,,intel,xeon gold gold 5218b
+silver 4215,cascadelake,xeon silver,,,intel,xeon silver silver 4215
+gold 6240l,cascadelake,xeon gold,,,intel,xeon gold gold 6240l
+gold 6238,cascadelake,xeon gold,,,intel,xeon gold gold 6238
+platinum 8268,cascadelake,xeon platinum,,,intel,xeon platinum platinum 8268
+silver 4208,cascadelake,xeon silver,,,intel,xeon silver silver 4208
+gold 5220s,cascadelake,xeon gold,,,intel,xeon gold gold 5220s
+platinum 8270,cascadelake,xeon platinum,,,intel,xeon platinum platinum 8270
+gold 5215,cascadelake,xeon gold,,,intel,xeon gold gold 5215
+gold 6222v,cascadelake,xeon gold,,,intel,xeon gold gold 6222v
+gold 6252n,cascadelake,xeon gold,,,intel,xeon gold gold 6252n
+gold 6230t,cascadelake,xeon gold,,,intel,xeon gold gold 6230t
+gold 6246,cascadelake,xeon gold,,,intel,xeon gold gold 6246
+gold 5215l,cascadelake,xeon gold,,,intel,xeon gold gold 5215l
+bronze 3204,cascadelake,xeon bronze,,,intel,xeon bronze bronze 3204
+gold 5218t,cascadelake,xeon gold,,,intel,xeon gold gold 5218t
+gold 5220t,cascadelake,xeon gold,,,intel,xeon gold gold 5220t
+silver 4216,cascadelake,xeon silver,,,intel,xeon silver silver 4216
+gold 6234,cascadelake,xeon gold,,,intel,xeon gold gold 6234
+gold 6209u,cascadelake,xeon gold,,,intel,xeon gold gold 6209u
+gold 6262v,cascadelake,xeon gold,,,intel,xeon gold gold 6262v
+platinum 9242,cascadelake,xeon platinum,,,intel,xeon platinum platinum 9242
+platinum 9282,cascadelake,xeon platinum,,,intel,xeon platinum platinum 9282
+platinum 9221,cascadelake,xeon platinum,,,intel,xeon platinum platinum 9221
+platinum 9222,cascadelake,xeon platinum,,,intel,xeon platinum platinum 9222
+silver 4210r,cascadelake,xeon silver,,,intel,xeon silver silver 4210r
+silver 4214r,cascadelake,xeon silver,,,intel,xeon silver silver 4214r
+bronze 3206r,cascadelake,xeon bronze,,,intel,xeon bronze bronze 3206r
+gold 6246r,cascadelake,xeon gold,,,intel,xeon gold gold 6246r
+gold 6240r,cascadelake,xeon gold,,,intel,xeon gold gold 6240r
+gold 5220r,cascadelake,xeon gold,,,intel,xeon gold gold 5220r
+silver 4210t,cascadelake,xeon silver,,,intel,xeon silver silver 4210t
+gold 6238r,cascadelake,xeon gold,,,intel,xeon gold gold 6238r
+gold 6230r,cascadelake,xeon gold,,,intel,xeon gold gold 6230r
+gold 6226r,cascadelake,xeon gold,,,intel,xeon gold gold 6226r
+gold 6250,cascadelake,xeon gold,,,intel,xeon gold gold 6250
+gold 6208u,cascadelake,xeon gold,,,intel,xeon gold gold 6208u
+gold 6256,cascadelake,xeon gold,,,intel,xeon gold gold 6256
+silver 4215r,cascadelake,xeon silver,,,intel,xeon silver silver 4215r
+gold 5218r,cascadelake,xeon gold,,,intel,xeon gold gold 5218r
+gold 6258r,cascadelake,xeon gold,,,intel,xeon gold gold 6258r
+gold 6248r,cascadelake,xeon gold,,,intel,xeon gold gold 6248r
+gold 6242r,cascadelake,xeon gold,,,intel,xeon gold gold 6242r
+gold 6250l,cascadelake,xeon gold,,,intel,xeon gold gold 6250l
+8275cl,cascadelake,,,,intel,
+8259cl,cascadelake,,,,intel,
+8252c,cascadelake,,,,intel,
+8370c,cascadelake,,,,intel,
+i9-10920x,cascadelake,core i9,,,intel,core i9 i9-10920x
+i9-10940x,cascadelake,core i9,,,intel,core i9 i9-10940x
+i9-10980xe,cascadelake,core i9,,,intel,core i9 i9-10980xe
+i9-10900x,cascadelake,core i9,,,intel,core i9 i9-10900x
+3235,cascadelake,,,,intel,
+w-2275,cascadelake,xeon w,,,intel,xeon w w-2275
+w-2295,cascadelake,xeon w,,,intel,xeon w w-2295
+w-2265,cascadelake,xeon w,,,intel,xeon w w-2265
+w-2255,cascadelake,xeon w,,,intel,xeon w w-2255
+w-2223,cascadelake,xeon w,,,intel,xeon w w-2223
+w-2235,cascadelake,xeon w,,,intel,xeon w w-2235
+w-2245,cascadelake,xeon w,,,intel,xeon w w-2245
+w-2225,cascadelake,xeon w,,,intel,xeon w w-2225
+w-3245,cascadelake,xeon w,,,intel,xeon w w-3245
+w-3275,cascadelake,xeon w,,,intel,xeon w w-3275
+w-3245m,cascadelake,xeon w,,,intel,xeon w w-3245m
+w-3265m,cascadelake,xeon w,,,intel,xeon w w-3265m
+w-3235,cascadelake,xeon w,,,intel,xeon w w-3235
+w-3225,cascadelake,xeon w,,,intel,xeon w w-3225
+w-3265,cascadelake,xeon w,,,intel,xeon w w-3265
+w-3223,cascadelake,xeon w,,,intel,xeon w w-3223
+w-3275m,cascadelake,xeon w,,,intel,xeon w w-3275m
+epyc 7351,naple,,,,amd,
+epyc 7501,naple,,,,amd,
+epyc 7551p,naple,,,,amd,
+epyc 7601,naple,,,,amd,
+epyc 7601,naple,,,,amd,
+epyc 7571,naple,,,,amd,
+epyc 7551,naple,,,,amd,
+epyc 7451,naple,,,,amd,
+epyc 7401p,naple,,,,amd,
+epyc 7401,naple,,,,amd,
+epyc 7371,naple,,,,amd,
+epyc 7351p,naple,,,,amd,
+epyc 7301,naple,,,,amd,
+epyc 7281,naple,,,,amd,
+epyc 7261,naple,,,,amd,
+epyc 7251,naple,,,,amd,
+epyc 7702,rome,,,,amd,
+epyc 7702p,rome,,,,amd,
+epyc 7742,rome,,,,amd,
+epyc 7r32,rome,,,,amd,
+epyc 7f72,rome,,,,amd,
+epyc 7f52,rome,,,,amd,
+epyc 7f32,rome,,,,amd,
+epyc 7h12,rome,,,,amd,
+epyc 7662,rome,,,,amd,
+epyc 7642,rome,,,,amd,
+epyc 7552,rome,,,,amd,
+epyc 7542,rome,,,,amd,
+epyc 7532,rome,,,,amd,
+epyc 7502,rome,,,,amd,
+epyc 7502p,rome,,,,amd,
+epyc 7452,rome,,,,amd,
+epyc 7402,rome,,,,amd,
+epyc 7402p,rome,,,,amd,
+epyc 7352,rome,,,,amd,
+epyc 7302,rome,,,,amd,
+epyc 7302p,rome,,,,amd,
+epyc 7282,rome,,,,amd,
+epyc 7272,rome,,,,amd,
+epyc 7262,rome,,,,amd,
+epyc 7252,rome,,,,amd,
+epyc 7232p,rome,,,,amd,
+epyc 7763,milan,,,,amd,
+epyc 7713p,milan,,,,amd,
+epyc 7713,milan,,,,amd,
+epyc 7663,milan,,,,amd,
+epyc 7643,milan,,,,amd,
+epyc 75f3,milan,,,,amd,
+epyc 7543p,milan,,,,amd,
+epyc 7543,milan,,,,amd,
+epyc 7513,milan,,,,amd,
+epyc 7453,milan,,,,amd,
+epyc 74f3,milan,,,,amd,
+epyc 7443p,milan,,,,amd,
+epyc 7443,milan,,,,amd,
+epyc 7413,milan,,,,amd,
+epyc 73f3,milan,,,,amd,
+epyc 7343,milan,,,,amd,
+epyc 7313p,milan,,,,amd,
+epyc 7313,milan,,,,amd,
+epyc 72f3,milan,,,,amd,

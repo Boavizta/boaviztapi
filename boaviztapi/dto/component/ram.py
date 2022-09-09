@@ -8,6 +8,7 @@ from boaviztapi.dto.usage import Usage
 from boaviztapi.dto.usage.usage import smart_mapper_usage
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import ComponentRAM
+from boaviztapi.utils.fuzzy_match import fuzzymatch_attr_from_pdf
 
 _ram_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/ram_manufacture.csv'))
 
@@ -27,6 +28,8 @@ def smart_mapper_ram(ram_dto: RAM) -> ComponentRAM:
 
     ram_component.usage = smart_mapper_usage(ram_dto.usage or Usage())
 
+    corrected_manufacturer = None
+
     if ram_dto.density is not None:
         ram_component.density.value = ram_dto.density
         ram_component.density.status = Status.INPUT
@@ -34,7 +37,8 @@ def smart_mapper_ram(ram_dto: RAM) -> ComponentRAM:
         sub = _ram_df
 
         if ram_dto.manufacturer is not None:
-            sub = sub[sub['manufacturer'] == ram_dto.manufacturer]
+            corrected_manufacturer = fuzzymatch_attr_from_pdf(ram_dto.manufacturer, "manufacturer", sub)
+            sub = sub[sub['manufacturer'] == corrected_manufacturer]
 
         if ram_dto.process is not None:
             sub = sub[sub['process'] == ram_dto.process]
@@ -58,9 +62,13 @@ def smart_mapper_ram(ram_dto: RAM) -> ComponentRAM:
         ram_component.capacity.value = ram_dto.capacity
         ram_component.capacity.status = Status.INPUT
 
-    if ram_dto.manufacturer is not None:
-        ram_component.manufacturer.value = ram_dto.manufacturer
-        ram_component.manufacturer.status = Status.INPUT
+    if ram_dto.manufacturer is not None and corrected_manufacturer is not None:
+        if ram_dto.manufacturer != corrected_manufacturer:
+            ram_component.manufacturer.value = corrected_manufacturer
+            ram_component.manufacturer.status = Status.CHANGED
+        else:
+            ram_component.manufacturer.value = ram_dto.manufacturer
+            ram_component.manufacturer.status = Status.INPUT
 
     if ram_dto.process is not None:
         ram_component.process.value = ram_dto.process

@@ -1,13 +1,7 @@
-import copy
-
 from fastapi import APIRouter, Body
 
-from boaviztapi.dto.component_dto import Cpu, Ram, Disk, PowerSupply, MotherBoard, Case
-from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
-    hdd_description, motherboard_description, power_supply_description, case_description
-from boaviztapi.routers.openapi_doc.examples import components_examples
-from boaviztapi.service.bottom_up import bottom_up_component
-from boaviztapi.service.verbose import verbose_component
+from boaviztapi.dto.consumption_profile import ConsumptionProfileCPU
+from boaviztapi.dto.consumption_profile.consumption_profile import mapper_cp_cpu
 
 consumption_profile = APIRouter(
     prefix='/v1/consumption_profile',
@@ -17,5 +11,8 @@ consumption_profile = APIRouter(
 
 @consumption_profile.post('/cpu',
                           description="cpu consumption profile generator")
-async def cpu_consumption_profile(cpu: Cpu = Body(None, example=components_examples["cpu"]), verbose: bool = True):
-    pass
+async def cpu_consumption_profile(cp_dto: ConsumptionProfileCPU = Body(None),
+                                  verbose: bool = True):
+    cp, cpu = mapper_cp_cpu(cp_dto)
+    result = cp.compute_consumption_profile_model(cpu_manufacturer=cpu.manufacturer.value, cpu_model_range=cpu.model_range.value)
+    return result

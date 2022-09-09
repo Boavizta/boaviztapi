@@ -12,7 +12,7 @@ def bottom_up_component(component: Component, allocation: Allocation) -> dict:
     impacts = {
         'gwp': {
             'manufacture': get_model_impact(component, 'manufacture', 'gwp', component.units, allocation) or NOT_IMPLEMENTED,
-            'use': get_model_impact(component, 'use', 'pe', component.units) or NOT_IMPLEMENTED,
+            'use': get_model_impact(component, 'use', 'gwp', component.units) or NOT_IMPLEMENTED,
             'unit': "kgCO2eq"
         },
         'pe': {
