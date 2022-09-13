@@ -28,7 +28,7 @@ class ModelUsage:
             unit="W",
             default=self.DEFAULT_POWER_CONSUMPTION
         )
-        self.time_workload = Boattribute(default=self.DEFAULT_WORKLOAD)
+        self.time_workload = Boattribute(default=self.DEFAULT_WORKLOAD, unit="%")
         self.consumption_profile = None
         self.usage_location = Boattribute(
             unit="CodSP3 - NCS Country Codes - NATO",

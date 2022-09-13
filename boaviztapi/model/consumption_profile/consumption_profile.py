@@ -17,6 +17,35 @@ class ConsumptionProfileModel:
     pass
 
 
+class RAMConsumptionProfileModel(ConsumptionProfileModel):
+    DEFAULT_RAM_CAPACITY = 'Xeon Platinum'
+    DEFAULT_WORKLOADS = None
+    RAM_ELECTRICAL_FACTOR_PER_GO = 0.8  # random @samuel
+
+    _DEFAULT_MODEL_PARAMS = {
+        'a': 15
+    }
+
+    def __init__(self):
+        self.workloads = Boattribute(
+            default=self.DEFAULT_WORKLOADS,
+            unit="workload_rate:W"
+        )
+        self.params = Boattribute(default=self._DEFAULT_MODEL_PARAMS)
+
+    def compute_consumption_profile_model(self, ram_capacity: int = DEFAULT_RAM_CAPACITY) -> int:
+        self.params.value = self.RAM_ELECTRICAL_FACTOR_PER_GO * ram_capacity
+        self.params.status = Status.COMPLETED
+
+        return self.params.value
+
+    def apply_consumption_profile(self, load_percentage: float) -> float:
+        return self.params.value
+
+    def apply_multiple_workloads(self, time_workload: List[WorkloadTime]) -> float:
+        return self.params.value
+
+
 class CPUConsumptionProfileModel(ConsumptionProfileModel):
     DEFAULT_CPU_MODEL_RANGE = 'Xeon Platinum'
     DEFAULT_WORKLOADS = None

@@ -1,10 +1,10 @@
 import os
-from typing import Optional, Dict, List, Union
+from typing import Optional, List, Union
 
 import pandas as pd
 
 from boaviztapi.dto import BaseDTO
-from boaviztapi.model.boattribute import Status, Boattribute
+from boaviztapi.model.boattribute import Status
 from boaviztapi.model.usage import ModelUsage, ModelUsageServer
 
 _electricity_emission_factors_df = pd.read_csv(os.path.join(os.path.dirname(__file__),
