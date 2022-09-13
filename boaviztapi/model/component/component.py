@@ -1,6 +1,7 @@
 from abc import abstractmethod
 from typing import Tuple
 
+import boaviztapi.utils.roundit as rd
 from boaviztapi.model.usage import ModelUsage
 
 NumberSignificantFigures = Tuple[float, int]
@@ -37,6 +38,18 @@ class Component:
     def units(self, value: int) -> None:
         self._units = value
 
+    def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
+        impact_factor = getattr(self.usage, f'{impact_type}_factor')
+
+        impacts = impact_factor.value * (
+                self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
+        sig_fig = self.__compute_significant_numbers_usage(impact_factor.value)
+        return impacts, sig_fig
+
+    def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
+        return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value,
+                                          impact_factor)
+
     @abstractmethod
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         raise NotImplementedError
@@ -49,14 +62,11 @@ class Component:
     def impact_manufacture_adp(self) -> NumberSignificantFigures:
         raise NotImplementedError
 
-    @abstractmethod
     def impact_use_gwp(self) -> NumberSignificantFigures:
-        raise NotImplementedError
+        return self.__impact_usage("gwp")
 
-    @abstractmethod
     def impact_use_pe(self) -> NumberSignificantFigures:
-        raise NotImplementedError
+        return self.__impact_usage("pe")
 
-    @abstractmethod
     def impact_use_adp(self) -> NumberSignificantFigures:
-        raise NotImplementedError
+        return self.__impact_usage("adp")

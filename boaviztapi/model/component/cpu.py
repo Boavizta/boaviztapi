@@ -81,10 +81,6 @@ class ComponentCPU(Component):
     def __compute_significant_numbers(self, core_impact: float, cpu_die_impact: float, cpu_impact: float) -> int:
         return rd.min_significant_figures(self.die_size_per_core.value, core_impact, cpu_die_impact, cpu_impact)
 
-    def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
-        return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value,
-                                          impact_factor)
-
     def __compute_impact_manufacture(self, core_impact: float, cpu_die_impact: float, cpu_impact: float) -> float:
         return (self.core_units.value * self.die_size_per_core.value + core_impact) * cpu_die_impact + cpu_impact
 
