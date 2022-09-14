@@ -1,6 +1,7 @@
 from abc import ABC
 from typing import List, Union
 
+from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
     ComponentPowerSupply, ComponentCase, ComponentMotherboard, ComponentAssembly
 from boaviztapi.model.device.device import Device, NumberSignificantFigures
@@ -148,9 +149,20 @@ class DeviceServer(Device):
 
     def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
+        if not self.usage.hours_electrical_consumption.is_set():
+            self.usage.hours_electrical_consumption.value = self.model_power_consumption()
+            self.usage.hours_electrical_consumption.status = Status.COMPLETED
+
         impacts = impact_factor.value * (self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
         sig_fig = self.__compute_significant_numbers(impact_factor.value)
         return impacts, sig_fig
+
+    def model_power_consumption(self):
+        conso_cpu = self.cpu.model_power_consumption()
+        conso_ram = 0
+        for ram_unit in self.ram:
+            conso_ram += ram_unit.model_power_consumption()
+        return (conso_cpu + conso_ram) * (1 + self.usage.other_consumption_ratio.value)
 
     def __compute_significant_numbers(self, impact_factor: float) -> int:
         return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value, impact_factor)

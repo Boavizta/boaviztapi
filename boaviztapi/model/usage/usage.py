@@ -75,7 +75,7 @@ class ModelUsageServer(ModelUsage):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.other_consumption_ratio = Boattribute(unit="ratio /1")
+        self.other_consumption_ratio = Boattribute(unit="ratio /1", default=self.DEFAULT_OTHER_CONSUMPTION_RATIO)
 
 
 class ModelUsageCloud(ModelUsageServer):
