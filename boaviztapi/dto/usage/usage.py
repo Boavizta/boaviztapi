@@ -97,6 +97,10 @@ def smart_mapper_usage_server(usage_dto: UsageServer) -> ModelUsageServer:
 
         usage_model_server.use_time.status = Status.INPUT
 
+    if usage_dto.time_workload is not None:
+        usage_model_server.time_workload.value = usage_dto.time_workload
+        usage_model_server.time_workload.status = Status.INPUT
+
     if usage_dto.usage_location is not None:
         sub = _electricity_emission_factors_df
         sub = sub[sub['code'] == usage_dto.usage_location]
