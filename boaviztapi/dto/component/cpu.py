@@ -23,6 +23,7 @@ class CPU(ComponentDTO):
     model_range: Optional[str] = None
     family: Optional[str] = None
     name: Optional[str] = None
+    tdp: Optional[int] = None
 
 
 def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
@@ -53,6 +54,10 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
     if cpu_dto.core_units is not None:
         cpu_component.core_units.value = cpu_dto.core_units
         cpu_component.core_units.status = Status.INPUT
+
+    if cpu_dto.tdp is not None:
+        cpu_component.tdp.value = cpu_dto.tdp
+        cpu_component.tdp.status = Status.INPUT
 
     if cpu_dto.die_size_per_core is not None:
         cpu_component.die_size_per_core.value = cpu_dto.die_size_per_core

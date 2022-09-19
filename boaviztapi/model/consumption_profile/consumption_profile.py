@@ -53,11 +53,19 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
     DEFAULT_WORKLOADS = None
 
     _DEFAULT_MODEL_PARAMS = {
+        'a': 0,
+        'b': 0,
+        'c': 0,
+        'd': 0
+    }
+
+    _DEFAULT_MODEL_PARAMS_PER_TDP = {
         'a': 342.4,
         'b': 0.0347,
         'c': 36.89,
         'd': -16.40
     }
+
     _DEFAULT_MODEL_BOUNDS = (
         [0, 0, 0, -math.inf],
         [math.inf, math.inf, math.inf, math.inf]
@@ -92,23 +100,23 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
             total += (workload.time_percentage / 100) * self.apply_consumption_profile(workload.load_percentage)
         return total
 
-    def compute_consumption_profile_model(self, cpu_manufacturer: str = None, cpu_model_range: str = None) \
-            -> Union[Dict[str, float], None]:
+    def compute_consumption_profile_model(self, cpu_manufacturer: str = None, cpu_model_range: str = None,
+                                          cpu_tdp: int = None) -> Union[Dict[str, float], None]:
         model = self.lookup_consumption_profile(cpu_manufacturer, cpu_model_range)
 
-        if model is None:
-            if self.workloads.is_set():
-                self.params.value = self.__compute_model_adaptation(self._DEFAULT_MODEL_PARAMS)
-                self.params.status = Status.COMPLETED
-            else:
-                self.params.value = self._DEFAULT_MODEL_PARAMS
-                self.params.status = Status.DEFAULT
-        else:
-            if self.workloads.is_set():
-                model = self.__compute_model_adaptation(model)
-
-            self.params.value = model
+        if self.workloads.is_set():
+            self.params.value = self.__compute_model_adaptation(model or self._DEFAULT_MODEL_PARAMS)
             self.params.status = Status.COMPLETED
+            self.params.source = "From workload"
+        elif cpu_tdp is not None:
+            params = self._DEFAULT_MODEL_PARAMS_PER_TDP
+            params["a"] = params["a"] * cpu_tdp
+            self.params.value = params
+            self.params.status = Status.COMPLETED
+            self.params.source = "From TDP"
+        else:
+            self.params.value = self._DEFAULT_MODEL_PARAMS
+            self.params.status = Status.DEFAULT
 
         return self.params.value
 
