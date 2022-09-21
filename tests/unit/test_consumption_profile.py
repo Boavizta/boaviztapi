@@ -76,6 +76,7 @@ def test_cpu_with_manufacture_and_model_range(
     (
             'xeon platinum',
             [
+                WorkloadPower(load_percentage=0, power_watt=60),
                 WorkloadPower(load_percentage=50, power_watt=448)
             ],
             {'a': 342.36, 'b': 0.0347, 'c': 36.89, 'd': -16.40}
@@ -104,6 +105,7 @@ def test_cpu_with_model_range_and_workload(
         expected_model_params: Dict[str, float]
 ):
     cpu_cp = CPUConsumptionProfileModel()
+    cpu_cp.workloads.set_input(workload)
     cpu_cp.compute_consumption_profile_model(cpu_model_range=model_range)
     expected_model = CPUConsumptionProfileModel()
     expected_model.params.value = expected_model_params

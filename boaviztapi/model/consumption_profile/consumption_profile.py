@@ -53,10 +53,10 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
     DEFAULT_WORKLOADS = None
 
     _DEFAULT_MODEL_PARAMS = {
-        'a': 0,
-        'b': 0,
-        'c': 0,
-        'd': 0
+        'a': 342.4,
+        'b': 0.0347,
+        'c': 36.89,
+        'd': -16.40
     }
 
     _DEFAULT_MODEL_PARAMS_PER_TDP = {
@@ -103,20 +103,22 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
     def compute_consumption_profile_model(self, cpu_manufacturer: str = None, cpu_model_range: str = None,
                                           cpu_tdp: int = None) -> Union[Dict[str, float], None]:
         model = self.lookup_consumption_profile(cpu_manufacturer, cpu_model_range)
-
         if self.workloads.is_set():
-            self.params.value = self.__compute_model_adaptation(model or self._DEFAULT_MODEL_PARAMS)
-            self.params.status = Status.COMPLETED
+            self.params.set_completed(self.__compute_model_adaptation(model or self._DEFAULT_MODEL_PARAMS))
             self.params.source = "From workload"
+
         elif cpu_tdp is not None:
             params = self._DEFAULT_MODEL_PARAMS_PER_TDP
             params["a"] = params["a"] * cpu_tdp
-            self.params.value = params
-            self.params.status = Status.COMPLETED
+            self.params.set_completed(params)
             self.params.source = "From TDP"
+
+        elif cpu_model_range is not None:
+            self.params.set_completed(model)
+            self.params.source = "From CPU model range"
+
         else:
-            self.params.value = self._DEFAULT_MODEL_PARAMS
-            self.params.status = Status.DEFAULT
+            self.params.set_default(self._DEFAULT_MODEL_PARAMS)
 
         return self.params.value
 
