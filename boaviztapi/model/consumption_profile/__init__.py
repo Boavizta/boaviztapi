@@ -1,1 +1,1 @@
-from .consumption_profile import CPUConsumptionProfileModel
+from .consumption_profile import CPUConsumptionProfileModel, RAMConsumptionProfileModel
