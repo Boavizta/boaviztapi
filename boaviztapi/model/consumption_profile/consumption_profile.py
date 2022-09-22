@@ -23,7 +23,7 @@ class RAMConsumptionProfileModel(ConsumptionProfileModel):
     RAM_ELECTRICAL_FACTOR_PER_GO = 0.284
 
     _DEFAULT_MODEL_PARAMS = {
-        'a': DEFAULT_RAM_CAPACITY
+        'a': DEFAULT_RAM_CAPACITY * RAM_ELECTRICAL_FACTOR_PER_GO
     }
 
     def __init__(self):
