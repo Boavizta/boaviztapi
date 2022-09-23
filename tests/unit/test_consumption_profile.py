@@ -1,13 +1,15 @@
-from typing import Dict
+from typing import Dict, Union
 
 import pytest
 
 from boaviztapi.dto.consumption_profile.consumption_profile import WorkloadPower
-from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
+from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel, RAMConsumptionProfileModel
 
 MODEL_TEST_DATA_POINTS = [0., 25., 50., 75., 100.]
 
 DEFAULT_CPU_PARAMS = {'a': 342.4, 'b': 0.0347, 'c': 36.89, 'd': -16.40}
+
+ConsumptionProfileModel = Union[CPUConsumptionProfileModel, RAMConsumptionProfileModel]
 
 
 def test_cpu_default():
@@ -26,7 +28,7 @@ def test_cpu_with_manufacturer_name(manufacturer: str, expected_model: Dict[str,
     assert model == expected_model
 
 
-def validate_models_approx(actual_model: CPUConsumptionProfileModel, expected_model: CPUConsumptionProfileModel):
+def validate_models_approx(actual_model: ConsumptionProfileModel, expected_model: ConsumptionProfileModel):
     actual_results = list(map(actual_model.apply_consumption_profile, MODEL_TEST_DATA_POINTS))
     expected_results = list(map(expected_model.apply_consumption_profile, MODEL_TEST_DATA_POINTS))
     assert actual_results == pytest.approx(expected_results, rel=10e-1)
@@ -106,3 +108,16 @@ def test_cpu_with_model_range_and_workload(
     expected_model = CPUConsumptionProfileModel()
     expected_model.params.value = expected_model_params
     validate_models_approx(cpu_cp, expected_model)
+
+
+@pytest.mark.parametrize('capacity,expected_model_params', [
+    (16, {'a': 4.544}),
+    (128, {'a': 36.352}),
+    (512, {'a': 145.408}),
+])
+def test_ram_with_capacity(capacity: int, expected_model_params: Dict[str, float]):
+    ram_cp = RAMConsumptionProfileModel()
+    ram_cp.compute_consumption_profile_model(capacity)
+    expected_model = RAMConsumptionProfileModel()
+    expected_model.params.value = expected_model_params
+    validate_models_approx(ram_cp, expected_model)

@@ -27,12 +27,6 @@ def verbose_device(device: Device):
 def verbose_usage(device: [Device, Component]):
     json_output = {}
 
-    for attr, val in device.usage.__iter__():
-        if not isinstance(val, Boattribute):
-            continue
-        if val.is_set():
-            json_output[attr] = val.to_json()
-
     json_output["impacts"] = {
         "gwp": {
             "value": get_model_impact(device, 'use', 'gwp', 1, Allocation.TOTAL) or NOT_IMPLEMENTED,
@@ -46,6 +40,12 @@ def verbose_usage(device: [Device, Component]):
             "unit": "kgSbeq"
         }
     }
+
+    for attr, val in device.usage.__iter__():
+        if not isinstance(val, Boattribute):
+            continue
+        if val.is_set():
+            json_output[attr] = val.to_json()
 
     return json_output
 

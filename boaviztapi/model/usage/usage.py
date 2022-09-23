@@ -28,7 +28,7 @@ class ModelUsage:
             unit="W",
             default=self.DEFAULT_POWER_CONSUMPTION
         )
-        self.time_workload = Boattribute(default=self.DEFAULT_WORKLOAD)
+        self.time_workload = Boattribute(default=self.DEFAULT_WORKLOAD, unit="%")
         self.consumption_profile = None
         self.usage_location = Boattribute(
             unit="CodSP3 - NCS Country Codes - NATO",
@@ -75,7 +75,7 @@ class ModelUsageServer(ModelUsage):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.other_consumption_ratio = Boattribute(unit="ratio /1")
+        self.other_consumption_ratio = Boattribute(unit="ratio /1", default=self.DEFAULT_OTHER_CONSUMPTION_RATIO)
 
 
 class ModelUsageCloud(ModelUsageServer):

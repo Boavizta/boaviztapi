@@ -8,7 +8,7 @@ from boaviztapi.dto.component.ram import smart_mapper_ram
 from boaviztapi.dto.usage import UsageServer, UsageCloud
 from boaviztapi.dto import BaseDTO
 from boaviztapi.dto.usage.usage import smart_mapper_usage_server
-from boaviztapi.model.boattribute import Status
+from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.component import ComponentCase
 from boaviztapi.model.device import DeviceServer
 
@@ -68,8 +68,24 @@ def smart_mapper_server(server_dto: Server) -> DeviceServer:
             server_model.case.case_type.status = Status.INPUT
 
     server_model.usage = smart_mapper_usage_server(server_dto.usage or UsageServer())
+    complete_components_usage(server_model)
 
     return server_model
+
+
+def complete_components_usage(server_model: DeviceServer):
+    complete_component_usage(server_model.cpu.usage, server_model.usage)
+    complete_component_usage(server_model.case.usage, server_model.usage)
+    for ram_unit in server_model.ram:
+        complete_component_usage(ram_unit.usage, server_model.usage)
+    for disk_unit in server_model.disk:
+        complete_component_usage(disk_unit.usage, server_model.usage)
+
+
+def complete_component_usage(usage_component, usage_device):
+    for attr, val in usage_component.__iter__():
+        if isinstance(val, Boattribute) and not val.is_set() and usage_device.__getattribute__(attr).is_set():
+            usage_component.__setattr__(attr, usage_device.__getattribute__(attr))
 
 
 class Cloud(Server):

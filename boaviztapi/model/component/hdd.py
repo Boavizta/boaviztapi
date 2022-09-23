@@ -40,12 +40,3 @@ class ComponentHDD(Component):
 
     def impact_manufacture_adp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('adp')
-
-    def impact_use_gwp(self, model=None) -> NumberSignificantFigures:
-        raise NotImplementedError
-
-    def impact_use_pe(self, model=None) -> NumberSignificantFigures:
-        raise NotImplementedError
-
-    def impact_use_adp(self, model=None) -> NumberSignificantFigures:
-        raise NotImplementedError

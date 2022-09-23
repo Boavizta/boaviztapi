@@ -6,7 +6,6 @@ from boaviztapi.model.component.component import Component, NumberSignificantFig
 
 
 class ComponentCase(Component):
-
     AVAILABLE_CASE_TYPE = ['blade', 'rack']
     NAME = "CASE"
 

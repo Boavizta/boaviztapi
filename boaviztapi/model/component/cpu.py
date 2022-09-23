@@ -53,23 +53,29 @@ class ComponentCPU(Component):
 
     def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
-        if not self.usage.hours_electrical_consumption.is_set() and self.usage.time_workload.is_set():
-            self.usage.consumption_profile = CPUConsumptionProfileModel()
-            self.usage.consumption_profile.compute_consumption_profile_model(cpu_manufacturer=self.manufacturer.value,
-                                                                             cpu_model_range=self.model_range.value)
 
-            if type(self.usage.time_workload.value) == float:
-                self.usage.hours_electrical_consumption.value = self.usage.consumption_profile.apply_consumption_profile(
-                    self.usage.time_workload.value)
-            else:
-                self.usage.hours_electrical_consumption.value = self.usage.consumption_profile.apply_multiple_workloads(
-                    self.usage.time_workload.value)
+        if not self.usage.hours_electrical_consumption.is_set():
+            self.usage.hours_electrical_consumption.value = self.model_power_consumption()
             self.usage.hours_electrical_consumption.status = Status.COMPLETED
 
         impacts = impact_factor.value * (
                 self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
+
         sig_fig = self.__compute_significant_numbers_usage(impact_factor.value)
         return impacts, sig_fig
+
+    def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
+        return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value,
+                                          impact_factor)
+
+    def model_power_consumption(self):
+        self.usage.consumption_profile = CPUConsumptionProfileModel()
+        self.usage.consumption_profile.compute_consumption_profile_model(cpu_manufacturer=self.manufacturer.value,
+                                                                         cpu_model_range=self.model_range.value)
+        if type(self.usage.time_workload.value) == float:
+            return self.usage.consumption_profile.apply_consumption_profile(self.usage.time_workload.value)
+
+        return self.usage.consumption_profile.apply_multiple_workloads(self.usage.time_workload.value)
 
     def __get_impact_constants(self, impact_type: str) -> Tuple[float, float, float]:
         core_impact = self.IMPACT_FACTOR['constant_core_impact']
@@ -79,10 +85,6 @@ class ComponentCPU(Component):
 
     def __compute_significant_numbers(self, core_impact: float, cpu_die_impact: float, cpu_impact: float) -> int:
         return rd.min_significant_figures(self.die_size_per_core.value, core_impact, cpu_die_impact, cpu_impact)
-
-    def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
-        return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value,
-                                          impact_factor)
 
     def __compute_impact_manufacture(self, core_impact: float, cpu_die_impact: float, cpu_impact: float) -> float:
         return (self.core_units.value * self.die_size_per_core.value + core_impact) * cpu_die_impact + cpu_impact

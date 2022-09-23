@@ -1,10 +1,10 @@
 import os
-from typing import Optional, Dict, List, Union
+from typing import Optional, List, Union
 
 import pandas as pd
 
 from boaviztapi.dto import BaseDTO
-from boaviztapi.model.boattribute import Status, Boattribute
+from boaviztapi.model.boattribute import Status
 from boaviztapi.model.usage import ModelUsage, ModelUsageServer
 
 _electricity_emission_factors_df = pd.read_csv(os.path.join(os.path.dirname(__file__),
@@ -96,6 +96,10 @@ def smart_mapper_usage_server(usage_dto: UsageServer) -> ModelUsageServer:
                                      (usage_dto.years_use_time or 0) * 24 * 365
 
         usage_model_server.use_time.status = Status.INPUT
+
+    if usage_dto.time_workload is not None:
+        usage_model_server.time_workload.value = usage_dto.time_workload
+        usage_model_server.time_workload.status = Status.INPUT
 
     if usage_dto.usage_location is not None:
         sub = _electricity_emission_factors_df
