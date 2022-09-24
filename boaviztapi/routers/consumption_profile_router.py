@@ -14,5 +14,7 @@ consumption_profile = APIRouter(
 async def cpu_consumption_profile(cp_dto: ConsumptionProfileCPU = Body(None),
                                   verbose: bool = True):
     cp, cpu = mapper_cp_cpu(cp_dto)
-    result = cp.compute_consumption_profile_model(cpu_manufacturer=cpu.manufacturer.value, cpu_model_range=cpu.model_range.value)
+    result = cp.compute_consumption_profile_model(cpu_manufacturer=cpu.manufacturer.value,
+                                                  cpu_model_range=cpu.model_range.value,
+                                                  cpu_tdp=cpu.tdp.value)
     return result
