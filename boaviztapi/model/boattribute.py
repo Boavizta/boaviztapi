@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Any
+from typing import Any, Optional
 
 
 class Status(Enum):
@@ -68,21 +68,23 @@ class Boattribute:
     def is_archetype(self):
         return self.status == Status.ARCHETYPE
 
-    def set_input(self, value: Any) -> None:
-        self.__set_value_and_status(value, Status.INPUT)
+    def set_input(self, value: Any, *, source: Optional[str] = None) -> None:
+        self.__set_value_and_status(value, Status.INPUT, source)
 
-    def set_completed(self, value: Any) -> None:
-        self.__set_value_and_status(value, Status.COMPLETED)
+    def set_completed(self, value: Any, *, source: Optional[str] = None) -> None:
+        self.__set_value_and_status(value, Status.COMPLETED, source)
 
-    def set_default(self, value: Any) -> None:
-        self.__set_value_and_status(value, Status.DEFAULT)
+    def set_default(self, value: Any, *, source: Optional[str] = None) -> None:
+        self.__set_value_and_status(value, Status.DEFAULT, source)
 
-    def set_changed(self, value: Any) -> None:
-        self.__set_value_and_status(value, Status.CHANGED)
+    def set_changed(self, value: Any, *, source: Optional[str] = None) -> None:
+        self.__set_value_and_status(value, Status.CHANGED, source)
 
-    def set_archetype(self, value: Any) -> None:
-        self.__set_value_and_status(value, Status.ARCHETYPE)
+    def set_archetype(self, value: Any, *, source: Optional[str] = None) -> None:
+        self.__set_value_and_status(value, Status.ARCHETYPE, source)
 
-    def __set_value_and_status(self, value: Any, status: Status) -> None:
+    def __set_value_and_status(self, value: Any, status: Status, source: str) -> None:
         self._value = value
         self.status = status
+        if source is not None:
+            self.source = source
