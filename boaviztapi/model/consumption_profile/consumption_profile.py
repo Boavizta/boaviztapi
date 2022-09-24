@@ -7,8 +7,11 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import curve_fit
 
+import boaviztapi.utils.fuzzymatch as fuzzymatch
 from boaviztapi.dto.usage.usage import WorkloadTime
 from boaviztapi.model.boattribute import Boattribute, Status
+
+fuzzymatch.pandas()
 
 _cpu_profile_consumption_df = pd.read_csv(os.path.join(os.path.dirname(__file__),
                                                        '../../data/consumption_profile/cpu/cpu_profile.csv'))
@@ -171,12 +174,12 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         sub = _cpu_profile_consumption_df
 
         if cpu_manufacturer is not None:
-            tmp = sub[sub['manufacturer'] == cpu_manufacturer]
+            tmp = sub[sub['manufacturer'].fuzzymatch(cpu_manufacturer)]
             if len(tmp) > 0:
                 sub = tmp.copy()
 
         if cpu_model_range is not None:
-            tmp = sub[sub['model_range'] == cpu_model_range]
+            tmp = sub[sub['model_range'].fuzzymatch(cpu_model_range)]
             if len(tmp) > 0:
                 sub = tmp.copy()
 

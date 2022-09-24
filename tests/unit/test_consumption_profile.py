@@ -47,6 +47,17 @@ def test_cpu_with_model_range(model_range: str, expected_model_params: Dict[str,
     validate_models_approx(cpu_cp, expected_model)
 
 
+@pytest.mark.parametrize('model_range,expected_model_params', [
+    ('xeon gold', {'a': 35.5688, 'b': 0.2438, 'c': 9.6694, 'd': -0.6087}),
+])
+def test_cpu_with_model_range_fuzzy(model_range: str, expected_model_params: Dict[str, float]):
+    cpu_cp = CPUConsumptionProfileModel()
+    cpu_cp.compute_consumption_profile_model(cpu_model_range=model_range)
+    expected_model = CPUConsumptionProfileModel()
+    expected_model.params.value = expected_model_params
+    validate_models_approx(cpu_cp, expected_model)
+
+
 @pytest.mark.parametrize('manufacturer,model_range,expected_model_params', [
     ('Intel', 'Xeon Platinum', {'a': 171.1813, 'b': 0.0354, 'c': 36.8953, 'd': -10.1336}),
     ('Intel', 'Xeon Gold', {'a': 35.5688, 'b': 0.2438, 'c': 9.6694, 'd': -0.6087}),
