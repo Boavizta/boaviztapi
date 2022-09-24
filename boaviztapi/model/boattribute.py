@@ -80,6 +80,9 @@ class Boattribute:
     def set_changed(self, value: Any) -> None:
         self.__set_value_and_status(value, Status.CHANGED)
 
+    def set_archetype(self, value: Any) -> None:
+        self.__set_value_and_status(value, Status.ARCHETYPE)
+
     def __set_value_and_status(self, value: Any, status: Status) -> None:
         self._value = value
         self.status = status
