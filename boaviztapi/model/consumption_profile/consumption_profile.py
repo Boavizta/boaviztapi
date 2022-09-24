@@ -1,3 +1,4 @@
+import dataclasses
 import math
 import os
 from typing import Dict, Optional, List, Tuple, Union
@@ -59,12 +60,8 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         'd': -10.13
     }
 
-    _DEFAULT_MODEL_PARAMS_PER_TDP = {
-        'a': 342.4,
-        'b': 0.0347,
-        'c': 36.89,
-        'd': -16.40
-    }
+    _TDP_RATIOS_WORKLOAD = [0, 10, 50, 100]
+    _TDP_RATIOS = [0.12, 0.32, 0.75, 1.02]
 
     _DEFAULT_MODEL_BOUNDS = (
         [0, 0, 0, -math.inf],
@@ -110,9 +107,10 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
             self.params.source = "From workload"
 
         elif cpu_tdp is not None:
-            params = self._DEFAULT_MODEL_PARAMS_PER_TDP
-            params["a"] = params["a"] * cpu_tdp
-            self.params.set_completed(params)
+            self.params.set_completed(self.__compute_model_adaptation_with_tdp(
+                base_model=model or self._DEFAULT_MODEL_PARAMS,
+                cpu_tdp=cpu_tdp
+            ))
             self.params.source = "From TDP"
 
         elif cpu_model_range is not None:
@@ -124,8 +122,17 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
 
         return self.params.value
 
-    def __compute_model_adaptation_with_tdp(self, base_model: Dict[str, float]):
-        pass
+    def __compute_model_adaptation_with_tdp(self, base_model: Dict[str, float], cpu_tdp: float) -> Dict[str, float]:
+        @dataclasses.dataclass
+        class _TDPWorkloadPower:
+            load_percentage: float = None
+            power_watt: float = None
+
+        self.workloads.set_completed([
+            _TDPWorkloadPower(load_percentage=w, power_watt=cpu_tdp * r)
+            for w, r in zip(self._TDP_RATIOS_WORKLOAD, self._TDP_RATIOS)
+        ])
+        return self.__compute_model_adaptation(base_model=base_model)
 
     def __compute_model_adaptation(self, base_model: Dict[str, float]) -> Dict[str, float]:
         base_model_list = self.__model_dict_to_list(base_model)
