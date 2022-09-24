@@ -53,10 +53,10 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
     DEFAULT_WORKLOADS = None
 
     _DEFAULT_MODEL_PARAMS = {
-        'a': 342.4,
-        'b': 0.0347,
+        'a': 171.2,
+        'b': 0.0354,
         'c': 36.89,
-        'd': -16.40
+        'd': -10.13
     }
 
     _DEFAULT_MODEL_PARAMS_PER_TDP = {
@@ -100,11 +100,13 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
             total += (workload.time_percentage / 100) * self.apply_consumption_profile(workload.load_percentage)
         return total
 
-    def compute_consumption_profile_model(self, cpu_manufacturer: str = None, cpu_model_range: str = None,
+    def compute_consumption_profile_model(self,
+                                          cpu_manufacturer: str = None,
+                                          cpu_model_range: str = None,
                                           cpu_tdp: int = None) -> Union[Dict[str, float], None]:
         model = self.lookup_consumption_profile(cpu_manufacturer, cpu_model_range)
         if self.workloads.is_set():
-            self.params.set_completed(self.__compute_model_adaptation(model or self._DEFAULT_MODEL_PARAMS))
+            self.params.set_completed(self.__compute_model_adaptation(base_model=model or self._DEFAULT_MODEL_PARAMS))
             self.params.source = "From workload"
 
         elif cpu_tdp is not None:
@@ -121,6 +123,9 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
             self.params.set_default(self._DEFAULT_MODEL_PARAMS)
 
         return self.params.value
+
+    def __compute_model_adaptation_with_tdp(self, base_model: Dict[str, float]):
+        pass
 
     def __compute_model_adaptation(self, base_model: Dict[str, float]) -> Dict[str, float]:
         base_model_list = self.__model_dict_to_list(base_model)

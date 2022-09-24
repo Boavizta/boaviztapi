@@ -7,7 +7,7 @@ from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel, RAM
 
 MODEL_TEST_DATA_POINTS = [0., 25., 50., 75., 100.]
 
-DEFAULT_CPU_PARAMS = {'a': 342.4, 'b': 0.0347, 'c': 36.89, 'd': -16.40}
+DEFAULT_CPU_PARAMS = {'a': 171.2, 'b': 0.0354, 'c': 36.89, 'd': -10.13}
 
 ConsumptionProfileModel = Union[CPUConsumptionProfileModel, RAMConsumptionProfileModel]
 
@@ -35,9 +35,9 @@ def validate_models_approx(actual_model: ConsumptionProfileModel, expected_model
 
 
 @pytest.mark.parametrize('model_range,expected_model_params', [
-    ('xeon platinum', {'a': 342.36, 'b': 0.0347, 'c': 36.89, 'd': -16.40}),
-    ('xeon gold', {'a': 71.13, 'b': 0.2280, 'c': 9.66, 'd': 6.26}),
-    ('xeon silver', {'a': 41.55, 'b': 0.2805, 'c': 8.42, 'd': 4.76})
+    ('Xeon Platinum', {'a': 171.1813, 'b': 0.0354, 'c': 36.8953, 'd': -10.1336}),
+    ('Xeon Gold', {'a': 35.5688, 'b': 0.2438, 'c': 9.6694, 'd': -0.6087}),
+    ('Xeon Silver', {'a': 20.7794, 'b': 0.3043, 'c': 8.4241, 'd': 0.8613})
 ])
 def test_cpu_with_model_range(model_range: str, expected_model_params: Dict[str, float]):
     cpu_cp = CPUConsumptionProfileModel()
@@ -48,9 +48,9 @@ def test_cpu_with_model_range(model_range: str, expected_model_params: Dict[str,
 
 
 @pytest.mark.parametrize('manufacturer,model_range,expected_model_params', [
-    ('intel', 'xeon platinum', {'a': 342.36, 'b': 0.0347, 'c': 36.89, 'd': -16.40}),
-    ('intel', 'xeon gold', {'a': 71.13, 'b': 0.2280, 'c': 9.66, 'd': 6.26}),
-    ('intel', 'xeon silver', {'a': 41.55, 'b': 0.2805, 'c': 8.42, 'd': 4.76})
+    ('Intel', 'Xeon Platinum', {'a': 171.1813, 'b': 0.0354, 'c': 36.8953, 'd': -10.1336}),
+    ('Intel', 'Xeon Gold', {'a': 35.5688, 'b': 0.2438, 'c': 9.6694, 'd': -0.6087}),
+    ('Intel', 'Xeon Silver', {'a': 20.7794, 'b': 0.3043, 'c': 8.4241, 'd': 0.8613})
 ])
 def test_cpu_with_manufacture_and_model_range(
         manufacturer: str,
@@ -66,37 +66,37 @@ def test_cpu_with_manufacture_and_model_range(
 
 @pytest.mark.parametrize('model_range,workload,expected_model_params', [
     (
-            'xeon platinum',
+            'Xeon Platinum',
             [
-                WorkloadPower(load_percentage=0, power_watt=58),
-                WorkloadPower(load_percentage=100, power_watt=618)
+                WorkloadPower(load_percentage=0, power_watt=29),
+                WorkloadPower(load_percentage=100, power_watt=309)
             ],
-            {'a': 342.36, 'b': 0.0347, 'c': 36.89, 'd': -16.40}
+            {'a': 171.1813, 'b': 0.0354, 'c': 36.8953, 'd': -10.1336}
     ),
     (
-            'xeon platinum',
+            'Xeon Platinum',
             [
-                WorkloadPower(load_percentage=0, power_watt=60),
-                WorkloadPower(load_percentage=50, power_watt=448)
+                WorkloadPower(load_percentage=0, power_watt=30),
+                WorkloadPower(load_percentage=50, power_watt=224)
             ],
-            {'a': 342.36, 'b': 0.0347, 'c': 36.89, 'd': -16.40}
+            {'a': 171.1813, 'b': 0.0354, 'c': 36.8953, 'd': -10.1336}
     ),
     (
-            'xeon platinum',
+            'Xeon Platinum',
             [
-                WorkloadPower(load_percentage=10, power_watt=176),
-                WorkloadPower(load_percentage=20, power_watt=241),
-                WorkloadPower(load_percentage=90, power_watt=607)
+                WorkloadPower(load_percentage=10, power_watt=88),
+                WorkloadPower(load_percentage=20, power_watt=120),
+                WorkloadPower(load_percentage=90, power_watt=303)
             ],
-            {'a': 342.36, 'b': 0.0347, 'c': 36.89, 'd': -16.40}
+            {'a': 171.1813, 'b': 0.0354, 'c': 36.8953, 'd': -10.1336}
     ),
     (
-            'xeon silver',
+            'Xeon Silver',
             [
-                WorkloadPower(load_percentage=30, power_watt=96),
-                WorkloadPower(load_percentage=80, power_watt=130)
+                WorkloadPower(load_percentage=30, power_watt=48),
+                WorkloadPower(load_percentage=80, power_watt=65)
             ],
-            {'a': 41.55, 'b': 0.2805, 'c': 8.42, 'd': 4.76}
+            {'a': 20.7794, 'b': 0.3043, 'c': 8.4241, 'd': 0.8613}
     ),
 ])
 def test_cpu_with_model_range_and_workload(
