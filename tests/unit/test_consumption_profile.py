@@ -28,7 +28,7 @@ def test_cpu_with_manufacturer_name(manufacturer: str, expected_model: Dict[str,
     assert model == expected_model
 
 
-def validate_models_approx(actual_model: ConsumptionProfileModel, expected_model: ConsumptionProfileModel):
+def validate_models_approx(actual_model: CPUConsumptionProfileModel, expected_model: CPUConsumptionProfileModel):
     actual_results = list(map(actual_model.apply_consumption_profile, MODEL_TEST_DATA_POINTS))
     expected_results = list(map(expected_model.apply_consumption_profile, MODEL_TEST_DATA_POINTS))
     assert actual_results == pytest.approx(expected_results, rel=10e-1)
@@ -107,6 +107,30 @@ def test_cpu_with_model_range_and_workload(
     cpu_cp = CPUConsumptionProfileModel()
     cpu_cp.workloads.set_input(workload)
     cpu_cp.compute_consumption_profile_model(cpu_model_range=model_range)
+    expected_model = CPUConsumptionProfileModel()
+    expected_model.params.value = expected_model_params
+    validate_models_approx(cpu_cp, expected_model)
+
+
+@pytest.mark.parametrize('tdp,expected_model_params', [
+    (240, {'a': 171.1813, 'b': 0.0354, 'c': 36.8953, 'd': -10.1336}),
+    (85, {'a': 41.56, 'b': 0.2805, 'c': 8.424, 'd': 4.7644})
+])
+def test_cpu_with_tdp(tdp: int, expected_model_params: Dict[str, float]):
+    cpu_cp = CPUConsumptionProfileModel()
+    cpu_cp.compute_consumption_profile_model(cpu_tdp=tdp)
+    expected_model = CPUConsumptionProfileModel()
+    expected_model.params.value = expected_model_params
+    validate_models_approx(cpu_cp, expected_model)
+
+
+@pytest.mark.parametrize('model_range,tdp,expected_model_params', [
+    ('Xeon Platinum', 240, {'a': 171.1813, 'b': 0.0354, 'c': 36.8953, 'd': -10.1336}),
+    ('Xeon Silver', 85, {'a': 41.56, 'b': 0.2805, 'c': 8.424, 'd': 4.7644})
+])
+def test_cpu_with_tdp_and_model_range(model_range: str, tdp: int, expected_model_params: Dict[str, float]):
+    cpu_cp = CPUConsumptionProfileModel()
+    cpu_cp.compute_consumption_profile_model(cpu_model_range=model_range, cpu_tdp=tdp)
     expected_model = CPUConsumptionProfileModel()
     expected_model.params.value = expected_model_params
     validate_models_approx(cpu_cp, expected_model)
