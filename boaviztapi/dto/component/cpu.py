@@ -1,15 +1,14 @@
+import os
 from typing import Optional, Tuple
 
 import pandas as pd
 from rapidfuzz import fuzz, process
 
 from boaviztapi.dto.component import ComponentDTO
-import os
-
 from boaviztapi.dto.usage.usage import smart_mapper_usage, Usage
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import ComponentCPU
-from boaviztapi.utils.fuzzy_match import fuzzymatch_attr_from_pdf
+from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
 _cpu_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/cpu_manufacture.csv'))
 _cpu_index = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/cpu_index.csv'))
