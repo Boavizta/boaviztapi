@@ -8,7 +8,7 @@ from boaviztapi.dto.usage import Usage
 from boaviztapi.dto.usage.usage import smart_mapper_usage
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import ComponentRAM
-from boaviztapi.utils.fuzzy_match import fuzzymatch_attr_from_pdf
+from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
 _ram_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/ram_manufacture.csv'))
 

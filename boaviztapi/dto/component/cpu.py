@@ -1,15 +1,14 @@
+import os
 from typing import Optional, Tuple
 
 import pandas as pd
 from rapidfuzz import fuzz, process
 
 from boaviztapi.dto.component import ComponentDTO
-import os
-
 from boaviztapi.dto.usage.usage import smart_mapper_usage, Usage
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import ComponentCPU
-from boaviztapi.utils.fuzzy_match import fuzzymatch_attr_from_pdf
+from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
 _cpu_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/cpu_manufacture.csv'))
 _cpu_index = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/cpu_index.csv'))
@@ -23,6 +22,7 @@ class CPU(ComponentDTO):
     model_range: Optional[str] = None
     family: Optional[str] = None
     name: Optional[str] = None
+    tdp: Optional[int] = None
 
 
 def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
@@ -53,6 +53,10 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
     if cpu_dto.core_units is not None:
         cpu_component.core_units.value = cpu_dto.core_units
         cpu_component.core_units.status = Status.INPUT
+
+    if cpu_dto.tdp is not None:
+        cpu_component.tdp.value = cpu_dto.tdp
+        cpu_component.tdp.status = Status.INPUT
 
     if cpu_dto.die_size_per_core is not None:
         cpu_component.die_size_per_core.value = cpu_dto.die_size_per_core

@@ -41,6 +41,7 @@ class ComponentCPU(Component):
         self.model_range = Boattribute(default=self.DEFAULT_MODEL_RANGE)
         self.manufacturer = Boattribute(default=self.DEFAULT_CPU_MANUFACTURER)
         self.family = Boattribute(default=self.DEFAULT_CPU_FAMILY)
+        self.tdp = Boattribute(unit="W")
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         return self.__impact_manufacture('gwp')
@@ -71,7 +72,8 @@ class ComponentCPU(Component):
     def model_power_consumption(self):
         self.usage.consumption_profile = CPUConsumptionProfileModel()
         self.usage.consumption_profile.compute_consumption_profile_model(cpu_manufacturer=self.manufacturer.value,
-                                                                         cpu_model_range=self.model_range.value)
+                                                                         cpu_model_range=self.model_range.value,
+                                                                         cpu_tdp=self.tdp.value)
         if type(self.usage.time_workload.value) == float:
             return self.usage.consumption_profile.apply_consumption_profile(self.usage.time_workload.value)
 

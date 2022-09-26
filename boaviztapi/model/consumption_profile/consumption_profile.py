@@ -1,3 +1,4 @@
+import dataclasses
 import math
 import os
 from typing import Dict, Optional, List, Tuple, Union
@@ -6,15 +7,20 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import curve_fit
 
+import boaviztapi.utils.fuzzymatch as fuzzymatch
 from boaviztapi.dto.usage.usage import WorkloadTime
 from boaviztapi.model.boattribute import Boattribute, Status
+
+fuzzymatch.pandas()
 
 _cpu_profile_consumption_df = pd.read_csv(os.path.join(os.path.dirname(__file__),
                                                        '../../data/consumption_profile/cpu/cpu_profile.csv'))
 
 
 class ConsumptionProfileModel:
-    pass
+    def __iter__(self):
+        for attr, value in self.__dict__.items():
+            yield attr, value
 
 
 class RAMConsumptionProfileModel(ConsumptionProfileModel):
@@ -53,11 +59,15 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
     DEFAULT_WORKLOADS = None
 
     _DEFAULT_MODEL_PARAMS = {
-        'a': 342.4,
-        'b': 0.0347,
+        'a': 171.2,
+        'b': 0.0354,
         'c': 36.89,
-        'd': -16.40
+        'd': -10.13
     }
+
+    _TDP_RATIOS_WORKLOAD = [0, 10, 50, 100]
+    _TDP_RATIOS = [0.12, 0.32, 0.75, 1.02]
+
     _DEFAULT_MODEL_BOUNDS = (
         [0, 0, 0, -math.inf],
         [math.inf, math.inf, math.inf, math.inf]
@@ -92,25 +102,41 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
             total += (workload.time_percentage / 100) * self.apply_consumption_profile(workload.load_percentage)
         return total
 
-    def compute_consumption_profile_model(self, cpu_manufacturer: str = None, cpu_model_range: str = None) \
-            -> Union[Dict[str, float], None]:
+    def compute_consumption_profile_model(self,
+                                          cpu_manufacturer: str = None,
+                                          cpu_model_range: str = None,
+                                          cpu_tdp: int = None) -> Union[Dict[str, float], None]:
         model = self.lookup_consumption_profile(cpu_manufacturer, cpu_model_range)
+        if self.workloads.is_set():
+            model = self.__compute_model_adaptation(base_model=model or self._DEFAULT_MODEL_PARAMS)
+            self.params.set_completed(model, source="From workload")
 
-        if model is None:
-            if self.workloads.is_set():
-                self.params.value = self.__compute_model_adaptation(self._DEFAULT_MODEL_PARAMS)
-                self.params.status = Status.COMPLETED
-            else:
-                self.params.value = self._DEFAULT_MODEL_PARAMS
-                self.params.status = Status.DEFAULT
+        elif cpu_tdp is not None:
+            model = self.__compute_model_adaptation_with_tdp(
+                base_model=model or self._DEFAULT_MODEL_PARAMS,
+                cpu_tdp=cpu_tdp
+            )
+            self.params.set_completed(model, source="From TDP")
+
+        elif cpu_model_range is not None:
+            self.params.set_completed(model, source="From CPU model range")
+
         else:
-            if self.workloads.is_set():
-                model = self.__compute_model_adaptation(model)
-
-            self.params.value = model
-            self.params.status = Status.COMPLETED
+            self.params.set_default(self._DEFAULT_MODEL_PARAMS)
 
         return self.params.value
+
+    def __compute_model_adaptation_with_tdp(self, base_model: Dict[str, float], cpu_tdp: float) -> Dict[str, float]:
+        @dataclasses.dataclass
+        class _TDPWorkloadPower:
+            load_percentage: float = None
+            power_watt: float = None
+
+        self.workloads.set_completed([
+            _TDPWorkloadPower(load_percentage=w, power_watt=cpu_tdp * r)
+            for w, r in zip(self._TDP_RATIOS_WORKLOAD, self._TDP_RATIOS)
+        ])
+        return self.__compute_model_adaptation(base_model=base_model)
 
     def __compute_model_adaptation(self, base_model: Dict[str, float]) -> Dict[str, float]:
         base_model_list = self.__model_dict_to_list(base_model)
@@ -149,12 +175,12 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         sub = _cpu_profile_consumption_df
 
         if cpu_manufacturer is not None:
-            tmp = sub[sub['manufacturer'] == cpu_manufacturer]
+            tmp = sub[sub['manufacturer'].fuzzymatch(cpu_manufacturer)]
             if len(tmp) > 0:
                 sub = tmp.copy()
 
         if cpu_model_range is not None:
-            tmp = sub[sub['model_range'] == cpu_model_range]
+            tmp = sub[sub['model_range'].fuzzymatch(cpu_model_range)]
             if len(tmp) > 0:
                 sub = tmp.copy()
 

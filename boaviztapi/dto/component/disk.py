@@ -7,7 +7,7 @@ from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.usage.usage import smart_mapper_usage, Usage
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import ComponentSSD, ComponentHDD
-from boaviztapi.utils.fuzzy_match import fuzzymatch_attr_from_pdf
+from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
 _ssd_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/components/ssd_manufacture.csv'))
 

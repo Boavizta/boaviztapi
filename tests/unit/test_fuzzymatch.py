@@ -1,4 +1,4 @@
-from boaviztapi.utils.fuzzy_match import fuzzymatch_attr_from_pdf
+from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
 
 def test_fuzzymatch_cpu(cpu_dataframe):
