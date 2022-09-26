@@ -18,7 +18,9 @@ _cpu_profile_consumption_df = pd.read_csv(os.path.join(os.path.dirname(__file__)
 
 
 class ConsumptionProfileModel:
-    pass
+    def __iter__(self):
+        for attr, value in self.__dict__.items():
+            yield attr, value
 
 
 class RAMConsumptionProfileModel(ConsumptionProfileModel):

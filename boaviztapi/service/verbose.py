@@ -41,11 +41,9 @@ def verbose_usage(device: [Device, Component]):
         }
     }
 
-    for attr, val in device.usage.__iter__():
-        if not isinstance(val, Boattribute):
-            continue
-        if val.is_set():
-            json_output[attr] = val.to_json()
+    json_output = {**json_output, **iter_boattribute(device.usage)}
+    if device.usage.consumption_profile is not None:
+        json_output = {**json_output, **iter_boattribute(device.usage.consumption_profile)}
 
     return json_output
 
@@ -66,13 +64,19 @@ def verbose_component(component: Component):
             "unit": "kgSbeq"
         },
     }
-    for attr, val in component.__iter__():
-        if not isinstance(val, Boattribute):
-            continue
-        if val.is_set():
-            json_output[attr] = val.to_json()
+    json_output = {**json_output, **iter_boattribute(component)}
 
     if get_model_impact(component, 'use', 'gwp', 1, Allocation.TOTAL):
         json_output["USAGE"] = verbose_usage(component)
 
+    return json_output
+
+
+def iter_boattribute(element):
+    json_output = {}
+    for attr, val in element.__iter__():
+        if not isinstance(val, Boattribute):
+            continue
+        if val.is_set():
+            json_output[attr] = val.to_json()
     return json_output
