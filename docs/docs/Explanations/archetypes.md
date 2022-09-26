@@ -1,5 +1,7 @@
 # Archetypes
 
+**Work in progress**
+
 An archetype is a pre-recorded device.
 
 Archetype can be used :

@@ -16,8 +16,3 @@
 | assemblymanufgwp | kgCO2eq | 6.68     |
 | assemblymanufadp | kgSbeq  | 1.41E-06 |
 | assemblymanufpe  | MJ      | 68.60    |
-
-
-## Usage impact
-
-Only power consumption is implemented.

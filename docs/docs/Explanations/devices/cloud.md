@@ -20,6 +20,8 @@ Components configuration are never sent by the user but pre-recorded as an [arch
 
 Usage impact of cloud instance are measured only from its [consumption profile](../consumption_profile.md).
 
-## Resources
+As for manufacture, usage impact for a physical server are divided into the number of instances hosted by the server.
 
-[AWS server configuration - Benjamin Davy for teads](https://medium.com/teads-engineering/evaluating-the-carbon-footprint-of-a-software-platform-hosted-in-the-cloud-e716e14e060c)
+## Consumption profile
+
+We use the same process as described for the servers. 

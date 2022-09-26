@@ -6,17 +6,13 @@ Manufacture impacts are measured at components and device level with a bottom-up
 
 Manufacture impacts can be reported with several allocation strategies.
 
-### Hover the lifecycle
-
-```Allocation: TOTAL```
+### Hover the lifecycle - ```Allocation: TOTAL```
 
 The total manufacturing impacts are reported independently of the usage.
 
 ```manufacture_impact = total_impact```
 
-### Hover a specific duration 
-
-```Allocation: LINEAR```
+### Hover a specific duration - ```Allocation: LINEAR```
 
 The manufacturing impacts is linearly distributed hover the life duration of the devices.
 The impacts are reported hover the usage duration.

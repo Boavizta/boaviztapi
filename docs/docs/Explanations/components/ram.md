@@ -43,6 +43,18 @@ Both [power consumption](../usage/elec_conso.md) and [consumption profile](../co
 
 ## Consumption profile
 
-The consumption profile depends on the quantity of ram :
+The RAM consumption profile is of the form : ```consumption_profile(workload) = a * capacity```
 
-**power_consumption = x * qtGB**
+As a first approximation, we use a uniform consumption profile since the stress test data used show a rather uniform consumption. Consequently, the workload won't be used.
+
+![img.png](img.png)
+
+New stress test data specifically on RAM calls should be conducted to specify this consumption profile.
+
+### Determining the parameters
+
+To determine ```a``` we averaged the electrical consumption of RAM per GB. With the process we came up with ```a=0.284```
+
+Capacity is either given by the user or the default value is used.
+
+```consumption_profile(workload) = 0.284 * capacity```

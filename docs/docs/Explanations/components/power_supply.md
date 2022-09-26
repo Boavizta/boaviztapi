@@ -23,4 +23,4 @@ With :
 ## Usage impact
 
 Only power consumption is implemented. 
-This shouldn't be used since the electricity consume by a power supply is consume on behalf of other components.
+This shouldn't be used in moste cases since the electricity consume by a power supply is consume on behalf of other components.

@@ -1,6 +1,6 @@
 # Verbose
 
-In the interest of transparency of our methods and data, all data used by the API can be described in the response to a request if the option verbose is set as true 
+In the interest of transparency of our methods, data and source, all data used by the API can be described in the response to a request if the option verbose is set as true 
 
 ## Impacts per components
 

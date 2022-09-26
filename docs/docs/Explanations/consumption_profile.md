@@ -6,7 +6,7 @@ A consumption profile is a continuous function which links a workload with an el
 Consumption profile can be given by the user or be completed.
 The completion strategy of the consumption profile is specified for each device or component when implemented.
 
-Consumption profile is implemented for :
+You will find the details of each of the consumption profiles in the respective components and device pages. Consumption profile are implemented for :
 
 * [CPU](../components/cpu.md)
 * [RAM](../components/ram.md)
@@ -14,8 +14,11 @@ Consumption profile is implemented for :
 * [CLOUD INSTANCES](../devices/cloud.md)
 
 
-## Building consumption profile
+## Dataset
 
-We conduct stress test on different brand and range of components to gather punctual measurement...
+The consumption profiles are produced empirically from spot measurements at different workload levels on different architectures. We rely on the data described here:
 
-![img.png](img.png)
+* [AWS server configuration - Benjamin Davy for teads](https://medium.com/teads-engineering/evaluating-the-carbon-footprint-of-a-software-platform-hosted-in-the-cloud-e716e14e060c)
+
+* [Energizta](https://github.com/Boavizta/Energizta) project aims to build a collaborative database to refine the consumption profiles usable in the API.
+
