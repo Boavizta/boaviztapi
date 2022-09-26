@@ -1,4 +1,14 @@
 from enum import Enum
+from typing import Any, Optional
+
+
+class Status(Enum):
+    NONE = "NONE"
+    INPUT = "INPUT"
+    COMPLETED = "COMPLETED"
+    DEFAULT = "DEFAULT"
+    CHANGED = "CHANGED"
+    ARCHETYPE = "ARCHETYPE"
 
 
 class Boattribute:
@@ -16,7 +26,7 @@ class Boattribute:
                 self.__setattr__(attr, val)
 
     @property
-    def value(self):
+    def value(self) -> Any:
         if self._value is None:
             if callable(self.default):
                 default = self.default(self.args)
@@ -30,7 +40,7 @@ class Boattribute:
         return self._value
 
     @value.setter
-    def value(self, value):
+    def value(self, value: Any):
         self._value = value
 
     def to_json(self):
@@ -58,11 +68,23 @@ class Boattribute:
     def is_archetype(self):
         return self.status == Status.ARCHETYPE
 
+    def set_input(self, value: Any, *, source: Optional[str] = None) -> None:
+        self.__set_value_and_status(value, Status.INPUT, source)
 
-class Status(Enum):
-    NONE = "NONE"
-    INPUT = "INPUT"
-    COMPLETED = "COMPLETED"
-    DEFAULT = "DEFAULT"
-    CHANGED = "CHANGED"
-    ARCHETYPE = "ARCHETYPE"
+    def set_completed(self, value: Any, *, source: Optional[str] = None) -> None:
+        self.__set_value_and_status(value, Status.COMPLETED, source)
+
+    def set_default(self, value: Any, *, source: Optional[str] = None) -> None:
+        self.__set_value_and_status(value, Status.DEFAULT, source)
+
+    def set_changed(self, value: Any, *, source: Optional[str] = None) -> None:
+        self.__set_value_and_status(value, Status.CHANGED, source)
+
+    def set_archetype(self, value: Any, *, source: Optional[str] = None) -> None:
+        self.__set_value_and_status(value, Status.ARCHETYPE, source)
+
+    def __set_value_and_status(self, value: Any, status: Status, source: str) -> None:
+        self._value = value
+        self.status = status
+        if source is not None:
+            self.source = source
