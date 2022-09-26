@@ -34,7 +34,7 @@ def set_list(obj):
     return obj
 
 
-_csv_file_path = '../data/devices/cloud/source/AWS EC2 Carbon Footprint Dataset - Boavizta API Dataset.csv'
+_csv_file_path = '../data/devices/cloud/source/EC2 Instances Carbon Footprint Estimator TEADS.csv'
 _json_path = '../data/devices/cloud/aws'
 
 if __name__ == '__main__':

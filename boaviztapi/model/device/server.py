@@ -203,24 +203,24 @@ class DeviceCloudInstance(DeviceServer, ABC):
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         impact, sign_fig = super().impact_manufacture_gwp()
-        return (impact / self.usage.instance_per_server), sign_fig
+        return (impact / self.usage.instance_per_server.value), sign_fig
 
     def impact_manufacture_pe(self) -> NumberSignificantFigures:
         impact, sign_fig = super().impact_manufacture_pe()
-        return (impact / self.usage.instance_per_server), sign_fig
+        return (impact / self.usage.instance_per_server.value), sign_fig
 
     def impact_manufacture_adp(self) -> NumberSignificantFigures:
         impact, sign_fig = super().impact_manufacture_adp()
-        return (impact / self.usage.instance_per_server), sign_fig
+        return (impact / self.usage.instance_per_server.value), sign_fig
 
     def impact_use_gwp(self) -> NumberSignificantFigures:
         impact, sign_fig = super().impact_use_gwp()
-        return (impact / self.usage.instance_per_server), sign_fig
+        return (impact / self.usage.instance_per_server.value), sign_fig
 
     def impact_use_pe(self) -> NumberSignificantFigures:
         impact, sign_fig = super().impact_use_pe()
-        return (impact / self.usage.instance_per_server), sign_fig
+        return (impact / self.usage.instance_per_server.value), sign_fig
 
     def impact_use_adp(self) -> NumberSignificantFigures:
         impact, sign_fig = super().impact_use_adp()
-        return (impact / self.usage.instance_per_server), sign_fig
+        return (impact / self.usage.instance_per_server.value), sign_fig
