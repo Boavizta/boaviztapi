@@ -72,9 +72,15 @@ class ComponentCPU(Component):
 
     def model_power_consumption(self):
         self.usage.consumption_profile = CPUConsumptionProfileModel()
-        self.usage.consumption_profile.compute_consumption_profile_model(cpu_manufacturer=self.manufacturer.value,
-                                                                         cpu_model_range=self.model_range.value,
-                                                                         cpu_tdp=self.tdp.value)
+
+        manuf, model, tdp = None, None, None
+        if self.manufacturer.is_set(): manuf = self.manufacturer.value
+        if self.model_range.is_set(): model = self.manufacturer.value
+        if self.tdp.is_set(): tdp = self.manufacturer.value
+
+        self.usage.consumption_profile.compute_consumption_profile_model(cpu_manufacturer=manuf,
+                                                                         cpu_model_range=model,
+                                                                         cpu_tdp=tdp)
         if type(self.usage.time_workload.value) == float:
             return self.usage.consumption_profile.apply_consumption_profile(self.usage.time_workload.value)
 
