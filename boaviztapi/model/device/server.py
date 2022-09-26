@@ -158,10 +158,10 @@ class DeviceServer(Device):
         return impacts, sig_fig
 
     def model_power_consumption(self):
-        conso_cpu = self.cpu.model_power_consumption()
+        conso_cpu = self.cpu.model_power_consumption()*self.cpu.units
         conso_ram = 0
         for ram_unit in self.ram:
-            conso_ram += ram_unit.model_power_consumption()
+            conso_ram += ram_unit.model_power_consumption()*ram_unit.units
         return (conso_cpu + conso_ram) * (1 + self.usage.other_consumption_ratio.value)
 
     def __compute_significant_numbers(self, impact_factor: float) -> int:

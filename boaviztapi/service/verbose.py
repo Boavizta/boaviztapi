@@ -53,14 +53,14 @@ def verbose_component(component: Component):
 
     json_output["manufacture_impacts"] = {
         "gwp": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_gwp()) * component.units,
+            "value": rd.round_to_sigfig(*component.impact_manufacture_gwp()),
             "unit": "kgCO2eq"
         },
         "pe": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_pe()) * component.units,
+            "value": rd.round_to_sigfig(*component.impact_manufacture_pe()),
             "unit": "MJ"},
         "adp": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_adp()) * component.units,
+            "value": rd.round_to_sigfig(*component.impact_manufacture_adp()),
             "unit": "kgSbeq"
         },
     }
