@@ -158,10 +158,10 @@ class DeviceServer(Device):
         return impacts, sig_fig
 
     def model_power_consumption(self):
-        conso_cpu = self.cpu.model_power_consumption()
+        conso_cpu = self.cpu.model_power_consumption()*self.cpu.units
         conso_ram = 0
         for ram_unit in self.ram:
-            conso_ram += ram_unit.model_power_consumption()
+            conso_ram += ram_unit.model_power_consumption()*ram_unit.units
         return (conso_cpu + conso_ram) * (1 + self.usage.other_consumption_ratio.value)
 
     def __compute_significant_numbers(self, impact_factor: float) -> int:
@@ -203,24 +203,24 @@ class DeviceCloudInstance(DeviceServer, ABC):
 
     def impact_manufacture_gwp(self) -> NumberSignificantFigures:
         impact, sign_fig = super().impact_manufacture_gwp()
-        return (impact / self.usage.instance_per_server), sign_fig
+        return (impact / self.usage.instance_per_server.value), sign_fig
 
     def impact_manufacture_pe(self) -> NumberSignificantFigures:
         impact, sign_fig = super().impact_manufacture_pe()
-        return (impact / self.usage.instance_per_server), sign_fig
+        return (impact / self.usage.instance_per_server.value), sign_fig
 
     def impact_manufacture_adp(self) -> NumberSignificantFigures:
         impact, sign_fig = super().impact_manufacture_adp()
-        return (impact / self.usage.instance_per_server), sign_fig
+        return (impact / self.usage.instance_per_server.value), sign_fig
 
     def impact_use_gwp(self) -> NumberSignificantFigures:
         impact, sign_fig = super().impact_use_gwp()
-        return (impact / self.usage.instance_per_server), sign_fig
+        return (impact / self.usage.instance_per_server.value), sign_fig
 
     def impact_use_pe(self) -> NumberSignificantFigures:
         impact, sign_fig = super().impact_use_pe()
-        return (impact / self.usage.instance_per_server), sign_fig
+        return (impact / self.usage.instance_per_server.value), sign_fig
 
     def impact_use_adp(self) -> NumberSignificantFigures:
         impact, sign_fig = super().impact_use_adp()
-        return (impact / self.usage.instance_per_server), sign_fig
+        return (impact / self.usage.instance_per_server.value), sign_fig

@@ -4,6 +4,7 @@ import os
 from fastapi import APIRouter, Query, Body, HTTPException
 
 from boaviztapi.dto.device import Cloud
+from boaviztapi.dto.device.device import smart_mapper_server, mapper_cloud_instance
 from boaviztapi.dto.usage import UsageCloud
 from boaviztapi.model.device import DeviceCloudInstance
 from boaviztapi.routers import data_dir
@@ -27,20 +28,16 @@ async def instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=clo
                                 allocation: Allocation = Allocation.TOTAL):
     cloud_instance = Cloud()
     cloud_instance.usage = cloud_usage
-    completed_instance = copy.deepcopy(cloud_instance)
-
     instance_archetype = await get_cloud_instance_archetype(instance_type, "aws")
 
     if not instance_archetype:
-        raise HTTPException(status_code=404, detail=f"{instance_type} not found")
+        raise HTTPException(status_code=404, detail=f"{instance_archetype} not found")
 
-    completed_instance = Cloud(**complete_with_archetype(completed_instance, instance_archetype))
-    completed_instance = smart_complete_server(completed_instance)
+    instance_archetype = Cloud(**complete_with_archetype(cloud_instance, instance_archetype))
+    instance_model = mapper_cloud_instance(instance_archetype)
 
     return await server_impact(
-        input_device_dto=cloud_instance,
-        smart_complete_device_dto=completed_instance,
-        device_class=DeviceCloudInstance,
+        device=instance_model,
         verbose=verbose,
         allocation=allocation
     )

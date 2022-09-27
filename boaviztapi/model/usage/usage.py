@@ -35,13 +35,13 @@ class ModelUsage:
             default=self.DEFAULT_USAGE_LOCATION
         )
         self.adp_factor = Boattribute(
-            unit="kgCO2e/kWh",
+            unit="KgSbeq/kWh",
             default=default_impact_factor,
             args={"impact_type": "adpe",
                   "usage_location": self.usage_location,
                   "emission_factors_df": _electricity_emission_factors_df})
         self.gwp_factor = Boattribute(
-            unit="KgSbeq/kWh",
+            unit="kgCO2e/kWh",
             default=default_impact_factor,
             args={"impact_type": "gwp",
                   "usage_location": self.usage_location,

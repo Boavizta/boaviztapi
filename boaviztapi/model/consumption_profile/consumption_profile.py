@@ -42,6 +42,8 @@ class RAMConsumptionProfileModel(ConsumptionProfileModel):
     def compute_consumption_profile_model(self, ram_capacity: int = DEFAULT_RAM_CAPACITY) -> int:
         self.params.value = {'a': self.RAM_ELECTRICAL_FACTOR_PER_GO * ram_capacity}
         self.params.status = Status.COMPLETED
+        self.params.source = f"(ram_electrical_factor_per_go : {self.RAM_ELECTRICAL_FACTOR_PER_GO}) * (" \
+                             f"ram_electrical_factor_per_go: {ram_capacity}) "
         return self.params.value
 
     def apply_consumption_profile(self, load_percentage: float) -> float:

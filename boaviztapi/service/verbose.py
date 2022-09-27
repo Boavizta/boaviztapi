@@ -27,7 +27,7 @@ def verbose_device(device: Device):
 def verbose_usage(device: [Device, Component]):
     json_output = {}
 
-    json_output["impacts"] = {
+    json_output["usage_impacts"] = {
         "gwp": {
             "value": get_model_impact(device, 'use', 'gwp', 1, Allocation.TOTAL) or NOT_IMPLEMENTED,
             "unit": "kgCO2eq"
@@ -51,16 +51,16 @@ def verbose_usage(device: [Device, Component]):
 def verbose_component(component: Component):
     json_output = {"units": component.units}
 
-    json_output["impacts"] = {
+    json_output["manufacture_impacts"] = {
         "gwp": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_gwp()) * component.units,
+            "value": rd.round_to_sigfig(*component.impact_manufacture_gwp()),
             "unit": "kgCO2eq"
         },
         "pe": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_pe()) * component.units,
+            "value": rd.round_to_sigfig(*component.impact_manufacture_pe()),
             "unit": "MJ"},
         "adp": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_adp()) * component.units,
+            "value": rd.round_to_sigfig(*component.impact_manufacture_adp()),
             "unit": "kgSbeq"
         },
     }

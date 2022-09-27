@@ -18,6 +18,6 @@ def test_usage_server_empty_usage(empty_usage_dto):
     usage = smart_mapper_usage_server(empty_usage_dto)
     server.usage = usage
 
-    assert get_model_impact(server, 'use', 'pe') == 33800.0
-    assert get_model_impact(server, 'use', 'adp') == 0.000169
-    assert get_model_impact(server, 'use', 'gwp') == 1000.0
+    assert get_model_impact(server, 'use', 'pe') == 87380
+    assert get_model_impact(server, 'use', 'adp') == 0.000436
+    assert get_model_impact(server, 'use', 'gwp') == 2600

@@ -48,18 +48,18 @@ async def test_complete_config_server():
                 }
             }
         })
-    assert res.json() == {'adp': {'manufacture': 0.25, 'unit': 'kgSbeq', 'use': 0.000169},
-                          'gwp': {'manufacture': 1100.0, 'unit': 'kgCO2eq', 'use': 1000.0},
-                          'pe': {'manufacture': 15000.0, 'unit': 'MJ', 'use': 33800.0}}
+    assert res.json() == {'adp': {'manufacture': 0.25, 'unit': 'kgSbeq', 'use': 0.000313},
+                          'gwp': {'manufacture': 1100.0, 'unit': 'kgCO2eq', 'use': 1900.0},
+                          'pe': {'manufacture': 15000.0, 'unit': 'MJ', 'use': 62850.0}}
 
 
 @pytest.mark.asyncio
 async def test_empty_config_server():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/server.md/?verbose=false', json={})
-    assert res.json() == {'adp': {'manufacture': 0.23, 'unit': 'kgSbeq', 'use': 0.000169},
-                          'gwp': {'manufacture': 3300.0, 'unit': 'kgCO2eq', 'use': 1000.0},
-                          'pe': {'manufacture': 42000.0, 'unit': 'MJ', 'use': 33800.0}}
+    assert res.json() == {'adp': {'manufacture': 0.23, 'unit': 'kgSbeq', 'use': 0.000436},
+                          'gwp': {'manufacture': 3300.0, 'unit': 'kgCO2eq', 'use': 2600.0},
+                          'pe': {'manufacture': 42000.0, 'unit': 'MJ', 'use': 87380.0}}
 
 
 @pytest.mark.asyncio
@@ -124,9 +124,9 @@ async def test_dell_r740_server():
             }
         }
                             )
-    assert res.json() == {'adp': {'manufacture': 0.15, 'unit': 'kgSbeq', 'use': 0.000169},
-                          'gwp': {'manufacture': 970.0, 'unit': 'kgCO2eq', 'use': 1000.0},
-                          'pe': {'manufacture': 13000.0, 'unit': 'MJ', 'use': 33800.0}}
+    assert res.json() == {'adp': {'manufacture': 0.15, 'unit': 'kgSbeq', 'use': 0.000354},
+                          'gwp': {'manufacture': 970.0, 'unit': 'kgCO2eq', 'use': 2100.0},
+                          'pe': {'manufacture': 13000.0, 'unit': 'MJ', 'use': 71020.0}}
 
 
 @pytest.mark.asyncio
@@ -161,9 +161,9 @@ async def test_partial_server_1():
                 ]
             }
         })
-    assert res.json() == {'adp': {'manufacture': 0.15, 'unit': 'kgSbeq', 'use': 0.000169},
-                          'gwp': {'manufacture': 1300.0, 'unit': 'kgCO2eq', 'use': 1000.0},
-                          'pe': {'manufacture': 17000.0, 'unit': 'MJ', 'use': 33800.0}}
+    assert {'adp': {'manufacture': 0.15, 'unit': 'kgSbeq', 'use': 0.000313},
+            'gwp': {'manufacture': 1300.0, 'unit': 'kgCO2eq', 'use': 1900.0},
+            'pe': {'manufacture': 17000.0, 'unit': 'MJ', 'use': 62850.0}}
 
 
 @pytest.mark.asyncio
@@ -205,9 +205,9 @@ async def test_partial_server_2():
                 }
             }
         })
-    assert res.json() == {'adp': {'manufacture': 0.26, 'unit': 'kgSbeq', 'use': 0.000169},
-                          'gwp': {'manufacture': 1400.0, 'unit': 'kgCO2eq', 'use': 1000.0},
-                          'pe': {'manufacture': 19000.0, 'unit': 'MJ', 'use': 33800.0}}
+    assert res.json() == {'adp': {'manufacture': 0.26, 'unit': 'kgSbeq', 'use': 0.000313},
+                          'gwp': {'manufacture': 1400.0, 'unit': 'kgCO2eq', 'use': 1900.0},
+                          'pe': {'manufacture': 19000.0, 'unit': 'MJ', 'use': 62850.0}}
 
 
 @pytest.mark.asyncio
@@ -232,9 +232,9 @@ async def test_partial_server_3():
                 }
             }
         })
-    assert res.json() == {'adp': {'manufacture': 0.24, 'unit': 'kgSbeq', 'use': 0.000169},
-                          'gwp': {'manufacture': 900.0, 'unit': 'kgCO2eq', 'use': 1000.0},
-                          'pe': {'manufacture': 13000.0, 'unit': 'MJ', 'use': 33800.0}}
+    assert res.json() == {'adp': {'manufacture': 0.24, 'unit': 'kgSbeq', 'use': 0.000286},
+                          'gwp': {'manufacture': 900.0, 'unit': 'kgCO2eq', 'use': 1700.0},
+                          'pe': {'manufacture': 13000.0, 'unit': 'MJ', 'use': 57390.0}}
 
 
 @pytest.mark.asyncio
