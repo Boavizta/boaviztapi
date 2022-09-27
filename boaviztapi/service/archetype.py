@@ -5,7 +5,7 @@ from typing import Union
 from boaviztapi.dto.device import Server, Cloud, DeviceDTO
 from boaviztapi.service import data_dir
 
-known_server_directory = os.path.join(data_dir, 'devices/server.md')
+known_server_directory = os.path.join(data_dir, 'devices/server')
 known_instances_directory = os.path.join(data_dir, 'devices/cloud')
 
 

@@ -19,15 +19,15 @@ from boaviztapi.service.verbose import verbose_device
 from boaviztapi.service.bottom_up import bottom_up_device
 
 server_router = APIRouter(
-    prefix='/v1/server.md',
-    tags=['server.md']
+    prefix='/v1/server',
+    tags=['server']
 )
 
 
 @server_router.get('/all_default_models',
                    description=all_default_model_description)
 async def server_get_all_archetype_name():
-    return get_device_archetype_lst(os.path.join(data_dir, 'devices/server.md'))
+    return get_device_archetype_lst(os.path.join(data_dir, 'devices/server'))
 
 
 @server_router.get('/model',

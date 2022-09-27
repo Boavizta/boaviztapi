@@ -74,8 +74,8 @@ class ComponentCPU(Component):
 
         manuf, model, tdp = None, None, None
         if self.manufacturer.is_set(): manuf = self.manufacturer.value
-        if self.model_range.is_set(): model = self.manufacturer.value
-        if self.tdp.is_set(): tdp = self.manufacturer.value
+        if self.model_range.is_set(): model = self.model_range.value
+        if self.tdp.is_set(): tdp = self.tdp.value
 
         self.usage.consumption_profile.compute_consumption_profile_model(cpu_manufacturer=manuf,
                                                                          cpu_model_range=model,

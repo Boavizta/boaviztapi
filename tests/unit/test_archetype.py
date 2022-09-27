@@ -11,12 +11,12 @@ pytest_plugins = ('pytest_asyncio',)
 
 @pytest.mark.asyncio
 async def test_get_server_archetype_none():
-    assert not await get_server_archetype("nothing", path=os.path.join(data_dir, 'devices/server.md'))
+    assert not await get_server_archetype("nothing", path=os.path.join(data_dir, 'devices/server'))
 
 
 @pytest.mark.asyncio
 async def test_get_server_archetype_dellr740(dell_r740_dto):
-    assert await get_server_archetype("dellR740", path=os.path.join(data_dir, 'devices/server.md')) == dell_r740_dto
+    assert await get_server_archetype("dellR740", path=os.path.join(data_dir, 'devices/server')) == dell_r740_dto
 
 
 def test_complete_with_archetype_empty(dell_r740_dto, empty_server_dto):

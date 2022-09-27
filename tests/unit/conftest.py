@@ -254,7 +254,7 @@ def assembly_model():
 
 @pytest.fixture(scope="function")
 def dell_r740_dto():
-    return Server.parse_obj(Server.parse_file(data_dir + "/devices/server.md/dellR740.json"))
+    return Server.parse_obj(Server.parse_file(data_dir + "/devices/server/dellR740.json"))
 
 
 @pytest.fixture(scope="function")
@@ -264,12 +264,12 @@ def empty_server_dto():
 
 @pytest.fixture(scope="function")
 def incomplete_server_dto():
-    return Server.parse_file(data_dir + "/devices/server.md/incomplete.json")
+    return Server.parse_file(data_dir + "/devices/server/incomplete.json")
 
 
 @pytest.fixture(scope="function")
 def completed_server_with_dellr740_dto():
-    return Server.parse_file(data_dir + "/devices/server.md/completed_server_with_dellr740.json")
+    return Server.parse_file(data_dir + "/devices/server/completed_server_with_dellr740.json")
 
 
 @pytest.fixture(scope="function")

@@ -1,6 +1,7 @@
 import json
 import os
 
+import markdown
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from fastapi.middleware.cors import CORSMiddleware
@@ -37,32 +38,11 @@ if __name__ == '__main__':
 
 @app.on_event("startup")
 def my_schema():
+    intro = open(os.path.join(os.path.dirname(__file__), 'routers/openapi_doc/intro_openapi.md'), 'r')
     openapi_schema = get_openapi(
         title="BOAVIZTAPI - DEMO",
         version=__version__,
-        description="# 🎯 Retrieving the impacts of digital elements\n"
-                    "This is a quick demo, to see full documentation [click here](https://doc.api.boavizta.org) \n"
-                    "## ➡️Server router \n"
-                    "### Server routers support the following impacts: \n"
-                    "| Impact | 🔨 Manufacture | 🔌 Usage |\n"
-                    "|--------|----------------|----------|\n"
-                    "|   GWP  |        X       |     X    |\n"
-                    "|   ADP  |        X       |     X    |\n"
-                    "|   PE   |        X       |     X    |\n"
-                    "## ➡️Cloud router \n"
-                    "### Cloud routers support the following impacts: \n"
-                    "| Impact | 🔨 Manufacture | 🔌 Usage |\n"
-                    "|--------|----------------|----------|\n"
-                    "|   GWP  |        X       |     X    |\n"
-                    "|   ADP  |        X       |     X    |\n"
-                    "|   PE   |        X       |     X    |\n"
-                    "## ➡️Component router \n"
-                    "### Component routers support the following impacts: \n"
-                    "| Impact | 🔨 Manufacture | 🔌 Usage |\n"
-                    "|--------|----------------|----------|\n"
-                    "|   GWP  |        X       |          |\n"
-                    "|   ADP  |        X       |          |\n"
-                    "|   PE   |        X       |          |\n",
+        description=markdown.markdown(intro.read()),
         routes=app.routes,
         servers=app.servers,
     )

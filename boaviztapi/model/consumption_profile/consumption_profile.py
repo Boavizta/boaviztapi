@@ -133,7 +133,6 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         class _TDPWorkloadPower:
             load_percentage: float = None
             power_watt: float = None
-
         self.workloads.set_completed([
             _TDPWorkloadPower(load_percentage=w, power_watt=cpu_tdp * r)
             for w, r in zip(self._TDP_RATIOS_WORKLOAD, self._TDP_RATIOS)

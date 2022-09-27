@@ -68,7 +68,7 @@ When the usage impacts are evaluated at component or device level, the attribute
         "status": "INPUT",
         "source": null
       },
-      "impacts": {
+      "usage_impacts": {
         "gwp": {
           "value": 1000,
           "unit": "kgCO2eq"

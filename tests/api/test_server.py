@@ -9,7 +9,7 @@ pytest_plugins = ('pytest_asyncio',)
 @pytest.mark.asyncio
 async def test_complete_config_server():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/server.md/?verbose=false', json={
+        res = await ac.post('/v1/server/?verbose=false', json={
             "model": {
             },
             "configuration": {
@@ -56,7 +56,7 @@ async def test_complete_config_server():
 @pytest.mark.asyncio
 async def test_empty_config_server():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/server.md/?verbose=false', json={})
+        res = await ac.post('/v1/server/?verbose=false', json={})
     assert res.json() == {'adp': {'manufacture': 0.23, 'unit': 'kgSbeq', 'use': 0.000436},
                           'gwp': {'manufacture': 3300.0, 'unit': 'kgCO2eq', 'use': 2600.0},
                           'pe': {'manufacture': 42000.0, 'unit': 'MJ', 'use': 87380.0}}
@@ -65,7 +65,7 @@ async def test_empty_config_server():
 @pytest.mark.asyncio
 async def test_dell_r740_server():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/server.md/?verbose=false', json={
+        res = await ac.post('/v1/server/?verbose=false', json={
             "model":
                 {
                     "manufacturer": "Dell",
@@ -132,7 +132,7 @@ async def test_dell_r740_server():
 @pytest.mark.asyncio
 async def test_partial_server_1():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/server.md/?verbose=false', json={
+        res = await ac.post('/v1/server/?verbose=false', json={
             "model": {
             },
             "configuration": {
@@ -169,7 +169,7 @@ async def test_partial_server_1():
 @pytest.mark.asyncio
 async def test_partial_server_2():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/server.md/?verbose=false', json={
+        res = await ac.post('/v1/server/?verbose=false', json={
             "model": {
             },
             "configuration": {
@@ -213,7 +213,7 @@ async def test_partial_server_2():
 @pytest.mark.asyncio
 async def test_partial_server_3():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/server.md/?verbose=false', json={
+        res = await ac.post('/v1/server/?verbose=false', json={
             "model": {
             },
             "configuration": {
@@ -240,7 +240,7 @@ async def test_partial_server_3():
 @pytest.mark.asyncio
 async def test_custom_usage_1():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/server.md/?verbose=false', json={
+        res = await ac.post('/v1/server/?verbose=false', json={
             "usage": {
                 "years_use_time": 1,
                 "days_use_time": 1,
