@@ -81,9 +81,11 @@ class ComponentCPU(Component):
                                                                          cpu_model_range=model,
                                                                          cpu_tdp=tdp)
         if type(self.usage.time_workload.value) == float:
-            return self.usage.consumption_profile.apply_consumption_profile(self.usage.time_workload.value)
+            self.usage.hours_electrical_consumption.set_completed(self.usage.consumption_profile.apply_consumption_profile(self.usage.time_workload.value))
+        else:
+            self.usage.hours_electrical_consumption.set_completed(self.usage.consumption_profile.apply_multiple_workloads(self.usage.time_workload.value))
 
-        return self.usage.consumption_profile.apply_multiple_workloads(self.usage.time_workload.value)
+        return self.usage.hours_electrical_consumption.value
 
     def __get_impact_constants(self, impact_type: str) -> Tuple[float, float, float]:
         core_impact = self.IMPACT_FACTOR['constant_core_impact']
