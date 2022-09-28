@@ -66,7 +66,7 @@ def verbose_component(component: Component):
     }
     json_output = {**json_output, **iter_boattribute(component)}
 
-    if get_model_impact(component, 'use', 'gwp', 1, Allocation.TOTAL):
+    if component.usage.hours_electrical_consumption.is_set():
         json_output["USAGE"] = verbose_usage(component)
 
     return json_output

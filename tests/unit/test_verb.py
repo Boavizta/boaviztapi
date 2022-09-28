@@ -6,8 +6,6 @@ def test_verbose_component_cpu_1(complete_cpu_model):
     print(verbose)
     assert verbose["core_units"] == {'source': None, 'status': 'INPUT', 'unit': 'none', 'value': 24}
     assert verbose["die_size_per_core"] == {'source': None, 'status': 'INPUT', 'unit': 'mm2', 'value': 0.245}
-    assert verbose["USAGE"]["usage_location"] == {'value': 'EEE', 'unit': 'CodSP3 - NCS Country Codes - NATO',
-                                                  'status': 'DEFAULT', 'source': None}
 
     assert verbose["manufacture_impacts"] == {'adp': {'unit': 'kgSbeq', 'value': 0.02},
                                               'gwp': {'unit': 'kgCO2eq', 'value': 21.7},
@@ -18,9 +16,6 @@ def test_verbose_component_cpu_2(incomplete_cpu_model):
     verbose = verbose_component(incomplete_cpu_model)
     assert verbose["core_units"] == {'source': None, 'status': 'INPUT', 'unit': 'none', 'value': 12}
     assert verbose["family"] == {'source': None, 'status': 'INPUT', 'unit': 'none', 'value': 'Skylake'}
-    assert verbose["USAGE"]["usage_location"] == {'value': 'EEE', 'unit': 'CodSP3 - NCS Country Codes - NATO',
-                                                  'status': 'DEFAULT', 'source': None}
-
     assert verbose["manufacture_impacts"] == {'adp': {'unit': 'kgSbeq', 'value': 0.02},
                                               'gwp': {'unit': 'kgCO2eq', 'value': 19.7},
                                               'pe': {'unit': 'MJ', 'value': 297.0}}
