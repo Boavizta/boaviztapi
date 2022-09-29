@@ -58,13 +58,13 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
         cpu_component.tdp.value = cpu_dto.tdp
         cpu_component.tdp.status = Status.INPUT
 
-    if cpu_dto.die_size_per_core is not None:
-        cpu_component.die_size_per_core.value = cpu_dto.die_size_per_core
-        cpu_component.die_size_per_core.status = Status.INPUT
-
     if cpu_dto.model_range is not None:
         cpu_component.model_range.value = cpu_dto.model_range
         cpu_component.model_range.status = Status.INPUT
+
+    if cpu_dto.die_size_per_core is not None:
+        cpu_component.die_size_per_core.value = cpu_dto.die_size_per_core
+        cpu_component.die_size_per_core.status = Status.INPUT
 
     elif cpu_dto.die_size is not None and cpu_dto.core_units is not None:
         cpu_component.die_size_per_core.value = cpu_dto.die_size / cpu_dto.core_units
