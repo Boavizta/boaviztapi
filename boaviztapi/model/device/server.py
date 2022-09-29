@@ -1,3 +1,4 @@
+import copy
 from abc import ABC
 from typing import List, Union
 
@@ -44,7 +45,7 @@ class DeviceServer(Device):
     @property
     def cpu(self) -> ComponentCPU:
         if self._cpu is None:
-            self._cpu = self.DEFAULT_COMPONENT_CPU
+            self._cpu = copy.deepcopy(self.DEFAULT_COMPONENT_CPU)
             self._cpu.units = self.DEFAULT_NUMBER_CPU
         return self._cpu
 
@@ -55,7 +56,7 @@ class DeviceServer(Device):
     @property
     def ram(self) -> List[ComponentRAM]:
         if self._ram_list is None:
-            self.DEFAULT_COMPONENT_RAM.units = self.DEFAULT_NUMBER_RAM
+            self.DEFAULT_COMPONENT_RAM.units = copy.deepcopy(self.DEFAULT_NUMBER_RAM)
             self._ram_list = [self.DEFAULT_COMPONENT_RAM]
         return self._ram_list
 
@@ -67,7 +68,7 @@ class DeviceServer(Device):
     def disk(self) -> List[Union[ComponentSSD, ComponentHDD]]:
         if self._disk_list is None:
             self.DEFAULT_COMPONENT_DISK.units = self.DEFAULT_NUMBER_DISK
-            self._disk_list = [self.DEFAULT_COMPONENT_DISK]
+            self._disk_list = [copy.deepcopy(self.DEFAULT_COMPONENT_DISK)]
         return self._disk_list
 
     @disk.setter
@@ -77,7 +78,7 @@ class DeviceServer(Device):
     @property
     def power_supply(self) -> ComponentPowerSupply:
         if self._power_supply is None:
-            self._power_supply = self.DEFAULT_COMPONENT_POWER_SUPPLY
+            self._power_supply = copy.deepcopy(self.DEFAULT_COMPONENT_POWER_SUPPLY)
             self._power_supply.units = self.DEFAULT_NUMBER_POWER_SUPPLY
         return self._power_supply
 
@@ -88,7 +89,7 @@ class DeviceServer(Device):
     @property
     def case(self) -> ComponentCase:
         if self._case is None:
-            self._case = self.DEFAULT_COMPONENT_CASE
+            self._case = copy.deepcopy(self.DEFAULT_COMPONENT_CASE)
         return self._case
 
     @case.setter
@@ -106,7 +107,7 @@ class DeviceServer(Device):
     @property
     def motherboard(self) -> ComponentMotherboard:
         if self._motherboard is None:
-            self._motherboard = self.DEFAULT_COMPONENT_MOTHERBOARD
+            self._motherboard = copy.deepcopy(self.DEFAULT_COMPONENT_MOTHERBOARD)
         return self._motherboard
 
     @motherboard.setter
@@ -116,7 +117,7 @@ class DeviceServer(Device):
     @property
     def assembly(self) -> ComponentAssembly:
         if self._assembly is None:
-            self._assembly = self.DEFAULT_COMPONENT_ASSEMBLY
+            self._assembly = copy.deepcopy(self.DEFAULT_COMPONENT_ASSEMBLY)
         return self._assembly
 
     @assembly.setter
