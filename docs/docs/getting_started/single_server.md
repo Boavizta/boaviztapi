@@ -55,10 +55,9 @@ curl -X 'GET' \
 
 It returns :
 
-- The impacts (gwp, pe, adp) at the server level (global cumulated impacts)
-- The impacts of manufacturing (gwp, pe, adp) for each component (like RAM, CPU, SSD a.s.o)
-- The impacts (gwp, pe, adp) of usage at server level
-- The impacts (gwp, pe, adp) of usage for CPU and RAM
+- The total impacts of manufacturing (gwp, pe, adp) for each component (like RAM, CPU, SSD a.s.o)
+- The impacts (gwp, pe, adp) of usage at server level for one year
+- The impacts (gwp, pe, adp) of usage for CPU and RAM for one year
 - The value of the attributes used for the calculation for each component (i.e. the detailed configuration)
 
 ```JSON
@@ -653,7 +652,7 @@ Result :
 
 In this query, we use the default server configuration, but provide a specific usage of the machine.
 
-In this  case the average is unknown. We use the level of workload (```time_workload``) of the machine as a proxy for the power consumption.
+In this  case the average is unknown. We use the level of workload (```time_workload```) of the machine as a proxy for the power consumption.
 
 Query : 
 ```bash
@@ -674,10 +673,9 @@ curl -X 'POST' \
   }'
 ```
 
-* The API will create a consumption profile based on the default characteristics and apply it for an average level workload of 90%
+* The API will create a consumption profile based on the default characteristics and apply it for an average level of workload of 90%
 
 Result :
-
 ```json
 {
   "impacts": {
@@ -697,8 +695,7 @@ Result :
       "unit": "kgSbeq"
     }
   },
-  "verbose": {
-    ...
+   ...
     "CPU-1": {
       ...
       "USAGE": {

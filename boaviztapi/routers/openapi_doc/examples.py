@@ -68,3 +68,26 @@ cloud_usage_example = {
             {"time_percentage": 25, "load_percentage": 100}
         ]
 }
+
+cpu_consumption_profiles = {
+        "cpu": {
+            "name": "intel xeon gold 6134"
+        },
+        "workload": [
+            {
+                "load_percentage": 0,
+                "power_watt": 50
+            },
+            {
+                "load_percentage": 10,
+                "power_watt": 100
+            },{
+                "load_percentage": 50,
+                "power_watt": 180
+            },
+            {
+                "load_percentage": 100,
+                "power_watt": 245
+            }
+        ],
+}
