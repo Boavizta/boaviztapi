@@ -465,9 +465,9 @@ It returns :
 
 ## Retrieve the impacts of a _custom_ server
 
-In this query, you refer to a _standard_ server, but provide a specific configuration of the machine (like extra RAM).
+In this query, you provide a specific configuration of the machine. Missing attributes or component will be replaced by default ones.
 
-The API returns impacts, updated to reflect your _own_ server configuration.
+The API returns impacts, to reflect your _own_ server configuration.
 
 Query : 
 
@@ -534,6 +534,8 @@ Result :
 ## Retrieve the impacts with from a custom power consumption
 
 In this query, we use the default server configuration, but provide a specific usage of the machine.
+
+In this specific case the average power consumption of the machine is known (```hours_electrical_consumptions``)
 
 The API returns impacts, updated to reflect your own server usage.
 
@@ -649,6 +651,11 @@ Result :
 
 ## Retrieve the impacts with from a custom workload
 
+In this query, we use the default server configuration, but provide a specific usage of the machine.
+
+In this  case the average is unknown. We use the level of workload (```time_workload``) of the machine as a proxy for the power consumption.
+
+Query : 
 ```bash
 curl -X 'POST' \
   'https://api.boavizta.org/v1/server/?verbose=true' \
@@ -667,6 +674,9 @@ curl -X 'POST' \
   }'
 ```
 
+* The API will create a consumption profile based on the default characteristics and apply it for an average level workload of 90%
+
+Result :
 
 ```json
 {

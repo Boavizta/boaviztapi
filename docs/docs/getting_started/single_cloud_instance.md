@@ -525,14 +525,14 @@ curl -X 'POST' \
   "usage_location": "FRA",
   "time_workload": [
     {
-    "time":50
-    "workload":0
+      "time_percentage": 50,
+      "load_percentage": 0
     },
     {
-    "time":100
-    "workload":0
-    },
-  ]'
+      "time_percentage": 50,
+      "load_percentage": 50
+    }
+  ]}'
 ```
 
 the query usage can be translated as such :
@@ -544,18 +544,18 @@ Results:
 ```json
 {
   "gwp": {
-    "manufacture": 36.0,
-    "use": 0.00077,
+    "manufacture": 36,
+    "use": 0.001,
     "unit": "kgCO2eq"
   },
   "pe": {
-    "manufacture": 460.0,
-    "use": 0.088,
+    "manufacture": 450,
+    "use": 0.1,
     "unit": "MJ"
   },
   "adp": {
     "manufacture": 0.0027,
-    "use": 3.8e-10,
+    "use": 5e-10,
     "unit": "kgSbeq"
   }
 }
