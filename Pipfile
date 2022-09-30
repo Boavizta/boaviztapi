@@ -12,6 +12,7 @@ aiofile = '*'
 numpy = "*"
 scipy = "*"
 rapidfuzz = "*"
+markdown = "*"
 
 [dev-packages]
 mkdocs = '*'

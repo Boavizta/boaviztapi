@@ -15,4 +15,4 @@ COPY dist/boaviztapi-$VERSION.tar.gz ./
 RUN pip3 install boaviztapi-$VERSION.tar.gz
 
 EXPOSE 5000
-ENTRYPOINT ["uvicorn", "boaviztapi.main:app", "--host", "0.0.0.0", "--port", "5000"]
+ENTRYPOINT ["uvicorn", "boaviztapi.main:app", "--host", "0.0.0.0", "--port", "c"]
