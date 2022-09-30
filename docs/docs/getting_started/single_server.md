@@ -923,3 +923,5 @@ Result :
   }
 }
 ```
+
+For further information see : [The explanation page on cloud](../Explanations/devices/server.md)

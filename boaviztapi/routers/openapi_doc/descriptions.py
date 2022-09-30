@@ -1,30 +1,28 @@
 server_impact_by_model_description = "# ✔ ️Server impacts from model name\n" \
-                                     "Retrieve the impacts of a given server name (archetype).\n"\
+                                     "Retrieve the impacts of a given server name (archetype).\n" \
                                      "### Features\n\n" \
                                      "👄 Verbose\n\n" \
                                      "🔃 Auto-complete\n\n" \
                                      "🔨 Manufacture\n\n" \
                                      "🔌 Usage\n\n" \
                                      "📋 Archetype: " \
-                                     "Uses the [classic server impacts router]with a pre-registered archetype \n" \
-
-
+                                     "Uses the [classic server impacts router]with a pre-registered archetype \n\n" \
+                                     "⏬ Allocation"
 
 server_impact_by_config_description = "# ✔️ Server impacts from configuration\n" \
                                       "Retrieve the impacts of a given server configuration.\n" \
                                       "### Features\n\n" \
                                       "👄 Verbose\n\n" \
-                                      "🔃 Auto-complete\n\n"\
+                                      "🔃 Auto-complete\n\n" \
                                       "🔨 Manufacture\n\n" \
                                       "🔌 Usage\n\n" \
                                       "* ⏺️  Given\n\n" \
                                       "* 📈 Modeled\n\n" \
-                                      "📋 Archetype" \
-
+                                      "📋 Archetype\n\n" \
+                                      "⏬ Allocation"
 
 all_default_model_description = "# ✔️ Get all the available server models\n" \
                                 "📜 Return the name of all pre-registered server models"
-
 
 cpu_description = "# ✔ ️CPU impacts from configuration\n" \
                   "### Features\n\n" \
@@ -38,6 +36,7 @@ cpu_description = "# ✔ ️CPU impacts from configuration\n" \
                   "🔌 Usage\n\n" \
                   "* ⏺️  Given\n\n" \
                   "* 📈 Modeled\n\n" \
+                  "⏬ Allocation"
 
 ssd_description = "# ✔ ️SSD impacts from configuration\n" \
                   "### Features\n\n" \
@@ -49,16 +48,17 @@ ssd_description = "# ✔ ️SSD impacts from configuration\n" \
                   "ssd<sub>manuf_base<sub><em>criteria</em></sub></sub></h3>" \
                   "🔌 Usage\n\n" \
                   "* ⏺️  Given\n\n" \
-
+                  "⏬ Allocation"
 
 hdd_description = "# ✔ ️HDD impacts from configuration\n" \
                   "### Features\n\n" \
                   "👄 Verbose\n\n" \
                   "🔃 Auto-complete\n\n" \
                   "🔨 Manufacture\n\n" \
-                  "The impacts values are set by default"\
+                  "The impacts values are set by default" \
                   "🔌 Usage\n\n" \
-                  "* ⏺️  Given\n\n"
+                  "* ⏺️  Given\n\n" \
+                  "⏬ Allocation"
 
 ram_description = "# ✔️ RAM impacts from configuration\n" \
                   "### Features\n\n" \
@@ -71,6 +71,7 @@ ram_description = "# ✔️ RAM impacts from configuration\n" \
                   "🔌 Usage\n\n" \
                   "* ⏺️  Given\n\n" \
                   "* 📈 Modeled\n\n" \
+                  "⏬ Allocation"
 
 motherboard_description = "# ✔ ️Motherboard impacts from configuration\n" \
                           "### Features\n\n" \
@@ -79,7 +80,8 @@ motherboard_description = "# ✔ ️Motherboard impacts from configuration\n" \
                           "🔨 Manufacture\n\n" \
                           "The impacts values are set by default" \
                           "🔌 Usage\n\n" \
-                          "* ⏺️  Given\n\n"
+                          "* ⏺️  Given\n\n" \
+                          "⏬ Allocation"
 
 power_supply_description = "# ✔ ️Power supply impacts from configuration\n" + \
                            "### Features\n\n" \
@@ -89,7 +91,8 @@ power_supply_description = "# ✔ ️Power supply impacts from configuration\n" 
                            "<h3>psu<sub>manuf<sub><em>criteria</em></sub></sub> = psu<sub>unit<sub>weight</sub></sub>" \
                            " x psu<sub>manuf_weight<sub><em>criteria</em></sub></sub></h3> " \
                            "🔌 Usage\n\n" \
-                           "* ⏺️  Given : shouldn't be used\n\n"
+                           "* ⏺️  Given : shouldn't be used\n\n" \
+                           "⏬ Allocation"
 
 case_description = "# ✔ ️Case impacts from configuration\n" \
                    "### Features\n\n" \
@@ -99,18 +102,21 @@ case_description = "# ✔ ️Case impacts from configuration\n" \
                    "<h3>psu<sub>manuf<sub><em>criteria</em></sub></sub> = psu<sub>unit<sub>weight</sub></sub>" \
                    " x psu<sub>manuf_weight<sub><em>criteria</em></sub></sub></h3> " \
                    "🔌 Usage\n\n" \
-                   "* ⏺️  Given : when the enclosure consumes energy \n\n"
+                   "* ⏺️  Given : when the enclosure consumes energy \n\n" \
+                   "⏬ Allocation"
 
 cloud_aws_description = "# ✔ ️AWS instance impacts from instance type and usage \n" \
                         "Retrieve the impacts of a given AWS instance and usage.\n\n" \
                         "📋 Instance type \n\n" \
-                        "AWS name of the chosen instance. You can retrieve the [list here](#/cloud/server_get_all_archetype_name_v1_cloud_all_aws_instances_get).\n" \
+                        "AWS name of the chosen instance. You can retrieve the [list here](" \
+                        "#/cloud/server_get_all_archetype_name_v1_cloud_all_aws_instances_get).\n" \
                         "### Features\n\n" \
                         "👄 Verbose\n\n" \
                         "🔨 Manufacture\n\n" \
                         "🔌 Usage \n\n" \
                         "* 📈 Modeled\n\n" \
-                        "📋 Archetype : The configuration is set by the API, only usage is given by the user"
+                        "📋 Archetype : The configuration is set by the API, only usage is given by the user\n\n" \
+                        "⏬ Allocation"
 
 all_default_aws_instances = "# ✔ ️Get all the available aws instances\n" \
                             "📜 Return the name of all pre-registered aws instances"

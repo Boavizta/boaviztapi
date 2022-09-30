@@ -2,23 +2,23 @@
 
 ## Characteristics
 
-| Name              | Unit | Default value | Description                                   | Example          |
-|-------------------|------|---------------|-----------------------------------------------|------------------|
-| units             | None | 1             | CPU quantity                                  | 2                |
-| usage             | None | See Usage     | See usage                                     | ..               |
-| core_units        | None | 24            | Number of core on one CPU                     | 12               |
-| die_size          | mm2  | None          | Size of the die                               | 2900             |
-| manufacturer      | None | Intel         | Name of the CPU manufacturer                  | AMD              |
-| die_size_per_core | mm2  | 0.245         | Size of the die divided by the number of core | 0.245            |
-| model_range       | None | Xeon Platinum | Name of the cpu range or brand                | i7               |
-| family            | None | Skylake       | Name of the architectural family (Generation) | Naple            |
+| Name              | Unit | Default value | Description                                   | Example            |
+|-------------------|------|---------------|-----------------------------------------------|--------------------|
+| units             | None | 1             | CPU quantity                                  | 2                  |
+| usage             | None | See Usage     | See usage                                     | ..                 |
+| core_units        | None | 24            | Number of core on one CPU                     | 12                 |
+| die_size          | mm2  | None          | Size of the die                               | 2900               |
+| manufacturer      | None | Intel         | Name of the CPU manufacturer                  | AMD                |
+| die_size_per_core | mm2  | 0.245         | Size of the die divided by the number of core | 0.245              |
+| model_range       | None | Xeon Platinum | Name of the cpu range or brand                | i7                 |
+| family            | None | Skylake       | Name of the architectural family (Generation) | Naple              |
 | name              | None | None          | Complete commercial name of the CPU           | Intel Core i7-1065 |
-| TDP               | Watt | None          | Thermal Design Point                          | 250              |
+| TDP               | Watt | None          | Thermal Design Point                          | 250                |
 
 
 ## Complete
 
-**The following variables can be [completed](complete.md)**
+**The following variables can be [completed](../complete.md)**
 
 ### die_size_per_core and core_units
 
@@ -50,7 +50,6 @@ with:
 | cpumanuf_baseadp | kgSbeq      | 2.04E-02 |
 | cpumanuf_basepe  | MJ          | 156.00   |
 
-
 ## Usage impact
 
 Both [power consumption](../usage/elec_conso.md) and [consumption profile](../consumption_profile.md) are implemented.
@@ -65,14 +64,14 @@ The CPU consumption profile is of the form : ```consumption_profile(workload) = 
 
 If ```model_range``` is given or is completed from the ```cpu_name```, we use the averaged parameter for the specific model range.
 
-|manufacturer|model_range  | a                 |b                   |c                 |d                  |
-|------------|-------------|-------------------|--------------------|------------------|-------------------|
-|Intel       |xeon platinum| 342.3624349628362 |0.034750819765533035|36.89522616719806 |-16.402219089443307|
-|Intel       |xeon gold    | 71.13767381183924 |0.2280562153242743  |9.66939980437224  |6.266004455550223  |
-|Intel       |xeon silver  | 41.55884200277906 |0.2805828410398358  |8.424085900547572 |4.764407035404158  |
-|Intel       |xeon e5      | 97.83350026272564 |0.10296318761911205 |15.726228837967518|-1.8588498922070307|
-|Intel       |xeon e3      | 342.3624349628362 |0.034750819765533035|36.89522616719806 |-16.402219089443307|
-|Intel       |xeon e       | 55.65014194649273 |0.04666041377084888 |20.41458697644834 |4.243652609400892  |
+| manufacturer  |model_range  | a                 |b                   |c                 |d                  |
+|---------------|-------------|-------------------|--------------------|------------------|-------------------|
+| Intel         |xeon platinum| 342.3624349628362 |0.034750819765533035|36.89522616719806 |-16.402219089443307|
+| Intel         |xeon gold    | 71.13767381183924 |0.2280562153242743  |9.66939980437224  |6.266004455550223  |
+| Intel         |xeon silver  | 41.55884200277906 |0.2805828410398358  |8.424085900547572 |4.764407035404158  |
+| Intel         |xeon e5      | 97.83350026272564 |0.10296318761911205 |15.726228837967518|-1.8588498922070307|
+| Intel         |xeon e3      | 342.3624349628362 |0.034750819765533035|36.89522616719806 |-16.402219089443307|
+| Intel         |xeon e       | 55.65014194649273 |0.04666041377084888 |20.41458697644834 |4.243652609400892  |
 
 By default, we use the consumption profile of **Intel Xeon Platinum**
 
@@ -84,7 +83,7 @@ In case punctual power measurement (load;power_consumption) are given by a user,
 
 ![img_2.png](img_2.png)
 
-#### Model adaptation from from TDP
+#### Model adaptation from TDP
 
 If the TDP is given we use the average power consumption per unit of TDP (given by TEADS) multiplied by the given TDP as power measurement and compute a model adaptation as describe above. 
 

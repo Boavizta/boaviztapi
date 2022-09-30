@@ -87,3 +87,5 @@ The API will select the average xeon gold consumption profile and adapt it to ma
   "d": -0.6456240344253034
 }
 ```
+
+For further information see : [The explanation page on consumption profiles](../Explanations/consumption_profile.md)

@@ -1,9 +1,21 @@
 # Server
 
+## Characteristics
+
+| Name         | Unit | Default value                                                 | Description    | Example |
+|--------------|------|---------------------------------------------------------------|----------------|---------|
+| usage        | None | See [server usage](../usage/usage.md)                         |                | ..      |
+| cpu          | None | See [cpu](../components/cpu.md)                               |                | ..      |
+| ram          | None | See [ram](../components/ram.md)                               |                | ..      |
+| power_supply | None | See [power_supply](../components/power_supply.md)             |                | ..      |
+| motherboard  | None | See [motherboad](../components/motherboard.md)                 |                | ..      |
+| disk         | None | See [ssd](../components/ssd.md) & [hdd](../components/hdd.md) | SSD or HDD     | ..      |
+| case         | None | See [case](../components/case.md)                             | Enclosure      | ..      |
+| assembly     | None | See [assembly](../components/assembly.md)                     | Assembly phase | ..      |
 
 ## Complete
 
-The following component are [completed](complete.md) with the default characteristics if not given by the user:
+The following component are [completed](../complete.md) with the default characteristics if not given by the user:
 
 * 2  [CPU](../components/cpu.md)
 * 24 [RAM](../components/ram.md)
@@ -18,7 +30,6 @@ The following component are [completed](complete.md) with the default characteri
 ## Usage impact
 
 Both [power consumption](../usage/elec_conso.md) and [consumption profile](../consumption_profile.md) are implemented.
-
 
 ## Consumption profile
 

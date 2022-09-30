@@ -6,10 +6,10 @@ They are characterised by technical characteristics and one to several impacts (
 
 ## Available components
 
-* [CPU](components/cpu.md)
-* [SSD](components/ssd.md)
-* [RAM](components/ram.md)
-* [MOTHERBOARD](components/motherboard.md)
-* [ASSEMBLY](components/assembly.md)
-* [POWER SUPPLY](components/power_supply.md)
-* [HDD](components/hdd.md)
+* [CPU](cpu.md)
+* [SSD](ssd.md)
+* [RAM](ram.md)
+* [MOTHERBOARD](motherboard.md)
+* [ASSEMBLY](assembly.md)
+* [POWER SUPPLY](power_supply.md)
+* [HDD](hdd.md)

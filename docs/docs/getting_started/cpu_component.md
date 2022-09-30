@@ -393,3 +393,5 @@ Result :
   }
 }
 ```
+
+For further information see : [The explanation page on cpu](../Explanations/components/cpu.md)

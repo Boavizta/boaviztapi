@@ -31,6 +31,7 @@ nav:
         - Archetypes: Explanations/archetypes.md
         - Verbose: Explanations/verbose.md
         - Components:
+              - components: Explanations/components/component.md
               - cpu: Explanations/components/cpu.md
               - ssd: Explanations/components/ssd.md
               - ram: Explanations/components/ram.md
@@ -40,13 +41,13 @@ nav:
               - case: Explanations/components/case.md
               - power supply: Explanations/components/power_supply.md
         - Devices:
+              - devices: Explanations/devices/devices.md
               - server: Explanations/devices/server.md
               - cloud instances: Explanations/devices/cloud.md
         - Useful resources: Explanations/useful_resources.md
     - Reference:
         - Component route: Reference/component_route.md
         - Model: Reference/model.md
-        - Configuration: Reference/configuration.md
         - Usage: Reference/usage.md
         - Server route: Reference/server_route.md
         - Cloud route: Reference/cloud_route.md

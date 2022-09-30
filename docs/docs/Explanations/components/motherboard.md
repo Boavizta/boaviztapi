@@ -21,4 +21,4 @@
 
 ## Usage impact
 
-Only power consumption is implemented.
+Only [power consumption](../usage/elec_conso.md) is implemented.

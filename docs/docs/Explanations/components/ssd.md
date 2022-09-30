@@ -17,7 +17,7 @@ SSD are Disk objects of ```type``` SSD.
 
 ## Complete
 
-**The following variables can be [completed](complete.md)**
+**The following variables can be [completed](../complete.md)**
 
 ### density
 
@@ -41,4 +41,4 @@ With:
 
 ## Usage impact
 
-Only power consumption is implemented.
+Only [power consumption](../usage/elec_conso.md) is implemented.

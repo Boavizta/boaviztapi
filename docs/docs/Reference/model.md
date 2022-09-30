@@ -26,8 +26,7 @@ This type of attribute are not used for now in the api but could be used to impl
 
 ## Archetype
 
-See [archetypes documentation](../FUNCTIONNAL/archetypes.md#using-archetype-in-model-object)
-
+See [archetypes documentation](../Explanations/archetypes.md#using-archetype-in-model-object)
 
 ## Type
 

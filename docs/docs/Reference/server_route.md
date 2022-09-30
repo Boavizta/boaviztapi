@@ -1,6 +1,6 @@
 # DeviceServer route
 
-##```/v1/server/```
+## ```/v1/server/```
 
 A server input is composed of 3 different objects : ```model```, ```configuration```, ```usage```
 
@@ -38,14 +38,10 @@ In this case, only default value are used.
 
 If any of those following components aren't sent, a default component will be added to the configuration.
 
-* 1 CPU
-* 1 RAM
-* 1 SSD - TO MODIFY
-
 #### Complete input
 
 The Dell R740 is a good example of a well-defined server configuration input. 
-Specific needed data are sent (in particular the die size) to apply the bottom-up methodology.
+Specific needed data are sent to apply the bottom-up methodology.
 
 ``` json
 {
@@ -85,7 +81,7 @@ Specific needed data are sent (in particular the die size) to apply the bottom-u
 
 #### Incomplete input
 
-The die size in unknown but some component's attributes are given so specific die size can be retrieved by the API
+Some required attributes are unknown but some component's attributes are given so specific die size can be retrieved by the API
 
 ``` json
 {
@@ -126,6 +122,6 @@ The die size in unknown but some component's attributes are given so specific di
 
 See [usage](usage.md)
 
-##```/v1/server/model```
+## ```/v1/server/model```
 
-See [archetypes documentation](../FUNCTIONNAL/archetypes.md#using-archetype-in-model-routes)
+See [archetypes documentation](../Explanations/archetypes.md#using-archetype-in-model-routes)

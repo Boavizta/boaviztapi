@@ -15,7 +15,7 @@
 
 ## Complete
 
-**The following variables can be [completed](complete.md)**
+**The following variables can be [completed](../complete.md)**
 
 ### density
 

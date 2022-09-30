@@ -1,9 +1,10 @@
-🎯 Retrieving the impacts of digital elements
+🎯 Retrieving the impacts of digital elements.
+
 This is a quick demo, to see full documentation [click here](https://doc.api.boavizta.org)
 
 ## Features
 
-Bellow a list of all available features. Implemented features are specified for each route.
+Bellow a list of all available features. Implemented features are specified in each route.
 
 ### 👄 Verbose
 
@@ -47,16 +48,23 @@ If no duration is given, **the impact is measured for a year**.
 #### ⚡ Electrical consumption
 
 ##### ⏺️ Given
-*Electrical consumption can be given for one hour (average) *usage:{hours_electrical_consumption: 1}*. See
+*Electrical consumption can be given for one hour (average) *usage:{hours_electrical_consumption: 1}*.
 
 ##### 📈 Modeled
-* Electrical consumption can be retrieved from consumption profile using *usage:{time_workload: 50}*. See : 
+* Electrical consumption can be retrieved from consumption profile using *usage:{time_workload: 50}*. 
 
-#### 🔃 Auto-complete
+### 🔃 Auto-complete
 
-The API will complete the missing attributes in a request. Components have different completion strategies see :
-Devices have minimal required components. If not given in the request a component with default characteristics are used. see :
+The API will complete the missing attributes in a request. Components have different completion strategies.
+Devices have minimal required components. If not given in the request a component with default characteristics are used.
 
-#### 📋 Archetype
+### 📋 Archetype
 
 If an archetype is given, the missing attributes will be complete with the archetypes attributes instead of default attributes
+
+### ⏬ Allocation
+
+Allocation is an HTTP parameter. 
+
+* If set at TOTAL, the total manufacture impact is returned.
+* If set at LINEAR the manufacture impact is allocated linearly hover a specific lifespan given or set by default : {"usage":{"years_life_time":1}}

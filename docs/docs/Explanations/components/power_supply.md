@@ -22,5 +22,5 @@ With :
 
 ## Usage impact
 
-Only power consumption is implemented. 
-This shouldn't be used in moste cases since the electricity consume by a power supply is consume on behalf of other components.
+Only [power consumption](../usage/elec_conso.md) is implemented. 
+This shouldn't be used in most cases since the electricity consume by a power supply is consume on behalf of other components.

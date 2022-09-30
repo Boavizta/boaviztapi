@@ -8,10 +8,10 @@ The completion strategy of the consumption profile is specified for each device 
 
 You will find the details of each of the consumption profiles in the respective components and device pages. Consumption profile are implemented for :
 
-* [CPU](../components/cpu.md)
-* [RAM](../components/ram.md)
-* [SERVER](../devices/server.md)
-* [CLOUD INSTANCES](../devices/cloud.md)
+* [CPU](components/cpu.md)
+* [RAM](components/ram.md)
+* [SERVER](devices/server.md)
+* [CLOUD INSTANCES](devices/cloud.md)
 
 
 ## Dataset

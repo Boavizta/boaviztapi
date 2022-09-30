@@ -2,10 +2,11 @@
 
 ## Characteristics
 
-| Name       | Unit | Default value   | Description           | Example |
-|------------|------|-----------------|-----------------------|---------|
-| units      | None | 1               | power supply quantity | 2       |
-| usage      | None | See Cloud Usage | See cloud usage       | ..      |
+Server's characteristics +
+
+| Name       | Unit | Default value                        | Description | Example  |
+|------------|------|--------------------------------------|-------------|----------|
+| usage      | None | See [cloud usage](../usage/usage.md) |             | ..       |
 
 
 ## Manufacture impact
