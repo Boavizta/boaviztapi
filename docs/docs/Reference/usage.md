@@ -1,118 +1,156 @@
 # Usage
 
-Each device can have a ```usage``` object.
+Usage impacts can be measured at device or component level from usage configuration.
 
-``` json
-"usage": {
-    "max_power": 510,
-    "year_use_time": 3,
-    "usage_location": "FRA",
-    "workload": {
-      "100": {
-        "time": 0.15,
-        "power": 1.0
-      },
-      "50": {
-        "time": 0.55,
-        "power": 0.7235
-      },
-      "10": {
-        "time": 0.2,
-        "power": 0.5118
-      },
-      "idle": {
-        "time": 0.1,
-        "power": 0.3941
-      }
+## General
+
+*```hours_electrical_consumption``` is given Watt. The usage location is given as a trigram (see available country code). The duration is given in day, hours and years (units are cumulative)*
+
+```json
+{
+ "usage": {
+   "days_use_time": 1,
+   "hours_use_time": 1,
+   "years_use_time": 1,
+   "usage_location": "FRA",
+   "hours_electrical_consumption": 120
+ }
+}
+```
+
+## Modeled
+
+When ```hours_electrical_consumption``` is unknown, it can be retrieved from ```time_workload```
+
+### ```/v1/server/```
+
+*```time_workload``` is given as a percentage at server level. The electrical consumption will be model for a load of 50% from RAM and CPU characteristics. The consumption of the other components are set relatively to the consumption of RAM and CPU with the ```other_consumption_ratio```*
+
+```json
+{
+  "usage": {
+    "time_workload": 50,
+    "other_consumption_ratio": 0.33
+  },
+  "configuration": {
+    "cpu": {
+       "name": "Intel Xeon Gold 6138f"
+    },
+    "ram": {
+       "capacity": 32
     }
   }
-```
-*Example for a dellR740 server*
-
-## Duration attributes
-
-The API handles three different time units :
-
-| time unit | Usage parameter      |
-|------     |-----------------     |
-| HOURS     | ```hours_use_time``` |
-| DAYS      | ```days_use_time```  |
-| YEARS     | ```years_use_time``` |
-
-If no duration is given, **the impact is measured for a year**.
-
-*Note* : units are cumulative, if multiple units are used, they are summed.
-
-### Example
-
-```json
-"usage":{
-  "hours_use_time": 1,      
-  "days_use_time": 1,
-  "years_use_time":  1
 }
 ```
 
-will be converted in **8785** hours (```1+1*24+1*24*365```).
-
-## Electrical impact factors
-
-If you give your own electrical impact factor, the api will use it. 
-
-### Example
+*```time_workload``` is given as a dictionary at server level*
 
 ```json
-"usage":{
-  "gwp_factor": 0.055
+{
+  "usage": {
+    "time_workload": [
+      {
+        "time_percentage": 50,
+        "load_percentage": 0
+      },
+      {
+        "time_percentage": 25,
+        "load_percentage": 60
+      },
+      {
+        "time_percentage": 25,
+        "load_percentage": 100
+      }
+    ]
+  },
+  "configuration": {
+    "cpu": {
+      "name": "Intel Xeon Gold 6138f"
+    },
+    "ram": {
+      "capacity": 32
+    }
+  }
 }
 ```
-## Usage location
 
-You can use the device location instead of giving an electrical impact factor.
-
-```usage_location``` attribute describe the usage country. The country is represented as as trigram (usually the first three letter of the country).
-
-By default, ```usage_location``` is set as ```EU27+1``` (Europe of the 27 + England)
-
-### Example
+*```time_workload``` is given as a percentage at RAM and CPU level. The electrical consumption will be model for a load of 50% for CPU and 30% for the RAM*
 
 ```json
-"usage":{
-  "usage_location": "FRA"
+{
+  "usage": {
+    "other_consumption_ratio": 0.33
+  },
+  "configuration": {
+    "cpu": {
+       "name": "Intel Xeon Gold 6138f",
+       "usage":{
+            "time_workload": 50
+        }
+    },
+    "ram": {
+       "capacity": 32,
+       "usage":{
+            "time_workload": 30
+        }
+    }
+  }
 }
 ```
 
-## Electrical consumption
+### ```/v1/component/ram```
 
-```hours_electrical_consumption``` is the medium electrical consumption in Watt per hour. 
-If given, it will be used by the API.
+*```time_workload``` is given in percentage at RAM level. The electrical consumption will be model for 32GB of RAM at 50% of load*
 
+```json
+{
+ "capacity": 32,
+ "usage": {
+   "days_use_time": 1,
+   "usage_location": "FRA",
+   "time_workload": 50
+ }
+}
+```
 
-## Workload and max power
+### ```/v1/component/cpu```
 
-If unknown, ```hours_electrical_consumption``` can be retrieved with a ```workload``` object. [See functional documentation](../FUNCTIONNAL/usage.md#retrieving-electrical-consumption)
+*```time_workload``` is given in percentage at CPU level. The electrical consumption will be model for a CPU with a TDP of 120 Watt at 50% of load*
 
-```max_power``` correspond to the nominal power (specify by the constructor). 
+```json
+{
+ "tdp": "120",
+ "usage": {
+   "days_use_time": 1,
+   "usage_location": "FRA",
+   "time_workload": 50,
+ }
+}
+```
 
-Workload is an object segmented into one to many loads. 
+*```time_workload``` is given in percentage at CPU level. The electrical consumption will be model for a Xeon Gold CPU at 50% of load*
 
-A load is a quantity of resource usage. Each load has :
+```json
+{
+ "name": "Intel Xeon Gold 6138f",
+ "usage": {
+   "days_use_time": 1,
+   "usage_location": "FRA",
+   "time_workload": 50,
+ }
+}
+```
 
-* A ```time``` : ratio of time when the device is running at this load. 
-* A ```power```: power consumption at this load. **Express as a ratio of ```max_power```**
+*```time_workload``` is given in percentage at CPU level. The electrical consumption will be model for a Xeon Gold CPU with a TDP of 220 Watt at 50% of load*
 
-*note : the sum of the ```time``` attributes of all the loads must be 1*
-
-### Incomplete workload
-
-If you don't know the ```power``` per load of your device, you might need to use the ```power``` per workload of an archetype. In that case you should specify only the ```time``` per load.
-Be sure to use a load segmentation supported by the archetype.
-
-**Supported archetype loads : **
-
-* 100%
-* 50%
-* 10%
-* IDLE
-* OFF
-
+```json
+{
+ "name": "Intel Xeon Gold 6138f", 
+ "tdp": 220,
+ "usage": {
+   "days_use_time": 1,
+   "usage_location": "FRA",
+   "time_workload": 50,
+ }
+}
+```

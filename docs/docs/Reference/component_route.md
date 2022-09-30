@@ -1,39 +1,57 @@
 # Component route
 
-Component routes only measure the manufacture impacts.
+Available components :
 
-## Minimal component input
+* cpu
+* ram
+* power-supply
+* ssd
+* hdd
+* case
+* motherboard
+* assembly
 
-You can send an empty component :
+## ```/v1/component/<component_name>```
 
-```/v1/component/<component_name>```
+You can send an empty component. In this case, only default values will be used
 
 ``` json
 {}
 ```
 
-In this case, only default value are used.
+You can set a units. If so, all the impacts will be multiplied by the number of units.
 
-*Components have no units since they represent a single instance of a component.*
+``` json
+{
+    "units": 2
+}
+```
 
-## ```/v1/component/cpu```
+### ```/v1/component/cpu```
 
+*All needed information are sent*
 ``` json
 {
    "core_units": 24,
    "die_size_per_core": 0.245
 }
 ```
-*All needed information are sent*
 
+*Incomplete CPU, die-size will be retrieved with the cpu family and core_units*
 ``` json
 {
    "core_units": 24,
    "family": "Skylake",
 }
 ```
-*Incomplete CPU, die-size will be retrieved with the cpu family and core_units*
 
+*Incomplete CPU, family will be retrieved from cpu name, die-size will be retrieved with the cpu family and core_units*
+``` json
+{
+   "core_units": 24,
+   "name": "Intel Xeon Gold 6138f",
+}
+```
 
 ## ```/v1/component/ssd```
 
@@ -54,7 +72,7 @@ In this case, only default value are used.
 *Incomplete SSD, die-size will be retrieved with the manufacturer name*
 
 
-##```/v1/component/ram```
+## ```/v1/component/ram```
 
 ``` json
 {
@@ -75,7 +93,6 @@ In this case, only default value are used.
 
 
 ## ```/v1/component/hdd```
-
 
 ``` json
 {}
@@ -100,7 +117,6 @@ In this case, only default value are used.
 ```
 *All needed information are sent*
 
-
 ## ```/v1/component/case```
 
 ``` json
@@ -121,3 +137,19 @@ In this case, only default value are used.
 {}
 ```
 *case_type will be set to rack by default*
+
+## Usage
+
+### Given
+
+See [usage](usage.md)
+
+### Modeled
+
+#### ```/v1/component/cpu```
+
+See [usage](usage.md)
+
+#### ```/v1/component/ram```
+
+See [usage](usage.md)

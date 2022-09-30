@@ -18,9 +18,7 @@ class RAM(ComponentDTO):
     density: Optional[float] = None
     process: Optional[float] = None
     manufacturer: Optional[str] = None
-    manufacture_date: Optional[str] = None
     model: Optional[str] = None
-    integrator: Optional[str] = None
 
 
 def smart_mapper_ram(ram_dto: RAM) -> ComponentRAM:
