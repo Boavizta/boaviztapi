@@ -41,5 +41,5 @@ We use the consumption of fossil resources per kwh (APDf/kwh) per country and ex
 
 _Source_ :
 
-* ADP (2011) : BASE IMPACT ADEME 
+* ADP (2011): [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) 
 
