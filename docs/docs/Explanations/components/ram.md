@@ -27,21 +27,21 @@ If several ram matches the given ```process``` or/and ```manufacturer``` the max
 For one RAM bank the manufacture impact is:
 
 $$
-\text{RAM}_{\text{manufacture}_\text{criteria}} = (\text{RAM}_{\text{capacity}} / \text{RAM}_{\text{density}}) * \text{RAM}_{\text{manufacture_die}_\text{criteria}} + \text{RAM}_{\text{manufacture_base}_\text{criteria}}
+\text{RAM}_\text{manufacture}^\text{criteria} = (\text{RAM}_{\text{capacity}} / \text{RAM}_{\text{density}}) * \text{RAM}_\text{manufacture_die}^\text{criteria} + \text{RAM}_\text{manufacture_base}^\text{criteria}
 $$
 
 with:
 
-| Constant                                          | Units       | Value      |
-|---------------------------------------------------|-------------|------------|
-| $\text{RAM}_{\text{manufacture_die}_\text{gwp}}$  | kgCO2eq/cm2 | 2.20       |
-| $\text{RAM}_{\text{manufacture_die}_\text{adp}}$  | kgSbeq/cm2  | 6.30E-05   |
-| $\text{RAM}_{\text{manufacture_die}_\text{pe}}$   | MJ/cm2      | 27.30      |
-| $\text{RAM}_{\text{manufacture_base}_\text{gwp}}$ | kgCO2eq     | 5.22       |
-| $\text{RAM}_{\text{manufacture_base}_\text{adp}}$ | kgSbeq      | 1.69E-03   |
-| $\text{RAM}_{\text{manufacture_base}_\text{pe}}$  | MJ          | 74.00      |
+| Constant                                        | Units       | Value      |
+|-------------------------------------------------|-------------|------------|
+| $\text{RAM}_\text{manufacture_die}^\text{gwp}$  | kgCO2eq/cm2 | 2.20       |
+| $\text{RAM}_\text{manufacture_die}^\text{adp}$  | kgSbeq/cm2  | 6.30E-05   |
+| $\text{RAM}_\text{manufacture_die}^\text{pe}$   | MJ/cm2      | 27.30      |
+| $\text{RAM}_\text{manufacture_base}^\text{gwp}$ | kgCO2eq     | 5.22       |
+| $\text{RAM}_\text{manufacture_base}^\text{adp}$ | kgSbeq      | 1.69E-03   |
+| $\text{RAM}_\text{manufacture_base}^\text{pe}$  | MJ          | 74.00      |
 
-_Note: If there are more than 1 RAM bank we multiply $\text{RAM}_{\text{manufacture}_\text{criteria}}$ by the number of RAM bank given in `units`._
+_Note: If there are more than 1 RAM bank we multiply $\text{RAM}_\text{manufacture}^\text{criteria}$ by the number of RAM bank given in `units`._
 
 
 ## Usage impact

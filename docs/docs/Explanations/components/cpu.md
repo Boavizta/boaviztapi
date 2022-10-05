@@ -40,21 +40,21 @@ if ```name``` is given, ```model_range``` and ```family``` can be retrieved from
 For one CPU the manufacture impact is:
 
 $$ 
-\text{CPU}_{\text{manufacture}_\text{criteria}} = (\text{CPU}_{\text{core_units}} * \text{CPU}_{\text{die_size}} + 0.491 ) * \text{CPU}_{\text{manufacture_die}_\text{criteria}} + \text{CPU}_{\text{manufacture_base}_\text{criteria}}
+\text{CPU}_\text{manufacture}^\text{criteria} = (\text{CPU}_{\text{core_units}} * \text{CPU}_{\text{die_size}} + 0.491 ) * \text{CPU}_\text{manufacture_die}^\text{criteria} + \text{CPU}_\text{manufacture_base}^\text{criteria}
 $$
 
 with:
 
-| Constant                                            | Units       | Value    |
-|-----------------------------------------------------|-------------|----------|
-| $\text{CPU}_{\text{manufacture_die}_{\text{gwp}}}$  | kgCO2eq/cm2 | 1.97     |
-| $\text{CPU}_{\text{manufacture_die}_{\text{adp}}}$  | kgSbeq/cm2  | 5.80E-07 |
-| $\text{CPU}_{\text{manufacture_die}_{\text{pe}}}$   | MJ/cm2      | 26.50    |
-| $\text{CPU}_{\text{manufacture_base}_{\text{gwp}}}$ | kgCO2eq     | 9.14     |
-| $\text{CPU}_{\text{manufacture_base}_{\text{adp}}}$ | kgSbeq      | 2.04E-02 |
-| $\text{CPU}_{\text{manufacture_base}_{\text{pe}}}$  | MJ          | 156.00   |
+| Constant                                          | Units       | Value    |
+|---------------------------------------------------|-------------|----------|
+| $\text{CPU}_\text{manufacture_die}^{\text{gwp}}$  | kgCO2eq/cm2 | 1.97     |
+| $\text{CPU}_\text{manufacture_die}^{\text{adp}}$  | kgSbeq/cm2  | 5.80E-07 |
+| $\text{CPU}_\text{manufacture_die}^{\text{pe}}$   | MJ/cm2      | 26.50    |
+| $\text{CPU}_\text{manufacture_base}^{\text{gwp}}$ | kgCO2eq     | 9.14     |
+| $\text{CPU}_\text{manufacture_base}^{\text{adp}}$ | kgSbeq      | 2.04E-02 |
+| $\text{CPU}_\text{manufacture_base}^{\text{pe}}$  | MJ          | 156.00   |
 
-_Note: If there are more than 1 CPU we multiply $\text{CPU}_{\text{manufacture}_\text{criteria}}$ by the number of CPU given in `units`._
+_Note: If there are more than 1 CPU we multiply $\text{CPU}_\text{manufacture}^\text{criteria}$ by the number of CPU given in `units`._
 
 ## Usage impact
 
