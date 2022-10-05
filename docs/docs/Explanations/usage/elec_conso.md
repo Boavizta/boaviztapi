@@ -24,18 +24,19 @@ A Workload can also be given as a dictionary to specify the percentage of time s
 The following 
 
 ```json
-[{
- "load_percentage": 10,
-  "time_percentage": 50
-},
-{
- "load_percentage": 50,
-  "time_percentage": 20
-},
-  {
- "load_percentage": 100,
-  "time_percentage": 30
-}
+[
+    {
+        "load_percentage": 10,
+        "time_percentage": 50
+    },
+    {
+        "load_percentage": 50,
+        "time_percentage": 20
+    },
+    {
+        "load_percentage": 100,
+        "time_percentage": 30
+    }
 ]
 ```
 
@@ -53,11 +54,11 @@ Taking the following load segmentation :
 
 With the following time repartition
 
-| LOAD       | high (100%) | medium (50%) | low (10%) | idle  | off    |
-| ---------- | ----------- | ------------ |-----------|-------|--------|
-| Time_ratio | 0.15        | 0.55         | 0.1       | 0.2   | 0      |
+| load_percentage | high (100%) | medium (50%) | low (10%) | idle | off |
+|-----------------|-------------|--------------|-----------|------|-----|
+| time_percentage | 15%         | 55%          | 10%       | 20%  | 0%  |
 
-_note : the sum of time ratio per load must be 1._
+_note : the sum of time ratio per load must be 100._
 
 With the following consumption profile : 
 
