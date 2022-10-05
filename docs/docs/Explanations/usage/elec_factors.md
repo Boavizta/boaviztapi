@@ -34,8 +34,8 @@ We use the consumption of fossil resources per kwh (APDf/kwh) per country and ex
 
 ```PE/kwh = ADPf/kwh / (1-%RenewableEnergyInMix)```
 
-* %RenewableEnergyInMix (2016) : https://en.wikipedia.org/wiki/List_of_countries_by_renewable_electricity_production from IRENA
-* ADPf (2011): BASE IMPACT ADEME
+* `%RenewableEnergyInMix` (2016): [List of countries by renewable electricity production](https://en.wikipedia.org/wiki/List_of_countries_by_renewable_electricity_production) from IRENA
+* `ADPf` (2011): [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) 
 
 ### ADP - Abiotic Depletion Potential
 
