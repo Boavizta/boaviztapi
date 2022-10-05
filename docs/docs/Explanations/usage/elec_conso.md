@@ -40,7 +40,11 @@ The following
 ]
 ```
 
-will mean : *"I used my component or device at 50% of the time at 10% of its maximum of workload, 20%  of the time at 50% of its maximum of workload and 30% of the time at its maximum workload (100%)"*
+This translates into using a component or a device:
+
+- 50% of the time at 10% ot its maximum workload,
+- 20% of the time at 50% of its maximum workload,
+- 30% of the time at the maximum workload
 
 ### Example for a CPU
 
