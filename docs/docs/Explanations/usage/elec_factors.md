@@ -13,7 +13,7 @@ Users can use the average impact factors per country available in BoaviztAPI.
 
 Impact factors will depend on the `usage_location` defined by the user. By default, the average european mix is used.
 
-`usage_location` are given in a trigram format. You can find the list of the available countries [here](countries.md).
+`usage_location` are given in a trigram format, according to the [list of the available countries](countries.md).
 
 You can find bellow the data source and methodology used for each impact criteria.
 
