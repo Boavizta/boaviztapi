@@ -23,7 +23,7 @@ Usage impacts are measured by multiplying a **[duration](duration.md)**, an **[i
 
 ### Server usage
 
-General usage +
+In addition to the parameters from the above table, you can use the following:
 
 | Name                    | Unit | Default value | Description                                                         | Example |
 |-------------------------|------|---------------|---------------------------------------------------------------------|---------|
@@ -31,7 +31,7 @@ General usage +
 
 ### Cloud usage
 
-Server usage +
+In addition to the parameters from both tables above, you can use the following:
 
 | Name                  | Unit       | Default value | Description                                    | Example |
 |-----------------------|------------|---------------|------------------------------------------------|---------|
