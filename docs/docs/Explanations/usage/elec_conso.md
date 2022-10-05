@@ -6,7 +6,7 @@ If available, user should send the electrical consumption of his components or d
 Since the power will be extrapolated on the all duration, the power given should be The average power of the device or component over the given duration.
 
 
-## Modeled
+## Modeling
 
 Sometime user doesn't have access to the electrical consumption of their component or device.
 If so, he can use the percentage of component' or device' resource usage as a proxy for the electrical consumption. We refer to this percentage as a workload of the component or device.
