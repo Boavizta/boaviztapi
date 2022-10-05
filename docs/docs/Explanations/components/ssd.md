@@ -25,19 +25,24 @@ if ```manufacturer``` is given, ```density``` can be retrieved from a fuzzy matc
 
 ## Manufacture impact
 
-<h6>ssd<sub>manuf<sub><em>criteria</em></sub></sub> = ssd<sub>units</sub> x ( ( ssd<sub>size</sub> / ssd<sub>density</sub> ) x ssd<sub>manuf_die<sub><em>criteria</em></sub></sub> + ssd<sub>manuf_base<sub><em>criteria</em></sub></sub> )</h6>
+For one SSD the manufacture impact is:
 
-With:
+$$
+\text{SSD}_{\text{manufacture}_\text{criteria}} = (\text{SSD}_{\text{capacity}} / \text{SSD}_{\text{density}}) * \text{SSD}_{\text{manufacture_die}_\text{criteria}} + \text{SSD}_{\text{manufacture_base}_\text{criteria}}
+$$
 
-| Constant         | Units       | Value    |
-|------------------|-------------|----------|
-| ssdmanuf_diegwp  | kgCO2eq/cm2 | 2.20     |
-| ssdmanuf_dieadp  | kgSbeq/cm2  | 6.30E-05 |
-| ssdmanuf_diepe   | MJ/cm2      | 27.30    |
-| ssdmanuf_basegwp | kgCO2eq     | 6.34     |
-| ssdmanuf_baseadp | kgSbeq      | 5.63E-04 |
-| ssdmanuf_basepe  | MJ          | 76.90    |
+with:
 
+| Constant                                          | Units       | Value    |
+|---------------------------------------------------|-------------|----------|
+| $\text{SSD}_{\text{manufacture_die}_\text{gwp}}$  | kgCO2eq/cm2 | 2.20     |
+| $\text{SSD}_{\text{manufacture_die}_\text{adp}}$  | kgSbeq/cm2  | 6.30E-05 |
+| $\text{SSD}_{\text{manufacture_die}_\text{pe}}$   | MJ/cm2      | 27.30    |
+| $\text{SSD}_{\text{manufacture_base}_\text{gwp}}$ | kgCO2eq     | 6.34     |
+| $\text{SSD}_{\text{manufacture_base}_\text{adp}}$ | kgSbeq      | 5.63E-04 |
+| $\text{SSD}_{\text{manufacture_base}_\text{pe}}$  | MJ          | 76.90    |
+
+_Note: If there are more than 1 RAM bank we multiply $\text{RAM}_{\text{manufacture}_\text{criteria}}$ by the number of RAM bank given in `units`._
 
 ## Usage impact
 
