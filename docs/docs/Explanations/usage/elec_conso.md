@@ -70,9 +70,9 @@ With the following consumption profile :
 
 Power consumptions : 
 
-| LOAD      | 100% | 50% | 10% | idle | off |
-| --------- |------|-----|-----|------|-----|
-| Power (W) | 260  | 182 | 77  | 36   | 0   |
+| load_percentage | 100% | 50% | 10% | idle | off |
+|-----------------|------|-----|-----|------|-----|
+| Power (W)       | 260  | 182 | 77  | 36   | 0   |
 
 `hours_electrical_consumption` is measured as follows :
 
