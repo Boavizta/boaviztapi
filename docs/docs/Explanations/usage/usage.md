@@ -36,4 +36,4 @@ In addition to the parameters from both tables above, you can use the following:
 | Name                  | Unit       | Default value | Description                                    | Example |
 |-----------------------|------------|---------------|------------------------------------------------|---------|
 | instance_per_server   | None       | 1             | See usage                                      | 10      |
-| years_life_time       | Non        | 2             | Lifespan of the element                        | 2       |
+| years_life_time       | None       | 2             | Lifespan of the cloud element                  | 2       |
