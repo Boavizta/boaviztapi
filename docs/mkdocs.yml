@@ -23,29 +23,29 @@ nav:
         - Impacts criteria : Explanations/impacts.md
         - Manufacture methodology: Explanations/manufacture_methodology.md
         - Usage :
-              - methodology: Explanations/usage/usage.md
-              - duration : Explanations/usage/duration.md
-              - electrical impacts factors : Explanations/usage/elec_factors.md
-              - electrical consumption: Explanations/usage/elec_conso.md
-              - countries: Explanations/usage/countries.md
+              - Methodology: Explanations/usage/usage.md
+              - Duration : Explanations/usage/duration.md
+              - Electrical impacts factors : Explanations/usage/elec_factors.md
+              - Electrical consumption: Explanations/usage/elec_conso.md
+              - Countries: Explanations/usage/countries.md
         - Consumption profiles : Explanations/consumption_profile.md
         - Complete: Explanations/complete.md
         - Archetypes: Explanations/archetypes.md
         - Verbose: Explanations/verbose.md
         - Components:
-              - components: Explanations/components/component.md
-              - cpu: Explanations/components/cpu.md
-              - ssd: Explanations/components/ssd.md
-              - ram: Explanations/components/ram.md
-              - motherboard: Explanations/components/motherboard.md
-              - hdd: Explanations/components/hdd.md
-              - assembly: Explanations/components/assembly.md
-              - case: Explanations/components/case.md
-              - power supply: Explanations/components/power_supply.md
+              - Components: Explanations/components/component.md
+              - CPU: Explanations/components/cpu.md
+              - SSD: Explanations/components/ssd.md
+              - RAM: Explanations/components/ram.md
+              - Motherboard: Explanations/components/motherboard.md
+              - HDD: Explanations/components/hdd.md
+              - Assembly: Explanations/components/assembly.md
+              - Case: Explanations/components/case.md
+              - Power supply: Explanations/components/power_supply.md
         - Devices:
-              - devices: Explanations/devices/devices.md
-              - server: Explanations/devices/server.md
-              - cloud instances: Explanations/devices/cloud.md
+              - Devices: Explanations/devices/devices.md
+              - Server: Explanations/devices/server.md
+              - Cloud instances: Explanations/devices/cloud.md
         - Useful resources: Explanations/useful_resources.md
     - Reference:
         - Component route: Reference/component_route.md
