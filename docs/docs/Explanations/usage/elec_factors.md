@@ -21,8 +21,8 @@ You can find bellow the data source and methodology used for each impact criteri
 
 _Source_ : 
 
-* For Europe (2019) : https://www.sciencedirect.com/science/article/pii/S0306261921012149
-* For the rest of the world (2011) : BASE IMPACT ADEME 
+* For Europe (2019): [Quantification of the carbon intensity of electricity produced and used in Europe](https://www.sciencedirect.com/science/article/pii/S0306261921012149)
+* For the rest of the world (2011): [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) 
 
 
 ### PE - Primary energy factor
