@@ -81,13 +81,16 @@ If ```model_range``` is given or is completed from the ```cpu_name```, we use th
 
 By default, we use the consumption profile of **Intel Xeon Platinum**
 
-![img_1.png](img_1.png)
+<TODO: fix consumption profile graphs>
+![cp_cpu_xeon_platinum.png](cp_cpu_xeon_platinum.png)
 
 #### Model adaptation from punctual measurement
 
-In case punctual power measurement (load;power_consumption) are given by a user, we adapt the selected consumption profile to match the given point.
+In case punctual power measurement (load;power_consumption) are given by a user, we adapt the selected consumption
+profile to match the given point.
 
-![img_2.png](img_2.png)
+<TODO: fix consumption profile graphs>
+![cp_cpu_fine_tune.png](cp_cpu_fine_tune.png)
 
 #### Model adaptation from TDP
 
