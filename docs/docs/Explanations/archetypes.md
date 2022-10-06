@@ -28,17 +28,16 @@ When doing so, missing data are retrieved from the archetype instead of default 
 
 ```json
 {
-  "model":
-  {
-    ...
-    "archetype": "dellR740"
-  },
-  "config": {
-    ...
-  },
+    "model": {
+        ...
+        "archetype": "dellR740"
+    },
+    "config": {
+        ...
+    },
     "usage": {
         ...
- }
+    }
 }
 ```
 
