@@ -28,8 +28,8 @@ The following component are [completed](../complete.md) with the default charact
 $$
 \begin{equation}
 \begin{aligned}
-\text{server}_\text{manufacture}^\text{criteria} & = \sum_{\text{component}}{\text{component}_
-\text{manufacture}^\text{criteria}} \\
+\text{server}_\text{manufacture}^\text{criteria} & = \sum_{\set{\text{components}}}{\text{component}_
+\text{manufacture}^\text{criteria}} \\ \\
 & = \text{cpu_units} * \text{CPU}_{manufacture}^{criteria} \\
 & \quad + \ \text{ram_units} * \text{RAM}_{manufacture}^{criteria} \\
 & \quad + \ \text{ssd_units} * \text{SSD}_{manufacture}^{criteria} \\
