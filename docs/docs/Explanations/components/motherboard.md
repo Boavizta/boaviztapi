@@ -9,14 +9,13 @@
 
 ## Manufacture impact
 
-<h6>motherboard<sub>manuf<sub><em>criteria</em></sub></sub></h6>
+The motherboard manufacturing impact is considered as a constant.
 
-
-| Constant            | Unit    | Value    |
-|---------------------|---------|----------|
-| motherboardmanufgwp | kgCO2eq | 66.10    |
-| motherboardmanufadp | kgSbeq  | 3.69E-03 |
-| motherboardmanufpe  | MJ      | 836.00   |
+| Constant                                               | Unit    | Value    |
+|--------------------------------------------------------|---------|----------|
+| $\text{motherboard}_{\text{manufacture}}^{\text{gwp}}$ | kgCO2eq | 66.10    |
+| $\text{motherboard}_{\text{manufacture}}^{\text{adp}}$ | kgSbeq  | 3.69E-03 |
+| $\text{motherboard}_{\text{manufacture}}^{\text{pe}}$  | MJ      | 836.00   |
 
 
 ## Usage impact
