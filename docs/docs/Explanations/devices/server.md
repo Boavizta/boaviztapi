@@ -19,9 +19,9 @@ The following component are [completed](../complete.md) with the default charact
 
 * 2  [CPU](../components/cpu.md)
 * 24 [RAM](../components/ram.md)
-* 2  [POWER-SUPPLY](../components/power_supply.md)
 * 1  [SSD](../components/ssd.md)
-* 1  [CASE](../components/case.md) 
+* 2  [power supplies](../components/power_supply.md)
+* 1  [case](../components/case.md)
 
 ## Manufacture impact
 
