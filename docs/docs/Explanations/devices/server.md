@@ -7,11 +7,11 @@
 | usage        | None | See [server usage](../usage/usage.md)                         |                | ..      |
 | cpu          | None | See [cpu](../components/cpu.md)                               |                | ..      |
 | ram          | None | See [ram](../components/ram.md)                               |                | ..      |
-| power_supply | None | See [power_supply](../components/power_supply.md)             |                | ..      |
-| motherboard  | None | See [motherboad](../components/motherboard.md)                 |                | ..      |
 | disk         | None | See [ssd](../components/ssd.md) & [hdd](../components/hdd.md) | SSD or HDD     | ..      |
-| case         | None | See [case](../components/case.md)                             | Enclosure      | ..      |
+| motherboard  | None | See [motherboad](../components/motherboard.md)                 |                | ..      |
+| power_supply | None | See [power_supply](../components/power_supply.md)             |                | ..      |
 | assembly     | None | See [assembly](../components/assembly.md)                     | Assembly phase | ..      |
+| case         | None | See [case](../components/case.md)                             | Enclosure      | ..      |
 
 ## Complete
 
