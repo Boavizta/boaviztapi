@@ -35,13 +35,13 @@ nav:
         - Components:
               - Components: Explanations/components/component.md
               - CPU: Explanations/components/cpu.md
-              - SSD: Explanations/components/ssd.md
               - RAM: Explanations/components/ram.md
-              - Motherboard: Explanations/components/motherboard.md
+              - SSD: Explanations/components/ssd.md
               - HDD: Explanations/components/hdd.md
+              - Motherboard: Explanations/components/motherboard.md
+              - Power supply: Explanations/components/power_supply.md
               - Assembly: Explanations/components/assembly.md
               - Case: Explanations/components/case.md
-              - Power supply: Explanations/components/power_supply.md
         - Devices:
               - Devices: Explanations/devices/devices.md
               - Server: Explanations/devices/server.md
