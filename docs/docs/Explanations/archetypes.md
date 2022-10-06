@@ -36,8 +36,8 @@ When doing so, missing data are retrieved from the archetype instead of default 
   "config": {
     ...
   },
-  "usage"; {
-  ...
+    "usage": {
+        ...
  }
 }
 ```
