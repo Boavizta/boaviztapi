@@ -7,8 +7,7 @@ __What__ : Global warming potential (GWP) is the heat absorbed by any greenhouse
 the heat that would be absorbed by the same mass of carbon dioxide (CO2). GWP is 1 for CO2. For other gases it depends
 on the gas and the time frame.
 
-__
-Source__ : [https://en.wikipedia.org/wiki/Global_warming_potential](https://en.wikipedia.org/wiki/Global_warming_potential)
+__Source__ : [https://en.wikipedia.org/wiki/Global_warming_potential](https://en.wikipedia.org/wiki/Global_warming_potential)
 
 __Unit__ : kgCO2e
 
@@ -29,7 +28,6 @@ this sense, mainly influenced by the rate of resources extracted [245]. The effe
 depletion is estimated according to their availability stock at a global scale [246]. This impact category is divided
 into two components: a material component and a fossil fuels component. [We use a version of ADP wich include both]
 
-__
-Source__: [https://www.sciencedirect.com/topics/engineering/abiotic-depletion-potential](https://www.sciencedirect.com/topics/engineering/abiotic-depletion-potential)
+__Source__: [https://www.sciencedirect.com/topics/engineering/abiotic-depletion-potential](https://www.sciencedirect.com/topics/engineering/abiotic-depletion-potential)
 
 __Unit__ : KgSbeq
