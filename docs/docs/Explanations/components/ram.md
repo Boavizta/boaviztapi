@@ -52,9 +52,10 @@ Both [power consumption](../usage/elec_conso.md) and [consumption profile](../co
 
 The RAM consumption profile is of the form : ```consumption_profile(workload) = a * capacity```
 
-As a first approximation, we use a uniform consumption profile since the stress test data used show a rather uniform consumption. Consequently, the workload won't be used.
+As a first approximation, we use a uniform consumption profile since the stress test data used show a rather uniform
+consumption. Consequently, the workload won't be used.
 
-![img.png](img.png)
+![cp_ram.png](cp_ram.png)
 
 New stress test data specifically on RAM calls should be conducted to specify this consumption profile.
 
