@@ -11,18 +11,18 @@ HDD are Disk objects of ```type``` HDD.
 | type          | None   | HDD           | "HDD"                  | HDD     |
 | capacity      | Go     | 500           | Capacity of a HDD disk | 1000    |
 
-
 ## Manufacture impact
 
-<h6>hdd<sub>manuf<sub><em>criteria</em></sub></sub> = hdd<sub>units</sub> x hdd<sub>manuf_unit<sub><em>criteria</em></sub></sub></h6>
+The HDD disk manufacturing impact is considered as a constant.
 
-With:
+| Constant                                       | Unit    | Value    |
+|------------------------------------------------|---------|----------|
+| $\text{HDD}_{\text{manufacture}}^{\text{gwp}}$ | kgCO2eq | 31.10    |
+| $\text{HDD}_{\text{manufacture}}^{\text{adp}}$ | kgSbeq  | 2.50E-04 |
+| $\text{HDD}_{\text{manufacture}}^{\text{pe}}$  | MJ      | 276.00   |
 
-| Constant          | Unit    | Value    |
-|-------------------|---------|----------|
-| hddmanuf_unitgwp  | kgCO2eq | 31.10    |
-| hddmanuf_unitadp  | kgSbeq  | 2.50E-04 |
-| hddmanuf_unitpe   | MJ      | 276.00   |
+_Note: If there are more than 1 HDD we multiply $\text{HDD}_\text{manufacture}^\text{criteria}$ by the number of HDD
+given in `units`._
 
 ## Usage impact
 
