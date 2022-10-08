@@ -15,7 +15,7 @@
 
 ## Complete
 
-The following component are [completed](../complete.md) with the default characteristics if not given by the user:
+The following component are [completed](../auto_complete.md) with the default characteristics if not given by the user:
 
 * 2  [CPU](../components/cpu.md)
 * 24 [RAM](../components/ram.md)

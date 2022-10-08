@@ -35,7 +35,7 @@ nav:
               - Electrical consumption: Explanations/usage/elec_conso.md
               - Countries: Explanations/usage/countries.md
         - Consumption profiles : Explanations/consumption_profile.md
-        - Complete: Explanations/complete.md
+        - Auto-complete: Explanations/auto_complete.md
         - Archetypes: Explanations/archetypes.md
         - Verbose: Explanations/verbose.md
         - Components:

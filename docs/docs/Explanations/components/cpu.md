@@ -18,7 +18,7 @@
 
 ## Complete
 
-**The following variables can be [completed](../complete.md)**
+**The following variables can be [completed](../auto_complete.md)**
 
 ### die_size_per_core and core_units
 
