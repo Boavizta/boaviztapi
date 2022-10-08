@@ -1,17 +1,15 @@
-# BOAVIZTA Database
-
-## Documentation
+# Boavizta Environmental Footprint Database
 
 Boavizta database contains the impacts of devices referenced by their model.
 
 Data is gathered from manufactures declarations. Boavizta methodologies may be used to fill the database in the future.
-The dataset can be found **[here](https://github.com/Boavizta/environmental-footprint-data/blob/main/boavizta-data-us.csv)**
+The dataset can be found in the **[environmental-footprint-data](https://github.com/Boavizta/environmental-footprint-data/blob/main/boavizta-data-us.csv)** GitHub repo.
 
 The database can be explored with [Datavizta](https://datavizta.boavizta.org/).
 
 ## Data gathering
 
-The data is gathered either manually or via Boavizta's **[scrapper](https://github.com/Boavizta/environmental-footprint-data/tree/main/tools)**
+The data is gathered either manually or via Boavizta's **[scrapper](https://github.com/Boavizta/environmental-footprint-data/tree/main/tools)**.
 
 ## Data sources
 
@@ -26,5 +24,6 @@ The data is gathered from :
 
 ## Data integration
 
-⚠ For now, Boavizta API is _not_ integrated with Boavizta database since the API do not use manufactures declarations.
-However, this database is one of the resources used to build the data and methods available in the API.
+!!! warning
+    For now, **Boavizta API is not integrated with Boavizta database** since the API do not use manufactures declarations.
+    However, this database is one of the resources used to build the data and methods available in the API.
