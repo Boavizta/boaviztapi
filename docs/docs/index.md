@@ -4,7 +4,7 @@
 
 Try [accessing the demo API](https://api.boavizta.org/docs) or follow a [a short tutorial](getting_started/single_server.md) to get started and retrieve impact data.
 
-Read the [explanations](Explanations/boavizta-db.md) section to get information about the source of data, the details of the methodology and theoretical model.
+Read the [explanations](Explanations/boavizta_db.md) section to get information about the source of data, the details of the methodology and theoretical model.
 
 Have a look at the [reference](Reference/component_route.md) section to get technical details about the routes and data formats of the API.
 
