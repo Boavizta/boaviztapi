@@ -4,7 +4,7 @@ Any calculation using the API is made easier thanks to the **data auto-complete 
 
 Depending on the type of calculation and component, device or cloud instance, the API will **either infer or use default values** for those missing attributes. The documentation about how attributes are auto-completed is given on each component, device or cloud instance documentation page. 
 
-All attributes that are auto-completed by the API can be found the [verbose](verbose.md) information. Attributes with a `status` of `DEFAULT` or `COMPLETED` is respectively using a default value or using an inferred value given user inputs.
+All attributes that are auto-completed by the API can be found in the [verbose](verbose.md) information. Attributes with a `status` of `DEFAULT` or `COMPLETED` is respectively using a default value or using an inferred value given user inputs.
 
 ## Example on a CPU
 

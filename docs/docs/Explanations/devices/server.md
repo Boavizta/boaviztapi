@@ -62,6 +62,6 @@ $$
 
 $\text{CP}_{\text{CPU}}(\text{workload})$ and $\text{CP}_{\text{RAM}}(\text{workload})$ depend on the technical
 characteristics of the RAM and CPU.
-```other_consumption_ratio``` is used to account for the electrical consumption of the other components (other than RAM
+$\text{other_consumption_ratio}$ is used to account for the electrical consumption of the other components (other than RAM
 and CPU).
-It is arbitrary set to 0.3 and can modify by users.
+It is arbitrary set to **0.3** and can modify by users.

@@ -24,8 +24,8 @@ __Unit__ : MJ
 ## ADP - Abiotic Depletion Potential
 
 __What__ : ADP is the first EI category presented. This category corresponds to mineral and resources used and is, in
-this sense, mainly influenced by the rate of resources extracted [245]. The effect of this consumption on their
-depletion is estimated according to their availability stock at a global scale [246]. This impact category is divided
+this sense, mainly influenced by the rate of resources extracted. The effect of this consumption on their
+depletion is estimated according to their availability stock at a global scale. This impact category is divided
 into two components: a material component and a fossil fuels component. [We use a version of ADP wich include both]
 
 __Source__: [https://www.sciencedirect.com/topics/engineering/abiotic-depletion-potential](https://www.sciencedirect.com/topics/engineering/abiotic-depletion-potential)

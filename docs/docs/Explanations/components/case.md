@@ -34,8 +34,8 @@ With :
 | $\text{blade}_\text{manufacture}^\text{adp}$           | kgSbeq  | 6.72E-04  |
 | $\text{blade}_\text{manufacture}^\text{pe}$            | MJ      | 435.00    |
 | $\text{blade_enclosure}_\text{manufacture}^\text{gwp}$ | kgCO2eq | 880.00    |
-| $\text{blade_enclosure}_\text{manufacture}^\text{adp}  | kgSbeq  | 4.32E-01  |
-| $\text{blade_enclosure}_\text{manufacture}^\text{pe}   | MJ      | 12 700.00 |
+| $\text{blade_enclosure}_\text{manufacture}^\text{adp}$  | kgSbeq  | 4.32E-01  |
+| $\text{blade_enclosure}_\text{manufacture}^\text{pe}$   | MJ      | 12 700.00 |
 
 ## Usage impact
 

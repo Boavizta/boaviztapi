@@ -10,9 +10,6 @@
 
 ## Manufacture impact
 
-<h6>psu<sub>manuf<sub><em>criteria</em></sub></sub> = psu<sub>units</sub> x psu<sub>unit<sub>weight</sub></sub> x
-psu<sub>manuf_weight<sub><em>criteria</em></sub></sub></h6>
-
 For one power supply the manufacture impact is:
 
 $$
