@@ -6,7 +6,7 @@ If available, user should send the electrical consumption of his components or d
 Since the power will be extrapolated on the all duration, the power given should be The average power of the device or component over the given duration.
 
 
-## Modeled
+## Modeling
 
 Sometime user doesn't have access to the electrical consumption of their component or device.
 If so, he can use the percentage of component' or device' resource usage as a proxy for the electrical consumption. We refer to this percentage as a workload of the component or device.
@@ -24,22 +24,27 @@ A Workload can also be given as a dictionary to specify the percentage of time s
 The following 
 
 ```json
-[{
- "load_percentage": 10,
-  "time_percentage": 50
-},
-{
- "load_percentage": 50,
-  "time_percentage": 20
-},
-  {
- "load_percentage": 100,
-  "time_percentage": 30
-}
+[
+    {
+        "load_percentage": 10,
+        "time_percentage": 50
+    },
+    {
+        "load_percentage": 50,
+        "time_percentage": 20
+    },
+    {
+        "load_percentage": 100,
+        "time_percentage": 30
+    }
 ]
 ```
 
-will mean : *"I used my component or device at 50% of the time at 10% of its maximum of workload, 20%  of the time at 50% of its maximum of workload and 30% of the time at its maximum workload (100%)"*
+This translates into using a component or a device:
+
+- 50% of the time at 10% ot its maximum workload,
+- 20% of the time at 50% of its maximum workload,
+- 30% of the time at the maximum workload
 
 ### Example for a CPU
 
@@ -53,11 +58,11 @@ Taking the following load segmentation :
 
 With the following time repartition
 
-| LOAD       | high (100%) | medium (50%) | low (10%) | idle  | off    |
-| ---------- | ----------- | ------------ |-----------|-------|--------|
-| Time_ratio | 0.15        | 0.55         | 0.1       | 0.2   | 0      |
+| load_percentage | high (100%) | medium (50%) | low (10%) | idle | off |
+|-----------------|-------------|--------------|-----------|------|-----|
+| time_percentage | 15%         | 55%          | 10%       | 20%  | 0%  |
 
-_note : the sum of time ratio per load must be 1._
+_note : the sum of time ratio per load must be 100._
 
 With the following consumption profile : 
 
@@ -65,9 +70,9 @@ With the following consumption profile :
 
 Power consumptions : 
 
-| LOAD      | 100% | 50% | 10% | idle | off |
-| --------- |------|-----|-----|------|-----|
-| Power (W) | 260  | 182 | 77  | 36   | 0   |
+| load_percentage | 100% | 50% | 10% | idle | off |
+|-----------------|------|-----|-----|------|-----|
+| Power (W)       | 260  | 182 | 77  | 36   | 0   |
 
 `hours_electrical_consumption` is measured as follows :
 

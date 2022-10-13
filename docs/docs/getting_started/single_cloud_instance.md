@@ -4,7 +4,7 @@ This page presents basic queries that can be used to retrieve impacts of cloud i
 
 You use `curl` in command line to query Boavizta demo (public) API.
 
-💡 _You can format the results by using jq (`curl -X 'GET' 'http://localhost:5000/v1/component/cpu' | jq`)_
+💡 _You can format the results by using jq (`curl -X 'GET' 'http://localhost:5000/v1/cloud/aws?instance_type=a1.xlarge' | jq`)_
 
 ## Get the impacts from cpu name
 
@@ -537,7 +537,7 @@ curl -X 'POST' \
 
 the query usage can be translated as such :
 
-```I used a r6g.medium in a french datacenter for 2 hours half of the time in IDLE mode and half of the time at 50% of workload```
+```I used a r6g.medium in a french data center for 2 hours half of the time in IDLE mode and half of the time at 50% of workload```
 
 Results:
 

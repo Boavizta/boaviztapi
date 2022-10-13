@@ -6,10 +6,18 @@ plugins:
 markdown_extensions:
     - attr_list
     - md_in_html
-      
+    - pymdownx.arithmatex:
+        generic: true
+    - pymdownx.highlight:
+        anchor_linenums: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.superfences
+    - admonition
+    - pymdownx.details
 
 nav:
-    - Introduction: index.md 
+    - Introduction: index.md
     - Getting started:
         - Try the API (OpenAPI): !ENV [API_URL, https://api.boavizta.org/docs]
         - Get the impacts of a cpu: getting_started/cpu_component.md
@@ -17,33 +25,33 @@ nav:
         - Get the impacts of a cloud instance (AWS): getting_started/single_cloud_instance.md
         - Get started with consumption profiles : getting_started/consumption_profile.md
     - Explanations:
-        - Boavizta database: Explanations/boavizta-db.md
+        - Boavizta database: Explanations/boavizta_db.md
         - Impacts criteria : Explanations/impacts.md
         - Manufacture methodology: Explanations/manufacture_methodology.md
         - Usage :
-              - methodology: Explanations/usage/usage.md
-              - duration : Explanations/usage/duration.md
-              - electrical impacts factors : Explanations/usage/elec_factors.md
-              - electrical consumption: Explanations/usage/elec_conso.md
-              - countries: Explanations/usage/countries.md
+              - Methodology: Explanations/usage/usage.md
+              - Duration : Explanations/usage/duration.md
+              - Electrical impacts factors : Explanations/usage/elec_factors.md
+              - Electrical consumption: Explanations/usage/elec_conso.md
+              - Countries: Explanations/usage/countries.md
         - Consumption profiles : Explanations/consumption_profile.md
-        - Complete: Explanations/complete.md
+        - Auto-complete: Explanations/auto_complete.md
         - Archetypes: Explanations/archetypes.md
         - Verbose: Explanations/verbose.md
         - Components:
-              - components: Explanations/components/component.md
-              - cpu: Explanations/components/cpu.md
-              - ssd: Explanations/components/ssd.md
-              - ram: Explanations/components/ram.md
-              - motherboard: Explanations/components/motherboard.md
-              - hdd: Explanations/components/hdd.md
-              - assembly: Explanations/components/assembly.md
-              - case: Explanations/components/case.md
-              - power supply: Explanations/components/power_supply.md
+              - Components: Explanations/components/component.md
+              - CPU: Explanations/components/cpu.md
+              - RAM: Explanations/components/ram.md
+              - SSD: Explanations/components/ssd.md
+              - HDD: Explanations/components/hdd.md
+              - Motherboard: Explanations/components/motherboard.md
+              - Power supply: Explanations/components/power_supply.md
+              - Assembly: Explanations/components/assembly.md
+              - Case: Explanations/components/case.md
         - Devices:
-              - devices: Explanations/devices/devices.md
-              - server: Explanations/devices/server.md
-              - cloud instances: Explanations/devices/cloud.md
+              - Devices: Explanations/devices/devices.md
+              - Server: Explanations/devices/server.md
+              - Cloud instances: Explanations/devices/cloud.md
         - Useful resources: Explanations/useful_resources.md
     - Reference:
         - Component route: Reference/component_route.md
@@ -53,6 +61,11 @@ nav:
         - Cloud route: Reference/cloud_route.md
         - Architecture decisions records (ADRs) :
             - Bottom up methodology: ADR/adr1-Bottom-up.md
-            - Always return something: ADR/adr2-Alway-return-something.md    
+            - Always return something: ADR/adr2-Alway-return-something.md
 
 theme: material
+
+extra_javascript:
+    - javascripts/mathjax.js
+    - https://polyfill.io/v3/polyfill.min.js?features=es6
+    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

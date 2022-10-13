@@ -17,7 +17,7 @@ SSD are Disk objects of ```type``` SSD.
 
 ## Complete
 
-**The following variables can be [completed](../complete.md)**
+**The following variables can be [completed](../auto_complete.md)**
 
 ### density
 
@@ -25,19 +25,24 @@ if ```manufacturer``` is given, ```density``` can be retrieved from a fuzzy matc
 
 ## Manufacture impact
 
-<h6>ssd<sub>manuf<sub><em>criteria</em></sub></sub> = ssd<sub>units</sub> x ( ( ssd<sub>size</sub> / ssd<sub>density</sub> ) x ssd<sub>manuf_die<sub><em>criteria</em></sub></sub> + ssd<sub>manuf_base<sub><em>criteria</em></sub></sub> )</h6>
+For one SSD the manufacture impact is:
 
-With:
+$$
+\text{SSD}_\text{manufacture}^\text{criteria} = (\text{SSD}_{\text{capacity}} / \text{SSD}_{\text{density}}) * \text{SSD}_\text{manufacture_die}^\text{criteria} + \text{SSD}_\text{manufacture_base}^\text{criteria}
+$$
 
-| Constant         | Units       | Value    |
-|------------------|-------------|----------|
-| ssdmanuf_diegwp  | kgCO2eq/cm2 | 2.20     |
-| ssdmanuf_dieadp  | kgSbeq/cm2  | 6.30E-05 |
-| ssdmanuf_diepe   | MJ/cm2      | 27.30    |
-| ssdmanuf_basegwp | kgCO2eq     | 6.34     |
-| ssdmanuf_baseadp | kgSbeq      | 5.63E-04 |
-| ssdmanuf_basepe  | MJ          | 76.90    |
+with:
 
+| Constant                                        | Units       | Value    |
+|-------------------------------------------------|-------------|----------|
+| $\text{SSD}_\text{manufacture_die}^\text{gwp}$  | kgCO2eq/cm2 | 2.20     |
+| $\text{SSD}_\text{manufacture_die}^\text{adp}$  | kgSbeq/cm2  | 6.30E-05 |
+| $\text{SSD}_\text{manufacture_die}^\text{pe}$   | MJ/cm2      | 27.30    |
+| $\text{SSD}_\text{manufacture_base}^\text{gwp}$ | kgCO2eq     | 6.34     |
+| $\text{SSD}_\text{manufacture_base}^\text{adp}$ | kgSbeq      | 5.63E-04 |
+| $\text{SSD}_\text{manufacture_base}^\text{pe}$  | MJ          | 76.90    |
+
+_Note: If there are more than 1 SDD we multiply $\text{SSD}_\text{manufacture}^\text{criteria}$ by the number of SSD given in `units`._
 
 ## Usage impact
 

@@ -10,7 +10,7 @@ The API handles three different time units :
 | YEARS     |
 
 When duration is not given, the impact is measured for the default duration. Typically, 1 hour.
-_Note : units are cumulative, if multiple units are used, they are summed._
+_Note: units are cumulative, if multiple units are used, they are summed up._
 
 ## Example
 

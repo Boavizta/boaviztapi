@@ -18,13 +18,13 @@
 
 ## Complete
 
-**The following variables can be [completed](../complete.md)**
+**The following variables can be [completed](../auto_complete.md)**
 
 ### die_size_per_core and core_units
 
 if ```die_size``` and ```core_units``` are given :
 
-```die_size_per_core = core_units/die_size```
+$$ \text{die_size_per_core} = \frac{\text{core_units}}{\text{die_size}}$$
 
 Otherwise, if ```family``` or/and ```core_units``` are given, ```die_size_per_core``` can be retrieved from a fuzzy matching on our cpu repository.
 If several cpu matches the given ```family``` and/or ```core_units``` the maximizing value is given (in terms of impacts).
@@ -37,18 +37,24 @@ if ```name``` is given, ```model_range``` and ```family``` can be retrieved from
 
 ## Manufacture impact
 
-<h6>cpu<sub>manuf<sub><em>criteria</em></sub></sub> = cpu<sub>units<sub></sub></sub> x ( ( cpu<sub>core<sub>units</sub></sub> x cpu<sub>diesize</sub> + 0,491 ) x cpu<sub>manuf_die<sub><em>criteria</em></sub></sub> + cpu<sub>manuf_base<sub><em>criteria</em></sub></sub> )</h6>
+For one CPU the manufacture impact is:
+
+$$ 
+\text{CPU}_\text{manufacture}^\text{criteria} = (\text{CPU}_{\text{core_units}} * \text{CPU}_{\text{die_size}} + 0.491 ) * \text{CPU}_\text{manufacture_die}^\text{criteria} + \text{CPU}_\text{manufacture_base}^\text{criteria}
+$$
 
 with:
 
-| Constant         | Units       | Value    |
-|------------------|-------------|----------|
-| cpumanuf_diegwp  | kgCO2eq/cm2 | 1.97     |
-| cpumanuf_dieadp  | kgSbeq/cm2  | 5.80E-07 |
-| cpumanuf_diepe   | MJ/cm2      | 26.50    |
-| cpumanuf_basegwp | kgCO2eq     | 9.14     |
-| cpumanuf_baseadp | kgSbeq      | 2.04E-02 |
-| cpumanuf_basepe  | MJ          | 156.00   |
+| Constant                                          | Units       | Value    |
+|---------------------------------------------------|-------------|----------|
+| $\text{CPU}_\text{manufacture_die}^{\text{gwp}}$  | kgCO2eq/cm2 | 1.97     |
+| $\text{CPU}_\text{manufacture_die}^{\text{adp}}$  | kgSbeq/cm2  | 5.80E-07 |
+| $\text{CPU}_\text{manufacture_die}^{\text{pe}}$   | MJ/cm2      | 26.50    |
+| $\text{CPU}_\text{manufacture_base}^{\text{gwp}}$ | kgCO2eq     | 9.14     |
+| $\text{CPU}_\text{manufacture_base}^{\text{adp}}$ | kgSbeq      | 2.04E-02 |
+| $\text{CPU}_\text{manufacture_base}^{\text{pe}}$  | MJ          | 156.00   |
+
+_Note: If there are more than 1 CPU we multiply $\text{CPU}_\text{manufacture}^\text{criteria}$ by the number of CPU given in `units`._
 
 ## Usage impact
 
@@ -75,13 +81,16 @@ If ```model_range``` is given or is completed from the ```cpu_name```, we use th
 
 By default, we use the consumption profile of **Intel Xeon Platinum**
 
-![img_1.png](img_1.png)
+<TODO: fix consumption profile graphs>
+![cp_cpu_xeon_platinum.png](cp_cpu_xeon_platinum.png)
 
 #### Model adaptation from punctual measurement
 
-In case punctual power measurement (load;power_consumption) are given by a user, we adapt the selected consumption profile to match the given point.
+In case punctual power measurement (load;power_consumption) are given by a user, we adapt the selected consumption
+profile to match the given point.
 
-![img_2.png](img_2.png)
+<TODO: fix consumption profile graphs>
+![cp_cpu_fine_tune.png](cp_cpu_fine_tune.png)
 
 #### Model adaptation from TDP
 

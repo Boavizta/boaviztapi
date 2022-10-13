@@ -10,17 +10,26 @@
 
 ## Manufacture impact
 
-<h6>psu<sub>manuf<sub><em>criteria</em></sub></sub> = psu<sub>units</sub> x psu<sub>unit<sub>weight</sub></sub> x psu<sub>manuf_weight<sub><em>criteria</em></sub></sub></h6>
+For one power supply the manufacture impact is:
 
-With :
+$$
+\text{power_supply}_\text{manufacture}^\text{criteria} = \text{power_supply}_\text{unit_weight} * \text{power_supply}_
+\text{manufacture_weight}^\text{criteria}
+$$
 
-| Constant           | Unit       | Value    |
-|--------------------|------------|----------|
-| psumanuf_weightgwp | kgCO2eq/kg | 24.30    |
-| psumanuf_weightadp | kgSbeq/kg  | 8.30E-03 |
-| psumanuf_weightpe  | MJ/kg      | 352.00   |
+with :
+
+| Constant                                                   | Unit       | Value    |
+|------------------------------------------------------------|------------|----------|
+| $\text{power_supply}_\text{manufacture_weight}^\text{gwp}$ | kgCO2eq/kg | 24.30    |
+| $\text{power_supply}_\text{manufacture_weight}^\text{adp}$ | kgSbeq/kg  | 8.30E-03 |
+| $\text{power_supply}_\text{manufacture_weight}^\text{pe}$  | MJ/kg      | 352.00   |
+
+_Note: If there are more than 1 power we multiply $\text{power_supply}_\text{manufacture}^\text{criteria}$ by the number
+of power supply given in `units`._
 
 ## Usage impact
 
-Only [power consumption](../usage/elec_conso.md) is implemented. 
-This shouldn't be used in most cases since the electricity consume by a power supply is consume on behalf of other components.
+Only [power consumption](../usage/elec_conso.md) is implemented.
+This shouldn't be used in most cases since the electricity consume by a power supply is consume on behalf of other
+components.

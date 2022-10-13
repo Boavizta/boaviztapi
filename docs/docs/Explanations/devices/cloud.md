@@ -11,9 +11,13 @@ Server's characteristics +
 
 ## Manufacture impact
 
-Manufacture impacts of cloud instances correspond to the impact of the physical [server](server.md) hosting the instance divided by the number of instances hosted on the server.
+Manufacture impacts of cloud instances correspond to the impact of the physical [server](server.md) hosting the instance
+divided by the number of instances hosted on the server.
 
-```CloudInstancemanufcriteria = servermanufcriteria / instance_per_server```
+$$
+\text{cloud_instance}_\text{manufacture}^\text{criteria} = \frac{\text{server}_
+\text{manufacture}^\text{criteria}}{\text{instances_per_server}}
+$$
 
 Components configuration are never sent by the user but pre-recorded as an [archetype](../archetypes.md).
 
@@ -25,4 +29,4 @@ As for manufacture, usage impact for a physical server are divided into the numb
 
 ## Consumption profile
 
-We use the same process as described for the servers. 
+We use the same process as [described for the servers](server.md#consumption-profile) .

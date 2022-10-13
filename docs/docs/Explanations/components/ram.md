@@ -15,7 +15,7 @@
 
 ## Complete
 
-**The following variables can be [completed](../complete.md)**
+**The following variables can be [completed](../auto_complete.md)**
 
 ### density
 
@@ -24,18 +24,25 @@ If several ram matches the given ```process``` or/and ```manufacturer``` the max
 
 ## Manufacture impact
 
-<h6>ram<sub>manuf<sub><em>criteria</em></sub></sub> = ram<sub>units</sub> x ( ( ram<sub>size</sub> / ram<sub>density</sub> ) x ram<sub>manuf_die<sub><em>criteria</em></sub></sub> + ram<sub>manuf_base<sub><em>criteria</em></sub></sub> )</h6>
+For one RAM bank the manufacture impact is:
 
-With
+$$
+\text{RAM}_\text{manufacture}^\text{criteria} = (\text{RAM}_{\text{capacity}} / \text{RAM}_{\text{density}}) * \text{RAM}_\text{manufacture_die}^\text{criteria} + \text{RAM}_\text{manufacture_base}^\text{criteria}
+$$
 
-| Constant          | Units       | Value      |
-|-------------------|-------------|------------|
-| rammanuf_diegwp   | kgCO2eq/cm2 | 2.20       |
-| rammanuf_dieadp   | kgSbeq/cm2  | 6.30E-05   |
-| rammanuf_diepe    | MJ/cm2      | 27.30      |
-| rammanuf_basegwp  | kgCO2eq     | 5.22       |
-| rammanuf_baseadp  | kgSbeq      | 1.69E-03   |
-| rammanuf_basepe   | MJ          | 74.00      |
+with:
+
+| Constant                                        | Units       | Value      |
+|-------------------------------------------------|-------------|------------|
+| $\text{RAM}_\text{manufacture_die}^\text{gwp}$  | kgCO2eq/cm2 | 2.20       |
+| $\text{RAM}_\text{manufacture_die}^\text{adp}$  | kgSbeq/cm2  | 6.30E-05   |
+| $\text{RAM}_\text{manufacture_die}^\text{pe}$   | MJ/cm2      | 27.30      |
+| $\text{RAM}_\text{manufacture_base}^\text{gwp}$ | kgCO2eq     | 5.22       |
+| $\text{RAM}_\text{manufacture_base}^\text{adp}$ | kgSbeq      | 1.69E-03   |
+| $\text{RAM}_\text{manufacture_base}^\text{pe}$  | MJ          | 74.00      |
+
+_Note: If there are more than 1 RAM bank we multiply $\text{RAM}_\text{manufacture}^\text{criteria}$ by the number of RAM bank given in `units`._
+
 
 ## Usage impact
 
@@ -45,9 +52,10 @@ Both [power consumption](../usage/elec_conso.md) and [consumption profile](../co
 
 The RAM consumption profile is of the form : ```consumption_profile(workload) = a * capacity```
 
-As a first approximation, we use a uniform consumption profile since the stress test data used show a rather uniform consumption. Consequently, the workload won't be used.
+As a first approximation, we use a uniform consumption profile since the stress test data used show a rather uniform
+consumption. Consequently, the workload won't be used.
 
-![img.png](img.png)
+![cp_ram.png](cp_ram.png)
 
 New stress test data specifically on RAM calls should be conducted to specify this consumption profile.
 

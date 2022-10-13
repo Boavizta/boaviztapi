@@ -9,10 +9,10 @@
 
 ## Manufacture impact
 
-<h6>assembly<sub>manuf<sub><em>criteria</em></sub></sub></h6>
+The assembly manufacturing impact is considered as a constant.
 
-| Constant         | Unit    | Value    |
-|------------------|---------|----------|
-| assemblymanufgwp | kgCO2eq | 6.68     |
-| assemblymanufadp | kgSbeq  | 1.41E-06 |
-| assemblymanufpe  | MJ      | 68.60    |
+| Constant                                            | Unit    | Value    |
+|-----------------------------------------------------|---------|----------|
+| $\text{assembly}_{\text{manufacture}}^{\text{gwp}}$ | kgCO2eq | 6.68     |
+| $\text{assembly}_{\text{manufacture}}^{\text{adp}}$ | kgSbeq  | 1.41E-06 |
+| $\text{assembly}_{\text{manufacture}}^{\text{pe}}$  | MJ      | 68.60    |
