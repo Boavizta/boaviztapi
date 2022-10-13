@@ -29,4 +29,4 @@ As for manufacture, usage impact for a physical server are divided into the numb
 
 ## Consumption profile
 
-We use the same process as described for the servers. 
+We use the same process as [described for the servers](server.md#consumption-profile) .
