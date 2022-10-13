@@ -537,7 +537,7 @@ curl -X 'POST' \
 
 the query usage can be translated as such :
 
-```I used a r6g.medium in a french datacenter for 2 hours half of the time in IDLE mode and half of the time at 50% of workload```
+```I used a r6g.medium in a french data center for 2 hours half of the time in IDLE mode and half of the time at 50% of workload```
 
 Results:
 

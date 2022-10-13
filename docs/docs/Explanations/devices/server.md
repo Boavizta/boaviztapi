@@ -8,7 +8,7 @@
 | cpu          | None | See [cpu](../components/cpu.md)                               |                | ..      |
 | ram          | None | See [ram](../components/ram.md)                               |                | ..      |
 | disk         | None | See [ssd](../components/ssd.md) & [hdd](../components/hdd.md) | SSD or HDD     | ..      |
-| motherboard  | None | See [motherboad](../components/motherboard.md)                 |                | ..      |
+| motherboard  | None | See [motherboard](../components/motherboard.md)                 |                | ..      |
 | power_supply | None | See [power_supply](../components/power_supply.md)             |                | ..      |
 | assembly     | None | See [assembly](../components/assembly.md)                     | Assembly phase | ..      |
 | case         | None | See [case](../components/case.md)                             | Enclosure      | ..      |
@@ -64,4 +64,4 @@ $\text{CP}_{\text{CPU}}(\text{workload})$ and $\text{CP}_{\text{RAM}}(\text{work
 characteristics of the RAM and CPU.
 $\text{other_consumption_ratio}$ is used to account for the electrical consumption of the other components (other than RAM
 and CPU).
-It is arbitrary set to **0.3** and can modify by users.
+It is arbitrary set to **0.3** and can be modified by users.
