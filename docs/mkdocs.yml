@@ -62,6 +62,7 @@ nav:
         - Architecture decisions records (ADRs) :
             - Bottom up methodology: ADR/adr1-Bottom-up.md
             - Always return something: ADR/adr2-Alway-return-something.md
+    - Deploy: Reference/deploy.md
 
 theme: material
 

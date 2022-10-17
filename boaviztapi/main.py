@@ -16,7 +16,7 @@ from boaviztapi.routers.utils_router import utils_router
 
 app = FastAPI()
 
-origins = os.getenv("ALLOWED_ORIGINS", [])
+origins = json.loads(os.getenv("ALLOWED_ORIGINS", '["*"]'))
 
 app.add_middleware(
     CORSMiddleware,
@@ -24,6 +24,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 app.include_router(server_router)
 app.include_router(cloud_router)
 app.include_router(component_router)
