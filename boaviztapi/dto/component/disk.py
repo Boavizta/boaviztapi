@@ -27,7 +27,7 @@ def smart_mapper_ssd(disk_dto: Disk) -> ComponentSSD:
     disk_component.units = disk_dto.units
     corrected_manufacturer = None
 
-    if disk_dto.type == 'ssd':
+    if disk_dto.type.lower() == 'ssd':
         if disk_dto.capacity is not None:
             disk_component.capacity.value = disk_dto.capacity
             disk_component.capacity.status = Status.INPUT
