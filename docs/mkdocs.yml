@@ -18,6 +18,7 @@ markdown_extensions:
 
 nav:
     - Introduction: index.md
+    - FAQ : faq.md
     - Getting started:
         - Try the API (OpenAPI): !ENV [API_URL, https://api.boavizta.org/docs]
         - Get the impacts of a cpu: getting_started/cpu_component.md
