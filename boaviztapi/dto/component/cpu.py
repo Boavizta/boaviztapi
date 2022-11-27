@@ -147,6 +147,5 @@ def parse(cpu_name: str) -> Tuple[str, str]:
 
 def fuzzymatch(cpu_name_to_match: str, cpu_name_list: list) -> Optional[Tuple[str, float, int]]:
     foo = process.extractOne(cpu_name_to_match, cpu_name_list, scorer=fuzz.WRatio)
-    print(foo)
     if foo is not None:
         return foo if foo[1] > 88.0 else None
