@@ -24,16 +24,16 @@ async def test_complete_cpu_verbose():
     assert res.json() == {'impacts': {'adp': {'manufacture': 0.02, 'unit': 'kgSbeq', 'use': 0.000102},
                                       'gwp': {'manufacture': 15.9, 'unit': 'kgCO2eq', 'use': 610.0},
                                       'pe': {'manufacture': 247.0, 'unit': 'MJ', 'use': 20550.0}},
-                          'verbose': {'USAGE': {'adp_factor': {'source': {'1': 'ADEME BASE IMPACT'},
+                          'verbose': {'USAGE': {'adp_factor': {'source': 'ADEME BASE IMPACT',
                                                                'status': 'COMPLETED',
                                                                'unit': 'KgSbeq/kWh',
                                                                'value': 6.42e-08},
-                                                'gwp_factor': {'source': {
-                                                    '1': 'https://www.sciencedirect.com/science/article/pii'
-                                                         '/S0306261921012149 '
-                                                         ': \n'
-                                                         'Average of 27 european '
-                                                         'countries'},
+                                                'gwp_factor': {
+                                                    'source': 'https://www.sciencedirect.com/science/article/pii'
+                                                              '/S0306261921012149 '
+                                                              ': \n'
+                                                              'Average of 27 european '
+                                                              'countries',
                                                     'status': 'COMPLETED',
                                                     'unit': 'kgCO2e/kWh',
                                                     'value': 0.38},
@@ -48,8 +48,8 @@ async def test_complete_cpu_verbose():
                                                                      'b': 0.0354,
                                                                      'c': 36.89,
                                                                      'd': -10.13}},
-                                                'pe_factor': {'source': {'1': 'ADPf / '
-                                                                              '(1-%renewable_energy)'},
+                                                'pe_factor': {'source': 'ADPf / '
+                                                                        '(1-%renewable_energy)',
                                                               'status': 'COMPLETED',
                                                               'unit': 'MJ/kWh',
                                                               'value': 12.874},
@@ -126,19 +126,18 @@ async def test_incomplete_cpu_verbose():
     assert res.json() == {'impacts': {'adp': {'manufacture': 0.02, 'unit': 'kgSbeq', 'use': 0.000102},
                                       'gwp': {'manufacture': 23.8, 'unit': 'kgCO2eq', 'use': 610.0},
                                       'pe': {'manufacture': 353.0, 'unit': 'MJ', 'use': 20550.0}},
-                          'verbose': {'USAGE': {'adp_factor': {'source': {'1': 'ADEME BASE IMPACT'},
+                          'verbose': {'USAGE': {'adp_factor': {'source': 'ADEME BASE IMPACT',
                                                                'status': 'COMPLETED',
                                                                'unit': 'KgSbeq/kWh',
                                                                'value': 6.42e-08},
-                                                'gwp_factor': {'source': {
-                                                    '1': 'https://www.sciencedirect.com/science/article/pii'
-                                                         '/S0306261921012149 '
-                                                         ': \n'
-                                                         'Average of 27 european '
-                                                         'countries'},
-                                                    'status': 'COMPLETED',
-                                                    'unit': 'kgCO2e/kWh',
-                                                    'value': 0.38},
+                                                'gwp_factor': {'source': 'https://www.sciencedirect.com/science/article/pii'
+                                                              '/S0306261921012149 '
+                                                              ': \n'
+                                                              'Average of 27 european '
+                                                              'countries',
+                                                               'status': 'COMPLETED',
+                                                               'unit': 'kgCO2e/kWh',
+                                                               'value': 0.38},
                                                 'hours_electrical_consumption': {'source': None,
                                                                                  'status': 'COMPLETED',
                                                                                  'unit': 'W',
@@ -150,8 +149,7 @@ async def test_incomplete_cpu_verbose():
                                                                      'b': 0.0354,
                                                                      'c': 36.89,
                                                                      'd': -10.13}},
-                                                'pe_factor': {'source': {'1': 'ADPf / '
-                                                                              '(1-%renewable_energy)'},
+                                                'pe_factor': {'source': 'ADPf / (1-%renewable_energy)',
                                                               'status': 'COMPLETED',
                                                               'unit': 'MJ/kWh',
                                                               'value': 12.874},
@@ -178,8 +176,8 @@ async def test_incomplete_cpu_verbose():
                                                      'status': 'INPUT',
                                                      'unit': 'none',
                                                      'value': 24},
-                                      'die_size_per_core': {'source': {
-                                          '1': 'https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)'},
+                                      'die_size_per_core': {
+                                          'source': 'https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)',
                                           'status': 'COMPLETED',
                                           'unit': 'mm2',
                                           'value': 0.289},
@@ -202,16 +200,16 @@ async def test_incomplete_cpu_verbose_2():
     assert res.json() == {'impacts': {'adp': {'manufacture': 0.02, 'unit': 'kgSbeq', 'use': 0.000102},
                                       'gwp': {'manufacture': 23.8, 'unit': 'kgCO2eq', 'use': 610.0},
                                       'pe': {'manufacture': 353.0, 'unit': 'MJ', 'use': 20550.0}},
-                          'verbose': {'USAGE': {'adp_factor': {'source': {'1': 'ADEME BASE IMPACT'},
+                          'verbose': {'USAGE': {'adp_factor': {'source': 'ADEME BASE IMPACT',
                                                                'status': 'COMPLETED',
                                                                'unit': 'KgSbeq/kWh',
                                                                'value': 6.42e-08},
-                                                'gwp_factor': {'source': {
-                                                    '1': 'https://www.sciencedirect.com/science/article/pii'
-                                                         '/S0306261921012149 '
-                                                         ': \n'
-                                                         'Average of 27 european '
-                                                         'countries'},
+                                                'gwp_factor': {
+                                                    'source': 'https://www.sciencedirect.com/science/article/pii'
+                                                              '/S0306261921012149 '
+                                                              ': \n'
+                                                              'Average of 27 european '
+                                                              'countries',
                                                     'status': 'COMPLETED',
                                                     'unit': 'kgCO2e/kWh',
                                                     'value': 0.38},
@@ -226,8 +224,7 @@ async def test_incomplete_cpu_verbose_2():
                                                                      'b': 0.0354,
                                                                      'c': 36.89,
                                                                      'd': -10.13}},
-                                                'pe_factor': {'source': {'1': 'ADPf / '
-                                                                              '(1-%renewable_energy)'},
+                                                'pe_factor': {'source': 'ADPf / (1-%renewable_energy)',
                                                               'status': 'COMPLETED',
                                                               'unit': 'MJ/kWh',
                                                               'value': 12.874},
@@ -254,8 +251,7 @@ async def test_incomplete_cpu_verbose_2():
                                                      'status': 'INPUT',
                                                      'unit': 'none',
                                                      'value': 24},
-                                      'die_size_per_core': {'source': {
-                                          '1': 'https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)'},
+                                      'die_size_per_core': {'source': 'https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)',
                                           'status': 'COMPLETED',
                                           'unit': 'mm2',
                                           'value': 0.289},

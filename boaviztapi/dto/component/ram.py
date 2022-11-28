@@ -48,7 +48,7 @@ def smart_mapper_ram(ram_dto: RAM) -> ComponentRAM:
         elif len(sub) == 1:
             ram_component.density.value = float(sub['density'])
             ram_component.density.status = Status.COMPLETED
-            ram_component.density.source = sub['manufacturer']
+            ram_component.density.source = str(sub['manufacturer'].iloc[0])
         else:
             sub['_scope3'] = sub['density'].apply(lambda x: x)
             sub = sub.sort_values(by='_scope3', ascending=True)

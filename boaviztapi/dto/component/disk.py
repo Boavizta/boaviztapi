@@ -46,7 +46,7 @@ def smart_mapper_ssd(disk_dto: Disk) -> ComponentSSD:
             elif len(sub) == 1:
                 disk_component.density.value = float(sub['density'])
                 disk_component.density.status = Status.COMPLETED
-                disk_component.density.source = sub['manufacturer']
+                disk_component.density.source = str(sub['manufacturer'].iloc[0])
             else:
                 if disk_dto.capacity is not None:
                     capacity = disk_dto.capacity

@@ -92,7 +92,7 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
         elif len(sub) == 1:
             cpu_component.die_size_per_core.value = float(sub['die_size_per_core'])
             cpu_component.die_size_per_core.status = Status.COMPLETED
-            cpu_component.die_size_per_core.source = sub['Source']
+            cpu_component.die_size_per_core.source = str(sub['Source'].iloc[0])
         else:
             sub['_scope3'] = sub[['core_units', 'die_size_per_core']].apply(lambda x: x[0] * x[1], axis=1)
             sub = sub.sort_values(by='_scope3', ascending=False)

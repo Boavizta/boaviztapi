@@ -91,4 +91,4 @@ def default_impact_factor(args):
     sub = args["emission_factors_df"]
     sub = sub[sub['code'] == args["usage_location"].value]
     return float(sub[f"{args['impact_type']}_emission_factor"]), sub[
-        f"{args['impact_type']}_emission_source"], Status.COMPLETED
+        f"{args['impact_type']}_emission_source"].iloc[0], Status.COMPLETED

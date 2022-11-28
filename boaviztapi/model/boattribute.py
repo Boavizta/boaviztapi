@@ -31,7 +31,7 @@ class Boattribute:
             if callable(self.default):
                 default = self.default(self.args)
                 self._value = default[0]
-                self.source = default[1].iloc[0]
+                self.source = default[1]
                 self.status = default[2]
 
             else:
