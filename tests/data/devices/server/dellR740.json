@@ -2,7 +2,7 @@
   "model":
   {
     "manufacturer": "Dell",
-    "name": "R740",
+    "name": "dellR740",
     "type": "rack",
     "year": 2020
   },
@@ -36,6 +36,5 @@
       "units": 2,
       "unit_weight": 2.99
     }
-  },
-  "usage": {}
+  }
 }

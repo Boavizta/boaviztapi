@@ -31,7 +31,7 @@ async def instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=clo
     instance_archetype = await get_cloud_instance_archetype(instance_type, "aws")
 
     if not instance_archetype:
-        raise HTTPException(status_code=404, detail=f"{instance_archetype} not found")
+        raise HTTPException(status_code=404, detail=f"{instance_type} not found")
 
     instance_archetype = Cloud(**complete_with_archetype(cloud_instance, instance_archetype))
     instance_model = mapper_cloud_instance(instance_archetype)
@@ -46,4 +46,4 @@ async def instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=clo
 @cloud_router.get('/aws/all_instances',
                   description=all_default_aws_instances)
 async def server_get_all_archetype_name():
-    return get_device_archetype_lst(os.path.join(data_dir, 'devices/cloud/aws'))
+    return get_device_archetype_lst(os.path.join(data_dir, 'devices/cloud/aws.csv'))

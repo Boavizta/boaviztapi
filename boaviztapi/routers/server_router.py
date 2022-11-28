@@ -27,7 +27,7 @@ server_router = APIRouter(
 @server_router.get('/all_default_models',
                    description=all_default_model_description)
 async def server_get_all_archetype_name():
-    return get_device_archetype_lst(os.path.join(data_dir, 'devices/server'))
+    return get_device_archetype_lst(os.path.join(data_dir, 'devices/server/server.csv'))
 
 
 @server_router.get('/model',

@@ -1,17 +1,16 @@
+import csv
 import os
-from pathlib import Path
 from typing import Union
+
+import pandas as pd
 
 from boaviztapi.dto.device import Server, Cloud, DeviceDTO
 from boaviztapi.service import data_dir
 
-known_server_directory = os.path.join(data_dir, 'devices/server')
-known_instances_directory = os.path.join(data_dir, 'devices/cloud')
 
-
-def get_device_archetype_lst(path=known_server_directory) -> list:
-    known_devices_lst = os.listdir(path)
-    return [Path(file_name).stem for file_name in known_devices_lst]
+def get_device_archetype_lst(path):
+    df = pd.read_csv(path)
+    return df['model.name'].tolist()
 
 
 def complete_with_archetype(device: DeviceDTO, archetype_device: DeviceDTO) -> dict:
@@ -29,25 +28,56 @@ def recursive_dict_complete(dict1, dict2):
     return dict2
 
 
-async def get_server_archetype(archetype_name: str, path=known_server_directory) -> Union[Server, bool]:
-    known_server_lst = get_device_archetype_lst(path=path)
-    for device_name in known_server_lst:
-        if archetype_name == device_name:
-            known_server = Server.parse_file(
-                path + '/' + device_name + ".json")
-            return known_server
+async def get_server_archetype(archetype_name: str) -> Union[Server, bool]:
+    arch = get_archetype(archetype_name, os.path.join(data_dir, "devices/server/server.csv"))
+    if not arch:
+        return False
+    return Server.parse_obj(arch)
+
+
+async def get_cloud_instance_archetype(archetype_name: str, provider) -> Union[Cloud, bool]:
+    arch = False
+    if provider == "aws":
+        arch = get_archetype(archetype_name, os.path.join(data_dir, "devices/cloud/aws.csv"))
+    if not arch:
+        return False
+    return Cloud.parse_obj(arch)
+
+
+def get_archetype(archetype_name: str, csv_path: str) -> Union[dict, bool]:
+    reader = csv.DictReader(open(csv_path, encoding='utf-8'))
+    for row in reader:
+        if row["model.name"] == archetype_name:
+            print(row2json(row))
+            return row2json(row)
     return False
 
 
-async def get_cloud_instance_archetype(archetype_name: str, provider, path=known_instances_directory) \
-        -> Union[Cloud, bool]:
-    known_cloud_instance_lst = get_device_archetype_lst(os.path.join(path, provider))
-    for device_name in known_cloud_instance_lst:
-        if archetype_name == device_name:
-            known_server = Cloud.parse_file(
-                path + '/' + provider + '/' + device_name + ".json")
-            return known_server
-    return False
+def row2json(archetype):
+    obj = {}
+    for attribute in archetype:
+        value = archetype[attribute]
+        if value == "" or value is None:
+            continue
+        names = attribute.split('.')
+        nested_set(obj, names, value)
+    obj = set_list(obj)
+    return obj
+
+
+def nested_set(dic, keys, value):
+    for key in keys[:-1]:
+        dic = dic.setdefault(key, {})
+    dic[keys[-1]] = value
+
+
+def set_list(obj):
+    if obj.get("configuration") is not None:
+        if obj.get("configuration").get("disk"):
+            obj["configuration"]["disk"] = [obj["configuration"]["disk"]]
+        if obj.get("configuration").get("ram"):
+            obj["configuration"]["ram"] = [obj["configuration"]["ram"]]
+    return obj
 
 
 def find_archetype(server_dto: Server) -> Server:
