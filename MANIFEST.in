@@ -1,4 +1,5 @@
 exclude tests/*
 include Pipfile
 include Pipfile.lock
+include boaviztapi/routers/openapi_doc/intro_openapi.md
 graft boaviztapi/data

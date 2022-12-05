@@ -9,6 +9,10 @@ fastapi = '*'
 uvicorn = '*'
 pandas = '*'
 aiofile = '*'
+numpy = "*"
+scipy = "*"
+rapidfuzz = "*"
+markdown = "*"
 mangum = "*"
 
 [dev-packages]
@@ -22,6 +26,7 @@ requests = '*'
 setuptools-pipfile = "==0.4.1"
 twine = "==3.2.0"
 bump2version = "==1.0.1"
+mkdocs-render-swagger-plugin = "*"
 
 [requires]
 python_version = "3.8"

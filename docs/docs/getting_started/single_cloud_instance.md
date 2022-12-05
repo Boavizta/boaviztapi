@@ -4,9 +4,9 @@ This page presents basic queries that can be used to retrieve impacts of cloud i
 
 You use `curl` in command line to query Boavizta demo (public) API.
 
-💡 _You can format the results by using jq (`curl -X 'GET' 'https://api.boavizta.org/v1/cloud/aws/all_instances' | jq`)_
+💡 _You can format the results by using jq (`curl -X 'GET' 'http://localhost:5000/v1/cloud/aws?instance_type=a1.xlarge' | jq`)_
 
-## Get the list of available instance types
+## Get the impacts from cpu name
 
 This query return the list of available aws instances 
 
@@ -56,22 +56,21 @@ Results:
 ```json
 {
   "gwp": {
-    "manufacture": 36.0,
-    "use": 18.0,
+    "manufacture": 36,
+    "use": 21,
     "unit": "kgCO2eq"
   },
   "pe": {
-    "manufacture": 460.0,
-    "use": 610.0,
+    "manufacture": 450,
+    "use": 709,
     "unit": "MJ"
   },
   "adp": {
     "manufacture": 0.0027,
-    "use": 3.1e-06,
+    "use": 3.54e-06,
     "unit": "kgSbeq"
   }
 }
-
 ```
 
 ## Get the values used to measure the impacts of each component
@@ -95,166 +94,25 @@ Response :
 {
   "impacts": {
     "gwp": {
-      "manufacture": 36.0,
-      "use": 18.0,
+      "manufacture": 36,
+      "use": 21,
       "unit": "kgCO2eq"
     },
     "pe": {
-      "manufacture": 460.0,
-      "use": 610.0,
+      "manufacture": 450,
+      "use": 709,
       "unit": "MJ"
     },
     "adp": {
       "manufacture": 0.0027,
-      "use": 3.1e-06,
+      "use": 3.54e-06,
       "unit": "kgSbeq"
     }
   },
   "verbose": {
-    "CPU-1": {
-      "unit": 1,
-      "hash": "8c8e46192c3d81601f833f27788b714ff684b227b31246d6a6335681a9693d87",
-      "core_units": {
-        "input_value": null,
-        "used_value": 24,
-        "status": "SET"
-      },
-      "die_size_per_core": {
-        "input_value": null,
-        "used_value": 0.245,
-        "status": "SET"
-      },
-      "process": {
-        "input_value": null,
-        "used_value": 7.0,
-        "status": "SET"
-      },
-      "manufacturer": {
-        "input_value": null,
-        "used_value": "Annapurna Labs",
-        "status": "SET"
-      },
-      "manufacture_date": {
-        "input_value": null,
-        "used_value": "2019",
-        "status": "SET"
-      },
-      "family": {
-        "input_value": null,
-        "used_value": "Graviton2",
-        "status": "SET"
-      },
-      "impacts": {
-        "gwp": {
-          "value": 21.7,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 325.0,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.02,
-          "unit": "kgSbeq"
-        }
-      }
-    },
-    "RAM-1": {
-      "unit": 16,
-      "hash": "a34b138e4ee0b4c832576fe84c3ef50c4e9713ab83fe8269fdc4dbacfd382efb",
-      "capacity": {
-        "input_value": null,
-        "used_value": 32,
-        "status": "SET"
-      },
-      "density": {
-        "input_value": null,
-        "used_value": 0.625,
-        "status": "SET"
-      },
-      "impacts": {
-        "gwp": {
-          "value": 1920.0,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 24000.0,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.0784,
-          "unit": "kgSbeq"
-        }
-      }
-    },
-    "POWER_SUPPLY-1": {
-      "unit": 2,
-      "hash": "be84aabaaac41126e1bd93ec3c10b355c6c7534cf9e3d7337cef9d6d0bb116c6",
-      "unit_weight": {
-        "input_value": null,
-        "used_value": 2.99,
-        "status": "SET"
-      },
-      "impacts": {
-        "gwp": {
-          "value": 145.32,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 2100.0,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.0496,
-          "unit": "kgSbeq"
-        }
-      }
-    },
-    "CASE-1": {
-      "unit": 1,
-      "hash": "083dcd17f9997756af73de7c61f0cf2986b25075ad00bbf7c07e08cc80a2183f",
-      "case_type": {
-        "input_value": null,
-        "used_value": "rack",
-        "status": "SET"
-      },
-      "impacts": {
-        "gwp": {
-          "value": 150.0,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 2200.0,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.0202,
-          "unit": "kgSbeq"
-        }
-      }
-    },
-    "MOTHERBOARD-1": {
-      "unit": 1,
-      "hash": "3a31a8fbd4b871719831ef11af93eefbb1c2afc0f62d850a31fb5475aac9336e",
-      "impacts": {
-        "gwp": {
-          "value": 66.1,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 836.0,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.00369,
-          "unit": "kgSbeq"
-        }
-      }
-    },
     "ASSEMBLY-1": {
-      "unit": 1,
-      "hash": "8bfe70a2b59691c050865455cc9cf1b561ec702e7cf930c1026a490964bbd364",
-      "impacts": {
+      "units": 1,
+      "manufacture_impacts": {
         "gwp": {
           "value": 6.68,
           "unit": "kgCO2eq"
@@ -269,140 +127,379 @@ Response :
         }
       }
     },
-    "SSD-1": {
-      "unit": 1,
-      "hash": "cb269039943b145f924c394acd2f665c10b23bddf954428af81bd8eccaff3d6a",
-      "capacity": {
-        "input_value": null,
-        "used_value": 1000,
-        "status": "SET"
-      },
-      "density": {
-        "input_value": null,
-        "used_value": 48.5,
-        "status": "SET"
-      },
-      "impacts": {
+    "CPU-1": {
+      "units": 1,
+      "manufacture_impacts": {
         "gwp": {
-          "value": 52.0,
+          "value": 19.1,
           "unit": "kgCO2eq"
         },
         "pe": {
-          "value": 640.0,
+          "value": 290,
           "unit": "MJ"
         },
         "adp": {
-          "value": 0.0019,
+          "value": 0.02,
+          "unit": "kgSbeq"
+        }
+      },
+      "core_units": {
+        "value": 64,
+        "unit": "none",
+        "status": "INPUT",
+        "source": null
+      },
+      "die_size_per_core": {
+        "value": 0.0714,
+        "unit": "mm2",
+        "status": "COMPLETED",
+        "source": {
+          "64": "https://en.wikichip.org/wiki/annapurna_labs/alpine/alc12b00"
+        }
+      },
+      "family": {
+        "value": "graviton2",
+        "unit": "none",
+        "status": "CHANGED",
+        "source": null
+      },
+      "tdp": {
+        "value": 210,
+        "unit": "W",
+        "status": "INPUT",
+        "source": null
+      },
+      "USAGE": {
+        "usage_impacts": {
+          "gwp": {
+            "value": 520,
+            "unit": "kgCO2eq"
+          },
+          "pe": {
+            "value": 17720,
+            "unit": "MJ"
+          },
+          "adp": {
+            "value": 8.84e-05,
+            "unit": "kgSbeq"
+          }
+        },
+        "hours_electrical_consumption": {
+          "value": 157.11830305304008,
+          "unit": "W",
+          "status": "COMPLETED",
+          "source": null
+        },
+        "time_workload": {
+          "value": 50,
+          "unit": "%",
+          "status": "DEFAULT",
+          "source": null
+        },
+        "usage_location": {
+          "value": "EEE",
+          "unit": "CodSP3 - NCS Country Codes - NATO",
+          "status": "DEFAULT",
+          "source": null
+        },
+        "adp_factor": {
+          "value": 6.42e-08,
+          "unit": "KgSbeq/kWh",
+          "status": "COMPLETED",
+          "source": {
+            "1": "ADEME BASE IMPACT"
+          }
+        },
+        "gwp_factor": {
+          "value": 0.38,
+          "unit": "kgCO2e/kWh",
+          "status": "COMPLETED",
+          "source": {
+            "1": "https://www.sciencedirect.com/science/article/pii/S0306261921012149 : \nAverage of 27 european countries"
+          }
+        },
+        "pe_factor": {
+          "value": 12.874,
+          "unit": "MJ/kWh",
+          "status": "COMPLETED",
+          "source": {
+            "1": "ADPf / (1-%renewable_energy)"
+          }
+        },
+        "use_time": {
+          "value": 8760,
+          "unit": "hours",
+          "status": "DEFAULT",
+          "source": null
+        },
+        "workloads": {
+          "value": [
+            {
+              "load_percentage": 0,
+              "power_watt": 25.2
+            },
+            {
+              "load_percentage": 10,
+              "power_watt": 67.2
+            },
+            {
+              "load_percentage": 50,
+              "power_watt": 157.5
+            },
+            {
+              "load_percentage": 100,
+              "power_watt": 214.20000000000002
+            }
+          ],
+          "unit": "workload_rate:W",
+          "status": "COMPLETED",
+          "source": null
+        },
+        "params": {
+          "value": {
+            "a": 106.7806614802558,
+            "b": 0.06385367477645258,
+            "c": 20.45110317833163,
+            "d": -3.4539444500465573
+          },
+          "unit": "none",
+          "status": "COMPLETED",
+          "source": "From TDP"
+        }
+      }
+    },
+    "RAM-1": {
+      "units": 16,
+      "manufacture_impacts": {
+        "gwp": {
+          "value": 120,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 1500,
+          "unit": "MJ"
+        },
+        "adp": {
+          "value": 0.0049,
+          "unit": "kgSbeq"
+        }
+      },
+      "capacity": {
+        "value": 32,
+        "unit": "GB",
+        "status": "INPUT",
+        "source": null
+      },
+      "density": {
+        "value": 0.625,
+        "unit": "GB/cm2",
+        "status": "DEFAULT",
+        "source": null
+      },
+      "USAGE": {
+        "usage_impacts": {
+          "gwp": {
+            "value": 30,
+            "unit": "kgCO2eq"
+          },
+          "pe": {
+            "value": 1025,
+            "unit": "MJ"
+          },
+          "adp": {
+            "value": 5.11e-06,
+            "unit": "kgSbeq"
+          }
+        },
+        "hours_electrical_consumption": {
+          "value": 9.088,
+          "unit": "W",
+          "status": "COMPLETED",
+          "source": null
+        },
+        "time_workload": {
+          "value": 50,
+          "unit": "%",
+          "status": "DEFAULT",
+          "source": null
+        },
+        "usage_location": {
+          "value": "EEE",
+          "unit": "CodSP3 - NCS Country Codes - NATO",
+          "status": "DEFAULT",
+          "source": null
+        },
+        "adp_factor": {
+          "value": 6.42e-08,
+          "unit": "KgSbeq/kWh",
+          "status": "COMPLETED",
+          "source": {
+            "1": "ADEME BASE IMPACT"
+          }
+        },
+        "gwp_factor": {
+          "value": 0.38,
+          "unit": "kgCO2e/kWh",
+          "status": "COMPLETED",
+          "source": {
+            "1": "https://www.sciencedirect.com/science/article/pii/S0306261921012149 : \nAverage of 27 european countries"
+          }
+        },
+        "pe_factor": {
+          "value": 12.874,
+          "unit": "MJ/kWh",
+          "status": "COMPLETED",
+          "source": {
+            "1": "ADPf / (1-%renewable_energy)"
+          }
+        },
+        "use_time": {
+          "value": 8760,
+          "unit": "hours",
+          "status": "DEFAULT",
+          "source": null
+        },
+        "params": {
+          "value": {
+            "a": 9.088
+          },
+          "unit": "none",
+          "status": "COMPLETED",
+          "source": "(ram_electrical_factor_per_go : 0.284) * (ram_electrical_factor_per_go: 32) "
+        }
+      }
+    },
+    "POWER_SUPPLY-1": {
+      "units": 2,
+      "manufacture_impacts": {
+        "gwp": {
+          "value": 72.7,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 1050,
+          "unit": "MJ"
+        },
+        "adp": {
+          "value": 0.025,
+          "unit": "kgSbeq"
+        }
+      },
+      "unit_weight": {
+        "value": 2.99,
+        "unit": "kg",
+        "status": "DEFAULT",
+        "source": null
+      }
+    },
+    "CASE-1": {
+      "units": 1,
+      "manufacture_impacts": {
+        "gwp": {
+          "value": 150,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 2200,
+          "unit": "MJ"
+        },
+        "adp": {
+          "value": 0.0202,
+          "unit": "kgSbeq"
+        }
+      },
+      "case_type": {
+        "value": "rack",
+        "unit": "none",
+        "status": "INPUT",
+        "source": null
+      }
+    },
+    "MOTHERBOARD-1": {
+      "units": 1,
+      "manufacture_impacts": {
+        "gwp": {
+          "value": 66.1,
+          "unit": "kgCO2eq"
+        },
+        "pe": {
+          "value": 836,
+          "unit": "MJ"
+        },
+        "adp": {
+          "value": 0.00369,
           "unit": "kgSbeq"
         }
       }
     },
-    "USAGE-1": {
-      "unit": 1,
-      "hash": 0,
-      "years_use_time": {
-        "input_value": null,
-        "used_value": 1,
-        "status": "SET"
-      },
-      "hours_electrical_consumption": {
-        "input_value": null,
-        "used_value": 0.3478858,
-        "status": "SET"
-      },
-      "usage_location": {
-        "input_value": null,
-        "used_value": "EEE",
-        "status": "SET"
-      },
-      "gwp_factor": {
-        "input_value": null,
-        "used_value": 0.38,
-        "status": "SET"
-      },
-      "pe_factor": {
-        "input_value": null,
-        "used_value": 12.874,
-        "status": "SET"
-      },
-      "adp_factor": {
-        "input_value": null,
-        "used_value": 6.42e-08,
-        "status": "SET"
-      },
-      "max_power": {
-        "input_value": null,
-        "used_value": 489.98,
-        "status": "SET"
-      },
-      "workload": {
-        "idle": {
-          "power": {
-            "input_value": null,
-            "used_value": 0.31,
-            "status": "SET"
-          },
-          "time": {
-            "input_value": null,
-            "used_value": 0.0,
-            "status": "SET"
-          }
-        },
-        "10": {
-          "power": {
-            "input_value": null,
-            "used_value": 0.47,
-            "status": "SET"
-          },
-          "time": {
-            "input_value": null,
-            "used_value": 0.0,
-            "status": "SET"
-          }
-        },
-        "50": {
-          "power": {
-            "input_value": null,
-            "used_value": 0.71,
-            "status": "SET"
-          },
-          "time": {
-            "input_value": null,
-            "used_value": 1.0,
-            "status": "SET"
-          }
-        },
-        "100": {
-          "power": {
-            "input_value": null,
-            "used_value": 1.0,
-            "status": "SET"
-          },
-          "time": {
-            "input_value": null,
-            "used_value": 0.0,
-            "status": "SET"
-          }
-        }
-      },
-      "instance_per_server": {
-        "input_value": null,
-        "used_value": 64.0,
-        "status": "SET"
-      },
-      "impacts": {
+    "USAGE": {
+      "usage_impacts": {
         "gwp": {
-          "value": 1160.0,
+          "value": 21,
           "unit": "kgCO2eq"
         },
         "pe": {
-          "value": 39200.0,
+          "value": 709,
           "unit": "MJ"
         },
         "adp": {
-          "value": 0.000196,
+          "value": 3.54e-06,
           "unit": "kgSbeq"
         }
+      },
+      "hours_electrical_consumption": {
+        "value": 402.3599830605433,
+        "unit": "W",
+        "status": "COMPLETED",
+        "source": null
+      },
+      "usage_location": {
+        "value": "EEE",
+        "unit": "CodSP3 - NCS Country Codes - NATO",
+        "status": "DEFAULT",
+        "source": null
+      },
+      "adp_factor": {
+        "value": 6.42e-08,
+        "unit": "KgSbeq/kWh",
+        "status": "COMPLETED",
+        "source": {
+          "1": "ADEME BASE IMPACT"
+        }
+      },
+      "gwp_factor": {
+        "value": 0.38,
+        "unit": "kgCO2e/kWh",
+        "status": "COMPLETED",
+        "source": {
+          "1": "https://www.sciencedirect.com/science/article/pii/S0306261921012149 : \nAverage of 27 european countries"
+        }
+      },
+      "pe_factor": {
+        "value": 12.874,
+        "unit": "MJ/kWh",
+        "status": "COMPLETED",
+        "source": {
+          "1": "ADPf / (1-%renewable_energy)"
+        }
+      },
+      "use_time": {
+        "value": 8760,
+        "unit": "hours",
+        "status": "DEFAULT",
+        "source": null
+      },
+      "other_consumption_ratio": {
+        "value": 0.33,
+        "unit": "ratio /1",
+        "status": "DEFAULT",
+        "source": null
+      },
+      "instance_per_server": {
+        "value": 64,
+        "unit": "none",
+        "status": "INPUT",
+        "source": null
       }
     }
   }
@@ -426,45 +523,42 @@ curl -X 'POST' \
   -d '{
   "hours_use_time": 2,
   "usage_location": "FRA",
-  "workload": {
-    "10": {
-      "time": 0
+  "time_workload": [
+    {
+      "time_percentage": 50,
+      "load_percentage": 0
     },
-    "50": {
-      "time": 0.5
-    },
-    "100": {
-      "time": 0
-    },
-    "idle": {
-      "time": 0.5
+    {
+      "time_percentage": 50,
+      "load_percentage": 50
     }
-  }
-}'
+  ]}'
 ```
 
 the query usage can be translated as such :
 
-```I used a r6g.medium in a french datacenter for 2 hours half of the time in IDLE mode and half of the time at 50% of workload```
+```I used a r6g.medium in a french data center for 2 hours half of the time in IDLE mode and half of the time at 50% of workload```
 
 Results:
 
 ```json
 {
   "gwp": {
-    "manufacture": 36.0,
-    "use": 0.00077,
+    "manufacture": 36,
+    "use": 0.001,
     "unit": "kgCO2eq"
   },
   "pe": {
-    "manufacture": 460.0,
-    "use": 0.088,
+    "manufacture": 450,
+    "use": 0.1,
     "unit": "MJ"
   },
   "adp": {
     "manufacture": 0.0027,
-    "use": 3.8e-10,
+    "use": 5e-10,
     "unit": "kgSbeq"
   }
 }
 ```
+
+For further information see : [The explanation page on cloud](../Explanations/devices/cloud.md)

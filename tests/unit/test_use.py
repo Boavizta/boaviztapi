@@ -1,15 +1,23 @@
-from boaviztapi.utils.roundit import round_to_sigfig
+from boaviztapi.dto.usage.usage import smart_mapper_usage, smart_mapper_usage_server
+from boaviztapi.model.device import DeviceServer
+from boaviztapi.service.bottom_up import get_model_impact
 
 
-def test_usage_server_french_mix_1_kw(french_mix_1_kw):
-    french_mix_1_kw.smart_complete_data()
-    assert round_to_sigfig(french_mix_1_kw.impact_pe()[0], 2) == 99.0
-    assert round_to_sigfig(french_mix_1_kw.impact_adp()[0], 2) == 4.3e-07
-    assert round_to_sigfig(french_mix_1_kw.impact_gwp()[0], 2) == 0.86
+def test_usage_server_french_mix_1_kw(french_mix_1_kw_dto):
+    server = DeviceServer()
+    usage = smart_mapper_usage_server(french_mix_1_kw_dto)
+    server.usage = usage
+
+    assert get_model_impact(server, 'use', 'pe') == 100
+    assert get_model_impact(server, 'use', 'adp') == 4e-07
+    assert get_model_impact(server, 'use', 'gwp') == 0.9
 
 
-def test_usage_server_empty_usage(empty_usage):
-    empty_usage.smart_complete_data()
-    assert round_to_sigfig(empty_usage.impact_pe()[0], 2) == 40000.0
-    assert round_to_sigfig(empty_usage.impact_adp()[0], 2) == 0.0002
-    assert round_to_sigfig(empty_usage.impact_gwp()[0], 2) == 1200.0
+def test_usage_server_empty_usage(empty_usage_dto):
+    server = DeviceServer()
+    usage = smart_mapper_usage_server(empty_usage_dto)
+    server.usage = usage
+
+    assert get_model_impact(server, 'use', 'pe') == 87380
+    assert get_model_impact(server, 'use', 'adp') == 0.000436
+    assert get_model_impact(server, 'use', 'gwp') == 2600

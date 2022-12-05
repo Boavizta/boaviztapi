@@ -1,17 +1,4 @@
 { "usage": {
-    "workload": {
-      "10": {
-        "time": 0.4
-      },
-      "50": {
-        "time": 0.2
-      },
-      "100": {
-        "time": 0.2
-      },
-      "idle": {
-        "time": 0.2
-      }
-    }
+   "usage_location":"FRA"
   }
 }

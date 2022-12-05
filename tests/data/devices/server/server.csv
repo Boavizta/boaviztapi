@@ -1,0 +1,7 @@
+model.name,model.manufacturer,model.type,model.year,configuration.cpu.units,configuration.cpu.die_size_per_core,configuration.cpu.core_units,configuration.cpu.name,configuration.cpu.manufacturer,configuration.cpu.model_range,configuration.cpu.family,configuration.cpu.tdp,configuration.cpu.manufacture_date,configuration.ram.capacity,configuration.ram.units,configuration.ram.density,configuration.disk.units,configuration.disk.type,configuration.disk.capacity,configuration.disk.density,configuration.power_supply.units,configuration.power_supply.unit_weight,configuration.gpu.memory,configuration.gpu.memory,configuration.gpu.units,usage.instance_per_server,usage.overcommited,warnings
+hyper-converged-medium-storage,,blade,2021,2,,24,,,,Ice Lake,,,128,12,1.79,24,ssd,1920,50.6,2,2.99,,,,,,
+containerization-standard,,blade,2021,2,,28,,,,Ice Lake,,,128,8,1.79,3,ssd,7680,50.6,2,2.99,,,,,,
+dellR740,Dell,rack,2020,2,0.245,24,,,,,,,32,12,1.79,1,ssd,400,50.6,2,2.99,,,,,,
+hyper-converged-low-storage,,blade,2021,2,,24,,,,Ice Lake,,,128,12,1.79,16,ssd,1920,50.6,2,2.99,,,,,,
+hyper-converged-high-storage,,blade,2021,2,,24,,,,Ice Lake,,,128,12,1.79,24,ssd,3840,50.6,2,2.99,,,,,,
+bare-metal-low-compute,,blade,2016,2,,10,,,,Broadwell,,,128,12,1.79,16,ssd,1920,50.6,2,2.99,,,,,,

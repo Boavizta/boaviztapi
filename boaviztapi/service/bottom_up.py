@@ -1,57 +1,67 @@
-from typing import Set, Optional
+from typing import Union, Optional
 
-from boaviztapi.model.components.component import Component
-from boaviztapi.model.devices.device import Device
+from boaviztapi.model.component import Component
+from boaviztapi.model.device import Device
 import boaviztapi.utils.roundit as rd
+from boaviztapi.service.allocation import allocate, Allocation
 
-_default_impacts_code = {"gwp", "pe", "adp"}
+NOT_IMPLEMENTED = 'not implemented'
 
 
-def bottom_up_device(device: Device, impact_codes: Optional[Set[str]] = None) -> dict:
-    # Smart complete data
-    device.smart_complete_data()
-
+def bottom_up_component(component: Component, allocation: Allocation) -> dict:
     impacts = {
         'gwp': {
-            'manufacture': rd.round_to_sigfig(*device.impact_manufacture_gwp()),
-            'use': rd.round_to_sigfig(*device.impact_use_gwp()),
+            'manufacture': get_model_impact(component, 'manufacture', 'gwp', component.units, allocation) or NOT_IMPLEMENTED,
+            'use': get_model_impact(component, 'use', 'gwp', component.units) or NOT_IMPLEMENTED,
             'unit': "kgCO2eq"
         },
         'pe': {
-            'manufacture': rd.round_to_sigfig(*device.impact_manufacture_pe()),
-            'use': rd.round_to_sigfig(*device.impact_use_pe()),
+            'manufacture': get_model_impact(component, 'manufacture', 'pe', component.units, allocation) or NOT_IMPLEMENTED,
+            'use': get_model_impact(component, 'use', 'pe', component.units) or NOT_IMPLEMENTED,
             'unit': "MJ"
         },
         'adp': {
-            'manufacture': rd.round_to_sigfig(*device.impact_manufacture_adp()),
-            'use': rd.round_to_sigfig(*device.impact_use_adp()),
+            'manufacture': get_model_impact(component, 'manufacture', 'adp', component.units, allocation) or NOT_IMPLEMENTED,
+            'use': get_model_impact(component, 'use', 'adp', component.units) or NOT_IMPLEMENTED,
             'unit': "kgSbeq"
         },
     }
     return impacts
 
 
-def bottom_up_component(component: Component, units: int = 1, impact_codes: Optional[Set[str]] = None) -> dict:
-    component.smart_complete_data()
-    gwp = component.impact_gwp()
-    pe = component.impact_pe()
-    adp = component.impact_adp()
+def get_model_impact(model: Union[Component, Device],
+                     phase: str,
+                     impact_type: str,
+                     units: int = 1,
+                     allocation_type: Allocation = Allocation.TOTAL) -> Optional[float]:
+    try:
+        impact_function = model.__getattribute__(f'impact_{phase}_{impact_type}')
+        impact, significant_figures = impact_function()
 
+        if phase == "manufacture":
+            impact = allocate(impact, allocation_type, model.usage)
+
+        units_impact = impact * units
+        return rd.round_to_sigfig(units_impact, significant_figures)
+    except (AttributeError, NotImplementedError):
+        pass
+
+
+def bottom_up_device(device: Device, allocation) -> dict:
     impacts = {
         'gwp': {
-            'manufacture': rd.round_to_sigfig(gwp[0]*units, gwp[1]),
-            'use': "not implemented",
+            'manufacture': get_model_impact(device, 'manufacture', 'gwp', allocation_type=allocation) or NOT_IMPLEMENTED,
+            'use': get_model_impact(device, 'use', 'gwp') or NOT_IMPLEMENTED,
             'unit': "kgCO2eq"
-
         },
         'pe': {
-            'manufacture': rd.round_to_sigfig(pe[0]*units, pe[1]),
-            'use': "not implemented",
+            'manufacture': get_model_impact(device, 'manufacture', 'pe', allocation_type=allocation) or NOT_IMPLEMENTED,
+            'use': get_model_impact(device, 'use', 'pe') or NOT_IMPLEMENTED,
             'unit': "MJ"
         },
         'adp': {
-            'manufacture': rd.round_to_sigfig(adp[0]*units, adp[1]),
-            'use': "not implemented",
+            'manufacture': get_model_impact(device, 'manufacture', 'adp', allocation_type=allocation) or NOT_IMPLEMENTED,
+            'use': get_model_impact(device, 'use', 'adp') or NOT_IMPLEMENTED,
             'unit': "kgSbeq"
         },
     }
