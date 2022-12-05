@@ -1,24 +1,24 @@
-## General
+****## General
 
 #### How does the API data set differ from other Boavizta' data set ?
-While the [digital product carbon footprint repository](https://github.com/Boavizta/environmental-footprint-data) aggregates non-transparent manufacturer claims, the API reports assessed impacts via an open, auditable and improvable bottom-up approach. 
-Our impacts factors relies on scientific publications which can be read in an open way.
+While the [digital product carbon footprint repository](https://github.com/Boavizta/environmental-footprint-data) aggregates non-transparent manufacturer data, the API reports impacts via an open, auditable and improvable bottom-up approach. 
+Our impacts factors relies on scientific publications.
 
 #### How the API data differs to other datasets (like Negaoctet or Ecoinvent for example) ?
-The API is not intended to offer as high a level of quality as paid databases. However, it allows anyone to evaluate the impacts of digital products in a free, automated, open, auditable and community-improvable way.
+The API is not intended to offer the same level of quality as paid databases. However, it allows anyone to evaluate the impacts of digital products in a free, automated, open, auditable and community-improvable way.
 
 ## Methodology
 
 #### How does the API compute environmental impacts related to manufacture ?
 
-Manufacture impacts are retrieved from with a bottom-up approach (the sum of components impacts). The impacts are evaluated according to the technical configuration of the components sent by the user or completed by the API.
+Manufacture impacts are retrieved with a bottom-up approach. The impacts are evaluated according to the technical configuration of the components sent by the user or completed by the API.
 
 See: [Manufacture methodology](./Explanations/manufacture_methodology.md)
 
 
 #### How does the API compute environmental impacts related to usage ?
 
-Manufacture impacts are retrieved by multiplying a power hover a length of use with an impact factor relative to the place of use of the evaluated product.
+Manufacture impacts are retrieved by multiplying a power hover a duration with an impact factor relative to the place of use of the evaluated product.
 
 See: [Usage methodology](Explanations/usage/usage.md)
 
@@ -31,13 +31,13 @@ See: [Electricity methodology](Explanations/usage/elec_conso.md)
 #### How do we compute the impacts of cloud instances ?
 
 The technical configuration of cloud instances are pre-recorded in the API.
-Its impacts are computed through the bottom-up process. The electricity is modeled from the technical configuration and the context of usage given by the user.
+Their impacts are computed through the bottom-up process. The electricity is modeled from the technical configuration and the context of usage given by the user.
 
 See: [Cloud methodology](Explanations/devices/cloud.md)
 
 #### How does the API amortize manufacturing costs ?
-The API implements two methods to report manufacturing-related impacts
-Either the total cost of manufacturing impacts is given, or a linear amortization over the life cycle of the products can be reported 
+The API implements two methods to amortize manufacturing-related impacts
+Either the total cost of manufacturing impacts is given, or a linear amortization over the life cycle of the products can be applied. 
 
 See: [Allocation methodology](Explanations/manufacture_methodology/#allocation)
 
@@ -84,4 +84,4 @@ Several contributions are possible :
 
 * Code : Contribute to the [open issues](https://github.com/Boavizta/boaviztapi/issues)
 * Methodology : Open issues on our [GitHub](https://github.com/Boavizta/boaviztapi/) to criticize, propose improvements, or extend the scope of our methodology.
-* Crowdsourcing : Help us collect missing data (TBD)
+* Crowdsourcing : Help us collect missing data (TBD)****
