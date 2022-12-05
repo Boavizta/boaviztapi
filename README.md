@@ -79,6 +79,22 @@ $ uvicorn boaviztapi.main:app --host=localhost --port 5000
 
 You can run the tests with `pytest`.
 
+### Deploy to AWS as serverless application
+
+Api can be self hosted to your own AWS account using the serverless framework.
+
+```sh
+# Install the serverless framework and plugins
+npm install -g serverless
+npm i
+# Authenticate
+export AWS_PROFILE=your-own-profile
+# Deploy to dev
+serverless deploy
+```
+
+_Fisrt packaging/deployment may takes a several minutes_
+
 ### OpenAPI specification (Swagger)
 
 Once API server is launched API swagger is available at [httsp://localhost:5000/docs](https://localhost:5000/docs).

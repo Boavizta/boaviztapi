@@ -13,6 +13,7 @@ numpy = "*"
 scipy = "*"
 rapidfuzz = "*"
 markdown = "*"
+mangum = "*"
 
 [dev-packages]
 mkdocs = '*'
