@@ -79,7 +79,7 @@ class ComponentRAM(Component):
             self.usage.hours_electrical_consumption.set_completed(
                 self.usage.consumption_profile.apply_multiple_workloads(self.usage.time_workload.value))
 
-        return self.usage.hours_electrical_consumption.value
+        return rd.round_to_sigfig(self.usage.hours_electrical_consumption.value, 5)
 
     def __get_impact_constants(self, impact_type: str) -> Tuple[float, float]:
         ram_die_impact = self.IMPACT_FACTOR[impact_type]['die_impact']
