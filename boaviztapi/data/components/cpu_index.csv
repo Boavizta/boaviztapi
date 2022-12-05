@@ -1050,10 +1050,10 @@ gold 6258r,xeon gold 6258r,intel,cascadelake,xeon gold,
 gold 6248r,xeon gold 6248r,intel,cascadelake,xeon gold,
 gold 6242r,xeon gold 6242r,intel,cascadelake,xeon gold,
 gold 6250l,xeon gold 6250l,intel,cascadelake,xeon gold,
-8275cl,8275cl,intel,cascadelake,,
-8259cl,8259cl,intel,cascadelake,,
-8252c,8252c,intel,cascadelake,,
-8370c,8370c,intel,cascadelake,,
+platinum 8275cl,xeon platinum 8275cl,intel,cascadelake,xeon platinum,240
+platinum 8259cl,xeon platinum 8259cl,intel,cascadelake,xeon platinum,210
+platinum 8252c,xeon platinum 8252c,intel,cascadelake,xeon platinum,240
+platinum 8370c,xeon platinum 8370c,intel,cascadelake,xeon platinum,
 i9 i9-10920x,core i9 i9-10920x,intel,cascadelake,core i9,
 i9 i9-10940x,core i9 i9-10940x,intel,cascadelake,core i9,
 i9 i9-10980xe,core i9 i9-10980xe,intel,cascadelake,core i9,
