@@ -1,4 +1,4 @@
-****## General
+## General
 
 #### How does the API data set differ from other Boavizta' data set ?
 While the [digital product carbon footprint repository](https://github.com/Boavizta/environmental-footprint-data) aggregates non-transparent manufacturer data, the API reports impacts via an open, auditable and improvable bottom-up approach. 
@@ -84,4 +84,4 @@ Several contributions are possible :
 
 * Code : Contribute to the [open issues](https://github.com/Boavizta/boaviztapi/issues)
 * Methodology : Open issues on our [GitHub](https://github.com/Boavizta/boaviztapi/) to criticize, propose improvements, or extend the scope of our methodology.
-* Crowdsourcing : Help us collect missing data (TBD)****
+* Crowdsourcing : Help us collect missing data (TBD)
