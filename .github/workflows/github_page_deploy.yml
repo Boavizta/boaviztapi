@@ -20,4 +20,3 @@ jobs:
           CONFIG_FILE: docs/mkdocs.yml
           EXTRA_PACKAGES: build-base
           REQUIREMENTS: docs/requirements.txt
-          GITHUB_DOMAIN: doc.api.boavizta.org
