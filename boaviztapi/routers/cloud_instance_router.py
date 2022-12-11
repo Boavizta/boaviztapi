@@ -9,7 +9,7 @@ from boaviztapi.dto.usage import UsageCloud
 from boaviztapi.model.device import DeviceCloudInstance
 from boaviztapi.routers import data_dir
 from boaviztapi.routers.openapi_doc.descriptions import cloud_provider_description, all_default_cloud_instances, all_default_cloud_providers
-from boaviztapi.routers.openapi_doc.examples import cloud_usage_example
+from boaviztapi.routers.openapi_doc.examples import cloud_example
 from boaviztapi.routers.server_router import server_impact
 from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import complete_with_archetype, get_cloud_instance_archetype, \
@@ -23,11 +23,30 @@ cloud_instance_router = APIRouter(
 
 @cloud_instance_router.post('/',
                    description=cloud_provider_description)
-async def instance_cloud_impact(cloud_provider: str = Query(None, example="aws"), cloud_usage: UsageCloud = Body(None, example=cloud_usage_example),
+async def instance_cloud_impact(cloud_instance: Cloud = Body(None, example=cloud_example),
+                                verbose: bool = True,
+                                allocation: Allocation = Allocation.TOTAL):
+    instance_archetype = await get_cloud_instance_archetype(cloud_instance.instance_type, cloud_instance.provider)
+
+    if not instance_archetype:
+        raise HTTPException(status_code=404, detail=f"{cloud_instance.instance_type} at {cloud_instance.provider} not found")
+
+    instance_archetype = Cloud(**complete_with_archetype(cloud_instance, instance_archetype))
+    instance_model = mapper_cloud_instance(instance_archetype)
+
+    return await server_impact(
+        device=instance_model,
+        verbose=verbose,
+        allocation=allocation
+    )
+
+@cloud_instance_router.get('/',
+                   description=cloud_provider_description)
+async def instance_cloud_impact(cloud_provider: str = Query(None, example="aws"),
                                 instance_type: str = Query(None, example="a1.4xlarge"), verbose: bool = True,
                                 allocation: Allocation = Allocation.TOTAL):
     cloud_instance = Cloud()
-    cloud_instance.usage = cloud_usage
+    cloud_instance.usage = {}
     instance_archetype = await get_cloud_instance_archetype(instance_type, cloud_provider)
 
     if not instance_archetype:
@@ -41,7 +60,6 @@ async def instance_cloud_impact(cloud_provider: str = Query(None, example="aws")
         verbose=verbose,
         allocation=allocation
     )
-
 
 @cloud_instance_router.get('/all_instances',
                   description=all_default_cloud_instances)

@@ -66,8 +66,9 @@ def complete_component_usage(usage_component, usage_device):
 
 
 class Cloud(Server):
+    provider: Optional[str] = None
+    instance_type: Optional[str] = None
     usage: Optional[UsageCloud] = None
-
 
 def mapper_cloud_instance(cloud_dto: Cloud) -> DeviceCloudInstance:
     model_cloud_instance = DeviceCloudInstance()
