@@ -35,10 +35,10 @@ async def get_server_archetype(archetype_name: str) -> Union[Server, bool]:
     return Server.parse_obj(arch)
 
 
-async def get_cloud_instance_archetype(archetype_name: str, provider) -> Union[Cloud, bool]:
+async def get_cloud_instance_archetype(archetype_name: str, provider: str) -> Union[Cloud, bool]:
     arch = False
-    if provider == "aws":
-        arch = get_archetype(archetype_name, os.path.join(data_dir, "devices/cloud/aws.csv"))
+    if os.path.exists(data_dir+"/devices/cloud/"+provider+".csv"):
+        arch = get_archetype(archetype_name, os.path.join(data_dir, "devices/cloud/"+provider+".csv"))
     if not arch:
         return False
     return Cloud.parse_obj(arch)
