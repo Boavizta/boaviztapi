@@ -1,7 +1,0 @@
-model.name,model.manufacturer,model.type,model.year,configuration.cpu.units,configuration.cpu.core_units,configuration.cpu.name,configuration.cpu.manufacturer,configuration.cpu.model_range,configuration.cpu.family,configuration.cpu.tdp,configuration.cpu.manufacture_date,configuration.ram.capacity,configuration.ram.units,configuration.disk.units,configuration.disk.type,configuration.disk.capacity,configuration.power_supply.units,configuration.gpu.memory,configuration.gpu.memory,configuration.gpu.units,usage.instance_per_server,usage.overcommited,warnings
-azure1,Azure,rack,2018,1,16,Graviton,Annapurna Labs,Graviton,Graviton,40,2018,16,2,0,,,2,,,,2,0,
-azure2,Azure,rack,2018,1,16,Graviton,Annapurna Labs,Graviton,Graviton,40,2018,16,2,0,,,2,,,,1,0,
-azure3,Azure,rack,2018,1,16,Graviton,Annapurna Labs,Graviton,Graviton,40,2018,16,2,0,,,2,,,,8,0,
-azure4,Azure,rack,2018,1,16,Graviton,Annapurna Labs,Graviton,Graviton,40,2018,16,2,0,,,2,,,,16,0,
-azure5,Azure,rack,2019,1,16,Graviton,Annapurna Labs,Graviton,Graviton,40,2019,16,2,0,,,2,,,,1,0,
-azure6,Azure,rack,2018,1,16,Graviton,Annapurna Labs,Graviton,Graviton,40,2018,16,2,0,,,2,,,,4,0,
