@@ -6,6 +6,32 @@ pytest_plugins = ('pytest_asyncio',)
 
 
 @pytest.mark.asyncio
+async def test_empty_usage():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/cloud/?verbose=false', json={
+            'provider': 'aws',
+            'instance_type': 'a1.4xlarge',
+            'usage': {}
+        })
+
+    assert res.json() == {
+        'gwp': {
+            'manufacture': 500.0,
+            'use': 230.0,
+            'unit': 'kgCO2eq'
+        },
+        'pe': {
+            'manufacture': 7000.0,
+            'use': 7791.0,
+            'unit': 'MJ'
+        },
+        'adp': {
+            'manufacture': 0.1,
+            'use': 3.89e-05,
+            'unit': 'kgSbeq'
+        }}
+
+@pytest.mark.asyncio
 async def test_empty_usage_1():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/cloud/aws?verbose=false&instance_type=a1.2xlarge', json={})
@@ -24,6 +50,16 @@ async def test_empty_usage_2():
 
 @pytest.mark.asyncio
 async def test_wrong_input():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/cloud/?verbose=false', json={
+            "provider": "test",
+            "instance_type": "a1.4xlarge",
+            "usage": {} 
+        })
+    assert res.json() == {'detail': 'a1.4xlarge at test not found'}
+
+@pytest.mark.asyncio
+async def test_wrong_input_1():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/cloud/aws?verbose=false&instance_type=test', json={})
     assert res.json() == {'detail': 'test not found'}
@@ -72,3 +108,41 @@ async def test_usage_3():
     assert res.json() == {'adp': {'manufacture': 0.13, 'unit': 'kgSbeq', 'use': 2e-08},
                           'gwp': {'manufacture': 1100.0, 'unit': 'kgCO2eq', 'use': 0.1},
                           'pe': {'manufacture': 15000.0, 'unit': 'MJ', 'use': 5.0}}
+
+@pytest.mark.asyncio
+async def test_usage():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/cloud/?verbose=false', json={
+            "provider": "aws",
+            "instance_type": "a1.4xlarge",
+            "usage": {
+                "hours_use_time": "2",
+                "usage_location": "FRA",
+                "time_workload": [
+                {
+                    "time_percentage": "50",
+                    "load_percentage": "0"
+                },
+                {
+                    "time_percentage": "50",
+                    "load_percentage": "50"
+                }
+                ]
+            }
+        })
+    assert res.json() == {
+    "gwp": {
+        "manufacture": 500.0,
+        "use": 0.007,
+        "unit": "kgCO2eq"
+    },
+    "pe": {
+        "manufacture": 7000.0,
+        "use": 0.8,
+        "unit": "MJ"
+    },
+    "adp": {
+        "manufacture": 0.1,
+        "use": 3e-09,
+        "unit": "kgSbeq"
+    }}
