@@ -1,18 +1,25 @@
-FROM python:3.7-slim-buster
+FROM python:3.9-slim AS build-env
 
 ARG VERSION
 
-RUN apt-get update -qq 
+COPY . /app
 
-WORKDIR /opt/app
+WORKDIR /app
 
+COPY dist/boaviztapi-$VERSION.tar.gz ./
+RUN pip install boaviztapi-$VERSION.tar.gz && cp $(which uvicorn) /app
+
+FROM gcr.io/distroless/python3
 # Python 3 surrogate unicode handling
 # @see https://click.palletsprojects.com/en/7.x/python3/
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
-COPY dist/boaviztapi-$VERSION.tar.gz ./
-RUN pip3 install boaviztapi-$VERSION.tar.gz
+COPY --from=build-env /app /app
+COPY --from=build-env /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
+ENV PYTHONPATH=/usr/local/lib/python3.9/site-packages
+
+WORKDIR /app
 
 EXPOSE 5000
-ENTRYPOINT ["uvicorn", "boaviztapi.main:app", "--host", "0.0.0.0", "--port", "5000"]
+CMD ["./uvicorn", "boaviztapi.main:app", "--host", "0.0.0.0", "--port", "5000"]

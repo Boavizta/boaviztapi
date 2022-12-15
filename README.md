@@ -79,6 +79,20 @@ $ uvicorn boaviztapi.main:app --host=localhost --port 5000
 
 You can run the tests with `pytest`.
 
+### Create your own docker image and run it
+
+Build application package
+```sh
+make install
+```
+Build docker image
+```sh
+docker build --build-arg VERSION=0.2.0 -t boaviztapi:0.2.0 .
+```
+Run docker image
+```sh
+podman run -p 5000:5000/tcp localhost/boaviztapi 
+```
 ### Deploy to AWS as serverless application
 
 Api can be self hosted to your own AWS account using the serverless framework.
