@@ -1,16 +1,15 @@
 name: Publish docs via GitHub Pages
 on:
   push:
-    push:
-      branches:
-        - main
-      paths:
-        - 'docs/**'
-    pull_request:
-      paths:
-        - 'docs/**'
-      branches:
-        - main
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+  pull_request:
+    paths:
+      - 'docs/**'
+    branches:
+      - main
 jobs:
   build:
     name: Deploy docs
