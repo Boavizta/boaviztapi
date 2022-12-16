@@ -1,19 +1,18 @@
-name: Python tests main
+name: Python tests
 
 on:
   push:
-    push:
-      branches:
-        - main
-        - dev
-      paths:
-        - 'boaviztapi/**'
-    pull_request:
-      paths:
-        - 'boaviztapi/**'
-      branches:
-        - main
-        - dev
+    branches:
+      - main
+      - dev
+    paths:
+      - 'boaviztapi/**'
+  pull_request:
+    paths:
+      - 'boaviztapi/**'
+    branches:
+      - main
+      - dev
 
 
 jobs:
