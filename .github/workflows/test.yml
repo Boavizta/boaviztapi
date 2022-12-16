@@ -29,7 +29,6 @@ jobs:
         python -m pip install --upgrade pipenv wheel
 
     - name: Install dependencies
-      if: steps.cache-pipenv.outputs.cache-hit != 'true'
       run: |
         pipenv install --dev
 
