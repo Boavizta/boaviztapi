@@ -2,9 +2,18 @@ name: Python tests main
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    push:
+      branches:
+        - main
+        - dev
+      paths:
+        - 'boaviztapi/**'
+    pull_request:
+      paths:
+        - 'boaviztapi/**'
+      branches:
+        - main
+        - dev
 
 
 jobs:
@@ -32,10 +41,6 @@ jobs:
       if: steps.cache-pipenv.outputs.cache-hit != 'true'
       run: |
         pipenv install --dev
-
-    - name: Run test suite
-      run: |
-        pipenv run pytest
 
     - name: Run test suite
       run: |
