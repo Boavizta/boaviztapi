@@ -40,7 +40,7 @@ if ```name``` is given, ```model_range``` and ```family``` can be retrieved from
 For one CPU the manufacture impact is:
 
 $$ 
-\text{CPU}_\text{manufacture}^\text{criteria} = (\text{CPU}_{\text{core_units}} * \text{CPU}_{\text{die_size}} + 0.491 ) * \text{CPU}_\text{manufacture_die}^\text{criteria} + \text{CPU}_\text{manufacture_base}^\text{criteria}
+\text{CPU}_\text{manufacture}^\text{criteria} = (\text{CPU}_{\text{core_units}} * \text{CPU}_{\text{die_size_per_core}} + 0.491 ) * \text{CPU}_\text{manufacture_die}^\text{criteria} + \text{CPU}_\text{manufacture_base}^\text{criteria}
 $$
 
 with:
