@@ -5,11 +5,6 @@ on:
       - main
     paths:
       - 'docs/**'
-  pull_request:
-    paths:
-      - 'docs/**'
-    branches:
-      - main
 jobs:
   build:
     name: Deploy docs
