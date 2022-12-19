@@ -11,7 +11,7 @@ An API to access [Boavizta's](https://boavizta.cmakers.io/) methodologies and fo
 
 See the [documentation](https://doc.api.boavizta.org/) for API usage and methodology.
 
-[![Python tests main](https://github.com/Boavizta/Tools-API/actions/workflows/main-main.yml/badge.svg)](https://github.com/Boavizta/Tools-API/actions/workflows/main-main.yml)
+[![Python tests](https://github.com/Boavizta/boaviztapi/actions/workflows/test.yml/badge.svg)](https://github.com/Boavizta/boaviztapi/actions/workflows/test.yml)
 
 ## :dart: Objective
 
