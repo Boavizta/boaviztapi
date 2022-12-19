@@ -14,7 +14,7 @@ Query:
 ```bash
 # Query the available aws instances
 curl -X 'GET' \
-  'https://api.boavizta.org/v1/cloud/aws/all_instances' \
+  'https://api.boavizta.org/v1/cloud/all_instances?cloud_provider=aws' \
   -H 'accept: application/json'
 ```
 
@@ -39,17 +39,15 @@ Results:
 This query returns :
 
 * The usage impact of 1 year of compute at 50% of load for a ```r6g.medium``` instance type in europe
-* The total manufacture impacts of a ```r6g.medium```
+* The **total manufacture impacts** of a ```r6g.medium```
 
 Query:
 
 ```bash
 # Query the data for `r6g.medium` with default usage value
-curl -X 'POST' \
-  'https://api.boavizta.org/v1/cloud/aws?instance_type=r6g.medium&verbose=false' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{}'
+curl -X 'GET' \
+  'https://api.boavizta.org/v1/cloud/?cloud_provider=aws&instance_type=r6g.medium&verbose=false' \
+  -H 'accept: application/json'
 ```
 
 Results:
@@ -81,11 +79,10 @@ Query :
 
 ```bash
 # Query the data for `r6g.medium` with default usage value
-curl -X 'POST' \
-  'https://api.boavizta.org/v1/cloud/aws?instance_type=r6g.medium&verbose=true' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{}'
+# Query the data for `r6g.medium` with default usage value
+curl -X 'GET' \
+  'https://api.boavizta.org/v1/cloud/?cloud_provider=aws&instance_type=r6g.medium&verbose=true' \
+  -H 'accept: application/json'
 ```
 
 Response :
@@ -517,22 +514,26 @@ Query:
 ```bash
 # Query the data for `r6g.medium` with custom usage value
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/cloud/aws?instance_type=r6g.medium&verbose=false' \
+  'https://api.boavizta.org/v1/cloud/?verbose=false' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "hours_use_time": 2,
-  "usage_location": "FRA",
-  "time_workload": [
-    {
-      "time_percentage": 50,
-      "load_percentage": 0
-    },
-    {
-      "time_percentage": 50,
-      "load_percentage": 50
-    }
-  ]}'
+    "provider": "aws",
+    "instance_type": "r6g.medium",
+    "usage": {
+       "hours_use_time": 2,
+       "usage_location": "FRA",
+       "time_workload": [
+          {
+            "time_percentage": 50,
+            "load_percentage": 0
+          },
+          {
+            "time_percentage": 50,
+            "load_percentage": 50
+          }
+       ]}
+    }'
 ```
 
 the query usage can be translated as such :
@@ -545,7 +546,7 @@ Results:
 {
   "gwp": {
     "manufacture": 36,
-    "use": 0.001,
+    "use": 0.0009,
     "unit": "kgCO2eq"
   },
   "pe": {
@@ -555,7 +556,7 @@ Results:
   },
   "adp": {
     "manufacture": 0.0027,
-    "use": 5e-10,
+    "use": 4e-10,
     "unit": "kgSbeq"
   }
 }

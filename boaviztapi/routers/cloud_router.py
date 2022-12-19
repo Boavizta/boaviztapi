@@ -24,7 +24,7 @@ cloud_router = APIRouter(
 
 @cloud_router.post('/aws',
                    description=cloud_aws_description)
-async def instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=cloud_usage_example),
+async def legacy_instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=cloud_usage_example),
                                 instance_type: str = Query(None, example="a1.4xlarge"), verbose: bool = True,
                                 allocation: Allocation = Allocation.TOTAL):
     cloud_instance = Cloud()
@@ -46,7 +46,7 @@ async def instance_cloud_impact(cloud_usage: UsageCloud = Body(None, example=clo
 
 @cloud_router.get('/aws/all_instances',
                   description=all_default_aws_instances)
-async def server_get_all_archetype_name():
+async def legacy_server_get_all_archetype_name():
     return get_device_archetype_lst(os.path.join(data_dir, 'devices/cloud/aws.csv'))
 
 @cloud_router.post('/',
@@ -70,15 +70,15 @@ async def instance_cloud_impact(cloud_instance: Cloud = Body(None, example=cloud
 
 @cloud_router.get('/',
                    description=cloud_provider_description)
-async def instance_cloud_impact(cloud_provider: str = Query(None, example="aws"),
+async def instance_cloud_impact(provider: str = Query(None, example="aws"),
                                 instance_type: str = Query(None, example="a1.4xlarge"), verbose: bool = True,
                                 allocation: Allocation = Allocation.TOTAL):
     cloud_instance = Cloud()
     cloud_instance.usage = {}
-    instance_archetype = await get_cloud_instance_archetype(instance_type, cloud_provider)
+    instance_archetype = await get_cloud_instance_archetype(instance_type, provider)
 
     if not instance_archetype:
-        raise HTTPException(status_code=404, detail=f"{instance_type} at {cloud_provider} not found")
+        raise HTTPException(status_code=404, detail=f"{instance_type} at {provider} not found")
 
     instance_archetype = Cloud(**complete_with_archetype(cloud_instance, instance_archetype))
     instance_model = mapper_cloud_instance(instance_archetype)

@@ -107,13 +107,13 @@ case_description = "# ✔ ️Case impacts from configuration\n" \
 
 cloud_provider_description = "# ✔ ️Cloud instance impacts from provider, instance type and usage \n" \
                         "Retrieve the impacts of a given Cloud instance and usage.\n\n" \
+                        "### Features\n\n" \
                         "📋 Provider \n\n" \
                         "Name of the cloud provider. You can retrieve the [list here](" \
-                        "#/cloud_instance/server_get_all_cloud_providers).\n" \
+                        "#/cloud_instance/server_get_all_cloud_providers).\n\n" \
                         "📋 Instance type \n\n" \
                         "Name of the chosen instance. You can retrieve the [list here](" \
-                        "#/cloud/server_get_archetype_name_v1_cloud_all_aws_instances_get).\n" \
-                        "### Features\n\n" \
+                        "#/cloud/server_get_archetype_name_v1_cloud_all_aws_instances_get).\n\n" \
                         "👄 Verbose\n\n" \
                         "🔨 Manufacture\n\n" \
                         "🔌 Usage \n\n" \
@@ -121,12 +121,12 @@ cloud_provider_description = "# ✔ ️Cloud instance impacts from provider, ins
                         "📋 Archetype : The configuration is set by the API, only usage is given by the user\n\n" \
                         "⏬ Allocation"
 
-cloud_aws_description = "# ✔ ️AWS instance impacts from instance type and usage \n" \
+cloud_aws_description = "# ✔ (LEGACY) ️AWS instance impacts from instance type and usage \n" \
                         "Retrieve the impacts of a given AWS instance and usage.\n\n" \
+                        "### Features\n\n" \
                         "📋 Instance type \n\n" \
                         "AWS name of the chosen instance. You can retrieve the [list here](" \
-                        "#/cloud/server_get_all_archetype_name_v1_cloud_all_aws_instances_get).\n" \
-                        "### Features\n\n" \
+                        "#/cloud/server_get_all_archetype_name_v1_cloud_all_aws_instances_get).\n\n" \
                         "👄 Verbose\n\n" \
                         "🔨 Manufacture\n\n" \
                         "🔌 Usage \n\n" \
@@ -134,7 +134,7 @@ cloud_aws_description = "# ✔ ️AWS instance impacts from instance type and us
                         "📋 Archetype : The configuration is set by the API, only usage is given by the user\n\n" \
                         "⏬ Allocation"
 
-all_default_aws_instances = "# ✔ ️Get all the available aws instances\n" \
+all_default_aws_instances = "# ✔ (LEGACY)️ Get all the available aws instances\n" \
                             "📜 Return the name of all pre-registered aws instances"
             
 all_default_cloud_instances = "# ✔ ️Get all the available instances for a given Cloud provider\n" \
