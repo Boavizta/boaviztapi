@@ -25,6 +25,8 @@ The system is developed in layers according to a bottom-up principle. The first 
 
 ## :fast_forward: Test it yourself (no installation)
 
+* See our pedagogical front-end app (using the API) : <https://datavizta.boavizta.org/serversimpact>
+
 * See the OpenAPI specification: <https://api.boavizta.org/docs>
 
 * [Documentation](https://doc.api.boavizta.org/)
