@@ -87,11 +87,11 @@ make install
 ```
 Build docker image
 ```sh
-docker build --build-arg VERSION=0.2.0 -t boaviztapi:0.2.0 .
+docker build --build-arg VERSION=0.2.0 -t boavizta/boaviztapi:0.2.0 .
 ```
 Run docker image
 ```sh
-docker run -p 5000:5000/tcp localhost/boaviztapi 
+docker run -p 5000:5000/tcp boavizta/boaviztapi:0.2.0
 ```
 ### Deploy to AWS as serverless application
 
