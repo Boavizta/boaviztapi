@@ -1,6 +1,6 @@
 # Documentation
 
-Documentation of Boavizta tools-API.
+Documentation of Boaviztapi
 
 Content:
 
