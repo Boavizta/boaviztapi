@@ -20,7 +20,4 @@ jobs:
           CUSTOM_DOMAIN: doc.api.boavizta.org
           CONFIG_FILE: docs/mkdocs.yml
           EXTRA_PACKAGES: build-base
-          REQUIREMENTS: docs/requirements.txt            
-      - name: set custom domain
-        run: echo 'doc.api.boavizta.org' > CNAME
-
+          REQUIREMENTS: docs/requirements.txt
