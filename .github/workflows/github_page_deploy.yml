@@ -21,3 +21,5 @@ jobs:
           CONFIG_FILE: docs/mkdocs.yml
           EXTRA_PACKAGES: build-base
           REQUIREMENTS: docs/requirements.txt
+      - name: test
+        run: chown -R $(whoami) .git
