@@ -29,4 +29,5 @@ jobs:
          git checkout gh-pages
          echo 'doc.api.boavizta.org' > CNAME
          git add CNAME
+         git commit -m "adding CNAME"
          git push origin gh-pages
