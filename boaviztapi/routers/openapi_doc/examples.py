@@ -69,6 +69,20 @@ cloud_usage_example = {
         ]
 }
 
+cloud_example = {
+    "provider": "aws",
+    "instance_type": "a1.4xlarge",
+    "usage":
+            {
+            "hours_use_time": 2,
+            "usage_location": "FRA",
+            "time_workload": [
+                {"time_percentage": 50, "load_percentage": 0},
+                {"time_percentage": 25, "load_percentage": 60},
+                {"time_percentage": 25, "load_percentage": 100}
+            ]}
+}
+
 cpu_consumption_profiles = {
         "cpu": {
             "name": "intel xeon gold 6134"

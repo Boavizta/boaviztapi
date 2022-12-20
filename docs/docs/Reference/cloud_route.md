@@ -2,27 +2,28 @@
 
 Only AWS in implemented for now.
 
-## ```/v1/cloud/aws```
+## ``` GET /v1/cloud/```
 
-A cloud instance input is composed of a single objects : ```usage``` and a ```instance_type``` query attribute.
+The GET router will return the default impacts of a cloud instance. The query is composed of minimum two query parameters : a ```provider``` and an ```instance_type```.
+
+```/v1/cloud/?provider=aws&instance_type=r6g.medium```
+
+```usage``` will be set with default values, ```model``` and ```configuration``` are retrieve from the pre-register ```instance_type```.
+
+
+## ``` POST /v1/cloud/```
+
+The POST router let you set the usage variables. You need to set a ```provider``` and an ```instance_type```. ```usage``` is optional.
 
 ```json
 {
-"usage":{}
+  "provider": "aws",
+  "instance_type": "r6g.medium",
+  "usage": {}
 }
 ```
 
 ```model``` and ```configuration``` are retrieve from the pre-register ```instance_type```.
-
-### Minimal cloud input
-
-You can send an empty cloud instance :
-
-```json
-{}
-```
-
-In this case, default value from ```instance_type``` are used
 
 ### Usage
 
@@ -42,22 +43,26 @@ You should set :
 
 ```json
 {
-  "hours_use_time": 2,
-  "usage_location": "FRA",
-  "time_workload": [
-    {
-      "time_percentage": 50,
-      "load_percentage": 0
-    },
-    {
-      "time_percentage": 25,
-      "load_percentage": 60
-    },
-    {
-      "time_percentage": 25,
-      "load_percentage": 100
-    }
-  ]
+  "provider": "aws",
+  "instance_type": "r6g.medium",
+  "usage":{
+    "hours_use_time": 2,
+    "usage_location": "FRA",
+    "time_workload": [
+      {
+        "time_percentage": 50,
+        "load_percentage": 0
+      },
+      {
+        "time_percentage": 25,
+        "load_percentage": 60
+      },
+      {
+        "time_percentage": 25,
+        "load_percentage": 100
+      }
+    ]
+  }
 }
 ```
 
@@ -65,9 +70,13 @@ You should set :
 
 ```json
 {
-  "hours_use_time": 2,
-  "usage_location": "FRA",
-  "time_workload": 34
+  "provider": "aws",
+  "instance_type": "r6g.medium",
+  "usage": {
+    "hours_use_time": 2,
+    "usage_location": "FRA",
+    "time_workload": 34
+  }
 }
 ```
 
