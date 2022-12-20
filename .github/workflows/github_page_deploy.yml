@@ -23,6 +23,7 @@ jobs:
           REQUIREMENTS: docs/requirements.txt
       - name: Set costum domain
         run: |
+         git branch -a
          echo 'doc.api.boavizta.org' > CNAME
          git add CNAME
          git push
