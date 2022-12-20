@@ -21,10 +21,3 @@ jobs:
           CONFIG_FILE: docs/mkdocs.yml
           EXTRA_PACKAGES: build-base
           REQUIREMENTS: docs/requirements.txt
-      - name: Set costum domain
-        run: |
-         git fetch -a
-         git checkout gh-pages
-         echo 'doc.api.boavizta.org' > CNAME
-         git add CNAME
-         git push --set-upstream origin/gh-pages
