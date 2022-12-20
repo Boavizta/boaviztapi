@@ -22,4 +22,4 @@ jobs:
           EXTRA_PACKAGES: build-base
           REQUIREMENTS: docs/requirements.txt
       - name: test
-        run: chown -R $(whoami) .git
+        run: sudo chown -R $(whoami) .git
