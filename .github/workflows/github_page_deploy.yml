@@ -21,5 +21,12 @@ jobs:
           CONFIG_FILE: docs/mkdocs.yml
           EXTRA_PACKAGES: build-base
           REQUIREMENTS: docs/requirements.txt
-      - name: test
+      - name: change permissions
         run: sudo chown -R $(whoami) .git
+      - name: set custom domain
+        run: |
+         git fetch origin gh-pages
+         git checkout gh-pages
+         echo 'doc.api.boavizta.org' > CNAME
+         git add CNAME
+         git push gh-pages
