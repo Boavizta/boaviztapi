@@ -91,11 +91,11 @@ async def instance_cloud_impact(provider: str = Query(None, example="aws"),
 
 @cloud_router.get('/all_instances',
                   description=all_default_cloud_instances)
-async def server_get_all_archetype_name(cloud_provider: str = Query(None, example="aws")):
-    if not os.path.exists(data_dir+'/devices/cloud/'+cloud_provider+'.csv'):
-        print(data_dir+'devices/cloud/'+cloud_provider+'.csv')
-        raise HTTPException(status_code=404, detail=f"No available data for this cloud provider ({cloud_provider})")
-    return get_device_archetype_lst(os.path.join(data_dir, 'devices/cloud/'+cloud_provider+'.csv'))
+async def server_get_all_archetype_name(provider: str = Query(None, example="aws")):
+    if not os.path.exists(data_dir +'/devices/cloud/' + provider + '.csv'):
+        print(data_dir +'devices/cloud/' + provider + '.csv')
+        raise HTTPException(status_code=404, detail=f"No available data for this cloud provider ({provider})")
+    return get_device_archetype_lst(os.path.join(data_dir, 'devices/cloud/' + provider + '.csv'))
 
 @cloud_router.get('/all_providers',
                   description=all_default_cloud_providers)
