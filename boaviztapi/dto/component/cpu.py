@@ -114,7 +114,8 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
             row = sub.iloc[0]
             cpu_component.die_size_per_core.value = float(row['die_size_per_core'])
             cpu_component.die_size_per_core.status = Status.COMPLETED
-            cpu_component.die_size_per_core.source = row['Source'] + "- maximizing value without core_unit given"
+            cpu_component.die_size_per_core.source = row['Source']
+            cpu_component.die_size_per_core.add_warning("Maximizing value without cpu.core_unit given")
 
     return cpu_component
 
