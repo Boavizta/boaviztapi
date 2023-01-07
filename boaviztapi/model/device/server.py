@@ -208,25 +208,25 @@ class DeviceCloudInstance(DeviceServer, ABC):
         self._usage = value
 
     def impact_manufacture_gwp(self) -> ComputedImpacts:
-        impact, sign_fig = super().impact_manufacture_gwp()
-        return (impact / self.usage.instance_per_server.value), sign_fig
+        impact, sign_fig, c_error_margin, c_warning = super().impact_manufacture_gwp()
+        return (impact / self.usage.instance_per_server.value), sign_fig, c_error_margin, c_warning
 
     def impact_manufacture_pe(self) -> ComputedImpacts:
-        impact, sign_fig = super().impact_manufacture_pe()
-        return (impact / self.usage.instance_per_server.value), sign_fig
+        impact, sign_fig, c_error_margin, c_warning = super().impact_manufacture_pe()
+        return (impact / self.usage.instance_per_server.value), sign_fig, c_error_margin, c_warning
 
     def impact_manufacture_adp(self) -> ComputedImpacts:
-        impact, sign_fig = super().impact_manufacture_adp()
-        return (impact / self.usage.instance_per_server.value), sign_fig
+        impact, sign_fig, c_error_margin, c_warning = super().impact_manufacture_adp()
+        return (impact / self.usage.instance_per_server.value), sign_fig, c_error_margin, c_warning
 
     def impact_use_gwp(self) -> ComputedImpacts:
-        impact, sign_fig = super().impact_use_gwp()
-        return (impact / self.usage.instance_per_server.value), sign_fig
+        impact, sign_fig, c_error_margin, c_warning = super().impact_use_gwp()
+        return (impact / self.usage.instance_per_server.value), sign_fig, c_error_margin, c_warning
 
     def impact_use_pe(self) -> ComputedImpacts:
-        impact, sign_fig = super().impact_use_pe()
-        return (impact / self.usage.instance_per_server.value), sign_fig
+        impact, sign_fig, c_error_margin, c_warning = super().impact_use_pe()
+        return (impact / self.usage.instance_per_server.value), sign_fig, c_error_margin, c_warning
 
     def impact_use_adp(self) -> ComputedImpacts:
-        impact, sign_fig = super().impact_use_adp()
-        return (impact / self.usage.instance_per_server.value), sign_fig
+        impact, sign_fig, c_error_margin, c_warning = super().impact_use_adp()
+        return (impact / self.usage.instance_per_server.value), sign_fig, c_error_margin, c_warning

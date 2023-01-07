@@ -26,14 +26,14 @@ def verbose_device(device: Device):
 
 
 def verbose_usage(device: [Device, Component]):
-    json_output = {"usage_impacts": {}}
+    json_output = {"use": {}}
 
     for criteria in IMPACT_CRITERIAS:
-        json_output["usage_impacts"][criteria.name] = {}
+        json_output["use"][criteria.name] = {}
         single_impact = get_model_single_impact(device, 'use', 'gwp', 1, Allocation.TOTAL)
-        json_output["usage_impacts"][criteria.name] = single_impact.to_json() if single_impact else NOT_IMPLEMENTED
-        json_output["usage_impacts"][criteria.name]["unit"] = criteria.unit
-        json_output["usage_impacts"][criteria.name]["description"] = criteria.description
+        json_output["use"][criteria.name] = single_impact.to_json() if single_impact else NOT_IMPLEMENTED
+        json_output["use"][criteria.name]["unit"] = criteria.unit
+        json_output["use"][criteria.name]["description"] = criteria.description
 
     json_output = {**json_output, **iter_boattribute(device.usage)}
     if device.usage.consumption_profile is not None:
@@ -43,13 +43,13 @@ def verbose_usage(device: [Device, Component]):
 
 
 def verbose_component(component: Component):
-    json_output = {"units": component.units, "manufacture_impacts": {}}
+    json_output = {"units": component.units, "manufacture": {}}
     for criteria in IMPACT_CRITERIAS:
-        json_output["manufacture_impacts"][criteria.name] = {}
+        json_output["manufacture"][criteria.name] = {}
         single_impact = get_model_single_impact(component, "manufacture", criteria.name)
-        json_output["manufacture_impacts"][criteria.name] = single_impact.to_json() if single_impact else NOT_IMPLEMENTED
-        json_output["manufacture_impacts"][criteria.name]["unit"] = criteria.unit
-        json_output["manufacture_impacts"][criteria.name]["description"] = criteria.description
+        json_output["manufacture"][criteria.name] = single_impact.to_json() if single_impact else NOT_IMPLEMENTED
+        json_output["manufacture"][criteria.name]["unit"] = criteria.unit
+        json_output["manufacture"][criteria.name]["description"] = criteria.description
 
     json_output = {**json_output, **iter_boattribute(component)}
 

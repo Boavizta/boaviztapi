@@ -4,7 +4,7 @@ from typing import Tuple, List
 from boaviztapi.model.component import Component
 from boaviztapi.model.usage import ModelUsage
 
-NumberSignificantFigures = Tuple[float, int]
+ComputedImpacts = Tuple[float, int]
 
 
 class Device:
@@ -26,27 +26,27 @@ class Device:
         return []
 
     @abstractmethod
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+    def impact_manufacture_gwp(self) -> ComputedImpacts:
         raise NotImplementedError
 
     @abstractmethod
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
+    def impact_manufacture_pe(self) -> ComputedImpacts:
         raise NotImplementedError
 
     @abstractmethod
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
+    def impact_manufacture_adp(self) -> ComputedImpacts:
         raise NotImplementedError
 
     @abstractmethod
-    def impact_use_gwp(self) -> NumberSignificantFigures:
+    def impact_use_gwp(self) -> ComputedImpacts:
         raise NotImplementedError
 
     @abstractmethod
-    def impact_use_pe(self) -> NumberSignificantFigures:
+    def impact_use_pe(self) -> ComputedImpacts:
         raise NotImplementedError
 
     @abstractmethod
-    def impact_use_adp(self) -> NumberSignificantFigures:
+    def impact_use_adp(self) -> ComputedImpacts:
         raise NotImplementedError
 
     def __iter__(self):
