@@ -46,7 +46,7 @@ class Boattribute:
         self._value = value
 
     def add_warning(self, warn):
-        self.warnings = self.warnings.append(warn)
+        self.warnings.append(warn)
 
     def to_json(self):
         json = {"value": self._value, "status": self.status.value}
