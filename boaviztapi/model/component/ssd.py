@@ -1,8 +1,8 @@
 from typing import Tuple
 
 import boaviztapi.utils.roundit as rd
-from boaviztapi.model.boattribute import Boattribute, Status
-from boaviztapi.model.component.component import Component, NumberSignificantFigures
+from boaviztapi.model.boattribute import Boattribute
+from boaviztapi.model.component.component import Component, ComputedImpacts
 
 
 class ComponentSSD(Component):
@@ -41,14 +41,14 @@ class ComponentSSD(Component):
             default=self.DEFAULT_SSD_DENSITY
         )
 
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+    def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')
 
-    def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
+    def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
         ssd_die_impact, ssd_impact = self.__get_impact_constants(impact_type)
         sign_figures = self.__compute_significant_numbers(ssd_die_impact, ssd_impact)
         impact = self.__compute_impact_manufacture(ssd_die_impact, ssd_impact)
-        return impact, sign_figures
+        return impact, sign_figures, 0, []
 
     def __get_impact_constants(self, impact_type: str) -> Tuple[float, float]:
         ssd_die_impact = self.IMPACT_FACTOR[impact_type]['die_impact']
@@ -61,8 +61,8 @@ class ComponentSSD(Component):
     def __compute_impact_manufacture(self, ssd_die_impact: float, ssd_impact: float) -> float:
         return (self.capacity.value / self.density.value) * ssd_die_impact + ssd_impact
 
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
+    def impact_manufacture_pe(self) -> ComputedImpacts:
         return self.__impact_manufacture('pe')
 
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
+    def impact_manufacture_adp(self) -> ComputedImpacts:
         return self.__impact_manufacture('adp')

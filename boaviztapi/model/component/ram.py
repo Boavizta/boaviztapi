@@ -2,7 +2,7 @@ from typing import Tuple
 
 import boaviztapi.utils.roundit as rd
 from boaviztapi.model.boattribute import Boattribute, Status
-from boaviztapi.model.component.component import Component, NumberSignificantFigures
+from boaviztapi.model.component.component import Component, ComputedImpacts
 from boaviztapi.model.consumption_profile.consumption_profile import RAMConsumptionProfileModel
 
 
@@ -43,16 +43,16 @@ class ComponentRAM(Component):
             default=self.DEFAULT_RAM_DENSITY
         )
 
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+    def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')
 
-    def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
+    def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
         ram_die_impact, ram_impact = self.__get_impact_constants(impact_type)
         sign_figures = self.__compute_significant_numbers(ram_die_impact, ram_impact)
         impact = self.__compute_impact_manufacture(ram_die_impact, ram_impact)
-        return impact, sign_figures
+        return impact, sign_figures, 0, []
 
-    def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
+    def __impact_usage(self, impact_type: str) -> ComputedImpacts:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
 
         if not self.usage.hours_electrical_consumption.is_set():
@@ -62,7 +62,7 @@ class ComponentRAM(Component):
         impacts = impact_factor.value * (self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
 
         sig_fig = self.__compute_significant_numbers_usage(impact_factor.value)
-        return impacts, sig_fig
+        return impacts, sig_fig, 0, []
 
     def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
         return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value,
@@ -92,17 +92,17 @@ class ComponentRAM(Component):
     def __compute_impact_manufacture(self, ram_die_impact: float, ram_impact: float) -> float:
         return (self.capacity.value / self.density.value) * ram_die_impact + ram_impact
 
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
+    def impact_manufacture_pe(self) -> ComputedImpacts:
         return self.__impact_manufacture('pe')
 
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
+    def impact_manufacture_adp(self) -> ComputedImpacts:
         return self.__impact_manufacture('adp')
 
-    def impact_use_gwp(self) -> NumberSignificantFigures:
+    def impact_use_gwp(self) -> ComputedImpacts:
         return self.__impact_usage("gwp")
 
-    def impact_use_pe(self) -> NumberSignificantFigures:
+    def impact_use_pe(self) -> ComputedImpacts:
         return self.__impact_usage("pe")
 
-    def impact_use_adp(self) -> NumberSignificantFigures:
+    def impact_use_adp(self) -> ComputedImpacts:
         return self.__impact_usage("adp")

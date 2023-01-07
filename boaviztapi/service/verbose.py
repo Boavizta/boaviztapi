@@ -2,8 +2,9 @@ import boaviztapi.utils.roundit as rd
 from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.device import Device
 from boaviztapi.model.component import Component
+from boaviztapi.model.impact import IMPACT_CRITERIAS
 from boaviztapi.service.allocation import Allocation
-from boaviztapi.service.bottom_up import get_model_impact, NOT_IMPLEMENTED
+from boaviztapi.service.bottom_up import get_model_single_impact, NOT_IMPLEMENTED
 
 
 def verbose_device(device: Device):
@@ -25,21 +26,14 @@ def verbose_device(device: Device):
 
 
 def verbose_usage(device: [Device, Component]):
-    json_output = {}
+    json_output = {"usage_impacts": {}}
 
-    json_output["usage_impacts"] = {
-        "gwp": {
-            "value": get_model_impact(device, 'use', 'gwp', 1, Allocation.TOTAL) or NOT_IMPLEMENTED,
-            "unit": "kgCO2eq"
-        },
-        "pe": {
-            "value": get_model_impact(device, 'use', 'pe', 1, Allocation.TOTAL) or NOT_IMPLEMENTED,
-            "unit": "MJ"},
-        "adp": {
-            "value": get_model_impact(device, 'use', 'adp', 1, Allocation.TOTAL) or NOT_IMPLEMENTED,
-            "unit": "kgSbeq"
-        }
-    }
+    for criteria in IMPACT_CRITERIAS:
+        json_output["usage_impacts"][criteria.name] = {}
+        single_impact = get_model_single_impact(device, 'use', 'gwp', 1, Allocation.TOTAL)
+        json_output["usage_impacts"][criteria.name] = single_impact.to_json() if single_impact else NOT_IMPLEMENTED
+        json_output["usage_impacts"][criteria.name]["unit"] = criteria.unit
+        json_output["usage_impacts"][criteria.name]["description"] = criteria.description
 
     json_output = {**json_output, **iter_boattribute(device.usage)}
     if device.usage.consumption_profile is not None:
@@ -49,21 +43,14 @@ def verbose_usage(device: [Device, Component]):
 
 
 def verbose_component(component: Component):
-    json_output = {"units": component.units}
+    json_output = {"units": component.units, "manufacture_impacts": {}}
+    for criteria in IMPACT_CRITERIAS:
+        json_output["manufacture_impacts"][criteria.name] = {}
+        single_impact = get_model_single_impact(component, "manufacture", criteria.name)
+        json_output["manufacture_impacts"][criteria.name] = single_impact.to_json() if single_impact else NOT_IMPLEMENTED
+        json_output["manufacture_impacts"][criteria.name]["unit"] = criteria.unit
+        json_output["manufacture_impacts"][criteria.name]["description"] = criteria.description
 
-    json_output["manufacture_impacts"] = {
-        "gwp": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_gwp()),
-            "unit": "kgCO2eq"
-        },
-        "pe": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_pe()),
-            "unit": "MJ"},
-        "adp": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_adp()),
-            "unit": "kgSbeq"
-        },
-    }
     json_output = {**json_output, **iter_boattribute(component)}
 
     if component.usage.hours_electrical_consumption.is_set():

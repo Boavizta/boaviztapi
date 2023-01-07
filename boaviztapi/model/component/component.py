@@ -1,10 +1,8 @@
 from abc import abstractmethod
-from typing import Tuple
 
 import boaviztapi.utils.roundit as rd
+from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.usage import ModelUsage
-
-NumberSignificantFigures = Tuple[float, int]
 
 
 class Component:
@@ -38,35 +36,35 @@ class Component:
     def units(self, value: int) -> None:
         self._units = value
 
-    def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
+    def __impact_usage(self, impact_type: str) -> ComputedImpacts:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
 
         impacts = impact_factor.value * (
                 self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
         sig_fig = self.__compute_significant_numbers_usage(impact_factor.value)
-        return impacts, sig_fig
+        return impacts, sig_fig, 0, []
 
     def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
         return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value,
                                           impact_factor)
 
     @abstractmethod
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+    def impact_manufacture_gwp(self) -> ComputedImpacts:
         raise NotImplementedError
 
     @abstractmethod
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
+    def impact_manufacture_pe(self) -> ComputedImpacts:
         raise NotImplementedError
 
     @abstractmethod
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
+    def impact_manufacture_adp(self) -> ComputedImpacts:
         raise NotImplementedError
 
-    def impact_use_gwp(self) -> NumberSignificantFigures:
+    def impact_use_gwp(self) -> ComputedImpacts:
         return self.__impact_usage("gwp")
 
-    def impact_use_pe(self) -> NumberSignificantFigures:
+    def impact_use_pe(self) -> ComputedImpacts:
         return self.__impact_usage("pe")
 
-    def impact_use_adp(self) -> NumberSignificantFigures:
+    def impact_use_adp(self) -> ComputedImpacts:
         return self.__impact_usage("adp")

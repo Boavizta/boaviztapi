@@ -1,7 +1,6 @@
-from typing import Any
-
 import boaviztapi.utils.roundit as rd
-from boaviztapi.model.component.component import Component, NumberSignificantFigures
+from boaviztapi.model import ComputedImpacts
+from boaviztapi.model.component.component import Component
 
 
 class ComponentAssembly(Component):
@@ -23,25 +22,25 @@ class ComponentAssembly(Component):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+    def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')
 
-    def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
+    def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
         impact = self.IMPACT_FACTOR[impact_type]['impact']
         significant_figures = rd.min_significant_figures(impact)
-        return impact, significant_figures
+        return impact, significant_figures, 0, []
 
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
+    def impact_manufacture_pe(self) -> ComputedImpacts:
         return self.__impact_manufacture('pe')
 
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
+    def impact_manufacture_adp(self) -> ComputedImpacts:
         return self.__impact_manufacture('adp')
 
-    def impact_use_gwp(self, model=None) -> NumberSignificantFigures:
+    def impact_use_gwp(self, model=None) -> ComputedImpacts:
         raise NotImplementedError
 
-    def impact_use_pe(self, model=None) -> NumberSignificantFigures:
+    def impact_use_pe(self, model=None) -> ComputedImpacts:
         raise NotImplementedError
 
-    def impact_use_adp(self, model=None) -> NumberSignificantFigures:
+    def impact_use_adp(self, model=None) -> ComputedImpacts:
         raise NotImplementedError

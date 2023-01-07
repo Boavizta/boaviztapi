@@ -1,8 +1,9 @@
 from typing import Tuple
 
 import boaviztapi.utils.roundit as rd
+from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Boattribute, Status
-from boaviztapi.model.component.component import Component, NumberSignificantFigures
+from boaviztapi.model.component.component import Component
 from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
 
 
@@ -43,16 +44,16 @@ class ComponentCPU(Component):
         self.family = Boattribute(default=self.DEFAULT_CPU_FAMILY)
         self.tdp = Boattribute(unit="W")
 
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+    def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')
 
-    def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
+    def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
         core_impact, cpu_die_impact, cpu_impact = self.__get_impact_constants(impact_type)
         sign_figures = self.__compute_significant_numbers(core_impact, cpu_die_impact, cpu_impact)
         impact = self.__compute_impact_manufacture(core_impact, cpu_die_impact, cpu_impact)
-        return impact, sign_figures
+        return impact, sign_figures, 0, []
 
-    def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
+    def __impact_usage(self, impact_type: str) -> ComputedImpacts:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
 
         if not self.usage.hours_electrical_consumption.is_set():
@@ -63,7 +64,7 @@ class ComponentCPU(Component):
                 self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
 
         sig_fig = self.__compute_significant_numbers_usage(impact_factor.value)
-        return impacts, sig_fig
+        return impacts, sig_fig, 0, []
 
     def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
         return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value,
@@ -99,17 +100,17 @@ class ComponentCPU(Component):
     def __compute_impact_manufacture(self, core_impact: float, cpu_die_impact: float, cpu_impact: float) -> float:
         return (self.core_units.value * self.die_size_per_core.value + core_impact) * cpu_die_impact + cpu_impact
 
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
+    def impact_manufacture_pe(self) -> ComputedImpacts:
         return self.__impact_manufacture('pe')
 
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
+    def impact_manufacture_adp(self) -> ComputedImpacts:
         return self.__impact_manufacture('adp')
 
-    def impact_use_gwp(self) -> NumberSignificantFigures:
+    def impact_use_gwp(self) -> ComputedImpacts:
         return self.__impact_usage("gwp")
 
-    def impact_use_pe(self) -> NumberSignificantFigures:
+    def impact_use_pe(self) -> ComputedImpacts:
         return self.__impact_usage("pe")
 
-    def impact_use_adp(self) -> NumberSignificantFigures:
+    def impact_use_adp(self) -> ComputedImpacts:
         return self.__impact_usage("adp")

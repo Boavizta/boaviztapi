@@ -2,10 +2,11 @@ import copy
 from abc import ABC
 from typing import List, Union
 
+from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
     ComponentPowerSupply, ComponentCase, ComponentMotherboard, ComponentAssembly
-from boaviztapi.model.device.device import Device, NumberSignificantFigures
+from boaviztapi.model.device.device import Device
 from boaviztapi.model.usage import ModelUsageServer, ModelUsageCloud
 import boaviztapi.utils.roundit as rd
 
@@ -139,16 +140,20 @@ class DeviceServer(Device):
         return [self.assembly] + [self.cpu] + self.ram + self.disk + [self.power_supply] + [self.case] + [
             self.motherboard]
 
-    def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
+    def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
         impacts = []
         significant_figures = []
+        warnings = []
+        error_margin = []
         for component in self.components:
-            impact, sign_fig = getattr(component, f'impact_manufacture_{impact_type}')()
+            impact, sign_fig, c_error_margin, c_warning = getattr(component, f'impact_manufacture_{impact_type}')()
             impacts.append(impact*component.units)
             significant_figures.append(sign_fig)
-        return sum(impacts), min(significant_figures)
+            warnings = warnings + c_warning
+            error_margin.append(c_error_margin)
+        return sum(impacts), min(significant_figures), sum(error_margin), warnings
 
-    def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
+    def __impact_usage(self, impact_type: str) -> ComputedImpacts:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
         if not self.usage.hours_electrical_consumption.is_set():
             self.usage.hours_electrical_consumption.value = self.model_power_consumption()
@@ -156,7 +161,7 @@ class DeviceServer(Device):
 
         impacts = impact_factor.value * (self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
         sig_fig = self.__compute_significant_numbers(impact_factor.value)
-        return impacts, sig_fig
+        return impacts, sig_fig, 0, []
 
     def model_power_consumption(self):
         conso_cpu = self.cpu.model_power_consumption()*self.cpu.units
@@ -168,22 +173,22 @@ class DeviceServer(Device):
     def __compute_significant_numbers(self, impact_factor: float) -> int:
         return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value, impact_factor)
 
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+    def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')
 
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
+    def impact_manufacture_pe(self) -> ComputedImpacts:
         return self.__impact_manufacture('pe')
 
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
+    def impact_manufacture_adp(self) -> ComputedImpacts:
         return self.__impact_manufacture('adp')
 
-    def impact_use_gwp(self) -> NumberSignificantFigures:
+    def impact_use_gwp(self) -> ComputedImpacts:
         return self.__impact_usage('gwp')
 
-    def impact_use_pe(self) -> NumberSignificantFigures:
+    def impact_use_pe(self) -> ComputedImpacts:
         return self.__impact_usage('pe')
 
-    def impact_use_adp(self) -> NumberSignificantFigures:
+    def impact_use_adp(self) -> ComputedImpacts:
         return self.__impact_usage('adp')
 
 
@@ -202,26 +207,26 @@ class DeviceCloudInstance(DeviceServer, ABC):
     def usage(self, value: ModelUsageCloud) -> None:
         self._usage = value
 
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+    def impact_manufacture_gwp(self) -> ComputedImpacts:
         impact, sign_fig = super().impact_manufacture_gwp()
         return (impact / self.usage.instance_per_server.value), sign_fig
 
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
+    def impact_manufacture_pe(self) -> ComputedImpacts:
         impact, sign_fig = super().impact_manufacture_pe()
         return (impact / self.usage.instance_per_server.value), sign_fig
 
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
+    def impact_manufacture_adp(self) -> ComputedImpacts:
         impact, sign_fig = super().impact_manufacture_adp()
         return (impact / self.usage.instance_per_server.value), sign_fig
 
-    def impact_use_gwp(self) -> NumberSignificantFigures:
+    def impact_use_gwp(self) -> ComputedImpacts:
         impact, sign_fig = super().impact_use_gwp()
         return (impact / self.usage.instance_per_server.value), sign_fig
 
-    def impact_use_pe(self) -> NumberSignificantFigures:
+    def impact_use_pe(self) -> ComputedImpacts:
         impact, sign_fig = super().impact_use_pe()
         return (impact / self.usage.instance_per_server.value), sign_fig
 
-    def impact_use_adp(self) -> NumberSignificantFigures:
+    def impact_use_adp(self) -> ComputedImpacts:
         impact, sign_fig = super().impact_use_adp()
         return (impact / self.usage.instance_per_server.value), sign_fig

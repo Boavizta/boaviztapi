@@ -1,6 +1,6 @@
 import boaviztapi.utils.roundit as rd
-from boaviztapi.model.boattribute import Boattribute, Status
-from boaviztapi.model.component.component import Component, NumberSignificantFigures
+from boaviztapi.model.boattribute import Boattribute
+from boaviztapi.model.component.component import Component, ComputedImpacts
 
 
 class ComponentPowerSupply(Component):
@@ -28,29 +28,29 @@ class ComponentPowerSupply(Component):
             default=self.DEFAULT_POWER_SUPPLY_WEIGHT
         )
 
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+    def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')
 
-    def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
+    def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
         power_supply_impact = self.IMPACT_FACTOR[impact_type]['impact']
         impact = self.__compute_impact_manufacture(power_supply_impact)
         sign_figures = rd.min_significant_figures(power_supply_impact)
-        return impact, sign_figures
+        return impact, sign_figures, 0, []
 
     def __compute_impact_manufacture(self, power_supply_impact: float) -> float:
         return self.unit_weight.value * power_supply_impact
 
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
+    def impact_manufacture_pe(self) -> ComputedImpacts:
         return self.__impact_manufacture('pe')
 
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
+    def impact_manufacture_adp(self) -> ComputedImpacts:
         return self.__impact_manufacture('adp')
 
-    def impact_use_gwp(self, model=None) -> NumberSignificantFigures:
+    def impact_use_gwp(self, model=None) -> ComputedImpacts:
         raise NotImplementedError
 
-    def impact_use_pe(self, model=None) -> NumberSignificantFigures:
+    def impact_use_pe(self, model=None) -> ComputedImpacts:
         raise NotImplementedError
 
-    def impact_use_adp(self, model=None) -> NumberSignificantFigures:
+    def impact_use_adp(self, model=None) -> ComputedImpacts:
         raise NotImplementedError

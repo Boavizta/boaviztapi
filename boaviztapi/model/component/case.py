@@ -1,9 +1,9 @@
 from typing import Tuple
 
 import boaviztapi.utils.roundit as rd
-from boaviztapi.model.boattribute import Boattribute, Status
-from boaviztapi.model.component.component import Component, NumberSignificantFigures
-
+from boaviztapi.model import ComputedImpacts
+from boaviztapi.model.boattribute import Boattribute
+from boaviztapi.model.component.component import Component
 
 class ComponentCase(Component):
     AVAILABLE_CASE_TYPE = ['blade', 'rack']
@@ -43,10 +43,10 @@ class ComponentCase(Component):
         super().__init__(**kwargs)
         self.case_type = Boattribute(default=self.DEFAULT_CASE_TYPE)
 
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+    def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')
 
-    def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
+    def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
         if self.case_type.value == 'rack':
             return self.__impact_manufacture_rack(impact_type)
         elif self.case_type.value == 'blade':
@@ -54,16 +54,16 @@ class ComponentCase(Component):
         else:
             return self.__impact_manufacture_rack(impact_type)
 
-    def __impact_manufacture_rack(self, impact_type: str) -> NumberSignificantFigures:
+    def __impact_manufacture_rack(self, impact_type: str) -> ComputedImpacts:
         impact = self.IMPACT_FACTOR['rack'][impact_type]['impact']
         significant_figures = rd.min_significant_figures(impact)
-        return impact, significant_figures
+        return impact, significant_figures, 0, []
 
-    def __impact_manufacture_blade(self, impact_type: str) -> NumberSignificantFigures:
+    def __impact_manufacture_blade(self, impact_type: str) -> ComputedImpacts:
         impact_blade_server, impact_blade_16_slots = self.__get_impact_constants_blade(impact_type)
         impact = self.__compute_impact_manufacture_blade(impact_blade_server, impact_blade_16_slots)
         sign_figures = self.__compute_significant_numbers(impact_blade_server, impact_blade_16_slots)
-        return impact, sign_figures
+        return impact, sign_figures, 0, []
 
     def __get_impact_constants_blade(self, impact_type: str) -> Tuple[float, float]:
         impact_blade_server = self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server']
@@ -78,17 +78,17 @@ class ComponentCase(Component):
     def __compute_significant_numbers(impact_blade_server: float, impact_blade_16_slots: float) -> int:
         return rd.min_significant_figures(impact_blade_server, impact_blade_16_slots)
 
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
+    def impact_manufacture_pe(self) -> ComputedImpacts:
         return self.__impact_manufacture('pe')
 
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
+    def impact_manufacture_adp(self) -> ComputedImpacts:
         return self.__impact_manufacture('adp')
 
-    def impact_use_gwp(self) -> NumberSignificantFigures:
+    def impact_use_gwp(self) -> ComputedImpacts:
         raise NotImplementedError
 
-    def impact_use_pe(self) -> NumberSignificantFigures:
+    def impact_use_pe(self) -> ComputedImpacts:
         raise NotImplementedError
 
-    def impact_use_adp(self) -> NumberSignificantFigures:
+    def impact_use_adp(self) -> ComputedImpacts:
         raise NotImplementedError
