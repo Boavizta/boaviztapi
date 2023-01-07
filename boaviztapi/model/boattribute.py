@@ -14,12 +14,14 @@ class Status(Enum):
 class Boattribute:
     def __init__(self, **kwargs):
 
+        self.error_margin = None
         self._value = None
-        self.unit = "none"
+        self.unit = None
         self.status = Status.NONE
         self.source = None
         self.default = None
         self.args = None
+        self.warnings = []
 
         for attr, val in kwargs.items():
             if val is not None:
@@ -43,8 +45,16 @@ class Boattribute:
     def value(self, value: Any):
         self._value = value
 
+    def add_warning(self, warn):
+        self.warnings = self.warnings.append(warn)
+
     def to_json(self):
-        json = {"value": self._value, "unit": self.unit, "status": self.status.value, "source": self.source}
+        json = {"value": self._value, "status": self.status.value}
+        if self.unit: json['unit'] = self.unit   
+        if self.source: json['source'] = self.source   
+        if self.error_margin: json['error_margin'] = self.error_margin
+        if self.warnings: json['warnings'] = self.warnings
+
         return json
 
     def is_set(self):
@@ -82,6 +92,8 @@ class Boattribute:
 
     def set_archetype(self, value: Any, *, source: Optional[str] = None) -> None:
         self.__set_value_and_status(value, Status.ARCHETYPE, source)
+
+
 
     def __set_value_and_status(self, value: Any, status: Status, source: str) -> None:
         self._value = value
