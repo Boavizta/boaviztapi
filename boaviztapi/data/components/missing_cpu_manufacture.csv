@@ -1,25 +1,5 @@
-Intel,Cascade Lake,2019,14,unknown,56,unknown,
-Intel,Cascade Lake,2019,14,unknown,48,unknown,
-Intel,Cascade Lake,2019,14,unknown,32,unknown,
-Intel,Cascade Lake,2019,14,unknown,28,unknown,
-Intel,Cascade Lake,2019,14,unknown,26,unknown,
-Intel,Cascade Lake,2019,14,unknown,24,unknown,
-Intel,Cascade Lake,2019,14,unknown,22,unknown,
-Intel,Cascade Lake,2019,14,unknown,20,unknown,
-Intel,Cascade Lake,2019,14,unknown,18,unknown,
-Intel,Cascade Lake,2019,14,unknown,16,unknown,
-Intel,Cascade Lake,2019,14,unknown,12,unknown,
-Intel,Cascade Lake,2019,14,unknown,10,unknown,
-Intel,Cascade Lake,2019,14,unknown,8,unknown,
-Intel,Cascade Lake,2019,14,unknown,6,unknown,
-Intel,Cascade Lake,2019,14,unknown,4,unknown,
-Intel,Cascade Lake,2019,14,unknown,2,unknown,
-Annapurna Labs,Graviton,2018,16,unknown,16,unknown,
-Intel,Kaby Lake,2017,14,unknown,2,unknown,
-Amd,Zen,2017,7,unknown,8,unknown,
-Intel,Sandy Bridge,2010,32,unknown,2,unknown,
-Intel,Haswell,2013,22,unknown,4,unknown,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
-Intel,Haswell,2013,22,unknown,2,unknown,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)
-Intel,Broadwell,2014,14,unknown,2,unknown,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client))
-Intel,Coffee Lake,2017,14,unknown,2,unknown,
-
+Intel,cascadelake,2019,14
+Annapurna Labs,Graviton,2018,?
+Amd,Zen,2017,7
+Intel,cooperlake,2020,14
+AMD,Zen+,2018,12

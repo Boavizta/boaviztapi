@@ -124,8 +124,8 @@ async def test_incomplete_cpu_verbose():
             "core_units": 24, "family": "Skylake", "manufacture_date": 2017})
 
     assert res.json() == {'impacts': {'adp': {'manufacture': 0.02, 'unit': 'kgSbeq', 'use': 0.000102},
-                                      'gwp': {'manufacture': 23.8, 'unit': 'kgCO2eq', 'use': 610.0},
-                                      'pe': {'manufacture': 353.0, 'unit': 'MJ', 'use': 20550.0}},
+                                      'gwp': {'manufacture': 22.0, 'unit': 'kgCO2eq', 'use': 610.0},
+                                      'pe': {'manufacture': 330.0, 'unit': 'MJ', 'use': 20550.0}},
                           'verbose': {'USAGE': {'adp_factor': {'source': 'ADEME BASE IMPACT',
                                                                'status': 'COMPLETED',
                                                                'unit': 'KgSbeq/kWh',
@@ -177,17 +177,17 @@ async def test_incomplete_cpu_verbose():
                                                      'unit': 'none',
                                                      'value': 24},
                                       'die_size_per_core': {
-                                          'source': 'https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)',
+                                          'source': 'https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)#Extreme_Core_Count_.28XCC.29',
                                           'status': 'COMPLETED',
                                           'unit': 'mm2',
-                                          'value': 0.289},
+                                          'value': 0.25},
                                       'family': {'source': None,
                                                  'status': 'CHANGED',
                                                  'unit': 'none',
                                                  'value': 'skylake'},
                                       'manufacture_impacts': {'adp': {'unit': 'kgSbeq', 'value': 0.02},
-                                                              'gwp': {'unit': 'kgCO2eq', 'value': 23.8},
-                                                              'pe': {'unit': 'MJ', 'value': 353.0}},
+                                                              'gwp': {'unit': 'kgCO2eq', 'value': 22.0},
+                                                              'pe': {'unit': 'MJ', 'value': 330.0}},
                                       'units': 1}}
 
 
@@ -198,8 +198,8 @@ async def test_incomplete_cpu_verbose_2():
             "core_units": 24, "family": "skylak", "manufacture_date": 2017})
 
     assert res.json() == {'impacts': {'adp': {'manufacture': 0.02, 'unit': 'kgSbeq', 'use': 0.000102},
-                                      'gwp': {'manufacture': 23.8, 'unit': 'kgCO2eq', 'use': 610.0},
-                                      'pe': {'manufacture': 353.0, 'unit': 'MJ', 'use': 20550.0}},
+                                      'gwp': {'manufacture': 22.0, 'unit': 'kgCO2eq', 'use': 610.0},
+                                      'pe': {'manufacture': 330.0, 'unit': 'MJ', 'use': 20550.0}},
                           'verbose': {'USAGE': {'adp_factor': {'source': 'ADEME BASE IMPACT',
                                                                'status': 'COMPLETED',
                                                                'unit': 'KgSbeq/kWh',
@@ -251,17 +251,17 @@ async def test_incomplete_cpu_verbose_2():
                                                      'status': 'INPUT',
                                                      'unit': 'none',
                                                      'value': 24},
-                                      'die_size_per_core': {'source': 'https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)',
+                                      'die_size_per_core': {'source': 'https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)#Extreme_Core_Count_.28XCC.29',
                                           'status': 'COMPLETED',
                                           'unit': 'mm2',
-                                          'value': 0.289},
+                                          'value': 0.25},
                                       'family': {'source': None,
                                                  'status': 'CHANGED',
                                                  'unit': 'none',
                                                  'value': 'skylake'},
                                       'manufacture_impacts': {'adp': {'unit': 'kgSbeq', 'value': 0.02},
-                                                              'gwp': {'unit': 'kgCO2eq', 'value': 23.8},
-                                                              'pe': {'unit': 'MJ', 'value': 353.0}},
+                                                              'gwp': {'unit': 'kgCO2eq', 'value': 22.0},
+                                                              'pe': {'unit': 'MJ', 'value': 330.0}},
                                       'units': 1}}
 
 

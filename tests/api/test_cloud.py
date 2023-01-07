@@ -37,8 +37,8 @@ async def test_empty_usage_1():
         res = await ac.get('/v1/cloud/?verbose=false&instance_type=a1.2xlarge&provider=aws')
 
     assert res.json() == {'adp': {'manufacture': 0.05, 'unit': 'kgSbeq', 'use': 1.94e-05},
-                         'gwp': {'manufacture': 250.0, 'unit': 'kgCO2eq', 'use': 110.0},
-                         'pe': {'manufacture': 3500.0, 'unit': 'MJ', 'use': 3895.0}}
+                         'gwp': {'manufacture': 300.0, 'unit': 'kgCO2eq', 'use': 110.0},
+                         'pe': {'manufacture': 3000.0, 'unit': 'MJ', 'use': 3895.0}}
 
 @pytest.mark.asyncio
 async def test_empty_usage_2():
@@ -167,8 +167,8 @@ async def test_legacy_empty_usage_1():
         res = await ac.post('/v1/cloud/aws?verbose=false&instance_type=a1.2xlarge', json={})
 
     assert res.json() == {'adp': {'manufacture': 0.05, 'unit': 'kgSbeq', 'use': 1.94e-05},
-                         'gwp': {'manufacture': 250.0, 'unit': 'kgCO2eq', 'use': 110.0},
-                         'pe': {'manufacture': 3500.0, 'unit': 'MJ', 'use': 3895.0}}
+                         'gwp': {'manufacture': 300.0, 'unit': 'kgCO2eq', 'use': 110.0},
+                         'pe': {'manufacture': 3000.0, 'unit': 'MJ', 'use': 3895.0}}
 
 @pytest.mark.asyncio
 async def test_legacy_empty_usage_2():
