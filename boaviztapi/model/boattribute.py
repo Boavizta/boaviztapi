@@ -53,8 +53,8 @@ class Boattribute:
         json = {"value": self._value, "status": self.status.value}
         if self.unit: json['unit'] = self.unit   
         if self.source: json['source'] = self.source   
-        if self.min and (self.is_default() or self.is_completed()): json['min'] = self.min
-        if self.max and (self.is_default() or self.is_completed()): json['max'] = self.max
+        if (self.min or self.min==0) and (self.is_default() or self.is_completed()): json['min'] = self.min
+        if (self.max or self.max==0) and (self.is_default() or self.is_completed()): json['max'] = self.max
         if self.warnings: json['warnings'] = self.warnings
 
         return json

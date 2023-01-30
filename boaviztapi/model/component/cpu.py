@@ -93,7 +93,7 @@ class ComponentCPU(Component):
         self.usage.consumption_profile.compute_consumption_profile_model(cpu_manufacturer=manuf,
                                                                          cpu_model_range=model,
                                                                          cpu_tdp=tdp)
-        if type(self.usage.time_workload.value) == float:
+        if type(self.usage.time_workload.value) in (float, int):
             self.usage.hours_electrical_consumption.set_completed(self.usage.consumption_profile.apply_consumption_profile(self.usage.time_workload.value))
         else:
             self.usage.hours_electrical_consumption.set_completed(self.usage.consumption_profile.apply_multiple_workloads(self.usage.time_workload.value))
