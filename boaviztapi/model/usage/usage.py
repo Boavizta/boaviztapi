@@ -80,9 +80,9 @@ class ModelUsageServer(ModelUsage):
 
         self.other_consumption_ratio = Boattribute(
             unit="ratio /1",
-            default=default_config.other_consumption_ratio.default,
-            min=default_config.other_consumption_ratio.min,
-            max=default_config.other_consumption_ratio.max
+            default=default_config['other_consumption_ratio']['default'],
+            min=default_config['other_consumption_ratio']['min'],
+            max=default_config['other_consumption_ratio']['max']
         )
 
 

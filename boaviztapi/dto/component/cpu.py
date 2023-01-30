@@ -81,6 +81,9 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
 
     elif cpu_dto.die_size is not None and cpu_dto.core_units is not None:
         cpu_component.die_size_per_core.value = cpu_dto.die_size / cpu_dto.core_units
+        cpu_component.die_size_per_core.min =  cpu_component.die_size_per_core.value
+        cpu_component.die_size_per_core.max =  cpu_component.die_size_per_core.value
+
         cpu_component.die_size_per_core.status = Status.COMPLETED
         cpu_component.die_size_per_core.source = "INPUT : die_size / core_units"
 
@@ -103,19 +106,23 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
             sub['core_dif'] = sub[['core_units']].apply(lambda x: abs(x[0] - cpu_dto.core_units), axis=1)
             sub = sub.sort_values(by='core_dif', ascending=True)
             row = sub.iloc[0]
+            row2 = sub.iloc[2]
 
             cpu_component.die_size_per_core.value = float(row['die_size_per_core'])
             cpu_component.die_size_per_core.status = Status.COMPLETED
             cpu_component.die_size_per_core.source = row['Source']
 
-        else:
-            # Maximize die_size_per_core
-            sub = sub.sort_values(by='die_size_per_core', ascending=False)
-            row = sub.iloc[0]
-            cpu_component.die_size_per_core.value = float(row['die_size_per_core'])
-            cpu_component.die_size_per_core.status = Status.COMPLETED
-            cpu_component.die_size_per_core.source = row['Source']
-            cpu_component.die_size_per_core.add_warning("Maximizing value without cpu.core_unit given")
+            if row['core_dif'] == 0:
+                cpu_component.die_size_per_core.min = float(row['die_size_per_core'])
+                cpu_component.die_size_per_core.max = float(row['die_size_per_core'])
+
+            elif float(row2['die_size_per_core']) > float(row['die_size_per_core']):
+                cpu_component.die_size_per_core.min = float(row['die_size_per_core'])
+                cpu_component.die_size_per_core.max = float(row2['die_size_per_core'])
+
+            else :
+                cpu_component.die_size_per_core.min = float(row2['die_size_per_core'])
+                cpu_component.die_size_per_core.max = float(row['die_size_per_core'])
 
     return cpu_component
 

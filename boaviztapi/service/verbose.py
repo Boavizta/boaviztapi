@@ -1,5 +1,4 @@
-import boaviztapi.utils.roundit as rd
-from boaviztapi.model.boattribute import Status, Boattribute
+from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.device import Device
 from boaviztapi.model.component import Component
 from boaviztapi.model.impact import IMPACT_CRITERIAS

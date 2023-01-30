@@ -69,7 +69,6 @@ async def server_impact_from_configuration(
         allocation=allocation
     )
 
-
 async def server_impact(device: Device,
                         verbose: bool, allocation: Allocation) -> dict:
     impacts = bottom_up_device(device=device, allocation=allocation)

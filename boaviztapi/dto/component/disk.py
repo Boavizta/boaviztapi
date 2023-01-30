@@ -46,18 +46,15 @@ def smart_mapper_ssd(disk_dto: Disk) -> ComponentSSD:
             elif len(sub) == 1:
                 disk_component.density.value = float(sub['density'])
                 disk_component.density.status = Status.COMPLETED
+                disk_component.density.min = float(sub['density'])
+                disk_component.density.max = float(sub['density'])
                 disk_component.density.source = str(sub['manufacturer'].iloc[0])
             else:
-                if disk_dto.capacity is not None:
-                    capacity = disk_dto.capacity
-                    sub['_scope3'] = sub['density'].apply(lambda x: capacity / x)
-                    sub = sub.sort_values(by='_scope3', ascending=False)
-                    row = sub.iloc[0]
-
-                    density = float(row["density"])
-                    disk_component.density.value = density
-                    disk_component.density.status = Status.COMPLETED
-                    disk_component.density.source = row["manufacturer"]
+                disk_component.density.value = float(sub['density'].mean())
+                disk_component.density.min = float(sub['density'].min())
+                disk_component.density.max = float(sub['density'].max())
+                disk_component.density.status = Status.COMPLETED
+                disk_component.density.source = "Average of " + str(len(sub)) + " rows"
 
         if disk_dto.manufacturer is not None and corrected_manufacturer is not None:
             if corrected_manufacturer != disk_dto.manufacturer:

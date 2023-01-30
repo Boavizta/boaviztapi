@@ -49,14 +49,14 @@ def smart_mapper_ram(ram_dto: RAM) -> ComponentRAM:
             ram_component.density.value = float(sub['density'])
             ram_component.density.status = Status.COMPLETED
             ram_component.density.source = str(sub['manufacturer'].iloc[0])
+            ram_component.density.min = float(sub['density'])
+            ram_component.density.max = float(sub['density'])
         else:
-            sub['_scope3'] = sub['density'].apply(lambda x: x)
-            sub = sub.sort_values(by='_scope3', ascending=True)
-            row = sub.iloc[0]
-
-            ram_component.density.value = float(row['density'])
+            ram_component.density.value = float(sub['density'].mean())
+            ram_component.density.min = float(sub['density'].min())
+            ram_component.density.max = float(sub['density'].max())
             ram_component.density.status = Status.COMPLETED
-            ram_component.density.source = row['manufacturer']
+            ram_component.density.source = "Average of " + str(len(sub)) + " rows"
 
     if ram_dto.capacity is not None:
         ram_component.capacity.value = ram_dto.capacity
