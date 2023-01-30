@@ -1,12 +1,11 @@
 import boaviztapi.utils.roundit as rd
+from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component, ComputedImpacts
 
 
 class ComponentPowerSupply(Component):
     NAME = "POWER_SUPPLY"
-
-    DEFAULT_POWER_SUPPLY_WEIGHT = 2.99
 
     IMPACT_FACTOR = {
         'gwp': {
@@ -20,12 +19,14 @@ class ComponentPowerSupply(Component):
         }
     }
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, default_config=config["DEFAULT"]["POWER_SUPPLY"], **kwargs):
+        super().__init__(default_config=default_config, **kwargs)
 
         self.unit_weight = Boattribute(
             unit="kg",
-            default=self.DEFAULT_POWER_SUPPLY_WEIGHT
+            default=default_config['unit_weight']['default'],
+            min=default_config['unit_weight']['min'],
+            max=default_config['unit_weight']['max']
         )
 
     def impact_manufacture_gwp(self) -> ComputedImpacts:

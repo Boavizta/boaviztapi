@@ -1,6 +1,7 @@
 from typing import Tuple
 
 import boaviztapi.utils.roundit as rd
+from boaviztapi import config
 from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component
@@ -8,8 +9,6 @@ from boaviztapi.model.component.component import Component
 class ComponentCase(Component):
     AVAILABLE_CASE_TYPE = ['blade', 'rack']
     NAME = "CASE"
-
-    DEFAULT_CASE_TYPE = 'rack'
 
     IMPACT_FACTOR = {
         'rack': {
@@ -39,9 +38,11 @@ class ComponentCase(Component):
         }
     }
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.case_type = Boattribute(default=self.DEFAULT_CASE_TYPE)
+    def __init__(self, default_config=config["DEFAULT"]["CASE"], **kwargs):
+        super().__init__(default_config=default_config, **kwargs)
+        self.case_type = Boattribute(
+            default=default_config['case_type']['default']
+        )
 
     def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')

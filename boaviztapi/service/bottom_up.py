@@ -48,7 +48,6 @@ def get_model_single_impact(model: Union[Component, Device],
     except (AttributeError, NotImplementedError):
         pass
 
-
 def bottom_up_device(device: Device, allocation) -> dict:
     impacts = {}
 

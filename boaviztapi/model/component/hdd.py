@@ -1,14 +1,12 @@
 import boaviztapi.utils.roundit as rd
+from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component, ComputedImpacts
-
 
 class ComponentHDD(Component):
     NAME = "HDD"
 
     __DISK_TYPE = 'hdd'
-
-    DEFAULT_HDD_CAPACITY = 500
 
     IMPACT_FACTOR = {
         'gwp': {
@@ -22,10 +20,15 @@ class ComponentHDD(Component):
         }
     }
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, default_config=config["DEFAULT"]["HDD"], **kwargs):
+        super().__init__(default_config=default_config, **kwargs)
 
-        self.capacity = Boattribute(unit="GB", default=self.DEFAULT_HDD_CAPACITY)
+        self.capacity = Boattribute(
+            unit="GB",
+            default=default_config['capacity']['default'],
+            min=default_config['capacity']['min'],
+            max=default_config['capacity']['max']
+        )
 
     def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')

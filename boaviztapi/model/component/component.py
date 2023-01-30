@@ -1,6 +1,7 @@
 from abc import abstractmethod
 
 import boaviztapi.utils.roundit as rd
+from boaviztapi import config
 from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.usage import ModelUsage
 
@@ -8,7 +9,7 @@ from boaviztapi.model.usage import ModelUsage
 class Component:
     NAME = "COMPONENT"
 
-    def __init__(self, **kwargs):
+    def __init__(self, default_config=config["DEFAULT"]["COMPONENT"], **kwargs):
         self._units = None
         self._usage = None
 

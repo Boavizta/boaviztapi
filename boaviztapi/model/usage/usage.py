@@ -2,6 +2,7 @@ import os
 
 import pandas as pd
 
+from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute, Status
 
 _electricity_emission_factors_df = pd.read_csv(
@@ -12,27 +13,28 @@ _cloud_profile_path = os.path.join(os.path.dirname(__file__), '../../data/consum
 _server_profile_path = os.path.join(os.path.dirname(__file__),
                                     '../../data/consumption_profile/server/server_profile.csv')
 
-
 class ModelUsage:
-    DEFAULT_USAGE_LOCATION = "EEE"
-    DEFAULT_USE_TIME_IN_HOURS = 24 * 365
-    DEFAULT_LIFE_TIME_IN_HOURS = 24 * 365 * 3  # 3 years
-    DEFAULT_WORKLOAD = 50.
-    DEFAULT_POWER_CONSUMPTION = 0
 
     _DAYS_IN_HOURS = 24
     _YEARS_IN_HOURS = 24 * 365
 
-    def __init__(self, **kwargs):
+    def __init__(self, default_config=config["DEFAULT"]["USAGE"], **kwargs):
         self.hours_electrical_consumption = Boattribute(
             unit="W",
-            default=self.DEFAULT_POWER_CONSUMPTION
+            default=default_config['hours_electrical_consumption']['default'],
+            min=default_config['hours_electrical_consumption']['min'],
+            max=default_config['hours_electrical_consumption']['max']
         )
-        self.time_workload = Boattribute(default=self.DEFAULT_WORKLOAD, unit="%")
+        self.time_workload = Boattribute(
+            unit="%",
+            default=default_config['time_workload']['default'],
+            min=default_config['time_workload']['min'],
+            max=default_config['time_workload']['max']
+        )
         self.consumption_profile = None
         self.usage_location = Boattribute(
             unit="CodSP3 - NCS Country Codes - NATO",
-            default=self.DEFAULT_USAGE_LOCATION
+            default=default_config['usage_location']['default']
         )
         self.adp_factor = Boattribute(
             unit="KgSbeq/kWh",
@@ -55,11 +57,15 @@ class ModelUsage:
 
         self.use_time = Boattribute(
             unit="hours",
-            default=self.DEFAULT_USE_TIME_IN_HOURS
+            default=default_config['use_time']['default'],
+            min=default_config['use_time']['min'],
+            max=default_config['use_time']['max']
         )
         self.life_time = Boattribute(
             unit="hours",
-            default=self.DEFAULT_LIFE_TIME_IN_HOURS
+            default=default_config['life_time']['default'],
+            min=default_config['life_time']['min'],
+            max=default_config['life_time']['max']
         )
 
     def __iter__(self):
@@ -68,23 +74,26 @@ class ModelUsage:
 
 
 class ModelUsageServer(ModelUsage):
-    DEFAULT_OTHER_CONSUMPTION_RATIO = 0.33
-    DEFAULT_LIFE_TIME_IN_HOURS = 24 * 365 * 3  # 3 years
-    DEFAULT_POWER_CONSUMPTION = 300  # 300 watt
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, default_config=config["DEFAULT"]["USAGE"], **kwargs):
+        super().__init__(default_config=default_config, **kwargs)
 
-        self.other_consumption_ratio = Boattribute(unit="ratio /1", default=self.DEFAULT_OTHER_CONSUMPTION_RATIO)
+        self.other_consumption_ratio = Boattribute(
+            unit="ratio /1",
+            default=default_config.other_consumption_ratio.default,
+            min=default_config.other_consumption_ratio.min,
+            max=default_config.other_consumption_ratio.max
+        )
 
 
 class ModelUsageCloud(ModelUsageServer):
-    DEFAULT_INSTANCE_PER_SERVER = 1
-    DEFAULT_LIFE_TIME_IN_HOURS = 24 * 365 * 2  # 2 years
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.instance_per_server = Boattribute(default=self.DEFAULT_INSTANCE_PER_SERVER)
+    def __init__(self, default_config=config["DEFAULT"]["USAGE"], **kwargs):
+        super().__init__(default_config=default_config, **kwargs)
+        self.instance_per_server = Boattribute(
+            default=default_config['instance_per_server']['default'],
+            min=default_config['instance_per_server']['min'],
+            max=default_config['instance_per_server']['max']
+        )
 
 
 def default_impact_factor(args):

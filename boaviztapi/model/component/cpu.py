@@ -1,6 +1,7 @@
 from typing import Tuple
 
 import boaviztapi.utils.roundit as rd
+from boaviztapi import config
 from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Boattribute, Status
 from boaviztapi.model.component.component import Component
@@ -9,12 +10,6 @@ from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
 
 class ComponentCPU(Component):
     NAME = "CPU"
-
-    DEFAULT_CPU_DIE_SIZE_PER_CORE = 0.245
-    DEFAULT_CPU_CORE_UNITS = 24
-    DEFAULT_CPU_MANUFACTURER = 'Intel'
-    DEFAULT_CPU_FAMILY = 'Skylake'
-    DEFAULT_MODEL_RANGE = 'Xeon Platinum'
 
     IMPACT_FACTOR = {
         'gwp': {
@@ -32,17 +27,34 @@ class ComponentCPU(Component):
         'constant_core_impact': 0.491
     }
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.core_units = Boattribute(default=self.DEFAULT_CPU_CORE_UNITS)
+    def __init__(self, default_config=config["DEFAULT"]["CPU"], **kwargs):
+        super().__init__(default_config=default_config, **kwargs)
+        self.core_units = Boattribute(
+            default=default_config['core_units']['default'],
+            min=default_config['core_units']['min'],
+            max=default_config['core_units']['max']
+        )
         self.die_size_per_core = Boattribute(
             unit="mm2",
-            default=self.DEFAULT_CPU_DIE_SIZE_PER_CORE
+            default=default_config['die_size_per_core']['default'],
+            min=default_config['die_size_per_core']['min'],
+            max=default_config['die_size_per_core']['max']
         )
-        self.model_range = Boattribute(default=self.DEFAULT_MODEL_RANGE)
-        self.manufacturer = Boattribute(default=self.DEFAULT_CPU_MANUFACTURER)
-        self.family = Boattribute(default=self.DEFAULT_CPU_FAMILY)
-        self.tdp = Boattribute(unit="W")
+        self.model_range = Boattribute(
+            default=default_config['model_range']['default'],
+        )
+        self.manufacturer = Boattribute(
+            default=default_config['manufacturer']['default'],
+        )
+        self.family = Boattribute(
+            default=default_config['manufacturer']['default'],
+        )
+        self.tdp = Boattribute(
+            unit="W",
+            default=default_config['tdp']['default'],
+            min=default_config['tdp']['min'],
+            max=default_config['tdp']['max']
+        )
 
     def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')

@@ -1,6 +1,7 @@
 from typing import Tuple
 
 import boaviztapi.utils.roundit as rd
+from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute, Status
 from boaviztapi.model.component.component import Component, ComputedImpacts
 from boaviztapi.model.consumption_profile.consumption_profile import RAMConsumptionProfileModel
@@ -8,11 +9,6 @@ from boaviztapi.model.consumption_profile.consumption_profile import RAMConsumpt
 
 class ComponentRAM(Component):
     NAME = "RAM"
-
-    DEFAULT_RAM_CAPACITY = 32
-    DEFAULT_RAM_DENSITY = 0.625
-    DEFAULT_RAM_PROCESS = 30
-    DEFAULT_RAM_MANUFACTURER = "Samsung"
 
     IMPACT_FACTOR = {
         'gwp': {
@@ -29,18 +25,28 @@ class ComponentRAM(Component):
         }
     }
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, default_config=config["DEFAULT"]["RAM"], **kwargs):
+        super().__init__(default_config=default_config, **kwargs)
 
-        self.process = Boattribute(default=self.DEFAULT_RAM_PROCESS)
-        self.manufacturer = Boattribute(default=self.DEFAULT_RAM_MANUFACTURER)
+        self.process = Boattribute(
+            default=default_config['process']['default'],
+            min=default_config['process']['min'],
+            max=default_config['process']['max']
+        )
+        self.manufacturer = Boattribute(
+            default=default_config['manufacturer']['default'],
+        )
         self.capacity = Boattribute(
             unit="GB",
-            default=self.DEFAULT_RAM_CAPACITY
+            default=default_config['capacity']['default'],
+            min=default_config['capacity']['min'],
+            max=default_config['capacity']['max']
         )
         self.density = Boattribute(
             unit="GB/cm2",
-            default=self.DEFAULT_RAM_DENSITY
+            default=default_config['density']['default'],
+            min=default_config['density']['min'],
+            max=default_config['density']['max']
         )
 
     def impact_manufacture_gwp(self) -> ComputedImpacts:

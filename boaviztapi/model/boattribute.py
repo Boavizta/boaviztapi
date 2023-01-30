@@ -14,7 +14,8 @@ class Status(Enum):
 class Boattribute:
     def __init__(self, **kwargs):
 
-        self.error_margin = None
+        self.min = None
+        self.max = None
         self._value = None
         self.unit = None
         self.status = Status.NONE
@@ -52,7 +53,8 @@ class Boattribute:
         json = {"value": self._value, "status": self.status.value}
         if self.unit: json['unit'] = self.unit   
         if self.source: json['source'] = self.source   
-        if self.error_margin: json['error_margin'] = self.error_margin
+        if self.min and self.is_default(): json['min'] = self.min
+        if self.max and self.is_default(): json['max'] = self.max
         if self.warnings: json['warnings'] = self.warnings
 
         return json

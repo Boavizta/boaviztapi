@@ -10,7 +10,8 @@ class Impact:
     def __init__(self, **kwargs):
         self.value = 0
         self.significant_figures = 1
-        self.error_margin = 0
+        self.min = 0
+        self.max = 0
         self.warnings = []
 
         for attr, val in kwargs.items():
@@ -20,7 +21,8 @@ class Impact:
         self.warnings.append(warn)
     def to_json(self):
         json = {"value": rd.round_to_sigfig(self.value, self.significant_figures), "significant_figures": self.significant_figures}
-        if self.error_margin: json['error_margin'] = self.error_margin
+        if self.min: json['min'] = self.min
+        if self.max: json['max'] = self.max
         if self.warnings: json['warnings'] = self.warnings
 
         return json
