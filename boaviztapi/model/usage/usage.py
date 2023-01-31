@@ -72,7 +72,6 @@ class ModelUsage:
         for attr, value in self.__dict__.items():
             yield attr, value
 
-
 class ModelUsageServer(ModelUsage):
 
     def __init__(self, default_config=config["DEFAULT"]["USAGE"], **kwargs):
@@ -85,7 +84,6 @@ class ModelUsageServer(ModelUsage):
             max=default_config['other_consumption_ratio']['max']
         )
 
-
 class ModelUsageCloud(ModelUsageServer):
     def __init__(self, default_config=config["DEFAULT"]["USAGE"], **kwargs):
         super().__init__(default_config=default_config, **kwargs)
@@ -95,9 +93,11 @@ class ModelUsageCloud(ModelUsageServer):
             max=default_config['instance_per_server']['max']
         )
 
-
 def default_impact_factor(args):
     sub = args["emission_factors_df"]
-    sub = sub[sub['code'] == args["usage_location"].value]
-    return float(sub[f"{args['impact_type']}_emission_factor"]), sub[
-        f"{args['impact_type']}_emission_source"].iloc[0], Status.COMPLETED
+    sub_selected = sub[sub['code'] == args["usage_location"].value]
+    factor = float(sub_selected[f"{args['impact_type']}_emission_factor"])
+    if args['usage_location'].is_default():
+        return factor, sub_selected[f"{args['impact_type']}_emission_source"].iloc[0], sub[f"{args['impact_type']}_emission_factor"].min(), sub[f"{args['impact_type']}_emission_factor"].max(), Status.DEFAULT
+
+    return factor, sub_selected[f"{args['impact_type']}_emission_source"].iloc[0], factor, factor, Status.COMPLETED

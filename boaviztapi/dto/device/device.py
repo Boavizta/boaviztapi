@@ -59,11 +59,9 @@ def complete_components_usage(server_model: DeviceServer):
 def complete_component_usage(usage_component, usage_device):
     if usage_device.hours_electrical_consumption.is_set():
         return
-    print(usage_component.time_workload.status)
     for attr, val in usage_component.__iter__():
         if isinstance(val, Boattribute) and not val.is_set() and usage_device.__getattribute__(attr).is_set():
             usage_component.__setattr__(attr, usage_device.__getattribute__(attr))
-
 
 class Cloud(Server):
     provider: Optional[str] = None

@@ -35,7 +35,9 @@ class Boattribute:
                 default = self.default(self.args)
                 self._value = default[0]
                 self.source = default[1]
-                self.status = default[2]
+                self.min = default[2]
+                self.max = default[3]
+                self.status = default[4]
 
             else:
                 self._value = self.default

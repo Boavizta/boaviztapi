@@ -4,8 +4,9 @@ from typing import Optional, List, Union
 import pandas as pd
 
 from boaviztapi.dto import BaseDTO
-from boaviztapi.model.boattribute import Status
+from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
+from boaviztapi.model.usage.usage import default_impact_factor
 
 _electricity_emission_factors_df = pd.read_csv(os.path.join(os.path.dirname(__file__),
                                                             '../../data/electricity/electricity_impact_factors.csv'))
@@ -73,9 +74,9 @@ def smart_mapper_usage(usage_dto: Usage) -> ModelUsage:
         if len(sub) == 0:
             pass
         else:
-
             usage_model.usage_location.value = usage_dto.usage_location
             usage_model.usage_location.status = Status.INPUT
+
     return usage_model
 
 
