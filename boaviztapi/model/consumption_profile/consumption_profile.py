@@ -8,6 +8,7 @@ import pandas as pd
 from scipy.optimize import curve_fit
 
 import boaviztapi.utils.fuzzymatch as fuzzymatch
+from boaviztapi import config
 from boaviztapi.dto.usage.usage import WorkloadTime
 from boaviztapi.model.boattribute import Boattribute, Status
 
@@ -24,25 +25,25 @@ class ConsumptionProfileModel:
 
 
 class RAMConsumptionProfileModel(ConsumptionProfileModel):
-    DEFAULT_RAM_CAPACITY = 15
-    DEFAULT_WORKLOADS = None
-    RAM_ELECTRICAL_FACTOR_PER_GO = 0.284
+    ram_electrical_factor_per_go = 0.284
 
-    _DEFAULT_MODEL_PARAMS = {
-        'a': DEFAULT_RAM_CAPACITY * RAM_ELECTRICAL_FACTOR_PER_GO
-    }
-
-    def __init__(self):
+    def __init__(self, default_config=config["DEFAULT"]["RAM"]["CONSUMPTION_PROFILE"]):
         self.workloads = Boattribute(
-            default=self.DEFAULT_WORKLOADS,
+            default=default_config['workloads']['default'],
+            min=default_config['workloads']['min'],
+            max=default_config['workloads']['max'],
             unit="workload_rate:W"
         )
-        self.params = Boattribute(default=self._DEFAULT_MODEL_PARAMS)
+        self.params = Boattribute(
+            default=default_config['model_param']['default'],
+            min=default_config['model_param']['min'],
+            max=default_config['model_param']['max']
+        )
 
-    def compute_consumption_profile_model(self, ram_capacity: int = DEFAULT_RAM_CAPACITY) -> int:
-        self.params.value = {'a': self.RAM_ELECTRICAL_FACTOR_PER_GO * ram_capacity}
+    def compute_consumption_profile_model(self, ram_capacity) -> int:
+        self.params.value = {'a': self.ram_electrical_factor_per_go * ram_capacity}
         self.params.status = Status.COMPLETED
-        self.params.source = f"(ram_electrical_factor_per_go : {self.RAM_ELECTRICAL_FACTOR_PER_GO}) * (" \
+        self.params.source = f"(ram_electrical_factor_per_go : {self.ram_electrical_factor_per_go}) * (" \
                              f"ram_capacity: {ram_capacity}) "
         return self.params.value
 
@@ -58,14 +59,6 @@ class RAMConsumptionProfileModel(ConsumptionProfileModel):
 
 class CPUConsumptionProfileModel(ConsumptionProfileModel):
     DEFAULT_CPU_MODEL_RANGE = 'Xeon Platinum'
-    DEFAULT_WORKLOADS = None
-
-    _DEFAULT_MODEL_PARAMS = {
-        'a': 171.2,
-        'b': 0.0354,
-        'c': 36.89,
-        'd': -10.13
-    }
 
     _TDP_RATIOS_WORKLOAD = [0, 10, 50, 100]
     _TDP_RATIOS = [0.12, 0.32, 0.75, 1.02]
@@ -76,12 +69,18 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
     )
     _MODEL_PARAM_NAME = ['a', 'b', 'c', 'd']
 
-    def __init__(self):
+    def __init__(self, default_config=config["DEFAULT"]["CPU"]["CONSUMPTION_PROFILE"]):
         self.workloads = Boattribute(
-            default=self.DEFAULT_WORKLOADS,
+            default=default_config['workloads']['default'],
+            min=default_config['workloads']['min'],
+            max=default_config['workloads']['max'],
             unit="workload_rate:W"
         )
-        self.params = Boattribute(default=self._DEFAULT_MODEL_PARAMS)
+        self.params = Boattribute(
+            default=default_config['model_param']['default'],
+            min=default_config['model_param']['min'],
+            max=default_config['model_param']['max'],
+        )
 
     @property
     def list_workloads(self) -> Tuple[List[float], List[float]]:
@@ -110,21 +109,18 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
                                           cpu_tdp: int = None) -> Union[Dict[str, float], None]:
         model = self.lookup_consumption_profile(cpu_manufacturer, cpu_model_range)
         if self.workloads.is_set():
-            model = self.__compute_model_adaptation(base_model=model or self._DEFAULT_MODEL_PARAMS)
+            model = self.__compute_model_adaptation(base_model=model or self.params.default)
             self.params.set_completed(model, source="From workload")
 
         elif cpu_tdp is not None:
             model = self.__compute_model_adaptation_with_tdp(
-                base_model=model or self._DEFAULT_MODEL_PARAMS,
+                base_model=model or self.params.default,
                 cpu_tdp=cpu_tdp
             )
             self.params.set_completed(model, source="From TDP")
 
         elif cpu_model_range is not None:
             self.params.set_completed(model, source="From CPU model range")
-
-        else:
-            self.params.set_default(self._DEFAULT_MODEL_PARAMS)
 
         return self.params.value
 

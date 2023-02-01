@@ -42,7 +42,6 @@ def get_model_single_impact(model: Union[Component, Device],
             value = allocate(value, allocation_type, model.usage)
 
         units_impact = value * units
-
         return Impact(value=units_impact, significant_figures=significant_figures, error_margin=error_margin, warnings=warnings)
 
     except (AttributeError, NotImplementedError):
