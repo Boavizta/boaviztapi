@@ -5,6 +5,7 @@ from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute, Status
 from boaviztapi.model.component.component import Component, ComputedImpacts
 from boaviztapi.model.consumption_profile.consumption_profile import RAMConsumptionProfileModel
+from boaviztapi.model.impact import ImpactFactor
 
 
 class ComponentRAM(Component):
@@ -49,32 +50,41 @@ class ComponentRAM(Component):
             max=default_config['density']['max']
         )
 
-    def impact_manufacture_gwp(self) -> ComputedImpacts:
-        return self.__impact_manufacture('gwp')
-
     def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
         ram_die_impact, ram_impact = self.__get_impact_constants(impact_type)
-        sign_figures = self.__compute_significant_numbers(ram_die_impact, ram_impact)
+
         impact = self.__compute_impact_manufacture(ram_die_impact, ram_impact)
-        return impact, sign_figures, 0, []
+
+        sign_figures = self.__compute_significant_numbers(ram_die_impact.value, ram_impact.value)
+        return impact.value, sign_figures, impact.min, impact.max, []
 
     def __impact_usage(self, impact_type: str) -> ComputedImpacts:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
 
         if not self.usage.hours_electrical_consumption.is_set():
-            self.usage.hours_electrical_consumption.value = self.model_power_consumption()
+            self.usage.hours_electrical_consumption.value, \
+                self.usage.hours_electrical_consumption.min, \
+                self.usage.hours_electrical_consumption.max = self.model_power_consumption()
+
             self.usage.hours_electrical_consumption.status = Status.COMPLETED
 
-        impacts = impact_factor.value * (self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
+        impact = ImpactFactor(
+            value=impact_factor.value * (
+                    self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value,
+            min=impact_factor.min * (
+                    self.usage.hours_electrical_consumption.min / 1000) * self.usage.use_time.min,
+            max=impact_factor.max * (
+                    self.usage.hours_electrical_consumption.max / 1000) * self.usage.use_time.max
+        )
 
         sig_fig = self.__compute_significant_numbers_usage(impact_factor.value)
-        return impacts, sig_fig, 0, []
+        return impact.value, sig_fig, impact.min, impact.max, []
 
     def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
         return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value,
                                           impact_factor)
 
-    def model_power_consumption(self):
+    def model_power_consumption(self,) -> ImpactFactor:
         self.usage.consumption_profile = RAMConsumptionProfileModel()
         self.usage.consumption_profile.compute_consumption_profile_model(ram_capacity=self.capacity.value)
 
@@ -85,24 +95,43 @@ class ComponentRAM(Component):
             self.usage.hours_electrical_consumption.set_completed(
                 self.usage.consumption_profile.apply_multiple_workloads(self.usage.time_workload.value))
 
-        return rd.round_to_sigfig(self.usage.hours_electrical_consumption.value, 5)
+        return ImpactFactor(
+                value=rd.round_to_sigfig(self.usage.hours_electrical_consumption.value, 5),
+                min=rd.round_to_sigfig(self.usage.hours_electrical_consumption.value, 5),
+                max=rd.round_to_sigfig(self.usage.hours_electrical_consumption.value, 5)
+        )
 
-    def __get_impact_constants(self, impact_type: str) -> Tuple[float, float]:
-        ram_die_impact = self.IMPACT_FACTOR[impact_type]['die_impact']
-        ram_impact = self.IMPACT_FACTOR[impact_type]['impact']
+    def __get_impact_constants(self, impact_type: str) -> Tuple[ImpactFactor, ImpactFactor]:
+        ram_die_impact = ImpactFactor(
+            value=self.IMPACT_FACTOR[impact_type]['die_impact'],
+            min=self.IMPACT_FACTOR[impact_type]['die_impact'],
+            max=self.IMPACT_FACTOR[impact_type]['die_impact']
+        )
+        ram_impact = ImpactFactor(
+            value=self.IMPACT_FACTOR[impact_type]['impact'],
+            min=self.IMPACT_FACTOR[impact_type]['impact'],
+            max=self.IMPACT_FACTOR[impact_type]['impact']
+        )
         return ram_die_impact, ram_impact
 
     def __compute_significant_numbers(self, ram_die_impact: float, ram_impact: float) -> int:
         return rd.min_significant_figures(self.density.value, ram_die_impact, ram_impact)
 
-    def __compute_impact_manufacture(self, ram_die_impact: float, ram_impact: float) -> float:
-        return (self.capacity.value / self.density.value) * ram_die_impact + ram_impact
+    def __compute_impact_manufacture(self, ram_die_impact: ImpactFactor, ram_impact: ImpactFactor) -> ImpactFactor:
+        return ImpactFactor(
+            value=(self.capacity.value / self.density.value) * ram_die_impact.value + ram_impact.value,
+            min=(self.capacity.min / self.density.min) * ram_die_impact.min + ram_impact.min,
+            max=(self.capacity.max / self.density.max) * ram_die_impact.max + ram_impact.max
+        )
 
     def impact_manufacture_pe(self) -> ComputedImpacts:
         return self.__impact_manufacture('pe')
 
     def impact_manufacture_adp(self) -> ComputedImpacts:
         return self.__impact_manufacture('adp')
+
+    def impact_manufacture_gwp(self) -> ComputedImpacts:
+        return self.__impact_manufacture('gwp')
 
     def impact_use_gwp(self) -> ComputedImpacts:
         return self.__impact_usage("gwp")

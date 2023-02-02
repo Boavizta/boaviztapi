@@ -1,4 +1,6 @@
 from dataclasses import dataclass
+from typing import Tuple
+
 import boaviztapi.utils.roundit as rd
 
 @dataclass
@@ -36,3 +38,12 @@ PE = ImpactCriteria(name="pe", unit="MJ", description="Consumption of primary en
 
 IMPACT_CRITERIAS = [GWP, ADP, PE]
 IMPACT_PHASES = ["manufacture", "use"]
+
+class ImpactFactor:
+    def __init__(self, **kwargs):
+        self.value = 0
+        self.min = 0
+        self.max = 0
+        for attr, val in kwargs.items():
+            if val is not None:
+                self.__setattr__(attr, val)

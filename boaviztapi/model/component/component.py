@@ -43,7 +43,12 @@ class Component:
         impacts = impact_factor.value * (
                 self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
         sig_fig = self.__compute_significant_numbers_usage(impact_factor.value)
-        return impacts, sig_fig, 0, []
+
+        max_impact = impact_factor.max * (self.usage.hours_electrical_consumption.max / 1000) * self.usage.use_time.max
+        min_impact = impact_factor.min * (self.usage.hours_electrical_consumption.min / 1000) * self.usage.use_time.min
+
+
+        return impacts, sig_fig, min_impact, max_impact, []
 
     def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
         return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value,

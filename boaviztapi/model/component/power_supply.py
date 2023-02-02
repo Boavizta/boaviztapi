@@ -2,6 +2,7 @@ import boaviztapi.utils.roundit as rd
 from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component, ComputedImpacts
+from boaviztapi.model.impact import ImpactFactor
 
 
 class ComponentPowerSupply(Component):
@@ -33,13 +34,23 @@ class ComponentPowerSupply(Component):
         return self.__impact_manufacture('gwp')
 
     def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
-        power_supply_impact = self.IMPACT_FACTOR[impact_type]['impact']
-        impact = self.__compute_impact_manufacture(power_supply_impact)
-        sign_figures = rd.min_significant_figures(power_supply_impact)
-        return impact, sign_figures, 0, []
+        impact_factor = ImpactFactor(
+            value=self.IMPACT_FACTOR[impact_type]['impact'],
+            min=self.IMPACT_FACTOR[impact_type]['impact'],
+            max=self.IMPACT_FACTOR[impact_type]['impact']
+        )
 
-    def __compute_impact_manufacture(self, power_supply_impact: float) -> float:
-        return self.unit_weight.value * power_supply_impact
+        impact = self.__compute_impact_manufacture(impact_factor)
+        sign_figures = rd.min_significant_figures(impact_factor.value)
+
+        return impact.value, sign_figures, impact.min, impact.max, []
+
+    def __compute_impact_manufacture(self, power_supply_impact: ImpactFactor) -> ImpactFactor:
+        return ImpactFactor(
+            value=self.unit_weight.value * power_supply_impact.value,
+            min=self.unit_weight.min * power_supply_impact.min,
+            max=self.unit_weight.max * power_supply_impact.max
+        )
 
     def impact_manufacture_pe(self) -> ComputedImpacts:
         return self.__impact_manufacture('pe')

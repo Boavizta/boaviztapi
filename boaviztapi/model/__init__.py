@@ -1,3 +1,4 @@
 from typing import Tuple, List
 
-ComputedImpacts = Tuple[float, int, float, List[int]]
+# value, significant_figures, min, max, [warnings]
+ComputedImpacts = Tuple[float, int, float, float, List[int]]

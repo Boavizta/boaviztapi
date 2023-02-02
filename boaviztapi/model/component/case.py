@@ -1,10 +1,10 @@
-from typing import Tuple
-
 import boaviztapi.utils.roundit as rd
 from boaviztapi import config
 from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component
+from boaviztapi.model.impact import ImpactFactor
+
 
 class ComponentCase(Component):
     AVAILABLE_CASE_TYPE = ['blade', 'rack']
@@ -52,28 +52,63 @@ class ComponentCase(Component):
             return self.__impact_manufacture_rack(impact_type)
         elif self.case_type.value == 'blade':
             return self.__impact_manufacture_blade(impact_type)
-        else:
-            return self.__impact_manufacture_rack(impact_type)
 
     def __impact_manufacture_rack(self, impact_type: str) -> ComputedImpacts:
-        impact = self.IMPACT_FACTOR['rack'][impact_type]['impact']
-        significant_figures = rd.min_significant_figures(impact)
-        return impact, significant_figures, 0, []
+        impact_factor = ImpactFactor(
+            value=self.IMPACT_FACTOR['rack'][impact_type]['impact'],
+            min=self.IMPACT_FACTOR['rack'][impact_type]['impact'],
+            max=self.IMPACT_FACTOR['rack'][impact_type]['impact']
+        )
+
+        significant_figures = rd.min_significant_figures(impact_factor.value)
+
+        if self.case_type.is_default() and self.case_type.value == 'rack':
+            blade_impact = self.__impact_manufacture_rack(impact_type)
+            if blade_impact[0] > impact_factor.value:
+                return impact_factor.value, significant_figures, impact_factor.min, blade_impact[3], []
+            else:
+                return impact_factor.value, significant_figures, blade_impact[2], impact_factor.max, []
+
+        return impact_factor.value, significant_figures, impact_factor.min, impact_factor.max, []
 
     def __impact_manufacture_blade(self, impact_type: str) -> ComputedImpacts:
         impact_blade_server, impact_blade_16_slots = self.__get_impact_constants_blade(impact_type)
-        impact = self.__compute_impact_manufacture_blade(impact_blade_server, impact_blade_16_slots)
-        sign_figures = self.__compute_significant_numbers(impact_blade_server, impact_blade_16_slots)
-        return impact, sign_figures, 0, []
 
-    def __get_impact_constants_blade(self, impact_type: str) -> Tuple[float, float]:
-        impact_blade_server = self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server']
-        impact_blade_16_slots = self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_16_slots']
+        impact = self.__compute_impact_manufacture_blade(impact_blade_server, impact_blade_16_slots)
+
+        significant_figures = self.__compute_significant_numbers(impact_blade_server.value, impact_blade_16_slots.value)
+
+        if self.case_type.is_default() and self.case_type.value == 'blade':
+            rack_impact = self.__impact_manufacture_rack(impact_type)
+            if rack_impact[0] > impact.value:
+                return impact.value, significant_figures, impact.min, rack_impact[3], []
+            else:
+                return impact.value, significant_figures, rack_impact[2], impact.max, []
+
+        return impact.value, significant_figures, impact.min, impact.max, []
+
+
+    def __get_impact_constants_blade(self, impact_type: str) -> tuple[ImpactFactor, ImpactFactor]:
+        impact_blade_server = ImpactFactor(
+            value=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server'],
+            min=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server'],
+            max=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server']
+        )
+        impact_blade_16_slots = ImpactFactor(
+            value=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_16_slots'],
+            min=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server'],
+            max=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server']
+        )
+
         return impact_blade_server, impact_blade_16_slots
 
     @staticmethod
-    def __compute_impact_manufacture_blade(impact_blade_server: float, impact_blade_16_slots: float) -> float:
-        return (impact_blade_16_slots / 16) + impact_blade_server
+    def __compute_impact_manufacture_blade(impact_blade_server: ImpactFactor, impact_blade_16_slots: ImpactFactor) -> ImpactFactor:
+        return ImpactFactor(
+            value=(impact_blade_16_slots.value / 16) + impact_blade_server.value,
+            min=(impact_blade_16_slots.min / 16) + impact_blade_server.min,
+            max=(impact_blade_16_slots.max / 16) + impact_blade_server.max
+        )
 
     @staticmethod
     def __compute_significant_numbers(impact_blade_server: float, impact_blade_16_slots: float) -> int:
