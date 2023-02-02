@@ -69,8 +69,8 @@ class Boattribute:
 
     def to_json(self):
         json = {"value": self._value, "status": self.status.value}
-        if self.unit: json['unit'] = self.unit   
-        if self.source: json['source'] = self.source   
+        if self.unit: json['unit'] = self.unit
+        if self.source: json['source'] = self.source
         if (self.min or self.min==0) and (self.is_default() or self.is_completed()): json['min'] = self.min
         if (self.max or self.max==0) and (self.is_default() or self.is_completed()): json['max'] = self.max
         if self.warnings: json['warnings'] = self.warnings
@@ -99,12 +99,10 @@ class Boattribute:
         return self.status == Status.ARCHETYPE
 
     def set_input(self, value: Any, *, source: Optional[str] = None) -> None:
-        self.__set_value_and_status(value, Status.INPUT, source)
-        self.max = value
-        self.min = value
+        self.__set_value_and_status(value, Status.INPUT, source, min=value, max=value)
 
-    def set_completed(self, value: Any, *, source: Optional[str] = None) -> None:
-        self.__set_value_and_status(value, Status.COMPLETED, source)
+    def set_completed(self, value: Any, *, source: Optional[str] = None, min:float = None, max:float = None) -> None:
+        self.__set_value_and_status(value, Status.COMPLETED, source, min=min, max=max)
 
     def set_default(self, value: Any, *, source: Optional[str] = None) -> None:
         self.__set_value_and_status(value, Status.DEFAULT, source)
@@ -117,8 +115,14 @@ class Boattribute:
 
 
 
-    def __set_value_and_status(self, value: Any, status: Status, source: str) -> None:
+    def __set_value_and_status(self, value: Any, status: Status, source: str, min:float = None, max:float=None) -> None:
         self._value = value
         self.status = status
         if source is not None:
             self.source = source
+        if min is not None and not isinstance(min, str):
+            self.min = min
+        if max is not None and not isinstance(max, str):
+            self.max = max
+
+

@@ -24,12 +24,10 @@ def mapper_power_supply(power_supply_dto: PowerSupply) -> ComponentPowerSupply:
     power_supply_component.usage = smart_mapper_usage(power_supply_dto.usage or Usage())
 
     if power_supply_dto.units is not None:
-        power_supply_component.units.value = power_supply_dto.units
-        power_supply_component.units.status = Status.INPUT
+        power_supply_component.units.set_input(power_supply_dto.units)
 
     if power_supply_dto.unit_weight is not None:
-        power_supply_component.unit_weight.value = power_supply_dto.unit_weight
-        power_supply_component.unit_weight.status = Status.INPUT
+        power_supply_component.unit_weight.set_input(power_supply_dto.unit_weight)
 
     return power_supply_component
 
@@ -50,12 +48,10 @@ def mapper_case(case_dto: Case) -> ComponentCase:
     case_component = ComponentCase()
 
     if case_dto.units is not None:
-        case_component.units.value = case_dto.units
-        case_component.units.status = Status.INPUT
+        case_component.units.set_input(case_dto.units)
 
     if case_dto.case_type is not None:
-        case_component.case_type.value = case_dto.case_type
-        case_component.case_type.status = Status.INPUT
+        case_component.case_type.set_input(case_dto.case_type)
 
     case_component.usage = smart_mapper_usage(case_dto.usage or Usage())
 

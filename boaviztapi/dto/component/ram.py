@@ -25,15 +25,14 @@ def smart_mapper_ram(ram_dto: RAM) -> ComponentRAM:
     ram_component = ComponentRAM()
 
     if ram_dto.units is not None:
-        ram_component.units.value = ram_dto.units
-        ram_component.units.status = Status.INPUT
+        ram_component.units.set_input(ram_dto.units)
+
     ram_component.usage = smart_mapper_usage(ram_dto.usage or Usage())
 
     corrected_manufacturer = None
 
     if ram_dto.density is not None:
-        ram_component.density.value = ram_dto.density
-        ram_component.density.status = Status.INPUT
+        ram_component.density.set_input(ram_dto.density)
     else:
         sub = _ram_df
 
@@ -47,33 +46,31 @@ def smart_mapper_ram(ram_dto: RAM) -> ComponentRAM:
         if len(sub) == 0 or len(sub) == len(_ram_df):
             pass
         elif len(sub) == 1:
-            ram_component.density.value = float(sub['density'])
-            ram_component.density.status = Status.COMPLETED
-            ram_component.density.source = str(sub['manufacturer'].iloc[0])
-            ram_component.density.min = float(sub['density'])
-            ram_component.density.max = float(sub['density'])
+            ram_component.density.set_completed(
+                float(sub['density']),
+                source=str(sub['manufacturer'].iloc[0]),
+                min=float(sub['density']),
+                max=float(sub['density'])
+            )
         else:
-            ram_component.density.value = float(sub['density'].mean())
-            ram_component.density.min = float(sub['density'].min())
-            ram_component.density.max = float(sub['density'].max())
-            ram_component.density.status = Status.COMPLETED
-            ram_component.density.source = "Average of " + str(len(sub)) + " rows"
+            ram_component.density.set_completed(
+                float(sub['density'].mean()),
+                source="Average of " + str(len(sub)) + " rows",
+                min=float(sub['density'].min()),
+                max=float(sub['density'].max())
+            )
 
     if ram_dto.capacity is not None:
-        ram_component.capacity.value = ram_dto.capacity
-        ram_component.capacity.status = Status.INPUT
+        ram_component.capacity.set_input(ram_dto.capacity)
 
     if ram_dto.manufacturer is not None and corrected_manufacturer is not None:
         if ram_dto.manufacturer != corrected_manufacturer:
-            ram_component.manufacturer.value = corrected_manufacturer
-            ram_component.manufacturer.status = Status.CHANGED
+            ram_component.manufacturer.set_changed(corrected_manufacturer)
         else:
-            ram_component.manufacturer.value = ram_dto.manufacturer
-            ram_component.manufacturer.status = Status.INPUT
+            ram_component.manufacturer.set_input(ram_dto.manufacturer)
 
     if ram_dto.process is not None:
-        ram_component.process.value = ram_dto.process
-        ram_component.process.status = Status.INPUT
+        ram_component.process.set_input(ram_dto.process)
 
     return ram_component
 

@@ -31,71 +31,56 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
     cpu_component.usage = smart_mapper_usage(cpu_dto.usage or Usage())
 
     if cpu_dto.units is not None:
-        cpu_component.units.value = cpu_dto.units
-        cpu_component.units.status = Status.INPUT
+        cpu_component.units.set_input(cpu_dto.units)
 
     if cpu_dto.name is not None:
         manufacturer, model_range, family, tdp = attributes_from_cpu_name(cpu_dto.name)
         if manufacturer is not None:
             cpu_dto.manufacturer = manufacturer
-            cpu_component.manufacturer.value = manufacturer
-            cpu_component.manufacturer.status = Status.COMPLETED
-            cpu_component.manufacturer.source = "from name"
+            cpu_component.manufacturer.set_completed(manufacturer, source="from name")
         if model_range is not None:
             cpu_dto.model_range = model_range
-            cpu_component.model_range.value = model_range
-            cpu_component.model_range.status = Status.COMPLETED
-            cpu_component.model_range.source = "from name"
+            cpu_component.model_range.set_completed(model_range, source="from name")
         if family is not None:
             cpu_dto.family = family
-            cpu_component.family.value = family
-            cpu_component.family.status = Status.COMPLETED
-            cpu_component.family.source = "from name"
+            cpu_component.family.set_completed(family, source="from name")
         if tdp is not None:
             cpu_dto.tdp = tdp
-            cpu_component.tdp.value = tdp
-            cpu_component.tdp.status = Status.COMPLETED
-            cpu_component.tdp.source = "from name"
+            cpu_component.tdp.cpu_component.family.set_completed(tdp, min=tdp, max=tdp, source="from name")
 
     if cpu_dto.family is not None and cpu_component.family.status != Status.COMPLETED:
-        cpu_component.family.value = cpu_dto.family
-        cpu_component.family.status = Status.INPUT
+        cpu_component.family.set_input(cpu_dto.family)
 
     if cpu_dto.core_units is not None:
-        cpu_component.core_units.value = cpu_dto.core_units
-        cpu_component.core_units.status = Status.INPUT
+        cpu_component.core_units.set_input(cpu_dto.core_units)
 
     if cpu_dto.tdp is not None and cpu_component.tdp.status != Status.COMPLETED:
-        cpu_component.tdp.value = cpu_dto.tdp
-        cpu_component.tdp.status = Status.INPUT
+        cpu_component.tdp.set_input(cpu_dto.tdp)
 
     if cpu_dto.model_range is not None and cpu_component.model_range.status != Status.COMPLETED:
-        cpu_component.model_range.value = cpu_dto.model_range
-        cpu_component.model_range.status = Status.INPUT
+        cpu_component.model_range.set_input(cpu_dto.model_range)
 
     if cpu_dto.die_size_per_core is not None:
-        cpu_component.die_size_per_core.value = cpu_dto.die_size_per_core
-        cpu_component.die_size_per_core.status = Status.INPUT
+        cpu_component.die_size_per_core.set_input(cpu_dto.die_size_per_core)
 
     if cpu_dto.die_size_per_core is not None:
-        cpu_component.core_units.value = cpu_dto.core_units
-        cpu_component.die_size_per_core.status = Status.INPUT
+        cpu_component.core_units.set_input(cpu_dto.core_units)
 
     elif cpu_dto.die_size is not None and cpu_dto.core_units is not None:
-        cpu_component.die_size_per_core.value = cpu_dto.die_size / cpu_dto.core_units
-        cpu_component.die_size_per_core.min =  cpu_component.die_size_per_core.value
-        cpu_component.die_size_per_core.max =  cpu_component.die_size_per_core.value
-
-        cpu_component.die_size_per_core.status = Status.COMPLETED
-        cpu_component.die_size_per_core.source = "INPUT : die_size / core_units"
+        die_size_per_core = cpu_dto.die_size / cpu_dto.core_units
+        cpu_component.die_size_per_core.set_completed(
+            die_size_per_core,
+            source="INPUT : die_size / core_units",
+            min=die_size_per_core,
+            max=die_size_per_core
+        )
 
     else:
         sub = _cpu_df
         if cpu_dto.family is not None:
             corrected_family = fuzzymatch_attr_from_pdf(cpu_dto.family, "family", sub)
             if corrected_family != cpu_dto.family:
-                cpu_component.family.value = corrected_family
-                cpu_component.family.status = Status.CHANGED
+                cpu_component.family.set_changed(corrected_family)
             tmp = sub[sub['family'] == corrected_family]
             if len(tmp) > 0:
                 sub = tmp.copy()
@@ -110,9 +95,7 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
             row = sub.iloc[0]
             row2 = sub.iloc[2]
 
-            cpu_component.die_size_per_core.value = float(row['die_size_per_core'])
-            cpu_component.die_size_per_core.status = Status.COMPLETED
-            cpu_component.die_size_per_core.source = row['Source']
+            cpu_component.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
 
             if row['core_dif'] == 0:
                 cpu_component.die_size_per_core.min = float(row['die_size_per_core'])

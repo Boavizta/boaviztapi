@@ -32,8 +32,7 @@ class ConsumptionProfileCPU(ConsumptionProfile):
 def mapper_cp(cp_dto: ConsumptionProfile) -> CPUConsumptionProfileModel:
     cp = CPUConsumptionProfileModel()
     if cp_dto.workload is not None:
-        cp.workloads.value = cp_dto.workload
-        cp.workloads.status = Status.INPUT
+        cp.workloads.set_input(cp_dto.workload)
     return cp
 
 
@@ -45,17 +44,13 @@ def mapper_cp_cpu(cp_dto: ConsumptionProfileCPU) -> (CPUConsumptionProfileModel,
         manufacturer, model_range, family = attributes_from_cpu_name(cp_dto.cpu.name)
 
     if cp_dto.cpu.manufacturer is not None:
-        cpu.manufacturer.value = cp_dto.cpu.manufacturer
-        cpu.manufacturer.status = Status.INPUT
+        cpu.manufacturer.set_input(cp_dto.cpu.manufacturer)
     elif manufacturer is not None:
-        cpu.manufacturer.value = manufacturer
-        cpu.manufacturer.status = Status.COMPLETED
+        cpu.manufacturer.set_completed(manufacturer)
 
     if cp_dto.cpu.model_range is not None:
-        cpu.model_range.value = cp_dto.cpu.model_range
-        cpu.model_range.status = Status.INPUT
+        cpu.model_range.set_input(cp_dto.cpu.model_range)
     elif model_range is not None:
-        cpu.model_range.value = model_range
-        cpu.model_range.status = Status.COMPLETED
+        cpu.model_range.set_input(model_range)
 
     return mapper_cp(cp_dto), cpu
