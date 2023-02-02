@@ -68,7 +68,7 @@ DEFAULT:
     RAM:
         units:
             min: 1
-            max: 16
+            max: 22
             default: 4
         capacity:
             min: 1

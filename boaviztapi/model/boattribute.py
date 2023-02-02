@@ -50,10 +50,7 @@ class Boattribute:
 
     @property
     def min(self) -> Any:
-        if (self.is_default() or self.is_completed()) and self._min is not None:
-            return self._min
-        else:
-            return self.value
+        return self._min
 
     @min.setter
     def min(self, value: Any):
@@ -61,10 +58,7 @@ class Boattribute:
 
     @property
     def max(self) -> Any:
-        if (self.is_default() or self.is_completed()) and self._max is not None:
-            return self._max
-        else:
-            return self.value
+        return self._max
 
     @max.setter
     def max(self, value: Any):
@@ -106,6 +100,8 @@ class Boattribute:
 
     def set_input(self, value: Any, *, source: Optional[str] = None) -> None:
         self.__set_value_and_status(value, Status.INPUT, source)
+        self.max = value
+        self.min = value
 
     def set_completed(self, value: Any, *, source: Optional[str] = None) -> None:
         self.__set_value_and_status(value, Status.COMPLETED, source)

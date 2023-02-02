@@ -149,9 +149,10 @@ class DeviceServer(Device):
     def __impact_usage(self, impact_type: str) -> ComputedImpacts:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
         if not self.usage.hours_electrical_consumption.is_set():
-            self.usage.hours_electrical_consumption.value, \
-            self.usage.hours_electrical_consumption.min, \
-            self.usage.hours_electrical_consumption.max = self.model_power_consumption()
+            modeled_consumption = self.model_power_consumption()
+            self.usage.hours_electrical_consumption.value = modeled_consumption.value
+            self.usage.hours_electrical_consumption.min = modeled_consumption.min
+            self.usage.hours_electrical_consumption.max = modeled_consumption.max
             self.usage.hours_electrical_consumption.status = Status.COMPLETED
 
         impact = impact_factor.value * (self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
