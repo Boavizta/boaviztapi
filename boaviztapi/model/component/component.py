@@ -13,7 +13,7 @@ class Component:
     NAME = "COMPONENT"
 
     def __init__(self, default_config=config["DEFAULT"]["COMPONENT"], **kwargs):
-        self._units = Boattribute(
+        self.units = Boattribute(
             default=default_config['units']['default'],
             min=default_config['units']['min'],
             max=default_config['units']['max']

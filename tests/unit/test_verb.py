@@ -3,7 +3,6 @@ from boaviztapi.service.verbose import verbose_component, verbose_device
 
 def test_verbose_component_cpu_1(complete_cpu_model):
     verbose = verbose_component(complete_cpu_model)
-    print(verbose)
     assert verbose["core_units"] == {'source': None, 'status': 'INPUT', 'unit': 'none', 'value': 24}
     assert verbose["die_size_per_core"] == {'source': None, 'status': 'INPUT', 'unit': 'mm2', 'value': 0.245}
 

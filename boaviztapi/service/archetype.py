@@ -48,7 +48,6 @@ def get_archetype(archetype_name: str, csv_path: str) -> Union[dict, bool]:
     reader = csv.DictReader(open(csv_path, encoding='utf-8'))
     for row in reader:
         if row["model.name"] == archetype_name:
-            print(row2json(row))
             return row2json(row)
     return False
 

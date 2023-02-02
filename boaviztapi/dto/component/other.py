@@ -22,7 +22,11 @@ def mapper_power_supply(power_supply_dto: PowerSupply) -> ComponentPowerSupply:
     power_supply_component = ComponentPowerSupply()
 
     power_supply_component.usage = smart_mapper_usage(power_supply_dto.usage or Usage())
-    power_supply_component.units = power_supply_dto.units
+
+    if power_supply_dto.units is not None:
+        power_supply_component.units.value = power_supply_dto.units
+        power_supply_component.units.status = Status.INPUT
+
     if power_supply_dto.unit_weight is not None:
         power_supply_component.unit_weight.value = power_supply_dto.unit_weight
         power_supply_component.unit_weight.status = Status.INPUT
@@ -34,14 +38,20 @@ def mapper_motherboard(motherboard_dto: Motherboard) -> ComponentMotherboard:
     motherboard_component = ComponentMotherboard()
 
     motherboard_component.usage = smart_mapper_usage(motherboard_dto.usage or Usage())
-    motherboard_component.units = motherboard_dto.units
+
+    if motherboard_dto.units is not None:
+        motherboard_component.units.value = motherboard_dto.units
+        motherboard_component.units.status = Status.INPUT
 
     return motherboard_component
 
 
 def mapper_case(case_dto: Case) -> ComponentCase:
     case_component = ComponentCase()
-    case_component.units = case_dto.units
+
+    if case_dto.units is not None:
+        case_component.units.value = case_dto.units
+        case_component.units.status = Status.INPUT
 
     if case_dto.case_type is not None:
         case_component.case_type.value = case_dto.case_type

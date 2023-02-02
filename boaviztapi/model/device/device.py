@@ -1,6 +1,7 @@
 from abc import abstractmethod
 from typing import Tuple, List
 
+from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component import Component
 from boaviztapi.model.usage import ModelUsage
 
@@ -10,6 +11,11 @@ ComputedImpacts = Tuple[float, int]
 class Device:
 
     def __init__(self, **kwargs):
+        self.units = Boattribute(
+            default=1,
+            min=1,
+            max=1
+        )
         self._usage = None
         pass
 

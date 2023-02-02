@@ -29,7 +29,7 @@ def verbose_usage(device: [Device, Component]):
 
     for criteria in IMPACT_CRITERIAS:
         json_output["use"][criteria.name] = {}
-        single_impact = get_model_single_impact(device, 'use', criteria.name, 1, Allocation.TOTAL)
+        single_impact = get_model_single_impact(device, 'use', criteria.name, Allocation.TOTAL)
         json_output["use"][criteria.name] = single_impact.to_json() if single_impact else NOT_IMPLEMENTED
         json_output["use"][criteria.name]["unit"] = criteria.unit
         json_output["use"][criteria.name]["description"] = criteria.description

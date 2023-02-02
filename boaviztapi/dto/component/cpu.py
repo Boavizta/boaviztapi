@@ -30,7 +30,9 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
     cpu_component = ComponentCPU()
     cpu_component.usage = smart_mapper_usage(cpu_dto.usage or Usage())
 
-    cpu_component.units = cpu_dto.units
+    if cpu_dto.units is not None:
+        cpu_component.units.value = cpu_dto.units
+        cpu_component.units.status = Status.INPUT
 
     if cpu_dto.name is not None:
         manufacturer, model_range, family, tdp = attributes_from_cpu_name(cpu_dto.name)

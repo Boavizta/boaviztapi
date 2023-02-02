@@ -77,7 +77,7 @@ class ComponentSSD(Component):
 
     def __compute_impact_manufacture(self, ssd_die_impact: ImpactFactor, ssd_impact: ImpactFactor) -> ImpactFactor:
         return ImpactFactor(
-            value=(self.capacity.value / self.density.value) * ssd_die_impact + ssd_impact,
+            value=(self.capacity.value / self.density.value) * ssd_die_impact.value + ssd_impact.value,
             min=(self.capacity.min / self.density.min) * ssd_die_impact.min + ssd_impact.min,
             max=(self.capacity.max / self.density.max) * ssd_die_impact.max + ssd_impact.max
         )

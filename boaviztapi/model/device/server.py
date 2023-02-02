@@ -7,6 +7,7 @@ from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
     ComponentPowerSupply, ComponentCase, ComponentMotherboard, ComponentAssembly
 from boaviztapi.model.device.device import Device
+from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.model.usage import ModelUsageServer, ModelUsageCloud
 import boaviztapi.utils.roundit as rd
 
@@ -130,33 +131,58 @@ class DeviceServer(Device):
 
     def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
         impacts = []
+        min_impacts = []
+        max_impacts = []
         significant_figures = []
         warnings = []
-        error_margin = []
+
         for component in self.components:
-            impact, sign_fig, c_error_margin, c_warning = getattr(component, f'impact_manufacture_{impact_type}')()
-            impacts.append(impact*component.units)
+            impact, sign_fig, min_impact, max_impact, c_warning = getattr(component, f'impact_manufacture_{impact_type}')()
+            impacts.append(impact*component.units.value)
+            min_impacts.append(min_impact*component.units.min)
+            max_impacts.append(max_impact*component.units.max)
+
             significant_figures.append(sign_fig)
             warnings = warnings + c_warning
-            error_margin.append(c_error_margin)
-        return sum(impacts), min(significant_figures), sum(error_margin), warnings
+        return sum(impacts), min(significant_figures), sum(min_impacts), sum(max_impacts), warnings
 
     def __impact_usage(self, impact_type: str) -> ComputedImpacts:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
         if not self.usage.hours_electrical_consumption.is_set():
-            self.usage.hours_electrical_consumption.value = self.model_power_consumption()
+            self.usage.hours_electrical_consumption.value, \
+            self.usage.hours_electrical_consumption.min, \
+            self.usage.hours_electrical_consumption.max = self.model_power_consumption()
             self.usage.hours_electrical_consumption.status = Status.COMPLETED
 
-        impacts = impact_factor.value * (self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
+        impact = impact_factor.value * (self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
+        min_impact = impact_factor.min * (self.usage.hours_electrical_consumption.min / 1000) * self.usage.use_time.min
+        max_impact = impact_factor.max * (self.usage.hours_electrical_consumption.max / 1000) * self.usage.use_time.max
+
         sig_fig = self.__compute_significant_numbers(impact_factor.value)
-        return impacts, sig_fig, 0, []
+        return impact, sig_fig, min_impact, max_impact, []
 
     def model_power_consumption(self):
-        conso_cpu = self.cpu.model_power_consumption()*self.cpu.units
-        conso_ram = 0
+        conso_cpu = ImpactFactor(
+            value=self.cpu.model_power_consumption().value*self.cpu.units.value,
+            min=self.cpu.model_power_consumption().min*self.cpu.units.min,
+            max=self.cpu.model_power_consumption().min * self.cpu.units.min,
+        )
+        conso_ram = ImpactFactor(
+            value=0,
+            min=0,
+            max=0
+        )
         for ram_unit in self.ram:
-            conso_ram += ram_unit.model_power_consumption()*ram_unit.units
-        return (conso_cpu + conso_ram) * (1 + self.usage.other_consumption_ratio.value)
+            conso_ram.value = conso_ram.value + ram_unit.model_power_consumption().value * ram_unit.units.value
+            conso_ram.min = conso_ram.min + ram_unit.model_power_consumption().min * ram_unit.units.min
+            conso_ram.max = conso_ram.max + ram_unit.model_power_consumption().max * ram_unit.units.max
+
+        return ImpactFactor(
+                value=(conso_cpu.value + conso_ram.value) * (1 + self.usage.other_consumption_ratio.value),
+                min=(conso_cpu.min + conso_ram.min) * (1 + self.usage.other_consumption_ratio.min),
+                max=(conso_cpu.max + conso_ram.max) * (1 + self.usage.other_consumption_ratio.max)
+        )
+
 
     def __compute_significant_numbers(self, impact_factor: float) -> int:
         return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value, impact_factor)
@@ -196,25 +222,25 @@ class DeviceCloudInstance(DeviceServer, ABC):
         self._usage = value
 
     def impact_manufacture_gwp(self) -> ComputedImpacts:
-        impact, sign_fig, c_error_margin, c_warning = super().impact_manufacture_gwp()
-        return (impact / self.usage.instance_per_server.value), sign_fig, c_error_margin, c_warning
+        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_manufacture_gwp()
+        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
 
     def impact_manufacture_pe(self) -> ComputedImpacts:
-        impact, sign_fig, c_error_margin, c_warning = super().impact_manufacture_pe()
-        return (impact / self.usage.instance_per_server.value), sign_fig, c_error_margin, c_warning
+        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_manufacture_pe()
+        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
 
     def impact_manufacture_adp(self) -> ComputedImpacts:
-        impact, sign_fig, c_error_margin, c_warning = super().impact_manufacture_adp()
-        return (impact / self.usage.instance_per_server.value), sign_fig, c_error_margin, c_warning
+        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_manufacture_adp()
+        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
 
     def impact_use_gwp(self) -> ComputedImpacts:
-        impact, sign_fig, c_error_margin, c_warning = super().impact_use_gwp()
-        return (impact / self.usage.instance_per_server.value), sign_fig, c_error_margin, c_warning
+        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_use_gwp()
+        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
 
     def impact_use_pe(self) -> ComputedImpacts:
-        impact, sign_fig, c_error_margin, c_warning = super().impact_use_pe()
-        return (impact / self.usage.instance_per_server.value), sign_fig, c_error_margin, c_warning
+        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_use_pe()
+        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
 
     def impact_use_adp(self) -> ComputedImpacts:
-        impact, sign_fig, c_error_margin, c_warning = super().impact_use_adp()
-        return (impact / self.usage.instance_per_server.value), sign_fig, c_error_margin, c_warning
+        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_use_adp()
+        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning

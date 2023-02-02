@@ -24,8 +24,9 @@ class RAM(ComponentDTO):
 def smart_mapper_ram(ram_dto: RAM) -> ComponentRAM:
     ram_component = ComponentRAM()
 
-    ram_component.units = ram_dto.units
-
+    if ram_dto.units is not None:
+        ram_component.units.value = ram_dto.units
+        ram_component.units.status = Status.INPUT
     ram_component.usage = smart_mapper_usage(ram_dto.usage or Usage())
 
     corrected_manufacturer = None

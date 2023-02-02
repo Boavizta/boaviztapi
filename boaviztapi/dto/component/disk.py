@@ -24,7 +24,11 @@ def smart_mapper_ssd(disk_dto: Disk) -> ComponentSSD:
     disk_component = ComponentSSD()
 
     disk_component.usage = smart_mapper_usage(disk_dto.usage or Usage())
-    disk_component.units = disk_dto.units
+
+    if disk_dto.units is not None:
+        disk_component.units.value = disk_dto.units
+        disk_component.units.status = Status.INPUT
+
     corrected_manufacturer = None
 
     if disk_dto.type.lower() == 'ssd':
@@ -71,7 +75,10 @@ def mapper_hdd(disk_dto: Disk) -> ComponentHDD:
     disk_component = ComponentHDD()
 
     disk_component.usage = smart_mapper_usage(disk_dto.usage or Usage())
-    disk_component.units = disk_dto.units
+
+    if disk_dto.units is not None:
+        disk_component.units.value = disk_dto.units
+        disk_component.units.status = Status.INPUT
 
     disk_component.capacity.value = disk_dto.capacity
 

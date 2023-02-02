@@ -49,5 +49,3 @@ class ElectricityMap(ElecFactorProvider):
 
 if __name__ == '__main__':
     elec_provider = ElectricityMap()
-    print(datetime.now() - timedelta(hours=3))
-    print(elec_provider.get("gwp", "DE", datetime.now() - timedelta(hours=3)))
