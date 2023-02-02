@@ -14,8 +14,8 @@ class Status(Enum):
 class Boattribute:
     def __init__(self, **kwargs):
 
-        self._min = None
-        self._max = None
+        self.min = None
+        self.max = None
         self._value = None
         self.unit = None
         self.status = Status.NONE
@@ -47,22 +47,6 @@ class Boattribute:
     @value.setter
     def value(self, value: Any):
         self._value = value
-
-    @property
-    def min(self) -> Any:
-        return self._min
-
-    @min.setter
-    def min(self, value: Any):
-        self._min = value
-
-    @property
-    def max(self) -> Any:
-        return self._max
-
-    @max.setter
-    def max(self, value: Any):
-        self._max = value
 
     def add_warning(self, warn):
         self.warnings.append(warn)

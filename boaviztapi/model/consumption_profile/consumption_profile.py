@@ -29,9 +29,6 @@ class RAMConsumptionProfileModel(ConsumptionProfileModel):
 
     def __init__(self, default_config=config["DEFAULT"]["RAM"]["CONSUMPTION_PROFILE"]):
         self.workloads = Boattribute(
-            default=default_config['workloads']['default'],
-            min=default_config['workloads']['min'],
-            max=default_config['workloads']['max'],
             unit="workload_rate:W"
         )
         self.params = Boattribute(
@@ -72,8 +69,6 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
     def __init__(self, default_config=config["DEFAULT"]["CPU"]["CONSUMPTION_PROFILE"]):
         self.workloads = Boattribute(
             default=default_config['workloads']['default'],
-            min=default_config['workloads']['min'],
-            max=default_config['workloads']['max'],
             unit="workload_rate:W"
         )
         self.params = Boattribute(

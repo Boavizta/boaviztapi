@@ -16,7 +16,7 @@ from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import get_server_archetype, complete_with_archetype, \
     get_device_archetype_lst
 from boaviztapi.service.verbose import verbose_device
-from boaviztapi.service.bottom_up import bottom_up_device
+from boaviztapi.service.bottom_up import bottom_up
 
 server_router = APIRouter(
     prefix='/v1/server',
@@ -71,7 +71,7 @@ async def server_impact_from_configuration(
 
 async def server_impact(device: Device,
                         verbose: bool, allocation: Allocation) -> dict:
-    impacts = bottom_up_device(device=device, allocation=allocation)
+    impacts = bottom_up(model=device, allocation=allocation)
 
     if verbose:
         return {

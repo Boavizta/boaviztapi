@@ -5,5 +5,5 @@ from boaviztapi.dto.usage import Usage
 
 
 class ComponentDTO(BaseDTO):
-    units: Optional[int] = 1
+    units: Optional[int]
     usage: Optional[Usage] = Usage()

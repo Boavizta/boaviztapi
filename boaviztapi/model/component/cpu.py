@@ -69,11 +69,12 @@ class ComponentCPU(Component):
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
 
         if not self.usage.hours_electrical_consumption.is_set():
-            self.usage.hours_electrical_consumption.value,\
-            self.usage.hours_electrical_consumption.min, \
-            self.usage.hours_electrical_consumption.max=  self.model_power_consumption()
-
-            self.usage.hours_electrical_consumption.status = Status.COMPLETED
+            modeled_consumption = self.model_power_consumption()
+            self.usage.hours_electrical_consumption.set_completed(
+                modeled_consumption.value,
+                min=modeled_consumption.min,
+                max=modeled_consumption.max
+            )
 
         impact = ImpactFactor(
             value=impact_factor.value * (

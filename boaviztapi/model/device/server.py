@@ -150,10 +150,11 @@ class DeviceServer(Device):
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
         if not self.usage.hours_electrical_consumption.is_set():
             modeled_consumption = self.model_power_consumption()
-            self.usage.hours_electrical_consumption.value = modeled_consumption.value
-            self.usage.hours_electrical_consumption.min = modeled_consumption.min
-            self.usage.hours_electrical_consumption.max = modeled_consumption.max
-            self.usage.hours_electrical_consumption.status = Status.COMPLETED
+            self.usage.hours_electrical_consumption.set_completed(
+                modeled_consumption.value,
+                min=modeled_consumption.min,
+                max=modeled_consumption.max
+            )
 
         impact = impact_factor.value * (self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
         min_impact = impact_factor.min * (self.usage.hours_electrical_consumption.min / 1000) * self.usage.use_time.min
@@ -166,7 +167,7 @@ class DeviceServer(Device):
         conso_cpu = ImpactFactor(
             value=self.cpu.model_power_consumption().value*self.cpu.units.value,
             min=self.cpu.model_power_consumption().min*self.cpu.units.min,
-            max=self.cpu.model_power_consumption().min * self.cpu.units.min,
+            max=self.cpu.model_power_consumption().max * self.cpu.units.max,
         )
         conso_ram = ImpactFactor(
             value=0,

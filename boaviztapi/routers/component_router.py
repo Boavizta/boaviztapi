@@ -10,7 +10,7 @@ from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_des
     hdd_description, motherboard_description, power_supply_description, case_description
 from boaviztapi.routers.openapi_doc.examples import components_examples
 from boaviztapi.service.allocation import Allocation
-from boaviztapi.service.bottom_up import bottom_up_component
+from boaviztapi.service.bottom_up import bottom_up
 from boaviztapi.service.verbose import verbose_component
 
 component_router = APIRouter(
@@ -127,7 +127,7 @@ async def case_impact_bottom_up(case: Case = Body(None, example=components_examp
 async def component_impact_bottom_up(component: Component,
                                      verbose: bool, allocation: Allocation) -> dict:
 
-    impacts = bottom_up_component(component=component, allocation=allocation)
+    impacts = bottom_up(model=component, allocation=allocation)
 
     if verbose:
         return {
