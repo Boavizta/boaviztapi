@@ -1,4 +1,5 @@
 import boaviztapi.utils.roundit as rd
+from boaviztapi import config
 from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.component.component import Component
 from boaviztapi.model.impact import ImpactFactor
@@ -20,8 +21,9 @@ class ComponentAssembly(Component):
         }
     }
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, default_config=config["DEFAULT"]["ASSEMBLY"], **kwargs):
+        super().__init__(default_config=default_config, **kwargs)
+
 
     def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')

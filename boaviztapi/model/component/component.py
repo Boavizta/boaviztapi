@@ -3,14 +3,21 @@ from abc import abstractmethod
 import boaviztapi.utils.roundit as rd
 from boaviztapi import config
 from boaviztapi.model import ComputedImpacts
+from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.usage import ModelUsage
+
+
 
 
 class Component:
     NAME = "COMPONENT"
 
     def __init__(self, default_config=config["DEFAULT"]["COMPONENT"], **kwargs):
-        self._units = None
+        self._units = Boattribute(
+            default=default_config['units']['default'],
+            min=default_config['units']['min'],
+            max=default_config['units']['max']
+        )
         self._usage = None
 
     def __iter__(self):
@@ -26,16 +33,6 @@ class Component:
     @usage.setter
     def usage(self, value: int) -> None:
         self._usage = value
-
-    @property
-    def units(self) -> int:
-        if self._units is None:
-            self._units = 1
-        return self._units
-
-    @units.setter
-    def units(self, value: int) -> None:
-        self._units = value
 
     def __impact_usage(self, impact_type: str) -> ComputedImpacts:
         impact_factor = getattr(self.usage, f'{impact_type}_factor')

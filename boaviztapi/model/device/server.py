@@ -13,17 +13,9 @@ import boaviztapi.utils.roundit as rd
 
 class DeviceServer(Device):
     DEFAULT_COMPONENT_CPU = ComponentCPU()
-    DEFAULT_NUMBER_CPU = 2
-
     DEFAULT_COMPONENT_RAM = ComponentRAM()
-    DEFAULT_NUMBER_RAM = 24
-
     DEFAULT_COMPONENT_DISK = ComponentSSD()
-    DEFAULT_NUMBER_DISK = 1
-
     DEFAULT_COMPONENT_POWER_SUPPLY = ComponentPowerSupply()
-    DEFAULT_NUMBER_POWER_SUPPLY = 2
-
     DEFAULT_COMPONENT_CASE = ComponentCase()
     DEFAULT_COMPONENT_MOTHERBOARD = ComponentMotherboard()
     DEFAULT_COMPONENT_ASSEMBLY = ComponentAssembly()
@@ -47,7 +39,6 @@ class DeviceServer(Device):
     def cpu(self) -> ComponentCPU:
         if self._cpu is None:
             self._cpu = copy.deepcopy(self.DEFAULT_COMPONENT_CPU)
-            self._cpu.units = self.DEFAULT_NUMBER_CPU
         return self._cpu
 
     @cpu.setter
@@ -57,7 +48,6 @@ class DeviceServer(Device):
     @property
     def ram(self) -> List[ComponentRAM]:
         if self._ram_list is None:
-            self.DEFAULT_COMPONENT_RAM.units = copy.deepcopy(self.DEFAULT_NUMBER_RAM)
             self._ram_list = [self.DEFAULT_COMPONENT_RAM]
         return self._ram_list
 
@@ -68,7 +58,6 @@ class DeviceServer(Device):
     @property
     def disk(self) -> List[Union[ComponentSSD, ComponentHDD]]:
         if self._disk_list is None:
-            self.DEFAULT_COMPONENT_DISK.units = self.DEFAULT_NUMBER_DISK
             self._disk_list = [copy.deepcopy(self.DEFAULT_COMPONENT_DISK)]
         return self._disk_list
 
@@ -80,7 +69,6 @@ class DeviceServer(Device):
     def power_supply(self) -> ComponentPowerSupply:
         if self._power_supply is None:
             self._power_supply = copy.deepcopy(self.DEFAULT_COMPONENT_POWER_SUPPLY)
-            self._power_supply.units = self.DEFAULT_NUMBER_POWER_SUPPLY
         return self._power_supply
 
     @power_supply.setter
