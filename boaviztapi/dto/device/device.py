@@ -73,7 +73,7 @@ def mapper_cloud_instance(cloud_dto: Cloud) -> DeviceCloudInstance:
 
     model_cloud_instance = device_mapper(cloud_dto, model_cloud_instance)
 
-    model_cloud_instance.usage = smart_mapper_usage_cloud(cloud_dto.usage or UsageServer(), default_config=model_cloud_instance.default_config['CPU'])
+    model_cloud_instance.usage = smart_mapper_usage_cloud(cloud_dto.usage or UsageServer(), default_config=model_cloud_instance.default_config['USAGE'])
 
     complete_component_usage(model_cloud_instance.cpu.usage, model_cloud_instance.usage)
     for ram_unit in model_cloud_instance.ram:

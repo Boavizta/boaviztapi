@@ -89,12 +89,16 @@ def smart_mapper_cpu(cpu_dto: CPU, default_config=config["DEFAULT"]["CPU"]) -> C
         if len(sub) == 0 or len(sub) == len(_cpu_df):
             pass
 
+        elif len(sub) == 1:
+            row = sub.iloc[0]
+            cpu_component.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
+
         elif cpu_dto.core_units is not None:
             # Find the closest line to the number of cores provided by the user
             sub['core_dif'] = sub[['core_units']].apply(lambda x: abs(x[0] - cpu_dto.core_units), axis=1)
             sub = sub.sort_values(by='core_dif', ascending=True)
             row = sub.iloc[0]
-            row2 = sub.iloc[2]
+            row2 = sub.iloc[1]
 
             cpu_component.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
 
