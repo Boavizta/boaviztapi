@@ -74,7 +74,7 @@ class ModelUsage:
 
 class ModelUsageServer(ModelUsage):
 
-    def __init__(self, default_config=config["DEFAULT"]["USAGE"], **kwargs):
+    def __init__(self, default_config=config["SERVER"]["USAGE"], **kwargs):
         super().__init__(default_config=default_config, **kwargs)
 
         self.other_consumption_ratio = Boattribute(
@@ -85,7 +85,7 @@ class ModelUsageServer(ModelUsage):
         )
 
 class ModelUsageCloud(ModelUsageServer):
-    def __init__(self, default_config=config["DEFAULT"]["USAGE"], **kwargs):
+    def __init__(self, default_config=config["CLOUD"]["USAGE"], **kwargs):
         super().__init__(default_config=default_config, **kwargs)
         self.instance_per_server = Boattribute(
             default=default_config['instance_per_server']['default'],

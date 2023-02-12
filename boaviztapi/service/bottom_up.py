@@ -10,6 +10,7 @@ def get_model_single_impact(model: Union[Component, Device],
                             phase: str,
                             impact_type: str,
                             allocation_type: Allocation = Allocation.TOTAL) -> Optional[Impact]:
+    try:
         impact_function = model.__getattribute__(f'impact_{phase}_{impact_type}')
         impact, significant_figures, min_impact, max_impact, warnings = impact_function()
 
@@ -23,6 +24,8 @@ def get_model_single_impact(model: Union[Component, Device],
             max=max_impact*model.units.max,
             warnings=warnings
         )
+    except (AttributeError, NotImplementedError):
+        pass
 
 def bottom_up(model: Union[Component, Device], allocation) -> dict:
     impacts = {}

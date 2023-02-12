@@ -42,8 +42,8 @@ class UsageCloud(UsageServer):
     instance_per_server: Optional[int] = None
 
 
-def smart_mapper_usage(usage_dto: Usage) -> ModelUsage:
-    usage_model = ModelUsage()
+def smart_mapper_usage(usage_dto: Usage, default_config=config["DEFAULT"]["USAGE"]) -> ModelUsage:
+    usage_model = ModelUsage(default_config=default_config)
 
     if usage_dto.time_workload is not None:
         usage_model.time_workload.value = usage_dto.time_workload

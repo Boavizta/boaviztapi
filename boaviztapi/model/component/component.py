@@ -35,6 +35,8 @@ class Component:
         self._usage = value
 
     def __impact_usage(self, impact_type: str) -> ComputedImpacts:
+        if not self.usage.hours_electrical_consumption.is_set():
+            raise NotImplementedError
         impact_factor = getattr(self.usage, f'{impact_type}_factor')
 
         impacts = impact_factor.value * (
