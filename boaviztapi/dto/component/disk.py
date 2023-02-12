@@ -3,6 +3,7 @@ from typing import Optional
 
 import pandas as pd
 
+from boaviztapi import config
 from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.usage.usage import smart_mapper_usage, Usage
 from boaviztapi.model.boattribute import Status
@@ -20,8 +21,8 @@ class Disk(ComponentDTO):
     model: Optional[str] = None
 
 
-def smart_mapper_ssd(disk_dto: Disk) -> ComponentSSD:
-    disk_component = ComponentSSD()
+def smart_mapper_ssd(disk_dto: Disk, default_config=config['DEFAULT']['SSD']) -> ComponentSSD:
+    disk_component = ComponentSSD(default_config=default_config)
 
     disk_component.usage = smart_mapper_usage(disk_dto.usage or Usage())
 
@@ -62,8 +63,8 @@ def smart_mapper_ssd(disk_dto: Disk) -> ComponentSSD:
     return disk_component
 
 
-def mapper_hdd(disk_dto: Disk) -> ComponentHDD:
-    disk_component = ComponentHDD()
+def mapper_hdd(disk_dto: Disk, default_config=config['DEFAULT']['HDD']) -> ComponentHDD:
+    disk_component = ComponentHDD(default_config=default_config)
 
     disk_component.usage = smart_mapper_usage(disk_dto.usage or Usage())
 

@@ -3,6 +3,7 @@ from typing import Optional
 
 import pandas as pd
 
+from boaviztapi import config
 from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.usage import Usage
 from boaviztapi.dto.usage.usage import smart_mapper_usage
@@ -21,8 +22,8 @@ class RAM(ComponentDTO):
     model: Optional[str] = None
 
 
-def smart_mapper_ram(ram_dto: RAM) -> ComponentRAM:
-    ram_component = ComponentRAM()
+def smart_mapper_ram(ram_dto: RAM, default_config=config["DEFAULT"]["RAM"]) -> ComponentRAM:
+    ram_component = ComponentRAM(default_config=default_config)
 
     if ram_dto.units is not None:
         ram_component.units.set_input(ram_dto.units)

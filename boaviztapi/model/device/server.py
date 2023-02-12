@@ -1,9 +1,8 @@
-import copy
 from abc import ABC
 from typing import List, Union
 
+from boaviztapi import config
 from boaviztapi.model import ComputedImpacts
-from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
     ComponentPowerSupply, ComponentCase, ComponentMotherboard, ComponentAssembly
 from boaviztapi.model.device.device import Device
@@ -13,16 +12,10 @@ import boaviztapi.utils.roundit as rd
 
 
 class DeviceServer(Device):
-    DEFAULT_COMPONENT_CPU = ComponentCPU()
-    DEFAULT_COMPONENT_RAM = ComponentRAM()
-    DEFAULT_COMPONENT_DISK = ComponentSSD()
-    DEFAULT_COMPONENT_POWER_SUPPLY = ComponentPowerSupply()
-    DEFAULT_COMPONENT_CASE = ComponentCase()
-    DEFAULT_COMPONENT_MOTHERBOARD = ComponentMotherboard()
-    DEFAULT_COMPONENT_ASSEMBLY = ComponentAssembly()
 
-    def __init__(self, **kwargs):
+    def __init__(self, default_config=config['SERVER'],**kwargs):
         super().__init__(**kwargs)
+        self.default_config = default_config
         self._cpu = None
         self._ram_list = None
         self._disk_list = None
@@ -39,7 +32,7 @@ class DeviceServer(Device):
     @property
     def cpu(self) -> ComponentCPU:
         if self._cpu is None:
-            self._cpu = copy.deepcopy(self.DEFAULT_COMPONENT_CPU)
+            self._cpu = ComponentCPU(default_config=self.default_config['CPU'])
         return self._cpu
 
     @cpu.setter
@@ -49,7 +42,7 @@ class DeviceServer(Device):
     @property
     def ram(self) -> List[ComponentRAM]:
         if self._ram_list is None:
-            self._ram_list = [self.DEFAULT_COMPONENT_RAM]
+            self._ram_list = [ComponentRAM(default_config=self.default_config['RAM'])]
         return self._ram_list
 
     @ram.setter
@@ -59,7 +52,7 @@ class DeviceServer(Device):
     @property
     def disk(self) -> List[Union[ComponentSSD, ComponentHDD]]:
         if self._disk_list is None:
-            self._disk_list = [copy.deepcopy(self.DEFAULT_COMPONENT_DISK)]
+            self._disk_list = [ComponentSSD(default_config=self.default_config['SSD'])]
         return self._disk_list
 
     @disk.setter
@@ -69,7 +62,7 @@ class DeviceServer(Device):
     @property
     def power_supply(self) -> ComponentPowerSupply:
         if self._power_supply is None:
-            self._power_supply = copy.deepcopy(self.DEFAULT_COMPONENT_POWER_SUPPLY)
+            self._power_supply = ComponentPowerSupply(default_config=self.default_config['POWER_SUPPLY'])
         return self._power_supply
 
     @power_supply.setter
@@ -79,7 +72,7 @@ class DeviceServer(Device):
     @property
     def case(self) -> ComponentCase:
         if self._case is None:
-            self._case = copy.deepcopy(self.DEFAULT_COMPONENT_CASE)
+            self._case = ComponentCase(default_config=self.default_config['CASE'])
         return self._case
 
     @case.setter
@@ -97,7 +90,7 @@ class DeviceServer(Device):
     @property
     def motherboard(self) -> ComponentMotherboard:
         if self._motherboard is None:
-            self._motherboard = copy.deepcopy(self.DEFAULT_COMPONENT_MOTHERBOARD)
+            self._motherboard = ComponentMotherboard(default_config=self.default_config['MOTHERBOARD'])
         return self._motherboard
 
     @motherboard.setter
@@ -107,7 +100,7 @@ class DeviceServer(Device):
     @property
     def assembly(self) -> ComponentAssembly:
         if self._assembly is None:
-            self._assembly = copy.deepcopy(self.DEFAULT_COMPONENT_ASSEMBLY)
+            self._assembly = ComponentAssembly(default_config=self.default_config['ASSEMBLY'])
         return self._assembly
 
     @assembly.setter
@@ -117,7 +110,7 @@ class DeviceServer(Device):
     @property
     def usage(self) -> ModelUsageServer:
         if self._usage is None:
-            self._usage = ModelUsageServer()
+            self._usage = ModelUsageServer(default_config=self.default_config['USAGE'])
         return self._usage
 
     @usage.setter
@@ -210,13 +203,13 @@ class DeviceServer(Device):
 
 class DeviceCloudInstance(DeviceServer, ABC):
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, default_config=config['CLOUD'], **kwargs):
+        super().__init__(**kwargs, default_config=default_config)
 
     @property
     def usage(self) -> ModelUsageCloud:
         if self._usage is None:
-            self._usage = ModelUsageCloud()
+            self._usage = ModelUsageCloud(default_config=self.default_config['USAGE'])
         return self._usage
 
     @usage.setter

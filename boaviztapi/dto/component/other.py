@@ -1,5 +1,6 @@
 from typing import Optional
 
+from boaviztapi import config
 from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.usage.usage import smart_mapper_usage, Usage
 from boaviztapi.model.boattribute import Status
@@ -18,8 +19,8 @@ class Case(ComponentDTO):
     case_type: str = None
 
 
-def mapper_power_supply(power_supply_dto: PowerSupply) -> ComponentPowerSupply:
-    power_supply_component = ComponentPowerSupply()
+def mapper_power_supply(power_supply_dto: PowerSupply, default_config=config['DEFAULT']['POWER_SUPPLY']) -> ComponentPowerSupply:
+    power_supply_component = ComponentPowerSupply(default_config=default_config)
 
     power_supply_component.usage = smart_mapper_usage(power_supply_dto.usage or Usage())
 

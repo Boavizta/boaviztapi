@@ -3,6 +3,7 @@ from typing import Optional, List, Union
 
 import pandas as pd
 
+from boaviztapi import config
 from boaviztapi.dto import BaseDTO
 from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
@@ -77,8 +78,8 @@ def smart_mapper_usage(usage_dto: Usage) -> ModelUsage:
     return usage_model
 
 
-def smart_mapper_usage_server(usage_dto: UsageServer) -> ModelUsageServer:
-    usage_model_server = ModelUsageServer()
+def smart_mapper_usage_server(usage_dto: UsageServer, default_config=config["SERVER"]["USAGE"]) -> ModelUsageServer:
+    usage_model_server = ModelUsageServer(default_config=default_config)
 
     if usage_dto.hours_electrical_consumption is not None:
         usage_model_server.hours_electrical_consumption.set_input(usage_dto.hours_electrical_consumption)
@@ -108,8 +109,8 @@ def smart_mapper_usage_server(usage_dto: UsageServer) -> ModelUsageServer:
     return usage_model_server
 
 
-def smart_mapper_usage_cloud(usage_dto: UsageCloud):
-    usage_model_cloud = ModelUsageCloud()
+def smart_mapper_usage_cloud(usage_dto: UsageCloud, default_config=config["CLOUD"]["USAGE"]) -> ModelUsageCloud:
+    usage_model_cloud = ModelUsageCloud(default_config=default_config)
 
     if usage_dto.hours_electrical_consumption is not None:
         usage_model_cloud.hours_electrical_consumption.set_input(usage_dto.hours_electrical_consumption)

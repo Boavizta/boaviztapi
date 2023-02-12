@@ -41,7 +41,7 @@ def smart_mapper_server(server_dto: Server) -> DeviceServer:
 
     server_model = device_mapper(server_dto, server_model)
 
-    server_model.usage = smart_mapper_usage_server(server_dto.usage or UsageServer())
+    server_model.usage = smart_mapper_usage_server(server_dto.usage or UsageServer(), default_config=server_model.default_config['USAGE'])
     complete_components_usage(server_model)
 
     return server_model
@@ -73,7 +73,7 @@ def mapper_cloud_instance(cloud_dto: Cloud) -> DeviceCloudInstance:
 
     model_cloud_instance = device_mapper(cloud_dto, model_cloud_instance)
 
-    model_cloud_instance.usage = smart_mapper_usage_cloud(cloud_dto.usage or UsageServer())
+    model_cloud_instance.usage = smart_mapper_usage_cloud(cloud_dto.usage or UsageServer(), default_config=model_cloud_instance.default_config['CPU'])
 
     complete_component_usage(model_cloud_instance.cpu.usage, model_cloud_instance.usage)
     for ram_unit in model_cloud_instance.ram:
@@ -85,12 +85,12 @@ def mapper_cloud_instance(cloud_dto: Cloud) -> DeviceCloudInstance:
 def device_mapper(device_dto, device_model):
     if device_dto.configuration is not None:
         if device_dto.configuration.cpu is not None:
-            device_model.cpu = smart_mapper_cpu(device_dto.configuration.cpu)
+            device_model.cpu = smart_mapper_cpu(device_dto.configuration.cpu, default_config=device_model.default_config['CPU'])
 
         if device_dto.configuration.ram is not None:
             complete_ram = []
             for ram_dto in device_dto.configuration.ram:
-                complete_ram.append(smart_mapper_ram(ram_dto))
+                complete_ram.append(smart_mapper_ram(ram_dto, default_config=device_model.default_config['RAM']))
             device_model.ram = complete_ram
         if device_dto.configuration.disk is not None:
             complete_disk = []
@@ -98,15 +98,15 @@ def device_mapper(device_dto, device_model):
                 if disk_dto.type is None:
                     disk_dto.type = "ssd"
                 if disk_dto.type.lower() == "ssd":
-                    complete_disk.append(smart_mapper_ssd(disk_dto))
+                    complete_disk.append(smart_mapper_ssd(disk_dto, default_config=device_model.default_config['SSD']))
                 elif disk_dto.type.lower() == "hdd":
-                    complete_disk.append(mapper_hdd(disk_dto))
+                    complete_disk.append(mapper_hdd(disk_dto, default_config=device_model.default_config['HDD']))
             device_model.disk = complete_disk
         if device_dto.configuration.power_supply is not None:
-            device_model.power_supply = mapper_power_supply(device_dto.configuration.power_supply)
+            device_model.power_supply = mapper_power_supply(device_dto.configuration.power_supply, default_config=device_model.default_config['POWER_SUPPLY'])
 
     if device_dto.model is not None and device_dto.model.type is not None:
-        device_model.case = ComponentCase()
+        device_model.case = ComponentCase(default_config=device_model.default_config['CASE'])
         if device_dto.model.type == "rack" or device_dto.model.type == "blade":
             device_model.case.case_type.value = device_dto.model.type
             device_model.case.case_type.status = Status.INPUT

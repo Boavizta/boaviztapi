@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from rapidfuzz import fuzz, process
 
+from boaviztapi import config
 from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.usage.usage import smart_mapper_usage, Usage
 from boaviztapi.model.boattribute import Status
@@ -26,8 +27,8 @@ class CPU(ComponentDTO):
     tdp: Optional[int] = None
 
 
-def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
-    cpu_component = ComponentCPU()
+def smart_mapper_cpu(cpu_dto: CPU, default_config=config["DEFAULT"]["CPU"]) -> ComponentCPU:
+    cpu_component = ComponentCPU(default_config=default_config)
     cpu_component.usage = smart_mapper_usage(cpu_dto.usage or Usage())
 
     if cpu_dto.units is not None:
@@ -46,7 +47,7 @@ def smart_mapper_cpu(cpu_dto: CPU) -> ComponentCPU:
             cpu_component.family.set_completed(family, source="from name")
         if tdp is not None:
             cpu_dto.tdp = tdp
-            cpu_component.tdp.cpu_component.family.set_completed(tdp, min=tdp, max=tdp, source="from name")
+            cpu_component.tdp.set_completed(tdp, source="from name")
 
     if cpu_dto.family is not None and cpu_component.family.status != Status.COMPLETED:
         cpu_component.family.set_input(cpu_dto.family)
