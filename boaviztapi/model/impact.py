@@ -23,8 +23,8 @@ class Impact:
         self.warnings.append(warn)
     def to_json(self):
         json = {"value": rd.round_to_sigfig(self.value, self.significant_figures), "significant_figures": self.significant_figures}
-        if self.min: json['min'] = rd.round_to_sigfig(self.min, self.significant_figures)
-        if self.max: json['max'] = rd.round_to_sigfig(self.max, self.significant_figures)
+        if self.min or self.min==0: json['min'] = rd.round_to_sigfig(self.min, self.significant_figures)
+        if self.max or self.max==0: json['max'] = rd.round_to_sigfig(self.max, self.significant_figures)
         if self.warnings: json['warnings'] = self.warnings
 
         return json
