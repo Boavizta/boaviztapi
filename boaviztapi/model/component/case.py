@@ -68,7 +68,6 @@ class ComponentCase(Component):
                 return impact_factor.value, significant_figures, impact_factor.min, blade_impact[3], []
             else:
                 return impact_factor.value, significant_figures, blade_impact[2], impact_factor.max, []
-
         return impact_factor.value, significant_figures, impact_factor.min, impact_factor.max, []
 
     def __impact_manufacture_blade(self, impact_type: str) -> ComputedImpacts:

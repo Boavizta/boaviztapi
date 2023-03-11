@@ -42,7 +42,7 @@ class ComponentHDD(Component):
             max=self.IMPACT_FACTOR[impact_type]['impact']
         )
 
-        significant_figures = rd.min_significant_figures(impact)
+        significant_figures = rd.min_significant_figures(impact.value)
         return impact.value, significant_figures, impact.min, impact.max, []
 
     def impact_manufacture_pe(self) -> ComputedImpacts:

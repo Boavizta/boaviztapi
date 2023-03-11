@@ -29,7 +29,7 @@ DEFAULT:
         core_units:
             min: 1
             max: 64
-            default: 6
+            default: 24
         die_size_per_core:
             min: 0.5
             max: 0.1
@@ -175,7 +175,7 @@ SERVER:
         core_units:
             min: 1
             max: 64
-            default: 24
+            default: 6
         die_size_per_core:
             min: 0.5
             max: 0.1
@@ -215,7 +215,7 @@ SERVER:
         units:
             min: 1
             max: 32
-            default: 4
+            default: 24
         capacity:
             min: 1
             max: 128
@@ -246,7 +246,7 @@ SERVER:
         units:
             min: 0
             max: 25
-            default: 1
+            default: 2
         capacity:
             min: 100
             max: 5000

@@ -67,7 +67,7 @@ def completed_server_with_dellr740_model(rack_case_model, complete_cpu_model, co
 def complete_cpu_model():
     cpu = ComponentCPU()
 
-    cpu.units = 2
+    cpu.units.value = 2
 
     cpu.core_units.value = 24
     cpu.core_units.status = Status.INPUT
@@ -103,7 +103,7 @@ def incomplete_cpu_model():
 def complete_ram_model():
     ram = ComponentRAM()
 
-    ram.units = 12
+    ram.units.value = 12
     ram.capacity.value = 32
     ram.capacity.status = Status.INPUT
 
@@ -122,7 +122,7 @@ def empty_ram_model():
 def incomplete_ram_model():
     ram = ComponentRAM()
 
-    ram.units = 12
+    ram.units.value = 12
     ram.manufacturer.value = "Samsung"
     ram.manufacturer.status = Status.INPUT
 
@@ -139,7 +139,7 @@ def incomplete_ram_model():
 def complete_ram_model_2():
     ram = ComponentRAM()
 
-    ram.units = 24
+    ram.units.value = 24
     ram.capacity.value = 32
     ram.capacity.status = Status.INPUT
 
@@ -165,7 +165,7 @@ def complete_ssd_model():
 @pytest.fixture(scope="function")
 def complete_ssd_model_2():
     ssd = ComponentSSD()
-    ssd.units = 2
+    ssd.units.value = 2
     ssd.capacity.value = 400
     ssd.capacity.status = Status.INPUT
 
@@ -218,7 +218,7 @@ def rack_case_model():
     case = ComponentCase()
 
     case.case_type.value = "rack"
-    case.case_type.value = Status.INPUT
+    case.case_type.status = Status.INPUT
 
     return case
 
@@ -237,7 +237,8 @@ def empty_power_supply_model():
 def complete_power_supply_model():
     power_supply = ComponentPowerSupply()
 
-    power_supply.units = 2
+    power_supply.units.value = 2
+    power_supply.units.status = Status.INPUT
 
     power_supply.unit_weight.value = 2.99
     power_supply.unit_weight.status = Status.INPUT
@@ -254,7 +255,7 @@ def assembly_model():
 
 @pytest.fixture(scope="function")
 def dell_r740_dto():
-    return Server.parse_obj(Server.parse_file(data_dir + "/devices/server/dellR740.json"))
+    return Server.parse_obj(Server.parse_file(data_dir + "/fixtures/server/dellR740.json"))
 
 
 @pytest.fixture(scope="function")
@@ -264,12 +265,12 @@ def empty_server_dto():
 
 @pytest.fixture(scope="function")
 def incomplete_server_dto():
-    return Server.parse_file(data_dir + "/devices/server/incomplete.json")
+    return Server.parse_file(data_dir + "/fixtures/server/incomplete.json")
 
 
 @pytest.fixture(scope="function")
 def completed_server_with_dellr740_dto():
-    return Server.parse_file(data_dir + "/devices/server/completed_server_with_dellr740.json")
+    return Server.parse_file(data_dir + "/fixtures/server/completed_server_with_dellr740.json")
 
 
 @pytest.fixture(scope="function")
@@ -376,26 +377,26 @@ def complete_power_supply_dto():
 
 @pytest.fixture(scope="function")
 def cloud_instance_1_dto():
-    cloud_server = Server.parse_file(data_dir + "/devices/cloud/cloud_instance_1.json")
+    cloud_server = Server.parse_file(data_dir + "/fixtures/cloud/cloud_instance_1.json")
     return cloud_server
 
 
 @pytest.fixture(scope="function")
 def incomplete_usage_dto():
-    incomplete_usage = Server.parse_file(data_dir + "/devices/cloud/incomplete_usage.json")
+    incomplete_usage = Server.parse_file(data_dir + "/fixtures/cloud/incomplete_usage.json")
     return incomplete_usage
 
 
 @pytest.fixture(scope="function")
 def complete_usage_dto():
-    complete_usage = Server.parse_file(data_dir + "/devices/cloud/complete_usage.json")
+    complete_usage = Server.parse_file(data_dir + "/fixtures/cloud/complete_usage.json")
     return complete_usage
 
 
 @pytest.fixture(scope="function")
 def cloud_instance_1_completed_dto():
     cloud_instance_1_completed = \
-        Server.parse_file(data_dir + "/devices/cloud/cloud_instance_1_completed.json")
+        Server.parse_file(data_dir + "/fixtures/cloud/cloud_instance_1_completed.json")
     return cloud_instance_1_completed
 
 
@@ -415,14 +416,14 @@ def empty_usage_dto():
 
 @pytest.fixture(scope="function")
 def cpu_dataframe():
-    return pd.read_csv(data_dir + "/csv_components/cpu_manufacture.csv")
+    return pd.read_csv(data_dir + "/components/cpu_manufacture.csv")
 
 
 @pytest.fixture(scope="function")
 def ram_dataframe():
-    return pd.read_csv(data_dir + "/csv_components/ram_manufacture.csv")
+    return pd.read_csv(data_dir + "/components/ram_manufacture.csv")
 
 
 @pytest.fixture(scope="function")
 def ssd_dataframe():
-    return pd.read_csv(data_dir + "/csv_components/ssd_manufacture.csv")
+    return pd.read_csv(data_dir + "/components/ssd_manufacture.csv")

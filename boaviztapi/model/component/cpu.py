@@ -56,6 +56,8 @@ class ComponentCPU(Component):
             min=default_config['tdp']['min'],
             max=default_config['tdp']['max']
         )
+        self.usage.hours_electrical_consumption.add_warning("value for one cpu unit")
+
 
     def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
         core_impact, cpu_die_impact, cpu_impact = self.__get_impact_constants(impact_type)

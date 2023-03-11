@@ -3,112 +3,452 @@ from boaviztapi.service.bottom_up import bottom_up
 
 
 def test_bottom_up_component_cpu_empty(empty_cpu_model):
-    assert bottom_up(empty_cpu_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.02, 'unit': 'kgSbeq', 'use': 0.000102},
-        'gwp': {'manufacture': 21.7, 'unit': 'kgCO2eq', 'use': 610.0},
-        'pe': {'manufacture': 325.0, 'unit': 'MJ', 'use': 20550.0}}
+    assert bottom_up(empty_cpu_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.02,
+                                    'min': 0.02,
+                                    'significant_figures': 2,
+                                    'value': 0.02},
+                    'unit': 'kgSbeq',
+                    'use': {'max': 0.00424,
+                            'min': 2.41e-09,
+                            'significant_figures': 3,
+                            'value': 0.000102}},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 22.7,
+                                    'min': 11.1,
+                                    'significant_figures': 3,
+                                    'value': 21.7},
+                    'unit': 'kgCO2eq',
+                    'use': {'max': 14000.0,
+                            'min': 0.0042,
+                            'significant_figures': 2,
+                            'value': 610.0}},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 339.0,
+                                   'min': 182.0,
+                                   'significant_figures': 3,
+                                   'value': 325.0},
+                   'unit': 'MJ',
+                   'use': {'max': 7473000.0,
+                           'min': 0.002369,
+                           'significant_figures': 4,
+                           'value': 20550.0}}}
 
 
 def test_bottom_up_component_cpu_complete(complete_cpu_model):
-    assert bottom_up(complete_cpu_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.041, 'unit': 'kgSbeq', 'use': 0.000205},
-        'gwp': {'manufacture': 43.4, 'unit': 'kgCO2eq', 'use': 1200.0},
-        'pe': {'manufacture': 650.0, 'unit': 'MJ', 'use': 41100.0}}
+    assert bottom_up(complete_cpu_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.02,
+                                    'min': 0.02,
+                                    'significant_figures': 2,
+                                    'value': 0.041},
+                    'unit': 'kgSbeq',
+                    'use': {'max': 0.00424,
+                            'min': 2.41e-09,
+                            'significant_figures': 3,
+                            'value': 0.000205}},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 22.7,
+                                    'min': 11.1,
+                                    'significant_figures': 3,
+                                    'value': 43.4},
+                    'unit': 'kgCO2eq',
+                    'use': {'max': 14000.0,
+                            'min': 0.0042,
+                            'significant_figures': 2,
+                            'value': 1200.0}},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 339.0,
+                                   'min': 182.0,
+                                   'significant_figures': 3,
+                                   'value': 650.0},
+                   'unit': 'MJ',
+                   'use': {'max': 7473000.0,
+                           'min': 0.002369,
+                           'significant_figures': 4,
+                           'value': 41100.0}}}
 
 
 def test_bottom_up_component_cpu_incomplete(incomplete_cpu_model):
-    assert bottom_up(incomplete_cpu_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.02, 'unit': 'kgSbeq', 'use': 0.000102},
-        'gwp': {'manufacture': 19.7, 'unit': 'kgCO2eq', 'use': 610.0},
-        'pe': {'manufacture': 297.0, 'unit': 'MJ', 'use': 20550.0}}
+    assert bottom_up(incomplete_cpu_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.02,
+                                    'min': 0.02,
+                                    'significant_figures': 2,
+                                    'value': 0.02},
+                    'unit': 'kgSbeq',
+                    'use': {'max': 0.00424,
+                            'min': 2.41e-09,
+                            'significant_figures': 3,
+                            'value': 0.000102}},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 22.7,
+                                    'min': 11.1,
+                                    'significant_figures': 3,
+                                    'value': 19.7},
+                    'unit': 'kgCO2eq',
+                    'use': {'max': 14000.0,
+                            'min': 0.0042,
+                            'significant_figures': 2,
+                            'value': 610.0}},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 339.0,
+                                   'min': 182.0,
+                                   'significant_figures': 3,
+                                   'value': 297.0},
+                   'unit': 'MJ',
+                   'use': {'max': 7473000.0,
+                           'min': 0.002369,
+                           'significant_figures': 4,
+                           'value': 20550.0}}}
 
 
 def test_bottom_up_component_ssd_empty(empty_ssd_model):
-    assert bottom_up(empty_ssd_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.0019, 'use': 'not implemented', "unit": "kgSbeq"},
-        'gwp': {'manufacture': 52.0, 'use': 'not implemented', "unit": "kgCO2eq"},
-        'pe': {'manufacture': 640.0, 'use': 'not implemented', "unit": "MJ"}}
+    assert bottom_up(empty_ssd_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.32,
+                                    'min': 0.064,
+                                    'significant_figures': 2,
+                                    'value': 0.0019},
+                    'unit': 'kgSbeq',
+                    'use': 'not implemented'},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 11000.0,
+                                    'min': 2200.0,
+                                    'significant_figures': 2,
+                                    'value': 52.0},
+                    'unit': 'kgCO2eq',
+                    'use': 'not implemented'},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 137000.0,
+                                   'min': 27400.0,
+                                   'significant_figures': 3,
+                                   'value': 640.0},
+                   'unit': 'MJ',
+                   'use': 'not implemented'}}
 
 
 def test_bottom_up_component_ssd_complete(complete_ssd_model):
-    assert bottom_up(complete_ssd_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.0011, 'use': 'not implemented', "unit": "kgSbeq"},
-        'gwp': {'manufacture': 24.0, 'use': 'not implemented', "unit": "kgCO2eq"},
-        'pe': {'manufacture': 293.0, 'use': 'not implemented', "unit": "MJ"}}
+    assert bottom_up(complete_ssd_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.32,
+                                    'min': 0.064,
+                                    'significant_figures': 2,
+                                    'value': 0.0011},
+                    'unit': 'kgSbeq',
+                    'use': 'not implemented'},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 11000.0,
+                                    'min': 2200.0,
+                                    'significant_figures': 2,
+                                    'value': 24.0},
+                    'unit': 'kgCO2eq',
+                    'use': 'not implemented'},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 137000.0,
+                                   'min': 27400.0,
+                                   'significant_figures': 3,
+                                   'value': 293.0},
+                   'unit': 'MJ',
+                   'use': 'not implemented'}}
 
 
 def test_bottom_up_component_ssd_incomplete(incomplete_ssd_model):
-    assert bottom_up(incomplete_ssd_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.0017, 'use': 'not implemented', "unit": "kgSbeq"},
-        'gwp': {'manufacture': 47.0, 'use': 'not implemented', "unit": "kgCO2eq"},
-        'pe': {'manufacture': 586.0, 'use': 'not implemented', "unit": "MJ"}}
+    assert bottom_up(incomplete_ssd_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.32,
+                                    'min': 0.064,
+                                    'significant_figures': 2,
+                                    'value': 0.0017},
+                    'unit': 'kgSbeq',
+                    'use': 'not implemented'},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 11000.0,
+                                    'min': 2200.0,
+                                    'significant_figures': 2,
+                                    'value': 47.0},
+                    'unit': 'kgCO2eq',
+                    'use': 'not implemented'},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 137000.0,
+                                   'min': 27400.0,
+                                   'significant_figures': 3,
+                                   'value': 586.0},
+                   'unit': 'MJ',
+                   'use': 'not implemented'}}
 
 
 def test_bottom_up_component_ram_empty(empty_ram_model):
-    assert bottom_up(empty_ram_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.0049, 'unit': 'kgSbeq', 'use': 5.11e-06},
-        'gwp': {'manufacture': 120.0, 'unit': 'kgCO2eq', 'use': 30.0},
-        'pe': {'manufacture': 1500.0, 'unit': 'MJ', 'use': 1025.0}}
+    assert bottom_up(empty_ram_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.008,
+                                    'min': 0.0023,
+                                    'significant_figures': 2,
+                                    'value': 0.0049},
+                    'unit': 'kgSbeq',
+                    'use': {'max': 0.000211,
+                            'min': 1.2e-10,
+                            'significant_figures': 3,
+                            'value': 5.11e-06}},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 230.0,
+                                    'min': 27.0,
+                                    'significant_figures': 2,
+                                    'value': 120.0},
+                    'unit': 'kgCO2eq',
+                    'use': {'max': 720.0,
+                            'min': 0.00021,
+                            'significant_figures': 2,
+                            'value': 30.0}},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 2800.0,
+                                   'min': 350.0,
+                                   'significant_figures': 2,
+                                   'value': 1500.0},
+                   'unit': 'MJ',
+                   'use': {'max': 372700.0,
+                           'min': 0.0001181,
+                           'significant_figures': 4,
+                           'value': 1025.0}}}
 
 
 def test_bottom_up_component_ram_complete(complete_ram_model):
-    assert bottom_up(complete_ram_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.034, 'unit': 'kgSbeq', 'use': 6.13e-05},
-        'gwp': {'manufacture': 530.0, 'unit': 'kgCO2eq', 'use': 360.0},
-        'pe': {'manufacture': 6700.0, 'unit': 'MJ', 'use': 12300.0}}
-
+    assert bottom_up(complete_ram_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.008,
+                                    'min': 0.0023,
+                                    'significant_figures': 2,
+                                    'value': 0.034},
+                    'unit': 'kgSbeq',
+                    'use': {'max': 0.000211,
+                            'min': 1.2e-10,
+                            'significant_figures': 3,
+                            'value': 6.13e-05}},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 230.0,
+                                    'min': 27.0,
+                                    'significant_figures': 2,
+                                    'value': 530.0},
+                    'unit': 'kgCO2eq',
+                    'use': {'max': 720.0,
+                            'min': 0.00021,
+                            'significant_figures': 2,
+                            'value': 360.0}},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 2800.0,
+                                   'min': 350.0,
+                                   'significant_figures': 2,
+                                   'value': 6700.0},
+                   'unit': 'MJ',
+                   'use': {'max': 372700.0,
+                           'min': 0.0001181,
+                           'significant_figures': 4,
+                           'value': 12300.0}}}
 
 def test_bottom_up_component_ram_incomplete(incomplete_ram_model):
-    assert bottom_up(incomplete_ram_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.059, 'unit': 'kgSbeq', 'use': 6.13e-05},
-        'gwp': {'manufacture': 1400.0, 'unit': 'kgCO2eq', 'use': 360.0},
-        'pe': {'manufacture': 18000.0, 'unit': 'MJ', 'use': 12300.0}}
+    assert bottom_up(incomplete_ram_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.008,
+                                    'min': 0.0023,
+                                    'significant_figures': 2,
+                                    'value': 0.059},
+                    'unit': 'kgSbeq',
+                    'use': {'max': 0.000211,
+                            'min': 1.2e-10,
+                            'significant_figures': 3,
+                            'value': 6.13e-05}},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 230.0,
+                                    'min': 27.0,
+                                    'significant_figures': 2,
+                                    'value': 1400.0},
+                    'unit': 'kgCO2eq',
+                    'use': {'max': 720.0,
+                            'min': 0.00021,
+                            'significant_figures': 2,
+                            'value': 360.0}},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 2800.0,
+                                   'min': 350.0,
+                                   'significant_figures': 2,
+                                   'value': 18000.0},
+                   'unit': 'MJ',
+                   'use': {'max': 372700.0,
+                           'min': 0.0001181,
+                           'significant_figures': 4,
+                           'value': 12300.0}}}
 
 
 def test_bottom_up_component_power_supply_complete(complete_power_supply_model):
-    assert bottom_up(complete_power_supply_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.05, 'unit': 'kgSbeq', 'use': 'not implemented'},
-        'gwp': {'manufacture': 145.0, 'unit': 'kgCO2eq', 'use': 'not implemented'},
-        'pe': {'manufacture': 2100.0, 'unit': 'MJ', 'use': 'not implemented'}}
+    assert bottom_up(complete_power_supply_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.042,
+                                    'min': 0.0083,
+                                    'significant_figures': 2,
+                                    'value': 0.05},
+                    'unit': 'kgSbeq',
+                    'use': 'not implemented'},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 122.0,
+                                    'min': 24.3,
+                                    'significant_figures': 3,
+                                    'value': 145.0},
+                    'unit': 'kgCO2eq',
+                    'use': 'not implemented'},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 1760.0,
+                                   'min': 352.0,
+                                   'significant_figures': 3,
+                                   'value': 2100.0},
+                   'unit': 'MJ',
+                   'use': 'not implemented'}}
 
 
 def test_bottom_up_component_power_supply_empty(empty_power_supply_model):
-    assert bottom_up(empty_power_supply_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.025, 'unit': 'kgSbeq', 'use': 'not implemented'},
-        'gwp': {'manufacture': 72.7, 'unit': 'kgCO2eq', 'use': 'not implemented'},
-        'pe': {'manufacture': 1050.0, 'unit': 'MJ', 'use': 'not implemented'}}
-
+    assert bottom_up(empty_power_supply_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.042,
+                                    'min': 0.0083,
+                                    'significant_figures': 2,
+                                    'value': 0.025},
+                    'unit': 'kgSbeq',
+                    'use': 'not implemented'},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 122.0,
+                                    'min': 24.3,
+                                    'significant_figures': 3,
+                                    'value': 72.7},
+                    'unit': 'kgCO2eq',
+                    'use': 'not implemented'},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 1760.0,
+                                   'min': 352.0,
+                                   'significant_figures': 3,
+                                   'value': 1050.0},
+                   'unit': 'MJ',
+                   'use': 'not implemented'}}
 
 def test_bottom_up_component_hdd(hdd_model):
-    assert bottom_up(hdd_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.00025, 'use': 'not implemented', "unit": "kgSbeq"},
-        'gwp': {'manufacture': 31.1, 'use': 'not implemented', "unit": "kgCO2eq"},
-        'pe': {'manufacture': 276.0, 'use': 'not implemented', "unit": "MJ"}}
+    assert bottom_up(hdd_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.00025,
+                                    'min': 0.00025,
+                                    'significant_figures': 2,
+                                    'value': 0.00025},
+                    'unit': 'kgSbeq',
+                    'use': 'not implemented'},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 31.1,
+                                    'min': 31.1,
+                                    'significant_figures': 3,
+                                    'value': 31.1},
+                    'unit': 'kgCO2eq',
+                    'use': 'not implemented'},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 276.0,
+                                   'min': 276.0,
+                                   'significant_figures': 3,
+                                   'value': 276.0},
+                   'unit': 'MJ',
+                   'use': 'not implemented'}}
 
 
 def test_bottom_up_component_motherboard(motherboard_model):
-    assert bottom_up(motherboard_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.00369, 'use': 'not implemented', "unit": "kgSbeq"},
-        'gwp': {'manufacture': 66.1, 'use': 'not implemented', "unit": "kgCO2eq"},
-        'pe': {'manufacture': 836.0, 'use': 'not implemented', "unit": "MJ"}}
+    assert bottom_up(motherboard_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.00369,
+                                    'min': 0.00369,
+                                    'significant_figures': 3,
+                                    'value': 0.00369},
+                    'unit': 'kgSbeq',
+                    'use': 'not implemented'},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 66.1,
+                                    'min': 66.1,
+                                    'significant_figures': 3,
+                                    'value': 66.1},
+                    'unit': 'kgCO2eq',
+                    'use': 'not implemented'},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 836.0,
+                                   'min': 836.0,
+                                   'significant_figures': 3,
+                                   'value': 836.0},
+                   'unit': 'MJ',
+                   'use': 'not implemented'}}
 
 
 def test_bottom_up_component_empty_case(empty_case_model):
-    assert bottom_up(empty_case_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.0202, 'use': 'not implemented', "unit": "kgSbeq"},
-        'gwp': {'manufacture': 150.0, 'use': 'not implemented', "unit": "kgCO2eq"},
-        'pe': {'manufacture': 2200.0, 'use': 'not implemented', "unit": "MJ"}}
+    assert bottom_up(empty_case_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.000714,
+                                    'min': 0.0202,
+                                    'significant_figures': 3,
+                                    'value': 0.0202},
+                    'unit': 'kgSbeq',
+                    'use': 'not implemented'},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 150.0,
+                                    'min': 32.8,
+                                    'significant_figures': 3,
+                                    'value': 150.0},
+                    'unit': 'kgCO2eq',
+                    'use': 'not implemented'},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 2200.0,
+                                   'min': 462.2,
+                                   'significant_figures': 4,
+                                   'value': 2200.0},
+                   'unit': 'MJ',
+                   'use': 'not implemented'}}
 
 
 def test_bottom_up_component_blade_case(blade_case_model):
-    assert bottom_up(blade_case_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 0.0277, 'use': 'not implemented', "unit": "kgSbeq"},
-        'gwp': {'manufacture': 85.9, 'use': 'not implemented', "unit": "kgCO2eq"},
-        'pe': {'manufacture': 1230.0, 'use': 'not implemented', "unit": "MJ"}}
+    assert bottom_up(blade_case_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 0.000714,
+                                    'min': 0.000714,
+                                    'significant_figures': 3,
+                                    'value': 0.0277},
+                    'unit': 'kgSbeq',
+                    'use': 'not implemented'},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 32.8,
+                                    'min': 32.8,
+                                    'significant_figures': 3,
+                                    'value': 85.9},
+                    'unit': 'kgCO2eq',
+                    'use': 'not implemented'},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 462.0,
+                                   'min': 462.0,
+                                   'significant_figures': 3,
+                                   'value': 1230.0},
+                   'unit': 'MJ',
+                   'use': 'not implemented'}}
 
 
 def test_bottom_up_component_assembly(assembly_model):
-    assert bottom_up(assembly_model, allocation=Allocation.TOTAL) == {
-        'adp': {'manufacture': 1.41e-06, 'use': 'not implemented', "unit": "kgSbeq"},
-        'gwp': {'manufacture': 6.68, 'use': 'not implemented', "unit": "kgCO2eq"},
-        'pe': {'manufacture': 68.6, 'use': 'not implemented', "unit": "MJ"}}
+    assert bottom_up(assembly_model, allocation=Allocation.TOTAL) == \
+           {'adp': {'description': 'Use of minerals and fossil ressources',
+                    'manufacture': {'max': 1.41e-06,
+                                    'min': 1.41e-06,
+                                    'significant_figures': 3,
+                                    'value': 1.41e-06},
+                    'unit': 'kgSbeq',
+                    'use': 'not implemented'},
+            'gwp': {'description': 'Effects on global warming',
+                    'manufacture': {'max': 6.68,
+                                    'min': 6.68,
+                                    'significant_figures': 3,
+                                    'value': 6.68},
+                    'unit': 'kgCO2eq',
+                    'use': 'not implemented'},
+            'pe': {'description': 'Consumption of primary energy',
+                   'manufacture': {'max': 68.6,
+                                   'min': 68.6,
+                                   'significant_figures': 3,
+                                   'value': 68.6},
+                   'unit': 'MJ',
+                   'use': 'not implemented'}}

@@ -49,6 +49,7 @@ class ComponentRAM(Component):
             min=default_config['density']['min'],
             max=default_config['density']['max']
         )
+        self.usage.hours_electrical_consumption.add_warning("value for one ram strip")
 
     def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
         ram_die_impact, ram_impact = self.__get_impact_constants(impact_type)
@@ -66,10 +67,8 @@ class ComponentRAM(Component):
             self.usage.hours_electrical_consumption.set_completed(
                 modeled_consumption.value,
                 min=modeled_consumption.min,
-                max=modeled_consumption.max
+                max=modeled_consumption.max,
             )
-
-            self.usage.hours_electrical_consumption.status = Status.COMPLETED
 
         impact = ImpactFactor(
             value=impact_factor.value * (

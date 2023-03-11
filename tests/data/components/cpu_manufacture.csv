@@ -1,0 +1,39 @@
+manufacturer,family,manufacture_date,process,die_size,core_units,die_size_per_core,Source
+Intel,skylake,2017,14,1.0183,2,0.51,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(client)#Dual-core
+Intel,skylake,2017,14,1.223,4,0.31,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(client)#Quad-core
+Intel,skylake,2017,14,3.2544,10,0.33,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)#Low_Core_Count_.28LCC.29
+Intel,skylake,2017,14,4.85,18,0.27,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)#High_Core_Count_.28HCC.29
+Intel,skylake,2017,14,6.94,28,0.25,https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)#Extreme_Core_Count_.28XCC.29
+Intel,coffee lake,2017,14,1.26,4,0.32,https://en.wikichip.org/wiki/intel/microarchitectures/coffee_lake#Quad-Core
+Intel,coffee lake,2017,14,1.496,6,0.25,https://en.wikichip.org/wiki/intel/microarchitectures/coffee_lake#Hexa-Core
+Intel,coffee lake,2017,14,1.74,8,0.22,https://en.wikichip.org/wiki/intel/microarchitectures/coffee_lake#Octa-Core
+Intel,broadwell,2014,14,0.82,2,0.41,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client)#Dual-core
+Intel,broadwell,2014,14,1.82,4,0.46,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client)#Quad-core_Broadwell_with_Iris_Pro_die
+Intel,broadwell,2014,14,2.46,10,0.25,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client)#Deca-core_Broadwell
+Intel,broadwell,2014,14,3.0518,14,0.22,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client)#Die_Stats
+Intel,broadwell,2014,14,4.5612,24,0.19,https://en.wikichip.org/wiki/intel/microarchitectures/broadwell_(client)#Die_Stats
+Intel,haswell,2013,22,1.81,2,0.91,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)#Dual-core_GT3
+Intel,haswell,2013,22,2.6,4,0.65,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)#Quad-core_GT3
+Intel,haswell,2013,22,3.5552,8,0.44,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)#Octa-core
+Intel,haswell,2013,22,6.22,18,0.35,https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)#Octadeca-core
+Intel,ivy bridge,2011,22,1.6,4,0.40,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client)#Quad-core_Ivy_Bridge_die
+Intel,ivy bridge,2011,22,5.41,15,0.36,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client)#Pentadeca-Core_Ivy_Bridge_die
+Intel,ivy bridge,2011,22,3.41,10,0.34,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client)#Deca-core_Ivy_Bridge_Die
+Intel,ivy bridge,2011,22,2.565,6,0.43,https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client)#Hexa-core_Ivy_Bridge_Die
+Intel,sandy bridge,2010,32,1.49,2,0.75,https://en.wikichip.org/wiki/intel/microarchitectures/sandy_bridge_(client)#Dual-Core_.28GT2.29
+Intel,sandy bridge,2010,32,2.16,4,0.54,https://en.wikichip.org/wiki/intel/microarchitectures/sandy_bridge_(client)#Quad-Core
+Intel,kaby lake,2017,14,1.26,4,0.32,https://en.wikichip.org/wiki/intel/microarchitectures/kaby_lake
+Intel,ice lake,2019,10,6.28,40,0.16,https://fuse.wikichip.org/news/4734/intel-launches-3rd-gen-ice-lake-xeon-scalable/
+Intel,ice lake,2019,10,1.3,4,0.33,https://medium.com/@ewoutterhoeven/calculating-the-intel-ice-lake-quad-core-die-size-130mm2-ce18a44c5f05
+Intel,ice lake,2019,10,3.7,16,0.23,https://twitter.com/dylan522p/status/1326817993792266241?lang=en
+Intel,ice lake,2019,10,5.05,28,0.18,https://twitter.com/dylan522p/status/1326817993792266241?lang=en
+Intel,ice lake,2019,10,6.3,42,0.15,https://twitter.com/dylan522p/status/1326817993792266241?lang=en
+Amd,zen2,2019,7,13.09,16,0.82,https://www.techarp.com/computer/amd-zen-3-tech-report/ (74mm2*core_units+125mm2)
+Amd,zen2,2019,7,10.13,12,0.84,https://www.techarp.com/computer/amd-zen-3-tech-report/ (74mm2*core_units+125mm2)
+Amd,zen2,2019,7,7.17,8,0.90,https://www.techarp.com/computer/amd-zen-3-tech-report/ (74mm2*core_units+125mm2)
+Amd,zen2,2019,7,5.69,6,0.95,https://www.techarp.com/computer/amd-zen-3-tech-report/ (74mm2*core_units+125mm2)
+Amd,zen3,2020,7,14.162,16,0.89,https://www.techarp.com/computer/amd-zen-3-tech-report/ (80.7mm2*core_units+125mm2)
+Amd,zen3,2020,7,10.934,12,0.91,https://www.techarp.com/computer/amd-zen-3-tech-report/ (80.7mm2*core_units+125mm2)
+Amd,zen3,2020,7,7.706,8,0.96,https://www.techarp.com/computer/amd-zen-3-tech-report/ (80.7mm2*core_units+125mm2)
+Amd,zen3,2020,7,6.092,6,1.02,https://www.techarp.com/computer/amd-zen-3-tech-report/ (80.7mm2*core_units+125mm2)
+Annapurna Labs,graviton2,2019,7,4.5696,64,0.07,https://en.wikichip.org/wiki/annapurna_labs/alpine/alc12b00
