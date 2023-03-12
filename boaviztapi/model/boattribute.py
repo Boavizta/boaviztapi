@@ -23,6 +23,7 @@ class Boattribute:
         self.default = None
         self.args = None
         self.warnings = []
+        self.complete_function = None
 
         for attr, val in kwargs.items():
             if val is not None:
@@ -31,15 +32,9 @@ class Boattribute:
     @property
     def value(self) -> Any:
         if self._value is None:
-            if callable(self.default):
-                default = self.default(self.args)
-                self._value = default[0]
-                self.source = default[1]
-                self.min = default[2]
-                self.max = default[3]
-                self.status = default[4]
-
-            else:
+            if self.complete_function:
+                self.complete_function()
+            if self._value is None:
                 self._value = self.default
                 self.status = Status.DEFAULT
         return self._value

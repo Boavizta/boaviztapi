@@ -5,12 +5,10 @@ import pandas as pd
 
 from boaviztapi.dto import BaseDTO
 from boaviztapi.dto.component import CPU
-from boaviztapi.dto.component.cpu import attributes_from_cpu_name
-from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import ComponentCPU
 from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
 
-_cpu_index = os.path.join(os.path.dirname(__file__), '../../data/components/cpu_index.csv')
+_cpu_index = os.path.join(os.path.dirname(__file__), '../../data/crowdsourcing/cpu_index.csv')
 
 
 class WorkloadPower(BaseDTO):

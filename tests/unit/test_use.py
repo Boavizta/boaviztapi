@@ -1,11 +1,11 @@
-from boaviztapi.dto.usage.usage import smart_mapper_usage_server
+from boaviztapi.dto.usage.usage import mapper_usage_server
 from boaviztapi.model.device import DeviceServer
 from boaviztapi.service.bottom_up import get_model_single_impact
 
 
 def test_usage_server_french_mix_1_kw(french_mix_1_kw_dto):
     server = DeviceServer()
-    usage = smart_mapper_usage_server(french_mix_1_kw_dto)
+    usage = mapper_usage_server(french_mix_1_kw_dto)
     server.usage = usage
 
     assert get_model_single_impact(server, 'use', 'pe').to_json() == {'max': 1000.0, 'min': 0.01, 'significant_figures': 1, 'value': 100.0}
@@ -15,7 +15,7 @@ def test_usage_server_french_mix_1_kw(french_mix_1_kw_dto):
 
 def test_usage_server_empty_usage(empty_usage_dto):
     server = DeviceServer()
-    usage = smart_mapper_usage_server(empty_usage_dto)
+    usage = mapper_usage_server(empty_usage_dto)
     server.usage = usage
 
     assert get_model_single_impact(server, 'use', 'pe').to_json() == {'max': 263000000.0, 'min': 0.002487,'significant_figures': 4, 'value': 87380.0}

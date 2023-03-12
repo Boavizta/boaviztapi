@@ -1,15 +1,21 @@
+import os
 from typing import Tuple
+
+import pandas as pd
 
 import boaviztapi.utils.roundit as rd
 from boaviztapi import config
-from boaviztapi.model.boattribute import Boattribute, Status
+from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component, ComputedImpacts
 from boaviztapi.model.consumption_profile.consumption_profile import RAMConsumptionProfileModel
 from boaviztapi.model.impact import ImpactFactor
+from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
 
 class ComponentRAM(Component):
     NAME = "RAM"
+
+    _ram_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/crowdsourcing/ram_manufacture.csv'))
 
     IMPACT_FACTOR = {
         'gwp': {
@@ -45,11 +51,15 @@ class ComponentRAM(Component):
         )
         self.density = Boattribute(
             unit="GB/cm2",
+            complete_function=self._complete_from_crowdsourcing,
             default=default_config['density']['default'],
             min=default_config['density']['min'],
             max=default_config['density']['max']
         )
         self.usage.hours_electrical_consumption.add_warning("value for one ram strip")
+
+
+    # IMPACT COMPUTATION
 
     def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
         ram_die_impact, ram_impact = self.__get_impact_constants(impact_type)
@@ -143,3 +153,33 @@ class ComponentRAM(Component):
 
     def impact_use_adp(self) -> ComputedImpacts:
         return self.__impact_usage("adp")
+
+    # COMPLETION
+    def _complete_from_crowdsourcing(self):
+        sub = self._ram_df
+
+        if self.manufacturer.is_set():
+            corrected_manufacturer = fuzzymatch_attr_from_pdf(self.manufacturer.value, "manufacturer", sub)
+            sub = sub[sub['manufacturer'] == corrected_manufacturer]
+            if corrected_manufacturer != self.manufacturer.value:
+                self.manufacturer.set_changed(corrected_manufacturer)
+
+        if self.process.is_set():
+            sub = sub[sub['process'] == self.process.value]
+
+        if len(sub) == 0 or len(sub) == len(self._ram_df):
+            pass
+        elif len(sub) == 1:
+            self.density.set_completed(
+                float(sub['density']),
+                source=str(sub['manufacturer'].iloc[0]),
+                min=float(sub['density']),
+                max=float(sub['density'])
+            )
+        else:
+            self.density.set_completed(
+                float(sub['density'].mean()),
+                source="Average of " + str(len(sub)) + " rows",
+                min=float(sub['density'].min()),
+                max=float(sub['density'].max())
+            )

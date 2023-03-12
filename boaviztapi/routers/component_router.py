@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Body
 
 from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply, Motherboard, Case
-from boaviztapi.dto.component.cpu import smart_mapper_cpu
+from boaviztapi.dto.component.cpu import mapper_cpu
 from boaviztapi.dto.component.other import mapper_motherboard, mapper_power_supply, mapper_case
-from boaviztapi.dto.component.ram import smart_mapper_ram
-from boaviztapi.dto.component.disk import smart_mapper_ssd, mapper_hdd
+from boaviztapi.dto.component.ram import mapper_ram
+from boaviztapi.dto.component.disk import mapper_ssd, mapper_hdd
 from boaviztapi.model.component import Component
 from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
     hdd_description, motherboard_description, power_supply_description, case_description
@@ -25,7 +25,7 @@ async def cpu_impact_bottom_up(cpu: CPU = Body(None, example=components_examples
                                verbose: bool = True,
                                allocation: Allocation = Allocation.TOTAL):
 
-    component = smart_mapper_cpu(cpu)
+    component = mapper_cpu(cpu)
 
     return await component_impact_bottom_up(
         component=component,
@@ -40,7 +40,7 @@ async def ram_impact_bottom_up(ram: RAM = Body(None, example=components_examples
                                verbose: bool = True,
                                allocation: Allocation = Allocation.TOTAL):
 
-    completed_ram = smart_mapper_ram(ram)
+    completed_ram = mapper_ram(ram)
 
     return await component_impact_bottom_up(
         component=completed_ram,
@@ -55,7 +55,7 @@ async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examp
                                 verbose: bool = True,
                                 allocation: Allocation = Allocation.TOTAL):
     disk.type = "ssd"
-    competed_ssd = smart_mapper_ssd(disk)
+    competed_ssd = mapper_ssd(disk)
 
     return await component_impact_bottom_up(
         component=competed_ssd,

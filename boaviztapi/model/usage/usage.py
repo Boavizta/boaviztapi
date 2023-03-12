@@ -4,6 +4,7 @@ import pandas as pd
 
 from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute, Status
+from boaviztapi.model.impact import IMPACT_CRITERIAS
 
 _electricity_emission_factors_df = pd.read_csv(
     os.path.join(os.path.dirname(__file__), '../../data/electricity/electricity_impact_factors.csv'))
@@ -38,22 +39,18 @@ class ModelUsage:
         )
         self.adp_factor = Boattribute(
             unit="KgSbeq/kWh",
-            default=default_impact_factor,
-            args={"impact_type": "adpe",
-                  "usage_location": self.usage_location,
-                  "emission_factors_df": _electricity_emission_factors_df})
+            complete_function=self._complete_impact_factor
+        )
+
         self.gwp_factor = Boattribute(
             unit="kgCO2e/kWh",
-            default=default_impact_factor,
-            args={"impact_type": "gwp",
-                  "usage_location": self.usage_location,
-                  "emission_factors_df": _electricity_emission_factors_df})
+            complete_function=self._complete_impact_factor
+        )
+
         self.pe_factor = Boattribute(
             unit="MJ/kWh",
-            default=default_impact_factor,
-            args={"impact_type": "pe",
-                  "usage_location": self.usage_location,
-                  "emission_factors_df": _electricity_emission_factors_df})
+            complete_function=self._complete_impact_factor
+        )
 
         self.use_time = Boattribute(
             unit="hours",
@@ -71,6 +68,24 @@ class ModelUsage:
     def __iter__(self):
         for attr, value in self.__dict__.items():
             yield attr, value
+
+    def _complete_impact_factor(self):
+        sub = _electricity_emission_factors_df
+        sub_selected = sub[sub['code'] == self.usage_location.value]
+
+        for i in IMPACT_CRITERIAS:
+            column_value = f"{i.name}_emission_factor" if i.name != "adp" else "adpe_emission_factor"
+            column_source = f"{i.name}_emission_source" if i.name != "adp" else "adpe_emission_source"
+            factor = float(sub_selected[column_value].iloc[0])
+
+            if self.usage_location.is_default():
+                getattr(self, f"{i.name}_factor").set_default(factor, source=str(sub_selected[column_source].iloc[0]))
+                getattr(self, f"{i.name}_factor").min = float(sub[column_value].min())
+                getattr(self, f"{i.name}_factor").max = float(sub[column_value].max())
+            else:
+                getattr(self, f"{i.name}_factor").set_completed(factor,
+                                                                source=str(sub_selected[column_source].iloc[0]),
+                                                                min=factor, max=factor)
 
 class ModelUsageServer(ModelUsage):
 
@@ -93,11 +108,3 @@ class ModelUsageCloud(ModelUsageServer):
             max=default_config['instance_per_server']['max']
         )
 
-def default_impact_factor(args):
-    sub = args["emission_factors_df"]
-    sub_selected = sub[sub['code'] == args["usage_location"].value]
-    factor = float(sub_selected[f"{args['impact_type']}_emission_factor"])
-    if args['usage_location'].is_default():
-        return factor, sub_selected[f"{args['impact_type']}_emission_source"].iloc[0], sub[f"{args['impact_type']}_emission_factor"].min(), sub[f"{args['impact_type']}_emission_factor"].max(), Status.DEFAULT
-
-    return factor, sub_selected[f"{args['impact_type']}_emission_source"].iloc[0], factor, factor, Status.COMPLETED
