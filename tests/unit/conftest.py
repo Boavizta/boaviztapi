@@ -416,14 +416,14 @@ def empty_usage_dto():
 
 @pytest.fixture(scope="function")
 def cpu_dataframe():
-    return pd.read_csv(data_dir + "/components/cpu_manufacture.csv")
+    return pd.read_csv(data_dir + "/crowdsourcing/cpu_manufacture.csv")
 
 
 @pytest.fixture(scope="function")
 def ram_dataframe():
-    return pd.read_csv(data_dir + "/components/ram_manufacture.csv")
+    return pd.read_csv(data_dir + "/crowdsourcing/ram_manufacture.csv")
 
 
 @pytest.fixture(scope="function")
 def ssd_dataframe():
-    return pd.read_csv(data_dir + "/components/ssd_manufacture.csv")
+    return pd.read_csv(data_dir + "/crowdsourcing/ssd_manufacture.csv")

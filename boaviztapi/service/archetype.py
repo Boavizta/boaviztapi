@@ -1,17 +1,16 @@
 import ast
 import csv
-import json
 import os
 from typing import Union
 
 import pandas as pd
 
-from boaviztapi.service import data_dir
+from boaviztapi import data_dir
 
 
 def get_device_archetype_lst(path):
     df = pd.read_csv(path)
-    return df['model.name'].tolist()
+    return df['id'].tolist()
 
 def get_component_archetype(archetype_name: str, component_type: str) -> Union[dict, bool]:
     arch = get_archetype(archetype_name, os.path.join(data_dir, "archetypes/components/"+component_type+".csv"))
@@ -20,14 +19,14 @@ def get_component_archetype(archetype_name: str, component_type: str) -> Union[d
     return arch
 
 
-async def get_server_archetype(archetype_name: str) -> Union[dict, bool]:
+def get_server_archetype(archetype_name: str) -> Union[dict, bool]:
     arch = get_archetype(archetype_name, os.path.join(data_dir, "archetypes/server.csv"))
     if not arch:
         return False
     return arch
 
 
-async def get_cloud_instance_archetype(archetype_name: str, provider: str) -> Union[dict, bool]:
+def get_cloud_instance_archetype(archetype_name: str, provider: str) -> Union[dict, bool]:
     arch = False
     if os.path.exists(data_dir+"/archetypes/cloud/"+provider+".csv"):
         arch = get_archetype(archetype_name, os.path.join(data_dir, "archetypes/cloud/"+provider+".csv"))
@@ -104,6 +103,8 @@ def get_arch_component(archetype: dict, component_name: str, default = None):
     if not archetype:
         return default
     if archetype.get(component_name) is not None:
+        if component_name != "USAGE" and archetype.get("USAGE") is not None:
+            archetype[component_name]["USAGE"] = archetype.get("USAGE")
         return archetype.get(component_name)
     return default
 

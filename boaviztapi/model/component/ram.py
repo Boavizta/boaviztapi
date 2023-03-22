@@ -4,7 +4,7 @@ from typing import Tuple
 import pandas as pd
 
 import boaviztapi.utils.roundit as rd
-from boaviztapi import config
+from boaviztapi import config, data_dir
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component, ComputedImpacts
 from boaviztapi.model.consumption_profile.consumption_profile import RAMConsumptionProfileModel
@@ -16,7 +16,7 @@ from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 class ComponentRAM(Component):
     NAME = "RAM"
 
-    _ram_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/crowdsourcing/ram_manufacture.csv'))
+    _ram_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/ram_manufacture.csv'))
 
     IMPACT_FACTOR = {
         'gwp': {

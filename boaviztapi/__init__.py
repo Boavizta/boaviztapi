@@ -7,8 +7,9 @@ import yaml
 __version__ = '0.2.2'
 
 if "pytest" in sys.modules:
-    config_file = os.path.join(os.path.dirname(__file__), '../tests/data/test_config.yml')
+    data_dir = os.path.join(os.path.dirname(__file__), '../tests/data')
 else:
-    config_file = os.path.join(os.path.dirname(__file__), 'data/config.yml')
+    data_dir = os.path.join(os.path.dirname(__file__), 'data')
 
+config_file = os.path.join(data_dir, 'config.yml')
 config = yaml.safe_load(Path(config_file).read_text())

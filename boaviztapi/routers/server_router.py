@@ -2,10 +2,10 @@ import os
 
 from fastapi import APIRouter, Body, HTTPException
 
+from boaviztapi import config, data_dir
 from boaviztapi.dto.device import Server
 from boaviztapi.dto.device.device import mapper_server
 from boaviztapi.model.device import Device, DeviceServer
-from boaviztapi.routers import data_dir
 from boaviztapi.routers.openapi_doc.descriptions import server_impact_by_model_description, \
     all_default_model_description, server_impact_by_config_description
 from boaviztapi.routers.openapi_doc.examples import server_configuration_examples
@@ -23,15 +23,15 @@ server_router = APIRouter(
 @server_router.get('/all_default_models',
                    description=all_default_model_description)
 async def server_get_all_archetype_name():
-    return get_device_archetype_lst(os.path.join(data_dir, 'devices/server/server.csv'))
+    return get_device_archetype_lst(os.path.join(data_dir, 'archetypes/server.csv'))
 
 
 @server_router.get('/model',
                    description=server_impact_by_model_description)
-async def server_impact_from_model(archetype: str = "compute_medium", verbose: bool = True,
+async def server_impact_from_model(archetype: str = config["default_server"], verbose: bool = True,
                                    allocation: Allocation = Allocation.TOTAL):
+    archetype_config = get_server_archetype(archetype)
 
-    archetype_config = await get_server_archetype(archetype)
     if not archetype_config:
         raise HTTPException(status_code=404, detail=f"{archetype} not found")
 
@@ -48,14 +48,14 @@ async def server_impact_from_model(archetype: str = "compute_medium", verbose: b
                     description=server_impact_by_config_description)
 async def server_impact_from_configuration(
         server: Server = Body(None, example=server_configuration_examples["DellR740"]),
-        verbose: bool = True, allocation: Allocation = Allocation.TOTAL, archetype: str = "compute_medium"):
+        verbose: bool = True, allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_server"]):
 
-    archetype_config = await get_server_archetype(archetype)
+    archetype_config = get_server_archetype(archetype)
 
     if not archetype_config:
-        raise HTTPException(status_code=404, detail=f"{server.model.archetype} not found")
+        raise HTTPException(status_code=404, detail=f"{archetype} not found")
 
-    completed_server = mapper_server(server)
+    completed_server = mapper_server(server, archetype=archetype_config)
 
     return await server_impact(
         device=completed_server,

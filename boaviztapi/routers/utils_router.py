@@ -4,7 +4,8 @@ import pandas as pd
 from fastapi import APIRouter
 
 from boaviztapi.dto.component.cpu import CPU
-from boaviztapi.model.component import ComponentCase, ComponentCPU
+from boaviztapi.model.component import ComponentCase
+from boaviztapi.model.component.cpu import attributes_from_cpu_name
 from boaviztapi.routers.openapi_doc.descriptions import country_code, cpu_family, cpu_model_range, ssd_manufacturer, \
     ram_manufacturer, case_type, name_to_cpu
 

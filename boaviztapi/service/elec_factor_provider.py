@@ -4,8 +4,10 @@ from datetime import datetime, timedelta
 import pandas as pd
 import requests
 
+from boaviztapi import data_dir
+
 _electricity_emission_factors_df = pd.read_csv(
-    os.path.join(os.path.dirname(__file__), '../data/electricity/electricity_impact_factors.csv'))
+    os.path.join(data_dir, 'electricity/electricity_impact_factors.csv'))
 class ElecFactorProvider:
     def get(self, criteria, location, date):
         pass

@@ -6,7 +6,7 @@ import pandas as pd
 from rapidfuzz import process, fuzz
 
 import boaviztapi.utils.roundit as rd
-from boaviztapi import config
+from boaviztapi import config, data_dir
 from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component
@@ -15,6 +15,30 @@ from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.service.archetype import get_component_archetype, get_arch_value
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
+
+def attributes_from_cpu_name(cpu_name: str) -> [str, str, str, int]:
+    cpu_name = cpu_name.lower()
+    manufacturer, cpu_sub_name = parse(cpu_name)
+    sub = _cpu_index.copy()
+    if manufacturer is None:
+        name_list = list(sub.sub_model_name.unique())
+    else:
+        name_list = list(sub[sub['manufacturer'] == manufacturer].sub_model_name.unique())
+    result = fuzzymatch(cpu_sub_name, name_list)
+
+    if result is not None:
+        model_range = sub[sub['sub_model_name'] == result[0]].iloc[0].model_range
+        family = sub[sub['sub_model_name'] == result[0]].iloc[0].family
+        tdp = sub[sub['sub_model_name'] == result[0]].iloc[0].tdp
+        if np.isnan(tdp):
+            tdp = None
+
+    else:
+        model_range = None
+        family = None
+        tdp = None
+
+    return manufacturer, model_range, family, tdp
 def parse(cpu_name: str) -> Tuple[str, str]:
     vendor_list = ["intel", "amd", "arm"]  # every string in lowercase
     for vendor in vendor_list:
@@ -29,11 +53,11 @@ def fuzzymatch(cpu_name_to_match: str, cpu_name_list: list) -> Optional[Tuple[st
     if foo is not None:
         return foo if foo[1] > 88.0 else None
 
+_cpu_index = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_index.csv'))
+_cpu_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_manufacture.csv'))
 
 class ComponentCPU(Component):
     NAME = "CPU"
-    _cpu_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/crowdsourcing/cpu_manufacture.csv'))
-    _cpu_index = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/crowdsourcing/cpu_index.csv'))
 
     IMPACT_FACTOR = {
         'gwp': {
@@ -200,7 +224,7 @@ class ComponentCPU(Component):
 
     # COMPLETION
     def _complete_die_size_per_core(self):
-        sub = self._cpu_df
+        sub = _cpu_df.copy()
 
         # If we don't have a family, we use the die_size_per_core from the archetype
         if self.die_size_per_core.has_value() and not self.family.has_value():
@@ -219,6 +243,14 @@ class ComponentCPU(Component):
             sub['core_dif'] = sub[['core_units']].apply(lambda x: abs(x[0] - self.core_units.value), axis=1)
             sub = sub.sort_values(by='core_dif', ascending=True)
             row = sub.iloc[0]
+
+            # If we have only one row but the number of cores is different, we use the max and min values of the dataframe
+            if row['core_dif'] != 0 and len(sub) == 1:
+                self.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
+                self.die_size_per_core.min = float(float(_cpu_df['die_size_per_core'].min()))
+                self.die_size_per_core.max = float(float(_cpu_df['die_size_per_core'].max()))
+                return
+
             row2 = sub.iloc[1]
             self.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
 
@@ -243,7 +275,7 @@ class ComponentCPU(Component):
 
     def _complete_from_name(self):
         if self.name.has_value():
-            manufacturer, model_range, family, tdp = self._attributes_from_cpu_name(self.name.value)
+            manufacturer, model_range, family, tdp = attributes_from_cpu_name(self.name.value)
             if manufacturer is not None:
                 self.manufacturer.set_completed(manufacturer, source="from name")
             if model_range is not None:
@@ -253,26 +285,3 @@ class ComponentCPU(Component):
             if tdp is not None:
                 self.tdp.set_completed(tdp, source="from name")
 
-    def _attributes_from_cpu_name(self, cpu_name: str) -> [str, str, str, int]:
-        cpu_name = cpu_name.lower()
-        manufacturer, cpu_sub_name = parse(cpu_name)
-        sub = self._cpu_index
-        if manufacturer is None:
-            name_list = list(sub.sub_model_name.unique())
-        else:
-            name_list = list(sub[sub['manufacturer'] == manufacturer].sub_model_name.unique())
-        result = fuzzymatch(cpu_sub_name, name_list)
-
-        if result is not None:
-            model_range = sub[sub['sub_model_name'] == result[0]].iloc[0].model_range
-            family = sub[sub['sub_model_name'] == result[0]].iloc[0].family
-            tdp = sub[sub['sub_model_name'] == result[0]].iloc[0].tdp
-            if np.isnan(tdp):
-                tdp = None
-
-        else:
-            model_range = None
-            family = None
-            tdp = None
-
-        return manufacturer, model_range, family, tdp

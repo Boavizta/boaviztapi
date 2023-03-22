@@ -9,13 +9,13 @@ from boaviztapi.model.device.device import Device
 from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.model.usage import ModelUsageServer, ModelUsageCloud
 import boaviztapi.utils.roundit as rd
+from boaviztapi.service.archetype import get_server_archetype, get_arch_component, get_cloud_instance_archetype
 
 
 class DeviceServer(Device):
 
-    def __init__(self, default_config=config['SERVER'],**kwargs):
-        super().__init__(**kwargs)
-        self.default_config = default_config
+    def __init__(self, archetype=get_server_archetype(config["default_server"]), **kwargs):
+        super().__init__(archetype=archetype, **kwargs)
         self._cpu = None
         self._ram_list = None
         self._disk_list = None
@@ -32,7 +32,7 @@ class DeviceServer(Device):
     @property
     def cpu(self) -> ComponentCPU:
         if self._cpu is None:
-            self._cpu = ComponentCPU(archetype=self.default_config['CPU'])
+            self._cpu = ComponentCPU(archetype=get_arch_component(self.archetype,"CPU"))
         return self._cpu
 
     @cpu.setter
@@ -42,7 +42,7 @@ class DeviceServer(Device):
     @property
     def ram(self) -> List[ComponentRAM]:
         if self._ram_list is None:
-            self._ram_list = [ComponentRAM(archetype=self.default_config['RAM'])]
+            self._ram_list = [ComponentRAM(archetype=get_arch_component(self.archetype,"RAM"))]
         return self._ram_list
 
     @ram.setter
@@ -52,7 +52,7 @@ class DeviceServer(Device):
     @property
     def disk(self) -> List[Union[ComponentSSD, ComponentHDD]]:
         if self._disk_list is None:
-            self._disk_list = [ComponentSSD(archetype=self.default_config['SSD'])]
+            self._disk_list = [ComponentSSD(archetype=get_arch_component(self.archetype,"SSD"))]
         return self._disk_list
 
     @disk.setter
@@ -62,7 +62,7 @@ class DeviceServer(Device):
     @property
     def power_supply(self) -> ComponentPowerSupply:
         if self._power_supply is None:
-            self._power_supply = ComponentPowerSupply(archetype=self.default_config['POWER_SUPPLY'])
+            self._power_supply = ComponentPowerSupply(archetype=get_arch_component(self.archetype,"POWER_SUPPLY"))
         return self._power_supply
 
     @power_supply.setter
@@ -72,7 +72,7 @@ class DeviceServer(Device):
     @property
     def case(self) -> ComponentCase:
         if self._case is None:
-            self._case = ComponentCase(archetype=self.default_config['CASE'])
+            self._case = ComponentCase(archetype=get_arch_component(self.archetype,"CASE"))
         return self._case
 
     @case.setter
@@ -90,7 +90,7 @@ class DeviceServer(Device):
     @property
     def motherboard(self) -> ComponentMotherboard:
         if self._motherboard is None:
-            self._motherboard = ComponentMotherboard(archetype=self.default_config['MOTHERBOARD'])
+            self._motherboard = ComponentMotherboard(archetype=get_arch_component(self.archetype,"MOTHERBOARD"))
         return self._motherboard
 
     @motherboard.setter
@@ -100,7 +100,7 @@ class DeviceServer(Device):
     @property
     def assembly(self) -> ComponentAssembly:
         if self._assembly is None:
-            self._assembly = ComponentAssembly(archetype=self.default_config['ASSEMBLY'])
+            self._assembly = ComponentAssembly(archetype=get_arch_component(self.archetype,"ASSEMBLY"))
         return self._assembly
 
     @assembly.setter
@@ -110,7 +110,7 @@ class DeviceServer(Device):
     @property
     def usage(self) -> ModelUsageServer:
         if self._usage is None:
-            self._usage = ModelUsageServer(archetype=self.default_config['USAGE'])
+            self._usage = ModelUsageServer(archetype=get_arch_component(self.archetype,"USAGE"))
         return self._usage
 
     @usage.setter
@@ -178,7 +178,6 @@ class DeviceServer(Device):
                 max=(conso_cpu.max + conso_ram.max) * (1 + self.usage.other_consumption_ratio.max)
         )
 
-
     def __compute_significant_numbers(self, impact_factor: float) -> int:
         return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value, impact_factor)
 
@@ -203,13 +202,13 @@ class DeviceServer(Device):
 
 class DeviceCloudInstance(DeviceServer, ABC):
 
-    def __init__(self, default_config=config['CLOUD'], **kwargs):
-        super().__init__(**kwargs, default_config=default_config)
+    def __init__(self, archetype=get_cloud_instance_archetype(config["default_cloud"], config["default_cloud_provider"]), **kwargs):
+        super().__init__(**kwargs, archetype=archetype)
 
     @property
     def usage(self) -> ModelUsageCloud:
         if self._usage is None:
-            self._usage = ModelUsageCloud(archetype=self.default_config['USAGE'])
+            self._usage = ModelUsageCloud(archetype=get_arch_component(self.archetype,"USAGE"))
         return self._usage
 
     @usage.setter

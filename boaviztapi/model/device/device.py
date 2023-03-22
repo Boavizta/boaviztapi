@@ -10,7 +10,8 @@ ComputedImpacts = Tuple[float, int]
 
 class Device:
 
-    def __init__(self, **kwargs):
+    def __init__(self, archetype=None, **kwargs):
+        self.archetype = archetype
         self.units = Boattribute(
             default=1,
             min=1,

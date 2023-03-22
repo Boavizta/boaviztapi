@@ -2,18 +2,16 @@ import os
 
 import pandas as pd
 
-from boaviztapi import config
-from boaviztapi.model.boattribute import Boattribute, Status
+from boaviztapi import config, data_dir
+from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.impact import IMPACT_CRITERIAS
-from boaviztapi.service.archetype import get_arch_value
+from boaviztapi.service.archetype import get_arch_value, get_server_archetype, get_cloud_instance_archetype
 
-_electricity_emission_factors_df = pd.read_csv(
-    os.path.join(os.path.dirname(__file__), '../../data/electricity/electricity_impact_factors.csv'))
+_electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electricity/electricity_impact_factors.csv'))
 
-_cpu_profile_path = os.path.join(os.path.dirname(__file__), '../../data/consumption_profile/cpu/cpu_profile.csv')
-_cloud_profile_path = os.path.join(os.path.dirname(__file__), '../../data/consumption_profile/cloud/cpu_profile.csv')
-_server_profile_path = os.path.join(os.path.dirname(__file__),
-                                    '../../data/consumption_profile/server/server_profile.csv')
+_cpu_profile_path = os.path.join(data_dir, 'consumption_profile/cpu/cpu_profile.csv')
+_cloud_profile_path = os.path.join(data_dir, 'consumption_profile/cloud/cpu_profile.csv')
+_server_profile_path = os.path.join(data_dir, 'consumption_profile/server/server_profile.csv')
 
 class ModelUsage:
 
@@ -21,6 +19,7 @@ class ModelUsage:
     _YEARS_IN_HOURS = 24 * 365
 
     def __init__(self, archetype, **kwargs):
+        self.archetype = archetype
         self.hours_electrical_consumption = Boattribute(
             unit="W",
             default=get_arch_value(archetype, 'hours_electrical_consumption', 'default'),
@@ -106,22 +105,22 @@ class ModelUsage:
 
 class ModelUsageServer(ModelUsage):
 
-    def __init__(self, archetype=config["SERVER"]["USAGE"], **kwargs):
+    def __init__(self, archetype=get_server_archetype(config["default_server"]).get("USAGE"), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
 
         self.other_consumption_ratio = Boattribute(
             unit="ratio /1",
-            default=archetype['other_consumption_ratio']['default'],
-            min=archetype['other_consumption_ratio']['min'],
-            max=archetype['other_consumption_ratio']['max']
+            default=get_arch_value(archetype, 'other_consumption_ratio', 'default'),
+            min=get_arch_value(archetype, 'other_consumption_ratio', 'min'),
+            max=get_arch_value(archetype, 'other_consumption_ratio', 'max')
         )
 
 class ModelUsageCloud(ModelUsageServer):
-    def __init__(self, archetype=config["CLOUD"]["USAGE"], **kwargs):
+    def __init__(self, archetype=get_cloud_instance_archetype(config["default_cloud"], config["default_cloud_provider"]).get("USAGE"), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
         self.instance_per_server = Boattribute(
-            default=archetype['instance_per_server']['default'],
-            min=archetype['instance_per_server']['min'],
-            max=archetype['instance_per_server']['max']
+            default=get_arch_value(archetype, 'instance_per_server', 'default'),
+            min=get_arch_value(archetype, 'instance_per_server', 'min'),
+            max=get_arch_value(archetype, 'instance_per_server', 'max')
         )
 
