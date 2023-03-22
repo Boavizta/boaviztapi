@@ -12,6 +12,7 @@ from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component
 from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
 from boaviztapi.model.impact import ImpactFactor
+from boaviztapi.service.archetype import get_component_archetype, get_arch_value
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
 def parse(cpu_name: str) -> Tuple[str, str]:
@@ -50,42 +51,50 @@ class ComponentCPU(Component):
         'constant_core_impact': 0.491
     }
 
-    def __init__(self, default_config=config["DEFAULT"]["CPU"], **kwargs):
-        super().__init__(default_config=default_config, **kwargs)
+    def __init__(self, archetype=get_component_archetype(config["default_cpu"], "cpu"), **kwargs):
+        super().__init__(archetype=archetype, **kwargs)
         self.core_units = Boattribute(
-            complete_function=self._complete_from_crowdsourcing,
-            default=default_config['core_units']['default'],
-            min=default_config['core_units']['min'],
-            max=default_config['core_units']['max']
+            complete_function=self._complete_from_name,
+            default=get_arch_value(archetype, 'core_units', 'default'),
+            min=get_arch_value(archetype, 'core_units', 'min'),
+            max=get_arch_value(archetype, 'core_units', 'max')
         )
         self.die_size_per_core = Boattribute(
-            complete_function=self._complete_from_crowdsourcing,
+            complete_function=self._complete_die_size_per_core,
             unit="mm2",
-            default=default_config['die_size_per_core']['default'],
-            min=default_config['die_size_per_core']['min'],
-            max=default_config['die_size_per_core']['max']
+            default=get_arch_value(archetype, 'die_size_per_core', 'default'),
+            min=get_arch_value(archetype, 'die_size_per_core', 'min'),
+            max=get_arch_value(archetype, 'die_size_per_core', 'max')
         )
         self.model_range = Boattribute(
-            complete_function=self._complete_from_crowdsourcing,
-            default=default_config['model_range']['default'],
+            complete_function=self._complete_from_name,
+            default=get_arch_value(archetype, 'model_range', 'default'),
+            min=get_arch_value(archetype, 'model_range', 'min'),
+            max=get_arch_value(archetype, 'model_range', 'max')
         )
         self.manufacturer = Boattribute(
-            complete_function=self._complete_from_crowdsourcing,
-            default=default_config['manufacturer']['default'],
+            complete_function=self._complete_from_name,
+            default=get_arch_value(archetype, 'manufacturer', 'default'),
+            min=get_arch_value(archetype, 'manufacturer', 'min'),
+            max=get_arch_value(archetype, 'manufacturer', 'max')
         )
         self.family = Boattribute(
-            complete_function=self._complete_from_crowdsourcing,
-            default=default_config['manufacturer']['default'],
+            complete_function=self._complete_from_name,
+            default=get_arch_value(archetype, 'family', 'default'),
+            min=get_arch_value(archetype, 'family', 'min'),
+            max=get_arch_value(archetype, 'family', 'max')
         )
         self.name = Boattribute(
-            default="intel xeon gold 6134",
+            default=get_arch_value(archetype, 'name', 'default'),
+            min=get_arch_value(archetype, 'name', 'min'),
+            max=get_arch_value(archetype, 'name', 'max')
         )
         self.tdp = Boattribute(
-            complete_function=self._complete_from_crowdsourcing,
+            complete_function=self._complete_from_name,
             unit="W",
-            default=default_config['tdp']['default'],
-            min=default_config['tdp']['min'],
-            max=default_config['tdp']['max']
+            default=get_arch_value(archetype, 'tdp', 'default'),
+            min=get_arch_value(archetype, 'tdp', 'min'),
+            max=get_arch_value(archetype, 'tdp', 'max')
         )
         self.usage.hours_electrical_consumption.add_warning("value for one cpu unit")
 
@@ -128,14 +137,9 @@ class ComponentCPU(Component):
     def model_power_consumption(self) -> ImpactFactor:
         self.usage.consumption_profile = CPUConsumptionProfileModel()
 
-        manuf, model, tdp = None, None, None
-        if self.manufacturer.is_set(): manuf = self.manufacturer.value
-        if self.model_range.is_set(): model = self.model_range.value
-        if self.tdp.is_set(): tdp = self.tdp.value
-
-        self.usage.consumption_profile.compute_consumption_profile_model(cpu_manufacturer=manuf,
-                                                                         cpu_model_range=model,
-                                                                         cpu_tdp=tdp)
+        self.usage.consumption_profile.compute_consumption_profile_model(cpu_manufacturer=self.manufacturer.value,
+                                                                         cpu_model_range=self.model_range.value,
+                                                                         cpu_tdp=self.tdp.value)
         if type(self.usage.time_workload.value) in (float, int):
             self.usage.hours_electrical_consumption.set_completed(self.usage.consumption_profile.apply_consumption_profile(self.usage.time_workload.value))
         else:
@@ -195,10 +199,14 @@ class ComponentCPU(Component):
         return self.__impact_usage("adp")
 
     # COMPLETION
-    def _complete_from_crowdsourcing(self):
-        self._complete_from_name()
+    def _complete_die_size_per_core(self):
         sub = self._cpu_df
-        if self.family.is_set():
+
+        # If we don't have a family, we use the die_size_per_core from the archetype
+        if self.die_size_per_core.has_value() and not self.family.has_value():
+            return None
+
+        if self.family.has_value():
             corrected_family = fuzzymatch_attr_from_pdf(self.family.value, "family", sub)
             if corrected_family != self.family.value:
                 self.family.set_changed(corrected_family)
@@ -206,20 +214,12 @@ class ComponentCPU(Component):
             if len(tmp) > 0:
                 sub = tmp.copy()
 
-        if len(sub) == 0 or len(sub) == len(self._cpu_df):
-            pass
-
-        elif len(sub) == 1:
-            row = sub.iloc[0]
-            self.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
-
-        elif self.core_units.is_set():
+        if self.core_units.has_value():
             # Find the closest line to the number of cores provided by the user
             sub['core_dif'] = sub[['core_units']].apply(lambda x: abs(x[0] - self.core_units.value), axis=1)
             sub = sub.sort_values(by='core_dif', ascending=True)
             row = sub.iloc[0]
             row2 = sub.iloc[1]
-
             self.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
 
             if row['core_dif'] == 0:
@@ -233,13 +233,16 @@ class ComponentCPU(Component):
             else:
                 self.die_size_per_core.min = float(row2['die_size_per_core'])
                 self.die_size_per_core.max = float(row['die_size_per_core'])
-        else:
-            self.die_size_per_core.set_completed(float(sub['die_size_per_core'].mean()), source=f"Average for the {self.family.value} family")
-            self.die_size_per_core.min = float(float(sub['die_size_per_core'].min()))
-            self.die_size_per_core.max = float(float(sub['die_size_per_core'].max()))
+
+            return
+
+        # If we don't have a number of cores, we use the average die size per core for a given family (if provided)
+        self.die_size_per_core.set_completed(float(sub['die_size_per_core'].mean()), source=f"Average for {self.family.value or 'all families'}")
+        self.die_size_per_core.min = float(float(sub['die_size_per_core'].min()))
+        self.die_size_per_core.max = float(float(sub['die_size_per_core'].max()))
 
     def _complete_from_name(self):
-        if self.name.is_set():
+        if self.name.has_value():
             manufacturer, model_range, family, tdp = self._attributes_from_cpu_name(self.name.value)
             if manufacturer is not None:
                 self.manufacturer.set_completed(manufacturer, source="from name")
@@ -273,5 +276,3 @@ class ComponentCPU(Component):
             tdp = None
 
         return manufacturer, model_range, family, tdp
-
-

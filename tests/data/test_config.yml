@@ -1,153 +1,13 @@
-DEFAULT:
-    COMPONENT:
-        units:
-            min: 1
-            max: 1
-            default: 1
-    ASSEMBLY:
-        units:
-          min: 1
-          max: 1
-          default: 1
-    MOTHERBOARD:
-        units:
-          min: 1
-          max: 1
-          default: 1
-    CASE:
-        units:
-            min: 1
-            max: 1
-            default: 1
-        case_type:
-            default: "rack"
-    CPU:
-        units:
-            min: 1
-            max: 1
-            default: 1
-        core_units:
-            min: 1
-            max: 64
-            default: 24
-        die_size_per_core:
-            min: 0.5
-            max: 0.1
-            default: 0.245
-        model_range:
-            default: 'Xeon Platinum'
-        manufacturer:
-            default: 'Intel'
-        family:
-            default: 'Skylake'
-        tdp:
-            min: 40
-            max: 300
-            default: 165
-        CONSUMPTION_PROFILE:
-            workloads:
-                default: 5O
-                max: 100
-                min: 0
-            model_param:
-              default:
-                a: 171.2
-                b: 0.0354
-                c: 36.89
-                d: -10.13
-              min:
-                a: 171.2
-                b: 0.0354
-                c: 36.89
-                d: -10.13
-              max:
-                a: 171.2
-                b: 0.0354
-                c: 36.89
-                d: -10.13
-    RAM:
-        units:
-            min: 1
-            max: 1
-            default: 1
-        capacity:
-            min: 1
-            max: 100
-            default: 32
-        density:
-            min: 0.1
-            max: 1
-            default: 0.625
-        manufacturer:
-            default: 'Samsung'
-        process:
-            min: 0.1
-            max: 1
-            default: 30
-        CONSUMPTION_PROFILE:
-            workloads:
-              default: 5O
-              max: 100
-              min: 0
-            model_param:
-                default:
-                  a: 9
-                min:
-                  a: 9
-                max:
-                  a: 9
-    SSD:
-        units:
-            min: 1
-            max: 1
-            default: 1
-        capacity:
-            min: 100
-            max: 5000
-            default: 1000
-        manufacturer:
-            default: 'Samsung'
-        density:
-            min: 0.1
-            max: 1
-            default: 48.5
-    HDD:
-        units:
-            min: 1
-            max: 1
-            default: 1
-        capacity:
-            min: 100
-            max: 5000
-            default: 1000
-    POWER_SUPPLY:
-        units:
-            min: 1
-            max: 1
-            default: 1
-        unit_weight:
-            min: 1
-            max: 5
-            default: 2.99
-    USAGE:
-          time_workload:
-                min: 0
-                max: 100
-                default: 50
-          hours_electrical_consumption:
-                min: 0
-                max: 0
-                default: 0
-          usage_location:
-                default: 'EEE'
-          use_time:
-                min: 1
-                max: 87600
-                default: 8760
-          life_time:
-                min: 8760
-                max: 87600
-                default: 26280
+default_location: "EEE"
+default_usage: "DEFAULT"
+default_cpu: "DEFAULT"
+default_ram: "DEFAULT"
+default_ssd: "DEFAULT"
+default_hdd: "DEFAULT"
+default_power_supply: "DEFAULT"
+default_case: "DEFAULT"
+default_assembly: "DEFAULT"
+default_motherboard: "DEFAULT"
 
 SERVER:
     ASSEMBLY:
@@ -175,7 +35,7 @@ SERVER:
         core_units:
             min: 1
             max: 64
-            default: 6
+            default: 24
         die_size_per_core:
             min: 0.5
             max: 0.1
@@ -215,7 +75,7 @@ SERVER:
         units:
             min: 1
             max: 32
-            default: 24
+            default: 4
         capacity:
             min: 1
             max: 128
@@ -246,7 +106,7 @@ SERVER:
         units:
             min: 0
             max: 25
-            default: 2
+            default: 1
         capacity:
             min: 100
             max: 5000

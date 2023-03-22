@@ -32,7 +32,7 @@ class DeviceServer(Device):
     @property
     def cpu(self) -> ComponentCPU:
         if self._cpu is None:
-            self._cpu = ComponentCPU(default_config=self.default_config['CPU'])
+            self._cpu = ComponentCPU(archetype=self.default_config['CPU'])
         return self._cpu
 
     @cpu.setter
@@ -42,7 +42,7 @@ class DeviceServer(Device):
     @property
     def ram(self) -> List[ComponentRAM]:
         if self._ram_list is None:
-            self._ram_list = [ComponentRAM(default_config=self.default_config['RAM'])]
+            self._ram_list = [ComponentRAM(archetype=self.default_config['RAM'])]
         return self._ram_list
 
     @ram.setter
@@ -52,7 +52,7 @@ class DeviceServer(Device):
     @property
     def disk(self) -> List[Union[ComponentSSD, ComponentHDD]]:
         if self._disk_list is None:
-            self._disk_list = [ComponentSSD(default_config=self.default_config['SSD'])]
+            self._disk_list = [ComponentSSD(archetype=self.default_config['SSD'])]
         return self._disk_list
 
     @disk.setter
@@ -62,7 +62,7 @@ class DeviceServer(Device):
     @property
     def power_supply(self) -> ComponentPowerSupply:
         if self._power_supply is None:
-            self._power_supply = ComponentPowerSupply(default_config=self.default_config['POWER_SUPPLY'])
+            self._power_supply = ComponentPowerSupply(archetype=self.default_config['POWER_SUPPLY'])
         return self._power_supply
 
     @power_supply.setter
@@ -72,7 +72,7 @@ class DeviceServer(Device):
     @property
     def case(self) -> ComponentCase:
         if self._case is None:
-            self._case = ComponentCase(default_config=self.default_config['CASE'])
+            self._case = ComponentCase(archetype=self.default_config['CASE'])
         return self._case
 
     @case.setter
@@ -90,7 +90,7 @@ class DeviceServer(Device):
     @property
     def motherboard(self) -> ComponentMotherboard:
         if self._motherboard is None:
-            self._motherboard = ComponentMotherboard(default_config=self.default_config['MOTHERBOARD'])
+            self._motherboard = ComponentMotherboard(archetype=self.default_config['MOTHERBOARD'])
         return self._motherboard
 
     @motherboard.setter
@@ -100,7 +100,7 @@ class DeviceServer(Device):
     @property
     def assembly(self) -> ComponentAssembly:
         if self._assembly is None:
-            self._assembly = ComponentAssembly(default_config=self.default_config['ASSEMBLY'])
+            self._assembly = ComponentAssembly(archetype=self.default_config['ASSEMBLY'])
         return self._assembly
 
     @assembly.setter
@@ -110,7 +110,7 @@ class DeviceServer(Device):
     @property
     def usage(self) -> ModelUsageServer:
         if self._usage is None:
-            self._usage = ModelUsageServer(default_config=self.default_config['USAGE'])
+            self._usage = ModelUsageServer(archetype=self.default_config['USAGE'])
         return self._usage
 
     @usage.setter
@@ -209,7 +209,7 @@ class DeviceCloudInstance(DeviceServer, ABC):
     @property
     def usage(self) -> ModelUsageCloud:
         if self._usage is None:
-            self._usage = ModelUsageCloud(default_config=self.default_config['USAGE'])
+            self._usage = ModelUsageCloud(archetype=self.default_config['USAGE'])
         return self._usage
 
     @usage.setter

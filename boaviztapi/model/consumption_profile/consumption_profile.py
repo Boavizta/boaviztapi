@@ -11,6 +11,7 @@ import boaviztapi.utils.fuzzymatch as fuzzymatch
 from boaviztapi import config
 from boaviztapi.dto.usage.usage import WorkloadTime
 from boaviztapi.model.boattribute import Boattribute, Status
+from boaviztapi.service.archetype import get_component_archetype, get_arch_value
 
 fuzzymatch.pandas()
 
@@ -27,15 +28,11 @@ class ConsumptionProfileModel:
 class RAMConsumptionProfileModel(ConsumptionProfileModel):
     ram_electrical_factor_per_go = 0.284
 
-    def __init__(self, default_config=config["DEFAULT"]["RAM"]["CONSUMPTION_PROFILE"]):
+    def __init__(self, archetype=get_component_archetype(config["default_ram"], "ram").get("consumption_profile")):
         self.workloads = Boattribute(
             unit="workload_rate:W"
         )
-        self.params = Boattribute(
-            default=default_config['model_param']['default'],
-            min=default_config['model_param']['min'],
-            max=default_config['model_param']['max']
-        )
+        self.params = Boattribute()
 
     def compute_consumption_profile_model(self, ram_capacity) -> int:
         self.params.value = {'a': self.ram_electrical_factor_per_go * ram_capacity}
@@ -55,8 +52,6 @@ class RAMConsumptionProfileModel(ConsumptionProfileModel):
 
 
 class CPUConsumptionProfileModel(ConsumptionProfileModel):
-    DEFAULT_CPU_MODEL_RANGE = 'Xeon Platinum'
-
     _TDP_RATIOS_WORKLOAD = [0, 10, 50, 100]
     _TDP_RATIOS = [0.12, 0.32, 0.75, 1.02]
 
@@ -66,15 +61,14 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
     )
     _MODEL_PARAM_NAME = ['a', 'b', 'c', 'd']
 
-    def __init__(self, default_config=config["DEFAULT"]["CPU"]["CONSUMPTION_PROFILE"]):
+    def __init__(self, archetype=get_component_archetype(config["default_cpu"], "cpu").get("CONSUMPTION_PROFILE")):
         self.workloads = Boattribute(
-            default=default_config['workloads']['default'],
             unit="workload_rate:W"
         )
         self.params = Boattribute(
-            default=default_config['model_param']['default'],
-            min=default_config['model_param']['min'],
-            max=default_config['model_param']['max'],
+            default=get_arch_value(archetype, 'params', 'default'),
+            min=get_arch_value(archetype, 'params', 'min'),
+            max=get_arch_value(archetype, 'params', 'max')
         )
 
     @property

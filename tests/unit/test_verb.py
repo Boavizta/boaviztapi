@@ -1,5 +1,4 @@
 from boaviztapi.service.verbose import verbose_component, verbose_device
-from tests.unit.conftest import incomplete_server_model
 
 
 def test_verbose_component_cpu_1(complete_cpu_model):

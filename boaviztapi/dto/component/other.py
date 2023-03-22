@@ -4,6 +4,7 @@ from boaviztapi import config
 from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.usage.usage import mapper_usage, Usage
 from boaviztapi.model.component import ComponentPowerSupply, ComponentMotherboard, ComponentCase
+from boaviztapi.service.archetype import get_component_archetype
 
 
 class PowerSupply(ComponentDTO):
@@ -18,9 +19,9 @@ class Case(ComponentDTO):
     case_type: str = None
 
 
-def mapper_power_supply(power_supply_dto: PowerSupply, default_config=config['DEFAULT']['POWER_SUPPLY']) -> ComponentPowerSupply:
-    power_supply_component = ComponentPowerSupply(default_config=default_config)
-    power_supply_component.usage = mapper_usage(power_supply_dto.usage or Usage())
+def mapper_power_supply(power_supply_dto: PowerSupply, archetype=get_component_archetype(config["default_power_supply"], "power_supply")) -> ComponentPowerSupply:
+    power_supply_component = ComponentPowerSupply(archetype=archetype)
+    power_supply_component.usage = mapper_usage(power_supply_dto.usage or Usage(), archetype=archetype.get("USAGE"))
 
     if power_supply_dto.units is not None:
         power_supply_component.units.set_input(power_supply_dto.units)
@@ -41,9 +42,9 @@ def mapper_motherboard(motherboard_dto: Motherboard) -> ComponentMotherboard:
     return motherboard_component
 
 
-def mapper_case(case_dto: Case) -> ComponentCase:
-    case_component = ComponentCase()
-    case_component.usage = mapper_usage(case_dto.usage or Usage())
+def mapper_case(case_dto: Case, archetype=get_component_archetype(config["default_case"], "case")) -> ComponentCase:
+    case_component = ComponentCase(archetype=archetype)
+    case_component.usage = mapper_usage(case_dto.usage or Usage(), archetype=archetype.get("USAGE"))
 
     if case_dto.units is not None:
         case_component.units.set_input(case_dto.units)

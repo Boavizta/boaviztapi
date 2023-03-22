@@ -5,16 +5,14 @@ import pandas as pd
 from fastapi import APIRouter, Query, Body, HTTPException
 
 from boaviztapi.dto.device import Cloud
-from boaviztapi.dto.device.device import smart_mapper_server, mapper_cloud_instance
+from boaviztapi.dto.device.device import mapper_server, mapper_cloud_instance
 from boaviztapi.dto.usage import UsageCloud
-from boaviztapi.model.device import DeviceCloudInstance
 from boaviztapi.routers import data_dir
 from boaviztapi.routers.openapi_doc.descriptions import cloud_provider_description, all_default_cloud_instances, all_default_cloud_providers, cloud_aws_description, all_default_aws_instances
 from boaviztapi.routers.openapi_doc.examples import cloud_usage_example, cloud_example
 from boaviztapi.routers.server_router import server_impact
 from boaviztapi.service.allocation import Allocation
-from boaviztapi.service.archetype import complete_with_archetype, get_cloud_instance_archetype, \
-    get_device_archetype_lst
+from boaviztapi.service.archetype import get_cloud_instance_archetype, get_device_archetype_lst
 
 cloud_router = APIRouter(
     prefix='/v1/cloud',
@@ -34,8 +32,7 @@ async def legacy_instance_cloud_impact(cloud_usage: UsageCloud = Body(None, exam
     if not instance_archetype:
         raise HTTPException(status_code=404, detail=f"{instance_type} not found")
 
-    instance_archetype = Cloud(**complete_with_archetype(cloud_instance, instance_archetype))
-    instance_model = mapper_cloud_instance(instance_archetype)
+    instance_model = mapper_cloud_instance(cloud_instance)
 
     return await server_impact(
         device=instance_model,
@@ -59,8 +56,7 @@ async def instance_cloud_impact(cloud_instance: Cloud = Body(None, example=cloud
     if not instance_archetype:
         raise HTTPException(status_code=404, detail=f"{cloud_instance.instance_type} at {cloud_instance.provider} not found")
 
-    instance_archetype = Cloud(**complete_with_archetype(cloud_instance, instance_archetype))
-    instance_model = mapper_cloud_instance(instance_archetype)
+    instance_model = mapper_cloud_instance(cloud_instance, archetype=instance_archetype)
 
     return await server_impact(
         device=instance_model,
@@ -78,10 +74,10 @@ async def instance_cloud_impact(provider: str = Query(None, example="aws"),
     instance_archetype = await get_cloud_instance_archetype(instance_type, provider)
 
     if not instance_archetype:
-        raise HTTPException(status_code=404, detail=f"{instance_type} at {provider} not found")
+        raise HTTPException(status_code=404,
+                            detail=f"{cloud_instance.instance_type} at {cloud_instance.provider} not found")
 
-    instance_archetype = Cloud(**complete_with_archetype(cloud_instance, instance_archetype))
-    instance_model = mapper_cloud_instance(instance_archetype)
+    instance_model = mapper_cloud_instance(cloud_instance)
 
     return await server_impact(
         device=instance_model,

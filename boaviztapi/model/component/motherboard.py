@@ -20,8 +20,8 @@ class ComponentMotherboard(Component):
         }
     }
 
-    def __init__(self, default_config=config["DEFAULT"]["MOTHERBOARD"], **kwargs):
-        super().__init__(default_config=default_config, **kwargs)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')

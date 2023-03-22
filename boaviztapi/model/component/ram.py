@@ -9,6 +9,7 @@ from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component, ComputedImpacts
 from boaviztapi.model.consumption_profile.consumption_profile import RAMConsumptionProfileModel
 from boaviztapi.model.impact import ImpactFactor
+from boaviztapi.service.archetype import get_arch_value, get_component_archetype
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
 
@@ -32,35 +33,36 @@ class ComponentRAM(Component):
         }
     }
 
-    def __init__(self, default_config=config["DEFAULT"]["RAM"], **kwargs):
-        super().__init__(default_config=default_config, **kwargs)
+    def __init__(self, archetype=get_component_archetype(config["default_ram"], "ram"), **kwargs):
+        super().__init__(archetype=archetype, **kwargs)
 
         self.process = Boattribute(
-            default=default_config['process']['default'],
-            min=default_config['process']['min'],
-            max=default_config['process']['max']
+            default=get_arch_value(archetype, 'process', 'default'),
+            min=get_arch_value(archetype, 'process', 'min'),
+            max=get_arch_value(archetype, 'process', 'max')
         )
         self.manufacturer = Boattribute(
-            default=default_config['manufacturer']['default'],
+            default=get_arch_value(archetype, 'manufacturer', 'default'),
+            min=get_arch_value(archetype, 'manufacturer', 'min'),
+            max=get_arch_value(archetype, 'manufacturer', 'max')
         )
         self.capacity = Boattribute(
             unit="GB",
-            default=default_config['capacity']['default'],
-            min=default_config['capacity']['min'],
-            max=default_config['capacity']['max']
+            default=get_arch_value(archetype, 'capacity', 'default'),
+            min=get_arch_value(archetype, 'capacity', 'min'),
+            max=get_arch_value(archetype, 'capacity', 'max')
         )
         self.density = Boattribute(
+            complete_function=self._complete_density,
             unit="GB/cm2",
-            complete_function=self._complete_from_crowdsourcing,
-            default=default_config['density']['default'],
-            min=default_config['density']['min'],
-            max=default_config['density']['max']
+            default=get_arch_value(archetype, 'density', 'default'),
+            min=get_arch_value(archetype, 'density', 'min'),
+            max=get_arch_value(archetype, 'density', 'max')
         )
         self.usage.hours_electrical_consumption.add_warning("value for one ram strip")
 
 
     # IMPACT COMPUTATION
-
     def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
         ram_die_impact, ram_impact = self.__get_impact_constants(impact_type)
 
@@ -155,27 +157,27 @@ class ComponentRAM(Component):
         return self.__impact_usage("adp")
 
     # COMPLETION
-    def _complete_from_crowdsourcing(self):
+    def _complete_density(self):
         sub = self._ram_df
 
-        if self.manufacturer.is_set():
+        if self.manufacturer.has_value():
             corrected_manufacturer = fuzzymatch_attr_from_pdf(self.manufacturer.value, "manufacturer", sub)
             sub = sub[sub['manufacturer'] == corrected_manufacturer]
             if corrected_manufacturer != self.manufacturer.value:
                 self.manufacturer.set_changed(corrected_manufacturer)
 
-        if self.process.is_set():
+        if self.process.has_value():
             sub = sub[sub['process'] == self.process.value]
 
-        if len(sub) == 0 or len(sub) == len(self._ram_df):
-            pass
-        elif len(sub) == 1:
+        if len(sub) == 1:
             self.density.set_completed(
                 float(sub['density']),
                 source=str(sub['manufacturer'].iloc[0]),
                 min=float(sub['density']),
                 max=float(sub['density'])
             )
+        elif self.density.has_value():
+            return
         else:
             self.density.set_completed(
                 float(sub['density'].mean()),

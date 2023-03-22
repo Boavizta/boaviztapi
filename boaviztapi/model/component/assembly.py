@@ -21,8 +21,8 @@ class ComponentAssembly(Component):
         }
     }
 
-    def __init__(self, default_config=config["DEFAULT"]["ASSEMBLY"], **kwargs):
-        super().__init__(default_config=default_config, **kwargs)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 
     def impact_manufacture_gwp(self) -> ComputedImpacts:

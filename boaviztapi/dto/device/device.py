@@ -36,7 +36,7 @@ class Server(DeviceDTO):
     usage: Optional[UsageServer] = None
 
 
-def smart_mapper_server(server_dto: Server) -> DeviceServer:
+def mapper_server(server_dto: Server) -> DeviceServer:
     server_model = DeviceServer()
 
     server_model = device_mapper(server_dto, server_model)
@@ -85,7 +85,7 @@ def mapper_cloud_instance(cloud_dto: Cloud) -> DeviceCloudInstance:
 def device_mapper(device_dto, device_model):
     if device_dto.configuration is not None:
         if device_dto.configuration.cpu is not None:
-            device_model.cpu = mapper_cpu(device_dto.configuration.cpu, default_config=device_model.default_config['CPU'])
+            device_model.cpu = mapper_cpu(device_dto.configuration.cpu, archetype=device_model.default_config['CPU'])
 
         if device_dto.configuration.ram is not None:
             complete_ram = []
@@ -106,7 +106,7 @@ def device_mapper(device_dto, device_model):
             device_model.power_supply = mapper_power_supply(device_dto.configuration.power_supply, default_config=device_model.default_config['POWER_SUPPLY'])
 
     if device_dto.model is not None and device_dto.model.type is not None:
-        device_model.case = ComponentCase(default_config=device_model.default_config['CASE'])
+        device_model.case = ComponentCase(archetype=device_model.default_config['CASE'])
         if device_dto.model.type == "rack" or device_dto.model.type == "blade":
             device_model.case.case_type.value = device_dto.model.type
             device_model.case.case_type.status = Status.INPUT

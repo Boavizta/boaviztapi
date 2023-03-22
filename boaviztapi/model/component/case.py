@@ -4,6 +4,7 @@ from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component
 from boaviztapi.model.impact import ImpactFactor
+from boaviztapi.service.archetype import get_arch_value, get_component_archetype
 
 
 class ComponentCase(Component):
@@ -38,10 +39,12 @@ class ComponentCase(Component):
         }
     }
 
-    def __init__(self, default_config=config["DEFAULT"]["CASE"], **kwargs):
-        super().__init__(default_config=default_config, **kwargs)
+    def __init__(self, archetype=get_component_archetype(config["default_case"], "case"), **kwargs):
+        super().__init__(archetype=archetype, **kwargs)
         self.case_type = Boattribute(
-            default=default_config['case_type']['default']
+            default=get_arch_value(archetype, 'case_type', 'default'),
+            min=get_arch_value(archetype, 'case_type', 'min'),
+            max=get_arch_value(archetype, 'case_type', 'max')
         )
 
     def impact_manufacture_gwp(self) -> ComputedImpacts:

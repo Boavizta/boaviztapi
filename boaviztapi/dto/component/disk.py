@@ -1,15 +1,11 @@
-import os
 from typing import Optional
 
-import pandas as pd
 
 from boaviztapi import config
 from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.usage.usage import mapper_usage, Usage
-from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import ComponentSSD, ComponentHDD
-from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
-
+from boaviztapi.service.archetype import get_component_archetype
 
 
 class Disk(ComponentDTO):
@@ -20,9 +16,9 @@ class Disk(ComponentDTO):
     model: Optional[str] = None
 
 
-def mapper_ssd(disk_dto: Disk, default_config=config['DEFAULT']['SSD']) -> ComponentSSD:
-    disk_component = ComponentSSD(default_config=default_config)
-    disk_component.usage = mapper_usage(disk_dto.usage or Usage())
+def mapper_ssd(disk_dto: Disk, archetype=get_component_archetype(config["default_ssd"], "ssd")) -> ComponentSSD:
+    disk_component = ComponentSSD(archetype=archetype)
+    disk_component.usage = mapper_usage(disk_dto.usage or Usage(), archetype=archetype.get("USAGE"))
 
     if disk_dto.units is not None:
         disk_component.units.set_input(disk_dto.units)
@@ -36,9 +32,9 @@ def mapper_ssd(disk_dto: Disk, default_config=config['DEFAULT']['SSD']) -> Compo
     return disk_component
 
 
-def mapper_hdd(disk_dto: Disk, default_config=config['DEFAULT']['HDD']) -> ComponentHDD:
-    disk_component = ComponentHDD(default_config=default_config)
-    disk_component.usage = mapper_usage(disk_dto.usage or Usage())
+def mapper_hdd(disk_dto: Disk, archetype=get_component_archetype(config["default_hdd"], "hdd")) -> ComponentHDD:
+    disk_component = ComponentHDD(archetype=archetype)
+    disk_component.usage = mapper_usage(disk_dto.usage or Usage(), archetype=archetype.get("USAGE"))
 
     if disk_dto.units is not None:
         disk_component.units.set_input(disk_dto.units)

@@ -7,9 +7,8 @@ from boaviztapi import config
 from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.usage import Usage
 from boaviztapi.dto.usage.usage import mapper_usage
-from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import ComponentRAM
-from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
+from boaviztapi.service.archetype import get_component_archetype
 
 _ram_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/crowdsourcing/ram_manufacture.csv'))
 
@@ -22,9 +21,9 @@ class RAM(ComponentDTO):
     model: Optional[str] = None
 
 
-def mapper_ram(ram_dto: RAM, default_config=config["DEFAULT"]["RAM"]) -> ComponentRAM:
-    ram_component = ComponentRAM(default_config=default_config)
-    ram_component.usage = mapper_usage(ram_dto.usage or Usage())
+def mapper_ram(ram_dto: RAM, archetype=get_component_archetype(config["default_ram"], "ram")) -> ComponentRAM:
+    ram_component = ComponentRAM(archetype=archetype)
+    ram_component.usage = mapper_usage(ram_dto.usage or Usage(), archetype=archetype.get("USAGE"))
 
     if ram_dto.units is not None:
         ram_component.units.set_input(ram_dto.units)

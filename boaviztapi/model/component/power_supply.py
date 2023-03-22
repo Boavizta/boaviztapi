@@ -3,6 +3,7 @@ from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component, ComputedImpacts
 from boaviztapi.model.impact import ImpactFactor
+from boaviztapi.service.archetype import get_component_archetype, get_arch_value
 
 
 class ComponentPowerSupply(Component):
@@ -20,14 +21,14 @@ class ComponentPowerSupply(Component):
         }
     }
 
-    def __init__(self, default_config=config["DEFAULT"]["POWER_SUPPLY"], **kwargs):
-        super().__init__(default_config=default_config, **kwargs)
+    def __init__(self, archetype=get_component_archetype(config["default_power_supply"], "power_supply"), **kwargs):
+        super().__init__(archetype=archetype, **kwargs)
 
         self.unit_weight = Boattribute(
             unit="kg",
-            default=default_config['unit_weight']['default'],
-            min=default_config['unit_weight']['min'],
-            max=default_config['unit_weight']['max']
+            default=get_arch_value(archetype, 'unit_weight', 'default'),
+            min=get_arch_value(archetype, 'unit_weight', 'min'),
+            max=get_arch_value(archetype, 'unit_weight', 'max')
         )
 
     def impact_manufacture_gwp(self) -> ComputedImpacts:

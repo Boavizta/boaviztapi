@@ -5,18 +5,18 @@ from boaviztapi import config
 from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.usage import ModelUsage
-
-
+from boaviztapi.service.archetype import get_arch_value, get_arch_component
 
 
 class Component:
     NAME = "COMPONENT"
 
-    def __init__(self, default_config=config["DEFAULT"]["COMPONENT"], **kwargs):
+    def __init__(self, archetype=None, **kwargs):
+        self.archetype = archetype
         self.units = Boattribute(
-            default=default_config['units']['default'],
-            min=default_config['units']['min'],
-            max=default_config['units']['max']
+            default=get_arch_value(archetype, 'units', 'default', default=1),
+            min=get_arch_value(archetype, 'units', 'min', default=1),
+            max=get_arch_value(archetype, 'units', 'max', default=1)
         )
         self._usage = None
 
@@ -27,7 +27,7 @@ class Component:
     @property
     def usage(self) -> ModelUsage:
         if self._usage is None:
-            self._usage = ModelUsage()
+            self._usage = ModelUsage(archetype=get_arch_component(self.archetype,"USAGE"))
         return self._usage
 
     @usage.setter

@@ -7,6 +7,7 @@ from boaviztapi import config
 from boaviztapi.dto import BaseDTO
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
+from boaviztapi.service.archetype import get_component_archetype
 
 _electricity_emission_factors_df = pd.read_csv(os.path.join(os.path.dirname(__file__),
                                                             '../../data/electricity/electricity_impact_factors.csv'))
@@ -41,8 +42,8 @@ class UsageCloud(UsageServer):
     instance_per_server: Optional[int] = None
 
 
-def mapper_usage(usage_dto: Usage, default_config=config["DEFAULT"]["USAGE"]) -> ModelUsage:
-    usage_model = ModelUsage(default_config=default_config)
+def mapper_usage(usage_dto: Usage, archetype=get_component_archetype(config["default_usage"], "usage")) -> ModelUsage:
+    usage_model = ModelUsage(archetype=archetype)
 
     if usage_dto.time_workload is not None:
         usage_model.time_workload.value = usage_dto.time_workload
@@ -79,7 +80,7 @@ def mapper_usage(usage_dto: Usage, default_config=config["DEFAULT"]["USAGE"]) ->
 
 
 def mapper_usage_server(usage_dto: UsageServer, default_config=config["SERVER"]["USAGE"]) -> ModelUsageServer:
-    usage_model_server = ModelUsageServer(default_config=default_config)
+    usage_model_server = ModelUsageServer(archetype=default_config)
 
     if usage_dto.hours_electrical_consumption is not None:
         usage_model_server.hours_electrical_consumption.set_input(usage_dto.hours_electrical_consumption)
@@ -110,7 +111,7 @@ def mapper_usage_server(usage_dto: UsageServer, default_config=config["SERVER"][
 
 
 def mapper_usage_cloud(usage_dto: UsageCloud, default_config=config["CLOUD"]["USAGE"]) -> ModelUsageCloud:
-    usage_model_cloud = ModelUsageCloud(default_config=default_config)
+    usage_model_cloud = ModelUsageCloud(archetype=default_config)
 
     if usage_dto.hours_electrical_consumption is not None:
         usage_model_cloud.hours_electrical_consumption.set_input(usage_dto.hours_electrical_consumption)

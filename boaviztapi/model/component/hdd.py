@@ -3,6 +3,7 @@ from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component, ComputedImpacts
 from boaviztapi.model.impact import ImpactFactor
+from boaviztapi.service.archetype import get_component_archetype, get_arch_value
 
 
 class ComponentHDD(Component):
@@ -22,14 +23,14 @@ class ComponentHDD(Component):
         }
     }
 
-    def __init__(self, default_config=config["DEFAULT"]["HDD"], **kwargs):
-        super().__init__(default_config=default_config, **kwargs)
+    def __init__(self, archetype=get_component_archetype(config["default_ssd"], "ssd"), **kwargs):
+        super().__init__(archetype=archetype, **kwargs)
 
         self.capacity = Boattribute(
             unit="GB",
-            default=default_config['capacity']['default'],
-            min=default_config['capacity']['min'],
-            max=default_config['capacity']['max']
+            default=get_arch_value(archetype, 'manufacturer', 'default'),
+            min=get_arch_value(archetype, 'manufacturer', 'default'),
+            max=get_arch_value(archetype, 'manufacturer', 'default')
         )
 
     def impact_manufacture_gwp(self) -> ComputedImpacts:

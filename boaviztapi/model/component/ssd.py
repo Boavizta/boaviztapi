@@ -8,6 +8,7 @@ from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component, ComputedImpacts
 from boaviztapi.model.impact import ImpactFactor
+from boaviztapi.service.archetype import get_component_archetype, get_arch_value
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
 
@@ -36,25 +37,25 @@ class ComponentSSD(Component):
         }
     }
 
-    def __init__(self, default_config=config["DEFAULT"]["SSD"], **kwargs):
-        super().__init__(default_config=default_config, **kwargs)
-
+    def __init__(self, archetype=get_component_archetype(config["default_ssd"], "ssd"), **kwargs):
+        super().__init__(archetype=archetype, **kwargs)
         self.manufacturer = Boattribute(
-            unit="none",
-            default=default_config['manufacturer']['default'],
+            default=get_arch_value(archetype, 'manufacturer', 'default'),
+            min=get_arch_value(archetype, 'manufacturer', 'min'),
+            max=get_arch_value(archetype, 'manufacturer', 'max')
         )
         self.capacity = Boattribute(
             unit="GB",
-            default=default_config['capacity']['default'],
-            min=default_config['capacity']['min'],
-            max=default_config['capacity']['max']
+            default=get_arch_value(archetype, 'capacity', 'default'),
+            min=get_arch_value(archetype, 'capacity', 'min'),
+            max=get_arch_value(archetype, 'capacity', 'max')
         )
         self.density = Boattribute(
             unit="GB/cm2",
-            complete_function=self._complete_from_crowdsourcing,
-            default=default_config['density']['default'],
-            min=default_config['density']['min'],
-            max=default_config['density']['max']
+            complete_function=self._complete_density,
+            default=get_arch_value(archetype, 'density', 'default'),
+            min=get_arch_value(archetype, 'density', 'min'),
+            max=get_arch_value(archetype, 'density', 'max')
         )
 
     # IMPACT CALCUATION
@@ -96,24 +97,23 @@ class ComponentSSD(Component):
         return self.__impact_manufacture('adp')
 
     # COMPLETION
-    def _complete_from_crowdsourcing(self):
-        if self.density.is_none():
-            sub = self._ssd_df
-            if self.manufacturer.is_set():
-                corrected_manufacturer = fuzzymatch_attr_from_pdf(self.manufacturer.value, "manufacturer", sub)
-                sub = sub[sub['manufacturer'] == corrected_manufacturer]
-                if corrected_manufacturer != self.manufacturer.value:
-                    self.manufacturer.set_changed(corrected_manufacturer)
+    def _complete_density(self):
+        sub = self._ssd_df
+        if self.manufacturer.is_set():
+            corrected_manufacturer = fuzzymatch_attr_from_pdf(self.manufacturer.value, "manufacturer", sub)
+            sub = sub[sub['manufacturer'] == corrected_manufacturer]
+            if corrected_manufacturer != self.manufacturer.value:
+                self.manufacturer.set_changed(corrected_manufacturer)
 
-            if len(sub) == 0 or len(sub) == len(self._ssd_df):
-                pass
-            elif len(sub) == 1:
-                self.density.set_completed(float(sub['density']), source=str(sub['manufacturer'].iloc[0]),
+        if len(sub) == 1:
+            self.density.set_completed(float(sub['density']), source=str(sub['manufacturer'].iloc[0]),
                                                          min=float(sub['density']), max=float(sub['density']))
-            else:
-                self.density.set_completed(
-                    float(sub['density'].mean()),
-                    source="Average of " + str(len(sub)) + " rows",
-                    min=float(sub['density'].min()),
-                    max=float(sub['density'].max())
-                )
+        elif self.density.has_value():
+            return
+        else:
+            self.density.set_completed(
+                float(sub['density'].mean()),
+                source="Average of " + str(len(sub)) + " rows",
+                min=float(sub['density'].min()),
+                max=float(sub['density'].max())
+            )
