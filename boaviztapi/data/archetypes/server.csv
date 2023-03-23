@@ -1,0 +1,8 @@
+id,manufacturer,CASE.case_type,CPU.units,CPU.die_size_per_core,CPU.core_units,CPU.name,CPU.manufacturer,CPU.model_range,CPU.family,CPU.tdp,RAM.capacity,RAM.units,RAM.density,SSD.units	,SSD.capacity,SSD.density,HDD.units,HDD.capacity,POWER_SUPPLY.units,POWER_SUPPLY.unit_weight,USAGE.time_workload,USAGE.use_time,USAGE.years_life_time,USAGE.other_consumption_ratio,WARNINGS
+compute_low,,rack,"1;1;1",,"4;2;8",,,,Ice Lake,,128,12,1.79,24,1920,"50.6;60;45",,,2;1;2,2.99;1;5,50;0;100,8760;1;87600,26280;8760;87600,0.33,
+compute_medium,,rack,"2;4",,"8;4;16",,Xeon Platinum,,Ice Lake,,128,12,1.79,24,1920,50.6,,,2;1;2,2.99;1;5,50;0;100,8760;1;87600,26280;8760;87600,0.33,
+compute_high,,rack,"4;8",,"32;16;64",,,,Ice Lake,,128,12,1.79,24,1920,50.6,,,2;1;2,2.99;1;5,50;0;100,8760;1;87600,26280;8760;87600,0.33,
+storage_low,,rack,"1;1;1",,24,,,,Ice Lake,,128,12,1.79,24,1920,50.6,,,2;1;2,2.99;1;5,50;0;100,8760;1;87600,26280;8760;87600,0.33,
+storage_medium,,rack,"1;1;1",,24,,,,Ice Lake,,128,12,1.79,24,1920,50.6,,,2;1;2,2.99;1;5,50;0;100,8760;1;87600,26280;8760;87600,0.33,
+storage_high,,rack,"1;1;1",,24,,,,Ice Lake,,128,12,1.79,24,1920,50.6,,,2;1;2,2.99;1;5,50;0;100,8760;1;87600,26280;8760;87600,0.33,
+dellR740,Dell,rack,2,0.245,24,,,,,,32,12,1.79,1,400,50.6,,,2;1;2,2.99;1;5,50;0;100,8760;1;87600,26280;8760;87600,0.33,

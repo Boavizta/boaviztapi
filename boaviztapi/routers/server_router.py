@@ -1,22 +1,18 @@
-import copy
-import json
 import os
-from typing import Type
 
-from fastapi import APIRouter, Body, Query, HTTPException
+from fastapi import APIRouter, Body, HTTPException
 
-from boaviztapi.dto.device import DeviceDTO, Server
-from boaviztapi.dto.device.device import smart_mapper_server
+from boaviztapi import config, data_dir
+from boaviztapi.dto.device import Server
+from boaviztapi.dto.device.device import mapper_server
 from boaviztapi.model.device import Device, DeviceServer
-from boaviztapi.routers import data_dir
 from boaviztapi.routers.openapi_doc.descriptions import server_impact_by_model_description, \
     all_default_model_description, server_impact_by_config_description
 from boaviztapi.routers.openapi_doc.examples import server_configuration_examples
 from boaviztapi.service.allocation import Allocation
-from boaviztapi.service.archetype import get_server_archetype, complete_with_archetype, \
-    get_device_archetype_lst
+from boaviztapi.service.archetype import get_server_archetype, get_device_archetype_lst
 from boaviztapi.service.verbose import verbose_device
-from boaviztapi.service.bottom_up import bottom_up_device
+from boaviztapi.service.bottom_up import bottom_up
 
 server_router = APIRouter(
     prefix='/v1/server',
@@ -27,24 +23,22 @@ server_router = APIRouter(
 @server_router.get('/all_default_models',
                    description=all_default_model_description)
 async def server_get_all_archetype_name():
-    return get_device_archetype_lst(os.path.join(data_dir, 'devices/server/server.csv'))
+    return get_device_archetype_lst(os.path.join(data_dir, 'archetypes/server.csv'))
 
 
 @server_router.get('/model',
                    description=server_impact_by_model_description)
-async def server_impact_from_model(archetype: str = Query(None, example="dellR740"), verbose: bool = True,
+async def server_impact_from_model(archetype: str = config["default_server"], verbose: bool = True,
                                    allocation: Allocation = Allocation.TOTAL):
-    server = Server()
-    server_archetype = await get_server_archetype(archetype)
+    archetype_config = get_server_archetype(archetype)
 
-    if not server_archetype:
+    if not archetype_config:
         raise HTTPException(status_code=404, detail=f"{archetype} not found")
 
-    server_archetyped = Server(**complete_with_archetype(server, server_archetype))
-    completed_server = smart_mapper_server(server_archetyped)
+    model_server=DeviceServer(archetype=archetype_config)
 
     return await server_impact(
-        device=completed_server,
+        device=model_server,
         verbose=verbose,
         allocation=allocation
     )
@@ -54,14 +48,14 @@ async def server_impact_from_model(archetype: str = Query(None, example="dellR74
                     description=server_impact_by_config_description)
 async def server_impact_from_configuration(
         server: Server = Body(None, example=server_configuration_examples["DellR740"]),
-        verbose: bool = True, allocation: Allocation = Allocation.TOTAL):
+        verbose: bool = True, allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_server"]):
 
-    if server.model is not None and server.model.archetype is not None:
-        server_archetype = await get_server_archetype(server.model.archetype)
-        if server_archetype:
-            server = Server(**complete_with_archetype(server, server_archetype))
+    archetype_config = get_server_archetype(archetype)
 
-    completed_server = smart_mapper_server(server)
+    if not archetype_config:
+        raise HTTPException(status_code=404, detail=f"{archetype} not found")
+
+    completed_server = mapper_server(server, archetype=archetype_config)
 
     return await server_impact(
         device=completed_server,
@@ -69,10 +63,9 @@ async def server_impact_from_configuration(
         allocation=allocation
     )
 
-
 async def server_impact(device: Device,
                         verbose: bool, allocation: Allocation) -> dict:
-    impacts = bottom_up_device(device=device, allocation=allocation)
+    impacts = bottom_up(model=device, allocation=allocation)
 
     if verbose:
         return {

@@ -1,6 +1,8 @@
 
 import boaviztapi.utils.roundit as rd
-from boaviztapi.model.component.component import Component, NumberSignificantFigures
+from boaviztapi import config
+from boaviztapi.model.component.component import Component, ComputedImpacts
+from boaviztapi.model.impact import ImpactFactor
 
 
 class ComponentMotherboard(Component):
@@ -21,16 +23,21 @@ class ComponentMotherboard(Component):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+    def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')
 
-    def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
-        impact = self.IMPACT_FACTOR[impact_type]['impact']
-        significant_figures = rd.min_significant_figures(impact)
-        return impact, significant_figures
+    def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
+        impact = ImpactFactor(
+            value=self.IMPACT_FACTOR[impact_type]['impact'],
+            min=self.IMPACT_FACTOR[impact_type]['impact'],
+            max=self.IMPACT_FACTOR[impact_type]['impact']
+        )
 
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
+        significant_figures = rd.min_significant_figures(impact.value)
+        return impact.value, significant_figures, impact.min, impact.max, []
+
+    def impact_manufacture_pe(self) -> ComputedImpacts:
         return self.__impact_manufacture('pe')
 
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
+    def impact_manufacture_adp(self) -> ComputedImpacts:
         return self.__impact_manufacture('adp')

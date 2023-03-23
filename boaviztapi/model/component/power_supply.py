@@ -1,12 +1,13 @@
 import boaviztapi.utils.roundit as rd
-from boaviztapi.model.boattribute import Boattribute, Status
-from boaviztapi.model.component.component import Component, NumberSignificantFigures
+from boaviztapi import config
+from boaviztapi.model.boattribute import Boattribute
+from boaviztapi.model.component.component import Component, ComputedImpacts
+from boaviztapi.model.impact import ImpactFactor
+from boaviztapi.service.archetype import get_component_archetype, get_arch_value
 
 
 class ComponentPowerSupply(Component):
     NAME = "POWER_SUPPLY"
-
-    DEFAULT_POWER_SUPPLY_WEIGHT = 2.99
 
     IMPACT_FACTOR = {
         'gwp': {
@@ -20,37 +21,49 @@ class ComponentPowerSupply(Component):
         }
     }
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, archetype=get_component_archetype(config["default_power_supply"], "power_supply"), **kwargs):
+        super().__init__(archetype=archetype, **kwargs)
 
         self.unit_weight = Boattribute(
             unit="kg",
-            default=self.DEFAULT_POWER_SUPPLY_WEIGHT
+            default=get_arch_value(archetype, 'unit_weight', 'default'),
+            min=get_arch_value(archetype, 'unit_weight', 'min'),
+            max=get_arch_value(archetype, 'unit_weight', 'max')
         )
 
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+    def impact_manufacture_gwp(self) -> ComputedImpacts:
         return self.__impact_manufacture('gwp')
 
-    def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
-        power_supply_impact = self.IMPACT_FACTOR[impact_type]['impact']
-        impact = self.__compute_impact_manufacture(power_supply_impact)
-        sign_figures = rd.min_significant_figures(power_supply_impact)
-        return impact, sign_figures
+    def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
+        impact_factor = ImpactFactor(
+            value=self.IMPACT_FACTOR[impact_type]['impact'],
+            min=self.IMPACT_FACTOR[impact_type]['impact'],
+            max=self.IMPACT_FACTOR[impact_type]['impact']
+        )
 
-    def __compute_impact_manufacture(self, power_supply_impact: float) -> float:
-        return self.unit_weight.value * power_supply_impact
+        impact = self.__compute_impact_manufacture(impact_factor)
+        sign_figures = rd.min_significant_figures(impact_factor.value)
 
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
+        return impact.value, sign_figures, impact.min, impact.max, []
+
+    def __compute_impact_manufacture(self, power_supply_impact: ImpactFactor) -> ImpactFactor:
+        return ImpactFactor(
+            value=self.unit_weight.value * power_supply_impact.value,
+            min=self.unit_weight.min * power_supply_impact.min,
+            max=self.unit_weight.max * power_supply_impact.max
+        )
+
+    def impact_manufacture_pe(self) -> ComputedImpacts:
         return self.__impact_manufacture('pe')
 
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
+    def impact_manufacture_adp(self) -> ComputedImpacts:
         return self.__impact_manufacture('adp')
 
-    def impact_use_gwp(self, model=None) -> NumberSignificantFigures:
+    def impact_use_gwp(self, model=None) -> ComputedImpacts:
         raise NotImplementedError
 
-    def impact_use_pe(self, model=None) -> NumberSignificantFigures:
+    def impact_use_pe(self, model=None) -> ComputedImpacts:
         raise NotImplementedError
 
-    def impact_use_adp(self, model=None) -> NumberSignificantFigures:
+    def impact_use_adp(self, model=None) -> ComputedImpacts:
         raise NotImplementedError

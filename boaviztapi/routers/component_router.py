@@ -1,16 +1,18 @@
-from fastapi import APIRouter, Body
+from fastapi import APIRouter, Body, HTTPException
 
+from boaviztapi import config
 from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply, Motherboard, Case
-from boaviztapi.dto.component.cpu import smart_mapper_cpu
+from boaviztapi.dto.component.cpu import mapper_cpu
 from boaviztapi.dto.component.other import mapper_motherboard, mapper_power_supply, mapper_case
-from boaviztapi.dto.component.ram import smart_mapper_ram
-from boaviztapi.dto.component.disk import smart_mapper_ssd, mapper_hdd
+from boaviztapi.dto.component.ram import mapper_ram
+from boaviztapi.dto.component.disk import mapper_ssd, mapper_hdd
 from boaviztapi.model.component import Component
 from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
     hdd_description, motherboard_description, power_supply_description, case_description
 from boaviztapi.routers.openapi_doc.examples import components_examples
 from boaviztapi.service.allocation import Allocation
-from boaviztapi.service.bottom_up import bottom_up_component
+from boaviztapi.service.archetype import get_component_archetype
+from boaviztapi.service.bottom_up import bottom_up
 from boaviztapi.service.verbose import verbose_component
 
 component_router = APIRouter(
@@ -23,9 +25,13 @@ component_router = APIRouter(
                        description=cpu_description)
 async def cpu_impact_bottom_up(cpu: CPU = Body(None, example=components_examples["cpu"]),
                                verbose: bool = True,
-                               allocation: Allocation = Allocation.TOTAL):
+                               allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_cpu"]):
+    archetype_config = get_component_archetype(archetype, "cpu")
 
-    component = smart_mapper_cpu(cpu)
+    if not archetype_config:
+        raise HTTPException(status_code=404, detail=f"{archetype} not found")
+
+    component = mapper_cpu(cpu, archetype_config)
 
     return await component_impact_bottom_up(
         component=component,
@@ -38,12 +44,16 @@ async def cpu_impact_bottom_up(cpu: CPU = Body(None, example=components_examples
                        description=ram_description)
 async def ram_impact_bottom_up(ram: RAM = Body(None, example=components_examples["ram"]),
                                verbose: bool = True,
-                               allocation: Allocation = Allocation.TOTAL):
+                               allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_ram"]):
+    archetype_config = get_component_archetype(archetype, "ram")
 
-    completed_ram = smart_mapper_ram(ram)
+    if not archetype_config:
+        raise HTTPException(status_code=404, detail=f"{archetype} not found")
+
+    component = mapper_ram(ram, archetype_config)
 
     return await component_impact_bottom_up(
-        component=completed_ram,
+        component=component,
         verbose=verbose,
         allocation=allocation
     )
@@ -53,12 +63,17 @@ async def ram_impact_bottom_up(ram: RAM = Body(None, example=components_examples
                        description=ssd_description)
 async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examples["ssd"]),
                                 verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL):
+                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_ssd"]):
     disk.type = "ssd"
-    competed_ssd = smart_mapper_ssd(disk)
+    archetype_config = get_component_archetype(archetype, "ssd")
+
+    if not archetype_config:
+        raise HTTPException(status_code=404, detail=f"{archetype} not found")
+
+    component = mapper_ssd(disk, archetype_config)
 
     return await component_impact_bottom_up(
-        component=competed_ssd,
+        component=component,
         verbose=verbose,
         allocation=allocation
     )
@@ -68,9 +83,14 @@ async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examp
                        description=hdd_description)
 async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examples["hdd"]),
                                 verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL):
+                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_hdd"]):
     disk.type = "hdd"
-    component = mapper_hdd(disk)
+    archetype_config = get_component_archetype(archetype, "hdd")
+
+    if not archetype_config:
+        raise HTTPException(status_code=404, detail=f"{archetype} not found")
+
+    component = mapper_hdd(disk, archetype_config)
 
     return await component_impact_bottom_up(
         component=component,
@@ -98,9 +118,14 @@ async def motherboard_impact_bottom_up(
                        description=power_supply_description)
 async def power_supply_impact_bottom_up(
         power_supply: PowerSupply = Body(None, example=components_examples["power_supply"]),
-        verbose: bool = True, allocation: Allocation = Allocation.TOTAL):
+        verbose: bool = True, allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_power_supply"]):
 
-    completed_power_supply = mapper_power_supply(power_supply)
+    archetype_config = get_component_archetype(archetype, "power_supply")
+
+    if not archetype_config:
+        raise HTTPException(status_code=404, detail=f"{archetype} not found")
+
+    completed_power_supply = mapper_power_supply(power_supply, archetype_config)
 
     return await component_impact_bottom_up(
         component=completed_power_supply,
@@ -113,7 +138,11 @@ async def power_supply_impact_bottom_up(
                        description=case_description)
 async def case_impact_bottom_up(case: Case = Body(None, example=components_examples["case"]),
                                 verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL):
+                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_case"]):
+    archetype_config = get_component_archetype(archetype, "hdd")
+
+    if not archetype_config:
+        raise HTTPException(status_code=404, detail=f"{archetype} not found")
 
     completed_case = mapper_case(case)
 
@@ -127,7 +156,7 @@ async def case_impact_bottom_up(case: Case = Body(None, example=components_examp
 async def component_impact_bottom_up(component: Component,
                                      verbose: bool, allocation: Allocation) -> dict:
 
-    impacts = bottom_up_component(component=component, allocation=allocation)
+    impacts = bottom_up(model=component, allocation=allocation)
 
     if verbose:
         return {
