@@ -1,3 +1,5 @@
+from typing import Tuple
+
 import boaviztapi.utils.roundit as rd
 from boaviztapi import config
 from boaviztapi.model import ComputedImpacts
@@ -90,7 +92,7 @@ class ComponentCase(Component):
         return impact.value, significant_figures, impact.min, impact.max, []
 
 
-    def __get_impact_constants_blade(self, impact_type: str) -> tuple[ImpactFactor, ImpactFactor]:
+    def __get_impact_constants_blade(self, impact_type: str) -> Tuple[ImpactFactor, ImpactFactor]:
         impact_blade_server = ImpactFactor(
             value=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server'],
             min=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server'],
