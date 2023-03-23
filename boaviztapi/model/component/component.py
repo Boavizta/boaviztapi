@@ -15,8 +15,8 @@ class Component:
         self.archetype = archetype
         self.units = Boattribute(
             default=get_arch_value(archetype, 'units', 'default', default=1),
-            min=get_arch_value(archetype, 'units', 'min', default=1),
-            max=get_arch_value(archetype, 'units', 'max', default=1)
+            min=get_arch_value(archetype, 'units', 'min'),
+            max=get_arch_value(archetype, 'units', 'max')
         )
         self._usage = None
 
