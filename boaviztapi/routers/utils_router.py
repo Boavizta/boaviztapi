@@ -7,7 +7,7 @@ from boaviztapi.dto.component.cpu import CPU
 from boaviztapi.model.component import ComponentCase
 from boaviztapi.model.component.cpu import attributes_from_cpu_name
 from boaviztapi.routers.openapi_doc.descriptions import country_code, cpu_family, cpu_model_range, ssd_manufacturer, \
-    ram_manufacturer, case_type, name_to_cpu
+    ram_manufacturer, case_type, name_to_cpu, cpu_names
 
 utils_router = APIRouter(
     prefix='/v1/utils',
@@ -67,3 +67,8 @@ async def name_to_cpu(cpu_name: str = None):
     manufacturer, model_range, family = attributes_from_cpu_name(cpu_name)
     cpu = CPU(manufacturer=manufacturer, model_range=model_range, family=family)
     return cpu
+
+@utils_router.get('/cpu_name', description=cpu_names)
+async def utils_get_all_cpu_name():
+    df = _cpu_index[_cpu_index["name"].notna()]
+    return [*df["name"].unique()]

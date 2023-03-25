@@ -14,6 +14,7 @@ class Disk(ComponentDTO):
     density: Optional[float] = None
     manufacturer: Optional[str] = None
     model: Optional[str] = None
+    layers: Optional[int] = None
 
 
 def mapper_ssd(disk_dto: Disk, archetype=get_component_archetype(config["default_ssd"], "ssd")) -> ComponentSSD:
@@ -26,8 +27,14 @@ def mapper_ssd(disk_dto: Disk, archetype=get_component_archetype(config["default
     if disk_dto.capacity is not None:
         disk_component.capacity.set_input(disk_dto.capacity)
 
+    if disk_dto.manufacturer is not None:
+        disk_component.manufacturer.set_input(disk_dto.manufacturer)
+
     if disk_dto.density is not None:
         disk_component.density.set_input(disk_dto.density)
+
+    if disk_dto.layers is not None:
+        disk_component.layers.set_input(disk_dto.layers)
 
     return disk_component
 

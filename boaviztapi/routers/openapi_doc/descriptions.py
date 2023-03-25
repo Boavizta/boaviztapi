@@ -150,3 +150,4 @@ ssd_manufacturer = "# ✔ ️Get all the available ssd manufacturer in the API (
 ram_manufacturer = "# ✔ ️Get all the available ram manufacturer in the API (*ram:{manufacturer:'samsung'}*)\n"
 case_type = "# ✔ ️Get all the available case type in the API (*model:{case:'blade'}*)\n"
 name_to_cpu = "# ✔ ️Complete a cpu attributes from a cpu name\n"
+cpu_names= "# ✔ ️Get all the available cpu name in the API (*cpu:{name:'intel xeon platinum 8175m'}*)\n"

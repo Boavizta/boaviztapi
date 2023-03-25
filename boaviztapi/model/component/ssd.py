@@ -57,6 +57,11 @@ class ComponentSSD(Component):
             min=get_arch_value(archetype, 'density', 'min'),
             max=get_arch_value(archetype, 'density', 'max')
         )
+        self.layers = Boattribute(
+            default=get_arch_value(archetype, 'layers', 'default'),
+            min=get_arch_value(archetype, 'layers', 'min'),
+            max=get_arch_value(archetype, 'layers', 'max')
+        )
 
     # IMPACT CALCUATION
     def impact_manufacture_gwp(self) -> ComputedImpacts:
@@ -99,17 +104,22 @@ class ComponentSSD(Component):
     # COMPLETION
     def _complete_density(self):
         sub = self._ssd_df
-        if self.manufacturer.is_set():
+        if self.manufacturer.has_value():
             corrected_manufacturer = fuzzymatch_attr_from_pdf(self.manufacturer.value, "manufacturer", sub)
             sub = sub[sub['manufacturer'] == corrected_manufacturer]
             if corrected_manufacturer != self.manufacturer.value:
                 self.manufacturer.set_changed(corrected_manufacturer)
 
+        if self.layers.has_value():
+            sub = sub[sub['layers'] == self.layers.value]
+
         if len(sub) == 1:
-            self.density.set_completed(float(sub['density']), source=str(sub['manufacturer'].iloc[0]),
+            self.density.set_completed(float(sub['density']), source=str(sub['source'].iloc[0]),
                                                          min=float(sub['density']), max=float(sub['density']))
-        elif self.density.has_value():
+
+        elif (len(sub) == 0 or len(sub) == len(self._ssd_df)) and self.density.has_value():
             return
+
         else:
             self.density.set_completed(
                 float(sub['density'].mean()),
