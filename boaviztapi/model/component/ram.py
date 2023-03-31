@@ -176,8 +176,10 @@ class ComponentRAM(Component):
                 min=float(sub['density']),
                 max=float(sub['density'])
             )
-        elif self.density.has_value():
+
+        elif (len(sub) == 0 or len(sub) == len(self._ram_df)) and self.density.has_value():
             return
+
         else:
             self.density.set_completed(
                 float(sub['density'].mean()),
