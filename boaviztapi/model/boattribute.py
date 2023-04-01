@@ -36,7 +36,7 @@ class Boattribute:
                 self.complete_function()
             if self._value is None and self.default is not None:
                 self._value = self.default
-                self.status = Status.DEFAULT
+                self.status = Status.ARCHETYPE
         return self._value
 
     @value.setter
@@ -70,8 +70,8 @@ class Boattribute:
         json = {"value": self._value, "status": self.status.value}
         if self.unit: json['unit'] = self.unit
         if self.source: json['source'] = self.source
-        if (self._min or self._min==0) and (self.is_default() or self.is_completed()): json['min'] = self._min
-        if (self._max or self._max==0) and (self.is_default() or self.is_completed()): json['max'] = self._max
+        if (self._min or self._min==0) and (self.is_default() or self.is_completed() or self.is_archetype()): json['min'] = self._min
+        if (self._max or self._max==0) and (self.is_default() or self.is_completed() or self.is_archetype()): json['max'] = self._max
         if self.warnings: json['warnings'] = self.warnings
 
         return json

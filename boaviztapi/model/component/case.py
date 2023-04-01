@@ -67,7 +67,7 @@ class ComponentCase(Component):
 
         significant_figures = rd.min_significant_figures(impact_factor.value)
 
-        if self.case_type.is_default() and self.case_type.value == 'rack':
+        if self.case_type.is_archetype() and self.case_type.value == 'rack':
             blade_impact = self.__impact_manufacture_blade(impact_type)
             if blade_impact[0] > impact_factor.value:
                 return impact_factor.value, significant_figures, impact_factor.min, blade_impact[3], []
@@ -82,7 +82,7 @@ class ComponentCase(Component):
 
         significant_figures = self.__compute_significant_numbers(impact_blade_server.value, impact_blade_16_slots.value)
 
-        if self.case_type.is_default() and self.case_type.value == 'blade':
+        if self.case_type.is_archetype() and self.case_type.value == 'blade':
             rack_impact = self.__impact_manufacture_rack(impact_type)
             if rack_impact[0] > impact.value:
                 return impact.value, significant_figures, impact.min, rack_impact[3], []

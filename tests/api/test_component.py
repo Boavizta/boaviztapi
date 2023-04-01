@@ -112,7 +112,7 @@ async def test_complete_cpu_verbose():
                                      'value': 12.874},
                        'time_workload': {'max': 100.0,
                                          'min': 0.0,
-                                         'status': 'DEFAULT',
+                                         'status': 'ARCHETYPE',
                                          'unit': '%',
                                          'value': 50.0},
                        'usage_location': {'status': 'DEFAULT',
@@ -142,7 +142,7 @@ async def test_complete_cpu_verbose():
                                       'value': 20550.0}},
                        'use_time': {'max': 87600.0,
                                     'min': 1.0,
-                                    'status': 'DEFAULT',
+                                    'status': 'ARCHETYPE',
                                     'unit': 'hours',
                                     'value': 8760.0}},
              'core_units': {'status': 'INPUT', 'value': 12},
@@ -169,10 +169,10 @@ async def test_complete_cpu_verbose():
                                     'significant_figures': 3,
                                     'unit': 'MJ',
                                     'value': 247.0}},
-             'model_range': {'status': 'DEFAULT', 'value': 'Xeon Platinum'},
+             'model_range': {'status': 'ARCHETYPE', 'value': 'Xeon Platinum'},
              'units': {'max': 1.0,
                        'min': 1.0,
-                       'status': 'DEFAULT',
+                       'status': 'ARCHETYPE',
                        'value': 1.0}}}
 @pytest.mark.asyncio
 async def test_complete_cpu_with_low_precision():
@@ -356,7 +356,7 @@ async def test_incomplete_cpu_verbose():
                                      'value': 12.874},
                        'time_workload': {'max': 100.0,
                                          'min': 0.0,
-                                         'status': 'DEFAULT',
+                                         'status': 'ARCHETYPE',
                                          'unit': '%',
                                          'value': 50.0},
                        'usage_location': {'status': 'DEFAULT',
@@ -386,7 +386,7 @@ async def test_incomplete_cpu_verbose():
                                       'value': 20550.0}},
                        'use_time': {'max': 87600.0,
                                     'min': 1.0,
-                                    'status': 'DEFAULT',
+                                    'status': 'ARCHETYPE',
                                     'unit': 'hours',
                                     'value': 8760.0}},
              'core_units': {'status': 'INPUT', 'value': 24},
@@ -417,10 +417,10 @@ async def test_incomplete_cpu_verbose():
                                     'significant_figures': 2,
                                     'unit': 'MJ',
                                     'value': 330.0}},
-             'model_range': {'status': 'DEFAULT', 'value': 'Xeon Platinum'},
+             'model_range': {'status': 'ARCHETYPE', 'value': 'Xeon Platinum'},
              'units': {'max': 1.0,
                        'min': 1.0,
-                       'status': 'DEFAULT',
+                       'status': 'ARCHETYPE',
                        'value': 1.0}}}
 
 
@@ -494,7 +494,7 @@ async def test_incomplete_cpu_verbose_2():
                                      'value': 12.874},
                        'time_workload': {'max': 100.0,
                                          'min': 0.0,
-                                         'status': 'DEFAULT',
+                                         'status': 'ARCHETYPE',
                                          'unit': '%',
                                          'value': 50.0},
                        'usage_location': {'status': 'DEFAULT',
@@ -524,7 +524,7 @@ async def test_incomplete_cpu_verbose_2():
                                       'value': 20550.0}},
                        'use_time': {'max': 87600.0,
                                     'min': 1.0,
-                                    'status': 'DEFAULT',
+                                    'status': 'ARCHETYPE',
                                     'unit': 'hours',
                                     'value': 8760.0}},
              'core_units': {'status': 'INPUT', 'value': 24},
@@ -555,10 +555,10 @@ async def test_incomplete_cpu_verbose_2():
                                     'significant_figures': 2,
                                     'unit': 'MJ',
                                     'value': 330.0}},
-             'model_range': {'status': 'DEFAULT', 'value': 'Xeon Platinum'},
+             'model_range': {'status': 'ARCHETYPE', 'value': 'Xeon Platinum'},
              'units': {'max': 1.0,
                        'min': 1.0,
-                       'status': 'DEFAULT',
+                       'status': 'ARCHETYPE',
                        'value': 1.0}}}
 
 

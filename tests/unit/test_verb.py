@@ -78,12 +78,12 @@ def test_verbose_component_ram(complete_ram_model):
 def test_verbose_component_ssd(empty_ssd_model):
     assert verbose_component(empty_ssd_model) == {'capacity': {'max': 5000,
                                                                'min': 100,
-                                                               'status': 'DEFAULT',
+                                                               'status': 'ARCHETYPE',
                                                                'unit': 'GB',
                                                                'value': 1000},
                                                   'density': {'max': 1,
                                                               'min': 0.1,
-                                                              'status': 'DEFAULT',
+                                                              'status': 'ARCHETYPE',
                                                               'unit': 'GB/cm2',
                                                               'value': 48.5},
                                                   'manufacture': {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -104,7 +104,7 @@ def test_verbose_component_ssd(empty_ssd_model):
                                                                          'significant_figures': 3,
                                                                          'unit': 'MJ',
                                                                          'value': 640.0}},
-                                                  'units': {'max': 1, 'min': 1, 'status': 'DEFAULT', 'value': 1}}
+                                                  'units': {'max': 1, 'min': 1, 'status': 'ARCHETYPE', 'value': 1}}
 
 
 def test_verbose_component_power_supply(empty_power_supply_model):
@@ -128,10 +128,10 @@ def test_verbose_component_power_supply(empty_power_supply_model):
                                                                                   'value': 1050.0}},
                                                            'unit_weight': {'max': 5,
                                                                            'min': 1,
-                                                                           'status': 'DEFAULT',
+                                                                           'status': 'ARCHETYPE',
                                                                            'unit': 'kg',
                                                                            'value': 2.99},
-                                                           'units': {'max': 1, 'min': 1, 'status': 'DEFAULT', 'value': 1}}
+                                                           'units': {'max': 1, 'min': 1, 'status': 'ARCHETYPE', 'value': 1}}
 
 
 def test_verbose_component_case(blade_case_model):
@@ -154,7 +154,7 @@ def test_verbose_component_case(blade_case_model):
                                                                           'significant_figures': 3,
                                                                           'unit': 'MJ',
                                                                           'value': 1230.0}},
-                                                   'units': {'max': 1, 'min': 1, 'status': 'DEFAULT', 'value': 1}}
+                                                   'units': {'max': 1, 'min': 1, 'status': 'ARCHETYPE', 'value': 1}}
 
 
 def test_verbose_device_server_1(incomplete_server_model):
@@ -178,7 +178,7 @@ def test_verbose_device_server_1(incomplete_server_model):
                                                             'significant_figures': 3,
                                                             'unit': 'MJ',
                                                             'value': 68.6}},
-                                     'units': {'max': 1, 'min': 1, 'status': 'DEFAULT', 'value': 1}}
+                                     'units': {'max': 1, 'min': 1, 'status': 'ARCHETYPE', 'value': 1}}
 
     assert verbose["CASE-1"] == {'case_type': {'status': 'INPUT', 'value': 'rack'},
                                  'manufacture': {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -199,7 +199,7 @@ def test_verbose_device_server_1(incomplete_server_model):
                                                         'significant_figures': 4,
                                                         'unit': 'MJ',
                                                         'value': 2200.0}},
-                                 'units': {'max': 1, 'min': 1, 'status': 'DEFAULT', 'value': 1}}
+                                 'units': {'max': 1, 'min': 1, 'status': 'ARCHETYPE', 'value': 1}}
 
     assert verbose["MOTHERBOARD-1"] == {'manufacture': {'adp': {'description': 'Use of minerals and fossil ressources',
                                                                 'max': 0.00369,
@@ -219,7 +219,7 @@ def test_verbose_device_server_1(incomplete_server_model):
                                                                'significant_figures': 3,
                                                                'unit': 'MJ',
                                                                'value': 836.0}},
-                                        'units': {'max': 1, 'min': 1, 'status': 'DEFAULT', 'value': 1}}
+                                        'units': {'max': 1, 'min': 1, 'status': 'ARCHETYPE', 'value': 1}}
 
     assert verbose["POWER_SUPPLY-1"] == {'manufacture': {'adp': {'description': 'Use of minerals and fossil ressources',
                                                                  'max': 0.17,
@@ -241,10 +241,10 @@ def test_verbose_device_server_1(incomplete_server_model):
                                                                 'value': 2100.0}},
                                          'unit_weight': {'max': 5,
                                                          'min': 1,
-                                                         'status': 'DEFAULT',
+                                                         'status': 'ARCHETYPE',
                                                          'unit': 'kg',
                                                          'value': 2.99},
-                                         'units': {'max': 4, 'min': 1, 'status': 'DEFAULT', 'value': 2}}
+                                         'units': {'max': 4, 'min': 1, 'status': 'ARCHETYPE', 'value': 2}}
 
 
 def test_verbose_device_server_2(dell_r740_model):
@@ -267,7 +267,7 @@ def test_verbose_device_server_2(dell_r740_model):
                                                             'significant_figures': 3,
                                                             'unit': 'MJ',
                                                             'value': 68.6}},
-                                     'units': {'max': 1, 'min': 1, 'status': 'DEFAULT', 'value': 1}}
+                                     'units': {'max': 1, 'min': 1, 'status': 'ARCHETYPE', 'value': 1}}
 
     assert verbose["CASE-1"] == {'case_type': {'status': 'INPUT', 'value': 'rack'},
                                  'manufacture': {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -288,7 +288,7 @@ def test_verbose_device_server_2(dell_r740_model):
                                                         'significant_figures': 4,
                                                         'unit': 'MJ',
                                                         'value': 2200.0}},
-                                 'units': {'max': 1, 'min': 1, 'status': 'DEFAULT', 'value': 1}}
+                                 'units': {'max': 1, 'min': 1, 'status': 'ARCHETYPE', 'value': 1}}
 
     assert verbose["MOTHERBOARD-1"] == {'manufacture': {'adp': {'description': 'Use of minerals and fossil ressources',
                                                                 'max': 0.00369,
@@ -308,7 +308,7 @@ def test_verbose_device_server_2(dell_r740_model):
                                                                'significant_figures': 3,
                                                                'unit': 'MJ',
                                                                'value': 836.0}},
-                                        'units': {'max': 1, 'min': 1, 'status': 'DEFAULT', 'value': 1}}
+                                        'units': {'max': 1, 'min': 1, 'status': 'ARCHETYPE', 'value': 1}}
 
     assert verbose["POWER_SUPPLY-1"] == {'manufacture': {'adp': {'description': 'Use of minerals and fossil ressources',
                                                                  'max': 0.042,
