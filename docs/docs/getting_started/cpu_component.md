@@ -4,7 +4,7 @@ This page presents basic queries that can be used to retrieve impacts of a CPU. 
 
 You use `curl` in command line to query Boavizta demo (public) API.
 
-💡 _You can format the results by using jq (`curl -X 'GET' 'https://api.boavizta.org/v1/cloud/aws/all_instances' | jq`)_
+💡 _You can format the results by using jq (`curl -X 'GET' '{{ endpoint }}/v1/cloud/aws/all_instances' | jq`)_
 
 ## Get the impacts from cpu name
 
@@ -14,7 +14,7 @@ Query :
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/component/cpu?verbose=false&allocation=TOTAL' \
+  '{{ endpoint }}/v1/component/cpu?verbose=false&allocation=TOTAL' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -32,22 +32,54 @@ Result :
 ```json
 {
   "gwp": {
-    "manufacture": 23.8,
-    "use": 310,
-    "unit": "kgCO2eq"
-  },
-  "pe": {
-    "manufacture": 353,
-    "use": 10670,
-    "unit": "MJ"
+    "manufacture": {
+      "value": 21.7,
+      "significant_figures": 3,
+      "min": 11.1,
+      "max": 22.7
+    },
+    "use": {
+      "value": 310,
+      "significant_figures": 2,
+      "min": 0.0022,
+      "max": 7500
+    },
+    "unit": "kgCO2eq",
+    "description": "Effects on global warming"
   },
   "adp": {
-    "manufacture": 0.02,
-    "use": 5.32e-05,
-    "unit": "kgSbeq"
+    "manufacture": {
+      "value": 0.02,
+      "significant_figures": 2,
+      "min": 0.02,
+      "max": 0.02
+    },
+    "use": {
+      "value": 5.32e-05,
+      "significant_figures": 3,
+      "min": 1.25e-09,
+      "max": 0.0022
+    },
+    "unit": "kgSbeq",
+    "description": "Use of minerals and fossil ressources"
+  },
+  "pe": {
+    "manufacture": {
+      "value": 325,
+      "significant_figures": 3,
+      "min": 182,
+      "max": 339
+    },
+    "use": {
+      "value": 10670,
+      "significant_figures": 4,
+      "min": 0.00123,
+      "max": 3881000
+    },
+    "unit": "MJ",
+    "description": "Consumption of primary energy"
   }
 }
-
 ```
 
 ## Get the values used to measure the impacts of the cpu
@@ -311,7 +343,7 @@ In this query we set a custom usage to an ```intel xeon gold 6134```. The averag
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/component/cpu?verbose=false&allocation=TOTAL' \
+  '{{ endpoint }}/v1/component/cpu?verbose=false&allocation=TOTAL' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -357,7 +389,7 @@ In this query we set a custom usage to an ```intel xeon gold 6134``` with a TDP 
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/component/cpu?verbose=false&allocation=TOTAL' \
+  '{{ endpoint }}/v1/component/cpu?verbose=false&allocation=TOTAL' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

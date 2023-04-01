@@ -231,42 +231,45 @@ class ComponentCPU(Component):
             return None
 
         if self.family.has_value():
+            # Check if the family matches one of the families in the database and correct it if necessary
             corrected_family = fuzzymatch_attr_from_pdf(self.family.value, "family", sub)
             if corrected_family != self.family.value:
                 self.family.set_changed(corrected_family)
+
             tmp = sub[sub['family'] == corrected_family]
+
             if len(tmp) > 0:
                 sub = tmp.copy()
 
-        if self.core_units.has_value():
-            # Find the closest line to the number of cores provided by the user
-            sub['core_dif'] = sub[['core_units']].apply(lambda x: abs(x[0] - self.core_units.value), axis=1)
-            sub = sub.sort_values(by='core_dif', ascending=True)
-            row = sub.iloc[0]
+            if self.core_units.has_value():
+                # Find the closest line to the number of cores provided by the user
+                sub['core_dif'] = sub[['core_units']].apply(lambda x: abs(x[0] - self.core_units.value), axis=1)
+                sub = sub.sort_values(by='core_dif', ascending=True)
+                row = sub.iloc[0]
 
-            # If we have only one row but the number of cores is different, we use the max and min values of the dataframe
-            if row['core_dif'] != 0 and len(sub) == 1:
+                # If we have only one row but the number of cores is different, we use the max and min values of the dataframe
+                if row['core_dif'] != 0 and len(sub) == 1:
+                    self.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
+                    self.die_size_per_core.min = float(float(_cpu_df['die_size_per_core'].min()))
+                    self.die_size_per_core.max = float(float(_cpu_df['die_size_per_core'].max()))
+                    return
+
+                row2 = sub.iloc[1]
                 self.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
-                self.die_size_per_core.min = float(float(_cpu_df['die_size_per_core'].min()))
-                self.die_size_per_core.max = float(float(_cpu_df['die_size_per_core'].max()))
+
+                if row['core_dif'] == 0:
+                    self.die_size_per_core.min = float(row['die_size_per_core'])
+                    self.die_size_per_core.max = float(row['die_size_per_core'])
+
+                elif float(row2['die_size_per_core']) > float(row['die_size_per_core']):
+                    self.die_size_per_core.min = float(row['die_size_per_core'])
+                    self.die_size_per_core.max = float(row2['die_size_per_core'])
+
+                else:
+                    self.die_size_per_core.min = float(row2['die_size_per_core'])
+                    self.die_size_per_core.max = float(row['die_size_per_core'])
+
                 return
-
-            row2 = sub.iloc[1]
-            self.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
-
-            if row['core_dif'] == 0:
-                self.die_size_per_core.min = float(row['die_size_per_core'])
-                self.die_size_per_core.max = float(row['die_size_per_core'])
-
-            elif float(row2['die_size_per_core']) > float(row['die_size_per_core']):
-                self.die_size_per_core.min = float(row['die_size_per_core'])
-                self.die_size_per_core.max = float(row2['die_size_per_core'])
-
-            else:
-                self.die_size_per_core.min = float(row2['die_size_per_core'])
-                self.die_size_per_core.max = float(row['die_size_per_core'])
-
-            return
 
         # If we don't have a number of cores, we use the average die size per core for a given family (if provided)
         self.die_size_per_core.set_completed(float(sub['die_size_per_core'].mean()), source=f"Average for {self.family.value or 'all families'}")
@@ -276,12 +279,13 @@ class ComponentCPU(Component):
     def _complete_from_name(self):
         if self.name.has_value():
             manufacturer, model_range, family, tdp = attributes_from_cpu_name(self.name.value)
+            manufacturer_min, model_range_min, family_min, tdp_min = attributes_from_cpu_name(self.name.min)
+            manufacturer_max, model_range_max, family_max, tdp_max = attributes_from_cpu_name(self.name.max)
             if manufacturer is not None:
-                self.manufacturer.set_completed(manufacturer, source="from name")
+                self.manufacturer.set_completed(manufacturer, min=manufacturer_min, max=manufacturer_max, source="from name")
             if model_range is not None:
-                self.model_range.set_completed(model_range, source="from name")
+                self.model_range.set_completed(model_range, min=model_range_min, max=model_range_max, source="from name")
             if family is not None:
-                self.family.set_completed(family, source="from name")
+                self.family.set_completed(family, min=family_min, max=family_max, source="from name")
             if tdp is not None:
-                self.tdp.set_completed(tdp, source="from name")
-
+                self.tdp.set_completed(tdp, min=tdp_min, max=tdp_max, source="from name")

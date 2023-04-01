@@ -4,7 +4,7 @@ This page presents basic queries that can be used to retrieve impacts.
 
 You use `curl` in command line to query Boavizta demo (public) API.
 
-💡 _You can format the results by using jq (`curl -X 'GET' 'https://api.boavizta.org/v1/server/model?archetype=dellR740' | jq`)_
+💡 _You can format the results by using jq (`curl -X 'GET' '{{ endpoint }}/v1/server/model?archetype=dellR740' | jq`)_
 
 ## Get the impacts of a dellR740 server
 
@@ -14,7 +14,7 @@ Query:
 ```bash
 # Query the data for `dellR740`
 curl -X 'GET' \
-  'https://api.boavizta.org/v1/server/model?archetype=dellR740&verbose=false' \
+  '{{ endpoint }}/v1/server/model?archetype=dellR740&verbose=false' \
   -H 'accept: application/json'
 ```
 
@@ -49,7 +49,7 @@ Query:
 ```bash
 # Query the data for `dellR740`
 curl -X 'GET' \
-  'https://api.boavizta.org/v1/server/model?archetype=dellR740&verbose=true' \
+  '{{ endpoint }}/v1/server/model?archetype=dellR740&verbose=true' \
   -H 'accept: application/json'
 ```
 
@@ -472,7 +472,7 @@ Query :
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/server/?verbose=false' \
+  '{{ endpoint }}/v1/server/?verbose=false' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -542,7 +542,7 @@ Query :
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/server/?verbose=true' \
+  '{{ endpoint }}/v1/server/?verbose=true' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -657,7 +657,7 @@ In this  case the average is unknown. We use the level of workload (```time_work
 Query : 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/server/?verbose=true' \
+  '{{ endpoint }}/v1/server/?verbose=true' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
