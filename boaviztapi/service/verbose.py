@@ -1,12 +1,12 @@
+from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.device import Device
 from boaviztapi.model.component import Component
-from boaviztapi.model.impact import IMPACT_CRITERIAS
 from boaviztapi.service.allocation import Allocation
-from boaviztapi.service.bottom_up import get_model_single_impact, NOT_IMPLEMENTED, bottom_up
+from boaviztapi.service.bottom_up import bottom_up
 
 
-def verbose_device(device: Device):
+def verbose_device(device: Device, allocation=Allocation.TOTAL, selected_criteria=config["default_criteria"]):
     json_output = {}
     for component in device.components:
         if f"{component.NAME}-1" in json_output:
@@ -17,7 +17,7 @@ def verbose_device(device: Device):
         else:
             key = f"{component.NAME}-1"
 
-        json_output[key] = verbose_component(component)
+        json_output[key] = verbose_component(component, allocation=allocation, selected_criteria=selected_criteria)
 
     json_output = {**json_output, **verbose_usage(device)}
 
@@ -28,11 +28,15 @@ def verbose_usage(device: [Device, Component]):
     json_output = {**iter_boattribute(device.usage)}
     if device.usage.consumption_profile is not None:
         json_output = {**json_output, **iter_boattribute(device.usage.consumption_profile)}
+    for elec in device.usage.elec_factors:
+        if device.usage.elec_factors[elec].is_set():
+            json_output[elec] = device.usage.elec_factors[elec].to_json()
+
     return json_output
 
 
-def verbose_component(component: Component, allocation=Allocation.TOTAL):
-    json_output = {"impacts": bottom_up(component, allocation), **iter_boattribute(component)}
+def verbose_component(component: Component, allocation=Allocation.TOTAL, selected_criteria=config["default_criteria"]):
+    json_output = {"impacts": bottom_up(component, allocation, selected_criteria), **iter_boattribute(component)}
 
     if component.usage.hours_electrical_consumption.is_set():
         json_output= {**json_output, **verbose_usage(component)}

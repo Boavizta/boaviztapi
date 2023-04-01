@@ -1,6 +1,7 @@
 import os
+from typing import List
 
-from fastapi import APIRouter, Body, HTTPException
+from fastapi import APIRouter, Body, HTTPException, Query
 
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device import Server
@@ -29,7 +30,8 @@ async def server_get_all_archetype_name():
 @server_router.get('/model',
                    description=server_impact_by_model_description)
 async def server_impact_from_model(archetype: str = config["default_server"], verbose: bool = True,
-                                   allocation: Allocation = Allocation.TOTAL):
+                                   allocation: Allocation = Allocation.TOTAL,
+                                   criteria: List[str] = Query(config["default_criteria"])):
     archetype_config = get_server_archetype(archetype)
 
     if not archetype_config:
@@ -40,7 +42,8 @@ async def server_impact_from_model(archetype: str = config["default_server"], ve
     return await server_impact(
         device=model_server,
         verbose=verbose,
-        allocation=allocation
+        allocation=allocation,
+        criteria=criteria
     )
 
 
@@ -48,7 +51,8 @@ async def server_impact_from_model(archetype: str = config["default_server"], ve
                     description=server_impact_by_config_description)
 async def server_impact_from_configuration(
         server: Server = Body(None, example=server_configuration_examples["DellR740"]),
-        verbose: bool = True, allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_server"]):
+        verbose: bool = True, allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_server"],
+                                   criteria: List[str] = Query(config["default_criteria"])):
 
     archetype_config = get_server_archetype(archetype)
 
@@ -60,16 +64,18 @@ async def server_impact_from_configuration(
     return await server_impact(
         device=completed_server,
         verbose=verbose,
-        allocation=allocation
+        allocation=allocation,
+        criteria=criteria
     )
 
 async def server_impact(device: Device,
-                        verbose: bool, allocation: Allocation) -> dict:
-    impacts = bottom_up(model=device, allocation=allocation)
+                        verbose: bool, allocation: Allocation,
+                        criteria: List[str] = Query(config["default_criteria"])) -> dict:
+    impacts = bottom_up(model=device, allocation=allocation, selected_criteria=criteria)
 
     if verbose:
         return {
             "impacts": impacts,
-            "verbose": verbose_device(device)
+            "verbose": verbose_device(device, allocation=allocation, selected_criteria=criteria)
         }
     return impacts
