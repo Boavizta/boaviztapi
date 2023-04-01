@@ -35,7 +35,6 @@ def test_bottom_up_component_cpu_empty(empty_cpu_model):
                            'significant_figures': 4,
                            'value': 20550.0}}}
 
-
 def test_bottom_up_component_cpu_complete(complete_cpu_model):
     assert bottom_up(complete_cpu_model, allocation=Allocation.TOTAL) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -353,7 +352,6 @@ def test_bottom_up_component_hdd(hdd_model):
                    'unit': 'MJ',
                    'use': 'not implemented'}}
 
-
 def test_bottom_up_component_motherboard(motherboard_model):
     assert bottom_up(motherboard_model, allocation=Allocation.TOTAL) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -377,7 +375,6 @@ def test_bottom_up_component_motherboard(motherboard_model):
                                    'value': 836.0},
                    'unit': 'MJ',
                    'use': 'not implemented'}}
-
 
 def test_bottom_up_component_empty_case(empty_case_model):
     assert bottom_up(empty_case_model, allocation=Allocation.TOTAL) == \

@@ -13,6 +13,7 @@ from boaviztapi.model.component.component import Component
 from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
 from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.service.archetype import get_component_archetype, get_arch_value
+from boaviztapi.service.factor_provider import get_impact_factor
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
 
@@ -58,22 +59,6 @@ _cpu_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_manufacture.csv'
 
 class ComponentCPU(Component):
     NAME = "CPU"
-
-    IMPACT_FACTOR = {
-        'gwp': {
-            'die_impact': 1.97,
-            'impact': 9.14
-        },
-        'pe': {
-            'die_impact': 26.50,
-            'impact': 156.00
-        },
-        'adp': {
-            'die_impact': 5.80E-07,
-            'impact': 2.04E-02
-        },
-        'constant_core_impact': 0.491
-    }
 
     def __init__(self, archetype=get_component_archetype(config["default_cpu"], "cpu"), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
@@ -123,15 +108,15 @@ class ComponentCPU(Component):
         self.usage.hours_electrical_consumption.add_warning("value for one cpu unit")
 
     # IMPACT COMPUTATION
-    def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
+    def impact_other(self, impact_type: str) -> ComputedImpacts:
         core_impact, cpu_die_impact, cpu_impact = self.__get_impact_constants(impact_type)
         sign_figures = self.__compute_significant_numbers(core_impact.value, cpu_die_impact.value, cpu_impact.value)
         impact = self.__compute_impact_manufacture(core_impact, cpu_die_impact, cpu_impact)
 
         return impact.value, sign_figures, impact.min, impact.max, []
 
-    def __impact_usage(self, impact_type: str) -> ComputedImpacts:
-        impact_factor = getattr(self.usage, f'{impact_type}_factor')
+    def impact_use(self, impact_type: str) -> ComputedImpacts:
+        impact_factor = self.usage.elec_factors[impact_type]
 
         if not self.usage.hours_electrical_consumption.is_set():
             modeled_consumption = self.model_power_consumption()
@@ -177,19 +162,19 @@ class ComponentCPU(Component):
 
     def __get_impact_constants(self, impact_type: str) -> Tuple[ImpactFactor, ImpactFactor, ImpactFactor]:
         core_impact = ImpactFactor(
-            value=self.IMPACT_FACTOR['constant_core_impact'],
-            min=self.IMPACT_FACTOR['constant_core_impact'],
-            max=self.IMPACT_FACTOR['constant_core_impact']
+            value=get_impact_factor(item='cpu', impact_type=impact_type)['constant_core_impact'],
+            min=get_impact_factor(item='cpu', impact_type=impact_type)['constant_core_impact'],
+            max=get_impact_factor(item='cpu', impact_type=impact_type)['constant_core_impact']
         )
-        cpu_die_impact =  ImpactFactor(
-            value=self.IMPACT_FACTOR[impact_type]['die_impact'],
-            min=self.IMPACT_FACTOR[impact_type]['die_impact'],
-            max=self.IMPACT_FACTOR[impact_type]['die_impact']
+        cpu_die_impact = ImpactFactor(
+            value=get_impact_factor(item='cpu', impact_type=impact_type)['die_impact'],
+            min=get_impact_factor(item='cpu', impact_type=impact_type)['die_impact'],
+            max=get_impact_factor(item='cpu', impact_type=impact_type)['die_impact']
         )
         cpu_impact = ImpactFactor(
-            value=self.IMPACT_FACTOR[impact_type]['impact'],
-            min=self.IMPACT_FACTOR[impact_type]['impact'],
-            max=self.IMPACT_FACTOR[impact_type]['impact']
+            value=get_impact_factor(item='cpu', impact_type=impact_type)['impact'],
+            min=get_impact_factor(item='cpu', impact_type=impact_type)['impact'],
+            max=get_impact_factor(item='cpu', impact_type=impact_type)['impact']
         )
 
         return core_impact, cpu_die_impact, cpu_impact
@@ -203,24 +188,6 @@ class ComponentCPU(Component):
             min=(self.core_units.min * self.die_size_per_core.min + core_impact.min) * cpu_die_impact.min + cpu_impact.min,
             max=(self.core_units.max * self.die_size_per_core.max + core_impact.max) * cpu_die_impact.max + cpu_impact.max
         )
-
-    def impact_manufacture_gwp(self) -> ComputedImpacts:
-        return self.__impact_manufacture('gwp')
-
-    def impact_manufacture_pe(self) -> ComputedImpacts:
-        return self.__impact_manufacture('pe')
-
-    def impact_manufacture_adp(self) -> ComputedImpacts:
-        return self.__impact_manufacture('adp')
-
-    def impact_use_gwp(self) -> ComputedImpacts:
-        return self.__impact_usage("gwp")
-
-    def impact_use_pe(self) -> ComputedImpacts:
-        return self.__impact_usage("pe")
-
-    def impact_use_adp(self) -> ComputedImpacts:
-        return self.__impact_usage("adp")
 
     # COMPLETION
     def _complete_die_size_per_core(self):

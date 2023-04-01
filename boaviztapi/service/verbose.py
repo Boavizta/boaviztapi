@@ -3,7 +3,7 @@ from boaviztapi.model.device import Device
 from boaviztapi.model.component import Component
 from boaviztapi.model.impact import IMPACT_CRITERIAS
 from boaviztapi.service.allocation import Allocation
-from boaviztapi.service.bottom_up import get_model_single_impact, NOT_IMPLEMENTED
+from boaviztapi.service.bottom_up import get_model_single_impact, NOT_IMPLEMENTED, bottom_up
 
 
 def verbose_device(device: Device):
@@ -19,41 +19,23 @@ def verbose_device(device: Device):
 
         json_output[key] = verbose_component(component)
 
-    json_output["USAGE"] = verbose_usage(device)
+    json_output = {**json_output, **verbose_usage(device)}
 
     return json_output
 
 
 def verbose_usage(device: [Device, Component]):
-    json_output = {"use": {}}
-
-    for criteria in IMPACT_CRITERIAS:
-        json_output["use"][criteria.name] = {}
-        single_impact = get_model_single_impact(device, 'use', criteria.name, Allocation.TOTAL)
-        json_output["use"][criteria.name] = single_impact.to_json() if single_impact else NOT_IMPLEMENTED
-        json_output["use"][criteria.name]["unit"] = criteria.unit
-        json_output["use"][criteria.name]["description"] = criteria.description
-
-    json_output = {**json_output, **iter_boattribute(device.usage)}
+    json_output = {**iter_boattribute(device.usage)}
     if device.usage.consumption_profile is not None:
         json_output = {**json_output, **iter_boattribute(device.usage.consumption_profile)}
-
     return json_output
 
 
-def verbose_component(component: Component):
-    json_output = {"units": component.units, "manufacture": {}}
-    for criteria in IMPACT_CRITERIAS:
-        json_output["manufacture"][criteria.name] = {}
-        single_impact = get_model_single_impact(component, "manufacture", criteria.name)
-        json_output["manufacture"][criteria.name] = single_impact.to_json() if single_impact else NOT_IMPLEMENTED
-        json_output["manufacture"][criteria.name]["unit"] = criteria.unit
-        json_output["manufacture"][criteria.name]["description"] = criteria.description
-
-    json_output = {**json_output, **iter_boattribute(component)}
+def verbose_component(component: Component, allocation=Allocation.TOTAL):
+    json_output = {"impacts": bottom_up(component, allocation), **iter_boattribute(component)}
 
     if component.usage.hours_electrical_consumption.is_set():
-        json_output["USAGE"] = verbose_usage(component)
+        json_output= {**json_output, **verbose_usage(component)}
 
     return json_output
 

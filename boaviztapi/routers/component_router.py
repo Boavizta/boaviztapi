@@ -25,7 +25,7 @@ component_router = APIRouter(
                        description=cpu_description)
 async def cpu_impact_bottom_up(cpu: CPU = Body(None, example=components_examples["cpu"]),
                                verbose: bool = True,
-                               allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_cpu"]):
+                               allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_cpu"],):
     archetype_config = get_component_archetype(archetype, "cpu")
 
     if not archetype_config:

@@ -7,7 +7,6 @@ import pandas as pd
 
 from boaviztapi import data_dir
 
-
 def get_device_archetype_lst(path):
     df = pd.read_csv(path)
     return df['id'].tolist()

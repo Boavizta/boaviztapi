@@ -7,39 +7,12 @@ from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component
 from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.service.archetype import get_arch_value, get_component_archetype
+from boaviztapi.service.factor_provider import get_impact_factor
 
 
 class ComponentCase(Component):
     AVAILABLE_CASE_TYPE = ['blade', 'rack']
     NAME = "CASE"
-
-    IMPACT_FACTOR = {
-        'rack': {
-            'gwp': {
-                'impact': 150.00
-            },
-            'pe': {
-                'impact': 2200.00
-            },
-            'adp': {
-                'impact': 2.02E-02
-            }
-        },
-        'blade': {
-            'gwp': {
-                'impact_blade_server': 30.90,
-                'impact_blade_16_slots': 880.00
-            },
-            'pe': {
-                'impact_blade_server': 435.00,
-                'impact_blade_16_slots': 12700.00
-            },
-            'adp': {
-                'impact_blade_server': 6.72E-04,
-                'impact_blade_16_slots': 4.32E-01
-            }
-        }
-    }
 
     def __init__(self, archetype=get_component_archetype(config["default_case"], "case"), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
@@ -48,11 +21,7 @@ class ComponentCase(Component):
             min=get_arch_value(archetype, 'case_type', 'min'),
             max=get_arch_value(archetype, 'case_type', 'max')
         )
-
-    def impact_manufacture_gwp(self) -> ComputedImpacts:
-        return self.__impact_manufacture('gwp')
-
-    def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
+    def impact_other(self, impact_type: str) -> ComputedImpacts:
         if self.case_type.value == 'rack':
             return self.__impact_manufacture_rack(impact_type)
         elif self.case_type.value == 'blade':
@@ -60,9 +29,9 @@ class ComponentCase(Component):
 
     def __impact_manufacture_rack(self, impact_type: str) -> ComputedImpacts:
         impact_factor = ImpactFactor(
-            value=self.IMPACT_FACTOR['rack'][impact_type]['impact'],
-            min=self.IMPACT_FACTOR['rack'][impact_type]['impact'],
-            max=self.IMPACT_FACTOR['rack'][impact_type]['impact']
+            value=get_impact_factor(item='case', impact_type=impact_type)['rack']['impact'],
+            min=get_impact_factor(item='case', impact_type=impact_type)['rack']['impact'],
+            max=get_impact_factor(item='case', impact_type=impact_type)['rack']['impact']
         )
 
         significant_figures = rd.min_significant_figures(impact_factor.value)
@@ -91,17 +60,16 @@ class ComponentCase(Component):
 
         return impact.value, significant_figures, impact.min, impact.max, []
 
-
     def __get_impact_constants_blade(self, impact_type: str) -> Tuple[ImpactFactor, ImpactFactor]:
         impact_blade_server = ImpactFactor(
-            value=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server'],
-            min=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server'],
-            max=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server']
+            value=get_impact_factor(item='case', impact_type=impact_type)['blade']['impact_blade_server'],
+            min=get_impact_factor(item='case', impact_type=impact_type)['blade']['impact_blade_server'],
+            max=get_impact_factor(item='case', impact_type=impact_type)['blade']['impact_blade_server']
         )
         impact_blade_16_slots = ImpactFactor(
-            value=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_16_slots'],
-            min=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server'],
-            max=self.IMPACT_FACTOR['blade'][impact_type]['impact_blade_server']
+            value=get_impact_factor(item='case', impact_type=impact_type)['blade']['impact_blade_server'],
+            min=get_impact_factor(item='case', impact_type=impact_type)['blade']['impact_blade_server'],
+            max=get_impact_factor(item='case', impact_type=impact_type)['blade']['impact_blade_server']
         )
 
         return impact_blade_server, impact_blade_16_slots
@@ -118,17 +86,5 @@ class ComponentCase(Component):
     def __compute_significant_numbers(impact_blade_server: float, impact_blade_16_slots: float) -> int:
         return rd.min_significant_figures(impact_blade_server, impact_blade_16_slots)
 
-    def impact_manufacture_pe(self) -> ComputedImpacts:
-        return self.__impact_manufacture('pe')
-
-    def impact_manufacture_adp(self) -> ComputedImpacts:
-        return self.__impact_manufacture('adp')
-
-    def impact_use_gwp(self) -> ComputedImpacts:
-        raise NotImplementedError
-
-    def impact_use_pe(self) -> ComputedImpacts:
-        raise NotImplementedError
-
-    def impact_use_adp(self) -> ComputedImpacts:
+    def impact_use(self, impact_type: str) -> ComputedImpacts:
         raise NotImplementedError

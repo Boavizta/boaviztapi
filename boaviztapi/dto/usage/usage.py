@@ -7,7 +7,7 @@ from boaviztapi import config
 from boaviztapi.dto import BaseDTO
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
-from boaviztapi.service.archetype import get_component_archetype, get_cloud_instance_archetype, get_server_archetype
+from boaviztapi.service.archetype import get_cloud_instance_archetype, get_server_archetype
 
 _electricity_emission_factors_df = pd.read_csv(os.path.join(os.path.dirname(__file__),
                                                             '../../data/electricity/electricity_impact_factors.csv'))
@@ -16,6 +16,13 @@ _electricity_emission_factors_df = pd.read_csv(os.path.join(os.path.dirname(__fi
 class WorkloadTime(BaseDTO):
     time_percentage: float = None
     load_percentage: float = None
+
+
+class ElecFactor:
+    gwp_factor: Optional[float] = None
+    pe_factor: Optional[float] = None
+    adp_factor: Optional[float] = None
+
 
 
 class Usage(BaseDTO):
@@ -32,6 +39,7 @@ class Usage(BaseDTO):
     gwp_factor: Optional[float] = None
     pe_factor: Optional[float] = None
     adp_factor: Optional[float] = None
+
 
 
 class UsageServer(Usage):

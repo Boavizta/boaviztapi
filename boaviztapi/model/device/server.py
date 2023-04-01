@@ -10,6 +10,7 @@ from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.model.usage import ModelUsageServer, ModelUsageCloud
 import boaviztapi.utils.roundit as rd
 from boaviztapi.service.archetype import get_server_archetype, get_arch_component, get_cloud_instance_archetype
+from boaviztapi.service.factor_provider import get_impact_factor
 
 
 class DeviceServer(Device):
@@ -122,25 +123,38 @@ class DeviceServer(Device):
         return [self.assembly] + [self.cpu] + self.ram + self.disk + [self.power_supply] + [self.case] + [
             self.motherboard]
 
-    def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
+    def impact_other(self, impact_type: str) -> ComputedImpacts:
         impacts = []
         min_impacts = []
         max_impacts = []
         significant_figures = []
         warnings = []
 
-        for component in self.components:
-            impact, sign_fig, min_impact, max_impact, c_warning = getattr(component, f'impact_manufacture_{impact_type}')()
-            impacts.append(impact*component.units.value)
-            min_impacts.append(min_impact*component.units.min)
-            max_impacts.append(max_impact*component.units.max)
+        try:
+            for component in self.components:
+                impact, sign_fig, min_impact, max_impact, c_warning = getattr(component, f'impact_other')(impact_type)
 
-            significant_figures.append(sign_fig)
-            warnings = warnings + c_warning
-        return sum(impacts), min(significant_figures), sum(min_impacts), sum(max_impacts), warnings
+                impacts.append(impact*component.units.value)
+                min_impacts.append(min_impact*component.units.min)
+                max_impacts.append(max_impact*component.units.max)
 
-    def __impact_usage(self, impact_type: str) -> ComputedImpacts:
-        impact_factor = getattr(self.usage, f'{impact_type}_factor')
+                significant_figures.append(sign_fig)
+                warnings = warnings + c_warning
+            return sum(impacts), min(significant_figures), sum(min_impacts), sum(max_impacts), warnings
+
+        except NotImplementedError:
+            impact = get_impact_factor(item='server', impact_type=impact_type)["impact"]
+            min_impacts = get_impact_factor(item='server', impact_type=impact_type)["impact"]
+            max_impacts = get_impact_factor(item='server', impact_type=impact_type)["impact"]
+            significant_figures = rd.significant_number(impact)
+
+            warnings = ["Generic data used for impact calculation."]
+
+            return impact, significant_figures, min_impacts, max_impacts, warnings
+
+
+    def impact_use(self, impact_type: str) -> ComputedImpacts:
+        impact_factor = self.usage.elec_factors[impact_type]
         if not self.usage.hours_electrical_consumption.is_set():
             modeled_consumption = self.model_power_consumption()
             self.usage.hours_electrical_consumption.set_completed(
@@ -181,24 +195,6 @@ class DeviceServer(Device):
     def __compute_significant_numbers(self, impact_factor: float) -> int:
         return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value, impact_factor)
 
-    def impact_manufacture_gwp(self) -> ComputedImpacts:
-        return self.__impact_manufacture('gwp')
-
-    def impact_manufacture_pe(self) -> ComputedImpacts:
-        return self.__impact_manufacture('pe')
-
-    def impact_manufacture_adp(self) -> ComputedImpacts:
-        return self.__impact_manufacture('adp')
-
-    def impact_use_gwp(self) -> ComputedImpacts:
-        return self.__impact_usage('gwp')
-
-    def impact_use_pe(self) -> ComputedImpacts:
-        return self.__impact_usage('pe')
-
-    def impact_use_adp(self) -> ComputedImpacts:
-        return self.__impact_usage('adp')
-
 
 class DeviceCloudInstance(DeviceServer, ABC):
 
@@ -215,26 +211,10 @@ class DeviceCloudInstance(DeviceServer, ABC):
     def usage(self, value: ModelUsageCloud) -> None:
         self._usage = value
 
-    def impact_manufacture_gwp(self) -> ComputedImpacts:
-        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_manufacture_gwp()
+    def impact_other(self, impact_type: str) -> ComputedImpacts:
+        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_other(impact_type)
         return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
 
-    def impact_manufacture_pe(self) -> ComputedImpacts:
-        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_manufacture_pe()
-        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
-
-    def impact_manufacture_adp(self) -> ComputedImpacts:
-        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_manufacture_adp()
-        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
-
-    def impact_use_gwp(self) -> ComputedImpacts:
-        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_use_gwp()
-        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
-
-    def impact_use_pe(self) -> ComputedImpacts:
-        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_use_pe()
-        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
-
-    def impact_use_adp(self) -> ComputedImpacts:
-        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_use_adp()
+    def impact_use(self, impact_type: str) -> ComputedImpacts:
+        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_use(impact_type)
         return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning

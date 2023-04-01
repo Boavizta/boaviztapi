@@ -1,0 +1,34 @@
+'assembly' : { 'gwp': { 'impact': 6.68, 'source':'https://www.researchgate.net/publication/352707793_2021-06-17_texte_94-2021_green-cloud-computing' }, 'pe': { 'impact': 68.60, 'source':'https://www.researchgate.net/publication/352707793_2021-06-17_texte_94-2021_green-cloud-computing' }, 'adp': { 'impact': 1.41E-06, 'source':'https://www.researchgate.net/publication/352707793_2021-06-17_texte_94-2021_green-cloud-computing' }}
+
+'case': {
+  'gwp': {
+    'rack': {'impact': 150.0},
+    'blade': {'impact_blade_server': 30.9, 'impact_blade_16_slots': 880.0}
+  },
+  'pe': {
+    'rack': {'impact': 2200.0},
+    'blade': {'impact_blade_server': 435.0, 'impact_blade_16_slots': 12700.0}
+  },
+  'adp': {
+    'rack': {'impact': 0.0202},
+    'blade': {'impact_blade_server': 0.000672, 'impact_blade_16_slots': 0.432}
+  }
+}
+
+'cpu': {
+  'gwp': {
+      'die_impact': 1.97,
+      'impact': 9.14,
+      'constant_core_impact': 0.491
+  },
+  'pe': {
+      'die_impact': 26.50,
+      'impact': 156.00,
+      'constant_core_impact': 0.491
+  },
+  'adp': {
+      'die_impact': 5.80E-07,
+      'impact': 2.04E-02,
+      'constant_core_impact': 0.491
+  }
+}

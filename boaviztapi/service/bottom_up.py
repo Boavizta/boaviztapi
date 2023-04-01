@@ -11,10 +11,10 @@ def get_model_single_impact(model: Union[Component, Device],
                             impact_type: str,
                             allocation_type: Allocation = Allocation.TOTAL) -> Optional[Impact]:
     try:
-        impact_function = model.__getattribute__(f'impact_{phase}_{impact_type}')
-        impact, significant_figures, min_impact, max_impact, warnings = impact_function()
+        impact_function = model.__getattribute__(f'impact_{phase}')
+        impact, significant_figures, min_impact, max_impact, warnings = impact_function(impact_type)
 
-        if phase == "manufacture":
+        if phase == "other":
             impact = allocate(impact, allocation_type, model.usage)
 
         return Impact(
