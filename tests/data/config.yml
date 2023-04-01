@@ -11,3 +11,5 @@ default_motherboard: "DEFAULT"
 default_server: "DEFAULT"
 default_cloud: "a1.4xlarge"
 default_cloud_provider: "aws"
+
+default_criteria: ["gwp", "adp", "pe"]

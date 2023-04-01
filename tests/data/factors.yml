@@ -32,3 +32,156 @@
       'constant_core_impact': 0.491
   }
 }
+
+'hdd': {
+        'gwp': {
+            'impact': 31.10
+        },
+        'pe': {
+            'impact': 276.00
+        },
+        'adp': {
+            'impact': 2.50E-04
+        }
+    }
+
+'motherboard': {
+        'gwp': {
+            'impact': 66.10
+        },
+        'pe': {
+            'impact': 836.00
+        },
+        'adp': {
+            'impact': 3.69E-03
+        }
+    }
+
+'power_supply':  {
+        'gwp': {
+            'impact': 24.30
+        },
+        'pe': {
+            'impact': 352.00
+        },
+        'adp': {
+            'impact': 8.30E-03
+        }
+    }
+
+'ram': {
+        'gwp': {
+            'die_impact': 2.20,
+            'impact': 5.22
+        },
+        'pe': {
+            'die_impact': 27.30,
+            'impact': 74.00
+        },
+        'adp': {
+            'die_impact': 6.30E-05,
+            'impact': 1.69E-03
+        }
+    }
+
+'ssd': {
+        'gwp': {
+            'die_impact': 2.20,
+            'impact': 6.34
+        },
+        'pe': {
+            'die_impact': 27.30,
+            'impact': 76.90
+        },
+        'adp': {
+            'die_impact': 6.30E-05,
+            'impact': 5.63E-04
+        }
+    }
+
+"server": {
+  "gwp": {
+    "impact": 3.66e+03,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "gwppb": {
+    "impact": 4.19,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "gwppf": {
+    "impact": 3.66e+03,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "gwpplu": {
+    "impact": 6.65e-07,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "ir": {
+    "impact": 2.32e+03,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "lu": {
+    "impact": -1.47e+02,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "odp": {
+    "impact": 1.35e-03,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "pm": {
+    "impact": 1.13e-04,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "pocp": {
+    "impact": 8.40,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "wu": {
+    "impact": -3.71e+03,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "mips": {
+    "impact": 1.06e+04,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "adpe": {
+    "impact": 3.78e-02,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "adpf": {
+    "impact": 5.15e+04,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "adp": {
+    "impact": null,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "ap": {
+    "impact": 1.97e+01,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "ctue": {
+    "impact": 4.84e+04,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "ctuh-c": {
+    "impact": 1.94e-07,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "ctuh-nc": {
+    "impact": 1.87e-05,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "epf": {
+    "impact": -2.58e-01,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "epm": {
+    "impact": 2.94e+00,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  },
+  "ept": {
+    "impact": 2.70e+01,
+    "source": "https://base-impacts.ademe.fr/documents/Negaoctet.zip"
+  }
+}

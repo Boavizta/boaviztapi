@@ -30,7 +30,7 @@ def verbose_usage(device: [Device, Component]):
         json_output = {**json_output, **iter_boattribute(device.usage.consumption_profile)}
     for elec in device.usage.elec_factors:
         if device.usage.elec_factors[elec].is_set():
-            json_output[elec] = device.usage.elec_factors[elec].to_json()
+            json_output[f"{elec}_factor"] = device.usage.elec_factors[elec].to_json()
 
     return json_output
 

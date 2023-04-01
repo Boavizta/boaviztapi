@@ -1,4 +1,6 @@
 import os
+from typing import List
+
 import pandas as pd
 
 from fastapi import APIRouter, Query, Body, HTTPException
@@ -21,7 +23,8 @@ cloud_router = APIRouter(
                    description=cloud_provider_description)
 async def instance_cloud_impact(cloud_instance: Cloud = Body(None, example=cloud_example),
                                 verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL):
+                                allocation: Allocation = Allocation.TOTAL,
+                                criteria: List[str] = Query(config["default_criteria"])):
     instance_archetype = get_cloud_instance_archetype(cloud_instance.instance_type, cloud_instance.provider)
 
     if not instance_archetype:
@@ -32,14 +35,16 @@ async def instance_cloud_impact(cloud_instance: Cloud = Body(None, example=cloud
     return await server_impact(
         device=instance_model,
         verbose=verbose,
-        allocation=allocation
+        allocation=allocation,
+        criteria=criteria
     )
 
 @cloud_router.get('/',
                    description=cloud_provider_description)
 async def instance_cloud_impact(provider: str = Query(config["default_cloud_provider"], example=config["default_cloud_provider"]),
                                 instance_type: str = Query(config["default_cloud"], example=config["default_cloud"]), verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL):
+                                allocation: Allocation = Allocation.TOTAL,
+                                criteria: List[str] = Query(config["default_criteria"])):
     cloud_instance = Cloud()
     cloud_instance.usage = {}
     instance_archetype = get_cloud_instance_archetype(instance_type, provider)
@@ -53,7 +58,8 @@ async def instance_cloud_impact(provider: str = Query(config["default_cloud_prov
     return await server_impact(
         device=instance_model,
         verbose=verbose,
-        allocation=allocation
+        allocation=allocation,
+        criteria=criteria
     )
 
 @cloud_router.get('/all_instances',

@@ -67,9 +67,9 @@ class ComponentCase(Component):
             max=get_impact_factor(item='case', impact_type=impact_type)['blade']['impact_blade_server']
         )
         impact_blade_16_slots = ImpactFactor(
-            value=get_impact_factor(item='case', impact_type=impact_type)['blade']['impact_blade_server'],
-            min=get_impact_factor(item='case', impact_type=impact_type)['blade']['impact_blade_server'],
-            max=get_impact_factor(item='case', impact_type=impact_type)['blade']['impact_blade_server']
+            value=get_impact_factor(item='case', impact_type=impact_type)['blade']['impact_blade_16_slots'],
+            min=get_impact_factor(item='case', impact_type=impact_type)['blade']['impact_blade_16_slots'],
+            max=get_impact_factor(item='case', impact_type=impact_type)['blade']['impact_blade_16_slots']
         )
 
         return impact_blade_server, impact_blade_16_slots
