@@ -67,8 +67,8 @@ handler = Mangum(app)
 
 
 @app.get("/", response_class=HTMLResponse)
-async def welcom_page():
-    html_content = """
+async def welcome_page():
+    html_content = f"""
     <html>
         <head>
             <title>BOAVIZTAPI</title>
@@ -88,7 +88,8 @@ async def welcom_page():
             <h3 align="center">See OpenAPI specs (swagger) : <a href="docs">LINK</a></h2>
             <h3 align="center">See our complete documentation : <a href="https://doc.api.boavizta.org/">LINK</a></h2>
             <h3 align="center">See the other resources of Boavizta : <a href="https://boavizta.org/">LINK</a> </h2>
+            %s
         </body>
     </html>
-    """
+    """ % os.getenv('SPECIAL_MESSAGE', '')
     return HTMLResponse(content=html_content, status_code=200)
