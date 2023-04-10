@@ -11,6 +11,7 @@ ComputedImpacts = Tuple[float, int]
 class Device:
 
     def __init__(self, archetype=None, **kwargs):
+        self.impact_factor = {}
         self.archetype = archetype
         self.units = Boattribute(
             default=1,
@@ -33,27 +34,11 @@ class Device:
         return []
 
     @abstractmethod
-    def impact_manufacture_gwp(self) -> ComputedImpacts:
+    def impact_other(self, impact_type: str) -> ComputedImpacts:
         raise NotImplementedError
 
     @abstractmethod
-    def impact_manufacture_pe(self) -> ComputedImpacts:
-        raise NotImplementedError
-
-    @abstractmethod
-    def impact_manufacture_adp(self) -> ComputedImpacts:
-        raise NotImplementedError
-
-    @abstractmethod
-    def impact_use_gwp(self) -> ComputedImpacts:
-        raise NotImplementedError
-
-    @abstractmethod
-    def impact_use_pe(self) -> ComputedImpacts:
-        raise NotImplementedError
-
-    @abstractmethod
-    def impact_use_adp(self) -> ComputedImpacts:
+    def  impact_use(self, impact_type: str) -> ComputedImpacts:
         raise NotImplementedError
 
     def __iter__(self):

@@ -1,7 +1,6 @@
 from abc import abstractmethod
 
 import boaviztapi.utils.roundit as rd
-from boaviztapi import config
 from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.usage import ModelUsage
@@ -12,6 +11,7 @@ class Component:
     NAME = "COMPONENT"
 
     def __init__(self, archetype=None, **kwargs):
+        self.impact_factor = {}
         self.archetype = archetype
         self.units = Boattribute(
             default=get_arch_value(archetype, 'units', 'default', default=1),
@@ -34,10 +34,10 @@ class Component:
     def usage(self, value: int) -> None:
         self._usage = value
 
-    def __impact_usage(self, impact_type: str) -> ComputedImpacts:
+    def impact_use(self, impact_type: str) -> ComputedImpacts:
         if not self.usage.hours_electrical_consumption.is_set():
             raise NotImplementedError
-        impact_factor = getattr(self.usage, f'{impact_type}_factor')
+        impact_factor = self.usage.elec_factors[impact_type]
 
         impacts = impact_factor.value * (
                 self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
@@ -54,22 +54,5 @@ class Component:
                                           impact_factor)
 
     @abstractmethod
-    def impact_manufacture_gwp(self) -> ComputedImpacts:
+    def impact_other(self, impact_type: str) -> ComputedImpacts:
         raise NotImplementedError
-
-    @abstractmethod
-    def impact_manufacture_pe(self) -> ComputedImpacts:
-        raise NotImplementedError
-
-    @abstractmethod
-    def impact_manufacture_adp(self) -> ComputedImpacts:
-        raise NotImplementedError
-
-    def impact_use_gwp(self) -> ComputedImpacts:
-        return self.__impact_usage("gwp")
-
-    def impact_use_pe(self) -> ComputedImpacts:
-        return self.__impact_usage("pe")
-
-    def impact_use_adp(self) -> ComputedImpacts:
-        return self.__impact_usage("adp")

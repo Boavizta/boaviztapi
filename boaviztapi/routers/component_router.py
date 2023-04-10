@@ -1,4 +1,6 @@
-from fastapi import APIRouter, Body, HTTPException
+from typing import List
+
+from fastapi import APIRouter, Body, HTTPException, Query
 
 from boaviztapi import config
 from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply, Motherboard, Case
@@ -25,7 +27,9 @@ component_router = APIRouter(
                        description=cpu_description)
 async def cpu_impact_bottom_up(cpu: CPU = Body(None, example=components_examples["cpu"]),
                                verbose: bool = True,
-                               allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_cpu"]):
+                               allocation: Allocation = Allocation.TOTAL,
+                               archetype: str = config["default_cpu"],
+                               criteria: List[str] = Query(config["default_criteria"])):
     archetype_config = get_component_archetype(archetype, "cpu")
 
     if not archetype_config:
@@ -36,7 +40,8 @@ async def cpu_impact_bottom_up(cpu: CPU = Body(None, example=components_examples
     return await component_impact_bottom_up(
         component=component,
         verbose=verbose,
-        allocation=allocation
+        allocation=allocation,
+        criteria=criteria
     )
 
 
@@ -44,7 +49,8 @@ async def cpu_impact_bottom_up(cpu: CPU = Body(None, example=components_examples
                        description=ram_description)
 async def ram_impact_bottom_up(ram: RAM = Body(None, example=components_examples["ram"]),
                                verbose: bool = True,
-                               allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_ram"]):
+                               allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_ram"],
+                               criteria: List[str] = Query(config["default_criteria"])):
     archetype_config = get_component_archetype(archetype, "ram")
 
     if not archetype_config:
@@ -55,7 +61,8 @@ async def ram_impact_bottom_up(ram: RAM = Body(None, example=components_examples
     return await component_impact_bottom_up(
         component=component,
         verbose=verbose,
-        allocation=allocation
+        allocation=allocation,
+        criteria=criteria
     )
 
 
@@ -63,7 +70,8 @@ async def ram_impact_bottom_up(ram: RAM = Body(None, example=components_examples
                        description=ssd_description)
 async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examples["ssd"]),
                                 verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_ssd"]):
+                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_ssd"],
+                                criteria: List[str] = Query(config["default_criteria"])):
     disk.type = "ssd"
     archetype_config = get_component_archetype(archetype, "ssd")
 
@@ -75,7 +83,8 @@ async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examp
     return await component_impact_bottom_up(
         component=component,
         verbose=verbose,
-        allocation=allocation
+        allocation=allocation,
+        criteria=criteria
     )
 
 
@@ -83,7 +92,8 @@ async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examp
                        description=hdd_description)
 async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examples["hdd"]),
                                 verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_hdd"]):
+                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_hdd"],
+                                criteria: List[str] = Query(config["default_criteria"])):
     disk.type = "hdd"
     archetype_config = get_component_archetype(archetype, "hdd")
 
@@ -95,7 +105,8 @@ async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examp
     return await component_impact_bottom_up(
         component=component,
         verbose=verbose,
-        allocation=allocation
+        allocation=allocation,
+        criteria=criteria
     )
 
 
@@ -103,14 +114,16 @@ async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examp
                        description=motherboard_description)
 async def motherboard_impact_bottom_up(
         motherboard: Motherboard = Body(None, example=components_examples["motherboard"]),
-        verbose: bool = True, allocation: Allocation = Allocation.TOTAL):
+        verbose: bool = True, allocation: Allocation = Allocation.TOTAL,
+        criteria: List[str] = Query(config["default_criteria"])):
 
     completed_motherboard = mapper_motherboard(motherboard)
 
     return await component_impact_bottom_up(
         component=completed_motherboard,
         verbose=verbose,
-        allocation=allocation
+        allocation=allocation,
+        criteria=criteria
     )
 
 
@@ -118,7 +131,8 @@ async def motherboard_impact_bottom_up(
                        description=power_supply_description)
 async def power_supply_impact_bottom_up(
         power_supply: PowerSupply = Body(None, example=components_examples["power_supply"]),
-        verbose: bool = True, allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_power_supply"]):
+        verbose: bool = True, allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_power_supply"],
+                               criteria: List[str] = Query(config["default_criteria"])):
 
     archetype_config = get_component_archetype(archetype, "power_supply")
 
@@ -130,7 +144,8 @@ async def power_supply_impact_bottom_up(
     return await component_impact_bottom_up(
         component=completed_power_supply,
         verbose=verbose,
-        allocation=allocation
+        allocation=allocation,
+        criteria=criteria
     )
 
 
@@ -138,7 +153,8 @@ async def power_supply_impact_bottom_up(
                        description=case_description)
 async def case_impact_bottom_up(case: Case = Body(None, example=components_examples["case"]),
                                 verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_case"]):
+                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_case"],
+                                criteria: List[str] = Query(config["default_criteria"])):
     archetype_config = get_component_archetype(archetype, "hdd")
 
     if not archetype_config:
@@ -149,18 +165,19 @@ async def case_impact_bottom_up(case: Case = Body(None, example=components_examp
     return await component_impact_bottom_up(
         component=completed_case,
         verbose=verbose,
-        allocation=allocation
+        allocation=allocation,
+        criteria=criteria
     )
 
 
 async def component_impact_bottom_up(component: Component,
-                                     verbose: bool, allocation: Allocation) -> dict:
+                                     verbose: bool, allocation: Allocation, criteria=config["default_criteria"]) -> dict:
 
-    impacts = bottom_up(model=component, allocation=allocation)
+    impacts = bottom_up(model=component, allocation=allocation, selected_criteria=criteria)
 
     if verbose:
         return {
             "impacts": impacts,
-            "verbose": verbose_component(component=component)
+            "verbose": verbose_component(component=component, selected_criteria=criteria)
         }
     return impacts

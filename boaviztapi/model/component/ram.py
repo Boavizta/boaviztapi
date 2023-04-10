@@ -10,6 +10,7 @@ from boaviztapi.model.component.component import Component, ComputedImpacts
 from boaviztapi.model.consumption_profile.consumption_profile import RAMConsumptionProfileModel
 from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.service.archetype import get_arch_value, get_component_archetype
+from boaviztapi.service.factor_provider import get_impact_factor
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
 
@@ -17,21 +18,6 @@ class ComponentRAM(Component):
     NAME = "RAM"
 
     _ram_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/ram_manufacture.csv'))
-
-    IMPACT_FACTOR = {
-        'gwp': {
-            'die_impact': 2.20,
-            'impact': 5.22
-        },
-        'pe': {
-            'die_impact': 27.30,
-            'impact': 74.00
-        },
-        'adp': {
-            'die_impact': 6.30E-05,
-            'impact': 1.69E-03
-        }
-    }
 
     def __init__(self, archetype=get_component_archetype(config["default_ram"], "ram"), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
@@ -63,7 +49,7 @@ class ComponentRAM(Component):
 
 
     # IMPACT COMPUTATION
-    def __impact_manufacture(self, impact_type: str) -> ComputedImpacts:
+    def impact_other(self, impact_type: str) -> ComputedImpacts:
         ram_die_impact, ram_impact = self.__get_impact_constants(impact_type)
 
         impact = self.__compute_impact_manufacture(ram_die_impact, ram_impact)
@@ -71,8 +57,8 @@ class ComponentRAM(Component):
         sign_figures = self.__compute_significant_numbers(ram_die_impact.value, ram_impact.value)
         return impact.value, sign_figures, impact.min, impact.max, []
 
-    def __impact_usage(self, impact_type: str) -> ComputedImpacts:
-        impact_factor = getattr(self.usage, f'{impact_type}_factor')
+    def impact_use(self, impact_type: str) -> ComputedImpacts:
+        impact_factor = self.usage.elec_factors[impact_type]
 
         if not self.usage.hours_electrical_consumption.is_set():
             modeled_consumption = self.model_power_consumption()
@@ -117,14 +103,14 @@ class ComponentRAM(Component):
 
     def __get_impact_constants(self, impact_type: str) -> Tuple[ImpactFactor, ImpactFactor]:
         ram_die_impact = ImpactFactor(
-            value=self.IMPACT_FACTOR[impact_type]['die_impact'],
-            min=self.IMPACT_FACTOR[impact_type]['die_impact'],
-            max=self.IMPACT_FACTOR[impact_type]['die_impact']
+            value=get_impact_factor(item='ram', impact_type=impact_type)['die_impact'],
+            min=get_impact_factor(item='ram', impact_type=impact_type)['die_impact'],
+            max=get_impact_factor(item='ram', impact_type=impact_type)['die_impact']
         )
         ram_impact = ImpactFactor(
-            value=self.IMPACT_FACTOR[impact_type]['impact'],
-            min=self.IMPACT_FACTOR[impact_type]['impact'],
-            max=self.IMPACT_FACTOR[impact_type]['impact']
+            value=get_impact_factor(item='ram', impact_type=impact_type)['impact'],
+            min=get_impact_factor(item='ram', impact_type=impact_type)['impact'],
+            max=get_impact_factor(item='ram', impact_type=impact_type)['impact']
         )
         return ram_die_impact, ram_impact
 
@@ -137,24 +123,6 @@ class ComponentRAM(Component):
             min=(self.capacity.min / self.density.min) * ram_die_impact.min + ram_impact.min,
             max=(self.capacity.max / self.density.max) * ram_die_impact.max + ram_impact.max
         )
-
-    def impact_manufacture_pe(self) -> ComputedImpacts:
-        return self.__impact_manufacture('pe')
-
-    def impact_manufacture_adp(self) -> ComputedImpacts:
-        return self.__impact_manufacture('adp')
-
-    def impact_manufacture_gwp(self) -> ComputedImpacts:
-        return self.__impact_manufacture('gwp')
-
-    def impact_use_gwp(self) -> ComputedImpacts:
-        return self.__impact_usage("gwp")
-
-    def impact_use_pe(self) -> ComputedImpacts:
-        return self.__impact_usage("pe")
-
-    def impact_use_adp(self) -> ComputedImpacts:
-        return self.__impact_usage("adp")
 
     # COMPLETION
     def _complete_density(self):

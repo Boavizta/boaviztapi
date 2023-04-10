@@ -1,11 +1,22 @@
 import os
-from datetime import datetime, timedelta
+from pathlib import Path
 
 import pandas as pd
-import requests
-
+import yaml
 from boaviztapi import data_dir
 
+config_file = os.path.join(data_dir, 'factors.yml')
+impact_factors = yaml.safe_load(Path(config_file).read_text())
+_electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electricity/electricity_impact_factors.csv'))
+
+def get_impact_factor(item, impact_type) -> dict:
+    if impact_factors.get(item):
+        if impact_factors.get(item).get(impact_type):
+            return impact_factors.get(item).get(impact_type)
+    raise NotImplementedError
+
+
+"""
 _electricity_emission_factors_df = pd.read_csv(
     os.path.join(data_dir, 'electricity/electricity_impact_factors.csv'))
 class ElecFactorProvider:
@@ -47,7 +58,4 @@ class ElectricityMap(ElecFactorProvider):
         return reponse
     def _location_to_em_zone(self, location):
         return location
-
-
-if __name__ == '__main__':
-    elec_provider = ElectricityMap()
+"""
