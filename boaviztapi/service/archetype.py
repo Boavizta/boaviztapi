@@ -24,6 +24,11 @@ def get_server_archetype(archetype_name: str) -> Union[dict, bool]:
         return False
     return arch
 
+def get_user_terminal_archetype(archetype_name: str) -> Union[dict, bool]:
+    arch = get_archetype(archetype_name, os.path.join(data_dir, "archetypes/user_terminal.csv"))
+    if not arch:
+        return False
+    return arch
 
 def get_cloud_instance_archetype(archetype_name: str, provider: str) -> Union[dict, bool]:
     arch = False

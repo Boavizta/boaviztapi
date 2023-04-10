@@ -143,9 +143,9 @@ class DeviceServer(Device):
             return sum(impacts), min(significant_figures), sum(min_impacts), sum(max_impacts), warnings
 
         except NotImplementedError:
-            impact = get_impact_factor(item='server', impact_type=impact_type)["impact"]
-            min_impacts = get_impact_factor(item='server', impact_type=impact_type)["impact"]
-            max_impacts = get_impact_factor(item='server', impact_type=impact_type)["impact"]
+            impact = get_impact_factor(item='SERVER', impact_type=impact_type)["impact"]
+            min_impacts = get_impact_factor(item='SERVER', impact_type=impact_type)["impact"]
+            max_impacts = get_impact_factor(item='SERVER', impact_type=impact_type)["impact"]
             significant_figures = rd.significant_number(impact)
 
             warnings = ["Generic data used for impact calculation."]

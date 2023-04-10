@@ -105,3 +105,10 @@ cpu_consumption_profiles = {
             }
         ],
 }
+
+end_user_terminal = {
+    "usage": {
+        "years_use_time": 1,
+        "usage_location": "FRA"
+    }
+}
