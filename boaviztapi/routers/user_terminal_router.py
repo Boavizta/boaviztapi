@@ -191,31 +191,6 @@ async def box_impact(archetype: str = config["default_box"],
                          criteria=criteria,
                          archetype=archetype)
 
-@user_terminal_router.post('/box', description="")
-async def box_impact(box: Smartwatch = Body(None, example=end_user_terminal),
-                        verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
-                        archetype: str = config["default_box"],
-                        criteria: List[str] = Query(config["default_criteria"])):
-
-    return await user_terminal_impact(user_terminal_dto=box,
-                         verbose=verbose,
-                         allocation=allocation,
-                         criteria=criteria,
-                         archetype=archetype)
-
-@user_terminal_router.get('/box', description="")
-async def box_impact(archetype: str = config["default_box"],
-                        verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
-                        criteria: List[str] = Query(config["default_criteria"])):
-
-    return await user_terminal_impact(user_terminal_dto=Laptop(),
-                         verbose=verbose,
-                         allocation=allocation,
-                         criteria=criteria,
-                         archetype=archetype)
-
 @user_terminal_router.post('/usb_stick', description="")
 async def usb_stick_impact(usb_stick: UsbStick = Body(None, example=end_user_terminal),
                         verbose: bool = True,
