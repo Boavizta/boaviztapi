@@ -1,15 +1,23 @@
 from abc import abstractmethod
 from typing import Tuple, List
 
+from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component import Component
 from boaviztapi.model.usage import ModelUsage
 
-NumberSignificantFigures = Tuple[float, int]
+ComputedImpacts = Tuple[float, int]
 
 
 class Device:
 
-    def __init__(self, **kwargs):
+    def __init__(self, archetype=None, **kwargs):
+        self.impact_factor = {}
+        self.archetype = archetype
+        self.units = Boattribute(
+            default=1,
+            min=1,
+            max=1
+        )
         self._usage = None
         pass
 
@@ -26,27 +34,11 @@ class Device:
         return []
 
     @abstractmethod
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
+    def impact_other(self, impact_type: str) -> ComputedImpacts:
         raise NotImplementedError
 
     @abstractmethod
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
-        raise NotImplementedError
-
-    @abstractmethod
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
-        raise NotImplementedError
-
-    @abstractmethod
-    def impact_use_gwp(self) -> NumberSignificantFigures:
-        raise NotImplementedError
-
-    @abstractmethod
-    def impact_use_pe(self) -> NumberSignificantFigures:
-        raise NotImplementedError
-
-    @abstractmethod
-    def impact_use_adp(self) -> NumberSignificantFigures:
+    def  impact_use(self, impact_type: str) -> ComputedImpacts:
         raise NotImplementedError
 
     def __iter__(self):

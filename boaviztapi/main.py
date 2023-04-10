@@ -14,6 +14,7 @@ from boaviztapi.routers.component_router import component_router
 from boaviztapi.routers.consumption_profile_router import consumption_profile
 from boaviztapi.routers.server_router import server_router
 from boaviztapi.routers.cloud_router import cloud_router
+from boaviztapi.routers.user_terminal_router import user_terminal_router
 from boaviztapi.routers.utils_router import utils_router
 
 from fastapi.responses import HTMLResponse
@@ -35,6 +36,7 @@ app.add_middleware(
 
 app.include_router(server_router)
 app.include_router(cloud_router)
+app.include_router(user_terminal_router)
 app.include_router(component_router)
 app.include_router(utils_router)
 app.include_router(consumption_profile)
@@ -65,8 +67,8 @@ handler = Mangum(app)
 
 
 @app.get("/", response_class=HTMLResponse)
-async def welcom_page():
-    html_content = """
+async def welcome_page():
+    html_content = f"""
     <html>
         <head>
             <title>BOAVIZTAPI</title>
@@ -86,7 +88,8 @@ async def welcom_page():
             <h3 align="center">See OpenAPI specs (swagger) : <a href="docs">LINK</a></h2>
             <h3 align="center">See our complete documentation : <a href="https://doc.api.boavizta.org/">LINK</a></h2>
             <h3 align="center">See the other resources of Boavizta : <a href="https://boavizta.org/">LINK</a> </h2>
+            %s
         </body>
     </html>
-    """
+    """ % os.getenv('SPECIAL_MESSAGE', '')
     return HTMLResponse(content=html_content, status_code=200)

@@ -1,34 +1,22 @@
-import copy
 from abc import ABC
 from typing import List, Union
 
-from boaviztapi.model.boattribute import Status
+from boaviztapi import config
+from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
     ComponentPowerSupply, ComponentCase, ComponentMotherboard, ComponentAssembly
-from boaviztapi.model.device.device import Device, NumberSignificantFigures
+from boaviztapi.model.device.device import Device
+from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.model.usage import ModelUsageServer, ModelUsageCloud
 import boaviztapi.utils.roundit as rd
+from boaviztapi.service.archetype import get_server_archetype, get_arch_component, get_cloud_instance_archetype
+from boaviztapi.service.factor_provider import get_impact_factor
 
 
 class DeviceServer(Device):
-    DEFAULT_COMPONENT_CPU = ComponentCPU()
-    DEFAULT_NUMBER_CPU = 2
 
-    DEFAULT_COMPONENT_RAM = ComponentRAM()
-    DEFAULT_NUMBER_RAM = 24
-
-    DEFAULT_COMPONENT_DISK = ComponentSSD()
-    DEFAULT_NUMBER_DISK = 1
-
-    DEFAULT_COMPONENT_POWER_SUPPLY = ComponentPowerSupply()
-    DEFAULT_NUMBER_POWER_SUPPLY = 2
-
-    DEFAULT_COMPONENT_CASE = ComponentCase()
-    DEFAULT_COMPONENT_MOTHERBOARD = ComponentMotherboard()
-    DEFAULT_COMPONENT_ASSEMBLY = ComponentAssembly()
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, archetype=get_server_archetype(config["default_server"]), **kwargs):
+        super().__init__(archetype=archetype, **kwargs)
         self._cpu = None
         self._ram_list = None
         self._disk_list = None
@@ -45,8 +33,7 @@ class DeviceServer(Device):
     @property
     def cpu(self) -> ComponentCPU:
         if self._cpu is None:
-            self._cpu = copy.deepcopy(self.DEFAULT_COMPONENT_CPU)
-            self._cpu.units = self.DEFAULT_NUMBER_CPU
+            self._cpu = ComponentCPU(archetype=get_arch_component(self.archetype,"CPU"))
         return self._cpu
 
     @cpu.setter
@@ -56,8 +43,7 @@ class DeviceServer(Device):
     @property
     def ram(self) -> List[ComponentRAM]:
         if self._ram_list is None:
-            self.DEFAULT_COMPONENT_RAM.units = copy.deepcopy(self.DEFAULT_NUMBER_RAM)
-            self._ram_list = [self.DEFAULT_COMPONENT_RAM]
+            self._ram_list = [ComponentRAM(archetype=get_arch_component(self.archetype,"RAM"))]
         return self._ram_list
 
     @ram.setter
@@ -67,8 +53,7 @@ class DeviceServer(Device):
     @property
     def disk(self) -> List[Union[ComponentSSD, ComponentHDD]]:
         if self._disk_list is None:
-            self.DEFAULT_COMPONENT_DISK.units = self.DEFAULT_NUMBER_DISK
-            self._disk_list = [copy.deepcopy(self.DEFAULT_COMPONENT_DISK)]
+            self._disk_list = [ComponentSSD(archetype=get_arch_component(self.archetype,"SSD"))]
         return self._disk_list
 
     @disk.setter
@@ -78,8 +63,7 @@ class DeviceServer(Device):
     @property
     def power_supply(self) -> ComponentPowerSupply:
         if self._power_supply is None:
-            self._power_supply = copy.deepcopy(self.DEFAULT_COMPONENT_POWER_SUPPLY)
-            self._power_supply.units = self.DEFAULT_NUMBER_POWER_SUPPLY
+            self._power_supply = ComponentPowerSupply(archetype=get_arch_component(self.archetype,"POWER_SUPPLY"))
         return self._power_supply
 
     @power_supply.setter
@@ -89,7 +73,7 @@ class DeviceServer(Device):
     @property
     def case(self) -> ComponentCase:
         if self._case is None:
-            self._case = copy.deepcopy(self.DEFAULT_COMPONENT_CASE)
+            self._case = ComponentCase(archetype=get_arch_component(self.archetype,"CASE"))
         return self._case
 
     @case.setter
@@ -107,7 +91,7 @@ class DeviceServer(Device):
     @property
     def motherboard(self) -> ComponentMotherboard:
         if self._motherboard is None:
-            self._motherboard = copy.deepcopy(self.DEFAULT_COMPONENT_MOTHERBOARD)
+            self._motherboard = ComponentMotherboard(archetype=get_arch_component(self.archetype,"MOTHERBOARD"))
         return self._motherboard
 
     @motherboard.setter
@@ -117,7 +101,7 @@ class DeviceServer(Device):
     @property
     def assembly(self) -> ComponentAssembly:
         if self._assembly is None:
-            self._assembly = copy.deepcopy(self.DEFAULT_COMPONENT_ASSEMBLY)
+            self._assembly = ComponentAssembly(archetype=get_arch_component(self.archetype,"ASSEMBLY"))
         return self._assembly
 
     @assembly.setter
@@ -127,7 +111,7 @@ class DeviceServer(Device):
     @property
     def usage(self) -> ModelUsageServer:
         if self._usage is None:
-            self._usage = ModelUsageServer()
+            self._usage = ModelUsageServer(archetype=get_arch_component(self.archetype,"USAGE"))
         return self._usage
 
     @usage.setter
@@ -139,89 +123,98 @@ class DeviceServer(Device):
         return [self.assembly] + [self.cpu] + self.ram + self.disk + [self.power_supply] + [self.case] + [
             self.motherboard]
 
-    def __impact_manufacture(self, impact_type: str) -> NumberSignificantFigures:
+    def impact_other(self, impact_type: str) -> ComputedImpacts:
         impacts = []
+        min_impacts = []
+        max_impacts = []
         significant_figures = []
-        for component in self.components:
-            impact, sign_fig = getattr(component, f'impact_manufacture_{impact_type}')()
-            impacts.append(impact*component.units)
-            significant_figures.append(sign_fig)
-        return sum(impacts), min(significant_figures)
+        warnings = []
 
-    def __impact_usage(self, impact_type: str) -> NumberSignificantFigures:
-        impact_factor = getattr(self.usage, f'{impact_type}_factor')
+        try:
+            for component in self.components:
+                impact, sign_fig, min_impact, max_impact, c_warning = getattr(component, f'impact_other')(impact_type)
+
+                impacts.append(impact*component.units.value)
+                min_impacts.append(min_impact*component.units.min)
+                max_impacts.append(max_impact*component.units.max)
+
+                significant_figures.append(sign_fig)
+                warnings = warnings + c_warning
+            return sum(impacts), min(significant_figures), sum(min_impacts), sum(max_impacts), warnings
+
+        except NotImplementedError:
+            impact = get_impact_factor(item='SERVER', impact_type=impact_type)["impact"]
+            min_impacts = get_impact_factor(item='SERVER', impact_type=impact_type)["impact"]
+            max_impacts = get_impact_factor(item='SERVER', impact_type=impact_type)["impact"]
+            significant_figures = rd.significant_number(impact)
+
+            warnings = ["Generic data used for impact calculation."]
+
+            return impact, significant_figures, min_impacts, max_impacts, warnings
+
+
+    def impact_use(self, impact_type: str) -> ComputedImpacts:
+        impact_factor = self.usage.elec_factors[impact_type]
         if not self.usage.hours_electrical_consumption.is_set():
-            self.usage.hours_electrical_consumption.value = self.model_power_consumption()
-            self.usage.hours_electrical_consumption.status = Status.COMPLETED
+            modeled_consumption = self.model_power_consumption()
+            self.usage.hours_electrical_consumption.set_completed(
+                modeled_consumption.value,
+                min=modeled_consumption.min,
+                max=modeled_consumption.max
+            )
 
-        impacts = impact_factor.value * (self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
+        impact = impact_factor.value * (self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
+        min_impact = impact_factor.min * (self.usage.hours_electrical_consumption.min / 1000) * self.usage.use_time.min
+        max_impact = impact_factor.max * (self.usage.hours_electrical_consumption.max / 1000) * self.usage.use_time.max
+
         sig_fig = self.__compute_significant_numbers(impact_factor.value)
-        return impacts, sig_fig
+        return impact, sig_fig, min_impact, max_impact, []
 
     def model_power_consumption(self):
-        conso_cpu = self.cpu.model_power_consumption()*self.cpu.units
-        conso_ram = 0
+        conso_cpu = ImpactFactor(
+            value=self.cpu.model_power_consumption().value*self.cpu.units.value,
+            min=self.cpu.model_power_consumption().min*self.cpu.units.min,
+            max=self.cpu.model_power_consumption().max * self.cpu.units.max,
+        )
+        conso_ram = ImpactFactor(
+            value=0,
+            min=0,
+            max=0
+        )
         for ram_unit in self.ram:
-            conso_ram += ram_unit.model_power_consumption()*ram_unit.units
-        return (conso_cpu + conso_ram) * (1 + self.usage.other_consumption_ratio.value)
+            conso_ram.value = conso_ram.value + ram_unit.model_power_consumption().value * ram_unit.units.value
+            conso_ram.min = conso_ram.min + ram_unit.model_power_consumption().min * ram_unit.units.min
+            conso_ram.max = conso_ram.max + ram_unit.model_power_consumption().max * ram_unit.units.max
+
+        return ImpactFactor(
+                value=(conso_cpu.value + conso_ram.value) * (1 + self.usage.other_consumption_ratio.value),
+                min=(conso_cpu.min + conso_ram.min) * (1 + self.usage.other_consumption_ratio.min),
+                max=(conso_cpu.max + conso_ram.max) * (1 + self.usage.other_consumption_ratio.max)
+        )
 
     def __compute_significant_numbers(self, impact_factor: float) -> int:
         return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value, impact_factor)
 
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
-        return self.__impact_manufacture('gwp')
-
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
-        return self.__impact_manufacture('pe')
-
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
-        return self.__impact_manufacture('adp')
-
-    def impact_use_gwp(self) -> NumberSignificantFigures:
-        return self.__impact_usage('gwp')
-
-    def impact_use_pe(self) -> NumberSignificantFigures:
-        return self.__impact_usage('pe')
-
-    def impact_use_adp(self) -> NumberSignificantFigures:
-        return self.__impact_usage('adp')
-
 
 class DeviceCloudInstance(DeviceServer, ABC):
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, archetype=get_cloud_instance_archetype(config["default_cloud"], config["default_cloud_provider"]), **kwargs):
+        super().__init__(**kwargs, archetype=archetype)
 
     @property
     def usage(self) -> ModelUsageCloud:
         if self._usage is None:
-            self._usage = ModelUsageCloud()
+            self._usage = ModelUsageCloud(archetype=get_arch_component(self.archetype,"USAGE"))
         return self._usage
 
     @usage.setter
     def usage(self, value: ModelUsageCloud) -> None:
         self._usage = value
 
-    def impact_manufacture_gwp(self) -> NumberSignificantFigures:
-        impact, sign_fig = super().impact_manufacture_gwp()
-        return (impact / self.usage.instance_per_server.value), sign_fig
+    def impact_other(self, impact_type: str) -> ComputedImpacts:
+        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_other(impact_type)
+        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
 
-    def impact_manufacture_pe(self) -> NumberSignificantFigures:
-        impact, sign_fig = super().impact_manufacture_pe()
-        return (impact / self.usage.instance_per_server.value), sign_fig
-
-    def impact_manufacture_adp(self) -> NumberSignificantFigures:
-        impact, sign_fig = super().impact_manufacture_adp()
-        return (impact / self.usage.instance_per_server.value), sign_fig
-
-    def impact_use_gwp(self) -> NumberSignificantFigures:
-        impact, sign_fig = super().impact_use_gwp()
-        return (impact / self.usage.instance_per_server.value), sign_fig
-
-    def impact_use_pe(self) -> NumberSignificantFigures:
-        impact, sign_fig = super().impact_use_pe()
-        return (impact / self.usage.instance_per_server.value), sign_fig
-
-    def impact_use_adp(self) -> NumberSignificantFigures:
-        impact, sign_fig = super().impact_use_adp()
-        return (impact / self.usage.instance_per_server.value), sign_fig
+    def impact_use(self, impact_type: str) -> ComputedImpacts:
+        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_use(impact_type)
+        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning

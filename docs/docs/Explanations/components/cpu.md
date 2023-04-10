@@ -6,10 +6,10 @@
 |-------------------|------|---------------|-----------------------------------------------|--------------------|
 | units             | None | 1             | CPU quantity                                  | 2                  |
 | usage             | None | See Usage     | See usage                                     | ..                 |
-| core_units        | None | 24            | Number of core on one CPU                     | 12                 |
-| die_size          | mm2  | None          | Size of the die                               | 2900               |
+| core_units        | None | 24            | Number of physical core on one CPU            | 12                 |
+| die_size          | cm2  | None          | Size of the die                               | 1.1                |
 | manufacturer      | None | Intel         | Name of the CPU manufacturer                  | AMD                |
-| die_size_per_core | mm2  | 0.245         | Size of the die divided by the number of core | 0.245              |
+| die_size_per_core | cm2  | 0.245         | Size of the die divided by the number of core | 0.245              |
 | model_range       | None | Xeon Platinum | Name of the cpu range or brand                | i7                 |
 | family            | None | Skylake       | Name of the architectural family (Generation) | Naple              |
 | name              | None | None          | Complete commercial name of the CPU           | Intel Core i7-1065 |
@@ -26,8 +26,8 @@ if ```die_size``` and ```core_units``` are given :
 
 $$ \text{die_size_per_core} = \frac{\text{core_units}}{\text{die_size}}$$
 
-Otherwise, if ```family``` or/and ```core_units``` are given, ```die_size_per_core``` can be retrieved from a fuzzy matching on our cpu repository.
-If several cpu matches the given ```family``` and/or ```core_units``` the maximizing value is given (in terms of impacts).
+Otherwise, if ```family``` is given, ```die_size_per_core``` can be retrieved from a fuzzy matching on our cpu repository.
+If several cpu matches the given ```family```, the closest value in terms of ```core_units``` is used (if ```core_units``` given by the user). Otherwise, the maximizing value is given (in terms of impacts).
 
 If no cpu is found either because the cpu is unknown or not enough data have been given by the user the default data are used.
 

@@ -4,7 +4,7 @@ This page presents basic queries that can be used to retrieve impacts of cloud i
 
 You use `curl` in command line to query Boavizta demo (public) API.
 
-💡 _You can format the results by using jq (`curl -X 'GET' 'http://localhost:5000/v1/cloud/aws?instance_type=a1.xlarge' | jq`)_
+💡 _You can format the results by using jq (`curl -X 'GET' '{{ endpoint }}/v1/cloud/aws?instance_type=a1.xlarge' | jq`)_
 
 ## Get the impacts from cpu name
 
@@ -14,7 +14,7 @@ Query:
 ```bash
 # Query the available aws instances
 curl -X 'GET' \
-  'https://api.boavizta.org/v1/cloud/all_instances?cloud_provider=aws' \
+  '{{ endpoint }}/v1/cloud/all_instances?cloud_provider=aws' \
   -H 'accept: application/json'
 ```
 
@@ -46,7 +46,7 @@ Query:
 ```bash
 # Query the data for `r6g.medium` with default usage value
 curl -X 'GET' \
-  'https://api.boavizta.org/v1/cloud/?cloud_provider=aws&instance_type=r6g.medium&verbose=false' \
+  '{{ endpoint }}/v1/cloud/?cloud_provider=aws&instance_type=r6g.medium&verbose=false' \
   -H 'accept: application/json'
 ```
 
@@ -79,9 +79,8 @@ Query :
 
 ```bash
 # Query the data for `r6g.medium` with default usage value
-# Query the data for `r6g.medium` with default usage value
 curl -X 'GET' \
-  'https://api.boavizta.org/v1/cloud/?cloud_provider=aws&instance_type=r6g.medium&verbose=true' \
+  '{{ endpoint }}/v1/cloud/?cloud_provider=aws&instance_type=r6g.medium&verbose=true' \
   -H 'accept: application/json'
 ```
 
@@ -514,7 +513,7 @@ Query:
 ```bash
 # Query the data for `r6g.medium` with custom usage value
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/cloud/?verbose=false' \
+  '{{ endpoint }}/v1/cloud/?verbose=false' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

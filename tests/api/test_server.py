@@ -48,18 +48,72 @@ async def test_complete_config_server():
                 }
             }
         })
-    assert res.json() == {'adp': {'manufacture': 0.25, 'unit': 'kgSbeq', 'use': 0.000313},
-                          'gwp': {'manufacture': 1100.0, 'unit': 'kgCO2eq', 'use': 1900.0},
-                          'pe': {'manufacture': 15000.0, 'unit': 'MJ', 'use': 62850.0}}
+    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+                                  'other': {'max': 0.26,
+                                            'min': 0.25,
+                                            'significant_figures': 2,
+                                            'value': 0.25},
+                                  'unit': 'kgSbeq',
+                                  'use': {'max': 0.0195,
+                                          'min': 5.53e-09,
+                                          'significant_figures': 3,
+                                          'value': 0.000313}},
+                          'gwp': {'description': 'Effects on global warming',
+                                  'other': {'max': 1100.0,
+                                            'min': 1100.0,
+                                            'significant_figures': 2,
+                                            'value': 1100.0},
+                                  'unit': 'kgCO2eq',
+                                  'use': {'max': 66000.0,
+                                          'min': 0.0096,
+                                          'significant_figures': 2,
+                                          'value': 1900.0}},
+                          'pe': {'description': 'Consumption of primary energy',
+                                 'other': {'max': 15000.0,
+                                           'min': 14000.0,
+                                           'significant_figures': 2,
+                                           'value': 15000.0},
+                                 'unit': 'MJ',
+                                 'use': {'max': 34370000.0,
+                                         'min': 0.005447,
+                                         'significant_figures': 4,
+                                         'value': 62850.0}}}
 
 
 @pytest.mark.asyncio
 async def test_empty_config_server():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/server/?verbose=false', json={})
-    assert res.json() == {'adp': {'manufacture': 0.23, 'unit': 'kgSbeq', 'use': 0.000436},
-                          'gwp': {'manufacture': 3300.0, 'unit': 'kgCO2eq', 'use': 2600.0},
-                          'pe': {'manufacture': 42000.0, 'unit': 'MJ', 'use': 87380.0}}
+    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+                                  'other': {'max': 9.4,
+                                            'min': 0.055,
+                                            'significant_figures': 2,
+                                            'value': 0.23},
+                                  'unit': 'kgSbeq',
+                                  'use': {'max': 0.19,
+                                          'min': 2.53e-09,
+                                          'significant_figures': 3,
+                                          'value': 0.000436}},
+                          'gwp': {'description': 'Effects on global warming',
+                                  'other': {'max': 310000.0,
+                                            'min': 220.0,
+                                            'significant_figures': 2,
+                                            'value': 3300.0},
+                                  'unit': 'kgCO2eq',
+                                  'use': {'max': 640000.0,
+                                          'min': 0.0044,
+                                          'significant_figures': 2,
+                                          'value': 2600.0}},
+                          'pe': {'description': 'Consumption of primary energy',
+                                 'other': {'max': 3800000.0,
+                                           'min': 3000.0,
+                                           'significant_figures': 2,
+                                           'value': 42000.0},
+                                 'unit': 'MJ',
+                                 'use': {'max': 334600000.0,
+                                         'min': 0.002487,
+                                         'significant_figures': 4,
+                                         'value': 87380.0}}}
 
 
 @pytest.mark.asyncio
@@ -68,7 +122,7 @@ async def test_dell_r740_server():
         res = await ac.post('/v1/server/?verbose=false', json={
             "model":
                 {
-                    "manufacturer": "Dell",
+                    "otherr": "Dell",
                     "name": "R740",
                     "type": "rack",
                     "year": 2020
@@ -105,28 +159,39 @@ async def test_dell_r740_server():
                         }
                 },
             "usage": {
-                "100": {
-                    "time": 0.15,
-                    "power": 1.0
-                },
-                "50": {
-                    "time": 0.55,
-                    "power": 0.7235
-                },
-                "10": {
-                    "time": 0.2,
-                    "power": 0.5118
-                },
-                "idle": {
-                    "time": 0.1,
-                    "power": 0.3941
-                }
             }
-        }
-                            )
-    assert res.json() == {'adp': {'manufacture': 0.15, 'unit': 'kgSbeq', 'use': 0.000354},
-                          'gwp': {'manufacture': 970.0, 'unit': 'kgCO2eq', 'use': 2100.0},
-                          'pe': {'manufacture': 13000.0, 'unit': 'MJ', 'use': 71020.0}}
+        })
+
+    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+                                  'other': {'max': 0.15,
+                                            'min': 0.15,
+                                            'significant_figures': 2,
+                                            'value': 0.15},
+                                  'unit': 'kgSbeq',
+                                  'use': {'max': 0.022,
+                                          'min': 6.25e-09,
+                                          'significant_figures': 3,
+                                          'value': 0.000354}},
+                          'gwp': {'description': 'Effects on global warming',
+                                  'other': {'max': 970.0,
+                                            'min': 970.0,
+                                            'significant_figures': 2,
+                                            'value': 970.0},
+                                  'unit': 'kgCO2eq',
+                                  'use': {'max': 75000.0,
+                                          'min': 0.011,
+                                          'significant_figures': 2,
+                                          'value': 2100.0}},
+                          'pe': {'description': 'Consumption of primary energy',
+                                 'other': {'max': 13000.0,
+                                           'min': 13000.0,
+                                           'significant_figures': 2,
+                                           'value': 13000.0},
+                                 'unit': 'MJ',
+                                 'use': {'max': 38840000.0,
+                                         'min': 0.006156,
+                                         'significant_figures': 4,
+                                         'value': 71020.0}}}
 
 
 @pytest.mark.asyncio
@@ -161,9 +226,36 @@ async def test_partial_server_1():
                 ]
             }
         })
-    assert {'adp': {'manufacture': 0.15, 'unit': 'kgSbeq', 'use': 0.000313},
-            'gwp': {'manufacture': 1300.0, 'unit': 'kgCO2eq', 'use': 1900.0},
-            'pe': {'manufacture': 17000.0, 'unit': 'MJ', 'use': 62850.0}}
+    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+                                  'other': {'max': 0.9,
+                                            'min': 0.34,
+                                            'significant_figures': 2,
+                                            'value': 0.15},
+                                  'unit': 'kgSbeq',
+                                  'use': {'max': 0.0195,
+                                          'min': 5.53e-09,
+                                          'significant_figures': 3,
+                                          'value': 0.000313}},
+                          'gwp': {'description': 'Effects on global warming',
+                                  'other': {'max': 23000.0,
+                                            'min': 8900.0,
+                                            'significant_figures': 2,
+                                            'value': 1300.0},
+                                  'unit': 'kgCO2eq',
+                                  'use': {'max': 66000.0,
+                                          'min': 0.0096,
+                                          'significant_figures': 2,
+                                          'value': 1900.0}},
+                          'pe': {'description': 'Consumption of primary energy',
+                                 'other': {'max': 290000.0,
+                                           'min': 110000.0,
+                                           'significant_figures': 2,
+                                           'value': 17000.0},
+                                 'unit': 'MJ',
+                                 'use': {'max': 34370000.0,
+                                         'min': 0.005447,
+                                         'significant_figures': 4,
+                                         'value': 62850.0}}}
 
 
 @pytest.mark.asyncio
@@ -205,9 +297,36 @@ async def test_partial_server_2():
                 }
             }
         })
-    assert res.json() == {'adp': {'manufacture': 0.26, 'unit': 'kgSbeq', 'use': 0.000313},
-                          'gwp': {'manufacture': 1400.0, 'unit': 'kgCO2eq', 'use': 1900.0},
-                          'pe': {'manufacture': 19000.0, 'unit': 'MJ', 'use': 62850.0}}
+    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+                                  'other': {'max': 0.28,
+                                            'min': 0.25,
+                                            'significant_figures': 2,
+                                            'value': 0.26},
+                                  'unit': 'kgSbeq',
+                                  'use': {'max': 0.0195,
+                                          'min': 5.53e-09,
+                                          'significant_figures': 3,
+                                          'value': 0.000313}},
+                          'gwp': {'description': 'Effects on global warming',
+                                  'other': {'max': 1900.0,
+                                            'min': 980.0,
+                                            'significant_figures': 2,
+                                            'value': 1400.0},
+                                  'unit': 'kgCO2eq',
+                                  'use': {'max': 66000.0,
+                                          'min': 0.0096,
+                                          'significant_figures': 2,
+                                          'value': 1900.0}},
+                          'pe': {'description': 'Consumption of primary energy',
+                                 'other': {'max': 24000.0,
+                                           'min': 13000.0,
+                                           'significant_figures': 2,
+                                           'value': 19000.0},
+                                 'unit': 'MJ',
+                                 'use': {'max': 34370000.0,
+                                         'min': 0.005447,
+                                         'significant_figures': 4,
+                                         'value': 62850.0}}}
 
 
 @pytest.mark.asyncio
@@ -223,7 +342,6 @@ async def test_partial_server_3():
                         "units": 4,
                         "capacity": 16,
                         "density": 1.79
-
                     }
                 ],
                 "power_supply": {
@@ -232,9 +350,36 @@ async def test_partial_server_3():
                 }
             }
         })
-    assert res.json() == {'adp': {'manufacture': 0.24, 'unit': 'kgSbeq', 'use': 0.000286},
-                          'gwp': {'manufacture': 900.0, 'unit': 'kgCO2eq', 'use': 1700.0},
-                          'pe': {'manufacture': 13000.0, 'unit': 'MJ', 'use': 57390.0}}
+    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+                                  'other': {'max': 8.4,
+                                            'min': 0.22,
+                                            'significant_figures': 2,
+                                            'value': 0.24},
+                                  'unit': 'kgSbeq',
+                                  'use': {'max': 0.137,
+                                          'min': 2.65e-09,
+                                          'significant_figures': 3,
+                                          'value': 0.000286}},
+                          'gwp': {'description': 'Effects on global warming',
+                                  'other': {'max': 280000.0,
+                                            'min': 760.0,
+                                            'significant_figures': 2,
+                                            'value': 900.0},
+                                  'unit': 'kgCO2eq',
+                                  'use': {'max': 460000.0,
+                                          'min': 0.0046,
+                                          'significant_figures': 2,
+                                          'value': 1700.0}},
+                          'pe': {'description': 'Consumption of primary energy',
+                                 'other': {'max': 3400000.0,
+                                           'min': 11000.0,
+                                           'significant_figures': 2,
+                                           'value': 13000.0},
+                                 'unit': 'MJ',
+                                 'use': {'max': 240600000.0,
+                                         'min': 0.002605,
+                                         'significant_figures': 4,
+                                         'value': 57390.0}}}
 
 
 @pytest.mark.asyncio
@@ -249,6 +394,33 @@ async def test_custom_usage_1():
                 "usage_location": "FRA"
             }
         })
-    assert res.json() == {'adp': {'manufacture': 0.23, 'unit': 'kgSbeq', 'use': 4e-07},
-                          'gwp': {'manufacture': 3300.0, 'unit': 'kgCO2eq', 'use': 0.9},
-                          'pe': {'manufacture': 42000.0, 'unit': 'MJ', 'use': 100.0}}
+    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+                                  'other': {'max': 9.4,
+                                            'min': 0.055,
+                                            'significant_figures': 2,
+                                            'value': 0.23},
+                                  'unit': 'kgSbeq',
+                                  'use': {'max': 4e-07,
+                                          'min': 4e-07,
+                                          'significant_figures': 1,
+                                          'value': 4e-07}},
+                          'gwp': {'description': 'Effects on global warming',
+                                  'other': {'max': 310000.0,
+                                            'min': 220.0,
+                                            'significant_figures': 2,
+                                            'value': 3300.0},
+                                  'unit': 'kgCO2eq',
+                                  'use': {'max': 0.9,
+                                          'min': 0.9,
+                                          'significant_figures': 1,
+                                          'value': 0.9}},
+                          'pe': {'description': 'Consumption of primary energy',
+                                 'other': {'max': 3800000.0,
+                                           'min': 3000.0,
+                                           'significant_figures': 2,
+                                           'value': 42000.0},
+                                 'unit': 'MJ',
+                                 'use': {'max': 100.0,
+                                         'min': 100.0,
+                                         'significant_figures': 1,
+                                         'value': 100.0}}}

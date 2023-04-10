@@ -1,0 +1,15 @@
+id,type,USAGE.use_time,USAGE.years_life_time,USAGE.hours_electrical_consumption
+laptop-pro,pro,8760,35040,"75,50,100"
+laptop-perso,perso,8760,43800,"75,50,100"
+desktop-pro,pro,8760,52560,"175,100,450"
+desktop-perso,perso,8760,52560,"175,100,450"
+smartphone-default,,8760,21900,"1,0.5,3"
+tablet-default,,8760,26280,"7.5,5,10"
+tv-pro,pro,8760,70080,"300,17,1200"
+tv-perso,perso,8760,70080,"300,60,1200"
+monitor-default,,8760,57816,"55,20,100"
+smartwatch-default,,8760,,0
+box-default,,8760,43800,"10,5,20"
+usb-stick-default,,8760,43800,"0.3,0.12,0.63"
+external-ssd-default,,8760,43800,"2.5,0.5,5"
+hdd-default,,8760,43800,"7.75,6.5,9"

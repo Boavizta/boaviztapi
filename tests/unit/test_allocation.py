@@ -3,7 +3,7 @@ from boaviztapi.service.allocation import allocate, Allocation
 
 
 def test_allocate_():
-    usage = ModelUsage()
+    usage = ModelUsage(archetype={})
     usage.use_time.value = 1000
     usage.life_time.value = 2000
 

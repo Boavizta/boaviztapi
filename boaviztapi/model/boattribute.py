@@ -14,12 +14,16 @@ class Status(Enum):
 class Boattribute:
     def __init__(self, **kwargs):
 
+        self._min = None
+        self._max = None
         self._value = None
-        self.unit = "none"
+        self.unit = None
         self.status = Status.NONE
         self.source = None
         self.default = None
         self.args = None
+        self.warnings = []
+        self.complete_function = None
 
         for attr, val in kwargs.items():
             if val is not None:
@@ -28,23 +32,48 @@ class Boattribute:
     @property
     def value(self) -> Any:
         if self._value is None:
-            if callable(self.default):
-                default = self.default(self.args)
-                self._value = default[0]
-                self.source = default[1]
-                self.status = default[2]
-
-            else:
+            if self.complete_function:
+                self.complete_function()
+            if self._value is None and self.default is not None:
                 self._value = self.default
-                self.status = Status.DEFAULT
+                self.status = Status.ARCHETYPE
         return self._value
 
     @value.setter
     def value(self, value: Any):
         self._value = value
 
+    @property
+    def min(self) -> Any:
+        if self._min is None:
+            self._min = self._value
+        return self._min
+
+    @min.setter
+    def min(self, value: Any):
+        self._min = value
+
+    @property
+    def max(self) -> Any:
+        if self._max is None:
+            self._max = self._value
+        return self._max
+
+    @max.setter
+    def max(self, value: Any):
+        self._max = value
+
+    def add_warning(self, warn):
+        self.warnings.append(warn)
+
     def to_json(self):
-        json = {"value": self._value, "unit": self.unit, "status": self.status.value, "source": self.source}
+        json = {"value": self._value, "status": self.status.value}
+        if self.unit: json['unit'] = self.unit
+        if self.source: json['source'] = self.source
+        if (self._min or self._min==0) and (self.is_default() or self.is_completed() or self.is_archetype()): json['min'] = self._min
+        if (self._max or self._max==0) and (self.is_default() or self.is_completed() or self.is_archetype()): json['max'] = self._max
+        if self.warnings: json['warnings'] = self.warnings
+
         return json
 
     def is_set(self):
@@ -69,10 +98,10 @@ class Boattribute:
         return self.status == Status.ARCHETYPE
 
     def set_input(self, value: Any, *, source: Optional[str] = None) -> None:
-        self.__set_value_and_status(value, Status.INPUT, source)
+        self.__set_value_and_status(value, Status.INPUT, source, min=value, max=value)
 
-    def set_completed(self, value: Any, *, source: Optional[str] = None) -> None:
-        self.__set_value_and_status(value, Status.COMPLETED, source)
+    def set_completed(self, value: Any, *, source: Optional[str] = None, min:float = None, max:float = None) -> None:
+        self.__set_value_and_status(value, Status.COMPLETED, source, min=min, max=max)
 
     def set_default(self, value: Any, *, source: Optional[str] = None) -> None:
         self.__set_value_and_status(value, Status.DEFAULT, source)
@@ -83,8 +112,17 @@ class Boattribute:
     def set_archetype(self, value: Any, *, source: Optional[str] = None) -> None:
         self.__set_value_and_status(value, Status.ARCHETYPE, source)
 
-    def __set_value_and_status(self, value: Any, status: Status, source: str) -> None:
+    def __set_value_and_status(self, value: Any, status: Status, source: str, min:float = None, max:float=None) -> None:
         self._value = value
         self.status = status
         if source is not None:
             self.source = source
+        if min is not None and not isinstance(min, str):
+            self.min = min
+        if max is not None and not isinstance(max, str):
+            self.max = max
+
+    def has_value(self):
+        return (self._value is not None) or (self.default is not None)
+
+

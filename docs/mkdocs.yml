@@ -2,6 +2,8 @@ site_name: Boavizta API documentation
 dev_addr: '0.0.0.0:8080'
 plugins:
     - render_swagger
+    - search
+    - macros
 
 markdown_extensions:
     - attr_list
@@ -20,7 +22,7 @@ nav:
     - Introduction: index.md
     - FAQ : faq.md
     - Getting started:
-        - Try the API (OpenAPI): !ENV [API_URL, https://api.boavizta.org/docs]
+        - Try the API (OpenAPI): !ENV [API_URL, https://api.boavizta.org]
         - Get the impacts of a cpu: getting_started/cpu_component.md
         - Get the impacts of a server: getting_started/single_server.md
         - Get the impacts of a cloud instance (AWS): getting_started/single_cloud_instance.md
@@ -71,3 +73,6 @@ extra_javascript:
     - javascripts/mathjax.js
     - https://polyfill.io/v3/polyfill.min.js?features=es6
     - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  endpoint: !ENV [API_URL, https://api.boavizta.org]
