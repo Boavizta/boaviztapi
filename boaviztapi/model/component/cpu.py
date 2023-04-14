@@ -3,7 +3,6 @@ from typing import Tuple, Optional
 
 import numpy as np
 import pandas as pd
-from rapidfuzz import process, fuzz
 
 import boaviztapi.utils.roundit as rd
 from boaviztapi import config, data_dir
@@ -16,46 +15,14 @@ from boaviztapi.service.archetype import get_component_archetype, get_arch_value
 from boaviztapi.service.factor_provider import get_impact_factor
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
-
-def attributes_from_cpu_name(cpu_name: str) -> [str, str, str, int]:
-    cpu_name = cpu_name.lower()
-    manufacturer, cpu_sub_name = parse(cpu_name)
-    sub = _cpu_index.copy()
-    if manufacturer is None:
-        name_list = list(sub.sub_model_name.unique())
-    else:
-        name_list = list(sub[sub['manufacturer'] == manufacturer].sub_model_name.unique())
-    result = fuzzymatch(cpu_sub_name, name_list)
-
-    if result is not None:
-        model_range = sub[sub['sub_model_name'] == result[0]].iloc[0].model_range
-        family = sub[sub['sub_model_name'] == result[0]].iloc[0].family
-        tdp = sub[sub['sub_model_name'] == result[0]].iloc[0].tdp
-        if np.isnan(tdp):
-            tdp = None
-
-    else:
-        model_range = None
-        family = None
-        tdp = None
-
-    return manufacturer, model_range, family, tdp
-def parse(cpu_name: str) -> Tuple[str, str]:
-    vendor_list = ["intel", "amd", "arm"]  # every string in lowercase
-    for vendor in vendor_list:
-        if vendor in cpu_name:
-            cpu_name.replace(vendor, '')
-            return vendor, cpu_name.replace(vendor, '')
-    return None, cpu_name
+_cpu_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs_final_techpowerup.csv'))
 
 
-def fuzzymatch(cpu_name_to_match: str, cpu_name_list: list) -> Optional[Tuple[str, float, int]]:
-    foo = process.extractOne(cpu_name_to_match, cpu_name_list, scorer=fuzz.WRatio)
-    if foo is not None:
-        return foo if foo[1] > 88.0 else None
-
-_cpu_index = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_index.csv'))
-_cpu_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_manufacture.csv'))
+def attributes_from_cpu_name(cpu_name: str) -> Tuple[str, str, int, int, int]: 
+    df = _cpu_df.copy()
+    df["FuzzNF"] = df.apply(lambda x: fuzz.ratio(f'{x["Name"]}', cpu_name), axis=1)
+    df = df.loc[df['FuzzNF'].idxmax()]
+    return df.name, df.code_name, df.tdp, df.cores, df.total_die_size
 
 class ComponentCPU(Component):
     NAME = "CPU"
@@ -74,6 +41,13 @@ class ComponentCPU(Component):
             default=get_arch_value(archetype, 'die_size_per_core', 'default'),
             min=get_arch_value(archetype, 'die_size_per_core', 'min'),
             max=get_arch_value(archetype, 'die_size_per_core', 'max')
+        )
+        self.total_die_size = Boattribute(
+            complete_function=self._complete_from_name,
+            unit="mm2",
+            default=get_arch_value(archetype, 'total_die_size', 'default'),
+            min=get_arch_value(archetype, 'total_die_size', 'min'),
+            max=get_arch_value(archetype, 'total_die_size', 'max')
         )
         self.model_range = Boattribute(
             complete_function=self._complete_from_name,
@@ -191,8 +165,12 @@ class ComponentCPU(Component):
 
     # COMPLETION
     def _complete_die_size_per_core(self):
-        sub = _cpu_df.copy()
 
+        if self.total_die_size.is_set():
+            self.die_size_per_core.set_completed(value=float(self.total_die_size/self.core_units), source="total_die_size/core_units")
+            return None
+
+        sub = _cpu_df.copy()
         # If we don't have a family, we use the die_size_per_core from the archetype
         if self.die_size_per_core.has_value() and not self.family.has_value():
             return None
@@ -245,14 +223,20 @@ class ComponentCPU(Component):
 
     def _complete_from_name(self):
         if self.name.has_value():
-            manufacturer, model_range, family, tdp = attributes_from_cpu_name(self.name.value)
-            manufacturer_min, model_range_min, family_min, tdp_min = attributes_from_cpu_name(self.name.min)
-            manufacturer_max, model_range_max, family_max, tdp_max = attributes_from_cpu_name(self.name.max)
-            if manufacturer is not None:
-                self.manufacturer.set_completed(manufacturer, min=manufacturer_min, max=manufacturer_max, source="from name")
-            if model_range is not None:
-                self.model_range.set_completed(model_range, min=model_range_min, max=model_range_max, source="from name")
+            name, family, tdp, cores, total_die_size = attributes_from_cpu_name(self.name.value)
+            name_min, family_min, tdp_min, cores_min, total_die_size_min = attributes_from_cpu_name(self.name.min)
+            name_max, family_max, tdp_max, cores_max, total_die_size_max = attributes_from_cpu_name(self.name.max)
+
+            if name is not None:
+                self.name.set_completed(name, min=name_min, max=name_max, source="from name")
             if family is not None:
                 self.family.set_completed(family, min=family_min, max=family_max, source="from name")
             if tdp is not None:
                 self.tdp.set_completed(tdp, min=tdp_min, max=tdp_max, source="from name")
+            if cores is not None:
+                self.core_units.set_completed(cores, min=cores_min, max=cores_max, source="from name")
+            if total_die_size is not None:
+                self.total_die_size.set_completed(total_die_size, min=total_die_size_min, max=total_die_size_max, source="from name")
+
+
+
