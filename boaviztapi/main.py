@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
 @app.on_event("startup")
 def my_schema():
-    intro = open(os.path.join(os.path.dirname(__file__), 'routers/openapi_doc/intro_openapi.md'), 'r')
+    intro = open(os.path.join(os.path.dirname(__file__), 'routers/openapi_doc/intro_openapi.md'), 'r', encoding='utf-8')
     openapi_schema = get_openapi(
         title="BOAVIZTAPI - DEMO",
         version=__version__,
