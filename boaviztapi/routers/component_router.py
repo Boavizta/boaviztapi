@@ -174,7 +174,6 @@ async def component_impact_bottom_up(component: Component,
                                      verbose: bool, allocation: Allocation, criteria=config["default_criteria"]) -> dict:
 
     impacts = bottom_up(model=component, allocation=allocation, selected_criteria=criteria)
-
     if verbose:
         return {
             "impacts": impacts,

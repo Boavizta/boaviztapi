@@ -1,9 +1,9 @@
 import os
-from typing import Tuple, Optional
+from typing import Tuple
 
-import numpy as np
 import pandas as pd
 
+from thefuzz import fuzz
 import boaviztapi.utils.roundit as rd
 from boaviztapi import config, data_dir
 from boaviztapi.model import ComputedImpacts
@@ -16,13 +16,23 @@ from boaviztapi.service.factor_provider import get_impact_factor
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
 
 _cpu_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs_final_techpowerup.csv'))
+_family_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_manufacture.csv'))
 
-
-def attributes_from_cpu_name(cpu_name: str) -> Tuple[str, str, int, int, int]: 
+def attributes_from_cpu_name(cpu_name: str) -> Tuple[str, str, int, int, float]:
+    code_name, tdp, cores, die_size = None, None, None, None
     df = _cpu_df.copy()
-    df["FuzzNF"] = df.apply(lambda x: fuzz.ratio(f'{x["Name"]}', cpu_name), axis=1)
+    df["FuzzNF"] = df.apply(lambda x: fuzz.ratio(f'{x["name"]} {x["frequency"]}', cpu_name), axis=1)
     df = df.loc[df['FuzzNF'].idxmax()]
-    return df.name, df.code_name, df.tdp, df.cores, df.total_die_size
+    if pd.notna(df.code_name):
+        code_name = df.code_name
+    if pd.notna(df.tdp):
+        tdp = df.tdp.item()
+    if pd.notna(df.cores):
+        cores = df.cores.item()
+    if pd.notna(df.total_die_size):
+        die_size = df.total_die_size.item()
+
+    return df["name"], code_name, tdp, cores, die_size
 
 class ComponentCPU(Component):
     NAME = "CPU"
@@ -42,21 +52,19 @@ class ComponentCPU(Component):
             min=get_arch_value(archetype, 'die_size_per_core', 'min'),
             max=get_arch_value(archetype, 'die_size_per_core', 'max')
         )
-        self.total_die_size = Boattribute(
+        self.die_size = Boattribute(
             complete_function=self._complete_from_name,
             unit="mm2",
-            default=get_arch_value(archetype, 'total_die_size', 'default'),
-            min=get_arch_value(archetype, 'total_die_size', 'min'),
-            max=get_arch_value(archetype, 'total_die_size', 'max')
+            default=get_arch_value(archetype, 'die_size', 'default'),
+            min=get_arch_value(archetype, 'die_size', 'min'),
+            max=get_arch_value(archetype, 'die_size', 'max')
         )
         self.model_range = Boattribute(
-            complete_function=self._complete_from_name,
             default=get_arch_value(archetype, 'model_range', 'default'),
             min=get_arch_value(archetype, 'model_range', 'min'),
             max=get_arch_value(archetype, 'model_range', 'max')
         )
         self.manufacturer = Boattribute(
-            complete_function=self._complete_from_name,
             default=get_arch_value(archetype, 'manufacturer', 'default'),
             min=get_arch_value(archetype, 'manufacturer', 'min'),
             max=get_arch_value(archetype, 'manufacturer', 'max')
@@ -166,11 +174,12 @@ class ComponentCPU(Component):
     # COMPLETION
     def _complete_die_size_per_core(self):
 
-        if self.total_die_size.is_set():
-            self.die_size_per_core.set_completed(value=float(self.total_die_size/self.core_units), source="total_die_size/core_units")
+        # If we can have a die_size and core_units, we can compute the die_size_per_core
+        if self.die_size.has_value() and self.core_units.has_value():
+            self.die_size_per_core.set_completed(value=float(self.die_size.value/self.core_units.value), source="die_size/core_units")
             return None
 
-        sub = _cpu_df.copy()
+        sub = _family_df.copy()
         # If we don't have a family, we use the die_size_per_core from the archetype
         if self.die_size_per_core.has_value() and not self.family.has_value():
             return None
@@ -223,20 +232,26 @@ class ComponentCPU(Component):
 
     def _complete_from_name(self):
         if self.name.has_value():
-            name, family, tdp, cores, total_die_size = attributes_from_cpu_name(self.name.value)
-            name_min, family_min, tdp_min, cores_min, total_die_size_min = attributes_from_cpu_name(self.name.min)
-            name_max, family_max, tdp_max, cores_max, total_die_size_max = attributes_from_cpu_name(self.name.max)
+            compute_min_max = False
+            if self.name.min != self.name.value or self.name.max != self.name.value:
+                compute_min_max = True
+
+            name, family, tdp, cores, die_size = attributes_from_cpu_name(self.name.value)
+
+            if compute_min_max:
+                name_min, family_min, tdp_min, cores_min, die_size_min = attributes_from_cpu_name(self.name.min)
+                name_max, family_max, tdp_max, cores_max, die_size_max = attributes_from_cpu_name(self.name.max)
+            else:
+                name_min, family_min, tdp_min, cores_min, die_size_min = name, family, tdp, cores, die_size
+                name_max, family_max, tdp_max, cores_max, die_size_max = name, family, tdp, cores, die_size
 
             if name is not None:
-                self.name.set_completed(name, min=name_min, max=name_max, source="from name")
+                self.name.set_completed(name, min=name_min, max=name_max, source="fuzzy match")
             if family is not None:
                 self.family.set_completed(family, min=family_min, max=family_max, source="from name")
             if tdp is not None:
                 self.tdp.set_completed(tdp, min=tdp_min, max=tdp_max, source="from name")
             if cores is not None:
                 self.core_units.set_completed(cores, min=cores_min, max=cores_max, source="from name")
-            if total_die_size is not None:
-                self.total_die_size.set_completed(total_die_size, min=total_die_size_min, max=total_die_size_max, source="from name")
-
-
-
+            if die_size is not None:
+                self.die_size.set_completed(die_size, min=die_size_min, max=die_size_max, source="from name")

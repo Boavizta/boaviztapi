@@ -1,0 +1,1202 @@
+name,code_name,frequency,tdp,cores,total_die_size
+Intel Core i5-3610ME,Ivy Bridge,2.7 GHz,35,2,118.0
+Intel Core i5-4200U,Haswell,1600 MHz,15,2,118.0
+Intel Core i5-4200Y,Haswell,1400 MHz,12,2,118.0
+Intel Core i5-4210U,Haswell,1700 MHz,15,2,118.0
+Intel Core i5-4250U,Haswell,1300 MHz,15,2,118.0
+Intel Core i5-4258U,Haswell,2.4 GHz,28,2,118.0
+Intel Core i5-4288U,Haswell,2.6 GHz,28,2,118.0
+Intel Core i5-4300M,Haswell,2.6 GHz,37,2,118.0
+Intel Core i5-430M,Arrandale,2.267 GHz,35,2,81.0
+Intel Core i5-4330M,Haswell,2.8 GHz,37,2,118.0
+Intel Core i5-4350U,Haswell,1400 MHz,15,2,118.0
+Intel Core i5-4430,Haswell,3 GHz,84,4,177.0
+Intel Core i5-4430S,Haswell,2.7 GHz,65,4,177.0
+Intel Core i5-4440,Haswell,3.1 GHz,84,4,177.0
+Intel Core i5-4440S,Haswell,2.8 GHz,65,4,177.0
+Intel Core i5-450M,Arrandale,2.4 GHz,35,2,81.0
+Intel Core i5-4570,Haswell,3.2 GHz,84,4,177.0
+Intel Core i5-4570R,Haswell,2.7 GHz,65,4,177.0
+Intel Core i5-4570S,Haswell,2.9 GHz,65,4,177.0
+Intel Core i5-4570T,Haswell,2.9 GHz,35,2,177.0
+Intel Core i5-4570TE,Haswell,2.7 GHz,35,2,177.0
+Intel Core i5-4590,Haswell,3.3 GHz,84,4,177.0
+Intel Core i5-4590S,Haswell,2.9 GHz,65,4,177.0
+Intel Core i5-460M,Arrandale,2.534 GHz,35,2,81.0
+Intel Core i5-4670,Haswell,3.4 GHz,84,4,177.0
+Intel Core i5-4670K,Haswell,3.4 GHz,84,4,177.0
+Intel Core i5-4670R,Haswell,3 GHz,65,4,177.0
+Intel Core i5-4670S,Haswell,3.1 GHz,65,4,177.0
+Intel Core i5-4670T,Haswell,2.3 GHz,45,4,177.0
+Intel Core i5-4690,Haswell,3.4 GHz,84,4,177.0
+Intel Core i5-4690K,Haswell,3.5 GHz,88,4,177.0
+Intel Core i5-480M,Arrandale,2.667 GHz,35,2,81.0
+Intel Core i5-5200U,Broadwell-U,2.2 GHz,15,2,82.0
+Intel Core i5-5250U,Broadwell-U,1600 MHz,15,2,133.0
+Intel Core i5-5257U,Broadwell-U,2.7 GHz,28,2,133.0
+Intel Core i5-5287U,Broadwell-U,2.9 GHz,28,2,133.0
+Intel Core i5-5300U,Broadwell-U,2.3 GHz,15,2,82.0
+Intel Core i5-5350H,Broadwell-H,3.1 GHz,47,2,182.0
+Intel Core i5-5350U,Broadwell-U,1800 MHz,15,2,133.0
+Intel Core i5-540M,Arrandale,2.533 GHz,35,2,81.0
+Intel Core i5-5575R,Broadwell,2.8 GHz,65,4,182.0
+Intel Core i5-560M,Arrandale,2.667 GHz,35,2,81.0
+Intel Core i5-5675C,Broadwell,3.1 GHz,65,4,182.0
+Intel Core i5-5675R,Broadwell,3.1 GHz,65,4,182.0
+Intel Core i5-580M,Arrandale,2.667 GHz,35,2,81.0
+Intel Core i5-6350HQ,Skylake-H,2.3 GHz,45,4,
+Intel Core i5-6400,Skylake,2.7 GHz,65,4,177.0
+Intel Core i5-650,Clarkdale,3.2 GHz,73,2,81.0
+Intel Core i5-6500,Skylake,3.2 GHz,65,4,177.0
+Intel Core i5-655K,Clarkdale,3.2 GHz,73,2,81.0
+Intel Core i5-660,Clarkdale,3.333 GHz,73,2,81.0
+Intel Core i5-6600,Skylake,3.3 GHz,65,4,177.0
+Intel Core i5-6600K,Skylake,3.5 GHz,95,4,
+Intel Core i5-661,Clarkdale,3.333 GHz,87,2,81.0
+Intel Core i5-670,Clarkdale,3.466 GHz,73,2,81.0
+Intel Core i5-680,Clarkdale,3.6 GHz,73,2,81.0
+Intel Core i5-7300HQ,Kaby Lake-H,2.5 GHz,45,4,126.0
+Intel Core i5-7400,Kaby Lake,3 GHz,65,4,
+Intel Core i5-7400T,Kaby Lake,2.4 GHz,35,4,
+Intel Core i5-7440HQ,Kaby Lake-H,2.8 GHz,45,4,126.0
+Intel Core i5-750,Lynnfield,2.666 GHz,95,4,296.0
+Intel Core i5-7500,Kaby Lake,3.4 GHz,65,4,
+Intel Core i5-7500T,Kaby Lake,2.7 GHz,35,4,
+Intel Core i5-750s,Lynnfield,2.4 GHz,82,4,296.0
+Intel Core i5-760,Lynnfield,2.8 GHz,95,4,296.0
+Intel Core i5-7600,Kaby Lake,3.5 GHz,65,4,
+Intel Core i5-7600K,Kaby Lake,3.8 GHz,91,4,
+Intel Core i5-7600T,Kaby Lake,2.8 GHz,35,4,
+Intel Core i5-7640X,Kaby Lake-X,3.9 GHz,112,4,
+Intel Core i5-8250U,Kaby Lake-R,1600 MHz,15,4,123.0
+Intel Core i5-8259U,Coffee Lake-U,2.3 GHz,28,4,123.0
+Intel Core i5-8265U,Whiskey Lake-U,1600 MHz,28,4,123.0
+Intel Core i5-8269U,Kaby Lake-R,2.6 GHz,28,4,123.0
+Intel Core i5-8300H,Coffee Lake-H,2.3 GHz,45,4,126.0
+Intel Core i5-8305G,Kaby Lake G,2.8 GHz,65,4,
+Intel Core i5-8350U,Kaby Lake-R,1700 MHz,15,4,123.0
+Intel Core i5-8400,Coffee Lake,2.8 GHz,65,6,
+Intel Core i5-8400H,Coffee Lake-H,2.5 GHz,45,4,126.0
+Intel Core i5-8400T,Coffee Lake,1700 MHz,35,6,
+Intel Core i5-8420,Coffee Lake,2.9 GHz,65,6,
+Intel Core i5-8420T,Coffee Lake,1800 MHz,35,6,
+Intel Core i5-8500,Coffee Lake,3 GHz,65,6,
+Intel Core i5-8500B,Coffee Lake,3 GHz,65,6,154.0
+Intel Core i5-8500T,Coffee Lake,2.1 GHz,35,6,
+Intel Core i5-8550,Coffee Lake,3 GHz,65,6,
+Intel Core i5-8600,Coffee Lake,3.1 GHz,65,6,
+Intel Core i5-8600K,Coffee Lake,3.6 GHz,95,6,
+Intel Core i5-8600T,Coffee Lake,2.3 GHz,35,6,
+Intel Core i5-8650,Coffee Lake,3.1 GHz,65,6,
+Intel Core i5-8650K,Coffee Lake,3.7 GHz,95,6,
+Intel Core i5-9400,Coffee Lake,2.9 GHz,65,6,
+Intel Core i5-9400F,Coffee Lake,2.9 GHz,65,6,
+Intel Core i5-9400T,Coffee Lake,1800 MHz,35,6,
+Intel Core i5-9500,Coffee Lake,3 GHz,65,6,
+Intel Core i5-9500F,Coffee Lake,3 GHz,65,6,
+Intel Core i5-9600,Coffee Lake,3.1 GHz,65,6,
+Intel Core i5-9600K,Coffee Lake,3.7 GHz,95,6,
+Intel Core i5-9600KF,Coffee Lake,3.7 GHz,95,6,
+Intel Core i7-10510U,Comet Lake-U,1800 MHz,25,4,
+Intel Core i7-10510Y,Comet Lake-Y,1200 MHz,9,4,
+Intel Core i7-1060G7,Ice Lake-Y,1000 MHz,9,4,123.0
+Intel Core i7-10610U,Comet Lake-U,1800 MHz,25,4,
+Intel Core i7-1065G7,Ice Lake-U,1300 MHz,15,4,123.0
+Intel Core i7-1068NG7,Ice Lake-U,2.3 GHz,28,4,123.0
+Intel Core i7-10700,Comet Lake,2.9 GHz,65,8,
+Intel Core i7-10700F,Comet Lake,2.9 GHz,65,8,
+Intel Core i7-10700K,Comet Lake,3.8 GHz,125,8,
+Intel Core i7-10700KF,Comet Lake,3.8 GHz,125,8,
+Intel Core i7-10710U,Comet Lake-U,1100 MHz,25,6,
+Intel Core i7-10750H,Comet Lake-H,2.6 GHz,45,6,
+Intel Core i7-10810U,Comet Lake-U,1100 MHz,25,6,
+Intel Core i7-10850H,Comet Lake-H,2.7 GHz,45,6,
+Intel Core i7-10870H,Comet Lake-H,2.2 GHz,45,8,
+Intel Core i7-10875H,Comet Lake-H,2.3 GHz,45,8,885.0
+Intel Core i7-11370H,Tiger Lake-H,3 GHz,28,4,146.0
+Intel Core i7-11375H,Tiger Lake-H,3 GHz,28,4,146.0
+Intel Core i7-11390H,Tiger Lake-H,2.9 GHz,28,4,146.0
+Intel Core i7-11600H,Tiger Lake-H,2.5 GHz,35,6,190.0
+Intel Core i7-1160G7,Tiger Lake-U,1200 MHz,15,4,
+Intel Core i7-1165G7,Tiger Lake-U,2.8 GHz,28,4,
+Intel Core i7-11700,Rocket Lake,2.5 GHz,65,8,276.0
+Intel Core i7-11700F,Rocket Lake,2.5 GHz,65,8,276.0
+Intel Core i7-11700K,Rocket Lake,3.6 GHz,125,8,
+Intel Core i7-11700KF,Rocket Lake,3.6 GHz,125,8,276.0
+Intel Core i7-11700T,Rocket Lake,1400 MHz,35,8,276.0
+Intel Core i7-11800H,Tiger Lake-H,1900 MHz,35,8,190.0
+Intel Core i7-11850H,Tiger Lake-H,2.1 GHz,35,8,190.0
+Intel Core i7-1185G7,Tiger Lake-U,3 GHz,28,4,
+Intel Core i7-1195G7,Tiger Lake-U,2.9 GHz,28,4,146.0
+Intel Core i7-1250U,Alder Lake-U,1100 MHz,9,10,
+Intel Core i7-1255U,Alder Lake-U,1700 MHz,15,10,
+Intel Core i7-1260P,Alder Lake-P,2.1 GHz,28,12,217.0
+Intel Core i7-1260U,Alder Lake-U,1100 MHz,9,10,
+Intel Core i7-12650H,Alder Lake-H,2.3 GHz,45,10,217.0
+Intel Core i7-12650HX,Alder Lake-HX,2000 MHz,55,14,215.0
+Intel Core i7-1265U,Alder Lake-U,1800 MHz,15,10,
+Intel Core i7-12700,Alder Lake-S,2.1 GHz,65,12,215.0
+Intel Core i7-12700E,Alder Lake-S,2.1 GHz,65,12,215.0
+Intel Core i7-12700F,Alder Lake-S,2.1 GHz,65,12,215.0
+Intel Core i7-12700H,Alder Lake-H,2.3 GHz,45,14,217.0
+Intel Core i7-12700K,Alder Lake-S,3.6 GHz,125,12,215.0
+Intel Core i7-12700KF,Alder Lake-S,3.6 GHz,125,12,215.0
+Intel Core i7-12700T,Alder Lake-S,1400 MHz,35,12,215.0
+Intel Core i7-12700TE,Alder Lake-S,1400 MHz,35,12,215.0
+Intel Core i7-1270P,Alder Lake-P,2.2 GHz,28,12,217.0
+Intel Core i7-12800H,Alder Lake-H,2.4 GHz,45,14,217.0
+Intel Core i7-12800HE,Alder Lake-H,2.4 GHz,45,14,217.0
+Intel Core i7-12800HX,Alder Lake-HX,2000 MHz,55,16,215.0
+Intel Core i7-1280P,Alder Lake-P,1800 MHz,28,14,217.0
+Intel Core i7-12850HX,Alder Lake-HX,2.1 GHz,55,16,215.0
+Intel Core i7-1355U,Raptor Lake-U,1700 MHz,15,10,
+Intel Core i7-1360P,Raptor Lake-P,2.2 GHz,28,12,
+Intel Core i7-13620H,Raptor Lake-H,2.4 GHz,45,10,
+Intel Core i7-13650HX,Raptor Lake-HX,2.6 GHz,55,14,257.0
+Intel Core i7-1365U,Raptor Lake-U,1800 MHz,15,10,
+Intel Core i7-1365UE,Raptor Lake-U,1700 MHz,15,10,
+Intel Core i7-13700,Raptor Lake-S,2.1 GHz,65,16,257.0
+Intel Core i7-13700E,Raptor Lake-S,1900 MHz,65,16,257.0
+Intel Core i7-13700F,Raptor Lake-S,2.1 GHz,65,16,257.0
+Intel Core i7-13700H,Raptor Lake-H,2.4 GHz,45,14,
+Intel Core i7-13700HX,Raptor Lake-HX,2.1 GHz,55,16,257.0
+Intel Core i7-13700K,Raptor Lake-S,3.4 GHz,125,16,257.0
+Intel Core i7-13700KF,Raptor Lake-S,3.4 GHz,125,16,257.0
+Intel Core i7-13700T,Raptor Lake-S,1400 MHz,35,16,257.0
+Intel Core i7-13700TE,Raptor Lake-S,1100 MHz,35,16,257.0
+Intel Core i7-13705H,Raptor Lake-H,2.4 GHz,45,14,257.0
+Intel Core i7-1370P,Raptor Lake-P,1900 MHz,28,14,217.0
+Intel Core i7-13790F,Raptor Lake-S,2.1 GHz,65,16,257.0
+Intel Core i7-13800H,Raptor Lake-H,2.5 GHz,45,14,257.0
+Intel Core i7-13850HX,Raptor Lake-HX,2.1 GHz,55,20,257.0
+Intel Core i7-2670QM,Sandy Bridge,2.2 GHz,45,4,216.0
+Intel Core i7-2675QM,Sandy Bridge,2.2 GHz,45,4,216.0
+Intel Core i7-2700K,Sandy Bridge,3.5 GHz,95,4,216.0
+Intel Core i7-2760QM,Sandy Bridge,2.4 GHz,45,4,216.0
+Intel Core i7-2760QM,Sandy Bridge,2.4 GHz,45,4,216.0
+Intel Core i7-2860QM,Sandy Bridge,2.5 GHz,45,4,216.0
+Intel Core i7-2860QM,Sandy Bridge,2.5 GHz,45,4,216.0
+Intel Core i7-2960XM,Sandy Bridge,2.7 GHz,55,4,216.0
+Intel Core i7-3517U,Ivy Bridge,1900 MHz,17,2,118.0
+Intel Core i7-3517UE,Ivy Bridge,1700 MHz,17,2,118.0
+Intel Core i7-3520M,Ivy Bridge,2.9 GHz,35,2,118.0
+Intel Core i7-3520M,Ivy Bridge,2.9 GHz,35,2,118.0
+Intel Core i7-3525M,Ivy Bridge,2.9 GHz,35,2,160.0
+Intel Core i7-3537U,Ivy Bridge,2000 MHz,17,2,118.0
+Intel Core i7-3540M,Ivy Bridge,3 GHz,35,2,118.0
+Intel Core i7-3540M,Ivy Bridge,3 GHz,35,2,118.0
+Intel Core i7-3555LE,Ivy Bridge,2.5 GHz,25,2,118.0
+Intel Core i7-3630QM,Ivy Bridge,2.4 GHz,45,4,160.0
+Intel Core i7-3632QM,Ivy Bridge,2.2 GHz,35,4,160.0
+Intel Core i7-3632QM,Ivy Bridge,2.2 GHz,35,4,160.0
+Intel Core i7-3635QM,Ivy Bridge,2.4 GHz,45,4,160.0
+Intel Core i7-3667U,Ivy Bridge,2000 MHz,17,2,118.0
+Intel Core i7-3687U,Ivy Bridge,2.1 GHz,17,2,118.0
+Intel Core i7-3689Y,Ivy Bridge,1500 MHz,13,2,118.0
+Intel Core i7-3740QM,Ivy Bridge,2.7 GHz,45,4,160.0
+Intel Core i7-3740QM,Ivy Bridge,2.7 GHz,45,4,160.0
+Intel Core i7-3820,Sandy Bridge-E,3.6 GHz,130,4,294.0
+Intel Core i7-3840QM,Ivy Bridge,2.8 GHz,45,4,160.0
+Intel Core i7-3840QM,Ivy Bridge,2.8 GHz,45,4,160.0
+Intel Core i7-3910K,Sandy Bridge-E,3 GHz,130,6,435.0
+Intel Core i7-3930K,Sandy Bridge-E,3.2 GHz,130,6,435.0
+Intel Core i7-3940XM,Ivy Bridge,3 GHz,55,4,160.0
+Intel Core i7-3960X,Sandy Bridge-E,3.3 GHz,130,6,435.0
+Intel Core i7-3970X,Sandy Bridge-E,3.5 GHz,150,6,435.0
+Intel Core i7-4500U,Haswell-ULT,1800 MHz,15,2,118.0
+Intel Core i7-4550U,Haswell-ULT,1500 MHz,15,2,118.0
+Intel Core i7-4558U,Haswell-ULT,2.8 GHz,28,2,118.0
+Intel Core i7-4600M,Haswell,2.9 GHz,37,2,131.0
+Intel Core i7-4600U,Haswell-ULT,2.1 GHz,15,2,118.0
+Intel Core i7-4610M,Haswell,3 GHz,37,2,131.0
+Intel Core i7-4650U,Haswell-ULT,1700 MHz,15,2,118.0
+Intel Core i7-4700EQ,Haswell,2.4 GHz,47,4,177.0
+Intel Core i7-4700HQ,Crystalwell,2.4 GHz,47,4,264.0
+Intel Core i7-4700MQ,Haswell,2.4 GHz,47,4,177.0
+Intel Core i7-4702HQ,Crystalwell,2.2 GHz,37,4,264.0
+Intel Core i7-4702MQ,Haswell,2.2 GHz,37,4,177.0
+Intel Core i7-4710HQ,Crystalwell,2.5 GHz,47,4,264.0
+Intel Core i7-4712HQ,Haswell,2.3 GHz,37,4,177.0
+Intel Core i7-4750HQ,Crystalwell,2000 MHz,47,4,264.0
+Intel Core i7-4760HQ,Crystalwell,2.1 GHz,47,4,264.0
+Intel Core i7-4765T,Haswell,2000 MHz,35,4,177.0
+Intel Core i7-4770,Haswell,3.4 GHz,84,4,177.0
+Intel Core i7-4770HQ,Crystalwell,2.2 GHz,47,4,264.0
+Intel Core i7-4770K,Haswell,3.5 GHz,84,4,177.0
+Intel Core i7-4770R,Haswell,3.2 GHz,65,4,260.0
+Intel Core i7-4770S,Haswell,3.1 GHz,65,4,177.0
+Intel Core i7-4770T,Haswell,2.5 GHz,45,4,177.0
+Intel Core i7-4770TE,Haswell,2.3 GHz,45,4,177.0
+Intel Core i7-4771,Haswell,3.5 GHz,84,4,177.0
+Intel Core i7-4785T,Haswell,2.2 GHz,35,4,177.0
+Intel Core i7-4790,Haswell,3.6 GHz,84,4,177.0
+Intel Core i7-4790K,Haswell,4 GHz,88,4,177.0
+Intel Core i7-4790S,Haswell,3.2 GHz,65,4,177.0
+Intel Core i7-4800MQ,Haswell,2.7 GHz,47,4,177.0
+Intel Core i7-4810MQ,Haswell,2.8 GHz,47,4,177.0
+Intel Core i7-4820K,Ivy Bridge-E,3.7 GHz,130,4,257.0
+Intel Core i7-4850EQ,Crystalwell,1600 MHz,47,4,264.0
+Intel Core i7-4850HQ,Crystalwell,2.3 GHz,47,4,264.0
+Intel Core i7-4860EQ,Crystalwell,1800 MHz,47,4,264.0
+Intel Core i7-4860HQ,Crystalwell,2.4 GHz,47,4,264.0
+Intel Core i7-4870HQ,Crystalwell,2.5 GHz,47,4,264.0
+Intel Core i7-4900MQ,Haswell,2.8 GHz,47,4,177.0
+Intel Core i7-4910MQ,Haswell,2.9 GHz,47,4,177.0
+Intel Core i7-4930K,Ivy Bridge-E,3.4 GHz,130,6,257.0
+Intel Core i7-4930MX,Haswell,3 GHz,57,4,177.0
+Intel Core i7-4940MX,Haswell,3.1 GHz,57,4,177.0
+Intel Core i7-4950HQ,Crystalwell,2.4 GHz,47,4,264.0
+Intel Core i7-4960HQ,Crystalwell,2.6 GHz,47,4,264.0
+Intel Core i7-4960X,Ivy Bridge-E,3.6 GHz,130,6,257.0
+Intel Core i7-4980HQ,Crystalwell,2.8 GHz,47,4,264.0
+Intel Core i7-5500U,Broadwell-U,2.4 GHz,15,2,82.0
+Intel Core i7-5550U,Broadwell-U,2000 MHz,15,2,133.0
+Intel Core i7-5557U,Broadwell-U,3.1 GHz,28,2,133.0
+Intel Core i7-5600U,Broadwell-U,2.6 GHz,15,2,82.0
+Intel Core i7-5650U,Broadwell-U,2.2 GHz,15,2,133.0
+Intel Core i7-5700HQ,Broadwell-H,2.7 GHz,47,4,182.0
+Intel Core i7-5750HQ,Broadwell-H,2.5 GHz,47,4,182.0
+Intel Core i7-5775C,Broadwell,3.3 GHz,65,4,182.0
+Intel Core i7-5775R,Broadwell,3.3 GHz,65,4,182.0
+Intel Core i7-5820K,Haswell-E,3.3 GHz,140,6,356.0
+Intel Core i7-5850HQ,Broadwell-H,2.7 GHz,47,4,182.0
+Intel Core i7-5930K,Haswell-E,3.5 GHz,140,6,356.0
+Intel Core i7-5950HQ,Broadwell-H,2.9 GHz,47,4,182.0
+Intel Core i7-5960X,Haswell-E,3 GHz,140,8,356.0
+Intel Core i7-620M,Arrandale,2.677 GHz,35,2,81.0
+Intel Core i7-620M,Arrandale,2.677 GHz,35,2,81.0
+Intel Core i7-640M,Arrandale,2.8 GHz,35,2,81.0
+Intel Core i7-640M,Arrandale,2.8 GHz,35,2,81.0
+Intel Core i7-6700,Skylake,3.4 GHz,65,4,
+Intel Core i7-6700K,Skylake,4 GHz,95,4,
+Intel Core i7-6700T,Skylake,2.8 GHz,35,4,
+Intel Core i7-6700TE,Skylake,2.4 GHz,35,4,
+Intel Core i7-6800K,Broadwell-E,3.4 GHz,140,6,246.0
+Intel Core i7-6850K,Broadwell-E,3.6 GHz,140,6,246.0
+Intel Core i7-6900K,Broadwell-E,3.2 GHz,140,8,246.0
+Intel Core i7-6950X,Broadwell-E,3 GHz,140,10,246.0
+Intel Core i7-7700,Kaby Lake,3.6 GHz,65,4,
+Intel Core i7-7700HQ,Kaby Lake-H,2.8 GHz,45,4,126.0
+Intel Core i7-7700K,Kaby Lake,4.2 GHz,91,4,
+Intel Core i7-7700T,Kaby Lake,2.9 GHz,35,4,
+Intel Core i7-7740X,Kaby Lake-X,4.3 GHz,112,4,
+Intel Core i7-7800X,Skylake-X,3.5 GHz,140,6,
+Intel Core i7-7820HK,Kaby Lake-H,2.9 GHz,45,4,126.0
+Intel Core i7-7820HQ,Kaby Lake-H,2.9 GHz,45,4,126.0
+Intel Core i7-7820X,Skylake-X,3.6 GHz,140,8,
+Intel Core i7-7920HQ,Kaby Lake-H,3.1 GHz,45,4,126.0
+Intel Core i7-8086K,Coffee Lake,4 GHz,95,6,
+Intel Core i7-8550U,Kaby Lake-R,1800 MHz,15,4,123.0
+Intel Core i7-8559U,Kaby Lake-R,2.7 GHz,28,4,123.0
+Intel Core i7-8565U,Whiskey Lake-U,1800 MHz,28,4,123.0
+Intel Core i7-860,Lynnfield,2.8 GHz,95,4,296.0
+Intel Core i7-860S,Lynnfield,2.533 GHz,82,4,296.0
+Intel Core i7-8650U,Kaby Lake-R,1900 MHz,15,4,123.0
+Intel Core i7-8670,Coffee Lake,3.1 GHz,65,6,
+Intel Core i7-8670T,Coffee Lake,2.3 GHz,35,6,
+Intel Core i7-870,Lynnfield,2.933 GHz,95,4,296.0
+Intel Core i7-8700,Coffee Lake,3.2 GHz,65,6,154.0
+Intel Core i7-8700B,Coffee Lake,3.2 GHz,65,6,154.0
+Intel Core i7-8700K,Coffee Lake,3.7 GHz,95,6,154.0
+Intel Core i7-8700T,Coffee Lake,2.4 GHz,35,6,154.0
+Intel Core i7-8705G,Kaby Lake G,3.1 GHz,65,4,125.0
+Intel Core i7-8706G,Kaby Lake G,3.1 GHz,65,4,
+Intel Core i7-8709G,Kaby Lake G,3.1 GHz,65,4,
+Intel Core i7-870S,Lynnfield,2.666 GHz,82,4,296.0
+Intel Core i7-8750H,Coffee Lake-H,2.2 GHz,45,6,149.0
+Intel Core i7-875K,Lynnfield,2.933 GHz,95,4,296.0
+Intel Core i7-880,Lynnfield,3.066 GHz,95,4,296.0
+Intel Core i7-8809G,Kaby Lake G,3.1 GHz,65,4,
+Intel Core i7-8850H,Coffee Lake-H,2.7 GHz,45,6,149.0
+Intel Core i7-920,Bloomfield,2.666 GHz,130,4,263.0
+Intel Core i7-930,Bloomfield,2.8 GHz,130,4,263.0
+Intel Core i7-940,Bloomfield,2.933 GHz,130,4,263.0
+Intel Core i7-950,Bloomfield,3.066 GHz,130,4,263.0
+Intel Core i7-960,Bloomfield,3.2 GHz,130,4,263.0
+Intel Core i7-965,Bloomfield,3.2 GHz,130,4,263.0
+Intel Core i7-970,Gulftown,3.2 GHz,130,6,239.0
+Intel Core i7-9700,Coffee Lake,3 GHz,65,8,540.0
+Intel Core i7-9700E,Coffee Lake,2.6 GHz,65,8,540.0
+Intel Core i7-9700F,Coffee Lake,3 GHz,65,8,540.0
+Intel Core i7-9700K,Coffee Lake,3.6 GHz,95,8,540.0
+Intel Core i7-9700KF,Coffee Lake,3.6 GHz,95,8,540.0
+Intel Core i7-9700T,Coffee Lake,2000 MHz,35,8,540.0
+Intel Core i7-975,Bloomfield,3.333 GHz,130,4,263.0
+Intel Core i7-9750H,Coffee Lake-HR,2.6 GHz,45,6,149.0
+Intel Core i7-9750HF,Coffee Lake-HR,2.6 GHz,45,6,149.0
+Intel Core i7-980,Gulftown,3.333 GHz,130,6,239.0
+Intel Core i7-9800X,Skylake-X,3.8 GHz,165,8,
+Intel Core i7-980X,Gulftown,3.333 GHz,130,6,239.0
+Intel Core i7-9850H,Coffee Lake-HR,2.6 GHz,45,6,149.0
+Intel Core i7-9850HE,Coffee Lake-HR,2.7 GHz,45,6,149.0
+Intel Core i7-9850HL,Coffee Lake-HR,1900 MHz,25,6,149.0
+Intel Core i7-990X,Gulftown,3.466 GHz,130,6,239.0
+Intel Core i9-10800F,Comet Lake,2.7 GHz,65,10,
+Intel Core i9-10850K,Comet Lake,3.6 GHz,125,10,206.0
+Intel Core i9-10885H,Comet Lake-H,2.4 GHz,45,8,206.0
+Intel Core i9-10900,Comet Lake,2.8 GHz,65,10,
+Intel Core i9-10900F,Comet Lake,2.8 GHz,65,10,
+Intel Core i9-10900K,Comet Lake,3.7 GHz,125,10,206.0
+Intel Core i9-10900KF,Comet Lake,3.7 GHz,125,10,
+Intel Core i9-10900X,Cascade Lake-X,3.7 GHz,165,10,
+Intel Core i9-10920X,Cascade Lake-X,3.5 GHz,165,12,
+Intel Core i9-10940X,Cascade Lake-X,3.3 GHz,165,14,
+Intel Core i9-10980HK,Comet Lake-H,2.4 GHz,45,8,
+Intel Core i9-10980XE,Cascade Lake-X,3 GHz,165,18,
+Intel Core i9-10990XE,Cascade Lake-X,4 GHz,380,22,
+Intel Core i9-11900,Rocket Lake,2.5 GHz,65,8,276.0
+Intel Core i9-11900F,Rocket Lake,2.5 GHz,65,8,276.0
+Intel Core i9-11900H,Tiger Lake-H,2.1 GHz,35,8,190.0
+Intel Core i9-11900K,Rocket Lake,3.5 GHz,125,8,276.0
+Intel Core i9-11900KB,Tiger Lake-H,3.3 GHz,65,8,190.0
+Intel Core i9-11900KF,Rocket Lake,3.5 GHz,125,8,276.0
+Intel Core i9-11900T,Rocket Lake,1500 MHz,35,8,276.0
+Intel Core i9-11950H,Tiger Lake-H,2.1 GHz,35,8,190.0
+Intel Core i9-11980HK,Tiger Lake-H,2.6 GHz,45,8,190.0
+Intel Core i9-12900,Alder Lake-S,2.4 GHz,65,16,215.0
+Intel Core i9-12900E,Alder Lake-S,2.3 GHz,65,16,215.0
+Intel Core i9-12900F,Alder Lake-S,2.4 GHz,65,16,215.0
+Intel Core i9-12900H,Alder Lake-H,2.5 GHz,45,14,217.0
+Intel Core i9-12900HK,Alder Lake-H,2.5 GHz,45,14,217.0
+Intel Core i9-12900HX,Alder Lake-HX,2.3 GHz,55,16,215.0
+Intel Core i9-12900K,Alder Lake-S,3.2 GHz,125,16,215.0
+Intel Core i9-12900KF,Alder Lake-S,3.2 GHz,125,16,215.0
+Intel Core i9-12900KS,Alder Lake-S,3.4 GHz,150,16,215.0
+Intel Core i9-12900T,Alder Lake-S,1400 MHz,35,16,215.0
+Intel Core i9-12900TE,Alder Lake-S,1100 MHz,35,16,215.0
+Intel Core i9-12950HX,Alder Lake-HX,2.3 GHz,55,16,215.0
+Intel Core i9-13900,Raptor Lake-S,2000 MHz,65,24,257.0
+Intel Core i9-13900E,Raptor Lake-S,1800 MHz,65,24,257.0
+Intel Core i9-13900F,Raptor Lake-S,2000 MHz,65,24,257.0
+Intel Core i9-13900H,Raptor Lake-H,2.6 GHz,45,14,257.0
+Intel Core i9-13900HK,Raptor Lake-H,2.6 GHz,45,14,257.0
+Intel Core i9-13900HX,Raptor Lake-HX,2.2 GHz,55,24,257.0
+Intel Core i9-13900K,Raptor Lake-S,3 GHz,125,24,257.0
+Intel Core i9-13900KF,Raptor Lake-S,3 GHz,125,24,257.0
+Intel Core i9-13900KS,Raptor Lake-S,3.2 GHz,150,24,257.0
+Intel Core i9-13900T,Raptor Lake-S,1100 MHz,35,24,257.0
+Intel Core i9-13900TE,Raptor Lake-S,1000 MHz,35,24,257.0
+Intel Core i9-13905H,Raptor Lake-H,2.6 GHz,45,14,257.0
+Intel Core i9-13950HX,Raptor Lake-HX,2.2 GHz,55,24,257.0
+Intel Core i9-13980HX,Raptor Lake-HX,2.2 GHz,55,24,257.0
+Intel Core i9-7900X,Skylake-X,3.3 GHz,140,10,
+Intel Core i9-7920X,Skylake-X,2.9 GHz,140,12,
+Intel Core i9-7940X,Skylake-X,3.1 GHz,165,14,
+Intel Core i9-7960X,Skylake-X,2.8 GHz,165,16,
+Intel Core i9-7980XE,Skylake-X,2.6 GHz,165,18,
+Intel Core i9-8950HK,Coffee Lake-H,2.9 GHz,95,6,149.0
+Intel Core i9-9820X,Skylake-X,3.3 GHz,165,10,
+Intel Core i9-9880H,Coffee Lake-HR,2.3 GHz,45,8,149.0
+Intel Core i9-9900,Coffee Lake-R,3.1 GHz,65,8,540.0
+Intel Core i9-9900K,Coffee Lake-R,3.6 GHz,95,8,540.0
+Intel Core i9-9900KF,Coffee Lake-R,3.6 GHz,95,8,540.0
+Intel Core i9-9900KS,Coffee Lake-R,4 GHz,127,8,180.0
+Intel Core i9-9900T,Coffee Lake-R,2.1 GHz,35,8,540.0
+Intel Core i9-9900X,Skylake-X,3.5 GHz,165,10,
+Intel Core i9-9920X,Skylake-X,3.5 GHz,165,12,
+Intel Core i9-9940X,Skylake-X,3.3 GHz,165,14,
+Intel Core i9-9960X,Skylake-X,3.1 GHz,165,16,
+Intel Core i9-9980HK,Coffee Lake-HR,2.4 GHz,45,8,149.0
+Intel Core i9-9980XE,Skylake-X,3 GHz,165,18,
+Intel Core i9-9990XE,Skylake-X,4 GHz,255,14,
+Intel Core m3-8114Y,Cannon Lake-Y,1500 MHz,5,2,3640.0
+Intel Mobile Pentium 4 2.40,Northwood,2.4 GHz,60,1,131.0
+Intel Mobile Pentium 4 2.66,Northwood,2.667 GHz,66,1,131.0
+Intel Mobile Pentium 4 2.80,Northwood,2.8 GHz,68,1,131.0
+Intel Mobile Pentium 4 3.06,Northwood,3.067 GHz,70,1,131.0
+Intel Mobile Pentium 4 HT 2.66,Northwood,2.667 GHz,66,1,131.0
+Intel Mobile Pentium 4 HT 2.80,Northwood,2.8 GHz,68,1,131.0
+Intel Mobile Pentium 4 HT 3.06,Northwood,3.067 GHz,70,1,131.0
+Intel Mobile Pentium 4 HT 3.20,Northwood,3.2 GHz,76,1,131.0
+Intel Mobile Pentium 4 HT 518,Prescott,2.8 GHz,88,1,112.0
+Intel Mobile Pentium 4 HT 532,Prescott,3.067 GHz,88,1,112.0
+Intel Mobile Pentium 4 HT 538,Prescott,3.2 GHz,88,1,112.0
+Intel Mobile Pentium 4 HT 548,Prescott,3.334 GHz,88,1,112.0
+Intel Mobile Pentium 4 HT 552,Prescott,3.467 GHz,88,1,112.0
+Intel Pentium 1403 V2,Ivy Bridge-EN,2.6 GHz,80,2,133.0
+Intel Pentium 1405 V2,Ivy Bridge-EN,1400 MHz,40,2,133.0
+Intel Pentium 2020M,Ivy Bridge,2.4 GHz,35,2,118.0
+Intel Pentium 2030M,Ivy Bridge,2.5 GHz,35,2,118.0
+Intel Pentium 2117U,Ivy Bridge,1800 MHz,17,2,118.0
+Intel Pentium 2117U,Ivy Bridge,1800 MHz,17,2,118.0
+Intel Pentium 2129Y,Ivy Bridge,1100 MHz,10,2,118.0
+Intel Pentium 350,Sandy Bridge,1200 MHz,15,2,131.0
+Intel Pentium 3550M,Haswell,2.3 GHz,37,2,118.0
+Intel Pentium 3556U,Haswell,1700 MHz,15,2,118.0
+Intel Pentium 3560Y,Haswell,1200 MHz,12,2,118.0
+Intel Pentium 3805U,Broadwell-U,1900 MHz,15,2,82.0
+Intel Pentium 3825U,Broadwell-U,1900 MHz,15,2,
+Intel Pentium 4 1.3,Willamette,1300 MHz,52,1,217.0
+Intel Pentium 4 1.4,Willamette,1400 MHz,55,1,217.0
+Intel Pentium 4 1.4,Willamette,1400 MHz,55,1,217.0
+Intel Pentium 4 1.5,Willamette,1500 MHz,58,1,217.0
+Intel Pentium 4 1.5,Willamette,1500 MHz,58,1,217.0
+Intel Pentium 4 1.6,Willamette,1600 MHz,61,1,217.0
+Intel Pentium 4 1.6,Willamette,1600 MHz,61,1,217.0
+Intel Pentium 4 1.7,Willamette,1700 MHz,64,1,217.0
+Intel Pentium 4 1.7,Willamette,1700 MHz,64,1,217.0
+Intel Pentium 4 1.8,Willamette,1800 MHz,67,1,217.0
+Intel Pentium 4 1.80,Willamette,1800 MHz,67,1,217.0
+Intel Pentium 4 1.8A,Willamette,1800 MHz,69,1,217.0
+Intel Pentium 4 1.9,Willamette,1900 MHz,69,1,217.0
+Intel Pentium 4 1.9,Willamette,1900 MHz,69,1,217.0
+Intel Pentium 4 2.0,Willamette,2000 MHz,72,1,217.0
+Intel Pentium 4 2.0,Northwood,2000 MHz,92,1,146.0
+Intel Pentium 4 2.0,Northwood,2000 MHz,110,1,146.0
+Intel Pentium 4 2.0,Willamette,2000 MHz,72,1,217.0
+Intel Pentium 4 2.2,Northwood,2.2 GHz,92,1,146.0
+Intel Pentium 4 2.26,Northwood,2.261 GHz,110,1,146.0
+Intel Pentium 4 2.4,Northwood,2.4 GHz,110,1,146.0
+Intel Pentium 4 2.4,Northwood,2.4 GHz,92,1,146.0
+Intel Pentium 4 2.40,Prescott,2.4 GHz,110,1,109.0
+Intel Pentium 4 2.53,Northwood,2.527 GHz,110,1,146.0
+Intel Pentium 4 2.60,Northwood,2.6 GHz,92,1,146.0
+Intel Pentium 4 2.66,Northwood,2.66 GHz,110,1,146.0
+Intel Pentium 4 2.80,Northwood,2.793 GHz,110,1,146.0
+Intel Pentium 4 505,Prescott,2.66 GHz,84,1,109.0
+Intel Pentium 4 505J,Prescott,2.66 GHz,84,1,109.0
+Intel Pentium 4 506,Prescott,2.66 GHz,84,1,109.0
+Intel Pentium 4 506,Prescott,2.66 GHz,84,1,109.0
+Intel Pentium 4 506,Prescott,2.66 GHz,84,1,109.0
+Intel Pentium 4 511,Prescott,2.8 GHz,84,1,109.0
+Intel Pentium 4 511,Prescott,2.8 GHz,84,1,109.0
+Intel Pentium 4 511,Prescott,2.8 GHz,84,1,109.0
+Intel Pentium 4 519,Prescott,3.06 GHz,84,1,109.0
+Intel Pentium 4 519K,Prescott,3.06 GHz,84,1,109.0
+Intel Pentium 4 519K,Prescott,3.06 GHz,84,1,109.0
+Intel Pentium 4 HT 2.40,Northwood,2.4 GHz,66,1,131.0
+Intel Pentium 4 HT 2.60,Northwood,2.6 GHz,69,1,131.0
+Intel Pentium 4 HT 2.80,Northwood,2.8 GHz,70,1,131.0
+Intel Pentium 4 HT 2.8E,Prescott,2.8 GHz,115,1,109.0
+Intel Pentium 4 HT 3.00,Northwood,3 GHz,82,1,131.0
+Intel Pentium 4 HT 3.06,Northwood,3.06 GHz,110,1,146.0
+Intel Pentium 4 HT 3.0E,Prescott,3 GHz,115,1,109.0
+Intel Pentium 4 HT 3.20,Northwood,3.2 GHz,82,1,131.0
+Intel Pentium 4 HT 3.2E,Prescott,3.2 GHz,115,1,109.0
+Intel Pentium 4 HT 3.40,Northwood,3.4 GHz,89,1,131.0
+Intel Pentium 4 HT 3.4E,Prescott,3.4 GHz,115,1,109.0
+Intel Pentium 4 HT 3.6E,Prescott,3.6 GHz,115,1,109.0
+Intel Pentium 4 HT 515,Prescott,2.933 GHz,84,1,109.0
+Intel Pentium 4 HT 515,Prescott,2.933 GHz,84,1,109.0
+Intel Pentium 4 HT 516,Prescott,2.933 GHz,84,1,109.0
+Intel Pentium 4 HT 516,Prescott,2.933 GHz,84,1,109.0
+Intel Pentium 4 HT 517,Prescott,2.933 GHz,84,1,109.0
+Intel Pentium 4 HT 517,Prescott,2.933 GHz,84,1,109.0
+Intel Pentium 4 HT 520,Prescott,2.933 GHz,84,1,109.0
+Intel Pentium 4 HT 520,Prescott,2.8 GHz,84,1,109.0
+Intel Pentium 4 HT 520,Prescott,2.8 GHz,84,1,109.0
+Intel Pentium 4 HT 520,Prescott,2.8 GHz,84,1,109.0
+Intel Pentium 4 HT 521,Prescott,2.8 GHz,84,1,109.0
+Intel Pentium 4 HT 524,Prescott,3.06 GHz,84,1,109.0
+Intel Pentium 4 HT 524,Prescott,3.06 GHz,84,1,109.0
+Intel Pentium 4 HT 530,Prescott,3 GHz,84,1,109.0
+Intel Pentium 4 HT 531,Prescott,3 GHz,84,1,109.0
+Intel Pentium 4 HT 540,Prescott,3.2 GHz,84,1,109.0
+Intel Pentium 4 HT 541,Prescott,3.2 GHz,84,1,109.0
+Intel Pentium 4 HT 550,Prescott,3.4 GHz,115,1,109.0
+Intel Pentium 4 HT 551,Prescott,3.4 GHz,115,1,109.0
+Intel Pentium 4 HT 560,Prescott,3.6 GHz,115,1,109.0
+Intel Pentium 4 HT 561,Prescott,3.6 GHz,115,1,109.0
+Intel Pentium 4 HT 570,Prescott,3.8 GHz,115,1,109.0
+Intel Pentium 4 HT 571,Prescott,3.8 GHz,115,1,109.0
+Intel Pentium 4 HT 620,Prescott,2.8 GHz,84,1,135.0
+Intel Pentium 4 HT 630,Prescott,3 GHz,84,1,109.0
+Intel Pentium 4 HT 631,Cedar Mill,3 GHz,86,1,81.0
+Intel Pentium 4 HT 640,Prescott,3.2 GHz,84,1,109.0
+Intel Pentium 4 HT 641,Cedar Mill,3.2 GHz,86,1,81.0
+Intel Pentium 4 HT 650,Prescott,3.4 GHz,84,1,109.0
+Intel Pentium 4 HT 651,Cedar Mill,3.4 GHz,86,1,81.0
+Intel Pentium 4 HT 660,Prescott,3.6 GHz,84,1,109.0
+Intel Pentium 4 HT 661,Cedar Mill,3.6 GHz,86,1,81.0
+Intel Pentium 4 HT 662,Prescott,3.6 GHz,84,1,109.0
+Intel Pentium 4 HT 670,Prescott,3.8 GHz,84,1,109.0
+Intel Pentium 4 HT 672,Prescott,3.8 GHz,84,1,109.0
+Intel Pentium 4 HT EE 3.73,Prescott,3.733 GHz,115,1,109.0
+Intel Pentium 4 HT Extreme Edition 3.20,Gallatin,3.2 GHz,92,1,269.0
+Intel Pentium 4 HT Extreme Edition 3.40,Gallatin,3.4 GHz,103,1,269.0
+Intel Pentium 4 HT Extreme Edition 3.40,Gallatin,3.4 GHz,103,1,269.0
+Intel Pentium 4 HT Extreme Edition 3.46,Gallatin,3.466 GHz,110,1,269.0
+Intel Pentium 4-M 1.40,Northwood,1400 MHz,21,1,131.0
+Intel Pentium 4-M 1.50,Northwood,1500 MHz,26,1,131.0
+Intel Pentium 4-M 1.60,Northwood,1600 MHz,30,1,131.0
+Intel Pentium 4-M 1.70,Northwood,1700 MHz,30,1,131.0
+Intel Pentium 4-M 1.80,Northwood,1800 MHz,30,1,131.0
+Intel Pentium 4-M 1.90,Northwood,1900 MHz,32,1,131.0
+Intel Pentium 4-M 2.00,Northwood,2000 MHz,32,1,131.0
+Intel Pentium 4-M 2.20,Northwood,2.2 GHz,35,1,131.0
+Intel Pentium 4-M 2.40,Northwood,2.4 GHz,35,1,131.0
+Intel Pentium 4-M 2.50,Northwood,2.5 GHz,35,1,131.0
+Intel Pentium 4-M 2.60,Northwood,2.6 GHz,35,1,131.0
+Intel Pentium 8500,Alder Lake-U,1000 MHz,9,5,
+Intel Pentium 8505,Alder Lake-U,1200 MHz,15,5,
+Intel Pentium 8505 (IPU),Alder Lake-U,1200 MHz,15,5,
+Intel Pentium 957,Sandy Bridge,1200 MHz,17,2,131.0
+Intel Pentium 967,Sandy Bridge,1300 MHz,17,2,131.0
+Intel Pentium 977,Sandy Bridge,1400 MHz,17,2,131.0
+Intel Pentium 987,Sandy Bridge,1500 MHz,17,2,131.0
+Intel Pentium 997,Sandy Bridge,1600 MHz,17,2,131.0
+Intel Pentium B915C,Sandy Bridge,1500 MHz,35,2,131.0
+Intel Pentium B940,Sandy Bridge,2000 MHz,35,2,131.0
+Intel Pentium B950,Sandy Bridge,2.1 GHz,35,2,131.0
+Intel Pentium B960,Sandy Bridge,2.2 GHz,35,2,131.0
+Intel Pentium B970,Sandy Bridge,2.3 GHz,35,2,131.0
+Intel Pentium B980,Sandy Bridge,2.4 GHz,35,2,131.0
+Intel Pentium D 820,Smithfield,2.8 GHz,130,2,206.0
+Intel Pentium D 820,Smithfield,2.8 GHz,130,2,206.0
+Intel Pentium D 830,Smithfield,3 GHz,130,2,206.0
+Intel Pentium D 840,Smithfield,3.2 GHz,130,2,206.0
+Intel Pentium D 915,Presler,2.8 GHz,95,2,162.0
+Intel Pentium D 920,Presler,2.8 GHz,95,2,162.0
+Intel Pentium D 925,Presler,3 GHz,95,2,162.0
+Intel Pentium D 930,Presler,3 GHz,95,2,162.0
+Intel Pentium D 935,Presler,3.2 GHz,95,2,162.0
+Intel Pentium D 940,Presler,3.2 GHz,130,2,162.0
+Intel Pentium D 945,Presler,3.4 GHz,95,2,162.0
+Intel Pentium D 950,Presler,3.4 GHz,130,2,162.0
+Intel Pentium D 960,Presler,3.6 GHz,130,2,162.0
+Intel Pentium Dual-Core E2140,Allendale,1600 MHz,65,2,77.0
+Intel Pentium Dual-Core E2160,Allendale,1800 MHz,65,2,77.0
+Intel Pentium Dual-Core E2180,Allendale,2000 MHz,65,2,77.0
+Intel Pentium Dual-Core E2200,Allendale,2.2 GHz,65,2,77.0
+Intel Pentium Dual-Core E2210,Wolfdale,2.2 GHz,65,2,82.0
+Intel Pentium Dual-Core E2220,Allendale,2.4 GHz,65,2,77.0
+Intel Pentium Dual-Core T4200,Penryn,2000 MHz,35,2,107.0
+Intel Pentium Dual-Core T4300,Penryn,2.1 GHz,35,2,107.0
+Intel Pentium Dual-Core T4400,Penryn,2.2 GHz,35,2,107.0
+Intel Pentium Dual-Core T4500,Penryn,2.3 GHz,35,2,107.0
+Intel Pentium E5200,Wolfdale,2.5 GHz,65,2,82.0
+Intel Pentium E5300,Wolfdale,2.6 GHz,65,2,82.0
+Intel Pentium E5400,Wolfdale,2.7 GHz,65,2,82.0
+Intel Pentium E5500,Wolfdale,2.8 GHz,65,2,82.0
+Intel Pentium E5700,Wolfdale,3 GHz,65,2,82.0
+Intel Pentium E5800,Wolfdale,3.2 GHz,65,2,82.0
+Intel Pentium E6300,Wolfdale,2.8 GHz,65,2,82.0
+Intel Pentium E6500,Wolfdale,2.933 GHz,65,2,82.0
+Intel Pentium E6500K,Wolfdale,2.933 GHz,65,2,82.0
+Intel Pentium E6600,Wolfdale,3.067 GHz,65,2,82.0
+Intel Pentium E6700,Wolfdale,3.2 GHz,65,2,82.0
+Intel Pentium E6800,Wolfdale,3.333 GHz,65,2,82.0
+Intel Pentium Extreme Edition 840,Smithfield,3.2 GHz,130,2,206.0
+Intel Pentium Extreme Edition 955,Presler,3.466 GHz,130,2,162.0
+Intel Pentium Extreme Edition 965,Presler,3.733 GHz,130,2,162.0
+Intel Pentium G2010,Ivy Bridge,2.8 GHz,55,2,94.0
+Intel Pentium G2020,Ivy Bridge,2.9 GHz,55,2,94.0
+Intel Pentium G2020T,Ivy Bridge,2.5 GHz,35,2,94.0
+Intel Pentium G2100T,Ivy Bridge,2.6 GHz,35,2,94.0
+Intel Pentium G2120,Ivy Bridge,3.1 GHz,55,2,94.0
+Intel Pentium G2130,Ivy Bridge,3.2 GHz,55,2,94.0
+Intel Pentium G3220,Haswell,3 GHz,54,2,177.0
+Intel Pentium G3220T,Haswell,2.6 GHz,35,2,177.0
+Intel Pentium G3250,Haswell,3.2 GHz,54,2,177.0
+Intel Pentium G3250T,Haswell,2.8 GHz,35,2,177.0
+Intel Pentium G3258,Haswell,3.2 GHz,54,2,131.0
+Intel Pentium G3420,Haswell,3.2 GHz,54,2,177.0
+Intel Pentium G3420T,Haswell,2.7 GHz,35,2,177.0
+Intel Pentium G3430,Haswell,3.3 GHz,54,2,177.0
+Intel Pentium G3440,Haswell,3.3 GHz,54,2,177.0
+Intel Pentium G3450,Haswell,3.3 GHz,54,2,177.0
+Intel Pentium G3450T,Haswell,2.9 GHz,35,2,177.0
+Intel Pentium G3460,Haswell,3.5 GHz,54,2,177.0
+Intel Pentium G4400,Skylake,3.3 GHz,51,2,150.0
+Intel Pentium G4500,Skylake,3.5 GHz,51,2,150.0
+Intel Pentium G4520,Skylake,3.6 GHz,51,2,150.0
+Intel Pentium G4560,Kaby Lake,3.5 GHz,51,2,
+Intel Pentium G4560T,Kaby Lake,2.9 GHz,35,2,
+Intel Pentium G4600,Kaby Lake,3.6 GHz,51,2,
+Intel Pentium G4600T,Kaby Lake,3 GHz,35,2,
+Intel Pentium G4620,Kaby Lake,3.7 GHz,51,2,
+Intel Pentium G620,Sandy Bridge,2.6 GHz,65,2,131.0
+Intel Pentium G620T,Sandy Bridge,2.2 GHz,35,2,131.0
+Intel Pentium G622,Sandy Bridge,2.6 GHz,65,2,131.0
+Intel Pentium G630,Sandy Bridge,2.7 GHz,65,2,131.0
+Intel Pentium G630T,Sandy Bridge,2.3 GHz,35,2,131.0
+Intel Pentium G632,Sandy Bridge,2.7 GHz,65,2,131.0
+Intel Pentium G640,Sandy Bridge,2.8 GHz,65,2,131.0
+Intel Pentium G640T,Sandy Bridge,2.4 GHz,35,2,131.0
+Intel Pentium G645,Sandy Bridge,2.9 GHz,65,2,131.0
+Intel Pentium G645T,Sandy Bridge,2.5 GHz,35,2,131.0
+Intel Pentium G6950,Clarkdale,2.8 GHz,73,2,81.0
+Intel Pentium G6951,Clarkdale,2.8 GHz,73,2,81.0
+Intel Pentium G6960,Clarkdale,2.933 GHz,73,2,81.0
+Intel Pentium G840,Sandy Bridge,2.8 GHz,65,2,131.0
+Intel Pentium G850,Sandy Bridge,2.9 GHz,65,2,131.0
+Intel Pentium G860,Sandy Bridge,3 GHz,65,2,131.0
+Intel Pentium G860T,Sandy Bridge,2.6 GHz,35,2,131.0
+Intel Pentium G870,Sandy Bridge,3.1 GHz,65,2,131.0
+Intel Pentium Gold G5400,Coffee Lake,3.7 GHz,58,2,126.0
+Intel Pentium Gold G5400T,Coffee Lake,3.1 GHz,35,2,126.0
+Intel Pentium Gold G5500,Coffee Lake,3.8 GHz,54,2,126.0
+Intel Pentium Gold G5500T,Coffee Lake,3.2 GHz,35,2,126.0
+Intel Pentium Gold G5600,Coffee Lake,3.9 GHz,54,2,126.0
+Intel Pentium Gold G5620,Coffee Lake,4 GHz,54,2,126.0
+Intel Pentium Gold G6400,Comet Lake,4 GHz,58,2,
+Intel Pentium Gold G6405,Comet Lake-R,4.1 GHz,65,2,
+Intel Pentium Gold G6405T,Comet Lake-R,3.5 GHz,35,2,
+Intel Pentium Gold G6500,Comet Lake,4.1 GHz,58,2,
+Intel Pentium Gold G6505,Comet Lake-R,4.2 GHz,65,2,
+Intel Pentium Gold G6505T,Comet Lake-R,3.6 GHz,35,2,
+Intel Pentium Gold G6600,Comet Lake,4.2 GHz,58,2,
+Intel Pentium Gold G6605,Comet Lake-R,4.3 GHz,65,2,
+Intel Pentium Gold G7400,Alder Lake-S,3.7 GHz,46,2,
+Intel Pentium Gold G7400E,Alder Lake-S,3.6 GHz,46,2,
+Intel Pentium Gold G7400T,Alder Lake-S,3.1 GHz,35,2,
+Intel Pentium Gold G7400TE,Alder Lake-S,3 GHz,35,2,
+Intel Pentium II Xeon 400,Drake,400 MHz,31,1,113.0
+Intel Pentium II Xeon 400 1MB,Drake,400 MHz,38,1,113.0
+Intel Pentium II Xeon 450,Drake,450 MHz,35,1,113.0
+Intel Pentium II Xeon 450 1MB,Drake,450 MHz,43,1,113.0
+Intel Pentium II Xeon 450 2MB,Drake,450 MHz,47,1,113.0
+Intel Pentium III  800,Coppermine T,800 MHz,38,1,80.0
+Intel Pentium III  866,Coppermine T,866 MHz,38,1,80.0
+Intel Pentium III  933,Coppermine T,933 MHz,27,1,80.0
+Intel Pentium III 1000,Coppermine T,1000 MHz,29,1,80.0
+Intel Pentium III 1000,Tualatin,1000 MHz,30,1,80.0
+Intel Pentium III 1000S,Tualatin,1000 MHz,30,1,80.0
+Intel Pentium III 1133,Coppermine T,1133 MHz,29,1,80.0
+Intel Pentium III 1133,Tualatin,1133 MHz,29,1,80.0
+Intel Pentium III 1133,Coppermine,1133 MHz,29,1,80.0
+Intel Pentium III 1133S,Tualatin,1133 MHz,29,1,80.0
+Intel Pentium III 1200,Tualatin,1200 MHz,30,1,80.0
+Intel Pentium III 1266S,Tualatin,1266 MHz,30,1,80.0
+Intel Pentium III 1333,Tualatin,1333 MHz,30,1,80.0
+Intel Pentium III 1400,Tualatin,1400 MHz,31,1,80.0
+Intel Pentium III 1400S,Tualatin,1400 MHz,32,1,80.0
+Intel Pentium III Xeon 1000 2.8V,Cascades,1000 MHz,30,1,106.0
+Intel Pentium III Xeon 1000 5V-12V,Cascades,1000 MHz,31,1,106.0
+Intel Pentium III Xeon 500,Tanner,500 MHz,36,1,123.0
+Intel Pentium III Xeon 500 1MB,Tanner,500 MHz,45,1,123.0
+Intel Pentium III Xeon 500 2MB,Tanner,500 MHz,37,1,123.0
+Intel Pentium III Xeon 550,Tanner,550 MHz,34,1,123.0
+Intel Pentium III Xeon 550 1MB,Tanner,550 MHz,35,1,123.0
+Intel Pentium III Xeon 550 2MB,Tanner,550 MHz,41,1,123.0
+Intel Pentium III Xeon 600 2.8V,Cascades,600 MHz,19,1,106.0
+Intel Pentium III Xeon 600 5V-12V,Cascades,600 MHz,19,1,106.0
+Intel Pentium III Xeon 667 2.8V,Cascades,667 MHz,21,1,106.0
+Intel Pentium III Xeon 667 5V-12V,Cascades,667 MHz,21,1,106.0
+Intel Pentium III Xeon 700 2.8V,Cascades-2M,700 MHz,29,1,375.0
+Intel Pentium III Xeon 700 5V-12V,Cascades-2M,700 MHz,30,1,375.0
+Intel Pentium III Xeon 700-2M 2.8V,Cascades-2M,700 MHz,30,1,375.0
+Intel Pentium III Xeon 700-2M 5V-12V,Cascades-2M,700 MHz,30,1,375.0
+Intel Pentium III Xeon 733 2.8V,Cascades,733 MHz,23,1,106.0
+Intel Pentium III Xeon 733 5V-12V,Cascades,733 MHz,23,1,106.0
+Intel Pentium III Xeon 800 2.8V,Cascades,800 MHz,25,1,106.0
+Intel Pentium III Xeon 800 5V-12V,Cascades,800 MHz,25,1,106.0
+Intel Pentium III Xeon 866 2.8V,Cascades,866 MHz,25,1,106.0
+Intel Pentium III Xeon 866 5V-12V,Cascades,866 MHz,25,1,106.0
+Intel Pentium III Xeon 900 2.8V,Cascades-2M,900 MHz,36,1,375.0
+Intel Pentium III Xeon 900 5V-12V,Cascades-2M,900 MHz,36,1,375.0
+Intel Pentium III Xeon 933 2.8V,Cascades,933 MHz,29,1,106.0
+Intel Pentium III Xeon 933 5V-12V,Cascades,933 MHz,30,1,106.0
+Intel Pentium M 1.30,Banias,1300 MHz,24,1,100.0
+Intel Pentium M 1.40,Banias,1400 MHz,24,1,100.0
+Intel Pentium M 1.50,Banias,1500 MHz,24,1,100.0
+Intel Pentium M 1.60,Banias,1600 MHz,24,1,100.0
+Intel Pentium M 1.70,Banias,1700 MHz,24,1,100.0
+Intel Pentium M 715,Dothan,1500 MHz,21,1,84.0
+Intel Pentium M 725,Dothan,1600 MHz,21,1,84.0
+Intel Pentium M 730,Dothan,1600 MHz,27,1,84.0
+Intel Pentium M 735,Dothan,1700 MHz,21,1,84.0
+Intel Pentium M 740,Dothan,1730 MHz,27,1,84.0
+Intel Pentium M 745,Dothan,1800 MHz,21,1,84.0
+Intel Pentium M 750,Dothan,1860 MHz,27,1,84.0
+Intel Pentium M 755,Dothan,2000 MHz,21,1,84.0
+Intel Pentium M 760,Dothan,2000 MHz,27,1,84.0
+Intel Pentium M 765,Dothan,2.1 GHz,21,1,84.0
+Intel Pentium M 770,Dothan,2.13 GHz,27,1,84.0
+Intel Pentium M 780,Dothan,2.26 GHz,27,1,84.0
+Intel Pentium P6000,Arrandale,1877 MHz,35,2,81.0
+Intel Pentium P6100,Arrandale,2000 MHz,35,2,81.0
+Intel Pentium P6200,Arrandale,2.133 GHz,35,2,81.0
+Intel Pentium P6300,Arrandale,2.266 GHz,35,2,81.0
+Intel Pentium SU2700,Penryn,1300 MHz,10,1,107.0
+Intel Pentium SU4100,Penryn,1300 MHz,10,2,107.0
+Intel Pentium Silver J5005,Coffee Lake,1500 MHz,10,4,
+Intel Pentium U5400,Arrandale,1200 MHz,18,2,81.0
+Intel Pentium U5600,Arrandale,1333 MHz,18,2,81.0
+Intel Processor N100,Gracemont,100 MHz,6,4,
+Intel Processor N200,Gracemont,100 MHz,6,4,
+Intel Processor N50,Gracemont,1000 MHz,6,2,
+Intel Processor N95,Gracemont,100 MHz,15,4,
+Intel Processor N97,Gracemont,2000 MHz,12,4,
+Intel Processor U300,Raptor Lake-U,1200 MHz,15,5,
+Intel Processor U300E,Raptor Lake-U,1100 MHz,15,5,
+Intel Xeon 2.0,Prestonia,2000 MHz,89,1,217.0
+Intel Xeon 2.4,Prestonia,2.394 GHz,89,1,217.0
+Intel Xeon 2.66,Prestonia,2.66 GHz,89,1,217.0
+Intel Xeon 2.8,Nocona,2.8 GHz,135,1,135.0
+Intel Xeon 2.8,Paxville,2.8 GHz,135,2,213.0
+Intel Xeon 2.8,Prestonia,2.79 GHz,89,1,217.0
+Intel Xeon 3.0,Nocona,3 GHz,135,1,135.0
+Intel Xeon 3.0,Irwindale,3 GHz,135,1,169.0
+Intel Xeon 3.06,Gallatin,3.066 GHz,97,1,237.0
+Intel Xeon 3.06,Prestonia,3.066 GHz,89,1,217.0
+Intel Xeon 3.06,Gallatin,3.066 GHz,97,1,237.0
+Intel Xeon 3.2,Irwindale,3.2 GHz,135,1,169.0
+Intel Xeon 3.2,Nocona,3.2 GHz,135,1,135.0
+Intel Xeon 3.20,Gallatin,3.2 GHz,97,1,237.0
+Intel Xeon 3.20,Gallatin,3.2 GHz,97,1,237.0
+Intel Xeon 3.4,Nocona,3.4 GHz,135,1,135.0
+Intel Xeon 3.4,Irwindale,3.4 GHz,135,1,169.0
+Intel Xeon 3.6,Irwindale,3.6 GHz,135,1,169.0
+Intel Xeon 3.6,Nocona,3.6 GHz,135,1,135.0
+Intel Xeon 5020,Dempsey,2.5 GHz,95,2,162.0
+Intel Xeon 5030,Dempsey,2.667 GHz,95,2,162.0
+Intel Xeon 5040,Dempsey,2.83 GHz,95,2,162.0
+Intel Xeon 5050,Dempsey,3 GHz,95,2,162.0
+Intel Xeon 5060,Dempsey,3.2 GHz,130,2,162.0
+Intel Xeon 5063,Dempsey,3.2 GHz,95,2,162.0
+Intel Xeon 5080,Dempsey,3.73 GHz,130,2,162.0
+Intel Xeon 5110,Woodcrest,1600 MHz,65,2,
+Intel Xeon 5120,Woodcrest,1866 MHz,65,2,
+Intel Xeon 5130,Woodcrest,2000 MHz,65,2,
+Intel Xeon 5140,Woodcrest,2.333 GHz,65,2,
+Intel Xeon 5148,Woodcrest,2.333 GHz,40,2,
+Intel Xeon 5150,Woodcrest,2.666 GHz,65,2,
+Intel Xeon 5160,Woodcrest,3 GHz,80,2,
+Intel Xeon 7110M,Tulsa,2.6 GHz,95,2,435.0
+Intel Xeon 7110N,Tulsa,2.5 GHz,95,2,435.0
+Intel Xeon 7120M,Tulsa,3 GHz,95,2,435.0
+Intel Xeon 7120N,Tulsa,3 GHz,95,2,435.0
+Intel Xeon 7130M,Tulsa,3.2 GHz,150,2,435.0
+Intel Xeon 7130N,Tulsa,3.166 GHz,150,2,435.0
+Intel Xeon 7140M,Tulsa,3.4 GHz,150,2,435.0
+Intel Xeon 7140N,Tulsa,3.333 GHz,150,2,435.0
+Intel Xeon 7150N,Tulsa,3.5 GHz,150,2,435.0
+Intel Xeon Bronze 3106,Skylake-SP,2.1 GHz,85,8,
+Intel Xeon Bronze 3408U,Sapphire Rapids,1800 MHz,125,8,
+Intel Xeon D-1518,Broadwell,2.2 GHz,35,4,246.0
+Intel Xeon D-1520,Broadwell,2.2 GHz,45,4,246.0
+Intel Xeon D-1521,Broadwell,2.4 GHz,45,4,246.0
+Intel Xeon D-1527,Broadwell,2.2 GHz,35,4,246.0
+Intel Xeon D-1528,Broadwell,1900 MHz,35,6,246.0
+Intel Xeon D-1531,Broadwell,2.2 GHz,35,6,246.0
+Intel Xeon D-1537,Broadwell,1700 MHz,35,8,246.0
+Intel Xeon D-1540,Broadwell,2000 MHz,45,8,246.0
+Intel Xeon D-1541,Broadwell,2.1 GHz,45,8,246.0
+Intel Xeon D-1548,Broadwell,2000 MHz,45,8,246.0
+Intel Xeon D-1557,Broadwell,1500 MHz,45,12,246.0
+Intel Xeon D-1567,Broadwell,2.1 GHz,65,12,246.0
+Intel Xeon D-1571,Broadwell,1300 MHz,45,16,246.0
+Intel Xeon D-1577,Broadwell,1300 MHz,45,16,246.0
+Intel Xeon D-1581,Broadwell,1800 MHz,65,16,246.0
+Intel Xeon D-1587,Broadwell,1700 MHz,65,16,246.0
+Intel Xeon E-2124,Coffee Lake-S,3.4 GHz,72,4,126.0
+Intel Xeon E-2124G,Coffee Lake-S,3.4 GHz,72,4,126.0
+Intel Xeon E-2314,Rocket Lake-E,2.8 GHz,65,4,276.0
+Intel Xeon E-2324G,Rocket Lake-E,3.1 GHz,65,4,276.0
+Intel Xeon E-2334,Rocket Lake-E,3.4 GHz,65,4,276.0
+Intel Xeon E-2336,Rocket Lake-E,2.9 GHz,65,6,276.0
+Intel Xeon E-2356G,Rocket Lake-E,3.2 GHz,80,6,276.0
+Intel Xeon E-2374G,Rocket Lake-E,3.7 GHz,80,4,276.0
+Intel Xeon E-2378,Rocket Lake-E,2.6 GHz,65,8,276.0
+Intel Xeon E-2378G,Rocket Lake-E,2.8 GHz,80,8,276.0
+Intel Xeon E-2386G,Rocket Lake-E,3.5 GHz,95,6,276.0
+Intel Xeon E-2388G,Rocket Lake-E,3.2 GHz,95,8,276.0
+Intel Xeon E3-1105C,Gladden,1000 MHz,25,4,216.0
+Intel Xeon E3-1125C,Gladden,2000 MHz,40,4,216.0
+Intel Xeon E3-1220,Sandy Bridge,3.1 GHz,80,4,216.0
+Intel Xeon E3-1220 v2,Ivy Bridge,3.1 GHz,69,4,160.0
+Intel Xeon E3-1220 v3,Haswell-WS,3.1 GHz,80,4,160.0
+Intel Xeon E3-1220L,Sandy Bridge,2.2 GHz,20,2,131.0
+Intel Xeon E3-1220L v3,Haswell-WS,1100 MHz,13,2,160.0
+Intel Xeon E3-1225,Sandy Bridge,3.1 GHz,95,4,216.0
+Intel Xeon E3-1225 v3,Haswell-WS,3.2 GHz,84,4,160.0
+Intel Xeon E3-1226 v3,Haswell-WS,3.3 GHz,84,4,160.0
+Intel Xeon E3-1230,Sandy Bridge,3.2 GHz,80,4,216.0
+Intel Xeon E3-1230 v2,Ivy Bridge,3.3 GHz,69,4,160.0
+Intel Xeon E3-1230 v3,Haswell-WS,3.3 GHz,80,4,160.0
+Intel Xeon E3-1230L v3,Haswell-WS,1800 MHz,25,4,160.0
+Intel Xeon E3-1231 v3,Haswell-WS,3.4 GHz,80,4,160.0
+Intel Xeon E3-1235,Sandy Bridge,3.2 GHz,95,4,216.0
+Intel Xeon E3-1240 v2,Ivy Bridge,3.4 GHz,69,4,160.0
+Intel Xeon E3-1240 v3,Haswell-WS,3.4 GHz,80,4,160.0
+Intel Xeon E3-1240L v3,Haswell-WS,2000 MHz,25,4,160.0
+Intel Xeon E3-1241 v3,Haswell-WS,3.5 GHz,80,4,160.0
+Intel Xeon E3-1245 v2,Ivy Bridge,3.4 GHz,77,4,160.0
+Intel Xeon E3-1245 v3,Haswell-WS,3.4 GHz,84,4,160.0
+Intel Xeon E3-1258L v4,Broadwell-DT,1800 MHz,47,4,182.0
+Intel Xeon E3-1265L v2,Ivy Bridge,2.5 GHz,45,4,160.0
+Intel Xeon E3-1265L v3,Haswell-WS,2.5 GHz,45,4,160.0
+Intel Xeon E3-1265L v4,Broadwell-DT,2.3 GHz,35,4,182.0
+Intel Xeon E3-1270 v2,Ivy Bridge,3.5 GHz,69,4,160.0
+Intel Xeon E3-1270 v3,Haswell-WS,3.5 GHz,80,4,160.0
+Intel Xeon E3-1270L v4,Broadwell-DT,3 GHz,45,4,182.0
+Intel Xeon E3-1275 v2,Ivy Bridge,3.5 GHz,77,4,160.0
+Intel Xeon E3-1275 v3,Haswell-WS,3.5 GHz,84,4,160.0
+Intel Xeon E3-1278L v4,Broadwell-DT,2000 MHz,47,4,182.0
+Intel Xeon E3-1280 v2,Ivy Bridge,3.6 GHz,69,4,160.0
+Intel Xeon E3-1280 v3,Haswell-WS,3.6 GHz,82,4,160.0
+Intel Xeon E3-1280 v5,Skylake-S,3.7 GHz,80,4,160.0
+Intel Xeon E3-1283L v4,Broadwell-DT,2.9 GHz,47,4,182.0
+Intel Xeon E3-1284L v4,Broadwell-DT,2.9 GHz,47,4,182.0
+Intel Xeon E3-1285 v3,Haswell-WS,3.6 GHz,84,4,160.0
+Intel Xeon E3-1285 v4,Broadwell-DT,3.5 GHz,95,4,182.0
+Intel Xeon E3-1285 v6,Kaby Lake-DT,4.1 GHz,79,4,160.0
+Intel Xeon E3-1285L v3,Haswell-WS,3.1 GHz,65,4,160.0
+Intel Xeon E3-1285L v4,Broadwell-DT,3.4 GHz,65,4,160.0
+Intel Xeon E3-1290,Sandy Bridge,3.6 GHz,95,4,216.0
+Intel Xeon E3-1290 v2,Ivy Bridge,3.7 GHz,87,4,160.0
+Intel Xeon E5-1410,Sandy Bridge-EN,2.8 GHz,80,4,294.0
+Intel Xeon E5-1410 V2,Ivy Bridge-EN,2.8 GHz,80,4,257.0
+Intel Xeon E5-1428L,Sandy Bridge-EN,1800 MHz,60,6,294.0
+Intel Xeon E5-1428L V2,Ivy Bridge-EN,2.2 GHz,60,6,257.0
+Intel Xeon E5-1603 V3,Haswell-EP,2.8 GHz,140,4,356.0
+Intel Xeon E5-1607 V3,Haswell-EP,3.1 GHz,140,4,356.0
+Intel Xeon E5-1607 v2,Ivy Bridge-E,3 GHz,130,4,257.0
+Intel Xeon E5-1620,Sandy Bridge-E,3.6 GHz,130,4,294.0
+Intel Xeon E5-1620 V3,Haswell-EP,3.5 GHz,140,4,356.0
+Intel Xeon E5-1620 V4,Broadwell-EP,3.5 GHz,140,4,246.0
+Intel Xeon E5-1620 v2,Ivy Bridge-E,3.7 GHz,130,4,257.0
+Intel Xeon E5-1630 V3,Haswell-EP,3.7 GHz,140,4,356.0
+Intel Xeon E5-1630 V4,Broadwell-EP,3.7 GHz,140,4,246.0
+Intel Xeon E5-1650,Sandy Bridge-E,3.2 GHz,130,6,435.0
+Intel Xeon E5-1650 V3,Haswell-EP,3.5 GHz,140,6,356.0
+Intel Xeon E5-1650 V4,Broadwell-EP,3.6 GHz,140,6,246.0
+Intel Xeon E5-1650 v2,Ivy Bridge-E,3.5 GHz,130,6,257.0
+Intel Xeon E5-1660,Sandy Bridge-E,3.3 GHz,130,6,435.0
+Intel Xeon E5-1660 V3,Haswell-EP,3 GHz,140,8,356.0
+Intel Xeon E5-1660 V4,Broadwell-EP,3.2 GHz,140,8,246.0
+Intel Xeon E5-1660 v2,Ivy Bridge-E,3.7 GHz,130,6,257.0
+Intel Xeon E5-1680 V3,Haswell-EP,3.2 GHz,140,8,356.0
+Intel Xeon E5-1680 V4,Broadwell-EP,3.4 GHz,140,8,246.0
+Intel Xeon E5-1680 v2,Ivy Bridge-EP,3 GHz,130,8,341.0
+Intel Xeon E5-1681 V3,Haswell-EP,2.9 GHz,135,10,356.0
+Intel Xeon E5-1686 V3,Haswell-EP,2.6 GHz,135,12,356.0
+Intel Xeon E5-1691 V3,Haswell-EP,2.5 GHz,135,14,356.0
+Intel Xeon E5-2403,Sandy Bridge-EN,1800 MHz,80,4,294.0
+Intel Xeon E5-2403 v2,Ivy Bridge-EN,1800 MHz,80,4,160.0
+Intel Xeon E5-2407,Sandy Bridge-EN,2.2 GHz,80,4,294.0
+Intel Xeon E5-2407 v2,Ivy Bridge-EN,2.4 GHz,80,4,160.0
+Intel Xeon E5-2418L,Sandy Bridge-EN,2000 MHz,50,4,294.0
+Intel Xeon E5-2420,Sandy Bridge-EN,1900 MHz,95,6,294.0
+Intel Xeon E5-2420 v2,Ivy Bridge-EN,2.2 GHz,80,6,160.0
+Intel Xeon E5-2428L,Sandy Bridge-EN,1800 MHz,60,6,294.0
+Intel Xeon E5-2430,Sandy Bridge-EN,2.2 GHz,95,6,294.0
+Intel Xeon E5-2430 v2,Ivy Bridge-EN,2.5 GHz,80,6,160.0
+Intel Xeon E5-2430L,Sandy Bridge-EN,2000 MHz,60,6,294.0
+Intel Xeon E5-2440,Sandy Bridge-EN,2.4 GHz,95,6,294.0
+Intel Xeon E5-2440 v2,Ivy Bridge-EN,1900 MHz,95,8,160.0
+Intel Xeon E5-2448L,Sandy Bridge-EN,1800 MHz,70,8,294.0
+Intel Xeon E5-2450,Sandy Bridge-EN,2.1 GHz,95,8,294.0
+Intel Xeon E5-2450 v2,Ivy Bridge-EN,2.5 GHz,95,8,160.0
+Intel Xeon E5-2450L,Sandy Bridge-EN,1800 MHz,70,8,294.0
+Intel Xeon E5-2470,Sandy Bridge-EN,2.3 GHz,95,8,294.0
+Intel Xeon E5-2470 v2,Ivy Bridge-EN,2.4 GHz,95,10,160.0
+Intel Xeon E5-2603,Sandy Bridge-EP,1800 MHz,80,4,294.0
+Intel Xeon E5-2603 V3,Haswell-EP,1600 MHz,85,6,356.0
+Intel Xeon E5-2603 v2,Ivy Bridge-EP,1800 MHz,80,4,160.0
+Intel Xeon E5-2608L V3,Haswell-EP,2000 MHz,52,6,356.0
+Intel Xeon E5-2609,Sandy Bridge-EP,2.4 GHz,80,4,294.0
+Intel Xeon E5-2609 V3,Haswell-EP,1900 MHz,85,6,356.0
+Intel Xeon E5-2609 v2,Ivy Bridge-EP,2.5 GHz,80,4,160.0
+Intel Xeon E5-2618L V3,Haswell-EP,2.3 GHz,75,8,356.0
+Intel Xeon E5-2620,Sandy Bridge-EP,2000 MHz,95,6,435.0
+Intel Xeon E5-2620 V3,Haswell-EP,2.4 GHz,85,6,356.0
+Intel Xeon E5-2620 v2,Ivy Bridge-EP,2.1 GHz,80,6,160.0
+Intel Xeon E5-2622 V3,Haswell-EP,2.4 GHz,85,8,356.0
+Intel Xeon E5-2623 V3,Haswell-EP,3 GHz,105,4,356.0
+Intel Xeon E5-2628 V3,Haswell-EP,2.5 GHz,85,8,356.0
+Intel Xeon E5-2628L V3,Haswell-EP,2000 MHz,75,10,356.0
+Intel Xeon E5-2629 V3,Haswell-EP,2.4 GHz,85,8,356.0
+Intel Xeon E5-2630,Sandy Bridge-EP,2.3 GHz,95,6,435.0
+Intel Xeon E5-2630 V3,Haswell-EP,2.4 GHz,85,8,356.0
+Intel Xeon E5-2630 v2,Ivy Bridge-EP,2.6 GHz,80,6,160.0
+Intel Xeon E5-2630L,Sandy Bridge-EP,2000 MHz,60,6,435.0
+Intel Xeon E5-2630L V3,Haswell-EP,1800 MHz,55,8,356.0
+Intel Xeon E5-2630L v2,Ivy Bridge-EP,2.4 GHz,60,6,160.0
+Intel Xeon E5-2637,Sandy Bridge-EP,3 GHz,80,2,294.0
+Intel Xeon E5-2637 V3,Haswell-EP,3.5 GHz,135,4,356.0
+Intel Xeon E5-2637 v2,Ivy Bridge-EP,3.5 GHz,130,4,160.0
+Intel Xeon E5-2640,Sandy Bridge-EP,2.5 GHz,95,6,435.0
+Intel Xeon E5-2640 V3,Haswell-EP,2.6 GHz,90,8,356.0
+Intel Xeon E5-2640 v2,Ivy Bridge-EP,2000 MHz,95,8,160.0
+Intel Xeon E5-2643,Sandy Bridge-EP,3.3 GHz,130,4,294.0
+Intel Xeon E5-2643 V3,Haswell-EP,3.4 GHz,135,6,356.0
+Intel Xeon E5-2643 v2,Ivy Bridge-EP,3.5 GHz,130,6,160.0
+Intel Xeon E5-2648L,Sandy Bridge-EP,1800 MHz,70,8,435.0
+Intel Xeon E5-2648L V3,Haswell-EP,1800 MHz,75,12,356.0
+Intel Xeon E5-2649 V3,Haswell-EP,2.3 GHz,105,10,356.0
+Intel Xeon E5-2650,Sandy Bridge-EP,2000 MHz,95,8,435.0
+Intel Xeon E5-2650 V3,Haswell-EP,2.3 GHz,105,10,356.0
+Intel Xeon E5-2650 v2,Ivy Bridge-EP,2.6 GHz,95,8,160.0
+Intel Xeon E5-2650L,Sandy Bridge-EP,1800 MHz,70,8,435.0
+Intel Xeon E5-2650L V3,Haswell-EP,1800 MHz,65,12,356.0
+Intel Xeon E5-2650L v2,Ivy Bridge-EP,1700 MHz,70,10,160.0
+Intel Xeon E5-2652 V3,Haswell-EP,2.3 GHz,105,10,356.0
+Intel Xeon E5-2658,Sandy Bridge-EP,2.1 GHz,95,8,435.0
+Intel Xeon E5-2658 V3,Haswell-EP,2.2 GHz,105,12,356.0
+Intel Xeon E5-2658A V3,Haswell-EP,2.2 GHz,105,12,356.0
+Intel Xeon E5-2660,Sandy Bridge-EP,2.2 GHz,95,8,435.0
+Intel Xeon E5-2660 V3,Haswell-EP,2.6 GHz,105,10,356.0
+Intel Xeon E5-2660 v2,Ivy Bridge-EP,2.2 GHz,95,10,160.0
+Intel Xeon E5-2663 V3,Haswell-EP,2.8 GHz,105,10,356.0
+Intel Xeon E5-2665,Sandy Bridge-EP,2.4 GHz,115,8,435.0
+Intel Xeon E5-2666 V3,Haswell-EP,2.9 GHz,135,10,356.0
+Intel Xeon E5-2667,Sandy Bridge-EP,2.9 GHz,130,6,435.0
+Intel Xeon E5-2667 V3,Haswell-EP,3.2 GHz,135,8,356.0
+Intel Xeon E5-2667 v2,Ivy Bridge-EP,3.3 GHz,130,8,160.0
+Intel Xeon E5-2669 V3,Haswell-EP,2.3 GHz,120,12,356.0
+Intel Xeon E5-2670,Sandy Bridge-EP,2.6 GHz,115,8,435.0
+Intel Xeon E5-2670 V3,Haswell-EP,2.3 GHz,120,12,356.0
+Intel Xeon E5-2670 v2,Ivy Bridge-EP,2.5 GHz,115,10,160.0
+Intel Xeon E5-2673 V3,Haswell-EP,2.4 GHz,105,12,356.0
+Intel Xeon E5-2675 V3,Haswell-EP,1800 MHz,110,16,356.0
+Intel Xeon E5-2676 V3,Haswell-EP,2.4 GHz,120,12,356.0
+Intel Xeon E5-2678 V3,Haswell-EP,2.5 GHz,120,12,356.0
+Intel Xeon E5-2680,Sandy Bridge-EP,2.7 GHz,130,8,435.0
+Intel Xeon E5-2680 V3,Haswell-EP,2.5 GHz,120,12,356.0
+Intel Xeon E5-2680 v2,Ivy Bridge-EP,2.8 GHz,115,10,160.0
+Intel Xeon E5-2683 V3,Haswell-EP,2000 MHz,120,14,356.0
+Intel Xeon E5-2685 V3,Haswell-EP,2.6 GHz,120,12,356.0
+Intel Xeon E5-2686 V3,Haswell-EP,2000 MHz,120,18,356.0
+Intel Xeon E5-2687W,Sandy Bridge-EP,3.1 GHz,150,8,435.0
+Intel Xeon E5-2687W V3,Haswell-EP,3.1 GHz,160,10,356.0
+Intel Xeon E5-2687W v2,Ivy Bridge-EP,3.4 GHz,130,8,160.0
+Intel Xeon E5-2690,Sandy Bridge-EP,2.9 GHz,135,8,435.0
+Intel Xeon E5-2690 V3,Haswell-EP,2.6 GHz,135,12,356.0
+Intel Xeon E5-2690 v2,Ivy Bridge-EP,3 GHz,130,10,160.0
+Intel Xeon E5-2692 V3,Haswell-EP,3 GHz,165,12,356.0
+Intel Xeon E5-2692 v2,Ivy Bridge-EP,2.2 GHz,100,12,160.0
+Intel Xeon E5-2693 V3,Haswell-EP,2.8 GHz,160,12,356.0
+Intel Xeon E5-2695 V3,Haswell-EP,2.3 GHz,120,14,356.0
+Intel Xeon E5-2695 v2,Ivy Bridge-EP,2.4 GHz,115,12,160.0
+Intel Xeon E5-2696 V3,Haswell-EP,2.3 GHz,145,18,356.0
+Intel Xeon E5-2697 V3,Haswell-EP,2.6 GHz,145,14,356.0
+Intel Xeon E5-2697 v2,Ivy Bridge-EP,2.7 GHz,130,12,160.0
+Intel Xeon E5-2698 V3,Haswell-EP,2.3 GHz,135,16,356.0
+Intel Xeon E5-2698A V3,Haswell-EP,2.8 GHz,165,16,356.0
+Intel Xeon E5-2698B V3,Haswell-EP,2000 MHz,135,16,356.0
+Intel Xeon E5-2699 V3,Haswell-EP,2.3 GHz,145,18,356.0
+Intel Xeon E5-4603,Sandy Bridge-EP,2000 MHz,95,4,294.0
+Intel Xeon E5-4607,Sandy Bridge-EP,2.2 GHz,95,6,435.0
+Intel Xeon E5-4610,Sandy Bridge-EP,2.4 GHz,130,6,435.0
+Intel Xeon E5-4610 V3,Haswell-EP,1700 MHz,105,10,356.0
+Intel Xeon E5-4617,Sandy Bridge-EP,2.9 GHz,130,6,435.0
+Intel Xeon E5-4620,Sandy Bridge-EP,2.7 GHz,130,8,435.0
+Intel Xeon E5-4620 V3,Haswell-EP,2000 MHz,105,10,356.0
+Intel Xeon E5-4627 V3,Haswell-EP,2.6 GHz,135,10,356.0
+Intel Xeon E5-4640,Sandy Bridge-EP,2.4 GHz,95,8,435.0
+Intel Xeon E5-4640 V3,Haswell-EP,1900 MHz,105,12,356.0
+Intel Xeon E5-4648 V3,Haswell-EP,1700 MHz,105,12,356.0
+Intel Xeon E5-4650,Sandy Bridge-EP,2.7 GHz,130,8,435.0
+Intel Xeon E5-4650 V3,Haswell-EP,2.1 GHz,105,12,356.0
+Intel Xeon E5-4650L,Sandy Bridge-EP,2.6 GHz,115,8,435.0
+Intel Xeon E5-4655 V3,Haswell-EP,2.9 GHz,135,6,356.0
+Intel Xeon E5-4660 V3,Haswell-EP,2.1 GHz,120,14,356.0
+Intel Xeon E5-4667 V3,Haswell-EP,2000 MHz,135,16,356.0
+Intel Xeon E5-4669 V3,Haswell-EP,2.1 GHz,135,18,356.0
+Intel Xeon E5502,Gainestown,1866 MHz,80,2,263.0
+Intel Xeon E5503,Gainestown,2000 MHz,80,2,263.0
+Intel Xeon E5504,Gainestown,2000 MHz,80,4,263.0
+Intel Xeon E5506,Gainestown,2.133 GHz,80,4,263.0
+Intel Xeon E5507,Gainestown,2.266 GHz,80,4,263.0
+Intel Xeon E5520,Gainestown,2.266 GHz,80,4,263.0
+Intel Xeon E5530,Gainestown,2.4 GHz,80,4,263.0
+Intel Xeon E5540,Gainestown,2.533 GHz,80,4,263.0
+Intel Xeon E5603,Westmere-EP,1600 MHz,80,4,239.0
+Intel Xeon E5606,Westmere-EP,2.133 GHz,80,4,239.0
+Intel Xeon E5607,Westmere-EP,2.266 GHz,80,4,239.0
+Intel Xeon E5620,Westmere-EP,2.4 GHz,80,4,239.0
+Intel Xeon E5630,Westmere-EP,2.533 GHz,80,4,239.0
+Intel Xeon E5640,Westmere-EP,2.666 GHz,80,4,239.0
+Intel Xeon E5645,Westmere-EP,2.4 GHz,80,6,239.0
+Intel Xeon E5649,Westmere-EP,2.533 GHz,80,6,239.0
+Intel Xeon E7-4809 v3,Haswell-EX,2000 MHz,115,8,356.0
+Intel Xeon E7-4820 v3,Haswell-EX,1900 MHz,115,10,622.0
+Intel Xeon E7-4830 v3,Haswell-EX,2.1 GHz,115,12,160.0
+Intel Xeon E7-4850 v3,Haswell-EX,2.2 GHz,115,14,160.0
+Intel Xeon E7-8850,Westmere-EX,2000 MHz,130,10,513.0
+Intel Xeon E7-8860,Westmere-EX,2.276 GHz,130,10,513.0
+Intel Xeon E7-8860 v3,Haswell-EX,2.2 GHz,140,16,160.0
+Intel Xeon E7-8867 v3,Haswell-EX,2.5 GHz,165,16,160.0
+Intel Xeon E7-8870,Westmere-EX,2.4 GHz,130,10,513.0
+Intel Xeon E7-8870 v3,Haswell-EX,2.1 GHz,140,18,160.0
+Intel Xeon E7-8880 v3,Haswell-EX,2.3 GHz,150,18,160.0
+Intel Xeon E7-8880L v3,Haswell-EX,2000 MHz,115,18,160.0
+Intel Xeon E7-8890 v3,Haswell-EX,2.5 GHz,165,18,160.0
+Intel Xeon E7-8891 v3,Haswell-EX,2.8 GHz,165,10,160.0
+Intel Xeon E7-8893 v3,Haswell-EX,3.2 GHz,140,4,160.0
+Intel Xeon Gold 5315Y,Ice Lake-SP,3.2 GHz,140,8,
+Intel Xeon Gold 5317,Ice Lake-SP,3 GHz,150,12,
+Intel Xeon Gold 5318H,Cooper Lake-SP,2.5 GHz,150,18,
+Intel Xeon Gold 5318N,Ice Lake-SP,2.1 GHz,150,24,
+Intel Xeon Gold 5318S,Ice Lake-SP,2.1 GHz,165,24,
+Intel Xeon Gold 5318Y,Ice Lake-SP,2.1 GHz,165,24,
+Intel Xeon Gold 5320,Ice Lake-SP,2.2 GHz,185,26,
+Intel Xeon Gold 5320H,Cooper Lake-SP,2.4 GHz,150,20,
+Intel Xeon Gold 5320T,Ice Lake-SP,2.3 GHz,150,20,
+Intel Xeon Gold 5411N,Sapphire Rapids,1900 MHz,165,28,
+Intel Xeon Gold 5412U,Sapphire Rapids,2.1 GHz,185,24,
+Intel Xeon Gold 5415+,Sapphire Rapids,2.9 GHz,150,8,
+Intel Xeon Gold 5416S,Sapphire Rapids,2000 MHz,150,16,
+Intel Xeon Gold 5418N,Sapphire Rapids,1800 MHz,165,24,
+Intel Xeon Gold 5418Y,Sapphire Rapids,2000 MHz,185,24,
+Intel Xeon Gold 5420+,Sapphire Rapids,2000 MHz,205,28,
+Intel Xeon Gold 5423N,Sapphire Rapids,2.1 GHz,145,20,
+Intel Xeon Gold 5433N,Sapphire Rapids,2.3 GHz,160,20,
+Intel Xeon Gold 6154,Skylake-SP,3 GHz,200,18,
+Intel Xeon Gold 6312U,Ice Lake-SP,2.4 GHz,185,24,
+Intel Xeon Gold 6314U,Ice Lake-SP,2.3 GHz,205,32,
+Intel Xeon Gold 6326,Ice Lake-SP,2.9 GHz,185,16,
+Intel Xeon Gold 6328H,Cooper Lake-SP,2.8 GHz,165,16,
+Intel Xeon Gold 6328HL,Cooper Lake-SP,2.8 GHz,165,16,
+Intel Xeon Gold 6330,Ice Lake-SP,2000 MHz,205,28,
+Intel Xeon Gold 6330H,Cooper Lake-SP,2000 MHz,150,24,
+Intel Xeon Gold 6334,Ice Lake-SP,3.6 GHz,165,8,
+Intel Xeon Gold 6336Y,Ice Lake-SP,2.4 GHz,185,24,
+Intel Xeon Gold 6338N,Ice Lake-SP,2.2 GHz,185,32,
+Intel Xeon Gold 6338T,Ice Lake-SP,2.1 GHz,165,24,
+Intel Xeon Gold 6342,Ice Lake-SP,2.8 GHz,230,24,
+Intel Xeon Gold 6346,Ice Lake-SP,3.1 GHz,205,16,
+Intel Xeon Gold 6348,Ice Lake-SP,2.6 GHz,235,28,
+Intel Xeon Gold 6348H,Cooper Lake-SP,2.3 GHz,165,24,
+Intel Xeon Gold 6354,Ice Lake-SP,3 GHz,205,18,
+Intel Xeon Gold 6414U,Sapphire Rapids,2000 MHz,250,32,1908.0
+Intel Xeon Gold 6416H,Sapphire Rapids,2.2 GHz,165,18,
+Intel Xeon Gold 6418H,Sapphire Rapids,2.1 GHz,185,24,
+Intel Xeon Gold 6421N,Sapphire Rapids,1800 MHz,185,32,
+Intel Xeon Gold 6426Y,Sapphire Rapids,2.5 GHz,185,16,
+Intel Xeon Gold 6428N,Sapphire Rapids,1800 MHz,185,32,
+Intel Xeon Gold 6430,Sapphire Rapids,2.1 GHz,270,32,1908.0
+Intel Xeon Gold 6434,Sapphire Rapids,3.7 GHz,195,8,
+Intel Xeon Gold 6434H,Sapphire Rapids,3.7 GHz,195,8,
+Intel Xeon Gold 6438M,Sapphire Rapids,2.2 GHz,205,32,
+Intel Xeon Gold 6438N,Sapphire Rapids,2000 MHz,205,32,
+Intel Xeon Gold 6438Y+,Sapphire Rapids,2000 MHz,205,32,
+Intel Xeon Gold 6442Y,Sapphire Rapids,2.6 GHz,225,24,
+Intel Xeon Gold 6444Y,Sapphire Rapids,3.6 GHz,270,16,
+Intel Xeon Gold 6448H,Sapphire Rapids,2.4 GHz,250,32,
+Intel Xeon Gold 6448Y,Sapphire Rapids,2.1 GHz,225,32,
+Intel Xeon Gold 6454S,Sapphire Rapids,2.2 GHz,270,32,1908.0
+Intel Xeon Gold 6458Q,Sapphire Rapids,3.1 GHz,350,32,
+Intel Xeon L5506,Gainestown,2.133 GHz,60,4,263.0
+Intel Xeon L5508,Gainestown,2000 MHz,38,2,263.0
+Intel Xeon L5518,Gainestown,2.133 GHz,60,4,263.0
+Intel Xeon L5520,Gainestown,2.266 GHz,60,4,263.0
+Intel Xeon L5530,Gainestown,2.4 GHz,60,4,263.0
+Intel Xeon L5609,Westmere-EP,1866 MHz,40,4,239.0
+Intel Xeon L5618,Westmere-EP,1866 MHz,40,4,239.0
+Intel Xeon L5630,Westmere-EP,2.133 GHz,40,4,239.0
+Intel Xeon L5638,Westmere-EP,2000 MHz,60,6,239.0
+Intel Xeon L5640,Westmere-EP,2.266 GHz,60,6,239.0
+Intel Xeon MP 2.83,Potomac,2.833 GHz,135,1,
+Intel Xeon MP 2.83,Potomac,2.833 GHz,129,1,
+Intel Xeon MP 3.0,Gallatin,3 GHz,85,1,269.0
+Intel Xeon MP 3.00,Potomac,3 GHz,135,1,
+Intel Xeon MP 3.00,Potomac,3 GHz,135,1,
+Intel Xeon MP 3.16,Potomac,3.167 GHz,135,1,
+Intel Xeon MP 3.16,Potomac,3.167 GHz,135,1,
+Intel Xeon MP 3.16,Cranford,3.167 GHz,135,1,
+Intel Xeon MP 3.33,Potomac,3.333 GHz,135,1,
+Intel Xeon MP 3.33,Cranford,3.334 GHz,135,1,
+Intel Xeon MP 3.33,Potomac,3.333 GHz,135,1,
+Intel Xeon MP 3.50,Cranford,3.5 GHz,135,1,
+Intel Xeon MP 3.66,Cranford,3.667 GHz,135,1,
+Intel Xeon MP 7020 Dual-Core,Paxville,2.667 GHz,135,2,213.0
+Intel Xeon MP 7030 Dual-Core,Paxville,2.833 GHz,135,2,213.0
+Intel Xeon MP 7030 Dual-Core,Paxville,2.8 GHz,135,2,213.0
+Intel Xeon MP 7040 Dual-Core,Paxville,3 GHz,135,2,213.0
+Intel Xeon MP 7041 Dual-Core,Paxville,3 GHz,135,2,213.0
+Intel Xeon Platinum 8180,Skylake-SP,2.5 GHz,205,28,
+Intel Xeon Platinum 8180M,Skylake-SP,2.5 GHz,205,28,
+Intel Xeon Platinum 8253,Cascade Lake-SP,2.2 GHz,125,16,
+Intel Xeon Platinum 8256,Cascade Lake-SP,3.8 GHz,105,4,
+Intel Xeon Platinum 8260,Cascade Lake-SP,2.4 GHz,165,24,
+Intel Xeon Platinum 8260M,Cascade Lake-SP,2.4 GHz,165,24,
+Intel Xeon Platinum 8268,Cascade Lake-SP,2.9 GHz,205,24,
+Intel Xeon Platinum 8270,Cascade Lake-SP,2.7 GHz,205,26,
+Intel Xeon Platinum 8276,Cascade Lake-SP,2.2 GHz,165,28,
+Intel Xeon Platinum 8280,Cascade Lake-SP,2.7 GHz,205,28,
+Intel Xeon Platinum 8280M,Cascade Lake-SP,2.7 GHz,205,28,
+Intel Xeon Platinum 8351N,Ice Lake-SP,2.4 GHz,225,36,
+Intel Xeon Platinum 8352M,Ice Lake-SP,2.3 GHz,185,32,
+Intel Xeon Platinum 8352S,Ice Lake-SP,2.2 GHz,205,32,
+Intel Xeon Platinum 8352V,Ice Lake-SP,2.5 GHz,195,36,
+Intel Xeon Platinum 8353H,Cooper Lake-SP,2.5 GHz,150,18,
+Intel Xeon Platinum 8354H,Cooper Lake-SP,3.1 GHz,205,18,
+Intel Xeon Platinum 8356H,Cooper Lake-SP,3.9 GHz,190,8,
+Intel Xeon Platinum 8358,Ice Lake-SP,2.6 GHz,250,32,
+Intel Xeon Platinum 8358P,Ice Lake-SP,2.6 GHz,240,32,
+Intel Xeon Platinum 8360H,Cooper Lake-SP,3 GHz,225,24,
+Intel Xeon Platinum 8360HL,Cooper Lake-SP,3 GHz,225,24,
+Intel Xeon Platinum 8360Y,Ice Lake-SP,2.4 GHz,250,36,
+Intel Xeon Platinum 8362,Ice Lake-SP,2.8 GHz,265,32,
+Intel Xeon Platinum 8368,Ice Lake-SP,2.4 GHz,270,38,
+Intel Xeon Platinum 8368Q,Ice Lake-SP,2.6 GHz,270,38,
+Intel Xeon Platinum 8376H,Cooper Lake-SP,2.6 GHz,205,28,
+Intel Xeon Platinum 8376HL,Cooper Lake-SP,2.6 GHz,205,28,
+Intel Xeon Platinum 8380,Ice Lake-SP,2.3 GHz,270,40,
+Intel Xeon Platinum 8380H,Cooper Lake-SP,2.9 GHz,250,28,
+Intel Xeon Platinum 8380HL,Cooper Lake-SP,2.9 GHz,250,28,
+Intel Xeon Platinum 8444H,Sapphire Rapids,2.9 GHz,270,16,1908.0
+Intel Xeon Platinum 8450H,Sapphire Rapids,2000 MHz,250,28,1908.0
+Intel Xeon Platinum 8452Y,Sapphire Rapids,2000 MHz,300,36,1908.0
+Intel Xeon Platinum 8454H,Sapphire Rapids,2.1 GHz,270,32,1908.0
+Intel Xeon Platinum 8458P,Sapphire Rapids,2.7 GHz,350,44,1908.0
+Intel Xeon Platinum 8460H,Sapphire Rapids,2.2 GHz,330,40,1908.0
+Intel Xeon Platinum 8460Y+,Sapphire Rapids,2000 MHz,300,40,1908.0
+Intel Xeon Platinum 8461V,Sapphire Rapids,2.2 GHz,300,48,1908.0
+Intel Xeon Platinum 8462Y+,Sapphire Rapids,2.8 GHz,300,32,1908.0
+Intel Xeon Platinum 8468,Sapphire Rapids,2.1 GHz,350,48,1908.0
+Intel Xeon Platinum 8468H,Sapphire Rapids,2.1 GHz,330,48,1908.0
+Intel Xeon Platinum 8468V,Sapphire Rapids,2.4 GHz,330,48,1908.0
+Intel Xeon Platinum 8470,Sapphire Rapids,2000 MHz,350,52,1908.0
+Intel Xeon Platinum 8470N,Sapphire Rapids,1700 MHz,300,52,1908.0
+Intel Xeon Platinum 8470Q,Sapphire Rapids,2.1 GHz,350,52,1908.0
+Intel Xeon Platinum 8471N,Sapphire Rapids,1800 MHz,300,52,1908.0
+Intel Xeon Platinum 8480+,Sapphire Rapids,2000 MHz,350,56,1908.0
+Intel Xeon Platinum 8490H,Sapphire Rapids,1900 MHz,350,60,1908.0
+Intel Xeon Platinum 9221,Cascade Lake-AP,2.1 GHz,250,32,
+Intel Xeon Platinum 9222,Cascade Lake-AP,2.3 GHz,250,32,
+Intel Xeon Platinum 9242,Cascade Lake-AP,2.3 GHz,350,48,
+Intel Xeon Platinum 9282,Cascade Lake-AP,2.6 GHz,400,56,
+Intel Xeon Silver 4116,Skylake-SP,2.1 GHz,85,12,
+Intel Xeon Silver 4309Y,Ice Lake-SP,2.8 GHz,105,8,
+Intel Xeon Silver 4310,Ice Lake-SP,2.1 GHz,120,12,
+Intel Xeon Silver 4310T,Ice Lake-SP,2.3 GHz,105,10,
+Intel Xeon Silver 4314,Ice Lake-SP,2.4 GHz,135,16,
+Intel Xeon Silver 4316,Ice Lake-SP,2.3 GHz,150,20,
+Intel Xeon Silver 4410T,Sapphire Rapids,2.7 GHz,150,10,
+Intel Xeon Silver 4410Y,Sapphire Rapids,2000 MHz,150,12,
+Intel Xeon Silver 4416+,Sapphire Rapids,2000 MHz,165,20,
+Intel Xeon W-11855M,Tiger Lake-H,3.2 GHz,35,6,190.0
+Intel Xeon W-11955M,Tiger Lake-H,2.1 GHz,35,8,190.0
+Intel Xeon W-1290,Comet Lake,3.2 GHz,80,10,206.0
+Intel Xeon W-1290P,Comet Lake,3.7 GHz,125,10,206.0
+Intel Xeon W-2102,Skylake-W,2.9 GHz,120,4,484.0
+Intel Xeon W-2104,Skylake-W,3.2 GHz,120,4,484.0
+Intel Xeon W-2123,Skylake-W,3.6 GHz,120,4,484.0
+Intel Xeon W-2125,Skylake-W,4 GHz,120,4,484.0
+Intel Xeon W-2133,Skylake-W,3.6 GHz,140,6,484.0
+Intel Xeon W-2135,Skylake-W,3.7 GHz,140,6,484.0
+Intel Xeon W-2140B,Skylake-W,3.2 GHz,120,8,484.0
+Intel Xeon W-2145,Skylake-W,3.7 GHz,140,8,484.0
+Intel Xeon W-2150B,Skylake-W,3 GHz,120,10,484.0
+Intel Xeon W-2155,Skylake-W,3.3 GHz,140,10,484.0
+Intel Xeon W-2170B,Skylake-W,2.5 GHz,140,14,484.0
+Intel Xeon W-2175,Skylake-W,2.5 GHz,140,14,484.0
+Intel Xeon W-2191B,Skylake-W,2.3 GHz,140,18,484.0
+Intel Xeon W-2195,Skylake-W,2.3 GHz,140,18,484.0
+Intel Xeon W-3175X,Skylake-W,3.1 GHz,255,28,688.0
+Intel Xeon W-3323,Ice Lake-W,3.5 GHz,220,12,
+Intel Xeon W-3335,Ice Lake-W,3.4 GHz,250,16,
+Intel Xeon W-3345,Ice Lake-W,3 GHz,250,24,
+Intel Xeon W-3365,Ice Lake-W,2.7 GHz,270,32,
+Intel Xeon W-3375,Ice Lake-W,2.5 GHz,270,38,
+Intel Xeon W3503,Bloomfield,2.4 GHz,130,2,263.0
+Intel Xeon W3505,Bloomfield,2.533 GHz,130,2,263.0
+Intel Xeon W3520,Bloomfield,2.666 GHz,130,4,263.0
+Intel Xeon W3530,Bloomfield,2.8 GHz,130,4,263.0
+Intel Xeon W3540,Bloomfield,2.933 GHz,130,4,263.0
+Intel Xeon W3550,Bloomfield,3.066 GHz,130,4,263.0
+Intel Xeon W3565,Bloomfield,3.2 GHz,130,4,263.0
+Intel Xeon W3570,Bloomfield,3.2 GHz,130,4,263.0
+Intel Xeon W3580,Bloomfield,3.333 GHz,130,4,263.0
+Intel Xeon W3670,Gulftown,3.2 GHz,130,6,239.0
+Intel Xeon W3680,Gulftown,3.333 GHz,130,6,239.0
+Intel Xeon W3690,Gulftown,3.466 GHz,130,6,239.0
+Intel Xeon W5580,Gainestown,3.2 GHz,130,4,263.0
+Intel Xeon W5590,Gainestown,3.333 GHz,130,4,263.0
+Intel Xeon X5550,Gainestown,2.666 GHz,95,4,263.0
+Intel Xeon X5560,Gainestown,2.8 GHz,95,4,263.0
+Intel Xeon X5570,Gainestown,2.933 GHz,95,4,263.0

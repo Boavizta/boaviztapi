@@ -15,3 +15,4 @@ def test_fuzzymatch_ram(ram_dataframe):
     assert "samsung" == fuzzymatch_attr_from_pdf("samesung", "manufacturer", ram_dataframe).lower()
     assert fuzzymatch_attr_from_pdf("4R", "manufacturer", ram_dataframe) is None
 
+

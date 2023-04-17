@@ -27,7 +27,11 @@ def verbose_device(device: Device, allocation=Allocation.TOTAL, selected_criteri
 def verbose_usage(device: [Device, Component]):
     json_output = {**iter_boattribute(device.usage)}
     if device.usage.consumption_profile is not None:
-        json_output = {**json_output, **iter_boattribute(device.usage.consumption_profile)}
+        if device.usage.consumption_profile.workloads.is_set():
+            json_output["workloads"] = device.usage.consumption_profile.workloads.to_json()
+            json_output["workloads"]["value"] = [{"load_percentage" : workload.load_percentage, "power_watt": workload.power_watt} for workload in json_output["workloads"]["value"]]
+        if device.usage.consumption_profile.params.is_set():
+            json_output["params"] = device.usage.consumption_profile.params.to_json()
     for elec in device.usage.elec_factors:
         if device.usage.elec_factors[elec].is_set():
             json_output[f"{elec}_factor"] = device.usage.elec_factors[elec].to_json()

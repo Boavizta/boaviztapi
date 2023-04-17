@@ -18,6 +18,7 @@ utils_router = APIRouter(
 data_dir = os.path.join(os.path.dirname(__file__), '../data')
 _countries_df = pd.read_csv(os.path.join(data_dir, 'electricity/electricity_impact_factors.csv'))
 _cpu_index = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_index.csv'))
+_cpu_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs_final_techpowerup.csv'))
 _cpu_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_manufacture.csv'))
 _ssd_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/ssd_manufacture.csv'))
 _ram_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/ram_manufacture.csv'))
@@ -65,13 +66,13 @@ async def utils_get_all_case_type():
 
 @utils_router.get('/name_to_cpu', description=name_to_cpu)
 async def name_to_cpu(cpu_name: str = None):
-    manufacturer, model_range, family = attributes_from_cpu_name(cpu_name)
-    cpu = CPU(manufacturer=manufacturer, model_range=model_range, family=family)
+    name, family, tdp, cores, die_size = attributes_from_cpu_name(cpu_name)
+    cpu = CPU(family=family, name=name, tdp=tdp, core_units=cores, die_size=die_size)
     return cpu
 
 @utils_router.get('/cpu_name', description=cpu_names)
 async def utils_get_all_cpu_name():
-    df = _cpu_index[_cpu_index["name"].notna()]
+    df = _cpu_df[_cpu_df["name"].notna()]
     return [*df["name"].unique()]
 
 @utils_router.get('/impact_criteria', description=impacts_criteria)
