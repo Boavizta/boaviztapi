@@ -1293,7 +1293,7 @@
   }
 }
 
-"box": {
+"BOX": {
   "adpe": {
     "impact": 4.41e-05,
     "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
