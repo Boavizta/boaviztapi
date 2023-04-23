@@ -3,7 +3,6 @@
 A consumption profile is a continuous function which links a workload with an electrical consumption :
 ```consumption_profile(workload) = power_consumption```
 
-Consumption profile can be given by the user or be completed.
 The completion strategy of the consumption profile is specified for each device or component when implemented.
 
 You will find the details of each of the consumption profiles in the respective components and device pages. Consumption profile are implemented for :

@@ -1,14 +1,21 @@
 # Auto-complete information required for computation
 
-Any calculation using the API is made easier thanks to the **data auto-complete strategy**. Any valid input should return an impact evaluation, even though it is lacking some detailed information about the component, device or cloud instance. Given the user inputs, the API finds the best strategy to fill any missing attributes for the computation. 
+Any calculation using the API is made easier thanks to the **data auto-complete strategy**. Any valid input should return an impacts evaluation, even though it is lacking some detailed information about the component, device or cloud instance. Given the user inputs, the API finds the best strategy to fill any missing attributes for the computation. 
 
-Depending on the type of calculation and component, device or cloud instance, the API will **either infer or use default values** for those missing attributes. The documentation about how attributes are auto-completed is given on each component, device or cloud instance documentation page. 
+the API implements several approaches to complete the missing information:
 
-All attributes that are auto-completed by the API can be found in the [verbose](verbose.md) information. Attributes with a `status` of `DEFAULT` or `COMPLETED` is respectively using a default value or using an inferred value given user inputs.
+* ```COMPELETE``` : The API infer the value based on the user inputs (e.g. `manufacturer` and `family` for a CPU ```name```).  
+* ```DEFAULT``` : The API use a default value for those missing attributes (e.g. europe for the default ```usage_location```). The default values can be set in the [configuration file](configuration.md).
+* ```ARCETYPE``` : The API can use a value taken from an [archetype](archetypes.md)**.
+* ```CHANGED```: The API can change the value of an attribute to make the computation possible. This happens when you provide a value that is close to the value of an attribute but not exactly the same. For example, if you provide a ```family``` that is not in the database but is close to a family in the database, the API will change the ```family``` to the closest name in the database.
+
+The documentation about how attributes are auto-completed is given on each asset's documentation page. 
+
+All attributes that are auto-completed by the API can be found in the [verbose](verbose.md) information. Attributes with a `status` of `ARCHETYPE`, `DEFAULT` or  `COMPLETED` are respectively using an archetype value, a default value or using an inferred value given user inputs.
 
 ## Example on a CPU
 
-To provide a response to following query that is lacking key information to compute the manufacturing impact, some attributes will be auto-completed by the API.
+To provide a response to the following query that is lacking key information to compute the embedded impacts, some attributes will be auto-completed by the API.
 
 ```shell
 curl -X 'POST' \
@@ -21,26 +28,46 @@ curl -X 'POST' \
 }'
 ```
 
-The response verbose will look like the following. The `core_units` and `die_size_per_core` attributes are mandatory to compute manufacturing impact, thus they are `COMPLETED` by the API using user inputs `manufacturer` and `family`. Note that you can check the source of the value used.
+The response verbose will look like the following. 
 
 ```json
 {
-    ...
-    "verbose": {
-        ...
-        "core_units": {
-            "value": 18,
-            "unit": "none",
-            "status": "COMPLETED",
-            "source": "https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)"
-        },
-        "die_size_per_core": {
-            "value": 0.346,
-            "unit": "mm2",
-            "status": "COMPLETED",
-            "source": "https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)"
-        }
-        ...
+  ...
+    "core_units": {
+      "value": 24,
+      "status": "ARCHETYPE",
+      "min": 1,
+      "max": 64
+    },
+    "die_size_per_core": {
+      "value": 0.35,
+      "status": "COMPLETED",
+      "unit": "mm2",
+      "source": "https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)#Octadeca-core",
+      "min": 0.35,
+      "max": 0.44
+    },
+    "family": {
+      "value": "haswell",
+      "status": "CHANGED"
+    },
+    "time_workload": {
+      "value": 50,
+      "status": "ARCHETYPE",
+      "unit": "%",
+      "min": 0,
+      "max": 100
+    },
+    "usage_location": {
+      "value": "EEE",
+      "status": "DEFAULT",
+      "unit": "CodSP3 - NCS Country Codes - NATO"
     }
+  ...
 }
 ```
+
+* usage_location is set by ```DEFAULT```.
+* family is ```CHANGED``` since ```Haswell``` should be lowercase.
+* die_size_per_core is set by ```COMPLETED``` since the value is inferred from the user inputs.
+* time_workload is set by ```ARCHETYPE``` since the value is taken from the archetype.
