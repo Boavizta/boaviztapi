@@ -5,7 +5,7 @@ default_ram: "DEFAULT"
 default_ssd: "DEFAULT"
 default_hdd: "DEFAULT"
 default_power_supply: "DEFAULT"
-default_case: "DEFAULT"
+default_case: "rack"
 default_assembly: "DEFAULT"
 default_motherboard: "DEFAULT"
 
