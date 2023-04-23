@@ -14,7 +14,7 @@ from boaviztapi.service.factor_provider import get_impact_factor
 
 
 class DeviceServer(Device):
-
+    NAME = "SERVER"
     def __init__(self, archetype=get_server_archetype(config["default_server"]), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
         self._cpu = None

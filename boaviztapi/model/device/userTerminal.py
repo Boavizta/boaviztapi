@@ -25,9 +25,9 @@ class EndUserDevice(Device):
         self._usage = value
     @abstractmethod
     def impact_other(self, impact_type: str) -> ComputedImpacts:
-        impact = get_impact_factor(item=self.NAME, impact_type=impact_type)["impact"]
-        min_impacts = get_impact_factor(item=self.NAME, impact_type=impact_type)["impact"]
-        max_impacts = get_impact_factor(item=self.NAME, impact_type=impact_type)["impact"]
+        impact = float(get_impact_factor(item=self.NAME, impact_type=impact_type)["impact"])
+        min_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)["impact"])
+        max_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)["impact"])
         significant_figures = rd.significant_number(impact)
 
         warnings = ["Generic data used for impact calculation."]
@@ -59,9 +59,9 @@ class DeviceLaptop(EndUserDevice, ABC):
             max=get_arch_value(archetype, 'type', 'max')
         )
     def impact_other(self, impact_type: str) -> ComputedImpacts:
-        impact = get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"]
-        min_impacts = get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"]
-        max_impacts = get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"]
+        impact = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
+        min_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
+        max_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
         significant_figures = rd.significant_number(impact)
 
         warnings = ["Generic data used for impact calculation."]
@@ -79,9 +79,9 @@ class DeviceDesktop(EndUserDevice, ABC):
         )
 
     def impact_other(self, impact_type: str) -> ComputedImpacts:
-        impact = get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"]
-        min_impacts = get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"]
-        max_impacts = get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"]
+        impact = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
+        min_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
+        max_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
         significant_figures = rd.significant_number(impact)
 
         warnings = ["Generic data used for impact calculation."]
@@ -109,9 +109,10 @@ class DeviceTelevision(EndUserDevice, ABC):
         )
 
     def impact_other(self, impact_type: str) -> ComputedImpacts:
-        impact = get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"]
-        min_impacts = get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"]
-        max_impacts = get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"]
+        impact = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
+        min_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
+        max_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
+        print(impact_type," : ", impact)
         significant_figures = rd.significant_number(impact)
 
         warnings = ["Generic data used for impact calculation."]
