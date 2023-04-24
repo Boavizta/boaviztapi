@@ -120,8 +120,8 @@ class ComponentRAM(Component):
     def __compute_impact_manufacture(self, ram_die_impact: ImpactFactor, ram_impact: ImpactFactor) -> ImpactFactor:
         return ImpactFactor(
             value=(self.capacity.value / self.density.value) * ram_die_impact.value + ram_impact.value,
-            min=(self.capacity.min / self.density.min) * ram_die_impact.min + ram_impact.min,
-            max=(self.capacity.max / self.density.max) * ram_die_impact.max + ram_impact.max
+            min=(self.capacity.min / self.density.max) * ram_die_impact.min + ram_impact.min,
+            max=(self.capacity.max / self.density.min) * ram_die_impact.max + ram_impact.max
         )
 
     # COMPLETION

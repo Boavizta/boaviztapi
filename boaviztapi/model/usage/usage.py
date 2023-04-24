@@ -91,8 +91,8 @@ class ModelUsage:
 
         if self.usage_location.is_default():
             self.elec_factors.get(impact_criteria).set_default(factor["value"], source=str(factor["source"]))
-            self.elec_factors.get(impact_criteria).min = float(get_electrical_min_max(impact_criteria, "min"))
-            self.elec_factors.get(impact_criteria).max =  float(get_electrical_min_max(impact_criteria, "max"))
+            self.elec_factors.get(impact_criteria).min = float(get_electrical_min_max(impact_criteria_proxy, "min"))
+            self.elec_factors.get(impact_criteria).max =  float(get_electrical_min_max(impact_criteria_proxy, "max"))
         else:
             self.elec_factors.get(impact_criteria).set_completed(factor["value"],
                                                              source=str(factor["source"]),
