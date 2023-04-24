@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
         for i in IMPACT_CRITERIAS:
             try:
-                str+=f"| {i.name} | {i.unit} | {d_pro.impact_other(i.name)[0]} | {d_perso.impact_other(i.name)[0]} |\n"
+                str+=f"| {i.name} | {i.unit} | {d_pro.impact_embedded(i.name)[0]} | {d_perso.impact_embedded(i.name)[0]} |\n"
             except (AttributeError, NotImplementedError):
                 pass
         str += "\n### Usage\n"
@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
         for i in IMPACT_CRITERIAS:
             try:
-                str += f"| {i.name} | {i.unit} | {d_perso.impact_other(i.name)[0]} |\n"
+                str += f"| {i.name} | {i.unit} | {d_perso.impact_embedded(i.name)[0]} |\n"
             except (AttributeError, NotImplementedError):
                 pass
         str += "\n### Usage\n"

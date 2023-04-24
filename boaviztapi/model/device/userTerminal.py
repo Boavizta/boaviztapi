@@ -24,7 +24,7 @@ class EndUserDevice(Device):
     def usage(self, value: int) -> None:
         self._usage = value
     @abstractmethod
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         impact = float(get_impact_factor(item=self.NAME, impact_type=impact_type)["impact"])
         min_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)["impact"])
         max_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)["impact"])
@@ -58,7 +58,7 @@ class DeviceLaptop(EndUserDevice, ABC):
             min=get_arch_value(archetype, 'type', 'min'),
             max=get_arch_value(archetype, 'type', 'max')
         )
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         impact = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
         min_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
         max_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
@@ -78,7 +78,7 @@ class DeviceDesktop(EndUserDevice, ABC):
             max=get_arch_value(archetype, 'type', 'max')
         )
 
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         impact = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
         min_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
         max_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
@@ -108,7 +108,7 @@ class DeviceTelevision(EndUserDevice, ABC):
             max=get_arch_value(archetype, 'type', 'max')
         )
 
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         impact = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
         min_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
         max_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])

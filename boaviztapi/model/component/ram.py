@@ -49,7 +49,7 @@ class ComponentRAM(Component):
 
 
     # IMPACT COMPUTATION
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         ram_die_impact, ram_impact = self.__get_impact_constants(impact_type)
 
         impact = self.__compute_impact_manufacture(ram_die_impact, ram_impact)

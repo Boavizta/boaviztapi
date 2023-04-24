@@ -34,7 +34,7 @@ class Device:
         return []
 
     @abstractmethod
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         raise NotImplementedError
 
     @abstractmethod

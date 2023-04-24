@@ -90,7 +90,7 @@ class ComponentCPU(Component):
         self.usage.hours_electrical_consumption.add_warning("value for one cpu unit")
 
     # IMPACT COMPUTATION
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         core_impact, cpu_die_impact, cpu_impact = self.__get_impact_constants(impact_type)
         sign_figures = self.__compute_significant_numbers(core_impact.value, cpu_die_impact.value, cpu_impact.value)
         impact = self.__compute_impact_manufacture(core_impact, cpu_die_impact, cpu_impact)

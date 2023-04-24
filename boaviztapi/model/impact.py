@@ -57,7 +57,7 @@ Epm = ImpactCriteria(name="epm", unit="kg N eq.", method="PEF", description="Eut
 Ept = ImpactCriteria(name="ept", unit="mol N eq.", method="PEF", description="Terrestrial eutrophication")
 
 IMPACT_CRITERIAS = [GWP, ADP, PE, GWPPb, GWPPf, GWPPlu, IR, LU, ODP, PM, POCP, WU, MIPS, ADPe, ADPf, AP, CTUe, CTUh_c, CTUh_nc, Epf, Epm, Ept]
-IMPACT_PHASES = ["other", "use"]
+IMPACT_PHASES = ["embedded", "use"]
 
 class ImpactFactor:
     def __init__(self, **kwargs):

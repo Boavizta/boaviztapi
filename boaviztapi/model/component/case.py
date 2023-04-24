@@ -21,7 +21,7 @@ class ComponentCase(Component):
             min=get_arch_value(archetype, 'case_type', 'min'),
             max=get_arch_value(archetype, 'case_type', 'max')
         )
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         if self.case_type.value == 'rack':
             return self.__impact_manufacture_rack(impact_type)
         elif self.case_type.value == 'blade':

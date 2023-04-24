@@ -50,7 +50,7 @@ class ComponentSSD(Component):
         )
 
     # IMPACT CALCUATION
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         ssd_die_impact, ssd_impact = self.__get_impact_constants(impact_type)
         sign_figures = self.__compute_significant_numbers(ssd_die_impact.value, ssd_impact.value)
         impact = self.__compute_impact_manufacture(ssd_die_impact, ssd_impact)

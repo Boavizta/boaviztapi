@@ -49,7 +49,7 @@ async def test_complete_config_server():
             }
         })
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'other': {'max': 0.26,
+                                  'embedded': {'max': 0.26,
                                             'min': 0.25,
                                             'significant_figures': 2,
                                             'value': 0.25},
@@ -59,7 +59,7 @@ async def test_complete_config_server():
                                           'significant_figures': 3,
                                           'value': 0.000313}},
                           'gwp': {'description': 'Effects on global warming',
-                                  'other': {'max': 1100.0,
+                                  'embedded': {'max': 1100.0,
                                             'min': 1100.0,
                                             'significant_figures': 2,
                                             'value': 1100.0},
@@ -69,7 +69,7 @@ async def test_complete_config_server():
                                           'significant_figures': 2,
                                           'value': 1900.0}},
                           'pe': {'description': 'Consumption of primary energy',
-                                 'other': {'max': 15000.0,
+                                 'embedded': {'max': 15000.0,
                                            'min': 14000.0,
                                            'significant_figures': 2,
                                            'value': 15000.0},
@@ -85,7 +85,7 @@ async def test_empty_config_server():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/server/?verbose=false', json={})
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'other': {'max': 9.4,
+                                  'embedded': {'max': 9.4,
                                             'min': 0.055,
                                             'significant_figures': 2,
                                             'value': 0.23},
@@ -95,7 +95,7 @@ async def test_empty_config_server():
                                           'significant_figures': 3,
                                           'value': 0.000436}},
                           'gwp': {'description': 'Effects on global warming',
-                                  'other': {'max': 310000.0,
+                                  'embedded': {'max': 310000.0,
                                             'min': 220.0,
                                             'significant_figures': 2,
                                             'value': 3300.0},
@@ -105,7 +105,7 @@ async def test_empty_config_server():
                                           'significant_figures': 2,
                                           'value': 2600.0}},
                           'pe': {'description': 'Consumption of primary energy',
-                                 'other': {'max': 3800000.0,
+                                 'embedded': {'max': 3800000.0,
                                            'min': 3000.0,
                                            'significant_figures': 2,
                                            'value': 42000.0},
@@ -122,7 +122,7 @@ async def test_dell_r740_server():
         res = await ac.post('/v1/server/?verbose=false', json={
             "model":
                 {
-                    "otherr": "Dell",
+                    "embeddedr": "Dell",
                     "name": "R740",
                     "type": "rack",
                     "year": 2020
@@ -163,7 +163,7 @@ async def test_dell_r740_server():
         })
 
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'other': {'max': 0.15,
+                                  'embedded': {'max': 0.15,
                                             'min': 0.15,
                                             'significant_figures': 2,
                                             'value': 0.15},
@@ -173,7 +173,7 @@ async def test_dell_r740_server():
                                           'significant_figures': 3,
                                           'value': 0.000354}},
                           'gwp': {'description': 'Effects on global warming',
-                                  'other': {'max': 970.0,
+                                  'embedded': {'max': 970.0,
                                             'min': 970.0,
                                             'significant_figures': 2,
                                             'value': 970.0},
@@ -183,7 +183,7 @@ async def test_dell_r740_server():
                                           'significant_figures': 2,
                                           'value': 2100.0}},
                           'pe': {'description': 'Consumption of primary energy',
-                                 'other': {'max': 13000.0,
+                                 'embedded': {'max': 13000.0,
                                            'min': 13000.0,
                                            'significant_figures': 2,
                                            'value': 13000.0},
@@ -227,7 +227,7 @@ async def test_partial_server_1():
             }
         })
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'other': {'max': 0.9,
+                                  'embedded': {'max': 0.9,
                                             'min': 0.34,
                                             'significant_figures': 2,
                                             'value': 0.15},
@@ -237,7 +237,7 @@ async def test_partial_server_1():
                                           'significant_figures': 3,
                                           'value': 0.000313}},
                           'gwp': {'description': 'Effects on global warming',
-                                  'other': {'max': 23000.0,
+                                  'embedded': {'max': 23000.0,
                                             'min': 8900.0,
                                             'significant_figures': 2,
                                             'value': 1300.0},
@@ -247,7 +247,7 @@ async def test_partial_server_1():
                                           'significant_figures': 2,
                                           'value': 1900.0}},
                           'pe': {'description': 'Consumption of primary energy',
-                                 'other': {'max': 290000.0,
+                                 'embedded': {'max': 290000.0,
                                            'min': 110000.0,
                                            'significant_figures': 2,
                                            'value': 17000.0},
@@ -298,7 +298,7 @@ async def test_partial_server_2():
             }
         })
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'other': {'max': 0.28,
+                                  'embedded': {'max': 0.28,
                                             'min': 0.25,
                                             'significant_figures': 2,
                                             'value': 0.26},
@@ -308,7 +308,7 @@ async def test_partial_server_2():
                                           'significant_figures': 3,
                                           'value': 0.000313}},
                           'gwp': {'description': 'Effects on global warming',
-                                  'other': {'max': 1900.0,
+                                  'embedded': {'max': 1900.0,
                                             'min': 980.0,
                                             'significant_figures': 2,
                                             'value': 1400.0},
@@ -318,7 +318,7 @@ async def test_partial_server_2():
                                           'significant_figures': 2,
                                           'value': 1900.0}},
                           'pe': {'description': 'Consumption of primary energy',
-                                 'other': {'max': 24000.0,
+                                 'embedded': {'max': 24000.0,
                                            'min': 13000.0,
                                            'significant_figures': 2,
                                            'value': 19000.0},
@@ -351,7 +351,7 @@ async def test_partial_server_3():
             }
         })
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'other': {'max': 8.4,
+                                  'embedded': {'max': 8.4,
                                             'min': 0.22,
                                             'significant_figures': 2,
                                             'value': 0.24},
@@ -361,7 +361,7 @@ async def test_partial_server_3():
                                           'significant_figures': 3,
                                           'value': 0.000286}},
                           'gwp': {'description': 'Effects on global warming',
-                                  'other': {'max': 280000.0,
+                                  'embedded': {'max': 280000.0,
                                             'min': 760.0,
                                             'significant_figures': 2,
                                             'value': 900.0},
@@ -371,7 +371,7 @@ async def test_partial_server_3():
                                           'significant_figures': 2,
                                           'value': 1700.0}},
                           'pe': {'description': 'Consumption of primary energy',
-                                 'other': {'max': 3400000.0,
+                                 'embedded': {'max': 3400000.0,
                                            'min': 11000.0,
                                            'significant_figures': 2,
                                            'value': 13000.0},
@@ -395,7 +395,7 @@ async def test_custom_usage_1():
             }
         })
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'other': {'max': 9.4,
+                                  'embedded': {'max': 9.4,
                                             'min': 0.055,
                                             'significant_figures': 2,
                                             'value': 0.23},
@@ -405,7 +405,7 @@ async def test_custom_usage_1():
                                           'significant_figures': 1,
                                           'value': 4e-07}},
                           'gwp': {'description': 'Effects on global warming',
-                                  'other': {'max': 310000.0,
+                                  'embedded': {'max': 310000.0,
                                             'min': 220.0,
                                             'significant_figures': 2,
                                             'value': 3300.0},
@@ -415,7 +415,7 @@ async def test_custom_usage_1():
                                           'significant_figures': 1,
                                           'value': 0.9}},
                           'pe': {'description': 'Consumption of primary energy',
-                                 'other': {'max': 3800000.0,
+                                 'embedded': {'max': 3800000.0,
                                            'min': 3000.0,
                                            'significant_figures': 2,
                                            'value': 42000.0},
