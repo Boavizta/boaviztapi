@@ -8,9 +8,7 @@ from boaviztapi.dto import BaseDTO
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
 from boaviztapi.service.archetype import get_cloud_instance_archetype, get_server_archetype
-
-_electricity_emission_factors_df = pd.read_csv(os.path.join(os.path.dirname(__file__),
-                                                            '../../data/electricity/electricity_impact_factors.csv'))
+from boaviztapi.service.factor_provider import get_available_countries
 
 
 class WorkloadTime(BaseDTO):
@@ -76,13 +74,11 @@ def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
                                      (usage_dto.years_use_time or 0) * 24 * 365)
 
     if usage_dto.usage_location is not None:
-        sub = _electricity_emission_factors_df
-        sub = sub[sub['code'] == usage_dto.usage_location]
-        if len(sub) == 0:
+        if usage_dto.usage_location in get_available_countries(reverse=True):
+            usage_model.usage_location.set_input(usage_dto.usage_location)
+        else:
             usage_model.usage_location.set_changed(usage_model.usage_location.default)
             usage_model.usage_location.add_warning("Location not found. Default value used.")
-        else:
-            usage_model.usage_location.set_input(usage_dto.usage_location)
 
     return usage_model
 
@@ -105,13 +101,11 @@ def mapper_usage_server(usage_dto: UsageServer, archetype=get_server_archetype(c
         usage_model_server.time_workload.set_input(usage_dto.time_workload)
 
     if usage_dto.usage_location is not None:
-        sub = _electricity_emission_factors_df
-        sub = sub[sub['code'] == usage_dto.usage_location]
-        if len(sub) == 0:
+        if usage_dto.usage_location in get_available_countries(reverse=True):
+            usage_model_server.usage_location.set_input(usage_dto.usage_location)
+        else:
             usage_model_server.usage_location.set_changed(usage_model_server.usage_location.default)
             usage_model_server.usage_location.add_warning("Location not found. Default value used.")
-        else:
-            usage_model_server.usage_location.set_input(usage_dto.usage_location)
     if usage_dto.other_consumption_ratio is not None:
         usage_model_server.other_consumption_ratio.set_input(usage_dto.other_consumption_ratio)
 
@@ -136,13 +130,11 @@ def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_arche
         usage_model_cloud.time_workload.set_input(usage_dto.time_workload)
 
     if usage_dto.usage_location is not None:
-        sub = _electricity_emission_factors_df
-        sub = sub[sub['code'] == usage_dto.usage_location]
-        if len(sub) == 0:
+        if usage_dto.usage_location in get_available_countries(reverse=True):
+            usage_model_cloud.usage_location.set_input(usage_dto.usage_location)
+        else:
             usage_model_cloud.usage_location.set_changed(usage_model_cloud.usage_location.default)
             usage_model_cloud.usage_location.add_warning("Location not found. Default value used.")
-        else:
-            usage_model_cloud.usage_location.set_input(usage_dto.usage_location)
 
     if usage_dto.other_consumption_ratio is not None:
         usage_model_cloud.other_consumption_ratio.set_input(usage_dto.other_consumption_ratio)

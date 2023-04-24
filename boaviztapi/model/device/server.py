@@ -155,6 +155,7 @@ class DeviceServer(Device):
 
     def impact_use(self, impact_type: str) -> ComputedImpacts:
         impact_factor = self.usage.elec_factors[impact_type]
+
         if not self.usage.hours_electrical_consumption.is_set():
             modeled_consumption = self.model_power_consumption()
             self.usage.hours_electrical_consumption.set_completed(

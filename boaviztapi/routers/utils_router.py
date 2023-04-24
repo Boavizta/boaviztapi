@@ -9,6 +9,7 @@ from boaviztapi.model.component import ComponentCase
 from boaviztapi.model.component.cpu import attributes_from_cpu_name
 from boaviztapi.routers.openapi_doc.descriptions import country_code, cpu_family, cpu_model_range, ssd_manufacturer, \
     ram_manufacturer, case_type, name_to_cpu, cpu_names, impacts_criteria
+from boaviztapi.service.factor_provider import get_available_countries
 
 utils_router = APIRouter(
     prefix='/v1/utils',
@@ -16,7 +17,6 @@ utils_router = APIRouter(
 )
 
 data_dir = os.path.join(os.path.dirname(__file__), '../data')
-_countries_df = pd.read_csv(os.path.join(data_dir, 'electricity/electricity_impact_factors.csv'))
 _cpu_index = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_index.csv'))
 _cpu_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs_final_techpowerup.csv'))
 _cpu_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_manufacture.csv'))
@@ -26,11 +26,7 @@ _ram_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/ram_manufacture.c
 
 @utils_router.get('/country_code', description=country_code)
 async def utils_get_all_countries():
-    res = {}
-    for ind in _countries_df.index:
-        res[_countries_df["country"][ind]] = _countries_df["code"][ind]
-
-    return res
+    return get_available_countries()
 
 
 @utils_router.get('/cpu_family', description=cpu_family)
