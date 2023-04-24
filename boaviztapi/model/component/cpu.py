@@ -14,8 +14,9 @@ from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.service.archetype import get_component_archetype, get_arch_value
 from boaviztapi.service.factor_provider import get_impact_factor
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
+from thefuzz import fuzz, process
 
-_cpu_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs_final_techpowerup.csv'))
+_cpu_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs.csv'))
 _family_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_manufacture.csv'))
 
 def attributes_from_cpu_name(cpu_name: str) -> Tuple[str, str, int, int, float]:
