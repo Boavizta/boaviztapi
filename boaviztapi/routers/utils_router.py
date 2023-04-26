@@ -62,7 +62,7 @@ async def utils_get_all_case_type():
 @utils_router.get('/name_to_cpu', description=name_to_cpu)
 async def name_to_cpu(cpu_name: str = Query(example="Intel Core i7-9700K")):
     name, manufacturer, code_name, model_range, tdp, cores, total_die_size, total_die_size_source, source  = attributes_from_cpu_name(cpu_name)
-    return CPU(family=code_name, name=name, tdp=tdp, core_units=cores, die_size=total_die_size)
+    return CPU(family=code_name, name=name, tdp=tdp, core_units=cores, die_size=total_die_size, model_range=model_range, manufacturer=manufacturer)
 
 @utils_router.get('/cpu_name', description=cpu_names)
 async def utils_get_all_cpu_name():
