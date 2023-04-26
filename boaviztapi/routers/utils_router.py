@@ -1,7 +1,7 @@
 import os
 
 import pandas as pd
-from fastapi import APIRouter
+from fastapi import APIRouter, Query
 
 from boaviztapi.dto.component.cpu import CPU
 from boaviztapi.model import impact
@@ -17,8 +17,7 @@ utils_router = APIRouter(
 )
 
 data_dir = os.path.join(os.path.dirname(__file__), '../data')
-_cpu_index = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_index.csv'))
-_cpu_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs_final_techpowerup.csv'))
+_cpu_specs = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs.csv'))
 _cpu_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_manufacture.csv'))
 _ssd_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/ssd_manufacture.csv'))
 _ram_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/ram_manufacture.csv'))
@@ -37,7 +36,7 @@ async def utils_get_all_cpu_family():
 
 @utils_router.get('/cpu_model_range', description=cpu_model_range)
 async def utils_get_all_cpu_model_range():
-    df = _cpu_index[_cpu_index["model_range"].notna()]
+    df = _cpu_specs[_cpu_specs["model_range"].notna()]
     return [*df["model_range"].unique()]
 
 
@@ -61,14 +60,13 @@ async def utils_get_all_case_type():
 
 
 @utils_router.get('/name_to_cpu', description=name_to_cpu)
-async def name_to_cpu(cpu_name: str = None):
-    name, family, tdp, cores, die_size = attributes_from_cpu_name(cpu_name)
-    cpu = CPU(family=family, name=name, tdp=tdp, core_units=cores, die_size=die_size)
-    return cpu
+async def name_to_cpu(cpu_name: str = Query(example="Intel Core i7-9700K")):
+    name, manufacturer, code_name, model_range, tdp, cores, total_die_size, total_die_size_source, source  = attributes_from_cpu_name(cpu_name)
+    return CPU(family=code_name, name=name, tdp=tdp, core_units=cores, die_size=total_die_size, model_range=model_range, manufacturer=manufacturer)
 
 @utils_router.get('/cpu_name', description=cpu_names)
 async def utils_get_all_cpu_name():
-    df = _cpu_df[_cpu_df["name"].notna()]
+    df = _cpu_specs[_cpu_specs["name"].notna()]
     return [*df["name"].unique()]
 
 @utils_router.get('/impact_criteria', description=impacts_criteria)

@@ -415,6 +415,11 @@ def empty_usage_dto():
 
 
 @pytest.fixture(scope="function")
+def cpu_specs_dataframe():
+    return pd.read_csv(data_dir + "/crowdsourcing/cpu_specs.csv")
+
+
+@pytest.fixture(scope="function")
 def cpu_dataframe():
     return pd.read_csv(data_dir + "/crowdsourcing/cpu_manufacture.csv")
 

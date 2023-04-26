@@ -1,5 +1,5 @@
 import os
-from typing import List
+from typing import List, Tuple
 
 import pandas as pd
 
@@ -7,8 +7,7 @@ from boaviztapi.dto import BaseDTO
 from boaviztapi.dto.component import CPU
 from boaviztapi.model.component import ComponentCPU
 from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
-
-_cpu_index = os.path.join(os.path.dirname(__file__), '../../data/crowdsourcing/cpu_index.csv')
+from boaviztapi.model.component.cpu import attributes_from_cpu_name
 
 
 class WorkloadPower(BaseDTO):
@@ -34,12 +33,12 @@ def mapper_cp(cp_dto: ConsumptionProfile) -> CPUConsumptionProfileModel:
     return cp
 
 
-def mapper_cp_cpu(cp_dto: ConsumptionProfileCPU) -> (CPUConsumptionProfileModel, ComponentCPU):
+def mapper_cp_cpu(cp_dto: ConsumptionProfileCPU) -> Tuple[CPUConsumptionProfileModel, ComponentCPU]:
     cpu = ComponentCPU()
     manufacturer, model_range, family = None, None, None
 
     if cp_dto.cpu.name is not None:
-        manufacturer, model_range, family = attributes_from_cpu_name(cp_dto.cpu.name)
+        name, manufacturer, family, model_range, tdp, cores, total_die_size, total_die_size_source, source  = attributes_from_cpu_name(cp_dto.cpu.name)
 
     if cp_dto.cpu.manufacturer is not None:
         cpu.manufacturer.set_input(cp_dto.cpu.manufacturer)

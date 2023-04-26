@@ -3,7 +3,6 @@ from typing import Tuple
 
 import pandas as pd
 
-from thefuzz import fuzz
 import boaviztapi.utils.roundit as rd
 from boaviztapi import config, data_dir
 from boaviztapi.model import ComputedImpacts
@@ -13,29 +12,20 @@ from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
 from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.service.archetype import get_component_archetype, get_arch_value
 from boaviztapi.service.factor_provider import get_impact_factor
-from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf
+from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf, fuzzymatch_attr_from_cpu_name
 
-_cpu_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs_final_techpowerup.csv'))
+
+_cpu_specs = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs.csv'))
 _family_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_manufacture.csv'))
 
-def attributes_from_cpu_name(cpu_name: str) -> Tuple[str, str, int, int, float]:
-    code_name, tdp, cores, die_size = None, None, None, None
-    df = _cpu_df.copy()
-    df["FuzzNF"] = df.apply(lambda x: fuzz.ratio(f'{x["name"]} {x["frequency"]}', cpu_name), axis=1)
-    df = df.loc[df['FuzzNF'].idxmax()]
-    if pd.notna(df.code_name):
-        code_name = df.code_name
-    if pd.notna(df.tdp):
-        tdp = df.tdp.item()
-    if pd.notna(df.cores):
-        cores = df.cores.item()
-    if pd.notna(df.total_die_size):
-        die_size = df.total_die_size.item()
 
-    return df["name"], code_name, tdp, cores, die_size
+def attributes_from_cpu_name(cpu_name: str):
+    return fuzzymatch_attr_from_cpu_name(cpu_name, _cpu_specs)
+
 
 class ComponentCPU(Component):
     NAME = "CPU"
+    name_completion = False
 
     def __init__(self, archetype=get_component_archetype(config["default_cpu"], "cpu"), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
@@ -204,8 +194,8 @@ class ComponentCPU(Component):
                 # If we have only one row but the number of cores is different, we use the max and min values of the dataframe
                 if row['core_dif'] != 0 and len(sub) == 1:
                     self.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
-                    self.die_size_per_core.min = float(float(_cpu_df['die_size_per_core'].min()))
-                    self.die_size_per_core.max = float(float(_cpu_df['die_size_per_core'].max()))
+                    self.die_size_per_core.min = float(float(_family_df['die_size_per_core'].min()))
+                    self.die_size_per_core.max = float(float(_family_df['die_size_per_core'].max()))
                     return
 
                 row2 = sub.iloc[1]
@@ -231,27 +221,33 @@ class ComponentCPU(Component):
         self.die_size_per_core.max = float(float(sub['die_size_per_core'].max()))
 
     def _complete_from_name(self):
-        if self.name.has_value():
+        if self.name.has_value() and not self.name_completion:
             compute_min_max = False
             if self.name.min != self.name.value or self.name.max != self.name.value:
                 compute_min_max = True
 
-            name, family, tdp, cores, die_size = attributes_from_cpu_name(self.name.value)
+            name, manufacturer, family, model_range, tdp, cores, die_size, die_size_source, source  = attributes_from_cpu_name(self.name.value)
 
             if compute_min_max:
-                name_min, family_min, tdp_min, cores_min, die_size_min = attributes_from_cpu_name(self.name.min)
-                name_max, family_max, tdp_max, cores_max, die_size_max = attributes_from_cpu_name(self.name.max)
+                name_min, manufacturer_min, family_min, model_range_min, tdp_min, cores_min, die_size_min, die_size_source_min, source_min  = attributes_from_cpu_name(self.name.min)
+                name_max, manufacturer_max, family_max, model_range_max, tdp_max, cores_max, die_size_max, die_size_source_max, source_max  = attributes_from_cpu_name(self.name.max)
             else:
-                name_min, family_min, tdp_min, cores_min, die_size_min = name, family, tdp, cores, die_size
-                name_max, family_max, tdp_max, cores_max, die_size_max = name, family, tdp, cores, die_size
+                name_min, manufacturer_min, family_min, model_range_min, tdp_min, cores_min, die_size_min, die_size_source_min, source_min  = name, manufacturer, family, model_range, tdp, cores, die_size, die_size_source, source
+                name_max, manufacturer_max, family_max, model_range_max, tdp_max, cores_max, die_size_max, die_size_source_max, source_max  = name, manufacturer, family, model_range, tdp, cores, die_size, die_size_source, source
 
+            print(name, manufacturer, family, model_range, tdp, cores, die_size, die_size_source, source)
             if name is not None:
                 self.name.set_completed(name, min=name_min, max=name_max, source="fuzzy match")
+            if manufacturer is not None:
+                self.manufacturer.set_completed(manufacturer, min=manufacturer_min, max=manufacturer_max, source=f"Completed from name name based on {source}.")
             if family is not None:
-                self.family.set_completed(family, min=family_min, max=family_max, source="from name")
+                self.family.set_completed(family, min=family_min, max=family_max, source=f"Completed from name name based on {source}.")
+            if model_range is not None:
+                self.model_range.set_completed(model_range, min=model_range_min, max=model_range_max, source=f"Completed from name name based on {source}.")
             if tdp is not None:
-                self.tdp.set_completed(tdp, min=tdp_min, max=tdp_max, source="from name")
+                self.tdp.set_completed(tdp, min=tdp_min, max=tdp_max, source=f"Completed from name name based on {source}.")
             if cores is not None:
-                self.core_units.set_completed(cores, min=cores_min, max=cores_max, source="from name")
+                self.core_units.set_completed(cores, min=cores_min, max=cores_max, source=f"Completed from name name based on {source}.")
             if die_size is not None:
-                self.die_size.set_completed(die_size, min=die_size_min, max=die_size_max, source="from name")
+                self.die_size.set_completed(die_size, min=die_size_min, max=die_size_max, source=f"{die_size_source} : Completed from name name based on {source}.")
+            self.name_completion = True
