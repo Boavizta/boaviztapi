@@ -1293,7 +1293,6 @@ Intel Core Duo T2600,Intel,Yonah,Core Duo T,2.166 GHz,31.0,2.0,90.0,io_die_size 
 Intel Core Duo T2700,Intel,Yonah,Core Duo T,2.333 GHz,31.0,2.0,90.0,io_die_size () + die_size (90 mm²),https://www.techpowerup.com/cpu-specs/core-duo-t2700.c416
 Intel Core Duo ULV L2400,Intel,Yonah,Core Duo ULV L,1066 MHz,9.0,2.0,90.0,io_die_size () + die_size (90 mm²),https://www.techpowerup.com/cpu-specs/core-duo-ulv-l2400.c420
 Intel Core Duo ULV L2500,Intel,Yonah,Core Duo ULV L,1200 MHz,9.0,2.0,90.0,io_die_size () + die_size (90 mm²),https://www.techpowerup.com/cpu-specs/core-duo-ulv-l2500.c421
-Intel Core I7-3940XM,Intel,Ivy Bridge,Core i7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Core M-5Y10,Intel,Broadwell-Y,Core M,800 MHz,5.0,2.0,50.0,io_die_size () + die_size (50 mm²),https://www.techpowerup.com/cpu-specs/core-m-5y10.c1783
 Intel Core M-5Y10a,Intel,Broadwell-Y,Core M,800 MHz,5.0,2.0,50.0,io_die_size () + die_size (50 mm²),https://www.techpowerup.com/cpu-specs/core-m-5y10a.c1784
 Intel Core M-5Y10c,Intel,Broadwell-Y,Core M,800 MHz,5.0,2.0,50.0,io_die_size () + die_size (50 mm²),https://www.techpowerup.com/cpu-specs/core-m-5y10c.c1815
@@ -1844,7 +1843,6 @@ Intel Core i7-3612QM,Intel,Ivy Bridge,Core i7,,,,,,https://github.com/cloud-carb
 Intel Core i7-3615QM,Intel,Ivy Bridge,Core i7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Core i7-3630QM,Intel,Ivy Bridge,Core i7,2.4 GHz,45.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/core-i7-3630qm.c1218
 Intel Core i7-3632QM,Intel,Ivy Bridge,Core i7,2.2 GHz,35.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/core-i7-3632qm.c1221
-Intel Core i7-3632Qm,Intel,Ivy Bridge,Core i7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Core i7-3635QM,Intel,Ivy Bridge,Core i7,2.4 GHz,45.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/core-i7-3635qm.c1219
 Intel Core i7-3667U,Intel,Ivy Bridge,Core i7,2000 MHz,17.0,2.0,118.0,io_die_size () + die_size (118 mm²),https://www.techpowerup.com/cpu-specs/core-i7-3667u.c1088
 Intel Core i7-3687U,Intel,Ivy Bridge,Core i7,2.1 GHz,17.0,2.0,118.0,io_die_size () + die_size (118 mm²),https://www.techpowerup.com/cpu-specs/core-i7-3687u.c1518
@@ -1858,7 +1856,6 @@ Intel Core i7-3770T,Intel,Ivy Bridge,Core i7,,,,,,https://github.com/cloud-carbo
 Intel Core i7-3820,Intel,Sandy Bridge-E,Core i7,3.6 GHz,130.0,4.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/core-i7-3820.c961
 Intel Core i7-3820QM,Intel,Ivy Bridge,Core i7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Core i7-3840QM,Intel,Ivy Bridge,Core i7,2.8 GHz,45.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/core-i7-3840qm.c1082
-Intel Core i7-3840Qm,Intel,Ivy Bridge,Core i7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Core i7-3910K,Intel,Sandy Bridge-E,Core i7,3 GHz,130.0,6.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/core-i7-3910k.c1646
 Intel Core i7-3920XM,Intel,Ivy Bridge,Core i7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Core i7-3930K,Intel,Sandy Bridge-E,Core i7,3.2 GHz,130.0,6.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/core-i7-3930k.c858
@@ -2550,95 +2547,65 @@ Intel Xeon E-2388G,Intel,Rocket Lake-E,Xeon E,3.2 GHz,95.0,8.0,276.0,io_die_size
 Intel Xeon E3-1105C,Intel,Gladden,Xeon E3,1000 MHz,25.0,4.0,216.0,io_die_size () + die_size (216 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1105c.c1702
 Intel Xeon E3-1125C,Intel,Gladden,Xeon E3,2000 MHz,40.0,4.0,216.0,io_die_size () + die_size (216 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1125c.c1703
 Intel Xeon E3-1220,Intel,Sandy Bridge,Xeon E3,3.1 GHz,80.0,4.0,216.0,io_die_size () + die_size (216 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1220.c809
-Intel Xeon E3-1220 V2,Intel,Ivy Bridge,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1220 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1220 V5,Intel,Skylake,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1220 v2,Intel,Ivy Bridge,Xeon E3,3.1 GHz,69.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1220-v2.c1033
 Intel Xeon E3-1220 v3,Intel,Haswell-WS,Xeon E3,3.1 GHz,80.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1220-v3.c1545
 Intel Xeon E3-1220L,Intel,Sandy Bridge,Xeon E3,2.2 GHz,20.0,2.0,131.0,io_die_size () + die_size (131 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1220l.c808
 Intel Xeon E3-1220L V2,Intel,Ivy Bridge,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1220L V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1220L v3,Intel,Haswell-WS,Xeon E3,1100 MHz,13.0,2.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1220l-v3.c1642
 Intel Xeon E3-1225,Intel,Sandy Bridge,Xeon E3,3.1 GHz,95.0,4.0,216.0,io_die_size () + die_size (216 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1225.c810
 Intel Xeon E3-1225 V2,Intel,Ivy Bridge,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1225 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1225 V5,Intel,Skylake,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1225 v3,Intel,Haswell-WS,Xeon E3,3.2 GHz,84.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1225-v3.c1639
-Intel Xeon E3-1226 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1226 v3,Intel,Haswell-WS,Xeon E3,3.3 GHz,84.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1226-v3.c3181
 Intel Xeon E3-1230,Intel,Sandy Bridge,Xeon E3,3.2 GHz,80.0,4.0,216.0,io_die_size () + die_size (216 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1230.c811
-Intel Xeon E3-1230 V2,Intel,Ivy Bridge,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1230 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1230 V5,Intel,Skylake,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1230 v2,Intel,Ivy Bridge,Xeon E3,3.3 GHz,69.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1230-v2.c1032
 Intel Xeon E3-1230 v3,Intel,Haswell-WS,Xeon E3,3.3 GHz,80.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1230-v3.c1546
-Intel Xeon E3-1230L V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1230L v3,Intel,Haswell-WS,Xeon E3,1800 MHz,25.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1230l-v3.c1643
-Intel Xeon E3-1231 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1231 v3,Intel,Haswell-WS,Xeon E3,3.4 GHz,80.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1231-v3.c3183
 Intel Xeon E3-1235,Intel,Sandy Bridge,Xeon E3,3.2 GHz,95.0,4.0,216.0,io_die_size () + die_size (216 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1235.c812
 Intel Xeon E3-1235L V5,Intel,Skylake,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1240 V2,Intel,Ivy Bridge,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1240 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1240 V5,Intel,Skylake,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1240 v2,Intel,Ivy Bridge,Xeon E3,3.4 GHz,69.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1240-v2.c1031
 Intel Xeon E3-1240 v3,Intel,Haswell-WS,Xeon E3,3.4 GHz,80.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1240-v3.c1547
-Intel Xeon E3-1240L V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1240L V5,Intel,Skylake,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1240L v3,Intel,Haswell-WS,Xeon E3,2000 MHz,25.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1240l-v3.c3182
-Intel Xeon E3-1241 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1241 v3,Intel,Haswell-WS,Xeon E3,3.5 GHz,80.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1241-v3.c3184
-Intel Xeon E3-1245 V2,Intel,Ivy Bridge,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1245 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1245 V5,Intel,Skylake,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1245 v2,Intel,Ivy Bridge,Xeon E3,3.4 GHz,77.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1245-v2.c1036
 Intel Xeon E3-1245 v3,Intel,Haswell-WS,Xeon E3,3.4 GHz,84.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1245-v3.c1640
 Intel Xeon E3-1246 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1258L v4,Intel,Broadwell-DT,Xeon E3,1800 MHz,47.0,4.0,182.0,io_die_size () + die_size (182 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1258l-v4.c2682
 Intel Xeon E3-1260L V5,Intel,Skylake,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1265L V2,Intel,Ivy Bridge,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1265L V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1265L V4,Intel,Broadwell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1265L v2,Intel,Ivy Bridge,Xeon E3,2.5 GHz,45.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1265l-v2.c1035
 Intel Xeon E3-1265L v3,Intel,Haswell-WS,Xeon E3,2.5 GHz,45.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1265l-v3.c1644
 Intel Xeon E3-1265L v4,Intel,Broadwell-DT,Xeon E3,2.3 GHz,35.0,4.0,182.0,io_die_size () + die_size (182 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1265l-v4.c2680
-Intel Xeon E3-1270 V2,Intel,Ivy Bridge,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1270 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1270 V5,Intel,Skylake,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1270 v2,Intel,Ivy Bridge,Xeon E3,3.5 GHz,69.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1270-v2.c1030
 Intel Xeon E3-1270 v3,Intel,Haswell-WS,Xeon E3,3.5 GHz,80.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1270-v3.c1548
 Intel Xeon E3-1270L v4,Intel,Broadwell-DT,Xeon E3,3 GHz,45.0,4.0,182.0,io_die_size () + die_size (182 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1270l-v4.c2684
 Intel Xeon E3-1271 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1275 V2,Intel,Ivy Bridge,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1275 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1275 V5,Intel,Skylake,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1275 v2,Intel,Ivy Bridge,Xeon E3,3.5 GHz,77.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1275-v2.c1034
 Intel Xeon E3-1275 v3,Intel,Haswell-WS,Xeon E3,3.5 GHz,84.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1275-v3.c1641
 Intel Xeon E3-1275L V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1276 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1278L v4,Intel,Broadwell-DT,Xeon E3,2000 MHz,47.0,4.0,182.0,io_die_size () + die_size (182 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1278l-v4.c2683
-Intel Xeon E3-1280 V2,Intel,Ivy Bridge,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1280 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1280 V5,Intel,Skylake,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1280 v2,Intel,Ivy Bridge,Xeon E3,3.6 GHz,69.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1280-v2.c1029
 Intel Xeon E3-1280 v3,Intel,Haswell-WS,Xeon E3,3.6 GHz,82.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1280-v3.c1549
 Intel Xeon E3-1280 v5,Intel,Skylake-S,Xeon E3,3.7 GHz,80.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1280-v5.c1841
 Intel Xeon E3-1281 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1283L v4,Intel,Broadwell-DT,Xeon E3,2.9 GHz,47.0,4.0,182.0,io_die_size () + die_size (182 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1283l-v4.c2685
 Intel Xeon E3-1284L v4,Intel,Broadwell-DT,Xeon E3,2.9 GHz,47.0,4.0,182.0,io_die_size () + die_size (182 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1284l-v4.c2681
-Intel Xeon E3-1285 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1285 V4,Intel,Broadwell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1285 v3,Intel,Haswell-WS,Xeon E3,3.6 GHz,84.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1285-v3.c1550
 Intel Xeon E3-1285 v4,Intel,Broadwell-DT,Xeon E3,3.5 GHz,95.0,4.0,182.0,io_die_size () + die_size (182 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1285-v4.c1840
 Intel Xeon E3-1285 v6,Intel,Kaby Lake-DT,Xeon E3,4.1 GHz,79.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1285-v6.c1999
-Intel Xeon E3-1285L V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E3-1285L V4,Intel,Broadwell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1285L v3,Intel,Haswell-WS,Xeon E3,3.1 GHz,65.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1285l-v3.c1645
 Intel Xeon E3-1285L v4,Intel,Broadwell-DT,Xeon E3,3.4 GHz,65.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1285l-v4.c2679
 Intel Xeon E3-1286 V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1286L V3,Intel,Haswell,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1290,Intel,Sandy Bridge,Xeon E3,3.6 GHz,95.0,4.0,216.0,io_die_size () + die_size (216 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1290.c818
-Intel Xeon E3-1290 V2,Intel,Ivy Bridge,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1290 v2,Intel,Ivy Bridge,Xeon E3,3.7 GHz,87.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e3-1290-v2.c1028
 Intel Xeon E3-1505M,Intel,Skylake,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E3-1515M,Intel,Skylake,Xeon E3,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
@@ -2656,19 +2623,16 @@ Intel Xeon E5-1603 V3,Intel,Haswell-EP,Xeon E5,2.8 GHz,140.0,4.0,356.0,io_die_si
 Intel Xeon E5-1607 V3,Intel,Haswell-EP,Xeon E5,3.1 GHz,140.0,4.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1607-v3.c2668
 Intel Xeon E5-1607 v2,Intel,Ivy Bridge-E,Xeon E5,3 GHz,130.0,4.0,257.0,io_die_size () + die_size (257 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1607-v2.c2671
 Intel Xeon E5-1620,Intel,Sandy Bridge-E,Xeon E5,3.6 GHz,130.0,4.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1620.c983
-Intel Xeon E5-1620 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-1620 V3,Intel,Haswell-EP,Xeon E5,3.5 GHz,140.0,4.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1620-v3.c2660
 Intel Xeon E5-1620 V4,Intel,Broadwell-EP,Xeon E5,3.5 GHz,140.0,4.0,246.0,io_die_size () + die_size (246 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1620-v4.c3172
 Intel Xeon E5-1620 v2,Intel,Ivy Bridge-E,Xeon E5,3.7 GHz,130.0,4.0,257.0,io_die_size () + die_size (257 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1620-v2.c1672
 Intel Xeon E5-1630 V3,Intel,Haswell-EP,Xeon E5,3.7 GHz,140.0,4.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1630-v3.c2661
 Intel Xeon E5-1630 V4,Intel,Broadwell-EP,Xeon E5,3.7 GHz,140.0,4.0,246.0,io_die_size () + die_size (246 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1630-v4.c3173
 Intel Xeon E5-1650,Intel,Sandy Bridge-E,Xeon E5,3.2 GHz,130.0,6.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1650.c984
-Intel Xeon E5-1650 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-1650 V3,Intel,Haswell-EP,Xeon E5,3.5 GHz,140.0,6.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1650-v3.c2662
 Intel Xeon E5-1650 V4,Intel,Broadwell-EP,Xeon E5,3.6 GHz,140.0,6.0,246.0,io_die_size () + die_size (246 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1650-v4.c3174
 Intel Xeon E5-1650 v2,Intel,Ivy Bridge-E,Xeon E5,3.5 GHz,130.0,6.0,257.0,io_die_size () + die_size (257 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1650-v2.c1673
 Intel Xeon E5-1660,Intel,Sandy Bridge-E,Xeon E5,3.3 GHz,130.0,6.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1660.c985
-Intel Xeon E5-1660 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-1660 V3,Intel,Haswell-EP,Xeon E5,3 GHz,140.0,8.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1660-v3.c2663
 Intel Xeon E5-1660 V4,Intel,Broadwell-EP,Xeon E5,3.2 GHz,140.0,8.0,246.0,io_die_size () + die_size (246 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1660-v4.c3175
 Intel Xeon E5-1660 v2,Intel,Ivy Bridge-E,Xeon E5,3.7 GHz,130.0,6.0,257.0,io_die_size () + die_size (257 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1660-v2.c1674
@@ -2679,47 +2643,37 @@ Intel Xeon E5-1681 V3,Intel,Haswell-EP,Xeon E5,2.9 GHz,135.0,10.0,356.0,io_die_s
 Intel Xeon E5-1686 V3,Intel,Haswell-EP,Xeon E5,2.6 GHz,135.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1686-v3.c2666
 Intel Xeon E5-1691 V3,Intel,Haswell-EP,Xeon E5,2.5 GHz,135.0,14.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-1691-v3.c2667
 Intel Xeon E5-2403,Intel,Sandy Bridge-EN,Xeon E5,1800 MHz,80.0,4.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2403.c1690
-Intel Xeon E5-2403 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2403 v2,Intel,Ivy Bridge-EN,Xeon E5,1800 MHz,80.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2403-v2.c1675
 Intel Xeon E5-2407,Intel,Sandy Bridge-EN,Xeon E5,2.2 GHz,80.0,4.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2407.c1691
-Intel Xeon E5-2407 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2407 v2,Intel,Ivy Bridge-EN,Xeon E5,2.4 GHz,80.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2407-v2.c1676
 Intel Xeon E5-2418L,Intel,Sandy Bridge-EN,Xeon E5,2000 MHz,50.0,4.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2418l.c1692
 Intel Xeon E5-2420,Intel,Sandy Bridge-EN,Xeon E5,1900 MHz,95.0,6.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2420.c1693
-Intel Xeon E5-2420 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2420 v2,Intel,Ivy Bridge-EN,Xeon E5,2.2 GHz,80.0,6.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2420-v2.c1677
 Intel Xeon E5-2428L,Intel,Sandy Bridge-EN,Xeon E5,1800 MHz,60.0,6.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2428l.c1696
 Intel Xeon E5-2430,Intel,Sandy Bridge-EN,Xeon E5,2.2 GHz,95.0,6.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2430.c1694
-Intel Xeon E5-2430 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2430 v2,Intel,Ivy Bridge-EN,Xeon E5,2.5 GHz,80.0,6.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2430-v2.c1678
 Intel Xeon E5-2430L,Intel,Sandy Bridge-EN,Xeon E5,2000 MHz,60.0,6.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2430l.c1697
 Intel Xeon E5-2430L V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2440,Intel,Sandy Bridge-EN,Xeon E5,2.4 GHz,95.0,6.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2440.c1695
-Intel Xeon E5-2440 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2440 v2,Intel,Ivy Bridge-EN,Xeon E5,1900 MHz,95.0,8.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2440-v2.c1679
 Intel Xeon E5-2448L,Intel,Sandy Bridge-EN,Xeon E5,1800 MHz,70.0,8.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2448l.c1700
 Intel Xeon E5-2450,Intel,Sandy Bridge-EN,Xeon E5,2.1 GHz,95.0,8.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2450.c1698
-Intel Xeon E5-2450 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2450 v2,Intel,Ivy Bridge-EN,Xeon E5,2.5 GHz,95.0,8.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2450-v2.c1680
 Intel Xeon E5-2450L,Intel,Sandy Bridge-EN,Xeon E5,1800 MHz,70.0,8.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2450l.c1701
 Intel Xeon E5-2450L V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2470,Intel,Sandy Bridge-EN,Xeon E5,2.3 GHz,95.0,8.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2470.c1699
-Intel Xeon E5-2470 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2470 v2,Intel,Ivy Bridge-EN,Xeon E5,2.4 GHz,95.0,10.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2470-v2.c1681
 Intel Xeon E5-2603,Intel,Sandy Bridge-EP,Xeon E5,1800 MHz,80.0,4.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2603.c965
-Intel Xeon E5-2603 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2603 V3,Intel,Haswell-EP,Xeon E5,1600 MHz,85.0,6.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2603-v3.c2855
 Intel Xeon E5-2603 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2603 v2,Intel,Ivy Bridge-EP,Xeon E5,1800 MHz,80.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2603-v2.c1653
 Intel Xeon E5-2608L V3,Intel,Haswell-EP,Xeon E5,2000 MHz,52.0,6.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2608l-v3.c2856
 Intel Xeon E5-2609,Intel,Sandy Bridge-EP,Xeon E5,2.4 GHz,80.0,4.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2609.c966
-Intel Xeon E5-2609 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2609 V3,Intel,Haswell-EP,Xeon E5,1900 MHz,85.0,6.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2609-v3.c2857
 Intel Xeon E5-2609 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2609 v2,Intel,Ivy Bridge-EP,Xeon E5,2.5 GHz,80.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2609-v2.c1654
 Intel Xeon E5-2618L V3,Intel,Haswell-EP,Xeon E5,2.3 GHz,75.0,8.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2618l-v3.c2858
 Intel Xeon E5-2620,Intel,Sandy Bridge-EP,Xeon E5,2000 MHz,95.0,6.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2620.c969
-Intel Xeon E5-2620 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2620 V3,Intel,Haswell-EP,Xeon E5,2.4 GHz,85.0,6.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2620-v3.c2859
 Intel Xeon E5-2620 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2620 v2,Intel,Ivy Bridge-EP,Xeon E5,2.1 GHz,80.0,6.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2620-v2.c1656
@@ -2730,27 +2684,22 @@ Intel Xeon E5-2628 V3,Intel,Haswell-EP,Xeon E5,2.5 GHz,85.0,8.0,356.0,io_die_siz
 Intel Xeon E5-2628L V3,Intel,Haswell-EP,Xeon E5,2000 MHz,75.0,10.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2628l-v3.c2870
 Intel Xeon E5-2629 V3,Intel,Haswell-EP,Xeon E5,2.4 GHz,85.0,8.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2629-v3.c2865
 Intel Xeon E5-2630,Intel,Sandy Bridge-EP,Xeon E5,2.3 GHz,95.0,6.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2630.c970
-Intel Xeon E5-2630 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2630 V3,Intel,Haswell-EP,Xeon E5,2.4 GHz,85.0,8.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2630-v3.c2866
 Intel Xeon E5-2630 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2630 v2,Intel,Ivy Bridge-EP,Xeon E5,2.6 GHz,80.0,6.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2630-v2.c1657
 Intel Xeon E5-2630L,Intel,Sandy Bridge-EP,Xeon E5,2000 MHz,60.0,6.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2630l.c973
-Intel Xeon E5-2630L V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2630L V3,Intel,Haswell-EP,Xeon E5,1800 MHz,55.0,8.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2630l-v3.c2867
 Intel Xeon E5-2630L V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2630L v2,Intel,Ivy Bridge-EP,Xeon E5,2.4 GHz,60.0,6.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2630l-v2.c1659
 Intel Xeon E5-2637,Intel,Sandy Bridge-EP,Xeon E5,3 GHz,80.0,2.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2637.c968
-Intel Xeon E5-2637 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2637 V3,Intel,Haswell-EP,Xeon E5,3.5 GHz,135.0,4.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2637-v3.c2861
 Intel Xeon E5-2637 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2637 v2,Intel,Ivy Bridge-EP,Xeon E5,3.5 GHz,130.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2637-v2.c1655
 Intel Xeon E5-2640,Intel,Sandy Bridge-EP,Xeon E5,2.5 GHz,95.0,6.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2640.c971
-Intel Xeon E5-2640 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2640 V3,Intel,Haswell-EP,Xeon E5,2.6 GHz,90.0,8.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2640-v3.c2868
 Intel Xeon E5-2640 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2640 v2,Intel,Ivy Bridge-EP,Xeon E5,2000 MHz,95.0,8.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2640-v2.c1660
 Intel Xeon E5-2643,Intel,Sandy Bridge-EP,Xeon E5,3.3 GHz,130.0,4.0,294.0,io_die_size () + die_size (294 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2643.c967
-Intel Xeon E5-2643 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2643 V3,Intel,Haswell-EP,Xeon E5,3.4 GHz,135.0,6.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2643-v3.c2862
 Intel Xeon E5-2643 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2643 v2,Intel,Ivy Bridge-EP,Xeon E5,3.5 GHz,130.0,6.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2643-v2.c1658
@@ -2758,12 +2707,10 @@ Intel Xeon E5-2648L,Intel,Sandy Bridge-EP,Xeon E5,1800 MHz,70.0,8.0,435.0,io_die
 Intel Xeon E5-2648L V3,Intel,Haswell-EP,Xeon E5,1800 MHz,75.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2648l-v3.c2878
 Intel Xeon E5-2649 V3,Intel,Haswell-EP,Xeon E5,2.3 GHz,105.0,10.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2649-v3.c2871
 Intel Xeon E5-2650,Intel,Sandy Bridge-EP,Xeon E5,2000 MHz,95.0,8.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2650.c974
-Intel Xeon E5-2650 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2650 V3,Intel,Haswell-EP,Xeon E5,2.3 GHz,105.0,10.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2650-v3.c2872
 Intel Xeon E5-2650 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2650 v2,Intel,Ivy Bridge-EP,Xeon E5,2.6 GHz,95.0,8.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2650-v2.c1661
 Intel Xeon E5-2650L,Intel,Sandy Bridge-EP,Xeon E5,1800 MHz,70.0,8.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2650l.c982
-Intel Xeon E5-2650L V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2650L V3,Intel,Haswell-EP,Xeon E5,1800 MHz,65.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2650l-v3.c2879
 Intel Xeon E5-2650L V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2650L v2,Intel,Ivy Bridge-EP,Xeon E5,1700 MHz,70.0,10.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2650l-v2.c1668
@@ -2773,7 +2720,6 @@ Intel Xeon E5-2658,Intel,Sandy Bridge-EP,Xeon E5,2.1 GHz,95.0,8.0,435.0,io_die_s
 Intel Xeon E5-2658 V3,Intel,Haswell-EP,Xeon E5,2.2 GHz,105.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2658-v3.c2880
 Intel Xeon E5-2658A V3,Intel,Haswell-EP,Xeon E5,2.2 GHz,105.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2658a-v3.c2881
 Intel Xeon E5-2660,Intel,Sandy Bridge-EP,Xeon E5,2.2 GHz,95.0,8.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2660.c976
-Intel Xeon E5-2660 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2660 V3,Intel,Haswell-EP,Xeon E5,2.6 GHz,105.0,10.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2660-v3.c2874
 Intel Xeon E5-2660 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2660 v2,Intel,Ivy Bridge-EP,Xeon E5,2.2 GHz,95.0,10.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2660-v2.c1664
@@ -2781,13 +2727,11 @@ Intel Xeon E5-2663 V3,Intel,Haswell-EP,Xeon E5,2.8 GHz,105.0,10.0,356.0,io_die_s
 Intel Xeon E5-2665,Intel,Sandy Bridge-EP,Xeon E5,2.4 GHz,115.0,8.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2665.c977
 Intel Xeon E5-2666 V3,Intel,Haswell-EP,Xeon E5,2.9 GHz,135.0,10.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2666-v3.c2876
 Intel Xeon E5-2667,Intel,Sandy Bridge-EP,Xeon E5,2.9 GHz,130.0,6.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2667.c972
-Intel Xeon E5-2667 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2667 V3,Intel,Haswell-EP,Xeon E5,3.2 GHz,135.0,8.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2667-v3.c2869
 Intel Xeon E5-2667 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2667 v2,Intel,Ivy Bridge-EP,Xeon E5,3.3 GHz,130.0,8.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2667-v2.c1662
 Intel Xeon E5-2669 V3,Intel,Haswell-EP,Xeon E5,2.3 GHz,120.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2669-v3.c2882
 Intel Xeon E5-2670,Intel,Sandy Bridge-EP,Xeon E5,2.6 GHz,115.0,8.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2670.c978
-Intel Xeon E5-2670 V2,Intel,Ivy Bridge,Xeon E5,,115.0,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2670 V3,Intel,Haswell-EP,Xeon E5,2.3 GHz,120.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2670-v3.c2883
 Intel Xeon E5-2670 v2,Intel,Ivy Bridge-EP,Xeon E5,2.5 GHz,115.0,10.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2670-v2.c1665
 Intel Xeon E5-2673 V3,Intel,Haswell-EP,Xeon E5,2.4 GHz,105.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2673-v3.c2884
@@ -2795,7 +2739,6 @@ Intel Xeon E5-2675 V3,Intel,Haswell-EP,Xeon E5,1800 MHz,110.0,16.0,356.0,io_die_
 Intel Xeon E5-2676 V3,Intel,Haswell-EP,Xeon E5,2.4 GHz,120.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2676-v3.c2885
 Intel Xeon E5-2678 V3,Intel,Haswell-EP,Xeon E5,2.5 GHz,120.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2678-v3.c2886
 Intel Xeon E5-2680,Intel,Sandy Bridge-EP,Xeon E5,2.7 GHz,130.0,8.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2680.c979
-Intel Xeon E5-2680 V2,Intel,Ivy Bridge,Xeon E5,,115.0,10.0,,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 Intel Xeon E5-2680 V3,Intel,Haswell-EP,Xeon E5,2.5 GHz,120.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2680-v3.c2887
 Intel Xeon E5-2680 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2680 v2,Intel,Ivy Bridge-EP,Xeon E5,2.8 GHz,115.0,10.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2680-v2.c1666
@@ -2805,24 +2748,20 @@ Intel Xeon E5-2685 V3,Intel,Haswell-EP,Xeon E5,2.6 GHz,120.0,12.0,356.0,io_die_s
 Intel Xeon E5-2686 V3,Intel,Haswell-EP,Xeon E5,2000 MHz,120.0,18.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2686-v3.c2902
 Intel Xeon E5-2686 V4,Intel,Broadwell,Xeon E5,,145.0,18.0,,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 Intel Xeon E5-2687W,Intel,Sandy Bridge-EP,Xeon E5,3.1 GHz,150.0,8.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2687w.c981
-Intel Xeon E5-2687W V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2687W V3,Intel,Haswell-EP,Xeon E5,3.1 GHz,160.0,10.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2687w-v3.c2877
 Intel Xeon E5-2687W V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2687W v2,Intel,Ivy Bridge-EP,Xeon E5,3.4 GHz,130.0,8.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2687w-v2.c1663
 Intel Xeon E5-2690,Intel,Sandy Bridge-EP,Xeon E5,2.9 GHz,135.0,8.0,435.0,io_die_size () + die_size (435 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2690.c980
-Intel Xeon E5-2690 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2690 V3,Intel,Haswell-EP,Xeon E5,2.6 GHz,135.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2690-v3.c2890
 Intel Xeon E5-2690 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2690 v2,Intel,Ivy Bridge-EP,Xeon E5,3 GHz,130.0,10.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2690-v2.c1667
 Intel Xeon E5-2692 V3,Intel,Haswell-EP,Xeon E5,3 GHz,165.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2692-v3.c2891
 Intel Xeon E5-2692 v2,Intel,Ivy Bridge-EP,Xeon E5,2.2 GHz,100.0,12.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2692-v2.c1669
 Intel Xeon E5-2693 V3,Intel,Haswell-EP,Xeon E5,2.8 GHz,160.0,12.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2693-v3.c2892
-Intel Xeon E5-2695 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2695 V3,Intel,Haswell-EP,Xeon E5,2.3 GHz,120.0,14.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2695-v3.c2894
 Intel Xeon E5-2695 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2695 v2,Intel,Ivy Bridge-EP,Xeon E5,2.4 GHz,115.0,12.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2695-v2.c1670
 Intel Xeon E5-2696 V3,Intel,Haswell-EP,Xeon E5,2.3 GHz,145.0,18.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2696-v3.c2903
-Intel Xeon E5-2697 V2,Intel,Ivy Bridge,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2697 V3,Intel,Haswell-EP,Xeon E5,2.6 GHz,145.0,14.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2697-v3.c2897
 Intel Xeon E5-2697 V4,Intel,Broadwell,Xeon E5,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2697 v2,Intel,Ivy Bridge-EP,Xeon E5,2.7 GHz,130.0,12.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e5-2697-v2.c1671
@@ -2890,19 +2829,15 @@ Intel Xeon E7-2870 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-car
 Intel Xeon E7-2880 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-2890 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-4809 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E7-4809 V3,Intel,Haswell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-4809 V4,Intel,Broadwell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-4809 v3,Intel,Haswell-EX,Xeon E7,2000 MHz,115.0,8.0,356.0,io_die_size () + die_size (356 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-4809-v3.c2337
 Intel Xeon E7-4820 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E7-4820 V3,Intel,Haswell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-4820 V4,Intel,Broadwell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-4820 v3,Intel,Haswell-EX,Xeon E7,1900 MHz,115.0,10.0,622.0,io_die_size () + die_size (622 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-4820-v3.c1822
 Intel Xeon E7-4830 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E7-4830 V3,Intel,Haswell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-4830 V4,Intel,Broadwell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-4830 v3,Intel,Haswell-EX,Xeon E7,2.1 GHz,115.0,12.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-4830-v3.c1823
 Intel Xeon E7-4850 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E7-4850 V3,Intel,Haswell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-4850 V4,Intel,Broadwell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-4850 v3,Intel,Haswell-EX,Xeon E7,2.2 GHz,115.0,14.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-4850-v3.c1824
 Intel Xeon E7-4860 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
@@ -2913,34 +2848,26 @@ Intel Xeon E7-8850,Intel,Westmere-EX,Xeon E7,2000 MHz,130.0,10.0,513.0,io_die_si
 Intel Xeon E7-8850 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8857 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8860,Intel,Westmere-EX,Xeon E7,2.276 GHz,130.0,10.0,513.0,io_die_size () + die_size (513 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-8860.c1467
-Intel Xeon E7-8860 V3,Intel,Haswell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8860 V4,Intel,Broadwell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8860 v3,Intel,Haswell-EX,Xeon E7,2.2 GHz,140.0,16.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-8860-v3.c2338
-Intel Xeon E7-8867 V3,Intel,Haswell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8867 V4,Intel,Broadwell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8867 v3,Intel,Haswell-EX,Xeon E7,2.5 GHz,165.0,16.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-8867-v3.c2339
 Intel Xeon E7-8870,Intel,Westmere-EX,Xeon E7,2.4 GHz,130.0,10.0,513.0,io_die_size () + die_size (513 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-8870.c1466
 Intel Xeon E7-8870 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E7-8870 V3,Intel,Haswell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8870 V4,Intel,Broadwell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8870 v3,Intel,Haswell-EX,Xeon E7,2.1 GHz,140.0,18.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-8870-v3.c1821
 Intel Xeon E7-8880 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E7-8880 V3,Intel,Haswell,Xeon E7,,150.0,16.0,,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 Intel Xeon E7-8880 V4,Intel,Broadwell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8880 v3,Intel,Haswell-EX,Xeon E7,2.3 GHz,150.0,18.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-8880-v3.c1820
 Intel Xeon E7-8880L V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E7-8880L V3,Intel,Haswell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8880L v3,Intel,Haswell-EX,Xeon E7,2000 MHz,115.0,18.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-8880l-v3.c2342
 Intel Xeon E7-8890 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E7-8890 V3,Intel,Haswell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8890 V4,Intel,Broadwell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8890 v3,Intel,Haswell-EX,Xeon E7,2.5 GHz,165.0,18.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-8890-v3.c1819
 Intel Xeon E7-8891 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E7-8891 V3,Intel,Haswell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8891 V4,Intel,Broadwell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8891 v3,Intel,Haswell-EX,Xeon E7,2.8 GHz,165.0,10.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-8891-v3.c2340
 Intel Xeon E7-8893 V2,Intel,Ivy Bridge,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-Intel Xeon E7-8893 V3,Intel,Haswell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8893 V4,Intel,Broadwell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E7-8893 v3,Intel,Haswell-EX,Xeon E7,3.2 GHz,140.0,4.0,160.0,io_die_size () + die_size (160 mm²),https://www.techpowerup.com/cpu-specs/xeon-e7-8893-v3.c2341
 Intel Xeon E7-8894 V4,Intel,Broadwell,Xeon E7,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
@@ -3229,7 +3156,6 @@ Intel Xeon Silver 4316,Intel,Ice Lake-SP,Xeon Silver,2.3 GHz,150.0,20.0,,io_die_
 Intel Xeon Silver 4410T,Intel,Sapphire Rapids,Xeon Silver,2.7 GHz,150.0,10.0,,io_die_size () + die_size (),https://www.techpowerup.com/cpu-specs/xeon-silver-4410t.c3169
 Intel Xeon Silver 4410Y,Intel,Sapphire Rapids,Xeon Silver,2000 MHz,150.0,12.0,,io_die_size () + die_size (),https://www.techpowerup.com/cpu-specs/xeon-silver-4410y.c3168
 Intel Xeon Silver 4416+,Intel,Sapphire Rapids,Xeon Silver,2000 MHz,165.0,20.0,,io_die_size () + die_size (),https://www.techpowerup.com/cpu-specs/xeon-silver-4416.c3167
-Intel Xeon W W-3275,Intel,Cascade Lake,Xeon W,,,,,,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon W-11855M,Intel,Tiger Lake-H,Xeon W,3.2 GHz,35.0,6.0,190.0,io_die_size () + die_size (190 mm²),https://www.techpowerup.com/cpu-specs/xeon-w-11855m.c2483
 Intel Xeon W-11955M,Intel,Tiger Lake-H,Xeon W,2.1 GHz,35.0,8.0,190.0,io_die_size () + die_size (190 mm²),https://www.techpowerup.com/cpu-specs/xeon-w-11955m.c2482
 Intel Xeon W-1290,Intel,Comet Lake,Xeon W,3.2 GHz,80.0,10.0,206.0,io_die_size () + die_size (206 mm²),https://www.techpowerup.com/cpu-specs/xeon-w-1290.c2837
