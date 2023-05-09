@@ -11,7 +11,7 @@ The API is not intended to offer the same level of quality as paid databases. Ho
 
 #### How does the API compute environmental impacts related to raw material acquisition, manufacture, transport and end of life?
 
-Those impacts are retrieved with a bottom-up approach when possible. The impacts are evaluated according to the technical configuration of the components sent by the user or completed by the API. Note that transport and end of life are not taken into account in this approach for now. We want to take them into account. However, we lack open impact factors to do so. If you have ideas to fill this gap, please let us know.
+Those impacts are retrieved with a bottom-up approach when possible. The impacts are evaluated according to the technical configuration of the components sent by the user or completed by the API. Note that end of life is not taken into account in this approach for now. We want to take them into account. However, we lack open impact factors to do so. If you have ideas to fill this gap, please let us know.
 
 When a bottom-up approach is not possible we rely on non-specific impact factors per type of equipment.
 

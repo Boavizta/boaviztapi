@@ -15,7 +15,7 @@ The impacts of variable components are assessed from the component characteristi
 * [DISK (SSD)](components/ssd.md)
 
 !!!warning
-    For now, transport and end of life are not taken into account.
+    For now end of life is not taken into account.
 
 ### Fixed components impacts
 
@@ -27,7 +27,7 @@ The impacts of fixed components are set by default
 * [ASSEMBLY](components/assembly.md)
 
 !!!warning
-    For now, transport and end of life are not taken into account.
+    For now end of life is not taken into account.
 
 ## Device impacts
 
@@ -44,14 +44,14 @@ Two strategies exist
 Embedded impacts are assessed at component level and aggregated at device level with a bottom-up approach. 
 
 !!!warning
-    In this case, transport and end of life are not taken into account for now.
+    In this case, end of life is not taken into account for now.
 
 ### 2. Fix impacts factors
 
 If component impacts cannot be assessed, we use non-specific impacts factors at device level.
 
 !!!warning
-    In this case, all the life cycle is taken into account including transport and end of life.
+    In this case, all the life cycle is taken into account including end of life.
 
 ## Allocation
 
