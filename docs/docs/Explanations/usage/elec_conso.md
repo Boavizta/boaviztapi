@@ -3,13 +3,17 @@
 ## Given
 
 If available, user should send the electrical consumption of his components or devices in Watt/hour (`hours_electrical_consumption`).
-Since the power will be extrapolated on the all duration, the power given should be The average power of the device or component over the given duration.
+Since the power will be extrapolated on the all duration, the power given should be the average power of the device or component over the given duration.
 
+## Completed from the [archetype](../archetypes.md).
+
+If available, the API will complete the missing electrical consumption by the electrical consumption of the archetype of the asset.
 
 ## Modeling
 
-Sometime user doesn't have access to the electrical consumption of their component or device.
-If so, he can use the percentage of component' or device' resource usage as a proxy for the electrical consumption. We refer to this percentage as a workload of the component or device.
+Sometime user doesn't have access to the electrical consumption of their component or device, and we don't want to use a default value taken from an archetype.
+
+If so, the API can use the percentage of component' or device' resource usage as a proxy for the electrical consumption. We refer to this percentage as a workload of the component or device.
 The API is able to convert a workload into a power consumption with consumption profiles.
 
 To learn more about how we build consumption profile see consumption [profile page](../consumption_profile.md).

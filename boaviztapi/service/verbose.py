@@ -1,12 +1,12 @@
-import boaviztapi.utils.roundit as rd
-from boaviztapi.model.boattribute import Status, Boattribute
+from boaviztapi import config
+from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.device import Device
 from boaviztapi.model.component import Component
 from boaviztapi.service.allocation import Allocation
-from boaviztapi.service.bottom_up import get_model_impact, NOT_IMPLEMENTED
+from boaviztapi.service.bottom_up import bottom_up
 
 
-def verbose_device(device: Device):
+def verbose_device(device: Device, allocation=Allocation.TOTAL, selected_criteria=config["default_criteria"]):
     json_output = {}
     for component in device.components:
         if f"{component.NAME}-1" in json_output:
@@ -17,57 +17,33 @@ def verbose_device(device: Device):
         else:
             key = f"{component.NAME}-1"
 
-        json_output[key] = verbose_component(component)
+        json_output[key] = verbose_component(component, allocation=allocation, selected_criteria=selected_criteria)
 
-    json_output["USAGE"] = verbose_usage(device)
+    json_output = {**json_output, **verbose_usage(device)}
 
     return json_output
 
 
 def verbose_usage(device: [Device, Component]):
-    json_output = {}
-
-    json_output["usage_impacts"] = {
-        "gwp": {
-            "value": get_model_impact(device, 'use', 'gwp', 1, Allocation.TOTAL) or NOT_IMPLEMENTED,
-            "unit": "kgCO2eq"
-        },
-        "pe": {
-            "value": get_model_impact(device, 'use', 'pe', 1, Allocation.TOTAL) or NOT_IMPLEMENTED,
-            "unit": "MJ"},
-        "adp": {
-            "value": get_model_impact(device, 'use', 'adp', 1, Allocation.TOTAL) or NOT_IMPLEMENTED,
-            "unit": "kgSbeq"
-        }
-    }
-
-    json_output = {**json_output, **iter_boattribute(device.usage)}
+    json_output = {**iter_boattribute(device.usage)}
     if device.usage.consumption_profile is not None:
-        json_output = {**json_output, **iter_boattribute(device.usage.consumption_profile)}
+        if device.usage.consumption_profile.workloads.is_set():
+            json_output["workloads"] = device.usage.consumption_profile.workloads.to_json()
+            json_output["workloads"]["value"] = [{"load_percentage" : workload.load_percentage, "power_watt": workload.power_watt} for workload in json_output["workloads"]["value"]]
+        if device.usage.consumption_profile.params.is_set():
+            json_output["params"] = device.usage.consumption_profile.params.to_json()
+    for elec in device.usage.elec_factors:
+        if device.usage.elec_factors[elec].is_set():
+            json_output[f"{elec}_factor"] = device.usage.elec_factors[elec].to_json()
 
     return json_output
 
 
-def verbose_component(component: Component):
-    json_output = {"units": component.units}
-
-    json_output["manufacture_impacts"] = {
-        "gwp": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_gwp()),
-            "unit": "kgCO2eq"
-        },
-        "pe": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_pe()),
-            "unit": "MJ"},
-        "adp": {
-            "value": rd.round_to_sigfig(*component.impact_manufacture_adp()),
-            "unit": "kgSbeq"
-        },
-    }
-    json_output = {**json_output, **iter_boattribute(component)}
+def verbose_component(component: Component, allocation=Allocation.TOTAL, selected_criteria=config["default_criteria"]):
+    json_output = {"impacts": bottom_up(component, allocation, selected_criteria), **iter_boattribute(component)}
 
     if component.usage.hours_electrical_consumption.is_set():
-        json_output["USAGE"] = verbose_usage(component)
+        json_output= {**json_output, **verbose_usage(component)}
 
     return json_output
 

@@ -4,7 +4,7 @@ This page presents basic queries that can be used to generate and use consumptio
 
 You use `curl` in command line to query Boavizta demo (public) API.
 
-💡 _You can format the results by using jq (`curl -X 'GET' 'http://localhost:5000/v1/consumption_profile/cpu' | jq`)_
+💡 _You can format the results by using jq (`curl -X 'GET' '{{ endpoint }}/v1/consumption_profile/cpu' | jq`)_
 
 
 ## Generate a cpu consumption profile from TDP
@@ -15,7 +15,7 @@ In this query we generate consumption profile parameters (a,b,c,d) from a TDP an
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/consumption_profile/cpu' \
+  '{{ endpoint }}/v1/consumption_profile/cpu' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -47,7 +47,7 @@ In this query we generate consumption profile parameters (a,b,c,d) from a worklo
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/consumption_profile/cpu' \
+  '{{ endpoint }}/v1/consumption_profile/cpu' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

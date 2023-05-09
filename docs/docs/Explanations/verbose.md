@@ -1,117 +1,88 @@
 # Verbose
 
-In the interest of transparency of our methods, data and source, all data used by the API can be described in the response to a request if the option verbose is set as true 
+In the interest of transparency of our methods, data and source, all data used by the API can be described in the response to a request if the option ```verbose``` is set as true 
 
 ## Impacts per components
 
-For each component evaluated in a request the manufacture impact of one component unit is returned
+For each component evaluated in a request, the embedded and usage impacts of the component are returned
 
 ```json
-"impacts": {
-  "gwp": {
-      "manufacture": 24,
-      "use": "not implemented",
-      "unit": "kgCO2eq"
-  },
-  "pe": {
-      "manufacture": 293,
-      "use": "not implemented",
-      "unit": "MJ"
-  },
-  "adp": {
-      "manufacture": 0.0011,
-      "use": "not implemented",
-      "unit": "kgSbeq"
-  }
-}
-```
-
-## Impact per usage
-
-When the usage impacts are evaluated at component or device level, the attributes and usage impacts are returned.
-
-```json
-    "USAGE": {
-      "hours_electrical_consumption": {
-        "value": 300,
-        "unit": "W",
-        "status": "DEFAULT",
-        "source": null
-      },
-      "usage_location": {
-        "value": "EEE",
-        "unit": "CodSP3 - NCS Country Codes - NATO",
-        "status": "DEFAULT",
-        "source": null
-      },
-      "adp_factor": {
-        "value": 6.42e-8,
-        "unit": "kgCO2e/kWh",
-        "status": "COMPLETED",
-        "source": "1": "ADEME BASE IMPACT"
-      },
-      "gwp_factor": {
-        "value": 0.38,
-        "unit": "KgSbeq/kWh",
-        "status": "COMPLETED",
-        "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149 : \nAverage of 27 european countries"
-      },
-      "pe_factor": {
-        "value": 12.874,
-        "unit": "MJ/kWh",
-        "status": "COMPLETED",
-        "source": "ADPf / (1-%renewable_energy)"
-      },
-      "use_time": {
-        "value": 8785,
-        "unit": "hours",
-        "status": "INPUT",
-        "source": null
-      },
-      "usage_impacts": {
+     "impacts": {
         "gwp": {
-          "value": 1000,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 33900,
-          "unit": "MJ"
+          "other": {
+            "value": 64.7,
+            "significant_figures": 3,
+            "min": 12.3,
+            "max": 298
+          },
+          "use": {
+            "value": 1200,
+            "significant_figures": 2,
+            "min": 37,
+            "max": 5700
+          },
+          "unit": "kgCO2eq",
+          "description": "Total climate change"
         },
         "adp": {
-          "value": 0.000169,
-          "unit": "kgSbeq"
+          "other": {
+            "value": 0.041,
+            "significant_figures": 2,
+            "min": 0.02,
+            "max": 0.082
+          },
+          "use": {
+            "value": 0.000205,
+            "significant_figures": 3,
+            "min": 0.0000211,
+            "max": 0.0017
+          },
+          "unit": "kgSbeq",
+          "description": "Use of minerals and fossil ressources"
+        },
+        "pe": {
+          "other": {
+            "value": 937,
+            "significant_figures": 3,
+            "min": 199,
+            "max": 4140
+          },
+          "use": {
+            "value": 41100,
+            "significant_figures": 4,
+            "min": 20.75,
+            "max": 2989000
+          },
+          "unit": "MJ",
+          "description": "Consumption of primary energy"
         }
       }
-    }
-```
-
-## Units
-
-The number of unit per component in a device is returned.
-
-```json
-"units": 2,
 ```
 
 ## Boattribute
 
-For each attribute used in the evaluation process we return :
+For each attribute used in the evaluation process, we return :
 
 * Its **value**
 * Its **unit**
+* Its **unit** when relevant
+* Its **min** value
+* Its **max** value
 * Its **status** :
-     * **INPUT** : the value have been given by the user
-     * **COMPLETED** : the value have set by the API according to user inputs 
-     * **DEFAULT** : the default value have been set by the API
-     * **CHANGED** : the value have given by the user have been changed by the API
-     * **ARCHETYPE** : the default value have been set by the API from the archetype
-* The **source** of data in case the data have been COMPLETED or CHANGED and sometimes when the default value come from a secondary source.
+     * **INPUT**: the value has been given by the user
+     * **COMPLETED**: the value has set by the API according to user inputs 
+     * **DEFAULT**: the default value has been set by the API
+     * **CHANGED**: the value has been given by the user and has been changed by the API
+     * **ARCHETYPE**: the default value has been set by the API from the archetype
+* The **source** of data in case the data has been COMPLETED or CHANGED and sometimes when the DEFAULT value comes from a secondary source.
 
 ```json
 "gwp_factor": {
   "value": 0.38,
-  "unit": "KgSbeq/kWh",
-  "status": "COMPLETED",
-  "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149 : \nAverage of 27 european countries"
+  "status": "DEFAULT",
+  "unit": "kg CO2eq/kWh",
+  "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149 : \nAverage of 27 european countries",
+  "min": 0.023,
+  "max": 0.9
 }
 ```
