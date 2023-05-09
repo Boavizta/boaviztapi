@@ -1,5 +1,8 @@
 # Consumption profile
 
+!!!warning
+    Error margins are not yet implemented for the consumption profile.
+
 A consumption profile is a continuous function which links a workload with an electrical consumption :
 ```consumption_profile(workload) = power_consumption```
 

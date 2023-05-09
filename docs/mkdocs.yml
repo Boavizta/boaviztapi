@@ -69,6 +69,8 @@ nav:
           - Components: Reference/format/component_route.md
           - End user devices: Reference/format/end_user_devices_route.md
     - Deploy: Reference/deploy.md
+    - Configuration: Reference/config.md
+    - Release notes: release_notes.md
 
 theme: material
 
