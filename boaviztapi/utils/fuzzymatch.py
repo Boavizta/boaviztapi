@@ -38,3 +38,5 @@ def fuzzymatch(s: pd.Series, value: str, threshold: float = 90.0) -> pd.Series:
 
 def pandas() -> None:
     Series.fuzzymatch = fuzzymatch
+    
+    
