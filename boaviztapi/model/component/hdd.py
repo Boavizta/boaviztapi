@@ -30,4 +30,4 @@ class ComponentHDD(Component):
         )
 
         significant_figures = rd.min_significant_figures(impact.value)
-        return impact.value, significant_figures, impact.min, impact.max, []
+        return impact.value, significant_figures, impact.min, impact.max, ["End of life is not included in the calculation"]

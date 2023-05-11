@@ -55,7 +55,7 @@ class ComponentRAM(Component):
         impact = self.__compute_impact_manufacture(ram_die_impact, ram_impact)
 
         sign_figures = self.__compute_significant_numbers(ram_die_impact.value, ram_impact.value)
-        return impact.value, sign_figures, impact.min, impact.max, []
+        return impact.value, sign_figures, impact.min, impact.max, ["End of life is not included in the calculation"]
 
     def impact_use(self, impact_type: str) -> ComputedImpacts:
         impact_factor = self.usage.elec_factors[impact_type]

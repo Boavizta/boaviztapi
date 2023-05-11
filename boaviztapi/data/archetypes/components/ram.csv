@@ -1,3 +1,2 @@
 id,name,units,process,manufacturer,capacity,density,USAGE.time_workload,USAGE.use_time,USAGE.years_life_time
 DEFAULT,,"1;1;1",,,32;1;128,,"50;0;100",8760,26280
-,,,,,,,

@@ -7,8 +7,7 @@ from boaviztapi import config, data_dir
 from boaviztapi.dto.device import Server
 from boaviztapi.dto.device.device import mapper_server
 from boaviztapi.model.device import Device, DeviceServer
-from boaviztapi.routers.openapi_doc.descriptions import server_impact_by_model_description, \
-    all_default_model_description, server_impact_by_config_description
+from boaviztapi.routers.openapi_doc.descriptions import server_impact_by_model_description, server_impact_by_config_description, all_archetype_servers
 from boaviztapi.routers.openapi_doc.examples import server_configuration_examples
 from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import get_server_archetype, get_device_archetype_lst
@@ -21,8 +20,8 @@ server_router = APIRouter(
 )
 
 
-@server_router.get('/all_default_models',
-                   description=all_default_model_description)
+@server_router.get('/archetypes',
+                   description=all_archetype_servers)
 async def server_get_all_archetype_name():
     return get_device_archetype_lst(os.path.join(data_dir, 'archetypes/server.csv'))
 
