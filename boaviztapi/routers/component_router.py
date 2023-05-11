@@ -1,8 +1,9 @@
+import os
 from typing import List
 
 from fastapi import APIRouter, Body, HTTPException, Query
 
-from boaviztapi import config
+from boaviztapi import config, data_dir
 from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply, Motherboard, Case
 from boaviztapi.dto.component.cpu import mapper_cpu
 from boaviztapi.dto.component.other import mapper_motherboard, mapper_power_supply, mapper_case
@@ -10,10 +11,10 @@ from boaviztapi.dto.component.ram import mapper_ram
 from boaviztapi.dto.component.disk import mapper_ssd, mapper_hdd
 from boaviztapi.model.component import Component
 from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
-    hdd_description, motherboard_description, power_supply_description, case_description
+    hdd_description, motherboard_description, power_supply_description, case_description, all_archetype_components
 from boaviztapi.routers.openapi_doc.examples import components_examples
 from boaviztapi.service.allocation import Allocation
-from boaviztapi.service.archetype import get_component_archetype
+from boaviztapi.service.archetype import get_component_archetype, get_device_archetype_lst
 from boaviztapi.service.bottom_up import bottom_up
 from boaviztapi.service.verbose import verbose_component
 
@@ -22,6 +23,11 @@ component_router = APIRouter(
     tags=['component']
 )
 
+@component_router.get('/archetypes',
+                   description=all_archetype_components)
+async def server_get_all_archetype_name(name: str = Query("cpu")):
+    print(name)
+    return get_device_archetype_lst(os.path.join(data_dir, f'archetypes/components/{name.lower()}.csv'))
 
 @component_router.post('/cpu',
                        description=cpu_description)

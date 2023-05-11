@@ -21,8 +21,9 @@ server_impact_by_config_description = "# ✔️ Server impacts from configuratio
                                       "📋 Archetype\n\n" \
                                       "⏬ Allocation"
 
-all_default_model_description = "# ✔️ Get all the available server models\n" \
-                                "📜 Return the name of all pre-registered server models"
+all_archetype_servers = "# ✔️ Get all the available server archetype\n"
+all_archetype_components = "# ✔️ Get all the available component archetype for a given component name\n"
+all_archetype_user_terminals = "# ✔️ Get all the available user terminal archetype for a given user terminal name\n"
 
 cpu_description = "# ✔ ️CPU impacts from configuration\n" \
                   "### Features\n\n" \

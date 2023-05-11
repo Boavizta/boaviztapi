@@ -11,6 +11,11 @@ def get_device_archetype_lst(path):
     df = pd.read_csv(path)
     return df['id'].tolist()
 
+def get_device_archetype_lst_with_type(path, name: str,) -> Union[dict, bool]:
+    df = pd.read_csv(path)
+    df = df[df['device_type'] == name]
+    return df['id'].tolist()
+
 def get_component_archetype(archetype_name: str, component_type: str) -> Union[dict, bool]:
     arch = get_archetype(archetype_name, os.path.join(data_dir, "archetypes/components/"+component_type+".csv"))
     if not arch:
