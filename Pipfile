@@ -14,7 +14,7 @@ scipy = "*"
 rapidfuzz = "*"
 markdown = "*"
 mangum = "*"
-thefuzz = "*"
+thefuzz = "3.0.0"
 
 [dev-packages]
 mkdocs = '*'
