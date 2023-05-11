@@ -85,7 +85,7 @@ class ComponentCPU(Component):
         sign_figures = self.__compute_significant_numbers(core_impact.value, cpu_die_impact.value, cpu_impact.value)
         impact = self.__compute_impact_manufacture(core_impact, cpu_die_impact, cpu_impact)
 
-        return impact.value, sign_figures, impact.min, impact.max, []
+        return impact.value, sign_figures, impact.min, impact.max, ["End of life is not included in the calculation"]
 
     def impact_use(self, impact_type: str) -> ComputedImpacts:
         impact_factor = self.usage.elec_factors[impact_type]

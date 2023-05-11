@@ -30,7 +30,7 @@ class ComponentPowerSupply(Component):
         impact = self.__compute_impact_manufacture(impact_factor)
         sign_figures = rd.min_significant_figures(impact_factor.value)
 
-        return impact.value, sign_figures, impact.min, impact.max, []
+        return impact.value, sign_figures, impact.min, impact.max, ["End of life is not included in the calculation"]
 
     def __compute_impact_manufacture(self, power_supply_impact: ImpactFactor) -> ImpactFactor:
         return ImpactFactor(

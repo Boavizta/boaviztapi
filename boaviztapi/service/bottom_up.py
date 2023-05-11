@@ -17,7 +17,6 @@ def get_model_single_impact(model: Union[Component, Device],
 
 
         if phase == "embedded":
-            warnings.append("End of life is not included in the calculation")
             impact = allocate(impact, allocation_type, model.usage.use_time.value, model.usage.life_time.value)
             min_impact = allocate(min_impact, allocation_type, model.usage.use_time.min, model.usage.life_time.min)
             max_impact = allocate(max_impact, allocation_type, model.usage.use_time.max, model.usage.life_time.max)
@@ -27,7 +26,7 @@ def get_model_single_impact(model: Union[Component, Device],
             significant_figures=significant_figures,
             min=min_impact*model.units.min,
             max=max_impact*model.units.max,
-            warnings=warnings
+            warnings=list(set(warnings))
         )
     except (AttributeError, NotImplementedError):
         pass
