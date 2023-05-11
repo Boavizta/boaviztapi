@@ -7,14 +7,30 @@ from boaviztapi import data_dir
 
 config_file = os.path.join(data_dir, 'factors.yml')
 impact_factors = yaml.safe_load(Path(config_file).read_text())
-_electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electricity/electricity_impact_factors.csv'))
-
 def get_impact_factor(item, impact_type) -> dict:
     if impact_factors.get(item):
         if impact_factors.get(item).get(impact_type):
             return impact_factors.get(item).get(impact_type)
     raise NotImplementedError
 
+def get_electrical_impact_factor(usage_location, impact_type) -> dict:
+    if impact_factors["electricity"].get(usage_location):
+        if impact_factors["electricity"].get(usage_location).get(impact_type):
+            return impact_factors["electricity"].get(usage_location).get(impact_type)
+    raise NotImplementedError
+
+def get_electrical_min_max(impact_type, type) -> float:
+    if impact_factors["electricity"].get("min-max").get(impact_type):
+        if impact_factors["electricity"].get("min-max").get(impact_type).get(type):
+            return impact_factors["electricity"].get("min-max").get(impact_type).get(type)
+    raise NotImplementedError
+
+
+
+def get_available_countries(reverse=False):
+    if reverse:
+        return {v: k for k, v in impact_factors["electricity"]["available_countries"].items()}
+    return impact_factors["electricity"]["available_countries"]
 
 """
 _electricity_emission_factors_df = pd.read_csv(

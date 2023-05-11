@@ -27,7 +27,7 @@ async def server_get_all_archetype_name():
     return get_device_archetype_lst(os.path.join(data_dir, 'archetypes/server.csv'))
 
 
-@server_router.get('/model',
+@server_router.get('/',
                    description=server_impact_by_model_description)
 async def server_impact_from_model(archetype: str = config["default_server"], verbose: bool = True,
                                    allocation: Allocation = Allocation.TOTAL,

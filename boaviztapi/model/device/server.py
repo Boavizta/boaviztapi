@@ -14,7 +14,7 @@ from boaviztapi.service.factor_provider import get_impact_factor
 
 
 class DeviceServer(Device):
-
+    NAME = "SERVER"
     def __init__(self, archetype=get_server_archetype(config["default_server"]), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
         self._cpu = None
@@ -123,7 +123,7 @@ class DeviceServer(Device):
         return [self.assembly] + [self.cpu] + self.ram + self.disk + [self.power_supply] + [self.case] + [
             self.motherboard]
 
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         impacts = []
         min_impacts = []
         max_impacts = []
@@ -132,7 +132,7 @@ class DeviceServer(Device):
 
         try:
             for component in self.components:
-                impact, sign_fig, min_impact, max_impact, c_warning = getattr(component, f'impact_other')(impact_type)
+                impact, sign_fig, min_impact, max_impact, c_warning = getattr(component, f'impact_embedded')(impact_type)
 
                 impacts.append(impact*component.units.value)
                 min_impacts.append(min_impact*component.units.min)
@@ -155,6 +155,7 @@ class DeviceServer(Device):
 
     def impact_use(self, impact_type: str) -> ComputedImpacts:
         impact_factor = self.usage.elec_factors[impact_type]
+
         if not self.usage.hours_electrical_consumption.is_set():
             modeled_consumption = self.model_power_consumption()
             self.usage.hours_electrical_consumption.set_completed(
@@ -211,8 +212,8 @@ class DeviceCloudInstance(DeviceServer, ABC):
     def usage(self, value: ModelUsageCloud) -> None:
         self._usage = value
 
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
-        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_other(impact_type)
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
+        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_embedded(impact_type)
         return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
 
     def impact_use(self, impact_type: str) -> ComputedImpacts:

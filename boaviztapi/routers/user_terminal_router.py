@@ -4,7 +4,7 @@ from fastapi import APIRouter, Query, Body, HTTPException
 
 from boaviztapi import config
 from boaviztapi.dto.device.user_terminal import UserTerminal, mapper_user_terminal, Laptop, Desktop, Smartphone, \
-    Monitor, Television, Smartwatch, UsbStick, ExternalSSD, ExternalHDD
+    Monitor, Television, Smartwatch, UsbStick, ExternalSSD, ExternalHDD, Tablet, Box
 from boaviztapi.routers.openapi_doc.examples import end_user_terminal
 from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import get_user_terminal_archetype
@@ -60,7 +60,7 @@ async def desktop_impact(archetype: str = config["default_desktop"],
                         allocation: Allocation = Allocation.TOTAL,
                         criteria: List[str] = Query(config["default_criteria"])):
 
-    return await user_terminal_impact(user_terminal_dto=Laptop(),
+    return await user_terminal_impact(user_terminal_dto=Desktop(),
                          verbose=verbose,
                          allocation=allocation,
                          criteria=criteria,
@@ -85,7 +85,7 @@ async def monitor_impact(archetype: str = config["default_monitor"],
                         allocation: Allocation = Allocation.TOTAL,
                         criteria: List[str] = Query(config["default_criteria"])):
 
-    return await user_terminal_impact(user_terminal_dto=Laptop(),
+    return await user_terminal_impact(user_terminal_dto=Monitor(),
                          verbose=verbose,
                          allocation=allocation,
                          criteria=criteria,
@@ -110,14 +110,14 @@ async def smartphone_impact(archetype: str = config["default_smartphone"],
                         allocation: Allocation = Allocation.TOTAL,
                         criteria: List[str] = Query(config["default_criteria"])):
 
-    return await user_terminal_impact(user_terminal_dto=Laptop(),
+    return await user_terminal_impact(user_terminal_dto=Smartphone(),
                          verbose=verbose,
                          allocation=allocation,
                          criteria=criteria,
                          archetype=archetype)
 
 @user_terminal_router.post('/tablet', description="")
-async def tablet_impact(tablet: Desktop = Body(None, example=end_user_terminal),
+async def tablet_impact(tablet: Tablet = Body(None, example=end_user_terminal),
                         verbose: bool = True,
                         allocation: Allocation = Allocation.TOTAL,
                         archetype: str = config["default_tablet"],
@@ -135,7 +135,7 @@ async def tablet_impact(archetype: str = config["default_tablet"],
                         allocation: Allocation = Allocation.TOTAL,
                         criteria: List[str] = Query(config["default_criteria"])):
 
-    return await user_terminal_impact(user_terminal_dto=Laptop(),
+    return await user_terminal_impact(user_terminal_dto=Tablet(),
                          verbose=verbose,
                          allocation=allocation,
                          criteria=criteria,
@@ -160,14 +160,14 @@ async def television_impact(archetype: str = config["default_tv"],
                         allocation: Allocation = Allocation.TOTAL,
                         criteria: List[str] = Query(config["default_criteria"])):
 
-    return await user_terminal_impact(user_terminal_dto=Laptop(),
+    return await user_terminal_impact(user_terminal_dto=Television(),
                          verbose=verbose,
                          allocation=allocation,
                          criteria=criteria,
                          archetype=archetype)
 
 @user_terminal_router.post('/box', description="")
-async def box_impact(box: Smartwatch = Body(None, example=end_user_terminal),
+async def box_impact(box: Box = Body(None, example=end_user_terminal),
                         verbose: bool = True,
                         allocation: Allocation = Allocation.TOTAL,
                         archetype: str = config["default_box"],
@@ -185,7 +185,7 @@ async def box_impact(archetype: str = config["default_box"],
                         allocation: Allocation = Allocation.TOTAL,
                         criteria: List[str] = Query(config["default_criteria"])):
 
-    return await user_terminal_impact(user_terminal_dto=Laptop(),
+    return await user_terminal_impact(user_terminal_dto=Box(),
                          verbose=verbose,
                          allocation=allocation,
                          criteria=criteria,
@@ -210,7 +210,7 @@ async def usb_stick_impact(archetype: str = config["default_usb_stick"],
                         allocation: Allocation = Allocation.TOTAL,
                         criteria: List[str] = Query(config["default_criteria"])):
 
-    return await user_terminal_impact(user_terminal_dto=Laptop(),
+    return await user_terminal_impact(user_terminal_dto=UsbStick(),
                          verbose=verbose,
                          allocation=allocation,
                          criteria=criteria,
@@ -235,7 +235,7 @@ async def external_ssd_impact(archetype: str = config["default_external_ssd"],
                         allocation: Allocation = Allocation.TOTAL,
                         criteria: List[str] = Query(config["default_criteria"])):
 
-    return await user_terminal_impact(user_terminal_dto=Laptop(),
+    return await user_terminal_impact(user_terminal_dto=ExternalSSD(),
                          verbose=verbose,
                          allocation=allocation,
                          criteria=criteria,
@@ -260,7 +260,7 @@ async def external_hdd_impact(archetype: str = config["default_external_hdd"],
                         allocation: Allocation = Allocation.TOTAL,
                         criteria: List[str] = Query(config["default_criteria"])):
 
-    return await user_terminal_impact(user_terminal_dto=Laptop(),
+    return await user_terminal_impact(user_terminal_dto=ExternalHDD(),
                          verbose=verbose,
                          allocation=allocation,
                          criteria=criteria,

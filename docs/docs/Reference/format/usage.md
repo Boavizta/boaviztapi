@@ -1,6 +1,14 @@
 # Usage
+!!!info
+    To see the available attributes see [usage](../../Explanations/usage/usage.md).
 
-Usage impacts can be measured at device or component level from usage configuration.
+Usage impacts can be measured at device or component level from usage configuration. In the GET router, the usage configuration is set with default values. In the POST router, the usage configuration can be given by the user.
+
+```json
+{
+  "usage": {...}
+}
+```
 
 ## General
 
@@ -20,9 +28,11 @@ Usage impacts can be measured at device or component level from usage configurat
 
 ## Modeled
 
-When ```hours_electrical_consumption``` is unknown, it can be retrieved from ```time_workload```
+When ```hours_electrical_consumption``` is unknown, it can be retrieved from ```time_workload```.
+We refer to this as modeled electrical consumption.
+The feature is available for the following routes :
 
-### ```/v1/server/```
+### POST ```/v1/server/```
 
 *```time_workload``` is given as a percentage at server level. The electrical consumption will be model for a load of 50% from RAM and CPU characteristics. The consumption of the other components are set relatively to the consumption of RAM and CPU with the ```other_consumption_ratio```*
 
@@ -98,7 +108,7 @@ When ```hours_electrical_consumption``` is unknown, it can be retrieved from ```
 }
 ```
 
-### ```/v1/component/ram```
+### POST ```/v1/component/ram```
 
 *```time_workload``` is given in percentage at RAM level. The electrical consumption will be model for 32GB of RAM at 50% of load*
 
@@ -113,7 +123,7 @@ When ```hours_electrical_consumption``` is unknown, it can be retrieved from ```
 }
 ```
 
-### ```/v1/component/cpu```
+### POST ```/v1/component/cpu```
 
 *```time_workload``` is given in percentage at CPU level. The electrical consumption will be model for a CPU with a TDP of 120 Watt at 50% of load*
 

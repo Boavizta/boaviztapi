@@ -1,8 +1,8 @@
 # Component
 
 A component is the smallest element of the api. It is an abstract object which 
-can represent a physical component (CPU, RAM, SSD, ...).
-They are characterized by technical characteristics and one to several impacts (gwp, pe and adp for now).
+can represent a physical component (CPU, RAM, SSD, ...) or a specific process (Assembly).
+They are characterized by technical characteristics. Their impacts can be assessed.
 
 ## Available components
 

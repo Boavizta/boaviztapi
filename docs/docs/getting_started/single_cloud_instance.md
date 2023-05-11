@@ -8,7 +8,7 @@ You use `curl` in command line to query Boavizta demo (public) API.
 
 ## Get the impacts from cpu name
 
-This query return the list of available aws instances 
+This query returns the list of available aws instances 
 
 Query: 
 ```bash

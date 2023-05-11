@@ -22,7 +22,7 @@ class ComponentHDD(Component):
             max=get_arch_value(archetype, 'manufacturer', 'default')
         )
 
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         impact = ImpactFactor(
             value=get_impact_factor(item='hdd', impact_type=impact_type)['impact'],
             min=get_impact_factor(item='hdd', impact_type=impact_type)['impact'],

@@ -1,8 +1,8 @@
 # Cloud route
+!!!warning 
+    Only AWS is implemented for now.
 
-Only AWS in implemented for now.
-
-## ``` GET /v1/cloud/```
+## GET ```/v1/cloud/```
 
 The GET router will return the default impacts of a cloud instance. The query is composed of minimum two query parameters : a ```provider``` and an ```instance_type```.
 
@@ -13,7 +13,7 @@ The GET router will return the default impacts of a cloud instance. The query is
 
 ## ``` POST /v1/cloud/```
 
-The POST router let you set the usage variables. You need to set a ```provider``` and an ```instance_type```. ```usage``` is optional.
+The POST router lets you set the usage variables. You need to set a ```provider``` and an ```instance_type```. ```usage``` is optional.
 
 ```json
 {

@@ -15,6 +15,8 @@ version: "3.9"
 services:
   boaviztapi:
     image: ghcr.io/boavizta/boaviztapi:latest
+    environment:
+      - SPECIAL_MESSAGE="<p>my welcome message in HTML format</p>"
     ports:
       - "5000:5000"
   boaviztapi-doc:
@@ -76,6 +78,11 @@ By default, all origin are allowed. If you need to limit them set env value ```A
 
 Example : ```ALLOWED_ORIGINS='["https://datavizta.boavizta.org","https://boavizta.org"]'```
 
+### Special message
+
+You can customize the home page with a special message by setting the env value ```SPECIAL_MESSAGE`` in HTML format.
+
+Example : ```SPECIAL_MESSAGE="<p>my welcome message in HTML format</p>"```
 
 
 ## SDK

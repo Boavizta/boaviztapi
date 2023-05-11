@@ -20,9 +20,10 @@ markdown_extensions:
 
 nav:
     - Introduction: index.md
-    - FAQ : faq.md
+    - Q&A : q&a.md
     - Getting started:
-        - Try the API (OpenAPI): !ENV [API_URL, https://api.boavizta.org]
+        - Datavizta: https://datavizta.boavizta.org
+        - Try the API (OpenAPI): !ENV [API_URL, https://api.boavizta.org/docs]
         - Get the impacts of a cpu: getting_started/cpu_component.md
         - Get the impacts of a server: getting_started/single_server.md
         - Get the impacts of a cloud instance (AWS): getting_started/single_cloud_instance.md
@@ -30,8 +31,8 @@ nav:
     - Explanations:
         - Boavizta database: Explanations/boavizta_db.md
         - Impacts criteria : Explanations/impacts.md
-        - Manufacture methodology: Explanations/manufacture_methodology.md
-        - Usage :
+        - Embedded impacts: Explanations/embedded_methodology.md
+        - Usage impacts :
               - Methodology: Explanations/usage/usage.md
               - Duration : Explanations/usage/duration.md
               - Electrical impacts factors : Explanations/usage/elec_factors.md
@@ -41,6 +42,7 @@ nav:
         - Auto-complete: Explanations/auto_complete.md
         - Archetypes: Explanations/archetypes.md
         - Verbose: Explanations/verbose.md
+        - Error margin: Explanations/error_margin.md
         - Components:
               - Components: Explanations/components/component.md
               - CPU: Explanations/components/cpu.md
@@ -55,17 +57,20 @@ nav:
               - Devices: Explanations/devices/devices.md
               - Server: Explanations/devices/server.md
               - Cloud instances: Explanations/devices/cloud.md
+              - End user devices : Explanations/devices/end_user_devices.md
         - Useful resources: Explanations/useful_resources.md
     - Reference:
-        - Component route: Reference/component_route.md
-        - Model: Reference/model.md
-        - Usage: Reference/usage.md
-        - Server route: Reference/server_route.md
-        - Cloud route: Reference/cloud_route.md
-        - Architecture decisions records (ADRs) :
-            - Bottom up methodology: ADR/adr1-Bottom-up.md
-            - Always return something: ADR/adr2-Alway-return-something.md
+        - Routes: Reference/routes.md
+        - Format:
+          - Return format: Reference/format/return_format.md
+          - Usage: Reference/format/usage.md
+          - Server: Reference/format/server_route.md
+          - Cloud: Reference/format/cloud_route.md
+          - Components: Reference/format/component_route.md
+          - End user devices: Reference/format/end_user_devices_route.md
     - Deploy: Reference/deploy.md
+    - Configuration: Reference/config.md
+    - Release notes: release_notes.md
 
 theme: material
 

@@ -1,6 +1,6 @@
 # DeviceServer route
 
-## ```/v1/server/```
+## POST ```/v1/server/```
 
 A server input is composed of 3 different objects : ```model```, ```configuration```, ```usage```
 
@@ -30,7 +30,7 @@ or
 }
 ```
 
-In this case, only default value are used.
+In this case, only default values are used.
 
 ### Configuration
 
@@ -81,7 +81,7 @@ Specific needed data are sent to apply the bottom-up methodology.
 
 #### Incomplete input
 
-Some required attributes are unknown but some component's attributes are given so specific die size can be retrieved by the API
+Some required attributes are unknown, but some component attributes are given so specific die size can be retrieved by the API
 
 ``` json
 {
@@ -122,6 +122,6 @@ Some required attributes are unknown but some component's attributes are given s
 
 See [usage](usage.md)
 
-## ```/v1/server/model```
+## GET ```/v1/server```
 
-See [archetypes documentation](../Explanations/archetypes.md#using-archetype-in-model-routes)
+See [archetypes documentation](../../Explanations/archetypes.md)

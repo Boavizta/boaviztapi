@@ -100,7 +100,7 @@ class Boattribute:
     def set_input(self, value: Any, *, source: Optional[str] = None) -> None:
         self.__set_value_and_status(value, Status.INPUT, source, min=value, max=value)
 
-    def set_completed(self, value: Any, *, source: Optional[str] = None, min:float = None, max:float = None) -> None:
+    def set_completed(self, value: Any, *, source: Optional[str] = None, min = None, max = None) -> None:
         self.__set_value_and_status(value, Status.COMPLETED, source, min=min, max=max)
 
     def set_default(self, value: Any, *, source: Optional[str] = None) -> None:
@@ -117,9 +117,9 @@ class Boattribute:
         self.status = status
         if source is not None:
             self.source = source
-        if min is not None and not isinstance(min, str):
+        if min is not None:
             self.min = min
-        if max is not None and not isinstance(max, str):
+        if max is not None:
             self.max = max
 
     def has_value(self):

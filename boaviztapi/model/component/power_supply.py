@@ -20,7 +20,7 @@ class ComponentPowerSupply(Component):
             max=get_arch_value(archetype, 'unit_weight', 'max')
         )
 
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         impact_factor = ImpactFactor(
             value=get_impact_factor(item='power_supply', impact_type=impact_type)['impact'],
             min=get_impact_factor(item='power_supply', impact_type=impact_type)['impact'],

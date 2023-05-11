@@ -50,7 +50,7 @@ class ComponentSSD(Component):
         )
 
     # IMPACT CALCUATION
-    def impact_other(self, impact_type: str) -> ComputedImpacts:
+    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         ssd_die_impact, ssd_impact = self.__get_impact_constants(impact_type)
         sign_figures = self.__compute_significant_numbers(ssd_die_impact.value, ssd_impact.value)
         impact = self.__compute_impact_manufacture(ssd_die_impact, ssd_impact)
@@ -75,8 +75,8 @@ class ComponentSSD(Component):
     def __compute_impact_manufacture(self, ssd_die_impact: ImpactFactor, ssd_impact: ImpactFactor) -> ImpactFactor:
         return ImpactFactor(
             value=(self.capacity.value / self.density.value) * ssd_die_impact.value + ssd_impact.value,
-            min=(self.capacity.min / self.density.min) * ssd_die_impact.min + ssd_impact.min,
-            max=(self.capacity.max / self.density.max) * ssd_die_impact.max + ssd_impact.max
+            min=(self.capacity.min / self.density.max) * ssd_die_impact.min + ssd_impact.min,
+            max=(self.capacity.max / self.density.min) * ssd_die_impact.max + ssd_impact.max
         )
 
     # COMPLETION

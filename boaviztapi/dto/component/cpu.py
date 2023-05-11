@@ -9,8 +9,8 @@ from boaviztapi.dto.usage.usage import mapper_usage, Usage
 from boaviztapi.model.component import ComponentCPU
 from boaviztapi.service.archetype import get_component_archetype
 
+
 _cpu_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/crowdsourcing/cpu_manufacture.csv'))
-_cpu_index = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/crowdsourcing/cpu_index.csv'))
 
 
 class CPU(ComponentDTO):
@@ -22,7 +22,6 @@ class CPU(ComponentDTO):
     family: Optional[str] = None
     name: Optional[str] = None
     tdp: Optional[int] = None
-
 
 def mapper_cpu(cpu_dto: CPU, archetype=get_component_archetype(config["default_cpu"], "cpu")) -> ComponentCPU:
     cpu_component = ComponentCPU(archetype=archetype)
@@ -62,5 +61,3 @@ def mapper_cpu(cpu_dto: CPU, archetype=get_component_archetype(config["default_c
         )
 
     return cpu_component
-
-

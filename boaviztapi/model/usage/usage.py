@@ -1,13 +1,10 @@
 import os
 
-import pandas as pd
-
 from boaviztapi import config, data_dir
 from boaviztapi.model.boattribute import Boattribute
-from boaviztapi.model.impact import IMPACT_CRITERIAS
 from boaviztapi.service.archetype import get_arch_value, get_server_archetype, get_cloud_instance_archetype
-
-_electricity_emission_factors_df = pd.read_csv(os.path.join(data_dir, 'electricity/electricity_impact_factors.csv'))
+from boaviztapi.service.factor_provider import get_available_countries, get_electrical_impact_factor, \
+    get_electrical_min_max
 
 _cpu_profile_path = os.path.join(data_dir, 'consumption_profile/cpu/cpu_profile.csv')
 _cloud_profile_path = os.path.join(data_dir, 'consumption_profile/cloud/cpu_profile.csv')
@@ -80,32 +77,27 @@ class ModelUsage:
         for attr, value in self.__dict__.items():
             yield attr, value
 
-    def _complete_impact_factor(self, impact_criteria, column_name):
-        if column_name is None:
+    def _complete_impact_factor(self, impact_criteria, impact_criteria_proxy):
+        if impact_criteria is None:
             raise NotImplementedError
 
-        sub = _electricity_emission_factors_df
         if not self.usage_location.has_value():
             self.usage_location.set_default(config["default_location"])
 
-        sub_selected = sub[sub['code'] == self.usage_location.value]
-
-        column_value = f"{column_name}_emission_factor"
-        column_source = f"{column_name}_emission_source"
-
-        if not column_value in sub.columns:
+        if self.usage_location.value not in get_available_countries(reverse=True):
             raise NotImplementedError
 
-        factor = float(sub_selected[column_value].iloc[0])
+        factor = get_electrical_impact_factor(self.usage_location.value, impact_criteria_proxy)
 
         if self.usage_location.is_default():
-            self.elec_factors.get(impact_criteria).set_default(factor, source=str(sub_selected[column_source].iloc[0]))
-            self.elec_factors.get(impact_criteria).min = float(sub[column_value].min())
-            self.elec_factors.get(impact_criteria).max = float(sub[column_value].max())
+            self.elec_factors.get(impact_criteria).set_default(factor["value"], source=str(factor["source"]))
+            self.elec_factors.get(impact_criteria).min = float(get_electrical_min_max(impact_criteria_proxy, "min"))
+            self.elec_factors.get(impact_criteria).max =  float(get_electrical_min_max(impact_criteria_proxy, "max"))
         else:
-            self.elec_factors.get(impact_criteria).set_completed(factor,
-                                                             source=str(sub_selected[column_source].iloc[0]),
-                                                             min=factor, max=factor)
+            self.elec_factors.get(impact_criteria).set_completed(factor["value"],
+                                                             source=str(factor["source"]),
+                                                             min=factor["value"],
+                                                             max=factor["value"])
 
     def _complete_gwp(self):
         self._complete_impact_factor("gwp", "gwp")
@@ -114,43 +106,43 @@ class ModelUsage:
     def _complete_pe(self):
         self._complete_impact_factor("pe", "pe")
     def _complete_gwppb(self):
-        self._complete_impact_factor("gwppb", None)
+        self._complete_impact_factor("gwppb", "gwppb")
     def _complete_gwppf(self):
-        self._complete_impact_factor("gwppf", None)
+        self._complete_impact_factor("gwppf", "gwppf")
     def _complete_gwpplu(self):
-        self._complete_impact_factor("gwpplu", None)
+        self._complete_impact_factor("gwpplu", "gwpplu")
     def _complete_ir(self):
-        self._complete_impact_factor("ir", None)
+        self._complete_impact_factor("ir", "ir")
     def _complete_lu(self):
-        self._complete_impact_factor("lu", None)
+        self._complete_impact_factor("lu", "lu")
     def _complete_odp(self):
-        self._complete_impact_factor("odp", None)
+        self._complete_impact_factor("odp", "odp")
     def _complete_pm(self):
-        self._complete_impact_factor("pm", None)
+        self._complete_impact_factor("pm", "pm")
     def _complete_pocp(self):
-        self._complete_impact_factor("pocp", None)
+        self._complete_impact_factor("pocp", "pocp")
     def _complete_wu(self):
-        self._complete_impact_factor("wu", None)
+        self._complete_impact_factor("wu", "wu")
     def _complete_mips(self):
-        self._complete_impact_factor("mips", None)
+        self._complete_impact_factor("mips", "mips")
     def _complete_adpe(self):
         self._complete_impact_factor("adpe", "adpe")
     def _complete_adpf(self):
-        self._complete_impact_factor("adpf", None)
+        self._complete_impact_factor("adpf", "adpf")
     def _complete_ap(self):
-        self._complete_impact_factor("ap", None)
+        self._complete_impact_factor("ap", "ap")
     def _complete_ctue(self):
-        self._complete_impact_factor("ctue", None)
+        self._complete_impact_factor("ctue", "ctue")
     def _complete_ctuh_c(self):
-        self._complete_impact_factor("ctuh_c", None)
+        self._complete_impact_factor("ctuh_c", "ctuh_c")
     def _complete_ctuh_nc(self):
-        self._complete_impact_factor("ctuh_nc", None)
+        self._complete_impact_factor("ctuh_nc", "ctuh_nc")
     def _complete_epf(self):
-        self._complete_impact_factor("epf", None)
+        self._complete_impact_factor("epf", "epf")
     def _complete_epm(self):
-        self._complete_impact_factor("epm", None)
+        self._complete_impact_factor("epm", "epm")
     def _complete_ept(self):
-        self._complete_impact_factor("ept", None)
+        self._complete_impact_factor("ept", "ept")
 
 class ModelUsageServer(ModelUsage):
 

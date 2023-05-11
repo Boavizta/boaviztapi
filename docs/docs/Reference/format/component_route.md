@@ -1,4 +1,4 @@
-# Component route
+# Component routes
 
 Available components :
 
@@ -11,9 +11,9 @@ Available components :
 * motherboard
 * assembly
 
-## ```/v1/component/<component_name>```
+## POST ```/v1/component/<component_name>```
 
-You can send an empty component. In this case, only default values will be used
+You can send an empty component. In this case, only archetype values will be used
 
 ``` json
 {}
@@ -27,7 +27,7 @@ You can set a units. If so, all the impacts will be multiplied by the number of 
 }
 ```
 
-### ```/v1/component/cpu```
+### POST ```/v1/component/cpu```
 
 *All needed information are sent*
 ``` json
@@ -53,7 +53,7 @@ You can set a units. If so, all the impacts will be multiplied by the number of 
 }
 ```
 
-## ```/v1/component/ssd```
+## POST ```/v1/component/ssd```
 
 ``` json
 {
@@ -72,7 +72,7 @@ You can set a units. If so, all the impacts will be multiplied by the number of 
 *Incomplete SSD, die-size will be retrieved with the manufacturer name*
 
 
-## ```/v1/component/ram```
+## POST ```/v1/component/ram```
 
 ``` json
 {
@@ -92,23 +92,23 @@ You can set a units. If so, all the impacts will be multiplied by the number of 
 *Incomplete RAM, die-size will be retrieved with the manufacturer name and the process*
 
 
-## ```/v1/component/hdd```
+## POST ```/v1/component/hdd```
 
 ``` json
 {}
 ```
-*HDD impacts have a default value*
+*HDD impacts have a fix value*
 
 
-## ```/v1/component/motherboard```
+## POST ```/v1/component/motherboard```
 
 ``` json
 {}
 ```
-*motherboard impacts have a default value*
+*motherboard impacts have a fix value*
 
 
-## ```/v1/component/power_supply```
+## POST ```/v1/component/power_supply```
 
 ``` json
 {
@@ -117,39 +117,27 @@ You can set a units. If so, all the impacts will be multiplied by the number of 
 ```
 *All needed information are sent*
 
-## ```/v1/component/case```
+## POST ```/v1/component/case```
 
 ``` json
 {
   "case_type": "rack"
 }
 ```
-*rack impacts have a default value*
+*rack impacts have a fix value*
 
 ``` json
 {
   "case_type": "blade"
 }
 ```
-*blade impacts have a default value*
+*blade impacts have a fix value*
 
 ``` json
 {}
 ```
-*case_type will be set to rack by default*
+*case_type will be set to depending on the archetype*
 
 ## Usage
-
-### Given
-
-See [usage](usage.md)
-
-### Modeled
-
-#### ```/v1/component/cpu```
-
-See [usage](usage.md)
-
-#### ```/v1/component/ram```
 
 See [usage](usage.md)

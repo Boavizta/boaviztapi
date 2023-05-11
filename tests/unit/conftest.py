@@ -67,13 +67,9 @@ def completed_server_with_dellr740_model(rack_case_model, complete_cpu_model, co
 def complete_cpu_model():
     cpu = ComponentCPU()
 
-    cpu.units.value = 2
-
-    cpu.core_units.value = 24
-    cpu.core_units.status = Status.INPUT
-
-    cpu.die_size_per_core.value = 0.245
-    cpu.die_size_per_core.status = Status.INPUT
+    cpu.units.set_input(2)
+    cpu.core_units.set_input(24)
+    cpu.die_size_per_core.set_input(0.245)
 
     return cpu
 
@@ -87,14 +83,9 @@ def empty_cpu_model():
 def incomplete_cpu_model():
     cpu = ComponentCPU()
 
-    cpu.core_units.value = 12
-    cpu.core_units.status = Status.INPUT
-
-    cpu.family.value = "Skylake"
-    cpu.family.status = Status.INPUT
-
-    cpu.die_size_per_core.value = 0.404
-    cpu.die_size_per_core.status = Status.COMPLETED
+    cpu.core_units.set_input(12)
+    cpu.family.set_input("Skylake")
+    cpu.die_size_per_core.set_input(0.404)
 
     return cpu
 
@@ -103,12 +94,9 @@ def incomplete_cpu_model():
 def complete_ram_model():
     ram = ComponentRAM()
 
-    ram.units.value = 12
-    ram.capacity.value = 32
-    ram.capacity.status = Status.INPUT
-
-    ram.density.value = 1.79
-    ram.density.status = Status.INPUT
+    ram.units.set_input(value=12)
+    ram.capacity.set_input(value=32)
+    ram.density.set_input(value=1.79)
 
     return ram
 
@@ -122,15 +110,10 @@ def empty_ram_model():
 def incomplete_ram_model():
     ram = ComponentRAM()
 
-    ram.units.value = 12
-    ram.manufacturer.value = "Samsung"
-    ram.manufacturer.status = Status.INPUT
-
-    ram.process.value = 30
-    ram.process.status = Status.INPUT
-
-    ram.density.value = 0.625
-    ram.density.status = Status.COMPLETED
+    ram.units.set_input(12)
+    ram.manufacturer.set_input("Samsung")
+    ram.process.set_input(30)
+    ram.density.set_input(0.625)
 
     return ram
 
@@ -139,12 +122,9 @@ def incomplete_ram_model():
 def complete_ram_model_2():
     ram = ComponentRAM()
 
-    ram.units.value = 24
-    ram.capacity.value = 32
-    ram.capacity.status = Status.INPUT
-
-    ram.density.value = 1.79
-    ram.density.status = Status.INPUT
+    ram.units.set_input(24)
+    ram.capacity.set_input(32)
+    ram.density.set_input(1.79)
 
     return ram
 
@@ -153,11 +133,8 @@ def complete_ram_model_2():
 def complete_ssd_model():
     ssd = ComponentSSD()
 
-    ssd.capacity.value = 400
-    ssd.capacity.status = Status.INPUT
-
-    ssd.density.value = 50.6
-    ssd.density.status = Status.INPUT
+    ssd.capacity.set_input(400)
+    ssd.density.set_input(50.6)
 
     return ssd
 
@@ -165,12 +142,9 @@ def complete_ssd_model():
 @pytest.fixture(scope="function")
 def complete_ssd_model_2():
     ssd = ComponentSSD()
-    ssd.units.value = 2
-    ssd.capacity.value = 400
-    ssd.capacity.status = Status.INPUT
-
-    ssd.density.value = 50.6
-    ssd.density.status = Status.INPUT
+    ssd.units.set_input(2)
+    ssd.capacity.set_input(400)
+    ssd.density.set_input(50.6)
 
     return ssd
 
@@ -184,11 +158,9 @@ def empty_ssd_model():
 def incomplete_ssd_model():
     ssd = ComponentSSD()
 
-    ssd.manufacturer.value = "Samsung"
-    ssd.manufacturer.status = Status.INPUT
+    ssd.manufacturer.set_input("Samsung")
 
-    ssd.density.value = 53.6
-    ssd.density.status = Status.COMPLETED
+    ssd.density.set_input(53.6)
 
     return ssd
 
@@ -207,8 +179,7 @@ def empty_case_model():
 def blade_case_model():
     case = ComponentCase()
 
-    case.case_type.value = "blade"
-    case.case_type.status = Status.INPUT
+    case.case_type.set_input("blade")
 
     return case
 
@@ -237,11 +208,8 @@ def empty_power_supply_model():
 def complete_power_supply_model():
     power_supply = ComponentPowerSupply()
 
-    power_supply.units.value = 2
-    power_supply.units.status = Status.INPUT
-
-    power_supply.unit_weight.value = 2.99
-    power_supply.unit_weight.status = Status.INPUT
+    power_supply.units.set_input(2)
+    power_supply.unit_weight.set_input(2.99)
 
     return power_supply
 
@@ -412,6 +380,11 @@ def french_mix_1_kw_dto():
 def empty_usage_dto():
     return UsageServer.parse_obj({
     })
+
+
+@pytest.fixture(scope="function")
+def cpu_specs_dataframe():
+    return pd.read_csv(data_dir + "/crowdsourcing/cpu_specs.csv")
 
 
 @pytest.fixture(scope="function")

@@ -1,6 +1,6 @@
 # Duration
 
-Usage impacts are measured for a specific time duration given by the user.
+Usage impacts are assessed for a specific time duration given by the user.
 The API handles three different time units :
 
 | time unit |
@@ -9,8 +9,11 @@ The API handles three different time units :
 | DAYS      |
 | YEARS     |
 
-When duration is not given, the impact is measured for the default duration. Typically, 1 hour.
-_Note: units are cumulative, if multiple units are used, they are summed up._
+When duration is not given, the impact is measured for the default duration.
+Typically, 1 year.
+
+!!!info
+    Units are cumulative, if multiple units are used, they are summed up.
 
 ## Example
 
