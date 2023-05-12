@@ -1,12 +1,13 @@
 import os
 from typing import List
 
+import pandas as pd
 from fastapi import APIRouter, Query, Body, HTTPException
 
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device.user_terminal import UserTerminal, mapper_user_terminal, Laptop, Desktop, Smartphone, \
-    Monitor, Television, Smartwatch, UsbStick, ExternalSSD, ExternalHDD, Tablet, Box
-from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals
+    Monitor, Television, UsbStick, ExternalSSD, ExternalHDD, Tablet, Box
+from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals, all_user_terminal_categories
 from boaviztapi.routers.openapi_doc.examples import end_user_terminal
 from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import get_user_terminal_archetype, get_device_archetype_lst_with_type
@@ -25,6 +26,12 @@ async def server_get_all_archetype_name(name: str = Query("laptop")):
     if not result:
         return None
     return result
+
+@user_terminal_router.get('/all_categories',
+                   description=all_user_terminal_categories)
+async def user_terminal_get_all_categories():
+    df = pd.read_csv(os.path.join(data_dir, 'archetypes/user_terminal.csv'))
+    return df['device_type'].unique().tolist()
 
 @user_terminal_router.post('/laptop', description="")
 async def laptop_impact(laptop: Laptop = Body(None, example=end_user_terminal),
