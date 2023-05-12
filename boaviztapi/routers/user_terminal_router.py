@@ -41,7 +41,7 @@ async def user_terminal_get_all_subcategories(device_type: str = Query(None, exa
     if (df2.empty):
         raise HTTPException(status_code=404, detail=f"No data for this type of device ({device_type})")
     if (pd.isnull(df2['type']).all()):
-        raise HTTPException(status_code=404, detail=f"No specific subcategory for this type of device ({device_type})")
+        return [ "default" ]
     return df2['type'].unique().tolist()
 
 @user_terminal_router.post('/laptop', description="")
