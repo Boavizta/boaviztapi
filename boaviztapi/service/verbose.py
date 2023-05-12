@@ -19,7 +19,7 @@ def verbose_device(device: Device, allocation=Allocation.TOTAL, selected_criteri
 
         json_output[key] = verbose_component(component, allocation=allocation, selected_criteria=selected_criteria)
 
-    json_output = {**json_output, **verbose_usage(device)}
+    json_output = {**json_output, **verbose_usage(device), **iter_boattribute(device)}
 
     return json_output
 

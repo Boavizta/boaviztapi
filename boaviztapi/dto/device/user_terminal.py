@@ -13,9 +13,9 @@ class UserTerminal(DeviceDTO):
     usage: Optional[Usage] = None
 
 class Laptop(UserTerminal):
-    pass
+    type: Optional[str] = None
 class Desktop(UserTerminal):
-    pass
+    type: Optional[str] = None
 
 class Tablet(UserTerminal):
     pass
@@ -24,7 +24,7 @@ class Smartphone(UserTerminal):
     pass
 
 class Television(UserTerminal):
-    pass
+    type: Optional[str] = None
 
 class Smartwatch(UserTerminal):
     pass
@@ -48,14 +48,17 @@ def mapper_user_terminal(user_terminal_dto: UserTerminal, archetype) -> Device:
 
     if type(user_terminal_dto) == Laptop:
         model = DeviceLaptop(archetype=archetype)
+        model.type.set_input(user_terminal_dto.type)
     elif type(user_terminal_dto) == Desktop:
         model = DeviceDesktop(archetype=archetype)
+        model.type.set_input(user_terminal_dto.type)
     elif type(user_terminal_dto) == Tablet:
         model = DeviceTablet(archetype=archetype)
     elif type(user_terminal_dto) == Smartphone:
         model = DeviceSmartphone(archetype=archetype)
     elif type(user_terminal_dto) == Television:
         model = DeviceTelevision(archetype=archetype)
+        model.type.set_input(user_terminal_dto.type)
     elif type(user_terminal_dto) == Smartwatch:
         model = DeviceSmartWatch(archetype=archetype)
     elif type(user_terminal_dto) == Box:

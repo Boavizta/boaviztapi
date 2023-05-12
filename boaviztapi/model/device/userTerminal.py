@@ -112,7 +112,6 @@ class DeviceTelevision(EndUserDevice, ABC):
         impact = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
         min_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
         max_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
-        print(impact_type," : ", impact)
         significant_figures = rd.significant_number(impact)
 
         warnings = ["Generic data used for impact calculation."]
