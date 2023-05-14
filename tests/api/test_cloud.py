@@ -45,6 +45,14 @@ async def test_empty_usage():
                                          'significant_figures': 4,
                                          'value': 7791.0}}}
 
+@pytest.mark.asyncio
+async def test_empty_usage_m6gxlarge():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/cloud/?verbose=false', json={
+            'provider': 'aws',
+            'instance_type': 'm6g.xlarge',
+            'usage': {}
+        })
 
 @pytest.mark.asyncio
 async def test_empty_usage_1():
