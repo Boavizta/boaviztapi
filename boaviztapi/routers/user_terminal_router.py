@@ -7,7 +7,7 @@ from fastapi import APIRouter, Query, Body, HTTPException
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device.user_terminal import UserTerminal, mapper_user_terminal, Laptop, Desktop, Smartphone, \
     Monitor, Television, UsbStick, ExternalSSD, ExternalHDD, Tablet, Box
-from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals, all_user_terminal_categories
+from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals, all_user_terminal_categories, all_user_terminal_subcategories
 from boaviztapi.routers.openapi_doc.examples import end_user_terminal
 from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import get_user_terminal_archetype, get_device_archetype_lst_with_type
@@ -32,6 +32,17 @@ async def server_get_all_archetype_name(name: str = Query("laptop")):
 async def user_terminal_get_all_categories():
     df = pd.read_csv(os.path.join(data_dir, 'archetypes/user_terminal.csv'))
     return df['device_type'].unique().tolist()
+
+@user_terminal_router.get('/all_subcategories',
+                   description=all_user_terminal_subcategories)
+async def user_terminal_get_all_subcategories(device_type: str = Query(None, example="laptop")):
+    df = pd.read_csv(os.path.join(data_dir, 'archetypes/user_terminal.csv'))
+    df2 =  df[df['device_type'] == device_type]
+    if (df2.empty):
+        raise HTTPException(status_code=404, detail=f"No data for this type of device ({device_type})")
+    if (pd.isnull(df2['type']).all()):
+        return [ "default" ]
+    return df2['type'].unique().tolist()
 
 @user_terminal_router.post('/laptop', description="")
 async def laptop_impact(laptop: Laptop = Body(None, example=end_user_terminal),

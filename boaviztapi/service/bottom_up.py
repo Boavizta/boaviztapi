@@ -34,13 +34,13 @@ def get_model_single_impact(model: Union[Component, Device],
 def bottom_up(model: Union[Component, Device], allocation, selected_criteria=config["default_criteria"]) -> dict:
     impacts = {}
     for criteria in IMPACT_CRITERIAS:
-        if criteria.name not in selected_criteria:
-            continue
+        if ("all" not in selected_criteria):
+            if criteria.name not in selected_criteria:
+                continue
         impacts[criteria.name] = {}
         for phase in IMPACT_PHASES:
             single_impact = get_model_single_impact(model, phase, criteria.name, allocation_type=allocation)
             impacts[criteria.name][phase] = single_impact.to_json() if single_impact else NOT_IMPLEMENTED
         impacts[criteria.name]["unit"] = criteria.unit
         impacts[criteria.name]["description"] = criteria.description
-
     return impacts

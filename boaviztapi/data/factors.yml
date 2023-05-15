@@ -177,11 +177,11 @@
     "impact": 4.84e+04,
     "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
   },
-  "ctuh-c": {
+  "ctuh_c": {
     "impact": 1.94e-07,
     "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
   },
-  "ctuh-nc": {
+  "ctuh_nc": {
     "impact": 1.87e-05,
     "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
   },
