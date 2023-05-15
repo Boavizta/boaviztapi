@@ -4,7 +4,7 @@ from boaviztapi.service.verbose import verbose_component, verbose_device
 def test_verbose_component_cpu_1(complete_cpu_model):
     verbose = verbose_component(complete_cpu_model)
     assert verbose["core_units"] == {'status': 'INPUT', 'value': 24}
-    assert verbose["die_size_per_core"] == {'status': 'INPUT', 'unit': 'mm2', 'value': 0.245}
+    assert verbose["die_size_per_core"] == {'status': 'INPUT', 'unit': 'cm2', 'value': 0.245}
 
     assert verbose["impacts"] == {'adp': {'description': 'Use of minerals and fossil ressources',
                                           'embedded': {'warnings': ['End of life is not included in the calculation'],
