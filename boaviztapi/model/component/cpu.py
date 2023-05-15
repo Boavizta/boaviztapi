@@ -37,14 +37,14 @@ class ComponentCPU(Component):
         )
         self.die_size_per_core = Boattribute(
             complete_function=self._complete_die_size_per_core,
-            unit="mm2",
+            unit="cm2",
             default=get_arch_value(archetype, 'die_size_per_core', 'default'),
             min=get_arch_value(archetype, 'die_size_per_core', 'min'),
             max=get_arch_value(archetype, 'die_size_per_core', 'max')
         )
         self.die_size = Boattribute(
             complete_function=self._complete_from_name,
-            unit="mm2",
+            unit="cm2",
             default=get_arch_value(archetype, 'die_size', 'default'),
             min=get_arch_value(archetype, 'die_size', 'min'),
             max=get_arch_value(archetype, 'die_size', 'max')
@@ -163,7 +163,8 @@ class ComponentCPU(Component):
 
     # COMPLETION
     def _complete_die_size_per_core(self):
-
+        self._complete_from_name()
+        corrected_family = None
         # If we can have a die_size and core_units, we can compute the die_size_per_core
         if self.die_size.has_value() and self.core_units.has_value():
             self.die_size_per_core.set_completed(value=float(self.die_size.value/self.core_units.value), source="die_size/core_units")
@@ -177,7 +178,7 @@ class ComponentCPU(Component):
         if self.family.has_value():
             # Check if the family matches one of the families in the database and correct it if necessary
             corrected_family = fuzzymatch_attr_from_pdf(self.family.value, "family", sub)
-            if corrected_family != self.family.value:
+            if corrected_family != self.family.value and corrected_family is not None:
                 self.family.set_changed(corrected_family)
 
             tmp = sub[sub['family'] == corrected_family]
@@ -185,7 +186,7 @@ class ComponentCPU(Component):
             if len(tmp) > 0:
                 sub = tmp.copy()
 
-            if self.core_units.has_value():
+            if self.core_units.has_value() and corrected_family is not None:
                 # Find the closest line to the number of cores provided by the user
                 sub['core_dif'] = sub[['core_units']].apply(lambda x: abs(x[0] - self.core_units.value), axis=1)
                 sub = sub.sort_values(by='core_dif', ascending=True)
@@ -215,8 +216,10 @@ class ComponentCPU(Component):
 
                 return
 
+        source_family = self.family.value if corrected_family is not None else "all families"
+
         # If we don't have a number of cores, we use the average die size per core for a given family (if provided)
-        self.die_size_per_core.set_completed(float(sub['die_size_per_core'].mean()), source=f"Average for {self.family.value or 'all families'}")
+        self.die_size_per_core.set_completed(float(sub['die_size_per_core'].mean()), source=f"Average for {source_family}")
         self.die_size_per_core.min = float(float(sub['die_size_per_core'].min()))
         self.die_size_per_core.max = float(float(sub['die_size_per_core'].max()))
 
@@ -235,7 +238,6 @@ class ComponentCPU(Component):
                 name_min, manufacturer_min, family_min, model_range_min, tdp_min, cores_min, die_size_min, die_size_source_min, source_min  = name, manufacturer, family, model_range, tdp, cores, die_size, die_size_source, source
                 name_max, manufacturer_max, family_max, model_range_max, tdp_max, cores_max, die_size_max, die_size_source_max, source_max  = name, manufacturer, family, model_range, tdp, cores, die_size, die_size_source, source
 
-            print(name, manufacturer, family, model_range, tdp, cores, die_size, die_size_source, source)
             if name is not None:
                 self.name.set_completed(name, min=name_min, max=name_max, source="fuzzy match")
             if manufacturer is not None:
@@ -249,5 +251,5 @@ class ComponentCPU(Component):
             if cores is not None:
                 self.core_units.set_completed(cores, min=cores_min, max=cores_max, source=f"Completed from name name based on {source}.")
             if die_size is not None:
-                self.die_size.set_completed(die_size, min=die_size_min, max=die_size_max, source=f"{die_size_source} : Completed from name name based on {source}.")
+                self.die_size.set_completed(die_size/1000, min=die_size_min/1000, max=die_size_max/1000, source=f"{die_size_source} : Completed from name name based on {source}.")
             self.name_completion = True
