@@ -974,8 +974,8 @@ AMD Turion X2 Ultra ZM-87,AMD,Griffin,Turion X2 Ultra ZM,2.4 GHz,35.0,2.0,,io_di
 AMD Turion X2 Ultra ZM-88,AMD,Griffin,Turion X2 Ultra ZM,2.5 GHz,35.0,2.0,,io_die_size () + die_size (),https://www.techpowerup.com/cpu-specs/turion-x2-ultra-zm-88.c636
 AMD Z-01,AMD,Desna,Z,1000 MHz,6.0,2.0,,io_die_size () + die_size (),https://www.techpowerup.com/cpu-specs/z-01.c1179
 AMD Z-60,AMD,Hondo,Z,1000 MHz,5.0,2.0,,io_die_size () + die_size (),https://www.techpowerup.com/cpu-specs/z-60.c1180
-Annapurna Labs Graviton,Annapurna Labs,Graviton,Graviton,,40.0,16.0,,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
-Annapurna Labs Graviton2,Annapurna Labs,Graviton2,Graviton2,,150.0,64.0,,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
+Graviton,Annapurna Labs,Graviton,Graviton,,40.0,16.0,,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
+Graviton2,Annapurna Labs,Graviton2,Graviton2,,150.0,64.0,456.96,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 Intel A100,Intel,Stealey,A,600 MHz,3.0,1.0,66.0,io_die_size () + die_size (66 mm²),https://www.techpowerup.com/cpu-specs/a100.c1404
 Intel A110,Intel,Stealey,A,800 MHz,3.0,1.0,66.0,io_die_size () + die_size (66 mm²),https://www.techpowerup.com/cpu-specs/a110.c1405
 Intel Atom 230,Intel,Diamondville,Atom,1600 MHz,4.0,1.0,2400.0,io_die_size () + die_size (25.96 mm²),https://www.techpowerup.com/cpu-specs/atom-230.c1395
