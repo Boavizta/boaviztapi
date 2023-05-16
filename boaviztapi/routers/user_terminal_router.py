@@ -61,7 +61,7 @@ async def user_terminal_get_default_usage_values(category: str = Query(None, exa
             "default":df2['USAGE.hours_electrical_consumption'].values[0].split(";")[0],
         },
         "use_time": str(df2['USAGE.use_time'].values[0]),
-        "years_life_time": str(df2['USAGE.years_life_time'].values[0])
+        "years_life_time": str(df2['USAGE.life_time'].values[0])
     }
     return result
 
