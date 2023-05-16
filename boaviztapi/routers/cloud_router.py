@@ -8,7 +8,8 @@ from fastapi import APIRouter, Query, Body, HTTPException
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device import Cloud
 from boaviztapi.dto.device.device import mapper_cloud_instance
-from boaviztapi.routers.openapi_doc.descriptions import cloud_provider_description, all_default_cloud_instances, all_default_cloud_providers, cloud_aws_description, all_default_aws_instances
+from boaviztapi.routers.openapi_doc.descriptions import cloud_provider_description, all_default_cloud_instances, \
+    all_default_cloud_providers,get_instance_config
 from boaviztapi.routers.openapi_doc.examples import cloud_example
 from boaviztapi.routers.server_router import server_impact
 from boaviztapi.service.allocation import Allocation
@@ -18,6 +19,16 @@ cloud_router = APIRouter(
     prefix='/v1/cloud',
     tags=['cloud']
 )
+
+@cloud_router.get('/instance_config',
+                   description=get_instance_config)
+async def get_archetype_config(provider: str = Query(config["default_cloud_provider"], example=config["default_cloud_provider"]),
+                               instance_type: str = Query(config["default_cloud"], example=config["default_cloud"])):
+
+    result = get_cloud_instance_archetype(instance_type, provider)
+    if not result:
+        raise HTTPException(status_code=404, detail=f"{instance_type} at {provider} not found")
+    return result
 
 @cloud_router.post('/',
                    description=cloud_provider_description)

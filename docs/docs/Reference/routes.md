@@ -76,18 +76,23 @@ The format section of the documentation details the format of the body for each 
 
 Utils routes are used to retrieve the list of possible values for some parameters, to retrieve the list of archetypes for a given asset or to use some specific features.
 
-| Method | Routes                        | parameters     | Description                                                        |  
-|--------|-------------------------------|----------------|--------------------------------------------------------------------|  
-| GET    | /v1/server/archetypes         |                | Get all available server archetype                                 |
-| GET    | /v1/cloud/all_instances       | ```provider``` | Get all available cloud instances for a given provider             |
-| GET    | /v1/cloud/all_providers       |                | Get all available cloud providers                                  |
-| GET    | /v1/user_terminal/archetypes  | ```name```     | Get all available archetype for a given component name             |
-| GET    | /v1/component/archetypes      | ```name```     | Get all available archetype for a end user terminal name           |
-| GET    | /v1/utils/country_code        |                | Get all available country code associated to its country name      |
-| GET    | /v1/utils/cpu_model_range     |                | Get all available model_range                                      |
-| GET    | /v1/utils/ssd_manufacturer    |                | Get all available ssd manufacturer                                 |
-| GET    | /v1/utils/ram_manufacturer    |                | Get all available ram manufacturer                                 |
-| GET    | /v1/utils/case_type           |                | Get all available case type                                        |
-| GET    | /v1/utils/name_to_cpu         | ```cpu_name``` | Get a description of a CPU from its name                           |
-| GET    | /v1/utils/cpu_name            |                | Get all available cpu name                                         |
-| GET    | /v1/utils/impact_criteria     |                | Get all available impact criteria  (name, code, description, unit) |
+| Method | Routes                               | parameters                            | Description                                                        |  
+|--------|--------------------------------------|---------------------------------------|--------------------------------------------------------------------|  
+| GET    | /v1/server/archetypes                |                                       | Get all available server archetype                                 |
+| GET    | /v1/server/archetype_config          | ```archetype```                       | Get the config of a given archetype                                |
+| GET    | /v1/cloud/all_instances              | ```provider```                        | Get all available cloud instances for a given provider             |
+| GET    | /v1/cloud/all_providers              |                                       | Get all available cloud providers                                  |
+| GET    | /v1/server/archetype_config          | ```instance```                        | Get the config of a given instance                                 |
+| GET    | /v1/user_terminal/archetypes         | ```name```                            | Get all available archetype for a given component name             |
+| GET    | /v1/user_terminal/archetype_config   | ```archetype```                       | Get the config of a given archetype                                |
+| GET    | /v1/user_terminal/archetype_config   | ```archetype```                       | Get the config of a given archetype                                |
+| GET    | /v1/component/archetypes             | ```name```                            | Get all available archetype for a end user terminal name           |
+| GET    | /v1/component/archetype_config       | ```archetype```, ```component_type``` | Get the config of a given archetype for a given component type     |
+| GET    | /v1/utils/country_code               |                                       | Get all available country code associated to its country name      |
+| GET    | /v1/utils/cpu_model_range            |                                       | Get all available model_range                                      |
+| GET    | /v1/utils/ssd_manufacturer           |                                       | Get all available ssd manufacturer                                 |
+| GET    | /v1/utils/ram_manufacturer           |                                       | Get all available ram manufacturer                                 |
+| GET    | /v1/utils/case_type                  |                                       | Get all available case type                                        |
+| GET    | /v1/utils/name_to_cpu                | ```cpu_name```                        | Get a description of a CPU from its name                           |
+| GET    | /v1/utils/cpu_name                   |                                       | Get all available cpu name                                         |
+| GET    | /v1/utils/impact_criteria            |                                       | Get all available impact criteria  (name, code, description, unit) |

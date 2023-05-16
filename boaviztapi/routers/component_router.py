@@ -11,7 +11,8 @@ from boaviztapi.dto.component.ram import mapper_ram
 from boaviztapi.dto.component.disk import mapper_ssd, mapper_hdd
 from boaviztapi.model.component import Component
 from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
-    hdd_description, motherboard_description, power_supply_description, case_description, all_archetype_components
+    hdd_description, motherboard_description, power_supply_description, case_description, all_archetype_components, \
+    get_archetype_config
 from boaviztapi.routers.openapi_doc.examples import components_examples
 from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import get_component_archetype, get_device_archetype_lst
@@ -26,8 +27,14 @@ component_router = APIRouter(
 @component_router.get('/archetypes',
                    description=all_archetype_components)
 async def server_get_all_archetype_name(name: str = Query("cpu")):
-    print(name)
     return get_device_archetype_lst(os.path.join(data_dir, f'archetypes/components/{name.lower()}.csv'))
+
+@component_router.get('/archetype_config', description=get_archetype_config)
+async def get_archetype_config(archetype: str = Query(example=config["default_cpu"]), component_type: str = Query(example="cpu")):
+    result = get_component_archetype(archetype, component_type)
+    if not result:
+        raise HTTPException(status_code=404, detail=f"{archetype} not found")
+    return result
 
 @component_router.post('/cpu',
                        description=cpu_description)

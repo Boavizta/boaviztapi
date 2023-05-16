@@ -28,6 +28,10 @@ all_user_terminal_categories = "# ✔️ Get all the available user terminal\n"
 all_user_terminal_subcategories = "# ✔️ Get all the available user terminal subcategories\n"
 all_default_usage_values = "# ✔️ Get all default usage values for a given user terminal category and subcategory\n"
 
+get_archetype_config = "# ✔️ Get the configuration of a given archetype\n"
+get_instance_config = "# ✔️ Get the configuration of a given instance\n"
+
+
 cpu_description = "# ✔ ️CPU impacts from configuration\n" \
                   "### Features\n\n" \
                   "👄 Verbose\n\n" \
