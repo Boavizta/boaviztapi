@@ -1,5 +1,6 @@
 import os
 from typing import List
+from unicodedata import category
 
 import pandas as pd
 from fastapi import APIRouter, Query, Body, HTTPException
@@ -7,7 +8,8 @@ from fastapi import APIRouter, Query, Body, HTTPException
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device.user_terminal import UserTerminal, mapper_user_terminal, Laptop, Desktop, Smartphone, \
     Monitor, Television, UsbStick, ExternalSSD, ExternalHDD, Tablet, Box
-from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals, all_user_terminal_categories, all_user_terminal_subcategories
+from boaviztapi.dto.usage.usage import DefaultUsageValues
+from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals, all_user_terminal_categories, all_user_terminal_subcategories, all_default_usage_values
 from boaviztapi.routers.openapi_doc.examples import end_user_terminal
 from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import get_user_terminal_archetype, get_device_archetype_lst_with_type
@@ -35,14 +37,34 @@ async def user_terminal_get_all_categories():
 
 @user_terminal_router.get('/all_subcategories',
                    description=all_user_terminal_subcategories)
-async def user_terminal_get_all_subcategories(device_type: str = Query(None, example="laptop")):
+async def user_terminal_get_all_subcategories(category: str = Query(None, example="laptop")):
     df = pd.read_csv(os.path.join(data_dir, 'archetypes/user_terminal.csv'))
-    df2 =  df[df['device_type'] == device_type]
+    df2 =  df[df['device_type'] == category]
     if (df2.empty):
-        raise HTTPException(status_code=404, detail=f"No data for this type of device ({device_type})")
+        raise HTTPException(status_code=404, detail=f"No data for this type of device ({category})")
     if (pd.isnull(df2['type']).all()):
         return [ "default" ]
     return df2['type'].unique().tolist()
+
+@user_terminal_router.get('/all_default_usage_values',
+                   description=all_default_usage_values)
+async def user_terminal_get_default_usage_values(category: str = Query(None, example="laptop"),subcategory: str = Query(None, example="pro")):
+    df = pd.read_csv(os.path.join(data_dir, 'archetypes/user_terminal.csv'))
+    if (category == None) | (subcategory == None):
+        raise HTTPException(status_code=404, detail=f"Please specify category and subcategory.")
+    df2 =  df[(df['device_type'] == category) & (df['type'] == subcategory)]
+    if (df2.empty):
+        raise HTTPException(status_code=404, detail=f"No data for this type of device ({category}) and subcategory ({subcategory})")
+    result = {
+        "hours_electrical_consumption": {
+            "min":df2['USAGE.hours_electrical_consumption'].values[0].split(";")[1],
+            "max":df2['USAGE.hours_electrical_consumption'].values[0].split(";")[2],
+            "default":df2['USAGE.hours_electrical_consumption'].values[0].split(";")[0],
+        },
+        "use_time": str(df2['USAGE.use_time'].values[0]),
+        "years_life_time": str(df2['USAGE.years_life_time'].values[0])
+    }
+    return result
 
 @user_terminal_router.post('/laptop', description="")
 async def laptop_impact(laptop: Laptop = Body(None, example=end_user_terminal),

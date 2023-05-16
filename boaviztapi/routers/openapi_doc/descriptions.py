@@ -26,6 +26,7 @@ all_archetype_components = "# ✔️ Get all the available component archetype f
 all_archetype_user_terminals = "# ✔️ Get all the available user terminal archetype for a given user terminal name\n"
 all_user_terminal_categories = "# ✔️ Get all the available user terminal\n"
 all_user_terminal_subcategories = "# ✔️ Get all the available user terminal subcategories\n"
+all_default_usage_values = "# ✔️ Get all default usage values for a given user terminal category and subcategory\n"
 
 cpu_description = "# ✔ ️CPU impacts from configuration\n" \
                   "### Features\n\n" \
