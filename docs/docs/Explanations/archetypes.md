@@ -38,3 +38,7 @@ You can specify an archetype in the route parameters when you send a device or a
 ```
 
 In this case the missing values will be completed with the values taken from a *compute_medium* server.
+
+## GET the configuration of an archetype
+
+You can get the configuration of an archetype by using the GET method on the route ```{assets}/archetype_config```.
