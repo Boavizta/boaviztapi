@@ -8,7 +8,6 @@ from fastapi import APIRouter, Query, Body, HTTPException
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device.user_terminal import UserTerminal, mapper_user_terminal, Laptop, Desktop, Smartphone, \
     Monitor, Television, UsbStick, ExternalSSD, ExternalHDD, Tablet, Box
-from boaviztapi.dto.usage.usage import DefaultUsageValues
 from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals, all_user_terminal_categories, all_user_terminal_subcategories, all_default_usage_values
 from boaviztapi.routers.openapi_doc.examples import end_user_terminal
 from boaviztapi.service.allocation import Allocation
