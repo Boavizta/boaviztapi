@@ -280,7 +280,7 @@ async def test_multiple_cpu():
 async def test_incomplete_cpu_verbose():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=true', json={
-            "core_units": 24, "family": "Skylake", "embedded_date": 2017})
+            "core_units": 24, "family": "Skylake"})
 
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
                                               'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.02,
@@ -406,7 +406,7 @@ async def test_incomplete_cpu_verbose():
 async def test_incomplete_cpu_verbose_2():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=true', json={
-            "core_units": 24, "family": "skylak", "embedded_date": 2017})
+            "core_units": 24, "family": "skylak"})
 
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
                                               'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.02,

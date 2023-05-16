@@ -1,2 +1,2 @@
-id,units,unit_weight,USAGE.use_time,USAGE.use_time,USAGE.years_life_time
+id,units,unit_weight,USAGE.use_time,USAGE.use_time,USAGE.life_time
 DEFAULT,"1;1;1","2.99;1;5","8760;1;87600","8760;1;87600","26280;8760;87600"

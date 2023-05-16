@@ -1,4 +1,4 @@
-id,device_type,type,USAGE.use_time,USAGE.years_life_time,USAGE.hours_electrical_consumption
+id,device_type,type,USAGE.use_time,USAGE.life_time,USAGE.hours_electrical_consumption
 laptop-pro,laptop,pro,8760,35040,75;50;100
 laptop-perso,laptop,perso,8760,43800,75;50;100
 desktop-pro,desktop,pro,8760,52560,175;100;450

@@ -37,7 +37,7 @@ async def test_get_server_archetype_dellr740():
                                                                                                    'USAGE': {'other_consumption_ratio': {'default': 0.33},
                                                                                                              'time_workload': {'default': 50.0, 'max': 100.0, 'min': 0.0},
                                                                                                              'use_time': {'default': 8760.0, 'max': 87600.0, 'min': 1.0},
-                                                                                                             'years_life_time': {'default': 26280.0,
+                                                                                                             'life_time': {'default': 26280.0,
                                                                                                                                  'max': 87600.0,
                                                                                                                                  'min': 8760.0}},
                                                                                                    'WARNINGS': {},
