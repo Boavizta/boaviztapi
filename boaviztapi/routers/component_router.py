@@ -11,8 +11,7 @@ from boaviztapi.dto.component.ram import mapper_ram
 from boaviztapi.dto.component.disk import mapper_ssd, mapper_hdd
 from boaviztapi.model.component import Component
 from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
-    hdd_description, motherboard_description, power_supply_description, case_description, all_archetype_components, \
-    get_archetype_config
+    hdd_description, motherboard_description, power_supply_description, case_description
 from boaviztapi.routers.openapi_doc.examples import components_examples
 from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import get_component_archetype, get_device_archetype_lst
@@ -24,17 +23,29 @@ component_router = APIRouter(
     tags=['component']
 )
 
-@component_router.get('/archetypes',
-                   description=all_archetype_components)
-async def server_get_all_archetype_name(name: str = Query("cpu")):
-    return get_device_archetype_lst(os.path.join(data_dir, f'archetypes/components/{name.lower()}.csv'))
+@component_router.get('/all',
+                       description=cpu_description)
+async def cpu_all_archetype_name():
+    return {
+        "cpu": "v1/component/cpu",
+        "ram": "v1/component/ram",
+        "ssd": "v1/component/ssd",
+        "hdd": "v1/component/hdd",
+        "motherboard": "v1/component/motherboard",
+        "power_supply": "v1/component/power_supply",
+        "case": "v1/component/case"
+    }
+@component_router.get('/cpu/archetype',
+                       description=cpu_description)
+async def cpu_all_archetype_name():
+    archetype_lst = get_all_archetype_name("cpu")
+    return archetype_lst
 
-@component_router.get('/archetype_config', description=get_archetype_config)
-async def get_archetype_config(archetype: str = Query(example=config["default_cpu"]), component_type: str = Query(example="cpu")):
-    result = get_component_archetype(archetype, component_type)
-    if not result:
-        raise HTTPException(status_code=404, detail=f"{archetype} not found")
-    return result
+@component_router.get('/cpu/archetype_config',
+                       description=cpu_description)
+async def cpu_archetype_config(archetype: str = Query(Exemple=config["default_cpu"])):
+    archetype_config = get_archetype_config(archetype,"cpu")
+    return archetype_config
 
 @component_router.post('/cpu',
                        description=cpu_description)
@@ -77,6 +88,18 @@ async def cpu_impact_bottom_up(verbose: bool = True,
         criteria=criteria
     )
 
+@component_router.get('/ram/archetype',
+                       description=ram_description)
+async def ram_all_archetype_name():
+    archetype_lst = get_all_archetype_name("ram")
+    return archetype_lst
+
+@component_router.get('/ram/archetype_config',
+                       description=ram_description)
+async def ram_archetype_config(archetype: str = Query(Exemple=config["default_ram"])):
+    archetype_config = get_archetype_config(archetype,"ram")
+    return archetype_config
+
 @component_router.post('/ram',
                        description=ram_description)
 async def ram_impact_bottom_up(ram: RAM = Body(None, example=components_examples["ram"]),
@@ -116,6 +139,17 @@ async def ram_impact_bottom_up(verbose: bool = True,
         criteria=criteria
     )
 
+@component_router.get('/ssd/archetype',
+                       description=ssd_description)
+async def ssd_all_archetype_name():
+    archetype_lst = get_all_archetype_name("ssd")
+    return archetype_lst
+
+@component_router.get('/ssd/archetype_config',
+                       description=ssd_description)
+async def ssd_archetype_config(archetype: str = Query(Exemple=config["default_ssd"])):
+    archetype_config = get_archetype_config(archetype,"ssd")
+    return archetype_config
 
 @component_router.post('/ssd',
                        description=ssd_description)
@@ -159,6 +193,18 @@ async def disk_impact_bottom_up(verbose: bool = True,
         criteria=criteria
     )
 
+@component_router.get('/hdd/archetype',
+                       description=hdd_description)
+async def hdd_all_archetype_name():
+    archetype_lst = get_all_archetype_name("hdd")
+    return archetype_lst
+
+@component_router.get('/hdd/archetype_config',
+                       description=hdd_description)
+async def hdd_archetype_config(archetype: str = Query(Exemple=config["default_hdd"])):
+    archetype_config = get_archetype_config(archetype,"hdd")
+    return archetype_config
+
 @component_router.post('/hdd',
                        description=hdd_description)
 async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examples["hdd"]),
@@ -201,6 +247,19 @@ async def disk_impact_bottom_up(verbose: bool = True,
         criteria=criteria
     )
 
+@component_router.get('/motherboard/archetype',
+                       description=motherboard_description)
+async def motherboard_all_archetype_name():
+    archetype_lst = get_all_archetype_name("motherboard")
+    return archetype_lst
+
+@component_router.get('/motherboard/archetype_config',
+                       description=motherboard_description)
+async def motherboard_archetype_config(archetype: str = Query(Exemple=config["default_motherboard"])):
+    archetype_config = get_archetype_config(archetype,"motherboard")
+    return archetype_config
+
+
 @component_router.post('/motherboard',
                        description=motherboard_description)
 async def motherboard_impact_bottom_up(motherboard: Motherboard = Body(None, example=components_examples["motherboard"]),
@@ -229,6 +288,19 @@ async def motherboard_impact_bottom_up(verbose: bool = True, allocation: Allocat
         allocation=allocation,
         criteria=criteria
     )
+
+@component_router.get('/power_supply/archetype',
+                       description=power_supply_description)
+async def power_supply_all_archetype_name():
+    archetype_lst = get_all_archetype_name("power_supply")
+    return archetype_lst
+
+@component_router.get('/power_supply/archetype_config',
+                       description=power_supply_description)
+async def power_supply_archetype_config(archetype: str = Query(Exemple=config["default_power_supply"])):
+    archetype_config = get_archetype_config(archetype,"power_supply")
+    return archetype_config
+
 
 @component_router.post('/power_supply',
                        description=power_supply_description)
@@ -270,6 +342,18 @@ async def power_supply_impact_bottom_up(verbose: bool = True, allocation: Alloca
         allocation=allocation,
         criteria=criteria
     )
+
+@component_router.get('/case/archetype',
+                       description=case_description)
+async def case_all_archetype_name():
+    archetype_lst = get_all_archetype_name("case")
+    return archetype_lst
+
+@component_router.get('/case/archetype_config',
+                       description=case_description)
+async def case_archetype_config(archetype: str = Query(Exemple=config["default_case"])):
+    archetype_config = get_archetype_config(archetype,"case")
+    return archetype_config
 
 @component_router.post('/case',
                        description=case_description)
@@ -321,3 +405,12 @@ async def component_impact_bottom_up(component: Component,
             "verbose": verbose_component(component=component, selected_criteria=criteria)
         }
     return impacts
+
+def get_all_archetype_name(name: str):
+    return get_device_archetype_lst(os.path.join(data_dir, f'archetypes/components/{name.lower()}.csv'))
+
+def get_archetype_config(archetype: str, component_type: str):
+    result = get_component_archetype(archetype, component_type)
+    if not result:
+        raise HTTPException(status_code=404, detail=f"{archetype} not found")
+    return result

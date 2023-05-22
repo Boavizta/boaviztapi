@@ -24,7 +24,8 @@ server_impact_by_config_description = "# ✔️ Server impacts from configuratio
 all_archetype_servers = "# ✔️ Get all the available server archetype\n"
 all_archetype_components = "# ✔️ Get all the available component archetype for a given component name\n"
 all_archetype_user_terminals = "# ✔️ Get all the available user terminal archetype for a given user terminal name\n"
-all_user_terminal_categories = "# ✔️ Get all the available user terminal\n"
+all_terminal_categories = "# ✔️ Get all the available user terminal router\n"
+all_peripheral_categories = "# ✔️ Get all the available user peripheral router\n"
 all_user_terminal_subcategories = "# ✔️ Get all the available user terminal subcategories\n"
 all_default_usage_values = "# ✔️ Get all default usage values for a given user terminal category and subcategory\n"
 

@@ -4,7 +4,7 @@ from pathlib import Path
 
 import yaml
 
-__version__ = '0.2.2'
+__version__ = '0.3.0'
 
 if "pytest" in sys.modules:
     data_dir = os.path.join(os.path.dirname(__file__), '../tests/data')
