@@ -100,7 +100,7 @@ class DeviceSmartphone(EndUserDevice, ABC):
 
 class DeviceTelevision(EndUserDevice, ABC):
     NAME = "TELEVISION"
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_tv"]), **kwargs):
+    def __init__(self, archetype=get_user_terminal_archetype(config["default_television"]), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
         self.type = Boattribute(
             default=get_arch_value(archetype, 'type', 'default'),

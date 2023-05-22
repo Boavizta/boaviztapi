@@ -1,8 +1,8 @@
-# End user devices
+# Terminals & Peripherals
 
 ## General description
 
-End user devices may have several types (typically ```pro``` and ```perso```).
+Terminals & peripherals may have several types (typically ```pro``` and ```perso```).
 
 | Name            | Unit       | Default value | Description             | Example |
 |-----------------|------------|---------------|-------------------------|---------|
