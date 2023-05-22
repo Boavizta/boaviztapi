@@ -44,7 +44,7 @@ jobs:
         pipenv install --dev
 
     - name: Build the pip package
-      run: python3 setup.py sdist
+      run: pipenv run python setup.py sdist
 
     - name: push pip package
       run: pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.DAVID_PYPI_TOKEN }} dist/*
