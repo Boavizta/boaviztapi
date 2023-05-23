@@ -16,11 +16,29 @@ class WorkloadTime(BaseDTO):
     load_percentage: float = None
 
 
-class ElecFactor:
-    gwp_factor: Optional[float] = None
-    pe_factor: Optional[float] = None
-    adp_factor: Optional[float] = None
-
+class ElecFactors(BaseDTO):
+    gwp: Optional[float] = None
+    adp: Optional[float] = None
+    pe: Optional[float] = None
+    gwppb: Optional[float] = None
+    gwppf: Optional[float] = None
+    gwpplu: Optional[float] = None
+    ir: Optional[float] = None
+    lu: Optional[float] = None
+    odp: Optional[float] = None
+    pm: Optional[float] = None
+    pocp: Optional[float] = None
+    wu: Optional[float] = None
+    mips: Optional[float] = None
+    adpe: Optional[float] = None
+    adpf: Optional[float] = None
+    ap: Optional[float] = None
+    ctue: Optional[float] = None
+    ctuh_c: Optional[float] = None
+    ctuh_nc: Optional[float] = None
+    epf: Optional[float] = None
+    epm: Optional[float] = None
+    ept: Optional[float] = None
 
 
 class Usage(BaseDTO):
@@ -34,10 +52,7 @@ class Usage(BaseDTO):
     time_workload: Optional[Union[float, List[WorkloadTime]]] = None
 
     usage_location: Optional[str] = None
-    gwp_factor: Optional[float] = None
-    pe_factor: Optional[float] = None
-    adp_factor: Optional[float] = None
-
+    elec_factors: Optional[ElecFactors] = ElecFactors()
 
 
 class UsageServer(Usage):
@@ -50,6 +65,10 @@ class UsageCloud(UsageServer):
 
 def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
     usage_model = ModelUsage(archetype=archetype)
+
+    for elec_factor in usage_dto.elec_factors.__dict__.keys():
+        if usage_dto.elec_factors.__dict__[elec_factor] is not None:
+            usage_model.elec_factors.get(elec_factor).set_input(usage_dto.elec_factors.__dict__[elec_factor])
 
     if usage_dto.time_workload is not None:
         usage_model.time_workload.value = usage_dto.time_workload
@@ -86,6 +105,10 @@ def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
 def mapper_usage_server(usage_dto: UsageServer, archetype=get_server_archetype(config["default_server"]).get("USAGE")) -> ModelUsageServer:
     usage_model_server = ModelUsageServer(archetype=archetype)
 
+    for elec_factor in usage_dto.elec_factors.__dict__.keys():
+        if usage_dto.elec_factors.__dict__[elec_factor] is not None:
+            usage_model_server.elec_factors.get(elec_factor).set_input(usage_dto.elec_factors.__dict__[elec_factor])
+
     if usage_dto.hours_electrical_consumption is not None:
         usage_model_server.hours_electrical_consumption.set_input(usage_dto.hours_electrical_consumption)
 
@@ -114,6 +137,10 @@ def mapper_usage_server(usage_dto: UsageServer, archetype=get_server_archetype(c
 
 def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_archetype(config["default_cloud"], config["default_cloud_provider"]).get("USAGE")) -> ModelUsageCloud:
     usage_model_cloud = ModelUsageCloud(archetype=archetype)
+
+    for elec_factor in usage_dto.elec_factors.__dict__.keys():
+        if usage_dto.elec_factors.__dict__[elec_factor] is not None:
+            usage_model_cloud.elec_factors.get(elec_factor).set_input(usage_dto.elec_factors.__dict__[elec_factor])
 
     if usage_dto.hours_electrical_consumption is not None:
         usage_model_cloud.hours_electrical_consumption.set_input(usage_dto.hours_electrical_consumption)
