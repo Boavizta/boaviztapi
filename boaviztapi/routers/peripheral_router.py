@@ -3,10 +3,10 @@ from fastapi import APIRouter, Query, Body
 
 from boaviztapi import config
 from boaviztapi.dto.device.user_terminal import Monitor, UsbStick, ExternalSSD, ExternalHDD
-from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals, get_archetype_config, \
-    all_peripheral_categories
+from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals, all_peripheral_categories, \
+    get_archetype_config_desc
 from boaviztapi.routers.openapi_doc.examples import end_user_terminal
-from boaviztapi.routers.terminal_router import user_terminal_impact, get_all_archetype_name
+from boaviztapi.routers.terminal_router import user_terminal_impact, get_all_archetype_name,get_archetype_config
 from boaviztapi.service.allocation import Allocation
 
 peripheral_router = APIRouter(
@@ -30,7 +30,7 @@ async def monitor_get_all_archetype_name():
     return get_all_archetype_name('monitor')
 
 @peripheral_router.get('/monitor/archetype_config',
-                   description=get_archetype_config)
+                   description=get_archetype_config_desc)
 async def monitor_get_archetype_config(archetype: str = Query(example=config["default_monitor"])):
     return get_archetype_config(archetype)
 @peripheral_router.post('/monitor', description="")
@@ -64,7 +64,7 @@ async def usb_stick_get_all_archetype_name():
     return get_all_archetype_name('usb_stick')
 
 @peripheral_router.get('/usb_stick/archetype_config',
-                   description=get_archetype_config)
+                   description=get_archetype_config_desc)
 async def usb_stick_get_archetype_config(archetype: str = Query(example=config["default_usb_stick"])):
     return get_archetype_config(archetype)
 
@@ -99,7 +99,7 @@ async def external_ssd_get_all_archetype_name():
     return get_all_archetype_name('external_ssd')
 
 @peripheral_router.get('/external_ssd/archetype_config',
-                   description=get_archetype_config)
+                   description=get_archetype_config_desc)
 async def external_ssd_get_archetype_config(archetype: str = Query(example=config["default_external_ssd"])):
     return get_archetype_config(archetype)
 
@@ -134,7 +134,7 @@ async def external_hdd_get_all_archetype_name():
     return get_all_archetype_name('external_hdd')
 
 @peripheral_router.get('/external_hdd/archetype_config',
-                   description=get_archetype_config)
+                   description=get_archetype_config_desc)
 async def external_hdd_get_archetype_config(archetype: str = Query(example=config["default_external_hdd"])):
     return get_archetype_config(archetype)
 
