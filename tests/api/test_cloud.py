@@ -8,7 +8,7 @@ pytest_plugins = ('pytest_asyncio',)
 @pytest.mark.asyncio
 async def test_empty_usage():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/cloud/?verbose=false', json={
+        res = await ac.post('/v1/cloud/instance?verbose=false', json={
             'provider': 'aws',
             'instance_type': 'a1.4xlarge',
             'usage': {}
@@ -55,7 +55,7 @@ async def test_empty_usage():
 @pytest.mark.asyncio
 async def test_empty_usage_m6gxlarge():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/cloud/?verbose=false', json={
+        res = await ac.post('/v1/cloud/instance?verbose=false', json={
             'provider': 'aws',
             'instance_type': "m6g.xlarge",
             'usage': {}
@@ -102,7 +102,7 @@ async def test_empty_usage_m6gxlarge():
 @pytest.mark.asyncio
 async def test_empty_usage_1():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.get('/v1/cloud/?verbose=false&instance_type=a1.2xlarge&provider=aws')
+        res = await ac.get('/v1/cloud/instance?verbose=false&instance_type=a1.2xlarge&provider=aws')
 
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'max': 0.14,
@@ -145,7 +145,7 @@ async def test_empty_usage_1():
 @pytest.mark.asyncio
 async def test_empty_usage_2():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.get('/v1/cloud/?verbose=false&instance_type=r5ad.12xlarge&provider=aws')
+        res = await ac.get('/v1/cloud/instance?verbose=false&instance_type=r5ad.12xlarge&provider=aws')
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'max': 0.28,
                                                'min': 0.15,
@@ -187,7 +187,7 @@ async def test_empty_usage_2():
 @pytest.mark.asyncio
 async def test_wrong_input():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/cloud/?verbose=false', json={
+        res = await ac.post('/v1/cloud/instance?verbose=false', json={
             "provider": "test",
             "instance_type": "a1.4xlarge",
             "usage": {}
@@ -198,7 +198,7 @@ async def test_wrong_input():
 @pytest.mark.asyncio
 async def test_wrong_input_1():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/cloud/?verbose=false', json={
+        res = await ac.post('/v1/cloud/instance?verbose=false', json={
             "provider": "aws",
             "instance_type": "test",
             "usage": {}
@@ -209,7 +209,7 @@ async def test_wrong_input_1():
 @pytest.mark.asyncio
 async def test_usage_1():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/cloud/?verbose=false', json={
+        res = await ac.post('/v1/cloud/instance?verbose=false', json={
             "provider": "aws",
             "instance_type": "c5a.24xlarge",
             "usage": {
@@ -270,7 +270,7 @@ async def test_usage_1():
 @pytest.mark.asyncio
 async def test_usage_2():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/cloud/?verbose=false', json={
+        res = await ac.post('/v1/cloud/instance?verbose=false', json={
             "provider": "aws",
             "instance_type": "c5a.24xlarge",
             "usage": {
@@ -317,7 +317,7 @@ async def test_usage_2():
 @pytest.mark.asyncio
 async def test_usage_3():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/cloud/?verbose=false&allocation=TOTAL', json={
+        res = await ac.post('/v1/cloud/instance?verbose=false&allocation=TOTAL', json={
             "provider": "aws",
             "instance_type": "c5a.24xlarge",
             "usage": {
@@ -364,7 +364,7 @@ async def test_usage_3():
 @pytest.mark.asyncio
 async def test_usage():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/cloud/?verbose=false', json={
+        res = await ac.post('/v1/cloud/instance?verbose=false', json={
             "provider": "aws",
             "instance_type": "a1.4xlarge",
             "usage": {
