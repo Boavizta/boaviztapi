@@ -13,6 +13,7 @@ Usage impacts can be measured at device or component level from usage configurat
 ## General
 
 *```hours_electrical_consumption``` is given Watt. The usage location is given as a trigram (see available country code). The duration is given in day, hours and years (units are cumulative)*
+* ```elec_factors``` is given as a dictionary. Only ```gwp``` is given in kgCO2eq/kWh* the other will be completed by the API.
 
 ```json
 {
@@ -21,7 +22,10 @@ Usage impacts can be measured at device or component level from usage configurat
    "hours_use_time": 1,
    "years_use_time": 1,
    "usage_location": "FRA",
-   "hours_electrical_consumption": 120
+   "hours_electrical_consumption": 120,
+   "elec_factors": {
+     "gwp": 0.1
+   }
  }
 }
 ```
