@@ -72,7 +72,7 @@ def test_bottom_up_component_cpu_complete(complete_cpu_model):
 
 def test_bottom_up_component_cpu_incomplete(incomplete_cpu_model):
     bottom_up(incomplete_cpu_model, allocation=Allocation.TOTAL)
-    print(incomplete_cpu_model.usage.hours_electrical_consumption.value)
+    print(incomplete_cpu_model.usage.avg_power.value)
     assert bottom_up(incomplete_cpu_model, allocation=Allocation.TOTAL) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.02,

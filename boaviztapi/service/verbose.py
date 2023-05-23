@@ -42,7 +42,7 @@ def verbose_usage(device: [Device, Component]):
 def verbose_component(component: Component, allocation=Allocation.TOTAL, selected_criteria=config["default_criteria"]):
     json_output = {"impacts": bottom_up(component, allocation, selected_criteria), **iter_boattribute(component)}
 
-    if component.usage.hours_electrical_consumption.is_set():
+    if component.usage.avg_power.is_set():
         json_output= {**json_output, **verbose_usage(component)}
 
     return json_output

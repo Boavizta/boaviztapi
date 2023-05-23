@@ -48,7 +48,7 @@ class Usage(BaseDTO):
 
     years_life_time: Optional[float] = None
 
-    hours_electrical_consumption: Optional[float] = None
+    avg_power: Optional[float] = None
     time_workload: Optional[Union[float, List[WorkloadTime]]] = None
 
     usage_location: Optional[str] = None
@@ -81,8 +81,8 @@ def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
             usage_model.time_workload.unit = "(time_percentage:%, load_percentage: %)"
         usage_model.time_workload.status = Status.INPUT
 
-    if usage_dto.hours_electrical_consumption is not None:
-        usage_model.hours_electrical_consumption.set_input(usage_dto.hours_electrical_consumption)
+    if usage_dto.avg_power is not None:
+        usage_model.avg_power.set_input(usage_dto.avg_power)
 
     if usage_dto.years_life_time is not None:
         usage_model.life_time.set_input(usage_dto.years_life_time * 24 * 365)
@@ -109,8 +109,8 @@ def mapper_usage_server(usage_dto: UsageServer, archetype=get_server_archetype(c
         if usage_dto.elec_factors.__dict__[elec_factor] is not None:
             usage_model_server.elec_factors.get(elec_factor).set_input(usage_dto.elec_factors.__dict__[elec_factor])
 
-    if usage_dto.hours_electrical_consumption is not None:
-        usage_model_server.hours_electrical_consumption.set_input(usage_dto.hours_electrical_consumption)
+    if usage_dto.avg_power is not None:
+        usage_model_server.avg_power.set_input(usage_dto.avg_power)
 
     if usage_dto.years_life_time is not None:
         usage_model_server.life_time.set_input(usage_dto.years_life_time * 24 * 365)
@@ -142,8 +142,8 @@ def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_arche
         if usage_dto.elec_factors.__dict__[elec_factor] is not None:
             usage_model_cloud.elec_factors.get(elec_factor).set_input(usage_dto.elec_factors.__dict__[elec_factor])
 
-    if usage_dto.hours_electrical_consumption is not None:
-        usage_model_cloud.hours_electrical_consumption.set_input(usage_dto.hours_electrical_consumption)
+    if usage_dto.avg_power is not None:
+        usage_model_cloud.avg_power.set_input(usage_dto.avg_power)
 
     if usage_dto.years_life_time is not None:
         usage_model_cloud.life_time.set_input(usage_dto.years_life_time * 24 * 365)

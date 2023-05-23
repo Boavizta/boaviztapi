@@ -372,7 +372,7 @@ def cloud_instance_1_completed_dto():
 def french_mix_1_kw_dto():
     return UsageServer.parse_obj({
         "usage_location": "FRA",
-        "hours_electrical_consumption": 1
+        "avg_power": 1
     })
 
 

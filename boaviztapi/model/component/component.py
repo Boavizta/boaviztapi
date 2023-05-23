@@ -35,22 +35,22 @@ class Component:
         self._usage = value
 
     def impact_use(self, impact_type: str) -> ComputedImpacts:
-        if not self.usage.hours_electrical_consumption.is_set():
+        if not self.usage.avg_power.is_set():
             raise NotImplementedError
         impact_factor = self.usage.elec_factors[impact_type]
 
         impacts = impact_factor.value * (
-                self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
+                self.usage.avg_power.value / 1000) * self.usage.use_time.value
         sig_fig = self.__compute_significant_numbers_usage(impact_factor.value)
 
-        max_impact = impact_factor.max * (self.usage.hours_electrical_consumption.max / 1000) * self.usage.use_time.max
-        min_impact = impact_factor.min * (self.usage.hours_electrical_consumption.min / 1000) * self.usage.use_time.min
+        max_impact = impact_factor.max * (self.usage.avg_power.max / 1000) * self.usage.use_time.max
+        min_impact = impact_factor.min * (self.usage.avg_power.min / 1000) * self.usage.use_time.min
 
 
         return impacts, sig_fig, min_impact, max_impact, []
 
     def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
-        return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value,
+        return rd.min_significant_figures(self.usage.avg_power.value, self.usage.use_time.value,
                                           impact_factor)
 
     @abstractmethod

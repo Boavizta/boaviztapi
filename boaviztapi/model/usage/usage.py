@@ -17,11 +17,11 @@ class ModelUsage:
 
     def __init__(self, archetype, **kwargs):
         self.archetype = archetype
-        self.hours_electrical_consumption = Boattribute(
+        self.avg_power = Boattribute(
             unit="W",
-            default=get_arch_value(archetype, 'hours_electrical_consumption', 'default'),
-            min=get_arch_value(archetype, 'hours_electrical_consumption', 'min'),
-            max=get_arch_value(archetype, 'hours_electrical_consumption', 'max')
+            default=get_arch_value(archetype, 'avg_power', 'default'),
+            min=get_arch_value(archetype, 'avg_power', 'min'),
+            max=get_arch_value(archetype, 'avg_power', 'max')
         )
         self.time_workload = Boattribute(
             unit="%",
