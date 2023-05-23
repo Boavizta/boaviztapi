@@ -29,7 +29,7 @@ all_peripheral_categories = "# ✔️ Get all the available user peripheral rout
 all_user_terminal_subcategories = "# ✔️ Get all the available user terminal subcategories\n"
 all_default_usage_values = "# ✔️ Get all default usage values for a given user terminal category and subcategory\n"
 
-get_archetype_config = "# ✔️ Get the configuration of a given archetype\n"
+get_archetype_config_desc = "# ✔️ Get the configuration of a given archetype\n"
 get_instance_config = "# ✔️ Get the configuration of a given instance\n"
 
 

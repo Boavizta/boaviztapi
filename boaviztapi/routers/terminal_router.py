@@ -6,8 +6,8 @@ from fastapi import APIRouter, Query, Body, HTTPException
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device.user_terminal import UserTerminal, mapper_user_terminal, Laptop, Desktop, Smartphone, \
     Television, Tablet, Box
-from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals,\
-    get_archetype_config, all_terminal_categories
+from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals, all_terminal_categories, \
+    get_archetype_config_desc
 from boaviztapi.routers.openapi_doc.examples import end_user_terminal
 from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import get_user_terminal_archetype, get_device_archetype_lst_with_type
@@ -38,7 +38,7 @@ async def laptop_get_all_archetype_name():
     return get_all_archetype_name('laptop')
 
 @terminal_router.get('/laptop/archetype_config',
-                   description=get_archetype_config)
+                   description=get_archetype_config_desc)
 async def laptop_get_archetype_config(archetype: str = Query(example=config["default_laptop"])):
     return get_archetype_config(archetype)
 
@@ -73,7 +73,7 @@ async def desktop_get_all_archetype_name():
     return get_all_archetype_name('desktop')
 
 @terminal_router.get('/desktop/archetype_config',
-                   description=get_archetype_config)
+                   description=get_archetype_config_desc)
 async def desktop_get_archetype_config(archetype: str = Query(example=config["default_desktop"])):
     return get_archetype_config(archetype)
 
@@ -108,7 +108,7 @@ async def smartphone_get_all_archetype_name():
     return get_all_archetype_name('smartphone')
 
 @terminal_router.get('/smartphone/archetype_config',
-                   description=get_archetype_config)
+                   description=get_archetype_config_desc)
 async def smartphone_get_archetype_config(archetype: str = Query(example=config["default_smartphone"])):
     return get_archetype_config(archetype)
 
@@ -143,7 +143,7 @@ async def tablet_get_all_archetype_name():
     return get_all_archetype_name('tablet')
 
 @terminal_router.get('/tablet/archetype_config',
-                   description=get_archetype_config)
+                   description=get_archetype_config_desc)
 async def tablet_get_archetype_config(archetype: str = Query(example=config["default_tablet"])):
     return get_archetype_config(archetype)
 
@@ -178,7 +178,7 @@ async def television_get_all_archetype_name():
     return get_all_archetype_name('television')
 
 @terminal_router.get('/television/archetype_config',
-                   description=get_archetype_config)
+                   description=get_archetype_config_desc)
 async def television_get_archetype_config(archetype: str = Query(example=config["default_television"])):
     return get_archetype_config(archetype)
 
@@ -213,7 +213,7 @@ async def box_get_all_archetype_name():
     return get_all_archetype_name('box')
 
 @terminal_router.get('/box/archetype_config',
-                   description=get_archetype_config)
+                   description=get_archetype_config_desc)
 async def box_get_archetype_config(archetype: str = Query(example=config["default_box"])):
     return get_archetype_config(archetype)
 
