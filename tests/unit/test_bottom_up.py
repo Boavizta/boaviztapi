@@ -1,9 +1,8 @@
-from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.bottom_up import bottom_up
 
 
 def test_bottom_up_component_cpu_empty(empty_cpu_model):
-    assert bottom_up(empty_cpu_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(empty_cpu_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.02,
                                  'min': 0.02,
@@ -37,7 +36,7 @@ def test_bottom_up_component_cpu_empty(empty_cpu_model):
 
 
 def test_bottom_up_component_cpu_complete(complete_cpu_model):
-    assert bottom_up(complete_cpu_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(complete_cpu_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.041,
                                  'min': 0.041,
@@ -71,9 +70,9 @@ def test_bottom_up_component_cpu_complete(complete_cpu_model):
 
 
 def test_bottom_up_component_cpu_incomplete(incomplete_cpu_model):
-    bottom_up(incomplete_cpu_model, allocation=Allocation.TOTAL)
-    print(incomplete_cpu_model.usage.hours_electrical_consumption.value)
-    assert bottom_up(incomplete_cpu_model, allocation=Allocation.TOTAL) == \
+    bottom_up(incomplete_cpu_model, duration="total")
+    print(incomplete_cpu_model.usage.avg_power.value)
+    assert bottom_up(incomplete_cpu_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.02,
                                  'min': 0.02,
@@ -107,7 +106,7 @@ def test_bottom_up_component_cpu_incomplete(incomplete_cpu_model):
 
 
 def test_bottom_up_component_ssd_empty(empty_ssd_model):
-    assert bottom_up(empty_ssd_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(empty_ssd_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 3.2,
                                  'min': 0.0069,
@@ -132,7 +131,7 @@ def test_bottom_up_component_ssd_empty(empty_ssd_model):
 
 
 def test_bottom_up_component_ssd_complete(complete_ssd_model):
-    assert bottom_up(complete_ssd_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(complete_ssd_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.0011,
                                  'min': 0.0011,
@@ -157,7 +156,7 @@ def test_bottom_up_component_ssd_complete(complete_ssd_model):
 
 
 def test_bottom_up_component_ssd_incomplete(incomplete_ssd_model):
-    assert bottom_up(incomplete_ssd_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(incomplete_ssd_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.0064,
                                  'min': 0.00068,
@@ -182,7 +181,7 @@ def test_bottom_up_component_ssd_incomplete(incomplete_ssd_model):
 
 
 def test_bottom_up_component_ram_empty(empty_ram_model):
-    assert bottom_up(empty_ram_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(empty_ram_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.065,
                                  'min': 0.0018,
@@ -216,7 +215,7 @@ def test_bottom_up_component_ram_empty(empty_ram_model):
 
 
 def test_bottom_up_component_ram_complete(complete_ram_model):
-    assert bottom_up(complete_ram_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(complete_ram_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.034,
                                  'min': 0.034,
@@ -250,7 +249,7 @@ def test_bottom_up_component_ram_complete(complete_ram_model):
 
 
 def test_bottom_up_component_ram_incomplete(incomplete_ram_model):
-    assert bottom_up(incomplete_ram_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(incomplete_ram_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.14,
                                  'min': 0.021,
@@ -284,7 +283,7 @@ def test_bottom_up_component_ram_incomplete(incomplete_ram_model):
 
 
 def test_bottom_up_component_power_supply_complete(complete_power_supply_model):
-    assert bottom_up(complete_power_supply_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(complete_power_supply_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.05,
                                  'min': 0.05,
@@ -309,7 +308,7 @@ def test_bottom_up_component_power_supply_complete(complete_power_supply_model):
 
 
 def test_bottom_up_component_power_supply_empty(empty_power_supply_model):
-    assert bottom_up(empty_power_supply_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(empty_power_supply_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.042,
                                  'min': 0.0083,
@@ -334,7 +333,7 @@ def test_bottom_up_component_power_supply_empty(empty_power_supply_model):
 
 
 def test_bottom_up_component_hdd(hdd_model):
-    assert bottom_up(hdd_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(hdd_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.00025,
                                  'min': 0.00025,
@@ -359,7 +358,7 @@ def test_bottom_up_component_hdd(hdd_model):
 
 
 def test_bottom_up_component_motherboard(motherboard_model):
-    assert bottom_up(motherboard_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(motherboard_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.00369,
                                  'min': 0.00369,
@@ -384,7 +383,7 @@ def test_bottom_up_component_motherboard(motherboard_model):
 
 
 def test_bottom_up_component_empty_case(empty_case_model):
-    assert bottom_up(empty_case_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(empty_case_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.0277,
                                  'min': 0.0202,
@@ -409,7 +408,7 @@ def test_bottom_up_component_empty_case(empty_case_model):
 
 
 def test_bottom_up_component_blade_case(blade_case_model):
-    assert bottom_up(blade_case_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(blade_case_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.0277,
                                  'min': 0.0277,
@@ -434,7 +433,7 @@ def test_bottom_up_component_blade_case(blade_case_model):
 
 
 def test_bottom_up_component_assembly(assembly_model):
-    assert bottom_up(assembly_model, allocation=Allocation.TOTAL) == \
+    assert bottom_up(assembly_model, duration="total") == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 1.41e-06,
                                  'min': 1.41e-06,

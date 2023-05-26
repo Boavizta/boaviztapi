@@ -52,7 +52,7 @@ If no duration is given, **the impact is measured for a year**.
 #### ⚡ Electrical consumption
 
 ##### ⏺️ Given
-* Electrical consumption can be given for one hour (average) *usage:{hours_electrical_consumption: 1}*.
+* Electrical consumption can be given for one hour (average) *usage:{avg_power: 1}*.
 
 ##### 📈 Modeled
 * Electrical consumption can be retrieved from consumption profile using *usage:{time_workload: 50}*. 

@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Union
 from fastapi import APIRouter, Query, Body
 
 from boaviztapi import config
@@ -7,7 +7,6 @@ from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_termi
     get_archetype_config_desc
 from boaviztapi.routers.openapi_doc.examples import end_user_terminal
 from boaviztapi.routers.terminal_router import user_terminal_impact, get_all_archetype_name,get_archetype_config
-from boaviztapi.service.allocation import Allocation
 
 peripheral_router = APIRouter(
     prefix='/v1/peripheral',
@@ -36,25 +35,25 @@ async def monitor_get_archetype_config(archetype: str = Query(example=config["de
 @peripheral_router.post('/monitor', description="")
 async def monitor_impact(monitor: Monitor = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         archetype: str = config["default_monitor"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=monitor,
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
 @peripheral_router.get('/monitor', description="")
 async def monitor_impact(archetype: str = config["default_monitor"],
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=Monitor(),
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
@@ -71,25 +70,25 @@ async def usb_stick_get_archetype_config(archetype: str = Query(example=config["
 @peripheral_router.post('/usb_stick', description="")
 async def usb_stick_impact(usb_stick: UsbStick = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         archetype: str = config["default_usb_stick"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=usb_stick,
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
 @peripheral_router.get('/usb_stick', description="")
 async def usb_stick_impact(archetype: str = config["default_usb_stick"],
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=UsbStick(),
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
@@ -106,25 +105,25 @@ async def external_ssd_get_archetype_config(archetype: str = Query(example=confi
 @peripheral_router.post('/external_ssd', description="")
 async def external_ssd_impact(external_ssd: ExternalSSD = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         archetype: str = config["default_external_ssd"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=external_ssd,
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
 @peripheral_router.get('/external_ssd', description="")
 async def external_ssd_impact(archetype: str = config["default_external_ssd"],
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=ExternalSSD(),
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
@@ -141,24 +140,24 @@ async def external_hdd_get_archetype_config(archetype: str = Query(example=confi
 @peripheral_router.post('/external_hdd', description="")
 async def external_hdd_impact(external_hdd: ExternalHDD = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         archetype: str = config["default_external_hdd"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=external_hdd,
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
 @peripheral_router.get('/external_hdd', description="")
 async def external_hdd_impact(archetype: str = config["default_external_hdd"],
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=ExternalHDD(),
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)

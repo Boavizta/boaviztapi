@@ -17,11 +17,11 @@ class ModelUsage:
 
     def __init__(self, archetype, **kwargs):
         self.archetype = archetype
-        self.hours_electrical_consumption = Boattribute(
+        self.avg_power = Boattribute(
             unit="W",
-            default=get_arch_value(archetype, 'hours_electrical_consumption', 'default'),
-            min=get_arch_value(archetype, 'hours_electrical_consumption', 'min'),
-            max=get_arch_value(archetype, 'hours_electrical_consumption', 'max')
+            default=get_arch_value(archetype, 'avg_power', 'default'),
+            min=get_arch_value(archetype, 'avg_power', 'min'),
+            max=get_arch_value(archetype, 'avg_power', 'max')
         )
         self.time_workload = Boattribute(
             unit="%",
@@ -36,11 +36,11 @@ class ModelUsage:
             min=get_arch_value(archetype, 'usage_location', 'min'),
             max=get_arch_value(archetype, 'usage_location', 'max')
         )
-        self.use_time = Boattribute(
-            unit="hours",
-            default=get_arch_value(archetype, 'use_time', 'default'),
-            min=get_arch_value(archetype, 'use_time', 'min'),
-            max=get_arch_value(archetype, 'use_time', 'max')
+        self.use_time_ratio = Boattribute(
+            unit="/1",
+            default=get_arch_value(archetype, 'use_time_ratio', 'default'),
+            min=get_arch_value(archetype, 'use_time_ratio', 'min'),
+            max=get_arch_value(archetype, 'use_time_ratio', 'max')
         )
         self.life_time = Boattribute(
             unit="hours",

@@ -152,21 +152,20 @@ class DeviceServer(Device):
 
             return impact, significant_figures, min_impacts, max_impacts, warnings
 
-
-    def impact_use(self, impact_type: str) -> ComputedImpacts:
+    def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
         impact_factor = self.usage.elec_factors[impact_type]
 
-        if not self.usage.hours_electrical_consumption.is_set():
+        if not self.usage.avg_power.is_set():
             modeled_consumption = self.model_power_consumption()
-            self.usage.hours_electrical_consumption.set_completed(
+            self.usage.avg_power.set_completed(
                 modeled_consumption.value,
                 min=modeled_consumption.min,
                 max=modeled_consumption.max
             )
 
-        impact = impact_factor.value * (self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
-        min_impact = impact_factor.min * (self.usage.hours_electrical_consumption.min / 1000) * self.usage.use_time.min
-        max_impact = impact_factor.max * (self.usage.hours_electrical_consumption.max / 1000) * self.usage.use_time.max
+        impact = impact_factor.value * (self.usage.avg_power.value / 1000) * self.usage.use_time_ratio.value * duration
+        min_impact = impact_factor.min * (self.usage.avg_power.min / 1000) * self.usage.use_time_ratio.min * duration
+        max_impact = impact_factor.max * (self.usage.avg_power.max / 1000) * self.usage.use_time_ratio.max * duration
 
         sig_fig = self.__compute_significant_numbers(impact_factor.value)
         return impact, sig_fig, min_impact, max_impact, []
@@ -194,7 +193,7 @@ class DeviceServer(Device):
         )
 
     def __compute_significant_numbers(self, impact_factor: float) -> int:
-        return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value, impact_factor)
+        return rd.min_significant_figures(self.usage.avg_power.value, impact_factor)
 
 
 class DeviceCloudInstance(DeviceServer, ABC):
@@ -216,6 +215,6 @@ class DeviceCloudInstance(DeviceServer, ABC):
         impact, sign_fig, min_impact, max_impact, c_warning = super().impact_embedded(impact_type)
         return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
 
-    def impact_use(self, impact_type: str) -> ComputedImpacts:
-        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_use(impact_type)
+    def impact_use(self, impact_type: str, duration: int) -> ComputedImpacts:
+        impact, sign_fig, min_impact, max_impact, c_warning = super().impact_use(impact_type, duration)
         return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning

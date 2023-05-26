@@ -33,7 +33,7 @@ server_configuration_examples = {
             "years_use_time": 1,
             "days_use_time": 1,
             "hours_use_time": 1,
-            "hours_electrical_consumption": 300,
+            "avg_power": 300,
             "usage_location": "FRA"
         }
     }}

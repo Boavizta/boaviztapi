@@ -35,14 +35,13 @@ class EndUserDevice(Device):
         return impact, significant_figures, min_impacts, max_impacts, warnings
 
     @abstractmethod
-    def impact_use(self, impact_type: str) -> ComputedImpacts:
+    def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
         impact_factor = self.usage.elec_factors[impact_type]
-        impact = impact_factor.value * (
-                    self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value
-        min_impact = impact_factor.min * (self.usage.hours_electrical_consumption.min / 1000) * self.usage.use_time.min
-        max_impact = impact_factor.max * (self.usage.hours_electrical_consumption.max / 1000) * self.usage.use_time.max
+        impact = impact_factor.value * (self.usage.avg_power.value / 1000) * self.usage.use_time_ratio.value * duration
+        min_impact = impact_factor.min * (self.usage.avg_power.min / 1000) * self.usage.use_time_ratio.min * duration
+        max_impact = impact_factor.max * (self.usage.avg_power.max / 1000) * self.usage.use_time_ratio.max * duration
 
-        sig_fig = rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value, impact_factor.value)
+        sig_fig = rd.min_significant_figures(self.usage.avg_power.value, self.usage.use_time_ratio.value, impact_factor.value)
         return impact, sig_fig, min_impact, max_impact, []
 
     def __iter__(self):

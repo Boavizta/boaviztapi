@@ -77,7 +77,7 @@ class ComponentCPU(Component):
             min=get_arch_value(archetype, 'tdp', 'min'),
             max=get_arch_value(archetype, 'tdp', 'max')
         )
-        self.usage.hours_electrical_consumption.add_warning("value for one cpu unit")
+        self.usage.avg_power.add_warning("value for one cpu unit")
 
     # IMPACT COMPUTATION
     def impact_embedded(self, impact_type: str) -> ComputedImpacts:
@@ -87,12 +87,12 @@ class ComponentCPU(Component):
 
         return impact.value, sign_figures, impact.min, impact.max, ["End of life is not included in the calculation"]
 
-    def impact_use(self, impact_type: str) -> ComputedImpacts:
+    def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
         impact_factor = self.usage.elec_factors[impact_type]
 
-        if not self.usage.hours_electrical_consumption.is_set():
+        if not self.usage.avg_power.is_set():
             modeled_consumption = self.model_power_consumption()
-            self.usage.hours_electrical_consumption.set_completed(
+            self.usage.avg_power.set_completed(
                 modeled_consumption.value,
                 min=modeled_consumption.min,
                 max=modeled_consumption.max
@@ -100,19 +100,18 @@ class ComponentCPU(Component):
 
         impact = ImpactFactor(
             value=impact_factor.value * (
-                self.usage.hours_electrical_consumption.value / 1000) * self.usage.use_time.value,
+                    self.usage.avg_power.value / 1000) * self.usage.use_time_ratio.value * duration,
             min=impact_factor.min * (
-                self.usage.hours_electrical_consumption.min / 1000) * self.usage.use_time.min,
+                    self.usage.avg_power.min / 1000) * self.usage.use_time_ratio.min * duration,
             max=impact_factor.max * (
-                self.usage.hours_electrical_consumption.max / 1000) * self.usage.use_time.max
+                    self.usage.avg_power.max / 1000) * self.usage.use_time_ratio.max * duration
         )
 
         sig_fig = self.__compute_significant_numbers_usage(impact_factor.value)
         return impact.value, sig_fig, impact.min, impact.max, []
 
     def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
-        return rd.min_significant_figures(self.usage.hours_electrical_consumption.value, self.usage.use_time.value,
-                                          impact_factor)
+        return rd.min_significant_figures(self.usage.avg_power.value, self.usage.use_time_ratio.value, impact_factor)
 
     # TODO: compute min & max
     def model_power_consumption(self) -> ImpactFactor:
@@ -122,14 +121,14 @@ class ComponentCPU(Component):
                                                                          cpu_model_range=self.model_range.value,
                                                                          cpu_tdp=self.tdp.value)
         if type(self.usage.time_workload.value) in (float, int):
-            self.usage.hours_electrical_consumption.set_completed(self.usage.consumption_profile.apply_consumption_profile(self.usage.time_workload.value))
+            self.usage.avg_power.set_completed(self.usage.consumption_profile.apply_consumption_profile(self.usage.time_workload.value))
         else:
-            self.usage.hours_electrical_consumption.set_completed(self.usage.consumption_profile.apply_multiple_workloads(self.usage.time_workload.value))
+            self.usage.avg_power.set_completed(self.usage.consumption_profile.apply_multiple_workloads(self.usage.time_workload.value))
 
         return ImpactFactor(
-                value=rd.round_to_sigfig(self.usage.hours_electrical_consumption.value, 5),
-                min=rd.round_to_sigfig(self.usage.hours_electrical_consumption.value, 5),
-                max=rd.round_to_sigfig(self.usage.hours_electrical_consumption.value, 5)
+                value=rd.round_to_sigfig(self.usage.avg_power.value, 5),
+                min=rd.round_to_sigfig(self.usage.avg_power.value, 5),
+                max=rd.round_to_sigfig(self.usage.avg_power.value, 5)
         )
 
     def __get_impact_constants(self, impact_type: str) -> Tuple[ImpactFactor, ImpactFactor, ImpactFactor]:

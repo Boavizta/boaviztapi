@@ -27,3 +27,5 @@ default_external_ssd: "external-ssd-default"
 default_external_hdd: "hdd-default"
 
 default_criteria: ["gwp", "adp", "pe"]
+
+default_duration: "total"

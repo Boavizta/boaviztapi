@@ -86,5 +86,5 @@ class ComponentCase(Component):
     def __compute_significant_numbers(impact_blade_server: float, impact_blade_16_slots: float) -> int:
         return rd.min_significant_figures(impact_blade_server, impact_blade_16_slots)
 
-    def impact_use(self, impact_type: str) -> ComputedImpacts:
+    def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
         raise NotImplementedError
