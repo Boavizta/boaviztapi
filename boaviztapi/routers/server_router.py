@@ -1,5 +1,5 @@
 import os
-from typing import List, Union
+from typing import List, Union, Optional
 
 from fastapi import APIRouter, Body, HTTPException, Query
 
@@ -36,7 +36,7 @@ async def get_archetype_config(archetype: str = Query(exemple=config["default_se
                    description=server_impact_by_model_description)
 async def server_impact_from_model(archetype: str = config["default_server"],
                                    verbose: bool = True,
-                                   duration: Union[float,str] = config["default_duration"],
+                                   duration: Optional[float] = config["default_duration"],
                                    criteria: List[str] = Query(config["default_criteria"])):
     archetype_config = get_server_archetype(archetype)
 
@@ -58,7 +58,7 @@ async def server_impact_from_model(archetype: str = config["default_server"],
 async def server_impact_from_configuration(
         server: Server = Body(None, example=server_configuration_examples["DellR740"]),
         verbose: bool = True,
-        duration: Union[float,str] = config["default_duration"],
+        duration: Optional[float] = config["default_duration"],
         archetype: str = config["default_server"],
         criteria: List[str] = Query(config["default_criteria"])):
 
@@ -78,9 +78,9 @@ async def server_impact_from_configuration(
 
 async def server_impact(device: Device,
                         verbose: bool,
-                        duration: float = config["default_duration"],
+                        duration: Optional[float] = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])) -> dict:
-    if duration == "total":
+    if duration is None:
         duration = device.usage.life_time.value
 
     impacts = bottom_up(model=device, selected_criteria=criteria, duration=duration)

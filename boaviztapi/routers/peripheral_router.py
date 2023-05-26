@@ -35,7 +35,7 @@ async def monitor_get_archetype_config(archetype: str = Query(example=config["de
 @peripheral_router.post('/monitor', description="")
 async def monitor_impact(monitor: Monitor = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        duration: Union[float,str] = config["default_duration"],
+                        duration: float = config["default_duration"],
                         archetype: str = config["default_monitor"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
@@ -48,7 +48,7 @@ async def monitor_impact(monitor: Monitor = Body(None, example=end_user_terminal
 @peripheral_router.get('/monitor', description="")
 async def monitor_impact(archetype: str = config["default_monitor"],
                         verbose: bool = True,
-                        duration: Union[float,str] = config["default_duration"],
+                        duration: float = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=Monitor(),
@@ -70,7 +70,7 @@ async def usb_stick_get_archetype_config(archetype: str = Query(example=config["
 @peripheral_router.post('/usb_stick', description="")
 async def usb_stick_impact(usb_stick: UsbStick = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        duration: Union[float,str] = config["default_duration"],
+                        duration: float = config["default_duration"],
                         archetype: str = config["default_usb_stick"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
@@ -83,7 +83,7 @@ async def usb_stick_impact(usb_stick: UsbStick = Body(None, example=end_user_ter
 @peripheral_router.get('/usb_stick', description="")
 async def usb_stick_impact(archetype: str = config["default_usb_stick"],
                         verbose: bool = True,
-                        duration: Union[float,str] = config["default_duration"],
+                        duration: float = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=UsbStick(),
@@ -105,7 +105,7 @@ async def external_ssd_get_archetype_config(archetype: str = Query(example=confi
 @peripheral_router.post('/external_ssd', description="")
 async def external_ssd_impact(external_ssd: ExternalSSD = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        duration: Union[float,str] = config["default_duration"],
+                        duration: float = config["default_duration"],
                         archetype: str = config["default_external_ssd"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
@@ -118,7 +118,7 @@ async def external_ssd_impact(external_ssd: ExternalSSD = Body(None, example=end
 @peripheral_router.get('/external_ssd', description="")
 async def external_ssd_impact(archetype: str = config["default_external_ssd"],
                         verbose: bool = True,
-                        duration: Union[float,str] = config["default_duration"],
+                        duration: float = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=ExternalSSD(),
@@ -140,7 +140,7 @@ async def external_hdd_get_archetype_config(archetype: str = Query(example=confi
 @peripheral_router.post('/external_hdd', description="")
 async def external_hdd_impact(external_hdd: ExternalHDD = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        duration: Union[float,str] = config["default_duration"],
+                        duration: float = config["default_duration"],
                         archetype: str = config["default_external_hdd"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
@@ -153,7 +153,7 @@ async def external_hdd_impact(external_hdd: ExternalHDD = Body(None, example=end
 @peripheral_router.get('/external_hdd', description="")
 async def external_hdd_impact(archetype: str = config["default_external_hdd"],
                         verbose: bool = True,
-                        duration: Union[float,str] = config["default_duration"],
+                        duration: float = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=ExternalHDD(),

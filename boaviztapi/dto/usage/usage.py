@@ -37,7 +37,7 @@ class ElecFactors(BaseDTO):
 
 
 class Usage(BaseDTO):
-    percentage_use_time: Optional[float] = None
+    use_time_ratio: Optional[float] = None
 
     years_life_time: Optional[float] = None
 
@@ -80,8 +80,8 @@ def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
     if usage_dto.years_life_time is not None:
         usage_model.life_time.set_input(usage_dto.years_life_time * 24 * 365)
 
-    if usage_dto.percentage_use_time is not None:
-        usage_model.use_time_ratio.set_input(usage_dto.percentage_use_time)
+    if usage_dto.use_time_ratio is not None:
+        usage_model.use_time_ratio.set_input(usage_dto.use_time_ratio)
 
     if usage_dto.usage_location is not None:
         if usage_dto.usage_location in get_available_countries(reverse=True):
@@ -106,8 +106,8 @@ def mapper_usage_server(usage_dto: UsageServer, archetype=get_server_archetype(c
     if usage_dto.years_life_time is not None:
         usage_model_server.life_time.set_input(usage_dto.years_life_time * 24 * 365)
 
-    if usage_dto.percentage_use_time is not None:
-        usage_model_server.use_time_ratio.set_input(usage_dto.percentage_use_time)
+    if usage_dto.use_time_ratio is not None:
+        usage_model_server.use_time_ratio.set_input(usage_dto.use_time_ratio)
 
     if usage_dto.time_workload is not None:
         usage_model_server.time_workload.set_input(usage_dto.time_workload)
@@ -137,8 +137,8 @@ def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_arche
     if usage_dto.years_life_time is not None:
         usage_model_cloud.life_time.set_input(usage_dto.years_life_time * 24 * 365)
 
-    if usage_dto.percentage_use_time is not None:
-        usage_model_cloud.use_time_ratio.set_input(usage_dto.percentage_use_time)
+    if usage_dto.use_time_ratio is not None:
+        usage_model_cloud.use_time_ratio.set_input(usage_dto.use_time_ratio)
 
     if usage_dto.time_workload is not None:
         usage_model_cloud.time_workload.set_input(usage_dto.time_workload)
