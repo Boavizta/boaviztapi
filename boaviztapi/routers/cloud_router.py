@@ -1,5 +1,5 @@
 import os
-from typing import List, Union
+from typing import List, Union, Optional
 
 import pandas as pd
 
@@ -33,7 +33,7 @@ async def get_archetype_config(provider: str = Query(config["default_cloud_provi
                    description=cloud_provider_description)
 async def instance_cloud_impact(cloud_instance: Cloud = Body(None, example=cloud_example),
                                 verbose: bool = True,
-                                duration: Union[float,str] = config["default_duration"],
+                                duration: Optional[float] = config["default_duration"],
                                 criteria: List[str] = Query(config["default_criteria"])):
     instance_archetype = get_cloud_instance_archetype(cloud_instance.instance_type, cloud_instance.provider)
 
@@ -53,7 +53,7 @@ async def instance_cloud_impact(cloud_instance: Cloud = Body(None, example=cloud
                    description=cloud_provider_description)
 async def instance_cloud_impact(provider: str = Query(config["default_cloud_provider"], example=config["default_cloud_provider"]),
                                 instance_type: str = Query(config["default_cloud"], example=config["default_cloud"]), verbose: bool = True,
-                                duration: Union[float,str] = config["default_duration"],
+                                duration: Optional[float] = config["default_duration"],
                                 criteria: List[str] = Query(config["default_criteria"])):
     cloud_instance = Cloud()
     cloud_instance.usage = {}
