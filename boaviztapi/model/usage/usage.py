@@ -36,11 +36,11 @@ class ModelUsage:
             min=get_arch_value(archetype, 'usage_location', 'min'),
             max=get_arch_value(archetype, 'usage_location', 'max')
         )
-        self.use_time = Boattribute(
-            unit="hours",
-            default=get_arch_value(archetype, 'use_time', 'default'),
-            min=get_arch_value(archetype, 'use_time', 'min'),
-            max=get_arch_value(archetype, 'use_time', 'max')
+        self.use_time_ratio = Boattribute(
+            unit="/1",
+            default=get_arch_value(archetype, 'use_time_ratio', 'default'),
+            min=get_arch_value(archetype, 'use_time_ratio', 'min'),
+            max=get_arch_value(archetype, 'use_time_ratio', 'max')
         )
         self.life_time = Boattribute(
             unit="hours",

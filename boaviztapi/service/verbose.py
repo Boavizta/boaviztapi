@@ -2,13 +2,13 @@ from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.device import Device
 from boaviztapi.model.component import Component
-from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.bottom_up import bottom_up
 
 
-def verbose_device(device: Device, allocation=Allocation.TOTAL, selected_criteria=config["default_criteria"]):
+def verbose_device(device: Device, selected_criteria=config["default_criteria"], duration=config["default_duration"]):
     json_output = {}
     for component in device.components:
+        component.usage.life_time.set_completed(device.usage.life_time.value, min=device.usage.life_time.min, max=device.usage.life_time.max, source="from device")
         if f"{component.NAME}-1" in json_output:
             i = 2
             while f"{component.NAME}-{i}" in json_output:
@@ -17,7 +17,7 @@ def verbose_device(device: Device, allocation=Allocation.TOTAL, selected_criteri
         else:
             key = f"{component.NAME}-1"
 
-        json_output[key] = verbose_component(component, allocation=allocation, selected_criteria=selected_criteria)
+        json_output[key] = verbose_component(component, duration=duration, selected_criteria=selected_criteria)
 
     json_output = {**json_output, **verbose_usage(device), **iter_boattribute(device)}
 
@@ -39,8 +39,8 @@ def verbose_usage(device: [Device, Component]):
     return json_output
 
 
-def verbose_component(component: Component, allocation=Allocation.TOTAL, selected_criteria=config["default_criteria"]):
-    json_output = {"impacts": bottom_up(component, allocation, selected_criteria), **iter_boattribute(component)}
+def verbose_component(component: Component, duration=config["default_duration"], selected_criteria=config["default_criteria"]):
+    json_output = {"impacts": bottom_up(component, selected_criteria, duration=duration), **iter_boattribute(component)}
 
     if component.usage.avg_power.is_set():
         json_output= {**json_output, **verbose_usage(component)}

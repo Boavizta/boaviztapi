@@ -1,5 +1,5 @@
 import os
-from typing import List
+from typing import List, Union
 
 import pandas as pd
 
@@ -12,7 +12,6 @@ from boaviztapi.routers.openapi_doc.descriptions import cloud_provider_descripti
     all_default_cloud_providers,get_instance_config
 from boaviztapi.routers.openapi_doc.examples import cloud_example
 from boaviztapi.routers.server_router import server_impact
-from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import get_cloud_instance_archetype, get_device_archetype_lst
 
 cloud_router = APIRouter(
@@ -34,7 +33,7 @@ async def get_archetype_config(provider: str = Query(config["default_cloud_provi
                    description=cloud_provider_description)
 async def instance_cloud_impact(cloud_instance: Cloud = Body(None, example=cloud_example),
                                 verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL,
+                                duration: Union[float,str] = config["default_duration"],
                                 criteria: List[str] = Query(config["default_criteria"])):
     instance_archetype = get_cloud_instance_archetype(cloud_instance.instance_type, cloud_instance.provider)
 
@@ -46,7 +45,7 @@ async def instance_cloud_impact(cloud_instance: Cloud = Body(None, example=cloud
     return await server_impact(
         device=instance_model,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
@@ -54,7 +53,7 @@ async def instance_cloud_impact(cloud_instance: Cloud = Body(None, example=cloud
                    description=cloud_provider_description)
 async def instance_cloud_impact(provider: str = Query(config["default_cloud_provider"], example=config["default_cloud_provider"]),
                                 instance_type: str = Query(config["default_cloud"], example=config["default_cloud"]), verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL,
+                                duration: Union[float,str] = config["default_duration"],
                                 criteria: List[str] = Query(config["default_criteria"])):
     cloud_instance = Cloud()
     cloud_instance.usage = {}
@@ -69,7 +68,7 @@ async def instance_cloud_impact(provider: str = Query(config["default_cloud_prov
     return await server_impact(
         device=instance_model,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 

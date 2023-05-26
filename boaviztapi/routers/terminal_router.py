@@ -1,5 +1,5 @@
 import os
-from typing import List
+from typing import List, Union
 
 from fastapi import APIRouter, Query, Body, HTTPException
 
@@ -9,7 +9,6 @@ from boaviztapi.dto.device.user_terminal import UserTerminal, mapper_user_termin
 from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals, all_terminal_categories, \
     get_archetype_config_desc
 from boaviztapi.routers.openapi_doc.examples import end_user_terminal
-from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import get_user_terminal_archetype, get_device_archetype_lst_with_type
 from boaviztapi.service.bottom_up import bottom_up
 from boaviztapi.service.verbose import verbose_device
@@ -45,25 +44,25 @@ async def laptop_get_archetype_config(archetype: str = Query(example=config["def
 @terminal_router.post('/laptop', description="")
 async def laptop_impact(laptop: Laptop = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         archetype: str = config["default_laptop"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=laptop,
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
 @terminal_router.get('/laptop', description="")
 async def laptop_impact(archetype: str = config["default_laptop"],
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=Laptop(),
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
@@ -80,25 +79,25 @@ async def desktop_get_archetype_config(archetype: str = Query(example=config["de
 @terminal_router.post('/desktop', description="")
 async def desktop_impact(desktop: Desktop = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         archetype: str = config["default_desktop"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=desktop,
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
 @terminal_router.get('/desktop', description="")
 async def desktop_impact(archetype: str = config["default_desktop"],
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=Desktop(),
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
@@ -115,25 +114,25 @@ async def smartphone_get_archetype_config(archetype: str = Query(example=config[
 @terminal_router.post('/smartphone', description="")
 async def smartphone_impact(smartphone: Smartphone = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         archetype: str = config["default_smartphone"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=smartphone,
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
 @terminal_router.get('/smartphone', description="")
 async def smartphone_impact(archetype: str = config["default_smartphone"],
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=Smartphone(),
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
@@ -150,25 +149,25 @@ async def tablet_get_archetype_config(archetype: str = Query(example=config["def
 @terminal_router.post('/tablet', description="")
 async def tablet_impact(tablet: Tablet = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         archetype: str = config["default_tablet"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=tablet,
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
 @terminal_router.get('/tablet', description="")
 async def tablet_impact(archetype: str = config["default_tablet"],
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=Tablet(),
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
@@ -185,25 +184,25 @@ async def television_get_archetype_config(archetype: str = Query(example=config[
 @terminal_router.post('/television', description="")
 async def television_impact(television: Television = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         archetype: str = config["default_television"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=television,
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
 @terminal_router.get('/television', description="")
 async def television_impact(archetype: str = config["default_television"],
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=Television(),
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
@@ -220,32 +219,34 @@ async def box_get_archetype_config(archetype: str = Query(example=config["defaul
 @terminal_router.post('/box', description="")
 async def box_impact(box: Box = Body(None, example=end_user_terminal),
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         archetype: str = config["default_box"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=box,
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
 @terminal_router.get('/box', description="")
 async def box_impact(archetype: str = config["default_box"],
                         verbose: bool = True,
-                        allocation: Allocation = Allocation.TOTAL,
+                        duration: Union[float,str] = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])):
 
     return await user_terminal_impact(user_terminal_dto=Box(),
                          verbose=verbose,
-                         allocation=allocation,
+                         duration=duration,
                          criteria=criteria,
                          archetype=archetype)
 
 async def user_terminal_impact(user_terminal_dto: UserTerminal,
                          archetype:str,
-                         verbose: bool, allocation: Allocation,
+                         verbose: bool,
+                         duration: Union[float,str] = config["default_duration"],
                          criteria: List[str] = Query(config["default_criteria"])) -> dict:
+
     archetype_config = get_user_terminal_archetype(archetype)
 
     if not archetype_config:
@@ -253,12 +254,15 @@ async def user_terminal_impact(user_terminal_dto: UserTerminal,
 
     device = mapper_user_terminal(user_terminal_dto, archetype=archetype_config)
 
-    impacts = bottom_up(model=device, allocation=allocation, selected_criteria=criteria)
+    if duration == "total":
+        duration = device.usage.life_time.value
+
+    impacts = bottom_up(model=device, selected_criteria=criteria, duration=duration)
 
     if verbose:
         return {
             "impacts": impacts,
-            "verbose": verbose_device(device, allocation=allocation, selected_criteria=criteria)
+            "verbose": verbose_device(device, selected_criteria=criteria, duration=duration)
         }
 
     return impacts

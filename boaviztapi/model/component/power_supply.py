@@ -39,5 +39,5 @@ class ComponentPowerSupply(Component):
             max=self.unit_weight.max * power_supply_impact.max
         )
 
-    def impact_use(self, impact_type: str) -> ComputedImpacts:
+    def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
         raise NotImplementedError

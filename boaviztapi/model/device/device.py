@@ -38,7 +38,7 @@ class Device:
         raise NotImplementedError
 
     @abstractmethod
-    def  impact_use(self, impact_type: str) -> ComputedImpacts:
+    def  impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
         raise NotImplementedError
 
     def __iter__(self):

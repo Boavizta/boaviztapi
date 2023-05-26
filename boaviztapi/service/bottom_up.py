@@ -4,20 +4,21 @@ from boaviztapi import config
 from boaviztapi.model.component import Component
 from boaviztapi.model.device import Device
 from boaviztapi.model.impact import Impact, IMPACT_CRITERIAS, IMPACT_PHASES
-from boaviztapi.service.allocation import allocate, Allocation
+from boaviztapi.service.allocation import allocate
 
 NOT_IMPLEMENTED = 'not implemented'
 def get_model_single_impact(model: Union[Component, Device],
                             phase: str,
                             impact_type: str,
-                            allocation_type: Allocation = Allocation.TOTAL) -> Optional[Impact]:
+                            duration: Union[int, str] = config["default_duration"]) -> Optional[Impact]:
     try:
         impact_function = model.__getattribute__(f'impact_{phase}')
-        impact, significant_figures, min_impact, max_impact, warnings = impact_function(impact_type)
 
-
-        if phase == "embedded":
-            impact, min_impact, max_impact = allocate(Impact(value=impact, min=min_impact, max=max_impact), allocation_type, model.usage.use_time, model.usage.life_time)
+        if phase == "use":
+            impact, significant_figures, min_impact, max_impact, warnings = impact_function(impact_type, duration)
+        else:
+            impact, significant_figures, min_impact, max_impact, warnings = impact_function(impact_type)
+            impact, min_impact, max_impact = allocate(Impact(value=impact, min=min_impact, max=max_impact), duration, model.usage.life_time)
 
         return Impact(
             value=impact*model.units.value,
@@ -29,15 +30,15 @@ def get_model_single_impact(model: Union[Component, Device],
     except (AttributeError, NotImplementedError):
         pass
 
-def bottom_up(model: Union[Component, Device], allocation, selected_criteria=config["default_criteria"]) -> dict:
+def bottom_up(model: Union[Component, Device], selected_criteria=config["default_criteria"], duration=config["default_duration"]) -> dict:
     impacts = {}
     for criteria in IMPACT_CRITERIAS:
-        if ("all" not in selected_criteria):
+        if "all" not in selected_criteria:
             if criteria.name not in selected_criteria:
                 continue
         impacts[criteria.name] = {}
         for phase in IMPACT_PHASES:
-            single_impact = get_model_single_impact(model, phase, criteria.name, allocation_type=allocation)
+            single_impact = get_model_single_impact(model, phase, criteria.name, duration=duration)
             impacts[criteria.name][phase] = single_impact.to_json() if single_impact else NOT_IMPLEMENTED
         impacts[criteria.name]["unit"] = criteria.unit
         impacts[criteria.name]["description"] = criteria.description

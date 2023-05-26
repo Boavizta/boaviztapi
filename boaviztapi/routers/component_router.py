@@ -1,5 +1,5 @@
 import os
-from typing import List
+from typing import List, Union
 
 from fastapi import APIRouter, Body, HTTPException, Query
 
@@ -13,7 +13,6 @@ from boaviztapi.model.component import Component
 from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_description, ssd_description, \
     hdd_description, motherboard_description, power_supply_description, case_description
 from boaviztapi.routers.openapi_doc.examples import components_examples
-from boaviztapi.service.allocation import Allocation
 from boaviztapi.service.archetype import get_component_archetype, get_device_archetype_lst
 from boaviztapi.service.bottom_up import bottom_up
 from boaviztapi.service.verbose import verbose_component
@@ -51,7 +50,7 @@ async def cpu_archetype_config(archetype: str = Query(Exemple=config["default_cp
                        description=cpu_description)
 async def cpu_impact_bottom_up(cpu: CPU = Body(None, example=components_examples["cpu"]),
                                verbose: bool = True,
-                               allocation: Allocation = Allocation.TOTAL,
+                               duration: Union[float,str] = config["default_duration"],
                                archetype: str = config["default_cpu"],
                                criteria: List[str] = Query(config["default_criteria"])):
     archetype_config = get_component_archetype(archetype, "cpu")
@@ -64,14 +63,14 @@ async def cpu_impact_bottom_up(cpu: CPU = Body(None, example=components_examples
     return await component_impact_bottom_up(
         component=component,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
 @component_router.get('/cpu',
                        description=cpu_description)
 async def cpu_impact_bottom_up(verbose: bool = True,
-                               allocation: Allocation = Allocation.TOTAL,
+                               duration: Union[float,str] = config["default_duration"],
                                archetype: str = config["default_cpu"],
                                criteria: List[str] = Query(config["default_criteria"])):
     archetype_config = get_component_archetype(archetype, "cpu")
@@ -84,7 +83,7 @@ async def cpu_impact_bottom_up(verbose: bool = True,
     return await component_impact_bottom_up(
         component=component,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
@@ -104,7 +103,8 @@ async def ram_archetype_config(archetype: str = Query(Exemple=config["default_ra
                        description=ram_description)
 async def ram_impact_bottom_up(ram: RAM = Body(None, example=components_examples["ram"]),
                                verbose: bool = True,
-                               allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_ram"],
+                               duration: Union[float,str] = config["default_duration"],
+                               archetype: str = config["default_ram"],
                                criteria: List[str] = Query(config["default_criteria"])):
     archetype_config = get_component_archetype(archetype, "ram")
 
@@ -116,14 +116,15 @@ async def ram_impact_bottom_up(ram: RAM = Body(None, example=components_examples
     return await component_impact_bottom_up(
         component=component,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
 @component_router.get('/ram',
                        description=ram_description)
 async def ram_impact_bottom_up(verbose: bool = True,
-                               allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_ram"],
+                               duration: Union[float,str] = config["default_duration"],
+                               archetype: str = config["default_ram"],
                                criteria: List[str] = Query(config["default_criteria"])):
     archetype_config = get_component_archetype(archetype, "ram")
 
@@ -135,7 +136,7 @@ async def ram_impact_bottom_up(verbose: bool = True,
     return await component_impact_bottom_up(
         component=component,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
@@ -155,7 +156,8 @@ async def ssd_archetype_config(archetype: str = Query(Exemple=config["default_ss
                        description=ssd_description)
 async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examples["ssd"]),
                                 verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_ssd"],
+                                duration: Union[float,str] = config["default_duration"],
+                                archetype: str = config["default_ssd"],
                                 criteria: List[str] = Query(config["default_criteria"])):
     disk.type = "ssd"
     archetype_config = get_component_archetype(archetype, "ssd")
@@ -168,14 +170,15 @@ async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examp
     return await component_impact_bottom_up(
         component=component,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
 @component_router.get('/ssd',
                        description=ssd_description)
 async def disk_impact_bottom_up(verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_ssd"],
+                                duration: Union[float,str] = config["default_duration"],
+                                archetype: str = config["default_ssd"],
                                 criteria: List[str] = Query(config["default_criteria"])):
     disk = Disk()
     disk.type = "ssd"
@@ -189,7 +192,7 @@ async def disk_impact_bottom_up(verbose: bool = True,
     return await component_impact_bottom_up(
         component=component,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
@@ -209,7 +212,8 @@ async def hdd_archetype_config(archetype: str = Query(Exemple=config["default_hd
                        description=hdd_description)
 async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examples["hdd"]),
                                 verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_hdd"],
+                                duration: Union[float,str] = config["default_duration"],
+                                archetype: str = config["default_hdd"],
                                 criteria: List[str] = Query(config["default_criteria"])):
     disk.type = "hdd"
     archetype_config = get_component_archetype(archetype, "hdd")
@@ -222,14 +226,15 @@ async def disk_impact_bottom_up(disk: Disk = Body(None, example=components_examp
     return await component_impact_bottom_up(
         component=component,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
 @component_router.get('/hdd',
                        description=hdd_description)
 async def disk_impact_bottom_up(verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_hdd"],
+                                duration: Union[float,str] = config["default_duration"],
+                                archetype: str = config["default_hdd"],
                                 criteria: List[str] = Query(config["default_criteria"])):
     disk = Disk()
     disk.type = "hdd"
@@ -243,7 +248,7 @@ async def disk_impact_bottom_up(verbose: bool = True,
     return await component_impact_bottom_up(
         component=component,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
@@ -263,7 +268,8 @@ async def motherboard_archetype_config(archetype: str = Query(Exemple=config["de
 @component_router.post('/motherboard',
                        description=motherboard_description)
 async def motherboard_impact_bottom_up(motherboard: Motherboard = Body(None, example=components_examples["motherboard"]),
-                                       verbose: bool = True, allocation: Allocation = Allocation.TOTAL,
+                                       verbose: bool = True,
+                                       duration: Union[float,str] = config["default_duration"],
                                        criteria: List[str] = Query(config["default_criteria"])):
 
     completed_motherboard = mapper_motherboard(motherboard)
@@ -271,13 +277,14 @@ async def motherboard_impact_bottom_up(motherboard: Motherboard = Body(None, exa
     return await component_impact_bottom_up(
         component=completed_motherboard,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
 @component_router.get('/motherboard',
                        description=motherboard_description)
-async def motherboard_impact_bottom_up(verbose: bool = True, allocation: Allocation = Allocation.TOTAL,
+async def motherboard_impact_bottom_up(verbose: bool = True,
+                                       duration: Union[float,str] = config["default_duration"],
                                        criteria: List[str] = Query(config["default_criteria"])):
 
     completed_motherboard = mapper_motherboard(Motherboard())
@@ -285,7 +292,7 @@ async def motherboard_impact_bottom_up(verbose: bool = True, allocation: Allocat
     return await component_impact_bottom_up(
         component=completed_motherboard,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
@@ -305,7 +312,8 @@ async def power_supply_archetype_config(archetype: str = Query(Exemple=config["d
 @component_router.post('/power_supply',
                        description=power_supply_description)
 async def power_supply_impact_bottom_up(power_supply: PowerSupply = Body(None, example=components_examples["power_supply"]),
-                                        verbose: bool = True, allocation: Allocation = Allocation.TOTAL,
+                                        verbose: bool = True,
+                                        duration: Union[float,str] = config["default_duration"],
                                         archetype: str = config["default_power_supply"],
                                         criteria: List[str] = Query(config["default_criteria"])):
 
@@ -319,13 +327,14 @@ async def power_supply_impact_bottom_up(power_supply: PowerSupply = Body(None, e
     return await component_impact_bottom_up(
         component=completed_power_supply,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
 @component_router.get('/power_supply',
                        description=power_supply_description)
-async def power_supply_impact_bottom_up(verbose: bool = True, allocation: Allocation = Allocation.TOTAL,
+async def power_supply_impact_bottom_up(verbose: bool = True,
+                                        duration: Union[float,str] = config["default_duration"],
                                         archetype: str = config["default_power_supply"],
                                         criteria: List[str] = Query(config["default_criteria"])):
 
@@ -339,7 +348,7 @@ async def power_supply_impact_bottom_up(verbose: bool = True, allocation: Alloca
     return await component_impact_bottom_up(
         component=completed_power_supply,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
@@ -359,7 +368,8 @@ async def case_archetype_config(archetype: str = Query(Exemple=config["default_c
                        description=case_description)
 async def case_impact_bottom_up(case: Case = Body(None, example=components_examples["case"]),
                                 verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_case"],
+                                duration: Union[float,str] = config["default_duration"],
+                                archetype: str = config["default_case"],
                                 criteria: List[str] = Query(config["default_criteria"])):
     archetype_config = get_component_archetype(archetype, "case")
 
@@ -371,14 +381,15 @@ async def case_impact_bottom_up(case: Case = Body(None, example=components_examp
     return await component_impact_bottom_up(
         component=completed_case,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
 @component_router.get('/case',
                        description=case_description)
 async def case_impact_bottom_up(verbose: bool = True,
-                                allocation: Allocation = Allocation.TOTAL, archetype: str = config["default_case"],
+                                duration: Union[float,str] = config["default_duration"],
+                                archetype: str = config["default_case"],
                                 criteria: List[str] = Query(config["default_criteria"])):
     archetype_config = get_component_archetype(archetype, "case")
 
@@ -390,15 +401,19 @@ async def case_impact_bottom_up(verbose: bool = True,
     return await component_impact_bottom_up(
         component=completed_case,
         verbose=verbose,
-        allocation=allocation,
+        duration=duration,
         criteria=criteria
     )
 
 
 async def component_impact_bottom_up(component: Component,
-                                     verbose: bool, allocation: Allocation, criteria=config["default_criteria"]) -> dict:
+                                     verbose: bool,
+                                     duration: Union[float,str] = config["default_duration"],
+                                     criteria=config["default_criteria"]) -> dict:
+    if duration == "total":
+        duration = component.usage.life_time.value
 
-    impacts = bottom_up(model=component, allocation=allocation, selected_criteria=criteria)
+    impacts = bottom_up(model=component, duration=duration, selected_criteria=criteria)
     if verbose:
         return {
             "impacts": impacts,

@@ -9,7 +9,7 @@ pytest_plugins = ('pytest_asyncio',)
 @pytest.mark.asyncio
 async def test_complete_config_server():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?verbose=false', json={
+        res = await ac.post('/v1/server/?verbose=false&duration=total', json={
             "model": {
             },
             "configuration": {
@@ -49,41 +49,47 @@ async def test_complete_config_server():
             }
         })
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.26,
-                                               'min': 0.25,
-                                               'significant_figures': 2,
-                                               'value': 0.25},
-                                  'unit': 'kgSbeq',
-                                  'use': {'max': 0.0195,
-                                          'min': 5.53e-09,
-                                          'significant_figures': 3,
-                                          'value': 0.000313}},
-                          'gwp': {'description': 'Total climate change',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 1100.0,
-                                               'min': 1100.0,
-                                               'significant_figures': 2,
-                                               'value': 1100.0},
-                                  'unit': 'kgCO2eq',
-                                  'use': {'max': 66000.0,
-                                          'min': 0.0096,
-                                          'significant_figures': 2,
-                                          'value': 1900.0}},
-                          'pe': {'description': 'Consumption of primary energy',
-                                 'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 15000.0,
-                                              'min': 14000.0,
-                                              'significant_figures': 2,
-                                              'value': 15000.0},
-                                 'unit': 'MJ',
-                                 'use': {'max': 34370000.0,
-                                         'min': 0.005447,
-                                         'significant_figures': 4,
-                                         'value': 62850.0}}}
+         'embedded': {'max': 0.26,
+                      'min': 0.25,
+                      'significant_figures': 2,
+                      'value': 0.25,
+                      'warnings': ['End of life is not included in the '
+                                   'calculation']},
+         'unit': 'kgSbeq',
+         'use': {'max': 0.0078,
+                 'min': 0.000194,
+                 'significant_figures': 3,
+                 'value': 0.00125}},
+ 'gwp': {'description': 'Total climate change',
+         'embedded': {'max': 1100.0,
+                      'min': 1100.0,
+                      'significant_figures': 2,
+                      'value': 1100.0,
+                      'warnings': ['End of life is not included in the '
+                                   'calculation']},
+         'unit': 'kgCO2eq',
+         'use': {'max': 26000.0,
+                 'min': 340.0,
+                 'significant_figures': 2,
+                 'value': 7400.0}},
+ 'pe': {'description': 'Consumption of primary energy',
+        'embedded': {'max': 15000.0,
+                     'min': 14000.0,
+                     'significant_figures': 2,
+                     'value': 15000.0,
+                     'warnings': ['End of life is not included in the '
+                                  'calculation']},
+        'unit': 'MJ',
+        'use': {'max': 13746000.0,
+                'min': 190.86,
+                'significant_figures': 5,
+                'value': 251380.0}}}
 
 
 @pytest.mark.asyncio
 async def test_empty_config_server():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?verbose=false', json={})
+        res = await ac.post('/v1/server/?verbose=false&duration=8760', json={})
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 88.0,
                                                'min': 0.054,
@@ -122,7 +128,6 @@ async def test_dell_r740_server():
         res = await ac.post('/v1/server/?verbose=false', json={
             "model":
                 {
-                    "embeddedr": "Dell",
                     "name": "R740",
                     "type": "rack",
                     "year": 2020
@@ -385,7 +390,7 @@ async def test_partial_server_3():
 @pytest.mark.asyncio
 async def test_custom_usage_1():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?verbose=false', json={
+        res = await ac.post("/v1/server/?verbose=false&duration=390", json={
             "usage": {
                 "years_use_time": 1,
                 "days_use_time": 1,

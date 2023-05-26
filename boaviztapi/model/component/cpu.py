@@ -87,7 +87,7 @@ class ComponentCPU(Component):
 
         return impact.value, sign_figures, impact.min, impact.max, ["End of life is not included in the calculation"]
 
-    def impact_use(self, impact_type: str) -> ComputedImpacts:
+    def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
         impact_factor = self.usage.elec_factors[impact_type]
 
         if not self.usage.avg_power.is_set():
@@ -100,19 +100,18 @@ class ComponentCPU(Component):
 
         impact = ImpactFactor(
             value=impact_factor.value * (
-                    self.usage.avg_power.value / 1000) * self.usage.use_time.value,
+                    self.usage.avg_power.value / 1000) * self.usage.use_time_ratio.value * duration,
             min=impact_factor.min * (
-                    self.usage.avg_power.min / 1000) * self.usage.use_time.min,
+                    self.usage.avg_power.min / 1000) * self.usage.use_time_ratio.min * duration,
             max=impact_factor.max * (
-                    self.usage.avg_power.max / 1000) * self.usage.use_time.max
+                    self.usage.avg_power.max / 1000) * self.usage.use_time_ratio.max * duration
         )
 
         sig_fig = self.__compute_significant_numbers_usage(impact_factor.value)
         return impact.value, sig_fig, impact.min, impact.max, []
 
     def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
-        return rd.min_significant_figures(self.usage.avg_power.value, self.usage.use_time.value,
-                                          impact_factor)
+        return rd.min_significant_figures(self.usage.avg_power.value, self.usage.use_time_ratio.value, impact_factor)
 
     # TODO: compute min & max
     def model_power_consumption(self) -> ImpactFactor:
