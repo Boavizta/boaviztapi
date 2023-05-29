@@ -39,7 +39,7 @@ class ElecFactors(BaseDTO):
 class Usage(BaseDTO):
     use_time_ratio: Optional[float] = None
 
-    years_life_time: Optional[float] = None
+    hours_life_time: Optional[float] = None
 
     avg_power: Optional[float] = None
     time_workload: Optional[Union[float, List[WorkloadTime]]] = None
@@ -77,8 +77,8 @@ def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
     if usage_dto.avg_power is not None:
         usage_model.avg_power.set_input(usage_dto.avg_power)
 
-    if usage_dto.years_life_time is not None:
-        usage_model.life_time.set_input(usage_dto.years_life_time * 24 * 365)
+    if usage_dto.hours_life_time is not None:
+        usage_model.hours_life_time.set_input(usage_dto.hours_life_time)
 
     if usage_dto.use_time_ratio is not None:
         usage_model.use_time_ratio.set_input(usage_dto.use_time_ratio)
@@ -103,8 +103,8 @@ def mapper_usage_server(usage_dto: UsageServer, archetype=get_server_archetype(c
     if usage_dto.avg_power is not None:
         usage_model_server.avg_power.set_input(usage_dto.avg_power)
 
-    if usage_dto.years_life_time is not None:
-        usage_model_server.life_time.set_input(usage_dto.years_life_time * 24 * 365)
+    if usage_dto.hours_life_time is not None:
+        usage_model_server.hours_life_time.set_input(usage_dto.hours_life_time * 24 * 365)
 
     if usage_dto.use_time_ratio is not None:
         usage_model_server.use_time_ratio.set_input(usage_dto.use_time_ratio)
@@ -134,8 +134,8 @@ def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_arche
     if usage_dto.avg_power is not None:
         usage_model_cloud.avg_power.set_input(usage_dto.avg_power)
 
-    if usage_dto.years_life_time is not None:
-        usage_model_cloud.life_time.set_input(usage_dto.years_life_time * 24 * 365)
+    if usage_dto.hours_life_time is not None:
+        usage_model_cloud.hours_life_time.set_input(usage_dto.hours_life_time * 24 * 365)
 
     if usage_dto.use_time_ratio is not None:
         usage_model_cloud.use_time_ratio.set_input(usage_dto.use_time_ratio)

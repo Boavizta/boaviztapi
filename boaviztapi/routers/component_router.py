@@ -411,7 +411,7 @@ async def component_impact_bottom_up(component: Component,
                                      duration: Optional[float] = config["default_duration"],
                                      criteria=config["default_criteria"]) -> dict:
     if duration is None:
-        duration = component.usage.life_time.value
+        duration = component.usage.hours_life_time.value
 
     impacts = bottom_up(model=component, duration=duration, selected_criteria=criteria)
     if verbose:

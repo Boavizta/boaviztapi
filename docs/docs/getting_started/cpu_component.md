@@ -14,7 +14,7 @@ Query :
 
 ```bash
 curl -X 'POST' \
-  '{{ endpoint }}/v1/component/cpu?verbose=false&allocation=TOTAL' \
+  '{{ endpoint }}/v1/component/cpu?verbose=false' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -25,7 +25,7 @@ curl -X 'POST' \
 This query returns :
 
 - The total embedded impacts (for gwp, pe, adp) of the CPU
-- The usage impacts (for gwp, pe, adp) of the CPU for one year (default)
+- The usage impacts (for gwp, pe, adp) of the CPU during the life duration 
 - Error margins are provided in the form of min & max values for both embedded and usage impacts
 - Significant figures are provided for each value
 
@@ -90,7 +90,7 @@ This is the same query as before. However, you add the `verbose=true` flag to ge
 
 ```bash
 curl -X 'POST' \
-  '{{ endpoint }}/v1/component/cpu?verbose=true&allocation=TOTAL&criteria=gwp' \
+  '{{ endpoint }}/v1/component/cpu?verbose=true&criteria=gwp' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -189,7 +189,7 @@ The usage impact has been assessed using a default level of workload of 50% with
       "min": 130,
       "max": 130
     },
-    "hours_electrical_consumption": {
+    "avg_power": {
       "value": 95.095,
       "status": "COMPLETED",
       "unit": "W",
@@ -265,7 +265,7 @@ In this query, we give some characteristics to describe the CPU.
 
 ```bash
 curl -X 'POST' \
-  '{{ endpoint }}/v1/component/cpu?verbose=true&allocation=TOTAL&criteria=gwp&criteria=adp' \
+  '{{ endpoint }}/v1/component/cpu?verbose=true&criteria=gwp&criteria=adp' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
  -d '{
@@ -373,7 +373,7 @@ Since only lowercase is used, the API will correct Skylake to skylake (CHANGED) 
       "value": "skylake",
       "status": "CHANGED"
     },
-    "hours_electrical_consumption": {
+    "avg_power": {
       "value": 182.23,
       "status": "COMPLETED",
       "unit": "W",
@@ -434,22 +434,22 @@ In this query we set a custom usage to an ```intel xeon gold 6134```. The averag
 
 ```bash
 curl -X 'POST' \
-  '{{ endpoint }}/v1/component/cpu?verbose=false&allocation=TOTAL&criteria=gwp' \
+  '{{ endpoint }}/v1/component/cpu?verbose=false&criteria=gwp&duration=2' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
   "name": "intel xeon gold 6134",
   "usage":{
-      "hours_use_time": 2,
       "usage_location": "FRA",
-      "hours_electrical_consumption": 120
+      "avg_power": 120
   }}'
 ```
 
 Result : 
 
-* The API will use an electrical consumption of 120 Watt/hours for 2 hours
+* The API will use an electrical consumption of 120 Watt/hours for 2 hours (since duration is set at 2)
 * Usage impacts will be assessed for the French electrical mix impacts 
+* Embedded impacts will be allocated
 
 
 ```json
@@ -480,7 +480,7 @@ In this query we set a custom usage to an ```intel xeon gold 6134``` with a TDP 
 
 ```bash
 curl -X 'POST' \
-  '{{ endpoint }}/v1/component/cpu?verbose=false&allocation=TOTAL&criteria=gwp' \
+  '{{ endpoint }}/v1/component/cpu?verbose=false&criteria=gwp' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

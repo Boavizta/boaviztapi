@@ -85,7 +85,7 @@ or
   "usage_impacts": {
        ...
   }
-  "hours_electrical_consumption": {
+  "avg_power": {
     "value": 94.62364134445255,
     "unit": "W",
     "status": "COMPLETED",
@@ -202,7 +202,7 @@ v0.2 contains significant changes to the code to facilitate the addition of new 
 ### missing W to kW conversion
 
 ```hour_electical_consumption``` should be given in Watt.
-When hours_electrical_consumption was directly given (in watt) the value was used in Wh. The electrical impacts factor requires kWh.
+When avg_power was directly given (in watt) the value was used in Wh. The electrical impacts factor requires kWh.
 
 ### Correction
 

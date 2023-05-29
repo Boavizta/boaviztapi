@@ -81,7 +81,7 @@ async def server_impact(device: Device,
                         duration: Optional[float] = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])) -> dict:
     if duration is None:
-        duration = device.usage.life_time.value
+        duration = device.usage.hours_life_time.value
 
     impacts = bottom_up(model=device, selected_criteria=criteria, duration=duration)
 

@@ -73,17 +73,17 @@ Laptop has two ```types```: ```pro``` and ```perso```.
 
 #### Pro
 
-| Name                         | Unit                         | Default values (default;min;max)   | Description                                  | Example |
-|------------------------------|------------------------------|------------------------------------|----------------------------------------------|---------|
-| years_life_time              | None                         |                                    | Lifespan of the element                      |         |
-| hours_electrical_consumption | Watt/hour                    | 75.0;50.0;100.0                    | Average electrical consumption per hour      | 1       |
+| Name           | Unit      | Default values (default;min;max) | Description                                                      | Example |
+|----------------|-----------|----------------------------------|------------------------------------------------------------------|---------|
+| avg_power      | Watt/hour | 75.0;50.0;100.0                  | Average electrical consumption per hour                          | 1       |
+| use_time_ratio | /1        |                                  | Proportion of time the device is used during the given duration. | 0.2     |
 
 #### Perso
 
-| Name                         | Unit                         | Default values (default;min;max)  | Description                                    | Example   |
-|------------------------------|------------------------------|-----------------------------------|------------------------------------------------|-----------|
-| years_life_time              | None                         |                                   | Lifespan of the element                        |           |
-| hours_electrical_consumption | Watt/hour                    | 75.0;50.0;100.0                   | Average electrical consumption per hour        | 1         |
+| Name           | Unit        | Default values (default;min;max) | Description                                                      | Example  |
+|----------------|-------------|----------------------------------|------------------------------------------------------------------|----------|
+| avg_power      | Watt/hour   | 75.0;50.0;100.0                  | Average electrical consumption per hour                          | 1        |
+| use_time_ratio | /1          |                                  | Proportion of time the device is used during the given duration. | 0.2      |
 
 
 ## Desktop
@@ -119,17 +119,18 @@ desktop has two ```types```: ```pro``` and ```perso```.
 
 #### Pro
 
-| Name                          | Unit              | Default values (default;min;max)   | Description                             | Example |
-|-------------------------------|-------------------|------------------------------------|-----------------------------------------|---------|
-| years_life_time               | None              |                                    | Lifespan of the element                 |         |
-| hours_electrical_consumption  | Watt/hour         | 175.0;100.0;450.0                  | Average electrical consumption per hour | 1       |
+| Name           | Unit          | Default values (default;min;max) | Description                                                      | Example |
+|----------------|---------------|----------------------------------|------------------------------------------------------------------|---------|
+| avg_power      | Watt/hour     | 175.0;100.0;450.0                | Average electrical consumption per hour                          |  1      |
+| use_time_ratio | /1            |                                  | Proportion of time the device is used during the given duration. | 0.2     |
+
 
 #### Perso
 
-| Name                         | Unit                         | Default values (default;min;max)    | Description                                  | Example |
-|------------------------------|------------------------------|-------------------------------------|----------------------------------------------|---------|
-| years_life_time              | None                         |                                     | Lifespan of the element                      |         | 
-| hours_electrical_consumption | Watt/hour                    | 175.0;100.0;450.0                   | Average electrical consumption per hour      | 1       |
+| Name           | Unit         | Default values (default;min;max) | Description                                                      | Example |
+|----------------|--------------|----------------------------------|------------------------------------------------------------------|---------|
+| avg_power      | Watt/hour    | 175.0;100.0;450.0                | Average electrical consumption per hour                          | 1       |
+| use_time_ratio | /1           |                                  | Proportion of time the device is used during the given duration. | 0.2     |
 
 
 ## Tablet
@@ -161,10 +162,10 @@ desktop has two ```types```: ```pro``` and ```perso```.
 
 ### Usage
 
-| Name                          | Unit                         | Default values (default;min;max)   | Description                                    | Example |
-|-------------------------------|------------------------------|------------------------------------|------------------------------------------------|---------|
-| years_life_time               | None                         |                                    | Lifespan of the element                        |         |
-| hours_electrical_consumption  | Watt/hour                    | 7.5;5.0;10.0                       | Average electrical consumption per hour        | 1       |
+| Name           | Unit      | Default values (default;min;max) | Description                                                        | Example |
+|----------------|-----------|----------------------------------|--------------------------------------------------------------------|---------|
+| avg_power      | Watt/hour | 7.5;5.0;10.0                     | Average electrical consumption per hour                            | 1       |
+| use_time_ratio | /1        |                                  | Proportion of time the device is used during the given duration.   | 0.2     |
 
 ## Smartphone
 
@@ -195,10 +196,10 @@ desktop has two ```types```: ```pro``` and ```perso```.
 
 ### Usage
 
-| Name                         | Unit                         | Default values (default;min;max)     | Description                                  | Example |
-|------------------------------|------------------------------|--------------------------------------|----------------------------------------------|---------|
-| years_life_time              | None                         |                                      | Lifespan of the element                      |         |
-| hours_electrical_consumption | Watt/hour                    | 1.0;0.5;3.0                          | Average electrical consumption per hour      | 1       |
+| Name           | Unit        | Default values (default;min;max) | Description                                                      | Example |
+|----------------|-------------|----------------------------------|------------------------------------------------------------------|---------|
+| avg_power      | Watt/hour   | 1.0;0.5;3.0                      | Average electrical consumption per hour                          | 1       |
+| use_time_ratio | /1          |                                  | Proportion of time the device is used during the given duration. | 0.2     |
 
 ## Television
 
@@ -233,17 +234,17 @@ television has two ```types```: ```pro``` and ```perso```.
 
 #### Pro
 
-| Name                         | Unit                         | Default values (default;min;max)  | Description                             | Example |
-|------------------------------|------------------------------|-----------------------------------|-----------------------------------------|---------|
-| years_life_time              | None                         |                                   | Lifespan of the element                 |         |
-| hours_electrical_consumption | Watt/hour                    | 300.0;17.0;1200.0                 | Average electrical consumption per hour | 1       |
+| Name           | Unit       | Default values (default;min;max) | Description                                                      | Example |
+|----------------|------------|----------------------------------|------------------------------------------------------------------|---------|
+| avg_power      |  Watt/hour | 300.0;17.0;1200.0                | Average electrical consumption per hour                          | 1       |
+| use_time_ratio | /1         |                                  | Proportion of time the device is used during the given duration. | 0.2     |
 
 #### Perso
 
-| Name                         | Unit                         | Default values (default;min;max) | Description                                | Example |
-|------------------------------|------------------------------|----------------------------------|--------------------------------------------|---------|
-| years_life_time              | None                         |                                  | Lifespan of the element                    |         |
-| hours_electrical_consumption | Watt/hour                    | 300.0;17.0;1200.0                | Average electrical consumption per hour    | 1       |
+| Name           | Unit        | Default values (default;min;max) | Description                                                      | Example |
+|----------------|-------------|----------------------------------|------------------------------------------------------------------|---------|
+| avg_power      | Watt/hour   | 300.0;17.0;1200.0                | Average electrical consumption per hour                          | 1       |
+| use_time_ratio | /1          |                                  | Proportion of time the device is used during the given duration. | 0.2     |
 
 
 ## USB stick
@@ -274,10 +275,10 @@ television has two ```types```: ```pro``` and ```perso```.
 | ept        | mol N eq.          | 0.0429   |
 
 ### Usage
-| Name                         | Unit                         | Default values (default;min;max)   | Description                             | Example |
-|------------------------------|------------------------------|------------------------------------|-----------------------------------------|---------|
-| years_life_time              | None                         |                                    | Lifespan of the element                 |         |
-| hours_electrical_consumption | Watt/hour                    | 0.3;0.12;0.63                      | Average electrical consumption per hour | 1       |
+| Name           | Unit                | Default values (default;min;max)     | Description                                                      | Example |
+|----------------|---------------------|--------------------------------------|------------------------------------------------------------------|---------|
+| avg_power      | Watt/hour           | 0.3;0.12;0.63                        | Average electrical consumption per hour                          | 1       |
+| use_time_ratio | /1                  |                                      | Proportion of time the device is used during the given duration. | 0.2     |
 
 
 ## External SSD
@@ -308,10 +309,10 @@ television has two ```types```: ```pro``` and ```perso```.
 | ept       | mol N eq.          | 0.75     |
 
 ### Usage
-| Name                         | Unit                         | Default values (default;min;max)  | Description                                    | Example |
-|------------------------------|------------------------------|-----------------------------------|------------------------------------------------|---------|
-| years_life_time              | None                         |                                   | Lifespan of the element                        |         |
-| hours_electrical_consumption | Watt/hour                    | 2.5;0.5;5.0                       | Average electrical consumption per hour        | 1       |
+| Name           | Unit                | Default values (default;min;max) | Description                                                      | Example |
+|----------------|---------------------|----------------------------------|------------------------------------------------------------------|---------|
+| avg_power      | Watt/hour           | 2.5;0.5;5.0                      | Average electrical consumption per hour                          |  1      |
+| use_time_ratio | /1                  |                                  | Proportion of time the device is used during the given duration. | 0.2     |
 
 ## External HDD
 
@@ -341,11 +342,10 @@ television has two ```types```: ```pro``` and ```perso```.
 | ept        | mol N eq.          | 0.181    |
 
 ### Usage
-| Name                         | Unit                         | Default values (default;min;max)   | Description                                  | Example |
-|------------------------------|------------------------------|------------------------------------|----------------------------------------------|---------|
-| years_life_time              | None                         |                                    | Lifespan of the element                      |         |
-| hours_electrical_consumption | Watt/hour                    | 7.75;6.5;9.0                       | Average electrical consumption per hour      | 1       |
-
+| Name           | Unit          | Default values (default;min;max) | Description                                                        | Example |
+|----------------|---------------|----------------------------------|--------------------------------------------------------------------|---------|
+| avg_power      | Watt/hour     | 7.75;6.5;9.0                     | Average electrical consumption per hour                            | 1       |
+| use_time_ratio | /1            |                                  | Proportion of time the device is used during the given duration.   | 0.2     |
 
 ## Monitor
 
@@ -375,10 +375,10 @@ television has two ```types```: ```pro``` and ```perso```.
 | ept        | mol N eq.          | 0.65     |
 
 ### Usage
-| Name                         | Unit                         | Default values (default;min;max)   | Description                             | Example |
-|------------------------------|------------------------------|------------------------------------|-----------------------------------------|---------|
-| years_life_time              | None                         |                                    | Lifespan of the element                 |         |
-| hours_electrical_consumption | Watt/hour                    | 55.0;20.0;100.0                    | Average electrical consumption per hour | 1       |
+| Name           | Unit       | Default values (default;min;max) | Description                                                      | Example |
+|----------------|------------|----------------------------------|------------------------------------------------------------------|---------|
+| avg_power      |  Watt/hour | 55.0;20.0;100.0                  | Average electrical consumption per hour                          | 1       |
+| use_time_ratio | /1         |                                  | Proportion of time the device is used during the given duration. | 0.2     |
 
 
 ## Box
@@ -409,10 +409,10 @@ television has two ```types```: ```pro``` and ```perso```.
 | ept       | mol N eq.          | 0.25      |
 
 ### Usage
-| Name                         | Unit                         | Default values (default;min;max)   | Description                                  | Example |
-|------------------------------|------------------------------|------------------------------------|----------------------------------------------|---------|
-| years_life_time              | None                         |                                    | Lifespan of the element                      |         |
-| hours_electrical_consumption | Watt/hour                    | 10.0;5.0;20.0                      | Average electrical consumption per hour      | 1       |
+| Name           | Unit                         | Default values (default;min;max) | Description                                                      | Example |
+|----------------|------------------------------|----------------------------------|------------------------------------------------------------------|---------|
+| avg_power      | Watt/hour                    | 10.0;5.0;20.0                    | Average electrical consumption per hour                          | 1       |
+| use_time_ratio | /1                           |                                  | Proportion of time the device is used during the given duration. | 0.2     |
 
 
 ## Smartwatch
@@ -425,7 +425,6 @@ In progress...
 
 ### Usage
 
-| Name                         | Unit                         | Default values (default;min;max)  | Description                                   | Example |
-|------------------------------|------------------------------|-----------------------------------|-----------------------------------------------|---------|
-| years_life_time              | None                         |                                   | Lifespan of the element                       |         |
-| hours_electrical_consumption | Watt/hour                    | 0.0;0.0;0.0                       | Average electrical consumption per hour       | 1       |
+| Name       | Unit                         | Default values (default;min;max)  | Description                                   | Example |
+|------------|------------------------------|-----------------------------------|-----------------------------------------------|---------|
+| avg_power  | Watt/hour                    | 0.0;0.0;0.0                       | Average electrical consumption per hour       | 1       |

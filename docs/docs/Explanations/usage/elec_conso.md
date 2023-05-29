@@ -2,7 +2,7 @@
 
 ## Given
 
-If available, user should send the electrical consumption of his components or devices in Watt/hour (`hours_electrical_consumption`).
+If available, user should send the electrical consumption of his components or devices in Watt/hour (`avg_power`).
 Since the power will be extrapolated on the all duration, the power given should be the average power of the device or component over the given duration.
 
 ## Completed from the [archetype](../archetypes.md).
@@ -78,14 +78,14 @@ Power consumptions :
 |-----------------|------|-----|-----|------|-----|
 | Power (W)       | 260  | 182 | 77  | 36   | 0   |
 
-`hours_electrical_consumption` is measured as follows :
+`avg_power` is measured as follows :
 
 ```
-hours_electrical_consumption = power(100%) * time_ratio(100%) + power(50%) * time_ratio(50%) + power(10%) * time_ratio(10%) + power(idle) * time_ratio(idle) + power(off) * time_ratio(off)
+avg_power = power(100%) * time_ratio(100%) + power(50%) * time_ratio(50%) + power(10%) * time_ratio(10%) + power(idle) * time_ratio(idle) + power(off) * time_ratio(off)
 ```
 
 ```
-hours_electrical_consumption = 260 * 0.15 + 182 * 0.55 + 77 * 0.1 + 36 * 0.2 + 0 * 0
+avg_power = 260 * 0.15 + 182 * 0.55 + 77 * 0.1 + 36 * 0.2 + 0 * 0
                              = 39 + 100.1 + 7,7 + 7,2 + 0
                              = 154 W/hour
                              = 1349 kwh/year

@@ -1,26 +1,12 @@
 # Duration
 
-Usage impacts are assessed for a specific time duration given by the user.
-The API handles three different time units :
+Usage impacts are assessed for a specific time duration given by the user as a query parameter.
 
-| time unit |
-|-----------|
-| HOURS     |
-| DAYS      |
-| YEARS     |
+When no duration is given, the impacts are measured for the all lifespans of the device.
 
-When duration is not given, the impact is measured for the default duration.
-Typically, 1 year.
 
-!!!info
-    Units are cumulative, if multiple units are used, they are summed up.
+## Usage ratio
 
-## Example
+The usage ratio is the proportion of time the device is used during the given duration. When a device is always used, the usage ratio is 1. When a device is never used, the usage ratio is 0.
 
-```
-HOURS = 1
-DAYS = 1
-YEARS =  1
-```
-
-will be converted in **8785** hours (`1+1*24+1*24*365`).
+Users can give the usage ratio in the usage object.

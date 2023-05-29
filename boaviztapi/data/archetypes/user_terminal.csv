@@ -1,4 +1,4 @@
-id,router_type,device_type,type,USAGE.use_time_ratio,USAGE.life_time,USAGE.avg_power
+id,router_type,device_type,type,USAGE.use_time_ratio,USAGE.hours_life_time,USAGE.avg_power
 laptop-pro,terminal,laptop,pro,0.3,35040,75;50;100
 laptop-perso,terminal,laptop,perso,0.3,43800,75;50;100
 desktop-pro,terminal,desktop,pro,0.3,52560,175;100;450

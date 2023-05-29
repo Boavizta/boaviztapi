@@ -180,7 +180,7 @@ Response :
             "unit": "kgSbeq"
           }
         },
-        "hours_electrical_consumption": {
+        "avg_power": {
           "value": 157.11830305304008,
           "unit": "W",
           "status": "COMPLETED",
@@ -307,7 +307,7 @@ Response :
             "unit": "kgSbeq"
           }
         },
-        "hours_electrical_consumption": {
+        "avg_power": {
           "value": 9.088,
           "unit": "W",
           "status": "COMPLETED",
@@ -443,7 +443,7 @@ Response :
           "unit": "kgSbeq"
         }
       },
-      "hours_electrical_consumption": {
+      "avg_power": {
         "value": 402.3599830605433,
         "unit": "W",
         "status": "COMPLETED",

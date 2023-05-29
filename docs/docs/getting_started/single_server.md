@@ -183,7 +183,7 @@ It returns :
         "min": 0.07,
         "max": 1.02
       },
-      "hours_electrical_consumption": {
+      "avg_power": {
         "value": 182.23023303189055,
         "status": "COMPLETED",
         "unit": "W",
@@ -270,7 +270,7 @@ It returns :
         "min": 0.625,
         "max": 2.375
       },
-      "hours_electrical_consumption": {
+      "avg_power": {
         "value": 4.544,
         "status": "COMPLETED",
         "unit": "W",
@@ -425,7 +425,7 @@ It returns :
         "max": 1
       }
     },
-    "hours_electrical_consumption": {
+    "avg_power": {
       "value": 520.99292,
       "status": "COMPLETED",
       "unit": "W",
@@ -569,7 +569,7 @@ Result :
 
 In this query, we use the default server configuration of a ```compute_medium``` but provide a specific usage of the machine.
 
-In this specific case, the average power consumption of the machine is given by the user (```hours_electrical_consumptions``)
+In this specific case, the average power consumption of the machine is given by the user (```avg_powers``)
 
 The API returns impacts, updated to reflect your own server usage. Since no criteria flags are specified, the API returns the impacts of the server for the default criteria (adp, pe, gwp).
 
@@ -588,7 +588,7 @@ curl -X 'POST' \
      "days_use_time": 1,
      "hours_use_time": 1,
      "usage_location": "FRA",
-     "hours_electrical_consumption": 250
+     "avg_power": 250
     }
   }'
 ```
@@ -653,7 +653,7 @@ Result :
   },
   "verbose": {
     ...
-    "hours_electrical_consumption": {
+    "avg_power": {
       "value": 250,
       "status": "INPUT",
       "unit": "W"
@@ -780,7 +780,7 @@ Result :
   },
   "verbose": {
     ...
-    "hours_electrical_consumption": {
+    "avg_power": {
       "value": 693.44072,
       "status": "COMPLETED",
       "unit": "W",

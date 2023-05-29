@@ -57,18 +57,17 @@ If component impacts cannot be assessed, we use non-specific impacts factors at 
 
 Embedded impacts can be reported with several allocation strategies.
 
-### Hover the lifecycle - ```Allocation: TOTAL```
+### Hover the lifecycle 
 
-The total embedded impacts are reported independently of the usage.
+When no specific duration is given, the total embedded impacts of the asset are given.
 
-```manufacture_impacts = total_impact```
+```embedded_impacts = total_impact```
 
-### Hover a specific duration - ```Allocation: LINEAR```
+### Hover a specific duration
 
-The embedded impacts is linearly distributed hover the life duration of the devices.
-The impacts are queried hover the usage duration.
+When a duration is given as a query parameter, we allocate the embedded impacts linearly on this duration.
 
-```manufacture_impacts = total_impacts * (usage_duration/life_duration)```
+```embedded_impacts = total_impacts * (duration/life_duration)```
 
 ## Resources
 
