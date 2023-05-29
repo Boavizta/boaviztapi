@@ -18,7 +18,7 @@ def get_model_single_impact(model: Union[Component, Device],
             impact, significant_figures, min_impact, max_impact, warnings = impact_function(impact_type, duration)
         else:
             impact, significant_figures, min_impact, max_impact, warnings = impact_function(impact_type)
-            impact, min_impact, max_impact = allocate(Impact(value=impact, min=min_impact, max=max_impact), duration, model.usage.life_time)
+            impact, min_impact, max_impact = allocate(Impact(value=impact, min=min_impact, max=max_impact), duration, model.usage.hours_life_time)
 
         return Impact(
             value=impact*model.units.value,

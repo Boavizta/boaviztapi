@@ -13,10 +13,11 @@ In addition to the characteristics available for a [server](../devices/server.md
 
 In addition to the characteristics available for [server usage](../devices/server.md), you can use the following:
 
-| Name                  | Unit       | Default value | Description                                    | Example |
-|-----------------------|------------|---------------|------------------------------------------------|---------|
-| instance_per_server   | None       | None          | See usage                                      | 10      |
-| years_life_time       | None       | 4             | Lifespan of the cloud element                  | 2       |
+| Name                       | Unit           | Default value | Description                                                       | Example |
+|----------------------------|----------------|---------------|-------------------------------------------------------------------|---------|
+| instance_per_server        | None           | None          | See usage                                                         | 10      |
+| hours_life_time            | hours          | 35040         | Lifespan of the cloud element                                     | 2       |
+| use_time_ratio             | /1             | 1             | Proportion of time the device is used during the given duration.  | 0.5     |
 
 
 

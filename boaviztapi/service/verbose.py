@@ -8,7 +8,7 @@ from boaviztapi.service.bottom_up import bottom_up
 def verbose_device(device: Device, selected_criteria=config["default_criteria"], duration=config["default_duration"]):
     json_output = {"duration": {"value":duration, "unit": "hours"}}
     for component in device.components:
-        component.usage.life_time.set_completed(device.usage.life_time.value, min=device.usage.life_time.min, max=device.usage.life_time.max, source="from device")
+        component.usage.hours_life_time.set_completed(device.usage.hours_life_time.value, min=device.usage.hours_life_time.min, max=device.usage.hours_life_time.max, source="from device")
         if f"{component.NAME}-1" in json_output:
             i = 2
             while f"{component.NAME}-{i}" in json_output:

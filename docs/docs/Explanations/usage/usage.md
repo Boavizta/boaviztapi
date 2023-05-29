@@ -2,18 +2,18 @@
 
 Usage impacts can be assessed at device or component level from usage configuration. 
 
-Usage impacts are measured by multiplying a **[duration](duration.md)**, an **[impact factor](elec_factors.md)**, and an **[electrical consumption](elec_conso.md)** :
+Usage impacts are measured by multiplying a **[duration, a ratio of usage](duration.md)**, an **[impact factor](elec_factors.md)**, and an **[electrical consumption](elec_conso.md)** :
 
-```impact = electrical_consumption * duration * impact_factor```
+```impact = electrical_consumption * (duration * use_time_ratio) * impact_factor```
 
 ## Characteristics
 
-| Name                         | Unit                         | Default value (default;min;max) | Description                                  | Example |
-|------------------------------|------------------------------|---------------------------------|----------------------------------------------|---------|
-| days_use_time                | None                         | One year (365 days)             | Number of days considered in the evaluation  | 2       |
-| hours_use_time               | None                         | One year (8760 hours)           | Number of hours considered in the evaluation | 2       |
-| years_use_time               | None                         | One year                        | Number of years considered in the evaluation | 2       |
-| years_life_time              | None                         | Depends on the asset            | Lifespan of the element                      | 4       |
-| usage_location               | trigram                      | EEE (EU27+1)                    | See [available country codes](countries.md)  | FRA     |
-| hours_electrical_consumption | Watt/hour                    | None                            | Average electrical consumption per hour      | 120     |
-| time_workload                | %workload or %time:%workload | 50%;0%;100%                     | See usage                                    | ..      |
+| Name            | Unit                         | Description                                                      | Example         |
+|-----------------|------------------------------|------------------------------------------------------------------|-----------------|
+| hours_use_time  | hours                        | Number of hours considered in the evaluation                     | 2               |
+| hours_life_time | hours                        | Lifespan of the element                                          | 35040 (4 years) |
+| usage_location  | trigram                      | See [available country codes](countries.md)                      | FRA             |
+| avg_power       | Watt/hour                    | Average electrical consumption per hour                          | 120             |
+| time_workload   | %workload or %time:%workload | See usage                                                        | ..              |
+| use_time_ratio  | /1                           | Proportion of time the device is used during the given duration. | 0.5             |
+

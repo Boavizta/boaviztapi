@@ -42,7 +42,7 @@ class ModelUsage:
             min=get_arch_value(archetype, 'use_time_ratio', 'min'),
             max=get_arch_value(archetype, 'use_time_ratio', 'max')
         )
-        self.life_time = Boattribute(
+        self.hours_life_time = Boattribute(
             unit="hours",
             default=get_arch_value(archetype, 'life_time', 'default'),
             min=get_arch_value(archetype, 'life_time', 'min'),

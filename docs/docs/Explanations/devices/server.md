@@ -18,15 +18,16 @@
 
 In addition to the characteristics available for [usage](../usage/usage.md), you can use the following:
 
-| Name                          | Unit         | Default value (default;min;max) | Description                                                         | Example |
-|-------------------------------|--------------|---------------------------------|---------------------------------------------------------------------|---------|
-| other_consumption_ratio       | None         | 0.33;0.2;0.6                    | Power consumption ratio of other components relative to RAM and CPU | 0.2     |
-| years_life_time               | None         | 4                               | Lifespan of the element                                             | 3       |
+| Name                        | Unit           | Default value (default;min;max) | Description                                                         | Example |
+|-----------------------------|----------------|---------------------------------|---------------------------------------------------------------------|---------|
+| other_consumption_ratio     | None           | 0.33;0.2;0.6                    | Power consumption ratio of other components relative to RAM and CPU | 0.2     |
+| hours_life_time             | None           | 35040                           | Lifespan of the element                                             | 3       |
+| use_time_ratio              | /1             | 1                               | Proportion of time the instance is used during the given duration.  | 0.5     |
 
 
 ## Complete
 
-The following component are [completed](../auto_complete.md) with the characteristics taken from the [archetype](../archetypes.md) :
+The following components are [completed](../auto_complete.md) with the characteristics taken from the [archetype](../archetypes.md) :
 
 * [CPU](../components/cpu.md)
 * [RAM](../components/ram.md)

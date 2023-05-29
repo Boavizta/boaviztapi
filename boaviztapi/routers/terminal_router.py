@@ -255,7 +255,7 @@ async def user_terminal_impact(user_terminal_dto: UserTerminal,
     device = mapper_user_terminal(user_terminal_dto, archetype=archetype_config)
 
     if duration is None:
-        duration = device.usage.life_time.value
+        duration = device.usage.hours_life_time.value
 
     impacts = bottom_up(model=device, selected_criteria=criteria, duration=duration)
 
