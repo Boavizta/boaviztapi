@@ -44,9 +44,9 @@ class ModelUsage:
         )
         self.hours_life_time = Boattribute(
             unit="hours",
-            default=get_arch_value(archetype, 'life_time', 'default'),
-            min=get_arch_value(archetype, 'life_time', 'min'),
-            max=get_arch_value(archetype, 'life_time', 'max')
+            default=get_arch_value(archetype, 'hours_life_time', 'default'),
+            min=get_arch_value(archetype, 'hours_life_time', 'min'),
+            max=get_arch_value(archetype, 'hours_life_time', 'max')
         )
         self.elec_factors = {
             "gwp": Boattribute(unit="kg CO2eq/kWh", complete_function=self._complete_gwp),
