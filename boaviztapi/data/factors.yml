@@ -7,7 +7,7 @@
     "impact": 68.60,
     "source": "https://www.researchgate.net/publication/352707793_2021-06-17_texte_94-2021_green-cloud-computing"
   },
-  "adp": {
+  "adpe": {
     "impact": 1.41e-06,
     "source": "https://www.researchgate.net/publication/352707793_2021-06-17_texte_94-2021_green-cloud-computing"
   }
@@ -22,7 +22,7 @@
     "rack": { "impact": 2200.0 },
     "blade": { "impact_blade_server": 435.0, "impact_blade_16_slots": 12700.0 }
   },
-  "adp": {
+  "adpe": {
     "rack": { "impact": 0.0202 },
     "blade": { "impact_blade_server": 0.000672, "impact_blade_16_slots": 0.432 }
   }
@@ -39,7 +39,7 @@
     "impact": 156.00,
     "constant_core_impact": 0.491
   },
-  "adp": {
+  "adpe": {
     "die_impact": 5.80e-07,
     "impact": 2.04e-02,
     "constant_core_impact": 0.491
@@ -53,7 +53,7 @@
   "pe": {
     "impact": 276.00
   },
-  "adp": {
+  "adpe": {
     "impact": 2.50e-04
   }
 }
@@ -65,7 +65,7 @@
   "pe": {
     "impact": 836.00
   },
-  "adp": {
+  "adpe": {
     "impact": 3.69e-03
   }
 }
@@ -77,7 +77,7 @@
   "pe": {
     "impact": 352.00
   },
-  "adp": {
+  "adpe": {
     "impact": 8.30e-03
   }
 }
@@ -91,7 +91,7 @@
     "die_impact": 27.30,
     "impact": 74.00
   },
-  "adp": {
+  "adpe": {
     "die_impact": 6.30e-05,
     "impact": 1.69e-03
   }
@@ -106,7 +106,7 @@
     "die_impact": 27.30,
     "impact": 76.90
   },
-  "adp": {
+  "adpe": {
     "die_impact": 6.30e-05,
     "impact": 5.63e-04
   }
@@ -165,7 +165,7 @@
     "impact": 5.15e+04,
     "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
   },
-  "adp": {
+  "adpe": {
     "impact": null,
     "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
   },

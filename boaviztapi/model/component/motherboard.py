@@ -14,7 +14,7 @@ class ComponentMotherboard(Component):
         'pe': {
             'impact': 836.00
         },
-        'adp': {
+        'adpe': {
             'impact': 3.69E-03
         }
     }

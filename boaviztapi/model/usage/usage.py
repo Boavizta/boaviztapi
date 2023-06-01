@@ -50,7 +50,6 @@ class ModelUsage:
         )
         self.elec_factors = {
             "gwp": Boattribute(unit="kg CO2eq/kWh", complete_function=self._complete_gwp),
-            "adp": Boattribute(unit="kg Sbeq/kWh", complete_function=self._complete_adp),
             "pe": Boattribute(unit="MJ/kWh", complete_function=self._complete_pe),
             "gwppb": Boattribute(unit="kg CO2eq/kWh", complete_function=self._complete_gwppb),
             "gwppf": Boattribute(unit="kg CO2eq/kWh", complete_function=self._complete_gwppf),
@@ -101,8 +100,6 @@ class ModelUsage:
 
     def _complete_gwp(self):
         self._complete_impact_factor("gwp", "gwp")
-    def _complete_adp(self):
-        self._complete_impact_factor("adp", "adpe")
     def _complete_pe(self):
         self._complete_impact_factor("pe", "pe")
     def _complete_gwppb(self):
