@@ -44,28 +44,28 @@ We use the consumption of fossil resources per kwh (APDf/kwh) per country and ex
 
 ### Other impact factors
 
-| Criteria | Implemented | Source                                                   | 
-|----------|-------------|----------------------------------------------------------|
-| adp      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| gwppb    | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| gwppf    | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| gwpplu   | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| ir       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| lu       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| odp      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| pm       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| pocp     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| wu       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| mips     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| adpe     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| adpf     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| ap       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| ctue     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| ctuh_c   | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| ctuh_nc  | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| epf      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| epm      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| ept      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
+| Criteria | Implemented | Source                                                | 
+|----------|-------------|-------------------------------------------------------|
+| gwppb    | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| gwppf    | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| gwpplu   | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| ir       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| lu       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| odp      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| pm       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| pocp     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| wu       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| mips     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| adpe     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| adpf     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| ap       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| ctue     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| ctuh_c   | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| ctuh_nc  | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| epf      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| epm      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| ept      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) |
+| pe       | yes         | ADPf / (1-%renewable_energy)                          |
 
 ## Electricity map integration
 

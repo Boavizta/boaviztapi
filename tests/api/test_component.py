@@ -11,7 +11,7 @@ async def test_complete_cpu():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=false', json={"core_units": 12, "die_size_per_core": 0.245})
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.02,
                                             'min': 0.02,
                                             'significant_figures': 2,
@@ -48,7 +48,7 @@ async def test_complete_cpu_verbose():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=true', json={"core_units": 12, "die_size_per_core": 0.245})
 
-    assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'impacts': {'adpe': {'description': 'Use of minerals and fossil ressources',
                                               'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.02,
                                                         'min': 0.02,
                                                         'significant_figures': 2,
@@ -101,7 +101,7 @@ async def test_complete_cpu_verbose():
                                                                        'status': 'COMPLETED',
                                                                        'unit': 'W',
                                                                        'value': 182.22},
-                                      'impacts': {'adp': {'description': 'Use of minerals and fossil '
+                                      'impacts': {'adpe': {'description': 'Use of minerals and fossil '
                                                                          'ressources',
                                                           'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.02,
                                                                     'min': 0.02,
@@ -169,7 +169,7 @@ async def test_complete_cpu_with_low_precision():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=false', json={"core_units": 12, "die_size_per_core": 0.2})
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.02,
                                             'min': 0.02,
                                             'significant_figures': 1,
@@ -206,7 +206,7 @@ async def test_empty_cpu():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=false', json={})
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.02,
                                             'min': 0.02,
                                             'significant_figures': 2,
@@ -244,7 +244,7 @@ async def test_multiple_cpu():
         res = await ac.post('/v1/component/cpu?verbose=false', json={
             "units": 3, "core_units": 12, "die_size_per_core": 0.245})
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.061,
                                             'min': 0.061,
                                             'significant_figures': 2,
@@ -282,7 +282,7 @@ async def test_incomplete_cpu_verbose():
         res = await ac.post('/v1/component/cpu?verbose=true', json={
             "core_units": 24, "family": "Skylake"})
 
-    assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'impacts': {'adpe': {'description': 'Use of minerals and fossil ressources',
                                               'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.02,
                                                         'min': 0.02,
                                                         'significant_figures': 2,
@@ -339,7 +339,7 @@ async def test_incomplete_cpu_verbose():
                                                                        'status': 'COMPLETED',
                                                                        'unit': 'W',
                                                                        'value': 182.22},
-                                      'impacts': {'adp': {'description': 'Use of minerals and fossil '
+                                      'impacts': {'adpe': {'description': 'Use of minerals and fossil '
                                                                          'ressources',
                                                           'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.02,
                                                                     'min': 0.02,
@@ -408,7 +408,7 @@ async def test_incomplete_cpu_verbose_2():
         res = await ac.post('/v1/component/cpu?verbose=true', json={
             "core_units": 24, "family": "skylak"})
 
-    assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'impacts': {'adpe': {'description': 'Use of minerals and fossil ressources',
                                               'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.02,
                                                         'min': 0.02,
                                                         'significant_figures': 2,
@@ -465,7 +465,7 @@ async def test_incomplete_cpu_verbose_2():
                                                                        'status': 'COMPLETED',
                                                                        'unit': 'W',
                                                                        'value': 182.22},
-                                      'impacts': {'adp': {'description': 'Use of minerals and fossil '
+                                      'impacts': {'adpe': {'description': 'Use of minerals and fossil '
                                                                          'ressources',
                                                           'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.02,
                                                                     'min': 0.02,
@@ -533,7 +533,7 @@ async def test_complete_ram():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ram?verbose=false', json={"units": 12, "capacity": 32, "density": 1.79})
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.034,
                                             'min': 0.034,
                                             'significant_figures': 2,
@@ -570,7 +570,7 @@ async def test_empty_ram():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ram?verbose=false', json={})
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
          'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.065,
                       'min': 0.0018,
                       'significant_figures': 2,
@@ -607,7 +607,7 @@ async def test_complete_ssd():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ssd?verbose=false', json={"capacity": 400, "density": 50.6})
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.0011,
                                             'min': 0.0011,
                                             'significant_figures': 2,
@@ -635,7 +635,7 @@ async def test_empty_ssd():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ssd?verbose=false', json={})
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
          'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 3.2,
                       'min': 0.0069,
                       'significant_figures': 2,
@@ -663,7 +663,7 @@ async def test_empty_blade():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/component/case?verbose=false', json={"case_type": "blade"})
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.0277,
                                             'min': 0.0277,
                                             'significant_figures': 3,

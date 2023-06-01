@@ -23,7 +23,7 @@ SSD are Disk objects of ```type``` SSD.
 | Criteria | Implemented | Source                                                                                                                                                         | 
 |----------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | gwp      | yes         | [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
-| adp      | yes         | [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
+| adpe     | yes         | [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
 | pe       | yes         | [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
 | gwppb    | no          |                                                                                                                                                                |
 | gwppf    | no          |                                                                                                                                                                |
@@ -35,7 +35,6 @@ SSD are Disk objects of ```type``` SSD.
 | pocp     | no          |                                                                                                                                                                |
 | wu       | no          |                                                                                                                                                                |
 | mips     | no          |                                                                                                                                                                |
-| adpe     | no          |                                                                                                                                                                |
 | adpf     | no          |                                                                                                                                                                |
 | ap       | no          |                                                                                                                                                                |
 | ctue     | no          |                                                                                                                                                                |

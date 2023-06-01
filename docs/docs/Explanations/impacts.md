@@ -25,12 +25,11 @@ __Source__ : [https://en.wikipedia.org/wiki/Primary_energy](https://en.wikipedia
 
 __Unit__ : MJ
 
-## adp - Abiotic Depletion Potential
+## adpe - Abiotic Depletion Potential
 
-__What__ : Abiotic Depletion Potential (ADP) is an environmental impact indicator. This category corresponds to mineral and resources used and is, in
-this sense, mainly influenced by the rate of resources extracted. The effect of this consumption on their
-depletion is estimated according to their availability stock at a global scale. This impact category is divided
-into two components: a material component and a fossil fuels component (we use a version of ADP which include both).
+__What__ : Abiotic Depletion Potential element (ADPe) is an environmental impact indicator. This category corresponds to mineral and resources used and is, in
+this sense, mainly influenced by the rate of mineral and material resources extracted. The effect of this consumption on their
+depletion is estimated according to their availability stock at a global scale. 
 
 __Source__: [https://www.sciencedirect.com/topics/engineering/abiotic-depletion-potential](https://www.sciencedirect.com/topics/engineering/abiotic-depletion-potential)
 
@@ -128,15 +127,6 @@ __what__ : Material input per unit of service
 __Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
 
 __Unit__ : kg
-
-
-## adpe - Use of mineral and metal resources 
-
-__what__ : Use of mineral and metal resources 
-
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
-
-__Unit__ : kg SB eq.
 
 
 ## adpf - Use of fossil resources (including nuclear) 

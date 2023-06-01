@@ -14,7 +14,7 @@ async def test_empty_usage():
             'usage': {}
         })
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'max': 0.14,
                                                'min': 0.065,
                                                'significant_figures': 2,
@@ -61,7 +61,7 @@ async def test_empty_usage_m6gxlarge():
             'usage': {}
         })
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'max': 0.17,
                                                'min': 0.081,
                                                'significant_figures': 2,
@@ -104,7 +104,7 @@ async def test_empty_usage_1():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.get('/v1/cloud/instance?verbose=false&instance_type=a1.2xlarge&provider=aws')
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'max': 0.14,
                                                'min': 0.065,
                                                'significant_figures': 2,
@@ -146,7 +146,7 @@ async def test_empty_usage_1():
 async def test_empty_usage_2():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.get('/v1/cloud/instance?verbose=false&instance_type=r5ad.12xlarge&provider=aws')
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'max': 0.28,
                                                'min': 0.15,
                                                'significant_figures': 2,
@@ -229,7 +229,7 @@ async def test_usage_1():
                 ]
             }})
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'max': 0.17,
                                                'min': 0.086,
                                                'significant_figures': 2,
@@ -276,7 +276,7 @@ async def test_usage_2():
             "usage": {
                 "time_workload": 100
             }})
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'max': 0.17,
                                                'min': 0.086,
                                                'significant_figures': 2,
@@ -317,13 +317,13 @@ async def test_usage_2():
 @pytest.mark.asyncio
 async def test_usage_3():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/cloud/instance?verbose=false&allocation=TOTAL', json={
+        res = await ac.post('/v1/cloud/instance?verbose=false', json={
             "provider": "aws",
             "instance_type": "c5a.24xlarge",
             "usage": {
                 "hours_use_time": 1
             }})
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'max': 0.17,
                                                'min': 0.086,
                                                'significant_figures': 2,
@@ -382,7 +382,7 @@ async def test_usage():
                 ]
             }
         })
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'max': 0.14,
                                                'min': 0.065,
                                                'significant_figures': 2,

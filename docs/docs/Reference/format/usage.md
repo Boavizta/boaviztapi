@@ -12,17 +12,15 @@ Usage impacts can be measured at device or component level from usage configurat
 
 ## General
 
-*```avg_power``` is given Watt. The usage location is given as a trigram (see available country code). The duration is given in day, hours and years (units are cumulative)*
+*```avg_power``` is given Watt. The usage location is given as a trigram (see available country code). The lifetime of the asset is given in hours: 4 years * 24h * 365 days.*
 * ```elec_factors``` is given as a dictionary. Only ```gwp``` is given in kgCO2eq/kWh* the other will be completed by the API.
 
 ```json
 {
  "usage": {
-   "days_use_time": 1,
-   "hours_use_time": 1,
-   "years_use_time": 1,
    "usage_location": "FRA",
    "avg_power": 120,
+   "hours_life_time": 35040,
    "elec_factors": {
      "gwp": 0.1
    }
@@ -114,15 +112,13 @@ The feature is available for the following routes :
 
 ### POST ```/v1/component/ram```
 
-*```time_workload``` is given in percentage at RAM level. The electrical consumption will be model for 32GB of RAM at 50% of load*
+*```time_workload``` is given in percentage at RAM level. The electrical consumption will be model for 32GB of RAM.*
 
 ```json
 {
  "capacity": 32,
  "usage": {
-   "days_use_time": 1,
-   "usage_location": "FRA",
-   "time_workload": 50
+   "usage_location": "FRA"
  }
 }
 ```
@@ -135,9 +131,8 @@ The feature is available for the following routes :
 {
  "tdp": "120",
  "usage": {
-   "days_use_time": 1,
    "usage_location": "FRA",
-   "time_workload": 50,
+   "time_workload": 50
  }
 }
 ```
@@ -150,7 +145,7 @@ The feature is available for the following routes :
  "usage": {
    "days_use_time": 1,
    "usage_location": "FRA",
-   "time_workload": 50,
+   "time_workload": 50
  }
 }
 ```
@@ -162,9 +157,8 @@ The feature is available for the following routes :
  "name": "Intel Xeon Gold 6138f", 
  "tdp": 220,
  "usage": {
-   "days_use_time": 1,
    "usage_location": "FRA",
-   "time_workload": 50,
+   "time_workload": 50
  }
 }
 ```

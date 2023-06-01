@@ -48,7 +48,7 @@ If no cpu is found either because the cpu is unknown or not enough data have bee
 | Criteria | Implemented | Source                                                                                                                                                         | 
 |----------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | gwp      | yes         | [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
-| adp      | yes         | [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
+| adpe     | yes         | [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
 | pe       | yes         | [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
 | gwppb    | no          |                                                                                                                                                                |
 | gwppf    | no          |                                                                                                                                                                |
@@ -60,7 +60,6 @@ If no cpu is found either because the cpu is unknown or not enough data have bee
 | pocp     | no          |                                                                                                                                                                |
 | wu       | no          |                                                                                                                                                                |
 | mips     | no          |                                                                                                                                                                |
-| adpe     | no          |                                                                                                                                                                |
 | adpf     | no          |                                                                                                                                                                |
 | ap       | no          |                                                                                                                                                                |
 | ctue     | no          |                                                                                                                                                                |

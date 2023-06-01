@@ -29,3 +29,14 @@ The default criteria will be used if the user does not specify the ```criteria``
 ```
 default_criteria: ["gwp", "adp", "pe"]
 ```
+
+## Default duration
+
+The default duration for the assessment will be used
+if the user does not specify the ```duration``` in the request as a query parameter.
+
+```
+default_duration:
+```
+
+*If no value is specified (like in the example above), the assessment will be performed for the full lifetime of the asset.*

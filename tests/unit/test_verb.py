@@ -2,11 +2,11 @@ from boaviztapi.service.verbose import verbose_component, verbose_device
 
 
 def test_verbose_component_cpu_1(complete_cpu_model):
-    verbose = verbose_component(complete_cpu_model)
+    verbose = verbose_component(complete_cpu_model, duration=complete_cpu_model.usage.hours_life_time.value)
     assert verbose["core_units"] == {'status': 'INPUT', 'value': 24}
     assert verbose["die_size_per_core"] == {'status': 'INPUT', 'unit': 'cm2', 'value': 0.245}
 
-    assert verbose["impacts"] == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert verbose["impacts"] == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                           'embedded': {'warnings': ['End of life is not included in the calculation'],
                                                        'max': 0.041,
                                                        'min': 0.041,
@@ -45,7 +45,7 @@ def test_verbose_component_cpu_2(incomplete_cpu_model):
     verbose = verbose_component(incomplete_cpu_model)
     assert verbose["core_units"] == {'status': 'INPUT', 'value': 12}
     assert verbose["family"] == {'status': 'INPUT', 'value': 'Skylake'}
-    assert verbose["impacts"] == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert verbose["impacts"] == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                           'embedded': {'warnings': ['End of life is not included in the calculation'],
                                                        'max': 0.02,
                                                        'min': 0.02,
@@ -82,7 +82,7 @@ def test_verbose_component_cpu_2(incomplete_cpu_model):
 
 def test_verbose_component_ram(complete_ram_model):
     verbose = verbose_component(complete_ram_model)
-    assert verbose["impacts"] == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert verbose["impacts"] == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                           'embedded': {'warnings': ['End of life is not included in the calculation'],
                                                        'max': 0.034,
                                                        'min': 0.034,
@@ -133,7 +133,7 @@ def test_verbose_component_ssd(empty_ssd_model):
                                                               'unit': 'GB/cm2',
                                                               'value': 48.5},
                                                   'impacts': {
-                                                      'adp': {'description': 'Use of minerals and fossil ressources',
+                                                      'adpe': {'description': 'Use of minerals and fossil ressources',
                                                               'embedded': {'warnings': [
                                                                   'End of life is not included in the calculation'],
                                                                            'max': 3.2,
@@ -166,7 +166,7 @@ def test_verbose_component_ssd(empty_ssd_model):
 
 def test_verbose_component_power_supply(empty_power_supply_model):
     assert verbose_component(empty_power_supply_model) == {
-        'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
+        'impacts': {'adpe': {'description': 'Use of minerals and fossil ressources',
                             'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.042,
                                          'min': 0.0083,
                                          'significant_figures': 2,
@@ -198,7 +198,7 @@ def test_verbose_component_power_supply(empty_power_supply_model):
 def test_verbose_component_case(blade_case_model):
     assert verbose_component(blade_case_model) == {'case_type': {'status': 'INPUT', 'value': 'blade'},
                                                    'impacts': {
-                                                       'adp': {'description': 'Use of minerals and fossil ressources',
+                                                       'adpe': {'description': 'Use of minerals and fossil ressources',
                                                                'embedded': {'warnings': [
                                                                    'End of life is not included in the calculation'],
                                                                             'max': 0.0277,
@@ -232,7 +232,7 @@ def test_verbose_component_case(blade_case_model):
 def test_verbose_device_server_1(incomplete_server_model):
     verbose = verbose_device(incomplete_server_model)
 
-    assert verbose["ASSEMBLY-1"] == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert verbose["ASSEMBLY-1"] == {'impacts': {'adpe': {'description': 'Use of minerals and fossil ressources',
                                                          'embedded': {'warnings': [
                                                              'End of life is not included in the calculation'],
                                                                       'max': 1.41e-06,
@@ -262,7 +262,7 @@ def test_verbose_device_server_1(incomplete_server_model):
                                      'units': {'max': 1, 'min': 1, 'status': 'ARCHETYPE', 'value': 1}}
 
     assert verbose["CASE-1"] == {'case_type': {'status': 'INPUT', 'value': 'rack'},
-                                 'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
+                                 'impacts': {'adpe': {'description': 'Use of minerals and fossil ressources',
                                                      'embedded': {
                                                          'warnings': ['End of life is not included in the calculation'],
                                                          'max': 0.0202,
@@ -291,7 +291,7 @@ def test_verbose_device_server_1(incomplete_server_model):
                                                     'use': 'not implemented'}},
                                  'units': {'max': 1.0, 'min': 1.0, 'status': 'ARCHETYPE', 'value': 1.0}}
 
-    assert verbose["MOTHERBOARD-1"] == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert verbose["MOTHERBOARD-1"] == {'impacts': {'adpe': {'description': 'Use of minerals and fossil ressources',
                                                             'embedded': {'warnings': [
                                                                 'End of life is not included in the calculation'],
                                                                          'max': 0.00369,
@@ -320,7 +320,7 @@ def test_verbose_device_server_1(incomplete_server_model):
                                                            'use': 'not implemented'}},
                                         'units': {'max': 1, 'min': 1, 'status': 'ARCHETYPE', 'value': 1}}
 
-    assert verbose["POWER_SUPPLY-1"] == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert verbose["POWER_SUPPLY-1"] == {'impacts': {'adpe': {'description': 'Use of minerals and fossil ressources',
                                                              'embedded': {'warnings': [
                                                                  'End of life is not included in the calculation'],
                                                                           'max': 0.17,
@@ -357,7 +357,7 @@ def test_verbose_device_server_1(incomplete_server_model):
 
 def test_verbose_device_server_2(dell_r740_model):
     verbose = verbose_device(dell_r740_model)
-    assert verbose["ASSEMBLY-1"] == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert verbose["ASSEMBLY-1"] == {'impacts': {'adpe': {'description': 'Use of minerals and fossil ressources',
                                                          'embedded': {'warnings': [
                                                              'End of life is not included in the calculation'],
                                                                       'max': 1.41e-06,
@@ -387,7 +387,7 @@ def test_verbose_device_server_2(dell_r740_model):
                                      'units': {'max': 1, 'min': 1, 'status': 'ARCHETYPE', 'value': 1}}
 
     assert verbose["CASE-1"] == {'case_type': {'status': 'INPUT', 'value': 'rack'},
-                                 'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
+                                 'impacts': {'adpe': {'description': 'Use of minerals and fossil ressources',
                                                      'embedded': {
                                                          'warnings': ['End of life is not included in the calculation'],
                                                          'max': 0.0202,
@@ -416,7 +416,7 @@ def test_verbose_device_server_2(dell_r740_model):
                                                     'use': 'not implemented'}},
                                  'units': {'max': 1.0, 'min': 1.0, 'status': 'ARCHETYPE', 'value': 1.0}}
 
-    assert verbose["MOTHERBOARD-1"] == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert verbose["MOTHERBOARD-1"] == {'impacts': {'adpe': {'description': 'Use of minerals and fossil ressources',
                                                             'embedded': {'warnings': [
                                                                 'End of life is not included in the calculation'],
                                                                          'max': 0.00369,
@@ -445,7 +445,7 @@ def test_verbose_device_server_2(dell_r740_model):
                                                            'use': 'not implemented'}},
                                         'units': {'max': 1, 'min': 1, 'status': 'ARCHETYPE', 'value': 1}}
 
-    assert verbose["POWER_SUPPLY-1"] == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert verbose["POWER_SUPPLY-1"] == {'impacts': {'adpe': {'description': 'Use of minerals and fossil ressources',
                                                              'embedded': {'warnings': [
                                                                  'End of life is not included in the calculation'],
                                                                           'max': 0.05,

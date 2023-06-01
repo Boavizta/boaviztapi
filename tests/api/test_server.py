@@ -48,7 +48,7 @@ async def test_complete_config_server():
                 }
             }
         })
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
          'embedded': {'max': 0.26,
                       'min': 0.25,
                       'significant_figures': 2,
@@ -90,7 +90,7 @@ async def test_complete_config_server():
 async def test_empty_config_server():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/server/?verbose=false&duration=8760', json={})
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 88.0,
                                                'min': 0.054,
                                                'significant_figures': 2,
@@ -167,7 +167,7 @@ async def test_dell_r740_server():
             }
         })
 
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.15,
                                                'min': 0.15,
                                                'significant_figures': 2,
@@ -231,7 +231,7 @@ async def test_partial_server_1():
                 ]
             }
         })
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 6.7,
                                                'min': 0.11,
                                                'significant_figures': 2,
@@ -302,7 +302,7 @@ async def test_partial_server_2():
                 }
             }
         })
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.51,
                                                'min': 0.25,
                                                'significant_figures': 2,
@@ -355,7 +355,7 @@ async def test_partial_server_3():
                 }
             }
         })
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 79.0,
                                                'min': 0.22,
                                                'significant_figures': 2,
@@ -399,7 +399,7 @@ async def test_custom_usage_1():
                 "usage_location": "FRA"
             }
         })
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
+    assert res.json() == {'adpe': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 88.0,
                                                'min': 0.054,
                                                'significant_figures': 2,

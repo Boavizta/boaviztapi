@@ -19,7 +19,7 @@ To provide a response to the following query that is lacking key information to 
 
 ```shell
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/component/cpu?verbose=false&allocation=TOTAL' \
+  'https://api.boavizta.org/v1/component/cpu?verbose=false' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

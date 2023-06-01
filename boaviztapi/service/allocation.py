@@ -4,7 +4,7 @@ NumberSignificantFigures = Tuple[float, int]
 
 
 def allocate(impact, duration, life_time) -> [NumberSignificantFigures, NumberSignificantFigures, NumberSignificantFigures]:
-
+    print(impact.to_json(), duration, life_time.to_json())
     if duration > life_time.value:
         allocation_ratio, allocation_ratio_min, allocation_ratio_max = 1, 1, 1
     else:
