@@ -17,6 +17,7 @@ scipy = "^1.9"
 rapidfuzz = "^3.0"
 markdown = "^3.4"
 mangum = "^0.17"
+importlib-metadata = "^6.6.0"
 
 
 [tool.poetry.group.dev.dependencies]
