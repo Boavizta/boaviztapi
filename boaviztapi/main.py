@@ -3,12 +3,10 @@ import json
 import markdown
 from fastapi.middleware.cors import CORSMiddleware
 import os
-
+import pkg_resources
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from mangum import Mangum
-
-from boaviztapi import __version__
 
 from boaviztapi.routers.component_router import component_router
 from boaviztapi.routers.consumption_profile_router import consumption_profile
@@ -25,6 +23,7 @@ from fastapi.responses import HTMLResponse
 stage = os.environ.get('STAGE', None)
 openapi_prefix = f"/{stage}" if stage else "/"
 app = FastAPI(root_path=openapi_prefix)  # Here is the magic
+version = pkg_resources.get_distribution('boaviztapi').version
 
 origins = json.loads(os.getenv("ALLOWED_ORIGINS", '["*"]'))
 
@@ -54,7 +53,7 @@ def my_schema():
     intro = open(os.path.join(os.path.dirname(__file__), 'routers/openapi_doc/intro_openapi.md'), 'r', encoding='utf-8')
     openapi_schema = get_openapi(
         title="BOAVIZTAPI - DEMO",
-        version=__version__,
+        version=version,
         description=markdown.markdown(intro.read()),
         routes=app.routes,
         servers=app.servers,

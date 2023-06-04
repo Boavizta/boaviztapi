@@ -26,12 +26,12 @@ jobs:
 
     - name: Install pipenv
       run: |
-        python -m pip install --upgrade pipenv wheel
+        python -m pip install --upgrade poetry wheel
 
     - name: Install dependencies
       run: |
-        pipenv install --dev
+        make install
 
     - name: Run test suite
       run: |
-        pipenv run pytest
+        make test

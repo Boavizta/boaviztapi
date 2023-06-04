@@ -41,37 +41,42 @@ The system is developed in layers according to a bottom-up principle. The first 
 $ docker run ghcr.io/boavizta/boaviztapi:latest
 ```
 
-## 📦 Install using pip package
+## Install using pip package
 
 ```bash
 $ pip3 install boaviztapi
 ```
 
+Then you can run the server locally with :
+
+```bash
+$ uvicorn boaviztapi.main:app --host=localhost --port 5000
+```
 
 ## :computer: Development
 
 ### Prerequisite
 
-Python 3, pipenv recommended
+Python 3, poetry recommended
 
-### Setup pipenv
+### Setup poetry
 
-Install pipenv globally
+Install poetry.
 
 ```bash
-$ sudo pip3 install pipenv
+$ pip3 install poetry
 ```
 
 Install dependencies and create a python virtual environment.
 
 ```bash
-$ pipenv install -d
-$ pipenv shell
+$ make install
+$ poetry shell
 ```
 
 ### Launch a development server
 
-**Once in the pipenv environment**
+**Once in the poetry environment**
 
 Development server uses [uvicorn](https://www.uvicorn.org/) and [fastapi](https://fastapi.tiangolo.com/), you can launch development server with the `uvicorn` CLI.
 
@@ -89,7 +94,7 @@ make install
 ```
 Build docker image
 ```sh
-docker build --build-arg VERSION=0.2.0 -t boavizta/boaviztapi:0.2.0 .
+$ make docker-build
 ```
 Run docker image
 ```sh
@@ -120,7 +125,7 @@ Once API server is launched API swagger is available at [httsp://localhost:5000/
 
 See [contributing.md](./CONTRIBUTING.md)
 
-You can build a source distribution (installable with pip) with `python setup.py sdist`.
+You can build a source distribution (installable with pip) with `make build`.
 
 ## :one: Versioning
 
@@ -131,6 +136,14 @@ We use [Semantic Versioning 2.0.0](https://semver.org/)
 | MAJOR       | version when you make incompatible API changes                       | ```make major```  |
 | MINOR       | version when you add functionality in a backwards compatible manner  | ```make minor```  |
 | PATCH       | version when you make backwards compatible bug fixes                 | ```make patch```  |
+
+## :two: Publishing
+
+You can run : 
+
+```shell
+API_TOKEN=<your_token> make distribute 
+```
 
 ## :scroll: License
 
