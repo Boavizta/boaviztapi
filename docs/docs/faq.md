@@ -18,7 +18,7 @@ See: [Manufacture methodology](./Explanations/manufacture_methodology.md)
 
 #### How does the API compute environmental impacts related to usage ?
 
-Manufacture impacts are retrieved by multiplying a power hover a duration with an impact factor relative to the place of use of the evaluated product.
+Manufacture impacts are retrieved by multiplying a power over a duration with an impact factor relative to the place of use of the evaluated product.
 
 See: [Usage methodology](Explanations/usage/usage.md)
 
@@ -28,7 +28,7 @@ Electrical consumption can either be given by the user or modeled according to t
 
 See: [Electricity methodology](Explanations/usage/elec_conso.md)
 
-#### How do we compute the impacts of cloud instances ?
+#### How does the API compute the impacts of cloud instances ?
 
 The technical configuration of cloud instances are pre-recorded in the API.
 Their impacts are computed through the bottom-up process. The electricity is modeled from the technical configuration and the context of usage given by the user.
@@ -37,11 +37,11 @@ See: [Cloud methodology](Explanations/devices/cloud.md)
 
 #### How does the API amortize manufacturing costs ?
 The API implements two methods to amortize manufacturing-related impacts
-Either the total cost of manufacturing impacts is given, or a linear amortization over the life cycle of the products can be applied. 
+Either the total cost of manufacturing impacts is given, or a linear amortization over the lifetime of the products can be applied. 
 
 See: [Allocation methodology](Explanations/manufacture_methodology/#allocation)
 
-#### How do we handle missing data ?
+#### How does the API handle missing data ?
 The API returns impacts regardless of the level of detail given by the user. To do this, two strategies are possible: 
 
 * Default data can be used
@@ -51,7 +51,7 @@ See: [Auto complete](Explanations/auto_complete.md)
 
 #### Why don't we take into account transport and end of life impacts ?
 
-We want to take into account the impacts related to transportation and end of life. However, we lack open impact factors to do so. If you have ideas to fill this gap, please let us know.
+We want to take into account impacts related to transportation and end of life. However, we lack open impact factors to do so. If you have ideas to fill this gap, please let us know.
 
 ## Technical
 
