@@ -7,6 +7,8 @@ from boaviztapi.model.impact import Impact, IMPACT_CRITERIAS, IMPACT_PHASES
 from boaviztapi.service.allocation import allocate
 
 NOT_IMPLEMENTED = 'not implemented'
+
+
 def get_model_single_impact(model: Union[Component, Device],
                             phase: str,
                             impact_type: str,
@@ -18,19 +20,22 @@ def get_model_single_impact(model: Union[Component, Device],
             impact, significant_figures, min_impact, max_impact, warnings = impact_function(impact_type, duration)
         else:
             impact, significant_figures, min_impact, max_impact, warnings = impact_function(impact_type)
-            impact, min_impact, max_impact = allocate(Impact(value=impact, min=min_impact, max=max_impact), duration, model.usage.hours_life_time)
+            impact, min_impact, max_impact = allocate(Impact(value=impact, min=min_impact, max=max_impact), duration,
+                                                      model.usage.hours_life_time)
 
         return Impact(
-            value=impact*model.units.value,
+            value=impact * model.units.value,
             significant_figures=significant_figures,
-            min=min_impact*model.units.min,
-            max=max_impact*model.units.max,
+            min=min_impact * model.units.min,
+            max=max_impact * model.units.max,
             warnings=list(set(warnings))
         )
     except (AttributeError, NotImplementedError):
         pass
 
-def bottom_up(model: Union[Component, Device], selected_criteria=config["default_criteria"], duration=config["default_duration"]) -> dict:
+
+def bottom_up(model: Union[Component, Device], selected_criteria=config["default_criteria"],
+              duration=config["default_duration"]) -> dict:
     impacts = {}
     for criteria in IMPACT_CRITERIAS:
         if "all" not in selected_criteria:

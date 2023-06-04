@@ -1,6 +1,8 @@
 import math
 from decimal import Decimal
 
+from boaviztapi import config
+
 DEFAULT_SIG_FIGURES = 3
 
 
@@ -25,7 +27,7 @@ def min_significant_figures(*inputs):
         p = significant_number(input)
         if (p <= sigfig):
             sigfig = p
-    return sigfig
+    return sigfig if sigfig > config['min_significant_figures'] else config['min_significant_figures']
 
 
 def round_to_sigfig(x, significant_figures):

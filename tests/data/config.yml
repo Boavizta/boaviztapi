@@ -26,4 +26,6 @@ default_external_hdd: "hdd-default"
 
 default_criteria: ["gwp", "adp", "pe"]
 
-default_duration: "total"
+default_duration:
+
+min_significant_figures: 2

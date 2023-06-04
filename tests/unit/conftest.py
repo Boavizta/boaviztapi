@@ -196,7 +196,9 @@ def rack_case_model():
 
 @pytest.fixture(scope="function")
 def motherboard_model():
-    return ComponentMotherboard()
+    c = ComponentMotherboard()
+    c.usage.hours_life_time.value = 8760
+    return c
 
 
 @pytest.fixture(scope="function")
@@ -216,7 +218,9 @@ def complete_power_supply_model():
 
 @pytest.fixture(scope="function")
 def assembly_model():
-    return ComponentAssembly()
+    a = ComponentAssembly()
+    a.usage.hours_life_time.value = 8760
+    return a
 
 
 # DTO
