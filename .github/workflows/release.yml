@@ -59,7 +59,7 @@ jobs:
       run: docker build docs --file docs/Dockerfile --tag ghcr.io/boavizta/boaviztapi-doc:latest
 
     - name: Tag doc the Docker image
-      run: docker tag ghcr.io/boavizta/boaviztapi-doc:latest ghcr.io/boavizta/boaviztapi-doc:$(python setup.py --version)
+      run: docker tag ghcr.io/boavizta/boaviztapi-doc:latest ghcr.io/boavizta/boaviztapi-doc:$(poetry version -s)
 
     - name: Push doc images
       run: docker push -a ghcr.io/boavizta/boaviztapi-doc
