@@ -29,6 +29,7 @@ pytest-asyncio = '*'
 requests = '*'
 bump2version = "==1.0.1"
 mkdocs-render-swagger-plugin = "*"
+setuptools = "^67.8.0"
 
 [build-system]
 requires = ["poetry-core"]
