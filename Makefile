@@ -1,5 +1,6 @@
 CURRENT_VERSION := $(shell poetry version -s)
 DOCKER_NAME := boavizta/boaviztapi:${CURRENT_VERSION}
+SEMVERS := major minor patch
 
 clean:
 		find . -name "*.pyc" -exec rm -rf {} \;
@@ -16,14 +17,18 @@ test:
 run:
 		poetry run uvicorn boaviztapi.main:app
 
-minor:
-		poetry run bumpversion --commit --tag --current-version ${CURRENT_VERSION} minor boaviztapi/__init__.py
+$(SEMVERS):
+		poetry version $@
+		$(MAKE) npm_version
+		$(MAKE) tag_version
 
-major:
-		poetry run bumpversion --commit --tag --current-version ${CURRENT_VERSION} major boaviztapi/__init__.py
+npm_version:
+		npm version --no-git-tag-version ${CURRENT_VERSION}
 
-patch:
-		poetry run bumpversion --commit --tag --current-version ${CURRENT_VERSION} patch boaviztapi/__init__.py
+
+tag_version:
+		git commit -m "release: bump to ${CURRENT_VERSION}" pyproject.toml package.json package-lock.json
+		git tag ${CURRENT_VERSION}
 
 build:
 		poetry build
