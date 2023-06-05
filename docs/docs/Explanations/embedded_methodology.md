@@ -35,7 +35,7 @@ The data and methods are specified for each device in their dedicated page.
 
 * [Server](devices/server.md)
 * [Cloud instances](devices/cloud.md)
-* [End user devices](devices/end_user_devices.md)
+* [End user devices](devices/terminals_&_peripherals.md)
 
 Two strategies exist
 

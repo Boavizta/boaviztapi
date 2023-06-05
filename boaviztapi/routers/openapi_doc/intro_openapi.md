@@ -4,25 +4,25 @@ This is a quick demo, to see full documentation [click here](https://doc.api.boa
 
 ## Features
 
-Bellow a list of all available features. Implemented features are specified in each route.
+Bellow a list of all available features.
 
 ### 👄 Verbose
 
 Verbose is an HTTP parameter. If set at true :
 
 * Shows the impacts of each component
-* Shows the value used for each attributes
+* Shows the value used for each attribute
 
-*"attribute": {"value": "value", "unit": "unit", "status": "Status", "source": "Source"}*
+*"attribute": {"value": "value", "unit": "unit", "status": "Status", "source": "Source", "min":"min", "max":"max", "significant_figures":"significant_figures"}*
 
-### 🔨 Manufacture
+### 🔨 Embedded
  
-* Manufacture impacts of devices are the sum of the impacts of its components
-* Manufacture impacts equations of components are given for each component
+* Embedded impacts are the impacts occurring during raw material extraction, manufacture, distribution and end of life
+* When end of life is not taken into account, we specified it in the ```warnings```
 
 ### 🔌  Usage
 
-Usage impacts are measured by multiplying :
+Usage impacts are assessed by multiplying :
 
  * a **duration**
 
@@ -32,43 +32,39 @@ Usage impacts are measured by multiplying :
 
 #### ⏲ Duration
 
-Usage impacts are given for a specific time duration. Duration can be given in :
+Usage impacts can be given as a router parameter, in hours.
 
-* HOURS : *usage:{hours_use_time: 1}*
-* DAYS : *usage:{days_use_time: 1}*
-* YEARS : *usage:{years_use_time: 1}* 
+If no duration is given, **the impact is assess for the all life duration of the asset**.
 
-If no duration is given, **the impact is measured for a year**.
-
-*Note* : units are cumulative
 
 #### ✖️ Impact factors
 
-* Impact factors can be given : *usage:{[criterion]_factors: 0.38}*
-* Impact factors can be retrieved from : *usage:{usage_location: "FRA"}*. 
+* Impact factors can be given : *"usage":{"elec_factors":{[criterion]_factors: 0.38}}*
+* Impact factors can be retrieved from : *"usage":{"usage_location": "FRA"}*. 
 
-*See the list of locations : [/v1/utils/country_code](/v1/utils/country_code)*
+* See the list of locations : [/v1/utils/country_code](/v1/utils/country_code)*
 
 #### ⚡ Electrical consumption
 
 ##### ⏺️ Given
-* Electrical consumption can be given for one hour (average) *usage:{avg_power: 1}*.
+* Electrical consumption can be given for one hour (average) *"usage":{"avg_power": 1}*.
 
 ##### 📈 Modeled
-* Electrical consumption can be retrieved from consumption profile using *usage:{time_workload: 50}*. 
+* Electrical consumption can be retrieved from consumption profile using *usage:{time_workload: 50}*.
 
-### 🔃 Auto-complete
+##### 📋 Archetype
 
-The API will complete the missing attributes in a request. Components have different completion strategies.
-Devices have minimal required components. If not given in the request a component with default characteristics is used.
+* In some cases, default electrical consumption can be taken from the archetype
 
-### 📋 Archetype
+### 🔃 Auto-complete & 📋 Archetype
 
-If an archetype is given, the missing attributes will be complete with the archetypes attributes instead of default attributes
+The API will complete the missing attributes in a request with a completion function or with values
+taken from the ```archetype``` specified in the route parameter.
 
 ### ⏬ Allocation
 
-Allocation is an HTTP parameter. 
+* Usage impacts are assessed on the duration given in route parameter
+* Embedded impacts are allocated linearly on the duration given in parameter
+```embedded_impact = impact * (duration/life_duration)```
 
-* If set at TOTAL, the total manufacture impact is returned.
-* If set at LINEAR the manufacture impact is allocated linearly hover a specific lifespan given or set by default : *{"usage":{"years_life_time":1}}*
+If no duration is given, the life_duration (```hours_life_time``) of the asset is used.

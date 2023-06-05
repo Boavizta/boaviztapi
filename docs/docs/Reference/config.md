@@ -16,10 +16,8 @@ The default archetype will be used if the user does not specify an ```archetype`
 Note that it must match an existing archetype ID in the archetype files.
 
 ```
-..
 default_cpu: "DEFAULT"
 default_server: "compute_medium"
-...
 ```
 
 ## Default_criteria
@@ -29,3 +27,13 @@ The default criteria will be used if the user does not specify the ```criteria``
 ```
 default_criteria: ["gwp", "adp", "pe"]
 ```
+
+## Minimal significant figures
+
+The minimal significant figures will be used to round the results of the API.
+
+```
+min_significant_figures: 5
+```
+
+*If set to 5, the results will be rounded to 5 significant figures.*

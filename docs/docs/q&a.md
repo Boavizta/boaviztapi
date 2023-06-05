@@ -39,7 +39,7 @@ See: [Cloud methodology](Explanations/devices/cloud.md)
 
 #### How does the API amortize embedded impacts?
 The API implements two methods to amortize embedded impacts
-Either the total embedded impact is given or a linear amortization over the life cycle of the assets can be applied. 
+Either the total embedded impact is given or a linear amortization hover the life cycle of the assets can be applied. 
 
 See: [Allocation methodology](Explanations/embedded_methodology.md#allocation)
 

@@ -30,9 +30,6 @@ server_configuration_examples = {
                     ]
             },
         "usage": {
-            "years_use_time": 1,
-            "days_use_time": 1,
-            "hours_use_time": 1,
             "avg_power": 300,
             "usage_location": "FRA"
         }
@@ -60,7 +57,6 @@ components_examples = {
 }
 
 cloud_usage_example = {
-        "hours_use_time": 2,
         "usage_location": "FRA",
         "time_workload": [
             {"time_percentage": 50, "load_percentage": 0},
@@ -74,7 +70,6 @@ cloud_example = {
     "instance_type": "a1.4xlarge",
     "usage":
             {
-            "hours_use_time": 2,
             "usage_location": "FRA",
             "time_workload": [
                 {"time_percentage": 50, "load_percentage": 0},
@@ -108,7 +103,7 @@ cpu_consumption_profiles = {
 
 end_user_terminal = {
     "usage": {
-        "years_use_time": 1,
-        "usage_location": "FRA"
+        "use_time_ratio": 0.3,
+        "usage_location": "FRA",
     }
 }

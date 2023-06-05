@@ -1,12 +1,12 @@
 server_impact_by_model_description = "# ✔ ️Server impacts from model name\n" \
-                                     "Retrieve the impacts of a given server name (archetype).\n" \
+                                     "Retrieve the impacts of a given server archetype.\n" \
                                      "### Features\n\n" \
                                      "👄 Verbose\n\n" \
                                      "🔃 Auto-complete\n\n" \
                                      "🔨 Embedded\n\n" \
                                      "🔌 Usage\n\n" \
                                      "📋 Archetype: " \
-                                     "Uses the [classic server impacts router]with a pre-registered archetype \n\n" \
+                                     "Uses the classic server impacts router with a pre-registered archetype \n\n" \
                                      "⏬ Allocation"
 
 server_impact_by_config_description = "# ✔️ Server impacts from configuration\n" \
@@ -31,7 +31,6 @@ all_default_usage_values = "# ✔️ Get all default usage values for a given us
 
 get_archetype_config_desc = "# ✔️ Get the configuration of a given archetype\n"
 get_instance_config = "# ✔️ Get the configuration of a given instance\n"
-
 
 cpu_description = "# ✔ ️CPU impacts from configuration\n" \
                   "### Features\n\n" \
@@ -113,42 +112,26 @@ case_description = "# ✔ ️Case impacts from configuration\n" \
                    "⏬ Allocation"
 
 cloud_provider_description = "# ✔ ️Cloud instance impacts from provider, instance type and usage \n" \
-                        "Retrieve the impacts of a given Cloud instance and usage.\n\n" \
-                        "### Features\n\n" \
-                        "📋 Provider \n\n" \
-                        "Name of the cloud provider. You can retrieve the [list here](" \
-                        "#/cloud_instance/server_get_all_cloud_providers).\n\n" \
-                        "📋 Instance type \n\n" \
-                        "Name of the chosen instance. You can retrieve the [list here](" \
-                        "#/cloud/server_get_archetype_name_v1_cloud_all_aws_instances_get).\n\n" \
-                        "👄 Verbose\n\n" \
-                        "🔨 Embedded\n\n" \
-                        "🔌 Usage \n\n" \
-                        "* 📈 Modeled\n\n" \
-                        "📋 Archetype : The configuration is set by the API, only usage is given by the user\n\n" \
-                        "⏬ Allocation"
+                             "Retrieve the impacts of a given Cloud instance and usage.\n\n" \
+                             "### Features\n\n" \
+                             "📋 Provider \n\n" \
+                             "Name of the cloud provider. You can retrieve the [list here](" \
+                             "#/cloud_instance/server_get_all_cloud_providers).\n\n" \
+                             "📋 Instance type \n\n" \
+                             "Name of the chosen instance. You can retrieve the [list here](" \
+                             "#/cloud/server_get_archetype_name_v1_cloud_all_aws_instances_get).\n\n" \
+                             "👄 Verbose\n\n" \
+                             "🔨 Embedded\n\n" \
+                             "🔌 Usage \n\n" \
+                             "* 📈 Modeled\n\n" \
+                             "📋 Archetype : The configuration is set by the API, only usage is given by the user\n\n" \
+                             "⏬ Allocation"
 
-cloud_aws_description = "# ✔ (LEGACY) ️AWS instance impacts from instance type and usage \n" \
-                        "Retrieve the impacts of a given AWS instance and usage.\n\n" \
-                        "### Features\n\n" \
-                        "📋 Instance type \n\n" \
-                        "AWS name of the chosen instance. You can retrieve the [list here](" \
-                        "#/cloud/server_get_all_archetype_name_v1_cloud_all_aws_instances_get).\n\n" \
-                        "👄 Verbose\n\n" \
-                        "🔨 Embedded\n\n" \
-                        "🔌 Usage \n\n" \
-                        "* 📈 Modeled\n\n" \
-                        "📋 Archetype : The configuration is set by the API, only usage is given by the user\n\n" \
-                        "⏬ Allocation"
-
-all_default_aws_instances = "# ✔ (LEGACY)️ Get all the available aws instances\n" \
-                            "📜 Return the name of all pre-registered aws instances"
-            
 all_default_cloud_instances = "# ✔ ️Get all the available instances for a given Cloud provider\n" \
-                            "📜 Return the name of all pre-registered instances for the Cloud provider"
+                              "📜 Return the name of all pre-registered instances for the Cloud provider"
 
 all_default_cloud_providers = "# ✔ ️Get all the available Cloud providers\n" \
-                            "📜 Return the names of all pre-registered Cloud providers"
+                              "📜 Return the names of all pre-registered Cloud providers"
 
 country_code = "# ✔ ️Get all the available countries with their trigram code (*usage:{usage_location: 'FRA'}*)\n"
 cpu_family = "# ✔ ️Get all the available cpu family in the API (*cpu:{family:'skylake'}*)\n"
@@ -157,5 +140,29 @@ ssd_manufacturer = "# ✔ ️Get all the available ssd manufacturer in the API (
 ram_manufacturer = "# ✔ ️Get all the available ram manufacturer in the API (*ram:{manufacturer:'samsung'}*)\n"
 case_type = "# ✔ ️Get all the available case type in the API (*model:{case:'blade'}*)\n"
 name_to_cpu = "# ✔ ️Complete a cpu attributes from a cpu name\n"
-cpu_names= "# ✔ ️Get all the available cpu name in the API (*cpu:{name:'intel xeon platinum 8175m'}*)\n"
+cpu_names = "# ✔ ️Get all the available cpu name in the API (*cpu:{name:'intel xeon platinum 8175m'}*)\n"
 impacts_criteria = "# ✔ ️Get all the available criteria for the impacts calculation\n"
+
+
+terminal_description = "# ✔ Terminal impacts\n" \
+                          "### Features\n\n" \
+                          "👄 Verbose\n\n" \
+                          "🔃 Auto-complete\n\n" \
+                          "🔨 Embedded\n\n" \
+                          "The impacts values are fix" \
+                          "🔌 Usage\n\n" \
+                          "* ⏺️  Given\n\n" \
+                          "* 📋 Archetype\n\n" \
+                          "⏬ Allocation"
+
+
+peripheral_description = "# ✔ Peripheral impacts\n" \
+                          "### Features\n\n" \
+                          "👄 Verbose\n\n" \
+                          "🔃 Auto-complete\n\n" \
+                          "🔨 Embedded\n\n" \
+                          "The impacts values are fix" \
+                          "🔌 Usage\n\n" \
+                          "* ⏺️  Given\n\n" \
+                          "* 📋 Archetype\n\n" \
+                          "⏬ Allocation"

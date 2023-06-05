@@ -21,7 +21,7 @@ You can send an empty device. In this case, archetype's values will be used
 {}
 ```
 
-For some devices, you can set a type. See [end user device](../../Explanations/devices/end_user_devices.md) for more information about types.
+For some devices, you can set a type. See [end user device](../../Explanations/devices/terminals_&_peripherals.md) for more information about types.
 
 ``` json
 {
