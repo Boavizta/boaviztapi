@@ -7,7 +7,7 @@
 
 ---
 
-An API to access [Boavizta's](https://boavizta.cmakers.io/) methodologies and footprint [reference data](https://github.com/Boavizta/environmental-footprint-data).
+An API to access [Boavizta's](https://boavizta.cmakers.io/) methodologies and impacts data [reference data](https://github.com/Boavizta/environmental-footprint-data).
 
 See the [documentation](https://doc.api.boavizta.org/) for API usage and methodology.
 
@@ -15,13 +15,15 @@ See the [documentation](https://doc.api.boavizta.org/) for API usage and methodo
 
 ## :dart: Objective
 
-As part of Boavizta's desire to improve the quality of the measurement of the environmental impacts of ICTs in organizations, this project aims at giving access to the group's work to as many people as possible in an automated and industrialized way.
+Boavizta aims to enhance the assessment of environmental impacts induced by ICTs in organizations by providing widespread access to our work in an automated and efficient manner.
 
-The various data and methodologies integrated by Boavizta are aggregated and made available via an API.
+Boavizta integrates various data and methodologies, which are combined and made accessible through this API.
 
-In the interest of transparency and scientific popularization, the opening of the code, the versioning of the impact factors and the documentation of the project are critical points.
+Transparency and the popularization of scientific knowledge are of utmost importance in this project, and key aspects include open-sourcing the code, versioning the impact factors, and thoroughly documenting the project.
 
-The system is developed in layers according to a bottom-up principle. The first layer implemented is equipment, starting with the servers (MVP). The second layer is the measurement of the impact of digital services or systems. The measurement of the global impact is currently outside the scope.
+In the interest of transparency and scientific popularization, the opening of the code, the versioning of the impact factors and the documentation of the project are critical points. 
+
+The system follows a bottom-up approach in its development, organized into layers. The initial layer focuses on equipment. The second layer focues on the impacts of digital services (e.g. cloud instances) or systems. However, assessing the overall global impact of ICT is currently beyond the project's scope.
 
 ## :fast_forward: Test it yourself (no installation)
 
