@@ -417,7 +417,7 @@ async def component_impact_bottom_up(component: Component,
     if verbose:
         return {
             "impacts": impacts,
-            "verbose": verbose_component(component=component, selected_criteria=criteria)
+            "verbose": verbose_component(component=component, selected_criteria=criteria, duration=duration)
         }
     return impacts
 

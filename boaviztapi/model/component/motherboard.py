@@ -7,18 +7,6 @@ from boaviztapi.service.factor_provider import get_impact_factor
 class ComponentMotherboard(Component):
     NAME = "MOTHERBOARD"
 
-    IMPACT_FACTOR = {
-        'gwp': {
-            'impact': 66.10
-        },
-        'pe': {
-            'impact': 836.00
-        },
-        'adpe': {
-            'impact': 3.69E-03
-        }
-    }
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 

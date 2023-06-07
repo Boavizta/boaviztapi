@@ -8,9 +8,9 @@ def test_usage_server_french_mix_1_kw(french_mix_1_kw_dto):
     usage = mapper_usage_server(french_mix_1_kw_dto)
     server.usage = usage
 
-    assert get_model_single_impact(server, 'use', 'pe').to_json() == {'max': 1000.0, 'min': 0.01, 'significant_figures': 1, 'value': 100.0}
-    assert get_model_single_impact(server, 'use', 'adp').to_json() == {'max': 4e-06, 'min': 5e-11, 'significant_figures': 1, 'value': 4e-07}
-    assert get_model_single_impact(server, 'use', 'gwp').to_json() == {'max': 9.0, 'min': 0.0001, 'significant_figures': 1, 'value': 0.9}
+    assert get_model_single_impact(server, 'use', 'pe', duration=365*24).to_json() == {'max': 99.0, 'min': 99.0, 'significant_figures': 2, 'value': 99.0}
+    assert get_model_single_impact(server, 'use', 'adp', duration=365*24).to_json() == {'max': 4.3e-07, 'min': 4.3e-07, 'significant_figures': 2, 'value': 4.3e-07}
+    assert get_model_single_impact(server, 'use', 'gwp', duration=365*24).to_json() == {'max': 0.86, 'min': 0.86, 'significant_figures': 2, 'value': 0.86}
 
 
 def test_usage_server_empty_usage(empty_usage_dto):
@@ -18,6 +18,6 @@ def test_usage_server_empty_usage(empty_usage_dto):
     usage = mapper_usage_server(empty_usage_dto)
     server.usage = usage
 
-    assert get_model_single_impact(server, 'use', 'pe').to_json() == {'max': 334600000.0,'min': 0.002487,'significant_figures': 4,'value': 87380.0}
-    assert get_model_single_impact(server, 'use', 'adp').to_json() == {'max': 0.19,'min': 2.53e-09,'significant_figures': 3, 'value': 0.000436}
-    assert get_model_single_impact(server, 'use', 'gwp').to_json() == {'max': 640000.0,'min': 0.0044,'significant_figures': 2, 'value': 2600.0}
+    assert get_model_single_impact(server, 'use', 'pe', duration=365*24).to_json() == {'max': 33455000.0, 'min': 21.787, 'significant_figures': 5, 'value': 87381.0}
+    assert get_model_single_impact(server, 'use', 'adp', duration=365*24).to_json() == {'max': 0.019, 'min': 2.21e-05, 'significant_figures': 3, 'value': 0.000436}
+    assert get_model_single_impact(server, 'use', 'gwp', duration=365*24).to_json() == {'max': 64000.0, 'min': 39.0, 'significant_figures': 2, 'value': 2600.0}

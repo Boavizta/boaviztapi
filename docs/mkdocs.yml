@@ -28,6 +28,7 @@ nav:
         - Get the impacts of a server: getting_started/single_server.md
         - Get the impacts of a cloud instance (AWS): getting_started/single_cloud_instance.md
         - Get started with consumption profiles : getting_started/consumption_profile.md
+        - Get started with terminal and peripherals: getting_started/end_user_devices.md
     - Explanations:
         - Boavizta database: Explanations/boavizta_db.md
         - Impacts criteria : Explanations/impacts.md

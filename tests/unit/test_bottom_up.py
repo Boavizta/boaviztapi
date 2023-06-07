@@ -2,111 +2,127 @@ from boaviztapi.service.bottom_up import bottom_up
 
 
 def test_bottom_up_component_cpu_empty(empty_cpu_model):
-    assert bottom_up(empty_cpu_model, duration="total") == \
+    assert bottom_up(empty_cpu_model, duration=empty_cpu_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
-                    'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.02,
+                    'embedded': {'max': 0.02,
                                  'min': 0.02,
                                  'significant_figures': 2,
-                                 'value': 0.02},
+                                 'value': 0.02,
+                                 'warnings': ['End of life is not included in the '
+                                              'calculation']},
                     'unit': 'kgSbeq',
-                    'use': {'max': 0.00424,
-                            'min': 2.41e-09,
-                            'significant_figures': 3,
-                            'value': 0.000102}},
+                    'use': {'max': 0.0013,
+                            'min': 6.3e-05,
+                            'significant_figures': 2,
+                            'value': 0.00031}},
             'gwp': {'description': 'Total climate change',
-                    'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 22.7,
+                    'embedded': {'max': 22.7,
                                  'min': 11.1,
                                  'significant_figures': 3,
-                                 'value': 21.7},
+                                 'value': 21.7,
+                                 'warnings': ['End of life is not included in the '
+                                              'calculation']},
                     'unit': 'kgCO2eq',
-                    'use': {'max': 14000.0,
-                            'min': 0.0042,
+                    'use': {'max': 4300.0,
+                            'min': 110.0,
                             'significant_figures': 2,
-                            'value': 610.0}},
+                            'value': 1800.0}},
             'pe': {'description': 'Consumption of primary energy',
-                   'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 339.0,
+                   'embedded': {'max': 339.0,
                                 'min': 182.0,
                                 'significant_figures': 3,
-                                'value': 325.0},
+                                'value': 325.0,
+                                'warnings': ['End of life is not included in the '
+                                             'calculation']},
                    'unit': 'MJ',
-                   'use': {'max': 7473000.0,
-                           'min': 0.002369,
-                           'significant_figures': 4,
-                           'value': 20550.0}}}
+                   'use': {'max': 2200000.0,
+                           'min': 62.0,
+                           'significant_figures': 2,
+                           'value': 62000.0}}}
 
 
 def test_bottom_up_component_cpu_complete(complete_cpu_model):
-    assert bottom_up(complete_cpu_model, duration="total") == \
+    assert bottom_up(complete_cpu_model, duration=complete_cpu_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
-                    'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.041,
+                    'embedded': {'max': 0.041,
                                  'min': 0.041,
                                  'significant_figures': 2,
-                                 'value': 0.041},
+                                 'value': 0.041,
+                                 'warnings': ['End of life is not included in the '
+                                              'calculation']},
                     'unit': 'kgSbeq',
-                    'use': {'max': 0.00848,
-                            'min': 4.81e-09,
-                            'significant_figures': 3,
-                            'value': 0.000205}},
+                    'use': {'max': 0.0025,
+                            'min': 0.00013,
+                            'significant_figures': 2,
+                            'value': 0.00061}},
             'gwp': {'description': 'Total climate change',
-                    'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 43.4,
+                    'embedded': {'max': 43.4,
                                  'min': 43.4,
                                  'significant_figures': 3,
-                                 'value': 43.4},
+                                 'value': 43.4,
+                                 'warnings': ['End of life is not included in the '
+                                              'calculation']},
                     'unit': 'kgCO2eq',
-                    'use': {'max': 29000.0,
-                            'min': 0.0084,
+                    'use': {'max': 8600.0,
+                            'min': 220.0,
                             'significant_figures': 2,
-                            'value': 1200.0}},
+                            'value': 3600.0}},
             'pe': {'description': 'Consumption of primary energy',
-                   'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 650.0,
+                   'embedded': {'max': 650.0,
                                 'min': 650.0,
                                 'significant_figures': 3,
-                                'value': 650.0},
+                                'value': 650.0,
+                                'warnings': ['End of life is not included in the '
+                                             'calculation']},
                    'unit': 'MJ',
-                   'use': {'max': 14950000.0,
-                           'min': 0.004738,
-                           'significant_figures': 4,
-                           'value': 41100.0}}}
+                   'use': {'max': 4500000.0,
+                           'min': 120.0,
+                           'significant_figures': 2,
+                           'value': 120000.0}}}
 
 
 def test_bottom_up_component_cpu_incomplete(incomplete_cpu_model):
-    bottom_up(incomplete_cpu_model, duration="total")
-    print(incomplete_cpu_model.usage.avg_power.value)
-    assert bottom_up(incomplete_cpu_model, duration="total") == \
+    assert bottom_up(incomplete_cpu_model, duration=incomplete_cpu_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
-                    'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.02,
+                    'embedded': {'max': 0.02,
                                  'min': 0.02,
                                  'significant_figures': 2,
-                                 'value': 0.02},
+                                 'value': 0.02,
+                                 'warnings': ['End of life is not included in the '
+                                              'calculation']},
                     'unit': 'kgSbeq',
-                    'use': {'max': 0.00424,
-                            'min': 2.41e-09,
-                            'significant_figures': 3,
-                            'value': 0.000102}},
+                    'use': {'max': 0.0013,
+                            'min': 6.3e-05,
+                            'significant_figures': 2,
+                            'value': 0.00031}},
             'gwp': {'description': 'Total climate change',
-                    'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 19.7,
+                    'embedded': {'max': 19.7,
                                  'min': 19.7,
                                  'significant_figures': 3,
-                                 'value': 19.7},
+                                 'value': 19.7,
+                                 'warnings': ['End of life is not included in the '
+                                              'calculation']},
                     'unit': 'kgCO2eq',
-                    'use': {'max': 14000.0,
-                            'min': 0.0042,
+                    'use': {'max': 4300.0,
+                            'min': 110.0,
                             'significant_figures': 2,
-                            'value': 610.0}},
+                            'value': 1800.0}},
             'pe': {'description': 'Consumption of primary energy',
-                   'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 297.0,
+                   'embedded': {'max': 297.0,
                                 'min': 297.0,
                                 'significant_figures': 3,
-                                'value': 297.0},
+                                'value': 297.0,
+                                'warnings': ['End of life is not included in the '
+                                             'calculation']},
                    'unit': 'MJ',
-                   'use': {'max': 7473000.0,
-                           'min': 0.002369,
-                           'significant_figures': 4,
-                           'value': 20550.0}}}
+                   'use': {'max': 2200000.0,
+                           'min': 62.0,
+                           'significant_figures': 2,
+                           'value': 62000.0}}}
 
 
 def test_bottom_up_component_ssd_empty(empty_ssd_model):
-    assert bottom_up(empty_ssd_model, duration="total") == \
+    assert bottom_up(empty_ssd_model, duration=empty_ssd_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 3.2,
                                  'min': 0.0069,
@@ -131,7 +147,7 @@ def test_bottom_up_component_ssd_empty(empty_ssd_model):
 
 
 def test_bottom_up_component_ssd_complete(complete_ssd_model):
-    assert bottom_up(complete_ssd_model, duration="total") == \
+    assert bottom_up(complete_ssd_model, duration=complete_ssd_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.0011,
                                  'min': 0.0011,
@@ -156,7 +172,7 @@ def test_bottom_up_component_ssd_complete(complete_ssd_model):
 
 
 def test_bottom_up_component_ssd_incomplete(incomplete_ssd_model):
-    assert bottom_up(incomplete_ssd_model, duration="total") == \
+    assert bottom_up(incomplete_ssd_model, duration=incomplete_ssd_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.0064,
                                  'min': 0.00068,
@@ -181,109 +197,127 @@ def test_bottom_up_component_ssd_incomplete(incomplete_ssd_model):
 
 
 def test_bottom_up_component_ram_empty(empty_ram_model):
-    assert bottom_up(empty_ram_model, duration="total") == \
+    assert bottom_up(empty_ram_model, duration=empty_ram_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
-                    'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.065,
+                    'embedded': {'max': 0.065,
                                  'min': 0.0018,
                                  'significant_figures': 2,
-                                 'value': 0.0049},
+                                 'value': 0.0049,
+                                 'warnings': ['End of life is not included in the '
+                                              'calculation']},
                     'unit': 'kgSbeq',
-                    'use': {'max': 0.000211,
-                            'min': 1.2e-10,
-                            'significant_figures': 3,
-                            'value': 5.11e-06}},
+                    'use': {'max': 6.3e-05,
+                            'min': 3.2e-06,
+                            'significant_figures': 2,
+                            'value': 1.5e-05}},
             'gwp': {'description': 'Total climate change',
-                    'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 2200.0,
+                    'embedded': {'max': 2200.0,
                                  'min': 7.4,
                                  'significant_figures': 2,
-                                 'value': 120.0},
+                                 'value': 120.0,
+                                 'warnings': ['End of life is not included in the '
+                                              'calculation']},
                     'unit': 'kgCO2eq',
-                    'use': {'max': 720.0,
-                            'min': 0.00021,
+                    'use': {'max': 210.0,
+                            'min': 5.5,
                             'significant_figures': 2,
-                            'value': 30.0}},
+                            'value': 91.0}},
             'pe': {'description': 'Consumption of primary energy',
-                   'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 27000.0,
+                   'embedded': {'max': 27000.0,
                                 'min': 100.0,
                                 'significant_figures': 2,
-                                'value': 1500.0},
+                                'value': 1500.0,
+                                'warnings': ['End of life is not included in the '
+                                             'calculation']},
                    'unit': 'MJ',
-                   'use': {'max': 372700.0,
-                           'min': 0.0001181,
-                           'significant_figures': 4,
-                           'value': 1025.0}}}
+                   'use': {'max': 110000.0,
+                           'min': 3.1,
+                           'significant_figures': 2,
+                           'value': 3100.0}}}
 
 
 def test_bottom_up_component_ram_complete(complete_ram_model):
-    assert bottom_up(complete_ram_model, duration="total") == \
+    assert bottom_up(complete_ram_model, duration=complete_ram_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
-                    'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.034,
+                    'embedded': {'max': 0.034,
                                  'min': 0.034,
                                  'significant_figures': 2,
-                                 'value': 0.034},
+                                 'value': 0.034,
+                                 'warnings': ['End of life is not included in the '
+                                              'calculation']},
                     'unit': 'kgSbeq',
-                    'use': {'max': 0.00254,
-                            'min': 1.44e-09,
-                            'significant_figures': 3,
-                            'value': 6.13e-05}},
+                    'use': {'max': 0.00076,
+                            'min': 3.8e-05,
+                            'significant_figures': 2,
+                            'value': 0.00018}},
             'gwp': {'description': 'Total climate change',
-                    'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 530.0,
+                    'embedded': {'max': 530.0,
                                  'min': 530.0,
                                  'significant_figures': 2,
-                                 'value': 530.0},
+                                 'value': 530.0,
+                                 'warnings': ['End of life is not included in the '
+                                              'calculation']},
                     'unit': 'kgCO2eq',
-                    'use': {'max': 8600.0,
-                            'min': 0.0025,
+                    'use': {'max': 2600.0,
+                            'min': 66.0,
                             'significant_figures': 2,
-                            'value': 360.0}},
+                            'value': 1100.0}},
             'pe': {'description': 'Consumption of primary energy',
-                   'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 6700.0,
+                   'embedded': {'max': 6700.0,
                                 'min': 6700.0,
                                 'significant_figures': 2,
-                                'value': 6700.0},
+                                'value': 6700.0,
+                                'warnings': ['End of life is not included in the '
+                                             'calculation']},
                    'unit': 'MJ',
-                   'use': {'max': 4472000.0,
-                           'min': 0.001418,
-                           'significant_figures': 4,
-                           'value': 12300.0}}}
+                   'use': {'max': 1300000.0,
+                           'min': 37.0,
+                           'significant_figures': 2,
+                           'value': 37000.0}}}
 
 
 def test_bottom_up_component_ram_incomplete(incomplete_ram_model):
-    assert bottom_up(incomplete_ram_model, duration="total") == \
+    assert bottom_up(incomplete_ram_model, duration=incomplete_ram_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
-                    'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.14,
+                    'embedded': {'max': 0.14,
                                  'min': 0.021,
                                  'significant_figures': 2,
-                                 'value': 0.059},
+                                 'value': 0.059,
+                                 'warnings': ['End of life is not included in the '
+                                              'calculation']},
                     'unit': 'kgSbeq',
-                    'use': {'max': 0.00254,
-                            'min': 1.44e-09,
-                            'significant_figures': 3,
-                            'value': 6.13e-05}},
+                    'use': {'max': 0.00076,
+                            'min': 3.8e-05,
+                            'significant_figures': 2,
+                            'value': 0.00018}},
             'gwp': {'description': 'Total climate change',
-                    'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 4300.0,
+                    'embedded': {'max': 4300.0,
                                  'min': 100.0,
                                  'significant_figures': 2,
-                                 'value': 1400.0},
+                                 'value': 1400.0,
+                                 'warnings': ['End of life is not included in the '
+                                              'calculation']},
                     'unit': 'kgCO2eq',
-                    'use': {'max': 8600.0,
-                            'min': 0.0025,
+                    'use': {'max': 2600.0,
+                            'min': 66.0,
                             'significant_figures': 2,
-                            'value': 360.0}},
+                            'value': 1100.0}},
             'pe': {'description': 'Consumption of primary energy',
-                   'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 53000.0,
+                   'embedded': {'max': 53000.0,
                                 'min': 1400.0,
                                 'significant_figures': 2,
-                                'value': 18000.0},
+                                'value': 18000.0,
+                                'warnings': ['End of life is not included in the '
+                                             'calculation']},
                    'unit': 'MJ',
-                   'use': {'max': 4472000.0,
-                           'min': 0.001418,
-                           'significant_figures': 4,
-                           'value': 12300.0}}}
+                   'use': {'max': 1300000.0,
+                           'min': 37.0,
+                           'significant_figures': 2,
+                           'value': 37000.0}}}
 
 
 def test_bottom_up_component_power_supply_complete(complete_power_supply_model):
-    assert bottom_up(complete_power_supply_model, duration="total") == \
+    assert bottom_up(complete_power_supply_model, duration=complete_power_supply_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.05,
                                  'min': 0.05,
@@ -308,7 +342,7 @@ def test_bottom_up_component_power_supply_complete(complete_power_supply_model):
 
 
 def test_bottom_up_component_power_supply_empty(empty_power_supply_model):
-    assert bottom_up(empty_power_supply_model, duration="total") == \
+    assert bottom_up(empty_power_supply_model, duration=empty_power_supply_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.042,
                                  'min': 0.0083,
@@ -333,7 +367,7 @@ def test_bottom_up_component_power_supply_empty(empty_power_supply_model):
 
 
 def test_bottom_up_component_hdd(hdd_model):
-    assert bottom_up(hdd_model, duration="total") == \
+    assert bottom_up(hdd_model, duration=hdd_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.00025,
                                  'min': 0.00025,
@@ -358,7 +392,7 @@ def test_bottom_up_component_hdd(hdd_model):
 
 
 def test_bottom_up_component_motherboard(motherboard_model):
-    assert bottom_up(motherboard_model, duration="total") == \
+    assert bottom_up(motherboard_model, duration=motherboard_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.00369,
                                  'min': 0.00369,
@@ -383,7 +417,7 @@ def test_bottom_up_component_motherboard(motherboard_model):
 
 
 def test_bottom_up_component_empty_case(empty_case_model):
-    assert bottom_up(empty_case_model, duration="total") == \
+    assert bottom_up(empty_case_model, duration=empty_case_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.0277,
                                  'min': 0.0202,
@@ -408,7 +442,7 @@ def test_bottom_up_component_empty_case(empty_case_model):
 
 
 def test_bottom_up_component_blade_case(blade_case_model):
-    assert bottom_up(blade_case_model, duration="total") == \
+    assert bottom_up(blade_case_model, duration=blade_case_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 0.0277,
                                  'min': 0.0277,
@@ -433,7 +467,7 @@ def test_bottom_up_component_blade_case(blade_case_model):
 
 
 def test_bottom_up_component_assembly(assembly_model):
-    assert bottom_up(assembly_model, duration="total") == \
+    assert bottom_up(assembly_model, duration=assembly_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'warnings': ['End of life is not included in the calculation'], 'max': 1.41e-06,
                                  'min': 1.41e-06,

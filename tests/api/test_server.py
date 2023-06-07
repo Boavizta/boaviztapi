@@ -9,7 +9,7 @@ pytest_plugins = ('pytest_asyncio',)
 @pytest.mark.asyncio
 async def test_complete_config_server():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?verbose=false&duration=total', json={
+        res = await ac.post('/v1/server/?verbose=false', json={
             "model": {
             },
             "configuration": {
@@ -49,77 +49,83 @@ async def test_complete_config_server():
             }
         })
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-         'embedded': {'max': 0.26,
-                      'min': 0.25,
-                      'significant_figures': 2,
-                      'value': 0.25,
-                      'warnings': ['End of life is not included in the '
-                                   'calculation']},
-         'unit': 'kgSbeq',
-         'use': {'max': 0.0078,
-                 'min': 0.000194,
-                 'significant_figures': 3,
-                 'value': 0.00125}},
- 'gwp': {'description': 'Total climate change',
-         'embedded': {'max': 1100.0,
-                      'min': 1100.0,
-                      'significant_figures': 2,
-                      'value': 1100.0,
-                      'warnings': ['End of life is not included in the '
-                                   'calculation']},
-         'unit': 'kgCO2eq',
-         'use': {'max': 26000.0,
-                 'min': 340.0,
-                 'significant_figures': 2,
-                 'value': 7400.0}},
- 'pe': {'description': 'Consumption of primary energy',
-        'embedded': {'max': 15000.0,
-                     'min': 14000.0,
-                     'significant_figures': 2,
-                     'value': 15000.0,
-                     'warnings': ['End of life is not included in the '
-                                  'calculation']},
-        'unit': 'MJ',
-        'use': {'max': 13746000.0,
-                'min': 190.86,
-                'significant_figures': 5,
-                'value': 251380.0}}}
+                                  'embedded': {'max': 0.26,
+                                               'min': 0.25,
+                                               'significant_figures': 2,
+                                               'value': 0.25,
+                                               'warnings': ['End of life is not included in the '
+                                                            'calculation']},
+                                  'unit': 'kgSbeq',
+                                  'use': {'max': 0.0078,
+                                          'min': 0.000194,
+                                          'significant_figures': 3,
+                                          'value': 0.00125}},
+                          'gwp': {'description': 'Total climate change',
+                                  'embedded': {'max': 1100.0,
+                                               'min': 1100.0,
+                                               'significant_figures': 2,
+                                               'value': 1100.0,
+                                               'warnings': ['End of life is not included in the '
+                                                            'calculation']},
+                                  'unit': 'kgCO2eq',
+                                  'use': {'max': 26000.0,
+                                          'min': 340.0,
+                                          'significant_figures': 2,
+                                          'value': 7400.0}},
+                          'pe': {'description': 'Consumption of primary energy',
+                                 'embedded': {'max': 15000.0,
+                                              'min': 14000.0,
+                                              'significant_figures': 2,
+                                              'value': 15000.0,
+                                              'warnings': ['End of life is not included in the '
+                                                           'calculation']},
+                                 'unit': 'MJ',
+                                 'use': {'max': 13746000.0,
+                                         'min': 190.86,
+                                         'significant_figures': 5,
+                                         'value': 251380.0}}}
 
 
 @pytest.mark.asyncio
 async def test_empty_config_server():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?verbose=false&duration=8760', json={})
+        res = await ac.post('/v1/server/?verbose=false', json={})
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 88.0,
+                                  'embedded': {'max': 88.0,
                                                'min': 0.054,
                                                'significant_figures': 2,
-                                               'value': 0.23},
+                                               'value': 0.23,
+                                               'warnings': ['End of life is not included in the '
+                                                            'calculation']},
                                   'unit': 'kgSbeq',
-                                  'use': {'max': 0.19,
-                                          'min': 2.53e-09,
+                                  'use': {'max': 0.0759,
+                                          'min': 8.85e-05,
                                           'significant_figures': 3,
-                                          'value': 0.000436}},
+                                          'value': 0.00174}},
                           'gwp': {'description': 'Total climate change',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 3000000.0,
+                                  'embedded': {'max': 3000000.0,
                                                'min': 200.0,
                                                'significant_figures': 2,
-                                               'value': 3300.0},
+                                               'value': 3300.0,
+                                               'warnings': ['End of life is not included in the '
+                                                            'calculation']},
                                   'unit': 'kgCO2eq',
-                                  'use': {'max': 640000.0,
-                                          'min': 0.0044,
+                                  'use': {'max': 260000.0,
+                                          'min': 150.0,
                                           'significant_figures': 2,
-                                          'value': 2600.0}},
+                                          'value': 10000.0}},
                           'pe': {'description': 'Consumption of primary energy',
-                                 'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 38000000.0,
+                                 'embedded': {'max': 38000000.0,
                                               'min': 2800.0,
                                               'significant_figures': 2,
-                                              'value': 42000.0},
+                                              'value': 42000.0,
+                                              'warnings': ['End of life is not included in the '
+                                                           'calculation']},
                                  'unit': 'MJ',
-                                 'use': {'max': 334600000.0,
-                                         'min': 0.002487,
-                                         'significant_figures': 4,
-                                         'value': 87380.0}}}
+                                 'use': {'max': 133820000.0,
+                                         'min': 87.149,
+                                         'significant_figures': 5,
+                                         'value': 349530.0}}}
 
 
 @pytest.mark.asyncio
@@ -168,35 +174,41 @@ async def test_dell_r740_server():
         })
 
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.15,
-                                               'min': 0.15,
+                                   'embedded': {'max': 0.15,
+                                                'min': 0.15,
+                                                'significant_figures': 2,
+                                                'value': 0.15,
+                                                'warnings': ['End of life is not included in the '
+                                                             'calculation']},
+                                   'unit': 'kgSbeq',
+                                   'use': {'max': 0.00881,
+                                           'min': 0.000219,
+                                           'significant_figures': 3,
+                                           'value': 0.00142}},
+                           'gwp': {'description': 'Total climate change',
+                                   'embedded': {'max': 970.0,
+                                                'min': 970.0,
+                                                'significant_figures': 2,
+                                                'value': 970.0,
+                                                'warnings': ['End of life is not included in the '
+                                                             'calculation']},
+                                   'unit': 'kgCO2eq',
+                                   'use': {'max': 30000.0,
+                                           'min': 380.0,
+                                           'significant_figures': 2,
+                                           'value': 8400.0}},
+                           'pe': {'description': 'Consumption of primary energy',
+                                  'embedded': {'max': 13000.0,
+                                               'min': 13000.0,
                                                'significant_figures': 2,
-                                               'value': 0.15},
-                                  'unit': 'kgSbeq',
-                                  'use': {'max': 0.022,
-                                          'min': 6.25e-09,
-                                          'significant_figures': 3,
-                                          'value': 0.000354}},
-                          'gwp': {'description': 'Total climate change',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 970.0,
-                                               'min': 970.0,
-                                               'significant_figures': 2,
-                                               'value': 970.0},
-                                  'unit': 'kgCO2eq',
-                                  'use': {'max': 75000.0,
-                                          'min': 0.011,
-                                          'significant_figures': 2,
-                                          'value': 2100.0}},
-                          'pe': {'description': 'Consumption of primary energy',
-                                 'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 13000.0,
-                                              'min': 13000.0,
-                                              'significant_figures': 2,
-                                              'value': 13000.0},
-                                 'unit': 'MJ',
-                                 'use': {'max': 38840000.0,
-                                         'min': 0.006156,
-                                         'significant_figures': 4,
-                                         'value': 71020.0}}}
+                                               'value': 13000.0,
+                                               'warnings': ['End of life is not included in the '
+                                                            'calculation']},
+                                  'unit': 'MJ',
+                                  'use': {'max': 15535000.0,
+                                          'min': 215.7,
+                                          'significant_figures': 5,
+                                          'value': 284100.0}}}
 
 
 @pytest.mark.asyncio
@@ -232,35 +244,41 @@ async def test_partial_server_1():
             }
         })
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 6.7,
+                                  'embedded': {'max': 6.7,
                                                'min': 0.11,
                                                'significant_figures': 2,
-                                               'value': 0.15},
+                                               'value': 0.15,
+                                               'warnings': ['End of life is not included in the '
+                                                            'calculation']},
                                   'unit': 'kgSbeq',
-                                  'use': {'max': 0.0195,
-                                          'min': 5.53e-09,
+                                  'use': {'max': 0.0078,
+                                          'min': 0.000194,
                                           'significant_figures': 3,
-                                          'value': 0.000313}},
+                                          'value': 0.00125}},
                           'gwp': {'description': 'Total climate change',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 230000.0,
+                                  'embedded': {'max': 230000.0,
                                                'min': 1200.0,
                                                'significant_figures': 2,
-                                               'value': 1300.0},
+                                               'value': 1300.0,
+                                               'warnings': ['End of life is not included in the '
+                                                            'calculation']},
                                   'unit': 'kgCO2eq',
-                                  'use': {'max': 66000.0,
-                                          'min': 0.0096,
+                                  'use': {'max': 26000.0,
+                                          'min': 340.0,
                                           'significant_figures': 2,
-                                          'value': 1900.0}},
+                                          'value': 7400.0}},
                           'pe': {'description': 'Consumption of primary energy',
-                                 'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 2800000.0,
+                                 'embedded': {'max': 2800000.0,
                                               'min': 15000.0,
                                               'significant_figures': 2,
-                                              'value': 17000.0},
+                                              'value': 17000.0,
+                                              'warnings': ['End of life is not included in the '
+                                                           'calculation']},
                                  'unit': 'MJ',
-                                 'use': {'max': 34370000.0,
-                                         'min': 0.005447,
-                                         'significant_figures': 4,
-                                         'value': 62850.0}}}
+                                 'use': {'max': 13746000.0,
+                                         'min': 190.86,
+                                         'significant_figures': 5,
+                                         'value': 251380.0}}}
 
 
 @pytest.mark.asyncio
@@ -303,35 +321,41 @@ async def test_partial_server_2():
             }
         })
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 0.51,
+                                  'embedded': {'max': 0.51,
                                                'min': 0.25,
                                                'significant_figures': 2,
-                                               'value': 0.26},
+                                               'value': 0.26,
+                                               'warnings': ['End of life is not included in the '
+                                                            'calculation']},
                                   'unit': 'kgSbeq',
-                                  'use': {'max': 0.0195,
-                                          'min': 5.53e-09,
+                                  'use': {'max': 0.0078,
+                                          'min': 0.000194,
                                           'significant_figures': 3,
-                                          'value': 0.000313}},
+                                          'value': 0.00125}},
                           'gwp': {'description': 'Total climate change',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 9800.0,
+                                  'embedded': {'max': 9800.0,
                                                'min': 910.0,
                                                'significant_figures': 2,
-                                               'value': 1400.0},
+                                               'value': 1400.0,
+                                               'warnings': ['End of life is not included in the '
+                                                            'calculation']},
                                   'unit': 'kgCO2eq',
-                                  'use': {'max': 66000.0,
-                                          'min': 0.0096,
+                                  'use': {'max': 26000.0,
+                                          'min': 340.0,
                                           'significant_figures': 2,
-                                          'value': 1900.0}},
+                                          'value': 7400.0}},
                           'pe': {'description': 'Consumption of primary energy',
-                                 'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 120000.0,
+                                 'embedded': {'max': 120000.0,
                                               'min': 12000.0,
                                               'significant_figures': 2,
-                                              'value': 19000.0},
+                                              'value': 19000.0,
+                                              'warnings': ['End of life is not included in the '
+                                                           'calculation']},
                                  'unit': 'MJ',
-                                 'use': {'max': 34370000.0,
-                                         'min': 0.005447,
-                                         'significant_figures': 4,
-                                         'value': 62850.0}}}
+                                 'use': {'max': 13746000.0,
+                                         'min': 190.86,
+                                         'significant_figures': 5,
+                                         'value': 251380.0}}}
 
 
 @pytest.mark.asyncio
@@ -356,76 +380,85 @@ async def test_partial_server_3():
             }
         })
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 79.0,
+                                  'embedded': {'max': 79.0,
                                                'min': 0.22,
                                                'significant_figures': 2,
-                                               'value': 0.24},
+                                               'value': 0.24,
+                                               'warnings': ['End of life is not included in the '
+                                                            'calculation']},
                                   'unit': 'kgSbeq',
-                                  'use': {'max': 0.137,
-                                          'min': 2.65e-09,
+                                  'use': {'max': 0.0546,
+                                          'min': 9.27e-05,
                                           'significant_figures': 3,
-                                          'value': 0.000286}},
+                                          'value': 0.00114}},
                           'gwp': {'description': 'Total climate change',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 2800000.0,
+                                  'embedded': {'max': 2800000.0,
                                                'min': 760.0,
                                                'significant_figures': 2,
-                                               'value': 900.0},
+                                               'value': 900.0,
+                                               'warnings': ['End of life is not included in the '
+                                                            'calculation']},
                                   'unit': 'kgCO2eq',
-                                  'use': {'max': 460000.0,
-                                          'min': 0.0046,
+                                  'use': {'max': 190000.0,
+                                          'min': 160.0,
                                           'significant_figures': 2,
-                                          'value': 1700.0}},
+                                          'value': 6800.0}},
                           'pe': {'description': 'Consumption of primary energy',
-                                 'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 34000000.0,
+                                 'embedded': {'max': 34000000.0,
                                               'min': 11000.0,
                                               'significant_figures': 2,
-                                              'value': 13000.0},
+                                              'value': 13000.0,
+                                              'warnings': ['End of life is not included in the '
+                                                           'calculation']},
                                  'unit': 'MJ',
-                                 'use': {'max': 240600000.0,
-                                         'min': 0.002605,
-                                         'significant_figures': 4,
-                                         'value': 57390.0}}}
+                                 'use': {'max': 96254000.0,
+                                         'min': 91.289,
+                                         'significant_figures': 5,
+                                         'value': 229570.0}}}
 
 
 @pytest.mark.asyncio
 async def test_custom_usage_1():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post("/v1/server/?verbose=false&duration=390", json={
+        res = await ac.post("/v1/server/?verbose=false&duration=8785", json={
             "usage": {
-                "years_use_time": 1,
-                "days_use_time": 1,
-                "hours_use_time": 1,
                 "avg_power": 1,
                 "usage_location": "FRA"
             }
         })
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 88.0,
-                                               'min': 0.054,
+                                  'embedded': {'max': 22.0,
+                                               'min': 0.014,
                                                'significant_figures': 2,
-                                               'value': 0.23},
+                                               'value': 0.059,
+                                               'warnings': ['End of life is not included in the '
+                                                            'calculation']},
                                   'unit': 'kgSbeq',
-                                  'use': {'max': 4e-07,
-                                          'min': 4e-07,
-                                          'significant_figures': 1,
-                                          'value': 4e-07}},
+                                  'use': {'max': 4.3e-07,
+                                          'min': 4.3e-07,
+                                          'significant_figures': 2,
+                                          'value': 4.3e-07}},
                           'gwp': {'description': 'Total climate change',
-                                  'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 3000000.0,
-                                               'min': 200.0,
+                                  'embedded': {'max': 760000.0,
+                                               'min': 51.0,
                                                'significant_figures': 2,
-                                               'value': 3300.0},
+                                               'value': 830.0,
+                                               'warnings': ['End of life is not included in the '
+                                                            'calculation']},
                                   'unit': 'kgCO2eq',
-                                  'use': {'max': 0.9,
-                                          'min': 0.9,
-                                          'significant_figures': 1,
-                                          'value': 0.9}},
+                                  'use': {'max': 0.86,
+                                          'min': 0.86,
+                                          'significant_figures': 2,
+                                          'value': 0.86}},
                           'pe': {'description': 'Consumption of primary energy',
-                                 'embedded': {'warnings': ['End of life is not included in the calculation'],'max': 38000000.0,
-                                              'min': 2800.0,
+                                 'embedded': {'max': 9400000.0,
+                                              'min': 690.0,
                                               'significant_figures': 2,
-                                              'value': 42000.0},
+                                              'value': 10000.0,
+                                              'warnings': ['End of life is not included in the '
+                                                           'calculation']},
                                  'unit': 'MJ',
-                                 'use': {'max': 100.0,
-                                         'min': 100.0,
-                                         'significant_figures': 1,
-                                         'value': 100.0}}}
+                                 'use': {'max': 99.0,
+                                         'min': 99.0,
+                                         'significant_figures': 2,
+                                         'value': 99.0}}}

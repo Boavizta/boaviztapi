@@ -26,6 +26,8 @@ default_usb_stick: "usb-stick-default"
 default_external_ssd: "external-ssd-default"
 default_external_hdd: "hdd-default"
 
-default_criteria: ["gwp", "adpe", "pe"]
+default_criteria: ["gwp", "adp", "pe"]
 
 default_duration:
+
+min_significant_figures: 5

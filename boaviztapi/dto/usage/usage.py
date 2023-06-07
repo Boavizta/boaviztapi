@@ -13,6 +13,7 @@ class WorkloadTime(BaseDTO):
 
 class ElecFactors(BaseDTO):
     gwp: Optional[float] = None
+    adp: Optional[float] = None
     pe: Optional[float] = None
     gwppb: Optional[float] = None
     gwppf: Optional[float] = None

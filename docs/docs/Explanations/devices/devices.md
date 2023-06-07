@@ -6,5 +6,5 @@ A device is characterized by zero to one component(s) and a usage. Its impacts c
 
 * [Server](server.md)
 * [Cloud instances](cloud.md)
-* [End user devices](end_user_devices.md)
+* [End user devices](terminals_&_peripherals.md)
 
