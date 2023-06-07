@@ -34,6 +34,7 @@ class Impact:
 
 
 GWP = ImpactCriteria(name="gwp", unit="kgCO2eq", description="Total climate change")
+ADP = ImpactCriteria(name="adp", unit="kgSbeq", description="Use of minerals and fossil ressources")
 PE = ImpactCriteria(name="pe", unit="MJ", description="Consumption of primary energy")
 GWPPb = ImpactCriteria(name="gwppb", unit="kg CO2 eq.", method="PEF", description="Climate change - Contribution of biogenic emissions")
 GWPPf = ImpactCriteria(name="gwppf", unit="kg CO2 eq.", method="PEF", description="Climate change - Contribution of fossil fuel emissions")
@@ -55,7 +56,7 @@ Epf = ImpactCriteria(name="epf", unit="kg P eq.", method="PEF", description="Eut
 Epm = ImpactCriteria(name="epm", unit="kg N eq.", method="PEF", description="Eutrophication of marine waters")
 Ept = ImpactCriteria(name="ept", unit="mol N eq.", method="PEF", description="Terrestrial eutrophication")
 
-IMPACT_CRITERIAS = [GWP, PE, GWPPb, GWPPf, GWPPlu, IR, LU, ODP, PM, POCP, WU, MIPS, ADPe, ADPf, AP, CTUe, CTUh_c, CTUh_nc, Epf, Epm, Ept]
+IMPACT_CRITERIAS = [GWP, ADP, PE, GWPPb, GWPPf, GWPPlu, IR, LU, ODP, PM, POCP, WU, MIPS, ADPe, ADPf, AP, CTUe, CTUh_c, CTUh_nc, Epf, Epm, Ept]
 IMPACT_PHASES = ["embedded", "use"]
 
 class ImpactFactor:
