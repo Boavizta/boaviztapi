@@ -1,0 +1,56 @@
+name: Generate requirements.txt
+
+on:
+  push:
+    branches:
+      - dev-clever
+      - run-clever
+  pull_request:
+    branches:
+      - dev-clever
+      - run-clever
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install Poetry
+        run: |
+          pip install poetry
+
+      - name: Install project dependencies
+        run: |
+          poetry install --no-root
+
+      - name: Export requirements.txt
+        run: |
+          poetry export -f requirements.txt --output requirements.txt --without-hashes 
+          cat requirements.txt
+
+      - name: Check for changes in requirements.txt
+        id: git-diff
+        run: |
+          git diff --exit-code --quiet -- requirements.txt || echo "::set-output name=changed::true"
+
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add requirements.txt
+          git commit -m "Update requirements.txt"
+
+      - name: Push changes
+        if: steps.git-diff.outputs.changed == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
