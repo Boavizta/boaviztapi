@@ -1,9 +1,9 @@
 import json
+import subprocess
 
 import markdown
 from fastapi.middleware.cors import CORSMiddleware
 import os
-import pkg_resources
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from mangum import Mangum
@@ -23,7 +23,7 @@ from fastapi.responses import HTMLResponse
 stage = os.environ.get('STAGE', None)
 openapi_prefix = f"/{stage}" if stage else "/"
 app = FastAPI(root_path=openapi_prefix)  # Here is the magic
-version = pkg_resources.get_distribution('boaviztapi').version
+version = subprocess.run(['poetry', 'version', '-s'], capture_output=True, text=True).stdout.rstrip()
 
 origins = json.loads(os.getenv("ALLOWED_ORIGINS", '["*"]'))
 
