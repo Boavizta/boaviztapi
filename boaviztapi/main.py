@@ -2,6 +2,7 @@ import json
 import subprocess
 
 import markdown
+import toml
 from fastapi.middleware.cors import CORSMiddleware
 import os
 from fastapi import FastAPI
@@ -23,7 +24,8 @@ from fastapi.responses import HTMLResponse
 stage = os.environ.get('STAGE', None)
 openapi_prefix = f"/{stage}" if stage else "/"
 app = FastAPI(root_path=openapi_prefix)  # Here is the magic
-version = subprocess.run(['poetry', 'version', '-s'], capture_output=True, text=True).stdout.rstrip()
+version = toml.loads(open(os.path.join(os.path.dirname(__file__), '../pyproject.toml'), 'r').read())['tool']['poetry']['version']
+
 
 origins = json.loads(os.getenv("ALLOWED_ORIGINS", '["*"]'))
 
