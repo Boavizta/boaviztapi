@@ -45,7 +45,8 @@ jobs:
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add requirements.txt
+          git status
+          git add ./requirements.txt
           git commit -m "Update requirements.txt"
 
       - name: Push changes
