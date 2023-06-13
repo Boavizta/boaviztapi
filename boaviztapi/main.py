@@ -71,7 +71,7 @@ handler = Mangum(app)
 
 @app.get("/", response_class=HTMLResponse)
 async def welcome_page():
-    html_content = f"""
+    html_content = """
     <html>
         <head>
             <title>BOAVIZTAPI</title>
