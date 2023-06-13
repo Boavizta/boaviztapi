@@ -7,9 +7,11 @@ on:
       - dev
     paths:
       - 'boaviztapi/**'
+      - 'tests/**'
   pull_request:
     paths:
       - 'boaviztapi/**'
+      - 'tests/**'
     branches:
       - main
       - dev

@@ -14,7 +14,6 @@ from boaviztapi.service.archetype import get_component_archetype, get_arch_value
 from boaviztapi.service.factor_provider import get_impact_factor
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf, fuzzymatch_attr_from_cpu_name
 
-
 _cpu_specs = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs.csv'))
 _family_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_manufacture.csv'))
 
@@ -250,5 +249,6 @@ class ComponentCPU(Component):
             if cores is not None:
                 self.core_units.set_completed(cores, min=cores_min, max=cores_max, source=f"Completed from name name based on {source}.")
             if die_size is not None:
-                self.die_size.set_completed(die_size/1000, min=die_size_min/1000, max=die_size_max/1000, source=f"{die_size_source} : Completed from name name based on {source}.")
+                # divide by 100 to convert mm2 into cm2
+                self.die_size.set_completed(die_size/100, min=die_size_min/100, max=die_size_max/100, source=f"{die_size_source} : Completed from name name based on {source}.")
             self.name_completion = True

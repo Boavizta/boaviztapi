@@ -1,5 +1,6 @@
 import pytest
 from httpx import AsyncClient
+
 from boaviztapi.main import app
 
 pytest_plugins = ('pytest_asyncio',)
@@ -75,7 +76,7 @@ async def test_empty_usage_m6gxlarge():
                                           'value': 3.44e-05}},
                           'gwp': {'description': 'Total climate change',
                                   'embedded': {'max': 1400.0,
-                                               'min': 500.0,
+                                               'min': 510.0,
                                                'significant_figures': 2,
                                                'value': 55.0,
                                                'warnings': ['End of life is not included in the '
@@ -87,9 +88,9 @@ async def test_empty_usage_m6gxlarge():
                                           'value': 200.0}},
                           'pe': {'description': 'Consumption of primary energy',
                                  'embedded': {'max': 19000.0,
-                                              'min': 6600.0,
+                                              'min': 6700.0,
                                               'significant_figures': 2,
-                                              'value': 720.0,
+                                              'value': 730.0,
                                               'warnings': ['End of life is not included in the '
                                                            'calculation']},
                                  'unit': 'MJ',
