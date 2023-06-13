@@ -36,14 +36,14 @@ class ComponentCPU(Component):
         )
         self.die_size_per_core = Boattribute(
             complete_function=self._complete_die_size_per_core,
-            unit="cm2",
+            unit="mm2",
             default=get_arch_value(archetype, 'die_size_per_core', 'default'),
             min=get_arch_value(archetype, 'die_size_per_core', 'min'),
             max=get_arch_value(archetype, 'die_size_per_core', 'max')
         )
         self.die_size = Boattribute(
             complete_function=self._complete_from_name,
-            unit="cm2",
+            unit="mm2",
             default=get_arch_value(archetype, 'die_size', 'default'),
             min=get_arch_value(archetype, 'die_size', 'min'),
             max=get_arch_value(archetype, 'die_size', 'max')
@@ -249,6 +249,5 @@ class ComponentCPU(Component):
             if cores is not None:
                 self.core_units.set_completed(cores, min=cores_min, max=cores_max, source=f"Completed from name name based on {source}.")
             if die_size is not None:
-                # divide by 100 to convert mm2 into cm2
-                self.die_size.set_completed(die_size/100, min=die_size_min/100, max=die_size_max/100, source=f"{die_size_source} : Completed from name name based on {source}.")
+                self.die_size.set_completed(die_size, min=die_size_min, max=die_size_max, source=f"{die_size_source} : Completed from name name based on {source}.")
             self.name_completion = True

@@ -30,19 +30,19 @@
 
 "cpu": {
   "gwp": {
-    "die_impact": 1.97,
+    "die_impact": 0.0197,
     "impact": 9.14,
-    "constant_core_impact": 0.491
+    "constant_core_impact": 4.91e-3
   },
   "pe": {
-    "die_impact": 26.50,
+    "die_impact": 0.2650,
     "impact": 156.00,
-    "constant_core_impact": 0.491
+    "constant_core_impact": 4.91e-3
   },
   "adp": {
-    "die_impact": 5.80e-07,
+    "die_impact": 5.80e-09,
     "impact": 2.04e-02,
-    "constant_core_impact": 0.491
+    "constant_core_impact": 4.91e-3
   }
 }
 
