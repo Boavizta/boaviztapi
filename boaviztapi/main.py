@@ -75,6 +75,11 @@ async def welcome_page():
     <html>
         <head>
             <title>BOAVIZTAPI</title>
+            <style>
+                * {
+                    font-family: sans-serif;
+                }
+            </style>
         </head>
         <body>
             <p align="center">
