@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/Boavizta/boaviztapi/dev/boavizta-logo-4.png" width="100">
+    <img src="https://github.com/Boavizta/boaviztapi/blob/af7ca450518a2108f907736222a540908a258368/boavizta-logo-4.png" width="100">
 </p>
 <h1 align="center">
   Boavizta API
