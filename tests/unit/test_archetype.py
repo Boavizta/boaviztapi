@@ -18,7 +18,7 @@ async def test_get_server_archetype_dellr740():
     assert get_archetype("dellR740", csv_path=os.path.join(data_dir, "archetypes/server.csv")) == {
         'CASE': {'case_type': {'default': 'rack'}},
         'CPU': {'core_units': {'default': 24.0},
-                'die_size_per_core': {'default': 0.245},
+                'die_size_per_core': {'default': 24.5},
                 'family': {},
                 'manufacturer': {},
                 'model_range': {},
