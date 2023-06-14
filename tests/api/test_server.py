@@ -16,7 +16,7 @@ async def test_complete_config_server():
                 "cpu": {
                     "units": 2,
                     "core_units": 24,
-                    "die_size_per_core": 0.245
+                    "die_size_per_core": 24.5
                 },
                 "ram": [
                     {
@@ -144,7 +144,7 @@ async def test_dell_r740_server():
                         {
                             "units": 2,
                             "core_units": 24,
-                            "die_size_per_core": 0.245
+                            "die_size_per_core": 24.5
                         },
                     "ram":
                         [
@@ -290,7 +290,7 @@ async def test_partial_server_2():
             "configuration": {
                 "cpu": {
                     "units": 2,
-                    "die_size_per_core": 0.245
+                    "die_size_per_core": 24.5
                 },
                 "ram": [
                     {
