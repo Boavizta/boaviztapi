@@ -9,7 +9,7 @@ pytest_plugins = ('pytest_asyncio',)
 @pytest.mark.asyncio
 async def test_complete_cpu():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/component/cpu?verbose=false', json={"core_units": 12, "die_size_per_core": 0.245})
+        res = await ac.post('/v1/component/cpu?verbose=false', json={"core_units": 12, "die_size_per_core": 24.5})
 
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'max': 0.02,
@@ -52,7 +52,7 @@ async def test_complete_cpu():
 @pytest.mark.asyncio
 async def test_complete_cpu_verbose():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/component/cpu?verbose=true', json={"core_units": 12, "die_size_per_core": 0.245})
+        res = await ac.post('/v1/component/cpu?verbose=true', json={"core_units": 12, "die_size_per_core": 24.5})
 
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
                                               'embedded': {'max': 0.02,
@@ -104,7 +104,7 @@ async def test_complete_cpu_verbose():
                                       'core_units': {'status': 'INPUT', 'value': 12},
                                       'die_size_per_core': {'status': 'INPUT',
                                                             'unit': 'cm2',
-                                                            'value': 0.245},
+                                                            'value': 24.5},
                                       'duration': {'unit': 'hours', 'value': 26280.0},
                                       'gwp_factor': {'max': 0.9,
                                                      'min': 0.023,
@@ -193,7 +193,7 @@ async def test_complete_cpu_verbose():
 @pytest.mark.asyncio
 async def test_complete_cpu_with_low_precision():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post('/v1/component/cpu?verbose=false', json={"core_units": 12, "die_size_per_core": 0.2})
+        res = await ac.post('/v1/component/cpu?verbose=false', json={"core_units": 12, "die_size_per_core": 20.0})
 
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'max': 0.02,
@@ -280,7 +280,7 @@ async def test_empty_cpu():
 async def test_multiple_cpu():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=false', json={
-            "units": 3, "core_units": 12, "die_size_per_core": 0.245})
+            "units": 3, "core_units": 12, "die_size_per_core": 24.5})
 
     assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
                                   'embedded': {'max': 0.061,
