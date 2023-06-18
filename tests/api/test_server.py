@@ -290,7 +290,7 @@ async def test_partial_server_2():
             "configuration": {
                 "cpu": {
                     "units": 2,
-                    "die_size_per_core": 24.5
+                    "die_size": 24.5
                 },
                 "ram": [
                     {
