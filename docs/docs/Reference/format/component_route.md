@@ -1,3 +1,4 @@
+
 # Component routes
 
 Available components :
@@ -33,7 +34,7 @@ You can set a units. If so, all the impacts will be multiplied by the number of 
 ``` json
 {
    "core_units": 24,
-   "die_size_per_core": 0.245
+   "die_size_per_core": 245
 }
 ```
 

@@ -51,7 +51,7 @@ Specific needed data are sent to apply the bottom-up methodology.
         {
             "units": 2,
             "core_units": 24,
-            "die_size_per_core": 0.245
+            "die_size_per_core": 245
         },
         "ram":
         [
