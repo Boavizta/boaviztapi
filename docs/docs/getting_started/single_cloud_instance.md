@@ -148,7 +148,7 @@ Response :
       },
       "die_size_per_core": {
         "value": 0.0714,
-        "unit": "mm2",
+        "unit": "cm2",
         "status": "COMPLETED",
         "source": {
           "64": "https://en.wikichip.org/wiki/annapurna_labs/alpine/alc12b00"

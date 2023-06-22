@@ -7,9 +7,9 @@
 | units             | None | 1             | CPU quantity                                  | 2                  |
 | usage             | None | See Usage     | See usage                                     | ..                 |
 | core_units        | None | 24            | Number of core on one CPU                     | 12                 |
-| die_size          | mm2  | None          | Size of the die                               | 2900               |
+| die_size          | cm2  | None          | Size of the die                               | 2900               |
 | manufacturer      | None | Intel         | Name of the CPU manufacturer                  | AMD                |
-| die_size_per_core | mm2  | 0.245         | Size of the die divided by the number of core | 0.245              |
+| die_size_per_core | cm2  | 0.245         | Size of the die divided by the number of core | 0.245              |
 | model_range       | None | Xeon Platinum | Name of the cpu range or brand                | i7                 |
 | family            | None | Skylake       | Name of the architectural family (Generation) | Naple              |
 | name              | None | None          | Complete commercial name of the CPU           | Intel Core i7-1065 |

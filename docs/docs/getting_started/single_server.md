@@ -121,7 +121,7 @@ It returns :
       },
       "die_size_per_core": {
         "value": 0.245,
-        "unit": "mm2",
+        "unit": "cm2",
         "status": "INPUT",
         "source": null
       },

@@ -120,7 +120,7 @@ The usage impact have been evaluated using a default level of workload of 50% wi
     },
     "die_size_per_core": {
       "value": 0.248,
-      "unit": "mm2",
+      "unit": "cm2",
       "status": "COMPLETED",
       "source": "https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)"
     },
@@ -288,7 +288,7 @@ Since only lowercase are used, the API will correct Skylake to skylake (CHANGED)
     },
     "die_size_per_core": {
       "value": 0.289,
-      "unit": "mm2",
+      "unit": "cm2",
       "status": "COMPLETED",
       "source": {
         "1": "https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)"

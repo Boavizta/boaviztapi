@@ -35,7 +35,7 @@ class ComponentCPU(Component):
         super().__init__(**kwargs)
         self.core_units = Boattribute(default=self.DEFAULT_CPU_CORE_UNITS)
         self.die_size_per_core = Boattribute(
-            unit="mm2",
+            unit="cm2",
             default=self.DEFAULT_CPU_DIE_SIZE_PER_CORE
         )
         self.model_range = Boattribute(default=self.DEFAULT_MODEL_RANGE)

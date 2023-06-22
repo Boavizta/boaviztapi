@@ -5,7 +5,7 @@ def test_verbose_component_cpu_1(complete_cpu_model):
     verbose = verbose_component(complete_cpu_model)
     print(verbose)
     assert verbose["core_units"] == {'source': None, 'status': 'INPUT', 'unit': 'none', 'value': 24}
-    assert verbose["die_size_per_core"] == {'source': None, 'status': 'INPUT', 'unit': 'mm2', 'value': 0.245}
+    assert verbose["die_size_per_core"] == {'source': None, 'status': 'INPUT', 'unit': 'cm2', 'value': 0.245}
 
     assert verbose["manufacture_impacts"] == {'adp': {'unit': 'kgSbeq', 'value': 0.02},
                                               'gwp': {'unit': 'kgCO2eq', 'value': 21.7},
