@@ -24,7 +24,7 @@
 
 if ```die_size``` and ```core_units``` are given :
 
-$$ \text{die_size_per_core} = \frac{\text{core_units}}{\text{die_size}}$$
+$$ \text{die_size_per_core} = \frac{\text{die_size}}{\text{core_units}}$$
 
 Otherwise, if ```family``` or/and ```core_units``` are given, ```die_size_per_core``` can be retrieved from a fuzzy matching on our cpu repository.
 If several cpu matches the given ```family``` and/or ```core_units``` the maximizing value is given (in terms of impacts).
