@@ -91,17 +91,27 @@ You can run the tests with `pytest`.
 ### Create your own docker image and run it
 
 Build application package
+
 ```sh
 make install
 ```
+
 Build docker image
+
 ```sh
-$ make docker-build
+# using the makefile (recommended)
+make docker-build
+
+# manual build (requires to set version)
+docker build --build-arg VERSION=`poetry version -s` .
 ```
+
 Run docker image
+
 ```sh
 docker run -p 5000:5000/tcp boavizta/boaviztapi:0.2.0
 ```
+
 ### Deploy to AWS as serverless application
 
 Api can be self hosted to your own AWS account using the serverless framework.

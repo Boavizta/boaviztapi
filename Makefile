@@ -38,5 +38,5 @@ distribute:
 		poetry publish --build
 
 docker-build:
-		docker build -t $(DOCKER_NAME) .
+		docker build -t $(DOCKER_NAME) .  --build-arg VERSION=${CURRENT_VERSION}
 
