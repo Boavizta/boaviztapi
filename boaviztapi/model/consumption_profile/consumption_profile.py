@@ -181,7 +181,7 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
                 sub = tmp.copy()
 
         if cpu_model_range is not None:
-            tmp = sub[sub['model_range'].fuzzymatch(cpu_model_range)]
+            tmp = sub[sub['model_range'] == cpu_model_range.lower()]
             if len(tmp) > 0:
                 sub = tmp.copy()
 
