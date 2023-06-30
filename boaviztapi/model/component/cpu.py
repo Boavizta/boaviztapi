@@ -15,8 +15,6 @@ from boaviztapi.service.factor_provider import get_impact_factor
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_pdf, fuzzymatch_attr_from_cpu_name
 
 _cpu_specs = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs.csv'))
-_family_df = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_manufacture.csv'))
-
 
 def attributes_from_cpu_name(cpu_name: str):
     return fuzzymatch_attr_from_cpu_name(cpu_name, _cpu_specs)
@@ -161,65 +159,28 @@ class ComponentCPU(Component):
 
     # COMPLETION
     def _complete_die_size_per_core(self):
-        self._complete_from_name()
-        corrected_family = None
-        # If we can have a die_size and core_units, we can compute the die_size_per_core
-        if self.die_size.has_value() and self.core_units.has_value():
+
+        # Make sure all data have been completed from name
+        if self.name.is_set():
+            self._complete_from_name()
+
+        # If the die_size_per_core have been set we have nothing to do
+        if self.die_size_per_core.is_set():
+            pass
+
+        # If we have a die_size and core_units, we can compute the die_size_per_core
+        elif self.die_size.is_set() and self.core_units.is_set():
             self.die_size_per_core.set_completed(value=float(self.die_size.value/self.core_units.value), source="die_size/core_units")
             return None
 
-        sub = _family_df.copy()
-        # If we don't have a family, we use the die_size_per_core from the archetype
-        if self.die_size_per_core.has_value() and not self.family.has_value():
+        # If we cannot have a family, but we have a die_size_per_core we use it
+        elif self.die_size_per_core.has_value() and not self.family.has_value():
+            self.die_size_per_core.set_archetype(self.die_size_per_core.default)
             return None
 
-        if self.family.has_value():
-            # Check if the family matches one of the families in the database and correct it if necessary
-            corrected_family = fuzzymatch_attr_from_pdf(self.family.value, "family", sub)
-            if corrected_family != self.family.value and corrected_family is not None:
-                self.family.set_changed(corrected_family)
-
-            tmp = sub[sub['family'] == corrected_family]
-
-            if len(tmp) > 0:
-                sub = tmp.copy()
-
-            if self.core_units.has_value() and corrected_family is not None:
-                # Find the closest line to the number of cores provided by the user
-                sub['core_dif'] = sub[['core_units']].apply(lambda x: abs(x[0] - self.core_units.value), axis=1)
-                sub = sub.sort_values(by='core_dif', ascending=True)
-                row = sub.iloc[0]
-
-                # If we have only one row but the number of cores is different, we use the max and min values of the dataframe
-                if row['core_dif'] != 0 and len(sub) == 1:
-                    self.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
-                    self.die_size_per_core.min = float(float(_family_df['die_size_per_core'].min()))
-                    self.die_size_per_core.max = float(float(_family_df['die_size_per_core'].max()))
-                    return
-
-                row2 = sub.iloc[1]
-                self.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
-
-                if row['core_dif'] == 0:
-                    self.die_size_per_core.min = float(row['die_size_per_core'])
-                    self.die_size_per_core.max = float(row['die_size_per_core'])
-
-                elif float(row2['die_size_per_core']) > float(row['die_size_per_core']):
-                    self.die_size_per_core.min = float(row['die_size_per_core'])
-                    self.die_size_per_core.max = float(row2['die_size_per_core'])
-
-                else:
-                    self.die_size_per_core.min = float(row2['die_size_per_core'])
-                    self.die_size_per_core.max = float(row['die_size_per_core'])
-
-                return
-
-        source_family = self.family.value if corrected_family is not None else "all families"
-
-        # If we don't have a number of cores, we use the average die size per core for a given family (if provided)
-        self.die_size_per_core.set_completed(float(sub['die_size_per_core'].mean()), source=f"Average for {source_family}")
-        self.die_size_per_core.min = float(float(sub['die_size_per_core'].min()))
-        self.die_size_per_core.max = float(float(sub['die_size_per_core'].max()))
+        # If tha above completion strategies cannot be applied, we use our cpu specs file
+        else:
+            self._complete_die_size_from_cpu_specs()
 
     def _complete_from_name(self):
         if self.name.has_value() and not self.name_completion:
@@ -252,3 +213,61 @@ class ComponentCPU(Component):
                 # divide by 100 to convert mm2 into cm2
                 self.die_size.set_completed(die_size/100, min=die_size_min/100, max=die_size_max/100, source=f"{die_size_source} : Completed from name name based on {source}.")
             self.name_completion = True
+
+    def _complete_die_size_from_cpu_specs(self):
+        corrected_family = None
+        sub = _cpu_specs.copy()
+        sub['die_size_per_core'] = sub[['total_die_size']] / sub[['cores']]
+
+        if self.family.has_value():
+            # Check if the family matches one of the families in the database and correct it if necessary
+            corrected_family = fuzzymatch_attr_from_pdf(self.family.value, "code_name", sub)
+            if corrected_family != self.family.value and corrected_family is not None:
+                self.family.set_changed(corrected_family)
+
+            # Filter on the family of interest
+            tmp = sub[sub['code_name'] == corrected_family]
+
+            # If we have at least one match we keep on going with this df if not we keep the initial df
+            if len(tmp) > 0:
+                sub = tmp.copy()
+
+        if self.core_units.has_value():
+            # Find the closest line to the number of cores provided by the user
+            sub['core_dif'] = sub[['cores']].apply(lambda x: abs(x[0] - self.core_units.value), axis=1)
+            sub = sub.sort_values(by='core_dif', ascending=True)
+            row = sub.iloc[0]
+
+            # if we have only one row but the number of cores is different, we use the max and min values of the dataframe
+            if row['core_dif'] != 0 and len(sub) == 1:
+                self.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
+                self.die_size_per_core.min = float(float(_cpu_specs['die_size_per_core'].min()))
+                self.die_size_per_core.max = float(float(_cpu_specs['die_size_per_core'].max()))
+                return
+            # else we use the closest cpu
+            else:
+                self.die_size_per_core.set_completed(float(row['die_size_per_core']), source=row['Source'])
+
+            row2 = sub.iloc[1]
+
+            # if there are no dif min = max = value
+            if row['core_dif'] == 0:
+                self.die_size_per_core.min = float(row['die_size_per_core'])
+                self.die_size_per_core.max = float(row['die_size_per_core'])
+
+            # else we set the upper/lower band to the second-closest row
+            elif float(row2['die_size_per_core']) > float(row['die_size_per_core']):
+                self.die_size_per_core.min = float(row['die_size_per_core'])
+                self.die_size_per_core.max = float(row2['die_size_per_core'])
+
+            else:
+                self.die_size_per_core.min = float(row2['die_size_per_core'])
+                self.die_size_per_core.max = float(row['die_size_per_core'])
+
+        else:
+            source_family = self.family.value if corrected_family is not None else "all families"
+
+            # If we don't have a number of cores, we use the average die size per core for a given family (if provided)
+            self.die_size_per_core.set_completed(float(sub['die_size_per_core'].mean()), source=f"Average for {source_family}")
+            self.die_size_per_core.min = float(float(sub['die_size_per_core'].min()))
+            self.die_size_per_core.max = float(float(sub['die_size_per_core'].max()))
