@@ -70,9 +70,9 @@ With the following consumption profile :
 
 Power consumptions : 
 
-| load_percentage | 100% | 50% | 10% | idle | off |
-|-----------------|------|-----|-----|------|-----|
-| Power (W)       | 260  | 182 | 77  | 36   | 0   |
+| load_percentage | 100% | 50%  | 10%   | idle | off   |
+|-----------------|------|------|-------|------|-------|
+| Power (W)       | 100  | 70   | 24    | 2    | 0     |
 
 `hours_electrical_consumption` is measured as follows :
 
@@ -81,10 +81,10 @@ hours_electrical_consumption = power(100%) * time_ratio(100%) + power(50%) * tim
 ```
 
 ```
-hours_electrical_consumption = 260 * 0.15 + 182 * 0.55 + 77 * 0.1 + 36 * 0.2 + 0 * 0
-                             = 39 + 100.1 + 7,7 + 7,2 + 0
-                             = 154 W/hour
-                             = 1349 kwh/year
+hours_electrical_consumption = 100 * 0.15 + 70 * 0.55 + 24 * 0.1 + 2 * 0.2 + 0 * 0
+                             = 15 + 38.5 + 2.4 + 0.4 + 0
+                             = 56.3 W/hour
+                             = 493.188 kwh/year
 ```
 
 **Result : ** 154 W/hour
