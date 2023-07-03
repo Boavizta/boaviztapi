@@ -62,7 +62,7 @@ jobs:
 
     - name: Run the API locally
       run: |
-        docker run -p "5000:5000" --name=boaviztapi -t boaviztapi:latest
+        docker run -p "5000:5000" --name=boaviztapi -tid boaviztapi:latest
 
     - name: Get logs from the API container in case of a failure
       run: |
