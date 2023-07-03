@@ -1,0 +1,97 @@
+name: build_client_sdk_with_poetry
+
+# Temporarily allow execution only on this branch
+on:
+  push:
+    branches:
+      - "203-building-sdk-client-fails-in-ci"
+
+# on:
+#   push:
+#     tags:
+#       - '*'
+#     paths-ignore:
+#       - 'docs/**'
+#       - 'test/**'
+#       - 'README.md'
+#       - 'CHANGELOG.md'
+#       - 'LICENSE'
+#       - 'Dockerfile'
+#       - 'CITATION'
+#       - 'book.toml'
+#       - 'CONTRIBUTING.md'
+
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    name: build_python_client_sdk
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+        # Add twine install here ?
+      - name: Install pipenv
+      run: |
+          python -m pip install --upgrade poetry wheel
+
+      - id: cache-pipenv
+        uses: actions/cache@v1
+        with:
+          path: ~/.local/share/virtualenvs
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+
+      - name: Install dependencies
+        if: steps.cache-pipenv.outputs.cache-hit != 'true'
+        run: |
+          make install
+
+      - name: Build the api Docker image
+        run: docker build --build-arg VERSION=$(poetry version -s) . --file Dockerfile --tag ghcr.io/boavizta/boaviztapi:latest
+
+      - name: Run the API locally
+        run: |
+          docker run -p "5000:5000" --name=boaviztapi -tid boaviztapi:latest
+
+      - name: Get logs from the API container in case of a failure
+        run: |
+          docker logs boaviztapi
+
+      - name: Get the openapi.json definition and generate the code
+        run: |
+          while [[ ! $(docker ps | grep boaviztapi) ]]; do sleep 1; echo "Waiting for BoaviztAPI container to boot"; done
+          wget http://127.0.0.1:5000/openapi.json
+          docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g python -o /local/boaviztapi_sdk --package-name boaviztapi_sdk
+      
+      # WIP From here I am not sure what to do
+      # We may be able to keep below code (need to install twine as a dep)
+      # Retrieve API version with SDK_VERSION=$(poetry version -s)  instead of SDK_VERSION=${{ env.API_VERSION }}
+      # Move into the  generated code directory ?
+
+
+      Publish client SDK package
+      - name: Build the pip package and push it
+        run: |
+          sudo chown -R $(whoami) boaviztapi_sdk
+          SDK_VERSION=$(poetry version -s) 
+          echo "SDK_VERSION == ${SDK_VERSION}"
+          cd boaviztapi_sdk
+          sed -i "s/^VERSION.*/VERSION = \"${SDK_VERSION}\"/" setup.py
+          sed -i "s/^    long_description=.*/long_description='Python SDK for boaviztAPI'/" setup.py
+          sed -i 's/    #.*//' setup.py
+          sed -i 's/    """.*//' setup.py
+          python3 setup.py sdist
+      # Uncomment next line to allow publishing package once all work fine.
+      #     pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.BPETIT_SECRET_PYPI_TOKEN }} dist/*
+
+      # Publish client SDK package
+      # - name: Push package on pypi
+      #   run: API_TOKEN=${{ secrets.DAVID_PYPI_TOKEN }} make distribute
