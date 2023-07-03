@@ -54,6 +54,9 @@ jobs:
       run: |
         make install
 
+    - name: Build local api package
+      run: make build
+
     - name: Build the api Docker image
       run: docker build --build-arg VERSION=$(poetry version -s) . --file Dockerfile --tag ghcr.io/boavizta/boaviztapi:latest
 
