@@ -74,7 +74,14 @@ jobs:
         wget http://127.0.0.1:5000/openapi.json
         docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g python -o /local/boaviztapi_sdk --package-name boaviztapi_sdk
     
-    - name: Build the pip package and publish it
+    # WIP From here I am not sure what to do
+    # We may be able to keep below code (need to install twine as a dep)
+    # Retrieve API version with SDK_VERSION=$(poetry version -s)  instead of SDK_VERSION=${{ env.API_VERSION }}
+    # Move into the  generated code directory ?
+
+
+    # Publish client SDK package
+    - name: Build the pip package and push it
       run: |
         sudo chown -R $(whoami) boaviztapi_sdk
         SDK_VERSION=$(poetry version -s) 
@@ -85,4 +92,10 @@ jobs:
         sed -i '/    &lt;p&gt;.*/d' setup.py
         sed -i '/    """.*/d' setup.py
         python3 setup.py sdist
+        # Publish
+        pip3 install pipenv twine
         pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.BPETIT_SECRET_PYPI_TOKEN }} dist/*
+
+    # Publish client SDK package
+    # - name: Push package on pypi
+    #   run: API_TOKEN=${{ secrets.DAVID_PYPI_TOKEN }} make distribute
