@@ -88,9 +88,9 @@ jobs:
         echo "SDK_VERSION == ${SDK_VERSION}"
         cd boaviztapi_sdk
         sed -i "s/^VERSION.*/VERSION = \"${SDK_VERSION}\"/" setup.py
-        sed -i "s/^    long_description=.*/long_description='Python SDK for boaviztAPI'/" setup.py
-        sed -i 's/    #.*//' setup.py
-        sed -i 's/    """.*//' setup.py
+        sed -i "s/^    long_description=.*/    long_description='Python SDK for boaviztAPI',/" setup.py
+        sed -i '/    &lt;p&gt;.*/d' setup.py
+        sed -i '/    """.*/d' setup.py
         python3 setup.py sdist
     # Uncomment next line to allow publishing package once all work fine.
     #     pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.BPETIT_SECRET_PYPI_TOKEN }} dist/*
