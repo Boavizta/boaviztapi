@@ -15,7 +15,6 @@ on:
       - 'book.toml'
       - 'CONTRIBUTING.md'
 
-
 env:
   CARGO_TERM_COLOR: always
 
@@ -66,12 +65,6 @@ jobs:
         while [[ ! $(docker ps | grep boaviztapi) ]]; do sleep 1; echo "Waiting for BoaviztAPI container to boot"; done
         wget http://127.0.0.1:5000/openapi.json
         docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g python -o /local/boaviztapi_sdk --package-name boaviztapi_sdk
-    
-    # WIP From here I am not sure what to do
-    # We may be able to keep below code (need to install twine as a dep)
-    # Retrieve API version with SDK_VERSION=$(poetry version -s)  instead of SDK_VERSION=${{ env.API_VERSION }}
-    # Move into the  generated code directory ?
-
 
     # Publish client SDK package
     - name: Build the pip package and push it
