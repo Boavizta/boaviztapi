@@ -1,19 +1,22 @@
 name: build_client_sdk
 
-on:
-  push:
-    tags:
-      - '*'
-    paths-ignore:
-      - 'docs/**'
-      - 'test/**'
-      - 'README.md'
-      - 'CHANGELOG.md'
-      - 'LICENSE'
-      - 'Dockerfile'
-      - 'CITATION'
-      - 'book.toml'
-      - 'CONTRIBUTING.md'
+# Disable automatic triggring of this legacy workflow (replaced by build_client_sdk_with_poetry)
+on: workflow_dispatch
+
+# on:
+#   push:
+#     tags:
+#       - '*'
+#     paths-ignore:
+#       - 'docs/**'
+#       - 'test/**'
+#       - 'README.md'
+#       - 'CHANGELOG.md'
+#       - 'LICENSE'
+#       - 'Dockerfile'
+#       - 'CITATION'
+#       - 'book.toml'
+#       - 'CONTRIBUTING.md'
 
 env:
   CARGO_TERM_COLOR: always
