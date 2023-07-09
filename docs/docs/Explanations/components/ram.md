@@ -6,8 +6,8 @@
 |------------------|--------|---------------|---------------------------------------|---------|
 | units            | None   | 1             | RAM strip quantity                    | 2       |
 | usage            | None   | See Usage     | See usage                             | ..      |
-| capacity         | Go     | 32            | Capacity of a ram strip               | 12      |
-| density          | Go/cm2 | 0.625         | Size of the die per Go of a ram strip | 1.25    |
+| capacity         | GB     | 32            | Capacity of a ram strip               | 12      |
+| density          | GB/cm2 | 0.625         | Size of the die per Go of a ram strip | 1.25    |
 | process          | nm     | None          | Engraving process (Architecture)      | 25      |
 | manufacturer     | None   | None          | Name of the ram manufacturer          | Samsung |
 | model            | None   | None          | ..                                    | ..      |
