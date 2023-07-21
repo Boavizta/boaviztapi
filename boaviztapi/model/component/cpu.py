@@ -166,7 +166,7 @@ class ComponentCPU(Component):
 
         # If the die_size_per_core have been set we have nothing to do
         if self.die_size_per_core.is_set():
-            pass
+            return None
 
         # If we have a die_size and core_units, we can compute the die_size_per_core
         elif self.die_size.is_set() and self.core_units.is_set():
@@ -178,7 +178,7 @@ class ComponentCPU(Component):
             self.die_size_per_core.set_archetype(self.die_size_per_core.default)
             return None
 
-        # If tha above completion strategies cannot be applied, we use our cpu specs file
+        # If the above completion strategies cannot be applied, we use our cpu specs file
         else:
             self._complete_die_size_from_cpu_specs()
 
