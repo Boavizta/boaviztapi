@@ -393,7 +393,7 @@ def cpu_specs_dataframe():
 
 @pytest.fixture(scope="function")
 def cpu_dataframe():
-    return pd.read_csv(data_dir + "/crowdsourcing/cpu_manufacture.csv")
+    return pd.read_csv(data_dir + "/crowdsourcing/cpu_specs.csv")
 
 
 @pytest.fixture(scope="function")

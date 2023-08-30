@@ -21,8 +21,8 @@ def test_fuzzymatch_attr_from_cpu_name(cpu_specs_dataframe, cpu_name_input, name
 
 
 def test_fuzzymatch_cpu(cpu_dataframe):
-    assert "broadwell" == fuzzymatch_attr_from_pdf("broadwel", "family", cpu_dataframe).lower()
-    assert fuzzymatch_attr_from_pdf("cevevvreceerf", "family", cpu_dataframe) is None
+    assert "broadwell" == fuzzymatch_attr_from_pdf("broadwel", "code_name", cpu_dataframe).lower()
+    assert fuzzymatch_attr_from_pdf("cevevvreceerf", "code_name", cpu_dataframe) is None
 
 
 def test_fuzzymatch_ssd(ssd_dataframe):
