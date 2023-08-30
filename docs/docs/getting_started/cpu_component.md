@@ -173,12 +173,12 @@ Result :
       "max": 64
     },
     "die_size_per_core": {
-      "value": 0.25,
+      "value": 25,
       "status": "COMPLETED",
-      "unit": "cm2",
+      "unit": "mm2",
       "source": "https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)#Extreme_Core_Count_.28XCC.29",
-      "min": 0.25,
-      "max": 0.27
+      "min": 25,
+      "max": 27
     },
     "model_range": {
       "value": "Xeon Gold",
@@ -378,12 +378,12 @@ Result :
       "status": "INPUT"
     },
     "die_size_per_core": {
-      "value": 0.25,
+      "value": 25,
       "status": "COMPLETED",
-      "unit": "cm2",
+      "unit": "mm2",
       "source": "https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)#Extreme_Core_Count_.28XCC.29",
-      "min": 0.25,
-      "max": 0.27
+      "min": 25,
+      "max": 27
     },
     "family": {
       "value": "skylake",
