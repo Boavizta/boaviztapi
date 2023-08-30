@@ -7,9 +7,9 @@
 | units             | None | 1;1;1                           | CPU quantity                                  | 2                  |
 | usage             | None | See Usage                       | See usage                                     | ..                 |
 | core_units        | None | 24;1;64                         | Number of physical core on one CPU            | 12                 |
-| die_size          | cm2  | None                            | Size of the die                               | 1.1                |
-| embeddedr         | None | None                            | Name of the CPU embeddedr                     | AMD                |
-| die_size_per_core | cm2  | (avg;min;max) in our dataset    | Size of the die divided by the number of core | 0.245              |
+| die_size          | mm2  | None                            | Size of the die                               | 1.1                |
+| embedded          | None | None                            | Name of the CPU embedded                      | AMD                |
+| die_size_per_core | mm2  | None                            | Size of the die divided by the number of core | 0.245              |
 | model_range       | None | None                            | Name of the cpu range or brand                | i7                 |
 | family            | None | None                            | Name of the architectural family (Generation) | Skylake            |
 | name              | None | None                            | Complete commercial name of the CPU           | Intel Core i7-1065 |
@@ -25,21 +25,20 @@
 If CPU ```name``` is given, ```model_range```, ```tdp```, ```die_size``` and ```family``` can be retrieved from a fuzzy matching on our cpu name repository. 
 
 !!!warning
-    Note that the cpu name repository is not complete and that the completion can return a different cpu than the one given by the user.
+    Note that the cpu name repository is not complete and the completion can return a different cpu than the one given by the user.
 
-### Completion of the ```die_size_per_core``` from ```family``` and/or ```core_units```
+### Completion of the ```die_size``` from ```family``` and/or ```core_units```
 
-if ```die_size``` and ```core_units``` are given :
+if ```die_size_per_core``` and ```core_units``` are given :
 
-$$ \text{die_size_per_core} = \frac{\text{core_units}}{\text{die_size}}$$
+$$ \text{die_size} = {\text{core_units}}*{\text{die_size}}$$
 
-Otherwise, if ```family``` is given, ```die_size_per_core``` can be retrieved from a fuzzy matching on our cpu repository.
+Otherwise, if ```family``` is given, ```die_size``` can be retrieved from a fuzzy matching on our cpu repository. 
 
-If several cpu matches the given ```family```, the closest value in terms of ```core_units``` is used (if ```core_units``` given by the user). ```min``` and ```max``` will be set if the closest value does not correspond to the exact same ```core_units``` value provided by the user.
-
-If ```core_units``` is not provided, the average value is given and min and max value are used as ```min``` and ```max``` fields.
-
-If no cpu is found either because the cpu is unknown or not enough data have been given by the user the archetype data are used.
+If several cpu matches the given ```family```, we use the ```core_units``` attributes : 
+* If ```core_units``` matches one to many cpu, the average value is given and min and max value are used as ```min``` and ```max``` fields.
+* If ```core_units``` does not match any cpu, we infer the ```die_size``` with a rule of three or a linear regression (when multiple cpus are available).
+* If ```core_units``` is not provided, the average value is given and min and max value are used as ```min``` and ```max``` fields.
 
 ## Embedded impacts
 

@@ -1,11 +1,9 @@
 <p align="center">
-    <img src="https://avatars.githubusercontent.com/u/74682393?s=400&u=da76a8ca569cd8df38c59976ff041106448eb31b&v=4" width="100">
+    <img src="https://github.com/Boavizta/boaviztapi/blob/af7ca450518a2108f907736222a540908a258368/boavizta-logo-4.png" width="100">
 </p>
 <h1 align="center">
   Boavizta API
 </h1>
-
----
 
 An API to access [Boavizta's](https://boavizta.cmakers.io/) methodologies and impacts data [reference data](https://github.com/Boavizta/environmental-footprint-data).
 
@@ -91,17 +89,27 @@ You can run the tests with `pytest`.
 ### Create your own docker image and run it
 
 Build application package
+
 ```sh
 make install
 ```
+
 Build docker image
+
 ```sh
-$ make docker-build
+# using the makefile (recommended)
+make docker-build
+
+# manual build (requires to set version)
+docker build --build-arg VERSION=`poetry version -s` .
 ```
+
 Run docker image
+
 ```sh
 docker run -p 5000:5000/tcp boavizta/boaviztapi:0.2.0
 ```
+
 ### Deploy to AWS as serverless application
 
 Api can be self hosted to your own AWS account using the serverless framework.

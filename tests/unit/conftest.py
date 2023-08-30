@@ -69,7 +69,7 @@ def complete_cpu_model():
 
     cpu.units.set_input(2)
     cpu.core_units.set_input(24)
-    cpu.die_size_per_core.set_input(0.245)
+    cpu.die_size_per_core.set_input(24.5)
 
     return cpu
 
@@ -85,7 +85,7 @@ def incomplete_cpu_model():
 
     cpu.core_units.set_input(12)
     cpu.family.set_input("Skylake")
-    cpu.die_size_per_core.set_input(0.404)
+    cpu.die_size_per_core.set_input(40.4)
 
     return cpu
 
@@ -250,7 +250,7 @@ def complete_cpu_dto():
     return CPU.parse_obj({
         "units": 2,
         "core_units": 24,
-        "die_size_per_core": 0.245
+        "die_size_per_core": 24.5
     })
 
 
@@ -393,7 +393,7 @@ def cpu_specs_dataframe():
 
 @pytest.fixture(scope="function")
 def cpu_dataframe():
-    return pd.read_csv(data_dir + "/crowdsourcing/cpu_manufacture.csv")
+    return pd.read_csv(data_dir + "/crowdsourcing/cpu_specs.csv")
 
 
 @pytest.fixture(scope="function")

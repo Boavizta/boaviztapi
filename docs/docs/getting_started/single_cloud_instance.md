@@ -97,10 +97,10 @@ Response :
   "impacts": {
     "gwp": {
       "embedded": {
-        "value": 5.3431,
+        "value": 5.3747,
         "significant_figures": 5,
-        "min": 194.02,
-        "max": 590.64,
+        "min": 196.05,
+        "max": 592.66,
         "warnings": [
           "End of life is not included in the calculation"
         ]
@@ -109,17 +109,17 @@ Response :
         "value": 17.747,
         "significant_figures": 5,
         "min": 62.027,
-        "max": 4069
+        "max": 4069.0
       },
       "unit": "kgCO2eq",
       "description": "Total climate change"
     },
     "adp": {
       "embedded": {
-        "value": 0.00057378,
+        "value": 0.00057379,
         "significant_figures": 5,
-        "min": 0.025378,
-        "max": 0.053353,
+        "min": 0.025379,
+        "max": 0.053354,
         "warnings": [
           "End of life is not included in the calculation"
         ]
@@ -136,7 +136,7 @@ Response :
   },
   "verbose": {
     "duration": {
-      "value": 8760,
+      "value": 8760.0,
       "unit": "hours"
     },
     "ASSEMBLY-1": {
@@ -177,7 +177,7 @@ Response :
         "max": 1
       },
       "duration": {
-        "value": 8760,
+        "value": 8760.0,
         "unit": "hours"
       }
     },
@@ -185,10 +185,10 @@ Response :
       "impacts": {
         "gwp": {
           "embedded": {
-            "value": 2.7514,
+            "value": 4.7775,
             "significant_figures": 5,
-            "min": 2.7514,
-            "max": 2.7514,
+            "min": 4.7775,
+            "max": 4.7775,
             "warnings": [
               "End of life is not included in the calculation"
             ]
@@ -204,10 +204,10 @@ Response :
         },
         "adp": {
           "embedded": {
-            "value": 0.0051001,
+            "value": 0.0051007,
             "significant_figures": 5,
-            "min": 0.0051001,
-            "max": 0.0051001,
+            "min": 0.0051007,
+            "max": 0.0051007,
             "warnings": [
               "End of life is not included in the calculation"
             ]
@@ -223,10 +223,10 @@ Response :
         }
       },
       "units": {
-        "value": 1,
+        "value": 1.0,
         "status": "ARCHETYPE",
-        "min": 1,
-        "max": 1
+        "min": 1.0,
+        "max": 1.0
       },
       "core_units": {
         "value": 64,
@@ -235,21 +235,13 @@ Response :
         "min": 64,
         "max": 64
       },
-      "die_size_per_core": {
-        "value": 0.007125,
-        "status": "COMPLETED",
-        "unit": "cm2",
-        "source": "die_size/core_units",
-        "min": 0.007125,
-        "max": 0.007125
-      },
       "die_size": {
-        "value": 0.456,
+        "value": 4.57,
         "status": "COMPLETED",
         "unit": "cm2",
-        "source": "https://en.wikichip.org/wiki/annapurna_labs/alpine/alc12b00 : Completed from name name based on https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
-        "min": 0.456,
-        "max": 0.456
+        "source": "Average value of Graviton2 with 64 cores",
+        "min": 4.57,
+        "max": 4.57
       },
       "model_range": {
         "value": "Graviton2",
@@ -288,7 +280,7 @@ Response :
         "max": 150
       },
       "duration": {
-        "value": 8760,
+        "value": 8760.0,
         "unit": "hours"
       },
       "avg_power": {
@@ -302,11 +294,11 @@ Response :
         ]
       },
       "time_workload": {
-        "value": 50,
+        "value": 50.0,
         "status": "ARCHETYPE",
         "unit": "%",
-        "min": 0,
-        "max": 100
+        "min": 0.0,
+        "max": 100.0
       },
       "usage_location": {
         "value": "EEE",
@@ -314,29 +306,29 @@ Response :
         "unit": "CodSP3 - NCS Country Codes - NATO"
       },
       "use_time_ratio": {
-        "value": 1,
+        "value": 1.0,
         "status": "ARCHETYPE",
         "unit": "/1",
-        "min": 1,
-        "max": 1
+        "min": 1.0,
+        "max": 1.0
       },
       "hours_life_time": {
-        "value": 35040,
+        "value": 35040.0,
         "status": "COMPLETED",
         "unit": "hours",
         "source": "from device",
-        "min": 35040,
-        "max": 35040
+        "min": 35040.0,
+        "max": 35040.0
       },
       "workloads": {
         "value": [
           {
             "load_percentage": 0,
-            "power_watt": 18
+            "power_watt": 18.0
           },
           {
             "load_percentage": 10,
-            "power_watt": 48
+            "power_watt": 48.0
           },
           {
             "load_percentage": 50,
@@ -344,7 +336,7 @@ Response :
           },
           {
             "load_percentage": 100,
-            "power_watt": 153
+            "power_watt": 153.0
           }
         ],
         "status": "COMPLETED",
@@ -419,17 +411,17 @@ Response :
         }
       },
       "units": {
-        "value": 16,
+        "value": 16.0,
         "status": "ARCHETYPE",
-        "min": 16,
-        "max": 16
+        "min": 16.0,
+        "max": 16.0
       },
       "capacity": {
-        "value": 32,
+        "value": 32.0,
         "status": "ARCHETYPE",
         "unit": "GB",
-        "min": 32,
-        "max": 32
+        "min": 32.0,
+        "max": 32.0
       },
       "density": {
         "value": 1.2443636363636363,
@@ -440,7 +432,7 @@ Response :
         "max": 2.375
       },
       "duration": {
-        "value": 8760,
+        "value": 8760.0,
         "unit": "hours"
       },
       "avg_power": {
@@ -454,11 +446,11 @@ Response :
         ]
       },
       "time_workload": {
-        "value": 50,
+        "value": 50.0,
         "status": "ARCHETYPE",
         "unit": "%",
-        "min": 0,
-        "max": 100
+        "min": 0.0,
+        "max": 100.0
       },
       "usage_location": {
         "value": "EEE",
@@ -466,19 +458,19 @@ Response :
         "unit": "CodSP3 - NCS Country Codes - NATO"
       },
       "use_time_ratio": {
-        "value": 1,
+        "value": 1.0,
         "status": "ARCHETYPE",
         "unit": "/1",
-        "min": 1,
-        "max": 1
+        "min": 1.0,
+        "max": 1.0
       },
       "hours_life_time": {
-        "value": 35040,
+        "value": 35040.0,
         "status": "COMPLETED",
         "unit": "hours",
         "source": "from device",
-        "min": 35040,
-        "max": 35040
+        "min": 35040.0,
+        "max": 35040.0
       },
       "params": {
         "value": {
@@ -508,10 +500,10 @@ Response :
       "impacts": {
         "gwp": {
           "embedded": {
-            "value": 0,
+            "value": 0.0,
             "significant_figures": 5,
-            "min": 0,
-            "max": 0,
+            "min": 0.0,
+            "max": 0.0,
             "warnings": [
               "End of life is not included in the calculation"
             ]
@@ -522,10 +514,10 @@ Response :
         },
         "adp": {
           "embedded": {
-            "value": 0,
+            "value": 0.0,
             "significant_figures": 5,
-            "min": 0,
-            "max": 0,
+            "min": 0.0,
+            "max": 0.0,
             "warnings": [
               "End of life is not included in the calculation"
             ]
@@ -536,17 +528,17 @@ Response :
         }
       },
       "units": {
-        "value": 0,
+        "value": 0.0,
         "status": "ARCHETYPE",
-        "min": 0,
-        "max": 0
+        "min": 0.0,
+        "max": 0.0
       },
       "capacity": {
-        "value": 0,
+        "value": 0.0,
         "status": "ARCHETYPE",
         "unit": "GB",
-        "min": 0,
-        "max": 0
+        "min": 0.0,
+        "max": 0.0
       },
       "density": {
         "value": 54.8842105263158,
@@ -554,10 +546,10 @@ Response :
         "unit": "GB/cm2",
         "source": "Average of 19 rows",
         "min": 16.4,
-        "max": 128
+        "max": 128.0
       },
       "duration": {
-        "value": 8760,
+        "value": 8760.0,
         "unit": "hours"
       }
     },
@@ -593,20 +585,20 @@ Response :
         }
       },
       "units": {
-        "value": 2,
+        "value": 2.0,
         "status": "ARCHETYPE",
-        "min": 2,
-        "max": 2
+        "min": 2.0,
+        "max": 2.0
       },
       "unit_weight": {
         "value": 2.99,
         "status": "ARCHETYPE",
         "unit": "kg",
-        "min": 1,
-        "max": 5
+        "min": 1.0,
+        "max": 5.0
       },
       "duration": {
-        "value": 8760,
+        "value": 8760.0,
         "unit": "hours"
       }
     },
@@ -652,7 +644,7 @@ Response :
         "status": "ARCHETYPE"
       },
       "duration": {
-        "value": 8760,
+        "value": 8760.0,
         "unit": "hours"
       }
     },
@@ -694,7 +686,7 @@ Response :
         "max": 1
       },
       "duration": {
-        "value": 8760,
+        "value": 8760.0,
         "unit": "hours"
       }
     },
@@ -711,18 +703,18 @@ Response :
       "unit": "CodSP3 - NCS Country Codes - NATO"
     },
     "use_time_ratio": {
-      "value": 1,
+      "value": 1.0,
       "status": "ARCHETYPE",
       "unit": "/1",
-      "min": 1,
-      "max": 1
+      "min": 1.0,
+      "max": 1.0
     },
     "hours_life_time": {
-      "value": 35040,
+      "value": 35040.0,
       "status": "ARCHETYPE",
       "unit": "hours",
-      "min": 35040,
-      "max": 35040
+      "min": 35040.0,
+      "max": 35040.0
     },
     "other_consumption_ratio": {
       "value": 0.33,
@@ -732,7 +724,7 @@ Response :
       "max": 0.6
     },
     "instance_per_server": {
-      "value": 64,
+      "value": 64.0,
       "status": "ARCHETYPE"
     },
     "gwp_factor": {
@@ -758,7 +750,7 @@ Response :
       "max": 1
     }
   }
-}
+}(
 ```
 
 ## Get the impacts of a cloud instance with custom usage data

@@ -94,7 +94,7 @@ curl -X 'POST' \
 
 This query returns :
 
-- The impacts for the both gwp and adp criteria since ```criteria=gwp&criteria=adp```
+* The impacts for both gwp and adp criteria since ```criteria=gwp&criteria=adp```
 * The API will use an average electrical consumption of 70 Watt/hours 30% of the time (since ```use_time_ratio=0.3```) for one year (since duration is set at 8760 hours). 
 * Usage impacts will be assessed for the French electrical mix impacts since ```usage_location='FRA'```
 * Embedded impacts will be allocated on one year (since duration is set at 8760 hours).
