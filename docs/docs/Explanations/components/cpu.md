@@ -7,9 +7,9 @@
 | units             | None | 1;1;1                           | CPU quantity                                  | 2                  |
 | usage             | None | See Usage                       | See usage                                     | ..                 |
 | core_units        | None | 24;1;64                         | Number of physical core on one CPU            | 12                 |
-| die_size          | cm2  | None                            | Size of the die                               | 1.1                |
+| die_size          | mm2  | None                            | Size of the die                               | 1.1                |
 | embedded          | None | None                            | Name of the CPU embedded                      | AMD                |
-| die_size_per_core | cm2  | None                            | Size of the die divided by the number of core | 0.245              |
+| die_size_per_core | mm2  | None                            | Size of the die divided by the number of core | 0.245              |
 | model_range       | None | None                            | Name of the cpu range or brand                | i7                 |
 | family            | None | None                            | Name of the architectural family (Generation) | Skylake            |
 | name              | None | None                            | Complete commercial name of the CPU           | Intel Core i7-1065 |

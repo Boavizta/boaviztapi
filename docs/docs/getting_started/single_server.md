@@ -194,12 +194,12 @@ It will return:
         "max": 4.0
       },
       "die_size": {
-        "value": 2.48,
+        "value": 248,
         "status": "COMPLETED",
-        "unit": "cm2",
+        "unit": "mm2",
         "source": "Average value for all families",
-        "min": 0.26,
-        "max": 36.4
+        "min": 26,
+        "max": 364
       },
       "duration": {
         "value": 35040.0,
@@ -573,7 +573,7 @@ curl -X 'POST' \
     "cpu": {
       "units": 2,
       "core_units": 12,
-      "die_size_per_core": 0.245
+      "die_size_per_core": 245
     },
     "ram": [
       {

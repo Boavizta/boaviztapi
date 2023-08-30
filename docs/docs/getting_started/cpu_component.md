@@ -112,7 +112,7 @@ Result :
 
 * This query returns will only compute the gwp impact since we add the `criteria=gwp` flag.
 * You can see that the API has completed the needed value from the cpu name. We parse and fuzzymatch the cpu ```name``` with our dataset of cpu to identify ```tdp```, ```cores_unit```, ```family```...
-* The ```die_size_per_core``` is completed from the cpu family.
+* The ```die_size``` is completed from the cpu family.
 * The usage impact has been assessed using a default level of workload of 50% with the consumption profile of a xeon gold (completed from cpu ```name```).
 
 ```json
@@ -167,12 +167,12 @@ Result :
       "max": 1.0
     },
     "die_size": {
-      "value": 1.57,
+      "value": 157,
       "status": "COMPLETED",
-      "unit": "cm2",
+      "unit": "mm2",
       "source": "Average value for Skylake",
-      "min": 1.5,
-      "max": 1.77
+      "min": 150,
+      "max": 177
     },
     "model_range": {
       "value": "Xeon Gold",
@@ -374,12 +374,12 @@ Result :
       "status": "INPUT"
     },
     "die_size": {
-      "value": 4.47,
+      "value": 447,
       "status": "COMPLETED",
-      "unit": "cm2",
+      "unit": "mm2",
       "source": "Linear regression on Skylake",
-      "min": 4.47,
-      "max": 4.47
+      "min": 447,
+      "max": 447
     },
     "family": {
       "value": "Skylake",

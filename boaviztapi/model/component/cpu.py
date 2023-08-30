@@ -34,14 +34,14 @@ class ComponentCPU(Component):
             max=get_arch_value(archetype, 'core_units', 'max')
         )
         self.die_size_per_core = Boattribute(
-            unit="cm2",
+            unit="mm2",
             default=get_arch_value(archetype, 'die_size_per_core', 'default'),
             min=get_arch_value(archetype, 'die_size_per_core', 'min'),
             max=get_arch_value(archetype, 'die_size_per_core', 'max')
         )
         self.die_size = Boattribute(
             complete_function=self._complete_die_size,
-            unit="cm2",
+            unit="mm2",
             default=get_arch_value(archetype, 'die_size', 'default'),
             min=get_arch_value(archetype, 'die_size', 'min'),
             max=get_arch_value(archetype, 'die_size', 'max')
@@ -224,10 +224,8 @@ class ComponentCPU(Component):
                 self.core_units.set_completed(cores, min=cores_min, max=cores_max,
                                               source=f"Completed from name name based on {source}.")
             if die_size is not None:
-                # divide by 100 to convert mm2 into cm2
-                self.die_size.set_completed(die_size / 100, min=die_size_min / 100, max=die_size_max / 100,
+                self.die_size.set_completed(die_size, min=die_size_min, max=die_size_max,
                                             source=f"{die_size_source} : Completed from name name based on {source}.")
-            self.name_completion = True
 
     def _complete_die_size_from_cpu_specs(self):
         df = _cpu_specs[_cpu_specs["total_die_size"].notna()]
@@ -245,9 +243,9 @@ class ComponentCPU(Component):
         # If we don't have a core_units, we take the average of the df
         if self.core_units.is_none():
             self.die_size.set_completed(
-                value=rd.round_to_sigfig(df["total_die_size"].mean() / 100, 3),
-                min=rd.round_to_sigfig(df["total_die_size"].min() / 100, 3),
-                max=rd.round_to_sigfig(df["total_die_size"].max() / 100, 3),
+                value=rd.round_to_sigfig(df["total_die_size"].mean(), 3),
+                min=rd.round_to_sigfig(df["total_die_size"].min(), 3),
+                max=rd.round_to_sigfig(df["total_die_size"].max(), 3),
                 source=f"Average value for {self.family.value if family else 'all families'}"
             )
 
@@ -257,18 +255,18 @@ class ComponentCPU(Component):
             df_min = df[(df["cores"] == self.core_units.min)]
             df_max = df[(df["cores"] == self.core_units.max)]
             self.die_size.set_completed(
-                value=rd.round_to_sigfig(df_value["total_die_size"].mean() / 100, 3),
-                min=rd.round_to_sigfig(df_min["total_die_size"].min() / 100, 3),
-                max=rd.round_to_sigfig(df_max["total_die_size"].max() / 100, 3),
+                value=rd.round_to_sigfig(df_value["total_die_size"].mean(), 3),
+                min=rd.round_to_sigfig(df_min["total_die_size"].min(), 3),
+                max=rd.round_to_sigfig(df_max["total_die_size"].max(), 3),
                 source=f"Average value of {self.family.value if family else 'all families'} with {self.core_units.value} cores"
             )
 
         # If all rows have the same number of cores but different from the given cores_units
         elif len(df.index) == 1 or (not df.isnull and (df["cores"] == df["cores"].iloc[0]).all()):
             self.die_size.set_completed(
-                value=rd.round_to_sigfig((df["total_die_size"].iloc[0] * self.core_units.value / df['cores'].iloc[0]) / 100, 3),
-                min=rd.round_to_sigfig((df["total_die_size"].min() * self.core_units.min / df['cores'].iloc[0]) / 100, 3),
-                max=rd.round_to_sigfig((df["total_die_size"].max() * self.core_units.max / df['cores'].iloc[0]) / 100, 3),
+                value=rd.round_to_sigfig((df["total_die_size"].iloc[0] * self.core_units.value / df['cores'].iloc[0]), 3),
+                min=rd.round_to_sigfig((df["total_die_size"].min() * self.core_units.min / df['cores'].iloc[0]), 3),
+                max=rd.round_to_sigfig((df["total_die_size"].max() * self.core_units.max / df['cores'].iloc[0]), 3),
                 source=f"Rule of three on {df['name'].iloc[0]}"
             )
 
@@ -282,8 +280,8 @@ class ComponentCPU(Component):
             a = ȳ - b * x̄
 
             self.die_size.set_completed(
-                value=rd.round_to_sigfig((a + b * self.core_units.value) / 100, 3),
-                min=rd.round_to_sigfig((a + b * self.core_units.min) / 100, 3),
-                max=rd.round_to_sigfig((a + b * self.core_units.max) / 100, 3),
+                value=rd.round_to_sigfig((a + b * self.core_units.value), 3),
+                min=rd.round_to_sigfig((a + b * self.core_units.min), 3),
+                max=rd.round_to_sigfig((a + b * self.core_units.max), 3),
                 source=f"Linear regression on {self.family.value if family else 'all families'}"
             )
