@@ -19,7 +19,6 @@ utils_router = APIRouter(
 
 data_dir = os.path.join(os.path.dirname(__file__), '../data')
 _cpu_specs = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs.csv'))
-_cpu_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_manufacture.csv'))
 _ssd_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/ssd_manufacture.csv'))
 _ram_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/ram_manufacture.csv'))
 
@@ -31,8 +30,8 @@ async def utils_get_all_countries():
 
 @utils_router.get('/cpu_family', description=cpu_family)
 async def utils_get_all_cpu_family():
-    df = _cpu_manuf[_cpu_manuf["family"].notna()]
-    return [*df["family"].unique()]
+    df = _cpu_specs[_cpu_specs["code_name"].notna()]
+    return [*df["code_name"].unique()]
 
 
 @utils_router.get('/cpu_model_range', description=cpu_model_range)

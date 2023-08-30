@@ -17,7 +17,7 @@ Documentation is generated from markdown using `mkdocs` with the `material` them
 
 ```bash
 # install mkdocs and its extensions
-pip install mkdocs mkdocs-render-swagger-plugin mkdocs-material
+pip install mkdocs mkdocs-render-swagger-plugin mkdocs-material mkdocs-macros-plugin
 ```
 
 💡 Do not mixup _pip_ and _brew_ installation of `mkdocs` (see [troubleshooting](https://jimandreas.github.io/mkdocs-material/troubleshooting/)).

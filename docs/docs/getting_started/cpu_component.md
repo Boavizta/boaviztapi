@@ -36,10 +36,10 @@ Result :
 {
   "gwp": {
     "embedded": {
-      "value": 21.927,
+      "value": 13.2,
       "significant_figures": 5,
-      "min": 10.6,
-      "max": 44.149,
+      "min": 13.062,
+      "max": 13.594,
       "warnings": [
         "End of life is not included in the calculation"
       ]
@@ -48,17 +48,17 @@ Result :
       "value": 944.95,
       "significant_figures": 5,
       "min": 57.195,
-      "max": 2814
+      "max": 2814.0
     },
     "unit": "kgCO2eq",
     "description": "Total climate change"
   },
   "adp": {
     "embedded": {
-      "value": 0.020404,
+      "value": 0.020401,
       "significant_figures": 5,
-      "min": 0.0204,
-      "max": 0.02041,
+      "min": 0.020401,
+      "max": 0.020401,
       "warnings": [
         "End of life is not included in the calculation"
       ]
@@ -74,19 +74,19 @@ Result :
   },
   "pe": {
     "embedded": {
-      "value": 328.01,
+      "value": 210.62,
       "significant_figures": 5,
-      "min": 175.64,
-      "max": 626.93,
+      "min": 208.76,
+      "max": 215.92,
       "warnings": [
         "End of life is not included in the calculation"
       ]
     },
     "use": {
-      "value": 32012,
+      "value": 32012.0,
       "significant_figures": 5,
       "min": 32.327,
-      "max": 1164200
+      "max": 1164200.0
     },
     "unit": "MJ",
     "description": "Consumption of primary energy"
@@ -120,10 +120,10 @@ Result :
   "impacts": {
     "gwp": {
       "embedded": {
-        "value": 21.927,
+        "value": 13.2,
         "significant_figures": 5,
-        "min": 10.6,
-        "max": 44.149,
+        "min": 13.062,
+        "max": 13.594,
         "warnings": [
           "End of life is not included in the calculation"
         ]
@@ -132,7 +132,7 @@ Result :
         "value": 944.95,
         "significant_figures": 5,
         "min": 57.195,
-        "max": 2814
+        "max": 2814.0
       },
       "unit": "kgCO2eq",
       "description": "Total climate change"
@@ -142,10 +142,10 @@ Result :
     "impacts": {
       "gwp": {
         "embedded": {
-          "value": 21.927,
+          "value": 13.2,
           "significant_figures": 5,
-          "min": 10.6,
-          "max": 44.149,
+          "min": 13.062,
+          "max": 13.594,
           "warnings": [
             "End of life is not included in the calculation"
           ]
@@ -154,31 +154,25 @@ Result :
           "value": 944.95,
           "significant_figures": 5,
           "min": 57.195,
-          "max": 2814
+          "max": 2814.0
         },
         "unit": "kgCO2eq",
         "description": "Total climate change"
       }
     },
     "units": {
-      "value": 1,
+      "value": 1.0,
       "status": "ARCHETYPE",
-      "min": 1,
-      "max": 1
+      "min": 1.0,
+      "max": 1.0
     },
-    "core_units": {
-      "value": 24,
-      "status": "ARCHETYPE",
-      "min": 1,
-      "max": 64
-    },
-    "die_size_per_core": {
-      "value": 0.25,
+    "die_size": {
+      "value": 1.57,
       "status": "COMPLETED",
       "unit": "cm2",
-      "source": "https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)#Extreme_Core_Count_.28XCC.29",
-      "min": 0.25,
-      "max": 0.27
+      "source": "Average value for Skylake",
+      "min": 1.5,
+      "max": 1.77
     },
     "model_range": {
       "value": "Xeon Gold",
@@ -195,9 +189,11 @@ Result :
       "max": "Intel"
     },
     "family": {
-      "value": "skylake",
-      "status": "CHANGED",
-      "source": "Completed from name name based on https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data."
+      "value": "Skylake",
+      "status": "COMPLETED",
+      "source": "Completed from name name based on https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data.",
+      "min": "Skylake",
+      "max": "Skylake"
     },
     "name": {
       "value": "Intel Xeon Gold 6134",
@@ -207,7 +203,7 @@ Result :
       "max": "Intel Xeon Gold 6134"
     },
     "duration": {
-      "value": 26280,
+      "value": 26280.0,
       "unit": "hours"
     },
     "avg_power": {
@@ -218,11 +214,11 @@ Result :
       "max": 94.624
     },
     "time_workload": {
-      "value": 50,
+      "value": 50.0,
       "status": "ARCHETYPE",
       "unit": "%",
-      "min": 0,
-      "max": 100
+      "min": 0.0,
+      "max": 100.0
     },
     "usage_location": {
       "value": "EEE",
@@ -230,18 +226,18 @@ Result :
       "unit": "CodSP3 - NCS Country Codes - NATO"
     },
     "use_time_ratio": {
-      "value": 1,
+      "value": 1.0,
       "status": "ARCHETYPE",
       "unit": "/1",
-      "min": 1,
-      "max": 1
+      "min": 1.0,
+      "max": 1.0
     },
     "hours_life_time": {
-      "value": 26280,
+      "value": 26280.0,
       "status": "ARCHETYPE",
       "unit": "hours",
-      "min": 26280,
-      "max": 26280
+      "min": 26280.0,
+      "max": 26280.0
     },
     "params": {
       "value": {
@@ -276,23 +272,23 @@ curl -X 'POST' \
   -H 'Content-Type: application/json' \
  -d '{
       "core_units": 24,
-      "family": "Skylake"
+      "family": "skylake"
       }'
 ```
 Result :
 
 * This query returns will compute the gwp and adp impacts since we add the `criteria=gwp&criteria=adp` flags.
-* Since only lowercase is used, the API will correct Skylake to skylake (CHANGED) and complete the missing attributes from the given attributes (COMPLETED) or by default ones (ARCEHTYPE).
+* The API will correct skylake to Skylake (CHANGED) and complete the missing attributes from the given attributes (COMPLETED) or by default ones (ARCHETYPE).
 
 ```json
 {
   "impacts": {
     "gwp": {
       "embedded": {
-        "value": 21.927,
+        "value": 18.913,
         "significant_figures": 5,
-        "min": 21.927,
-        "max": 22.873,
+        "min": 18.913,
+        "max": 18.913,
         "warnings": [
           "End of life is not included in the calculation"
         ]
@@ -308,10 +304,10 @@ Result :
     },
     "adp": {
       "embedded": {
-        "value": 0.020404,
+        "value": 0.020403,
         "significant_figures": 5,
-        "min": 0.020404,
-        "max": 0.020404,
+        "min": 0.020403,
+        "max": 0.020403,
         "warnings": [
           "End of life is not included in the calculation"
         ]
@@ -330,10 +326,10 @@ Result :
     "impacts": {
       "gwp": {
         "embedded": {
-          "value": 21.927,
+          "value": 18.913,
           "significant_figures": 5,
-          "min": 21.927,
-          "max": 22.873,
+          "min": 18.913,
+          "max": 18.913,
           "warnings": [
             "End of life is not included in the calculation"
           ]
@@ -349,10 +345,10 @@ Result :
       },
       "adp": {
         "embedded": {
-          "value": 0.020404,
+          "value": 0.020403,
           "significant_figures": 5,
-          "min": 0.020404,
-          "max": 0.020404,
+          "min": 0.020403,
+          "max": 0.020403,
           "warnings": [
             "End of life is not included in the calculation"
           ]
@@ -368,29 +364,29 @@ Result :
       }
     },
     "units": {
-      "value": 1,
+      "value": 1.0,
       "status": "ARCHETYPE",
-      "min": 1,
-      "max": 1
+      "min": 1.0,
+      "max": 1.0
     },
     "core_units": {
       "value": 24,
       "status": "INPUT"
     },
-    "die_size_per_core": {
-      "value": 0.25,
+    "die_size": {
+      "value": 4.47,
       "status": "COMPLETED",
       "unit": "cm2",
-      "source": "https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)#Extreme_Core_Count_.28XCC.29",
-      "min": 0.25,
-      "max": 0.27
+      "source": "Linear regression on Skylake",
+      "min": 4.47,
+      "max": 4.47
     },
     "family": {
-      "value": "skylake",
+      "value": "Skylake",
       "status": "CHANGED"
     },
     "duration": {
-      "value": 26280,
+      "value": 26280.0,
       "unit": "hours"
     },
     "avg_power": {
@@ -401,11 +397,11 @@ Result :
       "max": 182.23
     },
     "time_workload": {
-      "value": 50,
+      "value": 50.0,
       "status": "ARCHETYPE",
       "unit": "%",
-      "min": 0,
-      "max": 100
+      "min": 0.0,
+      "max": 100.0
     },
     "usage_location": {
       "value": "EEE",
@@ -413,18 +409,18 @@ Result :
       "unit": "CodSP3 - NCS Country Codes - NATO"
     },
     "use_time_ratio": {
-      "value": 1,
+      "value": 1.0,
       "status": "ARCHETYPE",
       "unit": "/1",
-      "min": 1,
-      "max": 1
+      "min": 1.0,
+      "max": 1.0
     },
     "hours_life_time": {
-      "value": 26280,
+      "value": 26280.0,
       "status": "ARCHETYPE",
       "unit": "hours",
-      "min": 26280,
-      "max": 26280
+      "min": 26280.0,
+      "max": 26280.0
     },
     "params": {
       "value": {
@@ -483,10 +479,10 @@ Result :
 {
   "gwp": {
     "embedded": {
-      "value": 0.0016687,
+      "value": 0.0010046,
       "significant_figures": 5,
-      "min": 0.00080668,
-      "max": 0.0033599,
+      "min": 0.00099408,
+      "max": 0.0010346,
       "warnings": [
         "End of life is not included in the calculation"
       ]
@@ -531,10 +527,10 @@ Result :
 {
   "gwp": {
     "embedded": {
-      "value": 21.927,
+      "value": 13.2,
       "significant_figures": 5,
-      "min": 10.6,
-      "max": 44.149,
+      "min": 13.062,
+      "max": 13.594,
       "warnings": [
         "End of life is not included in the calculation"
       ]

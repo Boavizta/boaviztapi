@@ -10,9 +10,6 @@ from boaviztapi.model.component import ComponentCPU
 from boaviztapi.service.archetype import get_component_archetype
 
 
-_cpu_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/crowdsourcing/cpu_manufacture.csv'))
-
-
 class CPU(ComponentDTO):
     core_units: Optional[int] = None
     die_size: Optional[float] = None
