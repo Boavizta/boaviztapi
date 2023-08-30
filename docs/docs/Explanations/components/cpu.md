@@ -31,7 +31,7 @@ If CPU ```name``` is given, ```model_range```, ```tdp```, ```die_size``` and ```
 
 if ```die_size_per_core``` and ```core_units``` are given :
 
-$$ \text{die_size_per_core} = {\text{core_units}}*{\text{die_size}}$$
+$$ \text{die_size} = {\text{core_units}}*{\text{die_size}}$$
 
 Otherwise, if ```family``` is given, ```die_size``` can be retrieved from a fuzzy matching on our cpu repository. 
 
