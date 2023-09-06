@@ -15,6 +15,7 @@ from boaviztapi.service.factor_provider import get_impact_factor
 
 class DeviceServer(Device):
     NAME = "SERVER"
+
     def __init__(self, archetype=get_server_archetype(config["default_server"]), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
         self._cpu = None
@@ -33,7 +34,7 @@ class DeviceServer(Device):
     @property
     def cpu(self) -> ComponentCPU:
         if self._cpu is None:
-            self._cpu = ComponentCPU(archetype=get_arch_component(self.archetype,"CPU"))
+            self._cpu = ComponentCPU(archetype=get_arch_component(self.archetype, "CPU"))
         return self._cpu
 
     @cpu.setter
@@ -43,7 +44,7 @@ class DeviceServer(Device):
     @property
     def ram(self) -> List[ComponentRAM]:
         if self._ram_list is None:
-            self._ram_list = [ComponentRAM(archetype=get_arch_component(self.archetype,"RAM"))]
+            self._ram_list = [ComponentRAM(archetype=get_arch_component(self.archetype, "RAM"))]
         return self._ram_list
 
     @ram.setter
@@ -53,7 +54,7 @@ class DeviceServer(Device):
     @property
     def disk(self) -> List[Union[ComponentSSD, ComponentHDD]]:
         if self._disk_list is None:
-            self._disk_list = [ComponentSSD(archetype=get_arch_component(self.archetype,"SSD"))]
+            self._disk_list = [ComponentSSD(archetype=get_arch_component(self.archetype, "SSD"))]
         return self._disk_list
 
     @disk.setter
@@ -63,7 +64,7 @@ class DeviceServer(Device):
     @property
     def power_supply(self) -> ComponentPowerSupply:
         if self._power_supply is None:
-            self._power_supply = ComponentPowerSupply(archetype=get_arch_component(self.archetype,"POWER_SUPPLY"))
+            self._power_supply = ComponentPowerSupply(archetype=get_arch_component(self.archetype, "POWER_SUPPLY"))
         return self._power_supply
 
     @power_supply.setter
@@ -73,7 +74,7 @@ class DeviceServer(Device):
     @property
     def case(self) -> ComponentCase:
         if self._case is None:
-            self._case = ComponentCase(archetype=get_arch_component(self.archetype,"CASE"))
+            self._case = ComponentCase(archetype=get_arch_component(self.archetype, "CASE"))
         return self._case
 
     @case.setter
@@ -91,7 +92,7 @@ class DeviceServer(Device):
     @property
     def motherboard(self) -> ComponentMotherboard:
         if self._motherboard is None:
-            self._motherboard = ComponentMotherboard(archetype=get_arch_component(self.archetype,"MOTHERBOARD"))
+            self._motherboard = ComponentMotherboard(archetype=get_arch_component(self.archetype, "MOTHERBOARD"))
         return self._motherboard
 
     @motherboard.setter
@@ -101,7 +102,7 @@ class DeviceServer(Device):
     @property
     def assembly(self) -> ComponentAssembly:
         if self._assembly is None:
-            self._assembly = ComponentAssembly(archetype=get_arch_component(self.archetype,"ASSEMBLY"))
+            self._assembly = ComponentAssembly(archetype=get_arch_component(self.archetype, "ASSEMBLY"))
         return self._assembly
 
     @assembly.setter
@@ -111,7 +112,7 @@ class DeviceServer(Device):
     @property
     def usage(self) -> ModelUsageServer:
         if self._usage is None:
-            self._usage = ModelUsageServer(archetype=get_arch_component(self.archetype,"USAGE"))
+            self._usage = ModelUsageServer(archetype=get_arch_component(self.archetype, "USAGE"))
         return self._usage
 
     @usage.setter
@@ -132,11 +133,12 @@ class DeviceServer(Device):
 
         try:
             for component in self.components:
-                impact, sign_fig, min_impact, max_impact, c_warning = getattr(component, f'impact_embedded')(impact_type)
+                impact, sign_fig, min_impact, max_impact, c_warning = getattr(component, f'impact_embedded')(
+                    impact_type)
 
-                impacts.append(impact*component.units.value)
-                min_impacts.append(min_impact*component.units.min)
-                max_impacts.append(max_impact*component.units.max)
+                impacts.append(impact * component.units.value)
+                min_impacts.append(min_impact * component.units.min)
+                max_impacts.append(max_impact * component.units.max)
 
                 significant_figures.append(sign_fig)
                 warnings = warnings + c_warning
@@ -172,8 +174,8 @@ class DeviceServer(Device):
 
     def model_power_consumption(self):
         conso_cpu = ImpactFactor(
-            value=self.cpu.model_power_consumption().value*self.cpu.units.value,
-            min=self.cpu.model_power_consumption().min*self.cpu.units.min,
+            value=self.cpu.model_power_consumption().value * self.cpu.units.value,
+            min=self.cpu.model_power_consumption().min * self.cpu.units.min,
             max=self.cpu.model_power_consumption().max * self.cpu.units.max,
         )
         conso_ram = ImpactFactor(
@@ -187,9 +189,9 @@ class DeviceServer(Device):
             conso_ram.max = conso_ram.max + ram_unit.model_power_consumption().max * ram_unit.units.max
 
         return ImpactFactor(
-                value=(conso_cpu.value + conso_ram.value) * (1 + self.usage.other_consumption_ratio.value),
-                min=(conso_cpu.min + conso_ram.min) * (1 + self.usage.other_consumption_ratio.min),
-                max=(conso_cpu.max + conso_ram.max) * (1 + self.usage.other_consumption_ratio.max)
+            value=(conso_cpu.value + conso_ram.value) * (1 + self.usage.other_consumption_ratio.value),
+            min=(conso_cpu.min + conso_ram.min) * (1 + self.usage.other_consumption_ratio.min),
+            max=(conso_cpu.max + conso_ram.max) * (1 + self.usage.other_consumption_ratio.max)
         )
 
     def __compute_significant_numbers(self, impact_factor: float) -> int:
@@ -198,13 +200,15 @@ class DeviceServer(Device):
 
 class DeviceCloudInstance(DeviceServer, ABC):
 
-    def __init__(self, archetype=get_cloud_instance_archetype(config["default_cloud"], config["default_cloud_provider"]), **kwargs):
+    def __init__(self,
+                 archetype=get_cloud_instance_archetype(config["default_cloud"], config["default_cloud_provider"]),
+                 **kwargs):
         super().__init__(**kwargs, archetype=archetype)
 
     @property
     def usage(self) -> ModelUsageCloud:
         if self._usage is None:
-            self._usage = ModelUsageCloud(archetype=get_arch_component(self.archetype,"USAGE"))
+            self._usage = ModelUsageCloud(archetype=get_arch_component(self.archetype, "USAGE"))
         return self._usage
 
     @usage.setter
@@ -213,8 +217,18 @@ class DeviceCloudInstance(DeviceServer, ABC):
 
     def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         impact, sign_fig, min_impact, max_impact, c_warning = super().impact_embedded(impact_type)
-        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
+        return (
+            (impact / self.usage.instance_per_server.value), sign_fig,
+            (min_impact / self.usage.instance_per_server.min),
+            (max_impact / self.usage.instance_per_server.max),
+            c_warning
+        )
 
     def impact_use(self, impact_type: str, duration: int) -> ComputedImpacts:
         impact, sign_fig, min_impact, max_impact, c_warning = super().impact_use(impact_type, duration)
-        return (impact / self.usage.instance_per_server.value), sign_fig, min_impact, max_impact, c_warning
+        return (
+            (impact / self.usage.instance_per_server.value), sign_fig,
+            (min_impact / self.usage.instance_per_server.min),
+            (max_impact / self.usage.instance_per_server.max),
+            c_warning
+        )

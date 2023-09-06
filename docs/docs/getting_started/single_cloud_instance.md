@@ -8,9 +8,10 @@ You use `curl` in command line to query Boavizta demo (public) API.
 
 ## Get available cloud instances
 
-This query returns the list of available aws instances 
+This query returns the list of available aws instances
 
-Query: 
+Query:
+
 ```bash
 # Query the available aws instances
 curl -X 'GET' \
@@ -39,7 +40,8 @@ Results:
 This query returns :
 
 * Only gwp impact is compute since ```criteria=gwp```
-* The usage impact for 1 year (since ```duration=8760```) of compute at 50% of load for a ```r6g.medium``` instance type in europe
+* The usage impact for 1 year (since ```duration=8760```) of compute at 50% of load for a ```r6g.medium``` instance type
+  in europe
 * The embedded impacts of a ```r6g.medium``` allocated on one year (since ```duration=8760```).
 
 Query:
@@ -52,14 +54,15 @@ curl -X 'GET' \
 ```
 
 Results:
+
 ```json
 {
   "gwp": {
     "embedded": {
-      "value": 5.3431,
+      "value": 5.3747,
       "significant_figures": 5,
-      "min": 194.02,
-      "max": 590.64,
+      "min": 3.0632,
+      "max": 9.2604,
       "warnings": [
         "End of life is not included in the calculation"
       ]
@@ -67,8 +70,8 @@ Results:
     "use": {
       "value": 17.747,
       "significant_figures": 5,
-      "min": 62.027,
-      "max": 4069
+      "min": 0.96917,
+      "max": 63.578
     },
     "unit": "kgCO2eq",
     "description": "Total climate change"
@@ -77,9 +80,16 @@ Results:
 ```
 
 ## Get the values used to assess the impacts of each component
-This is the same query as before. However, you add the `verbose=true` flag to get the impacts of each of its components (including usage) and the value of the attributes used for the calculation.
+
+This is the same query as before. However, you add the `verbose=true` flag to get the impacts of each of its
+components (including usage) and the value of the attributes used for the calculation.
 
 * Both adp and gwp impacts are compute since ```criteria=adp&criteria=gwp```
+
+!!!warning
+Note that these are the components of the entire server, not the instance. To get the impact or the attribute of the
+component for the specific instance, divide the impact of each component by the number of instances hosted on the
+server.
 
 Query :
 
@@ -99,8 +109,8 @@ Response :
       "embedded": {
         "value": 5.3747,
         "significant_figures": 5,
-        "min": 196.05,
-        "max": 592.66,
+        "min": 3.0632,
+        "max": 9.2604,
         "warnings": [
           "End of life is not included in the calculation"
         ]
@@ -108,8 +118,8 @@ Response :
       "use": {
         "value": 17.747,
         "significant_figures": 5,
-        "min": 62.027,
-        "max": 4069.0
+        "min": 0.96917,
+        "max": 63.578
       },
       "unit": "kgCO2eq",
       "description": "Total climate change"
@@ -118,8 +128,8 @@ Response :
       "embedded": {
         "value": 0.00057379,
         "significant_figures": 5,
-        "min": 0.025379,
-        "max": 0.053354,
+        "min": 0.00039655,
+        "max": 0.00083366,
         "warnings": [
           "End of life is not included in the calculation"
         ]
@@ -127,8 +137,8 @@ Response :
       "use": {
         "value": 2.99981e-06,
         "significant_figures": 6,
-        "min": 3.57061e-05,
-        "max": 0.000954948
+        "min": 5.57907e-07,
+        "max": 1.49211e-05
       },
       "unit": "kgSbeq",
       "description": "Use of minerals and fossil ressources"
@@ -236,12 +246,12 @@ Response :
         "max": 64
       },
       "die_size": {
-        "value": 4.57,
+        "value": 457.0,
         "status": "COMPLETED",
-        "unit": "cm2",
+        "unit": "mm2",
         "source": "Average value of Graviton2 with 64 cores",
-        "min": 4.57,
-        "max": 4.57
+        "min": 457.0,
+        "max": 457.0
       },
       "model_range": {
         "value": "Graviton2",
@@ -725,7 +735,9 @@ Response :
     },
     "instance_per_server": {
       "value": 64.0,
-      "status": "ARCHETYPE"
+      "status": "ARCHETYPE",
+      "min": 64.0,
+      "max": 64.0
     },
     "gwp_factor": {
       "value": 0.38,
@@ -750,7 +762,7 @@ Response :
       "max": 1
     }
   }
-}(
+}
 ```
 
 ## Get the impacts of a cloud instance with custom usage data
@@ -785,8 +797,8 @@ curl -X 'POST' \
     }'
 ```
 
-
-* Since no criteria flags are specified, the API returns the impacts of the instance for the default criteria (adp, pe, gwp). 
+* Since no criteria flags are specified, the API returns the impacts of the instance for the default criteria (adp, pe,
+  gwp).
 * Since duration is set at 2 and time_workload is provided, the query usage can be translated as such :
 
 ```I used a r6g.medium in a french data center for 2 hours half of the time in IDLE mode and half of the time at 50% of workload```
@@ -797,10 +809,10 @@ Results:
 {
   "gwp": {
     "embedded": {
-      "value": 0.0012199,
+      "value": 0.0012271,
       "significant_figures": 5,
-      "min": 0.044297,
-      "max": 0.13485,
+      "min": 0.00069936,
+      "max": 0.0021142,
       "warnings": [
         "End of life is not included in the calculation"
       ]
@@ -808,8 +820,8 @@ Results:
     "use": {
       "value": 0.00085713,
       "significant_figures": 5,
-      "min": 0.049495,
-      "max": 0.065993
+      "min": 0.00077335,
+      "max": 0.0010311
     },
     "unit": "kgCO2eq",
     "description": "Total climate change"
@@ -818,8 +830,8 @@ Results:
     "embedded": {
       "value": 1.31e-07,
       "significant_figures": 5,
-      "min": 5.7941e-06,
-      "max": 1.2181e-05,
+      "min": 9.0536e-08,
+      "max": 1.9033e-07,
       "warnings": [
         "End of life is not included in the calculation"
       ]
@@ -827,18 +839,18 @@ Results:
     "use": {
       "value": 4.24891e-10,
       "significant_figures": 6,
-      "min": 2.45351e-08,
-      "max": 3.27134e-08
+      "min": 3.8336e-10,
+      "max": 5.11147e-10
     },
     "unit": "kgSbeq",
     "description": "Use of minerals and fossil ressources"
   },
   "pe": {
     "embedded": {
-      "value": 0.015881,
+      "value": 0.015979,
       "significant_figures": 5,
-      "min": 0.57578,
-      "max": 1.7325,
+      "min": 0.0090939,
+      "max": 0.027168,
       "warnings": [
         "End of life is not included in the calculation"
       ]
@@ -846,12 +858,13 @@ Results:
     "use": {
       "value": 0.098736,
       "significant_figures": 5,
-      "min": 5.7015,
-      "max": 7.602
+      "min": 0.089085,
+      "max": 0.11878
     },
     "unit": "MJ",
     "description": "Consumption of primary energy"
   }
+}
 ```
 
 For further information see : [The explanation page on cloud](../Explanations/devices/cloud.md)

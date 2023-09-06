@@ -2,6 +2,9 @@
 !!!warning 
     Only AWS is implemented for now.
 
+!!!warning
+    Note that the verbose object will return the components of the entire server, not the instance. To get the impact or the attribute of the component for the specific instance, divide the impact of each component by the number of instances hosted on the server.
+
 ## GET ```/v1/cloud/```
 
 The GET router will return the default impacts of a cloud instance. The query is composed of minimum two query parameters : a ```provider``` and an ```instance_type```.
