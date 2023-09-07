@@ -38,8 +38,10 @@ The system follows a bottom-up approach in its development, organized into layer
 ## :whale: Run API using docker
 
 ```bash
-$ docker run ghcr.io/boavizta/boaviztapi:latest
+$ docker run -p 5000:5000 ghcr.io/boavizta/boaviztapi:1.0.0a4
 ```
+
+Access API at http://localhost:5000
 
 ## Install using pip package
 
@@ -107,10 +109,12 @@ docker build --build-arg VERSION=`poetry version -s` .
 Run docker image
 
 ```sh
-docker run -p 5000:5000/tcp boavizta/boaviztapi:0.2.0
+docker run -p 5000:5000/tcp boavizta/boaviztapi:1.0.0a4
 ```
 
 ### Deploy to AWS as serverless application
+
+⚠ This is currently not working , see  [Deployment as serverless application does not work · Issue #153 · Boavizta/boaviztapi](https://github.com/Boavizta/boaviztapi/issues/153)
 
 Api can be self hosted to your own AWS account using the serverless framework.
 

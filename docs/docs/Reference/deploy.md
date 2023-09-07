@@ -4,9 +4,11 @@
 
 ### with docker
 
-```bash 
-$ docker run ghcr.io/boavizta/boaviztapi:latest
+```bash
+$ docker run  -p 5000:5000 ghcr.io/boavizta/boaviztapi:1.0.0a4
 ```
+
+Then access api at <http://localhost:5000>
 
 ### with docker-compose
 
@@ -14,7 +16,7 @@ $ docker run ghcr.io/boavizta/boaviztapi:latest
 version: "3.9"
 services:
   boaviztapi:
-    image: ghcr.io/boavizta/boaviztapi:latest
+    image: ghcr.io/boavizta/boaviztapi:1.0.0a4
     environment:
       - SPECIAL_MESSAGE="<p>my welcome message in HTML format</p>"
     ports:
