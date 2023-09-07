@@ -232,7 +232,11 @@ class ComponentCPU(Component):
 
         # Fuzzymatch on the available code_name
         family = fuzzymatch_attr_from_pdf(self.family.value, "code_name",
-                                          df) if self.family.has_value() else None
+                                          _cpu_specs) if self.family.has_value() else None
+
+        # if family not in df we set it to None
+        if family not in df["code_name"].values:
+            family = None
 
         if family is not None:
             if family != self.family.value:
