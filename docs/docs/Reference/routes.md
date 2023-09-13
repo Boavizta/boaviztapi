@@ -6,13 +6,12 @@ The impact routes are used to retrieve the impacts of a given usage and configur
 
 They all have the same query parameters. If no query parameters are provided, the default values will be used.
 
-| Parameter        | Description                                                                                                                                        | Default                                                               | Example                        |
-|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|--------------------------------|
-| ```criteria```   | List the impact criteria you want the API to compute .All impacts criteria can be found here ```/v1/utils/impact_criteria```                       | ```criteria=gwp&criteria=pe&criteria=adp```                           | ```criteria=gwp```             |
-| ```verbose```    | If set at true, the API will detail the data used in the assessment. See [verbose](../Explanations/verbose.md).                                    | ```allocation=true```                                                 |                                |
-| ```allocation``` | The allocation method for embedded impacts. See [allocation](../Explanations/embedded_methodology.md#Allocation)                                   | ```allocation=TOTAL```                                                | ```allocation=TOTAL```         |
-| ```archetype```  | The missing data will be completed from the chosen archetype. **Not implemented for cloud routes**. See [archetype](../Explanations/archetypes.md) | Default archetype for each asset can be set in the configuration file | ```archetype=compute_medium``` |
-| ```duration```   | Duration considered for the assessment. If not provided, the total duration of the asset will be used.                                             | None                                                                  | ```duration=8760``` (1 year)   |
+| Parameter         | Description                                                                                                                                        | Default                                                               | Example                        |
+|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|--------------------------------|
+| ```criteria```    | List the impact criteria you want the API to compute .All impacts criteria can be found here ```/v1/utils/impact_criteria```                       | ```criteria=gwp&criteria=pe&criteria=adp```                           | ```criteria=gwp```             |
+| ```verbose```     | If set at true, the API will detail the data used in the assessment. See [verbose](../Explanations/verbose.md).                                    | ```verbose=true```                                                    | ```verbose=false```            |
+| ```archetype```   | The missing data will be completed from the chosen archetype. **Not implemented for cloud routes**. See [archetype](../Explanations/archetypes.md) | Default archetype for each asset can be set in the configuration file | ```archetype=compute_medium``` |
+| ```duration```    | Duration considered for the assessment. If not provided, the total duration (lifetime) of the asset will be used.                                  | None                                                                  | ```duration=8760``` (1 year)   |
 
 ### GET
 
