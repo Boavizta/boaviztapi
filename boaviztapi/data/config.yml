@@ -31,3 +31,5 @@ default_criteria: ["gwp", "adp", "pe"]
 default_duration:
 
 min_significant_figures: 5
+
+cpu_name_fuzzymatch_threshold: 80

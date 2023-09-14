@@ -37,3 +37,11 @@ min_significant_figures: 5
 ```
 
 *If set to 5, the results will be rounded to 5 significant figures.*
+
+## CPU name fuzzymatch threshold
+
+The CPU name fuzzymatch threshold will determine the minimum similarity between the CPU name in the request and the CPU name in the database. If the similarity is lower than the threshold, the API will not use the match.
+
+```
+cpu_name_fuzzymatch_threshold: 62
+```
