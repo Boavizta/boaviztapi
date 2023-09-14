@@ -38,7 +38,7 @@ The system follows a bottom-up approach in its development, organized into layer
 ## :whale: Run API using docker
 
 ```bash
-$ docker run -p 5000:5000 ghcr.io/boavizta/boaviztapi:1.0.0a4
+$ docker run -p 5000:5000 ghcr.io/boavizta/boaviztapi:latest
 ```
 
 Access API at http://localhost:5000
@@ -109,7 +109,7 @@ docker build --build-arg VERSION=`poetry version -s` .
 Run docker image
 
 ```sh
-docker run -p 5000:5000/tcp boavizta/boaviztapi:1.0.0a4
+docker run -p 5000:5000/tcp boavizta/boaviztapi:latest
 ```
 
 ### Deploy to AWS as serverless application

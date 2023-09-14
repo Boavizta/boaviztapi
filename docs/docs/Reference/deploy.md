@@ -5,7 +5,7 @@
 ### with docker
 
 ```bash
-$ docker run  -p 5000:5000 ghcr.io/boavizta/boaviztapi:1.0.0a4
+$ docker run  -p 5000:5000 ghcr.io/boavizta/boaviztapi:latest
 ```
 
 Then access api at <http://localhost:5000>
@@ -16,7 +16,7 @@ Then access api at <http://localhost:5000>
 version: "3.9"
 services:
   boaviztapi:
-    image: ghcr.io/boavizta/boaviztapi:1.0.0a4
+    image: ghcr.io/boavizta/boaviztapi:latest
     environment:
       - SPECIAL_MESSAGE="<p>my welcome message in HTML format</p>"
     ports:
