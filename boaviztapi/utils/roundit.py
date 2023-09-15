@@ -30,6 +30,39 @@ def min_significant_figures(*inputs):
     return sigfig if sigfig > config['min_significant_figures'] else config['min_significant_figures']
 
 
+def round_based_on_min_max(val, min_val, max_val, precision):
+    """
+    Returns a rounded values for `val`.
+
+    The rounding depends on the difference betwwen `min_val` and `max-val`. 
+    The bigger the difference, the more agressive the rounding.
+
+    The precision is a % used to round the value.
+
+    """
+    if precision == 0:
+        raise ValueError("Invalid precision value, cannot be 0%")
+    if max_val < min_val:
+        raise ValueError("round_based_on_min_max : min must be less than max")
+
+    # value for approx% of the min max delta
+    approx = (max_val - min_val) / (100/precision)
+    if approx == 0:
+        return val
+    significant = math.floor(math.log10(approx))
+
+    # Mathematically, these two calculation should be equivalent, but
+    # dividing by very small number and multiplying by very large number
+    # cause issues with floats.
+    # We avoid these issues by inverting operation based on the sign of significant
+    if significant > 0:
+        rounded = round(val / 10 ** significant) * 10**significant
+    else:
+        rounded = round(val / 10 ** significant) / 10**-significant
+
+    return rounded
+
+
 def round_to_sigfig(x, significant_figures):
     """
    returns a float rounded to significant figures
@@ -69,6 +102,7 @@ def remove_unsignificant_zeros(x):
         divider = divider * 10
     exponent = -math.log10(divider) + 1
     return float(x * (Decimal(10 ** exponent)))
+
 
 def to_precision(x, p):
     """
