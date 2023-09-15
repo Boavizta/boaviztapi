@@ -25,7 +25,7 @@
 If CPU ```name``` is given, ```model_range```, ```tdp```, ```die_size``` and ```family``` can be retrieved from a fuzzy matching on our cpu name repository. 
 
 !!!warning
-    Note that the cpu name repository is not complete and the completion can return a different cpu than the one given by the user.
+    Note that the cpu name repository is not complete and the completion can return a different cpu than the one given by the user. You can set a threshold for the fuzzy matching in the [config file](../../Reference/config.md) to control the behavior of the fuzzy matching.
 
 ### Completion of the ```die_size``` from ```family``` and/or ```core_units```
 

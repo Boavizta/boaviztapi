@@ -61,13 +61,19 @@ async def utils_get_all_case_type():
 
 @utils_router.get('/name_to_cpu', description=name_to_cpu)
 async def name_to_cpu(cpu_name: str = Query(example="Intel Core i7-9700K")):
-    name, manufacturer, code_name, model_range, tdp, cores, total_die_size, total_die_size_source, source  = attributes_from_cpu_name(cpu_name)
-    return CPU(family=code_name, name=name, tdp=tdp, core_units=cores, die_size=total_die_size, model_range=model_range, manufacturer=manufacturer)
+    cpu_attributes = attributes_from_cpu_name(cpu_name)
+    if cpu_attributes is not None:
+        name, manufacturer, code_name, model_range, tdp, cores, total_die_size, total_die_size_source, source = cpu_attributes
+        return CPU(family=code_name, name=name, tdp=tdp, core_units=cores, die_size=total_die_size, model_range=model_range,
+                   manufacturer=manufacturer)
+    else:
+        return f"CPU name {cpu_name} is not found in our database"
 
 @utils_router.get('/cpu_name', description=cpu_names)
 async def utils_get_all_cpu_name():
     df = _cpu_specs[_cpu_specs["name"].notna()]
     return [*df["name"].unique()]
+
 
 @utils_router.get('/impact_criteria', description=impacts_criteria)
 async def utils_get_all_impacts_criteria():
