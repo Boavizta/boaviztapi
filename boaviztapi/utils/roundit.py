@@ -45,7 +45,7 @@ def round_based_on_min_max(val, min_val, max_val, uncertainty=config['uncertaint
     else:
         rounded = round(val / 10 ** significant) / 10 ** -significant
 
-    return rounded
+    return float(rounded)
 
 def round_to_sigfig(x, significant_figures):
     """
