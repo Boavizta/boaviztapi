@@ -3,9 +3,6 @@ from decimal import Decimal
 
 from boaviztapi import config
 
-DEFAULT_SIG_FIGURES = 3
-
-
 def significant_number(x):
     """
     Determine the number of significant figures for x
@@ -18,35 +15,23 @@ def significant_number(x):
     return precision_and_scale(x)[0]
 
 
-def min_significant_figures(*inputs):
-    """
-    Returns the minimum of significant figures for a tuple of values
-    """
-    sigfig = significant_number(inputs[0])
-    for input in inputs:
-        p = significant_number(input)
-        if (p <= sigfig):
-            sigfig = p
-    return sigfig if sigfig > config['min_significant_figures'] else config['min_significant_figures']
-
-
-def round_based_on_min_max(val, min_val, max_val, precision):
+def round_based_on_min_max(val, min_val, max_val, uncertainty=config['uncertainty']):
     """
     Returns a rounded values for `val`.
 
     The rounding depends on the difference betwwen `min_val` and `max-val`. 
     The bigger the difference, the more agressive the rounding.
 
-    The precision is a % used to round the value.
+    The uncertainty is a % used to round the value.
 
     """
-    if precision == 0:
+    if uncertainty == 0:
         raise ValueError("Invalid precision value, cannot be 0%")
     if max_val < min_val:
         raise ValueError("round_based_on_min_max : min must be less than max")
 
     # value for approx% of the min max delta
-    approx = (max_val - min_val) / (100/precision)
+    approx = (max_val - min_val) / (100 / uncertainty)
     if approx == 0:
         return val
     significant = math.floor(math.log10(approx))
@@ -56,12 +41,11 @@ def round_based_on_min_max(val, min_val, max_val, precision):
     # cause issues with floats.
     # We avoid these issues by inverting operation based on the sign of significant
     if significant > 0:
-        rounded = round(val / 10 ** significant) * 10**significant
+        rounded = round(val / 10 ** significant) * 10 ** significant
     else:
-        rounded = round(val / 10 ** significant) / 10**-significant
+        rounded = round(val / 10 ** significant) / 10 ** -significant
 
     return rounded
-
 
 def round_to_sigfig(x, significant_figures):
     """

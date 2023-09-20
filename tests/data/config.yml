@@ -28,4 +28,5 @@ default_criteria: ["gwp", "adp", "pe"]
 
 default_duration:
 
-min_significant_figures: 2
+uncertainty: 10
+max_sig_fig: 4

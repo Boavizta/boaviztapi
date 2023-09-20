@@ -17,15 +17,14 @@ def get_model_single_impact(model: Union[Component, Device],
         impact_function = model.__getattribute__(f'impact_{phase}')
 
         if phase == "use":
-            impact, significant_figures, min_impact, max_impact, warnings = impact_function(impact_type, duration)
+            impact, min_impact, max_impact, warnings = impact_function(impact_type, duration)
         else:
-            impact, significant_figures, min_impact, max_impact, warnings = impact_function(impact_type)
+            impact, min_impact, max_impact, warnings = impact_function(impact_type)
             impact, min_impact, max_impact = allocate(Impact(value=impact, min=min_impact, max=max_impact), duration,
                                                       model.usage.hours_life_time)
 
         return Impact(
             value=impact * model.units.value,
-            significant_figures=significant_figures,
             min=min_impact * model.units.min,
             max=max_impact * model.units.max,
             warnings=list(set(warnings))

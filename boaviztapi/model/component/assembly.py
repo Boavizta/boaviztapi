@@ -18,8 +18,7 @@ class ComponentAssembly(Component):
             max=get_impact_factor(item='assembly', impact_type=impact_type)['impact']
         )
 
-        significant_figures = rd.min_significant_figures(impact_factor.value)
-        return impact_factor.value, significant_figures, impact_factor.min, impact_factor.max, ["End of life is not included in the calculation"]
+        return impact_factor.value, impact_factor.min, impact_factor.max, ["End of life is not included in the calculation"]
 
     def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
         raise NotImplementedError
