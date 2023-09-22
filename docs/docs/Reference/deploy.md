@@ -4,9 +4,11 @@
 
 ### with docker
 
-```bash 
-$ docker run ghcr.io/boavizta/boaviztapi:latest
+```bash
+$ docker run  -p 5000:5000 ghcr.io/boavizta/boaviztapi:latest
 ```
+
+Then access api at <http://localhost:5000>
 
 ### with docker-compose
 

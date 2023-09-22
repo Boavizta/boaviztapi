@@ -30,3 +30,5 @@ default_duration:
 
 uncertainty: 10
 max_sig_fig: 4
+
+cpu_name_fuzzymatch_threshold: 60
