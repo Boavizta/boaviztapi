@@ -137,7 +137,6 @@ class DeviceServer(Device):
                 impacts.append(impact * component.units.value)
                 min_impacts.append(min_impact * component.units.min)
                 max_impacts.append(max_impact * component.units.max)
-                print(max_impact, component.NAME)
                 warnings = warnings + c_warning
 
             return sum(impacts), sum(min_impacts), sum(max_impacts), warnings

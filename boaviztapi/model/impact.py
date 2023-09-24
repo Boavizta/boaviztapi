@@ -4,6 +4,7 @@ from typing import Optional
 import boaviztapi.utils.roundit as rd
 from boaviztapi import config
 
+WARNING_IMPORTANT_UNCERTAINTY = ("Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)")
 
 @dataclass
 class ImpactCriteria:
@@ -37,8 +38,13 @@ class Impact:
 
     def rounded_value(self):
         rd_value = rd.round_based_on_min_max(self.value, self.min, self.max)
-        if rd.significant_number(rd_value) > config["max_sig_fig"]:
+        nb_sig_fig = rd.significant_number(rd_value)
+
+        if nb_sig_fig > config["max_sig_fig"]:
             return rd.round_to_sigfig(rd_value, config["max_sig_fig"])
+        elif rd_value == 0:
+            self.warnings.append(WARNING_IMPORTANT_UNCERTAINTY)
+            return rd.round_to_sigfig(self.value, config["min_sig_fig"])
         else:
             return rd_value
 

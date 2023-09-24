@@ -46,4 +46,5 @@ def bottom_up(model: Union[Component, Device], selected_criteria=config["default
             impacts[criteria.name][phase] = single_impact.to_json() if single_impact else NOT_IMPLEMENTED
         impacts[criteria.name]["unit"] = criteria.unit
         impacts[criteria.name]["description"] = criteria.description
+
     return impacts

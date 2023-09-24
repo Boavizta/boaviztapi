@@ -1,6 +1,5 @@
 from typing import Tuple
 
-import boaviztapi.utils.roundit as rd
 from boaviztapi import config
 from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Boattribute
@@ -21,6 +20,7 @@ class ComponentCase(Component):
             min=get_arch_value(archetype, 'case_type', 'min'),
             max=get_arch_value(archetype, 'case_type', 'max')
         )
+
     def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         if self.case_type.value == 'rack':
             return self.__impact_manufacture_rack(impact_type)
@@ -33,8 +33,6 @@ class ComponentCase(Component):
             min=get_impact_factor(item='case', impact_type=impact_type)['rack']['impact'],
             max=get_impact_factor(item='case', impact_type=impact_type)['rack']['impact']
         )
-
-        significant_figures = rd.min_significant_figures(impact_factor.value)
 
         if self.case_type.is_archetype() and self.case_type.value == 'rack':
             blade_impact = self.__impact_manufacture_blade(impact_type)

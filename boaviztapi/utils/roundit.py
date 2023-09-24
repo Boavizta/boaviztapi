@@ -8,12 +8,11 @@ def significant_number(x):
     Determine the number of significant figures for x
     """
     if x == 0:
-        return 1
+        return 0
     int_part = int(abs(x))
     if int_part == 0:
         x = remove_unsignificant_zeros(x)
     return precision_and_scale(x)[0]
-
 
 def round_based_on_min_max(val, min_val, max_val, uncertainty=config['uncertainty']):
     """
