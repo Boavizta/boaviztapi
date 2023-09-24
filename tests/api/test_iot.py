@@ -490,7 +490,7 @@ async def test_drone_mini_costume_usage():
 async def test_custom_iot():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/iot/iot_device?verbose=false&criteria=lu', json={
-            "configuration": [
+            "functional_blocks": [
                 {
                     "hsl_level": "HSL-1",
                     "type": "security"
