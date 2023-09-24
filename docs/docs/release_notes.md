@@ -1,17 +1,20 @@
-## v0.3
+## v1.0.0
 
 ### New features
 
 * Add new end-user devices from Base Empreinte 
 * Add PEF impacts criteria
+* Add IoT device impacts
 * Add min/max values depending on user input completeness
 * Add warnings
 * Improvement of the completion process from CPU name
 * Adding around 2000 CPUs for completion
-* Adding utils routers (list available data for string fields)
+* Adding utils routers (list available data for string fields, archetypes routers, etc.)
 * Users can now choose the impact factors to compute
-* Users can now add a special message to the home page
-
+* Users can now add a special message to the home page of the API
+* Refactor and normalize routes names
+* CPU die is now express in mm2 instead of cm2
+* Refactor the allocation process based on duration
 
 ### Internal changes
 
@@ -20,9 +23,52 @@
 * Facilitating the archetype process
 * Externalize the impact factors in a separate file
 * Create a config file
-
+* CPU die completion now use cpu spec file
+* CPU uses die_size instead of die_size_per_core
 
 ### Breaking changes
+
+#### Cloud routers
+
+##### Before
+
+* We add one rout per cloud provider (e.g. ```/v1/cloud/aws```)
+
+##### Now
+
+* We have only one route for all cloud providers (e.g. ```/v1/cloud/instance```)
+* Each route has a parameter called ```provider``` (in the url for GET requests, in the body for POST requests).
+
+#### Duration & allocation
+
+##### Before
+
+* Duration was a field in the usage object called ```hours_use_time```.
+
+```
+{
+  "usage": {
+    "hours_use_time": 2,
+  }
+}
+```
+
+* Allocation was a route parameter.
+
+##### Now
+
+* Duration is now a route parameter. Allocation is no longer used
+* If not provided, we use the lifetime of the device as duration.
+* We compute usage impacts hover the ```duration``` and allocate embedded impacts on the ```duration``` hover the lifetime of the device.
+* We introduce the notion of ```use_time_ratio``` which is the proportion of time the device is used during the given duration. When a device is always used, the usage ratio is 1. When a device is never used, the usage ratio is 0.
+
+```
+{
+  "usage": {
+    "use_time_ratio": 0.5,
+  }
+}
+```
 
 #### Impacts format
 
@@ -62,7 +108,6 @@ or
    "gwp": {
      "embedded": {
        "value": 6.68,
-       "significant_figures": 3,
        "min": 6.68,
        "max": 6.68,
        "warnings": [
@@ -137,17 +182,25 @@ or
 }
 ```
 
-### New Contributors
+### Contributors
 
+@airloren
+@csauge
+@da-ekchajzer
+@samuelrince
+@dorev
+@demeringo
+@PierreRust
 
 ### Known future requirements
 
 * Mobile and fix network impacts
-* IoT impacts
 * Generalize the AWS process to other cloud providers
 * GPU impacts
-* Add multiple impact factors for semiconductors
+* Add multiple impact factors for depending on the engraving process size
 * Screen impacts from characteristics
+* Take into account the uncertainty of the impact factors
+* Adding a system layer
 
 ## v0.2.2
 
@@ -161,7 +214,6 @@ or
 * @AirLoren made his first contribution in https://github.com/Boavizta/boaviztapi/pull/141
 
 **Full Changelog**: https://github.com/Boavizta/boaviztapi/compare/v0.2.1...v0.2.2
-
 
 ## v0.2
 
