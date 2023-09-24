@@ -30,3 +30,4 @@ default_duration:
 
 uncertainty: 10
 max_sig_fig: 4
+min_sig_fig: 1
