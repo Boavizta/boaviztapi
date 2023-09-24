@@ -1,0 +1,6 @@
+id,actuators.hsl_level,actuators.type,casing.hsl_level,casing.type,connectivity.hsl_level,connectivity.type,memory.hsl_level,memory.type,others.hsl_level,others.type,pcb.hsl_level,pcb.type,power_supply.hsl_level,power_supply.type,processing.hsl_level,processing.type,security.hsl_level,security.type,sensing.hsl_level,sensing.type,user_interface.hsl_level,user_interface.type,USAGE.use_time_ratio,USAGE.hours_life_time,USAGE.avg_power
+occupancy_sensor,,,HSL-1,casing,,,,,,,,,HSL-1,power_supply,,,,,HSL-2,sensing,HSL-1,user_interface,1,350401,
+home_connected_assistant_mini,,,HSL-1,casing,HSL-1,connectivity,HSL-2,memory,HSL-3,others,HSL-2,pcb,,,HSL-1,processing,,,HSL-1,sensing,HSL-2,user_interface,1,35040
+drone_mini,HSL-3,actuators,HSL-1,casing,HSL-1,connectivity,HSL-1,memory,HSL-3,others,HSL-2,pcb,HSL-3,power_supply,HSL-2,processing,,,HSL-3,sensing,HSL-1,user_interface,1,35040
+smart_watch,,,HSL-1,casing,HSL-2,connectivity,HSL-3,memory,HSL-3,others,HSL-1,pcb,HSL-2,power_supply,HSL-2,processing,,,HSL-2,sensing,HSL-3,user_interface,1,35040
+iot-device-default,,,,,,,,,,,,,,,,,,,,,,,1,35040,
