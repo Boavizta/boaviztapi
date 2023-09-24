@@ -54,11 +54,13 @@ nav:
               - Power supply: Explanations/components/power_supply.md
               - Assembly: Explanations/components/assembly.md
               - Case: Explanations/components/case.md
+              - Functional block (IoT): Explanations/components/functional_blocks.md
         - Devices:
               - Devices: Explanations/devices/devices.md
               - Server: Explanations/devices/server.md
               - Cloud instances: Explanations/devices/cloud.md
               - End user devices : Explanations/devices/terminals_&_peripherals.md
+              - IoT device : Explanations/devices/iot_devices.md
         - Useful resources: Explanations/useful_resources.md
     - Reference:
         - Routes: Reference/routes.md

@@ -50,16 +50,8 @@ IoT device impacts are the sum of the impacts of the [functional blocks](../comp
 $$
 \begin{equation}
 \begin{aligned}
-\text{server}_\text{embedded}^\text{criteria} & = \sum_{\set{\text{components}}}{\text{component}_
+\text{iot_device}_\text{embedded}^\text{criteria} & = \sum_{\set{\text{functional_blocks}}}{\text{functional_block}_
 \text{embedded}^\text{criteria}} \\ \\
-& = \text{cpu_units} * \text{CPU}_{embedded}^{criteria} \\
-& \quad + \ \text{functional_block} * \text{RAM}_{embedded}^{criteria} \\
-& \quad + \ \text{ssd_units} * \text{SSD}_{embedded}^{criteria} \\
-& \quad + \ \text{hdd_units} * \text{HDD}_{embedded}^{criteria} \\
-& \quad + \ \text{motherboard}_{embedded}^{criteria} \\
-& \quad + \ \text{power_supply_units} * \text{power_supply}_{embedded}^{criteria} \\
-& \quad + \ \text{assembly}_{embedded}^{criteria} \\
-& \quad + \ \text{enclosure}_{embedded}^{criteria}
 \end{aligned}
 \end{equation}
 $$
