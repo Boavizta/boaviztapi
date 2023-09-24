@@ -30,10 +30,29 @@ default_criteria: ["gwp", "adp", "pe"]
 
 ## Minimal significant figures
 
-The minimal significant figures will be used to round the results of the API.
+The minimal number of significant figures will be employed if classical rounding yields a result containing more significant figures than the minimal allowed.
 
 ```
-min_significant_figures: 5
+min_sig_fig: 1
 ```
 
-*If set to 5, the results will be rounded to 5 significant figures.*
+*If set to 1, the results will be rounded at least to 1 significant figures.*
+
+
+## Maximal significant figures
+
+The maximum number of significant figures will be employed if classical rounding yields a result containing more significant figures than the maximum allowed.
+```
+max_sig_fig: 5
+```
+
+*If set to 5, the results will be rounded to a maximum of 5 significant figures.*
+
+## Uncertainty percentage
+
+Uncertainty percentage is used to adapt the intensity of the rounding. The lower the uncertainty percentage, the lower aggressive the rounding.
+
+```
+uncertainty: 10
+```
+```

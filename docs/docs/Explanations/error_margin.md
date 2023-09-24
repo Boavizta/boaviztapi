@@ -26,3 +26,9 @@ Error margins are set when ```DEFAULT``` values are used. For example, if you do
 Error margins are set when ```ARCHETYPE``` values are used. For example, if you do not provide any information on your CPU, we will use the value of the attribute taken from the archetype. If the archetype provide a min and a max value for this specific attribute, those values will be used to compute min and max impacts values.
 
 
+## Rounding
+
+Impact values are rounded depending on the distance between min and max values. The bigger the difference, the more aggressive the rounding.
+To adapt the intensity of the rounding, we use an uncertainty percentage which can be set in configuration file. The default value is 10%. The lower the uncertainty percentage, the lower aggressive the rounding.
+
+You can set a minimal and maximal significant digit for the rounding in the configuration file.
