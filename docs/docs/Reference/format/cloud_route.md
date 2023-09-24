@@ -35,10 +35,6 @@ You should set :
 
 * ```usage_location```
 * ```time_workload```
-* Duration :
-    - ```hours_use_time```
-    - ```days_use_time```
-    - ```years_use_time```
 
 ### Examples
 
@@ -49,7 +45,6 @@ You should set :
   "provider": "aws",
   "instance_type": "r6g.medium",
   "usage":{
-    "hours_use_time": 2,
     "usage_location": "FRA",
     "time_workload": [
       {
@@ -76,7 +71,6 @@ You should set :
   "provider": "aws",
   "instance_type": "r6g.medium",
   "usage": {
-    "hours_use_time": 2,
     "usage_location": "FRA",
     "time_workload": 34
   }

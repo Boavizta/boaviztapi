@@ -18,9 +18,6 @@ Usage impacts can be measured at device or component level from usage configurat
 ```json
 {
  "usage": {
-   "days_use_time": 1,
-   "hours_use_time": 1,
-   "years_use_time": 1,
    "usage_location": "FRA",
    "avg_power": 120,
    "elec_factors": {
@@ -120,7 +117,6 @@ The feature is available for the following routes :
 {
  "capacity": 32,
  "usage": {
-   "days_use_time": 1,
    "usage_location": "FRA",
    "time_workload": 50
  }
@@ -135,9 +131,8 @@ The feature is available for the following routes :
 {
  "tdp": "120",
  "usage": {
-   "days_use_time": 1,
    "usage_location": "FRA",
-   "time_workload": 50,
+   "time_workload": 50
  }
 }
 ```
@@ -148,9 +143,8 @@ The feature is available for the following routes :
 {
  "name": "Intel Xeon Gold 6138f",
  "usage": {
-   "days_use_time": 1,
    "usage_location": "FRA",
-   "time_workload": 50,
+   "time_workload": 50
  }
 }
 ```
@@ -162,9 +156,8 @@ The feature is available for the following routes :
  "name": "Intel Xeon Gold 6138f", 
  "tdp": 220,
  "usage": {
-   "days_use_time": 1,
    "usage_location": "FRA",
-   "time_workload": 50,
+   "time_workload": 50
  }
 }
 ```

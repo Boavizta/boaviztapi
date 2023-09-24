@@ -10,7 +10,6 @@ Usage impacts are measured by multiplying a **[duration, a ratio of usage](durat
 
 | Name            | Unit                         | Description                                                      | Example         |
 |-----------------|------------------------------|------------------------------------------------------------------|-----------------|
-| hours_use_time  | hours                        | Number of hours considered in the evaluation                     | 2               |
 | hours_life_time | hours                        | Lifespan of the element                                          | 35040 (4 years) |
 | usage_location  | trigram                      | See [available country codes](countries.md)                      | FRA             |
 | avg_power       | Watt/hour                    | Average electrical consumption per hour                          | 120             |
