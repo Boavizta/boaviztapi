@@ -22,6 +22,8 @@ class ConsumptionProfileModel:
         for attr, value in self.__dict__.items():
             yield attr, value
 
+MIN_POWER = 1   # Minimal power is 1 W
+
 
 class RAMConsumptionProfileModel(ConsumptionProfileModel):
     ram_electrical_factor_per_go = 0.284
@@ -76,13 +78,17 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         return load, power
 
     def apply_consumption_profile(self, load_percentage: float) -> float:
-        return self.__log_model(
+        power = self.__log_model(
             load_percentage,
             self.params.value['a'],
             self.params.value['b'],
             self.params.value['c'],
             self.params.value['d']
         )
+        if power < MIN_POWER:
+            # TODO: Should output a warning in v1
+            pass
+        return max(power, MIN_POWER)
 
     def apply_multiple_workloads(self, time_workload: List[WorkloadTime]) -> float:
         total = 0
