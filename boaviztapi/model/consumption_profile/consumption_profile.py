@@ -137,8 +137,8 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         default_lower_bounds, default_upper_bounds = self._DEFAULT_MODEL_BOUNDS
         lower_bounds, upper_bounds = [], []
         for lower_b, upper_b, model_param in zip(default_lower_bounds, default_upper_bounds, base_model_list):
-            lower_bounds.append(max(lower_b, model_param - abs(0.5 * model_param)))
-            upper_bounds.append(min(upper_b, model_param + abs(1.5 * model_param)))
+            lower_bounds.append(max(lower_b, model_param - abs(2 * model_param)))
+            upper_bounds.append(min(upper_b, model_param + abs(2 * model_param)))
         return lower_bounds, upper_bounds
 
     def __model_dict_to_list(self, model: Dict[str, float]) -> List[float]:
