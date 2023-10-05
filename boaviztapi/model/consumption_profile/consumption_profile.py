@@ -17,12 +17,13 @@ fuzzymatch.pandas()
 
 _cpu_profile_consumption_df = pd.read_csv(os.path.join(data_dir, 'consumption_profile/cpu/cpu_profile.csv'))
 
+MIN_POWER = 1   # Minimal power is 1 W
+
+
 class ConsumptionProfileModel:
     def __iter__(self):
         for attr, value in self.__dict__.items():
             yield attr, value
-
-MIN_POWER = 1   # Minimal power is 1 W
 
 
 class RAMConsumptionProfileModel(ConsumptionProfileModel):
@@ -86,8 +87,9 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
             self.params.value['d']
         )
         if power < MIN_POWER:
-            # TODO: Should output a warning in v1
-            pass
+            self.params.add_warning('Fitted CPU consumption profile model yielded very low or negative power values, '
+                                    'this can be caused by wrong input data or model initialization. Power consumption '
+                                    'and usage impacts of the CPU might be false.')
         return max(power, MIN_POWER)
 
     def apply_multiple_workloads(self, time_workload: List[WorkloadTime]) -> float:
