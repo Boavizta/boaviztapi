@@ -95,9 +95,13 @@ with:
 
 Both [power consumption](../usage/elec_conso.md) and [consumption profile](../consumption_profile.md) are implemented.
 
-## Consumption profile
+## Power Consumption profile
 
-The CPU consumption profile is of the form : ```consumption_profile(workload) = a*ln(b+(workload*c))+d```
+The CPU consumption profile is of the form: 
+
+$$
+PowerConsumption(workload) = a * \ln(b * (workload + c)) + d
+$$
 
 ### Determining the parameters
 
