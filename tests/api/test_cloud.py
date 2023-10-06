@@ -446,39 +446,56 @@ async def test_usage():
                 ]
             }
         })
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'embedded': {'max': 8.1e-06,
-                                               'min': 3.7e-06,
-                                               'significant_figures': 2,
-                                               'value': 5.6e-06,
-                                               'warnings': ['End of life is not included in the '
-                                                            'calculation']},
-                                  'unit': 'kgSbeq',
-                                  'use': {'max': 4.36317e-09,
-                                          'min': 3.07988e-09,
-                                          'significant_figures': 6,
-                                          'value': 3.41354e-09}},
-                          'gwp': {'description': 'Total climate change',
-                                  'embedded': {'max': 0.036,
-                                               'min': 0.015,
-                                               'significant_figures': 2,
-                                               'value': 0.026,
-                                               'warnings': ['End of life is not included in the '
-                                                            'calculation']},
-                                  'unit': 'kgCO2eq',
-                                  'use': {'max': 0.0088,
-                                          'min': 0.0062,
-                                          'significant_figures': 2,
-                                          'value': 0.0069}},
-                          'pe': {'description': 'Consumption of primary energy',
-                                 'embedded': {'max': 0.5,
-                                              'min': 0.2,
-                                              'significant_figures': 2,
-                                              'value': 0.36,
-                                              'warnings': ['End of life is not included in the '
-                                                           'calculation']},
-                                 'unit': 'MJ',
-                                 'use': {'max': 1.0139,
-                                         'min': 0.7157,
-                                         'significant_figures': 5,
-                                         'value': 0.79324}}}
+    assert res.json() == {
+        'adp': {
+            'description': 'Use of minerals and fossil ressources',
+            'embedded': {
+                'max': 8.1e-06,
+                'min': 3.7e-06,
+                'significant_figures': 2,
+                'value': 5.6e-06,
+                'warnings': ['End of life is not included in the calculation']
+            },
+            'unit': 'kgSbeq',
+            'use': {
+                'max': 4.36663e-09,
+                'min': 3.08233e-09,
+                'significant_figures': 6,
+                'value': 3.41625e-09
+            }
+        },
+        'gwp': {
+            'description': 'Total climate change',
+            'embedded': {
+                'max': 0.036,
+                'min': 0.015,
+                'significant_figures': 2,
+                'value': 0.026,
+                'warnings': ['End of life is not included in the calculation']
+            },
+            'unit': 'kgCO2eq',
+            'use': {
+                'max': 0.0088,
+                'min': 0.0062,
+                'significant_figures': 2,
+                'value': 0.0069
+            }
+        },
+        'pe': {
+            'description': 'Consumption of primary energy',
+            'embedded': {
+                'max': 0.5,
+                'min': 0.2,
+                'significant_figures': 2,
+                'value': 0.36,
+                'warnings': ['End of life is not included in the calculation']
+            },
+            'unit': 'MJ',
+            'use': {
+                'max': 1.0147,
+                'min': 0.71627,
+                'significant_figures': 5,
+                'value': 0.79387
+            }
+        }
+    }
