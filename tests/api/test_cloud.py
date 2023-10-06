@@ -77,43 +77,59 @@ async def test_empty_usage_m6gxlarge():
             'instance_type': "m6g.xlarge",
             'usage': {}
         })
-
-    assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                  'embedded': {'max': 0.011,
-                                               'min': 0.0051,
-                                               'significant_figures': 2,
-                                               'value': 0.0075,
-                                               'warnings': ['End of life is not included in the '
-                                                            'calculation']},
-                                  'unit': 'kgSbeq',
-                                  'use': {'max': 0.000151,
-                                          'min': 6.38e-06,
-                                          'significant_figures': 3,
-                                          'value': 3.44e-05}},
-                          'gwp': {'description': 'Total climate change',
-                                  'embedded': {'max': 89.0,
-                                               'min': 32.0,
-                                               'significant_figures': 2,
-                                               'value': 55.0,
-                                               'warnings': ['End of life is not included in the '
-                                                            'calculation']},
-                                  'unit': 'kgCO2eq',
-                                  'use': {'max': 510.0,
-                                          'min': 11.0,
-                                          'significant_figures': 2,
-                                          'value': 200.0}},
-                          'pe': {'description': 'Consumption of primary energy',
-                                 'embedded': {'max': 1200.0,
-                                              'min': 420.0,
-                                              'significant_figures': 2,
-                                              'value': 730.0,
-                                              'warnings': ['End of life is not included in the '
-                                                           'calculation']},
-                                 'unit': 'MJ',
-                                 'use': {'max': 266520.0,
-                                         'min': 6.2808,
-                                         'significant_figures': 5,
-                                         'value': 6893.8}}}
+    assert res.json() == {
+        'adp': {
+            'description': 'Use of minerals and fossil ressources',
+            'embedded': {
+                'max': 0.011,
+                'min': 0.0051,
+                'significant_figures': 2,
+                'value': 0.0075,
+                'warnings': ['End of life is not included in the calculation']
+            },
+            'unit': 'kgSbeq',
+            'use': {
+                'max': 0.000152,
+                'min': 6.42e-06,
+                'significant_figures': 3,
+                'value': 3.46e-05
+            }
+        },
+        'gwp': {
+            'description': 'Total climate change',
+            'embedded': {
+                'max': 89.0,
+                'min': 32.0,
+                'significant_figures': 2,
+                'value': 55.0,
+                'warnings': ['End of life is not included in the calculation']
+            },
+            'unit': 'kgCO2eq',
+            'use': {
+                'max': 520.0,
+                'min': 11.0,
+                'significant_figures': 2,
+                'value': 200.0
+            }
+        },
+        'pe': {
+            'description': 'Consumption of primary energy',
+            'embedded': {
+                'max': 1200.0,
+                'min': 420.0,
+                'significant_figures': 2,
+                'value': 730.0,
+                'warnings': ['End of life is not included in the calculation']
+            },
+            'unit': 'MJ',
+            'use': {
+                'max': 268100.0,
+                'min': 6.3181,
+                'significant_figures': 5,
+                'value': 6934.7
+            }
+        }
+    }
 
 
 @pytest.mark.asyncio
