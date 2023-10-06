@@ -103,6 +103,9 @@ $$
 PowerConsumption(workload) = a * \ln(b * (workload + c)) + d
 $$
 
+!!!warning
+    We apply a log regression to fit data points $(workload, power)$ starting from a default consumption profile that can be found using the CPU `model_range`. This process can (in some cases) yield very low or negative power values due to wrong input data or model initialization. **That is why there is a minimum power consumption limit set to 1W for any input workload**.
+
 ### Determining the parameters
 
 #### From model range
