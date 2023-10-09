@@ -17,6 +17,9 @@ fuzzymatch.pandas()
 
 _cpu_profile_consumption_df = pd.read_csv(os.path.join(data_dir, 'consumption_profile/cpu/cpu_profile.csv'))
 
+MIN_POWER = 1   # Minimal power is 1 W
+
+
 class ConsumptionProfileModel:
     def __iter__(self):
         for attr, value in self.__dict__.items():
@@ -76,13 +79,18 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         return load, power
 
     def apply_consumption_profile(self, load_percentage: float) -> float:
-        return self.__log_model(
+        power = self.__log_model(
             load_percentage,
             self.params.value['a'],
             self.params.value['b'],
             self.params.value['c'],
             self.params.value['d']
         )
+        if power < MIN_POWER:
+            self.params.add_warning('Fitted CPU consumption profile model yielded very low or negative power values, '
+                                    'this can be caused by wrong input data or model initialization. Power consumption '
+                                    'and usage impacts of the CPU might be false.')
+        return max(power, MIN_POWER)
 
     def apply_multiple_workloads(self, time_workload: List[WorkloadTime]) -> float:
         total = 0
@@ -137,8 +145,8 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         default_lower_bounds, default_upper_bounds = self._DEFAULT_MODEL_BOUNDS
         lower_bounds, upper_bounds = [], []
         for lower_b, upper_b, model_param in zip(default_lower_bounds, default_upper_bounds, base_model_list):
-            lower_bounds.append(max(lower_b, model_param - abs(0.5 * model_param)))
-            upper_bounds.append(min(upper_b, model_param + abs(1.5 * model_param)))
+            lower_bounds.append(max(lower_b, model_param - abs(2 * model_param)))
+            upper_bounds.append(min(upper_b, model_param + abs(2 * model_param)))
         return lower_bounds, upper_bounds
 
     def __model_dict_to_list(self, model: Dict[str, float]) -> List[float]:
