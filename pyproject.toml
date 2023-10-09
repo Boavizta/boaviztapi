@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "boaviztapi"
-version = "1.0.0a4"
+version = "1.0.0"
 description = "An API to access Boavizta's methodologies and footprint reference data"
 authors = []
 readme = "README.md"
@@ -21,15 +21,27 @@ importlib-metadata = "^6.6.0"
 pyyaml = "^6.0"
 toml = "^0.10.2"
 
+
+[tool.poetry.group.dev]
+optional = true
+
 [tool.poetry.group.dev.dependencies]
-mkdocs = '*'
 pytest = '*'
-atomicwrites = "*"
-mkdocs-material = "*"
-httpx = '*'
 pytest-asyncio = '*'
+atomicwrites = "*"
+httpx = '*'
 requests = '*'
-mkdocs-render-swagger-plugin = "*"
+
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.5.3"
+mkdocs-material = "^9.4.4"
+mkdocs-render-swagger-plugin = "^0.1.0"
+mkdocs-macros-plugin = "^1.0.4"
+
 
 [build-system]
 requires = ["poetry-core"]

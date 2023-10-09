@@ -29,5 +29,4 @@ class ComponentHDD(Component):
             max=get_impact_factor(item='hdd', impact_type=impact_type)['impact']
         )
 
-        significant_figures = rd.min_significant_figures(impact.value)
-        return impact.value, significant_figures, impact.min, impact.max, ["End of life is not included in the calculation"]
+        return impact.value, impact.min, impact.max, ["End of life is not included in the calculation"]
