@@ -1,5 +1,4 @@
 import json
-import subprocess
 
 import markdown
 import toml
@@ -9,8 +8,10 @@ from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from mangum import Mangum
 
+from boaviztapi.routers import iot_router
 from boaviztapi.routers.component_router import component_router
 from boaviztapi.routers.consumption_profile_router import consumption_profile
+from boaviztapi.routers.iot_router import iot
 from boaviztapi.routers.peripheral_router import peripheral_router
 from boaviztapi.routers.server_router import server_router
 from boaviztapi.routers.cloud_router import cloud_router
@@ -41,8 +42,10 @@ app.include_router(cloud_router)
 app.include_router(terminal_router)
 app.include_router(peripheral_router)
 app.include_router(component_router)
-app.include_router(utils_router)
+app.include_router(iot)
 app.include_router(consumption_profile)
+app.include_router(utils_router)
+
 
 if __name__ == '__main__':
     import uvicorn

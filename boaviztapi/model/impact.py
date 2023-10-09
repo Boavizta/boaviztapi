@@ -6,6 +6,7 @@ from boaviztapi import config
 
 WARNING_IMPORTANT_UNCERTAINTY = ("Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)")
 
+
 @dataclass
 class ImpactCriteria:
     name: str
@@ -32,7 +33,7 @@ class Impact:
         json = {"value": self.rounded_value()}
         if self.min or self.min == 0: json['min'] = self.rounded_min()
         if self.max or self.max == 0: json['max'] = self.rounded_max()
-        if self.warnings: json['warnings'] = self.warnings
+        if self.warnings: json['warnings'] = sorted(self.warnings)
 
         return json
 
@@ -81,9 +82,11 @@ CTUh_nc = ImpactCriteria(name="ctuh_nc", unit="CTUh", method="PEF",
 Epf = ImpactCriteria(name="epf", unit="kg P eq.", method="PEF", description="Eutrophication of freshwater")
 Epm = ImpactCriteria(name="epm", unit="kg N eq.", method="PEF", description="Eutrophication of marine waters")
 Ept = ImpactCriteria(name="ept", unit="mol N eq.", method="PEF", description="Terrestrial eutrophication")
+FW = ImpactCriteria(name="fw", unit="m3", method="", description="Net use of freshwater")
 
 IMPACT_CRITERIAS = [GWP, ADP, PE, GWPPb, GWPPf, GWPPlu, IR, LU, ODP, PM, POCP, WU, MIPS, ADPe, ADPf, AP, CTUe, CTUh_c,
-                    CTUh_nc, Epf, Epm, Ept]
+                    CTUh_nc, Epf, Epm, Ept, FW]
+
 IMPACT_PHASES = ["embedded", "use"]
 
 

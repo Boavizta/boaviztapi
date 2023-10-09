@@ -19,7 +19,8 @@ class Case(ComponentDTO):
     case_type: str = None
 
 
-def mapper_power_supply(power_supply_dto: PowerSupply, archetype=get_component_archetype(config["default_power_supply"], "power_supply")) -> ComponentPowerSupply:
+def mapper_power_supply(power_supply_dto: PowerSupply, archetype=get_component_archetype(config["default_power_supply"],
+                                                                                         "power_supply")) -> ComponentPowerSupply:
     power_supply_component = ComponentPowerSupply(archetype=archetype)
     power_supply_component.usage = mapper_usage(power_supply_dto.usage or Usage(), archetype=archetype.get("USAGE"))
 
@@ -53,3 +54,8 @@ def mapper_case(case_dto: Case, archetype=get_component_archetype(config["defaul
         case_component.case_type.set_input(case_dto.case_type)
 
     return case_component
+
+
+class FunctionalBlock(ComponentDTO):
+    hsl_level: str = None
+    type: str = None
