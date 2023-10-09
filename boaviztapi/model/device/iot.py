@@ -2,13 +2,10 @@ from typing import List
 
 from boaviztapi import config
 from boaviztapi.model import ComputedImpacts
-from boaviztapi.model.boattribute import Boattribute
-from boaviztapi.model.component import Component
 from boaviztapi.model.component.functional_block import ComponentFunctionalBlock, get_functional_block
 from boaviztapi.model.device import Device
 from boaviztapi.model.usage import ModelUsage
-from boaviztapi.service.archetype import get_arch_value, get_arch_component, get_iot_device_archetype
-from boaviztapi.service.factor_provider import get_iot_impact_factor
+from boaviztapi.service.archetype import get_arch_component, get_iot_device_archetype
 
 
 class DeviceIoT(Device):
@@ -32,12 +29,12 @@ class DeviceIoT(Device):
         warnings = self.WARNINGS
 
         for component in self.components:
-            impact, sign_fig, min_impact, max_impact, c_warning = getattr(component, f'impact_embedded')(impact_type)
+            impact, min_impact, max_impact, c_warning = getattr(component, f'impact_embedded')(impact_type)
             impacts.append(impact * component.units.value)
             min_impacts.append(min_impact * component.units.min)
             max_impacts.append(max_impact * component.units.max)
             warnings = warnings + c_warning
-        return sum(impacts), 5, sum(min_impacts), sum(max_impacts), warnings
+        return sum(impacts), sum(min_impacts), sum(max_impacts), warnings
 
     def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
         if self.usage.avg_power.value is None:
@@ -48,7 +45,7 @@ class DeviceIoT(Device):
         min_impact = impact_factor.min * (self.usage.avg_power.min / 1000) * self.usage.use_time_ratio.min * duration
         max_impact = impact_factor.max * (self.usage.avg_power.max / 1000) * self.usage.use_time_ratio.max * duration
 
-        return impact, 5, min_impact, max_impact, []
+        return impact, min_impact, max_impact, []
 
     @property
     def components(self) -> List[ComponentFunctionalBlock]:

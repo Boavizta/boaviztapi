@@ -20,7 +20,7 @@ class ComponentFunctionalBlock(Component):
 
     def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         impact_factors = get_iot_impact_factor(self.IMPACT_KEY, self.hsl_level.value, impact_type)
-        return impact_factors, 5, impact_factors, impact_factors, []
+        return impact_factors, impact_factors, impact_factors, []
 
 
 class ActuatorsFunctionalBlock(ComponentFunctionalBlock):
