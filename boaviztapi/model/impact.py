@@ -2,6 +2,9 @@ from dataclasses import dataclass
 from typing import Optional
 
 import boaviztapi.utils.roundit as rd
+from boaviztapi import config
+
+WARNING_IMPORTANT_UNCERTAINTY = ("Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)")
 
 
 @dataclass
@@ -15,7 +18,6 @@ class ImpactCriteria:
 class Impact:
     def __init__(self, **kwargs):
         self.value = 0
-        self.significant_figures = 1
         self.min = 0
         self.max = 0
         self.warnings = []
@@ -28,16 +30,31 @@ class Impact:
         self.warnings.append(warn)
 
     def to_json(self):
-        json = {"value": rd.round_to_sigfig(self.value, self.significant_figures),
-                "significant_figures": self.significant_figures}
-        if self.min or self.min == 0: json['min'] = rd.round_to_sigfig(self.min, self.significant_figures)
-        if self.max or self.max == 0: json['max'] = rd.round_to_sigfig(self.max, self.significant_figures)
+
+        json = {"value": self.rounded_value()}
+        if self.min or self.min == 0: json['min'] = self.rounded_min()
+        if self.max or self.max == 0: json['max'] = self.rounded_max()
         if self.warnings: json['warnings'] = sorted(self.warnings)
 
         return json
 
     def rounded_value(self):
-        return rd.round_to_sigfig(self.value, self.significant_figures)
+        rd_value = rd.round_based_on_min_max(self.value, self.min, self.max)
+        nb_sig_fig = rd.significant_number(rd_value)
+
+        if nb_sig_fig > config["max_sig_fig"]:
+            return rd.round_to_sigfig(rd_value, config["max_sig_fig"])
+        elif rd_value == 0:
+            self.warnings.append(WARNING_IMPORTANT_UNCERTAINTY)
+            return rd.round_to_sigfig(self.value, config["min_sig_fig"])
+        else:
+            return rd_value
+
+    def rounded_min(self):
+        return rd.round_to_sigfig(self.min, config["max_sig_fig"])
+
+    def rounded_max(self):
+        return rd.round_to_sigfig(self.max, config["max_sig_fig"])
 
 
 GWP = ImpactCriteria(name="gwp", unit="kgCO2eq", description="Total climate change")
@@ -70,6 +87,7 @@ FW = ImpactCriteria(name="fw", unit="m3", method="", description="Net use of fre
 
 IMPACT_CRITERIAS = [GWP, ADP, PE, GWPPb, GWPPf, GWPPlu, IR, LU, ODP, PM, POCP, WU, MIPS, ADPe, ADPf, AP, CTUe, CTUh_c,
                     CTUh_nc, Epf, Epm, Ept, FW]
+
 IMPACT_PHASES = ["embedded", "use"]
 
 

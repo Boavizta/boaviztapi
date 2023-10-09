@@ -1,4 +1,3 @@
-import boaviztapi.utils.roundit as rd
 from boaviztapi.model.component.component import Component, ComputedImpacts
 from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.service.factor_provider import get_impact_factor
@@ -17,5 +16,4 @@ class ComponentMotherboard(Component):
             max=get_impact_factor(item='motherboard', impact_type=impact_type)['impact']
         )
 
-        significant_figures = rd.min_significant_figures(impact.value)
-        return impact.value, significant_figures, impact.min, impact.max, ["End of life is not included in the calculation"]
+        return impact.value, impact.min, impact.max, ["End of life is not included in the calculation"]

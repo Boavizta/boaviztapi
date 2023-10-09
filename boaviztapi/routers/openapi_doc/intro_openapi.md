@@ -39,7 +39,7 @@ If no duration is given, **the impact is assess for the all life duration of the
 
 #### ✖️ Impact factors
 
-* Impact factors can be given : *"usage":{"elec_factors":{[criterion]_factors: 0.38}}*
+* Impact factors can be given : *"usage":{"elec_factors":{[criteria]: 0.38}}*
 * Impact factors can be retrieved from : *"usage":{"usage_location": "FRA"}*. 
 
 * See the list of locations : [/v1/utils/country_code](/v1/utils/country_code)*
