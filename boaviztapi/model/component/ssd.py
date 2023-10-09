@@ -3,7 +3,6 @@ from typing import Tuple
 
 import pandas as pd
 
-import boaviztapi.utils.roundit as rd
 from boaviztapi import config, data_dir
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component, ComputedImpacts
@@ -52,9 +51,8 @@ class ComponentSSD(Component):
     # IMPACT CALCUATION
     def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         ssd_die_impact, ssd_impact = self.__get_impact_constants(impact_type)
-        sign_figures = self.__compute_significant_numbers(ssd_die_impact.value, ssd_impact.value)
         impact = self.__compute_impact_manufacture(ssd_die_impact, ssd_impact)
-        return impact.value, sign_figures, impact.min, impact.max, ["End of life is not included in the calculation"]
+        return impact.value, impact.min, impact.max, ["End of life is not included in the calculation"]
 
 
     def __get_impact_constants(self, impact_type: str) -> Tuple[ImpactFactor, ImpactFactor]:
@@ -69,9 +67,6 @@ class ComponentSSD(Component):
             max=get_impact_factor(item='ssd', impact_type=impact_type)['impact']
         )
         return ssd_die_impact, ssd_impact
-
-    def __compute_significant_numbers(self, ssd_die_impact: float, ssd_impact: float) -> int:
-        return rd.min_significant_figures(self.density.value, ssd_die_impact, ssd_impact)
 
     def __compute_impact_manufacture(self, ssd_die_impact: ImpactFactor, ssd_impact: ImpactFactor) -> ImpactFactor:
         return ImpactFactor(

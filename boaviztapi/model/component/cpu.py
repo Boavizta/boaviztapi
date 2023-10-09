@@ -79,10 +79,9 @@ class ComponentCPU(Component):
     # IMPACT COMPUTATION
     def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         core_impact, cpu_die_impact, cpu_impact = self.__get_impact_constants(impact_type)
-        sign_figures = self.__compute_significant_numbers(core_impact.value, cpu_die_impact.value, cpu_impact.value)
         impact = self.__compute_impact_manufacture(core_impact, cpu_die_impact, cpu_impact)
 
-        return impact.value, sign_figures, impact.min, impact.max, ["End of life is not included in the calculation"]
+        return impact.value, impact.min, impact.max, ["End of life is not included in the calculation"]
 
     def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
         impact_factor = self.usage.elec_factors[impact_type]
@@ -104,11 +103,7 @@ class ComponentCPU(Component):
                     self.usage.avg_power.max / 1000) * self.usage.use_time_ratio.max * duration
         )
 
-        sig_fig = self.__compute_significant_numbers_usage(impact_factor.value)
-        return impact.value, sig_fig, impact.min, impact.max, []
-
-    def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
-        return rd.min_significant_figures(self.usage.avg_power.value, self.usage.use_time_ratio.value, impact_factor)
+        return impact.value, impact.min, impact.max, []
 
     # TODO: compute min & max
     def model_power_consumption(self) -> ImpactFactor:
@@ -148,9 +143,6 @@ class ComponentCPU(Component):
         )
 
         return core_impact, cpu_die_impact, cpu_impact
-
-    def __compute_significant_numbers(self, core_impact: float, cpu_die_impact: float, cpu_impact: float) -> int:
-        return rd.min_significant_figures(self.die_size.value, core_impact, cpu_die_impact, cpu_impact)
 
     def __compute_impact_manufacture(self, core_impact: ImpactFactor, cpu_die_impact: ImpactFactor,
                                      cpu_impact: ImpactFactor) -> ImpactFactor:

@@ -1,4 +1,3 @@
-import boaviztapi.utils.roundit as rd
 from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component, ComputedImpacts
@@ -28,9 +27,8 @@ class ComponentPowerSupply(Component):
         )
 
         impact = self.__compute_impact_manufacture(impact_factor)
-        sign_figures = rd.min_significant_figures(impact_factor.value)
 
-        return impact.value, sign_figures, impact.min, impact.max, ["End of life is not included in the calculation"]
+        return impact.value, impact.min, impact.max, ["End of life is not included in the calculation"]
 
     def __compute_impact_manufacture(self, power_supply_impact: ImpactFactor) -> ImpactFactor:
         return ImpactFactor(

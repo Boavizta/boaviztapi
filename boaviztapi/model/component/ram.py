@@ -47,15 +47,13 @@ class ComponentRAM(Component):
         )
         self.usage.avg_power.add_warning("value for one ram strip")
 
-
     # IMPACT COMPUTATION
     def impact_embedded(self, impact_type: str) -> ComputedImpacts:
         ram_die_impact, ram_impact = self.__get_impact_constants(impact_type)
 
         impact = self.__compute_impact_manufacture(ram_die_impact, ram_impact)
 
-        sign_figures = self.__compute_significant_numbers(ram_die_impact.value, ram_impact.value)
-        return impact.value, sign_figures, impact.min, impact.max, ["End of life is not included in the calculation"]
+        return impact.value, impact.min, impact.max, ["End of life is not included in the calculation"]
 
     def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
         impact_factor = self.usage.elec_factors[impact_type]
@@ -77,13 +75,9 @@ class ComponentRAM(Component):
                     self.usage.avg_power.max / 1000) * self.usage.use_time_ratio.max * duration
         )
 
-        sig_fig = self.__compute_significant_numbers_usage(impact_factor.value)
-        return impact.value, sig_fig, impact.min, impact.max, []
+        return impact.value, impact.min, impact.max, []
 
-    def __compute_significant_numbers_usage(self, impact_factor: float) -> int:
-        return rd.min_significant_figures(self.usage.avg_power.value, self.usage.use_time_ratio.value, impact_factor)
-
-    def model_power_consumption(self,) -> ImpactFactor:
+    def model_power_consumption(self, ) -> ImpactFactor:
         self.usage.consumption_profile = RAMConsumptionProfileModel()
         self.usage.consumption_profile.compute_consumption_profile_model(ram_capacity=self.capacity.value)
 
@@ -95,9 +89,9 @@ class ComponentRAM(Component):
                 self.usage.consumption_profile.apply_multiple_workloads(self.usage.time_workload.value))
 
         return ImpactFactor(
-                value=rd.round_to_sigfig(self.usage.avg_power.value, 5),
-                min=rd.round_to_sigfig(self.usage.avg_power.value, 5),
-                max=rd.round_to_sigfig(self.usage.avg_power.value, 5)
+            value=rd.round_to_sigfig(self.usage.avg_power.value, 5),
+            min=rd.round_to_sigfig(self.usage.avg_power.value, 5),
+            max=rd.round_to_sigfig(self.usage.avg_power.value, 5)
         )
 
     def __get_impact_constants(self, impact_type: str) -> Tuple[ImpactFactor, ImpactFactor]:
@@ -112,9 +106,6 @@ class ComponentRAM(Component):
             max=get_impact_factor(item='ram', impact_type=impact_type)['impact']
         )
         return ram_die_impact, ram_impact
-
-    def __compute_significant_numbers(self, ram_die_impact: float, ram_impact: float) -> int:
-        return rd.min_significant_figures(self.density.value, ram_die_impact, ram_impact)
 
     def __compute_impact_manufacture(self, ram_die_impact: ImpactFactor, ram_impact: ImpactFactor) -> ImpactFactor:
         return ImpactFactor(

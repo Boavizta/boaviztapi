@@ -30,6 +30,8 @@ default_criteria: ["gwp", "adp", "pe"]
 
 default_duration:
 
-min_significant_figures: 5
+uncertainty: 10
+max_sig_fig: 4
+min_sig_fig: 1
 
 cpu_name_fuzzymatch_threshold: 80
