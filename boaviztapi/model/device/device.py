@@ -1,11 +1,10 @@
 from abc import abstractmethod
 from typing import Tuple, List
 
+from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component import Component
 from boaviztapi.model.usage import ModelUsage
-
-ComputedImpacts = Tuple[float, int]
 
 
 class Device:
@@ -38,10 +37,9 @@ class Device:
         raise NotImplementedError
 
     @abstractmethod
-    def  impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
+    def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
         raise NotImplementedError
 
     def __iter__(self):
         for attr, value in self.__dict__.items():
             yield attr, value
-

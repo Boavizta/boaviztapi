@@ -277,7 +277,7 @@ async def user_terminal_impact(user_terminal_dto: UserTerminal,
             "verbose": verbose_device(device, selected_criteria=criteria, duration=duration)
         }
 
-    return impacts
+    return {"impacts": impacts}
 
 
 def get_all_archetype_name(name: str):

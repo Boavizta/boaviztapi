@@ -12,40 +12,52 @@ from boaviztapi.service.archetype import get_arch_component
 class UserTerminal(DeviceDTO):
     usage: Optional[Usage] = None
 
+
 class Laptop(UserTerminal):
     type: Optional[str] = None
+
+
 class Desktop(UserTerminal):
     type: Optional[str] = None
+
 
 class Tablet(UserTerminal):
     pass
 
+
 class Smartphone(UserTerminal):
     pass
+
 
 class Television(UserTerminal):
     type: Optional[str] = None
 
+
 class Smartwatch(UserTerminal):
     pass
+
 
 class Box(UserTerminal):
     pass
 
+
 class UsbStick(UserTerminal):
     pass
+
 
 class ExternalHDD(UserTerminal):
     pass
 
+
 class Monitor(UserTerminal):
     pass
+
 
 class ExternalSSD(UserTerminal):
     pass
 
-def mapper_user_terminal(user_terminal_dto: UserTerminal, archetype) -> Device:
 
+def mapper_user_terminal(user_terminal_dto: UserTerminal, archetype) -> Device:
     if type(user_terminal_dto) == Laptop:
         model = DeviceLaptop(archetype=archetype)
         model.type.set_input(user_terminal_dto.type)
