@@ -19,10 +19,12 @@ server_router = APIRouter(
     tags=['server']
 )
 
+
 @server_router.get('/archetypes',
                    description=all_archetype_servers)
 async def server_get_all_archetype_name():
     return get_device_archetype_lst(os.path.join(data_dir, 'archetypes/server.csv'))
+
 
 @server_router.get('/archetype_config',
                    description=get_archetype_config_desc)
@@ -31,6 +33,7 @@ async def get_archetype_config(archetype: str = Query(example=config["default_se
     if not result:
         raise HTTPException(status_code=404, detail=f"{archetype} not found")
     return result
+
 
 @server_router.get('/',
                    description=server_impact_by_model_description)
@@ -43,7 +46,7 @@ async def server_impact_from_model(archetype: str = config["default_server"],
     if not archetype_config:
         raise HTTPException(status_code=404, detail=f"{archetype} not found")
 
-    model_server=DeviceServer(archetype=archetype_config)
+    model_server = DeviceServer(archetype=archetype_config)
 
     return await server_impact(
         device=model_server,
@@ -61,7 +64,6 @@ async def server_impact_from_configuration(
         duration: Optional[float] = config["default_duration"],
         archetype: str = config["default_server"],
         criteria: List[str] = Query(config["default_criteria"])):
-
     archetype_config = get_server_archetype(archetype)
 
     if not archetype_config:
@@ -75,6 +77,7 @@ async def server_impact_from_configuration(
         duration=duration,
         criteria=criteria
     )
+
 
 async def server_impact(device: Device,
                         verbose: bool,
@@ -90,4 +93,4 @@ async def server_impact(device: Device,
             "impacts": impacts,
             "verbose": verbose_device(device, selected_criteria=criteria, duration=duration)
         }
-    return impacts
+    return {"impacts": impacts}

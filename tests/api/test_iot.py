@@ -11,51 +11,53 @@ async def test_empty_iot_device():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.get('/v1/iot/iot_device?verbose=false')
 
-        assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                      'embedded': {'max': 0.0,
-                                                   'min': 0.0,
-                                                   'value': 0.0,
-                                                   'warnings': ['Connected object, not including associated '
-                                                                'digital services (use of network, '
-                                                                'datacenter, virtual machines or other '
-                                                                'terminals not included)',
-                                                                'Do not include the impact of distribution',
-                                                                'Uncertainty from technical characteristics '
-                                                                'is very important. Results should be '
-                                                                'interpreted with caution (see min and max '
-                                                                'values)']},
-                                      'unit': 'kgSbeq',
-                                      'use': 'not implemented'},
-                              'gwp': {'description': 'Total climate change',
-                                      'embedded': {'max': 0.0,
-                                                   'min': 0.0,
-                                                   'value': 0.0,
-                                                   'warnings': ['Connected object, not including associated '
-                                                                'digital services (use of network, '
-                                                                'datacenter, virtual machines or other '
-                                                                'terminals not included)',
-                                                                'Do not include the impact of distribution',
-                                                                'Uncertainty from technical characteristics '
-                                                                'is very important. Results should be '
-                                                                'interpreted with caution (see min and max '
-                                                                'values)']},
-                                      'unit': 'kgCO2eq',
-                                      'use': 'not implemented'},
-                              'pe': {'description': 'Consumption of primary energy',
-                                     'embedded': {'max': 0.0,
-                                                  'min': 0.0,
-                                                  'value': 0.0,
-                                                  'warnings': ['Connected object, not including associated '
-                                                               'digital services (use of network, '
-                                                               'datacenter, virtual machines or other '
-                                                               'terminals not included)',
-                                                               'Do not include the impact of distribution',
-                                                               'Uncertainty from technical characteristics '
-                                                               'is very important. Results should be '
-                                                               'interpreted with caution (see min and max '
-                                                               'values)']},
-                                     'unit': 'MJ',
-                                     'use': 'not implemented'}}
+        assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
+                                                  'embedded': {'max': 0.0,
+                                                               'min': 0.0,
+                                                               'value': 0.0,
+                                                               'warnings': [
+                                                                   'Connected object, not including associated '
+                                                                   'digital services (use of network, '
+                                                                   'datacenter, virtual machines or other '
+                                                                   'terminals not included)',
+                                                                   'Do not include the impact of distribution',
+                                                                   'Uncertainty from technical characteristics '
+                                                                   'is very important. Results should be '
+                                                                   'interpreted with caution (see min and max '
+                                                                   'values)']},
+                                                  'unit': 'kgSbeq',
+                                                  'use': 'not implemented'},
+                                          'gwp': {'description': 'Total climate change',
+                                                  'embedded': {'max': 0.0,
+                                                               'min': 0.0,
+                                                               'value': 0.0,
+                                                               'warnings': [
+                                                                   'Connected object, not including associated '
+                                                                   'digital services (use of network, '
+                                                                   'datacenter, virtual machines or other '
+                                                                   'terminals not included)',
+                                                                   'Do not include the impact of distribution',
+                                                                   'Uncertainty from technical characteristics '
+                                                                   'is very important. Results should be '
+                                                                   'interpreted with caution (see min and max '
+                                                                   'values)']},
+                                                  'unit': 'kgCO2eq',
+                                                  'use': 'not implemented'},
+                                          'pe': {'description': 'Consumption of primary energy',
+                                                 'embedded': {'max': 0.0,
+                                                              'min': 0.0,
+                                                              'value': 0.0,
+                                                              'warnings': ['Connected object, not including associated '
+                                                                           'digital services (use of network, '
+                                                                           'datacenter, virtual machines or other '
+                                                                           'terminals not included)',
+                                                                           'Do not include the impact of distribution',
+                                                                           'Uncertainty from technical characteristics '
+                                                                           'is very important. Results should be '
+                                                                           'interpreted with caution (see min and max '
+                                                                           'values)']},
+                                                 'unit': 'MJ',
+                                                 'use': 'not implemented'}}}
 
 
 @pytest.mark.asyncio
@@ -63,18 +65,19 @@ async def test_drone_mini():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.get('/v1/iot/iot_device?verbose=false&archetype=drone_mini&criteria=gwp')
 
-        assert res.json() == {'gwp': {'description': 'Total climate change',
-                                      'embedded': {'max': 15.37,
-                                                   'min': 15.37,
-                                                   'value': 15.37,
-                                                   'warnings': ['Connected object, not including associated '
-                                                                'digital services (use of network, '
-                                                                'datacenter, virtual machines or other '
-                                                                'terminals not included)',
-                                                                'Do not include the impact of '
-                                                                'distribution']},
-                                      'unit': 'kgCO2eq',
-                                      'use': 'not implemented'}}
+        assert res.json() == {"impacts": {'gwp': {'description': 'Total climate change',
+                                                  'embedded': {'max': 15.37,
+                                                               'min': 15.37,
+                                                               'value': 15.37,
+                                                               'warnings': [
+                                                                   'Connected object, not including associated '
+                                                                   'digital services (use of network, '
+                                                                   'datacenter, virtual machines or other '
+                                                                   'terminals not included)',
+                                                                   'Do not include the impact of '
+                                                                   'distribution']},
+                                                  'unit': 'kgCO2eq',
+                                                  'use': 'not implemented'}}}
 
 
 @pytest.mark.asyncio
@@ -430,33 +433,34 @@ async def test_drone_mini_costume_usage():
             }
         })
 
-        assert res.json() == {'adp': {'description': 'Use of minerals and fossil ressources',
-                                      'embedded': 'not implemented',
-                                      'unit': 'kgSbeq',
-                                      'use': {'max': 4.858e-09, 'min': 4.858e-09, 'value': 4.858e-09}},
-                              'gwp': {'description': 'Total climate change',
-                                      'embedded': {'max': 0.0004386,
-                                                   'min': 0.0004386,
-                                                   'value': 0.0004386,
-                                                   'warnings': ['Connected object, not including associated '
-                                                                'digital services (use of network, '
-                                                                'datacenter, virtual machines or other '
-                                                                'terminals not included)',
-                                                                'Do not include the impact of '
-                                                                'distribution']},
-                                      'unit': 'kgCO2eq',
-                                      'use': {'max': 0.0098, 'min': 0.0098, 'value': 0.0098}},
-                              'pe': {'description': 'Consumption of primary energy',
-                                     'embedded': {'max': 0.006337,
-                                                  'min': 0.006337,
-                                                  'value': 0.006337,
-                                                  'warnings': ['Connected object, not including associated '
-                                                               'digital services (use of network, '
-                                                               'datacenter, virtual machines or other '
-                                                               'terminals not included)',
-                                                               'Do not include the impact of distribution']},
-                                     'unit': 'MJ',
-                                     'use': {'max': 1.129, 'min': 1.129, 'value': 1.129}}}
+        assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
+                                                  'embedded': 'not implemented',
+                                                  'unit': 'kgSbeq',
+                                                  'use': {'max': 4.858e-09, 'min': 4.858e-09, 'value': 4.858e-09}},
+                                          'gwp': {'description': 'Total climate change',
+                                                  'embedded': {'max': 0.0004386,
+                                                               'min': 0.0004386,
+                                                               'value': 0.0004386,
+                                                               'warnings': [
+                                                                   'Connected object, not including associated '
+                                                                   'digital services (use of network, '
+                                                                   'datacenter, virtual machines or other '
+                                                                   'terminals not included)',
+                                                                   'Do not include the impact of '
+                                                                   'distribution']},
+                                                  'unit': 'kgCO2eq',
+                                                  'use': {'max': 0.0098, 'min': 0.0098, 'value': 0.0098}},
+                                          'pe': {'description': 'Consumption of primary energy',
+                                                 'embedded': {'max': 0.006337,
+                                                              'min': 0.006337,
+                                                              'value': 0.006337,
+                                                              'warnings': ['Connected object, not including associated '
+                                                                           'digital services (use of network, '
+                                                                           'datacenter, virtual machines or other '
+                                                                           'terminals not included)',
+                                                                           'Do not include the impact of distribution']},
+                                                 'unit': 'MJ',
+                                                 'use': {'max': 1.129, 'min': 1.129, 'value': 1.129}}}}
 
 
 @pytest.mark.asyncio
@@ -475,14 +479,14 @@ async def test_custom_iot():
             ]
         })
 
-        assert res.json() == {'lu': {'description': 'Land use',
-                                     'embedded': {'max': 0.06678,
-                                                  'min': 0.06678,
-                                                  'value': 0.06678,
-                                                  'warnings': ['Connected object, not including associated '
-                                                               'digital services (use of network, '
-                                                               'datacenter, virtual machines or other '
-                                                               'terminals not included)',
-                                                               'Do not include the impact of distribution']},
-                                     'unit': 'No dimension',
-                                     'use': 'not implemented'}}
+        assert res.json() == {"impacts": {'lu': {'description': 'Land use',
+                                                 'embedded': {'max': 0.06678,
+                                                              'min': 0.06678,
+                                                              'value': 0.06678,
+                                                              'warnings': ['Connected object, not including associated '
+                                                                           'digital services (use of network, '
+                                                                           'datacenter, virtual machines or other '
+                                                                           'terminals not included)',
+                                                                           'Do not include the impact of distribution']},
+                                                 'unit': 'No dimension',
+                                                 'use': 'not implemented'}}}

@@ -80,4 +80,4 @@ async def device_iot_impact(iot_dto: IoT,
             "verbose": verbose_device(device, selected_criteria=criteria, duration=duration)
         }
 
-    return impacts
+    return {"impacts": impacts}
