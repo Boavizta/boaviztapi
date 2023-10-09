@@ -30,7 +30,6 @@ class Impact:
         self.warnings.append(warn)
 
     def to_json(self):
-
         json = {"value": self.rounded_value()}
         if self.min or self.min == 0: json['min'] = self.rounded_min()
         if self.max or self.max == 0: json['max'] = self.rounded_max()
