@@ -4,7 +4,7 @@ This page presents basic queries that can be used to retrieve impacts of a CPU. 
 
 You use `curl` in command line to query Boavizta demo (public) API.
 
-💡 _You can format the results by using jq (`curl -X 'GET' 'https://api.boavizta.org/v1/cloud/aws/all_instances' | jq`)_
+💡 _You can format the results by using jq (`curl -X 'GET' '{{ endpoint }}/v1/cloud/aws/all_instances' | jq`)_
 
 ## Get the impacts from cpu name
 
@@ -14,7 +14,7 @@ Query :
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/component/cpu?verbose=false&allocation=TOTAL' \
+  '{{ endpoint }}/v1/component/cpu?verbose=false' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -24,39 +24,83 @@ curl -X 'POST' \
 
 This query returns :
 
-- The total manufacture impact (gwp, pe, adp) of the CPU
-- The usage impact (gwp, pe, adp) of the CPU for one year (default)
+- The impacts for the default criteria (gwp, pe, adp) since no impact is specified
+- The total embedded impacts of the CPU
+- The usage impacts of the CPU during the life duration, since no duration is given
+- Error margins are provided in the form of min & max values for both embedded and usage impacts
+- Significant figures are provided for each value
 
 Result :
 
 ```json
 {
   "gwp": {
-    "manufacture": 23.8,
-    "use": 310,
-    "unit": "kgCO2eq"
-  },
-  "pe": {
-    "manufacture": 353,
-    "use": 10670,
-    "unit": "MJ"
+    "embedded": {
+      "value": 13.2,
+      "significant_figures": 5,
+      "min": 13.062,
+      "max": 13.594,
+      "warnings": [
+        "End of life is not included in the calculation"
+      ]
+    },
+    "use": {
+      "value": 944.95,
+      "significant_figures": 5,
+      "min": 57.195,
+      "max": 2814.0
+    },
+    "unit": "kgCO2eq",
+    "description": "Total climate change"
   },
   "adp": {
-    "manufacture": 0.02,
-    "use": 5.32e-05,
-    "unit": "kgSbeq"
+    "embedded": {
+      "value": 0.020401,
+      "significant_figures": 5,
+      "min": 0.020401,
+      "max": 0.020401,
+      "warnings": [
+        "End of life is not included in the calculation"
+      ]
+    },
+    "use": {
+      "value": 0.00015973,
+      "significant_figures": 5,
+      "min": 3.2924e-05,
+      "max": 0.00066041
+    },
+    "unit": "kgSbeq",
+    "description": "Use of minerals and fossil ressources"
+  },
+  "pe": {
+    "embedded": {
+      "value": 210.62,
+      "significant_figures": 5,
+      "min": 208.76,
+      "max": 215.92,
+      "warnings": [
+        "End of life is not included in the calculation"
+      ]
+    },
+    "use": {
+      "value": 32012.0,
+      "significant_figures": 5,
+      "min": 32.327,
+      "max": 1164200.0
+    },
+    "unit": "MJ",
+    "description": "Consumption of primary energy"
   }
 }
-
 ```
 
-## Get the values used to measure the impacts of the cpu
+## Get the values used to assess the impacts of the cpu
 
 This is the same query as before. However, you add the `verbose=true` flag to get the value of the attributes used for the calculation.
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/component/cpu?verbose=true&allocation=TOTAL' \
+  '{{ endpoint }}/v1/component/cpu?verbose=true&criteria=gwp' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -64,158 +108,154 @@ curl -X 'POST' \
 }'
 ```
 
-This query returns :
-
-* The total manufacture impact (gwp, pe, adp) of the CPU
-* The CPU characteristics used to evaluate these impacts
-* The usage impact (gwp, pe, adp) of the CPU for one year (default)
-
 Result :
 
-You can see that the API have completed the needed value from the cpu name. We parse and fuzzymatch the cpu ```name``` with our dataset of cpu to identify ```model_range```, ```manufacturer``` and ```family```.
-The ```die_size_per_core``` is completed from the cpu family.
-
-The usage impact have been evaluated using a default level of workload of 50% with the consumption profile of a xeon gold (completed from cpu ```name```.
+* This query returns will only compute the gwp impact since we add the `criteria=gwp` flag.
+* You can see that the API has completed the needed value from the cpu name. We parse and fuzzymatch the cpu ```name``` with our dataset of cpu to identify ```tdp```, ```cores_unit```, ```family```...
+* The ```die_size``` is completed from the cpu family.
+* The usage impact has been assessed using a default level of workload of 50% with the consumption profile of a xeon gold (completed from cpu ```name```).
 
 ```json
 {
   "impacts": {
     "gwp": {
-      "manufacture": 23.8,
-      "use": 310,
-      "unit": "kgCO2eq"
-    },
-    "pe": {
-      "manufacture": 353,
-      "use": 10670,
-      "unit": "MJ"
-    },
-    "adp": {
-      "manufacture": 0.02,
-      "use": 5.32e-05,
-      "unit": "kgSbeq"
+      "embedded": {
+        "value": 13.2,
+        "significant_figures": 5,
+        "min": 13.062,
+        "max": 13.594,
+        "warnings": [
+          "End of life is not included in the calculation"
+        ]
+      },
+      "use": {
+        "value": 944.95,
+        "significant_figures": 5,
+        "min": 57.195,
+        "max": 2814.0
+      },
+      "unit": "kgCO2eq",
+      "description": "Total climate change"
     }
   },
   "verbose": {
-    "units": 1,
-    "manufacture_impacts": {
+    "impacts": {
       "gwp": {
-        "value": 23.8,
-        "unit": "kgCO2eq"
-      },
-      "pe": {
-        "value": 353,
-        "unit": "MJ"
-      },
-      "adp": {
-        "value": 0.02,
-        "unit": "kgSbeq"
+        "embedded": {
+          "value": 13.2,
+          "significant_figures": 5,
+          "min": 13.062,
+          "max": 13.594,
+          "warnings": [
+            "End of life is not included in the calculation"
+          ]
+        },
+        "use": {
+          "value": 944.95,
+          "significant_figures": 5,
+          "min": 57.195,
+          "max": 2814.0
+        },
+        "unit": "kgCO2eq",
+        "description": "Total climate change"
       }
     },
-    "core_units": {
-      "value": 28,
-      "unit": "none",
-      "status": "COMPLETED",
-      "source": "https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)"
+    "units": {
+      "value": 1.0,
+      "status": "ARCHETYPE",
+      "min": 1.0,
+      "max": 1.0
     },
-    "die_size_per_core": {
-      "value": 0.248,
-      "unit": "cm2",
+    "die_size": {
+      "value": 157,
       "status": "COMPLETED",
-      "source": "https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)"
+      "unit": "mm2",
+      "source": "Average value for Skylake",
+      "min": 150,
+      "max": 177
     },
     "model_range": {
-      "value": "xeon gold",
-      "unit": "none",
+      "value": "Xeon Gold",
       "status": "COMPLETED",
-      "source": null
+      "source": "Completed from name name based on https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data.",
+      "min": "Xeon Gold",
+      "max": "Xeon Gold"
     },
     "manufacturer": {
-      "value": "intel",
-      "unit": "none",
+      "value": "Intel",
       "status": "COMPLETED",
-      "source": null
+      "source": "Completed from name name based on https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data.",
+      "min": "Intel",
+      "max": "Intel"
     },
     "family": {
-      "value": "skylake",
-      "unit": "none",
+      "value": "Skylake",
       "status": "COMPLETED",
-      "source": null
+      "source": "Completed from name name based on https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data.",
+      "min": "Skylake",
+      "max": "Skylake"
     },
-    "USAGE": {
-      "usage_impacts": {
-        "gwp": {
-          "value": 310,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 10670,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 5.32e-05,
-          "unit": "kgSbeq"
-        }
+    "name": {
+      "value": "Intel Xeon Gold 6134",
+      "status": "COMPLETED",
+      "source": "fuzzy match",
+      "min": "Intel Xeon Gold 6134",
+      "max": "Intel Xeon Gold 6134"
+    },
+    "duration": {
+      "value": 26280.0,
+      "unit": "hours"
+    },
+    "avg_power": {
+      "value": 94.624,
+      "status": "COMPLETED",
+      "unit": "W",
+      "min": 94.624,
+      "max": 94.624
+    },
+    "time_workload": {
+      "value": 50.0,
+      "status": "ARCHETYPE",
+      "unit": "%",
+      "min": 0.0,
+      "max": 100.0
+    },
+    "usage_location": {
+      "value": "EEE",
+      "status": "DEFAULT",
+      "unit": "CodSP3 - NCS Country Codes - NATO"
+    },
+    "use_time_ratio": {
+      "value": 1.0,
+      "status": "ARCHETYPE",
+      "unit": "/1",
+      "min": 1.0,
+      "max": 1.0
+    },
+    "hours_life_time": {
+      "value": 26280.0,
+      "status": "ARCHETYPE",
+      "unit": "hours",
+      "min": 26280.0,
+      "max": 26280.0
+    },
+    "params": {
+      "value": {
+        "a": 35.5688,
+        "b": 0.2438,
+        "c": 9.6694,
+        "d": -0.6087
       },
-      "hours_electrical_consumption": {
-        "value": 94.62364134445255,
-        "unit": "W",
-        "status": "COMPLETED",
-        "source": null
-      },
-      "time_workload": {
-        "value": 50,
-        "unit": "%",
-        "status": "DEFAULT",
-        "source": null
-      },
-      "usage_location": {
-        "value": "EEE",
-        "unit": "CodSP3 - NCS Country Codes - NATO",
-        "status": "DEFAULT",
-        "source": null
-      },
-      "adp_factor": {
-        "value": 6.42e-08,
-        "unit": "KgSbeq/kWh",
-        "status": "COMPLETED",
-        "source": {
-          "1": "ADEME BASE IMPACT"
-        }
-      },
-      "gwp_factor": {
-        "value": 0.38,
-        "unit": "kgCO2e/kWh",
-        "status": "COMPLETED",
-        "source": {
-          "1": "https://www.sciencedirect.com/science/article/pii/S0306261921012149 : \nAverage of 27 european countries"
-        }
-      },
-      "pe_factor": {
-        "value": 12.874,
-        "unit": "MJ/kWh",
-        "status": "COMPLETED",
-        "source": {
-          "1": "ADPf / (1-%renewable_energy)"
-        }
-      },
-      "use_time": {
-        "value": 8760,
-        "unit": "hours",
-        "status": "DEFAULT",
-        "source": null
-      },
-      "params": {
-        "value": {
-          "a": 35.5688,
-          "b": 0.2438,
-          "c": 9.6694,
-          "d": -0.6087
-        },
-        "unit": "none",
-        "status": "COMPLETED",
-        "source": "From CPU model range"
-      }
+      "status": "COMPLETED",
+      "source": "From CPU model range"
+    },
+    "gwp_factor": {
+      "value": 0.38,
+      "status": "DEFAULT",
+      "unit": "kg CO2eq/kWh",
+      "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+      "min": 0.023,
+      "max": 1.13161
     }
   }
 }
@@ -227,82 +267,188 @@ In this query, we give some characteristics to describe the CPU.
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/component/cpu?verbose=true&allocation=TOTAL' \
+  '{{ endpoint }}/v1/component/cpu?verbose=true&criteria=gwp&criteria=adp' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
  -d '{
       "core_units": 24,
-      "family": "Skylake"
+      "family": "skylake"
       }'
 ```
-
-This query returns :
-
-* The total manufacture impact (gwp, pe, adp) of the CPU
-* The usage impact (gwp, pe, adp) of the CPU for one year (default)
-
 Result :
 
-Since only lowercase are used, the API will correct Skylake to skylake (CHANGED). And complete the missing attribute from the given attributes (COMPLETED) or by default ones (DEFAULT).
+* This query returns will compute the gwp and adp impacts since we add the `criteria=gwp&criteria=adp` flags.
+* The API will correct skylake to Skylake (CHANGED) and complete the missing attributes from the given attributes (COMPLETED) or by default ones (ARCHETYPE).
 
 ```json
 {
   "impacts": {
     "gwp": {
-      "manufacture": 23.8,
-      "use": 610,
-      "unit": "kgCO2eq"
-    },
-    "pe": {
-      "manufacture": 353,
-      "use": 20550,
-      "unit": "MJ"
+      "embedded": {
+        "value": 18.913,
+        "significant_figures": 5,
+        "min": 18.913,
+        "max": 18.913,
+        "warnings": [
+          "End of life is not included in the calculation"
+        ]
+      },
+      "use": {
+        "value": 1819.8,
+        "significant_figures": 5,
+        "min": 110.15,
+        "max": 5419.3
+      },
+      "unit": "kgCO2eq",
+      "description": "Total climate change"
     },
     "adp": {
-      "manufacture": 0.02,
-      "use": 0.000102,
-      "unit": "kgSbeq"
+      "embedded": {
+        "value": 0.020403,
+        "significant_figures": 5,
+        "min": 0.020403,
+        "max": 0.020403,
+        "warnings": [
+          "End of life is not included in the calculation"
+        ]
+      },
+      "use": {
+        "value": 0.00030761,
+        "significant_figures": 5,
+        "min": 6.3406e-05,
+        "max": 0.0012718
+      },
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources"
     }
   },
   "verbose": {
-    "units": 1,
-    "manufacture_impacts": {
+    "impacts": {
       "gwp": {
-        "value": 23.8,
-        "unit": "kgCO2eq"
-      },
-      "pe": {
-        "value": 353,
-        "unit": "MJ"
+        "embedded": {
+          "value": 18.913,
+          "significant_figures": 5,
+          "min": 18.913,
+          "max": 18.913,
+          "warnings": [
+            "End of life is not included in the calculation"
+          ]
+        },
+        "use": {
+          "value": 1819.8,
+          "significant_figures": 5,
+          "min": 110.15,
+          "max": 5419.3
+        },
+        "unit": "kgCO2eq",
+        "description": "Total climate change"
       },
       "adp": {
-        "value": 0.02,
-        "unit": "kgSbeq"
+        "embedded": {
+          "value": 0.020403,
+          "significant_figures": 5,
+          "min": 0.020403,
+          "max": 0.020403,
+          "warnings": [
+            "End of life is not included in the calculation"
+          ]
+        },
+        "use": {
+          "value": 0.00030761,
+          "significant_figures": 5,
+          "min": 6.3406e-05,
+          "max": 0.0012718
+        },
+        "unit": "kgSbeq",
+        "description": "Use of minerals and fossil ressources"
       }
+    },
+    "units": {
+      "value": 1.0,
+      "status": "ARCHETYPE",
+      "min": 1.0,
+      "max": 1.0
     },
     "core_units": {
       "value": 24,
-      "unit": "none",
-      "status": "INPUT",
-      "source": null
+      "status": "INPUT"
     },
-    "die_size_per_core": {
-      "value": 0.289,
-      "unit": "cm2",
+    "die_size": {
+      "value": 447,
       "status": "COMPLETED",
-      "source": {
-        "1": "https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)"
-      }
+      "unit": "mm2",
+      "source": "Linear regression on Skylake",
+      "min": 447,
+      "max": 447
     },
     "family": {
-      "value": "skylake",
-      "unit": "none",
-      "status": "CHANGED",
-      "source": null
+      "value": "Skylake",
+      "status": "CHANGED"
     },
-   ...
+    "duration": {
+      "value": 26280.0,
+      "unit": "hours"
+    },
+    "avg_power": {
+      "value": 182.23,
+      "status": "COMPLETED",
+      "unit": "W",
+      "min": 182.23,
+      "max": 182.23
+    },
+    "time_workload": {
+      "value": 50.0,
+      "status": "ARCHETYPE",
+      "unit": "%",
+      "min": 0.0,
+      "max": 100.0
+    },
+    "usage_location": {
+      "value": "EEE",
+      "status": "DEFAULT",
+      "unit": "CodSP3 - NCS Country Codes - NATO"
+    },
+    "use_time_ratio": {
+      "value": 1.0,
+      "status": "ARCHETYPE",
+      "unit": "/1",
+      "min": 1.0,
+      "max": 1.0
+    },
+    "hours_life_time": {
+      "value": 26280.0,
+      "status": "ARCHETYPE",
+      "unit": "hours",
+      "min": 26280.0,
+      "max": 26280.0
+    },
+    "params": {
+      "value": {
+        "a": 171.2,
+        "b": 0.0354,
+        "c": 36.89,
+        "d": -10.13
+      },
+      "status": "ARCHETYPE"
+    },
+    "gwp_factor": {
+      "value": 0.38,
+      "status": "DEFAULT",
+      "unit": "kg CO2eq/kWh",
+      "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+      "min": 0.023,
+      "max": 1.13161
+    },
+    "adp_factor": {
+      "value": 6.42317e-08,
+      "status": "DEFAULT",
+      "unit": "kg Sbeq/kWh",
+      "source": "ADEME Base IMPACTS ®",
+      "min": 1.324e-08,
+      "max": 2.65575e-07
+    }
+  }
 }
-
 ```
 
 ## Get the impacts from custom cpu usage using an electrical consumption
@@ -311,43 +457,46 @@ In this query we set a custom usage to an ```intel xeon gold 6134```. The averag
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/component/cpu?verbose=false&allocation=TOTAL' \
+  '{{ endpoint }}/v1/component/cpu?verbose=false&criteria=gwp&duration=2' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "name": "intel xeon gold 6134"
+  "name": "intel xeon gold 6134",
   "usage":{
-      "hours_use_time": 2,
       "usage_location": "FRA",
-      "hours_electrical_consumption": 120
+      "avg_power": 120
   }}'
 ```
 
 Result : 
 
-* The API will use an electrical consumption of 120 Watt/hours for 2 hours
-* Usage impacts will be measure for the French electrical mix impacts 
+* The API will use an electrical consumption of 120 Watt/hours for 2 hours (since duration is set at 2)
+* Usage impacts will be assessed for the French electrical mix impacts 
+* Embedded impacts will be allocated on 2 hours
 
 
 ```json
 {
   "gwp": {
-    "manufacture": 23.8,
-    "use": 0.02,
-    "unit": "kgCO2eq"
-  },
-  "pe": {
-    "manufacture": 353,
-    "use": 2,
-    "unit": "MJ"
-  },
-  "adp": {
-    "manufacture": 0.02,
-    "use": 8e-09,
-    "unit": "kgSbeq"
+    "embedded": {
+      "value": 0.0010046,
+      "significant_figures": 5,
+      "min": 0.00099408,
+      "max": 0.0010346,
+      "warnings": [
+        "End of life is not included in the calculation"
+      ]
+    },
+    "use": {
+      "value": 0.02352,
+      "significant_figures": 5,
+      "min": 0.02352,
+      "max": 0.02352
+    },
+    "unit": "kgCO2eq",
+    "description": "Total climate change"
   }
 }
-
 ```
 
 
@@ -357,7 +506,7 @@ In this query we set a custom usage to an ```intel xeon gold 6134``` with a TDP 
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/component/cpu?verbose=false&allocation=TOTAL' \
+  '{{ endpoint }}/v1/component/cpu?verbose=false&criteria=gwp' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -377,19 +526,23 @@ Result :
 ```json
 {
   "gwp": {
-    "manufacture": 23.8,
-    "use": 0.02,
-    "unit": "kgCO2eq"
-  },
-  "pe": {
-    "manufacture": 353,
-    "use": 2,
-    "unit": "MJ"
-  },
-  "adp": {
-    "manufacture": 0.02,
-    "use": 8e-09,
-    "unit": "kgSbeq"
+    "embedded": {
+      "value": 13.2,
+      "significant_figures": 5,
+      "min": 13.062,
+      "max": 13.594,
+      "warnings": [
+        "End of life is not included in the calculation"
+      ]
+    },
+    "use": {
+      "value": 205.09,
+      "significant_figures": 5,
+      "min": 205.09,
+      "max": 205.09
+    },
+    "unit": "kgCO2eq",
+    "description": "Total climate change"
   }
 }
 ```

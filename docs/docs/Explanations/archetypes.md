@@ -1,38 +1,34 @@
 # Archetypes
 
-**Work in progress**
-
-An archetype is a pre-recorded device.
+An archetype is a pre-recorded asset (device or component).
 
 Archetype can be used :
 
-* To create profiles for device with pre-recorded configuration components and usage. *For example : a high performance server.*
+* To create profiles for device with pre-recorded configuration components and usage. *For example : a medium storage server*
 
 * To pre-record real devices *For example : dellr740*
 
+Each type of device or component have a default archetype which can be changed in the configuration file.
 
-## Using archetype in /model routes
+## Using archetype in GET routes
 
-You can retrieve the impacts of a specific archetype by specifying its name in the /model routes of devices. 
+You can specify an archetype in the route parameters when you send a device or a component to the API via a GET method. In this case, the API will compute the impacts of this specific archetype.
+
+### Example
+
+```GET /v1/server?archetype=dellR740``` : will return the impact of the pre-recorded dellR740.
+
+## Using archetype in POST routes
+
+You can specify an archetype in the route parameters when you send a device or a component to the API via a POST method. In this case the missing values will be completed with the values taken from the archetype.
 
 ### Example
 
-```/v1/server/model?archetype=dellR740``` : will return the impact of the pre-recorded dellR740.
-
-## Using archetype in model object
-
-You can specify an archetype in the model of a device when you send a device to the api.
-When doing so, missing data are retrieved from the archetype instead of default data.
-
-### Example
+```POST /v1/server?archetype=compute_medium```
 
 ```json
 {
-    "model": {
-        ...
-        "archetype": "dellR740"
-    },
-    "config": {
+    "configuration": {
         ...
     },
     "usage": {
@@ -41,4 +37,8 @@ When doing so, missing data are retrieved from the archetype instead of default 
 }
 ```
 
-All the missing data will be set with the corresponding data of the dellR740.
+In this case the missing values will be completed with the values taken from a *compute_medium* server.
+
+## GET the configuration of an archetype
+
+You can get the configuration of an archetype by using the GET method on the route ```{assets}/archetype_config```.

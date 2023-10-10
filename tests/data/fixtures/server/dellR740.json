@@ -1,0 +1,40 @@
+{
+  "model":
+  {
+    "manufacturer": "Dell",
+    "name": "dellR740",
+    "type": "rack",
+    "year": 2020
+  },
+  "configuration":
+  {
+    "cpu":
+    {
+      "units": 2,
+      "core_units": 24,
+      "die_size_per_core": 24.5
+    },
+    "ram":
+    [
+      {
+        "units": 12,
+        "capacity": 32,
+        "density": 1.79
+      }
+    ],
+    "disk":
+    [
+      {
+        "units": 1,
+        "type": "ssd",
+        "capacity": 400,
+        "density": 50.6
+      }
+    ],
+    "power_supply":
+    {
+      "units": 2,
+      "unit_weight": 2.99
+    }
+  }
+}

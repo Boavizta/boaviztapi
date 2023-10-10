@@ -1,20 +1,15 @@
-from enum import Enum
 from typing import Tuple
-
-from boaviztapi.model.usage import ModelUsage
 
 NumberSignificantFigures = Tuple[float, int]
 
 
-def allocate(total_impact, allocation_type, usage: ModelUsage) -> NumberSignificantFigures:
-    allocation_ratio = 1
+def allocate(impact, duration, life_time) -> [NumberSignificantFigures, NumberSignificantFigures, NumberSignificantFigures]:
 
-    if allocation_type == Allocation.LINEAR:
-        allocation_ratio = usage.use_time.value / usage.life_time.value
+    if duration > life_time.value:
+        allocation_ratio, allocation_ratio_min, allocation_ratio_max = 1, 1, 1
+    else:
+        allocation_ratio = duration / life_time.value
+        allocation_ratio_min = duration / life_time.max
+        allocation_ratio_max = duration / life_time.min
 
-    return total_impact * allocation_ratio
-
-
-class Allocation(Enum):
-    LINEAR = "LINEAR"
-    TOTAL = "TOTAL"
+    return impact.value * allocation_ratio, impact.min * allocation_ratio_min, impact.max * allocation_ratio_max

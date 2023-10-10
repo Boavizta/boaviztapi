@@ -1,0 +1,20 @@
+manufacturer,layers,bits/cell,Cell type,Nand type,density,Année,source
+Intel ,32,3,FG,TLC,16.4,2015,https://www.techinsights.com/blog/intelmicron-64l-3d-nand-analysis
+Micron,64,3,FG (Floating Gate),TLC,49.6,,https://thememoryguy.com/64-layer-3d-nand-chips-revealed-at-isscc/
+Toshiba,64,3,CTF (Charge Trap Flash),TLC,48.5,,https://thememoryguy.com/64-layer-3d-nand-chips-revealed-at-isscc/
+Samsung,64,3,CTF (Charge Trap Flash),TLC,53.6,,https://thememoryguy.com/64-layer-3d-nand-chips-revealed-at-isscc/
+Intel ,64,3,FG,TLC,90.9,2017,https://www.techinsights.com/blog/intelmicron-64l-3d-nand-analysis
+Micron/Intel,64,3,FG,TLC,57.5,,https://semiengineering.com/micron-b47r-3d-ctf-cua-nand-die-worlds-first-176l-195t/
+Micron/Intel,96,3,FG,TLC,76.3,,https://semiengineering.com/micron-b47r-3d-ctf-cua-nand-die-worlds-first-176l-195t/
+Micron,128,3,CTF,,96.9,,https://semiengineering.com/micron-b47r-3d-ctf-cua-nand-die-worlds-first-176l-195t/
+Micron,128,3,CTF,,128,,https://semiengineering.com/micron-b47r-3d-ctf-cua-nand-die-worlds-first-176l-195t/
+Samsung,32,3,,TLC,19,2015,https://www.flashmemorysummit.com/Proceedings2019/08-07-Wednesday/20190807_FTEC-202-1_Choe.pdf
+Samsung,36,3,,TLC,23,2016,https://www.flashmemorysummit.com/Proceedings2019/08-07-Wednesday/20190807_FTEC-202-1_Choe.pdf
+Samsung,48,3,,TLC,33,2017,https://www.flashmemorysummit.com/Proceedings2019/08-07-Wednesday/20190807_FTEC-202-1_Choe.pdf
+Samsung,64,3,,TLC,41,2018,https://www.flashmemorysummit.com/Proceedings2019/08-07-Wednesday/20190807_FTEC-202-1_Choe.pdf
+Samsung,96,3,,TLC,57,2019,https://www.flashmemorysummit.com/Proceedings2019/08-07-Wednesday/20190807_FTEC-202-1_Choe.pdf
+Samsung,64,4,,TLC,71,2020,https://www.flashmemorysummit.com/Proceedings2019/08-07-Wednesday/20190807_FTEC-202-1_Choe.pdf
+Toshiba/WD,48,3,,TLC,31,2016,https://www.flashmemorysummit.com/Proceedings2019/08-07-Wednesday/20190807_FTEC-202-1_Choe.pdf
+Toshiba/WD,64,3,,TLC,45.5,2017,https://www.flashmemorysummit.com/Proceedings2019/08-07-Wednesday/20190807_FTEC-202-1_Choe.pdf
+Toshiba/WD,96,3,,TLC,76.1,2019,https://www.flashmemorysummit.com/Proceedings2019/08-07-Wednesday/20190807_FTEC-202-1_Choe.pdf
+Micron/Intel,36,3,,TLC,28.5,2016,https://www.flashmemorysummit.com/Proceedings2019/08-07-Wednesday/20190807_FTEC-202-1_Choe.pdf

@@ -2,67 +2,108 @@
 
 ## Characteristics
 
-| Name              | Unit | Default value | Description                                   | Example            |
-|-------------------|------|---------------|-----------------------------------------------|--------------------|
-| units             | None | 1             | CPU quantity                                  | 2                  |
-| usage             | None | See Usage     | See usage                                     | ..                 |
-| core_units        | None | 24            | Number of core on one CPU                     | 12                 |
-| die_size          | cm2  | None          | Size of the die                               | 2900               |
-| manufacturer      | None | Intel         | Name of the CPU manufacturer                  | AMD                |
-| die_size_per_core | cm2  | 0.245         | Size of the die divided by the number of core | 0.245              |
-| model_range       | None | Xeon Platinum | Name of the cpu range or brand                | i7                 |
-| family            | None | Skylake       | Name of the architectural family (Generation) | Naple              |
-| name              | None | None          | Complete commercial name of the CPU           | Intel Core i7-1065 |
-| TDP               | Watt | None          | Thermal Design Point                          | 250                |
-
+| Name              | Unit | Default value (default;min;max) | Description                                   | Example            |
+|-------------------|------|---------------------------------|-----------------------------------------------|--------------------|
+| units             | None | 1;1;1                           | CPU quantity                                  | 2                  |
+| usage             | None | See Usage                       | See usage                                     | ..                 |
+| core_units        | None | 24;1;64                         | Number of physical core on one CPU            | 12                 |
+| die_size          | mm2  | None                            | Size of the die                               | 1.1                |
+| embedded          | None | None                            | Name of the CPU embedded                      | AMD                |
+| die_size_per_core | mm2  | None                            | Size of the die divided by the number of core | 0.245              |
+| model_range       | None | None                            | Name of the cpu range or brand                | i7                 |
+| family            | None | None                            | Name of the architectural family (Generation) | Skylake            |
+| name              | None | None                            | Complete commercial name of the CPU           | Intel Core i7-1065 |
+| tdp               | Watt | None                            | Thermal Design Point                          | 250                |
 
 ## Complete
 
-**The following variables can be [completed](../auto_complete.md)**
+**The following [completion](../auto_complete.md) strategies can be used**
 
-### die_size_per_core and core_units
+### Completion from CPU ```name```
 
-if ```die_size``` and ```core_units``` are given :
+If CPU ```name``` is given, ```model_range```, ```tdp```, ```die_size``` and ```family``` can be retrieved from a fuzzy matching on our cpu name repository. 
 
-$$ \text{die_size_per_core} = \frac{\text{die_size}}{\text{core_units}}$$
+!!!warning
+    Note that the cpu name repository is not complete and the completion can return a different cpu than the one given by the user. You can set a threshold for the fuzzy matching in the [config file](../../Reference/config.md) to control the behavior of the fuzzy matching.
 
-Otherwise, if ```family``` or/and ```core_units``` are given, ```die_size_per_core``` can be retrieved from a fuzzy matching on our cpu repository.
-If several cpu matches the given ```family``` and/or ```core_units``` the maximizing value is given (in terms of impacts).
+### Completion of the ```die_size``` from ```family``` and/or ```core_units```
 
-If no cpu is found either because the cpu is unknown or not enough data have been given by the user the default data are used.
+if ```die_size_per_core``` and ```core_units``` are given :
 
-### model_range and family
+$$ \text{die_size} = {\text{core_units}}*{\text{die_size}}$$
 
-if ```name``` is given, ```model_range``` and ```family``` can be retrieved from a fuzzy matching on our cpu name repository.
+Otherwise, if ```family``` is given, ```die_size``` can be retrieved from a fuzzy matching on our cpu repository. 
 
-## Manufacture impact
+If several cpu matches the given ```family```, we use the ```core_units``` attributes : 
+* If ```core_units``` matches one to many cpu, the average value is given and min and max value are used as ```min``` and ```max``` fields.
+* If ```core_units``` does not match any cpu, we infer the ```die_size``` with a rule of three or a linear regression (when multiple cpus are available).
+* If ```core_units``` is not provided, the average value is given and min and max value are used as ```min``` and ```max``` fields.
 
-For one CPU the manufacture impact is:
+## Embedded impacts
+
+### Impacts criteria
+
+| Criteria | Implemented | Source                                                                                                                                                         | 
+|----------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| gwp      | yes         | [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
+| adp      | yes         | [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
+| pe       | yes         | [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
+| gwppb    | no          |                                                                                                                                                                |
+| gwppf    | no          |                                                                                                                                                                |
+| gwpplu   | no          |                                                                                                                                                                |
+| ir       | no          |                                                                                                                                                                |
+| lu       | no          |                                                                                                                                                                |
+| odp      | no          |                                                                                                                                                                |
+| pm       | no          |                                                                                                                                                                |
+| pocp     | no          |                                                                                                                                                                |
+| wu       | no          |                                                                                                                                                                |
+| mips     | no          |                                                                                                                                                                |
+| adpe     | no          |                                                                                                                                                                |
+| adpf     | no          |                                                                                                                                                                |
+| ap       | no          |                                                                                                                                                                |
+| ctue     | no          |                                                                                                                                                                |
+| ctuh_c   | no          |                                                                                                                                                                |
+| ctuh_nc  | no          |                                                                                                                                                                |
+| epf      | no          |                                                                                                                                                                |
+| epm      | no          |                                                                                                                                                                |
+| ept      | no          |                                                                                                                                                                |
+
+### Impact factors
+
+For one CPU the embedded impact is:
 
 $$ 
-\text{CPU}_\text{manufacture}^\text{criteria} = (\text{CPU}_{\text{core_units}} * \text{CPU}_{\text{die_size_per_core}} + 0.491 ) * \text{CPU}_\text{manufacture_die}^\text{criteria} + \text{CPU}_\text{manufacture_base}^\text{criteria}
+\text{CPU}_\text{embedded}^\text{criteria} = (\text{CPU}_{\text{core_units}} * \text{CPU}_{\text{die_size_per_core}} + 0.491 ) * \text{CPU}_\text{embedded_die}^\text{criteria} + \text{CPU}_\text{embedded_base}^\text{criteria}
 $$
 
 with:
 
-| Constant                                          | Units       | Value    |
-|---------------------------------------------------|-------------|----------|
-| $\text{CPU}_\text{manufacture_die}^{\text{gwp}}$  | kgCO2eq/cm2 | 1.97     |
-| $\text{CPU}_\text{manufacture_die}^{\text{adp}}$  | kgSbeq/cm2  | 5.80E-07 |
-| $\text{CPU}_\text{manufacture_die}^{\text{pe}}$   | MJ/cm2      | 26.50    |
-| $\text{CPU}_\text{manufacture_base}^{\text{gwp}}$ | kgCO2eq     | 9.14     |
-| $\text{CPU}_\text{manufacture_base}^{\text{adp}}$ | kgSbeq      | 2.04E-02 |
-| $\text{CPU}_\text{manufacture_base}^{\text{pe}}$  | MJ          | 156.00   |
+| Constant                                         | Units       | Value    |
+|--------------------------------------------------|-------------|----------|
+| $\text{CPU}_\text{embedded_die}^{\text{gwp}}$    | kgCO2eq/cm2 | 1.97     |
+| $\text{CPU}_\text{embedded_die}^{\text{adp}}$    | kgSbeq/cm2  | 5.80E-07 |
+| $\text{CPU}_\text{embedded_die}^{\text{pe}}$     | MJ/cm2      | 26.50    |
+| $\text{CPU}_\text{embedded_base}^{\text{gwp}}$   | kgCO2eq     | 9.14     |
+| $\text{CPU}_\text{embedded_base}^{\text{adp}}$   | kgSbeq      | 2.04E-02 |
+| $\text{CPU}_\text{embedded_base}^{\text{pe}}$    | MJ          | 156.00   |
 
-_Note: If there are more than 1 CPU we multiply $\text{CPU}_\text{manufacture}^\text{criteria}$ by the number of CPU given in `units`._
+!!!info
+    If there are more than 1 CPU we multiply $\text{CPU}_\text{embedded}^\text{criteria}$ by the number of CPU given in `units`.
 
-## Usage impact
+## Usage impacts
 
 Both [power consumption](../usage/elec_conso.md) and [consumption profile](../consumption_profile.md) are implemented.
 
-## Consumption profile
+## Power Consumption profile
 
-The CPU consumption profile is of the form : ```consumption_profile(workload) = a*ln(b+(workload*c))+d```
+The CPU consumption profile is of the form: 
+
+$$
+PowerConsumption(workload) = a * \ln(b * (workload + c)) + d
+$$
+
+!!!warning
+    We apply a log regression to fit data points $(workload, power)$ starting from a default consumption profile that can be found using the CPU `model_range`. This process can (in some cases) yield very low or negative power values due to wrong input data or model initialization. **That is why there is a minimum power consumption limit set to 1W for any input workload**.
 
 ### Determining the parameters
 
@@ -70,27 +111,25 @@ The CPU consumption profile is of the form : ```consumption_profile(workload) = 
 
 If ```model_range``` is given or is completed from the ```cpu_name```, we use the averaged parameter for the specific model range.
 
-| manufacturer  |model_range  | a                 |b                   |c                 |d                  |
-|---------------|-------------|-------------------|--------------------|------------------|-------------------|
-| Intel         |xeon platinum| 342.3624349628362 |0.034750819765533035|36.89522616719806 |-16.402219089443307|
-| Intel         |xeon gold    | 71.13767381183924 |0.2280562153242743  |9.66939980437224  |6.266004455550223  |
-| Intel         |xeon silver  | 41.55884200277906 |0.2805828410398358  |8.424085900547572 |4.764407035404158  |
-| Intel         |xeon e5      | 97.83350026272564 |0.10296318761911205 |15.726228837967518|-1.8588498922070307|
-| Intel         |xeon e3      | 342.3624349628362 |0.034750819765533035|36.89522616719806 |-16.402219089443307|
-| Intel         |xeon e       | 55.65014194649273 |0.04666041377084888 |20.41458697644834 |4.243652609400892  |
+| manufacturer | model_range   | a        | b      | c       | d        |
+|--------------|---------------|----------|--------|---------|----------|
+| Intel        | Xeon Platinum | 171.1813 | 0.0354 | 36.8953 | -10.1336 |
+| Intel        | Xeon Gold     | 35.5688  | 0.2438 | 9.6694  | -0.6087  |
+| Intel        | Xeon Silver   | 20.7794  | 0.3043 | 8.4241  | 0.8613   |
+| Intel        | Xeon E5       | 48.9167  | 0.1349 | 15.7262 | -4.654   |
+| Intel        | Xeon E3       | 342.3624 | 0.0347 | 36.8952 | -16.4022 |
+| Intel        | Xeon E        | 55.6501  | 0.0467 | 20.4146 | 4.24362  |
 
 By default, we use the consumption profile of **Intel Xeon Platinum**
 
-<TODO: fix consumption profile graphs>
-![cp_cpu_xeon_platinum.png](cp_cpu_xeon_platinum.png)
+![cp_cpu_xeon_platinum.svg](cp_cpu_xeon_platinum.svg)
 
 #### Model adaptation from punctual measurement
 
 In case punctual power measurement (load;power_consumption) are given by a user, we adapt the selected consumption
 profile to match the given point.
 
-<TODO: fix consumption profile graphs>
-![cp_cpu_fine_tune.png](cp_cpu_fine_tune.png)
+![cp_cpu_fine_tuned.svg](cp_cpu_fine_tuned.svg)
 
 #### Model adaptation from TDP
 

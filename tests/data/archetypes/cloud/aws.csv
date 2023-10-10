@@ -1,0 +1,622 @@
+id,manufacturer,CASE.case_type,year,CPU.units,CPU.core_units,CPU.name,CPU.manufacturer,CPU.model_range,CPU.family,CPU.tdp,CPU.manufacture_date,RAM.capacity,RAM.units,SSD.units,SSD.capacity,HDD.units,HDD.capacity,POWER_SUPPLY.units,GPU.memory,GPU.memory,GPU.units,POWER_SUPPLY.units,POWER_SUPPLY.unit_weight,USAGE.instance_per_server,USAGE.time_workload,USAGE.use_time_ratio,USAGE.hours_life_time,USAGE.other_consumption_ratio,USAGE.overcommited,Warnings
+a1.2xlarge,AWS,rack,2018,1,16,Graviton,Annapurna Labs,Graviton,Graviton,40,2018,16,2,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,
+a1.4xlarge,AWS,rack,2018,1,16,Graviton,Annapurna Labs,Graviton,Graviton,40,2018,16,2,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.7,0,
+a1.large,AWS,rack,2018,1,16,Graviton,Annapurna Labs,Graviton,Graviton,40,2018,16,2,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.8,0,
+a1.medium,AWS,rack,2018,1,16,Graviton,Annapurna Labs,Graviton,Graviton,40,2018,16,2,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.9,0,
+a1.metal,AWS,rack,2019,1,16,Graviton,Annapurna Labs,Graviton,Graviton,40,2019,16,2,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.10,0,
+a1.xlarge,AWS,rack,2018,1,16,Graviton,Annapurna Labs,Graviton,Graviton,40,2018,16,2,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.11,0,
+c1.medium,AWS,rack,2008,2,12,Xeon E5-2651 v2,intel,xeon e5,ivybridge,95,2008,2,21,1,350,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.12,0,configuration.ram.capacity not verified
+c1.xlarge,AWS,rack,2008,2,12,Xeon E5-2651 v2,intel,xeon e5,ivybridge,95,2008,2,21,4,420,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.13,0,configuration.ram.capacity not verified
+c3.2xlarge,AWS,rack,2013,2,10,Xeon E5-2680 v2,intel,xeon e5,ivybridge,115,2013,2,30,2,80,,0,2,,,,2;2;2,2.99;1;5,5,50;0;100,1,35040,0.33;0.2;0.14,0,configuration.ram.capacity not verified
+c3.4xlarge,AWS,rack,2013,2,10,Xeon E5-2680 v2,intel,xeon e5,ivybridge,115,2013,2,30,2,160,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.15,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+c3.8xlarge,AWS,rack,2013,2,10,Xeon E5-2680 v2,intel,xeon e5,ivybridge,115,2013,2,30,2,320,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.16,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+c3.large,AWS,rack,2013,2,10,Xeon E5-2680 v2,intel,xeon e5,ivybridge,115,2013,2,30,2,16,,0,2,,,,2;2;2,2.99;1;5,20,50;0;100,1,35040,0.33;0.2;0.17,0,configuration.ram.capacity not verified
+c3.xlarge,AWS,rack,2013,2,10,Xeon E5-2680 v2,intel,xeon e5,ivybridge,115,2013,2,30,2,40,,0,2,,,,2;2;2,2.99;1;5,10,50;0;100,1,35040,0.33;0.2;0.18,0,configuration.ram.capacity not verified
+c4.2xlarge,AWS,rack,2015,2,10,Xeon E5-2666 v3,intel,xeon e5,haswell,135,2015,2,30,0,0,,0,2,,,,2;2;2,2.99;1;5,5,50;0;100,1,35040,0.33;0.2;0.19,0,configuration.ram.capacity not verified
+c4.2xlarge.elasticsearch,AWS,rack,2015,2,10,Xeon E5-2666 v3,intel,xeon e5,haswell,135,2015,32,1.88,0,0,,0,2,,,,2;2;2,2.99;1;5,5,50;0;100,1,35040,0.33;0.2;0.20,0,configuration.ram.capacity not verified
+c4.4xlarge,AWS,rack,2015,2,10,Xeon E5-2666 v3,intel,xeon e5,haswell,135,2015,2,30,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.21,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+c4.4xlarge.elasticsearch,AWS,rack,2015,2,10,Xeon E5-2666 v3,intel,xeon e5,haswell,135,2015,32,1.88,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.22,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+c4.8xlarge,AWS,rack,2015,2,10,Xeon E5-2666 v3,intel,xeon e5,haswell,135,2015,2,30,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.23,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+c4.8xlarge.elasticsearch,AWS,rack,2015,2,10,Xeon E5-2666 v3,intel,xeon e5,haswell,135,2015,32,1.88,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.24,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+c4.large,AWS,rack,2015,2,10,Xeon E5-2666 v3,intel,xeon e5,haswell,135,2015,2,30,0,0,,0,2,,,,2;2;2,2.99;1;5,20,50;0;100,1,35040,0.33;0.2;0.25,0,configuration.ram.capacity not verified
+c4.large.elasticsearch,AWS,rack,2015,2,10,Xeon E5-2666 v3,intel,xeon e5,haswell,135,2015,32,1.88,0,0,,0,2,,,,2;2;2,2.99;1;5,20,50;0;100,1,35040,0.33;0.2;0.26,0,configuration.ram.capacity not verified
+c4.xlarge,AWS,rack,2015,2,10,Xeon E5-2666 v3,intel,xeon e5,haswell,135,2015,2,30,0,0,,0,2,,,,2;2;2,2.99;1;5,10,50;0;100,1,35040,0.33;0.2;0.27,0,configuration.ram.capacity not verified
+c4.xlarge.elasticsearch,AWS,rack,2015,2,10,Xeon E5-2666 v3,intel,xeon e5,haswell,135,2015,32,1.88,0,0,,0,2,,,,2;2;2,2.99;1;5,10,50;0;100,1,35040,0.33;0.2;0.28,0,configuration.ram.capacity not verified
+c5.12xlarge,AWS,rack,2019,2,24,Xeon Platinum 8275CL,intel,xeon platinum,cascadelake,240,2019,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.29,0,
+c5.18xlarge,AWS,rack,2019,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2019,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.30,0,
+c5.18xlarge.elasticsearch,AWS,rack,2019,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2019,32,6,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.31,0,configuration.ram.capacity not verified
+c5.24xlarge,AWS,rack,2019,2,24,Xeon Platinum 8275CL,intel,xeon platinum,cascadelake,240,2019,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.32,0,
+c5.2xlarge,AWS,rack,2016,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2016,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.33,0,
+c5.2xlarge.elasticsearch,AWS,rack,2016,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2016,32,6,0,0,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.34,0,configuration.ram.capacity not verified
+c5.4xlarge,AWS,rack,2016,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2016,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.35,0,;usage.instance_per_server is rounded
+c5.4xlarge.elasticsearch,AWS,rack,2016,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2016,32,6,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.36,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+c5.9xlarge,AWS,rack,2019,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2019,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.37,0,
+c5.9xlarge.elasticsearch,AWS,rack,2019,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2019,32,6,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.38,0,configuration.ram.capacity not verified
+c5.large,AWS,rack,2016,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2016,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.39,0,
+c5.large.elasticsearch,AWS,rack,2016,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2016,32,6,0,0,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.40,0,configuration.ram.capacity not verified
+c5.metal,AWS,rack,2019,2,24,Xeon Platinum 8275CL,intel,xeon platinum,cascadelake,240,2019,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.41,0,
+c5.xlarge,AWS,rack,2016,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2016,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.42,0,
+c5.xlarge.elasticsearch,AWS,rack,2016,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2016,32,6,0,0,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.43,0,configuration.ram.capacity not verified
+c5a.12xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.44,0,
+c5a.16xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.45,0,;usage.instance_per_server is rounded
+c5a.24xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.46,0,
+c5a.2xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.47,0,
+c5a.4xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.48,0,
+c5a.8xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.49,0,
+c5a.large,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.50,0,
+c5a.xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.51,0,
+c5ad.12xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,2,900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.52,0,
+c5ad.16xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,2,1200,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.53,0,;usage.instance_per_server is rounded
+c5ad.24xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,2,1900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.54,0,
+c5ad.2xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,1,300,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.55,0,
+c5ad.4xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,2,300,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.56,0,
+c5ad.8xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,2,600,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.57,0,
+c5ad.large,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,1,75,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.58,0,
+c5ad.xlarge,AWS,rack,2020,1,48,EPYC 7R32,amd,epyc,rome,280,2020,16,12,1,150,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.59,0,
+c5d.12xlarge,AWS,rack,2019,2,24,Xeon Platinum 8275CL,intel,xeon platinum,cascadelake,240,2019,16,12,2,900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.60,0,
+c5d.18xlarge,AWS,rack,2018,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2018,16,12,2,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.61,0,
+c5d.24xlarge,AWS,rack,2019,2,24,Xeon Platinum 8275CL,intel,xeon platinum,cascadelake,240,2019,16,12,4,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.62,0,
+c5d.2xlarge,AWS,rack,2018,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2018,16,12,1,200,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.63,0,
+c5d.4xlarge,AWS,rack,2018,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2018,16,12,1,400,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.64,0,;usage.instance_per_server is rounded
+c5d.9xlarge,AWS,rack,2018,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2018,16,12,1,900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.65,0,
+c5d.large,AWS,rack,2018,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2018,16,12,1,50,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.66,0,
+c5d.metal,AWS,rack,2019,2,24,Xeon Platinum 8275CL,intel,xeon platinum,cascadelake,240,2019,16,12,4,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.67,0,
+c5d.xlarge,AWS,rack,2018,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2018,16,12,1,100,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.68,0,
+c5n.18xlarge,AWS,rack,2018,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2018,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.69,0,
+c5n.2xlarge,AWS,rack,2018,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2018,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.70,0,
+c5n.4xlarge,AWS,rack,2018,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2018,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.71,0,;usage.instance_per_server is rounded
+c5n.9xlarge,AWS,rack,2018,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2018,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.72,0,
+c5n.large,AWS,rack,2018,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2018,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.73,0,
+c5n.metal,AWS,rack,2019,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2019,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.74,0,
+c5n.xlarge,AWS,rack,2018,2,18,Xeon Platinum 8124M,intel,xeon platinum,skylake,240,2018,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.75,0,
+c6g.12xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.76,0,;usage.instance_per_server is rounded
+c6g.12xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,4,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.77,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+c6g.16xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.78,0,
+c6g.2xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.79,0,
+c6g.2xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,4,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.80,0,configuration.ram.capacity not verified
+c6g.4xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.81,0,
+c6g.4xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,4,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.82,0,configuration.ram.capacity not verified
+c6g.8xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.83,0,
+c6g.8xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,4,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.84,0,configuration.ram.capacity not verified
+c6g.large,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.85,0,
+c6g.large.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,4,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.86,0,configuration.ram.capacity not verified
+c6g.medium,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.87,0,
+c6g.metal,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.88,0,
+c6g.xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.89,0,
+c6g.xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,4,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.90,0,configuration.ram.capacity not verified
+c6gd.12xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,2,1435,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.91,0,;usage.instance_per_server is rounded
+c6gd.16xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,2,1900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.92,0,
+c6gd.2xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,1,474,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.93,0,
+c6gd.4xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,1,950,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.94,0,
+c6gd.8xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,1,1900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.95,0,
+c6gd.large,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,1,118,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.96,0,
+c6gd.medium,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,1,59,,0,2,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.97,0,
+c6gd.metal,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,2,1900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.98,0,
+c6gd.xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,1,232,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.99,0,
+c6gn.12xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.100,0,;usage.instance_per_server is rounded
+c6gn.16xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.101,0,
+c6gn.2xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.102,0,
+c6gn.4xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.103,0,
+c6gn.8xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.104,0,
+c6gn.large,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.105,0,
+c6gn.medium,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.106,0,
+c6gn.xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,16,8,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.107,0,
+cache.m3.medium,AWS,rack,2014,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2014,32,12,1,4,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.108,0,configuration.ram.capacity not verified
+cache.m4.10xlarge,AWS,rack,2015,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.109,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+cache.m4.2xlarge,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.110,0,configuration.ram.capacity not verified
+cache.m4.4xlarge,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.111,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+cache.m4.large,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.112,0,configuration.ram.capacity not verified
+cache.m4.xlarge,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.113,0,configuration.ram.capacity not verified
+cache.m5.12xlarge,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.114,0,configuration.ram.capacity not verified
+cache.m5.24xlarge,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.115,0,configuration.ram.capacity not verified
+cache.m5.2xlarge,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.116,0,configuration.ram.capacity not verified
+cache.m5.4xlarge,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.117,0,configuration.ram.capacity not verified
+cache.m5.large,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.118,0,configuration.ram.capacity not verified
+cache.m5.xlarge,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.119,0,configuration.ram.capacity not verified
+cache.m6g.12xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.120,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+cache.m6g.16xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.121,0,configuration.ram.capacity not verified
+cache.m6g.2xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.122,0,configuration.ram.capacity not verified
+cache.m6g.4xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.123,0,configuration.ram.capacity not verified
+cache.m6g.8xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.124,0,configuration.ram.capacity not verified
+cache.m6g.large,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.125,0,configuration.ram.capacity not verified
+cache.m6g.xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.126,0,configuration.ram.capacity not verified
+cache.r3.2xlarge,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,1,160,,0,2,,,,2;2;2,2.99;1;5,5,50;0;100,1,35040,0.33;0.2;0.127,0,configuration.ram.capacity not verified
+cache.r4.16xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.128,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+cache.r4.2xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.129,0,configuration.ram.capacity not verified
+cache.r4.4xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.130,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+cache.r4.8xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.131,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+cache.r4.large,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.132,0,configuration.ram.capacity not verified
+cache.r4.xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.133,0,configuration.ram.capacity not verified
+cache.r5.12xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.134,0,configuration.ram.capacity not verified
+cache.r5.24xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.135,0,configuration.ram.capacity not verified
+cache.r5.2xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.136,0,configuration.ram.capacity not verified
+cache.r5.4xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.137,0,configuration.ram.capacity not verified
+cache.r5.large,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.138,0,configuration.ram.capacity not verified
+cache.r5.xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.139,0,configuration.ram.capacity not verified
+cache.r6g.12xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.140,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+cache.r6g.16xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.141,0,configuration.ram.capacity not verified
+cache.r6g.2xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.142,0,
+cache.r6g.4xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.143,0,configuration.ram.capacity not verified
+cache.r6g.8xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.144,0,configuration.ram.capacity not verified
+cache.r6g.large,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.145,0,
+cache.r6g.xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.146,0,
+cache.t2.medium,AWS,rack,2014,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2014,32,9,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.147,0,configuration.ram.capacity not verified
+cache.t2.micro,AWS,rack,2014,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2014,32,9,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.148,0,configuration.ram.capacity not verified
+cache.t2.small,AWS,rack,2014,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2014,32,9,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.149,0,configuration.ram.capacity not verified
+cache.t3.medium,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.150,0,configuration.ram.capacity not verified
+cache.t3.micro,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.151,0,configuration.ram.capacity not verified
+cache.t3.small,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.152,0,configuration.ram.capacity not verified
+cc2.8xlarge,AWS,rack,2011,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2011,2,30.25,4,840,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.153,0,configuration.ram.capacity not verified
+cr1.8xlarge,AWS,rack,2013,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2013,4,61,2,120,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.154,0,configuration.ram.capacity not verified
+d2.2xlarge,AWS,rack,2015,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2015,4,61,0,0,6,2000,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.155,0,configuration.ram.capacity not verified
+d2.4xlarge,AWS,rack,2015,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2015,4,61,0,0,12,2000,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.156,0,configuration.ram.capacity not verified
+d2.8xlarge,AWS,rack,2015,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2015,4,61,0,0,24,2000,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.157,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+d2.xlarge,AWS,rack,2015,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2015,4,61,0,0,3,2000,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.158,0,configuration.ram.capacity not verified
+d3.2xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,8,0,0,6,2000,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.159,0,configuration.ram.capacity not verified
+d3.4xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,8,0,0,12,2000,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.160,0,configuration.ram.capacity not verified
+d3.8xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,8,0,0,24,2000,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.161,0,configuration.ram.capacity not verified
+d3.xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,8,0,0,3,2000,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.162,0,configuration.ram.capacity not verified
+d3en.12xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,6,0,0,24,14000,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.163,0,configuration.ram.capacity not verified
+d3en.2xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,6,0,0,4,14000,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.164,0,configuration.ram.capacity not verified
+d3en.4xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,6,0,0,8,14000,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.165,0,configuration.ram.capacity not verified
+d3en.6xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,6,0,0,12,14000,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.166,0,configuration.ram.capacity not verified
+d3en.8xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,6,0,0,16,14000,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.167,0,configuration.ram.capacity not verified
+d3en.xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,6,0,0,2,14000,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.168,0,configuration.ram.capacity not verified
+db.m1.large,AWS,rack,2007,2,8,Xeon E5-2650,intel,xeon e5,sandybridge,95,2007,8,15,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.169,0,configuration.ram.capacity not verified
+db.m1.medium,AWS,rack,2012,2,8,Xeon E5-2650,intel,xeon e5,sandybridge,95,2012,8,15,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.170,0,configuration.ram.capacity not verified
+db.m1.small,AWS,rack,2006,2,8,Xeon E5-2650,intel,xeon e5,sandybridge,95,2006,8,15,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.171,0,configuration.ram.capacity not verified
+db.m1.xlarge,AWS,rack,2007,2,8,Xeon E5-2650,intel,xeon e5,sandybridge,95,2007,8,15,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.172,0,configuration.ram.capacity not verified
+db.m2.2xlarge,AWS,rack,2009,2,8,Xeon E5-2665,intel,xeon e5,sandybridge,115,2009,8,35,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.173,0,configuration.ram.capacity not verified
+db.m2.4xlarge,AWS,rack,2009,2,8,Xeon E5-2665,intel,xeon e5,sandybridge,115,2009,8,35,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.174,0,configuration.ram.capacity not verified
+db.m2.xlarge,AWS,rack,2010,2,8,Xeon E5-2665,intel,xeon e5,sandybridge,115,2010,8,35,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.175,0,configuration.ram.capacity not verified
+db.m3.2xlarge,AWS,rack,2012,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2012,8,30,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.176,0,configuration.ram.capacity not verified
+db.m3.large,AWS,rack,2014,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2014,8,30,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.177,0,configuration.ram.capacity not verified
+db.m3.medium,AWS,rack,2014,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2014,8,30,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.178,0,configuration.ram.capacity not verified
+db.m3.xlarge,AWS,rack,2012,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2012,8,30,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.179,0,configuration.ram.capacity not verified
+db.m4.10xlarge,AWS,rack,2015,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.180,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+db.m4.16xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.181,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+db.m4.2xlarge,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.182,0,configuration.ram.capacity not verified
+db.m4.4xlarge,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.183,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+db.m4.large,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.184,0,configuration.ram.capacity not verified
+db.m4.xlarge,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.185,0,configuration.ram.capacity not verified
+db.m5.12xlarge,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.186,0,configuration.ram.capacity not verified
+db.m5.16xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.187,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+db.m5.24xlarge,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.188,0,configuration.ram.capacity not verified
+db.m5.2xlarge,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.189,0,configuration.ram.capacity not verified
+db.m5.4xlarge,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.190,0,configuration.ram.capacity not verified
+db.m5.8xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.191,0,configuration.ram.capacity not verified
+db.m5.large,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.192,0,configuration.ram.capacity not verified
+db.m5.xlarge,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.193,0,configuration.ram.capacity not verified
+db.m6g.12xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.194,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+db.m6g.16xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.195,0,configuration.ram.capacity not verified
+db.m6g.2xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.196,0,configuration.ram.capacity not verified
+db.m6g.4xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.197,0,configuration.ram.capacity not verified
+db.m6g.8xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.198,0,configuration.ram.capacity not verified
+db.m6g.large,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.199,0,configuration.ram.capacity not verified
+db.m6g.xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.200,0,configuration.ram.capacity not verified
+db.r3.2xlarge,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,0,0,,0,2,,,,2;2;2,2.99;1;5,5,50;0;100,1,35040,0.33;0.2;0.201,0,configuration.ram.capacity not verified
+db.r3.4xlarge,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.202,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+db.r3.8xlarge,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.203,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+db.r3.large,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,0,0,,0,2,,,,2;2;2,2.99;1;5,20,50;0;100,1,35040,0.33;0.2;0.204,0,configuration.ram.capacity not verified
+db.r3.xlarge,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,0,0,,0,2,,,,2;2;2,2.99;1;5,10,50;0;100,1,35040,0.33;0.2;0.205,0,configuration.ram.capacity not verified
+db.r4.16xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.206,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+db.r4.2xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.207,0,configuration.ram.capacity not verified
+db.r4.4xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.208,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+db.r4.8xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.209,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+db.r4.large,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.210,0,configuration.ram.capacity not verified
+db.r4.xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.211,0,configuration.ram.capacity not verified
+db.r5.12xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.212,0,configuration.ram.capacity not verified
+db.r5.16xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.213,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+db.r5.24xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.214,0,configuration.ram.capacity not verified
+db.r5.2xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.215,0,configuration.ram.capacity not verified
+db.r5.4xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.216,0,configuration.ram.capacity not verified
+db.r5.8xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.217,0,configuration.ram.capacity not verified
+db.r5.large,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.218,0,configuration.ram.capacity not verified
+db.r5.xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.219,0,configuration.ram.capacity not verified
+db.r6g.12xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.220,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+db.r6g.16xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.221,0,configuration.ram.capacity not verified
+db.r6g.2xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.222,0,configuration.ram.capacity not verified
+db.r6g.4xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.223,0,configuration.ram.capacity not verified
+db.r6g.large,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.224,0,configuration.ram.capacity not verified
+db.r6g.xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.225,0,configuration.ram.capacity not verified
+db.t2.2xlarge,AWS,rack,2016,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2016,32,9,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.226,0,configuration.ram.capacity not verified
+db.t2.large,AWS,rack,2015,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2015,32,9,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.227,0,configuration.ram.capacity not verified
+db.t2.medium,AWS,rack,2014,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2014,32,9,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.228,0,configuration.ram.capacity not verified
+db.t2.micro,AWS,rack,2014,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2014,32,9,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.229,0,configuration.ram.capacity not verified
+db.t2.small,AWS,rack,2014,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2014,32,9,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.230,0,configuration.ram.capacity not verified
+db.t2.xlarge,AWS,rack,2016,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2016,32,9,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.231,0,configuration.ram.capacity not verified
+db.t3.2xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.232,0,configuration.ram.capacity not verified
+db.t3.large,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.233,0,configuration.ram.capacity not verified
+db.t3.medium,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.234,0,configuration.ram.capacity not verified
+db.t3.micro,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.235,0,configuration.ram.capacity not verified
+db.t3.small,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.236,0,configuration.ram.capacity not verified
+db.t3.xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.237,0,configuration.ram.capacity not verified
+db.x1.16xlarge,AWS,rack,2016,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2016,32,61,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.238,0,configuration.ram.capacity not verified
+db.x1.32xlarge,AWS,rack,2016,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2016,32,61,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.239,0,configuration.ram.capacity not verified
+db.x1e.16xlarge,AWS,rack,2017,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2017,32,122,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.240,0,configuration.ram.capacity not verified
+db.x1e.2xlarge,AWS,rack,2017,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2017,32,122,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.241,0,configuration.ram.capacity not verified
+db.x1e.32xlarge,AWS,rack,2017,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2017,32,122,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.242,0,configuration.ram.capacity not verified
+db.x1e.4xlarge,AWS,rack,2017,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2017,32,122,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.243,0,configuration.ram.capacity not verified
+db.x1e.8xlarge,AWS,rack,2017,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2017,32,122,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.244,0,configuration.ram.capacity not verified
+db.x1e.xlarge,AWS,rack,2017,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2017,32,122,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.245,0,configuration.ram.capacity not verified
+db.z1d.12xlarge,AWS,rack,2018,2,12,Xeon Platinum 8151,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.246,0,configuration.ram.capacity not verified
+db.z1d.2xlarge,AWS,rack,2018,2,12,Xeon Platinum 8151,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.247,0,configuration.ram.capacity not verified
+db.z1d.3xlarge,AWS,rack,2018,2,12,Xeon Platinum 8151,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.248,0,configuration.ram.capacity not verified
+db.z1d.6xlarge,AWS,rack,2018,2,12,Xeon Platinum 8151,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.249,0,configuration.ram.capacity not verified
+db.z1d.large,AWS,rack,2018,2,12,Xeon Platinum 8151,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.250,0,configuration.ram.capacity not verified
+db.z1d.xlarge,AWS,rack,2018,2,12,Xeon Platinum 8151,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.251,0,configuration.ram.capacity not verified
+dc2.8xlarge,AWS,rack,2017,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2017,4,61,2,2560,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.252,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+dc2.large,AWS,rack,2017,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2017,4,61,1,160,,0,2,,,,2;2;2,2.99;1;5,20,50;0;100,1,35040,0.33;0.2;0.253,0,configuration.ram.capacity not verified
+ds2.8xlarge,AWS,rack,2015,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2015,4,61,0,0,1,16000,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.254,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+ds2.xlarge,AWS,rack,2015,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2015,4,61,0,0,1,2000,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.255,0,configuration.ram.capacity not verified
+f1.16xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,16,61,1,940,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.256,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+f1.2xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,16,61,1,470,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.257,0,configuration.ram.capacity not verified
+f1.4xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,16,61,1,940,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.258,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+g2.2xlarge,AWS,rack,2013,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2013,4,15,1,60,,0,2,K520,4,4,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.259,0,configuration.ram.capacity not verified
+g2.8xlarge,AWS,rack,2015,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2015,4,15,2,120,,0,2,K520,16,4,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.260,0,configuration.ram.capacity not verified
+g3.16xlarge,AWS,rack,2017,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2017,8,61,0,0,,0,2,Tesla M60,32,4,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.261,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+g3.4xlarge,AWS,rack,2017,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2017,8,61,0,0,,0,2,Tesla M60,8,4,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.262,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+g3.8xlarge,AWS,rack,2017,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2017,8,61,0,0,,0,2,Tesla M60,16,4,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.263,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+g3s.xlarge,AWS,rack,2018,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2018,8,61,0,0,,0,2,Tesla M60,8,4,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.264,0,configuration.ram.capacity not verified
+g4ad.16xlarge,AWS,rack,2019,1,48,EPYC 7R32,amd,epyc,rome,280,2019,32,12,1,2400,,0,2,Radeon Pro V520,32,4,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.265,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+g4ad.4xlarge,AWS,rack,2019,1,48,EPYC 7R32,amd,epyc,rome,280,2019,32,12,1,600,,0,2,Radeon Pro V520,8,4,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.266,0,configuration.ram.capacity not verified
+g4ad.8xlarge,AWS,rack,2019,1,48,EPYC 7R32,amd,epyc,rome,280,2019,32,12,1,1200,,0,2,Radeon Pro V520,16,4,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.267,0,configuration.ram.capacity not verified
+g4dn.12xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,1,900,,0,2,T4,64,8,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.268,0,configuration.ram.capacity not verified
+g4dn.16xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,1,900,,0,2,T4,16,8,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.269,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+g4dn.2xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,2,225,,0,2,T4,16,8,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.270,0,configuration.ram.capacity not verified
+g4dn.4xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,2,225,,0,2,T4,16,8,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.271,0,configuration.ram.capacity not verified
+g4dn.8xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,1,900,,0,2,T4,16,8,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.272,0,configuration.ram.capacity not verified
+g4dn.metal,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,2,900,,0,2,T4,128,8,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.273,0,configuration.ram.capacity not verified
+g4dn.xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,1,125,,0,2,T4,16,8,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.274,0,configuration.ram.capacity not verified
+h1.16xlarge,AWS,rack,2017,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2017,32,8,0,0,8,2000,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.275,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+h1.2xlarge,AWS,rack,2017,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2017,32,8,0,0,1,2000,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.276,0,configuration.ram.capacity not verified
+h1.4xlarge,AWS,rack,2017,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2017,32,8,0,0,2,2000,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.277,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+h1.8xlarge,AWS,rack,2017,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2017,32,8,0,0,4,2000,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.278,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+hs1.8xlarge,AWS,rack,2012,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2012,4,61,0,0,24,2000,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.279,0,configuration.ram.capacity not verified
+i2.2xlarge,AWS,rack,2013,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2013,4,61,2,800,,0,2,,,,2;2;2,2.99;1;5,5,50;0;100,1,35040,0.33;0.2;0.280,0,configuration.ram.capacity not verified
+i2.2xlarge.elasticsearch,AWS,rack,2013,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2013,32,7.63,2,800,,0,2,,,,2;2;2,2.99;1;5,5,50;0;100,1,35040,0.33;0.2;0.281,0,configuration.ram.capacity not verified
+i2.4xlarge,AWS,rack,2013,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2013,4,61,4,800,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.282,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+i2.8xlarge,AWS,rack,2013,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2013,4,61,8,800,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.283,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+i2.xlarge,AWS,rack,2013,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2013,4,61,1,800,,0,2,,,,2;2;2,2.99;1;5,10,50;0;100,1,35040,0.33;0.2;0.284,0,configuration.ram.capacity not verified
+i2.xlarge.elasticsearch,AWS,rack,2013,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2013,32,7.63,1,800,,0,2,,,,2;2;2,2.99;1;5,10,50;0;100,1,35040,0.33;0.2;0.285,0,configuration.ram.capacity not verified
+i3.16xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,16,8,1900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.286,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+i3.16xlarge.elasticsearch,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,16,8,1900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.287,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+i3.2xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,16,1,1900,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.288,0,configuration.ram.capacity not verified
+i3.2xlarge.elasticsearch,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,16,1,1900,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.289,0,configuration.ram.capacity not verified
+i3.4xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,16,2,1900,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.290,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+i3.4xlarge.elasticsearch,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,16,2,1900,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.291,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+i3.8xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,16,4,1900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.292,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+i3.8xlarge.elasticsearch,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,16,4,1900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.293,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+i3.large,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,16,1,475,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.294,0,configuration.ram.capacity not verified
+i3.large.elasticsearch,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,16,1,475,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.295,0,configuration.ram.capacity not verified
+i3.metal,AWS,rack,2017,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2017,32,16,8,1900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.296,0,configuration.ram.capacity not verified
+i3.xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,16,1,950,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.297,0,configuration.ram.capacity not verified
+i3.xlarge.elasticsearch,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,16,1,950,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.298,0,configuration.ram.capacity not verified
+i3en.12xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,24,4,7500,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.299,0,configuration.ram.capacity not verified
+i3en.24xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,24,8,7500,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.300,0,configuration.ram.capacity not verified
+i3en.2xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,24,2,2500,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.301,0,configuration.ram.capacity not verified
+i3en.3xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,24,1,7500,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.302,0,configuration.ram.capacity not verified
+i3en.6xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,24,2,7500,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.303,0,configuration.ram.capacity not verified
+i3en.large,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,24,1,1250,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.304,0,configuration.ram.capacity not verified
+i3en.metal,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,24,8,7500,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.305,0,configuration.ram.capacity not verified
+i3en.xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,24,1,2500,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.306,0,configuration.ram.capacity not verified
+inf1.24xlarge,AWS,rack,2019,2,24,Xeon Platinum 8275CL,intel,xeon platinum,cascadelake,240,2019,32,6,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.307,0,configuration.ram.capacity not verified
+inf1.2xlarge,AWS,rack,2019,2,24,Xeon Platinum 8275CL,intel,xeon platinum,cascadelake,240,2019,32,6,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.308,0,configuration.ram.capacity not verified
+inf1.6xlarge,AWS,rack,2019,2,24,Xeon Platinum 8275CL,intel,xeon platinum,cascadelake,240,2019,32,6,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.309,0,configuration.ram.capacity not verified
+inf1.xlarge,AWS,rack,2019,2,24,Xeon Platinum 8275CL,intel,xeon platinum,cascadelake,240,2019,32,6,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.310,0,configuration.ram.capacity not verified
+m1.large,AWS,rack,2007,2,8,Xeon E5-2650,intel,xeon e5,sandybridge,95,2007,8,15,2,420,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.311,0,configuration.ram.capacity not verified
+m1.medium,AWS,rack,2012,2,8,Xeon E5-2650,intel,xeon e5,sandybridge,95,2012,8,15,1,410,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.312,0,configuration.ram.capacity not verified
+m1.small,AWS,rack,2006,2,8,Xeon E5-2650,intel,xeon e5,sandybridge,95,2006,8,15,1,160,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.313,0,configuration.ram.capacity not verified
+m1.xlarge,AWS,rack,2007,2,8,Xeon E5-2650,intel,xeon e5,sandybridge,95,2007,8,15,4,420,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.314,0,configuration.ram.capacity not verified
+m2.2xlarge,AWS,rack,2009,2,8,Xeon E5-2665,intel,xeon e5,sandybridge,115,2009,8,35,1,850,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.315,0,configuration.ram.capacity not verified
+m2.4xlarge,AWS,rack,2009,2,8,Xeon E5-2665,intel,xeon e5,sandybridge,115,2009,8,35,2,840,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.316,0,configuration.ram.capacity not verified
+m2.xlarge,AWS,rack,2010,2,8,Xeon E5-2665,intel,xeon e5,sandybridge,115,2010,8,35,1,420,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.317,0,configuration.ram.capacity not verified
+m3.2xlarge,AWS,rack,2012,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2012,8,30,2,80,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.318,0,configuration.ram.capacity not verified
+m3.2xlarge.elasticsearch,AWS,rack,2012,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2012,32,7.5,2,80,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.319,0,configuration.ram.capacity not verified
+m3.large,AWS,rack,2014,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2014,8,30,1,32,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.320,0,configuration.ram.capacity not verified
+m3.large.elasticsearch,AWS,rack,2014,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2014,32,7.5,1,32,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.321,0,configuration.ram.capacity not verified
+m3.medium,AWS,rack,2014,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2014,8,30,1,4,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.322,0,configuration.ram.capacity not verified
+m3.medium.elasticsearch,AWS,rack,2014,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2014,32,7.5,1,4,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.323,0,configuration.ram.capacity not verified
+m3.xlarge,AWS,rack,2012,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2012,8,30,2,40,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.324,0,configuration.ram.capacity not verified
+m3.xlarge.elasticsearch,AWS,rack,2012,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2012,32,7.5,2,40,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.325,0,configuration.ram.capacity not verified
+m4.10xlarge,AWS,rack,2015,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.326,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+m4.10xlarge.elasticsearch,AWS,rack,2015,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.327,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+m4.16xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.328,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+m4.2xlarge,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.329,0,configuration.ram.capacity not verified
+m4.2xlarge.elasticsearch,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.330,0,configuration.ram.capacity not verified
+m4.4xlarge,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.331,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+m4.4xlarge.elasticsearch,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.332,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+m4.large,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.333,0,configuration.ram.capacity not verified
+m4.large.elasticsearch,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.334,0,configuration.ram.capacity not verified
+m4.xlarge,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.335,0,configuration.ram.capacity not verified
+m4.xlarge.elasticsearch,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.336,0,configuration.ram.capacity not verified
+m5.12xlarge,AWS,rack,2017,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.337,0,
+m5.12xlarge.elasticsearch,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.338,0,configuration.ram.capacity not verified
+m5.16xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.339,0,;usage.instance_per_server is rounded
+m5.24xlarge,AWS,rack,2017,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.340,0,
+m5.2xlarge,AWS,rack,2017,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.341,0,
+m5.2xlarge.elasticsearch,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.342,0,configuration.ram.capacity not verified
+m5.4xlarge,AWS,rack,2017,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.343,0,
+m5.4xlarge.elasticsearch,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.344,0,configuration.ram.capacity not verified
+m5.8xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.345,0,
+m5.large,AWS,rack,2017,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.346,0,
+m5.large.elasticsearch,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.347,0,configuration.ram.capacity not verified
+m5.metal,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.348,0,
+m5.xlarge,AWS,rack,2017,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.349,0,
+m5.xlarge.elasticsearch,AWS,rack,2017,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2017,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.350,0,configuration.ram.capacity not verified
+m5a.12xlarge,AWS,rack,2018,2,24,EPYC 7571,amd,epyc,naple,200,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.351,0,
+m5a.16xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.352,0,;usage.instance_per_server is rounded
+m5a.24xlarge,AWS,rack,2018,2,24,EPYC 7571,amd,epyc,naple,200,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.353,0,
+m5a.2xlarge,AWS,rack,2018,2,24,EPYC 7571,amd,epyc,naple,200,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.354,0,
+m5a.4xlarge,AWS,rack,2018,2,24,EPYC 7571,amd,epyc,naple,200,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.355,0,
+m5a.8xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.356,0,
+m5a.large,AWS,rack,2018,2,24,EPYC 7571,amd,epyc,naple,200,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.357,0,
+m5a.xlarge,AWS,rack,2018,2,24,EPYC 7571,amd,epyc,naple,200,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.358,0,
+m5ad.12xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,2,900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.359,0,
+m5ad.16xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,4,600,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.360,0,;usage.instance_per_server is rounded
+m5ad.24xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,4,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.361,0,
+m5ad.2xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,1,300,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.362,0,
+m5ad.4xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,2,300,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.363,0,
+m5ad.8xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,2,600,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.364,0,
+m5ad.large,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,1,75,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.365,0,
+m5ad.xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,1,150,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.366,0,
+m5d.12xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,2,900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.367,0,
+m5d.16xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,12,4,600,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.368,0,;usage.instance_per_server is rounded
+m5d.24xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,4,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.369,0,
+m5d.2xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,1,300,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.370,0,
+m5d.4xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,2,300,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.371,0,
+m5d.8xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,12,2,600,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.372,0,
+m5d.large,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,1,75,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.373,0,
+m5d.metal,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,12,4,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.374,0,
+m5d.xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,1,150,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.375,0,
+m5dn.12xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,2,900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.376,0,
+m5dn.16xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,4,600,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.377,0,;usage.instance_per_server is rounded
+m5dn.24xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,4,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.378,0,
+m5dn.2xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,1,300,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.379,0,
+m5dn.4xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,2,300,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.380,0,
+m5dn.8xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,2,600,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.381,0,
+m5dn.large,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,1,75,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.382,0,
+m5dn.metal,AWS,rack,2021,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2021,32,12,4,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.383,0,
+m5dn.xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,1,150,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.384,0,
+m5n.12xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.385,0,
+m5n.16xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.386,0,;usage.instance_per_server is rounded
+m5n.24xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.387,0,
+m5n.2xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.388,0,
+m5n.4xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.389,0,
+m5n.8xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.390,0,
+m5n.large,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.391,0,
+m5n.metal,AWS,rack,2021,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2021,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.392,0,
+m5n.xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.393,0,
+m5zn.12xlarge,AWS,rack,2020,2,12,Xeon Platinum 8252C,intel,xeon platinum,cascadelake,240,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.394,0,
+m5zn.2xlarge,AWS,rack,2020,2,12,Xeon Platinum 8252C,intel,xeon platinum,cascadelake,240,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.395,0,
+m5zn.3xlarge,AWS,rack,2020,2,12,Xeon Platinum 8252C,intel,xeon platinum,cascadelake,240,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.396,0,
+m5zn.6xlarge,AWS,rack,2020,2,12,Xeon Platinum 8252C,intel,xeon platinum,cascadelake,240,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.397,0,
+m5zn.large,AWS,rack,2020,2,12,Xeon Platinum 8252C,intel,xeon platinum,cascadelake,240,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.398,0,
+m5zn.metal,AWS,rack,2020,2,12,Xeon Platinum 8252C,intel,xeon platinum,cascadelake,240,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.399,0,
+m5zn.xlarge,AWS,rack,2020,2,12,Xeon Platinum 8252C,intel,xeon platinum,cascadelake,240,2020,16,12,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.400,0,
+m6g.12xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.401,0,;usage.instance_per_server is rounded
+m6g.12xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.402,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+m6g.16xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.403,0,
+m6g.2xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.404,0,
+m6g.2xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.405,0,configuration.ram.capacity not verified
+m6g.4xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.406,0,
+m6g.4xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.407,0,configuration.ram.capacity not verified
+m6g.8xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.408,0,
+m6g.8xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.409,0,configuration.ram.capacity not verified
+m6g.large,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.410,0,
+m6g.large.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.411,0,configuration.ram.capacity not verified
+m6g.medium,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.412,0,
+m6g.metal,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.413,0,
+m6g.xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.414,0,
+m6g.xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.415,0,configuration.ram.capacity not verified
+m6gd.12xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,2,1425,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.416,0,;usage.instance_per_server is rounded
+m6gd.16xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,2,1900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.417,0,
+m6gd.2xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,1,474,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.418,0,
+m6gd.4xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,1,950,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.419,0,
+m6gd.8xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,1,1900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.420,0,
+m6gd.large,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,1,118,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.421,0,
+m6gd.medium,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,1,59,,0,2,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.422,0,
+m6gd.metal,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,2,1900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.423,0,
+m6gd.xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,8,1,237,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.424,0,
+m6i.12xlarge,AWS,rack,2021,2,32,Xeon Platinum 8375C,intel,xeon platinum,icelake,300,2021,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.425,0,;usage.instance_per_server is rounded
+m6i.16xlarge,AWS,rack,2021,2,32,Xeon Platinum 8375C,intel,xeon platinum,icelake,300,2021,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.426,0,
+m6i.24xlarge,AWS,rack,2021,2,32,Xeon Platinum 8375C,intel,xeon platinum,icelake,300,2021,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.427,0,;usage.instance_per_server is rounded
+m6i.2xlarge,AWS,rack,2021,2,32,Xeon Platinum 8375C,intel,xeon platinum,icelake,300,2021,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.428,0,
+m6i.32xlarge,AWS,rack,2021,2,32,Xeon Platinum 8375C,intel,xeon platinum,icelake,300,2021,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.429,0,
+m6i.4xlarge,AWS,rack,2021,2,32,Xeon Platinum 8375C,intel,xeon platinum,icelake,300,2021,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.430,0,
+m6i.8xlarge,AWS,rack,2021,2,32,Xeon Platinum 8375C,intel,xeon platinum,icelake,300,2021,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.431,0,
+m6i.large,AWS,rack,2021,2,32,Xeon Platinum 8375C,intel,xeon platinum,icelake,300,2021,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.432,0,
+m6i.xlarge,AWS,rack,2021,2,32,Xeon Platinum 8375C,intel,xeon platinum,icelake,300,2021,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.433,0,
+mac1.metal,AWS,rack,2020,1,6,Core i7-8700B,intel,core i7,coffeelake,65,2020,32,1,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.434,0,
+p2.16xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,4,183,0,0,,0,2,Tesla K80,384,16,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.435,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+p2.8xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,4,183,0,0,,0,2,Tesla K80,192,16,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.436,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+p2.xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,4,183,0,0,,0,2,Tesla K80,24,16,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.437,0,configuration.ram.capacity not verified
+p3.16xlarge,AWS,rack,2017,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2017,32,24,0,0,,0,2,Tesla V100,128,8,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.438,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+p3.2xlarge,AWS,rack,2017,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2017,32,24,0,0,,0,2,Tesla V100,16,8,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.439,0,configuration.ram.capacity not verified
+p3.8xlarge,AWS,rack,2017,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2017,32,24,0,0,,0,2,Tesla V100,64,8,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.440,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+p3dn.24xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,2,900,,0,2,Tesla V100,256,8,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.441,0,configuration.ram.capacity not verified
+p4d.24xlarge,AWS,rack,2020,2,24,Xeon Platinum 8275CL,intel,xeon platinum,cascadelake,240,2020,32,36,1,8000,,0,2,Tesla A100,320,8,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.442,0,configuration.ram.capacity not verified
+r3.2xlarge,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,1,160,,0,2,,,,2;2;2,2.99;1;5,5,50;0;100,1,35040,0.33;0.2;0.443,0,configuration.ram.capacity not verified
+r3.2xlarge.elasticsearch,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,1,160,,0,2,,,,2;2;2,2.99;1;5,5,50;0;100,1,35040,0.33;0.2;0.444,0,configuration.ram.capacity not verified
+r3.4xlarge,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,1,320,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.445,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+r3.4xlarge.elasticsearch,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,1,320,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.446,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+r3.8xlarge,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,2,320,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.447,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+r3.8xlarge.elasticsearch,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,2,320,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.448,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+r3.large,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,1,32,,0,2,,,,2;2;2,2.99;1;5,20,50;0;100,1,35040,0.33;0.2;0.449,0,configuration.ram.capacity not verified
+r3.large.elasticsearch,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,1,32,,0,2,,,,2;2;2,2.99;1;5,20,50;0;100,1,35040,0.33;0.2;0.450,0,configuration.ram.capacity not verified
+r3.xlarge,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,1,80,,0,2,,,,2;2;2,2.99;1;5,10,50;0;100,1,35040,0.33;0.2;0.451,0,configuration.ram.capacity not verified
+r3.xlarge.elasticsearch,AWS,rack,2014,2,10,Xeon E5-2670 v2,intel,xeon e5,ivybridge,115,2014,4,61,1,80,,0,2,,,,2;2;2,2.99;1;5,10,50;0;100,1,35040,0.33;0.2;0.452,0,configuration.ram.capacity not verified
+r4.16xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.453,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+r4.16xlarge.elasticsearch,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.454,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+r4.2xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.455,0,configuration.ram.capacity not verified
+r4.2xlarge.elasticsearch,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.456,0,configuration.ram.capacity not verified
+r4.4xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.457,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+r4.4xlarge.elasticsearch,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.458,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+r4.8xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.459,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+r4.8xlarge.elasticsearch,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.460,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+r4.large,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.461,0,configuration.ram.capacity not verified
+r4.large.elasticsearch,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.462,0,configuration.ram.capacity not verified
+r4.xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.463,0,configuration.ram.capacity not verified
+r4.xlarge.elasticsearch,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,61,0,0,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.464,0,configuration.ram.capacity not verified
+r5.12xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.465,0,
+r5.12xlarge.elasticsearch,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.466,0,configuration.ram.capacity not verified
+r5.16xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.467,0,;usage.instance_per_server is rounded
+r5.24xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.468,0,
+r5.2xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.469,0,
+r5.2xlarge.elasticsearch,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.470,0,configuration.ram.capacity not verified
+r5.4xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.471,0,
+r5.4xlarge.elasticsearch,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.472,0,configuration.ram.capacity not verified
+r5.8xlarge,AWS,rack,2019,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.473,0,
+r5.large,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.474,0,
+r5.large.elasticsearch,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.475,0,configuration.ram.capacity not verified
+r5.metal,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.476,0,
+r5.xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.477,0,
+r5.xlarge.elasticsearch,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.478,0,configuration.ram.capacity not verified
+r5a.12xlarge,AWS,rack,2018,2,24,EPYC 7571,amd,epyc,naple,200,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.479,0,
+r5a.16xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.480,0,;usage.instance_per_server is rounded
+r5a.24xlarge,AWS,rack,2018,2,24,EPYC 7571,amd,epyc,naple,200,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.481,0,
+r5a.2xlarge,AWS,rack,2018,2,24,EPYC 7571,amd,epyc,naple,200,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.482,0,
+r5a.4xlarge,AWS,rack,2018,2,24,EPYC 7571,amd,epyc,naple,200,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.483,0,
+r5a.8xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.484,0,
+r5a.large,AWS,rack,2018,2,24,EPYC 7571,amd,epyc,naple,200,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.485,0,
+r5a.xlarge,AWS,rack,2018,2,24,EPYC 7571,amd,epyc,naple,200,2018,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.486,0,
+r5ad.12xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,24,2,900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.487,0,
+r5ad.16xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,24,4,600,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.488,0,;usage.instance_per_server is rounded
+r5ad.24xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,24,4,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.489,0,
+r5ad.2xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,24,1,300,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.490,0,
+r5ad.4xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,24,2,300,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.491,0,
+r5ad.8xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,24,2,600,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.492,0,
+r5ad.large,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,24,1,75,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.493,0,
+r5ad.xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,24,1,150,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.494,0,
+r5b.12xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.495,0,
+r5b.16xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.496,0,;usage.instance_per_server is rounded
+r5b.24xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.497,0,
+r5b.2xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.498,0,
+r5b.4xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.499,0,
+r5b.8xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.500,0,
+r5b.large,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.501,0,
+r5b.metal,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.502,0,
+r5b.xlarge,AWS,rack,2020,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2020,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.503,0,
+r5d.12xlarge,AWS,rack,2018,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2018,32,24,2,900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.504,0,
+r5d.16xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,4,600,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.505,0,;usage.instance_per_server is rounded
+r5d.24xlarge,AWS,rack,2018,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2018,32,24,4,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.506,0,
+r5d.2xlarge,AWS,rack,2018,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2018,32,24,1,300,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.507,0,
+r5d.4xlarge,AWS,rack,2018,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2018,32,24,2,300,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.508,0,
+r5d.8xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,2,600,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.509,0,
+r5d.large,AWS,rack,2018,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2018,32,24,1,75,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.510,0,
+r5d.metal,AWS,rack,2018,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2018,32,24,4,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.511,0,
+r5d.xlarge,AWS,rack,2018,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2018,32,24,1,150,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.512,0,
+r5dn.12xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,2,900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.513,0,
+r5dn.16xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,4,600,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.514,0,;usage.instance_per_server is rounded
+r5dn.24xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,4,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.515,0,
+r5dn.2xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,1,300,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.516,0,
+r5dn.4xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,2,300,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.517,0,
+r5dn.8xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,2,600,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.518,0,
+r5dn.large,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,1,75,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.519,0,
+r5dn.metal,AWS,rack,2021,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2021,32,24,4,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.520,0,
+r5dn.xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,1,150,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.521,0,
+r5n.12xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.522,0,
+r5n.16xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.523,0,;usage.instance_per_server is rounded
+r5n.24xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.524,0,
+r5n.2xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.525,0,
+r5n.4xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.526,0,
+r5n.8xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.527,0,
+r5n.large,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.528,0,
+r5n.metal,AWS,rack,2021,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2021,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.529,0,
+r5n.xlarge,AWS,rack,2019,2,24,Xeon Platinum 8259CL,intel,xeon platinum,cascadelake,210,2019,32,24,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.530,0,
+r6g.12xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.531,0,;usage.instance_per_server is rounded
+r6g.12xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.532,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+r6g.16xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.533,0,
+r6g.2xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.534,0,
+r6g.2xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.535,0,configuration.ram.capacity not verified
+r6g.4xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.536,0,
+r6g.4xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.537,0,configuration.ram.capacity not verified
+r6g.8xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.538,0,
+r6g.8xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.539,0,configuration.ram.capacity not verified
+r6g.large,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.540,0,
+r6g.large.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.541,0,configuration.ram.capacity not verified
+r6g.medium,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.542,0,
+r6g.metal,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.543,0,
+r6g.xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.544,0,
+r6g.xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.545,0,configuration.ram.capacity not verified
+r6gd.12xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,2,1425,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.546,0,;usage.instance_per_server is rounded
+r6gd.12xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,2,1425,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.547,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+r6gd.16xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,2,1900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.548,0,
+r6gd.16xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,2,1900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.549,0,configuration.ram.capacity not verified
+r6gd.2xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,1,474,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.550,0,
+r6gd.2xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,1,474,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.551,0,configuration.ram.capacity not verified
+r6gd.4xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,1,950,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.552,0,
+r6gd.4xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,1,950,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.553,0,configuration.ram.capacity not verified
+r6gd.8xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,1,1900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.554,0,
+r6gd.8xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,1,1900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.555,0,configuration.ram.capacity not verified
+r6gd.large,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,1,118,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.556,0,
+r6gd.large.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,1,118,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.557,0,configuration.ram.capacity not verified
+r6gd.medium,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,1,59,,0,2,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.558,0,
+r6gd.metal,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,2,1900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.559,0,
+r6gd.xlarge,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,1,237,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.560,0,
+r6gd.xlarge.elasticsearch,AWS,rack,2019,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2019,32,16,1,237,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.561,0,configuration.ram.capacity not verified
+ra3.16xlarge,AWS,rack,2019,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2019,32,12,6,64000,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.562,0,configuration.ram.capacity not verified;RMS considered as SSD
+ra3.4xlarge,AWS,rack,2019,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2019,32,12,6,64000,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.563,0,configuration.ram.capacity not verified;RMS considered as SSD
+t1.micro,AWS,rack,2010,2,8,Xeon E5-2670,intel,xeon e5,sandybridge,115,2010,8,18,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.564,1,configuration.ram.capacity not verified
+t2.2xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,36,0,0,,0,2,,,,2;2;2,2.99;1;5,9,50;0;100,1,35040,0.33;0.2;0.565,1,configuration.ram.capacity not verified
+t2.large,AWS,rack,2015,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2015,8,36,0,0,,0,2,,,,2;2;2,2.99;1;5,36,50;0;100,1,35040,0.33;0.2;0.566,1,configuration.ram.capacity not verified
+t2.medium,AWS,rack,2014,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2014,8,36,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.567,1,configuration.ram.capacity not verified
+t2.medium.elasticsearch,AWS,rack,2014,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2014,32,9,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.568,1,configuration.ram.capacity not verified
+t2.micro,AWS,rack,2014,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2014,8,36,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.569,1,configuration.ram.capacity not verified
+t2.micro.elasticsearch,AWS,rack,2014,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2014,32,9,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.570,1,configuration.ram.capacity not verified
+t2.nano,AWS,rack,2015,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2015,8,36,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.571,1,configuration.ram.capacity not verified
+t2.small,AWS,rack,2014,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2014,8,36,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.572,1,configuration.ram.capacity not verified
+t2.small.elasticsearch,AWS,rack,2014,2,12,Xeon E5-2676 v3,intel,xeon e5,haswell,120,2014,32,9,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.573,1,configuration.ram.capacity not verified
+t2.xlarge,AWS,rack,2016,2,18,Xeon E5-2686 v4,intel,xeon e5,broadwell,145,2016,8,36,0,0,,0,2,,,,2;2;2,2.99;1;5,18,50;0;100,1,35040,0.33;0.2;0.574,1,configuration.ram.capacity not verified
+t3.2xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.575,1,configuration.ram.capacity not verified
+t3.large,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.576,1,configuration.ram.capacity not verified
+t3.medium,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.577,1,configuration.ram.capacity not verified
+t3.medium.elasticsearch,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.578,1,configuration.ram.capacity not verified
+t3.micro,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.579,1,configuration.ram.capacity not verified
+t3.nano,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.580,1,configuration.ram.capacity not verified
+t3.small,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.581,1,configuration.ram.capacity not verified
+t3.small.elasticsearch,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.582,1,configuration.ram.capacity not verified
+t3.xlarge,AWS,rack,2018,2,24,Xeon Platinum 8175M,intel,xeon platinum,skylake,240,2018,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.583,1,configuration.ram.capacity not verified
+t3a.2xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.584,1,configuration.ram.capacity not verified
+t3a.large,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.585,1,configuration.ram.capacity not verified
+t3a.medium,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.586,1,configuration.ram.capacity not verified
+t3a.micro,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.587,1,configuration.ram.capacity not verified
+t3a.nano,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.588,1,configuration.ram.capacity not verified
+t3a.small,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.589,1,configuration.ram.capacity not verified
+t3a.xlarge,AWS,rack,2019,2,24,EPYC 7571,amd,epyc,naple,200,2019,32,12,0,0,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.590,1,configuration.ram.capacity not verified
+t4g.2xlarge,AWS,rack,2020,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2020,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.591,1,configuration.ram.capacity not verified
+t4g.large,AWS,rack,2020,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2020,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.592,1,configuration.ram.capacity not verified
+t4g.medium,AWS,rack,2020,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2020,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.593,1,configuration.ram.capacity not verified
+t4g.micro,AWS,rack,2020,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2020,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.594,1,configuration.ram.capacity not verified
+t4g.nano,AWS,rack,2020,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2020,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.595,1,configuration.ram.capacity not verified
+t4g.small,AWS,rack,2020,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2020,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.596,1,configuration.ram.capacity not verified
+t4g.xlarge,AWS,rack,2020,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2020,32,8,0,0,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.597,1,configuration.ram.capacity not verified
+u-12tb1.metal,AWS,rack,2018,8,28,Xeon Platinum 8176M,intel,xeon platinum,skylake,165,2018,256,96,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.598,0,configuration.ram.capacity not verified
+u-18tb1.metal,AWS,rack,2019,8,28,Xeon Platinum 8176M,intel,xeon platinum,skylake,165,2019,256,96,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.599,0,configuration.ram.capacity not verified
+u-24tb1.metal,AWS,rack,2019,8,28,Xeon Platinum 8176M,intel,xeon platinum,skylake,165,2019,256,96,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.600,0,configuration.ram.capacity not verified
+u-6tb1.metal,AWS,rack,2018,8,28,Xeon Platinum 8176M,intel,xeon platinum,skylake,165,2018,256,96,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.601,0,configuration.ram.capacity not verified
+u-9tb1.metal,AWS,rack,2018,8,28,Xeon Platinum 8176M,intel,xeon platinum,skylake,165,2018,256,96,0,0,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.602,0,configuration.ram.capacity not verified
+x1.16xlarge,AWS,rack,2016,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2016,32,61,1,1920,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.603,0,configuration.ram.capacity not verified
+x1.32xlarge,AWS,rack,2016,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2016,32,61,2,1920,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.604,0,configuration.ram.capacity not verified
+x1e.16xlarge,AWS,rack,2017,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2017,64,61,1,1920,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.605,0,configuration.ram.capacity not verified
+x1e.2xlarge,AWS,rack,2017,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2017,64,61,1,240,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.606,0,configuration.ram.capacity not verified
+x1e.32xlarge,AWS,rack,2017,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2017,64,61,2,1920,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.607,0,configuration.ram.capacity not verified
+x1e.4xlarge,AWS,rack,2017,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2017,64,61,1,480,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.608,0,configuration.ram.capacity not verified
+x1e.8xlarge,AWS,rack,2017,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2017,64,61,1,960,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.609,0,configuration.ram.capacity not verified
+x1e.xlarge,AWS,rack,2017,4,16,Xeon E7-8880 v3,intel,xeon e7,haswell,150,2017,64,61,1,120,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.610,0,configuration.ram.capacity not verified
+x2gd.12xlarge,AWS,rack,2021,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2021,64,16,2,1425,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.611,0,configuration.ram.capacity not verified;usage.instance_per_server is rounded
+x2gd.16xlarge,AWS,rack,2021,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2021,64,16,2,1900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.612,0,configuration.ram.capacity not verified
+x2gd.2xlarge,AWS,rack,2021,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2021,64,16,1,475,,0,2,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.613,0,configuration.ram.capacity not verified
+x2gd.4xlarge,AWS,rack,2021,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2021,64,16,1,950,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.614,0,configuration.ram.capacity not verified
+x2gd.8xlarge,AWS,rack,2021,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2021,64,16,1,1900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.615,0,configuration.ram.capacity not verified
+x2gd.large,AWS,rack,2021,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2021,64,16,1,118,,0,2,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.616,0,configuration.ram.capacity not verified
+x2gd.medium,AWS,rack,2021,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2021,64,16,1,59,,0,2,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.617,0,configuration.ram.capacity not verified
+x2gd.metal,AWS,rack,2021,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2021,64,16,2,1900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.618,0,configuration.ram.capacity not verified
+x2gd.xlarge,AWS,rack,2021,1,64,Graviton2,Annapurna Labs,Graviton2,Graviton2,150,2021,64,16,1,237,,0,2,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.619,0,configuration.ram.capacity not verified
+z1d.12xlarge,AWS,rack,2018,2,12,Xeon Platinum 8151,intel,xeon platinum,skylake,240,2018,32,12,2,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.620,0,
+z1d.2xlarge,AWS,rack,2018,2,12,Xeon Platinum 8151,intel,xeon platinum,skylake,240,2018,32,12,1,300,,0,2,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.621,0,
+z1d.3xlarge,AWS,rack,2018,2,12,Xeon Platinum 8151,intel,xeon platinum,skylake,240,2018,32,12,1,450,,0,2,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.622,0,
+z1d.6xlarge,AWS,rack,2018,2,12,Xeon Platinum 8151,intel,xeon platinum,skylake,240,2018,32,12,1,900,,0,2,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.623,0,
+z1d.large,AWS,rack,2018,2,12,Xeon Platinum 8151,intel,xeon platinum,skylake,240,2018,32,12,1,75,,0,2,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.624,0,
+z1d.metal,AWS,rack,2018,2,12,Xeon Platinum 8151,intel,xeon platinum,skylake,240,2018,32,12,2,900,,0,2,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.625,0,
+z1d.xlarge,AWS,rack,2018,2,12,Xeon Platinum 8151,intel,xeon platinum,skylake,240,2018,32,12,1,150,,0,2,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.626,0,

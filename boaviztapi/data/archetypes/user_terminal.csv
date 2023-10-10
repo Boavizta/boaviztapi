@@ -1,0 +1,15 @@
+id,router_type,device_type,type,USAGE.use_time_ratio,USAGE.hours_life_time,USAGE.avg_power
+laptop-pro,terminal,laptop,pro,0.3,35040,75;50;100
+laptop-perso,terminal,laptop,perso,0.3,43800,75;50;100
+desktop-pro,terminal,desktop,pro,0.3,52560,175;100;450
+desktop-perso,terminal,desktop,perso,0.3,52560,175;100;450
+smartphone-default,terminal,smartphone,default,0.3,21900,1;0.5;3
+tablet-default,terminal,tablet,default,0.3,26280,7.5;5;10
+tv-pro,terminal,television,pro,0.3,70080,300;17;1200
+tv-perso,terminal,television,perso,0.3,70080,300;60;1200
+monitor-default,peripheral,monitor,default,0.3,57816,55;20;100
+smartwatch-default,peripheral,smartwatch,default,1,,0
+box-default,terminal,box,default,1,43800,10;5;20
+usb-stick-default,peripheral,usb_stick,default,0.05,43800,0.3;0.12;0.63
+external-ssd-default,peripheral,external_ssd,default,0.05,43800,2.5;0.5;5
+hdd-default,peripheral,external_hdd,default,0.05,43800,7.75;6.5;9

@@ -4,459 +4,546 @@ This page presents basic queries that can be used to retrieve impacts.
 
 You use `curl` in command line to query Boavizta demo (public) API.
 
-💡 _You can format the results by using jq (`curl -X 'GET' 'https://api.boavizta.org/v1/server/model?archetype=dellR740' | jq`)_
+💡 _You can format the results by using jq (`curl -X 'GET' '{{ endpoint }}/v1/server/?archetype=compute_medium' | jq`)_
 
-## Get the impacts of a dellR740 server
+## Get the impacts of a compute medium server
 
-This is the simplest possible query. It returns the impacts of a _standard_ (i.e. predefined) server configuration (dellR740).
+This is the simplest possible query. It returns the impacts of a _standard_ (i.e. predefined) server configuration (compute_medium).
 
 Query: 
 ```bash
-# Query the data for `dellR740`
+# Query the data for `compute_medium`
 curl -X 'GET' \
-  'https://api.boavizta.org/v1/server/model?archetype=dellR740&verbose=false' \
+  '{{ endpoint }}/v1/server/?archetype=compute_medium&verbose=false' 
   -H 'accept: application/json'
 ```
+This query returns :
+
+- The impacts for the default criteria (gwp, pe, adp) since no impact is specified
+- The total embedded impacts of the server, since no duration is given
+- The usage impacts of the server during its life duration, since no duration is given
+- Error margins are provided in the form of min & max values for both embedded and usage impacts
+- Significant figures are provided for each value
 
 Results:
 
 ```json
 {
   "gwp": {
-    "manufacture": 970,
-    "use": 2100,
-    "unit": "kgCO2eq"
-  },
-  "pe": {
-    "manufacture": 13000,
-    "use": 71020,
-    "unit": "MJ"
+    "embedded": {
+      "value": 661.28,
+      "significant_figures": 5,
+      "min": 256.4,
+      "max": 1980.9,
+      "warnings": [
+        "End of life is not included in the calculation"
+      ]
+    },
+    "use": {
+      "value": 6937.1,
+      "significant_figures": 5,
+      "min": 193.81,
+      "max": 48551
+    },
+    "unit": "kgCO2eq",
+    "description": "Total climate change"
   },
   "adp": {
-    "manufacture": 0.15,
-    "use": 0.000354,
-    "unit": "kgSbeq"
+    "embedded": {
+      "value": 0.13048,
+      "significant_figures": 5,
+      "min": 0.060814,
+      "max": 0.24361,
+      "warnings": [
+        "End of life is not included in the calculation"
+      ]
+    },
+    "use": {
+      "value": 0.00117259,
+      "significant_figures": 6,
+      "min": 0.000111569,
+      "max": 0.0113943
+    },
+    "unit": "kgSbeq",
+    "description": "Use of minerals and fossil ressources"
+  },
+  "pe": {
+    "embedded": {
+      "value": 9035.9,
+      "significant_figures": 5,
+      "min": 3480,
+      "max": 25941,
+      "warnings": [
+        "End of life is not included in the calculation"
+      ]
+    },
+    "use": {
+      "value": 235000,
+      "significant_figures": 5,
+      "min": 109.55,
+      "max": 20086000
+    },
+    "unit": "MJ",
+    "description": "Consumption of primary energy"
   }
 }
 ```
 
-## Get the values used to measure the impacts of each component
+## Get the values used to assess the impacts of each component
 
-This is the same query as before. However, you add the `verbose=true` flag to get the impacts of each of its components and the value of the attributes used for the calculation.
+This is the same query as before. However, you add the `verbose=true` flag to get the impacts of each of its components and the value of the attributes used for the calculation. 
+This query will only compute the gwp impacts since we add the `criteria=gwp` flags.
 
 Query:
 
 ```bash
-# Query the data for `dellR740`
+# Query the data for `compute_medium`
 curl -X 'GET' \
-  'https://api.boavizta.org/v1/server/model?archetype=dellR740&verbose=true' \
+  '{{ endpoint }}/v1/server/?archetype=compute_medium&verbose=true&criteria=gwp' \
   -H 'accept: application/json'
 ```
 
-It returns :
+It will return:
 
-- The total impacts of manufacturing (gwp, pe, adp) for each component (like RAM, CPU, SSD a.s.o)
-- The impacts (gwp, pe, adp) of usage at server level for one year
-- The impacts (gwp, pe, adp) of usage for CPU and RAM for one year
+- The **total** embedded impacts for each component (like RAM, CPU, SSD a.s.o)
+- Since no duration is given, the usage impacts of the server during the life duration of the server
 - The value of the attributes used for the calculation for each component (i.e. the detailed configuration)
 
 ```JSON
 {
   "impacts": {
     "gwp": {
-      "manufacture": 970,
-      "use": 2100,
-      "unit": "kgCO2eq"
-    },
-    "pe": {
-      "manufacture": 13000,
-      "use": 71020,
-      "unit": "MJ"
-    },
-    "adp": {
-      "manufacture": 0.15,
-      "use": 0.000354,
-      "unit": "kgSbeq"
+      "embedded": {
+        "value": 625.51,
+        "significant_figures": 5,
+        "min": 252.18,
+        "max": 2010.6,
+        "warnings": [
+          "End of life is not included in the calculation"
+        ]
+      },
+      "use": {
+        "value": 6937.1,
+        "significant_figures": 5,
+        "min": 193.81,
+        "max": 48551.0
+      },
+      "unit": "kgCO2eq",
+      "description": "Total climate change"
     }
   },
   "verbose": {
+    "duration": {
+      "value": 35040.0,
+      "unit": "hours"
+    },
     "ASSEMBLY-1": {
-      "units": 1,
-      "manufacture_impacts": {
+      "impacts": {
         "gwp": {
-          "value": 6.68,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 68.6,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 1.41e-06,
-          "unit": "kgSbeq"
+          "embedded": {
+            "value": 6.68,
+            "significant_figures": 5,
+            "min": 6.68,
+            "max": 6.68,
+            "warnings": [
+              "End of life is not included in the calculation"
+            ]
+          },
+          "use": "not implemented",
+          "unit": "kgCO2eq",
+          "description": "Total climate change"
         }
+      },
+      "units": {
+        "value": 1,
+        "status": "ARCHETYPE",
+        "min": 1,
+        "max": 1
+      },
+      "duration": {
+        "value": 35040.0,
+        "unit": "hours"
       }
     },
     "CPU-1": {
-      "units": 2,
-      "manufacture_impacts": {
+      "impacts": {
         "gwp": {
-          "value": 21.7,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 325,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.02,
-          "unit": "kgSbeq"
-        }
-      },
-      "core_units": {
-        "value": 24,
-        "unit": "none",
-        "status": "INPUT",
-        "source": null
-      },
-      "die_size_per_core": {
-        "value": 0.245,
-        "unit": "cm2",
-        "status": "INPUT",
-        "source": null
-      },
-      "USAGE": {
-        "usage_impacts": {
-          "gwp": {
-            "value": 610,
-            "unit": "kgCO2eq"
+          "embedded": {
+            "value": 29.986,
+            "significant_figures": 5,
+            "min": 10.619,
+            "max": 327.26,
+            "warnings": [
+              "End of life is not included in the calculation"
+            ]
           },
-          "pe": {
-            "value": 20550,
-            "unit": "MJ"
+          "use": {
+            "value": 4852.9,
+            "significant_figures": 5,
+            "min": 146.86,
+            "max": 28903.0
           },
-          "adp": {
-            "value": 0.000102,
-            "unit": "kgSbeq"
-          }
-        },
-        "hours_electrical_consumption": {
-          "value": 182.23023303189055,
-          "unit": "W",
-          "status": "COMPLETED",
-          "source": null
-        },
-        "time_workload": {
-          "value": 50,
-          "unit": "%",
-          "status": "DEFAULT",
-          "source": null
-        },
-        "usage_location": {
-          "value": "EEE",
-          "unit": "CodSP3 - NCS Country Codes - NATO",
-          "status": "DEFAULT",
-          "source": null
-        },
-        "adp_factor": {
-          "value": 6.42e-08,
-          "unit": "KgSbeq/kWh",
-          "status": "COMPLETED",
-          "source": {
-            "1": "ADEME BASE IMPACT"
-          }
-        },
-        "gwp_factor": {
-          "value": 0.38,
-          "unit": "kgCO2e/kWh",
-          "status": "COMPLETED",
-          "source": {
-            "1": "https://www.sciencedirect.com/science/article/pii/S0306261921012149 : \nAverage of 27 european countries"
-          }
-        },
-        "pe_factor": {
-          "value": 12.874,
-          "unit": "MJ/kWh",
-          "status": "COMPLETED",
-          "source": {
-            "1": "ADPf / (1-%renewable_energy)"
-          }
-        },
-        "use_time": {
-          "value": 8760,
-          "unit": "hours",
-          "status": "DEFAULT",
-          "source": null
-        },
-        "params": {
-          "value": {
-            "a": 171.2,
-            "b": 0.0354,
-            "c": 36.89,
-            "d": -10.13
-          },
-          "unit": "none",
-          "status": "DEFAULT",
-          "source": null
-        }
-      }
-    },
-    "RAM-1": {
-      "units": 12,
-      "manufacture_impacts": {
-        "gwp": {
-          "value": 45,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 560,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.0028,
-          "unit": "kgSbeq"
+          "unit": "kgCO2eq",
+          "description": "Total climate change"
         }
       },
-      "capacity": {
-        "value": 32,
-        "unit": "GB",
-        "status": "INPUT",
-        "source": null
+      "units": {
+        "value": 2.0,
+        "status": "ARCHETYPE",
+        "min": 1.0,
+        "max": 4.0
       },
-      "density": {
-        "value": 1.79,
-        "unit": "GB/cm2",
-        "status": "INPUT",
-        "source": null
-      },
-      "USAGE": {
-        "usage_impacts": {
-          "gwp": {
-            "value": 30,
-            "unit": "kgCO2eq"
-          },
-          "pe": {
-            "value": 1025,
-            "unit": "MJ"
-          },
-          "adp": {
-            "value": 5.11e-06,
-            "unit": "kgSbeq"
-          }
-        },
-        "hours_electrical_consumption": {
-          "value": 9.088,
-          "unit": "W",
-          "status": "COMPLETED",
-          "source": null
-        },
-        "time_workload": {
-          "value": 50,
-          "unit": "%",
-          "status": "DEFAULT",
-          "source": null
-        },
-        "usage_location": {
-          "value": "EEE",
-          "unit": "CodSP3 - NCS Country Codes - NATO",
-          "status": "DEFAULT",
-          "source": null
-        },
-        "adp_factor": {
-          "value": 6.42e-08,
-          "unit": "KgSbeq/kWh",
-          "status": "COMPLETED",
-          "source": {
-            "1": "ADEME BASE IMPACT"
-          }
-        },
-        "gwp_factor": {
-          "value": 0.38,
-          "unit": "kgCO2e/kWh",
-          "status": "COMPLETED",
-          "source": {
-            "1": "https://www.sciencedirect.com/science/article/pii/S0306261921012149 : \nAverage of 27 european countries"
-          }
-        },
-        "pe_factor": {
-          "value": 12.874,
-          "unit": "MJ/kWh",
-          "status": "COMPLETED",
-          "source": {
-            "1": "ADPf / (1-%renewable_energy)"
-          }
-        },
-        "use_time": {
-          "value": 8760,
-          "unit": "hours",
-          "status": "DEFAULT",
-          "source": null
-        },
-        "params": {
-          "value": {
-            "a": 9.088
-          },
-          "unit": "none",
-          "status": "COMPLETED",
-          "source": "(ram_electrical_factor_per_go : 0.284) * (ram_electrical_factor_per_go: 32) "
-        }
-      }
-    },
-    "SSD-1": {
-      "units": 1,
-      "manufacture_impacts": {
-        "gwp": {
-          "value": 24,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 293,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.0011,
-          "unit": "kgSbeq"
-        }
-      },
-      "capacity": {
-        "value": 400,
-        "unit": "GB",
-        "status": "INPUT",
-        "source": null
-      },
-      "density": {
-        "value": 50.6,
-        "unit": "GB/cm2",
-        "status": "INPUT",
-        "source": null
-      }
-    },
-    "POWER_SUPPLY-1": {
-      "units": 2,
-      "manufacture_impacts": {
-        "gwp": {
-          "value": 72.7,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 1050,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.025,
-          "unit": "kgSbeq"
-        }
-      },
-      "unit_weight": {
-        "value": 2.99,
-        "unit": "kg",
-        "status": "INPUT",
-        "source": null
-      }
-    },
-    "CASE-1": {
-      "units": 1,
-      "manufacture_impacts": {
-        "gwp": {
-          "value": 150,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 2200,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.0202,
-          "unit": "kgSbeq"
-        }
-      },
-      "case_type": {
-        "value": "rack",
-        "unit": "none",
-        "status": "INPUT",
-        "source": null
-      }
-    },
-    "MOTHERBOARD-1": {
-      "units": 1,
-      "manufacture_impacts": {
-        "gwp": {
-          "value": 66.1,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 836,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.00369,
-          "unit": "kgSbeq"
-        }
-      }
-    },
-    "USAGE": {
-      "usage_impacts": {
-        "gwp": {
-          "value": 2100,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 71020,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.000354,
-          "unit": "kgSbeq"
-        }
-      },
-      "hours_electrical_consumption": {
-        "value": 629.7768998648289,
-        "unit": "W",
+      "die_size": {
+        "value": 248,
         "status": "COMPLETED",
-        "source": null
+        "unit": "mm2",
+        "source": "Average value for all families",
+        "min": 26,
+        "max": 364
+      },
+      "duration": {
+        "value": 35040.0,
+        "unit": "hours"
+      },
+      "avg_power": {
+        "value": 182.23023303189055,
+        "status": "COMPLETED",
+        "unit": "W",
+        "min": 182.23023303189055,
+        "max": 182.23023303189055,
+        "warnings": [
+          "value for one cpu unit"
+        ]
+      },
+      "time_workload": {
+        "value": 50.0,
+        "status": "ARCHETYPE",
+        "unit": "%",
+        "min": 0.0,
+        "max": 100.0
       },
       "usage_location": {
         "value": "EEE",
-        "unit": "CodSP3 - NCS Country Codes - NATO",
         "status": "DEFAULT",
-        "source": null
+        "unit": "CodSP3 - NCS Country Codes - NATO"
       },
-      "adp_factor": {
-        "value": 6.42e-08,
-        "unit": "KgSbeq/kWh",
+      "use_time_ratio": {
+        "value": 1.0,
+        "status": "ARCHETYPE",
+        "unit": "/1",
+        "min": 1.0,
+        "max": 1.0
+      },
+      "hours_life_time": {
+        "value": 35040.0,
         "status": "COMPLETED",
-        "source": {
-          "1": "ADEME BASE IMPACT"
-        }
+        "unit": "hours",
+        "source": "from device",
+        "min": 35040.0,
+        "max": 35040.0
+      },
+      "params": {
+        "value": {
+          "a": 171.2,
+          "b": 0.0354,
+          "c": 36.89,
+          "d": -10.13
+        },
+        "status": "ARCHETYPE"
       },
       "gwp_factor": {
         "value": 0.38,
-        "unit": "kgCO2e/kWh",
-        "status": "COMPLETED",
-        "source": {
-          "1": "https://www.sciencedirect.com/science/article/pii/S0306261921012149 : \nAverage of 27 european countries"
-        }
-      },
-      "pe_factor": {
-        "value": 12.874,
-        "unit": "MJ/kWh",
-        "status": "COMPLETED",
-        "source": {
-          "1": "ADPf / (1-%renewable_energy)"
-        }
-      },
-      "use_time": {
-        "value": 8760,
-        "unit": "hours",
         "status": "DEFAULT",
-        "source": null
-      },
-      "other_consumption_ratio": {
-        "value": 0.33,
-        "unit": "ratio /1",
-        "status": "DEFAULT",
-        "source": null
+        "unit": "kg CO2eq/kWh",
+        "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+        "min": 0.023,
+        "max": 1.13161
       }
+    },
+    "RAM-1": {
+      "impacts": {
+        "gwp": {
+          "embedded": {
+            "value": 201.05,
+            "significant_figures": 5,
+            "min": 50.522,
+            "max": 942.88,
+            "warnings": [
+              "End of life is not included in the calculation"
+            ]
+          },
+          "use": {
+            "value": 363.03,
+            "significant_figures": 5,
+            "min": 14.648,
+            "max": 1441.4
+          },
+          "unit": "kgCO2eq",
+          "description": "Total climate change"
+        }
+      },
+      "units": {
+        "value": 6.0,
+        "status": "ARCHETYPE",
+        "min": 4.0,
+        "max": 8.0
+      },
+      "capacity": {
+        "value": 16.0,
+        "status": "ARCHETYPE",
+        "unit": "GB",
+        "min": 8.0,
+        "max": 32.0
+      },
+      "density": {
+        "value": 1.2443636363636363,
+        "status": "COMPLETED",
+        "unit": "GB/cm2",
+        "source": "Average of 11 rows",
+        "min": 0.625,
+        "max": 2.375
+      },
+      "duration": {
+        "value": 35040.0,
+        "unit": "hours"
+      },
+      "avg_power": {
+        "value": 4.544,
+        "status": "COMPLETED",
+        "unit": "W",
+        "min": 4.544,
+        "max": 4.544,
+        "warnings": [
+          "value for one ram strip"
+        ]
+      },
+      "time_workload": {
+        "value": 50.0,
+        "status": "ARCHETYPE",
+        "unit": "%",
+        "min": 0.0,
+        "max": 100.0
+      },
+      "usage_location": {
+        "value": "EEE",
+        "status": "DEFAULT",
+        "unit": "CodSP3 - NCS Country Codes - NATO"
+      },
+      "use_time_ratio": {
+        "value": 1.0,
+        "status": "ARCHETYPE",
+        "unit": "/1",
+        "min": 1.0,
+        "max": 1.0
+      },
+      "hours_life_time": {
+        "value": 35040.0,
+        "status": "COMPLETED",
+        "unit": "hours",
+        "source": "from device",
+        "min": 35040.0,
+        "max": 35040.0
+      },
+      "params": {
+        "value": {
+          "a": 4.544
+        },
+        "status": "COMPLETED",
+        "source": "(ram_electrical_factor_per_go : 0.284) * (ram_capacity: 16.0) "
+      },
+      "gwp_factor": {
+        "value": 0.38,
+        "status": "DEFAULT",
+        "unit": "kg CO2eq/kWh",
+        "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+        "min": 0.023,
+        "max": 1.13161
+      }
+    },
+    "SSD-1": {
+      "impacts": {
+        "gwp": {
+          "embedded": {
+            "value": 26.382,
+            "significant_figures": 5,
+            "min": 8.0588,
+            "max": 274.63,
+            "warnings": [
+              "End of life is not included in the calculation"
+            ]
+          },
+          "use": "not implemented",
+          "unit": "kgCO2eq",
+          "description": "Total climate change"
+        }
+      },
+      "units": {
+        "value": 1,
+        "status": "ARCHETYPE",
+        "min": 1,
+        "max": 1
+      },
+      "capacity": {
+        "value": 500.0,
+        "status": "ARCHETYPE",
+        "unit": "GB",
+        "min": 100.0,
+        "max": 2000.0
+      },
+      "density": {
+        "value": 54.8842105263158,
+        "status": "COMPLETED",
+        "unit": "GB/cm2",
+        "source": "Average of 19 rows",
+        "min": 16.4,
+        "max": 128.0
+      },
+      "duration": {
+        "value": 35040.0,
+        "unit": "hours"
+      }
+    },
+    "POWER_SUPPLY-1": {
+      "impacts": {
+        "gwp": {
+          "embedded": {
+            "value": 145.31,
+            "significant_figures": 5,
+            "min": 24.3,
+            "max": 243.0,
+            "warnings": [
+              "End of life is not included in the calculation"
+            ]
+          },
+          "use": "not implemented",
+          "unit": "kgCO2eq",
+          "description": "Total climate change"
+        }
+      },
+      "units": {
+        "value": 2.0,
+        "status": "ARCHETYPE",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "unit_weight": {
+        "value": 2.99,
+        "status": "ARCHETYPE",
+        "unit": "kg",
+        "min": 1.0,
+        "max": 5.0
+      },
+      "duration": {
+        "value": 35040.0,
+        "unit": "hours"
+      }
+    },
+    "CASE-1": {
+      "impacts": {
+        "gwp": {
+          "embedded": {
+            "value": 150.0,
+            "significant_figures": 5,
+            "min": 85.9,
+            "max": 150.0,
+            "warnings": [
+              "End of life is not included in the calculation"
+            ]
+          },
+          "use": "not implemented",
+          "unit": "kgCO2eq",
+          "description": "Total climate change"
+        }
+      },
+      "units": {
+        "value": 1,
+        "status": "ARCHETYPE",
+        "min": 1,
+        "max": 1
+      },
+      "case_type": {
+        "value": "rack",
+        "status": "ARCHETYPE"
+      },
+      "duration": {
+        "value": 35040.0,
+        "unit": "hours"
+      }
+    },
+    "MOTHERBOARD-1": {
+      "impacts": {
+        "gwp": {
+          "embedded": {
+            "value": 66.1,
+            "significant_figures": 5,
+            "min": 66.1,
+            "max": 66.1,
+            "warnings": [
+              "End of life is not included in the calculation"
+            ]
+          },
+          "use": "not implemented",
+          "unit": "kgCO2eq",
+          "description": "Total climate change"
+        }
+      },
+      "units": {
+        "value": 1,
+        "status": "ARCHETYPE",
+        "min": 1,
+        "max": 1
+      },
+      "duration": {
+        "value": 35040.0,
+        "unit": "hours"
+      }
+    },
+    "avg_power": {
+      "value": 520.99292,
+      "status": "COMPLETED",
+      "unit": "W",
+      "min": 240.48719999999997,
+      "max": 1224.4352
+    },
+    "usage_location": {
+      "value": "EEE",
+      "status": "DEFAULT",
+      "unit": "CodSP3 - NCS Country Codes - NATO"
+    },
+    "use_time_ratio": {
+      "value": 1.0,
+      "status": "ARCHETYPE",
+      "unit": "/1",
+      "min": 1.0,
+      "max": 1.0
+    },
+    "hours_life_time": {
+      "value": 35040.0,
+      "status": "ARCHETYPE",
+      "unit": "hours",
+      "min": 35040.0,
+      "max": 35040.0
+    },
+    "other_consumption_ratio": {
+      "value": 0.33,
+      "status": "ARCHETYPE",
+      "unit": "ratio /1",
+      "min": 0.2,
+      "max": 0.6
+    },
+    "gwp_factor": {
+      "value": 0.38,
+      "status": "DEFAULT",
+      "unit": "kg CO2eq/kWh",
+      "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+      "min": 0.023,
+      "max": 1.13161
+    },
+    "units": {
+      "value": 1,
+      "status": "ARCHETYPE",
+      "min": 1,
+      "max": 1
     }
   }
 }
@@ -464,15 +551,18 @@ It returns :
 
 ## Retrieve the impacts of a _custom_ server
 
-In this query, you provide a specific configuration of the machine. Missing attributes or component will be replaced by default ones.
+In this query, you provide a specific configuration of the machine. Missing attributes or component will be replaced by the archetype specify with the flag ```archetype=compute_medium```.
 
-The API returns impacts, to reflect your _own_ server configuration.
+The API returns impacts, to reflect your _own_ server configuration. 
+
+Query : 
+```bash
 
 Query : 
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/server/?verbose=false' \
+  '{{ endpoint }}/v1/server/?verbose=false&archetype=compute_medium' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -483,7 +573,7 @@ curl -X 'POST' \
     "cpu": {
       "units": 2,
       "core_units": 12,
-      "die_size_per_core": 0.245
+      "die_size_per_core": 245
     },
     "ram": [
       {
@@ -509,58 +599,101 @@ curl -X 'POST' \
 ```
 
 Result :
-
 ```json
 {
   "gwp": {
-    "manufacture": 1500,
-    "use": 2600,
-    "unit": "kgCO2eq"
-  },
-  "pe": {
-    "manufacture": 19000,
-    "use": 87380,
-    "unit": "MJ"
+    "embedded": {
+      "value": 1501.4,
+      "significant_figures": 5,
+      "min": 1501.4,
+      "max": 1501.4,
+      "warnings": [
+        "End of life is not included in the calculation"
+      ]
+    },
+    "use": {
+      "value": 10317,
+      "significant_figures": 5,
+      "min": 563.41,
+      "max": 36960
+    },
+    "unit": "kgCO2eq",
+    "description": "Total climate change"
   },
   "adp": {
-    "manufacture": 0.17,
-    "use": 0.000436,
-    "unit": "kgSbeq"
+    "embedded": {
+      "value": 0.16588,
+      "significant_figures": 5,
+      "min": 0.16588,
+      "max": 0.16588,
+      "warnings": [
+        "End of life is not included in the calculation"
+      ]
+    },
+    "use": {
+      "value": 0.00174387,
+      "significant_figures": 6,
+      "min": 0.000324327,
+      "max": 0.00867403
+    },
+    "unit": "kgSbeq",
+    "description": "Use of minerals and fossil ressources"
+  },
+  "pe": {
+    "embedded": {
+      "value": 19475,
+      "significant_figures": 5,
+      "min": 19475,
+      "max": 19475,
+      "warnings": [
+        "End of life is not included in the calculation"
+      ]
+    },
+    "use": {
+      "value": 349500,
+      "significant_figures": 5,
+      "min": 318.45,
+      "max": 15290000
+    },
+    "unit": "MJ",
+    "description": "Consumption of primary energy"
   }
 }
 ```
 
-## Retrieve the impacts with from a custom power consumption
+* Since no criteria flags are specified, the API returns the impacts of the server for the default criteria (adp, pe, gwp). 
+* Since no duration is given, the API returns the impacts for the all life duration of the server.
 
-In this query, we use the default server configuration, but provide a specific usage of the machine.
 
-In this specific case the average power consumption of the machine is known (```hours_electrical_consumptions``)
+## Retrieve the impacts with a custom power consumption
 
-The API returns impacts, updated to reflect your own server usage.
+In this query, we use the default server configuration of a ```compute_medium``` but provide a specific usage of the machine.
+
+In this specific case, the average power consumption of the machine is given by the user (```avg_powers``)
+
+The API returns impacts, updated to reflect your own server usage. Since ```criteria=gwp&criteria=adp``` flags are specified, the API returns the impacts of the server for adp and gwp.
 
 Query : 
 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/server/?verbose=true' \
+  '{{ endpoint }}/v1/server/?verbose=true&archetype=compute_medium&duration=8760' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
   "model": {},
   "configuration": {},
   "usage":{
-     "years_use_time": 1,
-     "days_use_time": 1,
-     "hours_use_time": 1,
      "usage_location": "FRA",
-     "hours_electrical_consumption": 250
+     "avg_power": 250
     }
   }'
 ```
 
-* The server is evaluated with the specific impacts of the French electrical grid.
-* The server is evaluated for a usage of 1 year, 1 day, 1 hour. It corresponds to 8785 hours.
-* The average electrical consumption per hour is 250 W/hour
+* Usage impacts are assessed with the specific impacts of the French electrical grid.
+* The server impacts are assessed for a usage of 1 year (since duration is set at 8785 hours).
+* The average electrical consumption per hour is 250 Watts/hour.
+* Embedded impacts will be allocated on 1 year (since duration is set at 8785 hours).
 
 Result :
 
@@ -568,105 +701,117 @@ Result :
 {
   "impacts": {
     "gwp": {
-      "manufacture": 3300,
-      "use": 220,
-      "unit": "kgCO2eq"
-    },
-    "pe": {
-      "manufacture": 42000,
-      "use": 24800,
-      "unit": "MJ"
+      "other": {
+        "value": 660,
+        "significant_figures": 2,
+        "min": 350,
+        "max": 1100
+      },
+      "use": {
+        "value": 220,
+        "significant_figures": 2,
+        "min": 220,
+        "max": 220
+      },
+      "unit": "kgCO2eq",
+      "description": "Total climate change"
     },
     "adp": {
-      "manufacture": 0.23,
-      "use": 0.000107,
-      "unit": "kgSbeq"
+      "other": {
+        "value": 0.13,
+        "significant_figures": 2,
+        "min": 0.064,
+        "max": 0.22
+      },
+      "use": {
+        "value": 0.000107,
+        "significant_figures": 3,
+        "min": 0.000107,
+        "max": 0.000107
+      },
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources"
+    },
+    "pe": {
+      "other": {
+        "value": 9000,
+        "significant_figures": 2,
+        "min": 4600,
+        "max": 15000
+      },
+      "use": {
+        "value": 24800,
+        "significant_figures": 3,
+        "min": 24800,
+        "max": 24800
+      },
+      "unit": "MJ",
+      "description": "Consumption of primary energy"
     }
   },
   "verbose": {
-   ...
-    "USAGE": {
-      "usage_impacts": {
-        "gwp": {
-          "value": 220,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 24800,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.000107,
-          "unit": "kgSbeq"
-        }
-      },
-      "hours_electrical_consumption": {
-        "value": 250,
-        "unit": "W",
-        "status": "INPUT",
-        "source": null
-      },
-      "usage_location": {
-        "value": "FRA",
-        "unit": "CodSP3 - NCS Country Codes - NATO",
-        "status": "INPUT",
-        "source": null
-      },
-      "adp_factor": {
-        "value": 4.86e-08,
-        "unit": "KgSbeq/kWh",
-        "status": "COMPLETED",
-        "source": {
-          "43": "ADEME BASE IMPACT"
-        }
-      },
-      "gwp_factor": {
-        "value": 0.098,
-        "unit": "kgCO2e/kWh",
-        "status": "COMPLETED",
-        "source": {
-          "43": "https://www.sciencedirect.com/science/article/pii/S0306261921012149"
-        }
-      },
-      "pe_factor": {
-        "value": 11.289,
-        "unit": "MJ/kWh",
-        "status": "COMPLETED",
-        "source": {
-          "43": "ADPf / (1-%renewable_energy)"
-        }
-      },
-      "use_time": {
-        "value": 8785,
-        "unit": "hours",
-        "status": "INPUT",
-        "source": null
-      }
+    ...
+    "avg_power": {
+      "value": 250,
+      "status": "INPUT",
+      "unit": "W"
+    },
+    "usage_location": {
+      "value": "FRA",
+      "status": "INPUT",
+      "unit": "CodSP3 - NCS Country Codes - NATO"
+    },
+    "use_time": {
+      "value": 8785,
+      "status": "INPUT",
+      "unit": "hours"
+    },
+    "gwp_factor": {
+      "value": 0.098,
+      "status": "COMPLETED",
+      "unit": "kg CO2eq/kWh",
+      "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+      "min": 0.098,
+      "max": 0.098
+    },
+    "adp_factor": {
+      "value": 4.86e-08,
+      "status": "COMPLETED",
+      "unit": "kg Sbeq/kWh",
+      "source": "ADEME BASE IMPACT",
+      "min": 4.86e-08,
+      "max": 4.86e-08
+    },
+    "pe_factor": {
+      "value": 11.289,
+      "status": "COMPLETED",
+      "unit": "MJ/kWh",
+      "source": "ADPf / (1-%renewable_energy)",
+      "min": 11.289,
+      "max": 11.289
     }
   }
 }
 
+
 ```
 
-## Retrieve the impacts with from a custom workload
+## Retrieve the impacts with a custom workload
 
-In this query, we use the default server configuration, but provide a specific usage of the machine.
+In this query, we use the default server configuration of a ```compute_medium``` but provide a specific usage of the machine.
 
-In this  case the average is unknown. We use the level of workload (```time_workload```) of the machine as a proxy for the power consumption.
+In this case, the average electrical consumption is unknown. We use the level of workload (```time_workload```) of the machine as a proxy for the power consumption.
 
 Query : 
 ```bash
 curl -X 'POST' \
-  'https://api.boavizta.org/v1/server/?verbose=true' \
+  '{{ endpoint }}/v1/server/?verbose=true&duration=8760' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
   "model": {},
   "configuration": {},
   "usage":{
-     "years_use_time": 1,
-     "days_use_time": 1,
-     "hours_use_time": 1,
      "usage_location": "FRA",
      "time_workload": 90
     }
@@ -674,251 +819,82 @@ curl -X 'POST' \
 ```
 
 * The API will create a consumption profile based on the default characteristics and apply it for an average level of workload of 90%
+* The server impacts are assessed for a usage of 1 year (since duration is set at 8785 hours).
+* Embedded impacts will be allocated on 1 year (since duration is set at 8785 hours).
 
 Result :
 ```json
 {
   "impacts": {
     "gwp": {
-      "manufacture": 3300,
-      "use": 820,
-      "unit": "kgCO2eq"
-    },
-    "pe": {
-      "manufacture": 42000,
-      "use": 93940,
-      "unit": "MJ"
+      "embedded": {
+        "value": 165.32,
+        "significant_figures": 5,
+        "min": 64.099,
+        "max": 495.23,
+        "warnings": [
+          "End of life is not included in the calculation"
+        ]
+      },
+      "use": {
+        "value": 595.3,
+        "significant_figures": 5,
+        "min": 273.24,
+        "max": 1407.3
+      },
+      "unit": "kgCO2eq",
+      "description": "Total climate change"
     },
     "adp": {
-      "manufacture": 0.23,
-      "use": 0.000404,
-      "unit": "kgSbeq"
+      "embedded": {
+        "value": 0.032619,
+        "significant_figures": 5,
+        "min": 0.015204,
+        "max": 0.060903,
+        "warnings": [
+          "End of life is not included in the calculation"
+        ]
+      },
+      "use": {
+        "value": 0.0002951,
+        "significant_figures": 6,
+        "min": 0.000135448,
+        "max": 0.000697639
+      },
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources"
+    },
+    "pe": {
+      "embedded": {
+        "value": 2259,
+        "significant_figures": 5,
+        "min": 870.01,
+        "max": 6485.2,
+        "warnings": [
+          "End of life is not included in the calculation"
+        ]
+      },
+      "use": {
+        "value": 68575,
+        "significant_figures": 5,
+        "min": 31476,
+        "max": 162120
+      },
+      "unit": "MJ",
+      "description": "Consumption of primary energy"
     }
   },
-   ...
-    "CPU-1": {
-      ...
-      "USAGE": {
-        "usage_impacts": {
-          "gwp": {
-            "value": 820,
-            "unit": "kgCO2eq"
-          },
-          "pe": {
-            "value": 27940,
-            "unit": "MJ"
-          },
-          "adp": {
-            "value": 0.000139,
-            "unit": "kgSbeq"
-          }
-        },
-        "hours_electrical_consumption": {
-          "value": 247.0598413289702,
-          "unit": "W",
-          "status": "COMPLETED",
-          "source": null
-        },
-        "time_workload": {
-          "value": 90,
-          "unit": "%",
-          "status": "INPUT",
-          "source": null
-        },
-        "usage_location": {
-          "value": "FRA",
-          "unit": "CodSP3 - NCS Country Codes - NATO",
-          "status": "INPUT",
-          "source": null
-        },
-        "adp_factor": {
-          "value": 6.42e-08,
-          "unit": "KgSbeq/kWh",
-          "status": "COMPLETED",
-          "source": {
-            "1": "ADEME BASE IMPACT"
-          }
-        },
-        "gwp_factor": {
-          "value": 0.38,
-          "unit": "kgCO2e/kWh",
-          "status": "COMPLETED",
-          "source": {
-            "1": "https://www.sciencedirect.com/science/article/pii/S0306261921012149 : \nAverage of 27 european countries"
-          }
-        },
-        "pe_factor": {
-          "value": 12.874,
-          "unit": "MJ/kWh",
-          "status": "COMPLETED",
-          "source": {
-            "1": "ADPf / (1-%renewable_energy)"
-          }
-        },
-        "use_time": {
-          "value": 8785,
-          "unit": "hours",
-          "status": "INPUT",
-          "source": null
-        },
-        "params": {
-          "value": {
-            "a": 171.2,
-            "b": 0.0354,
-            "c": 36.89,
-            "d": -10.13
-          },
-          "unit": "none",
-          "status": "DEFAULT",
-          "source": null
-        }
-      }
-    },
-    "RAM-1": {
-      ...
-      "USAGE": {
-        "usage_impacts": {
-          "gwp": {
-            "value": 30,
-            "unit": "kgCO2eq"
-          },
-          "pe": {
-            "value": 1028,
-            "unit": "MJ"
-          },
-          "adp": {
-            "value": 5.13e-06,
-            "unit": "kgSbeq"
-          }
-        },
-        "hours_electrical_consumption": {
-          "value": 9.088,
-          "unit": "W",
-          "status": "COMPLETED",
-          "source": null
-        },
-        "time_workload": {
-          "value": 90,
-          "unit": "%",
-          "status": "INPUT",
-          "source": null
-        },
-        "usage_location": {
-          "value": "FRA",
-          "unit": "CodSP3 - NCS Country Codes - NATO",
-          "status": "INPUT",
-          "source": null
-        },
-        "adp_factor": {
-          "value": 6.42e-08,
-          "unit": "KgSbeq/kWh",
-          "status": "COMPLETED",
-          "source": {
-            "1": "ADEME BASE IMPACT"
-          }
-        },
-        "gwp_factor": {
-          "value": 0.38,
-          "unit": "kgCO2e/kWh",
-          "status": "COMPLETED",
-          "source": {
-            "1": "https://www.sciencedirect.com/science/article/pii/S0306261921012149 : \nAverage of 27 european countries"
-          }
-        },
-        "pe_factor": {
-          "value": 12.874,
-          "unit": "MJ/kWh",
-          "status": "COMPLETED",
-          "source": {
-            "1": "ADPf / (1-%renewable_energy)"
-          }
-        },
-        "use_time": {
-          "value": 8785,
-          "unit": "hours",
-          "status": "INPUT",
-          "source": null
-        },
-        "params": {
-          "value": {
-            "a": 9.088
-          },
-          "unit": "none",
-          "status": "COMPLETED",
-          "source": "(ram_electrical_factor_per_go : 0.284) * (ram_electrical_factor_per_go: 32) "
-        }
-      }
+  "verbose": {
+    "duration": {
+      "value": 8760,
+      "unit": "hours"
     },
     ...
-    "USAGE": {
-      "usage_impacts": {
-        "gwp": {
-          "value": 820,
-          "unit": "kgCO2eq"
-        },
-        "pe": {
-          "value": 93940,
-          "unit": "MJ"
-        },
-        "adp": {
-          "value": 0.000404,
-          "unit": "kgSbeq"
-        }
-      },
-      "hours_electrical_consumption": {
-        "value": 947.2681379350607,
-        "unit": "W",
-        "status": "COMPLETED",
-        "source": null
-      },
-      "time_workload": {
-        "value": 90,
-        "unit": "%",
-        "status": "INPUT",
-        "source": null
-      },
-      "usage_location": {
-        "value": "FRA",
-        "unit": "CodSP3 - NCS Country Codes - NATO",
-        "status": "INPUT",
-        "source": null
-      },
-      "adp_factor": {
-        "value": 4.86e-08,
-        "unit": "KgSbeq/kWh",
-        "status": "COMPLETED",
-        "source": {
-          "43": "ADEME BASE IMPACT"
-        }
-      },
-      "gwp_factor": {
-        "value": 0.098,
-        "unit": "kgCO2e/kWh",
-        "status": "COMPLETED",
-        "source": {
-          "43": "https://www.sciencedirect.com/science/article/pii/S0306261921012149"
-        }
-      },
-      "pe_factor": {
-        "value": 11.289,
-        "unit": "MJ/kWh",
-        "status": "COMPLETED",
-        "source": {
-          "43": "ADPf / (1-%renewable_energy)"
-        }
-      },
-      "use_time": {
-        "value": 8785,
-        "unit": "hours",
-        "status": "INPUT",
-        "source": null
-      },
-      "other_consumption_ratio": {
-        "value": 0.33,
-        "unit": "ratio /1",
-        "status": "DEFAULT",
-        "source": null
-      }
+    "units": {
+      "value": 1,
+      "status": "ARCHETYPE",
+      "min": 1,
+      "max": 1
     }
   }
 }

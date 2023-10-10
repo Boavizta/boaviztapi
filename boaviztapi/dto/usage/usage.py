@@ -1,35 +1,51 @@
-import os
 from typing import Optional, List, Union
 
-import pandas as pd
-
+from boaviztapi import config
 from boaviztapi.dto import BaseDTO
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
-
-_electricity_emission_factors_df = pd.read_csv(os.path.join(os.path.dirname(__file__),
-                                                            '../../data/electricity/electricity_impact_factors.csv'))
-
+from boaviztapi.service.archetype import get_cloud_instance_archetype, get_server_archetype
+from boaviztapi.service.factor_provider import get_available_countries
 
 class WorkloadTime(BaseDTO):
     time_percentage: float = None
     load_percentage: float = None
 
+class ElecFactors(BaseDTO):
+    gwp: Optional[float] = None
+    adp: Optional[float] = None
+    pe: Optional[float] = None
+    gwppb: Optional[float] = None
+    gwppf: Optional[float] = None
+    gwpplu: Optional[float] = None
+    ir: Optional[float] = None
+    lu: Optional[float] = None
+    odp: Optional[float] = None
+    pm: Optional[float] = None
+    pocp: Optional[float] = None
+    wu: Optional[float] = None
+    mips: Optional[float] = None
+    adpe: Optional[float] = None
+    adpf: Optional[float] = None
+    ap: Optional[float] = None
+    ctue: Optional[float] = None
+    ctuh_c: Optional[float] = None
+    ctuh_nc: Optional[float] = None
+    epf: Optional[float] = None
+    epm: Optional[float] = None
+    ept: Optional[float] = None
+
 
 class Usage(BaseDTO):
-    years_use_time: Optional[float] = None
-    days_use_time: Optional[float] = None
-    hours_use_time: Optional[float] = None
+    use_time_ratio: Optional[float] = None
 
-    years_life_time: Optional[float] = None
+    hours_life_time: Optional[float] = None
 
-    hours_electrical_consumption: Optional[float] = None
+    avg_power: Optional[float] = None
     time_workload: Optional[Union[float, List[WorkloadTime]]] = None
 
     usage_location: Optional[str] = None
-    gwp_factor: Optional[float] = None
-    pe_factor: Optional[float] = None
-    adp_factor: Optional[float] = None
+    elec_factors: Optional[ElecFactors] = ElecFactors()
 
 
 class UsageServer(Usage):
@@ -40,120 +56,104 @@ class UsageCloud(UsageServer):
     instance_per_server: Optional[int] = None
 
 
-def smart_mapper_usage(usage_dto: Usage) -> ModelUsage:
-    usage_model = ModelUsage()
+def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
+    usage_model = ModelUsage(archetype=archetype)
+
+    for elec_factor in usage_dto.elec_factors.__dict__.keys():
+        if usage_dto.elec_factors.__dict__[elec_factor] is not None:
+            usage_model.elec_factors.get(elec_factor).set_input(usage_dto.elec_factors.__dict__[elec_factor])
 
     if usage_dto.time_workload is not None:
         usage_model.time_workload.value = usage_dto.time_workload
+        usage_model.time_workload.min = usage_dto.time_workload
+        usage_model.time_workload.max = usage_dto.time_workload
+
         if type(usage_dto.time_workload) == float:
             usage_model.time_workload.unit = "%"
         else:
             usage_model.time_workload.unit = "(time_percentage:%, load_percentage: %)"
-
         usage_model.time_workload.status = Status.INPUT
 
-    if usage_dto.hours_electrical_consumption is not None:
-        usage_model.hours_electrical_consumption.value = usage_dto.hours_electrical_consumption
-        usage_model.hours_electrical_consumption.status = Status.INPUT
+    if usage_dto.avg_power is not None:
+        usage_model.avg_power.set_input(usage_dto.avg_power)
 
-    if usage_dto.years_life_time is not None:
-        usage_model.life_time.value = usage_dto.years_life_time * 24 * 365
-        usage_model.life_time.status = Status.INPUT
+    if usage_dto.hours_life_time is not None:
+        usage_model.hours_life_time.set_input(usage_dto.hours_life_time)
 
-    if usage_dto.hours_use_time is not None or usage_dto.days_use_time is not None or usage_dto.years_use_time is not None:
-        usage_model.use_time.value = (usage_dto.hours_use_time or 0) + \
-                                     (usage_dto.days_use_time or 0) * 24 + \
-                                     (usage_dto.years_use_time or 0) * 24 * 365
-
-        usage_model.use_time.status = Status.INPUT
+    if usage_dto.use_time_ratio is not None:
+        usage_model.use_time_ratio.set_input(usage_dto.use_time_ratio)
 
     if usage_dto.usage_location is not None:
-        sub = _electricity_emission_factors_df
-        sub = sub[sub['code'] == usage_dto.usage_location]
-        if len(sub) == 0:
-            pass
+        if usage_dto.usage_location in get_available_countries(reverse=True):
+            usage_model.usage_location.set_input(usage_dto.usage_location)
         else:
+            usage_model.usage_location.set_changed(usage_model.usage_location.default)
+            usage_model.usage_location.add_warning("Location not found. Default value used.")
 
-            usage_model.usage_location.value = usage_dto.usage_location
-            usage_model.usage_location.status = Status.INPUT
     return usage_model
 
 
-def smart_mapper_usage_server(usage_dto: UsageServer) -> ModelUsageServer:
-    usage_model_server = ModelUsageServer()
+def mapper_usage_server(usage_dto: UsageServer, archetype=get_server_archetype(config["default_server"]).get("USAGE")) -> ModelUsageServer:
+    usage_model_server = ModelUsageServer(archetype=archetype)
 
-    if usage_dto.hours_electrical_consumption is not None:
-        usage_model_server.hours_electrical_consumption.value = usage_dto.hours_electrical_consumption
-        usage_model_server.hours_electrical_consumption.status = Status.INPUT
+    for elec_factor in usage_dto.elec_factors.__dict__.keys():
+        if usage_dto.elec_factors.__dict__[elec_factor] is not None:
+            usage_model_server.elec_factors.get(elec_factor).set_input(usage_dto.elec_factors.__dict__[elec_factor])
 
-    if usage_dto.years_life_time is not None:
-        usage_model_server.life_time.value = usage_dto.years_life_time * 24 * 365
-        usage_model_server.life_time.status = Status.INPUT
+    if usage_dto.avg_power is not None:
+        usage_model_server.avg_power.set_input(usage_dto.avg_power)
 
-    if usage_dto.hours_use_time is not None or usage_dto.days_use_time is not None or usage_dto.years_use_time is not None:
-        usage_model_server.use_time.value = (usage_dto.hours_use_time or 0) + \
-                                     (usage_dto.days_use_time or 0) * 24 + \
-                                     (usage_dto.years_use_time or 0) * 24 * 365
+    if usage_dto.hours_life_time is not None:
+        usage_model_server.hours_life_time.set_input(usage_dto.hours_life_time)
 
-        usage_model_server.use_time.status = Status.INPUT
+    if usage_dto.use_time_ratio is not None:
+        usage_model_server.use_time_ratio.set_input(usage_dto.use_time_ratio)
 
     if usage_dto.time_workload is not None:
-        usage_model_server.time_workload.value = usage_dto.time_workload
-        usage_model_server.time_workload.status = Status.INPUT
+        usage_model_server.time_workload.set_input(usage_dto.time_workload)
 
     if usage_dto.usage_location is not None:
-        sub = _electricity_emission_factors_df
-        sub = sub[sub['code'] == usage_dto.usage_location]
-        if len(sub) == 0:
-            pass
+        if usage_dto.usage_location in get_available_countries(reverse=True):
+            usage_model_server.usage_location.set_input(usage_dto.usage_location)
         else:
-            usage_model_server.usage_location.value = usage_dto.usage_location
-            usage_model_server.usage_location.status = Status.INPUT
-
+            usage_model_server.usage_location.set_changed(usage_model_server.usage_location.default)
+            usage_model_server.usage_location.add_warning("Location not found. Default value used.")
     if usage_dto.other_consumption_ratio is not None:
-        usage_model_server.other_consumption_ratio.value = usage_dto.other_consumption_ratio
-        usage_model_server.other_consumption_ratio.status = Status.INPUT
+        usage_model_server.other_consumption_ratio.set_input(usage_dto.other_consumption_ratio)
 
     return usage_model_server
 
 
-def smart_mapper_usage_cloud(usage_dto: UsageCloud):
-    usage_model_cloud = ModelUsageCloud()
+def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_archetype(config["default_cloud"], config["default_cloud_provider"]).get("USAGE")) -> ModelUsageCloud:
+    usage_model_cloud = ModelUsageCloud(archetype=archetype)
 
-    if usage_dto.hours_electrical_consumption is not None:
-        usage_model_cloud.hours_electrical_consumption.value = usage_dto.hours_electrical_consumption
-        usage_model_cloud.hours_electrical_consumption.status = Status.INPUT
+    for elec_factor in usage_dto.elec_factors.__dict__.keys():
+        if usage_dto.elec_factors.__dict__[elec_factor] is not None:
+            usage_model_cloud.elec_factors.get(elec_factor).set_input(usage_dto.elec_factors.__dict__[elec_factor])
 
-    if usage_dto.years_life_time is not None:
-        usage_model_cloud.life_time.value = usage_dto.years_life_time * 24 * 365
-        usage_model_cloud.life_time.status = Status.INPUT
+    if usage_dto.avg_power is not None:
+        usage_model_cloud.avg_power.set_input(usage_dto.avg_power)
 
-    if usage_dto.hours_use_time is not None or usage_dto.days_use_time is not None or usage_dto.years_use_time is not None:
-        usage_model_cloud.use_time.value = (usage_dto.hours_use_time or 0) + \
-                                            (usage_dto.days_use_time or 0) * 24 + \
-                                            (usage_dto.years_use_time or 0) * 24 * 365
+    if usage_dto.hours_life_time is not None:
+        usage_model_cloud.hours_life_time.set_input(usage_dto.hours_life_time)
 
-        usage_model_cloud.use_time.status = Status.INPUT
+    if usage_dto.use_time_ratio is not None:
+        usage_model_cloud.use_time_ratio.set_input(usage_dto.use_time_ratio)
 
     if usage_dto.time_workload is not None:
-        usage_model_cloud.time_workload.value = usage_dto.time_workload
-        usage_model_cloud.time_workload.status = Status.INPUT
+        usage_model_cloud.time_workload.set_input(usage_dto.time_workload)
 
     if usage_dto.usage_location is not None:
-        sub = _electricity_emission_factors_df
-        sub = sub[sub['code'] == usage_dto.usage_location]
-        if len(sub) == 0:
-            pass
+        if usage_dto.usage_location in get_available_countries(reverse=True):
+            usage_model_cloud.usage_location.set_input(usage_dto.usage_location)
         else:
-            usage_model_cloud.usage_location.value = usage_dto.usage_location
-            usage_model_cloud.usage_location.status = Status.INPUT
+            usage_model_cloud.usage_location.set_changed(usage_model_cloud.usage_location.default)
+            usage_model_cloud.usage_location.add_warning("Location not found. Default value used.")
 
     if usage_dto.other_consumption_ratio is not None:
-        usage_model_cloud.other_consumption_ratio.value = usage_dto.other_consumption_ratio
-        usage_model_cloud.other_consumption_ratio.status = Status.INPUT
+        usage_model_cloud.other_consumption_ratio.set_input(usage_dto.other_consumption_ratio)
 
     if usage_dto.instance_per_server is not None:
-        usage_model_cloud.instance_per_server.value = usage_dto.instance_per_server
-        usage_model_cloud.instance_per_server.status = Status.INPUT
+        usage_model_cloud.instance_per_server.set_input(usage_dto.instance_per_server)
 
     return usage_model_cloud

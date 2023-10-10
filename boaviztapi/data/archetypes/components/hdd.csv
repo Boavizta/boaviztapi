@@ -1,0 +1,2 @@
+id,units,capacity,USAGE.use_time_ratio,USAGE.hours_life_time
+DEFAULT,1;1;1,500;100;2000,1,26280

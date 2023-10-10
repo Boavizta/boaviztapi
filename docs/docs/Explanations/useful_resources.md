@@ -11,3 +11,8 @@
 ## From Boavizta's members
 
 - [Benjamin Davy's work on cloud computing impact measurement methodology](https://medium.com/@benjamin.davy)
+
+
+## From others
+
+- [NegaOctet public database on Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)

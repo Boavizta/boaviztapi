@@ -1,0 +1,15 @@
+id,manufacturer,CASE.case_type,CPU.units,CPU.die_size_per_core,CPU.core_units,CPU.name,CPU.manufacturer,CPU.model_range,CPU.family,CPU.tdp,RAM.capacity,RAM.units,RAM.density,SSD.units	,SSD.capacity,SSD.density,HDD.units,HDD.capacity,POWER_SUPPLY.units,POWER_SUPPLY.unit_weight,USAGE.time_workload,USAGE.use_time_ratio,USAGE.hours_life_time,USAGE.other_consumption_ratio,WARNINGS
+compute_low,,rack,"1;1;1",,16;12;24,,,,,,8;4;16,1;2;6,,4;1;8,500;100;2000,,,,2;1;2,2.99;1;5,50;0;100,1,35040,"0.33;0.2;0.6
+",
+compute_medium,,rack,2;1;4,,24;16;32,,,,,,16;8;32,6;4;8,,4;2;8,500;100;2000,,,,2;1;2,2.99;1;5,50;0;100,1,35040,"0.33;0.2;0.6
+",
+compute_high,,rack,4;2;8,,32;24;64,,,,,,32;16;64,8;4;32,,4;2;8,500;100;2000,,,,2;1;2,2.99;1;5,50;0;100,1,35040,"0.33;0.2;0.6
+",
+storage_low,,rack,"1;1;1",,8;6;10,,,,,,8;4;32,1;2;6,,4;2;1,500;100;2000,,,,2;1;2,2.99;1;5,50;0;100,1,35040,"0.33;0.2;0.6
+",
+storage_medium,,rack,1;1;2,,8;6;10,,,,,,8;4;32,1;2;6,,32;16;48,500;100;2000,,,,2;1;2,2.99;1;5,50;0;100,1,35040,"0.33;0.2;0.6
+",
+storage_high,,rack,1;1;2,,10;16;24,,,,,,8;4;32,1;2;6,,"48,32,64",500;100;2000,,,,2;1;2,2.99;1;5,50;0;100,1,35040,"0.33;0.2;0.6
+",
+dellR740,Dell,rack,2,24.5,24,,,,,,32,12,,1,400,,,,2;1;2,2.99;1;5,50;0;100,1,35040,"0.33;0.2;0.6
+",

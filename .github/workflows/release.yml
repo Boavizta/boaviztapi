@@ -30,7 +30,7 @@ jobs:
 
     - name: Install pipenv
       run: |
-          python -m pip install --upgrade pipenv wheel
+          python -m pip install --upgrade poetry wheel
 
     - id: cache-pipenv
       uses: actions/cache@v1
@@ -41,19 +41,16 @@ jobs:
     - name: Install dependencies
       if: steps.cache-pipenv.outputs.cache-hit != 'true'
       run: |
-        pipenv install --dev
+        make install
 
-    - name: Build the pip package
-      run: python3 setup.py sdist
-
-    - name: push pip package
-      run: pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.DAVID_PYPI_TOKEN }} dist/*
+    - name: Push package on pypi
+      run: API_TOKEN=${{ secrets.DAVID_PYPI_TOKEN }} make distribute
 
     - name: Build the api Docker image
-      run: docker build --build-arg VERSION=$(python setup.py --version) . --file Dockerfile --tag ghcr.io/boavizta/boaviztapi:latest
+      run: docker build --build-arg VERSION=$(poetry version -s) . --file Dockerfile --tag ghcr.io/boavizta/boaviztapi:latest
 
     - name : Tag api Docker image
-      run: docker tag ghcr.io/boavizta/boaviztapi:latest ghcr.io/boavizta/boaviztapi:$(python setup.py --version)
+      run: docker tag ghcr.io/boavizta/boaviztapi:latest ghcr.io/boavizta/boaviztapi:$(poetry version -s)
 
     - name: Push api images
       run: docker push -a ghcr.io/boavizta/boaviztapi
@@ -62,7 +59,7 @@ jobs:
       run: docker build docs --file docs/Dockerfile --tag ghcr.io/boavizta/boaviztapi-doc:latest
 
     - name: Tag doc the Docker image
-      run: docker tag ghcr.io/boavizta/boaviztapi-doc:latest ghcr.io/boavizta/boaviztapi-doc:$(python setup.py --version)
+      run: docker tag ghcr.io/boavizta/boaviztapi-doc:latest ghcr.io/boavizta/boaviztapi-doc:$(poetry version -s)
 
     - name: Push doc images
       run: docker push -a ghcr.io/boavizta/boaviztapi-doc
