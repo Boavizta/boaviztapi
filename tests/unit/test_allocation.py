@@ -1,14 +1,14 @@
+from boaviztapi.model.impact import Impact
 from boaviztapi.model.usage import ModelUsage
-from boaviztapi.service.allocation import allocate, Allocation
+from boaviztapi.service.allocation import allocate
 
 
 def test_allocate_():
-    usage = ModelUsage()
-    usage.use_time.value = 1000
-    usage.life_time.value = 2000
+    usage = ModelUsage(archetype={})
+    usage.hours_life_time.value = 2000
 
-    assert allocate(100, Allocation.TOTAL, usage) == 100
-    assert allocate(100, Allocation.LINEAR, usage) == 50
+    assert allocate(Impact(value=100, min=100, max=100), 2000, usage.hours_life_time) == (100, 100, 100)
+    assert allocate(Impact(value=100, min=100, max=100), 1000, usage.hours_life_time) == (50, 50, 50)
 
-    assert allocate(0, Allocation.LINEAR, usage) == 0
-    assert allocate(0, Allocation.TOTAL, usage) == 0
+    assert allocate(Impact(), 1000, usage.hours_life_time) == (0, 0, 0)
+    assert allocate(Impact(), 2000, usage.hours_life_time) == (0, 0, 0)

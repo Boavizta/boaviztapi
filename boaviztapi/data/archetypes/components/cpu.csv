@@ -1,0 +1,2 @@
+id,name,units,model_range,manufacturer,family,core_units,tdp,die_size_per_core,USAGE.time_workload,USAGE.use_time_ratio,USAGE.hours_life_time,CONSUMPTION_PROFILE.params
+DEFAULT,,"1;1;1",,,,24;1;64,,,50;0;100,1,26280,"{'a': 171.2, 'b': 0.0354, 'c': 36.89, 'd': -10.13}"

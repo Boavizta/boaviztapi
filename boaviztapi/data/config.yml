@@ -1,0 +1,38 @@
+default_location: "EEE"
+default_usage: "DEFAULT"
+default_cpu: "DEFAULT"
+default_ram: "DEFAULT"
+default_ssd: "DEFAULT"
+default_hdd: "DEFAULT"
+default_power_supply: "DEFAULT"
+default_case: "rack"
+default_assembly: "DEFAULT"
+default_motherboard: "DEFAULT"
+
+default_server: "compute_medium"
+
+default_cloud: "a1.4xlarge"
+default_cloud_provider: "aws"
+
+default_laptop: "laptop-pro"
+default_desktop: "desktop-pro"
+default_smartphone: "smartphone-default"
+default_tablet: "tablet-default"
+default_television: "tv-pro"
+default_monitor: "monitor-default"
+default_smartwatch: "smartwatch-default"
+default_box: "box-default"
+default_usb_stick: "usb-stick-default"
+default_external_ssd: "external-ssd-default"
+default_external_hdd: "hdd-default"
+default_iot_device: "iot-device-default"
+
+default_criteria: ["gwp", "adp", "pe"]
+
+default_duration:
+
+uncertainty: 10
+max_sig_fig: 4
+min_sig_fig: 1
+
+cpu_name_fuzzymatch_threshold: 80

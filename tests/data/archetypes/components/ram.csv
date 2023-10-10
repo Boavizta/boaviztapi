@@ -1,0 +1,3 @@
+id,name,units,process,manufacturer,capacity,density,USAGE.time_workload,USAGE.use_time_ratio,USAGE.hours_life_time
+DEFAULT,,"1;1;1",,,"32;1;100",0.625;0.1;1,"50;0;100",1,26280
+,,,,,,,
