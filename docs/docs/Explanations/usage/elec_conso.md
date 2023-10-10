@@ -74,9 +74,9 @@ With the following consumption profile :
 
 Power consumptions : 
 
-| load_percentage | 100% | 50% | 10% | idle | off |
-|-----------------|------|-----|-----|------|-----|
-| Power (W)       | 260  | 182 | 77  | 36   | 0   |
+| load_percentage | 100% | 50%  | 10%   | idle | off   |
+|-----------------|------|------|-------|------|-------|
+| Power (W)       | 100  | 70   | 24    | 2    | 0     |
 
 `avg_power` is measured as follows :
 

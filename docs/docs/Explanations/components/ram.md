@@ -2,12 +2,13 @@
 
 ## Characteristics
 
+<<<<<<< HEAD
 | Name             | Unit   | Default value (default;min;max)  | Description                           | Example |
 |------------------|--------|----------------------------------|---------------------------------------|---------|
 | units            | None   | 1                                | RAM strip quantity                    | 2       |
 | usage            | None   | See Usage                        | See usage                             | ..      |
-| capacity         | Go     | 32;1;128                         | Capacity of a ram strip               | 12      |
-| density          | cm2/Go | (avg;min;max) in our dataset     | Size of the die per Go of a ram strip | 1.25    |
+| capacity         | GB     | 32;1;128                         | Capacity of a ram strip               | 12      |
+| density          | GB/cm2 | (avg;min;max) in our dataset     | Size of the die per Go of a ram strip | 1.25    |
 | process          | nm     | None                             | Engraving process (Architecture)      | 25      |
 | manufacturer     | None   | None                             | Name of the ram manufacturer          | Samsung |
 | model            | None   | None                             | ..                                    | ..      |
