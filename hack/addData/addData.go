@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/csv"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -74,9 +75,11 @@ type BoaviztaAWSData struct {
 func main() {
 	vantageExportPath := "vantage-export.csv"
 	awsFilePath := "../../boaviztapi/data/archetypes/cloud/aws.csv"
+	cpuSpecFilePath := "../../boaviztapi/data/crowdsourcing/cpu_specs.csv"
 
 	vantageExport := loadVantageExport(vantageExportPath)
 	existingData := loadExistingData(awsFilePath)
+	cpuSpecData := loadCpuSpecData(cpuSpecFilePath)
 
 	var missingInstances []VantageExport
 
@@ -108,13 +111,13 @@ func main() {
 			Year:                       getYear(instance),
 			Vcpu:                       getVcpu(instance),
 			PlatformVcpu:               getPlatformVcpu(instance, vantageExport),
-			CPUUnits:                   getCPUUnits(instance),
-			CPUCoreUnits:               getCPUCoreUnits(instance),
+			CPUUnits:                   getCPUUnits(instance, vantageExport),
+			CPUCoreUnits:               getCPUCoreUnits(instance, cpuSpecData),
 			CPUName:                    getCPUName(instance),
 			CPUManufacturer:            getCPUManufacturer(instance),
 			CPUModelRange:              getCPUModelRange(instance),
 			CPUFamily:                  getCPUFamily(instance),
-			CPUTdp:                     getCPUTdp(instance),
+			CPUTdp:                     getCPUTdp(instance, cpuSpecData),
 			CPUManufactureDate:         getCPUManufactureDate(instance),
 			InstanceRamCapacity:        getInstanceRamCapacity(instance),
 			RAMCapacity:                getRAMCapacity(instance, vantageExport),
@@ -247,6 +250,37 @@ func loadExistingData(fileName string) []BoaviztaAWSData {
 			ID: record[0],
 		}
 		instances = append(instances, instance)
+	}
+
+	return instances
+}
+
+type CpuSpecData struct {
+	TDP   string
+	Cores string
+}
+
+func loadCpuSpecData(filePath string) map[string]CpuSpecData {
+	file, err := os.Open(filePath)
+	if err != nil {
+		fmt.Println("Failed to open file:", err)
+		return nil
+	}
+	defer file.Close()
+
+	r := csv.NewReader(file)
+	records, err := r.ReadAll()
+	if err != nil {
+		fmt.Println("Failed to read CSV:", err)
+		return nil
+	}
+
+	var instances map[string]CpuSpecData = map[string]CpuSpecData{}
+	for _, record := range records[1:] { // Skip the header
+		instances[record[0]] = CpuSpecData{
+			Cores: record[7],
+			TDP:   record[6],
+		}
 	}
 
 	return instances
@@ -502,14 +536,61 @@ func getPlatformVcpu(instance VantageExport, allInstances []VantageExport) strin
 	return strconv.FormatFloat(metalInstance.vCPUs, 'f', -1, 64)
 }
 
-// CPU in the platform
-func getCPUUnits(instance VantageExport) string {
-	// platform_vcpu / nb_vcpu(cpu_name)
-	return "" // TODO @JacobValdemar: Actually attempt to get this value
+func getThreadsPerCpu(cpuName string) (float64, error) {
+	var threadsPerCpu float64
+	var err error = nil
+
+	threadMap := map[string]float64{
+		"Xeon Platinum 8375C":  64,
+		"Xeon Platinum 6455B":  32,
+		"Xeon Platinum 8176M":  56, // https://en.wikichip.org/wiki/intel/xeon_platinum/8176m
+		"Xeon Platinum 8252":   24, // https://www.cpu-world.com/CPUs/Xeon/Intel-Xeon%208252C.html
+		"Xeon Platinum 8259CL": 48, // https://www.cpu-world.com/CPUs/Xeon/Intel-Xeon%208259CL.html
+		"Xeon Platinum 8275L":  48, // https://www.cpu-world.com/CPUs/Xeon/Intel-Xeon%208275CL.html
+		"Xeon Platinum 8280L":  56, // https://ark.intel.com/content/www/us/en/ark/products/192472/intel-xeon-platinum-8280l-processor-38-5m-cache-2-70-ghz.html
+		"Apple M1 chip with 8-core CPU, 8-core GPU, and 16-core Neural Engine": 8, // Just a guess
+		"Xeon E5-2670 v2": 16, // https://www.intel.com/content/www/us/en/products/sku/64595/intel-xeon-processor-e52670-20m-cache-2-60-ghz-8-00-gts-intel-qpi/specifications.html
+		"Graviton2":       64, // https://en.wikipedia.org/wiki/AWS_Graviton#Graviton2
+		"Graviton3":       64, // https://en.wikipedia.org/wiki/AWS_Graviton#Graviton3
+		"EPYC 9R14":       96, // Just a guess
+		"EPYC 7R13":       96, // https://gadgetversus.com/processor/amd-epyc-7r13-specs/
+		"EPYC 7R32":       96, // https://www.cpubenchmark.net/cpu.php?cpu=AMD+EPYC+7R32&id=3894
+	}
+
+	threadsPerCpu, success := threadMap[cpuName]
+	if !success {
+		return 0, errors.New("cpuName didn't mactch any known thread number")
+	}
+
+	return threadsPerCpu, err
 }
 
-func getCPUCoreUnits(instance VantageExport) string {
-	return ""
+// CPU in the platform
+func getCPUUnits(instance VantageExport, allInstances []VantageExport) string {
+	// platform_vcpu / threads_per_cpu
+	cpuName := getCPUName(instance)
+	threadsPerCpu, err := getThreadsPerCpu(cpuName)
+	if err != nil {
+		log.Fatalf("%s: %v", cpuName, err)
+		return ""
+	}
+	platformVCPUstring := getPlatformVcpu(instance, allInstances)
+	platformVCPU, err := strconv.ParseFloat(platformVCPUstring, 64)
+	if err != nil {
+		log.Fatalf("getCPUUnits: %v", err)
+	}
+
+	CPUUnits := platformVCPU / threadsPerCpu
+	return strconv.FormatFloat(CPUUnits, 'f', -1, 64)
+}
+
+func getCPUCoreUnits(instance VantageExport, cpuSpecData map[string]CpuSpecData) string {
+	CPUName := getCPUName(instance)
+	CPUManufacturer := getCPUManufacturer(instance)
+	name := fmt.Sprintf("%s %s", CPUManufacturer, CPUName)
+	cpuSpec := cpuSpecData[name]
+	CPUCoreUnits := cpuSpec.Cores
+	return CPUCoreUnits
 }
 
 // returns: name, manufacturer, model_range, family
@@ -530,19 +611,26 @@ func getCPUNaming(instance VantageExport) (string, string, string, string) {
 	} else if instance.PhysicalProcessor == "AWS Graviton3 Processor" {
 		return "Graviton3", "Annapurna Labs", "Graviton3", "Graviton3"
 	} else if strings.HasPrefix(instance.PhysicalProcessor, "AMD EPYC") {
-		return parts[1] + " " + parts[2], "amd", "epyc", "naple"
+		return parts[1] + " " + parts[2], "AMD", "epyc", "naple"
 	} else if instance.PhysicalProcessor == "Intel Xeon Family" {
-		return "Xeon", "intel", "xeon", ""
-	} else if strings.HasPrefix(instance.PhysicalProcessor, "Intel Xeon E") {
-		return instance.PhysicalProcessor, "intel", parts[1] + " " + parts[2], insideParentheses
+		return "Xeon", "Intel", "xeon", ""
 	} else if strings.HasPrefix(instance.PhysicalProcessor, "Intel Xeon Platinum") {
-		return parts[1] + " " + parts[2] + " " + parts[3], "intel", "xeon platinum", insideParentheses
+		return parts[1] + " " + parts[2] + " " + parts[3], "Intel", "xeon platinum", insideParentheses
 	} else if instance.PhysicalProcessor == "Intel Xeon 8375C (Ice Lake)" {
-		return "Xeon Platinum 8375C", "intel", "xeon platinum", "Ice Lake"
-	} else if strings.HasPrefix(instance.PhysicalProcessor, "Intel Xeon Scalable") {
-		return "Xeon", "intel", "xeon scalable", insideParentheses
+		return "Xeon Platinum 8375C", "Intel", "xeon platinum", "Ice Lake"
+	} else if instance.PhysicalProcessor == "Intel Xeon Scalable (Icelake)" {
+		return "Xeon Platinum 8375C", "Intel", "xeon platinum", "Ice Lake"
+	} else if instance.PhysicalProcessor == "Intel Xeon Scalable (Sapphire Rapids)" {
+		return "Xeon Platinum 6455B", "Intel", "xeon platinum", "Sapphire Rapids"
+	} else if instance.PhysicalProcessor == "Intel Xeon Scalable (Skylake)" {
+		return "Xeon Platinum 8176M", "Intel", "xeon platinum", "Skylake"
 	} else if instance.PhysicalProcessor == "Intel Skylake E5 2686 v5" {
-		return "Skylake E5 2686 v5", "intel", "xeon scalable", "Skylake"
+		return "Xeon E5-2686 v5", "Intel", "xeon e5", "Skylake"
+	} else if strings.HasPrefix(instance.PhysicalProcessor, "Intel Xeon E5-") {
+		parts2 := strings.Split(parts[2], "-")
+		return parts[1] + " " + parts[2] + " " + parts[3], "Intel", parts[1] + " " + parts2[0], insideParentheses
+	} else if strings.HasPrefix(instance.PhysicalProcessor, "Intel Xeon E") {
+		return instance.PhysicalProcessor, "Intel", parts[1] + " " + parts[2], insideParentheses
 	} else {
 		return instance.PhysicalProcessor, "", "", "" // If nothing else
 	}
@@ -568,8 +656,13 @@ func getCPUFamily(instance VantageExport) string {
 	return family
 }
 
-func getCPUTdp(instance VantageExport) string {
-	return ""
+func getCPUTdp(instance VantageExport, cpuSpecData map[string]CpuSpecData) string {
+	CPUName := getCPUName(instance)
+	CPUManufacturer := getCPUManufacturer(instance)
+	name := fmt.Sprintf("%s %s", CPUManufacturer, CPUName)
+	cpuSpec := cpuSpecData[name]
+	TDP := cpuSpec.TDP
+	return TDP
 }
 
 func getCPUManufactureDate(instance VantageExport) string {
