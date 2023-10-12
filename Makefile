@@ -40,3 +40,5 @@ distribute:
 docker-build:
 		docker build -t $(DOCKER_NAME) .  --build-arg VERSION=${CURRENT_VERSION}
 
+docker-build-local:
+		docker build -t $(DOCKER_NAME) .  --build-arg VERSION=$(shell date "+%H.%M-%m-%d-%y")
