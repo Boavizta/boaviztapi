@@ -114,6 +114,12 @@ Run docker image
 docker run -p 5000:5000/tcp boavizta/boaviztapi:latest
 ```
 
+#### Alternative (if you don't have Python or Poetry)
+
+```sh
+make docker-build-independent
+```
+
 ### Deploy to AWS as serverless application
 
 ⚠ This is currently not working , see  [Deployment as serverless application does not work · Issue #153 · Boavizta/boaviztapi](https://github.com/Boavizta/boaviztapi/issues/153)
