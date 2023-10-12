@@ -1,4 +1,5 @@
 CURRENT_VERSION := $(shell poetry version -s)
+TIMESTAMP := $(shell date "+%H.%M-%m-%d-%y")
 DOCKER_NAME := boavizta/boaviztapi:${CURRENT_VERSION}
 SEMVERS := major minor patch
 
@@ -40,5 +41,5 @@ distribute:
 docker-build:
 		docker build -t $(DOCKER_NAME) .  --build-arg VERSION=${CURRENT_VERSION}
 
-docker-build-local:
-		docker build -t $(DOCKER_NAME) .  --build-arg VERSION=$(shell date "+%H.%M-%m-%d-%y")
+docker-build-independent:
+		docker build -t boavizta/boaviztapi:${TIMESTAMP} -f Dockerfile.independent .  --build-arg VERSION=${TIMESTAMP}
