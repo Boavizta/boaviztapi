@@ -1,4 +1,4 @@
-CURRENT_VERSION := $(shell poetry version -s)
+CURRENT_VERSION := $(shell poetry version -s || sed -n '3s/.*version = "\(.*\)"/\1/p' pyproject.toml)
 TIMESTAMP := $(shell date "+%H.%M-%m-%d-%y")
 DOCKER_NAME := boavizta/boaviztapi:${CURRENT_VERSION}
 SEMVERS := major minor patch
@@ -41,5 +41,5 @@ distribute:
 docker-build:
 		docker build -t $(DOCKER_NAME) .  --build-arg VERSION=${CURRENT_VERSION}
 
-docker-build-independent:
-		docker build -t boavizta/boaviztapi:${TIMESTAMP} -f Dockerfile.independent .  --build-arg VERSION=${TIMESTAMP}
+docker-build-development:
+		docker build -t boavizta/boaviztapi:${TIMESTAMP} .  --build-arg VERSION=${TIMESTAMP}
