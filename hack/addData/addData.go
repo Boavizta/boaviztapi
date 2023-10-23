@@ -544,9 +544,9 @@ func getThreadsPerCpu(cpuName string) (float64, error) {
 		"Xeon Platinum 8375C":  64,
 		"Xeon Platinum 6455B":  32,
 		"Xeon Platinum 8176M":  56, // https://en.wikichip.org/wiki/intel/xeon_platinum/8176m
-		"Xeon Platinum 8252":   24, // https://www.cpu-world.com/CPUs/Xeon/Intel-Xeon%208252C.html
+		"Xeon Platinum 8252C":  24, // https://www.cpu-world.com/CPUs/Xeon/Intel-Xeon%208252C.html
 		"Xeon Platinum 8259CL": 48, // https://www.cpu-world.com/CPUs/Xeon/Intel-Xeon%208259CL.html
-		"Xeon Platinum 8275L":  48, // https://www.cpu-world.com/CPUs/Xeon/Intel-Xeon%208275CL.html
+		"Xeon Platinum 8275CL": 48, // https://www.cpu-world.com/CPUs/Xeon/Intel-Xeon%208275CL.html
 		"Xeon Platinum 8280L":  56, // https://ark.intel.com/content/www/us/en/ark/products/192472/intel-xeon-platinum-8280l-processor-38-5m-cache-2-70-ghz.html
 		"Apple M1 chip with 8-core CPU, 8-core GPU, and 16-core Neural Engine": 8, // Just a guess
 		"Xeon E5-2670 v2": 16, // https://www.intel.com/content/www/us/en/products/sku/64595/intel-xeon-processor-e52670-20m-cache-2-60-ghz-8-00-gts-intel-qpi/specifications.html
@@ -569,6 +569,9 @@ func getThreadsPerCpu(cpuName string) (float64, error) {
 func getCPUUnits(instance VantageExport, allInstances []VantageExport) string {
 	// platform_vcpu / threads_per_cpu
 	cpuName := getCPUName(instance)
+	if cpuName == "" {
+		return ""
+	}
 	threadsPerCpu, err := getThreadsPerCpu(cpuName)
 	if err != nil {
 		log.Fatalf("%s: %v", cpuName, err)
@@ -621,7 +624,7 @@ func getCPUNaming(instance VantageExport) (string, string, string, string) {
 	} else if instance.PhysicalProcessor == "Intel Xeon Scalable (Icelake)" {
 		return "Xeon Platinum 8375C", "Intel", "xeon platinum", "Ice Lake"
 	} else if instance.PhysicalProcessor == "Intel Xeon Scalable (Sapphire Rapids)" {
-		return "Xeon Platinum 6455B", "Intel", "xeon platinum", "Sapphire Rapids"
+		return "", "Intel", "xeon platinum", "Sapphire Rapids"
 	} else if instance.PhysicalProcessor == "Intel Xeon Scalable (Skylake)" {
 		return "Xeon Platinum 8176M", "Intel", "xeon platinum", "Skylake"
 	} else if instance.PhysicalProcessor == "Intel Skylake E5 2686 v5" {
@@ -638,6 +641,14 @@ func getCPUNaming(instance VantageExport) (string, string, string, string) {
 
 func getCPUName(instance VantageExport) string {
 	name, _, _, _ := getCPUNaming(instance)
+
+	// Fix bad info
+	if name == "Xeon Platinum 8252" {
+		name = "Xeon Platinum 8252C"
+	} else if name == "Xeon Platinum 8275L" {
+		name = "Xeon Platinum 8275CL"
+	}
+
 	return name
 }
 
