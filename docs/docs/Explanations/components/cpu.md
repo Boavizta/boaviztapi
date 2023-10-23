@@ -15,7 +15,6 @@
 | name              | None | None                            | Complete commercial name of the CPU           | Intel Core i7-1065 |
 | tdp               | Watt | None                            | Thermal Design Point                          | 250                |
 
-
 ## Complete
 
 **The following [completion](../auto_complete.md) strategies can be used**

@@ -11,6 +11,8 @@ See the [documentation](https://doc.api.boavizta.org/) for API usage and methodo
 
 [![Python tests](https://github.com/Boavizta/boaviztapi/actions/workflows/test.yml/badge.svg)](https://github.com/Boavizta/boaviztapi/actions/workflows/test.yml)
 
+💬 [Join us on our public chat](https://chat.boavizta.org/signup_user_complete/?id=97a1cpe35by49jdc66ej7ktrjc)
+
 ## :dart: Objective
 
 Boavizta aims to enhance the assessment of environmental impacts induced by ICTs in organizations by providing widespread access to our work in an automated and efficient manner.
@@ -110,6 +112,12 @@ Run docker image
 
 ```sh
 docker run -p 5000:5000/tcp boavizta/boaviztapi:latest
+```
+
+#### Alternative (if you don't have Python or Poetry)
+
+```sh
+make docker-build-independent
 ```
 
 ### Deploy to AWS as serverless application
