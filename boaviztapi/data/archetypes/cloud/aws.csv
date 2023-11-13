@@ -719,8 +719,8 @@ c7i.24xlarge,AWS,rack,2023,96,192,,,,Intel,xeon platinum,Sapphire Rapids,,,192,3
 c7i.48xlarge,AWS,rack,2023,192,192,,,,Intel,xeon platinum,Sapphire Rapids,,,384,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7i.xlarge,AWS,rack,2023,4,192,,,,Intel,xeon platinum,Sapphire Rapids,,,8,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 dl1.24xlarge,AWS,rack,2019,96,96,2,24.0,Xeon Platinum 8275CL,Intel,xeon platinum,,240.0,,768,32,24,4,1000,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-g4ad.2xlarge,AWS,rack,2020,8,96,0.6666666666666666,48.0,EPYC 7R32,AMD,epyc,naple,280.0,,32,32,8,1,300,0,0,AMD Radeon Pro V520,1,,8,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-g4ad.xlarge,AWS,rack,2020,4,96,0.6666666666666666,48.0,EPYC 7R32,AMD,epyc,naple,280.0,,16,32,8,1,150,0,0,AMD Radeon Pro V520,1,,8,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+g4ad.2xlarge,AWS,rack,2020,8,96,1,48.0,EPYC 7R32,AMD,epyc,naple,280.0,,32,32,8,1,300,0,0,AMD Radeon Pro V520,1,,8,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+g4ad.xlarge,AWS,rack,2020,4,96,1,48.0,EPYC 7R32,AMD,epyc,naple,280.0,,16,32,8,1,150,0,0,AMD Radeon Pro V520,1,,8,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 g5.2xlarge,AWS,rack,2020,8,192,2,48.0,EPYC 7R32,AMD,epyc,naple,280.0,,32,32,24,1,450,0,0,NVIDIA A10G,1,,24,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 g5.4xlarge,AWS,rack,2020,16,192,2,48.0,EPYC 7R32,AMD,epyc,naple,280.0,,64,32,24,1,600,0,0,NVIDIA A10G,1,,24,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 g5.8xlarge,AWS,rack,2020,32,192,2,48.0,EPYC 7R32,AMD,epyc,naple,280.0,,128,32,24,1,900,0,0,NVIDIA A10G,1,,24,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
@@ -829,21 +829,21 @@ m7gd.2xlarge,AWS,rack,2023,8,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Gravit
 m7gd.8xlarge,AWS,rack,2023,32,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,100.0,,128,32,8,1,1900,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 m7gd.16xlarge,AWS,rack,2023,64,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,100.0,,256,32,8,2,1900,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 m7gd.xlarge,AWS,rack,2023,4,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,100.0,,16,32,8,1,237,0,0,,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i.large,AWS,rack,2023,2,192,,,,Intel,xeon platinum,Sapphire Rapids,,,8,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,96,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i.2xlarge,AWS,rack,2023,8,192,,,,Intel,xeon platinum,Sapphire Rapids,,,32,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i.4xlarge,AWS,rack,2023,16,192,,,,Intel,xeon platinum,Sapphire Rapids,,,64,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i.8xlarge,AWS,rack,2023,32,192,,,,Intel,xeon platinum,Sapphire Rapids,,,128,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i.12xlarge,AWS,rack,2023,48,192,,,,Intel,xeon platinum,Sapphire Rapids,,,192,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i.16xlarge,AWS,rack,2023,64,192,,,,Intel,xeon platinum,Sapphire Rapids,,,256,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i.24xlarge,AWS,rack,2023,96,192,,,,Intel,xeon platinum,Sapphire Rapids,,,384,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i.48xlarge,AWS,rack,2023,192,192,,,,Intel,xeon platinum,Sapphire Rapids,,,768,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i.xlarge,AWS,rack,2023,4,192,,,,Intel,xeon platinum,Sapphire Rapids,,,16,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i-flex.2xlarge,AWS,rack,2023,8,192,,,,Intel,xeon platinum,Sapphire Rapids,,,32,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i-flex.8xlarge,AWS,rack,2023,32,192,,,,Intel,xeon platinum,Sapphire Rapids,,,128,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i-flex.xlarge,AWS,rack,2023,4,192,,,,Intel,xeon platinum,Sapphire Rapids,,,16,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i-flex.large,AWS,rack,2023,2,192,,,,Intel,xeon platinum,Sapphire Rapids,,,8,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7i-flex.4xlarge,AWS,rack,2023,16,192,,,,Intel,xeon platinum,Sapphire Rapids,,,64,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-mac2.metal,AWS,rack,2021,12,12,1.5,,"Apple M1 chip with 8-core CPU, 8-core GPU, and 16-core Neural Engine",,,,,,16,16,1,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i.large,AWS,rack,2023,2,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,8,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,96,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i.2xlarge,AWS,rack,2023,8,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,32,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i.4xlarge,AWS,rack,2023,16,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,64,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i.8xlarge,AWS,rack,2023,32,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,128,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i.12xlarge,AWS,rack,2023,48,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,192,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i.16xlarge,AWS,rack,2023,64,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,256,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i.24xlarge,AWS,rack,2023,96,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,384,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i.48xlarge,AWS,rack,2023,192,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,768,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i.xlarge,AWS,rack,2023,4,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,16,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i-flex.2xlarge,AWS,rack,2023,8,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,32,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i-flex.8xlarge,AWS,rack,2023,32,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,128,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i-flex.xlarge,AWS,rack,2023,4,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,16,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i-flex.large,AWS,rack,2023,2,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,8,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7i-flex.4xlarge,AWS,rack,2023,16,192,2,,,Intel,xeon platinum,Sapphire Rapids,,,64,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+mac2.metal,AWS,rack,2021,12,12,1,,"Apple M1 chip with 8-core CPU, 8-core GPU, and 16-core Neural Engine",,,,,,16,16,1,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 p4de.24xlarge,AWS,rack,2019,96,96,2,24.0,Xeon Platinum 8275CL,Intel,xeon platinum,,240.0,,1152,32,36,8,1000,0,0,NVIDIA A100,8,,80,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 p5.48xlarge,AWS,rack,2023,192,192,2,48.0,EPYC 7R13,AMD,epyc,naple,225.0,,2048,32,64,8,3800,0,0,NVIDIA H100,8,,80,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 r6a.large,AWS,rack,2023,2,192,2,48.0,EPYC 7R13,AMD,epyc,naple,225.0,,16,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,96,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
@@ -926,21 +926,21 @@ r7gd.12xlarge,AWS,rack,2023,48,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Grav
 r7gd.16xlarge,AWS,rack,2023,64,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,100.0,,512,32,16,2,1900,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 r7gd.medium,AWS,rack,2023,1,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,100.0,,8,32,16,1,59,0,0,,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 r7gd.xlarge,AWS,rack,2023,4,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,100.0,,32,32,16,1,237,0,0,,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7iz.large,AWS,rack,2023,2,128,,,,Intel,xeon platinum,Sapphire Rapids,,,16,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7iz.2xlarge,AWS,rack,2023,8,128,,,,Intel,xeon platinum,Sapphire Rapids,,,64,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7iz.4xlarge,AWS,rack,2023,16,128,,,,Intel,xeon platinum,Sapphire Rapids,,,128,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7iz.8xlarge,AWS,rack,2023,32,128,,,,Intel,xeon platinum,Sapphire Rapids,,,256,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7iz.12xlarge,AWS,rack,2023,48,128,,,,Intel,xeon platinum,Sapphire Rapids,,,384,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,2.6666666666666665,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7iz.16xlarge,AWS,rack,2023,64,128,,,,Intel,xeon platinum,Sapphire Rapids,,,512,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7iz.32xlarge,AWS,rack,2023,128,128,,,,Intel,xeon platinum,Sapphire Rapids,,,1024,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7iz.xlarge,AWS,rack,2023,4,128,,,,Intel,xeon platinum,Sapphire Rapids,,,32,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7iz.large,AWS,rack,2023,2,128,2,,,Intel,xeon platinum,Sapphire Rapids,,,16,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7iz.2xlarge,AWS,rack,2023,8,128,2,,,Intel,xeon platinum,Sapphire Rapids,,,64,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7iz.4xlarge,AWS,rack,2023,16,128,2,,,Intel,xeon platinum,Sapphire Rapids,,,128,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7iz.8xlarge,AWS,rack,2023,32,128,2,,,Intel,xeon platinum,Sapphire Rapids,,,256,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7iz.12xlarge,AWS,rack,2023,48,128,2,,,Intel,xeon platinum,Sapphire Rapids,,,384,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,2.6666666666666665,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7iz.16xlarge,AWS,rack,2023,64,128,2,,,Intel,xeon platinum,Sapphire Rapids,,,512,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7iz.32xlarge,AWS,rack,2023,128,128,2,,,Intel,xeon platinum,Sapphire Rapids,,,1024,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7iz.xlarge,AWS,rack,2023,4,128,2,,,Intel,xeon platinum,Sapphire Rapids,,,32,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 trn1.2xlarge,AWS,rack,2022,8,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinum,Ice Lake,300.0,,32,32,16,1,474,0,0,AWS Inferentia,1,,32,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 trn1.32xlarge,AWS,rack,2022,128,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinum,Ice Lake,300.0,,512,32,16,4,1900,0,0,AWS Inferentia,16,,32,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 trn1n.32xlarge,AWS,rack,2022,128,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinum,Ice Lake,300.0,,512,32,16,4,1900,0,0,AWS Inferentia,16,,32,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 u-12tb1.112xlarge,AWS,rack,2021,448,448,8,28.0,Xeon Platinum 8176M,Intel,xeon platinum,Skylake,165.0,,12288,32,384,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 u-18tb1.112xlarge,AWS,rack,2021,448,448,8,,Xeon Platinum 8280L,Intel,xeon platinum,Cascade Lake,,,18432,32,576,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 u-24tb1.112xlarge,AWS,rack,2021,448,448,8,,Xeon Platinum 8280L,Intel,xeon platinum,Cascade Lake,,,24576,32,768,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-u-3tb1.56xlarge,AWS,rack,2021,224,448,4,28.0,Xeon Platinum 8176M,Intel,xeon platinum,Skylake,165.0,,3072,32,96,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+u-3tb1.56xlarge,AWS,rack,2021,224,448,8,28.0,Xeon Platinum 8176M,Intel,xeon platinum,Skylake,165.0,,3072,32,96,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 u-6tb1.56xlarge,AWS,rack,2021,224,448,8,28.0,Xeon Platinum 8176M,Intel,xeon platinum,Skylake,165.0,,6144,32,192,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 u-6tb1.112xlarge,AWS,rack,2021,448,448,8,28.0,Xeon Platinum 8176M,Intel,xeon platinum,Skylake,165.0,,6144,32,192,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 u-9tb1.112xlarge,AWS,rack,2021,448,448,8,28.0,Xeon Platinum 8176M,Intel,xeon platinum,Skylake,165.0,,9216,32,288,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
