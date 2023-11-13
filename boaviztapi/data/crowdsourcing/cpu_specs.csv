@@ -111,7 +111,7 @@ AMD EPYC 9554P,Genoa,EPYC (Zen 4 (Genoa)),TSMC,2022-11-10,3.1 GHz,360.0,64.0,"52
 AMD EPYC 9634,Genoa,EPYC (Zen 4 (Genoa)),TSMC,2022-11-10,2.25 GHz,290.0,84.0,"78,840 million",5.0,12x 72 mm²,397 mm²,6 nm,1261.0,io_die_size (397 mm²) + die_size (12x 72 mm²),AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-9634.c2932
 AMD EPYC 9654,Genoa,EPYC (Zen 4 (Genoa)),TSMC,2022-11-10,2.4 GHz,360.0,96.0,"78,840 million",5.0,12x 72 mm²,397 mm²,6 nm,1261.0,io_die_size (397 mm²) + die_size (12x 72 mm²),AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-9654.c2933
 AMD EPYC 9654P,Genoa,EPYC (Zen 4 (Genoa)),TSMC,2022-11-10,2.4 GHz,360.0,96.0,"78,840 million",5.0,12x 72 mm²,397 mm²,6 nm,1261.0,io_die_size (397 mm²) + die_size (12x 72 mm²),AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-9654p.c2934
-AMD EPYC 9R14,Genoa,EPYC (Zen 4 (Genoa)),TSMC,,3.7 GHz,,96.0,,,,,,,,,,
+AMD EPYC 9R14,Genoa,EPYC (Zen 4 (Genoa)),TSMC,,3.7 GHz,280.0,48,,,,,,,,,,
 AMD EPYC Embedded 3101,Snowy Owl,EPYC Embedded (Zen (Snowy Owl)),GlobalFoundries,2018-02-21,2.1 GHz,35.0,4.0,"4,800 million",14.0,213 mm²,,,213.0,io_die_size () + die_size (213 mm²),AMD,EPYC Embedded,https://www.techpowerup.com/cpu-specs/epyc-embedded-3101.c3199
 AMD EPYC Embedded 3151,Snowy Owl,EPYC Embedded (Zen (Snowy Owl)),GlobalFoundries,2018-02-21,2.7 GHz,45.0,4.0,"4,800 million",14.0,213 mm²,,,213.0,io_die_size () + die_size (213 mm²),AMD,EPYC Embedded,https://www.techpowerup.com/cpu-specs/epyc-embedded-3151.c3200
 AMD EPYC Embedded 3201,Snowy Owl,EPYC Embedded (Zen (Snowy Owl)),GlobalFoundries,2018-02-21,1500 MHz,30.0,8.0,"4,800 million",14.0,213 mm²,,,213.0,io_die_size () + die_size (213 mm²),AMD,EPYC Embedded,https://www.techpowerup.com/cpu-specs/epyc-embedded-3201.c3201

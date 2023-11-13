@@ -552,7 +552,7 @@ func getThreadsPerCpu(cpuName string) (float64, error) {
 		"Xeon E5-2670 v2": 16, // https://www.intel.com/content/www/us/en/products/sku/64595/intel-xeon-processor-e52670-20m-cache-2-60-ghz-8-00-gts-intel-qpi/specifications.html
 		"Graviton2":       64, // https://en.wikipedia.org/wiki/AWS_Graviton#Graviton2
 		"Graviton3":       64, // https://en.wikipedia.org/wiki/AWS_Graviton#Graviton3
-		"EPYC 9R14":       96, // Just a guess
+		"EPYC 9R14":       48, // Just a guess
 		"EPYC 7R13":       96, // https://gadgetversus.com/processor/amd-epyc-7r13-specs/
 		"EPYC 7R32":       96, // https://www.cpubenchmark.net/cpu.php?cpu=AMD+EPYC+7R32&id=3894
 	}
