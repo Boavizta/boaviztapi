@@ -702,7 +702,7 @@ c7gd.12xlarge,AWS,rack,2023,48,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Grav
 c7gd.16xlarge,AWS,rack,2023,64,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,128,32,4,2,1900,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7gd.medium,AWS,rack,2023,1,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,2,32,4,1,59,0,0,,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7gd.xlarge,AWS,rack,2023,4,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,8,32,4,1,237,0,0,,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7gn.2xlarge,AWS,rack,2023,8,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,16,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7gn.2xlarge,AWS,rack,2023,8,64,1,64.0,Graviton3E,Annapurna Labs,Graviton3E,Graviton3,220,,16,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7gn.4xlarge,AWS,rack,2023,16,64,1,64.0,Graviton3E,Annapurna Labs,Graviton3E,Graviton3,250,,32,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7gn.8xlarge,AWS,rack,2023,32,64,1,64.0,Graviton3E,Annapurna Labs,Graviton3E,Graviton3,250,,64,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7gn.12xlarge,AWS,rack,2023,48,64,1,64.0,Graviton3E,Annapurna Labs,Graviton3E,Graviton3,250,,96,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,1.3333333333333333,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
