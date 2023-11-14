@@ -2,9 +2,11 @@
     <img src="https://github.com/Boavizta/boaviztapi/blob/main/boaviztapi_color.svg" height="100" alt="BoaviztAPI">
 </p>
 
-</br>
+<h3 align="center">
+   An API to access <a href="https://boavizta.cmakers.io/">Boavizta's</a> methodologies and data</a>
+</h3>
 
-An API to access [Boavizta's](https://boavizta.cmakers.io/) methodologies and impacts data [reference data](https://github.com/Boavizta/environmental-footprint-data).
+---
 
 See the [documentation](https://doc.api.boavizta.org/) for API usage and methodology.
 
