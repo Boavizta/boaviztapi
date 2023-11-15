@@ -38,7 +38,7 @@ The system follows a bottom-up approach in its development, organized into layer
 
 ## Run a local instance
 
-## :whale: Run API using docker
+### :whale: Run API using docker
 
 ```bash
 $ docker run -p 5000:5000 ghcr.io/boavizta/boaviztapi:latest
@@ -46,7 +46,7 @@ $ docker run -p 5000:5000 ghcr.io/boavizta/boaviztapi:latest
 
 Access API at http://localhost:5000
 
-## Install using pip package
+### Install using pip package
 
 ```bash
 $ pip3 install boaviztapi
