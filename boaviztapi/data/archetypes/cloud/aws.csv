@@ -673,18 +673,18 @@ c6in.24xlarge,AWS,rack,2022,96,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinu
 c6in.32xlarge,AWS,rack,2022,128,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinum,Ice Lake,300.0,,256,32,8,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c6in.metal,AWS,rack,2022,128,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinum,Ice Lake,300.0,,256,32,8,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c6in.xlarge,AWS,rack,2022,4,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinum,Ice Lake,300.0,,8,32,8,0,0,0,0,,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7a.large,AWS,rack,2023,2,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,4,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,96,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7a.2xlarge,AWS,rack,2023,8,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,16,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7a.4xlarge,AWS,rack,2023,16,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,32,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7a.8xlarge,AWS,rack,2023,32,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,64,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7a.12xlarge,AWS,rack,2023,48,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,96,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7a.16xlarge,AWS,rack,2023,64,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,128,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7a.24xlarge,AWS,rack,2023,96,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,192,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7a.32xlarge,AWS,rack,2023,128,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,256,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,1.5,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7a.48xlarge,AWS,rack,2023,192,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,384,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7a.medium,AWS,rack,2023,1,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,2,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,192,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7a.metal-48xl,AWS,rack,2023,192,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,384,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7a.xlarge,AWS,rack,2023,4,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,8,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7a.large,AWS,rack,2023,2,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,4,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,96,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7a.2xlarge,AWS,rack,2023,8,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,16,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7a.4xlarge,AWS,rack,2023,16,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,32,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7a.8xlarge,AWS,rack,2023,32,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,64,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7a.12xlarge,AWS,rack,2023,48,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,96,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7a.16xlarge,AWS,rack,2023,64,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,128,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7a.24xlarge,AWS,rack,2023,96,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,192,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7a.32xlarge,AWS,rack,2023,128,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,256,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,1.5,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7a.48xlarge,AWS,rack,2023,192,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,384,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7a.medium,AWS,rack,2023,1,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,2,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,192,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7a.metal-48xl,AWS,rack,2023,192,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,384,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7a.xlarge,AWS,rack,2023,4,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,8,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7g.2xlarge,AWS,rack,2023,8,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,16,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7g.4xlarge,AWS,rack,2023,16,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,32,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7g.8xlarge,AWS,rack,2023,32,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,64,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
@@ -702,7 +702,7 @@ c7gd.12xlarge,AWS,rack,2023,48,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Grav
 c7gd.16xlarge,AWS,rack,2023,64,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,128,32,4,2,1900,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7gd.medium,AWS,rack,2023,1,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,2,32,4,1,59,0,0,,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7gd.xlarge,AWS,rack,2023,4,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,8,32,4,1,237,0,0,,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7gn.2xlarge,AWS,rack,2023,8,64,1,64.0,Graviton3E,Annapurna Labs,Graviton3E,Graviton3,220,,16,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7gn.2xlarge,AWS,rack,2023,8,64,1,64.0,Graviton3E,Annapurna Labs,Graviton3E,Graviton3,250,,16,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7gn.4xlarge,AWS,rack,2023,16,64,1,64.0,Graviton3E,Annapurna Labs,Graviton3E,Graviton3,250,,32,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7gn.8xlarge,AWS,rack,2023,32,64,1,64.0,Graviton3E,Annapurna Labs,Graviton3E,Graviton3,250,,64,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7gn.12xlarge,AWS,rack,2023,48,64,1,64.0,Graviton3E,Annapurna Labs,Graviton3E,Graviton3,250,,96,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,1.3333333333333333,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
@@ -710,15 +710,15 @@ c7gn.16xlarge,AWS,rack,2023,64,64,1,64.0,Graviton3E,Annapurna Labs,Graviton3E,Gr
 c7gn.medium,AWS,rack,2023,1,64,1,64.0,Graviton3E,Annapurna Labs,Graviton3E,Graviton3,250,,2,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,64,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7gn.xlarge,AWS,rack,2023,4,64,1,64.0,Graviton3E,Annapurna Labs,Graviton3E,Graviton3,250,,8,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 c7gn.large,AWS,rack,2023,2,64,1,64.0,Graviton3E,Annapurna Labs,Graviton3E,Graviton3,250,,4,32,4,0,0,0,0,,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7i.large,AWS,rack,2023,2,192,,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,4,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,96,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7i.2xlarge,AWS,rack,2023,8,192,,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,16,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7i.4xlarge,AWS,rack,2023,16,192,,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,32,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7i.8xlarge,AWS,rack,2023,32,192,,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,64,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7i.12xlarge,AWS,rack,2023,48,192,,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,96,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7i.16xlarge,AWS,rack,2023,64,192,,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,128,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7i.24xlarge,AWS,rack,2023,96,192,,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,192,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7i.48xlarge,AWS,rack,2023,192,192,,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,384,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-c7i.xlarge,AWS,rack,2023,4,192,,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,8,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7i.large,AWS,rack,2023,2,192,6,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,4,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,96,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7i.2xlarge,AWS,rack,2023,8,192,6,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,16,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7i.4xlarge,AWS,rack,2023,16,192,6,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,32,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7i.8xlarge,AWS,rack,2023,32,192,6,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,64,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7i.12xlarge,AWS,rack,2023,48,192,6,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,96,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7i.16xlarge,AWS,rack,2023,64,192,6,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,128,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7i.24xlarge,AWS,rack,2023,96,192,6,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,192,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7i.48xlarge,AWS,rack,2023,192,192,6,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,384,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+c7i.xlarge,AWS,rack,2023,4,192,6,48,Xeon Platinum 8488C,Intel,xeon platinum,Sapphire Rapids,385,,8,32,12,0,0,0,0,,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 dl1.24xlarge,AWS,rack,2019,96,96,2,24.0,Xeon Platinum 8275CL,Intel,xeon platinum,Cascade Lake,280,,768,32,24,4,1000,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 g4ad.2xlarge,AWS,rack,2020,8,96,1,48.0,EPYC 7R32,AMD,epyc,naple,280.0,,32,32,8,1,300,0,0,AMD Radeon Pro V520,1,,8,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 g4ad.xlarge,AWS,rack,2020,4,96,1,48.0,EPYC 7R32,AMD,epyc,naple,280.0,,16,32,8,1,150,0,0,AMD Radeon Pro V520,1,,8,2;2;2,2.99;1;5,16,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
@@ -800,18 +800,18 @@ m6in.24xlarge,AWS,rack,2022,96,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinu
 m6in.32xlarge,AWS,rack,2022,128,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinum,Ice Lake,300.0,,512,32,16,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 m6in.metal,AWS,rack,2022,128,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinum,Ice Lake,300.0,,512,32,16,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 m6in.xlarge,AWS,rack,2022,4,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinum,Ice Lake,300.0,,16,32,16,0,0,0,0,,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7a.large,AWS,rack,2023,2,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,8,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,96,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7a.2xlarge,AWS,rack,2023,8,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,32,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7a.4xlarge,AWS,rack,2023,16,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,64,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7a.8xlarge,AWS,rack,2023,32,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,128,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7a.12xlarge,AWS,rack,2023,48,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,192,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7a.16xlarge,AWS,rack,2023,64,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,256,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7a.24xlarge,AWS,rack,2023,96,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,384,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7a.32xlarge,AWS,rack,2023,128,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,512,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,1.5,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7a.48xlarge,AWS,rack,2023,192,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,768,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7a.medium,AWS,rack,2023,1,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,4,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,192,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7a.metal-48xl,AWS,rack,2023,192,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,768,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-m7a.xlarge,AWS,rack,2023,4,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,16,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7a.large,AWS,rack,2023,2,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,8,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,96,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7a.2xlarge,AWS,rack,2023,8,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,32,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7a.4xlarge,AWS,rack,2023,16,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,64,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7a.8xlarge,AWS,rack,2023,32,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,128,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7a.12xlarge,AWS,rack,2023,48,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,192,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7a.16xlarge,AWS,rack,2023,64,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,256,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7a.24xlarge,AWS,rack,2023,96,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,384,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7a.32xlarge,AWS,rack,2023,128,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,512,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,1.5,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7a.48xlarge,AWS,rack,2023,192,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,768,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7a.medium,AWS,rack,2023,1,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,4,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,192,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7a.metal-48xl,AWS,rack,2023,192,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,768,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+m7a.xlarge,AWS,rack,2023,4,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,16,32,24,0,0,0,0,,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 m7g.2xlarge,AWS,rack,2023,8,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,32,32,8,0,0,0,0,,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 m7g.4xlarge,AWS,rack,2023,16,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,64,32,8,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 m7g.8xlarge,AWS,rack,2023,32,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,128,32,8,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
@@ -897,18 +897,18 @@ r6in.24xlarge,AWS,rack,2021,96,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinu
 r6in.32xlarge,AWS,rack,2021,128,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinum,Ice Lake,300.0,,1024,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 r6in.metal,AWS,rack,2021,128,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinum,Ice Lake,300.0,,1024,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 r6in.xlarge,AWS,rack,2021,4,128,2,32.0,Xeon Platinum 8375C,Intel,xeon platinum,Ice Lake,300.0,,32,32,32,0,0,0,0,,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7a.large,AWS,rack,2023,2,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,16,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,96,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7a.2xlarge,AWS,rack,2023,8,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,64,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7a.4xlarge,AWS,rack,2023,16,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,128,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7a.8xlarge,AWS,rack,2023,32,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,256,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7a.12xlarge,AWS,rack,2023,48,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,384,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7a.16xlarge,AWS,rack,2023,64,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,512,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7a.24xlarge,AWS,rack,2023,96,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,768,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7a.32xlarge,AWS,rack,2023,128,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,1024,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,1.5,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7a.48xlarge,AWS,rack,2023,192,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,1536,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7a.medium,AWS,rack,2023,1,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,8,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,192,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7a.metal-48xl,AWS,rack,2023,192,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,1536,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
-r7a.xlarge,AWS,rack,2023,4,192,2,48,EPYC 9R14,AMD,epyc,Genoa,280,,32,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7a.large,AWS,rack,2023,2,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,16,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,96,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7a.2xlarge,AWS,rack,2023,8,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,64,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,24,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7a.4xlarge,AWS,rack,2023,16,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,128,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,12,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7a.8xlarge,AWS,rack,2023,32,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,256,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,6,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7a.12xlarge,AWS,rack,2023,48,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,384,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7a.16xlarge,AWS,rack,2023,64,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,512,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,3,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7a.24xlarge,AWS,rack,2023,96,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,768,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,2,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7a.32xlarge,AWS,rack,2023,128,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,1024,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,1.5,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7a.48xlarge,AWS,rack,2023,192,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,1536,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7a.medium,AWS,rack,2023,1,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,8,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,192,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7a.metal-48xl,AWS,rack,2023,192,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,1536,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,1,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
+r7a.xlarge,AWS,rack,2023,4,192,2,96,EPYC 9R14,AMD,epyc,Genoa,280,,32,32,48,0,0,0,0,,,,,2;2;2,2.99;1;5,48,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 r7g.large,AWS,rack,2023,2,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,16,32,16,0,0,0,0,,,,,2;2;2,2.99;1;5,32,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 r7g.2xlarge,AWS,rack,2023,8,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,64,32,16,0,0,0,0,,,,,2;2;2,2.99;1;5,8,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
 r7g.4xlarge,AWS,rack,2023,16,64,1,64.0,Graviton3,Annapurna Labs,Graviton3,Graviton3,220,,128,32,16,0,0,0,0,,,,,2;2;2,2.99;1;5,4,50;0;100,1,35040,0.33;0.2;0.6,0,RAM.capacity not verified
