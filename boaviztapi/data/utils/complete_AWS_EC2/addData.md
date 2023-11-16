@@ -5,8 +5,8 @@ This script add aws instances to aws.csv that are not already included based on 
 ## Usage
 
 ```sh
-# Inside PROJECT/hack/addData/
-go run addData.go
+# Inside PROJECT/hack/complete_AWS_EC2/
+go run complete_AWS_EC2.go
 ```
 
 ## Getting Vantage export
