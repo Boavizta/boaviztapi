@@ -6,7 +6,10 @@ COPY . /app
 
 WORKDIR /app
 
-COPY dist/boaviztapi-$VERSION.tar.gz ./
+RUN python -m pip install --upgrade poetry wheel twine
+RUN poetry install --with dev
+RUN poetry build
+RUN PROJECT_VERSION=$(poetry version -s) && cp /app/dist/boaviztapi-$PROJECT_VERSION.tar.gz ./boaviztapi-$VERSION.tar.gz
 RUN pip install boaviztapi-$VERSION.tar.gz && cp $(which uvicorn) /app
 
 FROM gcr.io/distroless/python3

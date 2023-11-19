@@ -271,6 +271,7 @@ class ComponentCPU(Component):
 
         # If none of the above works, we compute a linear regression
         else:
+            df = df[~df['cores'].isna()]
             cores = df["cores"].values
             total_die_size = df["total_die_size"].values
             x̄ = cores.mean()
