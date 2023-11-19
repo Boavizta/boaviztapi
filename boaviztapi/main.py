@@ -7,6 +7,8 @@ import os
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from mangum import Mangum
+from starlette.requests import Request
+from starlette.responses import Response
 
 from boaviztapi.routers import iot_router
 from boaviztapi.routers.component_router import component_router
@@ -25,10 +27,21 @@ from fastapi.responses import HTMLResponse
 stage = os.environ.get('STAGE', None)
 openapi_prefix = f"/{stage}" if stage else "/"
 app = FastAPI(root_path=openapi_prefix)  # Here is the magic
-version = toml.loads(open(os.path.join(os.path.dirname(__file__), '../pyproject.toml'), 'r').read())['tool']['poetry']['version']
-
+version = toml.loads(open(os.path.join(os.path.dirname(__file__), '../pyproject.toml'), 'r').read())['tool']['poetry'][
+    'version']
 
 origins = json.loads(os.getenv("ALLOWED_ORIGINS", '["*"]'))
+
+
+# Ensure that even an uncaught exception includes CORS headers.
+async def catch_exceptions_middleware(request: Request, call_next):
+    try:
+        return await call_next(request)
+    except Exception as e:
+        return Response(str(e), status_code=500)
+
+
+app.middleware('http')(catch_exceptions_middleware)
 
 app.add_middleware(
     CORSMiddleware,
@@ -46,11 +59,10 @@ app.include_router(iot)
 app.include_router(consumption_profile)
 app.include_router(utils_router)
 
-
 if __name__ == '__main__':
     import uvicorn
 
-    uvicorn.run('main:app', host='localhost', port=5000, reload=True, debug=True)
+    uvicorn.run('main:app', host='localhost', port=5000, reload=True)
 
 
 @app.on_event("startup")
