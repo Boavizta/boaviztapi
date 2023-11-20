@@ -59,7 +59,7 @@
 
 * Duration is now a route parameter. Allocation is no longer used
 * If not provided, we use the lifetime of the device as duration.
-* We compute usage impacts hover the ```duration``` and allocate embedded impacts on the ```duration``` hover the lifetime of the device.
+* We compute usage impacts over the ```duration``` and allocate embedded impacts on the ```duration``` over the lifetime of the device.
 * We introduce the notion of ```use_time_ratio``` which is the proportion of time the device is used during the given duration. When a device is always used, the usage ratio is 1. When a device is never used, the usage ratio is 0.
 
 ```

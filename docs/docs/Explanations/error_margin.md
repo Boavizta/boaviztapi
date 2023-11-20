@@ -8,7 +8,7 @@
 
 ## Error margin from the impact factors 
 
-Error can be caused by the impact factors used in the calculation since those impact factors are not specific to the process you are computing. For example, the impact factor of the electricity consumption is based on the average electricity consumption of a country hover a year. In reality, the electricity mix and its associated impacts vary a lot during a year.
+Error can be caused by the impact factors used in the calculation since those impact factors are not specific to the process you are computing. For example, the impact factor of the electricity consumption is based on the average electricity consumption of a country over a year. In reality, the electricity mix and its associated impacts vary a lot during a year.
 
 !!!warning
     We do not take into account the error margin from the impact factors in the API.

@@ -20,7 +20,7 @@ See: [Embedded methodology](./Explanations/embedded_methodology.md)
 
 #### How does the API compute environmental impacts related to usage?
 
-Usage impacts are retrieved by multiplying a power hover a duration with an impact factor relative to the place of use of the evaluated asset.
+Usage impacts are retrieved by multiplying a power over a duration with an impact factor relative to the place of use of the evaluated asset.
 
 See: [Usage methodology](Explanations/usage/usage.md)
 
@@ -39,7 +39,7 @@ See: [Cloud methodology](Explanations/devices/cloud.md)
 
 #### How does the API amortize embedded impacts?
 The API implements two methods to amortize embedded impacts
-Either the total embedded impact is given or a linear amortization hover the life cycle of the assets can be applied. 
+Either the total embedded impact is given or a linear amortization over the life cycle of the assets can be applied.
 
 See: [Allocation methodology](Explanations/embedded_methodology.md#allocation)
 
