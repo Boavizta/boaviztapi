@@ -2,7 +2,6 @@
 
 ## Characteristics
 
-<<<<<<< HEAD
 | Name             | Unit   | Default value (default;min;max)  | Description                           | Example |
 |------------------|--------|----------------------------------|---------------------------------------|---------|
 | units            | None   | 1                                | RAM strip quantity                    | 2       |
