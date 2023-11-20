@@ -1,4 +1,5 @@
 import json
+import logging
 
 import markdown
 import toml
@@ -28,6 +29,7 @@ stage = os.environ.get('STAGE', None)
 openapi_prefix = f"/{stage}" if stage else "/"
 app = FastAPI(root_path=openapi_prefix)  # Here is the magic
 version = toml.loads(open(os.path.join(os.path.dirname(__file__), '../pyproject.toml'), 'r').read())['tool']['poetry']['version']
+logger = logging.getLogger(__name__)
 
 origins = json.loads(os.getenv("ALLOWED_ORIGINS", '["*"]'))
 
@@ -37,6 +39,7 @@ async def catch_exceptions_middleware(request: Request, call_next):
     try:
         return await call_next(request)
     except Exception as e:
+        logger.exception(e, exc_info=True)
         return Response(str(e), status_code=500)
 
 
