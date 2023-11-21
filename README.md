@@ -1,11 +1,12 @@
 <p align="center">
-    <img src="https://github.com/Boavizta/boaviztapi/blob/af7ca450518a2108f907736222a540908a258368/boavizta-logo-4.png" width="100">
+    <img src="https://github.com/Boavizta/boaviztapi/blob/main/boaviztapi_color.svg" height="100" alt="BoaviztAPI">
 </p>
-<h1 align="center">
-  Boavizta API
-</h1>
 
-An API to access [Boavizta's](https://boavizta.cmakers.io/) methodologies and impacts data [reference data](https://github.com/Boavizta/environmental-footprint-data).
+<h3 align="center">
+   An API to access <a href="https://boavizta.cmakers.io/">Boavizta's</a> methodologies and data</a>
+</h3>
+
+---
 
 See the [documentation](https://doc.api.boavizta.org/) for API usage and methodology.
 
@@ -37,7 +38,7 @@ The system follows a bottom-up approach in its development, organized into layer
 
 ## Run a local instance
 
-## :whale: Run API using docker
+### :whale: Run API using docker
 
 ```bash
 $ docker run -p 5000:5000 ghcr.io/boavizta/boaviztapi:latest
@@ -45,7 +46,7 @@ $ docker run -p 5000:5000 ghcr.io/boavizta/boaviztapi:latest
 
 Access API at http://localhost:5000
 
-## Install using pip package
+### Install using pip package
 
 ```bash
 $ pip3 install boaviztapi
