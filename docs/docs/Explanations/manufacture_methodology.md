@@ -12,7 +12,7 @@ The total manufacturing impacts are reported independently of the usage.
 
 ```manufacture_impact = total_impact```
 
-### Hover a specific duration - ```Allocation: LINEAR```
+### Over a specific duration - ```Allocation: LINEAR```
 
 The manufacturing impacts are linearly distributed over the life duration of the devices.
 The impacts are reported over the usage duration.

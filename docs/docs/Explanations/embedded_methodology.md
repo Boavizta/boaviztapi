@@ -57,13 +57,13 @@ If component impacts cannot be assessed, we use non-specific impacts factors at 
 
 Embedded impacts can be reported with several allocation strategies.
 
-### Hover the lifecycle 
+### Over the lifecycle 
 
 When no specific duration is given, the total embedded impacts of the asset are given.
 
 ```embedded_impacts = total_impact```
 
-### Hover a specific duration
+### Over a specific duration
 
 When a duration is given as a query parameter, we allocate the embedded impacts linearly on this duration.
 
