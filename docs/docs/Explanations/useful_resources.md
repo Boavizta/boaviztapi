@@ -15,4 +15,4 @@
 
 ## From others
 
-- [NegaOctet public database on Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)
+- [NegaOctet public database on Base Empreinte® ADEME](https://base-empreinte.ademe.fr/documentation/base-impact?idDocument=167) (Requires a free account)
