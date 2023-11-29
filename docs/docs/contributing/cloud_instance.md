@@ -11,7 +11,7 @@ All instances for one particular cloud provider are stored in a CSV file named a
 | id                            | **Required** | Instance identifier                                                 | c5.2xlarge                |
 | manufacturer                  | **Required** | Cloud provider                                                      | AWS                       |
 | CASE.type                     |              | Type of enclosure (usually "rack")                                  | rack                      |
-| year                          |              | ???                                                                 | 2016                      |
+| year                          |              | Launch year                                                         | 2016                      |
 | vcpu                          | **Required** | Number of vCPU                                                      | 8                         |
 | platform_vcpu                 | **Required** | Number of vCPU of the platform[^1]                                  | 96                        |
 | CPU.units                     |              | Number of physical CPU                                              | 2                         |
@@ -40,7 +40,7 @@ All instances for one particular cloud provider are stored in a CSV file named a
 | USAGE.hours_life_time         |              | Number of hours of life time                                        | 35040 _(=4 years)_        |
 | USAGE.use_time_ratio          |              | Proportion of the time the instance is being used                   | 0.5                       |
 | USAGE.other_consumption_ratio |              | Power consumption ratio of other components relative to RAM and CPU | 0.33;0.2;0.6              |
-| USAGE.overcommited            |              | ???                                                                 | 0                         |
+| USAGE.overcommited            |              | Platform is subject to over-commitment practices                    | False                     |
 | Warnings                      |              | List of warnings separated by semi-colons (;)                       | RAM.capacity not verified |
 
 [^1]: Number of vCPU of the platform usually corresponds to the total number of vCPU of the bare metal instance. For a bare metal instance with 2x 24 cores CPU the platform_vcpu is: 2 (CPU units) x 24 (core units) x 2 ("threads" per core) = 96 vCPU.
