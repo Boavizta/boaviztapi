@@ -1,6 +1,6 @@
 # Add a new cloud provider
 
-This guide will you add a new cloud provider into BoaviztAPI.
+This guide will help you add a new cloud provider into BoaviztAPI.
 
 ## Register the cloud provider
 
@@ -9,7 +9,7 @@ To register the new cloud provider, you will need to update the `providers.csv` 
 - `provider.name`: The provider short name (e.g. "aws"),
 - `provider.description`: Full name of the provider (e.g. "Amazon Web Services").
 
-The file `provided.csv` is located at `boaviztapi/data/archetypes/cloud/providers.csv`.
+The file `provided.csv` is located at `boaviztapi/data/archetypes/cloud/providers.csv`. See on [GitHub](https://github.com/Boavizta/boaviztapi/blob/main/boaviztapi/data/archetypes/cloud/providers.csv).
 
 ## Add cloud instances
 
