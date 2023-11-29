@@ -17,6 +17,7 @@ markdown_extensions:
     - pymdownx.superfences
     - admonition
     - pymdownx.details
+    - footnotes
 
 nav:
     - Introduction: index.md
@@ -74,6 +75,9 @@ nav:
     - Deploy: Reference/deploy.md
     - Configuration: Reference/config.md
     - Release notes: release_notes.md
+    - Contributing:
+        - 'Add a cloud provider': contributing/cloud_provider.md
+        - 'Add a cloud instance': contributing/cloud_instance.md
 
 theme: material
 
