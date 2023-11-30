@@ -65,7 +65,22 @@ Also, you will need to provide the name of the physical CPU (**CPU.name**), alon
 
 #### GPU
 
-### Memory (RAM)
+If your cloud instance is equipped with a dedicated GPU, you will need to provide the following specifications:
+
+- Number of GPUs installed (**GPU.units**)
+- Model name (**GPU.name**)
+- Memory capacity (**GPU.memory_capacity**)
+- TDP[^1] (**GPU.tdp**)
+
+??? example "Example: add a `g4dn.4xlarge` AWS instance"
+    
+    Say we want to include the `g4dn.4xlarge` VM instance that is equipped with 4x _NVIDIA Tesla T4_ GPUs. You will fill the information as follow:
+
+    | id                | GPU.units | GPU.name        | GPU.memory_capacity | GPU.tdp |
+    |-------------------|-----------|-----------------|---------------------|---------|
+    | **g4dn.4xlarge**  | 4         | NVIDIA Tesla T4 | 16                  | 70      |
+
+### Memory
 
 ### Storage
 
@@ -82,11 +97,6 @@ Some values can be inputted using ranges like the following: `default;min;max`. 
 
 [^1]: Thermal Design Power (TDP)
 
-[//]: # (Number of vCPU of the platform usually corresponds to the total number of vCPU of the bare metal instance. For a bare metal instance with 2x 24 cores CPU the platform_vcpu is: 2 &#40;CPU units&#41; x 24 &#40;core units&#41; x 2 &#40;"threads" per core&#41; = 96 vCPU.)
-
-[//]: # (If the CPU is missing from the `cpu_specs.csv` &#40;located at `boaviztapi/data/crowdsourcing/`&#41;, please consider to add it there as well to enrich the internal database. For more information see [how to add a CPU]&#40;cpu.md&#41;.)
-
-[//]: # (Not required if CPU.name is in `cpu_specs.csv`. Will be completed during the request treatment by the API based on the CPU name if the CPU have been added to `cpu_specs.csv`)
 
 [//]: # (Usually the distribution of RAM modules is not known. In this case, take a hypothesis which respects: RAM.units*RAM.capacity = instance.ram_capacity * USAGE.instance_per_server and set the warning "RAM.capacity not verified")
 
