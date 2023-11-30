@@ -4,7 +4,9 @@ This guide will help you add new cloud instances for a cloud provider that is al
 
 ## Cloud instances CSV file
 
-All instances for one particular cloud provider are stored in a CSV file named after that cloud provider (e.g. `aws.csv` for AWS). These files are located at `boaviztapi/data/archetypes/cloud/`. 
+To take full advantage of Boavizta's bottom-up methodology, we need to have precise information of the underlying hardware. **If the cloud instance is a Virtual Machine (VM), then we need the information of the bare metal instance.** Impacts of the bare metal instance will be split and attributed to the VM according to its specifications (e.g. bare metal is 32 vCPU, VM is 16 vCPU, then the embedded impacts of the VM will half (16/32) of the bare metal.)
+
+All instances for one particular cloud provider are stored in a CSV file named after that cloud provider (e.g. `aws.csv` for AWS). These files are located at `boaviztapi/data/archetypes/cloud/`. See on [GitHub](https://github.com/Boavizta/boaviztapi/tree/main/boaviztapi/data/archetypes/cloud).
 
 | Column name                   | Required     | Description                                                             | Example                   |
 |-------------------------------|--------------|-------------------------------------------------------------------------|---------------------------|
@@ -15,13 +17,7 @@ All instances for one particular cloud provider are stored in a CSV file named a
 | vcpu                          |              | Number of vCPU                                                          | 8                         |
 | platform_vcpu                 |              | Number of vCPU of the platform[^1]                                      | 96                        |
 | CPU.units                     |              | Number of physical CPU                                                  | 2                         |
-| CPU.name                      | **Required** | CPU name[^2]                                                            | Xeon Platinum 8124M       |
-| CPU.core_units                | **Required** | Number of CPU cores per CPU[^3]                                         | 24                        |
-| CPU.manufacturer              |              | CPU manufacturer[^3]                                                    | Intel                     |
-| CPU.model_range               |              | CPU model range[^3]                                                     | Xeon Platinum             |
-| CPU.family                    | **Required** | CPU family[^3]                                                          | Skylake                   |
-| CPU.tdp                       | **Required** | CPU TDP (in Watt)[^3]                                                   | 240                       |
-| CPU.manufacture_date          |              | CPU manufacture date[^3]                                                | 2016                      |
+| CPU.name                      | **Required** | CPU name[^2]                                                            | Intel Xeon Platinum 8124M |
 | instance.ram_capacity         |              | Instance RAM capacity (in GB)                                           | 16                        |
 | RAM.units                     | **Required** | Number of RAM banks[^4]                                                 | 12                        |
 | RAM.capacity                  | **Required** | RAM bank capacity[^4]                                                   | 16                        |
@@ -43,7 +39,38 @@ All instances for one particular cloud provider are stored in a CSV file named a
 | USAGE.overcommited            |              | Platform is subject to over-commitment practices                        | False                     |
 | Warnings                      |              | List of warnings separated by semi-colons (;)                           | RAM.capacity not verified |
 
- See on [GitHub](https://github.com/Boavizta/boaviztapi/tree/main/boaviztapi/data/archetypes/cloud)
+### Compute
+
+The compute part addresses the case of [CPU](#cpu) and [GPU](#gpu) components.
+
+#### CPU
+
+We need information about the number of vCPU of the VM instance (**vcpu**) and the bare metal instance (**platform_vcpu**). If you are adding a bare metal instance then, the values are equal: $\text{vcpu} = \text{platform_vcpu}$
+
+Also, you will need to provide the name of the physical CPU (**CPU.name**), along with the number of CPU on the motherboard (**CPU.units**). Before adding the CPU name you must check, if the CPU is already registered in BoaviztAPI. To do so, you can manually search the CSV located at `boaviztapi/data/crowdsourcing/cpu_specs.csv` or search on [GitHub (recommended)](https://github.com/Boavizta/boaviztapi/blob/main/boaviztapi/data/crowdsourcing/cpu_specs.csv). If the CPU does not exist, then you must follow this guide: [Add a CPU](cpu.md).
+
+??? example "Example: add a `c5.2xlarge` AWS instance"
+    
+    Say we want to include the `c5.2xlarge` VM instance. 
+
+    1. It has 8 vCPU according to the [AWS documentation](https://aws.amazon.com/ec2/instance-types/c5/). The bare metal version of that instance is the `c5.metal` with 96 vCPU. 
+    2. The bare metal instance is equiped with 2x _Intel Xeon Platinum 8124M_ CPU. This CPU exists in BoaviztAPI.
+
+    You will fill the information as follow:
+
+    | id             | vcpu  | platform_vcpu | CPU.units | CPU.name                  |
+    |----------------|-------|---------------|-----------|---------------------------|
+    | **c5.2xlarge** | 8     | 96            | 2         | Intel Xeon Platinum 8124M |
+    | **c5.metal**   | 96    | 96            | 2         | Intel Xeon Platinum 8124M |
+
+#### GPU
+
+### Memory (RAM)
+
+### Storage
+
+### Usage
+
 
 [^1]: Number of vCPU of the platform usually corresponds to the total number of vCPU of the bare metal instance. For a bare metal instance with 2x 24 cores CPU the platform_vcpu is: 2 (CPU units) x 24 (core units) x 2 ("threads" per core) = 96 vCPU.
 
