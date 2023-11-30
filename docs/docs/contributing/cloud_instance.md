@@ -4,7 +4,7 @@ This guide will help you add new cloud instances for a cloud provider that is al
 
 ## Cloud instances CSV file
 
-To take full advantage of Boavizta's bottom-up methodology, we need to have precise information of the underlying hardware. **If the cloud instance is a Virtual Machine (VM), then we need the information of the bare metal instance.** Impacts of the bare metal instance will be split and attributed to the VM according to its specifications (e.g. bare metal is 32 vCPU, VM is 16 vCPU, then the embedded impacts of the VM will half (16/32) of the bare metal.)
+To take full advantage of Boavizta's bottom-up methodology, we need to have precise information of the underlying hardware. **If the cloud instance is a Virtual Machine (VM), then we need the information of the bare metal instance as well.** Impacts of the bare metal instance will be split and attributed to the VM according to its specifications (e.g. bare metal is 32 vCPU, VM is 16 vCPU, then the embedded impacts of the VM will half (16/32) of the bare metal.)
 
 All instances for one particular cloud provider are stored in a CSV file named after that cloud provider (e.g. `aws.csv` for AWS). These files are located at `boaviztapi/data/archetypes/cloud/`. See on [GitHub](https://github.com/Boavizta/boaviztapi/tree/main/boaviztapi/data/archetypes/cloud).
 
@@ -45,11 +45,17 @@ The compute part addresses the case of [CPU](#cpu) and [GPU](#gpu) components.
 
 #### CPU
 
-We need information about the number of vCPU of the VM instance (**vcpu**) and the bare metal instance (**platform_vcpu**). If you are adding a bare metal instance then, the values are equal: $\text{vcpu} = \text{platform_vcpu}$
+We need information about the number of vCPU of the VM instance (**vcpu**) and the bare metal instance (**platform_vcpu**). 
+
+If you are **adding a bare metal instance** then, both values are equal: 
+
+$$
+\text{vcpu}_{\text{bare_metal}} = \text{platform_vcpu}
+$$
 
 Also, you will need to provide the name of the physical CPU (**CPU.name**), along with the number of CPU on the motherboard (**CPU.units**). Before adding the CPU name you must check, if the CPU is already registered in BoaviztAPI. To do so, you can manually search the CSV located at `boaviztapi/data/crowdsourcing/cpu_specs.csv` or search on [GitHub (recommended)](https://github.com/Boavizta/boaviztapi/blob/main/boaviztapi/data/crowdsourcing/cpu_specs.csv). If the CPU does not exist, then you must follow this guide: [Add a CPU](cpu.md).
 
-??? example "Example: add a `c5.2xlarge` AWS instance"
+??? example "Example: add `c5.2xlarge` AWS instance"
     
     Say we want to include the `c5.2xlarge` VM instance. 
 
@@ -72,7 +78,7 @@ If your cloud instance is equipped with a dedicated GPU, you will need to provid
 - Memory capacity (**GPU.memory_capacity**)
 - TDP[^1] (**GPU.tdp**)
 
-??? example "Example: add a `g4dn.4xlarge` AWS instance"
+??? example "Example: add `g4dn.4xlarge` AWS instance"
     
     Say we want to include the `g4dn.4xlarge` VM instance that is equipped with 4x _NVIDIA Tesla T4_ GPUs. You will fill the information as follow:
 
@@ -81,6 +87,44 @@ If your cloud instance is equipped with a dedicated GPU, you will need to provid
     | **g4dn.4xlarge**  | 4         | NVIDIA Tesla T4 | 16                  | 70      |
 
 ### Memory
+
+We need information about the available memory of the VM instance (**instance.ram_capacity**) and also the RAM configuration of the bare metal instance. Especially, you need to provide the number of RAM banks installed (**RAM.units**) and the capacity (**RAM.capacity**).
+
+If you are **adding a bare metal instance** you should have: 
+
+$$
+\text{instance.ram_capacity}_{\text{bare_metal}} = \text{RAM.units} * \text{RAM.capacity}
+$$
+
+Otherwise, if you are **adding a VM instance**, you should have:
+
+$$
+\text{USAGE.instance_per_server} * \text{instance.ram_capacity}_{\text{VM_instance}} = \text{RAM.units} * \text{RAM.capacity}
+$$
+
+Where **USAGE.instance_per_server** denotes the number of VM instances hosted on the bare metal instance (see [usage](#usage) for more information). 
+
+!!! warning "Obtaining the RAM specifications"
+
+    If you cannot access to the RAM specifications of the bare metal instance, it will be estimated. You **MUST add a warning** in the CSV file, within the column named "_Warnings_" specigy "**_RAM.capacity not verified_**".
+
+??? example "Example: add `c5.2xlarge` AWS instance"
+
+    For example, if you are adding a `c5.2xlarge` AWS instance, you will need to estimate the number and the memory capacity of the RAM banks of the `c5.metal` instance.
+    
+    1. The VM instance has 16 GB of memory, so $\text{instance.ram_capacity} = 16$ ([AWS c5 docs](https://aws.amazon.com/ec2/instance-types/c5/))
+    2. The bare metal instance has 192 GB of memory ([AWS c5 docs](https://aws.amazon.com/ec2/instance-types/c5/))
+    3. The bare metal memory can be decomposed into $192\ GB = 12\ \text{(units)} * 16\ GB\ \text{(capacity)}$
+    4. The bare metal instance can fit 12 VM instance (**USAGE.instance_per_server**) and its verified by:
+
+        i. **vCPU sharing:** $\text{platform_vcpu} / \text{vcpu} = 96 / 8 = 12$
+
+        ii. **Memory sharing:** $\text{bare_metal.ram_capacity} / \text{VM.ram_capacity} = 192 / 16 = 12$
+
+    | id             | instance.ram_capacity | RAM.units | RAM.capacity | USAGE.instance_per_server | Warnings |
+    |----------------|-----------------------|-----------|--------------|---------------------------| -------- |
+    | **c5.2xlarge** | 16                    | 12        | 16           | 12                        |          |
+    | **c5.metal**   | 192                   | 12        | 16           | 1                         |          |
 
 ### Storage
 
