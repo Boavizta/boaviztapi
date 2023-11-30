@@ -106,7 +106,7 @@ Where **USAGE.instance_per_server** denotes the number of VM instances hosted on
 
 !!! warning "Obtaining the RAM specifications"
 
-    If you cannot access to the RAM specifications of the bare metal instance, it will be estimated. You **MUST add a warning** in the CSV file, within the column named "_Warnings_" specigy "**_RAM.capacity not verified_**".
+    If you cannot access to the RAM specifications of the bare metal instance, it will be estimated. You **MUST add a warning** in the CSV file, within the column named "_Warnings_" specify "**_RAM.capacity not verified_**".
 
 ??? example "Example: add `c5.2xlarge` AWS instance"
 
