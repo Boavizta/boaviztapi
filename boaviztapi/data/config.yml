@@ -11,7 +11,7 @@ default_motherboard: "DEFAULT"
 
 default_server: "compute_medium"
 
-default_cloud: "a1.4xlarge"
+default_cloud_instance: "a1.4xlarge"
 default_cloud_provider: "aws"
 
 default_laptop: "laptop-pro"
