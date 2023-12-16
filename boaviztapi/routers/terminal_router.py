@@ -10,7 +10,7 @@ from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_termi
     get_archetype_config_desc, terminal_description
 from boaviztapi.routers.openapi_doc.examples import end_user_terminal
 from boaviztapi.service.archetype import get_user_terminal_archetype, get_device_archetype_lst_with_type
-from boaviztapi.service.bottom_up import bottom_up
+from boaviztapi.service.impacts_computation import compute_impacts
 from boaviztapi.service.verbose import verbose_device
 
 terminal_router = APIRouter(
@@ -269,7 +269,7 @@ async def user_terminal_impact(user_terminal_dto: UserTerminal,
     if duration is None:
         duration = device.usage.hours_life_time.value
 
-    impacts = bottom_up(model=device, selected_criteria=criteria, duration=duration)
+    impacts = compute_impacts(model=device, selected_criteria=criteria, duration=duration)
 
     if verbose:
         return {

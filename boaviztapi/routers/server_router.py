@@ -6,13 +6,14 @@ from fastapi import APIRouter, Body, HTTPException, Query
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device import Server
 from boaviztapi.dto.device.device import mapper_server
-from boaviztapi.model.device import Device, DeviceServer
+from boaviztapi.model.device import Device
+from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.routers.openapi_doc.descriptions import server_impact_by_model_description, \
     server_impact_by_config_description, all_archetype_servers, get_archetype_config_desc
 from boaviztapi.routers.openapi_doc.examples import server_configuration_examples
 from boaviztapi.service.archetype import get_server_archetype, get_device_archetype_lst
 from boaviztapi.service.verbose import verbose_device
-from boaviztapi.service.bottom_up import bottom_up
+from boaviztapi.service.impacts_computation import compute_impacts
 
 server_router = APIRouter(
     prefix='/v1/server',
@@ -86,7 +87,7 @@ async def server_impact(device: Device,
     if duration is None:
         duration = device.usage.hours_life_time.value
 
-    impacts = bottom_up(model=device, selected_criteria=criteria, duration=duration)
+    impacts = compute_impacts(model=device, selected_criteria=criteria, duration=duration)
 
     if verbose:
         return {

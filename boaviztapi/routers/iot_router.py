@@ -7,7 +7,7 @@ from fastapi import APIRouter, Body, Query, HTTPException
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device.iot import IoT, mapper_iot_device
 from boaviztapi.service.archetype import get_iot_device_archetype
-from boaviztapi.service.bottom_up import bottom_up
+from boaviztapi.service.impacts_computation import compute_impacts
 from boaviztapi.service.verbose import verbose_device
 
 iot = APIRouter(
@@ -72,7 +72,7 @@ async def device_iot_impact(iot_dto: IoT,
     if duration is None:
         duration = device.usage.hours_life_time.value
 
-    impacts = bottom_up(model=device, selected_criteria=criteria, duration=duration)
+    impacts = compute_impacts(model=device, selected_criteria=criteria, duration=duration)
 
     if verbose:
         return {
