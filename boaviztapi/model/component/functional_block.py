@@ -1,8 +1,6 @@
-from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component import Component
 from boaviztapi.service.archetype import get_arch_value
-from boaviztapi.service.factor_provider import get_iot_impact_factor
 
 
 class ComponentFunctionalBlock(Component):
@@ -17,10 +15,6 @@ class ComponentFunctionalBlock(Component):
             min=get_arch_value(archetype, 'hsl_level', 'min'),
             max=get_arch_value(archetype, 'hsl_level', 'max')
         )
-
-    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
-        impact_factors = get_iot_impact_factor(self.IMPACT_KEY, self.hsl_level.value, impact_type)
-        return impact_factors, impact_factors, impact_factors, []
 
 
 class ActuatorsFunctionalBlock(ComponentFunctionalBlock):
@@ -78,7 +72,7 @@ class UserInterfaceSupplyFunctionalBlock(ComponentFunctionalBlock):
     IMPACT_KEY = "user_interface"
 
 
-def get_functional_block(name):
+def get_functional_block(name: str):
     if name == ActuatorsFunctionalBlock.NAME:
         return ActuatorsFunctionalBlock
     elif name == CasingFunctionalBlock.NAME:

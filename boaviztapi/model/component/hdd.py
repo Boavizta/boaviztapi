@@ -1,10 +1,7 @@
-import boaviztapi.utils.roundit as rd
 from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
-from boaviztapi.model.component.component import Component, ComputedImpacts
-from boaviztapi.model.impact import ImpactFactor
+from boaviztapi.model.component.component import Component
 from boaviztapi.service.archetype import get_component_archetype, get_arch_value
-from boaviztapi.service.factor_provider import get_impact_factor
 
 
 class ComponentHDD(Component):
@@ -17,16 +14,7 @@ class ComponentHDD(Component):
 
         self.capacity = Boattribute(
             unit="GB",
-            default=get_arch_value(archetype, 'manufacturer', 'default'),
-            min=get_arch_value(archetype, 'manufacturer', 'default'),
-            max=get_arch_value(archetype, 'manufacturer', 'default')
+            default=get_arch_value(archetype, 'capacity', 'default'),
+            min=get_arch_value(archetype, 'capacity', 'default'),
+            max=get_arch_value(archetype, 'capacity', 'default')
         )
-
-    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
-        impact = ImpactFactor(
-            value=get_impact_factor(item='hdd', impact_type=impact_type)['impact'],
-            min=get_impact_factor(item='hdd', impact_type=impact_type)['impact'],
-            max=get_impact_factor(item='hdd', impact_type=impact_type)['impact']
-        )
-
-        return impact.value, impact.min, impact.max, ["End of life is not included in the calculation"]

@@ -157,7 +157,7 @@ class ModelUsageServer(ModelUsage):
         )
 
 class ModelUsageCloud(ModelUsageServer):
-    def __init__(self, archetype=get_cloud_instance_archetype(config["default_cloud"], config["default_cloud_provider"]).get("USAGE"), **kwargs):
+    def __init__(self, archetype=get_cloud_instance_archetype(config["default_cloud_instance"], config["default_cloud_provider"]).get("USAGE"), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
         self.instance_per_server = Boattribute(
             default=get_arch_value(archetype, 'instance_per_server', 'default'),
