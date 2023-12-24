@@ -9,7 +9,7 @@ default_case: "rack"
 default_assembly: "DEFAULT"
 default_motherboard: "DEFAULT"
 
-default_server: "compute_medium"
+default_server: "platform_compute_medium"
 
 default_cloud_instance: "a1.4xlarge"
 default_cloud_provider: "aws"

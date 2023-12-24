@@ -71,10 +71,11 @@ class ComponentCPU(Component):
             min=get_arch_value(archetype, 'tdp', 'min'),
             max=get_arch_value(archetype, 'tdp', 'max')
         )
-        self.vcpu = Boattribute(
-            default=get_arch_value(archetype, 'vcpu', 'default'),
-            min=get_arch_value(archetype, 'vcpu', 'min'),
-            max=get_arch_value(archetype, 'vcpu', 'max')
+        self.threads = Boattribute(
+            complete_function=self._complete_from_name,
+            default=get_arch_value(archetype, 'threads', 'default'),
+            min=get_arch_value(archetype, 'threads', 'min'),
+            max=get_arch_value(archetype, 'threads', 'max')
         )
 
     # TODO: compute min & max
@@ -93,9 +94,9 @@ class ComponentCPU(Component):
                 self.usage.consumption_profile.apply_multiple_workloads(self.usage.time_workload.value))
 
         return ImpactFactor(
-            value=rd.round_to_sigfig(self.usage.avg_power.value, 5)*self.units.value,
-            min=rd.round_to_sigfig(self.usage.avg_power.value, 5)*self.units.min,
-            max=rd.round_to_sigfig(self.usage.avg_power.value, 5)*self.units.max
+            value=rd.round_to_sigfig(self.usage.avg_power.value, 5) * self.units.value,
+            min=rd.round_to_sigfig(self.usage.avg_power.value, 5) * self.units.min,
+            max=rd.round_to_sigfig(self.usage.avg_power.value, 5) * self.units.max
         )
 
     def _complete_die_size(self):
@@ -129,19 +130,19 @@ class ComponentCPU(Component):
                 compute_min_max = True
 
             cpu_attributes = attributes_from_cpu_name(self.name.value)
-            name, manufacturer, family, model_range, tdp, cores, die_size, die_size_source, source = cpu_attributes if (
+            name, manufacturer, family, model_range, tdp, cores, threads, die_size, die_size_source, source = cpu_attributes if (
                     cpu_attributes is not None) else (None, None, None, None, None, None, None, None, None)
 
             if compute_min_max:
                 cpu_attributes_min = attributes_from_cpu_name(self.name.min)
                 cpu_attributes_max = attributes_from_cpu_name(self.name.max)
-                name_min, manufacturer_min, family_min, model_range_min, tdp_min, cores_min, die_size_min, die_size_source_min, source_min = cpu_attributes_min if (
+                name_min, manufacturer_min, family_min, model_range_min, tdp_min, cores_min, threads_min, die_size_min, die_size_source_min, source_min = cpu_attributes_min if (
                         cpu_attributes_min is not None) else (None, None, None, None, None, None, None, None, None)
-                name_max, manufacturer_max, family_max, model_range_max, tdp_max, cores_max, die_size_max, die_size_source_max, source_max = cpu_attributes_max if (
+                name_max, manufacturer_max, family_max, model_range_max, tdp_max, cores_max, threads_max, die_size_max, die_size_source_max, source_max = cpu_attributes_max if (
                         cpu_attributes_max is not None) else (None, None, None, None, None, None, None, None, None)
             else:
-                name_min, manufacturer_min, family_min, model_range_min, tdp_min, cores_min, die_size_min, die_size_source_min, source_min = name, manufacturer, family, model_range, tdp, cores, die_size, die_size_source, source
-                name_max, manufacturer_max, family_max, model_range_max, tdp_max, cores_max, die_size_max, die_size_source_max, source_max = name, manufacturer, family, model_range, tdp, cores, die_size, die_size_source, source
+                name_min, manufacturer_min, family_min, model_range_min, tdp_min, cores_min, threads_min, die_size_min, die_size_source_min, source_min = name, manufacturer, family, model_range, tdp, cores, threads, die_size, die_size_source, source
+                name_max, manufacturer_max, family_max, model_range_max, tdp_max, cores_max, threads_max, die_size_max, die_size_source_max, source_max = name, manufacturer, family, model_range, tdp, cores, threads, die_size, die_size_source, source
 
             if name is not None:
                 self.name.set_completed(name, min=name_min, max=name_max, source="fuzzy match")
@@ -160,6 +161,9 @@ class ComponentCPU(Component):
             if cores is not None:
                 self.core_units.set_completed(cores, min=cores_min, max=cores_max,
                                               source=f"Completed from name name based on {source}.")
+            if threads is not None:
+                self.threads.set_completed(threads, min=threads_min, max=threads_max,
+                                           source=f"Completed from name name based on {source}.")
             if die_size is not None:
                 self.die_size.set_completed(die_size, min=die_size_min, max=die_size_max,
                                             source=f"{die_size_source} : Completed from name name based on {source}.")

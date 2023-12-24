@@ -168,4 +168,4 @@ class DeviceServer(Device):
         return capacity
 
     def get_total_vcpu(self):
-        return self.cpu.vcpu.value * self.cpu.units.value
+        return self.cpu.threads.value * self.cpu.units.value
