@@ -24,6 +24,7 @@ async def test_get_server_archetype_dellr740():
                 'model_range': {},
                 'name': {},
                 'tdp': {},
+                'threads':{},
                 'units': {'default': 2.0}},
         'HDD': {'capacity': {}, 'units': {}},
         'POWER_SUPPLY': {'unit_weight': {'default': 2.99, 'max': 5.0, 'min': 1.0},
