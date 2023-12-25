@@ -101,7 +101,7 @@ class ComponentCPU(Component):
 
     def _complete_die_size(self):
         # Make sure all data have been completed from name
-        if self.name.is_set():
+        if self.name.has_value():
             self._complete_from_name()
 
         # If the die_size_per_core have been set we have nothing to do
