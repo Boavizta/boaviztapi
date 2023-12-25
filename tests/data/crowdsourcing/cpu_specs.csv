@@ -387,7 +387,7 @@ AMD EPYC 7543P,AMD,Milan,EPYC,2.8 GHz,225.0,32.0,,1064.0,io_die_size (416 mm²) 
 AMD EPYC 7551,AMD,Naples,EPYC,2000 MHz,180.0,32.0,,213.0,io_die_size () + die_size (213 mm²),https://www.techpowerup.com/cpu-specs/epyc-7551.c1921
 AMD EPYC 7551P,AMD,Naples,EPYC,2000 MHz,180.0,32.0,,213.0,io_die_size () + die_size (213 mm²),https://www.techpowerup.com/cpu-specs/epyc-7551p.c1929
 AMD EPYC 7552,AMD,Rome,EPYC,2.2 GHz,200.0,48.0,,74.0,io_die_size () + die_size (74 mm²),https://www.techpowerup.com/cpu-specs/epyc-7552.c2248
-AMD EPYC 7571,AMD,Naples,EPYC,,200.0,24.0,,,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
+AMD EPYC 7571,AMD,Naples,EPYC,,200.0,32.0,64.0,,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 AMD EPYC 7573X,AMD,Milan-X,EPYC,2.8 GHz,280.0,32.0,,1064.0,io_die_size (416 mm²) + die_size (8x 81 mm²),https://www.techpowerup.com/cpu-specs/epyc-7573x.c2760
 AMD EPYC 75F3,AMD,Milan,EPYC,2.95 GHz,280.0,32.0,,1064.0,io_die_size (416 mm²) + die_size (8x 81 mm²),https://www.techpowerup.com/cpu-specs/epyc-75f3.c2378
 AMD EPYC 7601,AMD,Naples,EPYC,2.2 GHz,180.0,32.0,,213.0,io_die_size () + die_size (213 mm²),https://www.techpowerup.com/cpu-specs/epyc-7601.c1920
@@ -406,7 +406,7 @@ AMD EPYC 7F32,AMD,Rome,EPYC,3.7 GHz,180.0,8.0,,74.0,io_die_size () + die_size (7
 AMD EPYC 7F52,AMD,Rome,EPYC,3.5 GHz,155.0,16.0,,74.0,io_die_size () + die_size (74 mm²),https://www.techpowerup.com/cpu-specs/epyc-7f52.c2301
 AMD EPYC 7F72,AMD,Rome,EPYC,3.2 GHz,240.0,24.0,,74.0,io_die_size () + die_size (74 mm²),https://www.techpowerup.com/cpu-specs/epyc-7f72.c2302
 AMD EPYC 7H12,AMD,Rome,EPYC,2.6 GHz,280.0,64.0,,74.0,io_die_size () + die_size (74 mm²),https://www.techpowerup.com/cpu-specs/epyc-7h12.c2244
-AMD EPYC 7R32,AMD,Rome,EPYC,,280.0,48.0,,,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
+AMD EPYC 7R32,AMD,Rome,EPYC,,280.0,48.0,96.0,,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 AMD EPYC 9124,AMD,Genoa,EPYC,3 GHz,200.0,16.0,,685.0,io_die_size (397 mm²) + die_size (4x 72 mm²),https://www.techpowerup.com/cpu-specs/epyc-9124.c2917
 AMD EPYC 9174F,AMD,Genoa,EPYC,4.1 GHz,320.0,16.0,,973.0,io_die_size (397 mm²) + die_size (8x 72 mm²),https://www.techpowerup.com/cpu-specs/epyc-9174f.c2918
 AMD EPYC 9224,AMD,Genoa,EPYC,2.5 GHz,200.0,24.0,,685.0,io_die_size (397 mm²) + die_size (4x 72 mm²),https://www.techpowerup.com/cpu-specs/epyc-9224.c2919
@@ -974,8 +974,8 @@ AMD Turion X2 Ultra ZM-87,AMD,Griffin,Turion X2 Ultra ZM,2.4 GHz,35.0,2.0,,,io_d
 AMD Turion X2 Ultra ZM-88,AMD,Griffin,Turion X2 Ultra ZM,2.5 GHz,35.0,2.0,,,io_die_size () + die_size (),https://www.techpowerup.com/cpu-specs/turion-x2-ultra-zm-88.c636
 AMD Z-01,AMD,Desna,Z,1000 MHz,6.0,2.0,,,io_die_size () + die_size (),https://www.techpowerup.com/cpu-specs/z-01.c1179
 AMD Z-60,AMD,Hondo,Z,1000 MHz,5.0,2.0,,,io_die_size () + die_size (),https://www.techpowerup.com/cpu-specs/z-60.c1180
-Graviton,Annapurna Labs,Graviton,Graviton,,40.0,16.0,,,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
-Graviton2,Annapurna Labs,Graviton2,Graviton2,,150.0,64.0,,456.96,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
+Graviton,Annapurna Labs,Graviton,Graviton,,40.0,16.0,16.0,,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
+Graviton2,Annapurna Labs,Graviton2,Graviton2,,150.0,64.0,64.0,456.96,,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 Intel A100,Intel,Stealey,A,600 MHz,3.0,1.0,,66.0,io_die_size () + die_size (66 mm²),https://www.techpowerup.com/cpu-specs/a100.c1404
 Intel A110,Intel,Stealey,A,800 MHz,3.0,1.0,,66.0,io_die_size () + die_size (66 mm²),https://www.techpowerup.com/cpu-specs/a110.c1405
 Intel Atom 230,Intel,Diamondville,Atom,1600 MHz,4.0,1.0,,2400.0,io_die_size () + die_size (25.96 mm²),https://www.techpowerup.com/cpu-specs/atom-230.c1395

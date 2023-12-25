@@ -10,9 +10,9 @@ pytest_plugins = ('pytest_asyncio',)
 async def test_empty_usage():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/cloud/instance?verbose=false', json={
-            'provider': 'aws',
-            'instance_type': 'a1.4xlarge',
-            'usage': {}
+            "provider": "aws",
+            "instance_type": "a1.4xlarge",
+            "usage": {}
         })
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',

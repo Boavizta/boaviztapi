@@ -32,6 +32,7 @@ async def test_get_server_archetype_dellr740():
         'RAM': {'capacity': {'default': 32.0},
                 'density': {'default': 1.79},
                 'units': {'default': 12.0}},
+        'GPU': {'memory_capacity': {}, 'name': {}, 'units': {}},
         'SSD': {'capacity': {'default': 400.0},
                 'density': {'default': 50.6},
                 'units': {'default': 1.0}},
