@@ -10,7 +10,7 @@ from boaviztapi.model.component import ComponentCPU, ComponentCase, ComponentPow
 from boaviztapi.model.component.functional_block import ComponentFunctionalBlock
 from boaviztapi.model.device import Device
 from boaviztapi.model.device.iot import DeviceIoT
-from boaviztapi.model.impact import ImpactFactor, IMPACT_PHASES, IMPACT_CRITERIAS, Impact
+from boaviztapi.model.impact import ImpactFactor, IMPACT_PHASES, IMPACT_CRITERIAS, Impact, USE
 from boaviztapi.service.factor_provider import get_impact_factor, get_iot_impact_factor
 
 
@@ -438,6 +438,11 @@ def server_impact_use(impact_type: str, duration: int, server: DeviceServer) -> 
             max=modeled_consumption.max
         )
 
+    # Compute impacts at component level
+    compute_single_impact(server.cpu, USE, impact_type, duration)
+    for ram in server.ram:
+        compute_single_impact(ram, USE, impact_type, duration)
+
     impact = impact_factor.value * (server.usage.avg_power.value / 1000) * server.usage.use_time_ratio.value * duration
     min_impact = impact_factor.min * (server.usage.avg_power.min / 1000) * server.usage.use_time_ratio.min * duration
     max_impact = impact_factor.max * (server.usage.avg_power.max / 1000) * server.usage.use_time_ratio.max * duration
@@ -503,6 +508,11 @@ def cloud_impact_use(impact_type: str, duration: int, cloud_instance: ServiceClo
             min=modeled_consumption.min,
             max=modeled_consumption.max
         )
+
+    # Compute impacts at component level
+    compute_single_impact(platform.cpu, USE, impact_type, duration)
+    for ram in platform.ram:
+        compute_single_impact(ram, USE, impact_type, duration)
 
     impact = impact_factor.value * (cloud_instance.usage.avg_power.value / 1000) * platform.usage.use_time_ratio.value * duration
     min_impact = impact_factor.min * (cloud_instance.usage.avg_power.min / 1000) * platform.usage.use_time_ratio.min * duration
