@@ -445,13 +445,12 @@ def cloud_impact_embedded(impact_type: str, duration: int, cloud_instance: Servi
     min_impacts = []
     max_impacts = []
     warnings = []
+    default_allocation = cloud_instance.vcpu.value / cloud_instance.platform.get_total_vcpu()
 
     try:
         for component in cloud_instance.platform.components:
             component.usage.hours_life_time = cloud_instance.platform.usage.hours_life_time
-            allocation = 1
-            if component.NAME == "CPU":
-                allocation = cloud_instance.vcpu.value / cloud_instance.platform.get_total_vcpu()
+            allocation = default_allocation
             if component.NAME == "RAM":
                 allocation = cloud_instance.memory.value / cloud_instance.platform.get_total_memory()
             if component.NAME == "SSD":
