@@ -36,6 +36,7 @@ def compute_single_impact(model: Union[Component, Device, Service],
         return result
     except (AttributeError, NotImplementedError):
         model.add_impacts(None, criteria, phase)
+        return None
 
 
 def compute_impacts(model: Union[Component, Device, Service], selected_criteria=config["default_criteria"],
@@ -403,6 +404,10 @@ def server_impact_embedded(impact_type: str, duration: int, server: DeviceServer
         for component in server.components:
             component.usage.hours_life_time = server.usage.hours_life_time
             single_impact = compute_single_impact(component, "embedded", impact_type, duration)
+
+            if single_impact is None:
+                raise NotImplementedError
+
             impacts.append(single_impact.value)
             min_impacts.append(single_impact.min)
             max_impacts.append(single_impact.max)
@@ -465,6 +470,10 @@ def cloud_impact_embedded(impact_type: str, duration: int, cloud_instance: Servi
                     continue
 
             single_impact = compute_single_impact(component, "embedded", impact_type, duration, allocation)
+
+            if single_impact is None:
+                raise NotImplementedError
+
             impacts.append(single_impact.value)
             min_impacts.append(single_impact.min)
             max_impacts.append(single_impact.max)
@@ -472,16 +481,15 @@ def cloud_impact_embedded(impact_type: str, duration: int, cloud_instance: Servi
         return sum(impacts), sum(min_impacts), sum(max_impacts), warnings
 
     except NotImplementedError:
-        allocation = cloud_instance.vcpu / cloud_instance.platform.get_total_vcpu()
         impact = Impact(value=get_impact_factor(item='SERVER', impact_type=impact_type)["impact"],
                         min=get_impact_factor(item='SERVER', impact_type=impact_type)["impact"],
                         max=get_impact_factor(item='SERVER', impact_type=impact_type)["impact"])
 
         warnings = ["Generic data used for impact calculation."]
 
-        impact.allocate(duration, cloud_instance.usage.hours_life_time)
+        impact.allocate(duration, cloud_instance.platform.usage.hours_life_time)
 
-        return impact.value * allocation, impact.min * allocation, impact.max * allocation, warnings
+        return impact.value * default_allocation, impact.min * default_allocation, impact.max * default_allocation, warnings
 
 
 def cloud_impact_use(impact_type: str, duration: int, cloud_instance: ServiceCloudInstance) -> ComputedImpacts:

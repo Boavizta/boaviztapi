@@ -467,3 +467,19 @@ async def test_custom_usage_1():
                                               'min and max values)']},
                     'unit': 'MJ',
                     'use': {'max': 99.17, 'min': 99.17, 'value': 99.17}}}}
+
+@pytest.mark.asyncio
+async def test_empty_config_server_generic_criteria():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/server/?verbose=false&criteria=adpf', json={})
+    assert res.json() == {'impacts': {'adpf': {'description': 'Use of fossil resources (including '
+                                     'nuclear)',
+                      'embedded': {'max': 51500.0,
+                                   'min': 51500.0,
+                                   'value': 51500.0,
+                                   'warnings': ['Generic data used for impact '
+                                                'calculation.']},
+                      'unit': 'MJ',
+                      'use': {'max': 6660000.0,
+                              'min': 85.67,
+                              'value': 200000.0}}}}
