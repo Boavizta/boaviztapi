@@ -5,7 +5,7 @@ import pytest
 @pytest.mark.parametrize("cpu_name_input, name, manufacturer, code_name, model_range, tdp, cores, threads, total_die_size, total_die_size_source, source", [
     ("Intel(R) Pentium(R) CPU G2030 @ 3.00GHz", "Intel Pentium G2030", "Intel", "Ivy Bridge", "Pentium G", None, None, None, None, None, "https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data"),
     ("Intel(R) Core(TM) m7-6Y75 CPU @ 1.20GHz", "Intel Core m7-6Y75", "Intel", "Skylake", "Core m7", None, None, None, None, None, "https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data"),
-    ("AMD EPYC 7R32 48-Core Processor", "AMD EPYC 7R32", "AMD", "Rome", "EPYC", 280, 48, None, None, None, "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652"),
+    ("AMD EPYC 7R32 48-Core Processor", "AMD EPYC 7R32", "AMD", "Rome", "EPYC", 280, 48, 96, None, None, "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652"),
     ("Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz", "Intel Xeon E5-2660", "Intel", "Sandy Bridge-EP", "Xeon E5", 95, 8, None, 435, "io_die_size () + die_size (435 mm²)", "https://www.techpowerup.com/cpu-specs/xeon-e5-2660.c976"),
     ("Intel(R) Xeon(R) CPU E5-2680 v2 @ 2.80GHz", "Intel Xeon E5-2680 v2", "Intel", "Ivy Bridge-EP", "Xeon E5", 115, 10, None, 160, "io_die_size () + die_size (160 mm²)", "https://www.techpowerup.com/cpu-specs/xeon-e5-2680-v2.c1666"),
     ("Intel(R) Celeron(R) CPU G3900 @ 2.80GHz", "Intel Celeron G3900", "Intel", "Skylake", "Celeron G", 51, 2, None, 150, "io_die_size () + die_size (150 mm²)", "https://www.techpowerup.com/cpu-specs/celeron-g3900.c1855"),
