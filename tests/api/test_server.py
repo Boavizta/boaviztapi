@@ -85,15 +85,20 @@ async def test_empty_config_server():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.post('/v1/server/?verbose=false', json={})
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
-                     'embedded': {'max': 8.811,
+                     'embedded': {'max': 87.57,
                                   'min': 0.05434,
                                   'value': 0.2,
                                   'warnings': ['End of life is not included in '
-                                               'the calculation']},
+                                               'the calculation',
+                                               'Uncertainty from technical '
+                                               'characteristics is very '
+                                               'important. Results should be '
+                                               'interpreted with caution (see '
+                                               'min and max values)']},
                      'unit': 'kgSbeq',
                      'use': {'max': 0.07592, 'min': 8.849e-05, 'value': 0.002}},
              'gwp': {'description': 'Total climate change',
-                     'embedded': {'max': 285100.0,
+                     'embedded': {'max': 3034000.0,
                                   'min': 201.0,
                                   'value': 3000.0,
                                   'warnings': ['End of life is not included in '
@@ -106,7 +111,7 @@ async def test_empty_config_server():
                      'unit': 'kgCO2eq',
                      'use': {'max': 257300.0, 'min': 154.2, 'value': 10000.0}},
              'pe': {'description': 'Consumption of primary energy',
-                    'embedded': {'max': 3539000.0,
+                    'embedded': {'max': 37660000.0,
                                  'min': 2763.0,
                                  'value': 40000.0,
                                  'warnings': ['End of life is not included in '
@@ -366,27 +371,42 @@ async def test_partial_server_3():
             }
         })
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
-                     'embedded': {'max': 0.5394,
+                     'embedded': {'max': 79.3,
                                   'min': 0.2193,
-                                  'value': 0.24,
+                                  'value': 0.2,
                                   'warnings': ['End of life is not included in '
-                                               'the calculation']},
+                                               'the calculation',
+                                               'Uncertainty from technical '
+                                               'characteristics is very '
+                                               'important. Results should be '
+                                               'interpreted with caution (see '
+                                               'min and max values)']},
                      'unit': 'kgSbeq',
                      'use': {'max': 0.05461, 'min': 9.269e-05, 'value': 0.001}},
              'gwp': {'description': 'Total climate change',
-                     'embedded': {'max': 2895.0,
+                     'embedded': {'max': 2752000.0,
                                   'min': 754.8,
-                                  'value': 800.0,
+                                  'value': 900.0,
                                   'warnings': ['End of life is not included in '
-                                               'the calculation']},
+                                               'the calculation',
+                                               'Uncertainty from technical '
+                                               'characteristics is very '
+                                               'important. Results should be '
+                                               'interpreted with caution (see '
+                                               'min and max values)']},
                      'unit': 'kgCO2eq',
                      'use': {'max': 185000.0, 'min': 161.5, 'value': 10000.0}},
              'pe': {'description': 'Consumption of primary energy',
-                    'embedded': {'max': 36450.0,
+                    'embedded': {'max': 34160000.0,
                                  'min': 10620.0,
-                                 'value': 12000.0,
+                                 'value': 10000.0,
                                  'warnings': ['End of life is not included in '
-                                              'the calculation']},
+                                              'the calculation',
+                                              'Uncertainty from technical '
+                                              'characteristics is very '
+                                              'important. Results should be '
+                                              'interpreted with caution (see '
+                                              'min and max values)']},
                     'unit': 'MJ',
                     'use': {'max': 96250000.0,
                             'min': 91.29,
@@ -407,28 +427,43 @@ async def test_custom_usage_1():
             }
         })
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
-                     'embedded': {'max': 2.209,
+                     'embedded': {'max': 21.95,
                                   'min': 0.01362,
-                                  'value': 0.1,
+                                  'value': 0.06,
                                   'warnings': ['End of life is not included in '
-                                               'the calculation']},
+                                               'the calculation',
+                                               'Uncertainty from technical '
+                                               'characteristics is very '
+                                               'important. Results should be '
+                                               'interpreted with caution (see '
+                                               'min and max values)']},
                      'unit': 'kgSbeq',
                      'use': {'max': 4.268e-07,
                              'min': 4.268e-07,
                              'value': 4.268e-07}},
              'gwp': {'description': 'Total climate change',
-                     'embedded': {'max': 71470.0,
+                     'embedded': {'max': 760800.0,
                                   'min': 50.4,
-                                  'value': 1000.0,
+                                  'value': 800.0,
                                   'warnings': ['End of life is not included in '
-                                               'the calculation']},
+                                               'the calculation',
+                                               'Uncertainty from technical '
+                                               'characteristics is very '
+                                               'important. Results should be '
+                                               'interpreted with caution (see '
+                                               'min and max values)']},
                      'unit': 'kgCO2eq',
                      'use': {'max': 0.8609, 'min': 0.8609, 'value': 0.8609}},
              'pe': {'description': 'Consumption of primary energy',
-                    'embedded': {'max': 887300.0,
+                    'embedded': {'max': 9442000.0,
                                  'min': 692.6,
                                  'value': 10000.0,
                                  'warnings': ['End of life is not included in '
-                                              'the calculation']},
+                                              'the calculation',
+                                              'Uncertainty from technical '
+                                              'characteristics is very '
+                                              'important. Results should be '
+                                              'interpreted with caution (see '
+                                              'min and max values)']},
                     'unit': 'MJ',
                     'use': {'max': 99.17, 'min': 99.17, 'value': 99.17}}}}

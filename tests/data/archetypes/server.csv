@@ -1,5 +1,5 @@
 id,manufacturer,CASE.case_type,CPU.units,CPU.core_units,CPU.model_range,CPU.die_size_per_core,CPU.name,CPU.threads,CPU.manufacturer,CPU.tdp,CPU.family,RAM.units,RAM.density,RAM.capacity,SSD.units,SSD.capacity,SSD.density,HDD.units,HDD.capacity,GPU.units,GPU.name,GPU.memory_capacity,POWER_SUPPLY.units,POWER_SUPPLY.unit_weight,USAGE.time_workload,USAGE.use_time_ratio,USAGE.hours_life_time,USAGE.other_consumption_ratio,WARNINGS
-DEFAULT,,rack,2;1;16,24;1;64,,24.5;50.0;10.0,,,Xeon Platinum,,,24;1;128,0.625;0.1;1,32;1;100,1;0;25,1000;100;5000,48.5;0.1;1,0;0;25,1000;100;5000,,,,2;1;4,2.99;1;5,50;0;100,1,35040,0.33;0;1
+DEFAULT,,rack,2;1;16,24;1;64,,24.5;50.0;10.0,,,Xeon Platinum,,,24;1;128,0.625;0.1;1,32;1;100,1;0;25,1000;100;5000,48.5;0.1;1,0,0,,,,2;1;4,2.99;1;5,50;0;100,1,35040,0.33;0;1
 platform_compute_low,,rack,2,8;8;16,,,,,,,,4;2;8,,16,1;1;1,100,,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic compute platform
 platform_compute_medium,,rack,2,24;16;48,,,,,,,,8;6;10,,32,1;1;2,1000,,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic compute platform
 platform_compute_high,,rack,2,48;32;96,,,,,,,,8;6;12,,64,2;1;2,2000,,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic compute platform

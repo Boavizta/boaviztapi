@@ -16,7 +16,7 @@ class DeviceServer(Device):
         super().__init__(archetype=archetype, **kwargs)
         self._cpu = None
         self._ram_list = None
-        self._disk_list = None
+        self._disk_list = []
         self._power_supply = None
         self._case = None
         self._motherboard = None
@@ -49,11 +49,11 @@ class DeviceServer(Device):
 
     @property
     def disk(self) -> List[Union[ComponentSSD, ComponentHDD]]:
-        if self._disk_list is None:
-            if get_arch_component(self.archetype, "SSD")["units"] != {}:
-                self._disk_list = [ComponentSSD(archetype=get_arch_component(self.archetype, "SSD"))]
-            if get_arch_component(self.archetype, "HDD")["units"] != {}:
-                self._disk_list = [ComponentHDD(archetype=get_arch_component(self.archetype, "HDD"))]
+        if not self._disk_list:
+            if get_arch_component(self.archetype, "SSD")["units"]["default"] != 0:
+                self._disk_list.append(ComponentSSD(archetype=get_arch_component(self.archetype, "SSD")))
+            if get_arch_component(self.archetype, "HDD")["units"]["default"] != 0:
+                self._disk_list.append(ComponentHDD(archetype=get_arch_component(self.archetype, "HDD")))
 
         return self._disk_list
 
