@@ -82,26 +82,27 @@ class ServiceCloudInstance(Service):
                                                         min=total_cpu_consumption.min * vcpu_allocation,
                                                         max=total_cpu_consumption.max * vcpu_allocation)
 
-        conso_ram = ImpactFactor(
+        total_conso_ram = ImpactFactor(
             value=0,
             min=0,
             max=0
         )
 
         for ram in self.platform.ram:
-            total_ram_consumption = ram.model_power_consumption()
-            ram.usage.avg_power.set_completed(value=total_ram_consumption.value * ram_allocation,
-                                              min=total_ram_consumption.min * ram_allocation,
-                                              max=total_ram_consumption.max * ram_allocation)
+            ram_consumption = ram.model_power_consumption()
 
-            conso_ram.value = conso_ram.value + ram.model_power_consumption().value * ram.units.value * ram_allocation
-            conso_ram.min = conso_ram.min + ram.model_power_consumption().min * ram.units.min * ram_allocation
-            conso_ram.max = conso_ram.max + ram.model_power_consumption().max * ram.units.max * ram_allocation
+            ram.usage.avg_power.set_completed(value=ram_consumption.value * ram_allocation,
+                                              min=ram_consumption.min * ram_allocation,
+                                              max=ram_consumption.max * ram_allocation)
+
+            total_conso_ram.value = total_conso_ram.value + ram.usage.avg_power.value
+            total_conso_ram.min = total_conso_ram.min + ram.usage.avg_power.min
+            total_conso_ram.max = total_conso_ram.max + ram.usage.avg_power.max
 
         return ImpactFactor(
-            value=(self.platform.cpu.usage.avg_power.value + conso_ram.value) * (1 + self.platform.usage.other_consumption_ratio.value),
-            min=(self.platform.cpu.usage.avg_power.min + conso_ram.min) * (1 + self.platform.usage.other_consumption_ratio.min),
-            max=(self.platform.cpu.usage.avg_power.max + conso_ram.max) * (1 + self.platform.usage.other_consumption_ratio.max)
+            value=(self.platform.cpu.usage.avg_power.value + total_conso_ram.value) * (1 + self.platform.usage.other_consumption_ratio.value),
+            min=(self.platform.cpu.usage.avg_power.min + total_conso_ram.min) * (1 + self.platform.usage.other_consumption_ratio.min),
+            max=(self.platform.cpu.usage.avg_power.max + total_conso_ram.max) * (1 + self.platform.usage.other_consumption_ratio.max)
         )
 
     def __iter__(self):
