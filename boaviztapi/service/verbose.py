@@ -2,12 +2,13 @@ from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.device import Device
 from boaviztapi.model.component import Component
-from boaviztapi.model.services.cloud_instance import ServiceCloudInstance
+from boaviztapi.model.services.cloud_instance import ServiceCloudInstance, Service
 
 
 def verbose_cloud(cloud_instance: ServiceCloudInstance, selected_criteria=config["default_criteria"],
                   duration=config["default_duration"]):
     json_output = {**iter_boattribute(cloud_instance),
+                   **verbose_usage(cloud_instance),
                    **verbose_device(cloud_instance.platform, selected_criteria=selected_criteria, duration=duration)}
     return json_output
 
@@ -33,7 +34,7 @@ def verbose_device(device: Device, selected_criteria=config["default_criteria"],
     return json_output
 
 
-def verbose_usage(device: [Device, Component]):
+def verbose_usage(device: [Device, Component, Service]):
     json_output = {**iter_boattribute(device.usage)}
     if device.usage.consumption_profile is not None:
         if device.usage.consumption_profile.workloads.is_set():

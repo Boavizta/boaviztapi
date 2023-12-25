@@ -488,21 +488,17 @@ def cloud_impact_use(impact_type: str, duration: int, cloud_instance: ServiceClo
     platform = cloud_instance.platform
     impact_factor = platform.usage.elec_factors[impact_type]
 
-    if not platform.usage.avg_power.is_set():
-        modeled_consumption = platform.model_power_consumption()
-        platform.usage.avg_power.set_completed(
+    if not cloud_instance.usage.avg_power.is_set():
+        modeled_consumption = cloud_instance.model_power_consumption()
+        cloud_instance.usage.avg_power.set_completed(
             value=modeled_consumption.value,
             min=modeled_consumption.min,
             max=modeled_consumption.max
         )
 
-    impact = impact_factor.value * (platform.usage.avg_power.value / 1000) * platform.usage.use_time_ratio.value * duration
-    min_impact = impact_factor.min * (platform.usage.avg_power.min / 1000) * platform.usage.use_time_ratio.min * duration
-    max_impact = impact_factor.max * (platform.usage.avg_power.max / 1000) * platform.usage.use_time_ratio.max * duration
-
-    return impact, min_impact, max_impact, []
-
-    model_power_consumption
+    impact = impact_factor.value * (cloud_instance.usage.avg_power.value / 1000) * platform.usage.use_time_ratio.value * duration
+    min_impact = impact_factor.min * (cloud_instance.usage.avg_power.min / 1000) * platform.usage.use_time_ratio.min * duration
+    max_impact = impact_factor.max * (cloud_instance.usage.avg_power.max / 1000) * platform.usage.use_time_ratio.max * duration
 
     return impact, min_impact, max_impact, []
 
