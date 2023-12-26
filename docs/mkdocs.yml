@@ -59,9 +59,12 @@ nav:
         - Devices:
               - Devices: Explanations/devices/devices.md
               - Server: Explanations/devices/server.md
-              - Cloud instances: Explanations/devices/cloud.md
               - End user devices : Explanations/devices/terminals_&_peripherals.md
               - IoT device : Explanations/devices/iot_devices.md
+        - Services:
+            - Services: Explanations/services/services.md
+            - Cloud instances: Explanations/services/cloud.md
+
         - Useful resources: Explanations/useful_resources.md
     - Reference:
         - Routes: Reference/routes.md

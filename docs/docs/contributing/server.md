@@ -41,4 +41,4 @@ All available servers are stored in a CSV file named `servers.csv` located at `b
 
 ### Value ranges
 
-Some values can be inputted using ranges like the following: `default;min;max`. For example, if the value is `default;2;8`, it means that the default value is `2` and the range is from `2` to `8`. If the value is `2;1;4`, it means that the default value is `2` and the range is from `1` to `2`.
+Some values can be inputted using ranges like the following: `default;min;max`. For example, if the value is `4;2;8`, it means that the default value is `4` and the range is from `2` to `8`. 

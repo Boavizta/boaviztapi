@@ -35,7 +35,7 @@ See: [Electricity methodology](Explanations/usage/elec_conso.md)
 The technical configuration of cloud instances are pre-recorded in the API.
 Their impacts are computed through the bottom-up process. The electricity is modeled from the technical configuration and the context of usage given by the user.
 
-See: [Cloud methodology](Explanations/devices/cloud.md)
+See: [Cloud methodology](Explanations/services/cloud.md)
 
 #### How does the API amortize embedded impacts?
 The API implements two methods to amortize embedded impacts
