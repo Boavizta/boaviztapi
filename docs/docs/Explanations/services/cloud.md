@@ -2,24 +2,19 @@
 
 ## Characteristics
 
-In addition to the characteristics available for a [server](../devices/server.md), you can use the following:
+Cloud instance characteristics are pre-recorded as [archetypes](../archetypes.md). 
+The API will complete the following characteristics depending on the cloud provider and cloud instance name given by the user :
 
-| Name       | Unit | Default value                        | Description | Example  |
-|------------|------|--------------------------------------|-------------|----------|
-| usage      | None | See [cloud usage](../usage/usage.md) |             | ..       |
+| Name        | Unit  | Description                     | Example |
+|-------------|-------|---------------------------------|---------|
+| vcpu        | None  | Number of virtual CPUs          | 2       |
+| memory      | GB    | RAM capacity                    | 2       |
+| ssd_storage | GB    | ssd storage capacity            | 2       |
+| hdd_storage | GB    | hdd storage capacity            | 2       |
+| platform    | None  | Bare metal hosting the instance | 2       |
+| usage       | None  | See usage                       | ..      |
 
-
-### Cloud usage
-
-In addition to the characteristics available for [server usage](../devices/server.md), you can use the following:
-
-| Name                       | Unit           | Default value | Description                                                       | Example |
-|----------------------------|----------------|---------------|-------------------------------------------------------------------|---------|
-| instance_per_server        | None           | None          | See usage                                                         | 10      |
-| hours_life_time            | hours          | 35040         | Lifespan of the cloud element                                     | 2       |
-| use_time_ratio             | /1             | 1             | Proportion of time the device is used during the given duration.  | 0.5     |
-
-
+To add a new cloud instance to the API please refer to the [cloud instance contribution guide](../../contributing/cloud_instance.md).
 
 ## Embedded impacts
 
@@ -52,15 +47,15 @@ In addition to the characteristics available for [server usage](../devices/serve
 
 ### Method
 
-Embedded impacts of cloud instances correspond to the impact of the physical [server](server.md) hosting the instance
-divided by the number of instances hosted on the server.
+Embedded impacts of cloud instances are assessed based on the physical characteristics of the bare metal server hosting the instance (also named `platform` in this documentation). 
+The API allocate a portion of the impacts of each component to the instance based on the ratio of the instance characteristics to the server characteristics :
 
-$$
-\text{cloud_instance}_\text{embedded}^\text{criteria} = \frac{\text{server}_
-\text{embedded}^\text{criteria}}{\text{instances_per_server}}
-$$
+* For RAM :  $\text{RAM}_{\text{instance}}^{\text{embedded}} = \text{RAM}_{\text{server}}^{\text{embedded}} \times \frac{\text{RAM}_{\text{instance}}}{\text{RAM}_{\text{server}}}$
 
-Components configuration are never sent by the user but pre-recorded as an [archetype](../archetypes.md).
+
+* For SSD storage
+* For HDD storage
+* For CPU and all other components
 
 ## Usage impacts
 
@@ -70,4 +65,4 @@ As for embedded, usage impacts for a physical server are divided into the number
 
 ## Consumption profile
 
-We use the same process as [described for the servers](server.md#consumption-profile) .
+We use the same process as [described for the servers](../devices/server.md#consumption-profile) .

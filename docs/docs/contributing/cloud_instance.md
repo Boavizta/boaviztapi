@@ -4,150 +4,32 @@ This guide will help you add new cloud instances for a cloud provider that is al
 
 ## Cloud instances CSV file
 
-To take full advantage of Boavizta's bottom-up methodology, we need to have precise information of the underlying hardware. **If the cloud instance is a Virtual Machine (VM), then we need the information of the bare metal instance as well.** Impacts of the bare metal instance will be split and attributed to the VM according to its specifications (e.g. bare metal is 32 vCPU, VM is 16 vCPU, then the embedded impacts of the VM will half (16/32) of the bare metal.)
+To add cloud instances for a cloud provider, you will need to create a new CSV file using the same name as `provider.name` (e.g. `aws.csv`). The file must be created in the same location as the `providers.csv` file. You will need to have the exact same columns in the new CSV file compared to others. You can copy and paste the content of already existent list of instances from another cloud provider and remove all rows, but the first one.
 
-All instances for one particular cloud provider are stored in a CSV file named after that cloud provider (e.g. `aws.csv` for AWS). These files are located at `boaviztapi/data/archetypes/cloud/`. See on [GitHub](https://github.com/Boavizta/boaviztapi/tree/main/boaviztapi/data/archetypes/cloud).
+| Column name | Required     | Unit  | Description                      | Example    |
+|-------------|--------------|-------|----------------------------------|------------|
+| id          | **Required** |       | Instance identifier              | c5.2xlarge |
+| vcpu        | **Required** | unit  | Number of vCPU                   | 8          |
+| memory      | **Required** | GB    | RAM quantity                     | 32         |
+| ssd_storage |              | GB    | SSD storage quantity (can be 0)  | 200        |
+| hdd_storage |              | GB    | HDD storage quantity (can be 0)  | 500        |
+| gpu_units   |              | unit  | GPU quantity (not supported yet) | 2          |
+| platform    | **Required** |       |                                  | 96         |
 
-| Column name                   | Required     | Description                                                         | Example                   |
-|-------------------------------|--------------|---------------------------------------------------------------------|---------------------------|
-| id                            | **Required** | Instance identifier                                                 | c5.2xlarge                |
-| manufacturer                  | **Required** | Cloud provider                                                      | AWS                       |
-| CASE.type                     | **Required** | Type of enclosure (usually "rack")                                  | rack                      |
-| year                          |              | Launch year                                                         | 2016                      |
-| vcpu                          |              | Number of vCPU                                                      | 8                         |
-| platform_vcpu                 |              | Number of vCPU of the platform                                      | 96                        |
-| CPU.units                     |              | Number of physical CPU                                              | 2                         |
-| CPU.name                      | **Required** | CPU name                                                            | Intel Xeon Platinum 8124M |
-| instance.ram_capacity         |              | Instance RAM capacity (in GB)                                       | 16                        |
-| RAM.units                     | **Required** | Number of RAM banks                                                 | 12                        |
-| RAM.capacity                  | **Required** | RAM bank capacity                                                   | 16                        |
-| SSD.units                     |              | Number of SSD disks                                                 | 1                         |
-| SSD.capacity                  |              | Capacity of SSD disk (in GB)                                        | 512                       |
-| HDD.units                     |              | Number of HDD disks                                                 | 1                         |
-| HDD.capacity                  |              | Capacity of HDD disk (in GB)                                        | 4096                      |
-| GPU.units                     |              | Number of GPU cards                                                 | 4                         |
-| GPU.name                      |              | GPU name                                                            | NVIDIA A10G               |
-| GPU.tdp                       |              | GPU TDP[^1] value (in Watt)                                         | 150                       |
-| GPU.memory_capacity           |              | GPU memory capacity (in GB)                                         | 24                        |
-| POWER_SUPPLY.units            | **Required** | Number of power supplies                                            | 2                         |
-| POWER_SUPPLY.unit_weight      | **Required** | Power supply weight (in kg)                                         | 2.99;1;5                  |
-| USAGE.instance_per_server     | **Required** | Number of instances hosted by the same platform                     | 12                        |
-| USAGE.time_workload           | **Required** | Percentage of workload                                              | 50;0;100                  |
-| USAGE.hours_life_time         | **Required** | Number of hours of life time                                        | 35040 _(=4 years)_        |
-| USAGE.use_time_ratio          | **Required** | Proportion of the time the instance is being used                   | 1                         |
-| USAGE.other_consumption_ratio | **Required** | Power consumption ratio of other components relative to RAM and CPU | 0.33;0.2;0.6              |
-| USAGE.overcommited            |              | Platform is subject to over-commitment practices                    | False                     |
-| Warnings                      |              | List of warnings separated by semi-colons (;)                       | RAM.capacity not verified |
 
-### Compute
+### Platform
 
-The compute part addresses the case of [CPU](#cpu) and [GPU](#gpu) components.
+The platform is the bare metal server that host the instance. Since we compute the impacts of the instance as a portion of the bare metal server, we need to know its architecture. 
 
-#### CPU
+The `platform` field must match one of the `id` of the available server archetypes. You can either use :
 
-We need information about the number of vCPU of the VM instance (**vcpu**) and the bare metal instance (**platform_vcpu**). 
+* a generic server among the server archetypes that are already supported by BoaviztAPI. You can find the list of supported platforms in the `servers.csv` file located at `boaviztapi/data/archetypes/servers.csv` or by requesting the list of server archetypes using the API endpoint `/v1/server/archetypes`.
+* add a new platform to the `platforms.csv` file. See [Add a new server archetype](server_archetype.md).
 
-If you are **adding a bare metal instance** then, both values are equal: 
+!!! note
+    It is often impossible to find the exact architecture of the bare metal server. When so use a generic server architecture that matches the instance purpose (storage, compute, memory etc.)
 
-$$
-\text{vcpu}_{\text{bare_metal}} = \text{platform_vcpu}
-$$
-
-Also, you will need to provide the name of the physical CPU (**CPU.name**), along with the number of CPU on the motherboard (**CPU.units**). Before adding the CPU name you must check, if the CPU is already registered in BoaviztAPI. To do so, you can manually search the CSV located at `boaviztapi/data/crowdsourcing/cpu_specs.csv` or search on [GitHub (recommended)](https://github.com/Boavizta/boaviztapi/blob/main/boaviztapi/data/crowdsourcing/cpu_specs.csv). If the CPU does not exist, then you must follow this guide: [Add a CPU](cpu.md).
-
-??? example "Example: add `c5.2xlarge` AWS instance"
-    
-    Say we want to include the `c5.2xlarge` VM instance. 
-
-    1. It has 8 vCPU according to the [AWS documentation](https://aws.amazon.com/ec2/instance-types/c5/). The bare metal version of that instance is the `c5.metal` with 96 vCPU. 
-    2. The bare metal instance is equiped with 2x _Intel Xeon Platinum 8124M_ CPU. This CPU exists in BoaviztAPI.
-
-    You will fill the information as follow:
-
-    | id             | vcpu  | platform_vcpu | CPU.units | CPU.name                  |
-    |----------------|-------|---------------|-----------|---------------------------|
-    | **c5.2xlarge** | 8     | 96            | 2         | Intel Xeon Platinum 8124M |
-    | **c5.metal**   | 96    | 96            | 2         | Intel Xeon Platinum 8124M |
-
-#### GPU
-
-If your cloud instance is equipped with a dedicated GPU, you will need to provide the following specifications:
-
-- Number of GPUs installed (**GPU.units**)
-- Model name (**GPU.name**)
-- Memory capacity (**GPU.memory_capacity**)
-- TDP[^1] (**GPU.tdp**)
-
-??? example "Example: add `g4dn.4xlarge` AWS instance"
-    
-    Say we want to include the `g4dn.4xlarge` VM instance that is equipped with 4x _NVIDIA Tesla T4_ GPUs. You will fill the information as follow:
-
-    | id                | GPU.units | GPU.name        | GPU.memory_capacity | GPU.tdp |
-    |-------------------|-----------|-----------------|---------------------|---------|
-    | **g4dn.4xlarge**  | 4         | NVIDIA Tesla T4 | 16                  | 70      |
-
-### Memory
-
-We need information about the available memory of the VM instance (**instance.ram_capacity**) and also the RAM configuration of the bare metal instance. Especially, you need to provide the number of RAM banks installed (**RAM.units**) and the capacity (**RAM.capacity**).
-
-If you are **adding a bare metal instance** you should have: 
-
-$$
-\text{instance.ram_capacity}_{\text{bare_metal}} = \text{RAM.units} * \text{RAM.capacity}
-$$
-
-Otherwise, if you are **adding a VM instance**, you should have:
-
-$$
-\text{USAGE.instance_per_server} * \text{instance.ram_capacity}_{\text{VM_instance}} = \text{RAM.units} * \text{RAM.capacity}
-$$
-
-Where **USAGE.instance_per_server** denotes the number of VM instances hosted on the bare metal instance (see [usage](#usage) for more information). 
-
-!!! warning "Obtaining the RAM specifications"
-
-    If you cannot access to the RAM specifications of the bare metal instance, it will be estimated. You **MUST add a warning** in the CSV file, within the column named "_Warnings_" specify "**_RAM.capacity not verified_**".
-
-??? example "Example: add `c5.2xlarge` AWS instance"
-
-    For example, if you are adding a `c5.2xlarge` AWS instance, you will need to estimate the number and the memory capacity of the RAM banks of the `c5.metal` instance.
-    
-    1. The VM instance has 16 GB of memory, so $\text{instance.ram_capacity} = 16$ ([AWS c5 docs](https://aws.amazon.com/ec2/instance-types/c5/))
-    2. The bare metal instance has 192 GB of memory ([AWS c5 docs](https://aws.amazon.com/ec2/instance-types/c5/))
-    3. The bare metal memory can be decomposed into $192\ GB = 12\ \text{(units)} * 16\ GB\ \text{(capacity)}$
-    4. The bare metal instance can fit 12 VM instance (**USAGE.instance_per_server**) and its verified by:
-
-        i. **vCPU sharing:** $\text{platform_vcpu} / \text{vcpu} = 96 / 8 = 12$
-
-        ii. **Memory sharing:** $\text{bare_metal.ram_capacity} / \text{VM.ram_capacity} = 192 / 16 = 12$
-
-    | id             | instance.ram_capacity | RAM.units | RAM.capacity | USAGE.instance_per_server | Warnings |
-    |----------------|-----------------------|-----------|--------------|---------------------------| -------- |
-    | **c5.2xlarge** | 16                    | 12        | 16           | 12                        |          |
-    | **c5.metal**   | 192                   | 12        | 16           | 1                         |          |
-
-### Storage
-
-### Usage
-
-### Missing values
-
-Some values that are not required can be left empty if unknown and will be auto-completed by the API. Try to fill all columns as much as possible. 
 
 ### Value ranges
 
-Some values can be inputted using ranges like the following: `default;min;max`. This can help modeling uncertain values like the weight of a power supply for instance. In the example above the default power supply weighs 2.99 kg, but can vary from 1 kg to 5 kg.
-
-
-[^1]: Thermal Design Power (TDP)
-
-
-[//]: # (Usually the distribution of RAM modules is not known. In this case, take a hypothesis which respects: RAM.units*RAM.capacity = instance.ram_capacity * USAGE.instance_per_server and set the warning "RAM.capacity not verified")
-
-[//]: # (Usually power supply duplicated so POWER_SUPPLY.units = 2. Usually POWER_SUPPLY.unit_weight is unknown, in that case use a range such as 2.99;1;5)
-
-[//]: # (We usually consider that the number of instances on one platform is sized by the CPUs. So USAGE.instance_per_server = platform_vcpu / vcpu)
-
-[//]: # (Should be a range between 0 and 100 &#40;50;0;100&#41; without valid justification)
-
-[//]: # (In cloud environment a reserved instance is usually up 100% of the time so USAGE.use_time_ratio = 1)
+Some values can be inputted using ranges like the following: `default;min;max`. For example, if the value is `default;2;8`, it means that the default value is `2` and the range is from `2` to `8`. If the value is `2;1;4`, it means that the default value is `2` and the range is from `1` to `2`.

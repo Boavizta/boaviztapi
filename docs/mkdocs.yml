@@ -78,6 +78,7 @@ nav:
     - Contributing:
         - 'Add a cloud provider': contributing/cloud_provider.md
         - 'Add a cloud instance': contributing/cloud_instance.md
+        - 'Add a server': contributing/server.md
         - 'Add a CPU' : contributing/cpu.md
 
 theme: material
