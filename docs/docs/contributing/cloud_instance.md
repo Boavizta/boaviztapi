@@ -24,7 +24,7 @@ The platform is the bare metal server that host the instance. Since we compute t
 The `platform` field must match one of the `id` of the available server archetypes. You can either use :
 
 * a generic server among the server archetypes that are already supported by BoaviztAPI. You can find the list of supported platforms in the `servers.csv` file located at `boaviztapi/data/archetypes/servers.csv` or by requesting the list of server archetypes using the API endpoint `/v1/server/archetypes`.
-* add a new platform to the `platforms.csv` file. See [Add a new server archetype](server_archetype.md).
+* add a new platform to the `platforms.csv` file. See [Add a new server archetype](server.md).
 
 !!! note
     It is often impossible to find the exact architecture of the bare metal server. When so use a generic server architecture that matches the instance purpose (storage, compute, memory etc.)
