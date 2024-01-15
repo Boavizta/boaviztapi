@@ -6,15 +6,15 @@ This guide will help you add new cloud instances for a cloud provider that is al
 
 To add cloud instances for a cloud provider, you will need to create a new CSV file using the same name as `provider.name` (e.g. `aws.csv`). The file must be created in the same location as the `providers.csv` file. You will need to have the exact same columns in the new CSV file compared to others. You can copy and paste the content of already existent list of instances from another cloud provider and remove all rows, but the first one.
 
-| Column name | Required     | Unit  | Description                      | Example    |
-|-------------|--------------|-------|----------------------------------|------------|
-| id          | **Required** |       | Instance identifier              | c5.2xlarge |
-| vcpu        | **Required** | unit  | Number of vCPU                   | 8          |
-| memory      | **Required** | GB    | RAM quantity                     | 32         |
-| ssd_storage |              | GB    | SSD storage quantity (can be 0)  | 200        |
-| hdd_storage |              | GB    | HDD storage quantity (can be 0)  | 500        |
-| gpu_units   |              | unit  | GPU quantity (not supported yet) | 2          |
-| platform    | **Required** |       |                                  | 96         |
+| Column name | Required     | Unit  | Description                      | Example     |
+|-------------|--------------|-------|----------------------------------|-------------|
+| id          | **Required** |       | Instance identifier              | c5.12xlarge |
+| vcpu        | **Required** | unit  | Number of vCPU                   | 48          |
+| memory      | **Required** | GB    | RAM quantity                     | 96          |
+| ssd_storage |              | GB    | SSD storage quantity (can be 0)  | 0           |
+| hdd_storage |              | GB    | HDD storage quantity (can be 0)  | 0           |
+| gpu_units   |              | unit  | GPU quantity (not supported yet) | 0           |
+| platform    | **Required** |       |                                  | c5.metal    |
 
 
 ### Platform
