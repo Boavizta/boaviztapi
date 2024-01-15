@@ -1,7 +1,6 @@
 from typing import List
 
 from boaviztapi import config
-from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.component.functional_block import ComponentFunctionalBlock, get_functional_block
 from boaviztapi.model.device import Device
 from boaviztapi.model.usage import ModelUsage
@@ -21,31 +20,6 @@ class DeviceIoT(Device):
             functional_block = []
 
         self._functional_block = functional_block
-
-    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
-        impacts = []
-        min_impacts = []
-        max_impacts = []
-        warnings = self.WARNINGS
-
-        for component in self.components:
-            impact, min_impact, max_impact, c_warning = getattr(component, f'impact_embedded')(impact_type)
-            impacts.append(impact * component.units.value)
-            min_impacts.append(min_impact * component.units.min)
-            max_impacts.append(max_impact * component.units.max)
-            warnings = warnings + c_warning
-        return sum(impacts), sum(min_impacts), sum(max_impacts), warnings
-
-    def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
-        if self.usage.avg_power.value is None:
-            raise NotImplementedError
-
-        impact_factor = self.usage.elec_factors[impact_type]
-        impact = impact_factor.value * (self.usage.avg_power.value / 1000) * self.usage.use_time_ratio.value * duration
-        min_impact = impact_factor.min * (self.usage.avg_power.min / 1000) * self.usage.use_time_ratio.min * duration
-        max_impact = impact_factor.max * (self.usage.avg_power.max / 1000) * self.usage.use_time_ratio.max * duration
-
-        return impact, min_impact, max_impact, []
 
     @property
     def components(self) -> List[ComponentFunctionalBlock]:

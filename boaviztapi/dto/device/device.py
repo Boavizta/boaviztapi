@@ -11,7 +11,9 @@ from boaviztapi.dto import BaseDTO
 from boaviztapi.dto.usage.usage import mapper_usage_server, mapper_usage_cloud
 from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.component import ComponentCase
-from boaviztapi.model.device import DeviceServer, DeviceCloudInstance
+from boaviztapi.model.device.server import DeviceServer
+from boaviztapi.model.services.cloud_instance import ServiceCloudInstance
+from boaviztapi.model.usage import ModelUsage
 from boaviztapi.service.archetype import get_server_archetype, get_arch_component, get_cloud_instance_archetype
 
 
@@ -44,42 +46,41 @@ def mapper_server(server_dto: Server, archetype=get_server_archetype(config["def
     server_model = device_mapper(server_dto, server_model)
 
     server_model.usage = mapper_usage_server(server_dto.usage or UsageServer(), archetype=get_arch_component(server_model.archetype,"USAGE"))
-    complete_components_usage(server_model)
+    complete_components_usage(server_model, server_model.usage)
 
     return server_model
 
 
-def complete_components_usage(server_model: DeviceServer):
-    complete_component_usage(server_model.cpu.usage, server_model.usage)
-    complete_component_usage(server_model.case.usage, server_model.usage)
-    for ram_unit in server_model.ram:
-        complete_component_usage(ram_unit.usage, server_model.usage)
-    for disk_unit in server_model.disk:
-        complete_component_usage(disk_unit.usage, server_model.usage)
+def complete_components_usage(model: DeviceServer, usage: ModelUsage):
+    complete_usage(model.cpu.usage, usage)
+    complete_usage(model.case.usage, usage)
+    for ram_unit in model.ram:
+        complete_usage(ram_unit.usage, usage)
+    for disk_unit in model.disk:
+        complete_usage(disk_unit.usage, usage)
 
 
-def complete_component_usage(usage_component, usage_device):
+def complete_usage(usage_component, usage_device):
     if usage_device.avg_power.is_set():
         return
     for attr, val in usage_component.__iter__():
         if isinstance(val, Boattribute) and not val.is_set() and usage_device.__getattribute__(attr).is_set():
             usage_component.__setattr__(attr, usage_device.__getattribute__(attr))
 
+
 class Cloud(Server):
     provider: Optional[str] = None
     instance_type: Optional[str] = None
     usage: Optional[UsageCloud] = None
 
-def mapper_cloud_instance(cloud_dto: Cloud, archetype=get_cloud_instance_archetype(config["default_cloud"], config["default_cloud_provider"])) -> DeviceCloudInstance:
-    model_cloud_instance = DeviceCloudInstance(archetype=archetype)
 
-    model_cloud_instance = device_mapper(cloud_dto, model_cloud_instance)
+def mapper_cloud_instance(cloud_dto: Cloud, archetype=get_cloud_instance_archetype(config["default_cloud_instance"], config["default_cloud_provider"])) -> ServiceCloudInstance:
+    model_cloud_instance = ServiceCloudInstance(archetype=archetype)
 
     model_cloud_instance.usage = mapper_usage_cloud(cloud_dto.usage or UsageCloud(), archetype=get_arch_component(model_cloud_instance.archetype, "USAGE"))
 
-    complete_component_usage(model_cloud_instance.cpu.usage, model_cloud_instance.usage)
-    for ram_unit in model_cloud_instance.ram:
-        complete_component_usage(ram_unit.usage, model_cloud_instance.usage)
+    complete_components_usage(model_cloud_instance.platform, model_cloud_instance.usage)
+    complete_usage(model_cloud_instance.platform.usage, model_cloud_instance.usage)
 
     return model_cloud_instance
 

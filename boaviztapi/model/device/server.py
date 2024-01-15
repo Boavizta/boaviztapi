@@ -1,16 +1,12 @@
-from abc import ABC
 from typing import List, Union
 
 from boaviztapi import config
-from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.component import Component, ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, \
     ComponentPowerSupply, ComponentCase, ComponentMotherboard, ComponentAssembly
 from boaviztapi.model.device.device import Device
 from boaviztapi.model.impact import ImpactFactor
-from boaviztapi.model.usage import ModelUsageServer, ModelUsageCloud
-import boaviztapi.utils.roundit as rd
-from boaviztapi.service.archetype import get_server_archetype, get_arch_component, get_cloud_instance_archetype
-from boaviztapi.service.factor_provider import get_impact_factor
+from boaviztapi.model.usage import ModelUsageServer
+from boaviztapi.service.archetype import get_server_archetype, get_arch_component
 
 
 class DeviceServer(Device):
@@ -20,7 +16,7 @@ class DeviceServer(Device):
         super().__init__(archetype=archetype, **kwargs)
         self._cpu = None
         self._ram_list = None
-        self._disk_list = None
+        self._disk_list = []
         self._power_supply = None
         self._case = None
         self._motherboard = None
@@ -53,8 +49,12 @@ class DeviceServer(Device):
 
     @property
     def disk(self) -> List[Union[ComponentSSD, ComponentHDD]]:
-        if self._disk_list is None:
-            self._disk_list = [ComponentSSD(archetype=get_arch_component(self.archetype, "SSD"))]
+        if not self._disk_list:
+            if get_arch_component(self.archetype, "SSD")["units"]["default"] != 0:
+                self._disk_list.append(ComponentSSD(archetype=get_arch_component(self.archetype, "SSD")))
+            if get_arch_component(self.archetype, "HDD")["units"]["default"] != 0:
+                self._disk_list.append(ComponentHDD(archetype=get_arch_component(self.archetype, "HDD")))
+
         return self._disk_list
 
     @disk.setter
@@ -124,64 +124,28 @@ class DeviceServer(Device):
         return [self.assembly] + [self.cpu] + self.ram + self.disk + [self.power_supply] + [self.case] + [
             self.motherboard]
 
-    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
-        impacts = []
-        min_impacts = []
-        max_impacts = []
-        warnings = []
-
-        try:
-            for component in self.components:
-                impact, min_impact, max_impact, c_warning = getattr(component, f'impact_embedded')(impact_type)
-
-                impacts.append(impact * component.units.value)
-                min_impacts.append(min_impact * component.units.min)
-                max_impacts.append(max_impact * component.units.max)
-                warnings = warnings + c_warning
-
-            return sum(impacts), sum(min_impacts), sum(max_impacts), warnings
-
-        except NotImplementedError:
-            impact = get_impact_factor(item='SERVER', impact_type=impact_type)["impact"]
-            min_impacts = get_impact_factor(item='SERVER', impact_type=impact_type)["impact"]
-            max_impacts = get_impact_factor(item='SERVER', impact_type=impact_type)["impact"]
-
-            warnings = ["Generic data used for impact calculation."]
-
-            return impact, min_impacts, max_impacts, warnings
-
-    def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
-        impact_factor = self.usage.elec_factors[impact_type]
-
-        if not self.usage.avg_power.is_set():
-            modeled_consumption = self.model_power_consumption()
-            self.usage.avg_power.set_completed(
-                modeled_consumption.value,
-                min=modeled_consumption.min,
-                max=modeled_consumption.max
-            )
-
-        impact = impact_factor.value * (self.usage.avg_power.value / 1000) * self.usage.use_time_ratio.value * duration
-        min_impact = impact_factor.min * (self.usage.avg_power.min / 1000) * self.usage.use_time_ratio.min * duration
-        max_impact = impact_factor.max * (self.usage.avg_power.max / 1000) * self.usage.use_time_ratio.max * duration
-
-        return impact, min_impact, max_impact, []
-
     def model_power_consumption(self):
         conso_cpu = ImpactFactor(
-            value=self.cpu.model_power_consumption().value * self.cpu.units.value,
-            min=self.cpu.model_power_consumption().min * self.cpu.units.min,
-            max=self.cpu.model_power_consumption().max * self.cpu.units.max,
+            value=self.cpu.model_power_consumption().value,
+            min=self.cpu.model_power_consumption().min,
+            max=self.cpu.model_power_consumption().max,
         )
+        self.cpu.usage.avg_power.set_completed(value=conso_cpu.value,
+                                               min=conso_cpu.min,
+                                               max=conso_cpu.max)
+
         conso_ram = ImpactFactor(
             value=0,
             min=0,
             max=0
         )
         for ram_unit in self.ram:
-            conso_ram.value = conso_ram.value + ram_unit.model_power_consumption().value * ram_unit.units.value
-            conso_ram.min = conso_ram.min + ram_unit.model_power_consumption().min * ram_unit.units.min
-            conso_ram.max = conso_ram.max + ram_unit.model_power_consumption().max * ram_unit.units.max
+            conso_ram.value = conso_ram.value + ram_unit.model_power_consumption().value
+            conso_ram.min = conso_ram.min + ram_unit.model_power_consumption().min
+            conso_ram.max = conso_ram.max + ram_unit.model_power_consumption().max
+            ram_unit.usage.avg_power.set_completed(value=conso_ram.value,
+                                                   min=conso_ram.min,
+                                                   max=conso_ram.max)
 
         return ImpactFactor(
             value=(conso_cpu.value + conso_ram.value) * (1 + self.usage.other_consumption_ratio.value),
@@ -189,37 +153,19 @@ class DeviceServer(Device):
             max=(conso_cpu.max + conso_ram.max) * (1 + self.usage.other_consumption_ratio.max)
         )
 
-class DeviceCloudInstance(DeviceServer, ABC):
+    def get_total_memory(self):
+        memory = 0
+        for ram_strip in self.ram:
+            memory += ram_strip.capacity.value * ram_strip.units.value
+        return memory
 
-    def __init__(self,
-                 archetype=get_cloud_instance_archetype(config["default_cloud"], config["default_cloud_provider"]),
-                 **kwargs):
-        super().__init__(**kwargs, archetype=archetype)
+    def get_total_disk_capacity(self, disk_type):
+        capacity = 0
+        for disk in self.disk:
+            if disk.NAME == disk_type or disk_type == "all":
+                if disk.units.has_value():
+                    capacity += disk.capacity.value * disk.units.value
+        return capacity
 
-    @property
-    def usage(self) -> ModelUsageCloud:
-        if self._usage is None:
-            self._usage = ModelUsageCloud(archetype=get_arch_component(self.archetype, "USAGE"))
-        return self._usage
-
-    @usage.setter
-    def usage(self, value: ModelUsageCloud) -> None:
-        self._usage = value
-
-    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
-        impact, min_impact, max_impact, c_warning = super().impact_embedded(impact_type)
-        return (
-            (impact / self.usage.instance_per_server.value),
-            (min_impact / self.usage.instance_per_server.min),
-            (max_impact / self.usage.instance_per_server.max),
-            c_warning
-        )
-
-    def impact_use(self, impact_type: str, duration: int) -> ComputedImpacts:
-        impact, min_impact, max_impact, c_warning = super().impact_use(impact_type, duration)
-        return (
-            (impact / self.usage.instance_per_server.value),
-            (min_impact / self.usage.instance_per_server.min),
-            (max_impact / self.usage.instance_per_server.max),
-            c_warning
-        )
+    def get_total_vcpu(self):
+        return self.cpu.threads.value * self.cpu.units.value

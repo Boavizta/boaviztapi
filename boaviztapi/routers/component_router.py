@@ -1,5 +1,5 @@
 import os
-from typing import List, Union, Optional
+from typing import List, Optional
 
 from fastapi import APIRouter, Body, HTTPException, Query
 
@@ -14,7 +14,7 @@ from boaviztapi.routers.openapi_doc.descriptions import cpu_description, ram_des
     hdd_description, motherboard_description, power_supply_description, case_description
 from boaviztapi.routers.openapi_doc.examples import components_examples
 from boaviztapi.service.archetype import get_component_archetype, get_device_archetype_lst
-from boaviztapi.service.bottom_up import bottom_up
+from boaviztapi.service.impacts_computation import compute_impacts
 from boaviztapi.service.verbose import verbose_component
 
 component_router = APIRouter(
@@ -439,11 +439,12 @@ async def component_impact_bottom_up(component: Component,
     if duration is None:
         duration = component.usage.hours_life_time.value
 
-    impacts = bottom_up(model=component, duration=duration, selected_criteria=criteria)
+    impacts = compute_impacts(model=component, duration=duration, selected_criteria=criteria)
+
     if verbose:
         return {
             "impacts": impacts,
-            "verbose": verbose_component(component=component, selected_criteria=criteria, duration=duration)
+            "verbose": verbose_component(component=component, duration=duration)
         }
     return {"impacts": impacts}
 

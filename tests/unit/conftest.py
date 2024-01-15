@@ -9,7 +9,7 @@ from boaviztapi.dto.usage import UsageServer
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, ComponentCase, \
     ComponentMotherboard, ComponentPowerSupply, ComponentAssembly
-from boaviztapi.model.device import DeviceServer
+from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.model.usage import ModelUsageServer
 from tests.unit import data_dir
 
