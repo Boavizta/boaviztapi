@@ -867,4 +867,4 @@ Results:
 }
 ```
 
-For further information see : [The explanation page on cloud](../Explanations/devices/cloud.md)
+For further information see : [The explanation page on cloud](../Explanations/services/cloud.md)

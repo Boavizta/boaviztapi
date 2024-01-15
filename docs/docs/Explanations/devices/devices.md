@@ -1,10 +1,9 @@
 # Device
 
-A device is characterized by zero to one component(s) and a usage. Its impacts can be assessed.
+A device is characterized by zero to many component(s) and a usage. Its impacts can be assessed.
 
 ## Available devices
 
 * [Server](server.md)
-* [Cloud instances](cloud.md)
 * [End user devices](terminals_&_peripherals.md)
 

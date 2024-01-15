@@ -13,7 +13,7 @@ You will find the details of each of the consumption profiles in the respective 
 * [CPU](components/cpu.md)
 * [RAM](components/ram.md)
 * [Server](devices/server.md)
-* [Cloud instances](devices/cloud.md)
+* [Cloud instances](services/cloud.md)
 
 
 ## Dataset
