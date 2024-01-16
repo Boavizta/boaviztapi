@@ -5,6 +5,7 @@ import boaviztapi.utils.roundit as rd
 from boaviztapi import config
 
 WARNING_IMPORTANT_UNCERTAINTY = ("Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)")
+NOT_IMPLEMENTED = 'not implemented'
 
 
 @dataclass
@@ -27,7 +28,8 @@ class Impact:
                 self.__setattr__(attr, val)
 
     def add_warning(self, warn):
-        self.warnings.append(warn)
+        if warn not in self.warnings:
+            self.warnings.append(warn)
 
     def to_json(self):
         json = {"value": self.rounded_value()}
@@ -44,7 +46,7 @@ class Impact:
         if nb_sig_fig > config["max_sig_fig"]:
             return rd.round_to_sigfig(rd_value, config["max_sig_fig"])
         elif rd_value == 0:
-            self.warnings.append(WARNING_IMPORTANT_UNCERTAINTY)
+            self.add_warning(WARNING_IMPORTANT_UNCERTAINTY)
             return rd.round_to_sigfig(self.value, config["min_sig_fig"])
         else:
             return rd_value
@@ -54,6 +56,19 @@ class Impact:
 
     def rounded_max(self):
         return rd.round_to_sigfig(self.max, config["max_sig_fig"])
+
+    def allocate(self, duration, life_time):
+        if duration > life_time.value:
+            allocation_ratio, allocation_ratio_min, allocation_ratio_max = 1, 1, 1
+        else:
+            allocation_ratio = duration / life_time.value
+            allocation_ratio_min = duration / life_time.max
+            allocation_ratio_max = duration / life_time.min
+
+        self.value = self.value * allocation_ratio
+        self.min = self.min * allocation_ratio_min
+        self.max = self.max * allocation_ratio_max
+
 
 
 GWP = ImpactCriteria(name="gwp", unit="kgCO2eq", description="Total climate change")
@@ -71,7 +86,7 @@ ODP = ImpactCriteria(name="odp", unit="kg CFC-11 eq.", method="PEF", description
 PM = ImpactCriteria(name="pm", unit="Disease occurrence", method="PEF", description="Fine particle emissions")
 POCP = ImpactCriteria(name="pocp", unit="kg NMVOC eq.", method="PEF", description="Photochemical ozone formation")
 WU = ImpactCriteria(name="wu", unit="m3 eq.", method="PEF", description="Use of water resources")
-MIPS = ImpactCriteria(name="mips", unit="kg", description="Material input per unit of service")
+MIPS = ImpactCriteria(name="mips", unit="kg", description="Material input per unit of services")
 ADPe = ImpactCriteria(name="adpe", unit="kg SB eq.", method="PEF", description="Use of mineral and metal resources")
 ADPf = ImpactCriteria(name="adpf", unit="MJ", method="PEF", description="Use of fossil resources (including nuclear)")
 AP = ImpactCriteria(name="ap", unit="mol H+ eq.", method="PEF", description="Acidification")
@@ -84,10 +99,15 @@ Epm = ImpactCriteria(name="epm", unit="kg N eq.", method="PEF", description="Eut
 Ept = ImpactCriteria(name="ept", unit="mol N eq.", method="PEF", description="Terrestrial eutrophication")
 FW = ImpactCriteria(name="fw", unit="m3", method="", description="Net use of freshwater")
 
-IMPACT_CRITERIAS = [GWP, ADP, PE, GWPPb, GWPPf, GWPPlu, IR, LU, ODP, PM, POCP, WU, MIPS, ADPe, ADPf, AP, CTUe, CTUh_c,
-                    CTUh_nc, Epf, Epm, Ept, FW]
+IMPACT_CRITERIAS = {"gwp": GWP, "adp": ADP, "pe": PE, "gwppb": GWPPb, "gwppf": GWPPf, "gwpplu": GWPPlu, "ir": IR,
+                    "lu": LU, "odp": ODP, "pm": PM, "pocp": POCP, "wu": WU, "mips": MIPS, "adpe": ADPe, "adpf": ADPf,
+                    "ap": AP, "ctue": CTUe, "CTUh_c": CTUh_c, "CTUh_nc": CTUh_nc, "epf": Epf, "epm": Epm, "ept": Ept,
+                    "fw": FW}
 
-IMPACT_PHASES = ["embedded", "use"]
+EMBEDDED = "embedded"
+USE = "use"
+
+IMPACT_PHASES = [EMBEDDED, USE]
 
 
 class ImpactFactor:
@@ -98,3 +118,39 @@ class ImpactFactor:
         for attr, val in kwargs.items():
             if val is not None:
                 self.__setattr__(attr, val)
+
+
+class Assessable:
+    def __init__(self, **kwargs):
+        self._impacts = {}
+
+    def get_impacts(self, selected_criteria):
+        result = {}
+        for criteria in selected_criteria:
+            result[criteria] = {}
+            result[criteria]["unit"] = IMPACT_CRITERIAS[criteria].unit
+            result[criteria]["description"] = IMPACT_CRITERIAS[criteria].description
+            for phase in IMPACT_PHASES:
+                if criteria not in self._impacts or phase not in self._impacts[criteria] or self._impacts[criteria][phase] is None:
+                    result[criteria][phase] = NOT_IMPLEMENTED
+                else:
+                    result[criteria][phase] = self._impacts[criteria][phase].to_json()
+        return result
+    @property
+    def impacts(self):
+        return self._impacts
+
+    @impacts.setter
+    def impacts(self, impacts):
+        self._impacts = impacts
+
+    def add_impacts(self, impact, criteria, phase):
+        if criteria not in self._impacts:
+            self._impacts[criteria] = {}
+            self._impacts[criteria]["unit"] = IMPACT_CRITERIAS[criteria].unit
+            self._impacts[criteria]["description"] = IMPACT_CRITERIAS[criteria].description
+        if phase not in self._impacts[criteria]:
+            self._impacts[criteria][phase] = {}
+        self._impacts[criteria][phase] = impact
+
+

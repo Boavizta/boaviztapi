@@ -17,6 +17,7 @@ markdown_extensions:
     - pymdownx.superfences
     - admonition
     - pymdownx.details
+    - footnotes
 
 nav:
     - Introduction: index.md
@@ -58,9 +59,12 @@ nav:
         - Devices:
               - Devices: Explanations/devices/devices.md
               - Server: Explanations/devices/server.md
-              - Cloud instances: Explanations/devices/cloud.md
               - End user devices : Explanations/devices/terminals_&_peripherals.md
               - IoT device : Explanations/devices/iot_devices.md
+        - Services:
+            - Services: Explanations/services/services.md
+            - Cloud instances: Explanations/services/cloud.md
+
         - Useful resources: Explanations/useful_resources.md
     - Reference:
         - Routes: Reference/routes.md
@@ -74,6 +78,11 @@ nav:
     - Deploy: Reference/deploy.md
     - Configuration: Reference/config.md
     - Release notes: release_notes.md
+    - Contributing:
+        - 'Add a cloud provider': contributing/cloud_provider.md
+        - 'Add a cloud instance': contributing/cloud_instance.md
+        - 'Add a server': contributing/server.md
+        - 'Add a CPU' : contributing/cpu.md
 
 theme: material
 

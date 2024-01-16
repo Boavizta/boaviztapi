@@ -1,3 +1,42 @@
+## v1.2.0
+
+## What's Changed
+
+Adding new cloud instances is now easier. Simply define the resources they reserve and identify the server archetype on which the instance will be hosted. Refer to the [contribution](contributing) documentation for more information. 
+
+### Internal changes
+
+* Externalizing impacts computation outside the asset's model by creating a service for this purpose (boaviztapi/service/impacts_computation.py)
+* Updating cloud instance model and impacts computation in line with : https://github.com/Boavizta/boaviztapi/issues/252#issuecomment-1845967609
+* Improve impact model (boaviztapi/model/impact.py). All the assets keep the impacts as an attribute once they have been calculated. Performance is significantly improved in the event of a verbose call.
+
+### bug fixes
+
+* Power consumption was modelled for one component unit. Consumption was only multiplied by the number of components when calculating impacts at device level. The consumption of the component now reflects the consumption of all the units. 
+* https://github.com/Boavizta/boaviztapi/issues/256
+* https://github.com/Boavizta/boaviztapi/issues/257
+
+### Contributors
+
+@da-ekchajzer
+@samuelrince
+@JacobValdemar
+
+## v1.1.0
+
+## What's Changed
+
+* Add independent Dockerfile by @JacobValdemar in https://github.com/Boavizta/boaviztapi/pull/239
+* Add missing aws instances by @JacobValdemar and @github-benjamin-davy in https://github.com/Boavizta/boaviztapi/pull/237
+
+**Full Changelog**: https://github.com/Boavizta/boaviztapi/compare/v1.0.1...v1.1.0
+
+### Contributors
+
+@JacobValdemar
+@github-benjamin-davy
+@da-ekchajzer
+
 ## v1.0.0
 
 ### New features

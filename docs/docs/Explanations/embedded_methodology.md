@@ -34,7 +34,7 @@ The impacts of fixed components are set by default
 The data and methods are specified for each device in their dedicated page.
 
 * [Server](devices/server.md)
-* [Cloud instances](devices/cloud.md)
+* [Cloud instances](services/cloud.md)
 * [End user devices](devices/terminals_&_peripherals.md)
 
 Two strategies exist

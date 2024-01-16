@@ -1,12 +1,10 @@
-from abc import abstractmethod, ABC
+from abc import ABC
 
 from boaviztapi import config
-from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.device import Device
 from boaviztapi.model.usage import ModelUsage
 from boaviztapi.service.archetype import get_arch_value, get_user_terminal_archetype, get_arch_component
-from boaviztapi.service.factor_provider import get_impact_factor
 
 
 class EndUserDevice(Device):
@@ -25,25 +23,6 @@ class EndUserDevice(Device):
     def usage(self, value: int) -> None:
         self._usage = value
 
-    @abstractmethod
-    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
-        impact = float(get_impact_factor(item=self.NAME, impact_type=impact_type)["impact"])
-        min_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)["impact"])
-        max_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)["impact"])
-
-        warnings = ["Generic data used for impact calculation."]
-
-        return impact, min_impacts, max_impacts, warnings
-
-    @abstractmethod
-    def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
-        impact_factor = self.usage.elec_factors[impact_type]
-        impact = impact_factor.value * (self.usage.avg_power.value / 1000) * self.usage.use_time_ratio.value * duration
-        min_impact = impact_factor.min * (self.usage.avg_power.min / 1000) * self.usage.use_time_ratio.min * duration
-        max_impact = impact_factor.max * (self.usage.avg_power.max / 1000) * self.usage.use_time_ratio.max * duration
-
-        return impact, min_impact, max_impact, []
-
     def __iter__(self):
         for attr, value in self.__dict__.items():
             yield attr, value
@@ -60,16 +39,6 @@ class DeviceLaptop(EndUserDevice, ABC):
             max=get_arch_value(archetype, 'type', 'max')
         )
 
-    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
-        impact = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
-        min_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
-        max_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
-
-        warnings = ["Generic data used for impact calculation."]
-
-        return impact, min_impacts, max_impacts, warnings
-
-
 class DeviceDesktop(EndUserDevice, ABC):
     NAME = "DESKTOP"
 
@@ -80,16 +49,6 @@ class DeviceDesktop(EndUserDevice, ABC):
             min=get_arch_value(archetype, 'type', 'min'),
             max=get_arch_value(archetype, 'type', 'max')
         )
-
-    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
-        impact = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
-        min_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
-        max_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
-
-        warnings = ["Generic data used for impact calculation."]
-
-        return impact, min_impacts, max_impacts, warnings
-
 
 class DeviceTablet(EndUserDevice, ABC):
     NAME = "TABLET"
@@ -115,16 +74,6 @@ class DeviceTelevision(EndUserDevice, ABC):
             min=get_arch_value(archetype, 'type', 'min'),
             max=get_arch_value(archetype, 'type', 'max')
         )
-
-    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
-        impact = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
-        min_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
-        max_impacts = float(get_impact_factor(item=self.NAME, impact_type=impact_type)[self.type.value]["impact"])
-
-        warnings = ["Generic data used for impact calculation."]
-
-        return impact, min_impacts, max_impacts, warnings
-
 
 class DeviceSmartWatch(EndUserDevice, ABC):
     NAME = "SMARTWATCH"
