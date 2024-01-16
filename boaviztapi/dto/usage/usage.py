@@ -7,9 +7,11 @@ from boaviztapi.model.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
 from boaviztapi.service.archetype import get_cloud_instance_archetype, get_server_archetype
 from boaviztapi.service.factor_provider import get_available_countries
 
+
 class WorkloadTime(BaseDTO):
     time_percentage: float = None
     load_percentage: float = None
+
 
 class ElecFactors(BaseDTO):
     gwp: Optional[float] = None
@@ -93,7 +95,8 @@ def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
     return usage_model
 
 
-def mapper_usage_server(usage_dto: UsageServer, archetype=get_server_archetype(config["default_server"]).get("USAGE")) -> ModelUsageServer:
+def mapper_usage_server(usage_dto: UsageServer,
+                        archetype=get_server_archetype(config["default_server"]).get("USAGE")) -> ModelUsageServer:
     usage_model_server = ModelUsageServer(archetype=archetype)
 
     for elec_factor in usage_dto.elec_factors.__dict__.keys():
@@ -124,7 +127,10 @@ def mapper_usage_server(usage_dto: UsageServer, archetype=get_server_archetype(c
     return usage_model_server
 
 
-def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_archetype(config["default_cloud"], config["default_cloud_provider"]).get("USAGE")) -> ModelUsageCloud:
+def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_archetype(config["default_cloud_instance"],
+                                                                                     config[
+                                                                                         "default_cloud_provider"]).get(
+    "USAGE")) -> ModelUsageCloud:
     usage_model_cloud = ModelUsageCloud(archetype=archetype)
 
     for elec_factor in usage_dto.elec_factors.__dict__.keys():

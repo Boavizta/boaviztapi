@@ -7,7 +7,7 @@ from boaviztapi import config
 
 
 def fuzzymatch_attr_from_cpu_name(cpu_name: str, df: pd.DataFrame) -> Union[
-    Tuple[str, str, str, str, int, int, int, str, str], None]:
+    Tuple[str, str, str, str, int, int, int, int, str, str], None]:
     cpu_name = cpu_name.lower()
     score = df["name"].str.lower().apply(lambda x: fuzz.token_set_ratio(x, cpu_name))
     max_score = score.max()
@@ -25,6 +25,7 @@ def fuzzymatch_attr_from_cpu_name(cpu_name: str, df: pd.DataFrame) -> Union[
             best.model_range,
             safe_int(best.tdp),
             safe_int(best.cores),
+            safe_int(best.threads),
             safe_int(best.total_die_size),
             best.total_die_size_source,
             best.source,

@@ -1,24 +1,25 @@
-from abc import abstractmethod
-from typing import Tuple, List
+from typing import List
 
-from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component import Component
+from boaviztapi.model.impact import Assessable
 from boaviztapi.model.usage import ModelUsage
 
 
-class Device:
+class Device(Assessable):
+    NAME = None
 
     def __init__(self, archetype=None, **kwargs):
-        self.impact_factor = {}
+        super().__init__(**kwargs)
         self.archetype = archetype
+        self.type = None
         self.units = Boattribute(
             default=1,
             min=1,
             max=1
         )
         self._usage = None
-        pass
+        self._impacts = {}
 
     @property
     def usage(self) -> ModelUsage:
@@ -31,14 +32,6 @@ class Device:
     @property
     def components(self) -> List[Component]:
         return []
-
-    @abstractmethod
-    def impact_embedded(self, impact_type: str) -> ComputedImpacts:
-        raise NotImplementedError
-
-    @abstractmethod
-    def impact_use(self, impact_type: str, duration: float) -> ComputedImpacts:
-        raise NotImplementedError
 
     def __iter__(self):
         for attr, value in self.__dict__.items():
