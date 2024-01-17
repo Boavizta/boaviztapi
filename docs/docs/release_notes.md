@@ -1,10 +1,8 @@
-## v1.2.0
+## v1.2.1
 
 ## What's Changed
 
 Adding new cloud instances is now easier. Simply define the resources they reserve and identify the server archetype on which the instance will be hosted. Refer to the [contribution](contributing) documentation for more information. 
-
-**Full Changelog**: https://github.com/Boavizta/boaviztapi/compare/v1.1.0...v1.2.0
 
 ### Internal changes
 
@@ -20,6 +18,11 @@ Adding new cloud instances is now easier. Simply define the resources they reser
 * https://github.com/Boavizta/boaviztapi/pull/243
 * https://github.com/Boavizta/boaviztapi/pull/248
 
+### Breaking changes
+
+* 'instance_per_instance' is no longer included in the verbose output of the cloud route.
+* Previously, the verbose returned the impacts of each platform's components in their entirety. Now, only the impacts associated with the instance are returned for each component. Components impacts returned by cloud router shouldn't be divided by ```instance_per_instance```.
+
 ## Contributors
 
 ### New Contributors
@@ -32,7 +35,6 @@ Adding new cloud instances is now easier. Simply define the resources they reser
 @da-ekchajzer
 @samuelrince
 @JacobValdemar
-
 
 ## v1.1.0
 
