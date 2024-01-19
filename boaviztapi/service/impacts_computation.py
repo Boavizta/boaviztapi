@@ -100,7 +100,7 @@ def gpu_impact_use(impact_type: str, duration: int, gpu: ComponentGPU) -> Comput
     return impact.value, impact.min, impact.max, []
 
 
-def gpu_impact_embedded(impact_type: str, gpu: ComponentGPU) -> ComputedImpacts:
+def gpu_impact_embedded(impact_type: str, duration: int, gpu: ComponentGPU) -> ComputedImpacts:
     compute_chip_impact = Impact(
         value=get_impact_factor(item='gpu', impact_type=impact_type)['gpu_die_impact'] *
               get_impact_factor(item='gpu', impact_type=impact_type)['gpu_impact'] * gpu.gpu_die_size.value,
@@ -580,6 +580,10 @@ impacts_functions = {
     "CPU": {
         "use": cpu_impact_use,
         "embedded": cpu_impact_embedded
+    },
+    "GPU": {
+        "use": gpu_impact_use,
+        "embedded": gpu_impact_embedded
     },
     "RAM": {
         "use": ram_impact_use,
