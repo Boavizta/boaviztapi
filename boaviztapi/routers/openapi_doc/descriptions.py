@@ -46,6 +46,24 @@ cpu_description = "# ✔ ️CPU impacts from configuration\n" \
                   "* 📈 Modeled\n\n" \
                   "⏬ Allocation"
 
+gpu_description = "# ✔ ️GPU impacts from configuration\n" \
+                  "### Features\n\n" \
+                  "👄 Verbose\n\n" \
+                  "🔃 Auto-complete\n\n" \
+                  "🔨 Embedded\n\n" \
+                  "<h3>gpu<sub>manuf<sub><em>criteria</em></sub></sub> = ( gpu<sub>diesize</sub> x " \
+                  "gpu<sub>manuf_die<sub><em>criteria</em></sub></sub> + " \
+                  "gpu<sub>manuf_base<sub><em>criteria</em></sub></sub> ) + ( ( vram<sub>capacity</sub> / " \
+                  "vram<sub>density</sub> ) x vram<sub>manuf_die<sub><em>criteria</em></sub></sub> + " \
+                  "vram<sub>manuf_base<sub><em>criteria</em></sub></sub> ) + ( pcb<sub>size</sub> x " \
+                  "pcb<sub>manuf_pcb<sub><em>criteria</em></sub></sub> ) + ( " \
+                  "heatsink<sub>manuf_heat_sink<sub><em>criteria</em></sub></sub> ) + ( " \
+                  "pciconn<sub>manuf_pci_connector<sub><em>criteria</em></sub></sub> ) </h3> " \
+                  "🔌 Usage\n\n" \
+                  "* ⏺️  Given\n\n" \
+                  "* 📈 Modeled\n\n" \
+                  "⏬ Allocation"
+
 ssd_description = "# ✔ ️SSD impacts from configuration\n" \
                   "### Features\n\n" \
                   "👄 Verbose\n\n" \
