@@ -93,9 +93,9 @@ def simple_embedded(impact_type: str, duration: int, model: [Device, Component, 
 def gpu_impact_use(impact_type: str, duration: int, gpu: ComponentGPU) -> ComputedImpacts:
     impact_factor = gpu.usage.elec_factors[impact_type];
     impact = Impact(
-        value=impact_factor.value * gpu.tdp * duration,
-        min=impact_factor.min * gpu.tdp * duration,
-        max=impact_factor.max * gpu.tdp * duration
+        value=impact_factor.value * gpu.tdp.value * duration,
+        min=impact_factor.min * gpu.tdp.min * duration,
+        max=impact_factor.max * gpu.tdp.max * duration
     )
     return impact.value, impact.min, impact.max, []
 
