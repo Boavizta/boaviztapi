@@ -100,7 +100,7 @@ def gpu_impact_use(impact_type: str, duration: int, gpu: ComponentGPU) -> Comput
     return impact.value, impact.min, impact.max, []
 
 
-def gpu_impact_embedded(impact_type: str, duration: int, gpu: ComponentGPU) -> ComputedImpacts:
+def gpu_impact_embedded(impact_type: str, gpu: ComponentGPU) -> ComputedImpacts:
     compute_chip_impact = Impact(
         value=get_impact_factor(item='gpu', impact_type=impact_type)['gpu_die_impact'] *
               get_impact_factor(item='gpu', impact_type=impact_type)['gpu_impact'] * gpu.gpu_die_size.value,
@@ -127,13 +127,13 @@ def gpu_impact_embedded(impact_type: str, duration: int, gpu: ComponentGPU) -> C
     )
     impact = Impact(
         value=compute_chip_impact.value + memory_chip_impact.value + board_impact.value + get_impact_factor(
-            item="gpu", impact_type=impact_type)["heat_sink"] + get_impact_factor(item='gpu', impact_type=impact_type)
+            item="gpu", impact_type=impact_type)["heat_sink_impact"] + get_impact_factor(item='gpu', impact_type=impact_type)
               ['pci_connector_x16'],
         min=compute_chip_impact.min + memory_chip_impact.min + board_impact.min + get_impact_factor(
-            item="gpu", impact_type=impact_type)["heat_sink"] + get_impact_factor(item='gpu', impact_type=impact_type)
+            item="gpu", impact_type=impact_type)["heat_sink_impact"] + get_impact_factor(item='gpu', impact_type=impact_type)
             ['pci_connector_x16'],
         max=compute_chip_impact.max + memory_chip_impact.max + board_impact.max + get_impact_factor(
-            item="gpu", impact_type=impact_type)["heat_sink"] + get_impact_factor(item='gpu', impact_type=impact_type)
+            item="gpu", impact_type=impact_type)["heat_sink_impact"] + get_impact_factor(item='gpu', impact_type=impact_type)
             ['pci_connector_x16']
     )
     return impact.value, impact.min, impact.max, ["End of life is not included in the calculation"]
