@@ -113,14 +113,17 @@ def gpu_impact_embedded(impact_type: str, duration: int, gpu: ComponentGPU) -> C
              * gpu.gpu_die_size.max
     )
     memory_chip_impact = Impact(
-        value=get_impact_factor(item='gpu', impact_type=impact_type)['vram_die_impact'] +
-              get_impact_factor(item='gpu', impact_type=impact_type)['vram_impact'] * (
+        value=get_impact_factor(item='gpu', impact_type=impact_type)['vram_impact'] +
+             get_impact_factor(item='gpu', impact_type=impact_type)['vram_die_impact']
+               * (
                       gpu.vram_capacity.value / gpu.vram_density.value),
-        min=get_impact_factor(item='gpu', impact_type=impact_type)['vram_die_impact'] +
-            get_impact_factor(item='gpu', impact_type=impact_type)['vram_impact'] * (
+        min=get_impact_factor(item='gpu', impact_type=impact_type)['vram_impact'] +
+            get_impact_factor(item='gpu', impact_type=impact_type)['vram_die_impact']
+             * (
                     gpu.vram_capacity.min / gpu.vram_density.min),
-        max=get_impact_factor(item='gpu', impact_type=impact_type)['vram_die_impact'] +
-            get_impact_factor(item='gpu', impact_type=impact_type)['vram_impact'] * (
+        max=get_impact_factor(item='gpu', impact_type=impact_type)['vram_impact']  +
+            get_impact_factor(item='gpu', impact_type=impact_type)['vram_die_impact']
+            * (
                     gpu.vram_capacity.max / gpu.vram_density.max)
     )
     board_impact = Impact(
