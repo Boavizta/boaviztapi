@@ -9,13 +9,9 @@ from boaviztapi.model.component.component import Component
 from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
 from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.service.archetype import get_component_archetype, get_arch_value
-from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_cpu_name, fuzzymatch_attr_from_pdf
+from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_gpu_name, fuzzymatch_attr_from_pdf
 
-_cpu_specs = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs.csv'))
-
-
-def attributes_from_cpu_name(cpu_name: str):
-    return fuzzymatch_attr_from_cpu_name(cpu_name, _cpu_specs)
+_gpu_specs = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/gpu_specs.csv'))
 
 
 class ComponentGPU(Component):
@@ -25,7 +21,7 @@ class ComponentGPU(Component):
     def __init__(self, archetype=get_component_archetype(config["default_gpu"], "gpu"), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
         self.gpu_die_size = Boattribute(
-            # complete_function=self._complete_die_size,
+            complete_function=self._complete_from_name,
             unit="mm2",
             default=get_arch_value(archetype, 'die_size', 'default'),
             min=get_arch_value(archetype, 'die_size', 'min'),
@@ -50,12 +46,13 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, 'variant', 'max')
         )
         self.gpu_architecture = Boattribute(
-            # complete_function=self._complete_die_size,
+            # complete_function=self._complete_from_name,
             default=get_arch_value(archetype, 'architecture', 'default'),
             min=get_arch_value(archetype, 'architecture', 'min'),
             max=get_arch_value(archetype, 'architecture', 'max')
         )
         self.vram_capacity = Boattribute(
+            complete_function=self._complete_from_name,
             unit="GB",
             default=get_arch_value(archetype, 'vram_capacity', 'default'),
             min=get_arch_value(archetype, 'vram_capacity', 'min'),
@@ -80,18 +77,20 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, 'family', 'max')
         )
         self.name = Boattribute(
-            default=get_arch_value(archetype, 'name', 'default'),
+            # default=get_arch_value(archetype, 'name', 'default'),
+            default='NVIDIA GeForce RTX 4090',
             min=get_arch_value(archetype, 'name', 'min'),
             max=get_arch_value(archetype, 'name', 'max')
         )
         self.tdp = Boattribute(
-            # complete_function=self._complete_from_name,
+            complete_function=self._complete_from_name,
             unit="W",
             default=get_arch_value(archetype, 'tdp', 'default'),
             min=get_arch_value(archetype, 'tdp', 'min'),
             max=get_arch_value(archetype, 'tdp', 'max')
         )
         self.pcb_size = Boattribute(
+            complete_function=self._complete_from_name,
             default=get_arch_value(archetype, 'pcb_size', 'default'),
             min=get_arch_value(archetype, 'pcb_size', 'min'),
             max=get_arch_value(archetype, 'pcb_size', 'max')
@@ -101,3 +100,17 @@ class ComponentGPU(Component):
             min=get_arch_value(archetype, 'pcie', 'min'),
             max=get_arch_value(archetype, 'pcie', 'max')
         )
+
+    def _complete_from_name(self):
+        print(self.name.value)
+        attr = fuzzymatch_attr_from_gpu_name(self.name.value, _gpu_specs)
+        print(attr)
+        self.tdp = attr[1]
+        self.gpu_die_size = attr[2]
+        self.vram_capacity = attr[3]
+        self.pcb_size = attr[4]
+
+
+if __name__ == '__main__':
+    gpu = ComponentGPU(name='NVIDIA GeForce RTX 4090')
+    print(gpu.gpu_die_size.value)
