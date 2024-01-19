@@ -8,6 +8,7 @@ default_power_supply: "DEFAULT"
 default_case: "rack"
 default_assembly: "DEFAULT"
 default_motherboard: "DEFAULT"
+default_gpu: "DEFAULT"
 
 default_server: "platform_compute_medium"
 

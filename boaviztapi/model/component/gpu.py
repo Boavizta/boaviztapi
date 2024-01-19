@@ -25,7 +25,7 @@ class ComponentGPU(Component):
     def __init__(self, archetype=get_component_archetype(config["default_gpu"], "gpu"), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
         self.gpu_die_size = Boattribute(
-            complete_function=self._complete_die_size,
+            # complete_function=self._complete_die_size,
             unit="mm2",
             default=get_arch_value(archetype, 'die_size', 'default'),
             min=get_arch_value(archetype, 'die_size', 'min'),
@@ -74,7 +74,7 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, 'manufacturer', 'max')
         )
         self.family = Boattribute(
-            complete_function=self._complete_from_name,
+            # complete_function=self._complete_from_name,
             default=get_arch_value(archetype, 'family', 'default'),
             min=get_arch_value(archetype, 'family', 'min'),
             max=get_arch_value(archetype, 'family', 'max')
@@ -85,78 +85,19 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, 'name', 'max')
         )
         self.tdp = Boattribute(
-            complete_function=self._complete_from_name,
+            # complete_function=self._complete_from_name,
             unit="W",
             default=get_arch_value(archetype, 'tdp', 'default'),
             min=get_arch_value(archetype, 'tdp', 'min'),
             max=get_arch_value(archetype, 'tdp', 'max')
         )
-
-    def _complete_die_size(self):
-        # Make sure all data have been completed from name
-        if self.name.has_value():
-            self._complete_from_name()
-
-        # If the die_size_per_core have been set we have nothing to do
-        if self.die_size.is_set():
-            return None
-
-        # If we have a die_size_per_core and core_units, we can compute the die_size
-        elif self.die_size_per_core.is_set() and self.core_units.is_set():
-            self.die_size.set_completed(value=float(self.die_size_per_core.value * self.core_units.value),
-                                        source="die_size_per_core*core_units")
-            return None
-
-        # If we cannot have a family, but we have a default die_size we use it
-        elif self.die_size.has_value() and not self.family.has_value():
-            self.die_size.set_archetype(self.die_size.default)
-            return None
-
-        # If the above completion strategies cannot be applied, we use our cpu specs file
-        else:
-            self._complete_die_size_from_cpu_specs()
-
-    def _complete_from_name(self):
-        if self.name.has_value() and not self.name_completion:
-            compute_min_max = False
-            if self.name.min != self.name.value or self.name.max != self.name.value:
-                compute_min_max = True
-
-            cpu_attributes = attributes_from_cpu_name(self.name.value)
-            name, manufacturer, family, model_range, tdp, cores, threads, die_size, die_size_source, source = cpu_attributes if (
-                    cpu_attributes is not None) else (None, None, None, None, None, None, None, None, None)
-
-            if compute_min_max:
-                cpu_attributes_min = attributes_from_cpu_name(self.name.min)
-                cpu_attributes_max = attributes_from_cpu_name(self.name.max)
-                name_min, manufacturer_min, family_min, model_range_min, tdp_min, cores_min, threads_min, die_size_min, die_size_source_min, source_min = cpu_attributes_min if (
-                        cpu_attributes_min is not None) else (None, None, None, None, None, None, None, None, None)
-                name_max, manufacturer_max, family_max, model_range_max, tdp_max, cores_max, threads_max, die_size_max, die_size_source_max, source_max = cpu_attributes_max if (
-                        cpu_attributes_max is not None) else (None, None, None, None, None, None, None, None, None)
-            else:
-                name_min, manufacturer_min, family_min, model_range_min, tdp_min, cores_min, threads_min, die_size_min, die_size_source_min, source_min = name, manufacturer, family, model_range, tdp, cores, threads, die_size, die_size_source, source
-                name_max, manufacturer_max, family_max, model_range_max, tdp_max, cores_max, threads_max, die_size_max, die_size_source_max, source_max = name, manufacturer, family, model_range, tdp, cores, threads, die_size, die_size_source, source
-
-            if name is not None:
-                self.name.set_completed(name, min=name_min, max=name_max, source="fuzzy match")
-            if manufacturer is not None:
-                self.manufacturer.set_completed(manufacturer, min=manufacturer_min, max=manufacturer_max,
-                                                source=f"Completed from name name based on {source}.")
-            if family is not None:
-                self.family.set_completed(family, min=family_min, max=family_max,
-                                          source=f"Completed from name name based on {source}.")
-            if model_range is not None:
-                self.model_range.set_completed(model_range, min=model_range_min, max=model_range_max,
-                                               source=f"Completed from name name based on {source}.")
-            if tdp is not None:
-                self.tdp.set_completed(tdp, min=tdp_min, max=tdp_max,
-                                       source=f"Completed from name name based on {source}.")
-            if cores is not None:
-                self.core_units.set_completed(cores, min=cores_min, max=cores_max,
-                                              source=f"Completed from name name based on {source}.")
-            if threads is not None:
-                self.threads.set_completed(threads, min=threads_min, max=threads_max,
-                                           source=f"Completed from name name based on {source}.")
-            if die_size is not None:
-                self.die_size.set_completed(die_size, min=die_size_min, max=die_size_max,
-                                            source=f"{die_size_source} : Completed from name name based on {source}.")
+        self.pcb_size = Boattribute(
+            default=get_arch_value(archetype, 'pcb_size', 'default'),
+            min=get_arch_value(archetype, 'pcb_size', 'min'),
+            max=get_arch_value(archetype, 'pcb_size', 'max')
+        )
+        self.pcie = Boattribute(
+            default=get_arch_value(archetype, 'pcie', 'default'),
+            min=get_arch_value(archetype, 'pcie', 'min'),
+            max=get_arch_value(archetype, 'pcie', 'max')
+        )
