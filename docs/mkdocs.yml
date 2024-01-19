@@ -51,6 +51,7 @@ nav:
               - RAM: Explanations/components/ram.md
               - SSD: Explanations/components/ssd.md
               - HDD: Explanations/components/hdd.md
+              - GPU: Explanations/components/gpu.md
               - Motherboard: Explanations/components/motherboard.md
               - Power supply: Explanations/components/power_supply.md
               - Assembly: Explanations/components/assembly.md
