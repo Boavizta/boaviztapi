@@ -593,6 +593,10 @@ impacts_functions = {
         "use": simple_impact_use,
         "embedded": hdd_impact_embedded
     },
+    "GPU": {
+        "use": gpu_impact_use,
+        "embedded": gpu_impact_embedded
+    },
     "POWER_SUPPLY": {
         "use": not_implemented_function,
         "embedded": power_supply_impact_embedded
