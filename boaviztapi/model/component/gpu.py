@@ -61,7 +61,8 @@ class ComponentGPU(Component):
         self.vram_density = Boattribute(
             # complete_function=self._complete_density,
             unit="GB/cm2",
-            default=get_arch_value(archetype, 'vram_density', 'default'),
+            # default=get_arch_value(archetype, 'vram_density', 'default'),
+            default=1.625,
             min=get_arch_value(archetype, 'vram_density', 'min'),
             max=get_arch_value(archetype, 'vram_density', 'max')
         )
@@ -102,13 +103,11 @@ class ComponentGPU(Component):
         )
 
     def _complete_from_name(self):
-        print(self.name.value)
         attr = fuzzymatch_attr_from_gpu_name(self.name.value, _gpu_specs)
-        print(attr)
-        self.tdp = attr[1]
-        self.gpu_die_size = attr[2]
-        self.vram_capacity = attr[3]
-        self.pcb_size = attr[4]
+        self.tdp.set_completed(attr[1])
+        self.gpu_die_size.set_completed(attr[2])
+        self.vram_capacity.set_completed(attr[3])
+        self.pcb_size.set_completed(attr[4])
 
 
 if __name__ == '__main__':
