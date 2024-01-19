@@ -67,3 +67,11 @@ def mapper_gpu(gpu_dto: GPU, archetype=get_component_archetype(config["default_g
 
     if gpu_dto.pcie is not None:
         gpu_component.pcie.set_input(gpu_dto.pcie)
+
+    return gpu_component
+
+
+if __name__ == '__main__':
+    gpu_dto = GPU(name='NVIDIA GeForce 4090')
+    gpu_component = mapper_gpu(gpu_dto)
+    print(gpu_component.gpu_die_size.value)
