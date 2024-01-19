@@ -102,12 +102,15 @@ def gpu_impact_use(impact_type: str, duration: int, gpu: ComponentGPU) -> Comput
 
 def gpu_impact_embedded(impact_type: str, duration: int, gpu: ComponentGPU) -> ComputedImpacts:
     compute_chip_impact = Impact(
-        value=get_impact_factor(item='gpu', impact_type=impact_type)['gpu_die_impact'] +
-              get_impact_factor(item='gpu', impact_type=impact_type)['gpu_impact'] * gpu.gpu_die_size.value,
-        min=get_impact_factor(item='gpu', impact_type=impact_type)['gpu_die_impact'] +
-            get_impact_factor(item='gpu', impact_type=impact_type)['gpu_impact'] * gpu.gpu_die_size.min,
-        max=get_impact_factor(item='gpu', impact_type=impact_type)['gpu_die_impact'] +
-            get_impact_factor(item='gpu', impact_type=impact_type)['gpu_impact'] * gpu.gpu_die_size.max
+        value=get_impact_factor(item='gpu', impact_type=impact_type)['gpu_impact'] +
+              get_impact_factor(item='gpu', impact_type=impact_type)['gpu_die_impact']
+               * gpu.gpu_die_size.value,
+        min=get_impact_factor(item='gpu', impact_type=impact_type)['gpu_impact'] +
+            get_impact_factor(item='gpu', impact_type=impact_type)['gpu_die_impact']
+             * gpu.gpu_die_size.min,
+        max=get_impact_factor(item='gpu', impact_type=impact_type)['gpu_impact'] +
+            get_impact_factor(item='gpu', impact_type=impact_type)['gpu_die_impact']
+             * gpu.gpu_die_size.max
     )
     memory_chip_impact = Impact(
         value=get_impact_factor(item='gpu', impact_type=impact_type)['vram_die_impact'] +
@@ -597,10 +600,6 @@ impacts_functions = {
     "HDD": {
         "use": simple_impact_use,
         "embedded": hdd_impact_embedded
-    },
-    "GPU": {
-        "use": gpu_impact_use,
-        "embedded": gpu_impact_embedded
     },
     "POWER_SUPPLY": {
         "use": not_implemented_function,
