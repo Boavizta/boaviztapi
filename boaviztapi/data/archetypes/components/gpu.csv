@@ -1,4 +1,4 @@
-name,gpu_name,gpu_variant,architecture,generation,release_date,tdp,process_size,die_size,density,memory_size,length,width,height,source
+name,gpu_name,gpu_variant,gpu_architecture,family,release_date,tdp,process_size,die_size,density,memory_size,length,width,height,source
 3dfx Voodoo4 4500 AGP,VSA-100,Napalm 26-220 (355-0026-220),Voodoo Scalable,Voodoo4,2000-10-13,15.0,250,112.0,125000.0,0.032,,,,https://www.techpowerup.com/gpu-specs/voodoo4-4500-agp.c3548
 3dfx Voodoo4 4500 PCI,VSA-100,Napalm 26-220 (355-0026-220),Voodoo Scalable,Voodoo4,2000-10-13,15.0,250,112.0,125000.0,0.032,,,,https://www.techpowerup.com/gpu-specs/voodoo4-4500-pci.c3547
 3dfx Voodoo5 5500 AGP,VSA-100,Napalm 26-320 (355-0026-320),Voodoo Scalable,Voodoo5,2000-06-22,30.0,250,112.0,125000.0,0.032,,,,https://www.techpowerup.com/gpu-specs/voodoo5-5500-agp.c3531
