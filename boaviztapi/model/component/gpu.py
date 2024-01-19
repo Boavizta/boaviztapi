@@ -108,8 +108,3 @@ class ComponentGPU(Component):
         self.gpu_die_size.set_completed(attr[2])
         self.vram_capacity.set_completed(attr[3])
         self.pcb_size.set_completed(attr[4])
-
-
-if __name__ == '__main__':
-    gpu = ComponentGPU(name='NVIDIA GeForce RTX 4090')
-    print(gpu.gpu_die_size.value)
