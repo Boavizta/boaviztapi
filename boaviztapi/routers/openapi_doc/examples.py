@@ -39,6 +39,9 @@ components_examples = {
     "cpu": {
         "name": "intel xeon gold 6134",
     },
+    "gpu": {
+        "name": "NVIDIA GeForce 4090",
+    },
     "ssd": {
         "capacity": 24,
         "manufacturer": "Samsung",
