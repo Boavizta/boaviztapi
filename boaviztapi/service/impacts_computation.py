@@ -136,6 +136,7 @@ def gpu_impact_embedded(impact_type: str, duration: int, gpu: ComponentGPU) -> C
             item="gpu", impact_type=impact_type)["heat_sink_impact"] + get_impact_factor(item='gpu', impact_type=impact_type)
             ['pci_connector_x16']
     )
+    impact.allocate(duration, gpu.usage.hours_life_time)
     return impact.value, impact.min, impact.max, ["End of life is not included in the calculation"]
 
 
