@@ -3,6 +3,7 @@ from typing import Tuple, Union, Optional
 from boaviztapi import config
 from boaviztapi.dto.component import Motherboard
 from boaviztapi.model import ComputedImpacts
+from boaviztapi.model.component.gpu import ComponentGPU
 from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.model.services.cloud_instance import Service, ServiceCloudInstance
 from boaviztapi.model.component import ComponentCPU, ComponentCase, ComponentPowerSupply, ComponentRAM, Component, \
@@ -87,6 +88,55 @@ def simple_embedded(impact_type: str, duration: int, model: [Device, Component, 
     warnings = ["Generic data used for impact calculation."]
 
     return impact, min_impact, max_impact, warnings
+
+
+def gpu_impact_use(impact_type: str, duration: int, gpu: ComponentGPU) -> ComputedImpacts:
+    impact_factor = gpu.usage.elec_factors[impact_type];
+    impact = Impact(
+        value=impact_factor.value * gpu.tdp * duration,
+        min=impact_factor.min * gpu.tdp * duration,
+        max=impact_factor.max * gpu.tdp * duration
+    )
+    return impact.value, impact.min, impact.max, []
+
+
+def gpu_impact_embedded(impact_type: str, duration: int, gpu: ComponentGPU) -> ComputedImpacts:
+    compute_chip_impact = Impact(
+        value=get_impact_factor(item='gpu', impact_type=impact_type)['gpu_die_impact'] *
+              get_impact_factor(item='gpu', impact_type=impact_type)['gpu_impact'] * gpu.gpu_die_size.value,
+        min=get_impact_factor(item='gpu', impact_type=impact_type)['gpu_die_impact'] *
+            get_impact_factor(item='gpu', impact_type=impact_type)['gpu_impact'] * gpu.gpu_die_size.min,
+        max=get_impact_factor(item='gpu', impact_type=impact_type)['gpu_die_impact'] *
+            get_impact_factor(item='gpu', impact_type=impact_type)['gpu_impact'] * gpu.gpu_die_size.max
+    )
+    memory_chip_impact = Impact(
+        value=get_impact_factor(item='gpu', impact_type=impact_type)['vram_die_impact'] *
+              get_impact_factor(item='gpu', impact_type=impact_type)['vram_impact'] * (
+                      gpu.vram_capacity.value / gpu.vram_density.value),
+        min=get_impact_factor(item='gpu', impact_type=impact_type)['vram_die_impact'] *
+            get_impact_factor(item='gpu', impact_type=impact_type)['vram_impact'] * (
+                    gpu.vram_capacity.min / gpu.vram_density.min),
+        max=get_impact_factor(item='gpu', impact_type=impact_type)['vram_die_impact'] *
+            get_impact_factor(item='gpu', impact_type=impact_type)['vram_impact'] * (
+                    gpu.vram_capacity.max / gpu.vram_density.max)
+    )
+    board_impact = Impact(
+        value=get_impact_factor(item='gpu', impact_type=impact_type)['pcb_impact'] * gpu.pcb_size.value,
+        min=get_impact_factor(item='gpu', impact_type=impact_type)['pcb_impact'] * gpu.pcb_size.min,
+        max=get_impact_factor(item='gpu', impact_type=impact_type)['pcb_impact'] * gpu.pcb_size.max
+    )
+    impact = Impact(
+        value=compute_chip_impact.value + memory_chip_impact.value + board_impact.value + get_impact_factor(
+            item="gpu", impact_type=impact_type)["heat_sink"] + get_impact_factor(item='gpu', impact_type=impact_type)
+              ['pci_connector_x16'],
+        min=compute_chip_impact.min + memory_chip_impact.min + board_impact.min + get_impact_factor(
+            item="gpu", impact_type=impact_type)["heat_sink"] + get_impact_factor(item='gpu', impact_type=impact_type)
+            ['pci_connector_x16'],
+        max=compute_chip_impact.max + memory_chip_impact.max + board_impact.max + get_impact_factor(
+            item="gpu", impact_type=impact_type)["heat_sink"] + get_impact_factor(item='gpu', impact_type=impact_type)
+            ['pci_connector_x16']
+    )
+    return impact.value, impact.min, impact.max, ["End of life is not included in the calculation"]
 
 
 def cpu_impact_use(impact_type: str, duration: int, cpu: ComponentCPU) -> ComputedImpacts:
@@ -465,12 +515,14 @@ def cloud_impact_embedded(impact_type: str, duration: int, cloud_instance: Servi
                 allocation = cloud_instance.memory.value / cloud_instance.platform.get_total_memory()
             if component.NAME == "SSD":
                 if cloud_instance.ssd_storage.has_value():
-                    allocation = cloud_instance.ssd_storage.value / cloud_instance.platform.get_total_disk_capacity("SSD")
+                    allocation = cloud_instance.ssd_storage.value / cloud_instance.platform.get_total_disk_capacity(
+                        "SSD")
                 else:
                     continue
             if component.NAME == "HDD":
                 if cloud_instance.hdd_storage.has_value():
-                    allocation = cloud_instance.hdd_storage.value / cloud_instance.platform.get_total_disk_capacity("HDD")
+                    allocation = cloud_instance.hdd_storage.value / cloud_instance.platform.get_total_disk_capacity(
+                        "HDD")
                 else:
                     continue
 
@@ -514,9 +566,12 @@ def cloud_impact_use(impact_type: str, duration: int, cloud_instance: ServiceClo
     for ram in platform.ram:
         compute_single_impact(ram, USE, impact_type, duration)
 
-    impact = impact_factor.value * (cloud_instance.usage.avg_power.value / 1000) * platform.usage.use_time_ratio.value * duration
-    min_impact = impact_factor.min * (cloud_instance.usage.avg_power.min / 1000) * platform.usage.use_time_ratio.min * duration
-    max_impact = impact_factor.max * (cloud_instance.usage.avg_power.max / 1000) * platform.usage.use_time_ratio.max * duration
+    impact = impact_factor.value * (
+            cloud_instance.usage.avg_power.value / 1000) * platform.usage.use_time_ratio.value * duration
+    min_impact = impact_factor.min * (
+            cloud_instance.usage.avg_power.min / 1000) * platform.usage.use_time_ratio.min * duration
+    max_impact = impact_factor.max * (
+            cloud_instance.usage.avg_power.max / 1000) * platform.usage.use_time_ratio.max * duration
 
     return impact, min_impact, max_impact, []
 
