@@ -62,7 +62,7 @@ class ComponentGPU(Component):
             # complete_function=self._complete_density,
             unit="GB/cm2",
             # default=get_arch_value(archetype, 'vram_density', 'default'),
-            default=1.625,
+            default=0.01625,
             min=get_arch_value(archetype, 'vram_density', 'min'),
             max=get_arch_value(archetype, 'vram_density', 'max')
         )
