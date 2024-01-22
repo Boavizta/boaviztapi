@@ -7,3 +7,4 @@ from .motherboard import ComponentMotherboard
 from .power_supply import ComponentPowerSupply
 from .case import ComponentCase
 from .assembly import ComponentAssembly
+from .gpu import ComponentGPU

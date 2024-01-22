@@ -8,7 +8,7 @@ from boaviztapi.dto.device import Server
 from boaviztapi.dto.usage import UsageServer
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import ComponentCPU, ComponentRAM, ComponentSSD, ComponentHDD, ComponentCase, \
-    ComponentMotherboard, ComponentPowerSupply, ComponentAssembly
+    ComponentMotherboard, ComponentPowerSupply, ComponentAssembly, ComponentGPU
 from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.model.usage import ModelUsageServer
 from tests.unit import data_dir
@@ -88,6 +88,23 @@ def incomplete_cpu_model():
     cpu.die_size_per_core.set_input(40.4)
 
     return cpu
+
+
+@pytest.fixture(scope="function")
+def empty_gpu_model():
+    return ComponentGPU()
+
+
+@pytest.fixture(scope="function")
+def complete_gpu_model():
+    gpu = ComponentGPU()
+    gpu.units.set_input(value=2)
+    gpu.gpu_die_size.set_input(value=608)
+    gpu.vram_capacity.set_input(value=24)
+    gpu.vram_density.set_input(value=1.625e-2)
+    gpu.pcb_size.set_input(value=41648)
+    gpu.tdp.set_input(value=450)
+    return gpu
 
 
 @pytest.fixture(scope="function")

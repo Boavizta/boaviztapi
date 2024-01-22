@@ -2,14 +2,11 @@ import os
 
 import pandas as pd
 
-import boaviztapi.utils.roundit as rd
 from boaviztapi import config, data_dir
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component
-from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
-from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.service.archetype import get_component_archetype, get_arch_value
-from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_gpu_name, fuzzymatch_attr_from_pdf
+from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_gpu_name
 
 _gpu_specs = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/gpu_specs.csv'))
 

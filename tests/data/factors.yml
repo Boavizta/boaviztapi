@@ -46,6 +46,39 @@
   }
 }
 
+"gpu": {
+  "gwp": {
+    "gpu_die_impact": 0.0197,
+    "gpu_impact": 0.345,
+    "vram_die_impact": 0.0220,
+    "vram_impact": 2.99,
+    "pcb_impact": 4.22e-04,
+    "heat_sink_impact": 3.12,
+    "pci_connector_x8": 0.176,
+    "pci_connector_x16": 0.295
+  },
+  "pe": {
+    "gpu_die_impact": 0.2650,
+    "gpu_impact": 5.33,
+    "vram_die_impact": 0.273,
+    "vram_impact": 46.1,
+    "pcb_impact": 4.94e-03,
+    "heat_sink_impact": 63.3,
+    "pci_connector_x8": 2.72,
+    "pci_connector_x16": 4.56
+  },
+  "adp": {
+    "gpu_die_impact": 5.87e-09,
+    "gpu_impact": 4.33e-08,
+    "vram_die_impact": 6.3e-07,
+    "vram_impact": 3.75e-07,
+    "pcb_impact": 1.49e-08,
+    "heat_sink_impact": 5.19e-04,
+    "pci_connector_x8": 6.18e-04,
+    "pci_connector_x16": 1.03e-03
+  }
+}
+
 "hdd": {
   "gwp": {
     "impact": 31.10

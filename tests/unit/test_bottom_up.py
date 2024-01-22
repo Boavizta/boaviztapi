@@ -278,7 +278,8 @@ def test_bottom_up_component_ram_incomplete(incomplete_ram_model):
 
 
 def test_bottom_up_component_power_supply_complete(complete_power_supply_model):
-    assert compute_impacts(complete_power_supply_model, duration=complete_power_supply_model.usage.hours_life_time.value) == \
+    assert compute_impacts(complete_power_supply_model,
+                           duration=complete_power_supply_model.usage.hours_life_time.value) == \
            {'adp': {'description': 'Use of minerals and fossil ressources',
                     'embedded': {'max': 0.04963,
                                  'min': 0.04963,
@@ -471,3 +472,108 @@ def test_bottom_up_component_assembly(assembly_model):
                                              'calculation']},
                    'unit': 'MJ',
                    'use': 'not implemented'}}
+
+
+def test_bottom_up_component_gpu_empty(empty_gpu_model):
+    assert compute_impacts(empty_gpu_model, duration=empty_gpu_model.usage.hours_life_time.value) == \
+           {
+               'gwp': {
+                   'unit': 'kgCO2eq',
+                   'description': 'Total climate change',
+                   'embedded': {
+                       'value': 68.8,
+                       'min': 68.8,
+                       'max': 68.8,
+                       'warnings': ['End of life is not included in the calculation']
+                   },
+                   'use': {
+                       'value': 4000000.0,
+                       'min': 272000.0,
+                       'max': 10640000.0
+                   }
+               },
+               'adp': {
+                   'unit': 'kgSbeq',
+                   'description': 'Use of minerals and fossil ressources',
+                   'embedded': {
+                       'value': 0.003104,
+                       'min': 0.003104,
+                       'max': 0.003104,
+                       'warnings': ['End of life is not included in the calculation']
+                   },
+                   'use': {
+                       'value': 0.8,
+                       'min': 0.1561,
+                       'max': 3.141
+                   }
+               },
+               'pe': {
+                   'unit': 'MJ',
+                   'description': 'Consumption of primary energy',
+                   'embedded': {
+                       'value': 889.4,
+                       'min': 889.4,
+                       'max': 889.4,
+                       'warnings': ['End of life is not included in the calculation']
+                   },
+                   'use': {
+                       'value': 200000000.0,
+                       'min': 153700.0,
+                       'max': 5536000000.0
+                   }
+               }
+           }
+
+
+def test_bottom_up_component_gpu_complete(complete_gpu_model):
+    assert compute_impacts(complete_gpu_model, duration=complete_gpu_model.usage.hours_life_time.value) == \
+           {
+               'gwp': {
+                   'unit': 'kgCO2eq',
+                   'description': 'Total climate change',
+                   'embedded': {
+                       'value': 137.6,
+                       'min': 137.6,
+                       'max': 137.6,
+                       'warnings': ['End of life is not included in the calculation']
+                   },
+                   'use': {
+                       'value': 9000000.0,
+                       'min': 544000.0,
+                       'max': 21290000.0
+                   }
+               },
+               'adp': {
+                   'unit': 'kgSbeq',
+                   'description': 'Use of minerals and fossil ressources',
+                   'embedded': {
+                       'value': 0.006208,
+                       'min': 0.006208,
+                       'max': 0.006208,
+                       'warnings': ['End of life is not included in the calculation']
+                   },
+                   'use': {
+                       'value': 1.5,
+                       'min': 0.3122,
+                       'max': 6.282
+                   }
+               },
+               'pe': {
+                   'unit': 'MJ',
+                   'description': 'Consumption of primary energy',
+                   'embedded': {
+                       'value': 1779.0,
+                       'min': 1779.0,
+                       'max': 1779.0,
+                       'warnings': ['End of life is not included in the calculation']
+                   },
+                   'use': {
+                       'value': 300000000.0,
+                       'min': 307500.0,
+                       'max': 11070000000.0,
+                       'warnings': [
+                           'Uncertainty from technical characteristics is very important. Results should be '
+                           'interpreted with caution (see min and max values)']
+                   }
+               }
+           }

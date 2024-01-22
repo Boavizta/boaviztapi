@@ -9,6 +9,7 @@ default_case: "DEFAULT"
 default_assembly: "DEFAULT"
 default_motherboard: "DEFAULT"
 default_server: "DEFAULT"
+default_gpu: "DEFAULT"
 
 default_cloud_instance: "a1.4xlarge"
 default_cloud_provider: "aws"
@@ -35,3 +36,4 @@ max_sig_fig: 4
 min_sig_fig: 1
 
 cpu_name_fuzzymatch_threshold: 60
+gpu_name_fuzzymatch_threshold: 80
