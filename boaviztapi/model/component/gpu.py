@@ -17,6 +17,11 @@ class ComponentGPU(Component):
 
     def __init__(self, archetype=get_component_archetype(config["default_gpu"], "gpu"), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
+        self.name = Boattribute(
+            default=get_arch_value(archetype, 'name', 'default'),
+            min=get_arch_value(archetype, 'name', 'min'),
+            max=get_arch_value(archetype, 'name', 'max')
+        )
         self.gpu_die_size = Boattribute(
             complete_function=self._complete_from_name,
             unit="mm2",
@@ -31,19 +36,16 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, 'die_size', 'max')
         )
         self.gpu_name = Boattribute(
-            # complete_function=self._complete_die_size,
             default=get_arch_value(archetype, 'name', 'default'),
             min=get_arch_value(archetype, 'name', 'min'),
             max=get_arch_value(archetype, 'name', 'max')
         )
         self.gpu_variant = Boattribute(
-            # complete_function=self._complete_die_size,
             default=get_arch_value(archetype, 'variant', 'default'),
             min=get_arch_value(archetype, 'variant', 'min'),
             max=get_arch_value(archetype, 'variant', 'max')
         )
         self.gpu_architecture = Boattribute(
-            # complete_function=self._complete_from_name,
             default=get_arch_value(archetype, 'architecture', 'default'),
             min=get_arch_value(archetype, 'architecture', 'min'),
             max=get_arch_value(archetype, 'architecture', 'max')
@@ -56,10 +58,9 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, 'vram_capacity', 'max')
         )
         self.vram_density = Boattribute(
-            # complete_function=self._complete_density,
-            unit="GB/cm2",
-            # default=get_arch_value(archetype, 'vram_density', 'default'),
-            default=0.01625,
+            complete_function=self._complete_density,
+            unit="GB/mm2",
+            default=get_arch_value(archetype, 'vram_density', 'default'),
             min=get_arch_value(archetype, 'vram_density', 'min'),
             max=get_arch_value(archetype, 'vram_density', 'max')
         )
@@ -69,16 +70,9 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, 'manufacturer', 'max')
         )
         self.family = Boattribute(
-            # complete_function=self._complete_from_name,
             default=get_arch_value(archetype, 'family', 'default'),
             min=get_arch_value(archetype, 'family', 'min'),
             max=get_arch_value(archetype, 'family', 'max')
-        )
-        self.name = Boattribute(
-            # default=get_arch_value(archetype, 'name', 'default'),
-            default='NVIDIA GeForce RTX 4090',
-            min=get_arch_value(archetype, 'name', 'min'),
-            max=get_arch_value(archetype, 'name', 'max')
         )
         self.tdp = Boattribute(
             complete_function=self._complete_from_name,
@@ -99,9 +93,12 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, 'pcie', 'max')
         )
 
-    def _complete_from_name(self):
+    def _complete_from_name(self) -> None:
         attr = fuzzymatch_attr_from_gpu_name(self.name.value, _gpu_specs)
         self.tdp.set_completed(attr[1])
         self.gpu_die_size.set_completed(attr[2])
         self.vram_capacity.set_completed(attr[3])
         self.pcb_size.set_completed(attr[4])
+
+    def _complete_density(self) -> None:
+        self.vram_density.set_completed(value=0.01625)

@@ -1,2 +1,2 @@
-id,name,units,USAGE.time_workload,USAGE.use_time_ratio,USAGE.hours_life_time
-DEFAULT,,1;1;1,50;0;100,1,26280
+id,name,units,vram_density,USAGE.time_workload,USAGE.use_time_ratio,USAGE.hours_life_time
+DEFAULT,NVIDIA GeForce RTX 4090,1;1;1,0.01625,50;0;100,1,26280
