@@ -487,17 +487,17 @@ Result :
             "unit": "kgCO2eq",
             "description": "Total climate change",
             "embedded": {
-                "value": 23.78,
-                "min": 23.78,
-                "max": 23.78,
+                "value": 0.00181,
+                "min": 0.00181,
+                "max": 0.00181,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
-                "value": 193.6,
-                "min": 193.6,
-                "max": 193.6
+                "value": 0.02352,
+                "min": 0.02352,
+                "max": 0.02352
             }
         }
     }
@@ -530,25 +530,25 @@ Result :
 
 ```json
 {
-  "gwp": {
-    "embedded": {
-      "value": 13.2,
-      "significant_figures": 5,
-      "min": 13.062,
-      "max": 13.594,
-      "warnings": [
-        "End of life is not included in the calculation"
-      ]
-    },
-    "use": {
-      "value": 205.09,
-      "significant_figures": 5,
-      "min": 205.09,
-      "max": 205.09
-    },
-    "unit": "kgCO2eq",
-    "description": "Total climate change"
-  }
+    "impacts": {
+        "gwp": {
+            "unit": "kgCO2eq",
+            "description": "Total climate change",
+            "embedded": {
+                "value": 23.78,
+                "min": 23.78,
+                "max": 23.78,
+                "warnings": [
+                    "End of life is not included in the calculation"
+                ]
+            },
+            "use": {
+                "value": 193.6,
+                "min": 193.6,
+                "max": 193.6
+            }
+        }
+    }
 }
 ```
 
