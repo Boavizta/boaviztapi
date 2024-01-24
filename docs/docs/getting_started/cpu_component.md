@@ -34,63 +34,62 @@ Result :
 
 ```json
 {
-  "gwp": {
-    "embedded": {
-      "value": 13.2,
-      "significant_figures": 5,
-      "min": 13.062,
-      "max": 13.594,
-      "warnings": [
-        "End of life is not included in the calculation"
-      ]
-    },
-    "use": {
-      "value": 944.95,
-      "significant_figures": 5,
-      "min": 57.195,
-      "max": 2814.0
-    },
-    "unit": "kgCO2eq",
-    "description": "Total climate change"
-  },
-  "adp": {
-    "embedded": {
-      "value": 0.020401,
-      "significant_figures": 5,
-      "min": 0.020401,
-      "max": 0.020401,
-      "warnings": [
-        "End of life is not included in the calculation"
-      ]
-    },
-    "use": {
-      "value": 0.00015973,
-      "significant_figures": 5,
-      "min": 3.2924e-05,
-      "max": 0.00066041
-    },
-    "unit": "kgSbeq",
-    "description": "Use of minerals and fossil ressources"
-  },
-  "pe": {
-    "embedded": {
-      "value": 210.62,
-      "significant_figures": 5,
-      "min": 208.76,
-      "max": 215.92,
-      "warnings": [
-        "End of life is not included in the calculation"
-      ]
-    },
-    "use": {
-      "value": 32012.0,
-      "significant_figures": 5,
-      "min": 32.327,
-      "max": 1164200.0
-    },
-    "unit": "MJ",
-    "description": "Consumption of primary energy"
-  }
+    "impacts": {
+        "gwp": {
+            "unit": "kgCO2eq",
+            "description": "Total climate change",
+            "embedded": {
+                "value": 23.78,
+                "min": 23.78,
+                "max": 23.78,
+                "warnings": [
+                    "End of life is not included in the calculation"
+                ]
+            },
+            "use": {
+                "value": 900.0,
+                "min": 57.19,
+                "max": 2814.0
+            }
+        },
+        "adp": {
+            "unit": "kgSbeq",
+            "description": "Use of minerals and fossil ressources",
+            "embedded": {
+                "value": 0.0204,
+                "min": 0.0204,
+                "max": 0.0204,
+                "warnings": [
+                    "End of life is not included in the calculation"
+                ]
+            },
+            "use": {
+                "value": 0.00016,
+                "min": 3.292e-05,
+                "max": 0.0006604
+            }
+        },
+        "pe": {
+            "unit": "MJ",
+            "description": "Consumption of primary energy",
+            "embedded": {
+                "value": 352.9,
+                "min": 352.9,
+                "max": 352.9,
+                "warnings": [
+                    "End of life is not included in the calculation"
+                ]
+            },
+            "use": {
+                "value": 30000.0,
+                "min": 32.33,
+                "max": 1164000.0,
+                "warnings": [
+                    "Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)"
+                ]
+            }
+        }
+    }
 }
 ```
 
@@ -117,147 +116,155 @@ Result :
 
 ```json
 {
-  "impacts": {
-    "gwp": {
-      "embedded": {
-        "value": 13.2,
-        "significant_figures": 5,
-        "min": 13.062,
-        "max": 13.594,
-        "warnings": [
-          "End of life is not included in the calculation"
-        ]
-      },
-      "use": {
-        "value": 944.95,
-        "significant_figures": 5,
-        "min": 57.195,
-        "max": 2814.0
-      },
-      "unit": "kgCO2eq",
-      "description": "Total climate change"
-    }
-  },
-  "verbose": {
     "impacts": {
-      "gwp": {
-        "embedded": {
-          "value": 13.2,
-          "significant_figures": 5,
-          "min": 13.062,
-          "max": 13.594,
-          "warnings": [
-            "End of life is not included in the calculation"
-          ]
+        "gwp": {
+            "unit": "kgCO2eq",
+            "description": "Total climate change",
+            "embedded": {
+                "value": 23.78,
+                "min": 23.78,
+                "max": 23.78,
+                "warnings": [
+                    "End of life is not included in the calculation"
+                ]
+            },
+            "use": {
+                "value": 900.0,
+                "min": 57.19,
+                "max": 2814.0
+            }
+        }
+    },
+    "verbose": {
+        "impacts": {
+            "gwp": {
+                "unit": "kgCO2eq",
+                "description": "Total climate change",
+                "embedded": {
+                    "value": 23.78,
+                    "min": 23.78,
+                    "max": 23.78,
+                    "warnings": [
+                        "End of life is not included in the calculation"
+                    ]
+                },
+                "use": {
+                    "value": 900.0,
+                    "min": 57.19,
+                    "max": 2814.0
+                }
+            },
+            "adp": {
+                "unit": "kgSbeq",
+                "description": "Use of minerals and fossil ressources",
+                "embedded": "not implemented",
+                "use": "not implemented"
+            },
+            "pe": {
+                "unit": "MJ",
+                "description": "Consumption of primary energy",
+                "embedded": "not implemented",
+                "use": "not implemented"
+            }
         },
-        "use": {
-          "value": 944.95,
-          "significant_figures": 5,
-          "min": 57.195,
-          "max": 2814.0
+        "units": {
+            "value": 1.0,
+            "status": "ARCHETYPE",
+            "min": 1.0,
+            "max": 1.0
         },
-        "unit": "kgCO2eq",
-        "description": "Total climate change"
-      }
-    },
-    "units": {
-      "value": 1.0,
-      "status": "ARCHETYPE",
-      "min": 1.0,
-      "max": 1.0
-    },
-    "die_size": {
-      "value": 157,
-      "status": "COMPLETED",
-      "unit": "mm2",
-      "source": "Average value for Skylake",
-      "min": 150,
-      "max": 177
-    },
-    "model_range": {
-      "value": "Xeon Gold",
-      "status": "COMPLETED",
-      "source": "Completed from name name based on https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data.",
-      "min": "Xeon Gold",
-      "max": "Xeon Gold"
-    },
-    "manufacturer": {
-      "value": "Intel",
-      "status": "COMPLETED",
-      "source": "Completed from name name based on https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data.",
-      "min": "Intel",
-      "max": "Intel"
-    },
-    "family": {
-      "value": "Skylake",
-      "status": "COMPLETED",
-      "source": "Completed from name name based on https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data.",
-      "min": "Skylake",
-      "max": "Skylake"
-    },
-    "name": {
-      "value": "Intel Xeon Gold 6134",
-      "status": "COMPLETED",
-      "source": "fuzzy match",
-      "min": "Intel Xeon Gold 6134",
-      "max": "Intel Xeon Gold 6134"
-    },
-    "duration": {
-      "value": 26280.0,
-      "unit": "hours"
-    },
-    "avg_power": {
-      "value": 94.624,
-      "status": "COMPLETED",
-      "unit": "W",
-      "min": 94.624,
-      "max": 94.624
-    },
-    "time_workload": {
-      "value": 50.0,
-      "status": "ARCHETYPE",
-      "unit": "%",
-      "min": 0.0,
-      "max": 100.0
-    },
-    "usage_location": {
-      "value": "EEE",
-      "status": "DEFAULT",
-      "unit": "CodSP3 - NCS Country Codes - NATO"
-    },
-    "use_time_ratio": {
-      "value": 1.0,
-      "status": "ARCHETYPE",
-      "unit": "/1",
-      "min": 1.0,
-      "max": 1.0
-    },
-    "hours_life_time": {
-      "value": 26280.0,
-      "status": "ARCHETYPE",
-      "unit": "hours",
-      "min": 26280.0,
-      "max": 26280.0
-    },
-    "params": {
-      "value": {
-        "a": 35.5688,
-        "b": 0.2438,
-        "c": 9.6694,
-        "d": -0.6087
-      },
-      "status": "COMPLETED",
-      "source": "From CPU model range"
-    },
-    "gwp_factor": {
-      "value": 0.38,
-      "status": "DEFAULT",
-      "unit": "kg CO2eq/kWh",
-      "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
-      "min": 0.023,
-      "max": 1.13161
+        "die_size": {
+            "value": 694,
+            "status": "COMPLETED",
+            "unit": "mm2",
+            "source": "Max value of cpu_manufacture https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)#Extreme_Core_Count_.28XCC.29 : Completed from name name based on https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data.",
+            "min": 694,
+            "max": 694
+        },
+        "model_range": {
+            "value": "Xeon Gold",
+            "status": "COMPLETED",
+            "source": "Completed from name name based on https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data.",
+            "min": "Xeon Gold",
+            "max": "Xeon Gold"
+        },
+        "manufacturer": {
+            "value": "Intel",
+            "status": "COMPLETED",
+            "source": "Completed from name name based on https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data.",
+            "min": "Intel",
+            "max": "Intel"
+        },
+        "family": {
+            "value": "Skylake",
+            "status": "COMPLETED",
+            "source": "Completed from name name based on https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data.",
+            "min": "Skylake",
+            "max": "Skylake"
+        },
+        "name": {
+            "value": "Intel Xeon Gold 6134",
+            "status": "COMPLETED",
+            "source": "fuzzy match",
+            "min": "Intel Xeon Gold 6134",
+            "max": "Intel Xeon Gold 6134"
+        },
+        "duration": {
+            "value": 26280.0,
+            "unit": "hours"
+        },
+        "avg_power": {
+            "value": 94.624,
+            "status": "COMPLETED",
+            "unit": "W",
+            "min": 94.624,
+            "max": 94.624
+        },
+        "time_workload": {
+            "value": 50.0,
+            "status": "ARCHETYPE",
+            "unit": "%",
+            "min": 0.0,
+            "max": 100.0
+        },
+        "usage_location": {
+            "value": "EEE",
+            "status": "DEFAULT",
+            "unit": "CodSP3 - NCS Country Codes - NATO"
+        },
+        "use_time_ratio": {
+            "value": 1.0,
+            "status": "ARCHETYPE",
+            "unit": "/1",
+            "min": 1.0,
+            "max": 1.0
+        },
+        "hours_life_time": {
+            "value": 26280.0,
+            "status": "ARCHETYPE",
+            "unit": "hours",
+            "min": 26280.0,
+            "max": 26280.0
+        },
+        "params": {
+            "value": {
+                "a": 35.5688,
+                "b": 0.2438,
+                "c": 9.6694,
+                "d": -0.6087
+            },
+            "status": "COMPLETED",
+            "source": "From CPU model range"
+        },
+        "gwp_factor": {
+            "value": 0.38,
+            "status": "DEFAULT",
+            "unit": "kg CO2eq/kWh",
+            "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+            "min": 0.023,
+            "max": 1.13161
+        }
     }
-  }
 }
 ```
 
@@ -282,172 +289,170 @@ Result :
 
 ```json
 {
-  "impacts": {
-    "gwp": {
-      "embedded": {
-        "value": 18.913,
-        "significant_figures": 5,
-        "min": 18.913,
-        "max": 18.913,
-        "warnings": [
-          "End of life is not included in the calculation"
-        ]
-      },
-      "use": {
-        "value": 1819.8,
-        "significant_figures": 5,
-        "min": 110.15,
-        "max": 5419.3
-      },
-      "unit": "kgCO2eq",
-      "description": "Total climate change"
-    },
-    "adp": {
-      "embedded": {
-        "value": 0.020403,
-        "significant_figures": 5,
-        "min": 0.020403,
-        "max": 0.020403,
-        "warnings": [
-          "End of life is not included in the calculation"
-        ]
-      },
-      "use": {
-        "value": 0.00030761,
-        "significant_figures": 5,
-        "min": 6.3406e-05,
-        "max": 0.0012718
-      },
-      "unit": "kgSbeq",
-      "description": "Use of minerals and fossil ressources"
-    }
-  },
-  "verbose": {
     "impacts": {
-      "gwp": {
-        "embedded": {
-          "value": 18.913,
-          "significant_figures": 5,
-          "min": 18.913,
-          "max": 18.913,
-          "warnings": [
-            "End of life is not included in the calculation"
-          ]
+        "gwp": {
+            "unit": "kgCO2eq",
+            "description": "Total climate change",
+            "embedded": {
+                "value": 22.22,
+                "min": 22.22,
+                "max": 22.22,
+                "warnings": [
+                    "End of life is not included in the calculation"
+                ]
+            },
+            "use": {
+                "value": 1800.0,
+                "min": 110.1,
+                "max": 5419.0
+            }
         },
-        "use": {
-          "value": 1819.8,
-          "significant_figures": 5,
-          "min": 110.15,
-          "max": 5419.3
+        "adp": {
+            "unit": "kgSbeq",
+            "description": "Use of minerals and fossil ressources",
+            "embedded": {
+                "value": 0.0204,
+                "min": 0.0204,
+                "max": 0.0204,
+                "warnings": [
+                    "End of life is not included in the calculation"
+                ]
+            },
+            "use": {
+                "value": 0.0003,
+                "min": 6.341e-05,
+                "max": 0.001272
+            }
+        }
+    },
+    "verbose": {
+        "impacts": {
+            "gwp": {
+                "unit": "kgCO2eq",
+                "description": "Total climate change",
+                "embedded": {
+                    "value": 22.22,
+                    "min": 22.22,
+                    "max": 22.22,
+                    "warnings": [
+                        "End of life is not included in the calculation"
+                    ]
+                },
+                "use": {
+                    "value": 1800.0,
+                    "min": 110.1,
+                    "max": 5419.0
+                }
+            },
+            "adp": {
+                "unit": "kgSbeq",
+                "description": "Use of minerals and fossil ressources",
+                "embedded": {
+                    "value": 0.0204,
+                    "min": 0.0204,
+                    "max": 0.0204,
+                    "warnings": [
+                        "End of life is not included in the calculation"
+                    ]
+                },
+                "use": {
+                    "value": 0.0003,
+                    "min": 6.341e-05,
+                    "max": 0.001272
+                }
+            },
+            "pe": {
+                "unit": "MJ",
+                "description": "Consumption of primary energy",
+                "embedded": "not implemented",
+                "use": "not implemented"
+            }
         },
-        "unit": "kgCO2eq",
-        "description": "Total climate change"
-      },
-      "adp": {
-        "embedded": {
-          "value": 0.020403,
-          "significant_figures": 5,
-          "min": 0.020403,
-          "max": 0.020403,
-          "warnings": [
-            "End of life is not included in the calculation"
-          ]
+        "units": {
+            "value": 1.0,
+            "status": "ARCHETYPE",
+            "min": 1.0,
+            "max": 1.0
         },
-        "use": {
-          "value": 0.00030761,
-          "significant_figures": 5,
-          "min": 6.3406e-05,
-          "max": 0.0012718
+        "core_units": {
+            "value": 24,
+            "status": "INPUT"
         },
-        "unit": "kgSbeq",
-        "description": "Use of minerals and fossil ressources"
-      }
-    },
-    "units": {
-      "value": 1.0,
-      "status": "ARCHETYPE",
-      "min": 1.0,
-      "max": 1.0
-    },
-    "core_units": {
-      "value": 24,
-      "status": "INPUT"
-    },
-    "die_size": {
-      "value": 447,
-      "status": "COMPLETED",
-      "unit": "mm2",
-      "source": "Linear regression on Skylake",
-      "min": 447,
-      "max": 447
-    },
-    "family": {
-      "value": "Skylake",
-      "status": "CHANGED"
-    },
-    "duration": {
-      "value": 26280.0,
-      "unit": "hours"
-    },
-    "avg_power": {
-      "value": 182.23,
-      "status": "COMPLETED",
-      "unit": "W",
-      "min": 182.23,
-      "max": 182.23
-    },
-    "time_workload": {
-      "value": 50.0,
-      "status": "ARCHETYPE",
-      "unit": "%",
-      "min": 0.0,
-      "max": 100.0
-    },
-    "usage_location": {
-      "value": "EEE",
-      "status": "DEFAULT",
-      "unit": "CodSP3 - NCS Country Codes - NATO"
-    },
-    "use_time_ratio": {
-      "value": 1.0,
-      "status": "ARCHETYPE",
-      "unit": "/1",
-      "min": 1.0,
-      "max": 1.0
-    },
-    "hours_life_time": {
-      "value": 26280.0,
-      "status": "ARCHETYPE",
-      "unit": "hours",
-      "min": 26280.0,
-      "max": 26280.0
-    },
-    "params": {
-      "value": {
-        "a": 171.2,
-        "b": 0.0354,
-        "c": 36.89,
-        "d": -10.13
-      },
-      "status": "ARCHETYPE"
-    },
-    "gwp_factor": {
-      "value": 0.38,
-      "status": "DEFAULT",
-      "unit": "kg CO2eq/kWh",
-      "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
-      "min": 0.023,
-      "max": 1.13161
-    },
-    "adp_factor": {
-      "value": 6.42317e-08,
-      "status": "DEFAULT",
-      "unit": "kg Sbeq/kWh",
-      "source": "ADEME Base IMPACTS ®",
-      "min": 1.324e-08,
-      "max": 2.65575e-07
+        "die_size": {
+            "value": 615.0,
+            "status": "COMPLETED",
+            "unit": "mm2",
+            "source": "Average value of Skylake with 24 cores",
+            "min": 615.0,
+            "max": 615.0
+        },
+        "family": {
+            "value": "Skylake",
+            "status": "CHANGED"
+        },
+        "duration": {
+            "value": 26280.0,
+            "unit": "hours"
+        },
+        "avg_power": {
+            "value": 182.23,
+            "status": "COMPLETED",
+            "unit": "W",
+            "min": 182.23,
+            "max": 182.23
+        },
+        "time_workload": {
+            "value": 50.0,
+            "status": "ARCHETYPE",
+            "unit": "%",
+            "min": 0.0,
+            "max": 100.0
+        },
+        "usage_location": {
+            "value": "EEE",
+            "status": "DEFAULT",
+            "unit": "CodSP3 - NCS Country Codes - NATO"
+        },
+        "use_time_ratio": {
+            "value": 1.0,
+            "status": "ARCHETYPE",
+            "unit": "/1",
+            "min": 1.0,
+            "max": 1.0
+        },
+        "hours_life_time": {
+            "value": 26280.0,
+            "status": "ARCHETYPE",
+            "unit": "hours",
+            "min": 26280.0,
+            "max": 26280.0
+        },
+        "params": {
+            "value": {
+                "a": 171.2,
+                "b": 0.0354,
+                "c": 36.89,
+                "d": -10.13
+            },
+            "status": "ARCHETYPE"
+        },
+        "gwp_factor": {
+            "value": 0.38,
+            "status": "DEFAULT",
+            "unit": "kg CO2eq/kWh",
+            "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+            "min": 0.023,
+            "max": 1.13161
+        },
+        "adp_factor": {
+            "value": 6.42317e-08,
+            "status": "DEFAULT",
+            "unit": "kg Sbeq/kWh",
+            "source": "ADEME Base IMPACTS \u00ae",
+            "min": 1.324e-08,
+            "max": 2.65575e-07
+        }
     }
-  }
 }
 ```
 
@@ -477,25 +482,25 @@ Result :
 
 ```json
 {
-  "gwp": {
-    "embedded": {
-      "value": 0.0010046,
-      "significant_figures": 5,
-      "min": 0.00099408,
-      "max": 0.0010346,
-      "warnings": [
-        "End of life is not included in the calculation"
-      ]
-    },
-    "use": {
-      "value": 0.02352,
-      "significant_figures": 5,
-      "min": 0.02352,
-      "max": 0.02352
-    },
-    "unit": "kgCO2eq",
-    "description": "Total climate change"
-  }
+    "impacts": {
+        "gwp": {
+            "unit": "kgCO2eq",
+            "description": "Total climate change",
+            "embedded": {
+                "value": 0.00181,
+                "min": 0.00181,
+                "max": 0.00181,
+                "warnings": [
+                    "End of life is not included in the calculation"
+                ]
+            },
+            "use": {
+                "value": 0.02352,
+                "min": 0.02352,
+                "max": 0.02352
+            }
+        }
+    }
 }
 ```
 
@@ -525,25 +530,25 @@ Result :
 
 ```json
 {
-  "gwp": {
-    "embedded": {
-      "value": 13.2,
-      "significant_figures": 5,
-      "min": 13.062,
-      "max": 13.594,
-      "warnings": [
-        "End of life is not included in the calculation"
-      ]
-    },
-    "use": {
-      "value": 205.09,
-      "significant_figures": 5,
-      "min": 205.09,
-      "max": 205.09
-    },
-    "unit": "kgCO2eq",
-    "description": "Total climate change"
-  }
+    "impacts": {
+        "gwp": {
+            "unit": "kgCO2eq",
+            "description": "Total climate change",
+            "embedded": {
+                "value": 23.78,
+                "min": 23.78,
+                "max": 23.78,
+                "warnings": [
+                    "End of life is not included in the calculation"
+                ]
+            },
+            "use": {
+                "value": 193.6,
+                "min": 193.6,
+                "max": 193.6
+            }
+        }
+    }
 }
 ```
 
