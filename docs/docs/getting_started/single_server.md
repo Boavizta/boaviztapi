@@ -1426,9 +1426,9 @@ curl -X 'POST' \
                 ]
             },
             "use": {
-                "value": 214.6,
-                "min": 214.6,
-                "max": 214.6
+                "value": 650.0,
+                "min": 565.2,
+                "max": 803.5
             }
         },
         "adp": {
@@ -1443,9 +1443,9 @@ curl -X 'POST' \
                 ]
             },
             "use": {
-                "value": 0.0001064,
-                "min": 0.0001064,
-                "max": 0.0001064
+                "value": 0.00032,
+                "min": 0.0002802,
+                "max": 0.0003983
             }
         },
         "pe": {
@@ -1460,9 +1460,9 @@ curl -X 'POST' \
                 ]
             },
             "use": {
-                "value": 24720.0,
-                "min": 24720.0,
-                "max": 24720.0
+                "value": 75000.0,
+                "min": 65110.0,
+                "max": 92560.0
             }
         }
     },
@@ -1538,9 +1538,9 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 2400.0,
-                        "min": 146.9,
-                        "max": 7226.0
+                        "value": 848.4,
+                        "min": 848.4,
+                        "max": 848.4
                     }
                 },
                 "adp": {
@@ -1555,9 +1555,9 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 0.0004,
-                        "min": 8.454e-05,
-                        "max": 0.001696
+                        "value": 0.0004206,
+                        "min": 0.0004206,
+                        "max": 0.0004206
                     }
                 },
                 "pe": {
@@ -1572,9 +1572,9 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 100000.0,
-                        "min": 83.01,
-                        "max": 2989000.0
+                        "value": 97730.0,
+                        "min": 97730.0,
+                        "max": 97730.0
                     }
                 }
             },
@@ -1597,22 +1597,20 @@ curl -X 'POST' \
                 "unit": "hours"
             },
             "avg_power": {
-                "value": 364.46,
+                "value": 494.12,
                 "status": "COMPLETED",
                 "unit": "W",
-                "min": 364.46,
-                "max": 364.46
+                "min": 494.12,
+                "max": 494.12
             },
             "time_workload": {
-                "value": 50.0,
-                "status": "ARCHETYPE",
-                "unit": "%",
-                "min": 0.0,
-                "max": 100.0
+                "value": 90.0,
+                "status": "INPUT",
+                "unit": "%"
             },
             "usage_location": {
-                "value": "EEE",
-                "status": "DEFAULT",
+                "value": "FRA",
+                "status": "INPUT",
                 "unit": "CodSP3 - NCS Country Codes - NATO"
             },
             "use_time_ratio": {
@@ -1640,28 +1638,28 @@ curl -X 'POST' \
                 "status": "ARCHETYPE"
             },
             "gwp_factor": {
-                "value": 0.38,
-                "status": "DEFAULT",
+                "value": 0.098,
+                "status": "COMPLETED",
                 "unit": "kg CO2eq/kWh",
                 "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
-                "min": 0.023,
-                "max": 1.13161
+                "min": 0.098,
+                "max": 0.098
             },
             "adp_factor": {
-                "value": 6.42317e-08,
-                "status": "DEFAULT",
+                "value": 4.85798e-08,
+                "status": "COMPLETED",
                 "unit": "kg Sbeq/kWh",
                 "source": "ADEME Base IMPACTS \u00ae",
-                "min": 1.324e-08,
-                "max": 2.65575e-07
+                "min": 4.85798e-08,
+                "max": 4.85798e-08
             },
             "pe_factor": {
-                "value": 12.873,
-                "status": "DEFAULT",
+                "value": 11.289,
+                "status": "COMPLETED",
                 "unit": "MJ/kWh",
                 "source": "ADPf / (1-%renewable_energy)",
-                "min": 0.013,
-                "max": 468.15
+                "min": 11.289,
+                "max": 11.289
             }
         },
         "RAM-1": {
@@ -1678,9 +1676,9 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 1900.0,
-                        "min": 65.92,
-                        "max": 9009.0
+                        "value": 500.0,
+                        "min": 280.9,
+                        "max": 780.2
                     }
                 },
                 "adp": {
@@ -1695,9 +1693,9 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 0.0003,
-                        "min": 3.795e-05,
-                        "max": 0.002114
+                        "value": 0.00025,
+                        "min": 0.0001392,
+                        "max": 0.0003867
                     }
                 },
                 "pe": {
@@ -1712,9 +1710,9 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 100000.0,
-                        "min": 37.26,
-                        "max": 3727000.0
+                        "value": 58000.0,
+                        "min": 32350.0,
+                        "max": 89870.0
                     }
                 }
             },
@@ -1751,15 +1749,13 @@ curl -X 'POST' \
                 "max": 90.88
             },
             "time_workload": {
-                "value": 50.0,
-                "status": "ARCHETYPE",
-                "unit": "%",
-                "min": 0.0,
-                "max": 100.0
+                "value": 90.0,
+                "status": "INPUT",
+                "unit": "%"
             },
             "usage_location": {
-                "value": "EEE",
-                "status": "DEFAULT",
+                "value": "FRA",
+                "status": "INPUT",
                 "unit": "CodSP3 - NCS Country Codes - NATO"
             },
             "use_time_ratio": {
@@ -1785,28 +1781,28 @@ curl -X 'POST' \
                 "source": "(ram_electrical_factor_per_go : 0.284) * (ram_capacity: 32.0) "
             },
             "gwp_factor": {
-                "value": 0.38,
-                "status": "DEFAULT",
+                "value": 0.098,
+                "status": "COMPLETED",
                 "unit": "kg CO2eq/kWh",
                 "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
-                "min": 0.023,
-                "max": 1.13161
+                "min": 0.098,
+                "max": 0.098
             },
             "adp_factor": {
-                "value": 6.42317e-08,
-                "status": "DEFAULT",
+                "value": 4.85798e-08,
+                "status": "COMPLETED",
                 "unit": "kg Sbeq/kWh",
                 "source": "ADEME Base IMPACTS \u00ae",
-                "min": 1.324e-08,
-                "max": 2.65575e-07
+                "min": 4.85798e-08,
+                "max": 4.85798e-08
             },
             "pe_factor": {
-                "value": 12.873,
-                "status": "DEFAULT",
+                "value": 11.289,
+                "status": "COMPLETED",
                 "unit": "MJ/kWh",
                 "source": "ADPf / (1-%renewable_energy)",
-                "min": 0.013,
-                "max": 468.15
+                "min": 11.289,
+                "max": 11.289
             }
         },
         "SSD-1": {
@@ -2048,9 +2044,16 @@ curl -X 'POST' \
             }
         },
         "avg_power": {
-            "value": 250.0,
+            "value": 753.87592,
+            "status": "COMPLETED",
+            "unit": "W",
+            "min": 658.3776,
+            "max": 936.0
+        },
+        "time_workload": {
+            "value": 90.0,
             "status": "INPUT",
-            "unit": "W"
+            "unit": "%"
         },
         "usage_location": {
             "value": "FRA",
@@ -2071,6 +2074,13 @@ curl -X 'POST' \
             "source": "from device",
             "min": 35040.0,
             "max": 35040.0
+        },
+        "other_consumption_ratio": {
+            "value": 0.33,
+            "status": "ARCHETYPE",
+            "unit": "ratio /1",
+            "min": 0.2,
+            "max": 0.6
         },
         "gwp_factor": {
             "value": 0.098,
