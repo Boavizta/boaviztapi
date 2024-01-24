@@ -50,7 +50,6 @@ class DeviceServer(Device):
     @property
     def disk(self) -> List[Union[ComponentSSD, ComponentHDD]]:
         if not self._disk_list:
-            print(get_arch_component(self.archetype, "HDD")["units"])
             if get_arch_component(self.archetype, "SSD")["units"] not in [{}, {'default':0}]:
                 self._disk_list.append(ComponentSSD(archetype=get_arch_component(self.archetype, "SSD")))
             if get_arch_component(self.archetype, "HDD")["units"] not in [{}, {'default':0}]:
