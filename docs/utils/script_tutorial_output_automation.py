@@ -3,6 +3,8 @@ import os
 import re
 import subprocess
 import typing
+from uvicorn import Config
+from boaviztapi.main import app, UvicornServerThreaded
 
 """
 script_tutorial_output_automation.py
@@ -13,12 +15,13 @@ execute them and replace the nearest json after the curl command by the result o
 """
 
 
-def change_json_to_tempvalue(read_file: str,index_to_change):
+def change_json_to_tempvalue(read_file: str, index_to_change):
     regex_to_find_json_in_md = r"```json\w*[^`]+```*"
     json_to_change = read_file[index_to_change:]
     file_until_json = read_file[:index_to_change]
-    json_to_change = re.sub(regex_to_find_json_in_md, "changeThis", json_to_change,count=1)
+    json_to_change = re.sub(regex_to_find_json_in_md, "changeThis", json_to_change, count=1)
     return f"{file_until_json}{json_to_change}"
+
 
 def find_curl_commands(read_file: str):
     regex_to_find_curl_in_md = r"```bash\s*([\s\S]*?)```"
@@ -28,7 +31,7 @@ def find_curl_commands(read_file: str):
         bash_found = bash_command.group()
         if "curl" in bash_found:
             bash_found = re.sub(r'^```bash\n|\n```|#.*\n', '', bash_found)
-            curl_command.append([bash_found,bash_command.end()])
+            curl_command.append([bash_found, bash_command.end()])
     return curl_command
 
 
@@ -57,7 +60,7 @@ def replace_placeholder_by_json(curl_results: str, file_to_replace: str):
 def add_all_json_results_to_md(found_curl_commands: typing.List[str], read_file_to_replace: str, index_of_curl_commands:
 typing.List[str]):
     for i in range(0, len(found_curl_commands)):
-        read_file_to_replace = change_json_to_tempvalue(read_file_to_replace,int(index_of_curl_commands[i]))
+        read_file_to_replace = change_json_to_tempvalue(read_file_to_replace, int(index_of_curl_commands[i]))
         curl_result = execute_curl(found_curl_commands[i])
         curl_result = parse_result_to_json(curl_result)
         read_file_to_replace = replace_placeholder_by_json(curl_result, read_file_to_replace)
@@ -69,7 +72,7 @@ def change_one_read_file(file_content: str):
     list_of_curl_commands = [curl_commands[0] for curl_commands in found_curl_commands]
     index_curl_commands = [index[1] for index in found_curl_commands]
     found_curl_commands = replace_curl_with_localhost(list_of_curl_commands)
-    return add_all_json_results_to_md(found_curl_commands, file_content,index_curl_commands)
+    return add_all_json_results_to_md(found_curl_commands, file_content, index_curl_commands)
 
 
 def generate_tutorial_output(directory_to_check: str):
@@ -82,6 +85,9 @@ def generate_tutorial_output(directory_to_check: str):
             file.truncate()
 
 
-if __name__ == "__main__" :
-    # run the script
-   generate_tutorial_output("../docs/getting_started")
+if __name__ == "__main__":
+    config = Config(app=app, host='localhost', port=5000, reload=True)
+    server = UvicornServerThreaded(config=config)
+    with server.run_in_thread():
+        # run the script
+        generate_tutorial_output("../docs/getting_started")

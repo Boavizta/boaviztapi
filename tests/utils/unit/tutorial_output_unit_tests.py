@@ -34,7 +34,10 @@ def test_execute_curl():
     }
   }'
 """
-    assert execute_curl(curl_to_test) == '{"a":35.5688,"b":0.2438,"c":9.6694,"d":-0.6087}' # Change to verify if valid json is returned
+    config = Config(app=app, host='localhost', port=5000, reload=True)
+    server = UvicornServerThreaded(config=config)
+    with server.run_in_thread():
+        assert execute_curl(curl_to_test) == '{"a":35.5688,"b":0.2438,"c":9.6694,"d":-0.6087}' # Change to verify if valid json is returned
 
 
 def test_replace_curl_command():
