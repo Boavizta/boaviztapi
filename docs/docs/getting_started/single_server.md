@@ -14,8 +14,7 @@ Query:
 ```bash
 # Query the data for `compute_medium`
 curl -X 'GET' \
-  '{{ endpoint }}/v1/server/?archetype=compute_medium&verbose=false' 
-  -H 'accept: application/json'
+  '{{ endpoint }}/v1/server/?archetype=compute_medium&verbose=false' -H 'accept: application/json'
 ```
 This query returns :
 
@@ -29,63 +28,7 @@ Results:
 
 ```json
 {
-  "gwp": {
-    "embedded": {
-      "value": 661.28,
-      "significant_figures": 5,
-      "min": 256.4,
-      "max": 1980.9,
-      "warnings": [
-        "End of life is not included in the calculation"
-      ]
-    },
-    "use": {
-      "value": 6937.1,
-      "significant_figures": 5,
-      "min": 193.81,
-      "max": 48551
-    },
-    "unit": "kgCO2eq",
-    "description": "Total climate change"
-  },
-  "adp": {
-    "embedded": {
-      "value": 0.13048,
-      "significant_figures": 5,
-      "min": 0.060814,
-      "max": 0.24361,
-      "warnings": [
-        "End of life is not included in the calculation"
-      ]
-    },
-    "use": {
-      "value": 0.00117259,
-      "significant_figures": 6,
-      "min": 0.000111569,
-      "max": 0.0113943
-    },
-    "unit": "kgSbeq",
-    "description": "Use of minerals and fossil ressources"
-  },
-  "pe": {
-    "embedded": {
-      "value": 9035.9,
-      "significant_figures": 5,
-      "min": 3480,
-      "max": 25941,
-      "warnings": [
-        "End of life is not included in the calculation"
-      ]
-    },
-    "use": {
-      "value": 235000,
-      "significant_figures": 5,
-      "min": 109.55,
-      "max": 20086000
-    },
-    "unit": "MJ",
-    "description": "Consumption of primary energy"
-  }
+    "detail": "compute_medium not found"
 }
 ```
 
@@ -601,63 +544,7 @@ curl -X 'POST' \
 Result :
 ```json
 {
-  "gwp": {
-    "embedded": {
-      "value": 1501.4,
-      "significant_figures": 5,
-      "min": 1501.4,
-      "max": 1501.4,
-      "warnings": [
-        "End of life is not included in the calculation"
-      ]
-    },
-    "use": {
-      "value": 10317,
-      "significant_figures": 5,
-      "min": 563.41,
-      "max": 36960
-    },
-    "unit": "kgCO2eq",
-    "description": "Total climate change"
-  },
-  "adp": {
-    "embedded": {
-      "value": 0.16588,
-      "significant_figures": 5,
-      "min": 0.16588,
-      "max": 0.16588,
-      "warnings": [
-        "End of life is not included in the calculation"
-      ]
-    },
-    "use": {
-      "value": 0.00174387,
-      "significant_figures": 6,
-      "min": 0.000324327,
-      "max": 0.00867403
-    },
-    "unit": "kgSbeq",
-    "description": "Use of minerals and fossil ressources"
-  },
-  "pe": {
-    "embedded": {
-      "value": 19475,
-      "significant_figures": 5,
-      "min": 19475,
-      "max": 19475,
-      "warnings": [
-        "End of life is not included in the calculation"
-      ]
-    },
-    "use": {
-      "value": 349500,
-      "significant_figures": 5,
-      "min": 318.45,
-      "max": 15290000
-    },
-    "unit": "MJ",
-    "description": "Consumption of primary energy"
-  }
+    "detail": "compute_medium not found"
 }
 ```
 
@@ -699,101 +586,8 @@ Result :
 
 ```json
 {
-  "impacts": {
-    "gwp": {
-      "other": {
-        "value": 660,
-        "significant_figures": 2,
-        "min": 350,
-        "max": 1100
-      },
-      "use": {
-        "value": 220,
-        "significant_figures": 2,
-        "min": 220,
-        "max": 220
-      },
-      "unit": "kgCO2eq",
-      "description": "Total climate change"
-    },
-    "adp": {
-      "other": {
-        "value": 0.13,
-        "significant_figures": 2,
-        "min": 0.064,
-        "max": 0.22
-      },
-      "use": {
-        "value": 0.000107,
-        "significant_figures": 3,
-        "min": 0.000107,
-        "max": 0.000107
-      },
-      "unit": "kgSbeq",
-      "description": "Use of minerals and fossil ressources"
-    },
-    "pe": {
-      "other": {
-        "value": 9000,
-        "significant_figures": 2,
-        "min": 4600,
-        "max": 15000
-      },
-      "use": {
-        "value": 24800,
-        "significant_figures": 3,
-        "min": 24800,
-        "max": 24800
-      },
-      "unit": "MJ",
-      "description": "Consumption of primary energy"
-    }
-  },
-  "verbose": {
-    ...
-    "avg_power": {
-      "value": 250,
-      "status": "INPUT",
-      "unit": "W"
-    },
-    "usage_location": {
-      "value": "FRA",
-      "status": "INPUT",
-      "unit": "CodSP3 - NCS Country Codes - NATO"
-    },
-    "use_time": {
-      "value": 8785,
-      "status": "INPUT",
-      "unit": "hours"
-    },
-    "gwp_factor": {
-      "value": 0.098,
-      "status": "COMPLETED",
-      "unit": "kg CO2eq/kWh",
-      "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
-      "min": 0.098,
-      "max": 0.098
-    },
-    "adp_factor": {
-      "value": 4.86e-08,
-      "status": "COMPLETED",
-      "unit": "kg Sbeq/kWh",
-      "source": "ADEME BASE IMPACT",
-      "min": 4.86e-08,
-      "max": 4.86e-08
-    },
-    "pe_factor": {
-      "value": 11.289,
-      "status": "COMPLETED",
-      "unit": "MJ/kWh",
-      "source": "ADPf / (1-%renewable_energy)",
-      "min": 11.289,
-      "max": 11.289
-    }
-  }
+    "detail": "compute_medium not found"
 }
-
-
 ```
 
 ## Retrieve the impacts with a custom workload
@@ -825,78 +619,7 @@ curl -X 'POST' \
 Result :
 ```json
 {
-  "impacts": {
-    "gwp": {
-      "embedded": {
-        "value": 165.32,
-        "significant_figures": 5,
-        "min": 64.099,
-        "max": 495.23,
-        "warnings": [
-          "End of life is not included in the calculation"
-        ]
-      },
-      "use": {
-        "value": 595.3,
-        "significant_figures": 5,
-        "min": 273.24,
-        "max": 1407.3
-      },
-      "unit": "kgCO2eq",
-      "description": "Total climate change"
-    },
-    "adp": {
-      "embedded": {
-        "value": 0.032619,
-        "significant_figures": 5,
-        "min": 0.015204,
-        "max": 0.060903,
-        "warnings": [
-          "End of life is not included in the calculation"
-        ]
-      },
-      "use": {
-        "value": 0.0002951,
-        "significant_figures": 6,
-        "min": 0.000135448,
-        "max": 0.000697639
-      },
-      "unit": "kgSbeq",
-      "description": "Use of minerals and fossil ressources"
-    },
-    "pe": {
-      "embedded": {
-        "value": 2259,
-        "significant_figures": 5,
-        "min": 870.01,
-        "max": 6485.2,
-        "warnings": [
-          "End of life is not included in the calculation"
-        ]
-      },
-      "use": {
-        "value": 68575,
-        "significant_figures": 5,
-        "min": 31476,
-        "max": 162120
-      },
-      "unit": "MJ",
-      "description": "Consumption of primary energy"
-    }
-  },
-  "verbose": {
-    "duration": {
-      "value": 8760,
-      "unit": "hours"
-    },
-    ...
-    "units": {
-      "value": 1,
-      "status": "ARCHETYPE",
-      "min": 1,
-      "max": 1
-    }
-  }
+    "detail": "compute_medium not found"
 }
 ```
 

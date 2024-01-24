@@ -30,47 +30,33 @@ Result :
 
 ```json
 {
-  "gwp": {
-    "embedded": {
-      "value": 181,
-      "significant_figures": 3,
-      "min": 181,
-      "max": 181,
-      "warnings": [
-        "Generic data used for impact calculation."
-      ]
-    },
-    "use": {
-      "value": 299.59,
-      "significant_figures": 5,
-      "min": 12.089,
-      "max": 1189.5
-    },
-    "unit": "kgCO2eq",
-    "description": "Total climate change"
-  },
-  "adp": {
-    "embedded": "not implemented",
-    "use": {
-      "value": 5.064e-05,
-      "significant_figures": 5,
-      "min": 6.9589e-06,
-      "max": 0.00027917
-    },
-    "unit": "kgSbeq",
-    "description": "Use of minerals and fossil ressources"
-  },
-  "pe": {
-    "embedded": "not implemented",
-    "use": {
-      "value": 10149,
-      "significant_figures": 5,
-      "min": 6.8328,
-      "max": 492120
-    },
-    "unit": "MJ",
-    "description": "Consumption of primary energy"
-  }
+    "impacts": {
+        "gwp": {
+            "unit": "kgCO2eq",
+            "description": "Total climate change",
+            "embedded": {
+                "value": 181.0,
+                "min": 181.0,
+                "max": 181.0,
+                "warnings": [
+                    "Generic data used for impact calculation."
+                ]
+            },
+            "use": "not implemented"
+        },
+        "adp": {
+            "unit": "kgSbeq",
+            "description": "Use of minerals and fossil ressources",
+            "embedded": "not implemented",
+            "use": "not implemented"
+        },
+        "pe": {
+            "unit": "MJ",
+            "description": "Consumption of primary energy",
+            "embedded": "not implemented",
+            "use": "not implemented"
+        }
+    }
 }
 ```
 
@@ -101,92 +87,82 @@ This query returns :
 
 ```json
 {
-  "impacts": {
-    "gwp": {
-      "embedded": {
-        "value": 46.2,
-        "significant_figures": 3,
-        "min": 46.2,
-        "max": 46.2,
-        "warnings": [
-          "Generic data used for impact calculation."
-        ]
-      },
-      "use": {
-        "value": 18.028,
-        "significant_figures": 5,
-        "min": 18.028,
-        "max": 18.028
-      },
-      "unit": "kgCO2eq",
-      "description": "Total climate change"
+    "impacts": {
+        "gwp": {
+            "unit": "kgCO2eq",
+            "description": "Total climate change",
+            "embedded": {
+                "value": 277.0,
+                "min": 277.0,
+                "max": 277.0,
+                "warnings": [
+                    "Generic data used for impact calculation."
+                ]
+            },
+            "use": {
+                "value": 18.03,
+                "min": 18.03,
+                "max": 18.03
+            }
+        },
+        "adp": {
+            "unit": "kgSbeq",
+            "description": "Use of minerals and fossil ressources",
+            "embedded": "not implemented",
+            "use": {
+                "value": 8.937e-06,
+                "min": 8.937e-06,
+                "max": 8.937e-06
+            }
+        }
     },
-    "adp": {
-      "embedded": "not implemented",
-      "use": {
-        "value": 8.9367e-06,
-        "significant_figures": 5,
-        "min": 8.9367e-06,
-        "max": 8.9367e-06
-      },
-      "unit": "kgSbeq",
-      "description": "Use of minerals and fossil ressources"
+    "verbose": {
+        "duration": {
+            "value": 8760.0,
+            "unit": "hours"
+        },
+        "avg_power": {
+            "value": 70.0,
+            "status": "INPUT",
+            "unit": "W"
+        },
+        "usage_location": {
+            "value": "FRA",
+            "status": "INPUT",
+            "unit": "CodSP3 - NCS Country Codes - NATO"
+        },
+        "use_time_ratio": {
+            "value": 0.3,
+            "status": "INPUT",
+            "unit": "/1"
+        },
+        "gwp_factor": {
+            "value": 0.098,
+            "status": "COMPLETED",
+            "unit": "kg CO2eq/kWh",
+            "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+            "min": 0.098,
+            "max": 0.098
+        },
+        "adp_factor": {
+            "value": 4.85798e-08,
+            "status": "COMPLETED",
+            "unit": "kg Sbeq/kWh",
+            "source": "ADEME Base IMPACTS \u00ae",
+            "min": 4.85798e-08,
+            "max": 4.85798e-08
+        },
+        "type": {
+            "value": "pro",
+            "status": "ARCHETYPE"
+        },
+        "units": {
+            "value": 1,
+            "status": "ARCHETYPE",
+            "min": 1,
+            "max": 1
+        }
     }
-  },
-  "verbose": {
-    "duration": {
-      "value": 8760,
-      "unit": "hours"
-    },
-    "avg_power": {
-      "value": 70,
-      "status": "INPUT",
-      "unit": "W"
-    },
-    "usage_location": {
-      "value": "FRA",
-      "status": "INPUT",
-      "unit": "CodSP3 - NCS Country Codes - NATO"
-    },
-    "use_time_ratio": {
-      "value": 0.3,
-      "status": "INPUT",
-      "unit": "/1"
-    },
-    "hours_life_time": {
-      "value": 52560,
-      "status": "ARCHETYPE",
-      "unit": "hours",
-      "min": 52560,
-      "max": 52560
-    },
-    "gwp_factor": {
-      "value": 0.098,
-      "status": "COMPLETED",
-      "unit": "kg CO2eq/kWh",
-      "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
-      "min": 0.098,
-      "max": 0.098
-    },
-    "adp_factor": {
-      "value": 4.85798e-08,
-      "status": "COMPLETED",
-      "unit": "kg Sbeq/kWh",
-      "source": "ADEME Base IMPACTS ®",
-      "min": 4.85798e-08,
-      "max": 4.85798e-08
-    },
-    "units": {
-      "value": 1,
-      "status": "ARCHETYPE",
-      "min": 1,
-      "max": 1
-    },
-    "type": {
-      "value": "pro",
-      "status": "ARCHETYPE"
-    }
-  }
 }
 ```
 For further information see : [The explanation page on terminal and peripherals](../Explanations/devices/terminals_&_peripherals.md)
