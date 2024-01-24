@@ -483,3 +483,33 @@ async def test_empty_config_server_generic_criteria():
                       'use': {'max': 6660000.0,
                               'min': 85.67,
                               'value': 200000.0}}}}
+
+
+@pytest.mark.asyncio
+async def test_apple_m1_server():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/server/?archetype=mac2.metal&verbose=false&criteria=gwp', json={})
+
+        assert res.json() == {'impacts': {'gwp': {'description': 'Total climate change',
+                     'embedded': {'max': 609.1,
+                                  'min': 237.9,
+                                  'value': 420.0,
+                                  'warnings': ['End of life is not included in '
+                                               'the calculation']},
+                     'unit': 'kgCO2eq',
+                     'use': {'max': 9424.0, 'min': 180.6, 'value': 3300.0}}}}
+
+
+@pytest.mark.asyncio
+async def test_dellR740_server():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.post('/v1/server/?archetype=dellR740&verbose=false&criteria=gwp', json={})
+
+        assert res.json() == {'impacts': {'gwp': {'description': 'Total climate change',
+                     'embedded': {'max': 1188.0,
+                                  'min': 762.5,
+                                  'value': 960.0,
+                                  'warnings': ['End of life is not included in '
+                                               'the calculation']},
+                     'unit': 'kgCO2eq',
+                     'use': {'max': 14900.0, 'min': 380.7, 'value': 6000.0}}}}
