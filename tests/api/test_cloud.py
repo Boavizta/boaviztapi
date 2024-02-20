@@ -25,21 +25,19 @@ class CloudTest:
     gwp: GwpImpact
     pe: PeImpact
 
-    use_url_params: bool = False
+    verbose_output: str = None
 
     async def check_result(self):
-        if self.use_url_params:
-            url = f"/v1/cloud/instance?verbose=false&instance_type={self.instance_type}&provider={self.provider}"
-        else:
-            url = "/v1/cloud/instance?verbose=false"
+        url = self.request.to_url()
+        body = self.request.to_dict()
 
         async with AsyncClient(app=app, base_url="http://test") as ac:
-            res = await ac.post(
-                url,
-                json=None if self.use_url_params else self.request.to_dict(),
-            )
+            if self.request.use_url_params:
+                res = await ac.get(url)
+            else:
+                res = await ac.post(url, json=body)
 
-        assert res.json() == {
+        expected = {
             "impacts": {
                 "adp": self.adp.to_dict(),
                 "gwp": self.gwp.to_dict(),
@@ -47,11 +45,13 @@ class CloudTest:
             },
         }
 
+        assert res.json() == expected
+
 
 @pytest.mark.asyncio
 async def test_empty_usage():
     test = CloudTest(
-        InstanceRequest("aws", "a1.4xlarge", {}),
+        InstanceRequest("aws", "a1.4xlarge"),
         AdpImpact(
             ImpactOutput(0.1414, 0.06512, 0.099, END_OF_LIFE_WARNING),
             ImpactOutput(0.000581, 2.165e-05, 0.00012),
@@ -66,146 +66,70 @@ async def test_empty_usage():
         ),
     )
 
-    test.check_result()
+    await test.check_result()
 
 
 @pytest.mark.asyncio
 async def test_empty_usage_m6gxlarge():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post(
-            "/v1/cloud/instance?verbose=false",
-            json={"provider": "aws", "instance_type": "m6g.xlarge", "usage": {}},
-        )
+    test = CloudTest(
+        InstanceRequest("aws", "m6g.xlarge"),
+        AdpImpact(
+            ImpactOutput(0.01088, 0.005075, 0.0075, END_OF_LIFE_WARNING),
+            ImpactOutput(0.0001721, 6.415e-06, 3e-05),
+        ),
+        GwpImpact(
+            ImpactOutput(89.23, 31.58, 55.0, END_OF_LIFE_WARNING),
+            ImpactOutput(583.2, 11.18, 200.0),
+        ),
+        PeImpact(
+            ImpactOutput(1168.0, 416.4, 730.0, END_OF_LIFE_WARNING),
+            ImpactOutput(303400.0, 6.318, 10000.0),
+        ),
+    )
 
-    assert res.json() == {
-        "impacts": {
-            "adp": {
-                "description": "Use of minerals and fossil ressources",
-                "embedded": {
-                    "max": 0.01088,
-                    "min": 0.005075,
-                    "value": 0.0075,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgSbeq",
-                "use": {"max": 0.0001721, "min": 6.415e-06, "value": 3e-05},
-            },
-            "gwp": {
-                "description": "Total climate change",
-                "embedded": {
-                    "max": 89.23,
-                    "min": 31.58,
-                    "value": 55.0,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgCO2eq",
-                "use": {"max": 583.2, "min": 11.18, "value": 200.0},
-            },
-            "pe": {
-                "description": "Consumption of primary energy",
-                "embedded": {
-                    "max": 1168.0,
-                    "min": 416.4,
-                    "value": 730.0,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "MJ",
-                "use": {"max": 303400.0, "min": 6.318, "value": 10000.0},
-            },
-        }
-    }
+    await test.check_result()
 
 
 @pytest.mark.asyncio
-async def test_empty_usage_1():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.get(
-            "/v1/cloud/instance?verbose=false&instance_type=a1.2xlarge&provider=aws"
-        )
+async def test_empty_usage_with_url_params_a1():
+    test = CloudTest(
+        InstanceRequest("aws", "a1.2xlarge", use_url_params=True),
+        AdpImpact(
+            ImpactOutput(0.07069, 0.03256, 0.049, END_OF_LIFE_WARNING),
+            ImpactOutput(0.0002905, 1.083e-05, 6e-05),
+        ),
+        GwpImpact(
+            ImpactOutput(318.3, 129.5, 230.0, END_OF_LIFE_WARNING),
+            ImpactOutput(984.3, 18.87, 350.0),
+        ),
+        PeImpact(
+            ImpactOutput(4423.0, 1771.0, 3200.0, END_OF_LIFE_WARNING),
+            ImpactOutput(512000.0, 10.66, 10000.0),
+        ),
+    )
 
-    assert res.json() == {
-        "impacts": {
-            "adp": {
-                "description": "Use of minerals and fossil ressources",
-                "embedded": {
-                    "max": 0.07069,
-                    "min": 0.03256,
-                    "value": 0.049,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgSbeq",
-                "use": {"max": 0.0002905, "min": 1.083e-05, "value": 6e-05},
-            },
-            "gwp": {
-                "description": "Total climate change",
-                "embedded": {
-                    "max": 318.3,
-                    "min": 129.5,
-                    "value": 230.0,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgCO2eq",
-                "use": {"max": 984.3, "min": 18.87, "value": 350.0},
-            },
-            "pe": {
-                "description": "Consumption of primary energy",
-                "embedded": {
-                    "max": 4423.0,
-                    "min": 1771.0,
-                    "value": 3200.0,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "MJ",
-                "use": {"max": 512000.0, "min": 10.66, "value": 10000.0},
-            },
-        }
-    }
+    await test.check_result()
 
 
 @pytest.mark.asyncio
-async def test_empty_usage_2():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.get(
-            "/v1/cloud/instance?verbose=false&instance_type=r5ad.12xlarge&provider=aws"
-        )
+async def test_empty_usage_with_url_params_r5ad():
+    test = CloudTest(
+        InstanceRequest("aws", "r5ad.12xlarge", use_url_params=True),
+        AdpImpact(
+            ImpactOutput(0.1206, 0.06419, 0.086, END_OF_LIFE_WARNING),
+            ImpactOutput(0.003295, 0.0001228, 0.0007),
+        ),
+        GwpImpact(
+            ImpactOutput(1694.0, 593.4, 1000.0, END_OF_LIFE_WARNING),
+            ImpactOutput(11170.0, 214.0, 4000.0),
+        ),
+        PeImpact(
+            ImpactOutput(21480.0, 7606.0, 13000.0, END_OF_LIFE_WARNING),
+            ImpactOutput(5808000.0, 121.0, 100000.0),
+        ),
+    )
 
-    assert res.json() == {
-        "impacts": {
-            "adp": {
-                "description": "Use of minerals and fossil ressources",
-                "embedded": {
-                    "max": 0.1206,
-                    "min": 0.06419,
-                    "value": 0.086,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgSbeq",
-                "use": {"max": 0.003295, "min": 0.0001228, "value": 0.0007},
-            },
-            "gwp": {
-                "description": "Total climate change",
-                "embedded": {
-                    "max": 1694.0,
-                    "min": 593.4,
-                    "value": 1000.0,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgCO2eq",
-                "use": {"max": 11170.0, "min": 214.0, "value": 4000.0},
-            },
-            "pe": {
-                "description": "Consumption of primary energy",
-                "embedded": {
-                    "max": 21480.0,
-                    "min": 7606.0,
-                    "value": 13000.0,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "MJ",
-                "use": {"max": 5808000.0, "min": 121.0, "value": 100000.0},
-            },
-        }
-    }
+    await test.check_result()
 
 
 @pytest.mark.asyncio
@@ -229,267 +153,135 @@ async def test_wrong_input_1():
 
 
 @pytest.mark.asyncio
-async def test_usage_1():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post(
-            "/v1/cloud/instance?verbose=false",
-            json={
-                "provider": "aws",
-                "instance_type": "c5a.24xlarge",
-                "usage": {
-                    "time_workload": [
-                        {"time_percentage": 50, "load_percentage": 0},
-                        {"time_percentage": 25, "load_percentage": 60},
-                        {"time_percentage": 25, "load_percentage": 100},
-                    ]
-                },
+async def test_usage_with_complex_time_workload():
+    test = CloudTest(
+        InstanceRequest(
+            "aws",
+            "c5a.24xlarge",
+            usage={
+                "time_workload": [
+                    {"time_percentage": 50, "load_percentage": 0},
+                    {"time_percentage": 25, "load_percentage": 60},
+                    {"time_percentage": 25, "load_percentage": 100},
+                ]
             },
-        )
+        ),
+        AdpImpact(
+            ImpactOutput(0.1744, 0.08627, 0.124, END_OF_LIFE_WARNING),
+            ImpactOutput(0.002975, 0.0001109, 0.0006),
+        ),
+        GwpImpact(
+            ImpactOutput(1216.0, 459.3, 780.0, END_OF_LIFE_WARNING),
+            ImpactOutput(10080.0, 193.2, 3500.0),
+        ),
+        PeImpact(
+            ImpactOutput(16090.0, 6121.0, 10500.0, END_OF_LIFE_WARNING),
+            ImpactOutput(5244000.0, 109.2, 100000.0),
+        ),
+    )
 
-    assert res.json() == {
-        "impacts": {
-            "adp": {
-                "description": "Use of minerals and fossil ressources",
-                "embedded": {
-                    "max": 0.1744,
-                    "min": 0.08627,
-                    "value": 0.124,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgSbeq",
-                "use": {"max": 0.002975, "min": 0.0001109, "value": 0.0006},
-            },
-            "gwp": {
-                "description": "Total climate change",
-                "embedded": {
-                    "max": 1216.0,
-                    "min": 459.3,
-                    "value": 780.0,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgCO2eq",
-                "use": {"max": 10080.0, "min": 193.2, "value": 3500.0},
-            },
-            "pe": {
-                "description": "Consumption of primary energy",
-                "embedded": {
-                    "max": 16090.0,
-                    "min": 6121.0,
-                    "value": 10500.0,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "MJ",
-                "use": {"max": 5244000.0, "min": 109.2, "value": 100000.0},
-            },
-        }
-    }
+    await test.check_result()
 
 
 @pytest.mark.asyncio
-async def test_usage_2():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post(
-            "/v1/cloud/instance?verbose=false",
-            json={
-                "provider": "aws",
-                "instance_type": "c5a.24xlarge",
-                "usage": {"time_workload": 100},
-            },
-        )
-    assert res.json() == {
-        "impacts": {
-            "adp": {
-                "description": "Use of minerals and fossil ressources",
-                "embedded": {
-                    "max": 0.1744,
-                    "min": 0.08627,
-                    "value": 0.124,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgSbeq",
-                "use": {"max": 0.005068, "min": 0.0001889, "value": 0.001},
-            },
-            "gwp": {
-                "description": "Total climate change",
-                "embedded": {
-                    "max": 1216.0,
-                    "min": 459.3,
-                    "value": 780.0,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgCO2eq",
-                "use": {"max": 17170.0, "min": 329.2, "value": 6000.0},
-            },
-            "pe": {
-                "description": "Consumption of primary energy",
-                "embedded": {
-                    "max": 16090.0,
-                    "min": 6121.0,
-                    "value": 10500.0,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "MJ",
-                "use": {"max": 8934000.0, "min": 186.1, "value": 200000.0},
-            },
-        }
-    }
+async def test_usage_with_simple_time_workload():
+    test = CloudTest(
+        InstanceRequest(
+            "aws",
+            "c5a.24xlarge",
+            usage={"time_workload": 100},
+        ),
+        AdpImpact(
+            ImpactOutput(0.1744, 0.08627, 0.124, END_OF_LIFE_WARNING),
+            ImpactOutput(0.005068, 0.0001889, 0.001),
+        ),
+        GwpImpact(
+            ImpactOutput(1216.0, 459.3, 780.0, END_OF_LIFE_WARNING),
+            ImpactOutput(17170.0, 329.2, 6000.0),
+        ),
+        PeImpact(
+            ImpactOutput(16090.0, 6121.0, 10500.0, END_OF_LIFE_WARNING),
+            ImpactOutput(8934000.0, 186.1, 200000.0),
+        ),
+    )
+
+    await test.check_result()
 
 
 @pytest.mark.asyncio
-async def test_usage_3():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post(
-            "/v1/cloud/instance?verbose=false&duration=1",
-            json={"provider": "aws", "instance_type": "c5a.24xlarge", "usage": {}},
-        )
-    assert res.json() == {
-        "impacts": {
-            "adp": {
-                "description": "Use of minerals and fossil ressources",
-                "embedded": {
-                    "max": 4.977e-06,
-                    "min": 2.462e-06,
-                    "value": 3.5e-06,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgSbeq",
-                "use": {"max": 1.122e-07, "min": 4.182e-09, "value": 2e-08},
-            },
-            "gwp": {
-                "description": "Total climate change",
-                "embedded": {
-                    "max": 0.0347,
-                    "min": 0.01311,
-                    "value": 0.022,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgCO2eq",
-                "use": {"max": 0.3802, "min": 0.007287, "value": 0.13},
-            },
-            "pe": {
-                "description": "Consumption of primary energy",
-                "embedded": {
-                    "max": 0.4591,
-                    "min": 0.1747,
-                    "value": 0.3,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "MJ",
-                "use": {
-                    "max": 197.8,
-                    "min": 0.004119,
-                    "value": 5.0,
-                    "warnings": [
-                        "Uncertainty from technical characteristics is very important. Results should be "
-                        "interpreted with caution (see min and max values)"
-                    ],
-                },
-            },
-        }
-    }
+async def test_usage_with_duration():
+    test = CloudTest(
+        InstanceRequest(
+            "aws",
+            "c5a.24xlarge",
+            duration=1,
+        ),
+        AdpImpact(
+            ImpactOutput(4.977e-06, 2.462e-06, 3.5e-06, END_OF_LIFE_WARNING),
+            ImpactOutput(1.122e-07, 4.182e-09, 2e-08),
+        ),
+        GwpImpact(
+            ImpactOutput(0.0347, 0.01311, 0.022, END_OF_LIFE_WARNING),
+            ImpactOutput(0.3802, 0.007287, 0.13),
+        ),
+        PeImpact(
+            ImpactOutput(0.4591, 0.1747, 0.3, END_OF_LIFE_WARNING),
+            ImpactOutput(197.8, 0.004119, 5.0, UNCERTAINTY_WARNING),
+        ),
+    )
+
+    await test.check_result()
 
 
 @pytest.mark.asyncio
-async def test_usage():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.post(
-            "/v1/cloud/instance?verbose=false&duration=2",
-            json={
-                "provider": "aws",
-                "instance_type": "a1.4xlarge",
-                "usage": {
-                    "usage_location": "FRA",
-                    "time_workload": [
-                        {"time_percentage": "50", "load_percentage": "0"},
-                        {"time_percentage": "50", "load_percentage": "50"},
-                    ],
-                },
+async def test_usage_with_duration_and_time_workload():
+    test = CloudTest(
+        InstanceRequest(
+            "aws",
+            "a1.4xlarge",
+            duration=2,
+            usage={
+                "usage_location": "FRA",
+                "time_workload": [
+                    {"time_percentage": "50", "load_percentage": "0"},
+                    {"time_percentage": "50", "load_percentage": "50"},
+                ],
             },
-        )
+        ),
+        AdpImpact(
+            ImpactOutput(8.07e-06, 3.717e-06, 5.6e-06, END_OF_LIFE_WARNING),
+            ImpactOutput(4.11e-09, 3.082e-09, 3.4e-09),
+        ),
+        GwpImpact(
+            ImpactOutput(0.03634, 0.01478, 0.026, END_OF_LIFE_WARNING),
+            ImpactOutput(0.008291, 0.006218, 0.0069),
+        ),
+        PeImpact(
+            ImpactOutput(0.5049, 0.2022, 0.36, END_OF_LIFE_WARNING),
+            ImpactOutput(0.955, 0.7163, 0.79),
+        ),
+    )
 
-    assert res.json() == {
-        "impacts": {
-            "adp": {
-                "description": "Use of minerals and fossil ressources",
-                "embedded": {
-                    "max": 8.07e-06,
-                    "min": 3.717e-06,
-                    "value": 5.6e-06,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgSbeq",
-                "use": {"max": 4.11e-09, "min": 3.082e-09, "value": 3.4e-09},
-            },
-            "gwp": {
-                "description": "Total climate change",
-                "embedded": {
-                    "max": 0.03634,
-                    "min": 0.01478,
-                    "value": 0.026,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgCO2eq",
-                "use": {"max": 0.008291, "min": 0.006218, "value": 0.0069},
-            },
-            "pe": {
-                "description": "Consumption of primary energy",
-                "embedded": {
-                    "max": 0.5049,
-                    "min": 0.2022,
-                    "value": 0.36,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "MJ",
-                "use": {"max": 0.955, "min": 0.7163, "value": 0.79},
-            },
-        }
-    }
+    await test.check_result()
 
 
 @pytest.mark.asyncio
-async def test_verbose():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.get(
-            "/v1/cloud/instance?verbose=true&instance_type=r5ad.12xlarge&provider=aws"
-        )
-
-    assert res.json() == {
-        "impacts": {
-            "adp": {
-                "description": "Use of minerals and fossil ressources",
-                "embedded": {
-                    "max": 0.1206,
-                    "min": 0.06419,
-                    "value": 0.086,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgSbeq",
-                "use": {"max": 0.003295, "min": 0.0001228, "value": 0.0007},
-            },
-            "gwp": {
-                "description": "Total climate change",
-                "embedded": {
-                    "max": 1694.0,
-                    "min": 593.4,
-                    "value": 1000.0,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "kgCO2eq",
-                "use": {"max": 11170.0, "min": 214.0, "value": 4000.0},
-            },
-            "pe": {
-                "description": "Consumption of primary energy",
-                "embedded": {
-                    "max": 21480.0,
-                    "min": 7606.0,
-                    "value": 13000.0,
-                    "warnings": ["End of life is not included in the calculation"],
-                },
-                "unit": "MJ",
-                "use": {"max": 5808000.0, "min": 121.0, "value": 100000.0},
-            },
-        },
-        "verbose": {
+async def test_verbose_output_with_empty_usage():
+    test = CloudTest(
+        InstanceRequest("aws", "r5ad.12xlarge", use_url_params=True),
+        AdpImpact(
+            ImpactOutput(0.1206, 0.06419, 0.086, END_OF_LIFE_WARNING),
+            ImpactOutput(0.003295, 0.0001228, 0.0007),
+        ),
+        GwpImpact(
+            ImpactOutput(1694.0, 593.4, 1000.0, END_OF_LIFE_WARNING),
+            ImpactOutput(11170.0, 214.0, 4000.0),
+        ),
+        PeImpact(
+            ImpactOutput(21480.0, 7606.0, 13000.0, END_OF_LIFE_WARNING),
+            ImpactOutput(5808000.0, 121.0, 100000.0),
+        ),
+        verbose_output={
             "ASSEMBLY-1": {
                 "duration": {"unit": "hours", "value": 35040.0},
                 "impacts": {
@@ -1120,4 +912,6 @@ async def test_verbose():
             },
             "vcpu": {"status": "ARCHETYPE", "value": 48.0},
         },
-    }
+    )
+
+    await test.check_result()
