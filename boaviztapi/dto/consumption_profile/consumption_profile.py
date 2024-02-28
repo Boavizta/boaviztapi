@@ -38,7 +38,7 @@ def mapper_cp_cpu(cp_dto: ConsumptionProfileCPU) -> Tuple[CPUConsumptionProfileM
     manufacturer, model_range, family = None, None, None
 
     if cp_dto.cpu.name is not None:
-        name, manufacturer, family, model_range, tdp, cores, total_die_size, total_die_size_source, source  = attributes_from_cpu_name(cp_dto.cpu.name)
+        name, manufacturer, family, model_range, tdp, cores, threads, die_size, die_size_source, source = attributes_from_cpu_name(cp_dto.cpu.name)
 
     if cp_dto.cpu.manufacturer is not None:
         cpu.manufacturer.set_input(cp_dto.cpu.manufacturer)

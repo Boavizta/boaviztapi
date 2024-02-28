@@ -32,10 +32,10 @@ The API will select the average xeon gold consumption profile and adapt it with 
 
 ```json
 {
-  "a": 35.5688,
-  "b": 0.2438,
-  "c": 9.6694,
-  "d": -0.6087
+    "a": 35.5688,
+    "b": 0.2438,
+    "c": 9.6694,
+    "d": -0.6087
 }
 ```
 
@@ -81,10 +81,10 @@ The API will select the average xeon gold consumption profile and adapt it to ma
 
 ```json
 {
-  "a": 88.92199999999995,
-  "b": 0.13034943934208817,
-  "c": 13.521235682053703,
-  "d": -0.6456240344253034
+    "a": 105.9490625645529,
+    "b": 0.08276489427342926,
+    "c": 19.892145752325938,
+    "d": -0.7237683566860724
 }
 ```
 
