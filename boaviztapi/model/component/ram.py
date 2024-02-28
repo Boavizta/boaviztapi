@@ -69,9 +69,10 @@ class ComponentRAM(Component):
 
         if self.manufacturer.has_value():
             corrected_manufacturer = fuzzymatch_attr_from_pdf(self.manufacturer.value, "manufacturer", sub)
-            sub = sub[sub['manufacturer'] == corrected_manufacturer]
-            if corrected_manufacturer != self.manufacturer.value:
-                self.manufacturer.set_changed(corrected_manufacturer)
+            if corrected_manufacturer is not None:
+                sub = sub[sub['manufacturer'] == corrected_manufacturer]
+                if corrected_manufacturer != self.manufacturer.value:
+                    self.manufacturer.set_changed(corrected_manufacturer)
 
         if self.process.has_value():
             sub = sub[sub['process'] == self.process.value]
