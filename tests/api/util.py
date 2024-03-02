@@ -44,25 +44,25 @@ class CategoryImpact:
 
 
 @dataclass
-class AdpImpact(CategoryImpact):
+class ADPImpact(CategoryImpact):
     description: str = "Use of minerals and fossil ressources"
     unit: str = "kgSbeq"
 
 
 @dataclass
-class GwpImpact(CategoryImpact):
+class GWPImpact(CategoryImpact):
     description: str = "Total climate change"
     unit: str = "kgCO2eq"
 
 
 @dataclass
-class PeImpact(CategoryImpact):
+class PEImpact(CategoryImpact):
     description: str = "Consumption of primary energy"
     unit: str = "MJ"
 
 
 @dataclass
-class InstanceRequest:
+class CloudInstanceRequest:
     provider: str
     instance_type: str
 

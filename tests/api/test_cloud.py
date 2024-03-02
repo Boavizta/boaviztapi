@@ -5,10 +5,10 @@ from boaviztapi.main import app
 
 from dataclasses import dataclass
 from .util import (
-    InstanceRequest,
-    AdpImpact,
-    GwpImpact,
-    PeImpact,
+    CloudInstanceRequest,
+    ADPImpact,
+    GWPImpact,
+    PEImpact,
     ImpactOutput,
     END_OF_LIFE_WARNING,
     UNCERTAINTY_WARNING,
@@ -19,11 +19,11 @@ pytest_plugins = ("pytest_asyncio",)
 
 @dataclass
 class CloudTest:
-    request: InstanceRequest
+    request: CloudInstanceRequest
 
-    adp: AdpImpact
-    gwp: GwpImpact
-    pe: PeImpact
+    adp: ADPImpact
+    gwp: GWPImpact
+    pe: PEImpact
 
     verbose_output: str = None
 
@@ -51,16 +51,16 @@ class CloudTest:
 @pytest.mark.asyncio
 async def test_empty_usage():
     test = CloudTest(
-        InstanceRequest("aws", "a1.4xlarge"),
-        AdpImpact(
+        CloudInstanceRequest("aws", "a1.4xlarge"),
+        ADPImpact(
             ImpactOutput(0.1414, 0.06512, 0.099, END_OF_LIFE_WARNING),
             ImpactOutput(0.000581, 2.165e-05, 0.00012),
         ),
-        GwpImpact(
+        GWPImpact(
             ImpactOutput(636.6, 258.9, 450.0, END_OF_LIFE_WARNING),
             ImpactOutput(1969.0, 37.73, 700.0),
         ),
-        PeImpact(
+        PEImpact(
             ImpactOutput(8846.0, 3542.0, 6300.0, END_OF_LIFE_WARNING),
             ImpactOutput(1024000.0, 21.33, 20000.0, UNCERTAINTY_WARNING),
         ),
@@ -72,16 +72,16 @@ async def test_empty_usage():
 @pytest.mark.asyncio
 async def test_empty_usage_m6gxlarge():
     test = CloudTest(
-        InstanceRequest("aws", "m6g.xlarge"),
-        AdpImpact(
+        CloudInstanceRequest("aws", "m6g.xlarge"),
+        ADPImpact(
             ImpactOutput(0.01088, 0.005075, 0.0075, END_OF_LIFE_WARNING),
             ImpactOutput(0.0001721, 6.415e-06, 3e-05),
         ),
-        GwpImpact(
+        GWPImpact(
             ImpactOutput(89.23, 31.58, 55.0, END_OF_LIFE_WARNING),
             ImpactOutput(583.2, 11.18, 200.0),
         ),
-        PeImpact(
+        PEImpact(
             ImpactOutput(1168.0, 416.4, 730.0, END_OF_LIFE_WARNING),
             ImpactOutput(303400.0, 6.318, 10000.0),
         ),
@@ -93,16 +93,16 @@ async def test_empty_usage_m6gxlarge():
 @pytest.mark.asyncio
 async def test_empty_usage_with_url_params_a1():
     test = CloudTest(
-        InstanceRequest("aws", "a1.2xlarge", use_url_params=True),
-        AdpImpact(
+        CloudInstanceRequest("aws", "a1.2xlarge", use_url_params=True),
+        ADPImpact(
             ImpactOutput(0.07069, 0.03256, 0.049, END_OF_LIFE_WARNING),
             ImpactOutput(0.0002905, 1.083e-05, 6e-05),
         ),
-        GwpImpact(
+        GWPImpact(
             ImpactOutput(318.3, 129.5, 230.0, END_OF_LIFE_WARNING),
             ImpactOutput(984.3, 18.87, 350.0),
         ),
-        PeImpact(
+        PEImpact(
             ImpactOutput(4423.0, 1771.0, 3200.0, END_OF_LIFE_WARNING),
             ImpactOutput(512000.0, 10.66, 10000.0),
         ),
@@ -114,16 +114,16 @@ async def test_empty_usage_with_url_params_a1():
 @pytest.mark.asyncio
 async def test_empty_usage_with_url_params_r5ad():
     test = CloudTest(
-        InstanceRequest("aws", "r5ad.12xlarge", use_url_params=True),
-        AdpImpact(
+        CloudInstanceRequest("aws", "r5ad.12xlarge", use_url_params=True),
+        ADPImpact(
             ImpactOutput(0.1206, 0.06419, 0.086, END_OF_LIFE_WARNING),
             ImpactOutput(0.003295, 0.0001228, 0.0007),
         ),
-        GwpImpact(
+        GWPImpact(
             ImpactOutput(1694.0, 593.4, 1000.0, END_OF_LIFE_WARNING),
             ImpactOutput(11170.0, 214.0, 4000.0),
         ),
-        PeImpact(
+        PEImpact(
             ImpactOutput(21480.0, 7606.0, 13000.0, END_OF_LIFE_WARNING),
             ImpactOutput(5808000.0, 121.0, 100000.0),
         ),
@@ -155,7 +155,7 @@ async def test_wrong_input_1():
 @pytest.mark.asyncio
 async def test_usage_with_complex_time_workload():
     test = CloudTest(
-        InstanceRequest(
+        CloudInstanceRequest(
             "aws",
             "c5a.24xlarge",
             usage={
@@ -166,15 +166,15 @@ async def test_usage_with_complex_time_workload():
                 ]
             },
         ),
-        AdpImpact(
+        ADPImpact(
             ImpactOutput(0.1744, 0.08627, 0.124, END_OF_LIFE_WARNING),
             ImpactOutput(0.002975, 0.0001109, 0.0006),
         ),
-        GwpImpact(
+        GWPImpact(
             ImpactOutput(1216.0, 459.3, 780.0, END_OF_LIFE_WARNING),
             ImpactOutput(10080.0, 193.2, 3500.0),
         ),
-        PeImpact(
+        PEImpact(
             ImpactOutput(16090.0, 6121.0, 10500.0, END_OF_LIFE_WARNING),
             ImpactOutput(5244000.0, 109.2, 100000.0),
         ),
@@ -186,20 +186,20 @@ async def test_usage_with_complex_time_workload():
 @pytest.mark.asyncio
 async def test_usage_with_simple_time_workload():
     test = CloudTest(
-        InstanceRequest(
+        CloudInstanceRequest(
             "aws",
             "c5a.24xlarge",
             usage={"time_workload": 100},
         ),
-        AdpImpact(
+        ADPImpact(
             ImpactOutput(0.1744, 0.08627, 0.124, END_OF_LIFE_WARNING),
             ImpactOutput(0.005068, 0.0001889, 0.001),
         ),
-        GwpImpact(
+        GWPImpact(
             ImpactOutput(1216.0, 459.3, 780.0, END_OF_LIFE_WARNING),
             ImpactOutput(17170.0, 329.2, 6000.0),
         ),
-        PeImpact(
+        PEImpact(
             ImpactOutput(16090.0, 6121.0, 10500.0, END_OF_LIFE_WARNING),
             ImpactOutput(8934000.0, 186.1, 200000.0),
         ),
@@ -211,20 +211,20 @@ async def test_usage_with_simple_time_workload():
 @pytest.mark.asyncio
 async def test_usage_with_duration():
     test = CloudTest(
-        InstanceRequest(
+        CloudInstanceRequest(
             "aws",
             "c5a.24xlarge",
             duration=1,
         ),
-        AdpImpact(
+        ADPImpact(
             ImpactOutput(4.977e-06, 2.462e-06, 3.5e-06, END_OF_LIFE_WARNING),
             ImpactOutput(1.122e-07, 4.182e-09, 2e-08),
         ),
-        GwpImpact(
+        GWPImpact(
             ImpactOutput(0.0347, 0.01311, 0.022, END_OF_LIFE_WARNING),
             ImpactOutput(0.3802, 0.007287, 0.13),
         ),
-        PeImpact(
+        PEImpact(
             ImpactOutput(0.4591, 0.1747, 0.3, END_OF_LIFE_WARNING),
             ImpactOutput(197.8, 0.004119, 5.0, UNCERTAINTY_WARNING),
         ),
@@ -236,7 +236,7 @@ async def test_usage_with_duration():
 @pytest.mark.asyncio
 async def test_usage_with_duration_and_time_workload():
     test = CloudTest(
-        InstanceRequest(
+        CloudInstanceRequest(
             "aws",
             "a1.4xlarge",
             duration=2,
@@ -248,15 +248,15 @@ async def test_usage_with_duration_and_time_workload():
                 ],
             },
         ),
-        AdpImpact(
+        ADPImpact(
             ImpactOutput(8.07e-06, 3.717e-06, 5.6e-06, END_OF_LIFE_WARNING),
             ImpactOutput(4.11e-09, 3.082e-09, 3.4e-09),
         ),
-        GwpImpact(
+        GWPImpact(
             ImpactOutput(0.03634, 0.01478, 0.026, END_OF_LIFE_WARNING),
             ImpactOutput(0.008291, 0.006218, 0.0069),
         ),
-        PeImpact(
+        PEImpact(
             ImpactOutput(0.5049, 0.2022, 0.36, END_OF_LIFE_WARNING),
             ImpactOutput(0.955, 0.7163, 0.79),
         ),
@@ -268,16 +268,16 @@ async def test_usage_with_duration_and_time_workload():
 @pytest.mark.asyncio
 async def test_verbose_output_with_empty_usage():
     test = CloudTest(
-        InstanceRequest("aws", "r5ad.12xlarge", use_url_params=True),
-        AdpImpact(
+        CloudInstanceRequest("aws", "r5ad.12xlarge", use_url_params=True),
+        ADPImpact(
             ImpactOutput(0.1206, 0.06419, 0.086, END_OF_LIFE_WARNING),
             ImpactOutput(0.003295, 0.0001228, 0.0007),
         ),
-        GwpImpact(
+        GWPImpact(
             ImpactOutput(1694.0, 593.4, 1000.0, END_OF_LIFE_WARNING),
             ImpactOutput(11170.0, 214.0, 4000.0),
         ),
-        PeImpact(
+        PEImpact(
             ImpactOutput(21480.0, 7606.0, 13000.0, END_OF_LIFE_WARNING),
             ImpactOutput(5808000.0, 121.0, 100000.0),
         ),
