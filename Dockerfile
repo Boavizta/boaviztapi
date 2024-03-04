@@ -1,13 +1,20 @@
-FROM python:3.9-slim AS build-env
+ARG PY_VERSION=3.9
+FROM python:$PY_VERSION-slim AS build-env
 
 ARG VERSION
 
-COPY . /app
-
 WORKDIR /app
 
+# Install python deps
 RUN python -m pip install --upgrade poetry wheel twine
+
+# Install project deps
+COPY pyproject.toml .
 RUN poetry install --with dev
+
+# Copy code *after* installing deps to avoid unnecessarily invalidating cache
+COPY . .
+
 RUN poetry build
 RUN PROJECT_VERSION=$(poetry version -s) && cp /app/dist/boaviztapi-$PROJECT_VERSION.tar.gz ./boaviztapi-$VERSION.tar.gz
 RUN pip install boaviztapi-$VERSION.tar.gz && cp $(which uvicorn) /app
