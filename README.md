@@ -1,7 +1,7 @@
 <p align="center">
     <img src="https://github.com/Boavizta/boaviztapi/blob/main/boaviztapi_color.svg" height="100" alt="BoaviztAPI">
 </p>
-
+po
 <h3 align="center">
    An API to access <a href="https://boavizta.cmakers.io/">Boavizta's</a> methodologies and data</a>
 </h3>
@@ -62,7 +62,7 @@ $ uvicorn boaviztapi.main:app --host=localhost --port 5000
 
 ### Prerequisite
 
-Python 3, poetry recommended
+Python 3 mandatory, python >=3.9 recommended, poetry recommended
 
 ### Setup poetry
 
