@@ -31,18 +31,15 @@
 "cpu": {
   "gwp": {
     "die_impact": 0.0197,
-    "impact": 9.14,
-    "constant_core_impact": 49.1
+    "impact": 9.14
   },
   "pe": {
     "die_impact": 0.2650,
-    "impact": 156.00,
-    "constant_core_impact": 49.1
+    "impact": 156.00
   },
   "adp": {
     "die_impact": 5.80e-09,
-    "impact": 2.04e-02,
-    "constant_core_impact": 49.1
+    "impact": 2.04e-02
   }
 }
 

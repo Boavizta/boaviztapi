@@ -113,11 +113,6 @@ def cpu_impact_use(impact_type: str, duration: int, cpu: ComponentCPU) -> Comput
 
 
 def cpu_impact_embedded(impact_type: str, duration: int, cpu: ComponentCPU) -> ComputedImpacts:
-    core_impact = Impact(
-        value=get_impact_factor(item='cpu', impact_type=impact_type)['constant_core_impact'],
-        min=get_impact_factor(item='cpu', impact_type=impact_type)['constant_core_impact'],
-        max=get_impact_factor(item='cpu', impact_type=impact_type)['constant_core_impact']
-    )
     cpu_die_impact = Impact(
         value=get_impact_factor(item='cpu', impact_type=impact_type)['die_impact'],
         min=get_impact_factor(item='cpu', impact_type=impact_type)['die_impact'],
@@ -130,9 +125,9 @@ def cpu_impact_embedded(impact_type: str, duration: int, cpu: ComponentCPU) -> C
     )
 
     impact = Impact(
-        value=(cpu.die_size.value + core_impact.value) * cpu_die_impact.value + cpu_impact.value,
-        min=(cpu.die_size.min + core_impact.min) * cpu_die_impact.min + cpu_impact.min,
-        max=(cpu.die_size.max + core_impact.max) * cpu_die_impact.max + cpu_impact.max)
+        value=cpu.die_size.value * cpu_die_impact.value + cpu_impact.value,
+        min=cpu.die_size.min * cpu_die_impact.min + cpu_impact.min,
+        max=cpu.die_size.max * cpu_die_impact.max + cpu_impact.max)
 
     impact.allocate(duration, cpu.usage.hours_life_time)
 
