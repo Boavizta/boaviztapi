@@ -35,8 +35,8 @@ async def test_empty_usage():
             'gwp': {
                 'description': 'Total climate change',
                 'embedded': {
-                    'max': 636.6,
-                    'min': 258.9,
+                    'max': 635.6,
+                    'min': 258.0,
                     'value': 450.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -50,8 +50,8 @@ async def test_empty_usage():
             'pe': {
                 'description': 'Consumption of primary energy',
                 'embedded': {
-                    'max': 8846.0,
-                    'min': 3542.0,
+                    'max': 8833.0,
+                    'min': 3529.0,
                     'value': 6300.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -97,8 +97,8 @@ async def test_empty_usage_m6gxlarge():
             'gwp': {
                 'description': 'Total climate change',
                 'embedded': {
-                    'max': 89.23,
-                    'min': 31.58,
+                    'max': 89.17,
+                    'min': 31.52,
                     'value': 55.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -112,8 +112,8 @@ async def test_empty_usage_m6gxlarge():
             'pe': {
                 'description': 'Consumption of primary energy',
                 'embedded': {
-                    'max': 1168.0,
-                    'min': 416.4,
+                    'max': 1167.0,
+                    'min': 415.6,
                     'value': 730.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -153,8 +153,8 @@ async def test_empty_usage_1():
             'gwp': {
                 'description': 'Total climate change',
                 'embedded': {
-                    'max': 318.3,
-                    'min': 129.5,
+                    'max': 317.8,
+                    'min': 129.0,
                     'value': 230.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -168,8 +168,8 @@ async def test_empty_usage_1():
             'pe': {
                 'description': 'Consumption of primary energy',
                 'embedded': {
-                    'max': 4423.0,
-                    'min': 1771.0,
+                    'max': 4416.0,
+                    'min': 1764.0,
                     'value': 3200.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -209,8 +209,8 @@ async def test_empty_usage_2():
             'gwp': {
                 'description': 'Total climate change',
                 'embedded': {
-                    'max': 1694.0,
-                    'min': 593.4,
+                    'max': 1693.0,
+                    'min': 592.6,
                     'value': 1000.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -222,8 +222,8 @@ async def test_empty_usage_2():
             'pe': {
                 'description': 'Consumption of primary energy',
                 'embedded': {
-                    'max': 21480.0,
-                    'min': 7606.0,
+                    'max': 21470.0,
+                    'min': 7596.0,
                     'value': 13000.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -290,7 +290,7 @@ async def test_usage_1():
                 'description': 'Use of minerals and fossil ressources',
                 'embedded': {
                     'max': 0.1744,
-                    'min': 0.08627,
+                    'min': 0.08626,
                     'value': 0.124,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -304,8 +304,8 @@ async def test_usage_1():
             'gwp': {
                 'description': 'Total climate change',
                 'embedded': {
-                    'max': 1216.0,
-                    'min': 459.3,
+                    'max': 1215.0,
+                    'min': 458.4,
                     'value': 780.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -317,8 +317,8 @@ async def test_usage_1():
             'pe': {
                 'description': 'Consumption of primary energy',
                 'embedded': {
-                    'max': 16090.0,
-                    'min': 6121.0,
+                    'max': 16070.0,
+                    'min': 6108.0,
                     'value': 10500.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -350,7 +350,7 @@ async def test_usage_2():
                 'description': 'Use of minerals and fossil ressources',
                 'embedded': {
                     'max': 0.1744,
-                    'min': 0.08627,
+                    'min': 0.08626,
                     'value': 0.124,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -364,8 +364,8 @@ async def test_usage_2():
             'gwp': {
                 'description': 'Total climate change',
                 'embedded': {
-                    'max': 1216.0,
-                    'min': 459.3,
+                    'max': 1215.0,
+                    'min': 458.4,
                     'value': 780.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -377,8 +377,8 @@ async def test_usage_2():
             'pe': {
                 'description': 'Consumption of primary energy',
                 'embedded': {
-                    'max': 16090.0,
-                    'min': 6121.0,
+                    'max': 16070.0,
+                    'min': 6108.0,
                     'value': 10500.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -422,8 +422,8 @@ async def test_usage_3():
             'gwp': {
                 'description': 'Total climate change',
                 'embedded': {
-                    'max': 0.0347,
-                    'min': 0.01311,
+                    'max': 0.03467,
+                    'min': 0.01308,
                     'value': 0.022,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -435,8 +435,8 @@ async def test_usage_3():
             'pe': {
                 'description': 'Consumption of primary energy',
                 'embedded': {
-                    'max': 0.4591,
-                    'min': 0.1747,
+                    'max': 0.4588,
+                    'min': 0.1743,
                     'value': 0.3,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -493,8 +493,8 @@ async def test_usage():
             'gwp': {
                 'description': 'Total climate change',
                 'embedded': {
-                    'max': 0.03634,
-                    'min': 0.01478,
+                    'max': 0.03628,
+                    'min': 0.01472,
                     'value': 0.026,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -508,8 +508,8 @@ async def test_usage():
             'pe': {
                 'description': 'Consumption of primary energy',
                 'embedded': {
-                    'max': 0.5049,
-                    'min': 0.2022,
+                    'max': 0.5041,
+                    'min': 0.2014,
                     'value': 0.36,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -546,8 +546,8 @@ async def test_verbose():
             'gwp': {
                 'description': 'Total climate change',
                 'embedded': {
-                    'max': 1694.0,
-                    'min': 593.4,
+                    'max': 1693.0,
+                    'min': 592.6,
                     'value': 1000.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -559,8 +559,8 @@ async def test_verbose():
             'pe': {
                 'description': 'Consumption of primary energy',
                 'embedded': {
-                    'max': 21480.0,
-                    'min': 7606.0,
+                    'max': 21470.0,
+                    'min': 7596.0,
                     'value': 13000.0,
                     'warnings': ['End of life is not included in the calculation']
                 },
@@ -748,9 +748,9 @@ async def test_verbose():
                     'gwp': {
                         'description': 'Total climate change',
                         'embedded': {
-                            'max': 10.73,
-                            'min': 10.73,
-                            'value': 10.73,
+                            'max': 10.0,
+                            'min': 10.0,
+                            'value': 10.0,
                             'warnings': ['End of life is not included in the calculation']
                         },
                         'unit': 'kgCO2eq',
@@ -763,9 +763,9 @@ async def test_verbose():
                     'pe': {
                         'description': 'Consumption of primary energy',
                         'embedded': {
-                            'max': 169.1,
-                            'min': 169.1,
-                            'value': 169.1,
+                            'max': 159.3,
+                            'min': 159.3,
+                            'value': 159.3,
                             'warnings': ['End of life is not included in the calculation']
                         },
                         'unit': 'MJ',
