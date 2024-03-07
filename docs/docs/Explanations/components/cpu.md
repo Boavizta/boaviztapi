@@ -30,7 +30,7 @@ If CPU ```name``` is given, ```model_range```, ```tdp```, ```die_size``` and ```
 
 if ```die_size_per_core``` and ```core_units``` are given :
 
-$$ \text{die_size} = {\text{core_units}}*{\text{die_size}}$$
+$$ \text{die_size} = {\text{core_units}}*{\text{die_size_per_core}}$$
 
 Otherwise, if ```family``` is given, ```die_size``` can be retrieved from a fuzzy matching on our cpu repository. 
 
@@ -73,7 +73,7 @@ If several cpu matches the given ```family```, we use the ```core_units``` attri
 For one CPU the embedded impact is:
 
 $$ 
-\text{CPU}_\text{embedded}^\text{criteria} = (\text{CPU}_{\text{core_units}} * \text{CPU}_{\text{die_size_per_core}} + 0.491 ) * \text{CPU}_\text{embedded_die}^\text{criteria} + \text{CPU}_\text{embedded_base}^\text{criteria}
+\text{CPU}_\text{embedded}^\text{criteria} = (\text{CPU}_{\text{die_size}}) * \text{CPU}_\text{embedded_die}^\text{criteria} + \text{CPU}_\text{embedded_base}^\text{criteria}
 $$
 
 with:
