@@ -13,3 +13,4 @@ They are characterized by technical characteristics. Their impacts can be assess
 * [Assembly](assembly.md)
 * [Power supply](power_supply.md)
 * [HDD](hdd.md)
+* [Functional block](functional_blocks.md)

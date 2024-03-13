@@ -24,7 +24,7 @@
 If CPU ```name``` is given, ```model_range```, ```tdp```, ```die_size``` and ```family``` can be retrieved from a fuzzy matching on our cpu name repository. 
 
 !!!warning
-    Note that the cpu name repository is not complete and the completion can return a different cpu than the one given by the user. You can set a threshold for the fuzzy matching in the [config file](../../Reference/config.md) to control the behavior of the fuzzy matching.
+    Note that the cpu name repository is not complete and the completion can return a different cpu than the one given by the user. You can set a threshold for the fuzzy matching in the [config file](../../config.md) to control the behavior of the fuzzy matching. You can contribute to the cpu name repository by following the instructions in the [documentation](../../contributing/cpu.md).
 
 ### Completion of the ```die_size``` from ```family``` and/or ```core_units```
 
@@ -35,6 +35,7 @@ $$ \text{die_size} = {\text{core_units}}*{\text{die_size_per_core}}$$
 Otherwise, if ```family``` is given, ```die_size``` can be retrieved from a fuzzy matching on our cpu repository. 
 
 If several cpu matches the given ```family```, we use the ```core_units``` attributes : 
+
 * If ```core_units``` matches one to many cpu, the average value is given and min and max value are used as ```min``` and ```max``` fields.
 * If ```core_units``` does not match any cpu, we infer the ```die_size``` with a rule of three or a linear regression (when multiple cpus are available).
 * If ```core_units``` is not provided, the average value is given and min and max value are used as ```min``` and ```max``` fields.

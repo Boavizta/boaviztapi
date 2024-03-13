@@ -25,7 +25,7 @@ For some devices, you can set a type. See [end user device](../../Explanations/d
 
 ``` json
 {
-    "type": 2
+    "type": 'pro'
 }
 ```
 

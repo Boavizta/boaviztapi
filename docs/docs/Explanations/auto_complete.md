@@ -1,12 +1,12 @@
 # Auto-complete information required for computation
 
-Any calculation using the API is made easier thanks to the **data auto-complete strategy**. Any valid input should return an impacts evaluation, even though it is lacking some detailed information about the component, device or cloud instance. Given the user inputs, the API finds the best strategy to fill any missing attributes for the computation. 
+Any calculation using the API is made easier thanks to the **data auto-complete strategy**. Any valid input should return an impacts evaluation, even though it is lacking some detailed information about the asset. Given the user inputs, the API finds the best strategy to fill any missing attributes for the computation. 
 
 the API implements several approaches to complete the missing information:
 
 * ```COMPELETE``` : The API infer the value based on the user inputs (e.g. `manufacturer` and `family` for a CPU ```name```).  
-* ```DEFAULT``` : The API use a default value for those missing attributes (e.g. europe for the default ```usage_location```). The default values can be set in the [configuration file](configuration.md).
-* ```ARCETYPE``` : The API can use a value taken from an [archetype](archetypes.md)**.
+* ```DEFAULT``` : The API use a default value for those missing attributes (e.g. europe for the default ```usage_location```). The default values can be set in the [configuration file](../config.md).
+* ```ARCETYPE``` : The API can use a value taken from an [archetype](archetypes.md).
 * ```CHANGED```: The API can change the value of an attribute to make the computation possible. This happens when you provide a value that is close to the value of an attribute but not exactly the same. For example, if you provide a ```family``` that is not in the database but is close to a family in the database, the API will change the ```family``` to the closest name in the database.
 
 The documentation about how attributes are auto-completed is given on each asset's documentation page. 
