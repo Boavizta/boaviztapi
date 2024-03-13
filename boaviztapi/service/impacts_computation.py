@@ -61,7 +61,7 @@ def not_implemented_function(impact_type: str, duration: int, model: Union[Compo
 
 
 def simple_impact_use(impact_type: str, duration: int, model: Union[Component, Device, Service]) -> ComputedImpacts:
-    if not model.usage.avg_power.is_set():
+    if not model.usage.avg_power.has_value():
         raise NotImplementedError
 
     impact_factor = model.usage.elec_factors[impact_type]
