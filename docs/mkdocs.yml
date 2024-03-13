@@ -23,8 +23,8 @@ nav:
     - Introduction: index.md
     - Q&A : q&a.md
     - Getting started:
-        - Datavizta: https://datavizta.boavizta.org
-        - Try the API (OpenAPI): !ENV [API_URL, https://api.boavizta.org/docs]
+        - Datavizta: https://datavizta.boavizta.org/" target="_blank
+        - Try the API (OpenAPI): !ENV [API_URL, https://api.boavizta.org/docs" target="_blank]
         - Get the impacts of a cpu: getting_started/cpu_component.md
         - Get the impacts of a server: getting_started/single_server.md
         - Get the impacts of a cloud instance (AWS): getting_started/single_cloud_instance.md
@@ -38,7 +38,7 @@ nav:
               - Methodology: Explanations/usage/usage.md
               - Duration : Explanations/usage/duration.md
               - Electrical impacts factors : Explanations/usage/elec_factors.md
-              - Electrical consumption: Explanations/usage/elec_conso.md
+              - Power: Explanations/usage/power.md
               - Countries: Explanations/usage/countries.md
         - Consumption profiles : Explanations/consumption_profile.md
         - Auto-complete: Explanations/auto_complete.md
@@ -75,8 +75,9 @@ nav:
           - Cloud: Reference/format/cloud_route.md
           - Components: Reference/format/component_route.md
           - End user devices: Reference/format/end_user_devices_route.md
-    - Deploy: Reference/deploy.md
-    - Configuration: Reference/config.md
+          - IoT devices: Reference/format/iot_device_route.md
+    - Deploy: deploy.md
+    - Configuration: config.md
     - Release notes: release_notes.md
     - Contributing:
         - 'Add a cloud provider': contributing/cloud_provider.md

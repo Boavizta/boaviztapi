@@ -41,7 +41,7 @@ $ pip3 install boaviztapi
 
 #### Prerequisite
 
-Python 3, pipenv recommended
+Python 3 mandatory, python >=3.9 recommended, poetry recommended
 
 #### clone the repo
 
@@ -49,30 +49,32 @@ Python 3, pipenv recommended
 $ git clone https://github.com/Boavizta/boaviztapi.git
 ```
 
-#### Setup pipenv
+#### Setup poetry
 
-Install pipenv globally
+Install poetry.
 
 ```bash
-$ sudo pip3 install pipenv
+$ pip3 install poetry
 ```
 
 Install dependencies and create a python virtual environment.
 
 ```bash
-$ pipenv install -d 
-$ pipenv shell
+$ make install
+$ poetry shell
 ```
 
 #### Launch a development server
 
-Once in the pipenv environment
+**Once in the poetry environment**
 
 Development server uses [uvicorn](https://www.uvicorn.org/) and [fastapi](https://fastapi.tiangolo.com/), you can launch development server with the `uvicorn` CLI.
 
 ```bash
 $ uvicorn boaviztapi.main:app --host=localhost --port 5000
 ```
+
+You can run the tests with `pytest`.
 
 ### CORS
 

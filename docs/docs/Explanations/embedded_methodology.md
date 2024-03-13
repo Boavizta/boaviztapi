@@ -13,6 +13,7 @@ The impacts of variable components are assessed from the component characteristi
 * [CPU](components/cpu.md)
 * [RAM](components/ram.md)
 * [DISK (SSD)](components/ssd.md)
+* [Functional blocks (IoT)](components/functional_blocks.md)
 
 !!!warning
     For now end of life is not taken into account.
@@ -29,13 +30,14 @@ The impacts of fixed components are set by default
 !!!warning
     For now end of life is not taken into account.
 
-## Device impacts
+## Device & services impacts
 
-The data and methods are specified for each device in their dedicated page.
+The data and methods are specified for each device or service in their dedicated page.
 
 * [Server](devices/server.md)
 * [Cloud instances](services/cloud.md)
 * [End user devices](devices/terminals_&_peripherals.md)
+* [IoT devices](devices/iot_devices.md)
 
 Two strategies exist
 

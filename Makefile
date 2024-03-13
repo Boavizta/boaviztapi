@@ -3,6 +3,9 @@ TIMESTAMP := $(shell date "+%H.%M-%m-%d-%y")
 DOCKER_NAME := boavizta/boaviztapi:${CURRENT_VERSION}
 SEMVERS := major minor patch
 
+MINIMUM_PY_VERSION=3.9
+MAXIMUM_PY_VERSION=3.11
+
 clean:
 		find . -name "*.pyc" -exec rm -rf {} \;
 		rm -rf dist *.egg-info __pycache__
@@ -14,6 +17,24 @@ install_pip:
 
 test:
 		poetry run pytest
+
+define compat-check
+		docker build -t boavizta/boaviztapi-py$(1) \
+			--target build-env \
+			--build-arg VERSION=0.0.1 \
+			--build-arg PY_VERSION=$(1) \
+			.
+		docker run \
+			-v $(shell pwd):/app \
+ 			boavizta/boaviztapi-py$(1) \
+			poetry run pytest
+endef
+
+test-compat-min:
+	$(call compat-check,${MINIMUM_PY_VERSION})
+
+test-compat-max:
+	$(call compat-check,${MAXIMUM_PY_VERSION})
 
 run:
 		poetry run uvicorn boaviztapi.main:app

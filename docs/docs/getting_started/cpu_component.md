@@ -21,16 +21,8 @@ curl -X 'POST' \
   "name": "intel xeon gold 6134"
 }'
 ```
-
-This query returns :
-
-- The impacts for the default criteria (gwp, pe, adp) since no impact is specified
-- The total embedded impacts of the CPU
-- The usage impacts of the CPU during the life duration, since no duration is given
-- Error margins are provided in the form of min & max values for both embedded and usage impacts
-- Significant figures are provided for each value
-
-Result :
+<details>
+	<summary>Results</summary>
 
 ```json
 {
@@ -93,6 +85,16 @@ Result :
 }
 ```
 
+</details>
+
+This query returns :
+
+- The impacts for the default criteria (gwp, pe, adp) since no impact criteria is specified
+- The total embedded impacts of the CPU
+- The usage impacts of the CPU during the life duration, since no duration is given
+- Error margins are provided in the form of min & max values for both embedded and usage impacts
+- Significant figures are provided for each value
+
 ## Get the values used to assess the impacts of the cpu
 
 This is the same query as before. However, you add the `verbose=true` flag to get the value of the attributes used for the calculation.
@@ -106,13 +108,8 @@ curl -X 'POST' \
   "name": "intel xeon gold 6134"
 }'
 ```
-
-Result :
-
-* This query returns will only compute the gwp impact since we add the `criteria=gwp` flag.
-* You can see that the API has completed the needed value from the cpu name. We parse and fuzzymatch the cpu ```name``` with our dataset of cpu to identify ```tdp```, ```cores_unit```, ```family```...
-* The ```die_size``` is completed from the cpu family.
-* The usage impact has been assessed using a default level of workload of 50% with the consumption profile of a xeon gold (completed from cpu ```name```).
+<details>
+	<summary>Results</summary>
 
 ```json
 {
@@ -268,6 +265,16 @@ Result :
 }
 ```
 
+</details>
+
+Result :
+
+* This query will only compute the gwp (Global Warming Potential) impact since we add the `criteria=gwp` flag.
+* You can see that the API has completed the needed value from the cpu name. We parse and fuzzymatch the cpu ```name``` with our dataset of cpu to identify ```tdp```, ```cores_unit```, ```family```...
+* The ```die_size``` is completed from the cpu family.
+* The usage impact has been assessed using a default level of workload of 50% with the consumption profile of a xeon gold (completed from cpu ```name```).
+
+
 ## Get the impacts from custom cpu characteristics
 
 In this query, we give some characteristics to describe the CPU. 
@@ -282,10 +289,9 @@ curl -X 'POST' \
       "family": "skylake"
       }'
 ```
-Result :
 
-* This query returns will compute the gwp and adp impacts since we add the `criteria=gwp&criteria=adp` flags.
-* The API will correct skylake to Skylake (CHANGED) and complete the missing attributes from the given attributes (COMPLETED) or by default ones (ARCHETYPE).
+<details>
+	<summary>Results</summary>
 
 ```json
 {
@@ -456,6 +462,12 @@ Result :
 }
 ```
 
+</details>
+
+* This query will compute the gwp and adp impacts since we add the `criteria=gwp&criteria=adp` flags.
+* The API will correct skylake to Skylake (CHANGED) and complete the missing attributes from the given attributes (COMPLETED) or by default ones (ARCHETYPE).
+
+
 ## Get the impacts from custom cpu usage using an electrical consumption
 
 In this query we set a custom usage to an ```intel xeon gold 6134```. The average electrical consumption is given.
@@ -473,12 +485,8 @@ curl -X 'POST' \
   }}'
 ```
 
-Result : 
-
-* The API will use an electrical consumption of 120 Watt/hours for 2 hours (since duration is set at 2)
-* Usage impacts will be assessed for the French electrical mix impacts 
-* Embedded impacts will be allocated on 2 hours
-
+<details>
+	<summary>Results</summary>
 
 ```json
 {
@@ -504,29 +512,33 @@ Result :
 }
 ```
 
+</details>
+
+* The API will use an electrical power of 120 Watt for 2 hours since duration is set at 2 in query parameter
+* Usage impacts will be assessed for the French electrical mix impacts since usage_location is set at FRA
+* Embedded impacts will be allocated on 2 hours since duration is set at 2 in query parameter
+
 
 ## Get the impacts from custom cpu usage using a workload
 
-In this query we set a custom usage to an ```intel xeon gold 6134``` with a TDP of 130 Watt. The average electrical consumption is retrieved.
+In this query we set a custom usage to an ```intel xeon gold 6134``` with a TDP of 130 Watt. The average electrical consumption is modeled by the API.
 
 ```bash
 curl -X 'POST' \
-  '{{ endpoint }}/v1/component/cpu?verbose=false&criteria=gwp' \
+  '{{ endpoint }}/v1/component/cpu?verbose=false&criteria=gwp&duration=2' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
   "name": "intel xeon gold 6134",
   "tdp": 130,
   "usage":{
-      "hours_use_time": 2,
       "usage_location": "FRA",
       "time_workload": 30
   }}'
 ```
 
-Result : 
-
-* The API will use the ```xeon gold``` consumption profile adapted for a TDP of 130 Watt with a level of workload of 30% for 2 hours to retrieve the electrical consumption of the CPU.
+<details>
+	<summary>Results</summary>
 
 ```json
 {
@@ -551,5 +563,9 @@ Result :
     }
 }
 ```
+
+</details>
+
+* The API will use the ```xeon gold``` consumption profile adapted for a TDP of 130 Watt with a level of workload of 30% for 2 hours to retrieve the electrical consumption of the CPU.
 
 For further information see : [The explanation page on cpu](../Explanations/components/cpu.md)

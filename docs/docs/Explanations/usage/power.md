@@ -1,19 +1,22 @@
-# Electrical consumption
+# Power
 
 ## Given
 
-If available, user should send the electrical consumption of his components or devices in Watt/hour (`avg_power`).
-Since the power will be extrapolated on the all duration, the power given should be the average power of the device or component over the given duration.
+If available, user should send the power of his asset in Watt.
+Since the power will be extrapolated on the all duration, the power given should be the average power of the asset over the given duration.
+
+!!!info
+    The power can be given in usage object with the attribute `avg_power` in Watt.
 
 ## Completed from the [archetype](../archetypes.md).
 
-If available, the API will complete the missing electrical consumption by the electrical consumption of the archetype of the asset.
+If available, the API will complete the missing power by the one taken from the archetype of the asset.
 
 ## Modeling
 
-Sometime user doesn't have access to the electrical consumption of their component or device, and we don't want to use a default value taken from an archetype.
+Sometime user doesn't have access to the power of their asset, and we don't want to use a default value taken from an archetype.
 
-If so, the API can use the percentage of component' or device' resource usage as a proxy for the electrical consumption. We refer to this percentage as a workload of the component or device.
+If so, the API can use the percentage of asset' resource usage as a proxy for the power. We refer to this percentage as a workload of the asset.
 The API is able to convert a workload into a power consumption with consumption profiles.
 
 To learn more about how we build consumption profile see consumption [profile page](../consumption_profile.md).
@@ -22,9 +25,9 @@ To learn more about how we build consumption profile see consumption [profile pa
 
 Workload are given by the user as a percentage of the maximum workload.
 
-An average workloads can be given. A workload of 10% will mean : *"I used my component or device in average at 10% of its maximum workload"*
+An average workloads can be given. A workload of 10% will mean : *"I used my asset in average at 10% of its maximum workload"*
 
-A Workload can also be given as a dictionary to specify the percentage of time spent at each desired workload level.
+A workload can also be given as a dictionary to specify the percentage of time spent at each desired workload level.
 The following 
 
 ```json
@@ -44,7 +47,7 @@ The following
 ]
 ```
 
-This translates into using a component or a device:
+This translates into using an asset:
 
 - 50% of the time at 10% ot its maximum workload,
 - 20% of the time at 50% of its maximum workload,

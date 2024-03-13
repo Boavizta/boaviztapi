@@ -12,8 +12,8 @@ Usage impacts can be measured at device or component level from usage configurat
 
 ## General
 
-*```avg_power``` is given Watt. The usage location is given as a trigram (see available country code). The duration is given in day, hours and years (units are cumulative)*
-* ```elec_factors``` is given as a dictionary. Only ```gwp``` is given in kgCO2eq/kWh* the other will be completed by the API.
+* ```avg_power``` is given Watt. The usage location is given as a trigram (see available country code).
+* ```elec_factors``` is given as a dictionary. In this case, ```gwp``` is given (in kgCO2eq/kWh).
 
 ```json
 {

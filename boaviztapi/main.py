@@ -11,8 +11,11 @@ from fastapi.openapi.utils import get_openapi
 from mangum import Mangum
 from starlette.requests import Request
 from starlette.responses import Response
+import contextlib
+import time
+import threading
+import uvicorn
 
-from boaviztapi.routers import iot_router
 from boaviztapi.routers.component_router import component_router
 from boaviztapi.routers.consumption_profile_router import consumption_profile
 from boaviztapi.routers.iot_router import iot
@@ -29,7 +32,8 @@ from fastapi.responses import HTMLResponse
 stage = os.environ.get('STAGE', None)
 openapi_prefix = f"/{stage}" if stage else "/"
 app = FastAPI(root_path=openapi_prefix)  # Here is the magic
-version = toml.loads(open(os.path.join(os.path.dirname(__file__), '../pyproject.toml'), 'r').read())['tool']['poetry']['version']
+version = toml.loads(open(os.path.join(os.path.dirname(__file__), '../pyproject.toml'), 'r').read())['tool']['poetry'][
+    'version']
 _logger = logging.getLogger(__name__)
 
 origins = json.loads(os.getenv("ALLOWED_ORIGINS", '["*"]'))
@@ -123,3 +127,22 @@ async def welcome_page():
     </html>
     """ % os.getenv('SPECIAL_MESSAGE', '')
     return HTMLResponse(content=html_content, status_code=200)
+
+
+# # A uvicorn server that can be run in a thread. Taken from @florimondmanca @
+# https://github.com/encode/uvicorn/issues/742#issuecomment-674411676
+class UvicornServerThreaded(uvicorn.Server):
+    def install_signal_handlers(self):
+        pass
+
+    @contextlib.contextmanager
+    def run_in_thread(self):
+        thread = threading.Thread(target=self.run)
+        thread.start()
+        try:
+            while not self.started:
+                time.sleep(1e-3)
+            yield
+        finally:
+            self.should_exit = True
+            thread.join()

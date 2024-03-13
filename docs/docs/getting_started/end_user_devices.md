@@ -1,6 +1,6 @@
 # Getting started (5 min)
 
-This page presents basic queries that can be used to retrieve impacts of terminal and peripherals.
+This page presents basic queries that can be used to retrieve impacts of terminals and peripherals.
 
 You use `curl` in command line to query Boavizta demo (public) API.
 
@@ -8,7 +8,7 @@ You use `curl` in command line to query Boavizta demo (public) API.
 
 ## Get the impacts of a laptop with a default usage
 
-In this query, we compute the impact of a laptop
+In this query, we compute the impacts of a laptop
 
 Query : 
 
@@ -18,15 +18,8 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-This query returns :
-
-- The impacts for the default criteria (gwp, pe, adp) since no impact is specified
-- The total embedded impacts of the laptop since no duration is given
-- The usage impacts of the laptop during its life duration, since no duration is given
-- Error margins are provided in the form of min & max values for both embedded and usage impacts
-- Significant figures are provided for each value
-
-Result :
+<details>
+	<summary>Results</summary>
 
 ```json
 {
@@ -60,6 +53,17 @@ Result :
 }
 ```
 
+</details>
+
+This query returns :
+
+- The impacts for the default criteria (gwp, pe, adp) since no impact is specified
+- The total embedded impacts of the laptop since no duration is given
+- The usage impacts of the laptop during its life duration, since no duration is given
+- Error margins are provided in the form of min & max values for both embedded and usage impacts
+- Some values are not implemented, meaning that the API does not provide these impacts for this device.
+
+
 ## Get the impact of a desktop with a custom usage
 
 In this query, we compute the impact of a desktop with a custom usage. Since ```verbose=true``` the api will return the values used during the computation.
@@ -77,13 +81,8 @@ curl -X 'POST' \
   }
 }'
 ```
-
-This query returns :
-
-* The impacts for both gwp and adp criteria since ```criteria=gwp&criteria=adp```
-* The API will use an average electrical consumption of 70 Watt/hours 30% of the time (since ```use_time_ratio=0.3```) for one year (since duration is set at 8760 hours). 
-* Usage impacts will be assessed for the French electrical mix impacts since ```usage_location='FRA'```
-* Embedded impacts will be allocated on one year (since duration is set at 8760 hours).
+<details>
+	<summary>Results</summary>
 
 ```json
 {
@@ -165,4 +164,15 @@ This query returns :
     }
 }
 ```
+
+</details>
+
+This query returns :
+
+* The impacts for both gwp and adp criteria since ```criteria=gwp&criteria=adp```
+* The API will use an average electrical consumption of 70 Watt/hours 30% of the time (since ```use_time_ratio=0.3```) for one year (since duration is set at 8760 hours). 
+* Usage impacts will be assessed for the French electrical mix impacts since ```usage_location='FRA'```
+* Embedded impacts will be allocated on one year (since duration is set at 8760 hours).
+
+
 For further information see : [The explanation page on terminal and peripherals](../Explanations/devices/terminals_&_peripherals.md)

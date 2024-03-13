@@ -1,9 +1,10 @@
 # Cloud route
-!!!warning 
-    Only AWS is implemented for now.
 
 !!!warning
-    Note that the verbose object will return the components of the entire server, not the instance. To get the impact or the attribute of the component for the specific instance, divide the impact of each component by the number of instances hosted on the server.
+    Before v1.2, the impacts in the verbose dictionary qualified the impacts of the component of the whole server hosting the instance. Since v1.2, the impacts in the verbose dictionary are the impacts of the part of the component used by the instance itself.
+
+!!!warning
+    Archetype are renamed ```instance_type``` and are specific to a ```provider```. In GET routes, you can specify the ```provider``` and the ```instance_type``` in the route parameters. In POST routes, you can specify the ```provider``` and the ```instance_type``` in the object.
 
 ## GET ```/v1/cloud/```
 

@@ -33,8 +33,7 @@ You can set a units. If so, all the impacts will be multiplied by the number of 
 *All needed information are sent*
 ``` json
 {
-   "core_units": 24,
-   "die_size_per_core": 245
+   "die_size": 400
 }
 ```
 
@@ -46,10 +45,9 @@ You can set a units. If so, all the impacts will be multiplied by the number of 
 }
 ```
 
-*Incomplete CPU, family will be retrieved from cpu name, die-size will be retrieved with the cpu family and core_units*
+*Incomplete CPU die-size and the average power will be retrieved with the cpu name*
 ``` json
 {
-   "core_units": 24,
    "name": "Intel Xeon Gold 6138f",
 }
 ```

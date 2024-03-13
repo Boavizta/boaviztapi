@@ -2,9 +2,9 @@
 
 Usage impacts can be assessed at device or component level from usage configuration. 
 
-Usage impacts are measured by multiplying a **[duration, a ratio of usage](duration.md)**, an **[impact factor](elec_factors.md)**, and an **[electrical consumption](elec_conso.md)** :
+Usage impacts are measured by multiplying a **[duration, a ratio of usage](duration.md)**, an **[impact factor](elec_factors.md)**, and an **[power](elec_conso.md)** :
 
-```impact = electrical_consumption * (duration * use_time_ratio) * impact_factor```
+```impact = power * (duration * use_time_ratio) * impact_factor```
 
 ## Characteristics
 

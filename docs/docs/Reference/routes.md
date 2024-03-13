@@ -1,6 +1,6 @@
 ## Impacts routes
 
-The impact routes are used to retrieve the impacts of a given usage and configuration for a given device or component. They represent the main feature of the API.
+The impact routes are used to retrieve the impacts of a given usage and configuration for a given asset. They represent the main feature of the API.
 
 ### Query parameters
 
