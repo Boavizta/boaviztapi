@@ -5,12 +5,10 @@ Boavizta database contains the impacts of devices referenced by their model.
 Data is gathered from manufacturer declarations.
 The dataset can be found in the **[environmental-footprint-data](https://github.com/Boavizta/environmental-footprint-data/blob/main/boavizta-data-us.csv)** GitHub repo.
 
-The database can be explored with [Datavizta](https://datavizta.boavizta.org/).
-
 ## Data integration
 
 !!!warning
-    For now, **Boavizta API is not integrated with Boavizta database** since the API do not use manufactures declarations.
+    **Boavizta API is not integrated with Boavizta database** since the API do not use manufactures declarations.
     However, this database is one of the resources used to build the data and methods available in the API.
 
 

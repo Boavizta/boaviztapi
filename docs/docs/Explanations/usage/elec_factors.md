@@ -8,17 +8,20 @@ Users can give their own impact factors.
     We recommend using impact factors describing your national or regional electrical mix.
     An impact factor constructed from a market-based approach **should not be used**.
 
+!!!info
+    The factor is given in the `usage` object of the request.
 
 ## Boavizta's impact factors
 
 Users can use the average impact factors per country available in BoaviztAPI. 
 
-Impact factors will depend on the `usage_location` defined by the user. 
+!!!info
+    Impact factors will depend on the `usage_location` defined by the user in usage object. By default, the average european mix is used.
+
+`usage_location` are given in a trigram format, according to the [list of the available countries](countries.md). 
 
 !!!info
-    By default, the average european mix is used.
-
-`usage_location` are given in a trigram format, according to the [list of the available countries](countries.md).
+    Available countries can be retrieve using the API endpoint `/v1/utils/country_code`.
 
 You can find bellow the data source and methodology used for each impact criteria.
 

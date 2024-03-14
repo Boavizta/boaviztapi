@@ -38,6 +38,14 @@ In this case, only default values are used.
 
 If any of those following components aren't sent, a default component will be added to the configuration.
 
+* [CPU](../components/cpu.md)
+* [RAM](../components/ram.md)
+* [SSD](../components/ssd.md)
+* [HDD](../components/hdd.md)
+* [power supplies](../components/power_supply.md)
+* [case](../components/case.md)
+
+
 #### Complete input
 
 The Dell R740 is a good example of a well-defined server configuration input. 

@@ -1,5 +1,8 @@
 # Cloud instances
 
+!!!warning
+    Before v1.2, the impacts in the verbose dictionary qualified the impacts of the component of the whole server hosting the instance. Since v1.2, the impacts in the verbose dictionary are the impacts of the portion of the component used by the instance itself.
+
 ## Characteristics
 
 Cloud instance characteristics are pre-recorded as [archetypes](../archetypes.md). 

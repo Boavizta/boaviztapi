@@ -1,6 +1,6 @@
 # Getting started (5 min)
 
-This page presents basic queries that can be used to retrieve impacts of terminal and peripherals.
+This page presents basic queries that can be used to retrieve impacts of terminals and peripherals.
 
 You use `curl` in command line to query Boavizta demo (public) API.
 
@@ -8,7 +8,7 @@ You use `curl` in command line to query Boavizta demo (public) API.
 
 ## Get the impacts of a laptop with a default usage
 
-In this query, we compute the impact of a laptop
+In this query, we compute the impacts of a laptop
 
 Query : 
 
@@ -61,7 +61,7 @@ This query returns :
 - The total embedded impacts of the laptop since no duration is given
 - The usage impacts of the laptop during its life duration, since no duration is given
 - Error margins are provided in the form of min & max values for both embedded and usage impacts
-- Significant figures are provided for each value
+- Some values are not implemented, meaning that the API does not provide these impacts for this device.
 
 
 ## Get the impact of a desktop with a custom usage

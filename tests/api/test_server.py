@@ -57,17 +57,17 @@ async def test_complete_config_server():
                                               'unit': 'kgSbeq',
                                               'use': {'max': 0.007799, 'min': 0.0001938, 'value': 0.0013}},
                                       'gwp': {'description': 'Total climate change',
-                                              'embedded': {'max': 1140.0,
-                                                           'min': 1075.0,
-                                                           'value': 1140.0,
+                                              'embedded': {'max': 1138.0,
+                                                           'min': 1074.0,
+                                                           'value': 1138.0,
                                                            'warnings': ['End of life is not included in the '
                                                                         'calculation']},
                                               'unit': 'kgCO2eq',
                                               'use': {'max': 26430.0, 'min': 337.7, 'value': 7000.0}},
                                       'pe': {'description': 'Consumption of primary energy',
-                                             'embedded': {'max': 15450.0,
-                                                          'min': 14480.0,
-                                                          'value': 15450.0,
+                                             'embedded': {'max': 15430.0,
+                                                          'min': 14450.0,
+                                                          'value': 15430.0,
                                                           'warnings': ['End of life is not included in the '
                                                                        'calculation']},
                                              'unit': 'MJ',
@@ -99,7 +99,7 @@ async def test_empty_config_server():
                      'use': {'max': 0.07592, 'min': 8.849e-05, 'value': 0.002}},
              'gwp': {'description': 'Total climate change',
                      'embedded': {'max': 3034000.0,
-                                  'min': 201.0,
+                                  'min': 200.1,
                                   'value': 3000.0,
                                   'warnings': ['End of life is not included in '
                                                'the calculation',
@@ -112,7 +112,7 @@ async def test_empty_config_server():
                      'use': {'max': 257300.0, 'min': 154.2, 'value': 10000.0}},
              'pe': {'description': 'Consumption of primary energy',
                     'embedded': {'max': 37660000.0,
-                                 'min': 2763.0,
+                                 'min': 2750.0,
                                  'value': 40000.0,
                                  'warnings': ['End of life is not included in '
                                               'the calculation',
@@ -185,17 +185,17 @@ async def test_dell_r740_server():
                                               'unit': 'kgSbeq',
                                               'use': {'max': 0.008814, 'min': 0.000219, 'value': 0.0014}},
                                       'gwp': {'description': 'Total climate change',
-                                              'embedded': {'max': 969.8,
-                                                           'min': 969.8,
-                                                           'value': 969.8,
+                                              'embedded': {'max': 967.9,
+                                                           'min': 967.9,
+                                                           'value': 967.9,
                                                            'warnings': ['End of life is not included in the '
                                                                         'calculation']},
                                               'unit': 'kgCO2eq',
                                               'use': {'max': 29870.0, 'min': 381.6, 'value': 8000.0}},
                                       'pe': {'description': 'Consumption of primary energy',
-                                             'embedded': {'max': 12900.0,
-                                                          'min': 12900.0,
-                                                          'value': 12900.0,
+                                             'embedded': {'max': 12870.0,
+                                                          'min': 12870.0,
+                                                          'value': 12870.0,
                                                           'warnings': ['End of life is not included in the '
                                                                        'calculation']},
                                              'unit': 'MJ',
@@ -250,7 +250,7 @@ async def test_partial_server_1():
                                               'use': {'max': 0.007799, 'min': 0.0001938, 'value': 0.0013}},
                                       'gwp': {'description': 'Total climate change',
                                               'embedded': {'max': 225200.0,
-                                                           'min': 1183.0,
+                                                           'min': 1181.0,
                                                            'value': 1000.0,
                                                            'warnings': ['End of life is not included in the '
                                                                         'calculation',
@@ -261,7 +261,7 @@ async def test_partial_server_1():
                                               'use': {'max': 26430.0, 'min': 337.7, 'value': 7000.0}},
                                       'pe': {'description': 'Consumption of primary energy',
                                              'embedded': {'max': 2796000.0,
-                                                          'min': 14840.0,
+                                                          'min': 14810.0,
                                                           'value': 20000.0,
                                                           'warnings': ['End of life is not included in the '
                                                                        'calculation',
@@ -326,8 +326,8 @@ async def test_partial_server_2():
                                               'unit': 'kgSbeq',
                                               'use': {'max': 0.007799, 'min': 0.0001938, 'value': 0.0013}},
                                       'gwp': {'description': 'Total climate change',
-                                              'embedded': {'max': 9902.0,
-                                                           'min': 904.8,
+                                              'embedded': {'max': 9901.0,
+                                                           'min': 902.9,
                                                            'value': 1400.0,
                                                            'warnings': ['End of life is not included in the '
                                                                         'calculation']},
@@ -335,7 +335,7 @@ async def test_partial_server_2():
                                               'use': {'max': 26430.0, 'min': 337.7, 'value': 7000.0}},
                                       'pe': {'description': 'Consumption of primary energy',
                                              'embedded': {'max': 124300.0,
-                                                          'min': 12340.0,
+                                                          'min': 12310.0,
                                                           'value': 20000.0,
                                                           'warnings': ['End of life is not included in the '
                                                                        'calculation']},
@@ -385,7 +385,7 @@ async def test_partial_server_3():
                      'use': {'max': 0.05461, 'min': 9.269e-05, 'value': 0.001}},
              'gwp': {'description': 'Total climate change',
                      'embedded': {'max': 2752000.0,
-                                  'min': 754.8,
+                                  'min': 753.9,
                                   'value': 900.0,
                                   'warnings': ['End of life is not included in '
                                                'the calculation',
@@ -398,7 +398,7 @@ async def test_partial_server_3():
                      'use': {'max': 185000.0, 'min': 161.5, 'value': 10000.0}},
              'pe': {'description': 'Consumption of primary energy',
                     'embedded': {'max': 34160000.0,
-                                 'min': 10620.0,
+                                 'min': 10610.0,
                                  'value': 10000.0,
                                  'warnings': ['End of life is not included in '
                                               'the calculation',
@@ -443,7 +443,7 @@ async def test_custom_usage_1():
                              'value': 4.268e-07}},
              'gwp': {'description': 'Total climate change',
                      'embedded': {'max': 760800.0,
-                                  'min': 50.4,
+                                  'min': 50.16,
                                   'value': 800.0,
                                   'warnings': ['End of life is not included in '
                                                'the calculation',
@@ -456,7 +456,7 @@ async def test_custom_usage_1():
                      'use': {'max': 0.8609, 'min': 0.8609, 'value': 0.8609}},
              'pe': {'description': 'Consumption of primary energy',
                     'embedded': {'max': 9442000.0,
-                                 'min': 692.6,
+                                 'min': 689.3,
                                  'value': 10000.0,
                                  'warnings': ['End of life is not included in '
                                               'the calculation',
@@ -491,8 +491,8 @@ async def test_apple_m1_server():
         res = await ac.post('/v1/server/?archetype=mac2.metal&verbose=false&criteria=gwp', json={})
 
         assert res.json() == {'impacts': {'gwp': {'description': 'Total climate change',
-                     'embedded': {'max': 609.1,
-                                  'min': 237.9,
+                     'embedded': {'max': 608.2,
+                                  'min': 237.0,
                                   'value': 420.0,
                                   'warnings': ['End of life is not included in '
                                                'the calculation']},
@@ -506,9 +506,9 @@ async def test_dellR740_server():
         res = await ac.post('/v1/server/?archetype=dellR740&verbose=false&criteria=gwp', json={})
 
         assert res.json() == {'impacts': {'gwp': {'description': 'Total climate change',
-                     'embedded': {'max': 1188.0,
-                                  'min': 762.5,
-                                  'value': 960.0,
+                     'embedded': {'max': 1186.0,
+                                  'min': 760.6,
+                                  'value': 950.0,
                                   'warnings': ['End of life is not included in '
                                                'the calculation']},
                      'unit': 'kgCO2eq',

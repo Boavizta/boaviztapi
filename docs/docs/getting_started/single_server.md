@@ -8,7 +8,9 @@ You use `curl` in command line to query Boavizta demo (public) API.
 
 ## Get the impacts of a compute medium server
 
-This is the simplest possible query. It returns the impacts of a _standard_ (i.e. predefined) server configuration (platform_compute_medium).
+This is the simplest possible query. It returns the impacts of a _standard_ (i.e. predefined) server configuration (```platform_compute_medium```).
+
+_note: if no archetype is specified, a default one will be used_
 
 Query: 
 ```bash
@@ -84,12 +86,10 @@ curl -X 'GET' \
 
 This query returns :
 
-- The impacts for the default criteria (gwp, pe, adp) since no impact is specified
+- The impacts for the default criteria (gwp, pe, adp) since no impact criteria are specified
 - The total embedded impacts of the server, since no duration is given
 - The usage impacts of the server during its life duration, since no duration is given
 - Error margins are provided in the form of min & max values for both embedded and usage impacts
-- Significant figures are provided for each value
-
 
 ## Get the values used to assess the impacts of each component
 
@@ -535,7 +535,7 @@ curl -X 'GET' \
 
 It will return:
 
-- The **total** embedded impacts for each component (like RAM, CPU, SSD a.s.o)
+- The **total** embedded impacts for each component (like RAM, CPU, SSD a.s.o) since no duration is given
 - Since no duration is given, the usage impacts of the server during the life duration of the server
 - The value of the attributes used for the calculation for each component (i.e. the detailed configuration)
 
@@ -660,7 +660,7 @@ curl -X 'POST' \
 
 In this query, we use the default server configuration of a ```platform_compute_medium``` but provide a specific usage of the machine.
 
-In this specific case, the average power consumption of the machine is given by the user (```avg_powers``)
+In this specific case, the average power consumption of the machine is given by the user (```avg_power```)
 
 The API returns impacts, updated to reflect your own server usage. Since ```criteria=gwp&criteria=adp``` flags are specified, the API returns the impacts of the server for adp and gwp.
 

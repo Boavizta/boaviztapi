@@ -63,8 +63,8 @@ async def utils_get_all_case_type():
 async def name_to_cpu(cpu_name: str = Query(example="Intel Core i7-9700K")):
     cpu_attributes = attributes_from_cpu_name(cpu_name)
     if cpu_attributes is not None:
-        name, manufacturer, code_name, model_range, tdp, cores, total_die_size, total_die_size_source, source = cpu_attributes
-        return CPU(family=code_name, name=name, tdp=tdp, core_units=cores, die_size=total_die_size, model_range=model_range,
+        name, manufacturer, code_name, model_range, tdp, cores, threads, die_size, die_size_source, source = cpu_attributes
+        return CPU(family=code_name, name=name, tdp=tdp, core_units=cores, die_size=die_size, model_range=model_range,
                    manufacturer=manufacturer)
     else:
         return f"CPU name {cpu_name} is not found in our database"

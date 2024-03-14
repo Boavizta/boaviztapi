@@ -1,3 +1,4 @@
+# Configuration
 
 The config file located at data/config.json is used to set default values for the following parameters.
 
@@ -36,7 +37,6 @@ The minimal number of significant figures will be employed if classical rounding
 min_sig_fig: 1
 ```
 
-<<<<<<< HEAD
 *If set to 1, the results will be rounded at least to 1 significant figures.*
 
 
@@ -56,8 +56,8 @@ Uncertainty percentage is used to adapt the intensity of the rounding. The lower
 ```
 uncertainty: 10
 ```
-=======
-*If set to 5, the results will be rounded to 5 significant figures.*
+
+*If set to 10, the rounding aggressiveness will be set to 10%.*
 
 ## CPU name fuzzymatch threshold
 
@@ -65,5 +65,4 @@ The CPU name fuzzymatch threshold will determine the minimum similarity between 
 
 ```
 cpu_name_fuzzymatch_threshold: 62
->>>>>>> 0416dde5deaffdb14496936b91c5c66b64570f9d
 ```
