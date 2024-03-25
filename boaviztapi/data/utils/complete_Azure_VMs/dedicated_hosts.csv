@@ -1,132 +1,52 @@
 "Dedicated Host SKUs
-(VM series and Host Type)",Available vCPUs,Available RAM,CPU,Pay as you go,1 year savings plan,3 year savings plan
-Dadsv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),$7.17/hour ,"$5.71/hour 
-~20% savings ","$3.92/hour 
-~45% savings "
-Dasv4-Type2,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),$5.728/hour ,"$4.61/hour 
-~20% savings ","$3.15/hour 
-~45% savings "
-Dasv4-Type1,96,672 GiB,2.35 GHz AMD EPYC™ 7452,$5.728/hour ,"$4.61/hour 
-~20% savings ","$3.15/hour 
-~45% savings "
-Dasv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),$5.986/hour ,"$4.82/hour 
-~20% savings ","$3.28/hour 
-~45% savings "
-DCsv2-Type1,8,64 GiB,Intel® Xeon® E-2288G Processor with SGX Technology,N/A ,N/A ,N/A 
-DCadsv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),N/A ,N/A,N/A
-DCasv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),N/A ,N/A,N/A
-DCdsv3-Type1,48,384 GiB,Intel® Xeon Scalable Processor 8370C,$6.742/hour ,N/A,N/A
-DCsv3-Type1,48,384 GiB,Intel® Xeon Scalable Processor 8370C,$6.742/hour ,N/A,N/A
-Ddsv4-Type2,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$5.337/hour ,"$4.26/hour 
-~20% savings ","$2.91/hour 
-~46% savings "
-Ebdsv5-Type1,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$6.643/hour ,"$4.59/hour 
-~31% savings ","$2.86/hour 
-~57% savings "
-Ebsv5-Type1,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$5.927/hour ,"$4.10/hour 
-~31% savings ","$2.56/hour 
-~57% savings "
-ECadsv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),N/A ,N/A,N/A
-ECasv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),N/A ,N/A,N/A
-Ddsv4-Type1,80,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$4.495/hour ,"$3.59/hour 
-~20% savings ","$2.45/hour 
-~46% savings "
-Ddsv5-Type1,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$6.742/hour ,"$5.37/hour 
-~20% savings ","$3.68/hour 
-~46% savings "
-Dsv3-Type4,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$5.968/hour ,"$5.17/hour 
-~13% savings ","$4.08/hour 
-~32% savings "
-Dsv3-Type3,80,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$4.774/hour ,"$4.14/hour 
-~13% savings ","$3.27/hour 
-~32% savings "
-Dsv4-Type2,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$5.966/hour ,"$4.81/hour 
-~20% savings ","$3.28/hour 
-~45% savings "
-Dsv4-Type1,80,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$4.773/hour ,"$3.85/hour 
-~20% savings ","$2.62/hour 
-~45% savings "
-Dsv5-Type1,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$5.966/hour ,"$4.81/hour 
-~20% savings ","$3.28/hour 
-~45% savings "
-Eadsv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),$7.816/hour ,"$5.38/hour 
-~31% savings ","$4.05/hour 
-~48% savings "
-Easv4-Type2,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),$7.518/hour ,"$5.09/hour 
-~32% savings ","$3.56/hour 
-~53% savings "
-Easv4-Type1,96,672 GiB,2.35 GHz AMD EPYC™ 7452,$7.518/hour ,"$5.09/hour 
-~32% savings ","$3.56/hour 
-~53% savings "
-Easv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),$6.742/hour ,"$4.59/hour 
-~32% savings ","$3.49/hour 
-~48% savings "
-Edsv4-Type2,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$6.802/hour ,"$4.67/hour 
-~31% savings ","$3.26/hour 
-~52% savings "
-Edsv4-Type1,64,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$5.728/hour ,"$3.93/hour 
-~31% savings ","$2.75/hour 
-~52% savings "
-Edsv5-Type1,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$8.592/hour ,"$5.90/hour 
-~31% savings ","$4.12/hour 
-~52% savings "
-Esv3-Type4,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$6.579/hour ,"$5.70/hour 
-~13% savings ","$4.50/hour 
-~32% savings "
-Esv3-Type3,80,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$4.856/hour ,"$4.21/hour 
-~13% savings ","$3.32/hour 
-~32% savings "
-Esv4-Type2,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$6.578/hour ,"$4.46/hour 
-~32% savings ","$3.12/hour 
-~53% savings "
-Esv4-Type1,80,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$5.012/hour ,"$3.40/hour 
-~32% savings ","$2.38/hour 
-~53% savings "
-Esv5-Type1,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$7.518/hour ,"$5.09/hour 
-~32% savings ","$3.57/hour 
-~53% savings "
-Fsv2-Type4,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$5.283/hour ,"$4.08/hour 
-~23% savings ","$2.84/hour 
-~46% savings "
-Fsv2-Type3,86,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$5.161/hour ,"$3.99/hour 
-~23% savings ","$2.78/hour 
-~46% savings "
-Fsv2-Type2,72,144 GiB,Intel® Xeon® Platinum 8168 (Skylake),$3.804/hour ,"$2.94/hour 
-~23% savings ","$2.05/hour 
-~46% savings "
-FXmds-Type1,48,"1,152 GiB",Intel® Xeon® Gold 6246R,N/A ,N/A ,N/A 
-Lsv2-Type1,80,640 GiB,2.55 GHz AMD EPYC™ 7551,$8.237/hour ,"$6.09/hour 
-~26% savings ","$4.21/hour 
-~49% savings "
-Lasv3-Type1,112,"1,024 GiB",3rd Generation AMD EPYC™ 7763v (Milan),$7.756/hour ,"$5.73/hour 
-~26% savings ","$3.97/hour 
-~49% savings "
-Lsv3-Type1,119,"1,024 GiB",Intel® Xeon® Platinum 8370C (Ice Lake),$8.651/hour ,"$6.39/hour 
-~26% savings ","$4.43/hour 
-~49% savings "
-Mdmsv2MedMem-Type1,192,"4,096 GiB",Intel® Xeon® Platinum 8280 (Cascade Lake),$33.176/hour ,"$22.89/hour 
-~31% savings ","$11.61/hour 
-~65% savings "
-Mdsv2MedMem-Type1,192,"2,048 GiB",Intel® Xeon® Platinum 8280 (Cascade Lake),$16.582/hour ,"$11.44/hour 
-~31% savings ","$5.81/hour 
-~65% savings "
-Mmsv2MedMem-Type1,192,"4,096 GiB",Intel® Xeon® Platinum 8280 (Cascade Lake),$32.653/hour ,"$22.53/hour 
-~31% savings ","$11.43/hour 
-~65% savings "
-Ms-Type1,128,"2,048 GiB",Intel® Xeon® Platinum 8280 (Cascade Lake),$16.576/hour ,"$11.44/hour 
-~31% savings ","$5.80/hour 
-~65% savings "
-Msm-Type1,128,"3,892 GiB",Intel® Xeon® Platinum 8280 (Cascade Lake),$33.18/hour ,"$22.90/hour 
-~31% savings ","$11.61/hour 
-~65% savings "
-Msmv2-Type1,416,"11,400 GiB",Intel® Xeon® Platinum 8180M (Skylake),$123.24/hour ,"$85.03/hour 
-~31% savings ","$43.13/hour 
-~65% savings "
-Msv2-Type1,416,"5,700 GiB",Intel® Xeon® Platinum 8180M (Skylake),$61.628/hour ,"$42.52/hour 
-~31% savings ","$21.57/hour 
-~65% savings "
-Msv2MedMem-Type1,192,"2,048 GiB",Intel® Xeon® Platinum 8280 (Cascade Lake),$16.059/hour ,"$11.08/hour 
-~31% savings ","$5.62/hour 
-~65% savings "
-NVasv4-Type1,128,448 GiB,AMD EPYC™ 7V12 (Rome) AMD Radeon Instinct MI25 GPUs,N/A ,N/A ,N/A 
-NVsv3-Type1,48,448 GiB,Intel® E5-2690 v4 (Broadwell) NVIDIA Tesla M60 GPUs,N/A ,N/A ,N/A 
+(VM series and Host Type)",Available vCPUs,Available RAM,CPU,Pay as you go
+Dadsv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),$7.17/hour 
+Dasv4-Type2,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),$5.728/hour 
+Dasv4-Type1,96,672 GiB,2.35 GHz AMD EPYC™ 7452,$5.728/hour 
+Dasv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),$5.986/hour 
+DCsv2-Type1,8,64 GiB,Intel® Xeon® E-2288G Processor with SGX Technology,N/A 
+DCadsv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),N/A 
+DCasv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),N/A 
+DCdsv3-Type1,48,384 GiB,Intel® Xeon Scalable Processor 8370C,$6.742/hour 
+DCsv3-Type1,48,384 GiB,Intel® Xeon Scalable Processor 8370C,$6.742/hour 
+Ddsv4-Type2,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$5.337/hour 
+Ebdsv5-Type1,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$6.643/hour 
+Ebsv5-Type1,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$5.927/hour 
+ECadsv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),N/A 
+ECasv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),N/A 
+Ddsv4-Type1,80,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$4.495/hour 
+Ddsv5-Type1,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$6.742/hour 
+Dsv3-Type4,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$5.968/hour 
+Dsv3-Type3,80,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$4.774/hour 
+Dsv4-Type2,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$5.966/hour 
+Dsv4-Type1,80,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$4.773/hour 
+Dsv5-Type1,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$5.966/hour 
+Eadsv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),$7.816/hour 
+Easv4-Type2,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),$7.518/hour 
+Easv4-Type1,96,672 GiB,2.35 GHz AMD EPYC™ 7452,$7.518/hour 
+Easv5-Type1,112,768 GiB,3rd Generation AMD EPYC™ 7763v (Milan),$6.742/hour 
+Edsv4-Type2,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$6.802/hour 
+Edsv4-Type1,64,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$5.728/hour 
+Edsv5-Type1,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$8.592/hour 
+Esv3-Type4,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$6.579/hour 
+Esv3-Type3,80,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$4.856/hour 
+Esv4-Type2,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$6.578/hour 
+Esv4-Type1,80,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$5.012/hour 
+Esv5-Type1,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$7.518/hour 
+Fsv2-Type4,119,768 GiB,Intel® Xeon® Platinum 8370C (Ice Lake),$5.283/hour 
+Fsv2-Type3,86,504 GiB,Intel® Xeon® Platinum 8272CL (Cascade Lake),$5.161/hour 
+Fsv2-Type2,72,144 GiB,Intel® Xeon® Platinum 8168 (Skylake),$3.804/hour 
+FXmds-Type1,48,"1,152 GiB",Intel® Xeon® Gold 6246R,N/A 
+Lsv2-Type1,80,640 GiB,2.55 GHz AMD EPYC™ 7551,$8.237/hour 
+Lasv3-Type1,112,"1,024 GiB",3rd Generation AMD EPYC™ 7763v (Milan),$7.756/hour 
+Lsv3-Type1,119,"1,024 GiB",Intel® Xeon® Platinum 8370C (Ice Lake),$8.651/hour 
+Mdmsv2MedMem-Type1,192,"4,096 GiB",Intel® Xeon® Platinum 8280 (Cascade Lake),$33.176/hour 
+Mdsv2MedMem-Type1,192,"2,048 GiB",Intel® Xeon® Platinum 8280 (Cascade Lake),$16.582/hour 
+Mmsv2MedMem-Type1,192,"4,096 GiB",Intel® Xeon® Platinum 8280 (Cascade Lake),$32.653/hour 
+Ms-Type1,128,"2,048 GiB",Intel® Xeon® Platinum 8280 (Cascade Lake),$16.576/hour 
+Msm-Type1,128,"3,892 GiB",Intel® Xeon® Platinum 8280 (Cascade Lake),$33.18/hour 
+Msmv2-Type1,416,"11,400 GiB",Intel® Xeon® Platinum 8180M (Skylake),$123.24/hour 
+Msv2-Type1,416,"5,700 GiB",Intel® Xeon® Platinum 8180M (Skylake),$61.628/hour 
+Msv2MedMem-Type1,192,"2,048 GiB",Intel® Xeon® Platinum 8280 (Cascade Lake),$16.059/hour 
+NVasv4-Type1,128,448 GiB,AMD EPYC™ 7V12 (Rome) AMD Radeon Instinct MI25 GPUs,N/A 
+NVsv3-Type1,48,448 GiB,Intel® E5-2690 v4 (Broadwell) NVIDIA Tesla M60 GPUs,N/A 
