@@ -13,7 +13,7 @@
     a. if present
         i. compare CPU from both files, raise warnings if no match
         ii. set VM <-> platform
-    b. if not, get CPU and GPU refs from Azure doc (TODO: link to script)
+    b. if not, get CPU and GPU refs from Azure doc (TODO: document usage of parse_zure_instances_doc.sh)
 3. in both cases, fill azure_platforms.csv
 4. fill data/archetypes/server.csv with azure_platforms.csv
 5. generate azure.csv in data/archetypes/cloud/ with data from steps 1 and 2
