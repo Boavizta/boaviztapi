@@ -15,6 +15,7 @@ INSTANCES_CSV="tmp_instances_unique.csv"
 while IFS="," read -r ; 
   do  
     sed "s/Standard_\(F\|D\|B\|FX\|L\|DC\)[0-9]*[0-9]/\1/" |
+    sed "s/Standard_A[0-9]*[m,0-9]/A/" |
     sed "s/\(Standard_HB120rs_v3\|Standard_HB120-[0-9]*[0-9]rs_v3\)/HBv3/" |
     sed "s/Standard_HB120rs_v2/HBrsv2/" |
     sed "s/Standard_HB60rs/HBS/"| 
@@ -31,7 +32,12 @@ while IFS="," read -r instance_name _ ;
     printf "%s,\n" "$instance_name" | sed -e "s/^[[:space:]]*//"  >> tmp_instance_names.csv
   done < $INSTANCES_CSV
     
-paste tmp_instance_names.csv tmp_instances.csv > tmp_instances_with_instance_families.csv   
-INSTANCES_LOWER=$(tr "[:upper:]" "[:lower:]" < tmp_instances_with_instance_families.csv > tmp_instances_lower.csv) 
-HOSTS_LOWERCASE=$(tr "[:upper:]" "[:lower:]" < $HOSTS_CSV > tmp_hosts_lower.csv)
-# rm tmp_*
+paste tmp_instance_names.csv tmp_instances.csv | 
+sort | 
+sed "s/(R)//g" > tmp_instances_with_instance_families_sorted.csv   
+
+tr "[:upper:]" "[:lower:]" < tmp_instances_with_instance_families_sorted.csv > instances_lowercased.csv
+tr "[:upper:]" "[:lower:]" < $HOSTS_CSV | tail -n +2 > hosts_lowercased.csv
+
+rm tmp_*
+
