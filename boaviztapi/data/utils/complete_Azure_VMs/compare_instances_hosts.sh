@@ -4,6 +4,8 @@ INSTANCES_LINUX_CSV="instances_azure_linux.csv"
 INSTANCES_WINDOWS_CSV="instances_azure_windows.csv"
 HOSTS_CSV="cleaned_dedicated_hosts.csv"
 
+# Sort both CSV files of Linux and Windows instances benchmarks, and making sure of getting 
+# unique values.
 sort $INSTANCES_LINUX_CSV > tmp_instances_linux_sorted
 sort $INSTANCES_WINDOWS_CSV > tmp_instances_windows_sorted
 comm -3 tmp_instances_linux_sorted tmp_instances_windows_sorted > tmp_instances_unique.csv 
@@ -20,14 +22,16 @@ while IFS="," read -r ;
     sed "s/Standard_E[0-9]\?[0-9]\?-\?[0-9][0-9]\?i\?/E/" | 
     sed "s/Standard_\(DS\|D\)[0-9]\?[0-9]-\?[0-9]\?/DS/" |
     sed "s/Standard_M[0-9][0-9]\?[0-9]-\?2\?0\?8\?m\?d\?m\?i\?d\?m\?/M/" |
-    sed "s/_//" > tmp_instances.csv
-  done <"$INSTANCES_CSV" 
+    sed "s/_//" |
+    sed -e "s/^[[:space:]]*//" > tmp_instances.csv
+  done < $INSTANCES_CSV 
 
-while IFS="," read -r ;
+while IFS="," read -r instance_name _ ;
   do
-    INSTANCE_NAME=$(cut -d , -f 1)
-    printf "%s" "$INSTANCE_NAME" > tmp_instance_names.csv
-  done <"$INSTANCES_CSV"
+    printf "%s,\n" "$instance_name" | sed -e "s/^[[:space:]]*//"  >> tmp_instance_names.csv
+  done < $INSTANCES_CSV
     
-paste tmp_instance_names.csv tmp_instances.csv > result_instances.csv   
-rm tmp_*
+paste tmp_instance_names.csv tmp_instances.csv > tmp_instances_with_instance_families.csv   
+INSTANCES_LOWER=$(tr "[:upper:]" "[:lower:]" < tmp_instances_with_instance_families.csv > tmp_instances_lower.csv) 
+HOSTS_LOWERCASE=$(tr "[:upper:]" "[:lower:]" < $HOSTS_CSV > tmp_hosts_lower.csv)
+# rm tmp_*

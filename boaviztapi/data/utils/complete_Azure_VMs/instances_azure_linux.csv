@@ -662,5 +662,5 @@ Standard_DC1s_v2,Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz,1,1,4,34418,162,0.47%,77
 Standard_DC2s_v2,Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz,2,1,8,68562,758,1.11%,77
 Standard_DC4s_v2,Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz,4,1,16,133836,1964,1.47%,77
 Standard_DC8_v2,Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz,8,1,32,252047,3051,1.21%,77
-tandard_DC2s,Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz,2,1,8,63426,391,0.62%,28
+Standard_DC2s,Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz,2,1,8,63426,391,0.62%,28
 Standard_DC4s,Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz,4,1,16,124015,410,0.33%,21
