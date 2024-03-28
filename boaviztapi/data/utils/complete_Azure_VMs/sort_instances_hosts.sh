@@ -33,11 +33,14 @@ while IFS="," read -r instance_name _ ;
   done < $INSTANCES_CSV
     
 paste tmp_instance_names.csv tmp_instances.csv | 
-sort | 
-sed "s/(R)//g" > tmp_instances_with_instance_families_sorted.csv   
+sort |
+sed "s/(R)//g" |
+tr "[:upper:]" "[:lower:]" > tmp_instances_lowercased.csv   
 
-tr "[:upper:]" "[:lower:]" < tmp_instances_with_instance_families_sorted.csv > instances_lowercased.csv
-tr "[:upper:]" "[:lower:]" < $HOSTS_CSV | tail -n +2 > hosts_lowercased.csv
+sed -i '1i instance_name, instance_family, instance_cpu, vcpus, numa_nodes,  memory_gb,  avg_score,  stddev, stddev_percentage, runs' tmp_instances_lowercased.csv
+mv tmp_instances_lowercased.csv instances_lowercased.csv
+
+tr "[:upper:]" "[:lower:]" < $HOSTS_CSV > hosts_lowercased.csv
 
 rm tmp_*
 
