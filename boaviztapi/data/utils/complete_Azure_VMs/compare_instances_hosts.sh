@@ -1,9 +1,16 @@
 #!/bin/bash
 
-INSTANCES_CSV="instances_azure_linux.csv"
+INSTANCES_LINUX_CSV="instances_azure_linux.csv"
+INSTANCES_WINDOWS_CSV="instances_azure_windows.csv"
 HOSTS_CSV="cleaned_dedicated_hosts.csv"
 
-while read -r line; 
+sort $INSTANCES_LINUX_CSV > tmp_instances_linux_sorted
+sort $INSTANCES_WINDOWS_CSV > tmp_instances_windows_sorted
+comm -3 tmp_instances_linux_sorted tmp_instances_windows_sorted > tmp_instances_unique.csv 
+
+INSTANCES_CSV="tmp_instances_unique.csv"
+
+while IFS="," read -r ; 
   do  
     sed "s/Standard_\(F\|D\|B\|FX\|L\|DC\)[0-9]*[0-9]/\1/" |
     sed "s/\(Standard_HB120rs_v3\|Standard_HB120-[0-9]*[0-9]rs_v3\)/HBv3/" |
@@ -16,10 +23,11 @@ while read -r line;
     sed "s/_//" > tmp_instances.csv
   done <"$INSTANCES_CSV" 
 
-while read -r line;
+while IFS="," read -r ;
   do
     INSTANCE_NAME=$(cut -d , -f 1)
     printf "%s" "$INSTANCE_NAME" > tmp_instance_names.csv
   done <"$INSTANCES_CSV"
     
 paste tmp_instance_names.csv tmp_instances.csv > result_instances.csv   
+rm tmp_*
