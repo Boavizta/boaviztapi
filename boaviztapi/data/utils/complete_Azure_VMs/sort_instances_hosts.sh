@@ -32,12 +32,12 @@ while IFS="," read -r instance_name _ ;
     printf "%s,\n" "$instance_name" | sed -e "s/^[[:space:]]*//"  >> tmp_instance_names.csv
   done < $INSTANCES_CSV
     
-paste tmp_instance_names.csv tmp_instances.csv | 
+paste -d "" tmp_instance_names.csv tmp_instances.csv | 
 sort |
 sed "s/(R)//g" |
 tr "[:upper:]" "[:lower:]" > tmp_instances_lowercased.csv   
 
-sed -i '1i instance_name, instance_family, instance_cpu, vcpus, numa_nodes,  memory_gb,  avg_score,  stddev, stddev_percentage, runs' tmp_instances_lowercased.csv
+sed -i '1i instance_name,instance_family,instance_cpu,vcpus,numa_nodes,memory_gb,avg_score,stddev,stddev_percentage,runs' tmp_instances_lowercased.csv
 mv tmp_instances_lowercased.csv instances_lowercased.csv
 
 tr "[:upper:]" "[:lower:]" < $HOSTS_CSV > hosts_lowercased.csv
