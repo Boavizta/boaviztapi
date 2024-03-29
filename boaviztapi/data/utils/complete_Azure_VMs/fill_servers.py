@@ -71,7 +71,8 @@ def compute_ram_sticks(ram_total_capacity):
 def get_cpu_spec(cpu_specs, cpu_ref_string):
     cpu_ref_string = re.sub(r"(\w+) Generation ", '', cpu_ref_string)
     cpu_ref_string = re.sub(r"([0-9]+\.[0-9]+) (GHz|Ghz) ", '', cpu_ref_string)
-    cpu_ref_string = re.sub(r" (\(\w+\))", '', cpu_ref_string)
+    cpu_ref_string = re.sub(r" (\(\w+\)).*", '', cpu_ref_string)
+    cpu_ref_string = cpu_ref_string.replace("Scalable Processor", "Platinum")
     #exp = r"(AMD|Intel|Ampere)( Xeon|EPYC|Epyc)( Platinum|Gold|Silver|Bronze|Scalable)( [0-9]+\w*(-)?\w*)"
     #print("parsing {}".format(cpu_ref_string))
     #res = re.finditer(exp, cpu_ref_string)
@@ -80,7 +81,7 @@ def get_cpu_spec(cpu_specs, cpu_ref_string):
     #    for match in res:
     #        print("parsing {} gives: {}".format(cpu_ref_string, match))
     for s in cpu_specs[["name", "code_name", "generation", "manufacturer", "foundry", "manufacturer", "release_date", "frequency", "tdp", "cores", "threads", "process_size", "die_size", "io_die_size", "io_process_size", "total_die_size", "model_range"]].iterrows():
-        if cpu_ref_string in s[1]["name"] or s[1]["name"] in cpu_ref_string:
+        if cpu_ref_string in s[1]["name"] or s[1]["name"] in cpu_ref_string or s[1]["name"].replace(" Xeon", "") in cpu_ref_string.replace("v", "V"):
             spec = s[1]
     return spec
 
@@ -92,14 +93,29 @@ def get_gpu_from_string(cpu_gpu_string):
     else:
         return None
 
-def get_cpu_units():
+def get_cpu_units(host_data, cpu_data):
+    if cpu_data["threads"] != "nan":
+        guessed_value = round(host_data["Available vCPUs"] / cpu_data["threads"])
+        # sometimes the ratio is weird, sanity check required
+        if guessed_value == 0:
+            guessed_value = 1
+        elif guessed_value == 7:
+            guessed_value = 8
+        elif guessed_value == 3:
+            guessed_value = 4
+        return guessed_value
+    else:
+        return None
 
 cpu_specs = pd.read_csv(source_cpu_spec_file)
 
 for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vCPUs","Available RAM","CPU"]].iterrows():
     #print(host)
     current_cpu_spec = get_cpu_spec(cpu_specs, host[1]["CPU"])
-    print("For: {} Current spec: {}".format(host[1]["CPU"], current_cpu_spec))
+    if current_cpu_spec is None:
+        print("No spec found for: {}".format(host[1]["CPU"]))
+    else:
+        print("CPU: {} threads: {} host max vCPU : {} supposed CPU units: {}".format(current_cpu_spec["name"], current_cpu_spec["threads"], host[1]["Available vCPUs"], get_cpu_units(host[1], current_cpu_spec)))
     current_gpu = get_gpu_from_string(host[1]["CPU"])
     if current_gpu is not None:
         print("Current GPU: {}".format(current_gpu))
@@ -108,7 +124,7 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
         "id": [host[1]["Dedicated Host SKUs (VM series and Host Type)"]],
         "manufacturer": ["Azure"],
         "CASE.case_type": ["rack"], # TODO: source from Azure docs which platform is blade, which is rack
-        "CPU.units": [""],
+        "CPU.units": [get_cpu_units(host[1], current_cpu_spec)],
         "CPU.core_units": [""],
         "CPU.die_size": [""],
         "CPU.die_size_per_core": [""],
