@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import pandas as pd
+import re
 
 target_data = pd.DataFrame({
     "id": [],
@@ -36,7 +37,9 @@ source_columns = ["Dedicated Host SKUs (VM series and Host Type)",
             "Pay as you go"]
 
 source_dedicated_hosts_file = "cleaned_dedicated_hosts.csv"
+source_cpu_spec_file = "../../crowdsourcing/cpu_specs.csv"
 target_servers_file = "azure_servers.csv"
+
 
 data = pd.read_csv(source_dedicated_hosts_file)
 
@@ -65,18 +68,51 @@ def compute_ram_sticks(ram_total_capacity):
         nb_of_sticks = ram_total_capacity / stick_capacity
     return nb_of_sticks, stick_capacity
 
+def get_cpu_spec(cpu_specs, cpu_ref_string):
+    cpu_ref_string = re.sub(r"(\w+) Generation ", '', cpu_ref_string)
+    cpu_ref_string = re.sub(r"([0-9]+\.[0-9]+) (GHz|Ghz) ", '', cpu_ref_string)
+    cpu_ref_string = re.sub(r" (\(\w+\))", '', cpu_ref_string)
+    #exp = r"(AMD|Intel|Ampere)( Xeon|EPYC|Epyc)( Platinum|Gold|Silver|Bronze|Scalable)( [0-9]+\w*(-)?\w*)"
+    #print("parsing {}".format(cpu_ref_string))
+    #res = re.finditer(exp, cpu_ref_string)
+    spec = None
+    #if res is not None:
+    #    for match in res:
+    #        print("parsing {} gives: {}".format(cpu_ref_string, match))
+    for s in cpu_specs[["name", "code_name", "generation", "manufacturer", "foundry", "manufacturer", "release_date", "frequency", "tdp", "cores", "threads", "process_size", "die_size", "io_die_size", "io_process_size", "total_die_size", "model_range"]].iterrows():
+        if cpu_ref_string in s[1]["name"] or s[1]["name"] in cpu_ref_string:
+            spec = s[1]
+    return spec
+
+def get_gpu_from_string(cpu_gpu_string):
+    exp = re.compile("(AMD|NVIDIA).?.?.? (Radeon|Tesla) (\w+)?( (\w+)?(-)?(\w)*)? (GPUs)?")
+    res = exp.search(cpu_gpu_string)
+    if res is not None:
+        return res.group().replace("GPUs", "")
+    else:
+        return None
+
+def get_cpu_units():
+
+cpu_specs = pd.read_csv(source_cpu_spec_file)
+
 for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vCPUs","Available RAM","CPU"]].iterrows():
-    print(host)
+    #print(host)
+    current_cpu_spec = get_cpu_spec(cpu_specs, host[1]["CPU"])
+    print("For: {} Current spec: {}".format(host[1]["CPU"], current_cpu_spec))
+    current_gpu = get_gpu_from_string(host[1]["CPU"])
+    if current_gpu is not None:
+        print("Current GPU: {}".format(current_gpu))
     nb_of_sticks, stick_capacity = compute_ram_sticks(host[1]["Available RAM"])
     new_data = pd.DataFrame({
         "id": [host[1]["Dedicated Host SKUs (VM series and Host Type)"]],
         "manufacturer": ["Azure"],
-        "CASE.case_type": [""],
+        "CASE.case_type": ["rack"], # TODO: source from Azure docs which platform is blade, which is rack
         "CPU.units": [""],
         "CPU.core_units": [""],
         "CPU.die_size": [""],
         "CPU.die_size_per_core": [""],
-        "CPU.tdp": [""],
+        "CPU.tdp": [current_cpu_spec["tdp"] if current_cpu_spec is not None else ""],
         "CPU.name": [host[1]["CPU"]],
         "CPU.vcpu": [host[1]["Available vCPUs"]],
         "RAM.units": [nb_of_sticks],
@@ -85,16 +121,16 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
         "SSD.capacity": [""],
         "HDD.units": [""],
         "HDD.capacity": [""],
-        "GPU.units": [""],
-        "GPU.name": [""],
+        "GPU.units": [1], # TODO: guess it from how many GPUs have the biggest instances hosted on this platform
+        "GPU.name": [current_gpu],
         "GPU.memory_capacity": [""],
-        "POWER_SUPPLY.units": [""],
-        "POWER_SUPPLY.unit_weight": [""],
+        "POWER_SUPPLY.units": ["2;2;2"], # TODO: source from Azure docs which platform is blade, which is rack
+        "POWER_SUPPLY.unit_weight": ["2.99;1;5"], # TODO: source from Azure docs which platform is blade, which is rack
         "USAGE.time_workload": [""],
         "USAGE.use_time_ratio": [""],
         "USAGE.hours_life_time": [""],
         "USAGE.other_consumption_ratio": [""],
-        "WARNINGS": ["RAM capacity from Azure docs : {}".format(host[1]["Available RAM"])]
+        "WARNINGS": ["RAM units and per unit capacity not verified. RAM capacity from Azure docs was: {}".format(host[1]["Available RAM"])]
     })
     target_data = pd.concat([target_data, new_data])
 
