@@ -4,6 +4,9 @@ INSTANCES_LINUX_CSV="instances_azure_linux.csv"
 INSTANCES_WINDOWS_CSV="instances_azure_windows.csv"
 HOSTS_CSV="cleaned_dedicated_hosts.csv"
 
+# ADD STEP TO CHECK IF PIP, PYTHON AND CSVKIT IS INSTALLED
+
+
 # Sort both CSV files of Linux and Windows instances benchmarks, and making sure of getting 
 # unique values.
 sort $INSTANCES_LINUX_CSV > tmp_instances_linux_sorted
@@ -53,11 +56,14 @@ sed -e "s/^[[:space:]]*//" > hosts_lowercased.csv
 while IFS="," read -r host_family _ _ host_cpu _;
   do
   host=$(printf "%s" "$host_family" | cut -d "-" -f 1)
-  
+ 
   csvgrep -c instance_family -m "$host" instances_lowercased.csv | 
-  # CLEAN CPUS IN HOST CSVS FOR THIS TO MAYBE WORK
-  csvgrep -c instance_cpu -r "$host_cpu" >> instances_matched_with_hosts.csv
+  csvgrep -c instance_cpu -r "$host_cpu" | 
+  sed "/instance_name/d" |
+  sed "s/${host}/${host_family}/" >> instances_matched_with_hosts.csv
 
   done < hosts_lowercased.csv
-rm tmp_*
 
+csvcut -c 1,2 instances_matched_with_hosts.csv >> instance_host.csv
+
+rm tmp_*
