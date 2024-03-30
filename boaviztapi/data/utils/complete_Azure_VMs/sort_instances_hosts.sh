@@ -1,19 +1,41 @@
 #!/bin/bash
 
-INSTANCES_LINUX_CSV="instances_azure_linux.csv"
-INSTANCES_WINDOWS_CSV="instances_azure_windows.csv"
-HOSTS_CSV="cleaned_dedicated_hosts.csv"
+set -o nounset
+set -o noclobber
+export LC_ALL=C
+export PATH="/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
+PS4=' ${BASH_SOURCE##*/}:$LINENO ${FUNCNAME:-main}) '
 
-# ADD STEP TO CHECK IF PIP, PYTHON AND CSVKIT IS INSTALLED
+typeset INSTANCES_LINUX_CSV="instances_azure_linux.csv"
+typeset INSTANCES_WINDOWS_CSV="instances_azure_windows.csv"
+typeset HOSTS_CSV="cleaned_dedicated_hosts.csv"
 
+typeset REQUIRED_PYTHON="python3"
+typeset REQUIRED_CSVKIT="csvgrep csvcut"
 
+if ! command -v ${REQUIRED_PYTHON} &> /dev/null
+  then
+    printf "%s\n" "Python does not seem available, and is required for csvgrep and csvcut"
+    exit 1
+fi
+
+typeset csvprogram
+for csvprogram in $REQUIRED_CSVKIT; do
+  if ! command -v "${csvprogram}" &> /dev/null
+    then
+      printf "%s\n" "${csvprogram} does not seem available, and is required for this script."
+      printf "%s" "Suggestion: install csvkit with pip install csvkit"
+      exit 1
+  fi
+done
+ 
 # Sort both CSV files of Linux and Windows instances benchmarks, and making sure of getting 
 # unique values.
-sort $INSTANCES_LINUX_CSV > tmp_instances_linux_sorted
-sort $INSTANCES_WINDOWS_CSV > tmp_instances_windows_sorted
-comm -3 tmp_instances_linux_sorted tmp_instances_windows_sorted > tmp_instances_unique.csv 
+sort "${INSTANCES_LINUX_CSV}" >| tmp_instances_linux_sorted
+sort "${INSTANCES_WINDOWS_CSV}" >| tmp_instances_windows_sorted
+comm -3 tmp_instances_linux_sorted tmp_instances_windows_sorted >| tmp_instances_unique.csv 
 
-INSTANCES_CSV="tmp_instances_unique.csv"
+typeset INSTANCES_CSV="tmp_instances_unique.csv"
 
 # Remove patterns to get instances families matching part of hosts' families names
 while IFS="," read -r ; 
@@ -27,43 +49,43 @@ while IFS="," read -r ;
     sed "s/Standard_E[0-9]\?[0-9]\?-\?[0-9][0-9]\?i\?/E/" | 
     sed "s/Standard_\(DS\|D\)[0-9]\?[0-9]-\?[0-9]\?/DS/" |
     sed "s/Standard_M[0-9][0-9]\?[0-9]-\?2\?0\?8\?m\?d\?m\?i\?d\?m\?/M/" |
+    sed "s/(R)//g" |
     sed "s/_//" |
-    sed -e "s/^[[:space:]]*//" > tmp_instances.csv
-  done < $INSTANCES_CSV 
+    sed -e "s/^[[:space:]]*//" >| tmp_instances.csv
+  done < "${INSTANCES_CSV}"
 
 # Add leading column with instance name
 while IFS="," read -r instance_name _ ;
   do
     printf "%s,\n" "$instance_name" | sed -e "s/^[[:space:]]*//"  >> tmp_instance_names.csv
-  done < $INSTANCES_CSV
+  done < "${INSTANCES_CSV}"
  
 # Join instance name column to instances' CSV file, lowercase everything  
 paste -d "" tmp_instance_names.csv tmp_instances.csv | 
 sort |
-sed "s/(R)//g" |
-tr "[:upper:]" "[:lower:]" > tmp_instances_lowercased.csv   
+tr "[:upper:]" "[:lower:]" >| tmp_instances_lowercased_headless.csv   
 
 # Add header to instances' CSV file
-sed -i '1i instance_name,instance_family,instance_cpu,vcpus,numa_nodes,memory_gb,avg_score,stddev,stddev_percentage,runs' tmp_instances_lowercased.csv
-mv tmp_instances_lowercased.csv instances_lowercased.csv
+sed -i '1i instance_name,instance_family,instance_cpu,vcpus,numa_nodes,memory_gb,avg_score,stddev,stddev_percentage,runs' tmp_instances_lowercased_headless.csv
+mv tmp_instances_lowercased_headless.csv tmp_instances_lowercased.csv
 
 # Lowercase everything in hosts' CSV file, remove patterns in CPU column that do not exist in instances' CSV file
-tr "[:upper:]" "[:lower:]" < $HOSTS_CSV | 
+tr "[:upper:]" "[:lower:]" < "${HOSTS_CSV}" | 
 sed "s/\(3rd generation \)\|\([0-9].[0-9][0-9] ghz \)\| ([a-z]*)\| ([a-z]* [a-z]*)//g" | 
-sed -e "s/^[[:space:]]*//" > hosts_lowercased.csv
+sed -e "s/^[[:space:]]*//" >| tmp_hosts_lowercased.csv
 
 # Match instances and hosts CSV files to link instance name to host family
-while IFS="," read -r host_family _ _ host_cpu _;
+while IFS="," read -r host _ _ host_cpu _;
   do
-  host=$(printf "%s" "$host_family" | cut -d "-" -f 1)
+  host_family="$(printf "%s" "${host}" | cut -d "-" -f 1)"
  
-  csvgrep -c instance_family -m "$host" instances_lowercased.csv | 
-  csvgrep -c instance_cpu -r "$host_cpu" | 
+  csvgrep -c instance_family -m "${host_family}" tmp_instances_lowercased.csv | 
+  csvgrep -c instance_cpu -r "${host_cpu}" | 
   sed "/instance_name/d" |
-  sed "s/${host}/${host_family}/" >> instances_matched_with_hosts.csv
+  sed "s/${host_family}/${host}/" >> tmp_instances_matched_with_hosts.csv
 
-  done < hosts_lowercased.csv
+  done < tmp_hosts_lowercased.csv
 
-csvcut -c 1,2 instances_matched_with_hosts.csv >> instance_host.csv
+csvcut -c 1,2 tmp_instances_matched_with_hosts.csv >| instance_host.csv
 
 rm tmp_*
