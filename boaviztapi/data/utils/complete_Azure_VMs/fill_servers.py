@@ -39,9 +39,11 @@ source_columns = ["Dedicated Host SKUs (VM series and Host Type)",
 source_dedicated_hosts_file = "cleaned_dedicated_hosts.csv"
 source_cpu_spec_file = "../../crowdsourcing/cpu_specs.csv"
 target_servers_file = "azure_servers.csv"
+source_instances_file = "instances_lowercased.csv"
 
 
 data = pd.read_csv(source_dedicated_hosts_file)
+instances_data = pd.read_csv(source_instances_file)
 
 def compute_ram_sticks(ram_total_capacity):
     """
@@ -106,8 +108,16 @@ def get_cpu_units(host_data, cpu_data):
         return guessed_value
     else:
         return None
+    
+def get_instances_per_host(instances_data, host_name):
+    instances = []
+    for i in instances_data[["instance_name", "instance_family", "instance_cpu", "vcpus", "memory_gb"]].iterrows():
+        if i[1]["instance_family"] in host_name.lower():
+            instances.append(i[1])
+    return instances
 
 cpu_specs = pd.read_csv(source_cpu_spec_file)
+hosts_matching_no_instance = []
 
 for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vCPUs","Available RAM","CPU"]].iterrows():
     #print(host)
@@ -119,6 +129,16 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
     current_gpu = get_gpu_from_string(host[1]["CPU"])
     if current_gpu is not None:
         print("Current GPU: {}".format(current_gpu))
+    instances_per_host = get_instances_per_host(instances_data, host[1]["Dedicated Host SKUs (VM series and Host Type)"])
+    if len(instances_per_host) == 0:
+        print("host {} not macthing any instance !!!".format(host[1]["Dedicated Host SKUs (VM series and Host Type)"]))
+        hosts_matching_no_instance.append(host[1]["Dedicated Host SKUs (VM series and Host Type)"])
+    for i in instances_per_host:
+        # TODO : check matching, could be wrong ibetween ms and msm instances / hosts for instance
+        if current_cpu_spec["name"].lower() in i["instance_cpu"]:
+            print("{} host {} match and cpu {} match".format(i["instance_name"], host[1]["Dedicated Host SKUs (VM series and Host Type)"], current_cpu_spec["name"]))
+
+
     nb_of_sticks, stick_capacity = compute_ram_sticks(host[1]["Available RAM"])
     new_data = pd.DataFrame({
         "id": [host[1]["Dedicated Host SKUs (VM series and Host Type)"]],
@@ -149,5 +169,7 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
         "WARNINGS": ["RAM units and per unit capacity not verified. RAM capacity from Azure docs was: {}".format(host[1]["Available RAM"])]
     })
     target_data = pd.concat([target_data, new_data])
+    
+print("Hosts matching no instance: {}".format(hosts_matching_no_instance))
 
 target_data.to_csv(target_servers_file, index=False)
