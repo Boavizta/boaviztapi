@@ -40,10 +40,12 @@ source_dedicated_hosts_file = "cleaned_dedicated_hosts.csv"
 source_cpu_spec_file = "../../crowdsourcing/cpu_specs.csv"
 target_servers_file = "azure_servers.csv"
 source_instances_file = "instances_lowercased.csv"
+source_vantage_instances_file = "azure_vms_from_vantage.csv"
 
 
 data = pd.read_csv(source_dedicated_hosts_file)
 instances_data = pd.read_csv(source_instances_file)
+vantage_data = pd.read_csv(source_vantage_instances_file)
 
 def compute_ram_sticks(ram_total_capacity):
     """
@@ -116,28 +118,57 @@ def get_instances_per_host(instances_data, host_name):
             instances.append(i[1])
     return instances
 
+def get_instance_gpus_from_vantage(instance_name):
+    res = vantage_data.loc[vantage_data["Name"].str.lower() == instance_name]
+    return res
+
 cpu_specs = pd.read_csv(source_cpu_spec_file)
 hosts_matching_no_instance = []
+instance_host_mapping = pd.DataFrame({"instance": [], "host": []})
 
 for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vCPUs","Available RAM","CPU"]].iterrows():
     #print(host)
+    #
+    # Get CPU specification for the current host
+    #
     current_cpu_spec = get_cpu_spec(cpu_specs, host[1]["CPU"])
+    current_host_name = host[1]["Dedicated Host SKUs (VM series and Host Type)"]
     if current_cpu_spec is None:
         print("No spec found for: {}".format(host[1]["CPU"]))
     else:
         print("CPU: {} threads: {} host max vCPU : {} supposed CPU units: {}".format(current_cpu_spec["name"], current_cpu_spec["threads"], host[1]["Available vCPUs"], get_cpu_units(host[1], current_cpu_spec)))
     current_gpu = get_gpu_from_string(host[1]["CPU"])
-    if current_gpu is not None:
-        print("Current GPU: {}".format(current_gpu))
-    instances_per_host = get_instances_per_host(instances_data, host[1]["Dedicated Host SKUs (VM series and Host Type)"])
+    instances_per_host = get_instances_per_host(instances_data, current_host_name)
     if len(instances_per_host) == 0:
-        print("host {} not macthing any instance !!!".format(host[1]["Dedicated Host SKUs (VM series and Host Type)"]))
+        print("host {} not macthing any instance !!!".format(current_host_name))
         hosts_matching_no_instance.append(host[1]["Dedicated Host SKUs (VM series and Host Type)"])
+    #
+    # Make a mapping instance to host
+    #
     for i in instances_per_host:
         # TODO : check matching, could be wrong ibetween ms and msm instances / hosts for instance
         if current_cpu_spec["name"].lower() in i["instance_cpu"]:
-            print("{} host {} match and cpu {} match".format(i["instance_name"], host[1]["Dedicated Host SKUs (VM series and Host Type)"], current_cpu_spec["name"]))
-
+            #print("{} host {} match and cpu {} match".format(i["instance_name"], host[1]["Dedicated Host SKUs (VM series and Host Type)"], current_cpu_spec["name"]))
+            instance_host_mapping = pd.concat(
+                [instance_host_mapping,
+                pd.DataFrame(
+                    {
+                        "instance": [i["instance_name"]],
+                        "host": [current_host_name]
+                    }
+                )])
+    #
+    # If there are GPUs on this host
+    # Get how many GPUs are allocated to virtual machines deployed on current host, as a maximum
+    #
+    if current_gpu is not None:
+        print("Current GPU: {}".format(current_gpu))
+        for i in instances_per_host:
+            instance_gpus = get_instance_gpus_from_vantage(i["instance_name"])
+            if len(instance_gpus.index) > 0:
+                print("Instance: {} GPU: {}".format(i["instance_name"], instance_gpus))
+            else:
+                print("Host {} has GPUs ({}) but instance {} has not".format(current_host_name, current_gpu, i["instance_name"]))
 
     nb_of_sticks, stick_capacity = compute_ram_sticks(host[1]["Available RAM"])
     new_data = pd.DataFrame({
@@ -171,5 +202,6 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
     target_data = pd.concat([target_data, new_data])
     
 print("Hosts matching no instance: {}".format(hosts_matching_no_instance))
+instance_host_mapping.to_csv("instance_host2.csv", index=False)
 
 target_data.to_csv(target_servers_file, index=False)
