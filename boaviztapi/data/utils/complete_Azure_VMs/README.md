@@ -17,3 +17,11 @@
 3. in both cases, fill azure_platforms.csv
 4. fill data/archetypes/server.csv with azure_platforms.csv
 5. generate azure.csv in data/archetypes/cloud/ with data from steps 1 and 2
+
+## Sources / To-read-list
+
+- [https://azure.microsoft.com/en-us/pricing/details/virtual-machines/series/](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/series/)
+- [B series blog post](https://azure.microsoft.com/en-us/blog/introducing-b-series-our-new-burstable-vm-size/)
+- [Informations about storage capacity and performance](https://learn.microsoft.com/fr-fr/azure/virtual-machines/disks-scalability-targets)
+- [FinOps calculations useful for CPU allocation hypothesis ?](https://singhkays.medium.com/understanding-the-azure-b-series-and-cpu-credits-cd6ad1c46094)
+- [List of available dedicated hosts](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/dedicated-host/#resources)
