@@ -91,7 +91,7 @@ while IFS="," read -r host _ _ host_cpu _;
   sed "/instance_name/d" | 
   sed "s/${host_family}/${host}/" |
   sed "s/\(av2\|bseries\)/ddsv4-type1/" |   
-  sed "s/mseries/ms-type1:msv2medmem:msmv2/" >> tmp_instances_matched_with_hosts.csv
+  sed "s/mseries/ms-type1;msv2medmem;msmv2/" >> tmp_instances_matched_with_hosts.csv
 
 done < <(tail -n +2 tmp_hosts_lowercased.csv) 
 
