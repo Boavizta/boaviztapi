@@ -33,14 +33,17 @@ done
 # unique values.
 sort "${INSTANCES_LINUX_CSV}" >| tmp_instances_linux_sorted
 sort "${INSTANCES_WINDOWS_CSV}" >| tmp_instances_windows_sorted
-comm -3 tmp_instances_linux_sorted tmp_instances_windows_sorted >| tmp_instances_unique.csv 
+comm -3 tmp_instances_linux_sorted tmp_instances_windows_sorted | 
+sed "s/^[[:space:]]*//" >| tmp_instances_unique.csv 
 
 typeset INSTANCES_CSV="tmp_instances_unique.csv"
 
 # Remove patterns to get instances families matching part of hosts' families names
-while IFS="," read -r ; 
-  do  
-    sed "s/Standard_\(F\|D\|B\|FX\|L\|DC\)[0-9]*[0-9]/\1/" |
+while IFS="," read -r instance_name restofline ; 
+  do
+    printf "%s, %s\n" "${instance_name}" "${restofline}" |
+    sed "s/Standard_\(F\|D\|FX\|L\|DC\)[0-9]*[0-9]/\1/" |
+    sed "s/^Standard_B[^,]*/Bseries/" |
     sed "s/Standard_A[0-9]*[m,0-9]/A/" |
     sed "s/\(Standard_HB120rs_v3\|Standard_HB120-[0-9]*[0-9]rs_v3\)/HBv3/" |
     sed "s/Standard_HB120rs_v2/HBrsv2/" |
@@ -48,17 +51,17 @@ while IFS="," read -r ;
     sed "s/Standard_HC44rs/HCS/" | 
     sed "s/Standard_E[0-9]\?[0-9]\?-\?[0-9][0-9]\?i\?/E/" | 
     sed "s/Standard_\(DS\|D\)[0-9]\?[0-9]-\?[0-9]\?/DS/" |
-    sed "s/Standard_M[0-9][0-9]\?[0-9]-\?2\?0\?8\?m\?d\?m\?i\?d\?m\?/M/" |
+    sed "s/^Standard_M[^,]*/Mseries/" |
     sed "s/(R)//g" |
-    sed "s/_//" |
-    sed -e "s/^[[:space:]]*//" >| tmp_instances.csv
-  done < "${INSTANCES_CSV}"
+    sed "s/_//" >> tmp_instances.csv
+    # sed -e "s/^[[:space:]]*//" >| tmp_instances.csv
+  done < <(tail -n +1 ${INSTANCES_CSV})
 
 # Add leading column with instance name
 while IFS="," read -r instance_name _ ;
   do
     printf "%s,\n" "$instance_name" | sed -e "s/^[[:space:]]*//"  >> tmp_instance_names.csv
-  done < "${INSTANCES_CSV}"
+  done < <(tail -n +1 ${INSTANCES_CSV})
  
 # Join instance name column to instances' CSV file, lowercase everything  
 paste -d "" tmp_instance_names.csv tmp_instances.csv | 
@@ -72,20 +75,26 @@ mv tmp_instances_lowercased_headless.csv tmp_instances_lowercased.csv
 # Lowercase everything in hosts' CSV file, remove patterns in CPU column that do not exist in instances' CSV file
 tr "[:upper:]" "[:lower:]" < "${HOSTS_CSV}" | 
 sed "s/\(3rd generation \)\|\([0-9].[0-9][0-9] ghz \)\| ([a-z]*)\| ([a-z]* [a-z]*)//g" | 
-sed -e "s/^[[:space:]]*//" >| tmp_hosts_lowercased.csv
+sed "s/\(\".*\"\)/ram/" >| tmp_hosts_lowercased.csv
 
-# Match instances and hosts CSV files to link instance name to host family
+# Match instances and hosts CSV files to link instance name to host family.
+# Av2 and B VM series : ddsv4-type1 as host is an arbitrary choice as only this host is documented
+# with Intel Xeon Platinum 8272CL ; other possible CPUs for these series are not presently documented.
+# M Series VMs : range of possible hosts is given, as min:avg:max, as multiple CPU possibilities are documented.
+
 while IFS="," read -r host _ _ host_cpu _;
   do
   host_family="$(printf "%s" "${host}" | cut -d "-" -f 1)"
- 
-  csvgrep -c instance_family -m "${host_family}" tmp_instances_lowercased.csv | 
+
+  csvgrep -c instance_family -r "mseries|av2|bseries|${host_family}" tmp_instances_lowercased.csv | 
   csvgrep -c instance_cpu -r "${host_cpu}" | 
-  sed "/instance_name/d" |
-  sed "s/${host_family}/${host}/" >> tmp_instances_matched_with_hosts.csv
+  sed "/instance_name/d" | 
+  sed "s/${host_family}/${host}/" |
+  sed "s/\(av2\|bseries\)/ddsv4-type1/" |   
+  sed "s/mseries/ms-type1:msv2medmem:msmv2/" >> tmp_instances_matched_with_hosts.csv
 
-  done < tmp_hosts_lowercased.csv
+done < <(tail -n +2 tmp_hosts_lowercased.csv) 
 
-csvcut -c 1,2 tmp_instances_matched_with_hosts.csv >| instance_host.csv
+csvcut -c 1,2 tmp_instances_matched_with_hosts.csv | sort -u >| instance_host.csv
 
 rm tmp_*
