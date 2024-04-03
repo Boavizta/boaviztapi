@@ -31,8 +31,8 @@ done
  
 # Sort both CSV files of Linux and Windows instances benchmarks, and making sure of getting 
 # unique values.
-sort "${INSTANCES_LINUX_CSV}" >| tmp_instances_linux_sorted
-sort "${INSTANCES_WINDOWS_CSV}" >| tmp_instances_windows_sorted
+sort <(tail -n +2 ${INSTANCES_LINUX_CSV}) >| tmp_instances_linux_sorted
+sort <(tail -n +2 "${INSTANCES_WINDOWS_CSV}") >| tmp_instances_windows_sorted
 comm -3 tmp_instances_linux_sorted tmp_instances_windows_sorted | 
 sed "s/^[[:space:]]*//" >| tmp_instances_unique.csv 
 
