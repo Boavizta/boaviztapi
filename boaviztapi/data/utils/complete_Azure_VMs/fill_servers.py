@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import pandas as pd
+from pprint import pprint
 import re
 
 target_data = pd.DataFrame({
@@ -39,12 +40,13 @@ source_columns = ["Dedicated Host SKUs (VM series and Host Type)",
 source_dedicated_hosts_file = "cleaned_dedicated_hosts.csv"
 source_cpu_spec_file = "../../crowdsourcing/cpu_specs.csv"
 target_servers_file = "azure_servers.csv"
-source_instances_file = "instances_lowercased.csv"
+source_instances_host_mapping = "instance_host.csv"
 source_vantage_instances_file = "azure_vms_from_vantage.csv"
+target_instances_file = "azure_instances.csv"
 
 
 data = pd.read_csv(source_dedicated_hosts_file)
-instances_data = pd.read_csv(source_instances_file)
+instances_host_mapping = pd.read_csv(source_instances_host_mapping, header=None)
 vantage_data = pd.read_csv(source_vantage_instances_file)
 
 def compute_ram_sticks(ram_total_capacity):
@@ -111,12 +113,40 @@ def get_cpu_units(host_data, cpu_data):
     else:
         return None
     
-def get_instances_per_host(instances_data, host_name):
-    instances = []
-    for i in instances_data[["instance_name", "instance_family", "instance_cpu", "vcpus", "memory_gb"]].iterrows():
-        if i[1]["instance_family"] in host_name.lower():
-            instances.append(i[1])
-    return instances
+def get_instances_per_host(instances_host_mapping, host_name):
+    mapping = instances_host_mapping[instances_host_mapping[1] == host_name.lower()][0]
+    instances_data = pd.DataFrame({
+        "id": [],
+        "vcpu": [],
+        "memory": [],
+        "ssd_storage": [],
+        "hdd_storage": [],
+        "gpu_units": [],
+        "platform": [],
+        "source": []
+    })
+    for instance in mapping:
+        from_vantage = vantage_data[vantage_data["Name"].str.lower().replace(" ", "_") == instance]
+        from_vantage_by_api_name = vantage_data[vantage_data["API Name"].str.lower().replace(" ", "_") == instance]
+        pprint(from_vantage)
+        pprint(from_vantage_by_api_name)
+        instances_data = pd.concat(
+            [
+                instances_data,
+                pd.DataFrame({
+                    "id": [instance],
+                    "vcpu": [""],
+                    "memory": [""],
+                    "ssd_storage": [""],
+                    "hdd_storage": [""],
+                    "gpu_units": [""],
+                    "platform": [host_name],
+                    "source": [""]
+                })
+            ]
+        )
+    res = pd.concat([mapping, instances_data])
+    return res
 
 def get_instance_gpus_from_vantage(instance_name):
     res = vantage_data.loc[vantage_data["Name"].str.lower() == instance_name]
@@ -124,7 +154,18 @@ def get_instance_gpus_from_vantage(instance_name):
 
 cpu_specs = pd.read_csv(source_cpu_spec_file)
 hosts_matching_no_instance = []
-instance_host_mapping = pd.DataFrame({"instance": [], "host": []})
+instance_host_mapping = pd.DataFrame(
+    {
+        "id": [],
+        "vcpu": [],
+        "memory": [],
+        "ssd_storage": [],
+        "hdd_storage": [],
+        "gpu_units": [],
+        "platform": [],
+        "source": []
+    }
+)
 
 for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vCPUs","Available RAM","CPU"]].iterrows():
     #
@@ -137,25 +178,33 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
     else:
         print("CPU: {} threads: {} host max vCPU : {} supposed CPU units: {}".format(current_cpu_spec["name"], current_cpu_spec["threads"], host[1]["Available vCPUs"], get_cpu_units(host[1], current_cpu_spec)))
     current_gpu = get_gpu_from_string(host[1]["CPU"])
-    instances_per_host = get_instances_per_host(instances_data, current_host_name)
-    if len(instances_per_host) == 0:
+    instances_per_host = get_instances_per_host(instances_host_mapping, current_host_name)
+    if instances_per_host is None or len(instances_per_host.index) == 0:
         print("host {} not macthing any instance !!!".format(current_host_name))
         hosts_matching_no_instance.append(current_host_name)
-    #
-    # Make a mapping instance to host
-    #
-    for i in instances_per_host:
-        # TODO : check matching, could be wrong ibetween ms and msm instances / hosts for instance
-        if current_cpu_spec["name"].lower() in i["instance_cpu"]:
-            #print("{} host {} match and cpu {} match".format(i["instance_name"], host[1]["Dedicated Host SKUs (VM series and Host Type)"], current_cpu_spec["name"]))
-            instance_host_mapping = pd.concat(
-                [instance_host_mapping,
-                pd.DataFrame(
-                    {
-                        "instance": [i["instance_name"]],
-                        "host": [current_host_name]
-                    }
-                )])
+    else:
+        #
+        # Make a mapping instance to host
+        #
+        for i in instances_per_host[["id", "vcpu", "memory", "ssd_storage", "hdd_storage", "gpu_units", "platform", "source"]].iterrows():
+            print("Looping over i: {} host: {}".format(i[1]["id"], i[1]["platform"]))
+            # TODO : check matching, could be wrong ibetween ms and msm instances / hosts for instance
+            #if current_cpu_spec["name"].lower() in i["instance_cpu"]:
+            #    #print("{} host {} match and cpu {} match".format(i["instance_name"], host[1]["Dedicated Host SKUs (VM series and Host Type)"], current_cpu_spec["name"]))
+            #    instance_host_mapping = pd.concat(
+            #        [instance_host_mapping,
+            #        pd.DataFrame(
+            #            {
+            #                "id": [i["instance_name"]],
+            #                "vcpu": [],
+            #                "memory": [],
+            #                "ssd_storage": [],
+            #                "hdd_storage": [],
+            #                "gpu_units": [],
+            #                "platform": [current_host_name],
+            #                "source": []
+            #            }
+            #        )])
     #
     # If there are GPUs on this host
     # Get how many GPUs are allocated to virtual machines deployed on current host, as a maximum
@@ -202,6 +251,6 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
     target_data = pd.concat([target_data, new_data])
     
 print("Hosts matching no instance: {}".format(hosts_matching_no_instance))
-instance_host_mapping.to_csv("instance_host2.csv", index=False)
+instance_host_mapping.to_csv(target_instances_file, index=False)
 
 target_data.to_csv(target_servers_file, index=False)

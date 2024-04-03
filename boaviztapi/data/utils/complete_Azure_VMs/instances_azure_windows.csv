@@ -1,3 +1,4 @@
+Name,CPU,vCPUs,NUMA Nodes,Memory,Avg Score,StdDev,StdDev%,#Runs
 Standard_F2s_v2,Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70 GHz,2,1,4,34903,1101,3.15%,112
 Standard_F2s_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60 GHz,2,1,4,34738,1331,3.83%,224
 Standard_F4s_v2,Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70 GHz,4,1,8,66828,1524,2.28%,168
