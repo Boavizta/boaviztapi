@@ -51,7 +51,7 @@ while IFS="," read -r instance_name restofline ;
     sed "s/Standard_HC44rs/HCS/" | 
     sed "s/Standard_E[0-9]\?[0-9]\?-\?[0-9][0-9]\?i\?/E/" | 
     sed "s/Standard_\(DS\|D\)[0-9]\?[0-9]-\?[0-9]\?/DS/" |
-    sed "s/^Standard_M[^,]*/Mseries/" |
+    sed "/^Standard_M[^,]*/d" |
     sed "s/(R)//g" |
     sed "s/_//" >> tmp_instances.csv
     # sed -e "s/^[[:space:]]*//" >| tmp_instances.csv
@@ -88,26 +88,28 @@ while IFS="," read -r host _ _ host_cpu _;
 
   csvgrep -c instance_family -r "mseries|av2|bseries|${host_family}" tmp_instances_lowercased.csv | 
   csvgrep -c instance_cpu -r "${host_cpu}" | 
-  csvformat -E | 
+  csvformat -E |
   sed "s/${host_family}/${host}/" |
-  sed "s/\(av2\|bseries\)/ddsv4-type1/" |   
-  sed "s/mseries/ms-type1;msv2medmem;msmv2/" >> tmp_instances_matched_with_hosts.csv
+  sed "s/\(av2\|bseries\)/ddsv4-type1/" >> tmp_instances_matched_with_hosts.csv
+  # sed "s/mseries/ms-type1;msv2medmem;msmv2/" >> tmp_instances_matched_with_hosts.csv
 
 done < <(tail -n +2 tmp_hosts_lowercased.csv) 
 
-csvcut -c 1,2 tmp_instances_matched_with_hosts.csv | sort >| instance_host.csv
+# Scraped data for M series from Memory Optimized SKUs page : https://learn.microsoft.com/en-us/azure/virtual-machines/dedicated-host-memory-optimized-skus
+csvcut -c 1,2 tmp_instances_matched_with_hosts.csv >| tmp_instance_host_from_matching.csv
+cat tmp_instance_host_from_matching.csv m_series_host_instances.csv | sed "s/ /_/g" >| instance_host.csv
 
 # Generate file with unmatched instances from benchmarks based on instance_host.csv
 
 comm -2 -3  <(cut -d "," -f 1 tmp_instances_lowercased.csv | sed -e "s/^[[:space:]]*//" | sort -u) <(cut -d "," -f 1 instance_host.csv | sed -e "s/^[[:space:]]*//" | sort -u) >| tmp_instance_names_unique_in_benchmarks.csv 
 
-while IFS="," read -r unmatched_instance_name ;
-  do
-    csvgrep -c instance_name -m "${unmatched_instance_name}" tmp_instances_lowercased.csv |
-    csvformat -E |
-    csvcut -c 1,3 |
-    sed "s/\([0-9][0-9]-core.*\)\|\(v[0-9] @.*\)\|\(@.*\)//" |
-    sort -u >> benchmarked_instances_unmatched.csv
-  done < tmp_instance_names_unique_in_benchmarks.csv 
+ while IFS="," read -r unmatched_instance_name ;
+   do
+     csvgrep -c instance_name -m "${unmatched_instance_name}" tmp_instances_lowercased.csv |
+     csvformat -E |
+     csvcut -c 1,3 |
+     sed "s/\([0-9][0-9]-core.*\)\|\(v[0-9] @.*\)\|\(@.*\)//" |
+     sort -u >> benchmarked_instances_unmatched.csv
+   done < tmp_instance_names_unique_in_benchmarks.csv 
 
 rm tmp_*

@@ -127,7 +127,6 @@ hosts_matching_no_instance = []
 instance_host_mapping = pd.DataFrame({"instance": [], "host": []})
 
 for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vCPUs","Available RAM","CPU"]].iterrows():
-    #print(host)
     #
     # Get CPU specification for the current host
     #
@@ -141,7 +140,7 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
     instances_per_host = get_instances_per_host(instances_data, current_host_name)
     if len(instances_per_host) == 0:
         print("host {} not macthing any instance !!!".format(current_host_name))
-        hosts_matching_no_instance.append(host[1]["Dedicated Host SKUs (VM series and Host Type)"])
+        hosts_matching_no_instance.append(current_host_name)
     #
     # Make a mapping instance to host
     #
@@ -160,15 +159,16 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
     #
     # If there are GPUs on this host
     # Get how many GPUs are allocated to virtual machines deployed on current host, as a maximum
+    # TODO FIX
     #
-    if current_gpu is not None:
-        print("Current GPU: {}".format(current_gpu))
-        for i in instances_per_host:
-            instance_gpus = get_instance_gpus_from_vantage(i["instance_name"])
-            if len(instance_gpus.index) > 0:
-                print("Instance: {} GPU: {}".format(i["instance_name"], instance_gpus))
-            else:
-                print("Host {} has GPUs ({}) but instance {} has not".format(current_host_name, current_gpu, i["instance_name"]))
+    #if current_gpu is not None:
+    #    print("Current GPU: {}".format(current_gpu))
+    #    for i in instances_per_host:
+    #        instance_gpus = get_instance_gpus_from_vantage(i["instance_name"])
+    #        if len(instance_gpus.index) > 0:
+    #            print("Instance: {} GPU: {}".format(i["instance_name"], instance_gpus))
+    #        else:
+    #            print("Host {} has GPUs ({}) but instance {} has not".format(current_host_name, current_gpu, i["instance_name"]))
 
     nb_of_sticks, stick_capacity = compute_ram_sticks(host[1]["Available RAM"])
     new_data = pd.DataFrame({
@@ -188,7 +188,7 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
         "SSD.capacity": [""],
         "HDD.units": [""],
         "HDD.capacity": [""],
-        "GPU.units": [1], # TODO: guess it from how many GPUs have the biggest instances hosted on this platform
+        "GPU.units": [0], # TODO: guess it from how many GPUs have the biggest instances hosted on this platform
         "GPU.name": [current_gpu],
         "GPU.memory_capacity": [""],
         "POWER_SUPPLY.units": ["2;2;2"], # TODO: source from Azure docs which platform is blade, which is rack
