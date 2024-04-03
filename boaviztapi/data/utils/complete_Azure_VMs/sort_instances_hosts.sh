@@ -74,7 +74,7 @@ mv tmp_instances_lowercased_headless.csv tmp_instances_lowercased.csv
 
 # Lowercase everything in hosts' CSV file, remove patterns in CPU column that do not exist in instances' CSV file
 tr "[:upper:]" "[:lower:]" < "${HOSTS_CSV}" | 
-sed "s/\(3rd generation \)\|\([0-9].[0-9][0-9] ghz \)\| ([a-z]*)\| ([a-z]* [a-z]*)//g" | 
+sed "s/\(3rd generation \)\|\([0-9].[0-9][0-9] ghz \)\| ([a-z]*)\| ([a-z]* [a-z]*)\|\( processor with sgx technology\)//g" | 
 sed "s/\(\".*\"\)/ram/" >| tmp_hosts_lowercased.csv
 
 # Match instances and hosts CSV files to link instance name to host family.
@@ -88,13 +88,26 @@ while IFS="," read -r host _ _ host_cpu _;
 
   csvgrep -c instance_family -r "mseries|av2|bseries|${host_family}" tmp_instances_lowercased.csv | 
   csvgrep -c instance_cpu -r "${host_cpu}" | 
-  sed "/instance_name/d" | 
+  csvformat -E | 
   sed "s/${host_family}/${host}/" |
   sed "s/\(av2\|bseries\)/ddsv4-type1/" |   
   sed "s/mseries/ms-type1;msv2medmem;msmv2/" >> tmp_instances_matched_with_hosts.csv
 
 done < <(tail -n +2 tmp_hosts_lowercased.csv) 
 
-csvcut -c 1,2 tmp_instances_matched_with_hosts.csv | sort -u >| instance_host.csv
+csvcut -c 1,2 tmp_instances_matched_with_hosts.csv | sort >| instance_host.csv
+
+# Generate file with unmatched instances from benchmarks based on instance_host.csv
+
+comm -2 -3  <(cut -d "," -f 1 tmp_instances_lowercased.csv | sed -e "s/^[[:space:]]*//" | sort -u) <(cut -d "," -f 1 instance_host.csv | sed -e "s/^[[:space:]]*//" | sort -u) >| tmp_instance_names_unique_in_benchmarks.csv 
+
+while IFS="," read -r unmatched_instance_name ;
+  do
+    csvgrep -c instance_name -m "${unmatched_instance_name}" tmp_instances_lowercased.csv |
+    csvformat -E |
+    csvcut -c 1,3 |
+    sed "s/\([0-9][0-9]-core.*\)\|\(v[0-9] @.*\)\|\(@.*\)//" |
+    sort -u >> benchmarked_instances_unmatched.csv
+  done < tmp_instance_names_unique_in_benchmarks.csv 
 
 rm tmp_*
