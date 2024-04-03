@@ -1,0 +1,399 @@
+
+standard_a4m_v2, intel xeon cpu e5-2660 0 
+standard_a4m_v2, intel xeon cpu e5-2673 
+standard_a4m_v2, intel xeon platinum 8171m cpu 
+standard_b2hms, intel xeon cpu e5-2673 
+standard_b2hms, intel xeon platinum 8171m cpu 
+standard_d11_v2, intel xeon cpu e5-2673 
+standard_d11_v2, intel xeon platinum 8171m cpu 
+standard_d11_v2, intel xeon platinum 8272cl cpu 
+standard_d12_v2, intel xeon cpu e5-2673 
+standard_d12_v2, intel xeon platinum 8171m cpu 
+standard_d12_v2, intel xeon platinum 8272cl cpu 
+standard_d13_v2, intel xeon cpu e5-2673 
+standard_d13_v2, intel xeon platinum 8171m cpu 
+standard_d13_v2, intel xeon platinum 8272cl cpu 
+standard_d14_v2, intel xeon cpu e5-2673 
+standard_d14_v2, intel xeon platinum 8171m cpu 
+standard_d14_v2, intel xeon platinum 8272cl cpu 
+standard_d15_v2, intel xeon cpu e5-2673 
+standard_d15_v2, intel xeon platinum 8171m cpu 
+standard_d15_v2, intel xeon platinum 8272cl cpu 
+standard_d15i_v2, intel xeon cpu e5-2673 
+standard_d15i_v2, intel xeon platinum 8272cl cpu 
+standard_d16_v3, intel xeon cpu e5-2673 
+standard_d16_v3, intel xeon platinum 8171m cpu 
+standard_d16_v3, intel xeon platinum 8272cl cpu 
+standard_d16_v4, intel xeon platinum 8272cl cpu 
+standard_d16_v5, intel xeon platinum 8370c cpu 
+standard_d16a_v4, amd epyc 7452 
+standard_d16ads_v5, amd epyc 7763 
+standard_d16as_v5, amd epyc 7763 
+standard_d16d_v4, intel xeon platinum 8272cl cpu 
+standard_d16d_v5, intel xeon platinum 8370c cpu 
+standard_d1_v2, intel xeon cpu e5-2673 
+standard_d1_v2, intel xeon platinum 8171m cpu 
+standard_d1_v2, intel xeon platinum 8272cl cpu 
+standard_d2_v2, intel xeon cpu e5-2673 
+standard_d2_v2, intel xeon platinum 8171m cpu 
+standard_d2_v2, intel xeon platinum 8272cl cpu 
+standard_d2_v3, intel xeon cpu e5-2673 
+standard_d2_v3, intel xeon platinum 8171m cpu 
+standard_d2_v3, intel xeon platinum 8272cl cpu 
+standard_d2_v4, intel xeon platinum 8272cl cpu 
+standard_d2_v5, intel xeon platinum 8370c cpu 
+standard_d2a_v4, amd epyc 7452 
+standard_d2ads_v5, amd epyc 7763 
+standard_d2as_v5, amd epyc 7763 
+standard_d2d_v4, intel xeon platinum 8272cl cpu 
+standard_d2d_v5, intel xeon platinum 8370c cpu 
+standard_d32_v3, intel xeon cpu e5-2673 
+standard_d32_v3, intel xeon platinum 8171m cpu 
+standard_d32_v3, intel xeon platinum 8272cl cpu 
+standard_d32_v4, intel xeon platinum 8272cl cpu 
+standard_d32_v5, intel xeon platinum 8370c cpu 
+standard_d32a_v4, amd epyc 7452 
+standard_d32ads_v5, amd epyc 7763 
+standard_d32as_v5, amd epyc 7763 
+standard_d32d_v4, intel xeon platinum 8272cl cpu 
+standard_d32d_v5, intel xeon platinum 8370c cpu 
+standard_d3_v2, intel xeon cpu e5-2673 
+standard_d3_v2, intel xeon platinum 8171m cpu 
+standard_d3_v2, intel xeon platinum 8272cl cpu 
+standard_d48_v3, intel xeon cpu e5-2673 
+standard_d48_v3, intel xeon platinum 8171m cpu 
+standard_d48_v3, intel xeon platinum 8272cl cpu 
+standard_d48_v4, intel xeon platinum 8272cl cpu 
+standard_d48_v5, intel xeon platinum 8370c cpu 
+standard_d48a_v4, amd epyc 7452 
+standard_d48ads_v5, amd epyc 7763 
+standard_d48as_v5, amd epyc 7763 
+standard_d48d_v4, intel xeon platinum 8272cl cpu 
+standard_d48d_v5, intel xeon platinum 8370c cpu 
+standard_d4_v2, intel xeon cpu e5-2673 
+standard_d4_v2, intel xeon platinum 8171m cpu 
+standard_d4_v2, intel xeon platinum 8272cl cpu 
+standard_d4_v3, intel xeon cpu e5-2673 
+standard_d4_v3, intel xeon platinum 8171m cpu 
+standard_d4_v4, intel xeon platinum 8272cl cpu 
+standard_d4_v5, intel xeon platinum 8370c cpu 
+standard_d4a_v4, amd epyc 7452 
+standard_d4ads_v5, amd epyc 7763 
+standard_d4as_v5, amd epyc 7763 
+standard_d4d_v4, intel xeon platinum 8272cl cpu 
+standard_d4d_v5, intel xeon platinum 8370c cpu 
+standard_d5_v2, intel xeon cpu e5-2673 
+standard_d5_v2, intel xeon platinum 8171m cpu 
+standard_d5_v2, intel xeon platinum 8272cl cpu 
+standard_d64_v3, intel xeon cpu e5-2673 
+standard_d64_v3, intel xeon platinum 8171m cpu 
+standard_d64_v3, intel xeon platinum 8272cl cpu 
+standard_d64_v4, intel xeon platinum 8272cl cpu 
+standard_d64_v5, intel xeon platinum 8370c cpu 
+standard_d64a_v4, amd epyc 7452 
+standard_d64ads_v5, amd epyc 7763 
+standard_d64as_v5, amd epyc 7763 
+standard_d64d_v4, intel xeon platinum 8272cl cpu 
+standard_d64d_v5, intel xeon platinum 8370c cpu 
+standard_d8_v3, intel xeon cpu e5-2673 
+standard_d8_v3, intel xeon platinum 8171m cpu 
+standard_d8_v3, intel xeon platinum 8272cl cpu 
+standard_d8_v4, intel xeon platinum 8272cl cpu 
+standard_d8_v5, intel xeon platinum 8370c cpu 
+standard_d8a_v4, amd epyc 7452 
+standard_d8ads_v5, amd epyc 7763 
+standard_d8as_v5, amd epyc 7763 
+standard_d8d_v4, intel xeon platinum 8272cl cpu 
+standard_d8d_v5, intel xeon platinum 8370c cpu 
+standard_d96_v5, intel xeon platinum 8370c cpu 
+standard_d96a_v4, amd epyc 7452 
+standard_d96ads_v5, amd epyc 7763 
+standard_d96as_v5, amd epyc 7763 
+standard_d96d_v5, intel xeon platinum 8370c cpu 
+standard_dc16s_v3, intel xeon platinum 8370c cpu 
+standard_dc1s_v3, intel xeon platinum 8370c cpu 
+standard_dc24s_v3, intel xeon platinum 8370c cpu 
+standard_dc2s, intel xeon e-2176g cpu 
+standard_dc2s_v2, intel xeon e-2288g cpu 
+standard_dc2s_v3, intel xeon platinum 8370c cpu 
+standard_dc2s_v3, intel xeon platinum 8370c cpu 
+standard_dc32s_v3, intel xeon platinum 8370c cpu 
+standard_dc48s_v3, intel xeon platinum 8370c cpu 
+standard_dc4s, intel xeon e-2176g cpu 
+standard_dc4s_v2, intel xeon e-2288g cpu 
+standard_dc4s_v3, intel xeon platinum 8370c cpu 
+standard_dc4s_v3, intel xeon platinum 8370c cpu 
+standard_dc8_v2, intel xeon e-2288g cpu 
+standard_dc8s_v3, intel xeon platinum 8370c cpu 
+standard_ds11-1_v2, intel xeon cpu e5-2673 
+standard_ds11-1_v2, intel xeon platinum 8171m cpu 
+standard_ds11-1_v2, intel xeon platinum 8272cl cpu 
+standard_ds11_v2, intel xeon cpu e5-2673 
+standard_ds11_v2, intel xeon platinum 8171m cpu 
+standard_ds11_v2, intel xeon platinum 8272cl cpu 
+standard_ds12-1_v2, intel xeon cpu e5-2673 
+standard_ds12-1_v2, intel xeon platinum 8171m cpu 
+standard_ds12-1_v2, intel xeon platinum 8272cl cpu 
+standard_ds12-2_v2, intel xeon cpu e5-2673 
+standard_ds12-2_v2, intel xeon platinum 8171m cpu 
+standard_ds12-2_v2, intel xeon platinum 8272cl cpu 
+standard_ds12_v2, intel xeon cpu e5-2673 
+standard_ds12_v2, intel xeon platinum 8171m cpu 
+standard_ds12_v2, intel xeon platinum 8272cl cpu 
+standard_ds13-2_v2, intel xeon cpu e5-2673 
+standard_ds13-2_v2, intel xeon platinum 8171m cpu 
+standard_ds13-2_v2, intel xeon platinum 8272cl cpu 
+standard_ds13-4_v2, intel xeon cpu e5-2673 
+standard_ds13-4_v2, intel xeon platinum 8171m cpu 
+standard_ds13-4_v2, intel xeon platinum 8272cl cpu 
+standard_ds13_v2, intel xeon cpu e5-2673 
+standard_ds13_v2, intel xeon platinum 8171m cpu 
+standard_ds13_v2, intel xeon platinum 8272cl cpu 
+standard_ds14-4_v2, intel xeon cpu e5-2673 
+standard_ds14-4_v2, intel xeon platinum 8171m cpu 
+standard_ds14-4_v2, intel xeon platinum 8272cl cpu 
+standard_ds14-8_v2, intel xeon cpu e5-2673 
+standard_ds14-8_v2, intel xeon platinum 8171m cpu 
+standard_ds14-8_v2, intel xeon platinum 8272cl cpu 
+standard_ds14_v2, intel xeon cpu e5-2673 
+standard_ds14_v2, intel xeon platinum 8171m cpu 
+standard_ds14_v2, intel xeon platinum 8272cl cpu 
+standard_ds15_v2, intel xeon cpu e5-2673 
+standard_ds15_v2, intel xeon platinum 8171m cpu 
+standard_ds15_v2, intel xeon platinum 8272cl cpu 
+standard_ds15i_v2, intel xeon cpu e5-2673 
+standard_ds15i_v2, intel xeon platinum 8272cl cpu 
+standard_ds1_v2, intel xeon cpu e5-2673 
+standard_ds1_v2, intel xeon platinum 8171m cpu 
+standard_ds1_v2, intel xeon platinum 8272cl cpu 
+standard_ds2_v2, intel xeon cpu e5-2673 
+standard_ds2_v2, intel xeon platinum 8171m cpu 
+standard_ds2_v2, intel xeon platinum 8272cl cpu 
+standard_ds3_v2, intel xeon cpu e5-2673 
+standard_ds3_v2, intel xeon platinum 8171m cpu 
+standard_ds3_v2, intel xeon platinum 8272cl cpu 
+standard_ds4_v2, intel xeon cpu e5-2673 
+standard_ds4_v2, intel xeon platinum 8171m cpu 
+standard_ds4_v2, intel xeon platinum 8272cl cpu 
+standard_ds5_v2, intel xeon cpu e5-2673 
+standard_ds5_v2, intel xeon platinum 8171m cpu 
+standard_ds5_v2, intel xeon platinum 8272cl cpu 
+standard_e104i_v5, intel xeon platinum 8370c cpu 
+standard_e104id_v5, intel xeon platinum 8370c cpu 
+standard_e112iads_v5, amd epyc 7763 
+standard_e112ias_v5, amd epyc 7763 
+standard_e16-4ads_v5, amd epyc 7763 
+standard_e16-4as_v5, amd epyc 7763 
+standard_e16-8ads_v5, amd epyc 7763 
+standard_e16-8as_v5, amd epyc 7763 
+standard_e16_v3, intel xeon cpu e5-2673 
+standard_e16_v3, intel xeon platinum 8171m cpu 
+standard_e16_v3, intel xeon platinum 8272cl cpu 
+standard_e16_v4, intel xeon platinum 8272cl cpu 
+standard_e16_v5, intel xeon platinum 8370c cpu 
+standard_e16a_v4, amd epyc 7452 
+standard_e16ads_v5, amd epyc 7763 
+standard_e16as_v5, amd epyc 7763 
+standard_e16d_v4, intel xeon platinum 8272cl cpu 
+standard_e16d_v5, intel xeon platinum 8370c cpu 
+standard_e20_v3, intel xeon cpu e5-2673 
+standard_e20_v3, intel xeon platinum 8171m cpu 
+standard_e20_v3, intel xeon platinum 8272cl cpu 
+standard_e20_v4, intel xeon platinum 8272cl cpu 
+standard_e20_v5, intel xeon platinum 8370c cpu 
+standard_e20a_v4, amd epyc 7452 
+standard_e20ads_v5, amd epyc 7763 
+standard_e20as_v5, amd epyc 7763 
+standard_e20d_v4, intel xeon platinum 8272cl cpu 
+standard_e20d_v5, intel xeon platinum 8370c cpu 
+standard_e2_v3, intel xeon cpu e5-2673 
+standard_e2_v3, intel xeon platinum 8171m cpu 
+standard_e2_v3, intel xeon platinum 8272cl cpu 
+standard_e2_v4, intel xeon platinum 8272cl cpu 
+standard_e2_v5, intel xeon platinum 8370c cpu 
+standard_e2a_v4, amd epyc 7452 
+standard_e2ads_v5, amd epyc 7763 
+standard_e2as_v5, amd epyc 7763 
+standard_e2d_v4, intel xeon platinum 8272cl cpu 
+standard_e2d_v5, intel xeon platinum 8370c cpu 
+standard_e32-16ads_v5, amd epyc 7763 
+standard_e32-16as_v5, amd epyc 7763 
+standard_e32-8ads_v5, amd epyc 7763 
+standard_e32-8as_v5, amd epyc 7763 
+standard_e32_v3, intel xeon cpu e5-2673 
+standard_e32_v3, intel xeon platinum 8171m cpu 
+standard_e32_v3, intel xeon platinum 8272cl cpu 
+standard_e32_v4, intel xeon platinum 8272cl cpu 
+standard_e32_v5, intel xeon platinum 8370c cpu 
+standard_e32a_v4, amd epyc 7452 
+standard_e32ads_v5, amd epyc 7763 
+standard_e32as_v5, amd epyc 7763 
+standard_e32d_v4, intel xeon platinum 8272cl cpu 
+standard_e32d_v5, intel xeon platinum 8370c cpu 
+standard_e4-2ads_v5, amd epyc 7763 
+standard_e4-2as_v5, amd epyc 7763 
+standard_e48_v3, intel xeon cpu e5-2673 
+standard_e48_v3, intel xeon platinum 8171m cpu 
+standard_e48_v3, intel xeon platinum 8272cl cpu 
+standard_e48_v4, intel xeon platinum 8272cl cpu 
+standard_e48_v5, intel xeon platinum 8370c cpu 
+standard_e48a_v4, amd epyc 7452 
+standard_e48ads_v5, amd epyc 7763 
+standard_e48as_v5, amd epyc 7763 
+standard_e48d_v4, intel xeon platinum 8272cl cpu 
+standard_e48d_v5, intel xeon platinum 8370c cpu 
+standard_e4_v3, intel xeon cpu e5-2673 
+standard_e4_v3, intel xeon platinum 8171m cpu 
+standard_e4_v3, intel xeon platinum 8272cl cpu 
+standard_e4_v4, intel xeon platinum 8272cl cpu 
+standard_e4_v5, intel xeon platinum 8370c cpu 
+standard_e4a_v4, amd epyc 7452 
+standard_e4ads_v5, amd epyc 7763 
+standard_e4as_v5, amd epyc 7763 
+standard_e4d_v4, intel xeon platinum 8272cl cpu 
+standard_e4d_v5, intel xeon platinum 8370c cpu 
+standard_e64-16ads_v5, amd epyc 7763 
+standard_e64-16as_v5, amd epyc 7763 
+standard_e64-32ads_v5, amd epyc 7763 
+standard_e64-32as_v5, amd epyc 7763 
+standard_e64_v3, intel xeon cpu e5-2673 
+standard_e64_v3, intel xeon platinum 8171m cpu 
+standard_e64_v3, intel xeon platinum 8272cl cpu 
+standard_e64_v4, intel xeon platinum 8272cl cpu 
+standard_e64_v5, intel xeon platinum 8370c cpu 
+standard_e64a_v4, amd epyc 7452 
+standard_e64ads_v5, amd epyc 7763 
+standard_e64as_v5, amd epyc 7763 
+standard_e64d_v4, intel xeon platinum 8272cl cpu 
+standard_e64d_v5, intel xeon platinum 8370c cpu 
+standard_e8-2ads_v5, amd epyc 7763 
+standard_e8-2as_v5, amd epyc 7763 
+standard_e8-4ads_v5, amd epyc 7763 
+standard_e8-4as_v5, amd epyc 7763 
+standard_e8_v3, intel xeon cpu e5-2673 
+standard_e8_v3, intel xeon platinum 8171m cpu 
+standard_e8_v4, intel xeon platinum 8272cl cpu 
+standard_e8_v5, intel xeon platinum 8370c cpu 
+standard_e8a_v4, amd epyc 7452 
+standard_e8ads_v5, amd epyc 7763 
+standard_e8as_v5, amd epyc 7763 
+standard_e8d_v4, intel xeon platinum 8272cl cpu 
+standard_e8d_v5, intel xeon platinum 8370c cpu 
+standard_e96-24ads_v5, amd epyc 7763 
+standard_e96-24as_v5, amd epyc 7763 
+standard_e96-48ads_v5, amd epyc 7763 
+standard_e96-48as_v5, amd epyc 7763 
+standard_e96_v5, intel xeon platinum 8370c cpu 
+standard_e96a_v4, amd epyc 7452 
+standard_e96ads_v5, amd epyc 7763 
+standard_e96as_v5, amd epyc 7763 
+standard_e96d_v5, intel xeon platinum 8370c cpu 
+standard_e96iads_v5, amd epyc 7763 
+standard_e96ias_v5, amd epyc 7763 
+standard_f1, intel xeon cpu e5-2673 
+standard_f1, intel xeon platinum 8171m cpu 
+standard_f1, intel xeon platinum 8272cl cpu 
+standard_f16, intel xeon cpu e5-2673 
+standard_f16, intel xeon platinum 8171m cpu 
+standard_f16, intel xeon platinum 8272cl cpu 
+standard_f16s, intel xeon cpu e5-2673 
+standard_f16s, intel xeon platinum 8171m cpu 
+standard_f16s, intel xeon platinum 8272cl cpu 
+standard_f16s_v2, intel xeon platinum 8168 cpu 
+standard_f16s_v2, intel xeon platinum 8272cl cpu 
+standard_f1s, intel xeon cpu e5-2673 
+standard_f1s, intel xeon platinum 8171m cpu 
+standard_f1s, intel xeon platinum 8272cl cpu 
+standard_f16, intel xeon cpu e5-2673 
+standard_f16, intel xeon platinum 8171m cpu 
+standard_f16, intel xeon platinum 8272cl cpu 
+standard_f16s, intel xeon cpu e5-2673 
+standard_f16s, intel xeon platinum 8171m cpu 
+standard_f16s, intel xeon platinum 8272cl cpu 
+standard_f16s_v2, intel xeon platinum 8168 cpu 
+standard_f16s_v2, intel xeon platinum 8272cl cpu 
+standard_f16s, intel xeon cpu e5-2673 
+standard_f16s, intel xeon platinum 8171m cpu 
+standard_f16s, intel xeon platinum 8272cl cpu 
+standard_f16s_v2, intel xeon platinum 8168 cpu 
+standard_f16s_v2, intel xeon platinum 8272cl cpu 
+standard_f1s, intel xeon cpu e5-2673 
+standard_f1s, intel xeon platinum 8171m cpu 
+standard_f1s, intel xeon platinum 8272cl cpu 
+standard_f2, intel xeon cpu e5-2673 
+standard_f2, intel xeon platinum 8171m cpu 
+standard_f2, intel xeon platinum 8272cl cpu 
+standard_f2s, intel xeon cpu e5-2673 
+standard_f2s, intel xeon platinum 8171m cpu 
+standard_f2s, intel xeon platinum 8272cl cpu 
+standard_f2s_v2, intel xeon platinum 8168 cpu 
+standard_f2s_v2, intel xeon platinum 8272cl cpu 
+standard_f2s, intel xeon cpu e5-2673 
+standard_f2s, intel xeon platinum 8171m cpu 
+standard_f2s, intel xeon platinum 8272cl cpu 
+standard_f2s_v2, intel xeon platinum 8168 cpu 
+standard_f2s_v2, intel xeon platinum 8272cl cpu 
+standard_f4, intel xeon cpu e5-2673 
+standard_f4, intel xeon platinum 8171m cpu 
+standard_f4, intel xeon platinum 8272cl cpu 
+standard_f48s_v2, intel xeon platinum 8168 cpu 
+standard_f48s_v2, intel xeon platinum 8272cl cpu 
+standard_f4s, intel xeon cpu e5-2673 
+standard_f4s, intel xeon platinum 8171m cpu 
+standard_f4s, intel xeon platinum 8272cl cpu 
+standard_f4s_v2, intel xeon platinum 8168 cpu 
+standard_f4s_v2, intel xeon platinum 8272cl cpu 
+standard_f4s, intel xeon cpu e5-2673 
+standard_f4s, intel xeon platinum 8171m cpu 
+standard_f4s, intel xeon platinum 8272cl cpu 
+standard_f4s_v2, intel xeon platinum 8168 cpu 
+standard_f4s_v2, intel xeon platinum 8272cl cpu 
+standard_f8, intel xeon cpu e5-2673 
+standard_f8, intel xeon platinum 8171m cpu 
+standard_f8, intel xeon platinum 8272cl cpu 
+standard_f8s, intel xeon cpu e5-2673 
+standard_f8s, intel xeon platinum 8171m cpu 
+standard_f8s, intel xeon platinum 8272cl cpu 
+standard_f8s_v2, intel xeon platinum 8168 cpu 
+standard_f8s_v2, intel xeon platinum 8272cl cpu 
+standard_f8s, intel xeon cpu e5-2673 
+standard_f8s, intel xeon platinum 8171m cpu 
+standard_f8s, intel xeon platinum 8272cl cpu 
+standard_f8s_v2, intel xeon platinum 8168 cpu 
+standard_f8s_v2, intel xeon platinum 8272cl cpu 
+standard_g1, intel xeon cpu e5-2698b 
+standard_g2, intel xeon cpu e5-2698b 
+standard_g3, intel xeon cpu e5-2698b 
+standard_g4, intel xeon cpu e5-2698b 
+standard_g5, intel xeon cpu e5-2698b 
+standard_gs1, intel xeon cpu e5-2698b 
+standard_gs2, intel xeon cpu e5-2698b 
+standard_gs3, intel xeon cpu e5-2698b 
+standard_gs4, intel xeon cpu e5-2698b 
+standard_gs4-4, intel xeon cpu e5-2698b 
+standard_gs4-8, intel xeon cpu e5-2698b 
+standard_gs4-4, intel xeon cpu e5-2698b 
+standard_gs4-8, intel xeon cpu e5-2698b 
+standard_gs5, intel xeon cpu e5-2698b 
+standard_gs5-16, intel xeon cpu e5-2698b 
+standard_gs5-8, intel xeon cpu e5-2698b 
+standard_gs5-16, intel xeon cpu e5-2698b 
+standard_gs5-8, intel xeon cpu e5-2698b 
+standard_hb120-16rs_v3, amd epyc 7v73x 
+standard_hb120-32rs_v3, amd epyc 7v13 
+standard_hb120-32rs_v3, amd epyc 7v73x 
+standard_hb120-64rs_v3, amd epyc 7v73x 
+standard_hb120-96rs_v3, amd epyc 7v13 
+standard_hb120-96rs_v3, amd epyc 7v73x 
+standard_hb120rs_v2, amd epyc 7v12 
+standard_hb120rs_v3, amd epyc 7v13 
+standard_hb120rs_v3, amd epyc 7v73x 
+standard_hb60rs, amd epyc 7551 
+standard_hc44rs, intel xeon platinum 8168 cpu 
+standard_l16s, intel xeon cpu e5-2698b 
+standard_l16s_v2, amd epyc 7551 
+standard_l32s, intel xeon cpu e5-2698b 
+standard_l32s_v2, amd epyc 7551 
+standard_l4s, intel xeon cpu e5-2698b 
+standard_l8s, intel xeon cpu e5-2698b 
+standard_l8s_v2, amd epyc 7551 
