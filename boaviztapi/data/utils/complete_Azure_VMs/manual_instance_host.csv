@@ -290,3 +290,104 @@ E20s v3,esv3-type2
 E32s v3,esv3-type2
 E48s v3,esv3-type2
 E64s v3,esv3-type2
+E2s v3,esv3-type3
+E4s v3,esv3-type3
+E8s v3,esv3-type3
+E16s v3,esv3-type3
+E20s v3,esv3-type3
+E32s v3,esv3-type3
+E48s v3,esv3-type3
+E64s v3,esv3-type3
+E2s v3,esv3-type4
+E4s v3,esv3-type4
+E8s v3,esv3-type4
+E16s v3,esv3-type4
+E20s v3,esv3-type4
+E32s v3,esv3-type4
+E48s v3,esv3-type4
+E64s v3,esv3-type4
+M32ls,Ms-type1
+M32ts,Ms-type1
+M64,Ms-type1
+M64s,Ms-type1
+M64ls,Ms-type1
+M128,Ms-type1
+M128s,Ms-type1
+M8ms,Msm-type1
+M8-2ms,Msm-type1
+M8-4ms,Msm-type1
+M16ms,Msm-type1
+M16-4ms,Msm-type1
+M16-8ms,Msm-type1
+M32ts,Msm-type1
+M32ls,Msm-type1
+M32ms,Msm-type1
+M32-8ms,Msm-type1
+M32-16ms,Msm-type1
+M64ms,Msm-type1
+M64,Msm-type1
+M64s,Msm-type1
+M64m,Msm-type1
+M64ls,Msm-type1
+M64-16ms,Msm-type1
+M64-32ms,Msm-type1
+M128ms,Msm-type1
+M128s,Msm-type1
+M128m,Msm-type1
+M128,Msm-type1
+M128-32ms,Msm-type1
+M128-64ms,Msm-type1
+M32dms v2,Mdmsv2MedMem-Type1
+M64ds v2,Mdmsv2MedMem-Type1
+M64dms v2,Mdmsv2MedMem-Type1
+M128ds v2,Mdmsv2MedMem-Type1
+M128dms v2,Mdmsv2MedMem-Type1
+M32dms v2,Mdsv2MedMem-Type1
+M64ds v2,Mdsv2MedMem-Type1
+M64dms v2,Mdsv2MedMem-Type1
+M128ds v2,Mdsv2MedMem-Type1
+M32ms v2,Mmsv2MedMem-Type1
+M64s v2,Mmsv2MedMem-Type1
+M64ms v2,Mmsv2MedMem-Type1
+M128ms v2,Mmsv2MedMem-Type1
+M128s v2,Mmsv2MedMem-Type1
+M32ms v2,Msv2MedMem-Type1
+M64s v2,Msv2MedMem-Type1
+M64ms v2,Msv2MedMem-Type1
+M128s v2,Msv2MedMem-Type1
+M208ms v2,msmv2-type1
+M208s v2,msmv2-type1
+M416-208ms v2,msmv2-type1
+M416-208s v2,msmv2-type1
+M416ms v2,msmv2-type1
+M416s-8 v2,msmv2-type1
+M416s v2,msmv2-type1
+M208ms v2,msv2-type1
+M208s v2,msv2-type1
+M416-208s v2,msv2-type1
+M416s v2,msv2-type1
+L8as v3,lasv3-type1
+L16as v3,lasv3-type1
+L32as v3,lasv3-type1
+L48as v3,lasv3-type1
+L64as v3,lasv3-type1
+L80as v3,lasv3-type1
+L8s v3,lsv3-type1
+L16s v3,lsv3-type1
+L32s v3,lsv3-type1
+L48s v3,lsv3-type1
+L64s v3,lsv3-type1
+L80s v3,lsv3-type1
+L8s v2,lsv2-type1
+L16s v2,lsv2-type1
+L32s v2,lsv2-type1
+L48s v2,lsv2-type1
+L64s v2,lsv2-type1
+L80s v2,lsv2-type1
+NV4as v4,NVasv4-Type1
+NV8as v4,NVasv4-Type1
+NV16as v4,NVasv4-Type1
+NV32as v4,NVasv4-Type1
+NV12s v3,NVsv3-Type1
+NV24s v3,NVsv3-Type1
+NV48s v3,NVsv3-Type1
