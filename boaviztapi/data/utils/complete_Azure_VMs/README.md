@@ -2,21 +2,18 @@
 
 ## Source data
 
-1. Get benchmark data matching instance type to physical CPU : https://learn.microsoft.com/en-us/azure/virtual-machines/linux/compute-benchmark-scores and https://learn.microsoft.com/en-us/azure/virtual-machines/windows/compute-benchmark-scores, save as instances_azure_linux.csv and instances_azure_windows.csv
-2. Get dedicated_hosts.csv from https://azure.microsoft.com/en-us/pricing/details/virtual-machines/dedicated-host/ (Copy paste the table in libreoffice benefiting from automatic column filling, remove last two columns "1 year savings plan,3 year savings plan" then export in csv), then run clean_dedicated_hosts.csv > cleaned_dedicated_hosts.csv
-3. Get Azure VMs data from vantage "azure_vms_from_vantage.csv" from : https://instances.vantage.sh/azure/
+1. Get benchmark data matching instance type to physical CPU : https://learn.microsoft.com/en-us/azure/virtual-machines/linux/compute-benchmark-scores and https://learn.microsoft.com/en-us/azure/virtual-machines/windows/compute-benchmark-scores, save as `instances_azure_linux.csv` and `instances_azure_windows.csv`
+2. Get dedicated_hosts.csv from https://azure.microsoft.com/en-us/pricing/details/virtual-machines/dedicated-host/ (Copy paste the table in libreoffice benefiting from automatic column filling, remove last two columns "1 year savings plan,3 year savings plan" then export in csv), then run `clean_dedicated_hosts.sh > cleaned_dedicated_hosts.csv`
+3. Get Azure VMs data from vantage `azure_vms_from_vantage.csv` from : https://instances.vantage.sh/azure/
+4. Get data from tables in each [Dedicated Host documentation page](https://learn.microsoft.com/fr-fr/azure/virtual-machines/dedicated-host-general-purpose-skus) manually (or by scraping, if you wan to contribute), save it as or update `manual_instance_host.csv`
 
-## TODO
+## Workflow
 
-1. match family name in instance name in instance_\* files
-2. match family name from step 1 if present in dedicated_hosts
-    a. if present
-        i. compare CPU from both files, raise warnings if no match
-        ii. set VM <-> platform
-    b. if not, get CPU and GPU refs from Azure doc (TODO: document usage of parse_zure_instances_doc.sh)
-3. in both cases, fill azure_platforms.csv
-4. fill data/archetypes/server.csv with azure_platforms.csv
-5. generate azure.csv in data/archetypes/cloud/ with data from steps 1 and 2
+![Updating Azure's data in BoaviztAPI workflow](azure_update_workflow.webp)
+
+## Hypothesis, choices and caveats
+
+- 
 
 ## Sources / To-read-list
 
