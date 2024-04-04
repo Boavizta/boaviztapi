@@ -115,6 +115,9 @@ def get_cpu_units(host_data, cpu_data):
         return None
     
 def get_instances_per_host(instances_host_mapping, host_name):
+    instances_host_mapping = pd.concat([
+        instances_host_mapping, manual_instances_host_mapping
+    ])
     mapping = instances_host_mapping[instances_host_mapping[1] == host_name.lower()][0]
     instances_data = pd.DataFrame({
         "id": [],
@@ -127,30 +130,41 @@ def get_instances_per_host(instances_host_mapping, host_name):
         "source": []
     })
     for instance in mapping:
+        instance = instance.replace(" ", "_")
         from_vantage = vantage_data[vantage_data["Name"].str.lower() == instance.replace("_", " ")]
-        from_vantage_by_api_name = vantage_data[vantage_data["API Name"].str.lower() == instance.replace(" ", "_")]
+        from_vantage_by_api_name = vantage_data[vantage_data["API Name"].str.lower() == instance.replace("_", " ")]
 
         vcpus = from_vantage["vCPUs"].str.replace(" vCPUs", "")
+        if len(vcpus.index) == 0:
+            vcpus = from_vantage_by_api_name["vCPUs"].str.replace(" vCPUs", "")
         mem = from_vantage["Instance Memory"].str.replace(" GiB", "")
+        if len(mem.index) == 0:
+            mem = from_vantage_by_api_name["Instance Memory"].str.replace(" GiB", "")
         gpus = from_vantage["GPUs"].str.replace(r"", "", regex=True)
+        if len(gpus.index) == 0:
+            gpus = from_vantage_by_api_name["GPUs"].str.replace(r"", "", regex=True)
         ssd_sto = from_vantage["Instance Storage"]
-        instances_data = pd.concat(
-            [
-                instances_data,
-                pd.DataFrame({
-                    "id": [instance],
-                    "vcpu": [vcpus.values[0] if len(vcpus.index) > 0 else "NA"],
-                    "memory": [mem.values[0] if len(mem.index) > 0 else "NA"],
-                    "ssd_storage": [ssd_sto.values[0] if len(ssd_sto.index) > 0 else 25],
-                    # TODO: change default SSD value for average of all default storage
-                    "hdd_storage": [0],
-                    "gpu_units": [gpus.values[0] if len(gpus.index) > 0 else "NA"],
-                    # TODO fetch GPU units per instance
-                    "platform": [host_name],
-                    "source": ["Vantage for instance specs (https://instances.vantage.sh/azure/), Azure docs for instance-host mapping, see README for details."]
-                })
-            ]
-        )
+        if len(ssd_sto.index) == 0:
+            ssd_sto = from_vantage_by_api_name["Instance Storage"]
+        # if we have so bad data that we don't know at least for vcpus and memory, discard the instance
+        if len(vcpus.index) > 0 or len(mem.index) > 0:
+            instances_data = pd.concat(
+                [
+                    instances_data,
+                    pd.DataFrame({
+                        "id": [instance],
+                        "vcpu": [vcpus.values[0] if len(vcpus.index) > 0 else 0],
+                        "memory": [mem.values[0] if len(mem.index) > 0 else 0],
+                        "ssd_storage": [ssd_sto.values[0] if len(ssd_sto.index) > 0 else 0],
+                        # TODO: change default SSD value for average of all default storage
+                        "hdd_storage": [0],
+                        "gpu_units": [gpus.values[0] if len(gpus.index) > 0 else 0],
+                        # TODO fetch GPU units per instance
+                        "platform": [host_name],
+                        "source": ["Vantage for instance specs (https://instances.vantage.sh/azure/), Azure docs for instance-host mapping, see README for details."]
+                    })
+                ]
+            )
     return instances_data
 
 def get_instance_gpus_from_vantage(instance_name):
@@ -192,23 +206,6 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
         # Make a mapping instance to host
         #
         instance_host_mapping = pd.concat([instance_host_mapping, instances_per_host])
-            # TODO : check matching, could be wrong ibetween ms and msm instances / hosts for instance
-            #if current_cpu_spec["name"].lower() in i["instance_cpu"]:
-            #    #print("{} host {} match and cpu {} match".format(i["instance_name"], host[1]["Dedicated Host SKUs (VM series and Host Type)"], current_cpu_spec["name"]))
-            #    instance_host_mapping = pd.concat(
-            #        [instance_host_mapping,
-            #        pd.DataFrame(
-            #            {
-            #                "id": [i["instance_name"]],
-            #                "vcpu": [],
-            #                "memory": [],
-            #                "ssd_storage": [],
-            #                "hdd_storage": [],
-            #                "gpu_units": [],
-            #                "platform": [current_host_name],
-            #                "source": []
-            #            }
-            #        )])
     #
     # If there are GPUs on this host
     # Get how many GPUs are allocated to virtual machines deployed on current host, as a maximum
