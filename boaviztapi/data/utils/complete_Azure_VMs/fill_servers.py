@@ -41,11 +41,12 @@ source_dedicated_hosts_file = "cleaned_dedicated_hosts.csv"
 source_cpu_spec_file = "../../crowdsourcing/cpu_specs.csv"
 target_servers_file = "azure_servers.csv"
 source_instances_host_mapping = "instance_host.csv"
+source_manual_instances_host_mapping = "manual_instance_host_cleaned.csv"
 source_vantage_instances_file = "azure_vms_from_vantage.csv"
 target_instances_file = "azure_instances.csv"
 
-
 data = pd.read_csv(source_dedicated_hosts_file)
+manual_instances_host_mapping = pd.read_csv(source_manual_instances_host_mapping, header=None)
 instances_host_mapping = pd.read_csv(source_instances_host_mapping, header=None)
 vantage_data = pd.read_csv(source_vantage_instances_file)
 
@@ -140,7 +141,7 @@ def get_instances_per_host(instances_host_mapping, host_name):
                     "id": [instance],
                     "vcpu": [vcpus.values[0] if len(vcpus.index) > 0 else "NA"],
                     "memory": [mem.values[0] if len(mem.index) > 0 else "NA"],
-                    "ssd_storage": [ssd_sto.values[0] if len(ssd_sto.index) > 0 else "NA"],
+                    "ssd_storage": [ssd_sto.values[0] if len(ssd_sto.index) > 0 else 25],
                     # TODO: change default SSD value for average of all default storage
                     "hdd_storage": [0],
                     "gpu_units": [gpus.values[0] if len(gpus.index) > 0 else "NA"],
@@ -232,7 +233,7 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
         "CPU.die_size": [""],
         "CPU.die_size_per_core": [""],
         "CPU.tdp": [current_cpu_spec["tdp"] if current_cpu_spec is not None else ""],
-        "CPU.name": [host[1]["CPU"]],
+        "CPU.name": [current_cpu_spec["name"]],
         "CPU.vcpu": [host[1]["Available vCPUs"]],
         "RAM.units": [nb_of_sticks],
         "RAM.capacity": [stick_capacity],
@@ -253,7 +254,8 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
     })
     target_data = pd.concat([target_data, new_data])
     
-print("Hosts matching no instance: {}".format(hosts_matching_no_instance))
+print("Hosts matching no instance: ")
+pprint(hosts_matching_no_instance)
 instance_host_mapping.to_csv(target_instances_file, index=False)
 
 target_data.to_csv(target_servers_file, index=False)
