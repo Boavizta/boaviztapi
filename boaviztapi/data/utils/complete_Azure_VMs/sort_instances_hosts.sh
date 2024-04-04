@@ -51,10 +51,8 @@ while IFS="," read -r instance_name restofline ;
     sed "s/Standard_HC44rs/HCS/" | 
     sed "s/Standard_E[0-9]\?[0-9]\?-\?[0-9][0-9]\?i\?/E/" | 
     sed "s/Standard_\(DS\|D\)[0-9]\?[0-9]-\?[0-9]\?/DS/" |
-    sed "/^Standard_M[^,]*/d" |
     sed "s/(R)//g" |
     sed "s/_//" >> tmp_instances.csv
-    # sed -e "s/^[[:space:]]*//" >| tmp_instances.csv
   done < <(tail -n +1 ${INSTANCES_CSV})
 
 # Add leading column with instance name
@@ -63,9 +61,10 @@ while IFS="," read -r instance_name _ ;
     printf "%s,\n" "$instance_name" | sed -e "s/^[[:space:]]*//"  >> tmp_instance_names.csv
   done < <(tail -n +1 ${INSTANCES_CSV})
  
-# Join instance name column to instances' CSV file, lowercase everything  
+# Join instance name column to instances' CSV file, remove M series instances treated in m_series_host_instances.csv, lowercase everything  
 paste -d "" tmp_instance_names.csv tmp_instances.csv | 
 sort |
+sed "/^Standard_M[^,]*/d" |
 tr "[:upper:]" "[:lower:]" >| tmp_instances_lowercased_headless.csv   
 
 # Add header to instances' CSV file
@@ -91,7 +90,6 @@ while IFS="," read -r host _ _ host_cpu _;
   csvformat -E |
   sed "s/${host_family}/${host}/" |
   sed "s/\(av2\|bseries\)/ddsv4-type1/" >> tmp_instances_matched_with_hosts.csv
-  # sed "s/mseries/ms-type1;msv2medmem;msmv2/" >> tmp_instances_matched_with_hosts.csv
 
 done < <(tail -n +2 tmp_hosts_lowercased.csv) 
 
