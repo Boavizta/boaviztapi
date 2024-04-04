@@ -237,10 +237,10 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
         "CPU.vcpu": [host[1]["Available vCPUs"]],
         "RAM.units": [nb_of_sticks],
         "RAM.capacity": [stick_capacity],
-        "SSD.units": [""],
-        "SSD.capacity": [""],
-        "HDD.units": [""],
-        "HDD.capacity": [""],
+        "SSD.units": [0], # TODO: get hypothesis that seem close to what users see on those machines
+        "SSD.capacity": [0],
+        "HDD.units": [0],
+        "HDD.capacity": [0],
         "GPU.units": [0], # TODO: guess it from how many GPUs have the biggest instances hosted on this platform
         "GPU.name": [current_gpu],
         "GPU.memory_capacity": [""],
