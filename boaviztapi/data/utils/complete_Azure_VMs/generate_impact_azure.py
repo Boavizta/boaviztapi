@@ -73,7 +73,6 @@ def make_instance_impacts_for_one_hour():
                     "energy_{}_1h".format(load): []
                 })], axis=1
             )
-    pprint(final_data)
     
     for instance in base_data[["id"]].iterrows():
         clear()
@@ -87,7 +86,6 @@ def make_instance_impacts_for_one_hour():
             impacts[location] = {}
             for load in load_averages:
                 impacts[location][load] = get_instance_impact(instance_name, 1, location, load)
-                #pprint(impacts)
                 final_data["gwp_use_1h_load{}_{}".format(load, location)].values[instance[0]] = impacts[location][load]["impacts"]["gwp"]["use"]["value"]
         for load in load_averages:
             final_data["energy_{}_1h".format(load)].values[instance[0]] = impacts[usage_locations[0]][load]["verbose"]["avg_power"]["value"]
