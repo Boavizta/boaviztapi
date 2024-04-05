@@ -30,11 +30,10 @@ def get_instance_impact(instance_name, usage_hours, usage_location, load_percent
     usage_location -- str, three-letters code identifying the country and electricity mix for runtime, see columns in https://github.com/Boavizta/boaviztapi/blob/main/boaviztapi/data/crowdsourcing/electrical_mix.csv
     load_percentage -- int, what average percentage of CPU time usage should be considered for impacts calculation
     """
-    query = {"provider": "azure", "verbose": "true"}
+    query = {"provider": "azure", "verbose": "true", "duration": usage_hours}
     data = {
       "provider": "azure",
       "instance_type": f"{instance_name}",
-      "duration": usage_hours,
       "verbose": "true",
       "usage": {
         "usage_location": f"{usage_location}",
@@ -54,7 +53,8 @@ def get_instance_impact(instance_name, usage_hours, usage_location, load_percent
     return impact_request.json()
 
 def make_instance_impacts_for_one_hour():
-    """Reads AZURE_INSTANCES file, adds columns for impact, writes RESULT_FILE.
+    """
+    Reads AZURE_INSTANCES file, adds columns for impact, writes RESULT_FILE.
     """
     usage_locations = ["FRA", "GBR", "USA"] 
     load_averages = [0, 50, 100]
