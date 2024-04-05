@@ -15,12 +15,13 @@
 
 - We tried to get the widest instance families coverage possible, mixing data from several places in Microsoft Azure documentation and vantage website. While this seems a nice approach to be as complete as it can be, this may lead to incoherent data and mistakes while mixing data from different source for the same instance or physical host.
 - As Microsoft provides "Dedicated Hosts" that you could rent as the hardware platforms of the virtual machines you consume on Azure, we used this list of host as our bare-metal platforms pool, and tried to map each instance to a host at least. When we didn't have an explicit match, we used the CPU reference found in benchmark data for a given instance, to match one of those hosts nevertheless. This probably hides part of the truth behind the scene, as some instances are not explicitely said to be on a given host and we matched them to dedicated hosts anyway.
-- 
+- Bursts and overcommit are not accounted for, as the scripts in their current form only extract the number of vCPUs for each instance, without considering if this instance is a burstable instance. Fixing this would mean to extract informations about burst conditions for each instance and change the value of vcpus accordingly (or rely on a mecanism in BoaviztAPI that doesn't exist today). 
 
 ## TODO
 
 - [ ] GPU allocated to virtual machines are not properly filled, fis this
 - [ ] update references count alongside the workflow to identify data losses
+- [ ] Remove double references to the same instance aggregated in fill_server.py
 
 ## Sources / To-read-list
 
