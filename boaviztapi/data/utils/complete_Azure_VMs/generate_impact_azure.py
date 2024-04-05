@@ -64,13 +64,18 @@ def make_instance_impacts_for_one_hour():
             "gwp_manufacturing_impact_total": []
         })], axis=1
     )
-    for location in usage_locations:
-        for load in load_averages:
+    for load in load_averages:
+        final_data = pd.concat(
+            [final_data,
+            pd.DataFrame({
+                "energy_{}_1h".format(load): []
+            })], axis=1
+        )
+        for location in usage_locations:
             final_data = pd.concat(
                 [final_data, 
                 pd.DataFrame({
                     "gwp_use_1h_load{}_{}".format(load, location): [],
-                    "energy_{}_1h".format(load): []
                 })], axis=1
             )
     
