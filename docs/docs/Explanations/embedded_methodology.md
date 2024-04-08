@@ -73,4 +73,4 @@ When a duration is given as a query parameter, we allocate the embedded impacts 
 
 ## Resources
 
-[Boavizta server impacts measurement methodology](https://boavizta.org/blog/empreinte-de-la-fabrication-d-un-serveur)
+[Boavizta server impacts measurement methodology](https://boavizta.org/en/blog/empreinte-de-la-fabrication-d-un-serveur)
