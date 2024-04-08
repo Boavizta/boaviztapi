@@ -10,9 +10,8 @@ target_data = pd.DataFrame({
     "CASE.case_type": [],
     "CPU.units": [],
     "CPU.core_units": [],
-    "CPU.die_size": [],
     "CPU.die_size_per_core": [],
-    "CPU.tdp": [],
+    #"CPU.tdp": [],
     "CPU.name": [],
     "CPU.vcpu": [],
     "RAM.units": [],
@@ -227,9 +226,8 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
         "CASE.case_type": ["rack"], # TODO: source from Azure docs which platform is blade, which is rack
         "CPU.units": [get_cpu_units(host[1], current_cpu_spec)],
         "CPU.core_units": [""],
-        "CPU.die_size": [""],
         "CPU.die_size_per_core": [""],
-        "CPU.tdp": [current_cpu_spec["tdp"] if current_cpu_spec is not None else ""],
+        #"CPU.tdp": [current_cpu_spec["tdp"] if current_cpu_spec is not None else ""],
         "CPU.name": [current_cpu_spec["name"]],
         "CPU.vcpu": [host[1]["Available vCPUs"]],
         "RAM.units": [nb_of_sticks],
@@ -243,10 +241,10 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
         "GPU.memory_capacity": [""],
         "POWER_SUPPLY.units": ["2;2;2"], # TODO: source from Azure docs which platform is blade, which is rack
         "POWER_SUPPLY.unit_weight": ["2.99;1;5"], # TODO: source from Azure docs which platform is blade, which is rack
-        "USAGE.time_workload": [""],
-        "USAGE.use_time_ratio": [""],
-        "USAGE.hours_life_time": [""],
-        "USAGE.other_consumption_ratio": [""],
+        "USAGE.time_workload": ["50;0;100"],
+        "USAGE.use_time_ratio": ["1"],
+        "USAGE.hours_life_time": [52560], # According to latest news, Azure extended servers lifetime from 4 to 6 years. (https://www.networkworld.com/article/971373/microsoft-extends-azure-server-lifetimes-by-50.html)
+        "USAGE.other_consumption_ratio": ["0.33;0.2;0.6"], # TODO: challenge those factors based on azure actual hardware
         "WARNINGS": ["RAM units and per unit capacity not verified. RAM capacity from Azure docs was: {}".format(host[1]["Available RAM"])]
     })
     target_data = pd.concat([target_data, new_data])
