@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import requests
 from shutil import copyfile
 from csv import reader, writer
@@ -13,13 +15,19 @@ def clear():
     menu screens in terminal applications.
     """
     os.system('cls' if os.name == 'nt' else 'echo -e \\\\033c')
-
+    
+AWS_INSTANCES = "../../archetypes/cloud/aws.csv"
 AZURE_INSTANCES = "../../archetypes/cloud/azure.csv"
 BOAVIZTAPI_BASE_URL = "https://api.boavizta.org/v1/cloud/"
 BOAVIZTAPI_LOCAL_CONTAINER = "http://0.0.0.0:5000/v1"
 RESULT_FILE = "result.csv"
+if "GEN_IMPACT_PROVIDER" in os.environ and os.environ["GEN_IMPACT_PROVIDER"] == "aws":
+    RESULT_FILE = "aws_result.csv"
 
-base_data = pd.read_csv(AZURE_INSTANCES)
+if "GEN_IMPACT_PROVIDER" in os.environ and os.environ["GEN_IMPACT_PROVIDER"] == "aws":
+    base_data = pd.read_csv(AWS_INSTANCES)
+else:
+    base_data = pd.read_csv(AZURE_INSTANCES)
 
 def get_instance_impact(instance_name, usage_hours, usage_location, load_percentage):
     """Returns impacts json object for `instance_name`, by querying the BoaviztAPI located at BOAVIZTAPI_LOCAL_CONTAINER.
@@ -30,9 +38,12 @@ def get_instance_impact(instance_name, usage_hours, usage_location, load_percent
     usage_location -- str, three-letters code identifying the country and electricity mix for runtime, see columns in https://github.com/Boavizta/boaviztapi/blob/main/boaviztapi/data/crowdsourcing/electrical_mix.csv
     load_percentage -- int, what average percentage of CPU time usage should be considered for impacts calculation
     """
-    query = {"provider": "azure", "verbose": "true", "duration": usage_hours}
+    provider = "azure"
+    if "GEN_IMPACT_PROVIDER" in os.environ and os.environ["GEN_IMPACT_PROVIDER"] == "aws":
+        provider = "aws"
+    query = {"provider": provider, "verbose": "true", "duration": usage_hours}
     data = {
-      "provider": "azure",
+      "provider": provider,
       "instance_type": f"{instance_name}",
       "verbose": "true",
       "usage": {
@@ -61,7 +72,7 @@ def make_instance_impacts_for_one_hour():
 
     final_data = pd.concat(
         [base_data, pd.DataFrame({
-            "gwp_manufacturing_impact_total": []
+            "gwp_manufacturing_1h_impact": []
         })], axis=1
     )
     for load in load_averages:
@@ -94,8 +105,9 @@ def make_instance_impacts_for_one_hour():
                 final_data["gwp_use_1h_load{}_{}".format(load, location)].values[instance[0]] = impacts[location][load]["impacts"]["gwp"]["use"]["value"]
         for load in load_averages:
             final_data["energy_1h_load{}".format(load)].values[instance[0]] = impacts[usage_locations[0]][load]["verbose"]["avg_power"]["value"]
-        final_data["gwp_manufacturing_impact_total"].values[instance[0]] = impacts[usage_locations[0]][load_averages[0]]["impacts"]["gwp"]["embedded"]["value"]
+        final_data["gwp_manufacturing_1h_impact"].values[instance[0]] = impacts[usage_locations[0]][load_averages[0]]["impacts"]["gwp"]["embedded"]["value"]
 
+    final_data = final_data.reindex(sorted(final_data.columns), axis=1)
     final_data.to_csv(RESULT_FILE, index=False)
     print("Results written in {}".format(RESULT_FILE))
 
