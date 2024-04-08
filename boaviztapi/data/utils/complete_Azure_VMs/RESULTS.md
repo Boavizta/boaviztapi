@@ -6,7 +6,9 @@ In this document the word "phase" as in "lifecycle phase" regarding the lifecycl
 
 ## Columns reference
 
-`gwp_manufacturing_impact_total`: **G**lobal **W**arming **P**otential footprint estimated by the API for , in **kgC02eq**
+`gwp_manufacturing_impact_total`: **G**lobal **W**arming **P**otential footprint estimated by the API, considering the ratio `duration` / `server_lifetime` (see the[API's documentation](https://doc.api.boavizta.org/Explanations/embedded_methodology/)), in **kgC02eq**
+
+Embedded impacts returned per instance are a sub allocation of the bare metal server embedded impacts. The formulas used for this allocation are described [in the API documentation](https://doc.api.boavizta.org/Explanations/services/cloud/#method).
 
 Use phase energy consumption and GWP footprint are calculated, depending on the CPU load percentage hypothesis and the usage location.
 
