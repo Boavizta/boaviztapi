@@ -3,7 +3,7 @@ from json import dumps
 from csv import DictWriter
 
 BOAVIZTAPI_CONTAINER_URL = "http://0.0.0.0:5000/v1/server/"
-RESULT_FILE = "sensibility_analysis_hosts_with_ssd.csv"
+RESULT_FILE = "sensitivity_analysis_hosts_with_ssd.csv"
 
 query = {"verbose": "false", "criteria": "gwp"}
 

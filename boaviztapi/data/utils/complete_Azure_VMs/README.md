@@ -16,13 +16,12 @@
 - We tried to get the widest instance families coverage possible, mixing data from several places in Microsoft Azure documentation and vantage website. While this seems a nice approach to be as complete as it can be, this may lead to incoherent data and mistakes while mixing data from different source for the same instance or physical host.
 - As Microsoft provides "Dedicated Hosts" that you could rent as the hardware platforms of the virtual machines you consume on Azure, we used this list of host as our bare-metal platforms pool, and tried to map each instance to a host at least. When we didn't have an explicit match, we used the CPU reference found in benchmark data for a given instance, to match one of those hosts nevertheless. This probably hides part of the truth behind the scene, as some instances are not explicitely said to be on a given host and we matched them to dedicated hosts anyway.
 - Bursts and overcommit are not accounted for, as the scripts in their current form only extract the number of vCPUs for each instance, without considering if this instance is a burstable instance. Fixing this would mean to extract informations about burst conditions for each instance and change the value of vcpus accordingly (or rely on a mecanism in BoaviztAPI that doesn't exist today).
-- For GPUs (concerning NVv3 and NVv4 series): GPU units and memory for the hosts are established by matching the number of vCPUS for an instance and the number of vCPUS for the host, and establishing
-the potential number of GPUs in the host with the documentation for the instances.
+- For GPUs (concerning NVv3 and NVv4 series): GPU units and memory for the hosts are established by matching the number of vCPUS for an instance and the number of vCPUS for the host, and establishing the potential number of GPUs in the host with the documentation for the instances.
 - Current version of the API doesn't account for remote storage. A share of the impacts of local hardware storage is allocated to the virtual machine, which makes sense. In the case of Azure data, we don't have the actual stoarage hardware and volume available for Dedicated Hosts / Bare metal machines. It means that current version of the impacts calculated by the API for Azure is **underestimated** regarding impacts of storage, as we don't account neither for remote storage nor for local storage.
 
 ## TODO
 
-- [x] GPU allocated to virtual machines are not properly filled, fis this
+- [ ] GPU allocated to virtual machines are not properly filled, fis this
 - [ ] update references count alongside the workflow to identify data losses
 - [ ] Remove double references to the same instance aggregated in fill_server.py
 
