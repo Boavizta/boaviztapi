@@ -10,7 +10,7 @@ SSD are Disk objects of ```type``` SSD.
 | usage        | None   | See Usage                    | See usage                    | ..        |
 | type         | None   | SSD                          | "SSD"                        | SSD       |
 | capacity     | Go     | 1000;100;5000                | Capacity of a ssd disk       | 500       |
-| density      | cm2/Go | (avg;min;max) in our dataset | cm2 per Go on a ssd wafer    | 48.5      |
+| density      | GB/cm2 | (avg;min;max) in our dataset | GB per cm2 on a ssd wafer    | 48.5      |
 | manufacturer | None   | None                         | Name of the CPU manufacturer | Samsung   |
 | model        | None   | None                         | ..                           | ..        |
 | layers       | None   | None                         | Number of layers             | 64        |
