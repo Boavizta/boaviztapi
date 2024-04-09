@@ -107,7 +107,6 @@ def make_instance_impacts_for_one_hour():
             final_data["energy_1h_load{}".format(load)].values[instance[0]] = impacts[usage_locations[0]][load]["verbose"]["avg_power"]["value"]
         final_data["gwp_manufacturing_1h_impact"].values[instance[0]] = impacts[usage_locations[0]][load_averages[0]]["impacts"]["gwp"]["embedded"]["value"]
 
-    final_data = final_data.reindex(sorted(final_data.columns), axis=1)
     final_data.to_csv(RESULT_FILE, index=False)
     print("Results written in {}".format(RESULT_FILE))
 
