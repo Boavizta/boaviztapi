@@ -27,6 +27,23 @@ In addition to the characteristics available for [usage](../usage/usage.md), you
 |-----------------------------|----------------|---------------------------------|---------------------------------------------------------------------|---------|
 | other_consumption_ratio     | None           | 0.33;0.2;0.6                    | Power consumption ratio of other components relative to RAM and CPU | 0.2     |
 
+## Perimeter covered
+
+Following the Life Cycle Assesment methodology, we should include everythin that is needed to provide the Functional Unit.
+In the case of cloud instances, using te BoaviztAPI for evaluation, the Functional Unit would probably look like "using an instance of type/family X during N hours, with a load average of Z%".
+To be complete regarding the impact of such an FU, we should of course account for a share of the bare metal servers used to provide the instance, but also :
+- share of network infrastructure dedicated to the same service/FU
+- share of the mutualized infrastructure (servers, network, storage, etc.) used to deliver the service
+- share of the mutualized technical environment (building, cooling, lighting, etc.), allocated thanks to an adequate allocation factor
+
+![Drawing representing the perimeter covered by the cloud/instance route in BoaviztAPI](boaviztapi_cloud_instance_perimeter.webp)
+
+Today the BoaviztAPI only accounts for the share of resources used on the bare metal servers dedicated to the IaaS/instances service.
+
+The drawing above represents in black and plain lines the parts of the impact that are actually accounted for and in gray and dotted lines the ones that remain to be implemented.
+
+The other parts of the impact shall be implemented in a near future, using hypothesis when necessary.
+
 ## Embedded impacts
 
 ### Impacts criteria
@@ -95,7 +112,7 @@ $\text{Instance}_{\text{embedded}} = \text{Server}_{\text{embedded}} \times \fra
 
 Usage impact of cloud instance are measured only from its [consumption profile](../consumption_profile.md). 
 
-## Consumption profile
+### Consumption profile
 
 A cloud instance consumption profile is of the form :
 
