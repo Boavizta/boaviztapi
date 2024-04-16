@@ -36,7 +36,7 @@ To be complete regarding the impact of such an FU, we should of course account f
 - share of the mutualized infrastructure (servers, network, storage, etc.) used to deliver the service
 - share of the mutualized technical environment (building, cooling, lighting, etc.), allocated thanks to an adequate allocation factor
 
-![Drawing representing the perimeter covered by the cloud/instance route in BoaviztAPI](boaviztapi_cloud_instance_perimeter.webp)
+![Drawing representing the perimeter covered by the cloud/instance route in BoaviztAPI](../../assets/boaviztapi_cloud_instance_perimeter.webp)
 
 Today the BoaviztAPI only accounts for the share of resources used on the bare metal servers dedicated to the IaaS/instances service.
 
