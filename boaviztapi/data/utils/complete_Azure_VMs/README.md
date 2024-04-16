@@ -1,5 +1,9 @@
 # Completing and updating Azure VMs data
 
+## Sponsoring
+
+We'd like to thank [GreenPixie](https://greenpixie.com/) who sponsored this PR.
+
 ## Source data
 
 1. Get benchmark data matching instance type to physical CPU : https://learn.microsoft.com/en-us/azure/virtual-machines/linux/compute-benchmark-scores and https://learn.microsoft.com/en-us/azure/virtual-machines/windows/compute-benchmark-scores, save as `instances_azure_linux.csv` and `instances_azure_windows.csv`
@@ -24,6 +28,8 @@
 - [ ] GPU allocated to virtual machines are not properly filled, fis this
 - [ ] update references count alongside the workflow to identify data losses
 - [ ] Remove double references to the same instance aggregated in fill_server.py
+- [ ] Update with dasv6 instances
+- [x] Add SSD/HDD basic hypothesis for platforms (underlying servers and infrastructure) in servers.csv
 
 ## Sources / To-read-list
 
