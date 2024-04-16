@@ -96,7 +96,6 @@ done < <(tail -n +2 tmp_hosts_lowercased.csv)
 # Scraped data for M series from Memory Optimized SKUs page : https://learn.microsoft.com/en-us/azure/virtual-machines/dedicated-host-memory-optimized-skus
 csvcut -c 1,2 tmp_instances_matched_with_hosts.csv >| tmp_instance_host_from_matching.csv
 cat tmp_instance_host_from_matching.csv m_series_host_instances.csv | sed "s/ /_/g" >| instance_host.csv
-cat manual_instance_host.csv | tr "[:upper:]" "[:lower:]" | sed "s/ /_/g" >> manual_instance_host_cleaned.csv
 
 # Generate file with unmatched instances from benchmarks based on instance_host.csv
 

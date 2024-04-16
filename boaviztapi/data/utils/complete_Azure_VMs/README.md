@@ -29,6 +29,7 @@ We'd like to thank [GreenPixie](https://greenpixie.com/) who sponsored this PR.
 - [ ] update references count alongside the workflow to identify data losses
 - [ ] Remove double references to the same instance aggregated in fill_server.py
 - [ ] Update with dasv6 instances
+- [ ] Update with A and B instances missing
 - [x] Add SSD/HDD basic hypothesis for platforms (underlying servers and infrastructure) in servers.csv
 
 ## Sources / To-read-list

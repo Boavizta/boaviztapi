@@ -3,6 +3,7 @@
 import pandas as pd
 from pprint import pprint
 import re
+from math import ceil
 
 target_data = pd.DataFrame({
     "id": [],
@@ -155,13 +156,13 @@ def get_instances_per_host(instances_host_mapping, host_name):
         else:
             ssd_sto_value = 0
         # if we also have NVMe local ssd storage for the instance, add it to ssd_sto
-        data_from_manual_mapping = manual_instances_host_mapping[manual_instances_host_mapping["instance"] == instance]
+        data_from_manual_mapping = manual_instances_host_mapping[manual_instances_host_mapping["instance"] == instance.replace("standard_", "")]
         if len(data_from_manual_mapping.index) > 0:
             if data_from_manual_mapping["nvme_units"].values[0] != "NaN" and data_from_manual_mapping["nvme_units"].values[0] > 0:
                 if data_from_manual_mapping["nvme_capacity"].values[0] != "NaN" and data_from_manual_mapping["nvme_capacity"].values[0] > 0:
                     ssd_sto_value = float(ssd_sto_value) + float(data_from_manual_mapping["nvme_units"].values[0]) * float(data_from_manual_mapping["nvme_capacity"].values[0])
         else:
-            print("Couldn't find {} in manual_instance_mapping".format(instance))
+            print("Couldn't find {} in manual_instance_mapping".format(instance.replace("standard_", "")))
         # if we have so bad data that we don't know at least for vcpus and memory, discard the instance
         if len(vcpus.index) > 0 or len(mem.index) > 0:
             instances_data = pd.concat(
@@ -198,33 +199,42 @@ def get_disks_per_platform(platform_data, instances_per_host):
             "capacity": 0
         }
     }
-    # if we have the max number of instance per host
-
-
+    ssd_sto_platform = 0
+    hdd_sto_platform = 0
+    # if we have the max number of instance per host in the manual mapping data
+    manual_data = manual_instances_host_mapping[manual_instances_host_mapping["host"] == platform_data["id"].lower()]
+    if len(manual_data.index) > 0:
+        for i in manual_data[["instance", "host", "nbinstancesmax"]].iterrows():
+            if float(i[1]["nbinstancesmax"]) > 0.0:
+                instance_data = instances_per_host[instances_per_host["id"] == i[1]["instance"]]
+                if len(instance_data["ssd_storage"].index) > 0 and instance_data["ssd_storage"].values[0] * i[1]["nbinstancesmax"] > ssd_sto_platform:
+                    ssd_sto_platform = float(instance_data["ssd_storage"].values[0]) * float(i[1]["nbinstancesmax"])
+    else: 
     #  else get instance with highest vcpus count
-    #max_vcpu_instances = instances_per_host[instances_per_host["vcpu"]==instances_per_host["vcpu"].max()]
-    #if len(max_vcpu_instances.index) > 0:
-    #    max_vcpus_per_instance = max_vcpu_instances["vcpu"].values[0]
-    #    # divide the maximum vcpus count of the host by this max instance vcpus
-    #    max_vcpus_on_host = int(platform_data["vcpus"])
-    #    ratio = max_vcpus_on_host / float(max_vcpus_per_instance)
-    #    # to get how many vms of this type can run on the host : nb_{i}_on_{h}
-    #    # get ssd and hdd units and capacity for this instance
-    #    # multiply those values by nb_{i}_on_{h}, apply to res, return
-    #    ssd_sto_platform = ratio * max_vcpu_instances["ssd_storage"].values[0]
-    #    hdd_sto_platform = ratio * max_vcpu_instances["hdd_storage"].values[0]
-    #    # As we don't have better information so far regarding underlying storage infrastructure, we use an
-    #    # empirical hypothesis that SSD drives are most probably bigger than 2TB and HDD drives bigger than 4TB
-    #    res["ssd"]["units"] = round(ssd_sto_platform / 2048.0 + 1.0)
-    #    if res["ssd"]["units"] > 0:
-    #        res["ssd"]["capacity"] = 2048
-    #    else:
-    #        res["ssd"]["capacity"] = 0
-    #    res["hdd"]["units"] = round(hdd_sto_platform / 4096.0 + 1.0)
-    #    if res["hdd"]["units"] > 0:
-    #        res["hdd"]["capacity"] = 4096
-    #    else:
-    #        res["hdd"]["capacity"] = 0
+        max_vcpu_instances = instances_per_host[instances_per_host["vcpu"]==instances_per_host["vcpu"].max()]
+        if len(max_vcpu_instances.index) > 0:
+            max_vcpus_per_instance = max_vcpu_instances["vcpu"].values[0]
+            # divide the maximum vcpus count of the host by this max instance vcpus
+            max_vcpus_on_host = int(platform_data["vcpus"])
+            ratio = max_vcpus_on_host / float(max_vcpus_per_instance)
+            # to get how many vms of this type can run on the host : nb_{i}_on_{h}
+            # get ssd and hdd units and capacity for this instance
+            # multiply those values by nb_{i}_on_{h}, apply to res, return
+            ssd_sto_platform = ratio * max_vcpu_instances["ssd_storage"].values[0]
+            hdd_sto_platform = ratio * max_vcpu_instances["hdd_storage"].values[0]
+            # As we don't have better information so far regarding underlying storage infrastructure, we use an
+            # empirical hypothesis that SSD drives are most probably bigger than 2TB and HDD drives bigger than 4TB
+    # whatever the source of information we consider at least 2TB capacity per drive
+    res["ssd"]["units"] = ceil(ssd_sto_platform / 2048.0)
+    if res["ssd"]["units"] > 0:
+        res["ssd"]["capacity"] = 2048
+    else:
+        res["ssd"]["capacity"] = 0
+    res["hdd"]["units"] = ceil(hdd_sto_platform / 4096.0)
+    if res["hdd"]["units"] > 0:
+        res["hdd"]["capacity"] = 4096
+    else:
+        res["hdd"]["capacity"] = 0
     return res
 
 cpu_specs = pd.read_csv(source_cpu_spec_file)
