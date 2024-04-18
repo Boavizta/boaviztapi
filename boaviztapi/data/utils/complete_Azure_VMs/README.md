@@ -15,6 +15,12 @@ We'd like to thank [GreenPixie](https://greenpixie.com/) who sponsored this PR.
 
 ![Updating Azure's data in BoaviztAPI workflow](azure_update_workflow.webp)
 
+Then, we (as of now) manually update the Azure specific servers/platforms in data/archetypes/server.csv and instances in data/archetypes/cloud/azure.csv.
+
+Next, run a local version of BoaviztAPI by running `docker build -t boaviztapi-dev . && docker run -p "5000:5000" -t boaviztapi-dev` at the root of the project, building the container with the freshly generated data.
+
+Next, run the `generate_impact_azure.py` script, in the data/utils/complete_Azure/VMs folder (this one), to get the new generated result.csv file.
+
 ## Hypothesis, choices and caveats
 
 - We tried to get the widest instance families coverage possible, mixing data from several places in Microsoft Azure documentation and vantage website. While this seems a nice approach to be as complete as it can be, this may lead to incoherent data and mistakes while mixing data from different source for the same instance or physical host.
