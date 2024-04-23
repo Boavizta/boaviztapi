@@ -72,7 +72,7 @@ with:
 | $\text{SSD}_\text{embedded_die}^\text{pe}$     | MJ/cm2      | 27.30    |
 | $\text{SSD}_\text{embedded_base}^\text{gwp}$   | kgCO2eq     | 6.34     |
 | $\text{SSD}_\text{embedded_base}^\text{adp}$   | kgSbeq      | 5.63E-04 |
-| $\text{SSD}_\text{embedded_base}^\text{pe}$    | MJ          | 76.90    |
+| $\text{SSD}_\text{embedded_base}^\text{pe}$    | MJ          | 73.98    |
 
 !!!info
     If there are more than 1 SDD we multiply $\text{SSD}_\text{embedded}^\text{criteria}$ by the number of SSD given in `units`.

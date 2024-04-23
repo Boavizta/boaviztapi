@@ -46,7 +46,7 @@ The HDD disk manufacturing impact is considered as a constant.
 
 | Constant                                      | Unit    | Value    |
 |-----------------------------------------------|---------|----------|
-| $\text{HDD}_{\text{embedded}}^{\text{gwp}}$   | kgCO2eq | 31.10    |
+| $\text{HDD}_{\text{embedded}}^{\text{gwp}}$   | kgCO2eq | 31.11    |
 | $\text{HDD}_{\text{embedded}}^{\text{adp}}$   | kgSbeq  | 2.50E-04 |
 | $\text{HDD}_{\text{embedded}}^{\text{pe}}$    | MJ      | 276.00   |
 
