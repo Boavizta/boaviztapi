@@ -15,6 +15,8 @@ All available servers are stored in a CSV file named `servers.csv` located at `b
 | CPU.name [^1]                 |               |       | CPU name                         |                         |
 | CPU.core_units                |               | unit  | Number of CPU cores per CPU      | 24                      |
 | CPU.die_size_per_core         |               | mm²   | Die size per CPU core            | 8                       |
+| CPU.die_size                  |               | mm²   | Die size per CPU                 | 500                     |
+| CPU.tdp                       |               | Watt  | Thermal design power  (in watt)  | 150                     |
 | CPU.vcpu                      |               | unit  | Number of vCPU per CPU           | 32                      |
 | RAM.units                     | **Required**  | unit  | Number of RAM                    | 1                       |
 | RAM.capacity                  |               | GB    | RAM quantity                     | 1000                    |

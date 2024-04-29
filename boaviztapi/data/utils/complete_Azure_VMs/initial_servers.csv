@@ -1,0 +1,138 @@
+id,manufacturer,CASE.case_type,CPU.units,CPU.core_units,CPU.die_size,CPU.die_size_per_core,CPU.tdp,CPU.name,CPU.vcpu,RAM.units,RAM.capacity,SSD.units,SSD.capacity,HDD.units,HDD.capacity,GPU.units,GPU.name,GPU.memory_capacity,POWER_SUPPLY.units,POWER_SUPPLY.unit_weight,USAGE.time_workload,USAGE.use_time_ratio,USAGE.hours_life_time,USAGE.other_consumption_ratio,WARNINGS
+platform_compute_low,,rack,2,8;8;16,,,,,,4;2;8,16,1;1;1,100,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic compute platform
+platform_compute_medium,,rack,2,24;16;48,,,,,,8;6;10,32,1;1;2,1000,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic compute platform
+platform_compute_high,,rack,2,48;32;96,,,,,,8;6;12,64,2;1;2,2000,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic compute platform
+platform_memory_low,,rack,2,8;8;16,,,,,,10;8;16,64,1;1;1,100,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic memory platform
+platform_memory_medium,,rack,2,24;16;40,,,,,,16;16;20,64,1;1;2,1000,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic memory platform
+platform_memory_high,,rack,2,40;32;48,,,,,,20;20;24,64,2;1;2,2000,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic memory platform
+platform_ssdstorage_low,,rack,2,18;16;24,,,,,,12;8;16,32,8;6;8,2000,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic SSD storage platform
+platform_ssdstorage_medium,,rack,2,24;24;32,,,,,,16;16;20,32,8;6;8,4000,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic SSD storage platform
+platform_ssdstorage_high,,rack,2,32;24;48,,,,,,16;12;18,64,8;6;8,8000,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic SSD storage platform
+platform_hddstorage_low,,rack,2,16;10;20,,,,,,8;8;16,32,0,0,8;8;12,2000,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic HDD storage platform
+platform_hddstorage_medium,,rack,2,18;12;24,,,,,,12;8;16,32,0,0,24;18;24,2000,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic HDD storage platform
+platform_hddstorage_high,,rack,2,24;18;32,,,,,,12;8;16,64,0,0,24;18;24,14000,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic HDD storage platform
+platfom_gpucompute_low,,rack,2,24;18;32,,,,,,12;10;16,32,1;1;1,100,0,0,8,,16,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic GPU compute platform
+platfom_gpucompute_medium,,rack,2,24;18;48,,,,,,12;10;16,64,1;1;2,1000,0,0,8,,24,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic GPU compute platform
+platfom_gpucompute_high,,rack,2,24;18;48,,,,,,12;10;16,64,2;1;2,2000,0,0,8,,32,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic GPU compute platform
+platfom_gpucompute_veryhigh,,rack,2,24;18;48,,,,,,14;10;18,64,2;1;2,2000,0,0,8,,80,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,Using generic GPU compute platform
+dellR740,Dell,rack,2,24,,24.5,,,96,12,32,1,400,,,,,,2;1;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,
+a1.metal,AWS,rack,1,,,,,Annapurna Labs Graviton,,2,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c5.18xlarge,AWS,rack,2,,,,,Intel Xeon Platinum 8124M,,12,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c5.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8275CL,,12,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c5a.24xlarge,AWS,rack,1,,,,,AMD EPYC 7R32,,12,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c5ad.24xlarge,AWS,rack,1,,,,,AMD EPYC 7R32,,12,16,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c5d.18xlarge,AWS,rack,2,,,,,Intel Xeon Platinum 8124M,,12,16,2,900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c5d.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8275CL,,12,16,4,900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c5n.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8124M,,12,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c6g.metal,AWS,rack,1,,,,,Annapurna Labs Graviton2,,8,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c6gd.metal,AWS,rack,1,,,,,Annapurna Labs Graviton2,,8,16,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c6gn.16xlarge,AWS,rack,1,,,,,Annapurna Labs Graviton2,,8,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+g2.8xlarge,AWS,rack,2,,,,,Intel Xeon E5-2670,,15,4,2,120,0,0,4,K520,4,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+g4dn.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8259CL,,12,32,2,900,0,0,8,T4,16,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+hs1.8xlarge,AWS,rack,2,,,,,Intel Xeon E5-2670,,61,4,0,0,2,2000,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+i3.metal,AWS,rack,2,,,,,Intel Xeon E5-2686 v4,,16,32,8,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+i3en.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8175M,,24,32,8,7500,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+inf1.24xlarge,AWS,rack,2,,,,,Intel Xeon Platinum 8275CL,,6,32,0,0,0,0,16,AWS Inferentia,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m5.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8175M,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m5a.24xlarge,AWS,rack,2,,,,,AMD EPYC 7571,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m5ad.24xlarge,AWS,rack,2,,,,,AMD EPYC 7571,,12,32,4,900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m5d.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8175M,,12,32,4,900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m5dn.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8259CL,,12,32,4,900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m5n.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8259CL,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m5zn.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8252C,,12,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m6g.metal,AWS,rack,1,,,,,Annapurna Labs Graviton2,,8,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m6gd.metal,AWS,rack,1,,,,,Annapurna Labs Graviton2,,8,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+mac1.metal,AWS,rack,1,,,,,Intel Core i7-8700B,,1,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+p3dn.24xlarge,AWS,rack,2,,,,,Intel Xeon Platinum 8175M,,24,32,2,900,0,0,8,Tesla V100,32,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+p4d.24xlarge,AWS,rack,2,,,,,Intel Xeon Platinum 8275CL,,36,32,1,8000,0,0,8,Tesla A100,40,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r5.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8175M,,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r5a.24xlarge,AWS,rack,2,,,,,AMD EPYC 7571,,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r5ad.24xlarge,AWS,rack,2,,,,,AMD EPYC 7571,,24,32,4,900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r5b.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8259CL,,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r5d.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8259CL,,24,32,4,900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r5dn.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8259CL,,24,32,4,900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r5n.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8259CL,,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r6g.metal,AWS,rack,1,,,,,Annapurna Labs Graviton2,,16,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r6gd.metal,AWS,rack,1,,,,,Annapurna Labs Graviton2,,16,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+ra3.16xlarge,AWS,rack,2,,,,,Intel Xeon E5-2676 v3,,12,32,0,64000,6,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+u-12tb1.metal,AWS,rack,8,,,,,Intel Xeon Platinum 8176M,,96,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+u-18tb1.metal,AWS,rack,8,,,,,Intel Xeon Platinum 8176M,,96,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+u-24tb1.metal,AWS,rack,8,,,,,Intel Xeon Platinum 8176M,,96,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+u-6tb1.metal,AWS,rack,8,,,,,Intel Xeon Platinum 8176M,,96,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+u-9tb1.metal,AWS,rack,8,,,,,Intel Xeon Platinum 8176M,,96,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+x1.32xlarge,AWS,rack,4,,,,,Intel Xeon E7-8880 v3,,61,32,2,1920,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+x1e.32xlarge,AWS,rack,4,,,,,Intel Xeon E7-8880 v3,,61,64,2,1920,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+x2gd.metal,AWS,rack,1,,,,,Annapurna Labs Graviton2,,16,64,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+z1d.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8151,,12,32,2,900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m6a.metal,AWS,rack,2,,,,,AMD EPYC 7R13,,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;111,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c6a.metal,AWS,rack,2,,,,,AMD EPYC 7R13,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c6i.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,8,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c6id.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,8,32,4,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c6in.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,8,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c7a.metal-48xl,AWS,rack,2,,,,,AMD EPYC 9R14,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c7g.metal,AWS,rack,1,,,,,Annapurna Labs Graviton3,,4,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c7gd.16xlarge,AWS,rack,1,,,,,Annapurna Labs Graviton3,,4,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c7gn.16xlarge,AWS,rack,1,,,,,Annapurna Labs Graviton3E,,4,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c7i.48xlarge,AWS,rack,6,,,,,Intel Xeon Platinum 8488C,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+g5.48xlarge,AWS,rack,2,,,,,AMD EPYC 7R32,,24,32,2,3800,0,0,8,NVIDIA A10G,24,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+g5g.metal,AWS,rack,1,,,,,Annapurna Labs Graviton2,,4,32,0,0,0,0,2,NVIDIA T4G Tensor Core,16,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+hpc7g.16xlarge,AWS,rack,1,,,,,Annapurna Labs Graviton3,,4,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+i4g.16xlarge,AWS,rack,1,,,,,Annapurna Labs Graviton2,,16,32,4,3750,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+i4i.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,32,32,8,3750,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+im4gn.16xlarge,AWS,rack,1,,,,,Annapurna Labs Graviton2,,8,32,4,7500,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+inf2.48xlarge,AWS,rack,2,,,,,AMD EPYC 7R13,,24,32,0,0,0,0,12,AWS Inferentia2,32,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+is4gen.8xlarge,AWS,rack,0,,,,,Annapurna Labs Graviton2,,6,32,4,7500,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m6i.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,16,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m6id.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,16,32,4,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m6idn.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,16,32,4,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m6in.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,16,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m7a.metal-48xl,AWS,rack,2,,,,,AMD EPYC 9R14,,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m7g.metal,AWS,rack,1,,,,,Annapurna Labs Graviton3,,8,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+m7i.48xlarge,AWS,rack,2,,,,,Intel Xeon Platinum 8488C,,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+mac2.metal,AWS,rack,1,,,,,Apple M1,,1,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+p4de.24xlarge,AWS,rack,2,,,,,Intel Xeon Platinum 8275CL,,36,32,8,1000,0,0,8,NVIDIA A100,80,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+p5.48xlarge,AWS,rack,2,,,,,AMD EPYC 7R13,,64,32,8,3800,0,0,8,NVIDIA H100,80,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r6a.metal,AWS,rack,2,,,,,AMD EPYC 7R13,,48,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r6i.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,32,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r6id.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,32,32,4,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r6idn.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,32,32,4,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r6in.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,32,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r7a.metal-48xl,AWS,rack,2,,,,,AMD EPYC 9R14,,48,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r7g.metal,AWS,rack,1,,,,,Annapurna Labs Graviton3,,16,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r7gd.16xlarge,AWS,rack,1,,,,,Annapurna Labs Graviton3,,16,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+r7iz.32xlarge,AWS,rack,2,,,,,Intel Xeon Gold 6455B,,32,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+trn1.32xlarge,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,16,32,4,1900,0,0,16,AWS Inferentia,32,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+vt1.24xlarge,AWS,rack,2,,,,,Intel Xeon Platinum 8259CL,,6,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+x2idn.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,64,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+x2iedn.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8375C,,128,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+x2iezn.metal,AWS,rack,2,,,,,Intel Xeon Platinum 8252C,,48,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_c1,AWS,rack,2,,,,,Intel Xeon E5-2651 v2,,21,2,4,420,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_c3,AWS,rack,2,,,,,Intel Xeon E5-2680 v2,,30,2,2,320,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_c4,AWS,rack,2,,,,,Intel Xeon E5-2666 v3,,30,2,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_cc2,AWS,rack,2,,,,,Intel Xeon E5-2670,,30,2,4,840,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_cr1,AWS,rack,2,,,,,Intel Xeon E5-2670,,61,4,2,120,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_d2,AWS,rack,2,,,,,Intel Xeon E5-2676 v3,,61,4,0,0,24,2000,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_d3,AWS,rack,2,,,,,Intel Xeon Platinum 8259CL,,8,32,0,0,24,2000,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_d3en,AWS,rack,2,,,,,Intel Xeon Platinum 8259CL,,6,32,0,0,24,14000,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_dc2,AWS,rack,2,,,,,Intel Xeon E5-2670 v2,,61,4,2,2560,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_dl1,AWS,rack,2,,,,,Intel Xeon Platinum 8275CL,,24,32,4,1000,0,0,8,Intel Gaudi,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_ds2,AWS,rack,2,,,,,Intel Xeon E5-2676 v3,,61,4,0,0,1,16000,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_f1,AWS,rack,2,,,,,Intel Xeon E5-2686 v4,,61,16,1,940,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_g4ad,AWS,rack,1,,,,,AMD EPYC 7R32,,12,32,1,2400,0,0,4,Radeon Pro V520,16,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_h1,AWS,rack,2,,,,,Intel Xeon E5-2686 v4,,8,32,0,0,8,2000,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_i2,AWS,rack,2,,,,,Intel Xeon E5-2670 v2,,61,4,8,800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_m2,AWS,rack,2,,,,,Intel Xeon E5-2665,,35,8,2,840,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_m3,AWS,rack,2,,,,,Intel Xeon E5-2670,,30,8,2,80,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_m4-a,AWS,rack,2,,,,,Intel Xeon E5-2686 v4,,8,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_m4-b,AWS,rack,2,,,,,Intel Xeon E5-2676 v3,,8,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_m5-b,AWS,rack,2,,,,,Intel Xeon Platinum 8259CL,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_p2,AWS,rack,2,,,,,Intel Xeon E5-2686 v4,,183,4,0,0,0,0,16,Tesla K80,24,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_p3,AWS,rack,2,,,,,Intel Xeon E5-2686 v4,,24,32,0,0,0,0,8,Tesla V100,32,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_r3,AWS,rack,2,,,,,Intel Xeon E5-2670 v2,,61,4,2,320,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_r4,AWS,rack,2,,,,,Intel Xeon E5-2686 v4,,61,8,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_t1,AWS,rack,2,,,,,Intel Xeon E5-2670,,18,8,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_t2-a,AWS,rack,2,,,,,Intel Xeon E5-2676 v3,,9,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_t2-b,AWS,rack,2,,,,,Intel Xeon E5-2686 v4,,36,8,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_t3,AWS,rack,2,,,,,Intel Xeon Platinum 8175M,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_t3a,AWS,rack,2,,,,,AMD EPYC 7571,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_t4g,AWS,rack,1,,,,,Annapurna Labs Graviton2,,8,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
