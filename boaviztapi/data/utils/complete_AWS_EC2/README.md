@@ -1,4 +1,4 @@
-# Completing and updating Azure VMs data
+# Completing and updating AWS VMs data
 
 ## Source data
 
