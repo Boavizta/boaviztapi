@@ -126,6 +126,24 @@ cloud_provider_description = "# ✔ ️Cloud instance impacts from provider, ins
                              "* 📈 Modeled\n\n" \
                              "📋 Archetype : The configuration is set by the API, only usage is given by the user\n\n" \
                              "⏬ Allocation"
+                             #TODO fix path to all instances route in swagger
+
+cloud_block_storage_description = "# ✔ ️Cloud block storage impacts from provider, instance type and usage \n" \
+                             "Retrieve the impacts of a given block storage volume.\n\n" \
+                             "### Features\n\n" \
+                             "📋 Provider \n\n" \
+                             "Name of the cloud provider. You can retrieve the [list here](" \
+                             "#/cloud_instance/server_get_all_cloud_providers).\n\n" \
+                             "📋 Volume type \n\n" \
+                             "Name of the chosen storage volume type. You can retrieve the [list here](" \
+                             "#/cloud/).\n\n" \
+                             "👄 Verbose\n\n" \
+                             "🔨 Embedded\n\n" \
+                             "🔌 Usage \n\n" \
+                             "* 📈 Modeled\n\n" \
+                             "📋 Archetype : The configuration is set by the API, only usage is given by the user\n\n" \
+                             "⏬ Allocation"
+                             #TODO add route to storage volume types list
 
 all_default_cloud_instances = "# ✔ ️Get all the available instances for a given Cloud provider\n" \
                               "📜 Return the name of all pre-registered instances for the Cloud provider"

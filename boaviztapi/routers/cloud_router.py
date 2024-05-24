@@ -8,9 +8,9 @@ from fastapi import APIRouter, Query, Body, HTTPException
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device import Cloud
 from boaviztapi.dto.device.device import mapper_cloud_instance
-from boaviztapi.model.services.cloud_instance import ServiceCloudInstance
+from boaviztapi.model.services.cloud_instance import ServiceCloudInstance, ServiceCloudBlockStorageVolume
 from boaviztapi.routers.openapi_doc.descriptions import cloud_provider_description, all_default_cloud_instances, \
-    all_default_cloud_providers, get_instance_config
+    all_default_cloud_providers, get_instance_config, cloud_block_storage_description
 from boaviztapi.routers.openapi_doc.examples import cloud_example
 from boaviztapi.service.archetype import get_cloud_instance_archetype, get_device_archetype_lst
 from boaviztapi.service.impacts_computation import compute_impacts
@@ -89,7 +89,6 @@ async def server_get_all_archetype_name(provider: str = Query(None, example="aws
         raise HTTPException(status_code=404, detail=f"No available data for this cloud provider ({provider})")
     return get_device_archetype_lst(os.path.join(data_dir, 'archetypes/cloud/' + provider + '.csv'))
 
-
 @cloud_router.get('/instance/all_providers',
                   description=all_default_cloud_providers)
 async def server_get_all_provider_name():
@@ -110,5 +109,32 @@ async def cloud_instance_impact(cloud_instance: ServiceCloudInstance,
         return {
             "impacts": impacts,
             "verbose": verbose_cloud(cloud_instance, selected_criteria=criteria, duration=duration)
+        }
+    return {"impacts": impacts}
+
+@cloud_router.get('/block_storage',
+                  description=cloud_block_storage_description)
+async def block_storage_impact(
+        provider: str = Query(config["default_cloud_provider"], example=config["default_cloud_provider"]),
+        storage_type: str = Query("gp3", example="gp3"),
+        verbose: bool = True,
+        duration: Optional[float] = config["default_duration"],
+        criteria: List[str] = Query(config["default_criteria"])
+    ):
+    return cloud_block_storage_volume_impact(ServiceCloudBlockStorageVolume(), verbose, duration, criteria)
+
+async def cloud_block_storage_volume_impact(cloud_block_storage_volume: ServiceCloudBlockStorageVolume,
+                                     verbose: bool,
+                                     duration: Optional[float] = config["default_duration"],
+                                     criteria: List[str] = Query(config["default_criteria"])) -> dict:
+    if duration is None:
+        duration = 3600 #CHANGE this dumb value
+        
+    impacts = compute_impacts(model=cloud_block_storage_volume, selected_criteria=criteria, duration=duration)
+
+    if verbose:
+        return {
+            "impacts": impacts,
+            "verbose": {} #TODO implement verbose_cloud for storage
         }
     return {"impacts": impacts}

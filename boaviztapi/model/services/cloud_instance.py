@@ -26,7 +26,18 @@ class Service(Assessable):
     def usage(self, value: int) -> None:
         self._usage = value
 
+class ServiceCloudBlockStorageVolume(Service):
 
+    def __init__(self, **kwargs):
+        super().__init__(archetype=None, **kwargs)
+
+        self.reserved_capacity = Boattribute(
+            default=50, min=25, max=10000, unit="GB" #TODO change values according to csv files when they exist
+        ) 
+
+        self.storage_type = Boattribute(
+            default="gp3", min="gp3", max="gp3" #TODO change values with archetypes from future csv
+        )
 class ServiceCloudInstance(Service):
     NAME = "CLOUD_INSTANCE"
 
