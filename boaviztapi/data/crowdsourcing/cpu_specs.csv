@@ -1787,3 +1787,4 @@ Intel Xeon Platinum 8259CL,Cascade Lake,,,,,210.0,24.0,48.0,,,,,,,,Intel,Xeon Pl
 Intel Xeon Platinum 8275CL,Cascade Lake,,,,,240.0,24.0,48.0,,,,,,,,Intel,Xeon Platinum,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 Intel Xeon Platinum 8375C,Ice Lake,,,,,300.0,32.0,64.0,,,,,,529.5,Linear regression of cpu_manufacture,Intel,Xeon Platinum,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 Intel Xeon Platinum 8488C,Sapphire Rapids,Xeon Platinum (Sapphire Rapids-SP),Intel,,2.4 GHz,385.0,48.0,96.0,,,,,,,,Intel,Xeon Platinum,
+Intel Xeon 6455B,Sapphire Rapids,Xeon Scalable (Sapphire Rapids),Intel,2023-10-16,3.9 GHz,350.0,32.0,64.0,,7.0,,,,,,Intel,Xeon, https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit?gid=1498560972#gid=1498560972
