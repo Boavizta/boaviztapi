@@ -142,7 +142,7 @@ def test_verbose_component_ssd(empty_ssd_model):
                             'use': 'not implemented'},
                     'pe': {'description': 'Consumption of primary energy',
                            'embedded': {'max': 1365000.0,
-                                        'min': 2807.0,
+                                        'min': 2804.0,
                                         'value': 600.0,
                                         'warnings': ['End of life is not included in '
                                                      'the calculation',

@@ -679,7 +679,7 @@ async def test_wrong_manuf_ssd():
                                               'use': 'not implemented'},
                                       'pe': {'description': 'Consumption of primary energy',
                                              'embedded': {'max': 1365000.0,
-                                                          'min': 2807.0,
+                                                          'min': 2804.0,
                                                           'value': 600.0,
                                                           'warnings': ['End of life is not included in '
                                                                        'the calculation',
@@ -714,9 +714,9 @@ async def test_complete_ssd():
                                               'unit': 'kgCO2eq',
                                               'use': 'not implemented'},
                                       'pe': {'description': 'Consumption of primary energy',
-                                             'embedded': {'max': 292.7,
-                                                          'min': 292.7,
-                                                          'value': 292.7,
+                                             'embedded': {'max': 289.8,
+                                                          'min': 289.8,
+                                                          'value': 289.8,
                                                           'warnings': ['End of life is not included in the '
                                                                        'calculation']},
                                              'unit': 'MJ',
@@ -752,7 +752,7 @@ async def test_empty_ssd():
                                               'use': 'not implemented'},
                                       'pe': {'description': 'Consumption of primary energy',
                                              'embedded': {'max': 1365000.0,
-                                                          'min': 2807.0,
+                                                          'min': 2804.0,
                                                           'value': 600.0,
                                                           'warnings': ['End of life is not included in the '
                                                                        'calculation',

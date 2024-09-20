@@ -124,7 +124,7 @@ async def test_empty_usage_with_url_params_r5ad():
             ImpactOutput(11170.0, 214.0, 4000.0),
         ),
         PEImpact(
-            ImpactOutput(21470.0, 7596.0, 13000.0, END_OF_LIFE_WARNING),
+            ImpactOutput(21470.0, 7590.0, 13000.0, END_OF_LIFE_WARNING),
             ImpactOutput(5808000.0, 121.0, 100000.0),
         ),
     )
@@ -278,7 +278,7 @@ async def test_verbose_output_with_empty_usage():
             ImpactOutput(11170.0, 214.0, 4000.0),
         ),
         PEImpact(
-            ImpactOutput(21470.0, 7596.0, 13000.0, END_OF_LIFE_WARNING),
+            ImpactOutput(21470.0, 7590.0, 13000.0, END_OF_LIFE_WARNING),
             ImpactOutput(5808000.0, 121.0, 100000.0),
         ),
         verbose_output={
@@ -393,7 +393,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": 32,
                     "min": 32,
                     "source": "Completed from name name based on "
-                              "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+                    "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
                     "status": "COMPLETED",
                     "value": 32,
                 },
@@ -410,7 +410,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": "Naples",
                     "min": "Naples",
                     "source": "Completed from name name based on "
-                              "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+                    "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
                     "status": "COMPLETED",
                     "value": "Naples",
                 },
@@ -418,7 +418,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": 0.9,
                     "min": 0.023,
                     "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149: \n"
-                              "Average of 27 european countries",
+                    "Average of 27 european countries",
                     "status": "DEFAULT",
                     "unit": "kg CO2eq/kWh",
                     "value": 0.38,
@@ -476,7 +476,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": "AMD",
                     "min": "AMD",
                     "source": "Completed from name name based on "
-                              "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+                    "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
                     "status": "COMPLETED",
                     "value": "AMD",
                 },
@@ -484,7 +484,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": "EPYC",
                     "min": "EPYC",
                     "source": "Completed from name name based on "
-                              "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+                    "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
                     "status": "COMPLETED",
                     "value": "EPYC",
                 },
@@ -517,7 +517,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": 200,
                     "min": 200,
                     "source": "Completed from name name based on "
-                              "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+                    "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
                     "status": "COMPLETED",
                     "unit": "W",
                     "value": 200,
@@ -526,7 +526,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": 64,
                     "min": 64,
                     "source": "Completed from name name based on "
-                              "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+                    "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
                     "status": "COMPLETED",
                     "value": 64,
                 },
@@ -694,7 +694,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": 0.9,
                     "min": 0.023,
                     "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149: \n"
-                              "Average of 27 european countries",
+                    "Average of 27 european countries",
                     "status": "DEFAULT",
                     "unit": "kg CO2eq/kWh",
                     "value": 0.38,
@@ -867,7 +867,7 @@ async def test_verbose_output_with_empty_usage():
                 "max": 0.9,
                 "min": 0.023,
                 "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149: \n"
-                          "Average of 27 european countries",
+                "Average of 27 european countries",
                 "status": "DEFAULT",
                 "unit": "kg CO2eq/kWh",
                 "value": 0.38,

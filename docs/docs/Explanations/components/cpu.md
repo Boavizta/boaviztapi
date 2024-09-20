@@ -81,9 +81,9 @@ with:
 
 | Constant                                         | Units       | Value    |
 |--------------------------------------------------|-------------|----------|
-| $\text{CPU}_\text{embedded_die}^{\text{gwp}}$    | kgCO2eq/cm2 | 1.97     |
-| $\text{CPU}_\text{embedded_die}^{\text{adp}}$    | kgSbeq/cm2  | 5.80E-07 |
-| $\text{CPU}_\text{embedded_die}^{\text{pe}}$     | MJ/cm2      | 26.50    |
+| $\text{CPU}_\text{embedded_die}^{\text{gwp}}$    | kgCO2eq/mm2 | 1.97e−02 |
+| $\text{CPU}_\text{embedded_die}^{\text{adp}}$    | kgSbeq/mm2  | 5.87e-09 |
+| $\text{CPU}_\text{embedded_die}^{\text{pe}}$     | MJ/mm2      | 0.265    |
 | $\text{CPU}_\text{embedded_base}^{\text{gwp}}$   | kgCO2eq     | 9.14     |
 | $\text{CPU}_\text{embedded_base}^{\text{adp}}$   | kgSbeq      | 2.04E-02 |
 | $\text{CPU}_\text{embedded_base}^{\text{pe}}$    | MJ          | 156.00   |

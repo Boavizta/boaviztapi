@@ -38,14 +38,14 @@
     "impact": 156.00
   },
   "adp": {
-    "die_impact": 5.80e-09,
+    "die_impact": 5.87e-09,
     "impact": 2.04e-02
   }
 }
 
 "hdd": {
   "gwp": {
-    "impact": 31.10
+    "impact": 31.11
   },
   "pe": {
     "impact": 276.00
@@ -101,7 +101,7 @@
   },
   "pe": {
     "die_impact": 27.30,
-    "impact": 76.90
+    "impact": 73.98
   },
   "adp": {
     "die_impact": 6.30e-05,
