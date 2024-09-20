@@ -7,8 +7,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-pydantic = '^1.10'
-fastapi = '^0.95'
+pydantic = "^2.9.2"
+fastapi = "^0.115.0"
 uvicorn = '^0.22'
 pandas = '^2.0'
 aiofile = '^3.8'
