@@ -915,3 +915,55 @@ async def test_verbose_output_with_empty_usage():
     )
 
     await test.check_result()
+
+
+@pytest.mark.asyncio
+async def test_empty_usage_e8ads_v5():
+    test = CloudTest(
+        CloudInstanceRequest("azure", "e8ads_v5"),
+        ADPImpact(
+            ImpactOutput(0.02211, 0.0127, 0.0163, END_OF_LIFE_WARNING),
+            ImpactOutput(0.0006984, 2.603e-05, 0.00014),
+        ),
+        GWPImpact(
+            ImpactOutput(291.7, 108.2, 170.0, END_OF_LIFE_WARNING),
+            ImpactOutput(2367.0, 45.36, 800.0),
+        ),
+        PEImpact(
+            ImpactOutput(3713.0, 1400.0, 2200.0, END_OF_LIFE_WARNING),
+            ImpactOutput(1231000.0, 25.64, 30000.0, UNCERTAINTY_WARNING),
+        ),
+    )
+
+    await test.check_result()
+
+
+@pytest.mark.asyncio
+async def test_usage_with_complex_time_workload_e8ads_v5():
+    test = CloudTest(
+        CloudInstanceRequest(
+            "azure",
+            "e8ads_v5",
+            usage={
+                "time_workload": [
+                    {"time_percentage": 50, "load_percentage": 0},
+                    {"time_percentage": 25, "load_percentage": 60},
+                    {"time_percentage": 25, "load_percentage": 100},
+                ]
+            },
+        ),
+        ADPImpact(
+            ImpactOutput(0.02211, 0.0127, 0.0163, END_OF_LIFE_WARNING),
+            ImpactOutput(0.0006088, 2.269e-05, 0.00012),
+        ),
+        GWPImpact(
+            ImpactOutput(291.7, 108.2, 170.0, END_OF_LIFE_WARNING),
+            ImpactOutput(2063.0, 39.54, 700.0),
+        ),
+        PEImpact(
+            ImpactOutput(3713.0, 1400.0, 2200.0, END_OF_LIFE_WARNING),
+            ImpactOutput(1073000.0, 22.35, 20000.0, UNCERTAINTY_WARNING),
+        ),
+    )
+
+    await test.check_result()
