@@ -8,10 +8,16 @@ on:
     paths:
       - 'boaviztapi/**'
       - 'tests/**'
+      - 'poetry.lock'
+      - 'pyproject.toml'
+      - 'requirements.txt'
   pull_request:
     paths:
       - 'boaviztapi/**'
       - 'tests/**'
+      - 'poetry.lock'
+      - 'pyproject.toml'
+      - 'requirements.txt'
     branches:
       - main
       - dev
