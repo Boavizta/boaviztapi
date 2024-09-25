@@ -1,0 +1,667 @@
+Name,CPU,vCPUs,NUMA Nodes,Memory,Avg Score,StdDev,StdDev%,#Runs
+Standard_F2s_v2,Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz,2,1,4,35925,603,1.68%,308
+Standard_F2s_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,4,35659,344,0.96%,112
+Standard_F4s_v2,Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz,4,1,8,65819,851,1.29%,245
+Standard_F4s_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,8,65683,459,0.70%,98
+Standard_F8s_v2,Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz,8,1,16,136027,1272,0.94%,238
+Standard_F8s_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,16,135829,912,0.67%,91
+Standard_F16s_v2,Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz,16,1,32,271369,1955,0.72%,280
+Standard_F16s_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,32,271236,1325,0.49%,105
+Standard_F32s_v2,Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz,32,1,64,538734,3795,0.70%,245
+Standard_F32s_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,1,64,537915,7646,1.42%,91
+Standard_F48s_v2,Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz,48,2,96,780596,8712,1.12%,182
+Standard_F48s_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,1,96,749662,21751,2.90%,56
+Standard_F64s_v2,Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz,64,2,128,1035424,11557,1.12%,175
+Standard_F64s_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,64,2,128,1023867,17292,1.69%,63
+Standard_F72s_v2,Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz,72,2,144,1126078,12094,1.07%,182
+Standard_F72s_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,72,2,144,1120116,15662,1.40%,42
+Standard_FX4mds,Intel(R) Xeon(R) Gold 6246R CPU @ 3.40GHz,4,1,82.5,77794,711,0.91%,42
+Standard_FX12mds,Intel(R) Xeon(R) Gold 6246R CPU @ 3.40GHz,12,1,247.8,228808,827,0.36%,42
+Standard_FX24mds,Intel(R) Xeon(R) Gold 6246R CPU @ 3.40GHz,24,1,495.8,475203,2142,0.45%,42
+Standard_FX36mds,Intel(R) Xeon(R) Gold 6246R CPU @ 3.40GHz,36,2,744.1,678947,10647,1.57%,42
+Standard_FX48mds,Intel(R) Xeon(R) Gold 6246R CPU @ 3.40GHz,48,2,992.1,899165,12000,1.33%,42
+Standard_B1s,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,1,1,1,18768,429,2.29%,35
+Standard_B1s,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,1,1,1,19725,1258,6.38%,112
+Standard_B1s,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,1,1,1,18287,2316,12.66%,70
+Standard_B1s,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,1,1,1,21992,371,1.69%,21
+Standard_B1ls,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,1,1,0.5,19162,605,3.16%,28
+Standard_B1ls,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,1,1,0.5,19365,810,4.18%,126
+Standard_B1ls,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,1,1,0.5,18780,2840,15.12%,63
+Standard_B1ls,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,1,1,0.5,21954,461,2.10%,21
+Standard_B1ms,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,1,1,2,18167,82,0.45%,14
+Standard_B1ms,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,1,1,2,20113,1188,5.90%,126
+Standard_B1ms,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,1,1,2,18882,2434,12.89%,77
+Standard_B1ms,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,1,1,2,22182,57,0.26%,21
+Standard_B2s,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,2,1,4,36074,431,1.20%,21
+Standard_B2s,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,4,37634,1445,3.84%,119
+Standard_B2s,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,4,37824,5913,15.63%,70
+Standard_B2s,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,4,44147,397,0.90%,28
+Standard_B2ms,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,2,1,8,36338,333,0.92%,28
+Standard_B2ms,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,8,38026,1749,4.60%,119
+Standard_B2ms,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,8,38060,5978,15.71%,70
+Standard_B2ms,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,8,44227,349,0.79%,21
+Standard_B4ms,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,4,1,16,70362,3310,4.70%,28
+Standard_B4ms,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,4,1,16,74405,2647,3.56%,112
+Standard_B4ms,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,4,1,16,71174,8008,11.25%,77
+Standard_B4ms,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,16,85894,1445,1.68%,21
+Standard_B8ms,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,8,1,32,144753,3091,2.14%,35
+Standard_B8ms,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,8,1,32,145027,1460,1.01%,98
+Standard_B8ms,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,8,1,32,138848,11991,8.64%,84
+Standard_B8ms,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,32,170427,2402,1.41%,14
+Standard_B12ms,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,12,1,48,214731,4672,2.18%,28
+Standard_B12ms,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,12,1,48,219383,2213,1.01%,112
+Standard_B12ms,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,12,1,48,202912,17172,8.46%,77
+Standard_B12ms,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,12,1,48,256373,1768,0.69%,21
+Standard_B16ms,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,16,2,64,276669,8921,3.22%,35
+Standard_B16ms,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,16,1,64,294079,3437,1.17%,112
+Standard_B16ms,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,16,1,64,270563,27650,10.22%,70
+Standard_B16ms,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,64,340582,6378,1.87%,21
+Standard_B20ms,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,20,2,80,347156,5967,1.72%,14
+Standard_B20ms,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,20,1,80,363209,3837,1.06%,112
+Standard_B20ms,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,20,1,80,342212,21775,6.36%,91
+Standard_B20ms,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,20,1,80,416103,3337,0.80%,21
+Standard_D2ads_v5,AMD EPYC 7763 64-Core Processor,2,1,7.8,38919,41,0.10%,35
+Standard_D4ads_v5,AMD EPYC 7763 64-Core Processor,4,1,15.6,72644,172,0.24%,35
+Standard_D8ads_v5,AMD EPYC 7763 64-Core Processor,8,1,31.4,153951,552,0.36%,35
+Standard_D16ads_v5,AMD EPYC 7763 64-Core Processor,16,1,62.8,306800,941,0.31%,35
+Standard_D32ads_v5,AMD EPYC 7763 64-Core Processor,32,1,125.8,600925,7721,1.28%,35
+Standard_D48ads_v5,AMD EPYC 7763 64-Core Processor,48,1,188.7,893740,12161,1.36%,35
+Standard_D64ads_v5,AMD EPYC 7763 64-Core Processor,64,1,251.7,1195169,16506,1.38%,35
+Standard_D96ads_v5,AMD EPYC 7763 64-Core Processor,96,2,377.9,1831129,20839,1.14%,35
+Standard_D2as_v5,AMD EPYC 7763 64-Core Processor,2,1,7.8,38869,118,0.30%,35
+Standard_D4as_v5,AMD EPYC 7763 64-Core Processor,4,1,15.6,72928,460,0.63%,35
+Standard_D8as_v5,AMD EPYC 7763 64-Core Processor,8,1,31.4,153842,462,0.30%,35
+Standard_D16as_v5,AMD EPYC 7763 64-Core Processor,16,1,62.8,304560,3347,1.10%,35
+Standard_D32as_v5,AMD EPYC 7763 64-Core Processor,32,1,125.8,599269,8844,1.48%,35
+Standard_D48as_v5,AMD EPYC 7763 64-Core Processor,48,1,188.7,896034,12918,1.44%,35
+Standard_D64as_v5,AMD EPYC 7763 64-Core Processor,64,1,251.7,1195829,16444,1.38%,35
+Standard_D96as_v5,AMD EPYC 7763 64-Core Processor,96,2,377.9,1833797,20117,1.10%,35
+Standard_D2ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,7.8,34926,11,0.03%,56
+Standard_D4ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,15.6,68673,207,0.30%,56
+Standard_D8ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,31.4,136764,489,0.36%,49
+Standard_D16ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,1,62.8,273303,1122,0.41%,56
+Standard_D32ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,32,1,125.8,545658,2409,0.44%,49
+Standard_D48ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,48,1,188.7,813359,5923,0.73%,49
+Standard_D64ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,64,2,251.9,1061667,10151,0.96%,35
+Standard_D96ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,96,2,377.9,1577187,17287,1.10%,56
+Standard_D2d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,7.8,34923,16,0.05%,70
+Standard_D4d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,15.6,68696,234,0.34%,56
+Standard_D8d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,31.4,136791,496,0.36%,42
+Standard_D16d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,1,62.8,273463,1085,0.40%,49
+Standard_D32d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,32,1,125.8,544718,2672,0.49%,49
+Standard_D48d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,48,1,188.7,812195,7150,0.88%,56
+Standard_D64d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,64,2,251.9,1061317,11637,1.10%,42
+Standard_D96d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,96,2,377.9,1579691,19962,1.26%,49
+Standard_D2s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,7.8,32093,2789,8.69%,63
+Standard_D4s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,15.6,67114,3816,5.69%,42
+Standard_D8s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,31.4,129302,9365,7.24%,49
+Standard_D16s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,1,62.8,250482,19982,7.98%,49
+Standard_D32s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,32,1,125.8,500612,33756,6.74%,42
+Standard_D48s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,48,1,188.7,725001,39805,5.49%,35
+Standard_D64s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,64,2,251.9,965147,62581,6.48%,42
+Standard_D96s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,96,2,377.9,1422950,79151,5.56%,35
+Standard_D2_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,7.8,29597,565,1.91%,49
+Standard_D4_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,15.6,66338,3932,5.93%,56
+Standard_D8_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,31.4,121070,8218,6.79%,245
+Standard_D16_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,1,62.8,247579,18327,7.40%,42
+Standard_D32_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,32,1,125.8,475867,11659,2.45%,35
+Standard_D48_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,48,1,188.7,733540,43528,5.93%,35
+Standard_D64_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,64,2,251.9,924146,9983,1.08%,35
+Standard_D96_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,96,2,377.9,1378842,14644,1.06%,35
+Standard_D2as_v4,AMD EPYC 7452 32-Core Processor,2,1,8,38230,313,0.82%,77
+Standard_D4as_v4,AMD EPYC 7452 32-Core Processor,4,1,16,71707,790,1.10%,98
+Standard_D8as_v4,AMD EPYC 7452 32-Core Processor,8,1,32,151474,1599,1.06%,56
+Standard_D16as_v4,AMD EPYC 7452 32-Core Processor,16,2,64,292074,9782,3.35%,91
+Standard_D32as_v4,AMD EPYC 7452 32-Core Processor,32,4,128,575465,14574,2.53%,98
+Standard_D48as_v4,AMD EPYC 7452 32-Core Processor,48,6,192,843316,21739,2.58%,105
+Standard_D64as_v4,AMD EPYC 7452 32-Core Processor,64,8,256,1120467,30714,2.74%,7
+Standard_D2a_v4,AMD EPYC 7452 32-Core Processor,2,1,8,38061,1219,3.20%,119
+Standard_D4a_v4,AMD EPYC 7452 32-Core Processor,4,1,16,70996,2280,3.21%,140
+Standard_D8a_v4,AMD EPYC 7452 32-Core Processor,8,1,32,151379,1946,1.29%,147
+Standard_D16a_v4,AMD EPYC 7452 32-Core Processor,16,2,64,293654,6263,2.13%,161
+Standard_D32a_v4,AMD EPYC 7452 32-Core Processor,32,4,128,571897,16009,2.80%,147
+Standard_D48a_v4,AMD EPYC 7452 32-Core Processor,48,6,192,837332,22923,2.74%,161
+Standard_D64a_v4,AMD EPYC 7452 32-Core Processor,64,8,256,1126793,29148,2.59%,21
+Standard_D96a_v4,AMD EPYC 7452 32-Core Processor,96,12,384,1590434,31887,2.00%,14
+Standard_D2ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,8,35557,740,2.08%,189
+Standard_D4ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,16,65958,788,1.19%,189
+Standard_D8ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,32,135907,1108,0.81%,189
+Standard_D16ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,64,271137,1374,0.51%,189
+Standard_D32ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,1,128,540212,4954,0.92%,189
+Standard_D48ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,1,192,756538,15048,1.99%,154
+Standard_D48ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,2,192,775291,11776,1.52%,35
+Standard_D64ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,64,2,256,1025017,14482,1.41%,182
+Standard_D2d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,8,35640,371,1.04%,189
+Standard_D4d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,16,65767,590,0.90%,189
+Standard_D8d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,32,135756,901,0.66%,189
+Standard_D16d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,64,271216,1630,0.60%,189
+Standard_D32d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,1,128,540052,4426,0.82%,189
+Standard_D48d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,1,192,744246,20864,2.80%,147
+Standard_D48d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,2,192,769702,10800,1.40%,42
+Standard_D64d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,64,2,256,1021118,15896,1.56%,189
+Standard_D2s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,8,35794,578,1.61%,175
+Standard_D4s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,16,65910,668,1.01%,182
+Standard_D8s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,32,135542,835,0.62%,182
+Standard_D16s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,64,271053,1429,0.53%,182
+Standard_D32s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,1,128,539271,8236,1.53%,182
+Standard_D48s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,1,192,743539,18204,2.45%,140
+Standard_D48s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,2,192,772877,9466,1.22%,35
+Standard_D64s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,64,2,256,1024799,15499,1.51%,182
+Standard_D2_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,8,35651,228,0.64%,182
+Standard_D4_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,16,65896,647,0.98%,175
+Standard_D8_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,32,135803,963,0.71%,182
+Standard_D16_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,64,271203,1345,0.50%,182
+Standard_D32_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,1,128,539406,5745,1.07%,182
+Standard_D48_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,1,192,745137,17607,2.36%,154
+Standard_D48_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,2,192,771269,7936,1.03%,28
+Standard_D64_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,64,2,256,1020266,19814,1.94%,182
+Standard_D2s_v3,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,2,1,8,26323,1194,4.54%,35
+Standard_D2s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,8,27724,2091,7.54%,84
+Standard_D2s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,8,26916,1424,5.29%,91
+Standard_D2s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,8,31342,18,0.06%,21
+Standard_D4s_v3,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,4,1,16,50716,1058,2.09%,35
+Standard_D4s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,4,1,16,52445,3515,6.70%,77
+Standard_D4s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,4,1,16,50029,3332,6.66%,91
+Standard_D4s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,16,57991,277,0.48%,35
+Standard_D8s_v3,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,8,1,32,99350,179,0.18%,7
+Standard_D8s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,8,1,32,101053,7572,7.49%,126
+Standard_D8s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,8,1,32,102485,3143,3.07%,56
+Standard_D8s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,32,120003,546,0.46%,35
+Standard_D16s_v3,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,16,1,64,199434,1886,0.95%,35
+Standard_D16s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,16,1,64,196242,5336,2.72%,77
+Standard_D16s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,16,1,64,200086,3164,1.58%,98
+Standard_D16s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,64,239837,1457,0.61%,28
+Standard_D32s_v3,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,32,2,128,389200,3438,0.88%,35
+Standard_D32s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,32,1,128,390983,1845,0.47%,91
+Standard_D32s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,32,1,128,397239,2996,0.75%,77
+Standard_D32s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,1,128,478885,1968,0.41%,35
+Standard_D48s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,48,2,192,571460,4725,0.83%,112
+Standard_D48s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,48,1,192,581930,3357,0.58%,63
+Standard_D48s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,48,2,192,578181,5736,0.99%,35
+Standard_D48s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,1,192,698208,8889,1.27%,28
+Standard_D64s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,64,2,256,761965,4971,0.65%,49
+Standard_D64s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,64,2,256,767645,10497,1.37%,154
+Standard_D64s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,64,2,256,909271,7791,0.86%,28
+Standard_D2_v3,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,2,1,8,25478,977,3.84%,91
+Standard_D2_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,8,26601,1381,5.19%,70
+Standard_D2_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,8,27116,1688,6.23%,70
+Standard_D2_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,8,31352,22,0.07%,7
+Standard_D4_v3,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,4,1,16,49708,2668,5.37%,77
+Standard_D4_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,4,1,16,51650,3799,7.35%,91
+Standard_D4_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,4,1,16,50025,2210,4.42%,70
+Standard_D8_v3,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,8,1,32,100422,1323,1.32%,98
+Standard_D8_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,8,1,32,97861,5903,6.03%,91
+Standard_D8_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,8,1,32,100826,1597,1.58%,42
+Standard_D8_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,32,120063,559,0.47%,7
+Standard_D16_v3,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,16,1,64,198362,2228,1.12%,84
+Standard_D16_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,16,1,64,193498,2080,1.07%,77
+Standard_D16_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,16,1,64,199683,1862,0.93%,63
+Standard_D16_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,64,239145,1767,0.74%,7
+Standard_D32_v3,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,32,2,128,387724,3770,0.97%,63
+Standard_D32_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,32,1,128,388466,9936,2.56%,112
+Standard_D32_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,32,1,128,397605,2423,0.61%,49
+Standard_D32_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,1,128,479158,1356,0.28%,14
+Standard_D48_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,48,2,192,569331,6445,1.13%,140
+Standard_D48_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,48,1,192,578441,6615,1.14%,70
+Standard_D48_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,48,2,192,576459,7500,1.30%,21
+Standard_D48_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,1,192,693147,8980,1.30%,7
+Standard_D64_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,64,2,256,762667,5489,0.72%,42
+Standard_D64_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,64,2,256,766739,7516,0.98%,189
+Standard_D64_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,64,2,256,916549,8944,0.98%,7
+Standard_DS1_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,1,1,3.5,18952,876,4.62%,49
+Standard_DS1_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,1,1,3.5,20066,937,4.67%,70
+Standard_DS1_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,1,1,3.5,19721,1686,8.55%,98
+Standard_DS1_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,1,1,3.5,22210,25,0.11%,14
+Standard_DS2_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,2,1,7,37635,977,2.60%,70
+Standard_DS2_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,7,39784,2446,6.15%,84
+Standard_DS2_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,7,37761,1322,3.50%,70
+Standard_DS2_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,7,44728,39,0.09%,7
+Standard_DS3_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,4,1,14,73128,1720,2.35%,70
+Standard_DS3_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,4,1,14,75583,4279,5.66%,70
+Standard_DS3_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,4,1,14,72459,1230,1.70%,91
+Standard_DS4_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,8,1,28,146804,1270,0.86%,49
+Standard_DS4_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,8,1,28,147510,3214,2.18%,98
+Standard_DS4_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,8,1,28,144002,1731,1.20%,70
+Standard_DS4_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,28,116687,59050,50.61%,14
+Standard_DS5_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,16,2,56,284713,4702,1.65%,63
+Standard_DS5_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,16,1,56,297550,1502,0.50%,70
+Standard_DS5_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,16,1,56,287238,4723,1.64%,84
+Standard_DS5_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,56,345144,2027,0.59%,14
+Standard_D1_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,1,1,3.5,19112,851,4.45%,105
+Standard_D1_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,1,1,3.5,21866,1802,8.24%,49
+Standard_D1_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,1,1,3.5,19641,808,4.11%,63
+Standard_D2_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,2,1,7,36684,1542,4.20%,112
+Standard_D2_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,7,40452,2922,7.22%,42
+Standard_D2_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,7,37109,1525,4.11%,63
+Standard_D3_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,4,1,14,72681,1424,1.96%,84
+Standard_D3_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,4,1,14,76631,4948,6.46%,70
+Standard_D3_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,4,1,14,73768,2279,3.09%,56
+Standard_D4_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,8,1,28,141204,19309,13.67%,70
+Standard_D4_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,8,1,28,149027,1783,1.20%,98
+Standard_D4_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,8,1,28,143576,1305,0.91%,49
+Standard_D5_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,16,2,56,281644,9594,3.41%,105
+Standard_D5_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,16,1,56,296879,2069,0.70%,28
+Standard_D5_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,16,1,56,284996,5417,1.90%,77
+Standard_HB120rs_v3,AMD EPYC 7V13 64-Core Processor,120,4,440.9,2725819,62125,2.28%,7
+Standard_HB120rs_v3,AMD EPYC 7V73X 64-Core Processor,120,4,440.9,2736592,88258,3.23%,49
+Standard_HB120-16rs_v3,AMD EPYC 7V73X 64-Core Processor,16,4,440.9,441414,16866,3.82%,35
+Standard_HB120-32rs_v3,AMD EPYC 7V73X 64-Core Processor,32,4,440.9,821802,31550,3.84%,35
+Standard_HB120-32rs_v3,AMD EPYC 7V13 64-Core Processor,32,4,440.9,812130,29738,3.66%,7
+Standard_HB120-64rs_v3,AMD EPYC 7V73X 64-Core Processor,64,4,440.9,1602181,77107,4.81%,42
+Standard_HB120-96rs_v3,AMD EPYC 7V73X 64-Core Processor,96,4,440.9,2396063,79104,3.30%,35
+Standard_HB120-96rs_v3,AMD EPYC 7V13 64-Core Processor,96,4,440.9,2345787,74660,3.18%,7
+Standard_HB120rs_v2,AMD EPYC 7V12 64-Core Processor,120,30,425.1,2583980,68594,2.65%,133
+Standard_HB60rs,AMD EPYC 7551 32-Core Processor,60,15,228,986593,28102,2.85%,21
+Standard_HC44rs,Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz,44,2,352,995006,25995,2.61%,21
+Standard_E2ads_v5,AMD EPYC 7763 64-Core Processor,2,1,15.6,38922,47,0.12%,35
+Standard_E4ads_v5,AMD EPYC 7763 64-Core Processor,4,1,31.4,72638,140,0.19%,35
+Standard_E4-2ads_v5,AMD EPYC 7763 64-Core Processor,2,1,31.4,38924,52,0.13%,35
+Standard_E8ads_v5,AMD EPYC 7763 64-Core Processor,8,1,62.8,153765,572,0.37%,35
+Standard_E8-2ads_v5,AMD EPYC 7763 64-Core Processor,2,1,62.8,38916,48,0.12%,35
+Standard_E8-4ads_v5,AMD EPYC 7763 64-Core Processor,4,1,62.8,73154,920,1.26%,35
+Standard_E16ads_v5,AMD EPYC 7763 64-Core Processor,16,1,125.8,303780,4336,1.43%,35
+Standard_E16-4ads_v5,AMD EPYC 7763 64-Core Processor,4,1,125.8,72871,365,0.50%,35
+Standard_E16-8ads_v5,AMD EPYC 7763 64-Core Processor,8,1,125.8,153767,603,0.39%,35
+Standard_E20ads_v5,AMD EPYC 7763 64-Core Processor,20,2,157.4,375535,4506,1.20%,35
+Standard_E32ads_v5,AMD EPYC 7763 64-Core Processor,32,1,251.7,599632,7739,1.29%,35
+Standard_E32-8ads_v5,AMD EPYC 7763 64-Core Processor,8,1,251.7,153859,642,0.42%,35
+Standard_E32-16ads_v5,AMD EPYC 7763 64-Core Processor,16,1,251.7,305170,3524,1.15%,35
+Standard_E48ads_v5,AMD EPYC 7763 64-Core Processor,48,1,377.7,892509,12866,1.44%,35
+Standard_E64ads_v5,AMD EPYC 7763 64-Core Processor,64,1,503.7,1195479,15280,1.28%,35
+Standard_E64-16ads_v5,AMD EPYC 7763 64-Core Processor,16,1,503.7,307095,958,0.31%,35
+Standard_E64-32ads_v5,AMD EPYC 7763 64-Core Processor,32,1,503.7,598891,7892,1.32%,35
+Standard_E96ads_v5,AMD EPYC 7763 64-Core Processor,96,2,661.4,1832942,15387,0.84%,35
+Standard_E96-24ads_v5,AMD EPYC 7763 64-Core Processor,24,1,661,450787,5791,1.28%,35
+Standard_E96-48ads_v5,AMD EPYC 7763 64-Core Processor,48,1,661,894161,10898,1.22%,35
+Standard_E96iads_v5,AMD EPYC 7763 64-Core Processor,96,2,661.4,1837643,18009,0.98%,35
+Standard_E112iads_v5,AMD EPYC 7763 64-Core Processor,112,2,661.4,2125685,28945,1.36%,35
+Standard_E2as_v5,AMD EPYC 7763 64-Core Processor,2,1,15.6,38919,45,0.11%,35
+Standard_E4as_v5,AMD EPYC 7763 64-Core Processor,4,1,31.4,72704,161,0.22%,35
+Standard_E4-2as_v5,AMD EPYC 7763 64-Core Processor,2,1,31.4,37346,3168,8.48%,35
+Standard_E8as_v5,AMD EPYC 7763 64-Core Processor,8,1,62.8,153881,485,0.31%,35
+Standard_E8-2as_v5,AMD EPYC 7763 64-Core Processor,2,1,62.8,38929,47,0.12%,35
+Standard_E8-4as_v5,AMD EPYC 7763 64-Core Processor,4,1,62.8,72735,153,0.21%,35
+Standard_E16as_v5,AMD EPYC 7763 64-Core Processor,16,1,125.8,305729,2717,0.89%,35
+Standard_E16-4as_v5,AMD EPYC 7763 64-Core Processor,4,1,125.8,72736,225,0.31%,35
+Standard_E16-8as_v5,AMD EPYC 7763 64-Core Processor,8,1,125.8,154340,805,0.52%,35
+Standard_E20as_v5,AMD EPYC 7763 64-Core Processor,20,2,157.4,376978,4605,1.22%,35
+Standard_E32as_v5,AMD EPYC 7763 64-Core Processor,32,1,251.7,595261,7046,1.18%,35
+Standard_E32-8as_v5,AMD EPYC 7763 64-Core Processor,8,1,251.7,153867,462,0.30%,35
+Standard_E32-16as_v5,AMD EPYC 7763 64-Core Processor,16,1,251.7,306591,4517,1.47%,35
+Standard_E48as_v5,AMD EPYC 7763 64-Core Processor,48,1,377.7,892935,11974,1.34%,35
+Standard_E64as_v5,AMD EPYC 7763 64-Core Processor,64,1,503.7,1186352,19335,1.63%,35
+Standard_E64-16as_v5,AMD EPYC 7763 64-Core Processor,16,1,503.7,306793,869,0.28%,35
+Standard_E64-32as_v5,AMD EPYC 7763 64-Core Processor,32,1,503.7,600716,7948,1.32%,35
+Standard_E96as_v5,AMD EPYC 7763 64-Core Processor,96,2,661.4,1829274,23977,1.31%,35
+Standard_E96-24as_v5,AMD EPYC 7763 64-Core Processor,24,1,661,448295,6035,1.35%,35
+Standard_E96-48as_v5,AMD EPYC 7763 64-Core Processor,48,1,661,899801,11515,1.28%,35
+Standard_E96ias_v5,AMD EPYC 7763 64-Core Processor,96,2,661.4,1836489,27407,1.49%,35
+Standard_E112ias_v5,AMD EPYC 7763 64-Core Processor,112,2,661.4,2115432,31094,1.47%,35
+Standard_E2ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,15.6,34923,12,0.04%,35
+Standard_E4ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,31.4,68727,286,0.42%,63
+Standard_E4-2ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,31.4,34926,10,0.03%,49
+Standard_E8ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,62.8,136905,460,0.34%,35
+Standard_E8-2ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,62.8,34902,56,0.16%,42
+Standard_E8-4ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,62.8,68738,252,0.37%,42
+Standard_E16ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,1,125.8,271926,3097,1.14%,35
+Standard_E16-4ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,125.8,68703,217,0.32%,42
+Standard_E16-8ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,125.8,136880,469,0.34%,49
+Standard_E20ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,20,1,157.2,341049,1350,0.40%,35
+Standard_E32ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,32,1,251.7,545162,2334,0.43%,35
+Standard_E32-8ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,251.7,136995,454,0.33%,49
+Standard_E32-16ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,1,251.7,273226,1050,0.38%,56
+Standard_E48ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,48,2,377.9,807259,9663,1.20%,35
+Standard_E64ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,64,2,503.9,1060197,13810,1.30%,42
+Standard_E64-16ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,2,503.9,273485,1014,0.37%,35
+Standard_E64-32ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,32,2,503.9,536329,9334,1.74%,42
+Standard_E96ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,96,2,661.4,1580476,17308,1.10%,35
+Standard_E96-24ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,24,2,661.4,397038,5317,1.34%,35
+Standard_E96-48ds_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,48,2,661.4,800107,8216,1.03%,35
+Standard_E104ids_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,104,2,661.4,1708585,21877,1.28%,42
+Standard_E2d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,15.6,34927,9,0.03%,49
+Standard_E4d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,31.4,68699,254,0.37%,42
+Standard_E8d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,62.8,136974,509,0.37%,49
+Standard_E16d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,1,125.8,273081,1049,0.38%,49
+Standard_E20d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,20,1,157.2,341711,1560,0.46%,42
+Standard_E32d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,32,1,251.7,545310,2471,0.45%,56
+Standard_E48d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,48,2,377.9,801326,9677,1.21%,42
+Standard_E64d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,64,2,503.9,1062425,13190,1.24%,49
+Standard_E96d_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,96,2,661.4,1584556,18706,1.18%,49
+Standard_E104id_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,104,2,661.4,1709169,17132,1.00%,35
+Standard_E2s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,15.6,31454,2465,7.84%,49
+Standard_E4s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,31.4,65672,4558,6.94%,49
+Standard_E4-2s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,31.4,32937,2633,7.99%,49
+Standard_E8s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,62.8,120429,6932,5.76%,49
+Standard_E8-2s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,62.8,30473,1714,5.62%,35
+Standard_E8-4s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,62.8,64115,4800,7.49%,42
+Standard_E16s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,1,125.8,254478,19263,7.57%,56
+Standard_E16-4s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,125.8,65592,5002,7.63%,49
+Standard_E16-8s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,125.8,121123,7984,6.59%,35
+Standard_E20s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,20,1,157.2,323191,23552,7.29%,35
+Standard_E32s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,32,1,251.7,495411,28367,5.73%,35
+Standard_E32-8s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,251.7,123436,9678,7.84%,42
+Standard_E32-16s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,1,251.7,232861,1867,0.80%,35
+Standard_E48s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,48,2,377.9,699578,15956,2.28%,35
+Standard_E64s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,64,2,503.9,969853,49428,5.10%,35
+Standard_E64-16s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,2,503.9,244325,13378,5.48%,35
+Standard_E64-32s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,32,2,503.9,499778,35333,7.07%,35
+Standard_E96s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,96,2,661.4,1417598,86297,6.09%,35
+Standard_E96-24s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,24,2,661.4,368448,27903,7.57%,35
+Standard_E96-48s_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,48,2,661.4,711917,43548,6.12%,35
+Standard_E104is_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,104,2,661.4,1718000,19930,1.16%,35
+Standard_E2_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,15.6,31147,2390,7.67%,49
+Standard_E4_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,31.4,63068,5021,7.96%,49
+Standard_E8_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,62.8,126346,9905,7.84%,49
+Standard_E16_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,1,125.8,252327,18906,7.49%,49
+Standard_E20_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,20,1,157.2,307839,23401,7.60%,49
+Standard_E32_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,32,1,251.7,528288,18156,3.44%,42
+Standard_E48_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,48,2,377.9,704530,25690,3.65%,35
+Standard_E64_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,64,2,503.9,925660,15870,1.71%,35
+Standard_E96_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,96,2,661.4,1369408,18928,1.38%,35
+Standard_E104i_v5,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,104,2,661.4,1507969,12223,0.81%,35
+Standard_E2as_v4,AMD EPYC 7452 32-Core Processor,2,1,16,38155,432,1.13%,259
+Standard_E4as_v4,AMD EPYC 7452 32-Core Processor,4,1,32,71500,1260,1.76%,259
+Standard_E8as_v4,AMD EPYC 7452 32-Core Processor,8,1,64,151201,3171,2.10%,259
+Standard_E16as_v4,AMD EPYC 7452 32-Core Processor,16,2,128,293186,6371,2.17%,280
+Standard_E20as_v4,AMD EPYC 7452 32-Core Processor,20,3,160,363292,8744,2.41%,280
+Standard_E32as_v4,AMD EPYC 7452 32-Core Processor,32,4,256,570199,14140,2.48%,294
+Standard_E48as_v4,AMD EPYC 7452 32-Core Processor,48,6,384,841547,21858,2.60%,301
+Standard_E64as_v4,AMD EPYC 7452 32-Core Processor,64,8,512,1108151,28783,2.60%,28
+Standard_E96as_v4,AMD EPYC 7452 32-Core Processor,96,12,672,1578349,27080,1.72%,42
+Standard_E2a_v4,AMD EPYC 7452 32-Core Processor,2,1,16,38035,900,2.37%,196
+Standard_E4a_v4,AMD EPYC 7452 32-Core Processor,4,1,32,71345,949,1.33%,196
+Standard_E8a_v4,AMD EPYC 7452 32-Core Processor,8,1,64,151511,1940,1.28%,189
+Standard_E16a_v4,AMD EPYC 7452 32-Core Processor,16,2,128,292668,7220,2.47%,196
+Standard_E20a_v4,AMD EPYC 7452 32-Core Processor,20,3,160,361845,9332,2.58%,196
+Standard_E32a_v4,AMD EPYC 7452 32-Core Processor,32,4,256,570615,14419,2.53%,196
+Standard_E48a_v4,AMD EPYC 7452 32-Core Processor,48,6,384,841419,26181,3.11%,196
+Standard_E64a_v4,AMD EPYC 7452 32-Core Processor,64,8,512,1116891,28545,2.56%,14
+Standard_E96a_v4,AMD EPYC 7452 32-Core Processor,96,12,672,1592228,32515,2.04%,14
+Standard_E2ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,16,35975,673,1.87%,189
+Standard_E4ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,32,65819,523,0.79%,182
+Standard_E4-2ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,32,35623,312,0.88%,189
+Standard_E8ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,64,135576,723,0.53%,189
+Standard_E8-2ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,64,35831,529,1.48%,189
+Standard_E8-4ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,64,66007,778,1.18%,189
+Standard_E16ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,128,271138,1608,0.59%,189
+Standard_E16-4ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,128,66461,1250,1.88%,189
+Standard_E16-8ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,128,135960,1073,0.79%,189
+Standard_E20ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,20,1,160,339000,1496,0.44%,189
+Standard_E32ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,1,256,538949,6669,1.24%,168
+Standard_E32ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,2,256,527258,11587,2.20%,21
+Standard_E32-8ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,256,136425,1166,0.85%,147
+Standard_E32-8ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,2,256,136743,2124,1.55%,42
+Standard_E32-16ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,256,271264,1345,0.50%,154
+Standard_E32-16ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,2,256,269101,4332,1.61%,28
+Standard_E48ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,2,384,775434,10356,1.34%,189
+Standard_E64ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,64,2,504,1027169,12890,1.25%,182
+Standard_E64-16ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,2,504,266956,4181,1.57%,189
+Standard_E64-32ds_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,2,504,521183,6655,1.28%,182
+Standard_E2d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,16,35901,490,1.36%,189
+Standard_E4d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,32,65859,786,1.19%,189
+Standard_E8d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,64,135986,1194,0.88%,189
+Standard_E16d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,128,271196,1448,0.53%,182
+Standard_E20d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,20,1,160,338449,2948,0.87%,189
+Standard_E32d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,1,256,539487,5562,1.03%,161
+Standard_E32d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,2,256,529841,13344,2.52%,28
+Standard_E48d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,2,384,772684,11745,1.52%,189
+Standard_E64d_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,64,2,504,1025563,13902,1.36%,189
+Standard_E2s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,16,35750,491,1.37%,175
+Standard_E4s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,32,65919,696,1.06%,182
+Standard_E4-2s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,32,35875,598,1.67%,182
+Standard_E8s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,64,136061,1199,0.88%,182
+Standard_E8-2s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,64,35762,404,1.13%,182
+Standard_E8-4s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,64,65865,530,0.81%,182
+Standard_E16s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,128,270956,1486,0.55%,182
+Standard_E16-4s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,128,66290,1010,1.52%,182
+Standard_E16-8s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,128,135990,1139,0.84%,182
+Standard_E20s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,20,1,160,339149,1689,0.50%,182
+Standard_E32s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,1,256,540883,3428,0.63%,154
+Standard_E32s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,2,256,533105,10700,2.01%,28
+Standard_E32-8s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,256,136061,1055,0.78%,140
+Standard_E32-8s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,2,256,136911,3347,2.44%,35
+Standard_E32-16s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,256,271570,1334,0.49%,147
+Standard_E32-16s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,2,256,264434,5182,1.96%,35
+Standard_E48s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,2,384,774071,9926,1.28%,182
+Standard_E64s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,64,2,504,1024690,13752,1.34%,182
+Standard_E64-16s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,2,504,266980,3951,1.48%,182
+Standard_E64-32s_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,2,504,521342,7052,1.35%,182
+Standard_E2_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,16,35781,422,1.18%,182
+Standard_E4_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,32,65742,489,0.74%,175
+Standard_E8_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,64,135668,847,0.62%,182
+Standard_E16_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,128,270553,2565,0.95%,182
+Standard_E20_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,20,1,160,338166,4445,1.31%,175
+Standard_E32_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,1,256,541040,2289,0.42%,154
+Standard_E32_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,2,256,520279,6500,1.25%,28
+Standard_E48_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,2,384,774116,10210,1.32%,175
+Standard_E64_v4,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,64,2,504,1025603,13715,1.34%,182
+Standard_E2s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,16,27008,2136,7.91%,105
+Standard_E2s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,16,26729,987,3.69%,98
+Standard_E2s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,16,31341,14,0.04%,21
+Standard_E4s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,4,1,32,51647,3354,6.49%,105
+Standard_E4s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,4,1,32,49459,2426,4.91%,98
+Standard_E4s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,32,57986,283,0.49%,35
+Standard_E4-2s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,32,26468,1997,7.54%,105
+Standard_E4-2s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,32,26457,817,3.09%,84
+Standard_E4-2s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,32,31350,15,0.05%,42
+Standard_E8s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,8,1,64,101750,7494,7.36%,126
+Standard_E8s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,8,1,64,101526,1976,1.95%,77
+Standard_E8s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,64,120073,826,0.69%,35
+Standard_E8-2s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,64,26318,1665,6.33%,140
+Standard_E8-2s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,64,27219,1167,4.29%,56
+Standard_E8-2s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,64,31322,38,0.12%,42
+Standard_E8-4s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,4,1,64,52719,3706,7.03%,119
+Standard_E8-4s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,4,1,64,49518,2675,5.40%,77
+Standard_E8-4s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,64,57859,378,0.65%,42
+Standard_E16s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,16,1,128,195755,5337,2.73%,126
+Standard_E16s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,16,1,128,199681,2067,1.04%,77
+Standard_E16s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,128,240250,984,0.41%,28
+Standard_E16-4s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,4,1,128,54920,3833,6.98%,140
+Standard_E16-4s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,4,1,128,50869,3400,6.68%,77
+Standard_E16-4s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,128,58019,307,0.53%,21
+Standard_E16-8s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,8,1,128,103358,6272,6.07%,133
+Standard_E16-8s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,8,1,128,102945,2982,2.90%,63
+Standard_E16-8s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,128,120189,963,0.80%,35
+Standard_E20s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,20,1,160,245271,1479,0.60%,112
+Standard_E20s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,20,1,160,249245,2057,0.83%,98
+Standard_E20s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,20,1,160,300197,1881,0.63%,28
+Standard_E32s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,32,2,256,379015,6761,1.78%,126
+Standard_E32s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,32,1,256,397086,2450,0.62%,84
+Standard_E32s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,1,256,477740,4873,1.02%,28
+Standard_E32-8s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,8,2,256,105799,5853,5.53%,98
+Standard_E32-8s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,8,1,256,103535,2602,2.51%,105
+Standard_E32-8s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,256,120109,593,0.49%,28
+Standard_E32-16s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,16,2,256,199765,7562,3.79%,119
+Standard_E32-16s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,16,1,256,202033,3104,1.54%,77
+Standard_E32-16s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,256,240249,1126,0.47%,42
+Standard_E48s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,48,2,384,570727,4290,0.75%,98
+Standard_E48s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,48,2,384,578285,5864,1.01%,105
+Standard_E48s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,2,384,687857,6709,0.98%,35
+Standard_E64s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,64,2,432,763127,5541,0.73%,42
+Standard_E64s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,64,2,432,770574,7440,0.97%,161
+Standard_E64s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,64,2,432,913390,9287,1.02%,21
+Standard_E64-16s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,16,2,432,234395,2364,1.01%,42
+Standard_E64-16s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,16,2,432,211781,7841,3.70%,161
+Standard_E64-16s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,2,432,232571,3046,1.31%,28
+Standard_E64-32s_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,32,2,432,411194,4489,1.09%,56
+Standard_E64-32s_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,32,2,432,395227,5245,1.33%,161
+Standard_E64-32s_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,2,432,464744,6855,1.48%,21
+Standard_E2_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,16,27615,2226,8.06%,133
+Standard_E2_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,16,27471,1897,6.90%,84
+Standard_E4_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,4,1,32,51755,3604,6.96%,175
+Standard_E4_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,4,1,32,48159,1286,2.67%,63
+Standard_E8_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,8,1,64,100794,5678,5.63%,154
+Standard_E8_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,8,1,64,100458,1381,1.38%,84
+Standard_E16_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,16,1,128,196170,4590,2.34%,189
+Standard_E16_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,16,1,128,199986,1534,0.77%,42
+Standard_E16_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,128,240246,680,0.28%,7
+Standard_E20_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,20,1,160,243816,2644,1.08%,196
+Standard_E20_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,20,1,160,245193,6282,2.56%,35
+Standard_E20_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,20,1,160,300653,666,0.22%,7
+Standard_E32_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,32,2,256,377052,7434,1.97%,147
+Standard_E32_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,32,1,256,393569,5278,1.34%,70
+Standard_E32_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,32,1,256,479255,2237,0.47%,14
+Standard_E48_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,48,2,384,569428,5166,0.91%,147
+Standard_E48_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,48,2,384,577766,6460,1.12%,77
+Standard_E48_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,48,2,384,687699,7983,1.16%,14
+Standard_E64_v3,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,64,2,432,761587,5928,0.78%,63
+Standard_E64_v3,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,64,2,432,765301,11204,1.46%,161
+Standard_E64_v3,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,64,2,432,913332,12240,1.34%,14
+Standard_DS11_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,2,1,14,37489,1314,3.50%,49
+Standard_DS11_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,14,40138,3286,8.19%,70
+Standard_DS11_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,14,37889,1096,2.89%,84
+Standard_DS11_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,14,44107,406,0.92%,28
+Standard_DS11-1_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,1,1,14,19615,846,4.31%,42
+Standard_DS11-1_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,1,1,14,20835,1937,9.30%,42
+Standard_DS11-1_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,1,1,14,18765,767,4.09%,126
+Standard_DS11-1_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,1,1,14,23145,1425,6.16%,21
+Standard_DS12_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,4,1,28,73222,1506,2.06%,42
+Standard_DS12_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,4,1,28,76452,5858,7.66%,77
+Standard_DS12_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,4,1,28,73140,3323,4.54%,84
+Standard_DS12_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,28,86916,1044,1.20%,28
+Standard_DS12-1_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,1,1,28,19387,899,4.64%,56
+Standard_DS12-1_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,1,1,28,22048,1729,7.84%,77
+Standard_DS12-1_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,1,1,28,19102,943,4.94%,70
+Standard_DS12-1_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,1,1,28,22205,32,0.14%,28
+Standard_DS12-2_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,2,1,28,38766,1060,2.74%,56
+Standard_DS12-2_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,28,41447,3954,9.54%,91
+Standard_DS12-2_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,28,37639,1579,4.19%,70
+Standard_DS12-2_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,2,1,28,44226,810,1.83%,14
+Standard_DS13_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,8,1,56,147234,1202,0.82%,56
+Standard_DS13_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,8,1,56,147218,1636,1.11%,70
+Standard_DS13_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,8,1,56,144612,1582,1.09%,84
+Standard_DS13_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,56,172617,755,0.44%,21
+Standard_DS13-2_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,2,1,56,38688,816,2.11%,56
+Standard_DS13-2_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,56,39898,2493,6.25%,84
+Standard_DS13-2_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,56,38861,2788,7.17%,91
+Standard_DS13-4_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,4,1,56,73105,1727,2.36%,70
+Standard_DS13-4_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,4,1,56,77848,4307,5.53%,84
+Standard_DS13-4_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,4,1,56,74935,4384,5.85%,63
+Standard_DS13-4_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,56,86402,529,0.61%,14
+Standard_DS14_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,16,2,112,284796,4889,1.72%,49
+Standard_DS14_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,16,1,112,298261,1351,0.45%,63
+Standard_DS14_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,16,1,112,286993,3418,1.19%,98
+Standard_DS14_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,16,1,112,345521,1549,0.45%,21
+Standard_DS14-4_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,4,2,112,71287,2692,3.78%,42
+Standard_DS14-4_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,4,1,112,81710,6156,7.53%,56
+Standard_DS14-4_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,4,1,112,75101,2765,3.68%,112
+Standard_DS14-4_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,112,86598,517,0.60%,21
+Standard_DS14-8_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,8,2,112,143882,4104,2.85%,49
+Standard_DS14-8_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,8,1,112,150389,4548,3.02%,70
+Standard_DS14-8_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,8,1,112,145955,2224,1.52%,105
+Standard_DS14-8_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,112,171910,754,0.44%,7
+Standard_DS15_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,20,2,140,355354,6693,1.88%,49
+Standard_DS15_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,20,1,140,421202,56292,13.36%,154
+Standard_D11_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,2,1,14,37655,1925,5.11%,70
+Standard_D11_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,2,1,14,39953,3019,7.56%,70
+Standard_D11_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,2,1,14,37979,1830,4.82%,56
+Standard_D12_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,4,1,28,71521,4218,5.90%,77
+Standard_D12_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,4,1,28,77439,5095,6.58%,70
+Standard_D12_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,4,1,28,73464,1263,1.72%,56
+Standard_D12_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,4,1,28,87100,434,0.50%,7
+Standard_D13_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,8,1,56,141552,16057,11.34%,70
+Standard_D13_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,8,1,56,148352,2754,1.86%,70
+Standard_D13_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,8,1,56,141946,3604,2.54%,42
+Standard_D13_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,8,1,56,167641,1680,1.00%,7
+Standard_D14_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,16,2,112,283793,5207,1.83%,77
+Standard_D14_v2,Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz,16,1,112,297163,1817,0.61%,63
+Standard_D14_v2,Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz,16,1,112,286817,4109,1.43%,49
+Standard_D15_v2,Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz,20,2,140,354279,6021,1.70%,35
+Standard_D15_v2,Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz,20,1,140,418475,58044,13.87%,154
+Standard_M208s_v2,Intel(R) Xeon(R) Platinum 8180M CPU @ 2.50GHz,208,4,2850,3020762,55134,1.83%,84
+Standard_M208ms_v2,Intel(R) Xeon(R) Platinum 8180M CPU @ 2.50GHz,208,4,5700,3009120,58843,1.96%,42
+Standard_M208ms_v2,Intel(R) Xeon(R) Platinum 8180M CPU @ 2.50GHz,208,8,5700,3093184,33253,1.08%,42
+Standard_M416s_v2,Intel(R) Xeon(R) Platinum 8180M CPU @ 2.50GHz,416,8,5700,5959252,93933,1.58%,84
+Standard_M416ms_v2,Intel(R) Xeon(R) Platinum 8180M CPU @ 2.50GHz,416,8,11400,5910261,101190,1.71%,84
+Standard_M416-208s_v2,Intel(R) Xeon(R) Platinum 8180M CPU @ 2.50GHz,208,8,5700,3085232,36568,1.19%,70
+Standard_M416-208ms_v2,Intel(R) Xeon(R) Platinum 8180M CPU @ 2.50GHz,208,8,11400,3064892,40531,1.32%,77
+Standard_M32ms_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,32,2,861.2,501859,6988,1.39%,42
+Standard_M32dms_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,32,2,861.2,507318,12103,2.39%,35
+Standard_M64s_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,64,2,1007.9,977226,15256,1.56%,35
+Standard_M64ds_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,64,2,1007.9,980928,16781,1.71%,35
+Standard_M64ms_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,64,4,1763.9,980511,16384,1.67%,42
+Standard_M64dms_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,64,4,1763.9,979367,13927,1.42%,35
+Standard_M128s_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,128,4,2015.9,1905457,53830,2.83%,35
+Standard_M128ds_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,128,4,2015.9,1925932,29177,1.51%,35
+Standard_M128ms_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,128,4,3831.1,1907485,30641,1.61%,42
+Standard_M128dms_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,128,4,3831.1,1907006,25958,1.36%,35
+Standard_M192ms_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,192,4,4031.9,2794826,44549,1.59%,84
+Standard_M192is_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,192,4,2015.9,2805023,39961,1.42%,35
+Standard_M192ims_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,192,4,4031.9,2797557,39161,1.40%,35
+Standard_M192ids_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,192,4,2015.9,2818523,48260,1.71%,35
+Standard_M192idms_v2,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,192,4,4031.9,2813406,47652,1.69%,35
+Standard_M64,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,64,2,1024,821678,11118,1.35%,77
+Standard_M64,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,64,2,1024,754180,5686,0.75%,7
+Standard_M64m,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,64,2,1792,817400,9397,1.15%,56
+Standard_M64m,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,64,2,1792,754929,10566,1.40%,28
+Standard_M128,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,128,4,2048,1643769,17798,1.08%,70
+Standard_M128,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,128,4,2048,1475843,16197,1.10%,14
+Standard_M128m,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,128,4,3892,1631313,18162,1.11%,70
+Standard_M128m,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,128,4,3892,1471781,17646,1.20%,14
+Standard_M8ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,8,1,218.8,110370,366,0.33%,84
+Standard_M8-2ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,2,1,218.8,28041,35,0.12%,84
+Standard_M8-4ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,4,1,218.8,56231,348,0.62%,77
+Standard_M8-4ms,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,4,1,218.8,48391,280,0.58%,7
+Standard_M16ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,16,1,437.5,220331,473,0.21%,70
+Standard_M16ms,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,16,1,437.5,200561,877,0.44%,14
+Standard_M16-4ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,4,1,437.5,56218,304,0.54%,70
+Standard_M16-4ms,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,4,1,437.5,48401,205,0.42%,14
+Standard_M16-8ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,8,1,437.5,110426,383,0.35%,56
+Standard_M16-8ms,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,8,1,437.5,100377,442,0.44%,28
+Standard_M32ls,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,32,1,256,433173,4290,0.99%,70
+Standard_M32ls,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,32,1,256,400287,1610,0.40%,14
+Standard_M32ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,32,1,875,434866,2560,0.59%,70
+Standard_M32ms,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,32,1,875,400583,1596,0.40%,14
+Standard_M32-8ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,8,1,875,110408,346,0.31%,56
+Standard_M32-8ms,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,8,1,875,100521,643,0.64%,28
+Standard_M32-16ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,16,1,875,220495,569,0.26%,70
+Standard_M32-16ms,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,16,1,875,200494,723,0.36%,14
+Standard_M32ts,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,32,1,192,435785,2164,0.50%,77
+Standard_M32ts,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,32,1,192,399771,1291,0.32%,7
+Standard_M64s,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,64,2,1024,822245,7256,0.88%,70
+Standard_M64s,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,64,2,1024,750702,9866,1.31%,14
+Standard_M64ls,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,64,2,512,820406,13530,1.65%,77
+Standard_M64ls,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,64,2,512,759753,7639,1.01%,7
+Standard_M64ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,64,2,1792,823449,7565,0.92%,70
+Standard_M64ms,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,64,2,1792,755541,9337,1.24%,14
+Standard_M64-16ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,16,2,1792,210947,2766,1.31%,77
+Standard_M64-16ms,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,16,2,1792,191761,3503,1.83%,7
+Standard_M64-32ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,32,2,1792,416909,3769,0.90%,63
+Standard_M64-32ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,32,3,1792,417771,4820,1.15%,7
+Standard_M64-32ms,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,32,2,1792,382773,3547,0.93%,14
+Standard_M128s,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,128,4,2048,1641176,16698,1.02%,70
+Standard_M128s,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,128,4,2048,1477253,15626,1.06%,14
+Standard_M128ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,128,4,3892,1645242,17679,1.07%,63
+Standard_M128ms,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,128,4,3892,1479298,16978,1.15%,21
+Standard_M128-32ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,32,4,3892,414541,4739,1.14%,63
+Standard_M128-32ms,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,32,4,3892,380611,5653,1.49%,21
+Standard_M128-64ms,Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz,64,4,3892,817496,8437,1.03%,56
+Standard_M128-64ms,Intel(R) Xeon(R) Platinum 8280M CPU @ 2.70GHz,64,4,3892,749800,8506,1.13%,28
+Standard_L8s_v2,AMD EPYC 7551 32-Core Processor,8,1,64,102237,1320,1.29%,77
+Standard_L16s_v2,AMD EPYC 7551 32-Core Processor,16,2,128,198472,3734,1.88%,70
+Standard_L32s_v2,AMD EPYC 7551 32-Core Processor,32,4,256,390015,10126,2.60%,77
+Standard_L48s_v2,AMD EPYC 7551 32-Core Processor,48,6,384,583388,15479,2.65%,77
+Standard_L64s_v2,AMD EPYC 7551 32-Core Processor,64,8,512,774827,19205,2.48%,77
+Standard_L80s_v2,AMD EPYC 7551 32-Core Processor,80,10,640,966682,22811,2.36%,77
+Standard_DC1s_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,1,1,7.8,29127,72,0.25%,56
+Standard_DC2s_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,15.6,55785,534,0.96%,56
+Standard_DC4s_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,31.4,111636,827,0.74%,63
+Standard_DC8s_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,62.8,220443,2083,0.94%,56
+Standard_DC16s_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,1,125.8,439985,4224,0.96%,56
+Standard_DC24s_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,24,1,188.7,659602,5809,0.88%,42
+Standard_DC32s_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,32,1,251.7,850747,8658,1.02%,63
+Standard_DC48s_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,48,2,377.9,1221232,25082,2.05%,63
+Standard_DC1ds_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,1,1,7.8,29130,66,0.23%,42
+Standard_DC2ds_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,2,1,15.6,55911,207,0.37%,56
+Standard_DC4ds_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,4,1,31.4,111549,745,0.67%,56
+Standard_DC8ds_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,8,1,62.8,220223,2067,0.94%,42
+Standard_DC16ds_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,16,1,125.8,440580,3915,0.89%,63
+Standard_DC24ds_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,24,1,188.7,656455,9830,1.50%,56
+Standard_DC32ds_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,32,1,251.7,848418,18613,2.19%,35
+Standard_DC48ds_v3,Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz,48,2,377.9,1228361,21388,1.74%,35
+Standard_DC1s_v2,Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz,1,1,4,34418,162,0.47%,77
+Standard_DC2s_v2,Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz,2,1,8,68562,758,1.11%,77
+Standard_DC4s_v2,Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz,4,1,16,133836,1964,1.47%,77
+Standard_DC8_v2,Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz,8,1,32,252047,3051,1.21%,77
+Standard_DC2s,Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz,2,1,8,63426,391,0.62%,28
+Standard_DC4s,Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz,4,1,16,124015,410,0.33%,21

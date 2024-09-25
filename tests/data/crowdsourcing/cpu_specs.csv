@@ -400,7 +400,7 @@ AMD EPYC 7702P,AMD,Rome,EPYC,2000 MHz,200.0,64.0,,74.0,io_die_size () + die_size
 AMD EPYC 7713,AMD,Milan,EPYC,2000 MHz,225.0,64.0,,1064.0,io_die_size (416 mm²) + die_size (8x 81 mm²),https://www.techpowerup.com/cpu-specs/epyc-7713.c2374
 AMD EPYC 7713P,AMD,Milan,EPYC,2000 MHz,225.0,64.0,,1064.0,io_die_size (416 mm²) + die_size (8x 81 mm²),https://www.techpowerup.com/cpu-specs/epyc-7713p.c2375
 AMD EPYC 7742,AMD,Rome,EPYC,2.25 GHz,225.0,64.0,,74.0,io_die_size () + die_size (74 mm²),https://www.techpowerup.com/cpu-specs/epyc-7742.c2245
-AMD EPYC 7763,AMD,Milan,EPYC,2.45 GHz,280.0,64.0,,1064.0,io_die_size (416 mm²) + die_size (8x 81 mm²),https://www.techpowerup.com/cpu-specs/epyc-7763.c2373
+AMD EPYC 7763,AMD,Milan,EPYC,2.45 GHz,280.0,64.0,128.0,1064.0,io_die_size (416 mm²) + die_size (8x 81 mm²),https://www.techpowerup.com/cpu-specs/epyc-7763.c2373
 AMD EPYC 7773X,AMD,Milan-X,EPYC,2.2 GHz,280.0,64.0,,1064.0,io_die_size (416 mm²) + die_size (8x 81 mm²),https://www.techpowerup.com/cpu-specs/epyc-7773x.c2759
 AMD EPYC 7F32,AMD,Rome,EPYC,3.7 GHz,180.0,8.0,,74.0,io_die_size () + die_size (74 mm²),https://www.techpowerup.com/cpu-specs/epyc-7f32.c2300
 AMD EPYC 7F52,AMD,Rome,EPYC,3.5 GHz,155.0,16.0,,74.0,io_die_size () + die_size (74 mm²),https://www.techpowerup.com/cpu-specs/epyc-7f52.c2301
