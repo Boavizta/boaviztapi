@@ -124,7 +124,7 @@ async def test_empty_usage_with_url_params_r5ad():
             ImpactOutput(11170.0, 214.0, 4000.0),
         ),
         PEImpact(
-            ImpactOutput(21470.0, 7596.0, 13000.0, END_OF_LIFE_WARNING),
+            ImpactOutput(21470.0, 7590.0, 13000.0, END_OF_LIFE_WARNING),
             ImpactOutput(5808000.0, 121.0, 100000.0),
         ),
     )
@@ -278,7 +278,7 @@ async def test_verbose_output_with_empty_usage():
             ImpactOutput(11170.0, 214.0, 4000.0),
         ),
         PEImpact(
-            ImpactOutput(21470.0, 7596.0, 13000.0, END_OF_LIFE_WARNING),
+            ImpactOutput(21470.0, 7590.0, 13000.0, END_OF_LIFE_WARNING),
             ImpactOutput(5808000.0, 121.0, 100000.0),
         ),
         verbose_output={
@@ -393,7 +393,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": 32,
                     "min": 32,
                     "source": "Completed from name name based on "
-                              "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+                    "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
                     "status": "COMPLETED",
                     "value": 32,
                 },
@@ -410,7 +410,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": "Naples",
                     "min": "Naples",
                     "source": "Completed from name name based on "
-                              "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+                    "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
                     "status": "COMPLETED",
                     "value": "Naples",
                 },
@@ -418,7 +418,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": 0.9,
                     "min": 0.023,
                     "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149: \n"
-                              "Average of 27 european countries",
+                    "Average of 27 european countries",
                     "status": "DEFAULT",
                     "unit": "kg CO2eq/kWh",
                     "value": 0.38,
@@ -476,7 +476,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": "AMD",
                     "min": "AMD",
                     "source": "Completed from name name based on "
-                              "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+                    "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
                     "status": "COMPLETED",
                     "value": "AMD",
                 },
@@ -484,7 +484,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": "EPYC",
                     "min": "EPYC",
                     "source": "Completed from name name based on "
-                              "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+                    "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
                     "status": "COMPLETED",
                     "value": "EPYC",
                 },
@@ -517,7 +517,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": 200,
                     "min": 200,
                     "source": "Completed from name name based on "
-                              "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+                    "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
                     "status": "COMPLETED",
                     "unit": "W",
                     "value": 200,
@@ -526,7 +526,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": 64,
                     "min": 64,
                     "source": "Completed from name name based on "
-                              "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+                    "https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
                     "status": "COMPLETED",
                     "value": 64,
                 },
@@ -694,7 +694,7 @@ async def test_verbose_output_with_empty_usage():
                     "max": 0.9,
                     "min": 0.023,
                     "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149: \n"
-                              "Average of 27 european countries",
+                    "Average of 27 european countries",
                     "status": "DEFAULT",
                     "unit": "kg CO2eq/kWh",
                     "value": 0.38,
@@ -867,7 +867,7 @@ async def test_verbose_output_with_empty_usage():
                 "max": 0.9,
                 "min": 0.023,
                 "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149: \n"
-                          "Average of 27 european countries",
+                "Average of 27 european countries",
                 "status": "DEFAULT",
                 "unit": "kg CO2eq/kWh",
                 "value": 0.38,
@@ -912,6 +912,58 @@ async def test_verbose_output_with_empty_usage():
             },
             "vcpu": {"status": "ARCHETYPE", "value": 48.0},
         },
+    )
+
+    await test.check_result()
+
+
+@pytest.mark.asyncio
+async def test_empty_usage_e8ads_v5():
+    test = CloudTest(
+        CloudInstanceRequest("azure", "e8ads_v5"),
+        ADPImpact(
+            ImpactOutput(0.02211, 0.0127, 0.0163, END_OF_LIFE_WARNING),
+            ImpactOutput(0.0006984, 2.603e-05, 0.00014),
+        ),
+        GWPImpact(
+            ImpactOutput(291.7, 108.2, 170.0, END_OF_LIFE_WARNING),
+            ImpactOutput(2367.0, 45.36, 800.0),
+        ),
+        PEImpact(
+            ImpactOutput(3713.0, 1400.0, 2200.0, END_OF_LIFE_WARNING),
+            ImpactOutput(1231000.0, 25.64, 30000.0, UNCERTAINTY_WARNING),
+        ),
+    )
+
+    await test.check_result()
+
+
+@pytest.mark.asyncio
+async def test_usage_with_complex_time_workload_e8ads_v5():
+    test = CloudTest(
+        CloudInstanceRequest(
+            "azure",
+            "e8ads_v5",
+            usage={
+                "time_workload": [
+                    {"time_percentage": 50, "load_percentage": 0},
+                    {"time_percentage": 25, "load_percentage": 60},
+                    {"time_percentage": 25, "load_percentage": 100},
+                ]
+            },
+        ),
+        ADPImpact(
+            ImpactOutput(0.02211, 0.0127, 0.0163, END_OF_LIFE_WARNING),
+            ImpactOutput(0.0006088, 2.269e-05, 0.00012),
+        ),
+        GWPImpact(
+            ImpactOutput(291.7, 108.2, 170.0, END_OF_LIFE_WARNING),
+            ImpactOutput(2063.0, 39.54, 700.0),
+        ),
+        PEImpact(
+            ImpactOutput(3713.0, 1400.0, 2200.0, END_OF_LIFE_WARNING),
+            ImpactOutput(1073000.0, 22.35, 20000.0, UNCERTAINTY_WARNING),
+        ),
     )
 
     await test.check_result()

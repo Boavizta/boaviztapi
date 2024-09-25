@@ -139,3 +139,5 @@ dmypy.json
 # Serverless
 .serverless
 node_modules
+
+boaviztAPI

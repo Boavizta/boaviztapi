@@ -8,6 +8,7 @@ from boaviztapi.dto.component import CPU
 from boaviztapi.model.component import ComponentCPU
 from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
 from boaviztapi.model.component.cpu import attributes_from_cpu_name
+from pydantic import ConfigDict
 
 
 class WorkloadPower(BaseDTO):
@@ -17,9 +18,7 @@ class WorkloadPower(BaseDTO):
 
 class ConsumptionProfile(BaseDTO):
     workload: List[WorkloadPower] = None
-
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
 
 class ConsumptionProfileCPU(ConsumptionProfile):
