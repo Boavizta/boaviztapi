@@ -1,0 +1,3034 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>Functional block (IoT) - Boavizta API documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#functional-block" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Boavizta API documentation" class="md-header__button md-logo" aria-label="Boavizta API documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Boavizta API documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Functional block (IoT)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Boavizta API documentation" class="md-nav__button md-logo" aria-label="Boavizta API documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Boavizta API documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../q%26a/" class="md-nav__link">
+        Q&A
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://datavizta.boavizta.org/" target="_blank" class="md-nav__link">
+        Datavizta
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://api.boavizta.org/docs" target="_blank" class="md-nav__link">
+        Try the API (OpenAPI)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/cpu_component/" class="md-nav__link">
+        Get the impacts of a cpu
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/single_server/" class="md-nav__link">
+        Get the impacts of a server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/single_cloud_instance/" class="md-nav__link">
+        Get the impacts of a cloud instance (AWS)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/consumption_profile/" class="md-nav__link">
+        Get started with consumption profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/end_user_devices/" class="md-nav__link">
+        Get started with terminal and peripherals
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Explanations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Explanations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Explanations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../boavizta_db/" class="md-nav__link">
+        Boavizta database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../impacts/" class="md-nav__link">
+        Impacts criteria
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded_methodology/" class="md-nav__link">
+        Embedded impacts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Usage impacts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Usage impacts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Usage impacts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/usage/" class="md-nav__link">
+        Methodology
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/duration/" class="md-nav__link">
+        Duration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/elec_factors/" class="md-nav__link">
+        Electrical impacts factors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/power/" class="md-nav__link">
+        Power
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/countries/" class="md-nav__link">
+        Countries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consumption_profile/" class="md-nav__link">
+        Consumption profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../auto_complete/" class="md-nav__link">
+        Auto-complete
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archetypes/" class="md-nav__link">
+        Archetypes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../verbose/" class="md-nav__link">
+        Verbose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../error_margin/" class="md-nav__link">
+        Error margin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_10" type="checkbox" id="__nav_4_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_10">
+          Components
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Components" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_10">
+          <span class="md-nav__icon md-icon"></span>
+          Components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../component/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpu/" class="md-nav__link">
+        CPU
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ram/" class="md-nav__link">
+        RAM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssd/" class="md-nav__link">
+        SSD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hdd/" class="md-nav__link">
+        HDD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../motherboard/" class="md-nav__link">
+        Motherboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../power_supply/" class="md-nav__link">
+        Power supply
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assembly/" class="md-nav__link">
+        Assembly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case/" class="md-nav__link">
+        Case
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Functional block (IoT)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Functional block (IoT)
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#characteristics" class="md-nav__link">
+    Characteristics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedded-impacts" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedded impacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impacts-criteria" class="md-nav__link">
+    Impacts criteria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methodology" class="md-nav__link">
+    Methodology
+  </a>
+  
+    <nav class="md-nav" aria-label="Methodology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manufacture" class="md-nav__link">
+    Manufacture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-of-life" class="md-nav__link">
+    End of life
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-impact" class="md-nav__link">
+    Usage impact
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_11" type="checkbox" id="__nav_4_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11">
+          Devices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Devices" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_11">
+          <span class="md-nav__icon md-icon"></span>
+          Devices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/devices/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/server/" class="md-nav__link">
+        Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/terminals_%26_peripherals/" class="md-nav__link">
+        End user devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/iot_devices/" class="md-nav__link">
+        IoT device
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_12" type="checkbox" id="__nav_4_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_12">
+          Services
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Services" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_12">
+          <span class="md-nav__icon md-icon"></span>
+          Services
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/services/" class="md-nav__link">
+        Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/cloud/" class="md-nav__link">
+        Cloud instances
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../useful_resources/" class="md-nav__link">
+        Useful resources
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/routes/" class="md-nav__link">
+        Routes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Format
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Format" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Format
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/return_format/" class="md-nav__link">
+        Return format
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/server_route/" class="md-nav__link">
+        Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/cloud_route/" class="md-nav__link">
+        Cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/component_route/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/end_user_devices_route/" class="md-nav__link">
+        End user devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/iot_device_route/" class="md-nav__link">
+        IoT devices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/" class="md-nav__link">
+        Deploy
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../config/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release_notes/" class="md-nav__link">
+        Release notes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Contributing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Contributing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/cloud_provider/" class="md-nav__link">
+        Add a cloud provider
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/cloud_instance/" class="md-nav__link">
+        Add a cloud instance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/server/" class="md-nav__link">
+        Add a server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/cpu/" class="md-nav__link">
+        Add a CPU
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#characteristics" class="md-nav__link">
+    Characteristics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedded-impacts" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedded impacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impacts-criteria" class="md-nav__link">
+    Impacts criteria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methodology" class="md-nav__link">
+    Methodology
+  </a>
+  
+    <nav class="md-nav" aria-label="Methodology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manufacture" class="md-nav__link">
+    Manufacture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-of-life" class="md-nav__link">
+    End of life
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-impact" class="md-nav__link">
+    Usage impact
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="functional-block">Functional block</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Connected object, not including associated digital services (use of network, datacenter, virtual machines or other terminals not included)</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The impacts of distribution is not included in the functional block.</p>
+</div>
+<h2 id="characteristics">Characteristics</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default value</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hsl_level</td>
+<td>(None)</td>
+<td>See <a href="./">functional block</a></td>
+<td>"The hardware specification level (HSL) gives details about the hardware available within a functional block." (Pirson &amp; Bol, 2021)</td>
+<td>HSL-1</td>
+</tr>
+</tbody>
+</table>
+<p>hsl_level is described in the following table for each functional block.</p>
+<p><img alt="img.png" src="../img.png" /></p>
+<h2 id="embedded-impacts">Embedded impacts</h2>
+<p>We use the screening approach proposed by Pirson and Bol in : <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a>.
+Each functional block can be described by its hardware specification level (hsl_level).</p>
+<p><img alt="img_1.png" src="../img_1.png" /></p>
+<p>We invite you to read the paper for more details. This approach was initially designed for gwp. It has been adapted to other impacts criteria by TIDE.</p>
+<h3 id="impacts-criteria">Impacts criteria</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Implemented</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>adp</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>pe</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>gwppb</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>gwppf</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>gwpplu</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>ir</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>lu</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>odp</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>pm</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>wu</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>mips</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>ap</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>ctuh_c</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>ctuh_nc</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>epf</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>epm</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+<tr>
+<td>ept</td>
+<td>yes</td>
+<td>Adapted by <a href="https://www.linkedin.com/company/tide-env/">Tide</a> from <a href="https://doi.org/10.1016/j.jclepro.2021.128966">'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="methodology">Methodology</h3>
+<p>Embedded impacts of a functional block is the sum of the manufacturing and end of life impacts which are described in the following tables :</p>
+<h4 id="manufacture">Manufacture</h4>
+<table>
+<thead>
+<tr>
+<th>Functional_blocks - HSL_LEVEL</th>
+<th>Particulate Matter</th>
+<th>Eutrophication marine</th>
+<th>Eutrophication, terrestrial</th>
+<th>Acidification</th>
+<th>Climate change</th>
+<th>Ecotoxicity, freshwater</th>
+<th>Human toxicity, cancer</th>
+<th>Eutrophication, freshwater</th>
+<th>Human toxicity, non-cancer</th>
+<th>Ionising radiation, human health</th>
+<th>Land use</th>
+<th>Ozone depletion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit</td>
+<td>Disease occurrence</td>
+<td>kg N eq.</td>
+<td>mol N eq.</td>
+<td>mol H+ eq.</td>
+<td>kg CO2 eq.</td>
+<td>CTUe</td>
+<td>CTUh</td>
+<td>kg P eq.</td>
+<td>CTUh</td>
+<td>kBq U235 eq.</td>
+<td>No dimension</td>
+<td>kg CFC-11 eq.</td>
+</tr>
+<tr>
+<td>Actuators - HSL-1</td>
+<td>1.98E-09</td>
+<td>1.41E-05</td>
+<td>1.32E-04</td>
+<td>1.23E-04</td>
+<td>1.73E-02</td>
+<td>6.81E-01</td>
+<td>6.02E-12</td>
+<td>5.16E-08</td>
+<td>5.10E-10</td>
+<td>3.73E-02</td>
+<td>2.13E-04</td>
+<td>2.85E-09</td>
+</tr>
+<tr>
+<td>Actuators - HSL-2</td>
+<td>1.01E-08</td>
+<td>1.47E-04</td>
+<td>1.38E-03</td>
+<td>1.78E-03</td>
+<td>1.64E-01</td>
+<td>3.12E+00</td>
+<td>2.78E-11</td>
+<td>7.71E-08</td>
+<td>1.29E-09</td>
+<td>1.94E-02</td>
+<td>0.00E+00</td>
+<td>5.59E-09</td>
+</tr>
+<tr>
+<td>Actuators - HSL-3</td>
+<td>2.03E-07</td>
+<td>1.50E-03</td>
+<td>1.42E-02</td>
+<td>1.32E-02</td>
+<td>1.88E+00</td>
+<td>6.98E+01</td>
+<td>6.17E-10</td>
+<td>5.42E-06</td>
+<td>5.19E-08</td>
+<td>3.73E+00</td>
+<td>2.15E-02</td>
+<td>3.17E-07</td>
+</tr>
+<tr>
+<td>Casing - HSL-1</td>
+<td>1.72E-08</td>
+<td>4.35E-04</td>
+<td>4.66E-03</td>
+<td>2.44E-03</td>
+<td>4.31E-01</td>
+<td>1.68E+01</td>
+<td>8.38E-11</td>
+<td>1.20E-06</td>
+<td>3.34E-09</td>
+<td>9.79E-02</td>
+<td>0.00E+00</td>
+<td>2.05E-08</td>
+</tr>
+<tr>
+<td>Casing - HSL-2</td>
+<td>1.38E-07</td>
+<td>3.48E-03</td>
+<td>3.73E-02</td>
+<td>1.95E-02</td>
+<td>3.45E+00</td>
+<td>1.35E+02</td>
+<td>6.70E-10</td>
+<td>9.61E-06</td>
+<td>2.67E-08</td>
+<td>7.83E-01</td>
+<td>0.00E+00</td>
+<td>1.64E-07</td>
+</tr>
+<tr>
+<td>Casing - HSL-3</td>
+<td>2.75E-07</td>
+<td>6.96E-03</td>
+<td>7.46E-02</td>
+<td>3.91E-02</td>
+<td>6.89E+00</td>
+<td>2.69E+02</td>
+<td>1.34E-09</td>
+<td>1.92E-05</td>
+<td>5.34E-08</td>
+<td>1.57E+00</td>
+<td>0.00E+00</td>
+<td>3.28E-07</td>
+</tr>
+<tr>
+<td>Connectivity - HSL-1</td>
+<td>7.84E-09</td>
+<td>1.71E-04</td>
+<td>1.78E-03</td>
+<td>1.42E-03</td>
+<td>2.58E-01</td>
+<td>3.29E+00</td>
+<td>2.42E-11</td>
+<td>7.94E-07</td>
+<td>1.40E-09</td>
+<td>2.15E-03</td>
+<td>1.01E-03</td>
+<td>1.11E-07</td>
+</tr>
+<tr>
+<td>Connectivity - HSL-2</td>
+<td>3.97E-08</td>
+<td>6.36E-04</td>
+<td>6.70E-03</td>
+<td>6.97E-03</td>
+<td>9.03E-01</td>
+<td>1.21E+01</td>
+<td>3.81E-10</td>
+<td>2.66E-06</td>
+<td>3.39E-08</td>
+<td>3.62E+00</td>
+<td>3.34E-03</td>
+<td>3.76E-07</td>
+</tr>
+<tr>
+<td>Connectivity - HSL-3</td>
+<td>6.02E-08</td>
+<td>1.08E-03</td>
+<td>1.14E-02</td>
+<td>1.07E-02</td>
+<td>1.58E+00</td>
+<td>2.07E+01</td>
+<td>4.44E-10</td>
+<td>4.74E-06</td>
+<td>3.76E-08</td>
+<td>3.62E+00</td>
+<td>5.99E-03</td>
+<td>6.66E-07</td>
+</tr>
+<tr>
+<td>Memory - HSL-1</td>
+<td>8.49E-09</td>
+<td>1.85E-04</td>
+<td>1.93E-03</td>
+<td>1.54E-03</td>
+<td>2.79E-01</td>
+<td>3.57E+00</td>
+<td>2.62E-11</td>
+<td>8.64E-07</td>
+<td>1.51E-09</td>
+<td>2.34E-03</td>
+<td>1.10E-03</td>
+<td>1.21E-07</td>
+</tr>
+<tr>
+<td>Memory - HSL-2</td>
+<td>9.79E-08</td>
+<td>2.14E-03</td>
+<td>2.23E-02</td>
+<td>1.78E-02</td>
+<td>3.22E+00</td>
+<td>4.11E+01</td>
+<td>3.02E-10</td>
+<td>9.97E-06</td>
+<td>1.75E-08</td>
+<td>2.69E-02</td>
+<td>1.27E-02</td>
+<td>1.40E-06</td>
+</tr>
+<tr>
+<td>Memory - HSL-3</td>
+<td>2.06E-07</td>
+<td>4.49E-03</td>
+<td>4.68E-02</td>
+<td>3.73E-02</td>
+<td>6.77E+00</td>
+<td>8.64E+01</td>
+<td>6.35E-10</td>
+<td>2.09E-05</td>
+<td>3.67E-08</td>
+<td>5.66E-02</td>
+<td>2.68E-02</td>
+<td>2.93E-06</td>
+</tr>
+<tr>
+<td>Others - HSL-0</td>
+<td>1.15E-08</td>
+<td>2.21E-04</td>
+<td>2.38E-03</td>
+<td>2.11E-03</td>
+<td>3.17E-01</td>
+<td>6.13E+00</td>
+<td>6.59E-11</td>
+<td>1.88E-07</td>
+<td>4.70E-09</td>
+<td>5.17E+00</td>
+<td>0.00E+00</td>
+<td>7.61E-08</td>
+</tr>
+<tr>
+<td>Others - HSL-1</td>
+<td>2.24E-08</td>
+<td>4.14E-04</td>
+<td>4.46E-03</td>
+<td>3.90E-03</td>
+<td>5.89E-01</td>
+<td>1.14E+01</td>
+<td>1.20E-10</td>
+<td>3.92E-07</td>
+<td>8.91E-09</td>
+<td>1.03E+01</td>
+<td>0.00E+00</td>
+<td>1.45E-07</td>
+</tr>
+<tr>
+<td>Others - HSL-2</td>
+<td>4.49E-08</td>
+<td>8.54E-04</td>
+<td>9.23E-03</td>
+<td>8.04E-03</td>
+<td>1.21E+00</td>
+<td>2.48E+01</td>
+<td>2.68E-10</td>
+<td>6.66E-07</td>
+<td>2.04E-08</td>
+<td>2.58E+01</td>
+<td>0.00E+00</td>
+<td>3.26E-07</td>
+</tr>
+<tr>
+<td>Others - HSL-3</td>
+<td>7.56E-08</td>
+<td>1.41E-03</td>
+<td>1.53E-02</td>
+<td>1.36E-02</td>
+<td>2.00E+00</td>
+<td>4.09E+01</td>
+<td>6.45E-10</td>
+<td>1.13E-06</td>
+<td>3.46E-08</td>
+<td>4.39E+01</td>
+<td>0.00E+00</td>
+<td>5.60E-07</td>
+</tr>
+<tr>
+<td>PCB - HSL-0</td>
+<td>3.97E-09</td>
+<td>7.96E-05</td>
+<td>8.69E-04</td>
+<td>7.32E-04</td>
+<td>9.29E-02</td>
+<td>1.49E+00</td>
+<td>1.76E-11</td>
+<td>4.17E-08</td>
+<td>1.12E-09</td>
+<td>3.01E-02</td>
+<td>0.00E+00</td>
+<td>1.12E-08</td>
+</tr>
+<tr>
+<td>PCB - HSL-1</td>
+<td>1.40E-08</td>
+<td>2.81E-04</td>
+<td>3.07E-03</td>
+<td>2.58E-03</td>
+<td>3.28E-01</td>
+<td>5.24E+00</td>
+<td>6.20E-11</td>
+<td>1.47E-07</td>
+<td>3.94E-09</td>
+<td>1.06E-01</td>
+<td>0.00E+00</td>
+<td>3.94E-08</td>
+</tr>
+<tr>
+<td>PCB - HSL-2</td>
+<td>3.11E-08</td>
+<td>5.26E-04</td>
+<td>5.74E-03</td>
+<td>5.63E-03</td>
+<td>6.14E-01</td>
+<td>1.07E+01</td>
+<td>1.24E-10</td>
+<td>3.68E-07</td>
+<td>8.72E-09</td>
+<td>1.89E-01</td>
+<td>0.00E+00</td>
+<td>8.94E-08</td>
+</tr>
+<tr>
+<td>PCB - HSL-3</td>
+<td>7.42E-08</td>
+<td>1.25E-03</td>
+<td>1.37E-02</td>
+<td>1.34E-02</td>
+<td>1.46E+00</td>
+<td>2.56E+01</td>
+<td>2.96E-10</td>
+<td>8.79E-07</td>
+<td>2.08E-08</td>
+<td>4.53E-01</td>
+<td>0.00E+00</td>
+<td>2.14E-07</td>
+</tr>
+<tr>
+<td>Power supply - HSL-0</td>
+<td>1.71E-07</td>
+<td>3.24E-03</td>
+<td>3.44E-02</td>
+<td>3.11E-02</td>
+<td>4.43E+00</td>
+<td>6.27E+01</td>
+<td>8.27E-10</td>
+<td>5.05E-06</td>
+<td>6.15E-08</td>
+<td>4.23E+00</td>
+<td>5.10E-04</td>
+<td>4.58E-07</td>
+</tr>
+<tr>
+<td>Power supply - HSL-1</td>
+<td>5.51E-09</td>
+<td>1.20E-04</td>
+<td>1.31E-03</td>
+<td>9.46E-04</td>
+<td>1.04E-01</td>
+<td>6.83E+00</td>
+<td>1.01E-10</td>
+<td>4.97E-07</td>
+<td>2.18E-08</td>
+<td>1.83E+00</td>
+<td>0.00E+00</td>
+<td>2.21E-08</td>
+</tr>
+<tr>
+<td>Power supply - HSL-2</td>
+<td>1.65E-07</td>
+<td>4.83E-03</td>
+<td>3.72E-02</td>
+<td>2.81E-02</td>
+<td>4.64E+00</td>
+<td>1.07E+02</td>
+<td>1.14E-09</td>
+<td>9.08E-04</td>
+<td>1.93E-07</td>
+<td>2.03E+00</td>
+<td>6.77E-01</td>
+<td>1.88E-06</td>
+</tr>
+<tr>
+<td>Power supply - HSL-3</td>
+<td>1.76E-07</td>
+<td>5.07E-03</td>
+<td>3.96E-02</td>
+<td>3.00E-02</td>
+<td>4.99E+00</td>
+<td>1.11E+02</td>
+<td>1.17E-09</td>
+<td>9.09E-04</td>
+<td>1.95E-07</td>
+<td>2.03E+00</td>
+<td>6.78E-01</td>
+<td>2.04E-06</td>
+</tr>
+<tr>
+<td>Processing - HSL-0</td>
+<td>7.84E-09</td>
+<td>1.71E-04</td>
+<td>1.78E-03</td>
+<td>1.42E-03</td>
+<td>2.58E-01</td>
+<td>3.29E+00</td>
+<td>2.42E-11</td>
+<td>7.94E-07</td>
+<td>1.40E-09</td>
+<td>2.15E-03</td>
+<td>1.01E-03</td>
+<td>1.11E-07</td>
+</tr>
+<tr>
+<td>Processing - HSL-1</td>
+<td>5.27E-08</td>
+<td>1.15E-03</td>
+<td>1.20E-02</td>
+<td>9.55E-03</td>
+<td>1.73E+00</td>
+<td>2.21E+01</td>
+<td>1.62E-10</td>
+<td>5.39E-06</td>
+<td>9.39E-09</td>
+<td>1.45E-02</td>
+<td>6.89E-03</td>
+<td>7.55E-07</td>
+</tr>
+<tr>
+<td>Processing - HSL-2</td>
+<td>1.07E-07</td>
+<td>2.34E-03</td>
+<td>2.44E-02</td>
+<td>1.95E-02</td>
+<td>3.53E+00</td>
+<td>4.51E+01</td>
+<td>3.31E-10</td>
+<td>1.10E-05</td>
+<td>1.91E-08</td>
+<td>2.96E-02</td>
+<td>1.41E-02</td>
+<td>1.54E-06</td>
+</tr>
+<tr>
+<td>Processing - HSL-3</td>
+<td>1.93E-07</td>
+<td>4.20E-03</td>
+<td>4.37E-02</td>
+<td>3.49E-02</td>
+<td>6.33E+00</td>
+<td>8.08E+01</td>
+<td>5.93E-10</td>
+<td>1.97E-05</td>
+<td>3.43E-08</td>
+<td>5.30E-02</td>
+<td>2.52E-02</td>
+<td>2.76E-06</td>
+</tr>
+<tr>
+<td>Security - HSL-1</td>
+<td>1.34E-09</td>
+<td>2.91E-05</td>
+<td>3.04E-04</td>
+<td>2.42E-04</td>
+<td>4.39E-02</td>
+<td>5.62E-01</td>
+<td>4.13E-12</td>
+<td>1.35E-07</td>
+<td>2.39E-10</td>
+<td>3.67E-04</td>
+<td>1.72E-04</td>
+<td>1.89E-08</td>
+</tr>
+<tr>
+<td>Sensing - HSL-1</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+</tr>
+<tr>
+<td>Sensing - HSL-2</td>
+<td>1.40E-09</td>
+<td>3.05E-05</td>
+<td>3.19E-04</td>
+<td>2.54E-04</td>
+<td>4.60E-02</td>
+<td>5.90E-01</td>
+<td>4.33E-12</td>
+<td>1.39E-07</td>
+<td>2.51E-10</td>
+<td>3.83E-04</td>
+<td>1.78E-04</td>
+<td>1.95E-08</td>
+</tr>
+<tr>
+<td>Sensing - HSL-3</td>
+<td>2.42E-08</td>
+<td>5.28E-04</td>
+<td>5.51E-03</td>
+<td>4.39E-03</td>
+<td>7.96E-01</td>
+<td>1.02E+01</td>
+<td>7.47E-11</td>
+<td>2.44E-06</td>
+<td>4.32E-09</td>
+<td>6.64E-03</td>
+<td>3.12E-03</td>
+<td>3.42E-07</td>
+</tr>
+<tr>
+<td>User interface - HSL-1</td>
+<td>7.19E-09</td>
+<td>1.22E-04</td>
+<td>1.19E-03</td>
+<td>1.13E-03</td>
+<td>1.45E-01</td>
+<td>3.18E+00</td>
+<td>3.41E-11</td>
+<td>2.63E-07</td>
+<td>1.27E-09</td>
+<td>3.68E+00</td>
+<td>0.00E+00</td>
+<td>3.12E-08</td>
+</tr>
+<tr>
+<td>User interface - HSL-2</td>
+<td>1.66E-08</td>
+<td>2.93E-04</td>
+<td>2.91E-03</td>
+<td>2.66E-03</td>
+<td>3.62E-01</td>
+<td>7.43E+00</td>
+<td>7.58E-11</td>
+<td>7.38E-07</td>
+<td>3.15E-09</td>
+<td>7.55E+00</td>
+<td>2.60E-04</td>
+<td>9.13E-08</td>
+</tr>
+<tr>
+<td>User interface - HSL-3</td>
+<td>3.49E-08</td>
+<td>6.94E-04</td>
+<td>6.89E-03</td>
+<td>6.00E-03</td>
+<td>8.23E-01</td>
+<td>1.75E+01</td>
+<td>3.27E-10</td>
+<td>2.94E-06</td>
+<td>1.48E-08</td>
+<td>1.18E+01</td>
+<td>1.11E-02</td>
+<td>1.29E-07</td>
+</tr>
+</tbody>
+</table>
+<h4 id="end-of-life">End of life</h4>
+<table>
+<thead>
+<tr>
+<th>Functional_blocks - HSL_LEVEL</th>
+<th>Particulate Matter</th>
+<th>Eutrophication marine</th>
+<th>Eutrophication, terrestrial</th>
+<th>Acidification</th>
+<th>Climate change</th>
+<th>Ecotoxicity, freshwater</th>
+<th>Human toxicity, cancer</th>
+<th>Eutrophication, freshwater</th>
+<th>Human toxicity, non-cancer</th>
+<th>Ionising radiation, human health</th>
+<th>Land use</th>
+<th>Ozone depletion</th>
+<th>Photochemical ozone formation - human health</th>
+<th>Resource use, fossils</th>
+<th>Resource use, minerals and metals</th>
+<th>Water use</th>
+<th>Total Primary Energy</th>
+<th>Net use of freshwater</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name or Shortname</td>
+<td>Disease occurrence</td>
+<td>kg N eq.</td>
+<td>mol N eq.</td>
+<td>mol H+ eq.</td>
+<td>kg CO2 eq.</td>
+<td>CTUe</td>
+<td>CTUh</td>
+<td>kg P eq.</td>
+<td>CTUh</td>
+<td>kBq U235 eq.</td>
+<td>No dimension</td>
+<td>kg CFC-11 eq.</td>
+<td>kg NMVOC eq.</td>
+<td>MJ</td>
+<td>kg SB eq.</td>
+<td>m3 eq.</td>
+<td>MJ</td>
+<td>m3</td>
+</tr>
+<tr>
+<td>Actuators - HSL-1</td>
+<td>1.10E-10</td>
+<td>6.01E-06</td>
+<td>1.98E-05</td>
+<td>1.47E-05</td>
+<td>2.01E-03</td>
+<td>2.15E-01</td>
+<td>2.09E-12</td>
+<td>3.97E-08</td>
+<td>8.48E-11</td>
+<td>2.16E-04</td>
+<td>6.94E-03</td>
+<td>2.29E-10</td>
+<td>5.99E-06</td>
+<td>3.15E-02</td>
+<td>8.05E-09</td>
+<td>5.28E-01</td>
+<td>3.42E-02</td>
+<td>1.48E-02</td>
+</tr>
+<tr>
+<td>Actuators - HSL-2</td>
+<td>1.69E-11</td>
+<td>4.97E-06</td>
+<td>3.02E-06</td>
+<td>6.99E-06</td>
+<td>3.14E-04</td>
+<td>1.73E-01</td>
+<td>5.77E-13</td>
+<td>4.41E-09</td>
+<td>5.38E-11</td>
+<td>2.27E-05</td>
+<td>1.17E-03</td>
+<td>2.58E-11</td>
+<td>1.10E-06</td>
+<td>3.12E-03</td>
+<td>1.11E-10</td>
+<td>9.45E-02</td>
+<td>3.56E-03</td>
+<td>2.50E-03</td>
+</tr>
+<tr>
+<td>Actuators - HSL-3</td>
+<td>1.10E-08</td>
+<td>6.03E-04</td>
+<td>1.98E-03</td>
+<td>1.47E-03</td>
+<td>2.01E-01</td>
+<td>2.16E+01</td>
+<td>2.09E-10</td>
+<td>3.97E-06</td>
+<td>8.50E-09</td>
+<td>2.16E-02</td>
+<td>6.95E-01</td>
+<td>2.29E-08</td>
+<td>6.00E-04</td>
+<td>3.15E+00</td>
+<td>8.05E-07</td>
+<td>5.28E+01</td>
+<td>3.42E+00</td>
+<td>1.48E+00</td>
+</tr>
+<tr>
+<td>Casing - HSL-1</td>
+<td>4.99E-09</td>
+<td>8.35E-05</td>
+<td>9.44E-04</td>
+<td>4.57E-04</td>
+<td>9.12E-02</td>
+<td>1.69E+00</td>
+<td>4.22E-11</td>
+<td>1.13E-06</td>
+<td>8.65E-10</td>
+<td>6.75E-03</td>
+<td>2.10E-01</td>
+<td>1.03E-08</td>
+<td>2.85E-04</td>
+<td>1.35E+00</td>
+<td>5.85E-07</td>
+<td>1.44E+01</td>
+<td>1.43E+00</td>
+<td>4.00E-01</td>
+</tr>
+<tr>
+<td>Casing - HSL-2</td>
+<td>3.99E-08</td>
+<td>6.68E-04</td>
+<td>7.56E-03</td>
+<td>3.66E-03</td>
+<td>7.29E-01</td>
+<td>1.35E+01</td>
+<td>3.38E-10</td>
+<td>9.04E-06</td>
+<td>6.92E-09</td>
+<td>5.40E-02</td>
+<td>1.68E+00</td>
+<td>8.24E-08</td>
+<td>2.28E-03</td>
+<td>1.08E+01</td>
+<td>4.68E-06</td>
+<td>1.15E+02</td>
+<td>1.14E+01</td>
+<td>3.20E+00</td>
+</tr>
+<tr>
+<td>Casing - HSL-3</td>
+<td>7.99E-08</td>
+<td>1.34E-03</td>
+<td>1.51E-02</td>
+<td>7.32E-03</td>
+<td>1.46E+00</td>
+<td>2.70E+01</td>
+<td>6.75E-10</td>
+<td>1.81E-05</td>
+<td>1.38E-08</td>
+<td>1.08E-01</td>
+<td>3.35E+00</td>
+<td>1.65E-07</td>
+<td>4.56E-03</td>
+<td>2.16E+01</td>
+<td>9.36E-06</td>
+<td>2.31E+02</td>
+<td>2.28E+01</td>
+<td>6.39E+00</td>
+</tr>
+<tr>
+<td>Connectivity - HSL-1</td>
+<td>5.92E-13</td>
+<td>1.74E-07</td>
+<td>1.06E-07</td>
+<td>2.44E-07</td>
+<td>1.10E-05</td>
+<td>6.06E-03</td>
+<td>2.02E-14</td>
+<td>1.54E-10</td>
+<td>1.88E-12</td>
+<td>7.92E-07</td>
+<td>4.10E-05</td>
+<td>9.01E-13</td>
+<td>3.84E-08</td>
+<td>1.09E-04</td>
+<td>3.88E-12</td>
+<td>3.30E-03</td>
+<td>1.25E-04</td>
+<td>8.75E-05</td>
+</tr>
+<tr>
+<td>Connectivity - HSL-2</td>
+<td>8.02E-09</td>
+<td>1.83E-04</td>
+<td>1.60E-03</td>
+<td>7.37E-04</td>
+<td>1.08E-01</td>
+<td>8.51E+00</td>
+<td>9.63E-11</td>
+<td>3.91E-07</td>
+<td>1.61E-09</td>
+<td>9.45E-03</td>
+<td>2.84E-01</td>
+<td>1.84E-08</td>
+<td>4.31E-04</td>
+<td>1.82E+00</td>
+<td>1.26E-07</td>
+<td>1.61E+01</td>
+<td>1.94E+00</td>
+<td>5.28E-01</td>
+</tr>
+<tr>
+<td>Connectivity - HSL-3</td>
+<td>8.03E-09</td>
+<td>1.83E-04</td>
+<td>1.60E-03</td>
+<td>7.37E-04</td>
+<td>1.08E-01</td>
+<td>8.52E+00</td>
+<td>9.64E-11</td>
+<td>3.91E-07</td>
+<td>1.61E-09</td>
+<td>9.45E-03</td>
+<td>2.84E-01</td>
+<td>1.84E-08</td>
+<td>4.31E-04</td>
+<td>1.82E+00</td>
+<td>1.26E-07</td>
+<td>1.61E+01</td>
+<td>1.94E+00</td>
+<td>5.28E-01</td>
+</tr>
+<tr>
+<td>Memory - HSL-1</td>
+<td>5.15E-13</td>
+<td>1.51E-07</td>
+<td>9.19E-08</td>
+<td>2.13E-07</td>
+<td>9.55E-06</td>
+<td>5.27E-03</td>
+<td>1.75E-14</td>
+<td>1.34E-10</td>
+<td>1.64E-12</td>
+<td>6.89E-07</td>
+<td>3.56E-05</td>
+<td>7.84E-13</td>
+<td>3.34E-08</td>
+<td>9.47E-05</td>
+<td>3.37E-12</td>
+<td>2.87E-03</td>
+<td>1.08E-04</td>
+<td>7.61E-05</td>
+</tr>
+<tr>
+<td>Memory - HSL-2</td>
+<td>5.12E-12</td>
+<td>1.50E-06</td>
+<td>9.15E-07</td>
+<td>2.12E-06</td>
+<td>9.50E-05</td>
+<td>5.25E-02</td>
+<td>1.75E-13</td>
+<td>1.34E-09</td>
+<td>1.63E-11</td>
+<td>6.86E-06</td>
+<td>3.55E-04</td>
+<td>7.80E-12</td>
+<td>3.32E-07</td>
+<td>9.43E-04</td>
+<td>3.35E-11</td>
+<td>2.86E-02</td>
+<td>1.08E-03</td>
+<td>7.58E-04</td>
+</tr>
+<tr>
+<td>Memory - HSL-3</td>
+<td>9.56E-12</td>
+<td>2.80E-06</td>
+<td>1.71E-06</td>
+<td>3.95E-06</td>
+<td>1.77E-04</td>
+<td>9.79E-02</td>
+<td>3.26E-13</td>
+<td>2.49E-09</td>
+<td>3.04E-11</td>
+<td>1.28E-05</td>
+<td>6.62E-04</td>
+<td>1.46E-11</td>
+<td>6.20E-07</td>
+<td>1.76E-03</td>
+<td>6.26E-11</td>
+<td>5.33E-02</td>
+<td>2.01E-03</td>
+<td>1.41E-03</td>
+</tr>
+<tr>
+<td>Others - HSL-0</td>
+<td>4.89E-10</td>
+<td>1.43E-04</td>
+<td>8.73E-05</td>
+<td>2.02E-04</td>
+<td>9.07E-03</td>
+<td>5.01E+00</td>
+<td>1.67E-11</td>
+<td>1.27E-07</td>
+<td>1.55E-09</td>
+<td>6.54E-04</td>
+<td>3.38E-02</td>
+<td>7.44E-10</td>
+<td>3.17E-05</td>
+<td>8.99E-02</td>
+<td>3.20E-09</td>
+<td>2.73E+00</td>
+<td>1.03E-01</td>
+<td>7.23E-02</td>
+</tr>
+<tr>
+<td>Others - HSL-1</td>
+<td>1.01E-09</td>
+<td>2.97E-04</td>
+<td>1.81E-04</td>
+<td>4.18E-04</td>
+<td>1.88E-02</td>
+<td>1.04E+01</td>
+<td>3.45E-11</td>
+<td>2.64E-07</td>
+<td>3.21E-09</td>
+<td>1.35E-03</td>
+<td>7.00E-02</td>
+<td>1.54E-09</td>
+<td>6.56E-05</td>
+<td>1.86E-01</td>
+<td>6.62E-09</td>
+<td>5.64E+00</td>
+<td>2.13E-01</td>
+<td>1.50E-01</td>
+</tr>
+<tr>
+<td>Others - HSL-2</td>
+<td>2.29E-09</td>
+<td>6.73E-04</td>
+<td>4.10E-04</td>
+<td>9.48E-04</td>
+<td>4.26E-02</td>
+<td>2.35E+01</td>
+<td>7.82E-11</td>
+<td>5.98E-07</td>
+<td>7.29E-09</td>
+<td>3.07E-03</td>
+<td>1.59E-01</td>
+<td>3.49E-09</td>
+<td>1.49E-04</td>
+<td>4.22E-01</td>
+<td>1.50E-08</td>
+<td>1.28E+01</td>
+<td>4.83E-01</td>
+<td>3.39E-01</td>
+</tr>
+<tr>
+<td>Others - HSL-3</td>
+<td>3.73E-09</td>
+<td>1.10E-03</td>
+<td>6.67E-04</td>
+<td>1.54E-03</td>
+<td>6.93E-02</td>
+<td>3.83E+01</td>
+<td>1.27E-10</td>
+<td>9.73E-07</td>
+<td>1.19E-08</td>
+<td>5.00E-03</td>
+<td>2.59E-01</td>
+<td>5.68E-09</td>
+<td>2.42E-04</td>
+<td>6.87E-01</td>
+<td>2.44E-08</td>
+<td>2.08E+01</td>
+<td>7.86E-01</td>
+<td>5.52E-01</td>
+</tr>
+<tr>
+<td>PCB - HSL-0</td>
+<td>2.73E-10</td>
+<td>8.02E-05</td>
+<td>4.88E-05</td>
+<td>1.13E-04</td>
+<td>5.07E-03</td>
+<td>2.80E+00</td>
+<td>9.32E-12</td>
+<td>7.12E-08</td>
+<td>8.68E-10</td>
+<td>3.66E-04</td>
+<td>1.89E-02</td>
+<td>4.16E-10</td>
+<td>1.77E-05</td>
+<td>5.03E-02</td>
+<td>1.79E-09</td>
+<td>1.53E+00</td>
+<td>5.75E-02</td>
+<td>4.04E-02</td>
+</tr>
+<tr>
+<td>PCB - HSL-1</td>
+<td>9.61E-10</td>
+<td>2.82E-04</td>
+<td>1.72E-04</td>
+<td>3.97E-04</td>
+<td>1.78E-02</td>
+<td>9.85E+00</td>
+<td>3.28E-11</td>
+<td>2.51E-07</td>
+<td>3.05E-09</td>
+<td>1.29E-03</td>
+<td>6.66E-02</td>
+<td>1.46E-09</td>
+<td>6.23E-05</td>
+<td>1.77E-01</td>
+<td>6.29E-09</td>
+<td>5.36E+00</td>
+<td>2.02E-01</td>
+<td>1.42E-01</td>
+</tr>
+<tr>
+<td>PCB - HSL-2</td>
+<td>1.72E-09</td>
+<td>5.06E-04</td>
+<td>3.08E-04</td>
+<td>7.12E-04</td>
+<td>3.20E-02</td>
+<td>1.77E+01</td>
+<td>5.87E-11</td>
+<td>4.49E-07</td>
+<td>5.48E-09</td>
+<td>2.31E-03</td>
+<td>1.19E-01</td>
+<td>2.62E-09</td>
+<td>1.12E-04</td>
+<td>3.17E-01</td>
+<td>1.13E-08</td>
+<td>9.62E+00</td>
+<td>3.63E-01</td>
+<td>2.55E-01</td>
+</tr>
+<tr>
+<td>PCB - HSL-3</td>
+<td>4.13E-09</td>
+<td>1.21E-03</td>
+<td>7.37E-04</td>
+<td>1.71E-03</td>
+<td>7.66E-02</td>
+<td>4.23E+01</td>
+<td>1.41E-10</td>
+<td>1.08E-06</td>
+<td>1.31E-08</td>
+<td>5.53E-03</td>
+<td>2.86E-01</td>
+<td>6.29E-09</td>
+<td>2.68E-04</td>
+<td>7.60E-01</td>
+<td>2.70E-08</td>
+<td>2.30E+01</td>
+<td>8.69E-01</td>
+<td>6.11E-01</td>
+</tr>
+<tr>
+<td>Power supply - HSL-0</td>
+<td>3.69E-09</td>
+<td>1.14E-03</td>
+<td>5.89E-04</td>
+<td>1.59E-03</td>
+<td>5.94E-02</td>
+<td>4.00E+01</td>
+<td>1.18E-10</td>
+<td>1.02E-06</td>
+<td>1.22E-08</td>
+<td>4.76E-03</td>
+<td>2.64E-01</td>
+<td>5.51E-09</td>
+<td>2.29E-04</td>
+<td>6.82E-01</td>
+<td>2.23E-08</td>
+<td>2.16E+01</td>
+<td>7.83E-01</td>
+<td>5.71E-01</td>
+</tr>
+<tr>
+<td>Power supply - HSL-1</td>
+<td>1.11E-09</td>
+<td>1.61E-05</td>
+<td>1.76E-04</td>
+<td>2.01E-04</td>
+<td>1.81E-02</td>
+<td>2.08E-01</td>
+<td>4.98E-12</td>
+<td>4.81E-09</td>
+<td>2.44E-10</td>
+<td>5.52E-03</td>
+<td>0.00E+00</td>
+<td>2.16E-09</td>
+<td>6.80E-05</td>
+<td>4.46E-01</td>
+<td>3.53E-09</td>
+<td>3.01E-03</td>
+<td>4.47E-01</td>
+<td>7.01E-05</td>
+</tr>
+<tr>
+<td>Power supply - HSL-2</td>
+<td>1.80E-09</td>
+<td>2.85E-04</td>
+<td>3.95E-04</td>
+<td>5.50E-04</td>
+<td>4.57E-02</td>
+<td>1.43E+02</td>
+<td>3.32E-11</td>
+<td>2.40E-07</td>
+<td>3.19E-09</td>
+<td>1.14E-02</td>
+<td>6.05E-02</td>
+<td>5.65E-09</td>
+<td>1.49E-04</td>
+<td>8.48E-01</td>
+<td>6.07E-09</td>
+<td>4.95E+00</td>
+<td>8.71E-01</td>
+<td>1.31E-01</td>
+</tr>
+<tr>
+<td>Power supply - HSL-3</td>
+<td>1.80E-09</td>
+<td>2.85E-04</td>
+<td>3.95E-04</td>
+<td>5.50E-04</td>
+<td>4.57E-02</td>
+<td>1.43E+02</td>
+<td>3.33E-11</td>
+<td>2.40E-07</td>
+<td>3.19E-09</td>
+<td>1.14E-02</td>
+<td>6.06E-02</td>
+<td>5.65E-09</td>
+<td>1.49E-04</td>
+<td>8.48E-01</td>
+<td>6.08E-09</td>
+<td>4.96E+00</td>
+<td>8.71E-01</td>
+<td>1.31E-01</td>
+</tr>
+<tr>
+<td>Processing - HSL-0</td>
+<td>5.92E-13</td>
+<td>1.74E-07</td>
+<td>1.06E-07</td>
+<td>2.44E-07</td>
+<td>1.10E-05</td>
+<td>6.06E-03</td>
+<td>2.02E-14</td>
+<td>1.54E-10</td>
+<td>1.88E-12</td>
+<td>7.92E-07</td>
+<td>4.10E-05</td>
+<td>9.01E-13</td>
+<td>3.84E-08</td>
+<td>1.09E-04</td>
+<td>3.88E-12</td>
+<td>3.30E-03</td>
+<td>1.25E-04</td>
+<td>8.75E-05</td>
+</tr>
+<tr>
+<td>Processing - HSL-1</td>
+<td>2.37E-12</td>
+<td>6.95E-07</td>
+<td>4.23E-07</td>
+<td>9.79E-07</td>
+<td>4.40E-05</td>
+<td>2.43E-02</td>
+<td>8.08E-14</td>
+<td>6.18E-10</td>
+<td>7.53E-12</td>
+<td>3.17E-06</td>
+<td>1.64E-04</td>
+<td>3.61E-12</td>
+<td>1.54E-07</td>
+<td>4.36E-04</td>
+<td>1.55E-11</td>
+<td>1.32E-02</td>
+<td>4.99E-04</td>
+<td>3.50E-04</td>
+</tr>
+<tr>
+<td>Processing - HSL-2</td>
+<td>4.14E-12</td>
+<td>1.21E-06</td>
+<td>7.39E-07</td>
+<td>1.71E-06</td>
+<td>7.68E-05</td>
+<td>4.24E-02</td>
+<td>1.41E-13</td>
+<td>1.08E-09</td>
+<td>1.32E-11</td>
+<td>5.54E-06</td>
+<td>2.87E-04</td>
+<td>6.30E-12</td>
+<td>2.68E-07</td>
+<td>7.62E-04</td>
+<td>2.71E-11</td>
+<td>2.31E-02</td>
+<td>8.71E-04</td>
+<td>6.12E-04</td>
+</tr>
+<tr>
+<td>Processing - HSL-3</td>
+<td>4.82E-12</td>
+<td>1.41E-06</td>
+<td>8.60E-07</td>
+<td>1.99E-06</td>
+<td>8.93E-05</td>
+<td>4.94E-02</td>
+<td>1.64E-13</td>
+<td>1.26E-09</td>
+<td>1.53E-11</td>
+<td>6.45E-06</td>
+<td>3.34E-04</td>
+<td>7.33E-12</td>
+<td>3.12E-07</td>
+<td>8.86E-04</td>
+<td>3.15E-11</td>
+<td>2.69E-02</td>
+<td>1.01E-03</td>
+<td>7.12E-04</td>
+</tr>
+<tr>
+<td>Security - HSL-1</td>
+<td>1.19E-13</td>
+<td>3.48E-08</td>
+<td>2.12E-08</td>
+<td>4.90E-08</td>
+<td>2.20E-06</td>
+<td>1.21E-03</td>
+<td>4.04E-15</td>
+<td>3.09E-11</td>
+<td>3.77E-13</td>
+<td>1.59E-07</td>
+<td>8.21E-06</td>
+<td>1.80E-13</td>
+<td>7.69E-09</td>
+<td>2.18E-05</td>
+<td>7.76E-13</td>
+<td>6.62E-04</td>
+<td>2.49E-05</td>
+<td>1.75E-05</td>
+</tr>
+<tr>
+<td>Sensing - HSL-1</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+<td>0.00E+00</td>
+</tr>
+<tr>
+<td>Sensing - HSL-2</td>
+<td>1.78E-13</td>
+<td>5.22E-08</td>
+<td>3.18E-08</td>
+<td>7.34E-08</td>
+<td>3.30E-06</td>
+<td>1.82E-03</td>
+<td>6.06E-15</td>
+<td>4.63E-11</td>
+<td>5.65E-13</td>
+<td>2.38E-07</td>
+<td>1.23E-05</td>
+<td>2.71E-13</td>
+<td>1.15E-08</td>
+<td>3.27E-05</td>
+<td>1.16E-12</td>
+<td>9.92E-04</td>
+<td>3.74E-05</td>
+<td>2.63E-05</td>
+</tr>
+<tr>
+<td>Sensing - HSL-3</td>
+<td>1.96E-12</td>
+<td>5.74E-07</td>
+<td>3.49E-07</td>
+<td>8.08E-07</td>
+<td>3.63E-05</td>
+<td>2.00E-02</td>
+<td>6.67E-14</td>
+<td>5.10E-10</td>
+<td>6.22E-12</td>
+<td>2.62E-06</td>
+<td>1.35E-04</td>
+<td>2.98E-12</td>
+<td>1.27E-07</td>
+<td>3.60E-04</td>
+<td>1.28E-11</td>
+<td>1.09E-02</td>
+<td>4.12E-04</td>
+<td>2.89E-04</td>
+</tr>
+<tr>
+<td>User interface - HSL-1</td>
+<td>3.35E-10</td>
+<td>1.03E-04</td>
+<td>5.46E-05</td>
+<td>1.44E-04</td>
+<td>5.54E-03</td>
+<td>3.60E+00</td>
+<td>1.09E-11</td>
+<td>9.18E-08</td>
+<td>1.10E-09</td>
+<td>4.36E-04</td>
+<td>2.39E-02</td>
+<td>5.02E-10</td>
+<td>2.10E-05</td>
+<td>6.20E-02</td>
+<td>2.05E-09</td>
+<td>1.95E+00</td>
+<td>7.11E-02</td>
+<td>5.15E-02</td>
+</tr>
+<tr>
+<td>User interface - HSL-2</td>
+<td>7.17E-10</td>
+<td>2.06E-04</td>
+<td>1.18E-04</td>
+<td>2.92E-04</td>
+<td>1.20E-02</td>
+<td>7.21E+00</td>
+<td>2.29E-11</td>
+<td>2.10E-07</td>
+<td>2.23E-09</td>
+<td>9.41E-04</td>
+<td>5.01E-02</td>
+<td>1.11E-09</td>
+<td>4.43E-05</td>
+<td>1.38E-01</td>
+<td>7.38E-09</td>
+<td>4.21E+00</td>
+<td>1.58E-01</td>
+<td>1.12E-01</td>
+</tr>
+<tr>
+<td>User interface - HSL-3</td>
+<td>1.12E-09</td>
+<td>3.03E-04</td>
+<td>1.93E-04</td>
+<td>4.28E-04</td>
+<td>1.94E-02</td>
+<td>1.05E+01</td>
+<td>3.37E-11</td>
+<td>2.67E-07</td>
+<td>3.23E-09</td>
+<td>1.54E-03</td>
+<td>7.03E-02</td>
+<td>1.83E-09</td>
+<td>6.98E-05</td>
+<td>2.21E-01</td>
+<td>8.96E-09</td>
+<td>5.92E+00</td>
+<td>2.49E-01</td>
+<td>1.62E-01</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage-impact">Usage impact</h2>
+<p>Usage impacts are not implemented at functional level, but at the level of the <a href="../../devices/iot_devices/">iot device</a>.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../case/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Case" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Case
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../devices/devices/" class="md-footer__link md-footer__link--next" aria-label="Next: Devices" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Devices
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
