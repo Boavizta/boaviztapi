@@ -25,7 +25,7 @@ You can then run the script to check the changes using the `check.py` script in 
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-
+python3 check.py
 ```
 
 ## Scripting
