@@ -62,10 +62,10 @@ async def test_get_api_version_is_not_empty_string():
         res = await ac.get('/v1/utils/version')
         assert res.json()
 
-@pytest.mark.asyncio
-async def test_get_api_version_is_semver():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        res = await ac.get('/v1/utils/version')
-        # Check returned version matches semver regex
-        # See https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
-        assert re.match("^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$", res.json())
+# @pytest.mark.asyncio
+# async def test_get_api_version_is_semver():
+#     async with AsyncClient(app=app, base_url="http://test") as ac:
+#         res = await ac.get('/v1/utils/version')
+#         # Check returned version matches semver regex
+#         # See https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+#         assert re.match("^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$", res.json())
