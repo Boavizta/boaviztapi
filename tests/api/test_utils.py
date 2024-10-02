@@ -1,5 +1,6 @@
 import pytest
 from httpx import AsyncClient
+import re
 
 from boaviztapi.main import app
 
@@ -54,3 +55,17 @@ async def test_complete_cpu_from_name():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         res = await ac.get('/v1/utils/name_to_cpu?cpu_name=deijeijdiejdzij')
         assert res.json() == "CPU name deijeijdiejdzij is not found in our database"
+
+@pytest.mark.asyncio
+async def test_get_api_version_is_not_empty_string():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.get('/v1/utils/version')
+        assert res.json()
+
+@pytest.mark.asyncio
+async def test_get_api_version_is_semver():
+    async with AsyncClient(app=app, base_url="http://test") as ac:
+        res = await ac.get('/v1/utils/version')
+        # Check returned version matches semver regex
+        # See https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+        assert re.match("^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$", res.json())
