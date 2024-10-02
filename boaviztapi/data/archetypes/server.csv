@@ -186,14 +186,16 @@ Msv2MedMem-Type1,Azure,rack,4.0,,,Intel Xeon Platinum 8280,192.0,64.0,32.0,0.0,0
 NVasv4-Type1,Azure,rack,1.0,,,AMD EPYC 7V12,128.0,56.0,8.0,2.0,2048.0,0.0,0.0,0.0,AMD Radeon Instinct MI25 ,,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,RAM units and per unit capacity not verified. RAM capacity from Azure docs was: 448 GiB
 NVsv3-Type1,Azure,rack,2.0,,,Intel Xeon E5-2690 V4,48.0,56.0,8.0,2.0,2048.0,0.0,0.0,0.0,NVIDIA Tesla M60 ,,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,RAM units and per unit capacity not verified. RAM capacity from Azure docs was: 448 GiB
 
-
-scw_play2.base,,rack,2,32,,AMD EPYC 7543,128,16,64,2,480,0,0,0,,0,2,2,50;0;100,1,35040,0.33;0.2;0.6,
-scw_pro2.base,,rack,2,32,,AMD EPYC 7543,128,24,32,2,480,0,0,0,,0,2,2,50;0;100,1,35040,0.33;0.2;0.6,
-scw_dev1.base,,rack,1,16,,AMD EPYC 7281,64,8,32,5,1024,0,0,0,,0,2,2,50;0;100,1,35040,0.33;0.2;0.6,
-scw_ent1.base,,rack,2,32,,AMD EPYC 7543,128,16,32,2,240,0,0,0,,0,2,2,50;0;100,1,35040,0.33;0.2;0.6,
-scw_coparm1.base,,rack,1,128,,Ampere Altra Max 128,256,8,16,0,0,0,0,0,,0,0,0,50;0;100,1,35040,0.33;0.2;0.6,
-scw_gp1.base,,rack,2,24,,AMD EPYC 7401P,96,12,32,5,1024,0,0,0,,0,2,2,50;0;100,1,35040,0.33;0.2;0.6,
-scw_pop2.base,,rack,1,32,,AMD EPYC 7543,64,8,32,5,1024,0,0,0,,0,1,2,50;0;100,1,35040,0.33;0.2;0.6,
-scw_pop2hm.base,,rack,1,32,,AMD EPYC 7543,64,16,32,5,1024,0,0,0,,0,1,2,50;0;100,1,35040,0.33;0.2;0.6,
-scw_pop2hc.base,,rack,1,32,,AMD EPYC 7543,64,16,32,5,1024,0,0,0,,0,1,2,50;0;100,1,35040,0.33;0.2;0.6,
-scw_stardust1.base,,rack,1,16,,AMD EPYC 7281,64,8,32,5,1024,0,0,0,,0,2,2,50;0;100,1,35040,0.33;0.2;0.6,
+scw_coparm1.base,Scaleway,rack,1,128,,Ampere Altra Max 128,256,16,64,2,937,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
+scw_dev1.base,Scaleway,rack,1,16,,AMD EPYC 7281,64,8,32,5,976,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
+scw_ent1.base,Scaleway,rack,2,32,,AMD EPYC 7543,128,16,32,2,234,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
+scw_gp1.base,Scaleway,rack,2,24,,AMD EPYC 7401P,96,12,32,5,976,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
+scw_h100.base,Scaleway,rack,1,32,,AMD EPYC 9334,64,12,64,5,7500,0,0,2,Nvidia H100,80,2,0,50;0;100,1,52560,0.33;0.2;0.6,
+scw_l4.base,Scaleway,rack,2,24,,AMD EPYC 7413,48,16,32,2,234,0,0,8,Nvidia L4,24,4,0,50;0;100,1,52560,0.33;0.2;0.6,
+scw_play2.base,Scaleway,rack,2,32,,AMD EPYC 7543,128,16,64,2,468,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
+scw_pop2.base,Scaleway,rack,2,32,,AMD EPYC 7543,128,16,32,2,234,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
+scw_pop2hc.base,Scaleway,rack,2,32,,AMD EPYC 7543,128,16,32,2,234,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
+scw_pop2hm.base,Scaleway,rack,2,32,,AMD EPYC 7543,128,16,32,2,234,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
+scw_pro2.base,Scaleway,rack,2,32,,AMD EPYC 7543,128,24,32,2,468,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
+scw_renders.base,Scaleway,rack,2,20,,Intel Xeon Gold 6148,40,12,32,2,3750,0,0,8,Nvidia Tesla P100,24,4,0,50;0;100,1,52560,0.33;0.2;0.6,
+scw_stardust1.base,Scaleway,rack,1,16,,AMD EPYC 7281,64,8,32,5,976,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
