@@ -32,7 +32,7 @@ python3 check.py
 
 It would be much better if this code lived in the Boavizta repo. It can be scripted relatively easily:
 
-1. Hard-code the base server types for each instance family (from [this doc](https://github.com/Shillaker/scw-environmental-footprint/blob/main/docs/boavizta.md))
-2. Use the [scaleway-sdk-python](https://github.com/scaleway/scaleway-sdk-python) to list the types of Instances
-3. Map these the the underlying base server types
+1. Hard-code the base server types held in the [scw-environmental-footprint](https://github.com/Shillaker/scw-environmental-footprint) repo [here](https://github.com/Shillaker/scw-environmental-footprint/blob/main/model/instances.go)
+2. Use the [scaleway-sdk-python](https://github.com/scaleway/scaleway-sdk-python) to list all the Instance types
+3. Map these the the underlying base server types based on the prefix of the Instance type
 4. Print two CSV files: i) `instances.csv` with the instance types; ii) `servers.csv` with the specs of the base servers
