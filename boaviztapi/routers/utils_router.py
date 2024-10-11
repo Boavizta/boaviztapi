@@ -1,7 +1,7 @@
 import os
-import os
 
 import pandas as pd
+import toml
 from fastapi import APIRouter, Query
 
 from boaviztapi.dto.component.cpu import CPU
@@ -22,6 +22,12 @@ _cpu_specs = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/cpu_specs.csv'))
 _ssd_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/ssd_manufacture.csv'))
 _ram_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/ram_manufacture.csv'))
 
+
+
+@utils_router.get('/version', description="Get the version of the API")
+async def version():
+    return toml.loads(open(os.path.join(os.path.dirname(__file__), '../../pyproject.toml'), 'r').read())['tool']['poetry'][
+    'version']
 
 @utils_router.get('/country_code', description=country_code)
 async def utils_get_all_countries():
