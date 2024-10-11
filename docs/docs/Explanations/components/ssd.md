@@ -10,7 +10,7 @@ SSD are Disk objects of ```type``` SSD.
 | usage        | None   | See Usage                    | See usage                    | ..        |
 | type         | None   | SSD                          | "SSD"                        | SSD       |
 | capacity     | Go     | 1000;100;5000                | Capacity of a ssd disk       | 500       |
-| density      | cm2/Go | (avg;min;max) in our dataset | cm2 per Go on a ssd wafer    | 48.5      |
+| density      | GB/cm2 | (avg;min;max) in our dataset | GB per cm2 on a ssd wafer    | 48.5      |
 | manufacturer | None   | None                         | Name of the CPU manufacturer | Samsung   |
 | model        | None   | None                         | ..                           | ..        |
 | layers       | None   | None                         | Number of layers             | 64        |
@@ -72,7 +72,7 @@ with:
 | $\text{SSD}_\text{embedded_die}^\text{pe}$     | MJ/cm2      | 27.30    |
 | $\text{SSD}_\text{embedded_base}^\text{gwp}$   | kgCO2eq     | 6.34     |
 | $\text{SSD}_\text{embedded_base}^\text{adp}$   | kgSbeq      | 5.63E-04 |
-| $\text{SSD}_\text{embedded_base}^\text{pe}$    | MJ          | 76.90    |
+| $\text{SSD}_\text{embedded_base}^\text{pe}$    | MJ          | 73.98    |
 
 !!!info
     If there are more than 1 SDD we multiply $\text{SSD}_\text{embedded}^\text{criteria}$ by the number of SSD given in `units`.

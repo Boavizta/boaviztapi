@@ -1,3 +1,27 @@
+## v1.2.4
+
+### What's Changed
+
+* Docs: automate the generation of the tutorial output in the documentation by @valentinchaud in https://github.com/Boavizta/boaviztapi/pull/266
+* Bugfix/268 by @da-ekchajzer in https://github.com/Boavizta/boaviztapi/pull/269
+* Fixing error 500 when unknown manufacturer for RAM & SSD  by @da-ekchajzer in https://github.com/Boavizta/boaviztapi/pull/273
+* Upgrade to python 3.9 by @da-ekchajzer in https://github.com/Boavizta/boaviztapi/pull/278
+* Tests(cloud): reduce verbosity of cloud tests by @Shillaker in https://github.com/Boavizta/boaviztapi/pull/272
+* Remove 0.491 constant value from CPU die size by @tibosmn in https://github.com/Boavizta/boaviztapi/pull/279
+* Tests(compatibility): add matrix test strategy for Python versions by @Shillaker in https://github.com/Boavizta/boaviztapi/pull/277
+* Feat(compatibility): add tool for checking Python compatibility locally by @Shillaker in https://github.com/Boavizta/boaviztapi/pull/276
+* Fixing typos in documentations
+
+> [!IMPORTANT]  
+> This version may slightly update the values of embedded impacts returned by he API (e.g. https://github.com/Boavizta/cloud-scanner/issues/467)
+
+### New Contributors
+
+* @valentinchaud made their first contribution in https://github.com/Boavizta/boaviztapi/pull/266
+* @Shillaker made their first contribution in https://github.com/Boavizta/boaviztapi/pull/272
+
+**Full Changelog**: https://github.com/Boavizta/boaviztapi/compare/v1.2.2...v1.2.4
+
 ## v1.2.1
 
 ### What's Changed
