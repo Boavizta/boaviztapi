@@ -38,7 +38,9 @@ jobs:
         run: |
           poetry export --without-hashes --format=requirements.txt > requirements.txt
 
-      - uses: actions4git/add-commit-push@v1
+      - run: |
+         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+         git config --local user.name "github-actions[bot]"         
       - run: git add requirements.txt
-      - run: git commit --m 'generate requirements.txt from poetry'
+      - run: git commit --m 'generate requirements.txt from poetry' || exit 0
       - run: git push
