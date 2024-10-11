@@ -1,0 +1,44 @@
+name: Generate requirements.txt for clever branches
+
+on:
+  push:
+    branches:
+      - run-clever
+      - dev-clever
+  pull_request:
+    branches:
+      - run-clever
+      - dev-clever
+
+jobs:
+  export-requirements:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'  # Choose your Python version
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+
+      - name: Configure Poetry (no virtualenv)
+        run: poetry config virtualenvs.create false
+
+      - name: Install dependencies
+        run: poetry install
+
+        
+      - name: Export requirements.txt
+        run: |
+          poetry export --without-hashes --format=requirements.txt > requirements.txt
+
+      - uses: actions4git/add-commit-push@v1
+      - run: git add requirements.txt
+      - run: git commit --m 'generate requirements.txt from poetry'
+      - run: git push
