@@ -1,3 +1,4 @@
 provider.name,provider.description
 aws,Amazon Web Services
 azure,Azure
+scaleway,Scaleway
