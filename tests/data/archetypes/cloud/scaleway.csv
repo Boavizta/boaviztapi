@@ -1,0 +1,2 @@
+id,vcpu,memory,ssd_storage,hdd_storage,gpu_units,platform,source
+dev1-l,4,8,10,0,0,scw_dev1.base,
