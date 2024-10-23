@@ -34,7 +34,7 @@ AMD EPYC 7252,Rome,EPYC (Zen 2 (Rome)),TSMC,2019-08-07,2.8 GHz,120.0,8.0,16.0,"3
 AMD EPYC 7261,Naples,,,,,,,16.0,,,,,,,,AMD,EPYC,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 AMD EPYC 7262,Rome,EPYC (Zen 2 (Rome)),TSMC,2019-08-07,3.1 GHz,155.0,8.0,16.0,"3,800 million",7.0,2x 74 mm²,416 mm2,14 nm,564.0,io_die_size (416 mm2) + die_size (2x 74 mm²),AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-7262.c2257
 AMD EPYC 7272,Rome,EPYC (Zen 2 (Rome)),TSMC,2019-08-07,2.6 GHz,120.0,12.0,24.0,"3,800 million",7.0,3x 74 mm²,416 mm2,14 nm,638.0,io_die_size (416 mm2) + die_size (3x 74 mm²),AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-7272.c2256
-AMD EPYC 7281,Naples,,,,,,,32.0,,,,,,,,AMD,EPYC,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
+AMD EPYC 7281,Naples,,TSMC,,2.1 GHz,170.0,16.0,32.0,,,,,,,,AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-7281.c1927
 AMD EPYC 7282,Rome,EPYC (Zen 2 (Rome)),TSMC,2019-08-07,2.8 GHz,120.0,16.0,32.0,"3,800 million",7.0,4x 74 mm²,416 mm2,14 nm,712.0,io_die_size (416 mm2) + die_size (4x 74 mm²),AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-7282.c2255
 AMD EPYC 72F3,Milan,EPYC (Zen 3 (Milan)),TSMC,2021-03-15,3.7 GHz,180.0,8.0,16.0,"33,200 million",7.0,8x 81 mm²,416 mm²,12 nm,1064.0,io_die_size (416 mm²) + die_size (8x 81 mm²),AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-72f3.c2391
 AMD EPYC 7301,Naples,,,,,,,32.0,,,,,,,,AMD,EPYC,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
@@ -1778,7 +1778,6 @@ Intel Xeon E5-2670 V2,Ivy Bridge,,,,,115.0,10.0,20.0,,,,,,541.0,Max value of cpu
 Intel Xeon E5-2670 V3,Haswell,,,,,,12.0,24.0,,,,,,622.0,Max value of cpu_manufacture https://en.wikichip.org/wiki/intel/microarchitectures/haswell_(client)#Octadeca-core,Intel,Xeon E5,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
 Intel Xeon E5-2676 V3,Haswell,,,,,120.0,12.0,24.0,,,,,,462.4,Linear regression of cpu_manufacture,Intel,Xeon E5,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 Intel Xeon E5-2680 V2,Ivy Bridge,,,,,115.0,10.0,20.0,,,,,,341.0,Value of cpu_manufacture https://en.wikichip.org/wiki/intel/microarchitectures/ivy_bridge_(client)#Deca-core_Ivy_Bridge_Die,Intel,Xeon E5,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
-Intel Xeon E5-2686 V4,Broadwell,,,,,145.0,18.0,36.0,,,,,,367.1,Linear regression of cpu_manufacture,Intel,Xeon E5,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 Intel Xeon E7-8880 V3,Haswell,,,,,150.0,18.0,36.0,,,,,,570.1,Linear regression of cpu_manufacture,Intel,Xeon E7,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 Intel Xeon Platinum 8124M,Skylake,,,,,240.0,18.0,36.0,,,,,,485.0,Value of cpu_manufacture https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(server)#High_Core_Count_.28HCC.29,Intel,Xeon Platinum,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 Intel Xeon Platinum 8151,Skylake,,,,,240.0,12.0,24.0,,,,,,336.4,Linear regression of cpu_manufacture,Intel,Xeon Platinum,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
@@ -1790,3 +1789,4 @@ Intel Xeon Platinum 8275CL,Cascade Lake,,,,,240.0,24.0,48.0,,,,,,,,Intel,Xeon Pl
 Intel Xeon Platinum 8375C,Ice Lake,,,,,300.0,32.0,64.0,,,,,,529.5,Linear regression of cpu_manufacture,Intel,Xeon Platinum,https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652
 Intel Xeon Platinum 8488C,Sapphire Rapids,Xeon Platinum (Sapphire Rapids-SP),Intel,,2.4 GHz,385.0,48.0,96.0,,,,,,,,Intel,Xeon Platinum,
 Intel Xeon 6455B,Sapphire Rapids,Xeon Scalable (Sapphire Rapids),Intel,2023-10-16,3.9 GHz,350.0,32.0,64.0,,7.0,,,,,,Intel,Xeon, https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit?gid=1498560972#gid=1498560972
+Intel Xeon E5-2686 v4,Broadwell,,,,2.3 GHz,145.0,18.0,36.0,,14,,,,456,,,,https://www.x86-guide.net/fr/cpu/Intel-Xeon-E5-2686-v4-cpu-no5808.html

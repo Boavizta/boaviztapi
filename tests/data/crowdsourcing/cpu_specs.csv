@@ -349,7 +349,8 @@ AMD EPYC 7252,AMD,Rome,EPYC,2.8 GHz,120.0,8.0,,74.0,io_die_size () + die_size (7
 AMD EPYC 7261,AMD,Naples,EPYC,2.5 GHz,170.0,8.0,,213.0,io_die_size () + die_size (213 mm²),https://www.techpowerup.com/cpu-specs/epyc-7261.c2299
 AMD EPYC 7262,AMD,Rome,EPYC,3.1 GHz,155.0,8.0,,74.0,io_die_size () + die_size (74 mm²),https://www.techpowerup.com/cpu-specs/epyc-7262.c2257
 AMD EPYC 7272,AMD,Rome,EPYC,2.6 GHz,120.0,12.0,,74.0,io_die_size () + die_size (74 mm²),https://www.techpowerup.com/cpu-specs/epyc-7272.c2256
-AMD EPYC 7281,AMD,Naples,EPYC,2.1 GHz,170.0,16.0,,213.0,io_die_size () + die_size (213 mm²),https://www.techpowerup.com/cpu-specs/epyc-7281.c1927
+AMD EPYC 7763,AMD,Milan,EPYC,2.45 GHz,280.0,64.0,128.0,1064.0,io_die_size (416 mm²) + die_size (8x 81 mm²),https://www.techpowerup.com/cpu-specs/epyc-7763.c2373
+AMD EPYC 7281,AMD,Naples,EPYC,2.1 GHz,170.0,16.0,32.0,213.0,io_die_size () + die_size (213 mm²),https://www.techpowerup.com/cpu-specs/epyc-7281.c1927
 AMD EPYC 7282,AMD,Rome,EPYC,2.8 GHz,120.0,16.0,,74.0,io_die_size () + die_size (74 mm²),https://www.techpowerup.com/cpu-specs/epyc-7282.c2255
 AMD EPYC 72F3,AMD,Milan,EPYC,3.7 GHz,180.0,8.0,,1064.0,io_die_size (416 mm²) + die_size (8x 81 mm²),https://www.techpowerup.com/cpu-specs/epyc-72f3.c2391
 AMD EPYC 7301,AMD,Naples,EPYC,2.2 GHz,170.0,16.0,,213.0,io_die_size () + die_size (213 mm²),https://www.techpowerup.com/cpu-specs/epyc-7301.c1926
