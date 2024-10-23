@@ -19,7 +19,7 @@ RUN poetry build
 RUN PROJECT_VERSION=$(poetry version -s) && cp /app/dist/boaviztapi-$PROJECT_VERSION.tar.gz ./boaviztapi-$VERSION.tar.gz
 RUN pip install boaviztapi-$VERSION.tar.gz && cp $(which uvicorn) /app
 
-FROM gcr.io/distroless/python3
+FROM python:$PY_VERSION-slim AS run-env
 # Python 3 surrogate unicode handling
 # @see https://click.palletsprojects.com/en/7.x/python3/
 ENV LC_ALL=C.UTF-8
