@@ -70,7 +70,7 @@ async def instance_cloud_impact(
 
     if not instance_archetype:
         raise HTTPException(status_code=404,
-                            detail=f"{cloud_instance.instance_type} at {cloud_instance.provider} not found")
+                            detail=f"{instance_type} at {provider} not found")
 
     instance_model = mapper_cloud_instance(cloud_instance, archetype=instance_archetype)
 

@@ -967,3 +967,24 @@ async def test_usage_with_complex_time_workload_e8ads_v5():
     )
 
     await test.check_result()
+
+
+@pytest.mark.asyncio
+async def test_empty_usage_scw_dev1_l():
+    test = CloudTest(
+        CloudInstanceRequest("scaleway", "dev1-l"),
+        ADPImpact(
+            ImpactOutput(0.007718, 0.006189, 0.0064, END_OF_LIFE_WARNING),
+            ImpactOutput(0.0004059, 1.513e-05, 8e-05),
+        ),
+        GWPImpact(
+            ImpactOutput(59.5, 30.69, 45.0, END_OF_LIFE_WARNING),
+            ImpactOutput(1375.0, 26.36, 500.0),
+        ),
+        PEImpact(
+            ImpactOutput(789.0, 409.5, 610.0, END_OF_LIFE_WARNING),
+            ImpactOutput(715400.0, 14.9, 20000.0),
+        ),
+    )
+
+    await test.check_result()
