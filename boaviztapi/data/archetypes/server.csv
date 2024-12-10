@@ -188,7 +188,7 @@ NVsv3-Type1,Azure,rack,2.0,,,Intel Xeon E5-2690 V4,,56.0,8.0,2.0,2048.0,0.0,0.0,
 platform_aws_g3,AWS,rack,2.0,,, 	Intel Xeon E5-2686 v4,,8,64,0.0,0.0,0.0,0.0,4.0,NVIDIA Tesla M60,32,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,RAM units and per unit capacity not verified.
 m7gd.metal,AWS,rack,1.0,,,Annapurna Labs Graviton3,,4,64,0.0,0.0,0.0,0.0,0.0,,0.0,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,RAM units and per unit capacity not verified.
 platform_aws_m1,AWS,rack,1.0,32,,,64,15,16,4.0,420,0.0,0.0,0.0,,0.0,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,RAM units and per unit capacity not verified. CPU can be any Intel Xeon Family.
-scw_coparm1.base,Scaleway,rack,1,128,,Ampere Altra Max 128,256,16,64,2,937,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
+scw_coparm1.base,Scaleway,rack,1,128,,Ampere Altra Max M128-30,256,16,64,2,937,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
 scw_dev1.base,Scaleway,rack,1,16,,AMD EPYC 7281,64,8,32,5,976,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
 scw_ent1.base,Scaleway,rack,2,32,,AMD EPYC 7543,128,16,32,2,234,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
 scw_gp1.base,Scaleway,rack,2,24,,AMD EPYC 7401P,96,12,32,5,976,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
