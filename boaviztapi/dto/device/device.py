@@ -1,5 +1,7 @@
 from typing import Optional, List
 
+from fastapi import HTTPException
+
 from boaviztapi import config
 from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply
 from boaviztapi.dto.component.cpu import mapper_cpu
@@ -14,7 +16,8 @@ from boaviztapi.model.component import ComponentCase
 from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.model.services.cloud_instance import ServiceCloudInstance
 from boaviztapi.model.usage import ModelUsage
-from boaviztapi.service.archetype import get_server_archetype, get_arch_component, get_cloud_instance_archetype
+from boaviztapi.service.archetype import get_server_archetype, get_arch_component, get_cloud_instance_archetype, \
+    get_arch_value
 
 
 class DeviceDTO(BaseDTO):
@@ -75,6 +78,9 @@ class Cloud(Server):
 
 
 def mapper_cloud_instance(cloud_dto: Cloud, archetype=get_cloud_instance_archetype(config["default_cloud_instance"], config["default_cloud_provider"])) -> ServiceCloudInstance:
+    if get_server_archetype(archetype_name=get_arch_value(archetype, 'platform', 'default')) is False:
+        raise HTTPException(status_code=404, detail=f"Cloud platform {get_arch_value(archetype, 'platform', 'default')} not found. Please add it to the server archetypes. For more information, please check the documentation https://doc.api.boavizta.org/contributing/server/.")
+
     model_cloud_instance = ServiceCloudInstance(archetype=archetype)
 
     model_cloud_instance.usage = mapper_usage_cloud(cloud_dto.usage or UsageCloud(), archetype=get_arch_component(model_cloud_instance.archetype, "USAGE"))
