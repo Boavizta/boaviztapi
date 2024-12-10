@@ -1,5 +1,5 @@
 import pytest
-from httpx import AsyncClient
+from httpx import AsyncClient, ASGITransport
 
 from boaviztapi.main import app
 
@@ -8,7 +8,8 @@ pytest_plugins = ('pytest_asyncio',)
 
 @pytest.mark.asyncio
 async def test_empty_iot_device():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get('/v1/iot/iot_device?verbose=false')
 
         assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -62,7 +63,8 @@ async def test_empty_iot_device():
 
 @pytest.mark.asyncio
 async def test_drone_mini():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get('/v1/iot/iot_device?verbose=false&archetype=drone_mini&criteria=gwp')
 
         assert res.json() == {"impacts": {'gwp': {'description': 'Total climate change',
@@ -82,7 +84,8 @@ async def test_drone_mini():
 
 @pytest.mark.asyncio
 async def test_drone_mini_verbose():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get('/v1/iot/iot_device?verbose=true&archetype=drone_mini')
 
         assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -425,7 +428,8 @@ async def test_drone_mini_verbose():
 
 @pytest.mark.asyncio
 async def test_drone_mini_costume_usage():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/iot/iot_device?verbose=false&archetype=drone_mini&duration=1', json={
             "usage": {
                 "avg_power": 100,
@@ -465,7 +469,8 @@ async def test_drone_mini_costume_usage():
 
 @pytest.mark.asyncio
 async def test_custom_iot():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/iot/iot_device?verbose=false&criteria=lu', json={
             "functional_blocks": [
                 {
