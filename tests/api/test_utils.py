@@ -1,6 +1,5 @@
 import pytest
-from httpx import AsyncClient
-import re
+from httpx import AsyncClient, ASGITransport
 
 from boaviztapi.main import app
 
@@ -8,8 +7,9 @@ pytest_plugins = ('pytest_asyncio',)
 
 
 @pytest.mark.asyncio
-async def test_complete_cpu_from_name():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+async def test_complete_cpu_from_name_detail():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get('/v1/utils/name_to_cpu?cpu_name=i7-8565U')
 
         assert res.json() == {'core_units': 4,
@@ -52,19 +52,22 @@ async def test_complete_cpu_from_name():
 
 @pytest.mark.asyncio
 async def test_complete_cpu_from_name():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get('/v1/utils/name_to_cpu?cpu_name=deijeijdiejdzij')
         assert res.json() == "CPU name deijeijdiejdzij is not found in our database"
 
 @pytest.mark.asyncio
 async def test_get_api_version_is_not_empty_string():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get('/v1/utils/version')
         assert res.json()
 
 # @pytest.mark.asyncio
 # async def test_get_api_version_is_semver():
-#     async with AsyncClient(app=app, base_url="http://test") as ac:
+#     transport = ASGITransport(app=app)
+#     async with AsyncClient(transport=transport, base_url="http://test") as ac:
 #         res = await ac.get('/v1/utils/version')
 #         # Check returned version matches semver regex
 #         # See https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string

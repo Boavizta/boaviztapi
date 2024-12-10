@@ -1,5 +1,5 @@
 import pytest
-from httpx import AsyncClient
+from httpx import AsyncClient, ASGITransport
 
 from boaviztapi.main import app
 
@@ -8,7 +8,8 @@ pytest_plugins = ('pytest_asyncio',)
 
 @pytest.mark.asyncio
 async def test_complete_cpu():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=false', json={"core_units": 12, "die_size_per_core": 24.5})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -39,7 +40,8 @@ async def test_complete_cpu():
 
 @pytest.mark.asyncio
 async def test_complete_cpu_verbose():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=true', json={"core_units": 12, "die_size_per_core": 24.5})
 
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -172,7 +174,8 @@ async def test_complete_cpu_verbose():
 
 @pytest.mark.asyncio
 async def test_complete_cpu_with_low_precision():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=false', json={"core_units": 12, "die_size_per_core": 20})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -203,7 +206,8 @@ async def test_complete_cpu_with_low_precision():
 
 @pytest.mark.asyncio
 async def test_empty_cpu():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=false', json={})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -234,7 +238,8 @@ async def test_empty_cpu():
 
 @pytest.mark.asyncio
 async def test_multiple_cpu():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=false', json={
             "units": 3, "core_units": 12, "die_size_per_core": 24.5})
 
@@ -268,7 +273,8 @@ async def test_multiple_cpu():
 
 @pytest.mark.asyncio
 async def test_incomplete_cpu_verbose():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=true', json={
             "core_units": 24, "family": "Skylake"})
 
@@ -400,7 +406,8 @@ async def test_incomplete_cpu_verbose():
 
 @pytest.mark.asyncio
 async def test_incomplete_cpu_verbose_2():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=true', json={
             "core_units": 24, "family": "skylak"})
 
@@ -533,7 +540,8 @@ async def test_incomplete_cpu_verbose_2():
 
 @pytest.mark.asyncio
 async def test_complete_ram():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ram?verbose=false', json={"units": 12, "capacity": 32, "density": 1.79})
 
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -572,7 +580,8 @@ async def test_complete_ram():
 
 @pytest.mark.asyncio
 async def test_empty_ram():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ram?verbose=false', json={})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -609,7 +618,8 @@ async def test_empty_ram():
 
 @pytest.mark.asyncio
 async def test_wrong_manuf_ram():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ram?verbose=false', json={"manufacturer": "oieoiudhehz"})
 
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -648,7 +658,8 @@ async def test_wrong_manuf_ram():
 
 @pytest.mark.asyncio
 async def test_wrong_manuf_ssd():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ssd?verbose=false', json={"manufacturer": "oieoiudhehz"})
 
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -694,7 +705,8 @@ async def test_wrong_manuf_ssd():
 
 @pytest.mark.asyncio
 async def test_complete_ssd():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ssd?verbose=false', json={"capacity": 400, "density": 50.6})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -725,7 +737,8 @@ async def test_complete_ssd():
 
 @pytest.mark.asyncio
 async def test_empty_ssd():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ssd?verbose=false', json={})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -765,7 +778,8 @@ async def test_empty_ssd():
 
 @pytest.mark.asyncio
 async def test_empty_blade():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/case?verbose=false', json={"case_type": "blade"})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',

@@ -1,5 +1,5 @@
 import pytest
-from httpx import AsyncClient
+from httpx import AsyncClient, ASGITransport
 
 from boaviztapi.main import app
 
@@ -31,7 +31,8 @@ class CloudTest:
         url = self.request.to_url()
         body = self.request.to_dict()
 
-        async with AsyncClient(app=app, base_url="http://test") as ac:
+        transport = ASGITransport(app=app)
+        async with AsyncClient(transport=transport, base_url="http://test") as ac:
             if self.request.use_url_params:
                 res = await ac.get(url)
             else:
@@ -134,7 +135,8 @@ async def test_empty_usage_with_url_params_r5ad():
 
 @pytest.mark.asyncio
 async def test_wrong_input():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post(
             "/v1/cloud/instance?verbose=false",
             json={"provider": "test", "instance_type": "a1.4xlarge", "usage": {}},
@@ -144,7 +146,8 @@ async def test_wrong_input():
 
 @pytest.mark.asyncio
 async def test_wrong_input_1():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post(
             "/v1/cloud/instance?verbose=false",
             json={"provider": "aws", "instance_type": "test", "usage": {}},
