@@ -3,8 +3,8 @@ TIMESTAMP := $(shell date "+%H.%M-%m-%d-%y")
 DOCKER_NAME := boavizta/boaviztapi:${CURRENT_VERSION}
 SEMVERS := major minor patch
 
-MINIMUM_PY_VERSION=3.9
-MAXIMUM_PY_VERSION=3.11
+MINIMUM_PY_VERSION=3.10
+MAXIMUM_PY_VERSION=3.12
 
 clean:
 		find . -name "*.pyc" -exec rm -rf {} \;
