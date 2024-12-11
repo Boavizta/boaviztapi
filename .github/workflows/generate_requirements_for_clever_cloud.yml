@@ -21,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'  # Choose your Python version
+          python-version: '3.12'  # Choose your Python version
 
       - name: Install Poetry
         run: |
@@ -33,14 +33,14 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
-        
+
       - name: Export requirements.txt
         run: |
           poetry export --without-hashes --format=requirements.txt > requirements.txt
 
       - run: |
          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-         git config --local user.name "github-actions[bot]"         
+         git config --local user.name "github-actions[bot]"
       - run: git add requirements.txt
       - run: git commit --m 'generate requirements.txt from poetry' || exit 0
       - run: git push
