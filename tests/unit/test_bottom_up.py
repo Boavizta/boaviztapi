@@ -38,7 +38,7 @@ def test_bottom_up_component_cpu_complete(complete_cpu_model):
                                  'warnings': ['End of life is not included in the '
                                               'calculation']},
                     'unit': 'kgSbeq',
-                    'use': {'max': 0.005088, 'min': 0.0002528, 'value': 0.0012}},
+                    'use': {'max': 0.002544, 'min': 0.0001264, 'value': 0.0006}},
             'gwp': {'description': 'Total climate change',
                     'embedded': {'max': 41.45,
                                  'min': 41.45,
@@ -46,7 +46,7 @@ def test_bottom_up_component_cpu_complete(complete_cpu_model):
                                  'warnings': ['End of life is not included in the '
                                               'calculation']},
                     'unit': 'kgCO2eq',
-                    'use': {'max': 17240.0, 'min': 440.6, 'value': 7000.0}},
+                    'use': {'max': 8620.0, 'min': 220.3, 'value': 3600.0}},
             'pe': {'description': 'Consumption of primary energy',
                    'embedded': {'max': 623.6,
                                 'min': 623.6,
@@ -54,7 +54,7 @@ def test_bottom_up_component_cpu_complete(complete_cpu_model):
                                 'warnings': ['End of life is not included in the '
                                              'calculation']},
                    'unit': 'MJ',
-                   'use': {'max': 8967000.0, 'min': 249.0, 'value': 200000.0}}}
+                   'use': {'max': 4484000.0, 'min': 124.5, 'value': 100000.0}}}
 
 
 def test_bottom_up_component_cpu_incomplete(incomplete_cpu_model):
@@ -220,7 +220,7 @@ def test_bottom_up_component_ram_complete(complete_ram_model):
                                  'warnings': ['End of life is not included in the '
                                               'calculation']},
                     'unit': 'kgSbeq',
-                    'use': {'max': 0.009134, 'min': 0.000454, 'value': 0.0022}},
+                    'use': {'max': 0.0007612, 'min': 3.783e-05, 'value': 0.00018}},
             'gwp': {'description': 'Total climate change',
                     'embedded': {'max': 534.6,
                                  'min': 534.6,
@@ -228,7 +228,7 @@ def test_bottom_up_component_ram_complete(complete_ram_model):
                                  'warnings': ['End of life is not included in the '
                                               'calculation']},
                     'unit': 'kgCO2eq',
-                    'use': {'max': 30950.0, 'min': 791.0, 'value': 13000.0}},
+                    'use': {'max': 2579.0, 'min': 65.92, 'value': 1100.0}},
             'pe': {'description': 'Consumption of primary energy',
                    'embedded': {'max': 6745.0,
                                 'min': 6745.0,
@@ -236,9 +236,9 @@ def test_bottom_up_component_ram_complete(complete_ram_model):
                                 'warnings': ['End of life is not included in the '
                                              'calculation']},
                    'unit': 'MJ',
-                   'use': {'max': 16100000.0,
-                           'min': 447.1,
-                           'value': 400000.0,
+                   'use': {'max': 1342000.0,
+                           'min': 37.26,
+                           'value': 40000.0,
                            'warnings': ['Uncertainty from technical characteristics is '
                                         'very important. Results should be interpreted '
                                         'with caution (see min and max values)']}}}
@@ -253,7 +253,7 @@ def test_bottom_up_component_ram_incomplete(incomplete_ram_model):
                                  'warnings': ['End of life is not included in the '
                                               'calculation']},
                     'unit': 'kgSbeq',
-                    'use': {'max': 0.009134, 'min': 0.000454, 'value': 0.0022}},
+                    'use': {'max': 0.0007612, 'min': 3.783e-05, 'value': 0.00018}},
             'gwp': {'description': 'Total climate change',
                     'embedded': {'max': 4287.0,
                                  'min': 104.9,
@@ -261,7 +261,7 @@ def test_bottom_up_component_ram_incomplete(incomplete_ram_model):
                                  'warnings': ['End of life is not included in the '
                                               'calculation']},
                     'unit': 'kgCO2eq',
-                    'use': {'max': 30950.0, 'min': 791.0, 'value': 13000.0}},
+                    'use': {'max': 2579.0, 'min': 65.92, 'value': 1100.0}},
             'pe': {'description': 'Consumption of primary energy',
                    'embedded': {'max': 53300.0,
                                 'min': 1412.0,
@@ -269,9 +269,9 @@ def test_bottom_up_component_ram_incomplete(incomplete_ram_model):
                                 'warnings': ['End of life is not included in the '
                                              'calculation']},
                    'unit': 'MJ',
-                   'use': {'max': 16100000.0,
-                           'min': 447.1,
-                           'value': 400000.0,
+                   'use': {'max': 1342000.0,
+                           'min': 37.26,
+                           'value': 40000.0,
                            'warnings': ['Uncertainty from technical characteristics is '
                                         'very important. Results should be interpreted '
                                         'with caution (see min and max values)']}}}
