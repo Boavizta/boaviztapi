@@ -1,19 +1,19 @@
 [tool.poetry]
 name = "boaviztapi"
-version = "1.3.4"
+version = "1.3.6"
 description = "An API to access Boavizta's methodologies and footprint reference data"
 authors = []
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 pydantic = "^2.9.2"
 fastapi = "^0.115.0"
 uvicorn = "^0.22"
-pandas = "^2.0"
+pandas = "^2.2.3"
 aiofile = "^3.8"
-numpy = "^1.24"
-scipy = "^1.9"
+numpy = "^2.2.0"
+scipy = "^1.14.1"
 rapidfuzz = "^3.0"
 markdown = "^3.4"
 mangum = "^0.17"
