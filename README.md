@@ -112,13 +112,15 @@ docker build --build-arg VERSION=`poetry version -s` .
 Run Docker image:
 
 ```sh
-docker run -p 5000:5000/tcp boavizta/boaviztapi:latest
+docker run -p 5000:5000/tcp boavizta/boaviztapi:`poetry version -s`
 ```
 
 #### Alternative (if you don't have Python or Poetry)
 
 ```sh
 make docker-build-development
+
+make docker-run-development
 ```
 
 ### Deploy to AWS as serverless application

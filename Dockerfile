@@ -26,8 +26,8 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
 COPY --from=build-env /app /app
-COPY --from=build-env /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
-ENV PYTHONPATH=/usr/local/lib/python3.9/site-packages
+COPY --from=build-env /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
+ENV PYTHONPATH=/usr/local/lib/python3.12/site-packages
 
 WORKDIR /app
 
