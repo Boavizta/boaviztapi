@@ -838,7 +838,7 @@ func getUsageUseTimeRatio(instance VantageExport) string {
 }
 
 func getUsageHoursLifeTime(instance VantageExport) string {
-	return "35040" // 4 years
+	return "52560" // 6 years
 }
 
 func getUsageOtherConsumptionRatio(instance VantageExport) string {
