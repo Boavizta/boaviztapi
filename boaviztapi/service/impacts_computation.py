@@ -6,7 +6,7 @@ from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.model.services.cloud_instance import Service, ServiceCloudInstance
 from boaviztapi.model.component import ComponentCPU, ComponentCase, ComponentPowerSupply, ComponentRAM, Component, \
-    ComponentAssembly, ComponentHDD, ComponentSSD
+    ComponentAssembly, ComponentHDD, ComponentSSD, ComponentMotherboard
 from boaviztapi.model.component.functional_block import ComponentFunctionalBlock
 from boaviztapi.model.device import Device
 from boaviztapi.model.device.iot import DeviceIoT
@@ -25,9 +25,9 @@ def compute_single_impact(model: Union[Component, Device, Service],
         impact, min_impact, max_impact, warnings = impact_function(criteria, duration, model)
 
         result = Impact(
-            value=impact * model.units.value * allocation,
-            min=min_impact * model.units.min * allocation,
-            max=max_impact * model.units.max * allocation,
+            value=impact * allocation,
+            min=min_impact * allocation,
+            max=max_impact * allocation,
             warnings=list(set(warnings))
         )
 
@@ -66,23 +66,23 @@ def simple_impact_use(impact_type: str, duration: int, model: Union[Component, D
 
     impact_factor = model.usage.elec_factors[impact_type]
 
-    impacts = impact_factor.value * (model.usage.avg_power.value / 1000) * model.usage.use_time_ratio.value * duration
-    max_impact = impact_factor.max * (model.usage.avg_power.max / 1000) * model.usage.use_time_ratio.min * duration
-    min_impact = impact_factor.min * (model.usage.avg_power.min / 1000) * model.usage.use_time_ratio.max * duration
+    impacts = impact_factor.value * (model.usage.avg_power.value / 1000) * model.usage.use_time_ratio.value * duration * model.units.value
+    max_impact = impact_factor.max * (model.usage.avg_power.max / 1000) * model.usage.use_time_ratio.min * duration * model.units.max
+    min_impact = impact_factor.min * (model.usage.avg_power.min / 1000) * model.usage.use_time_ratio.max * duration * model.units.min
 
     return impacts, min_impact, max_impact, []
 
 
 def simple_embedded(impact_type: str, duration: int, model: [Device, Component, Service]) -> ComputedImpacts:
     if hasattr(model, 'type') and model.type is not None:
-        impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)[model.type.value]["impact"])
-        min_impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)[model.type.value]["impact"])
-        max_impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)[model.type.value]["impact"])
+        impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)[model.type.value]["impact"]) * model.units.value
+        min_impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)[model.type.value]["impact"]) * model.units.min
+        max_impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)[model.type.value]["impact"]) * model.units.max
 
     else:
-        impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)["impact"])
-        min_impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)["impact"])
-        max_impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)["impact"])
+        impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)["impact"]) * model.units.value
+        min_impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)["impact"]) * model.units.min
+        max_impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)["impact"]) * model.units.max
 
     warnings = ["Generic data used for impact calculation."]
 
@@ -125,9 +125,9 @@ def cpu_impact_embedded(impact_type: str, duration: int, cpu: ComponentCPU) -> C
     )
 
     impact = Impact(
-        value=cpu.die_size.value * cpu_die_impact.value + cpu_impact.value,
-        min=cpu.die_size.min * cpu_die_impact.min + cpu_impact.min,
-        max=cpu.die_size.max * cpu_die_impact.max + cpu_impact.max)
+        value=(cpu.die_size.value * cpu_die_impact.value + cpu_impact.value) * cpu.units.value,
+        min=(cpu.die_size.min * cpu_die_impact.min + cpu_impact.min) * cpu.units.min,
+        max=(cpu.die_size.max * cpu_die_impact.max + cpu_impact.max ) * cpu.units.max)
 
     impact.allocate(duration, cpu.usage.hours_life_time)
 
@@ -136,9 +136,9 @@ def cpu_impact_embedded(impact_type: str, duration: int, cpu: ComponentCPU) -> C
 
 def assembly_impact_embedded(impact_type: str, duration: int, model: ComponentAssembly) -> ComputedImpacts:
     impact = Impact(
-        value=get_impact_factor(item='assembly', impact_type=impact_type)['impact'],
-        min=get_impact_factor(item='assembly', impact_type=impact_type)['impact'],
-        max=get_impact_factor(item='assembly', impact_type=impact_type)['impact']
+        value=get_impact_factor(item='assembly', impact_type=impact_type)['impact'] * model.units.value,
+        min=get_impact_factor(item='assembly', impact_type=impact_type)['impact'] * model.units.min,
+        max=get_impact_factor(item='assembly', impact_type=impact_type)['impact'] * model.units.max
     )
 
     impact.allocate(duration, model.usage.hours_life_time)
@@ -155,9 +155,9 @@ def casing_impact_embedded(impact_type: str, duration: int, case: ComponentCase)
         computed_impact = impact_manufacture_rack(impact_type, case)
 
     impact = Impact(
-        value=computed_impact[0],
-        min=computed_impact[1],
-        max=computed_impact[2]
+        value=computed_impact[0] * case.units.value,
+        min=computed_impact[1] * case.units.min,
+        max=computed_impact[2] * case.units.max
     )
 
     impact.allocate(duration, case.usage.hours_life_time)
@@ -180,7 +180,7 @@ def impact_manufacture_rack(impact_type: str, case: ComponentCase) -> ComputedIm
         else:
             return impact_factor.value, blade_impact[1], impact_factor.max, [
                 "End of life is not included in the calculation"]
-    return impact_factor.value, impact_factor.min, impact_factor.max, ["End of life is not included in the calculation"]
+    return impact_factor.value * case.units.value, impact_factor.min * case.units.min, impact_factor.max * case.units.max, ["End of life is not included in the calculation"]
 
 
 def impact_manufacture_blade(impact_type: str, case: ComponentCase) -> ComputedImpacts:
@@ -195,7 +195,7 @@ def impact_manufacture_blade(impact_type: str, case: ComponentCase) -> ComputedI
         else:
             return impact.value, rack_impact[1], impact.max, ["End of life is not included in the calculation"]
 
-    return impact.value, impact.min, impact.max, ["End of life is not included in the calculation"]
+    return impact.value * case.units.value, impact.min * case.units.min, impact.max * case.units.max, ["End of life is not included in the calculation"]
 
 
 def get_impact_constants_blade(impact_type: str) -> Tuple[Impact, Impact]:
@@ -225,9 +225,9 @@ def compute_impact_manufacture_blade(impact_blade_server: Impact,
 def iot_functional_blocks_impact_embedded(impact_type: str, duration: int,
                                           function_blocks: ComponentFunctionalBlock) -> ComputedImpacts:
     impact = Impact(
-        value=get_iot_impact_factor(function_blocks.IMPACT_KEY, function_blocks.hsl_level.value, impact_type),
-        min=get_iot_impact_factor(function_blocks.IMPACT_KEY, function_blocks.hsl_level.value, impact_type),
-        max=get_iot_impact_factor(function_blocks.IMPACT_KEY, function_blocks.hsl_level.value, impact_type)
+        value=get_iot_impact_factor(function_blocks.IMPACT_KEY, function_blocks.hsl_level.value, impact_type) * function_blocks.units.value,
+        min=get_iot_impact_factor(function_blocks.IMPACT_KEY, function_blocks.hsl_level.value, impact_type) * function_blocks.units.min,
+        max=get_iot_impact_factor(function_blocks.IMPACT_KEY, function_blocks.hsl_level.value, impact_type) * function_blocks.units.max
     )
 
     impact.allocate(duration, function_blocks.usage.hours_life_time)
@@ -237,9 +237,9 @@ def iot_functional_blocks_impact_embedded(impact_type: str, duration: int,
 
 def hdd_impact_embedded(impact_type: str, duration: int, hdd: ComponentHDD) -> ComputedImpacts:
     impact = Impact(
-        value=get_impact_factor(item='hdd', impact_type=impact_type)['impact'],
-        min=get_impact_factor(item='hdd', impact_type=impact_type)['impact'],
-        max=get_impact_factor(item='hdd', impact_type=impact_type)['impact']
+        value=get_impact_factor(item='hdd', impact_type=impact_type)['impact'] * hdd.units.value,
+        min=get_impact_factor(item='hdd', impact_type=impact_type)['impact'] * hdd.units.min,
+        max=get_impact_factor(item='hdd', impact_type=impact_type)['impact'] * hdd.units.max
     )
 
     impact.allocate(duration, hdd.usage.hours_life_time)
@@ -247,11 +247,11 @@ def hdd_impact_embedded(impact_type: str, duration: int, hdd: ComponentHDD) -> C
     return impact.value, impact.min, impact.max, ["End of life is not included in the calculation"]
 
 
-def motherboard_impact_embedded(impact_type: str, duration: int, motherboard: Motherboard) -> ComputedImpacts:
+def motherboard_impact_embedded(impact_type: str, duration: int, motherboard: ComponentMotherboard) -> ComputedImpacts:
     impact = Impact(
-        value=get_impact_factor(item='motherboard', impact_type=impact_type)['impact'],
-        min=get_impact_factor(item='motherboard', impact_type=impact_type)['impact'],
-        max=get_impact_factor(item='motherboard', impact_type=impact_type)['impact']
+        value=get_impact_factor(item='motherboard', impact_type=impact_type)['impact'] * motherboard.units.value,
+        min=get_impact_factor(item='motherboard', impact_type=impact_type)['impact'] * motherboard.units.min,
+        max=get_impact_factor(item='motherboard', impact_type=impact_type)['impact'] * motherboard.units.max
     )
 
     impact.allocate(duration, motherboard.usage.hours_life_time)
@@ -278,9 +278,9 @@ def server_power_supply_impact_embedded(impact_type: str, duration: int,
     )
 
     impact = Impact(
-        value=power_supply.unit_weight.value * impact_factor.value,
-        min=power_supply.unit_weight.min * impact_factor.min,
-        max=power_supply.unit_weight.max * impact_factor.max
+        value=power_supply.unit_weight.value * impact_factor.value * power_supply.units.value,
+        min=power_supply.unit_weight.min * impact_factor.min * power_supply.units.min,
+        max=power_supply.unit_weight.max * impact_factor.max * power_supply.units.max
     )
 
     impact.allocate(duration, power_supply.usage.hours_life_time)
@@ -302,9 +302,9 @@ def ram_impact_embedded(impact_type: str, duration: int, ram: ComponentRAM) -> C
     )
 
     impact = Impact(
-        value=(ram.capacity.value / ram.density.value) * ram_die_impact.value + ram_impact.value,
-        min=(ram.capacity.min / ram.density.max) * ram_die_impact.min + ram_impact.min,
-        max=(ram.capacity.max / ram.density.min) * ram_die_impact.max + ram_impact.max
+        value=((ram.capacity.value / ram.density.value) * ram_die_impact.value + ram_impact.value) * ram.units.value,
+        min=((ram.capacity.min / ram.density.max) * ram_die_impact.min + ram_impact.min) * ram.units.min,
+        max=((ram.capacity.max / ram.density.min) * ram_die_impact.max + ram_impact.max) * ram.units.max
     )
 
     impact.allocate(duration, ram.usage.hours_life_time)
@@ -348,9 +348,9 @@ def ssd_impact_embedded(impact_type: str, duration: int, ssd: ComponentSSD) -> C
     )
 
     impact = Impact(
-        value=(ssd.capacity.value / ssd.density.value) * ssd_die_impact.value + ssd_impact.value,
-        min=(ssd.capacity.min / ssd.density.max) * ssd_die_impact.min + ssd_impact.min,
-        max=(ssd.capacity.max / ssd.density.min) * ssd_die_impact.max + ssd_impact.max
+        value=((ssd.capacity.value / ssd.density.value) * ssd_die_impact.value + ssd_impact.value) * ssd.units.value,
+        min=((ssd.capacity.min / ssd.density.max) * ssd_die_impact.min + ssd_impact.min) * ssd.units.min,
+        max=((ssd.capacity.max / ssd.density.min) * ssd_die_impact.max + ssd_impact.max) * ssd.units.max
     )
 
     impact.allocate(duration, ssd.usage.hours_life_time)
@@ -371,7 +371,7 @@ def iot_impact_embedded(impact_type: str, duration: int, iot_device: DeviceIoT) 
         max_impacts.append(single_impact.max)
         warnings = warnings + single_impact.warnings
 
-    return sum(impacts), sum(min_impacts), sum(max_impacts), warnings
+    return sum(impacts) * iot_device.units.value, sum(min_impacts) * iot_device.units.min, sum(max_impacts) * iot_device.units.max, warnings
 
 
 def iot_impact_use(impact_type: str, duration: int, iot_device: DeviceIoT) -> ComputedImpacts:
@@ -380,11 +380,11 @@ def iot_impact_use(impact_type: str, duration: int, iot_device: DeviceIoT) -> Co
 
     impact_factor = iot_device.usage.elec_factors[impact_type]
     impact = impact_factor.value * (
-            iot_device.usage.avg_power.value / 1000) * iot_device.usage.use_time_ratio.value * duration
+            iot_device.usage.avg_power.value / 1000) * iot_device.usage.use_time_ratio.value * duration * iot_device.units.value
     min_impact = impact_factor.min * (
-            iot_device.usage.avg_power.min / 1000) * iot_device.usage.use_time_ratio.min * duration
+            iot_device.usage.avg_power.min / 1000) * iot_device.usage.use_time_ratio.min * duration * iot_device.units.min
     max_impact = impact_factor.max * (
-            iot_device.usage.avg_power.max / 1000) * iot_device.usage.use_time_ratio.max * duration
+            iot_device.usage.avg_power.max / 1000) * iot_device.usage.use_time_ratio.max * duration * iot_device.units.max
 
     return impact, min_impact, max_impact, []
 
@@ -419,7 +419,7 @@ def server_impact_embedded(impact_type: str, duration: int, server: DeviceServer
 
         impact.allocate(duration, server.usage.hours_life_time)
 
-        return impact.value, impact.min, impact.max, warnings
+        return impact.value * server.units.value, impact.min * server.units.min, impact.max * server.units.max, warnings
 
 
 def server_impact_use(impact_type: str, duration: int, server: DeviceServer) -> ComputedImpacts:
@@ -438,9 +438,9 @@ def server_impact_use(impact_type: str, duration: int, server: DeviceServer) -> 
     for ram in server.ram:
         compute_single_impact(ram, USE, impact_type, duration)
 
-    impact = impact_factor.value * (server.usage.avg_power.value / 1000) * server.usage.use_time_ratio.value * duration
-    min_impact = impact_factor.min * (server.usage.avg_power.min / 1000) * server.usage.use_time_ratio.min * duration
-    max_impact = impact_factor.max * (server.usage.avg_power.max / 1000) * server.usage.use_time_ratio.max * duration
+    impact = impact_factor.value * (server.usage.avg_power.value / 1000) * server.usage.use_time_ratio.value * duration * server.units.value
+    min_impact = impact_factor.min * (server.usage.avg_power.min / 1000) * server.usage.use_time_ratio.min * duration * server.units.min
+    max_impact = impact_factor.max * (server.usage.avg_power.max / 1000) * server.usage.use_time_ratio.max * duration * server.units.max
 
     return impact, min_impact, max_impact, []
 
