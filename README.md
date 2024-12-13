@@ -22,13 +22,13 @@ Boavizta integrates various data and methodologies, which are combined and made 
 
 Transparency and the popularization of scientific knowledge are of utmost importance in this project, and key aspects include open-sourcing the code, versioning the impact factors, and thoroughly documenting the project.
 
-In the interest of transparency and scientific popularization, the opening of the code, the versioning of the impact factors and the documentation of the project are critical points. 
+In the interest of transparency and scientific popularization, the opening of the code, the versioning of the impact factors and the documentation of the project are critical points.
 
 The system follows a bottom-up approach in its development, organized into layers. The initial layer focuses on equipment. The second layer focues on the impacts of digital services (e.g. cloud instances) or systems. However, assessing the overall global impact of ICT is currently beyond the project's scope.
 
 ## :fast_forward: Test it yourself (no installation)
 
-* See our pedagogical front-end app (using the API) : <https://datavizta.boavizta.org/serversimpact>
+* See our pedagogical front-end app (using the API): <https://datavizta.boavizta.org/serversimpact>
 
 * See the OpenAPI specification: <https://api.boavizta.org/docs>
 
@@ -44,7 +44,7 @@ The system follows a bottom-up approach in its development, organized into layer
 $ docker run -p 5000:5000 ghcr.io/boavizta/boaviztapi:latest
 ```
 
-Access API at http://localhost:5000
+Access the API at http://localhost:5000.
 
 ### Install using pip package
 
@@ -52,7 +52,7 @@ Access API at http://localhost:5000
 $ pip3 install boaviztapi
 ```
 
-Then you can run the server locally with :
+Run the server locally with:
 
 ```bash
 $ uvicorn boaviztapi.main:app --host=localhost --port 5000
@@ -62,17 +62,17 @@ $ uvicorn boaviztapi.main:app --host=localhost --port 5000
 
 ### Prerequisite
 
-Python 3 mandatory, python >=3.9 recommended, poetry recommended
+Python 3 mandatory, Python >=3.10 and [Poetry](https://python-poetry.org/) strongly recommended.
 
 ### Setup poetry
 
-Install poetry.
+Install poetry (see the [install instructions](https://python-poetry.org/docs/) for more details):
 
 ```bash
 $ pip3 install poetry
 ```
 
-Install dependencies and create a python virtual environment.
+Install dependencies and create a Python virtual environment:
 
 ```bash
 $ make install
@@ -83,23 +83,23 @@ $ poetry shell
 
 **Once in the poetry environment**
 
-Development server uses [uvicorn](https://www.uvicorn.org/) and [fastapi](https://fastapi.tiangolo.com/), you can launch development server with the `uvicorn` CLI.
+The development server uses [uvicorn](https://www.uvicorn.org/) and [FastAPI](https://fastapi.tiangolo.com/). You can launch the development server with the `uvicorn` CLI.
 
 ```bash
 $ uvicorn boaviztapi.main:app --host=localhost --port 5000
 ```
 
-You can run the tests with `pytest`.
+You can run the tests with `pytest` via `make test`.
 
 ### Create your own docker image and run it
 
-Build application package
+Build application package:
 
 ```sh
 make install
 ```
 
-Build docker image
+Build Docker image:
 
 ```sh
 # using the makefile (recommended)
@@ -109,16 +109,18 @@ make docker-build
 docker build --build-arg VERSION=`poetry version -s` .
 ```
 
-Run docker image
+Run Docker image:
 
 ```sh
-docker run -p 5000:5000/tcp boavizta/boaviztapi:latest
+docker run -p 5000:5000/tcp boavizta/boaviztapi:`poetry version -s`
 ```
 
 #### Alternative (if you don't have Python or Poetry)
 
 ```sh
 make docker-build-development
+
+make docker-run-development
 ```
 
 ### Deploy to AWS as serverless application
@@ -146,7 +148,7 @@ Once API server is launched API swagger is available at [httsp://localhost:5000/
 
 ## :woman: Contributing
 
-See [contributing.md](./CONTRIBUTING.md)
+See [contributing.md](./CONTRIBUTING.md).
 
 You can build a source distribution (installable with pip) with `make build`.
 
@@ -162,10 +164,10 @@ We use [Semantic Versioning 2.0.0](https://semver.org/)
 
 ## :two: Publishing
 
-You can run : 
+You can run:
 
 ```shell
-API_TOKEN=<your_token> make distribute 
+API_TOKEN=<your_token> make distribute
 ```
 
 ## :scroll: License
