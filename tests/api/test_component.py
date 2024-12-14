@@ -1,5 +1,5 @@
 import pytest
-from httpx import AsyncClient
+from httpx import AsyncClient, ASGITransport
 
 from boaviztapi.main import app
 
@@ -8,7 +8,8 @@ pytest_plugins = ('pytest_asyncio',)
 
 @pytest.mark.asyncio
 async def test_complete_cpu():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=false', json={"core_units": 12, "die_size_per_core": 24.5})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -39,7 +40,8 @@ async def test_complete_cpu():
 
 @pytest.mark.asyncio
 async def test_complete_cpu_verbose():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=true', json={"core_units": 12, "die_size_per_core": 24.5})
 
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -172,7 +174,8 @@ async def test_complete_cpu_verbose():
 
 @pytest.mark.asyncio
 async def test_complete_cpu_with_low_precision():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=false', json={"core_units": 12, "die_size_per_core": 20})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -203,7 +206,8 @@ async def test_complete_cpu_with_low_precision():
 
 @pytest.mark.asyncio
 async def test_empty_cpu():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=false', json={})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -234,41 +238,45 @@ async def test_empty_cpu():
 
 @pytest.mark.asyncio
 async def test_multiple_cpu():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=false', json={
             "units": 3, "core_units": 12, "die_size_per_core": 24.5})
 
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
-                                              'embedded': {'max': 0.06121,
-                                                           'min': 0.06121,
-                                                           'value': 0.06121,
-                                                           'warnings': ['End of life is not included in '
-                                                                        'the calculation']},
-                                              'unit': 'kgSbeq',
-                                              'use': {'max': 0.01145, 'min': 0.0005689, 'value': 0.003}},
-                                      'gwp': {'description': 'Total climate change',
-                                              'embedded': {'max': 44.8,
-                                                           'min': 44.8,
-                                                           'value': 44.8,
-                                                           'warnings': ['End of life is not included in '
-                                                                        'the calculation']},
-                                              'unit': 'kgCO2eq',
-                                              'use': {'max': 38790.0, 'min': 991.3, 'value': 16000.0}},
-                                      'pe': {'description': 'Consumption of primary energy',
-                                             'embedded': {'max': 701.7,
-                                                          'min': 701.7,
-                                                          'value': 701.7,
-                                                          'warnings': ['End of life is not included in '
-                                                                       'the calculation']},
-                                             'unit': 'MJ',
-                                             'use': {'max': 20180000.0,
-                                                     'min': 560.3,
-                                                     'value': 1000000.0}}}}
+                     'embedded': {'max': 0.06121,
+                                  'min': 0.06121,
+                                  'value': 0.06121,
+                                  'warnings': ['End of life is not included in '
+                                               'the calculation']},
+                     'unit': 'kgSbeq',
+                     'use': {'max': 0.003816,
+                             'min': 0.0001896,
+                             'value': 0.0009}},
+             'gwp': {'description': 'Total climate change',
+                     'embedded': {'max': 44.8,
+                                  'min': 44.8,
+                                  'value': 44.8,
+                                  'warnings': ['End of life is not included in '
+                                               'the calculation']},
+                     'unit': 'kgCO2eq',
+                     'use': {'max': 12930.0, 'min': 330.4, 'value': 5000.0}},
+             'pe': {'description': 'Consumption of primary energy',
+                    'embedded': {'max': 701.7,
+                                 'min': 701.7,
+                                 'value': 701.7,
+                                 'warnings': ['End of life is not included in '
+                                              'the calculation']},
+                    'unit': 'MJ',
+                    'use': {'max': 6726000.0,
+                            'min': 186.8,
+                            'value': 200000.0}}}}
 
 
 @pytest.mark.asyncio
 async def test_incomplete_cpu_verbose():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=true', json={
             "core_units": 24, "family": "Skylake"})
 
@@ -400,7 +408,8 @@ async def test_incomplete_cpu_verbose():
 
 @pytest.mark.asyncio
 async def test_incomplete_cpu_verbose_2():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/cpu?verbose=true', json={
             "core_units": 24, "family": "skylak"})
 
@@ -533,46 +542,48 @@ async def test_incomplete_cpu_verbose_2():
 
 @pytest.mark.asyncio
 async def test_complete_ram():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ram?verbose=false', json={"units": 12, "capacity": 32, "density": 1.79})
 
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
-                                              'embedded': {'max': 0.0338,
-                                                           'min': 0.0338,
-                                                           'value': 0.0338,
-                                                           'warnings': ['End of life is not included in '
-                                                                        'the calculation']},
-                                              'unit': 'kgSbeq',
-                                              'use': {'max': 0.009134,
-                                                      'min': 0.000454,
-                                                      'value': 0.0022}},
-                                      'gwp': {'description': 'Total climate change',
-                                              'embedded': {'max': 534.6,
-                                                           'min': 534.6,
-                                                           'value': 534.6,
-                                                           'warnings': ['End of life is not included in '
-                                                                        'the calculation']},
-                                              'unit': 'kgCO2eq',
-                                              'use': {'max': 30950.0, 'min': 791.0, 'value': 13000.0}},
-                                      'pe': {'description': 'Consumption of primary energy',
-                                             'embedded': {'max': 6745.0,
-                                                          'min': 6745.0,
-                                                          'value': 6745.0,
-                                                          'warnings': ['End of life is not included in '
-                                                                       'the calculation']},
-                                             'unit': 'MJ',
-                                             'use': {'max': 16100000.0,
-                                                     'min': 447.1,
-                                                     'value': 400000.0,
-                                                     'warnings': ['Uncertainty from technical '
-                                                                  'characteristics is very important. '
-                                                                  'Results should be interpreted with '
-                                                                  'caution (see min and max values)']}}}}
+                     'embedded': {'max': 0.0338,
+                                  'min': 0.0338,
+                                  'value': 0.0338,
+                                  'warnings': ['End of life is not included in '
+                                               'the calculation']},
+                     'unit': 'kgSbeq',
+                     'use': {'max': 0.0007612,
+                             'min': 3.783e-05,
+                             'value': 0.00018}},
+             'gwp': {'description': 'Total climate change',
+                     'embedded': {'max': 534.6,
+                                  'min': 534.6,
+                                  'value': 534.6,
+                                  'warnings': ['End of life is not included in '
+                                               'the calculation']},
+                     'unit': 'kgCO2eq',
+                     'use': {'max': 2579.0, 'min': 65.92, 'value': 1100.0}},
+             'pe': {'description': 'Consumption of primary energy',
+                    'embedded': {'max': 6745.0,
+                                 'min': 6745.0,
+                                 'value': 6745.0,
+                                 'warnings': ['End of life is not included in '
+                                              'the calculation']},
+                    'unit': 'MJ',
+                    'use': {'max': 1342000.0,
+                            'min': 37.26,
+                            'value': 40000.0,
+                            'warnings': ['Uncertainty from technical '
+                                         'characteristics is very important. '
+                                         'Results should be interpreted with '
+                                         'caution (see min and max values)']}}}}
 
 
 @pytest.mark.asyncio
 async def test_empty_ram():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ram?verbose=false', json={})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -609,7 +620,8 @@ async def test_empty_ram():
 
 @pytest.mark.asyncio
 async def test_wrong_manuf_ram():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ram?verbose=false', json={"manufacturer": "oieoiudhehz"})
 
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -648,7 +660,8 @@ async def test_wrong_manuf_ram():
 
 @pytest.mark.asyncio
 async def test_wrong_manuf_ssd():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ssd?verbose=false', json={"manufacturer": "oieoiudhehz"})
 
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -694,7 +707,8 @@ async def test_wrong_manuf_ssd():
 
 @pytest.mark.asyncio
 async def test_complete_ssd():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ssd?verbose=false', json={"capacity": 400, "density": 50.6})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -725,7 +739,8 @@ async def test_complete_ssd():
 
 @pytest.mark.asyncio
 async def test_empty_ssd():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/ssd?verbose=false', json={})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
@@ -765,7 +780,8 @@ async def test_empty_ssd():
 
 @pytest.mark.asyncio
 async def test_empty_blade():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/component/case?verbose=false', json={"case_type": "blade"})
 
     assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',

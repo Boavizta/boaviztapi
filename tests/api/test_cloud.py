@@ -1,5 +1,5 @@
 import pytest
-from httpx import AsyncClient
+from httpx import AsyncClient, ASGITransport
 
 from boaviztapi.main import app
 
@@ -31,7 +31,8 @@ class CloudTest:
         url = self.request.to_url()
         body = self.request.to_dict()
 
-        async with AsyncClient(app=app, base_url="http://test") as ac:
+        transport = ASGITransport(app=app)
+        async with AsyncClient(transport=transport, base_url="http://test") as ac:
             if self.request.use_url_params:
                 res = await ac.get(url)
             else:
@@ -134,7 +135,8 @@ async def test_empty_usage_with_url_params_r5ad():
 
 @pytest.mark.asyncio
 async def test_wrong_input():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post(
             "/v1/cloud/instance?verbose=false",
             json={"provider": "test", "instance_type": "a1.4xlarge", "usage": {}},
@@ -144,7 +146,8 @@ async def test_wrong_input():
 
 @pytest.mark.asyncio
 async def test_wrong_input_1():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post(
             "/v1/cloud/instance?verbose=false",
             json={"provider": "aws", "instance_type": "test", "usage": {}},
@@ -967,3 +970,25 @@ async def test_usage_with_complex_time_workload_e8ads_v5():
     )
 
     await test.check_result()
+
+
+@pytest.mark.asyncio
+async def test_empty_usage_scw_dev1_l():
+    test = CloudTest(
+        CloudInstanceRequest("scaleway", "dev1-l"),
+        ADPImpact(
+            ImpactOutput(0.007718, 0.006189, 0.0064, END_OF_LIFE_WARNING),
+            ImpactOutput(0.0004059, 1.513e-05, 8e-05),
+        ),
+        GWPImpact(
+            ImpactOutput(59.5, 30.69, 45.0, END_OF_LIFE_WARNING),
+            ImpactOutput(1375.0, 26.36, 500.0),
+        ),
+        PEImpact(
+            ImpactOutput(789.0, 409.5, 610.0, END_OF_LIFE_WARNING),
+            ImpactOutput(715400.0, 14.9, 20000.0),
+        ),
+    )
+
+    await test.check_result()
+

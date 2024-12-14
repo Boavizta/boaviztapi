@@ -1,5 +1,5 @@
 import pytest
-from httpx import AsyncClient
+from httpx import AsyncClient, ASGITransport
 
 from boaviztapi.main import app
 
@@ -8,7 +8,8 @@ pytest_plugins = ('pytest_asyncio',)
 
 @pytest.mark.asyncio
 async def test_laptop():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post('/v1/terminal/laptop?verbose=false&criteria=ir', json={})
 
     assert res.status_code == 200
@@ -24,7 +25,8 @@ async def test_laptop():
 
 @pytest.mark.asyncio
 async def test_desktop():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get('/v1/terminal/desktop?verbose=false&criteria=lu')
 
     assert res.status_code == 200
@@ -40,7 +42,8 @@ async def test_desktop():
 
 @pytest.mark.asyncio
 async def test_smartphone():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get('/v1/terminal/smartphone?verbose=true')
 
     assert res.status_code == 200
@@ -103,7 +106,8 @@ async def test_smartphone():
 
 @pytest.mark.asyncio
 async def test_box():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get('/v1/terminal/box?verbose=true&criteria=adpe')
 
     assert res.status_code == 200
@@ -145,7 +149,8 @@ async def test_box():
 
 @pytest.mark.asyncio
 async def test_tv_archetype_perso():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get('/v1/terminal/television?verbose=true&criteria=adpe&archetype=tv-perso')
 
     assert res.status_code == 200
