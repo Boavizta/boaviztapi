@@ -50,7 +50,7 @@ AMD EPYC 7371,Naples,,,,,,,32.0,,,,,,,,AMD,EPYC,https://github.com/cloud-carbon-
 AMD EPYC 7373X,Milan-X,EPYC (Zen 3 (Milan)),TSMC,2022-03-22,3.05 GHz,240.0,16.0,32.0,"33,200 million",7.0,8x 81 mm²,416 mm²,12 nm,1064.0,io_die_size (416 mm²) + die_size (8x 81 mm²),AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-7373x.c2762
 AMD EPYC 73F3,Milan,EPYC (Zen 3 (Milan)),TSMC,2021-03-15,3.5 GHz,240.0,16.0,32.0,"33,200 million",7.0,8x 81 mm²,416 mm²,12 nm,1064.0,io_die_size (416 mm²) + die_size (8x 81 mm²),AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-73f3.c2387
 AMD EPYC 7401,Naples,,,,,,,48.0,,,,,,,,AMD,EPYC,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
-AMD EPYC 7401P,Naples,,,,,,,48.0,,,,,,,,AMD,EPYC,https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients/tree/main/data
+AMD EPYC 7401P,Naples,,,,,170.0,,48.0,,,,,,,,AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-7401p.c1930
 AMD EPYC 7402,Rome,EPYC (Zen 2 (Rome)),TSMC,2019-08-07,2.8 GHz,180.0,24.0,48.0,"3,800 million",7.0,6x 74 mm²,416 mm2,14 nm,860.0,io_die_size (416 mm2) + die_size (6x 74 mm²),AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-7402.c2252
 AMD EPYC 7402P,Rome,EPYC (Zen 2 (Rome)),TSMC,2019-08-07,2.8 GHz,180.0,24.0,48.0,"3,800 million",7.0,6x 74 mm²,416 mm2,14 nm,860.0,io_die_size (416 mm2) + die_size (6x 74 mm²),AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-7402p.c2261
 AMD EPYC 7413,Milan,EPYC (Zen 3 (Milan)),TSMC,2021-03-15,2.65 GHz,180.0,24.0,48.0,"16,600 million",7.0,4x 81 mm²,416 mm²,12 nm,740.0,io_die_size (416 mm²) + die_size (4x 81 mm²),AMD,EPYC,https://www.techpowerup.com/cpu-specs/epyc-7413.c2386
