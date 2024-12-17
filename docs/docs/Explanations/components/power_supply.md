@@ -59,6 +59,6 @@ with :
 
 ## Usage impact
 
-Only [power consumption](../usage/elec_conso.md) is implemented.
+Only [power consumption](../usage/power.md) is implemented.
 This shouldn't be used in most cases since the electricity consume by a power supply is consume on behalf of other
 components.

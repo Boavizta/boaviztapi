@@ -28,7 +28,7 @@ See: [Usage methodology](Explanations/usage/usage.md)
 
 Electrical consumption can either be given by the user or modeled according to the context of use and the technical configuration of the asset. 
 
-See: [Electricity methodology](Explanations/usage/elec_conso.md)
+See: [Electricity methodology](Explanations/usage/power.md)
 
 #### How do we compute the impacts of cloud instances?
 
