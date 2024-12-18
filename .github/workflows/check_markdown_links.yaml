@@ -1,0 +1,28 @@
+name: Check Markdown links
+run-name: "Check links in documentation"
+
+on: 
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+  
+
+jobs:
+  mkdocs-link-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+    - uses: byrnereese/github-action-mkdocs-link-check@1.0       
+      with:
+        folder-path: 'docs/**'
+        file-path: './README.md'
+        local-only: true
+
