@@ -1,0 +1,3 @@
+id,servers_quantity,server_id,PUE
+c3.4xlarge,1,platform_aws_c3,1.0
+a1.4xlarge,1,a1.metal,1.0

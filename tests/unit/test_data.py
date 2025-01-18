@@ -3,8 +3,8 @@ import os.path
 
 import pytest
 
-cloud_path =  os.path.join(os.path.dirname(__file__), "../../boaviztapi/data/archetypes/cloud/")
-providers_path = os.path.join(os.path.dirname(__file__),"../../boaviztapi/data/archetypes/cloud/providers.csv")
+cloud_path =  os.path.join(os.path.dirname(__file__), "../../boaviztapi/data/archetypes/cloud_instance/")
+providers_path = os.path.join(os.path.dirname(__file__),"../../boaviztapi/data/archetypes/cloud_instance/providers.csv")
 servers_patch = os.path.join(os.path.dirname(__file__),"../../boaviztapi/data/archetypes/server.csv")
 
 @pytest.fixture

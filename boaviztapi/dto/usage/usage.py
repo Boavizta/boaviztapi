@@ -58,6 +58,10 @@ class UsageCloud(UsageServer):
     instance_per_server: Optional[int] = None
 
 
+class UsagePlatform(UsageServer):
+    instance_per_server: Optional[int] = None
+
+
 def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
     usage_model = ModelUsage(archetype=archetype)
 
@@ -163,3 +167,42 @@ def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_arche
         usage_model_cloud.instance_per_server.set_input(usage_dto.instance_per_server)
 
     return usage_model_cloud
+
+
+def mapper_usage_platform(usage_dto: UsageCloud, archetype=get_cloud_instance_archetype(config["default_cloud_instance"],
+                                                                                     config[
+                                                                                         "default_cloud_provider"]).get(
+    "USAGE")) -> ModelUsageCloud:
+    usage_model_cloud = ModelUsageCloud(archetype=archetype)
+
+    for elec_factor in usage_dto.elec_factors.__dict__.keys():
+        if usage_dto.elec_factors.__dict__[elec_factor] is not None:
+            usage_model_cloud.elec_factors.get(elec_factor).set_input(usage_dto.elec_factors.__dict__[elec_factor])
+
+    if usage_dto.avg_power is not None:
+        usage_model_cloud.avg_power.set_input(usage_dto.avg_power)
+
+    if usage_dto.hours_life_time is not None:
+        usage_model_cloud.hours_life_time.set_input(usage_dto.hours_life_time)
+
+    if usage_dto.use_time_ratio is not None:
+        usage_model_cloud.use_time_ratio.set_input(usage_dto.use_time_ratio)
+
+    if usage_dto.time_workload is not None:
+        usage_model_cloud.time_workload.set_input(usage_dto.time_workload)
+
+    if usage_dto.usage_location is not None:
+        if usage_dto.usage_location in get_available_countries(reverse=True):
+            usage_model_cloud.usage_location.set_input(usage_dto.usage_location)
+        else:
+            usage_model_cloud.usage_location.set_changed(usage_model_cloud.usage_location.default)
+            usage_model_cloud.usage_location.add_warning("Location not found. Default value used.")
+
+    if usage_dto.other_consumption_ratio is not None:
+        usage_model_cloud.other_consumption_ratio.set_input(usage_dto.other_consumption_ratio)
+
+    if usage_dto.instance_per_server is not None:
+        usage_model_cloud.instance_per_server.set_input(usage_dto.instance_per_server)
+
+    return usage_model_cloud
+    # TODO REFAIRE CETTE FONCTION

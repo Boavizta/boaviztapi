@@ -14,6 +14,9 @@ default_server: "platform_compute_medium"
 default_cloud_instance: "a1.4xlarge"
 default_cloud_provider: "aws"
 
+default_platform_type: "a1.4xlarge"
+default_platform_provider: "aws"
+
 default_laptop: "laptop-pro"
 default_desktop: "desktop-pro"
 default_smartphone: "smartphone-default"

@@ -42,8 +42,17 @@ def get_user_terminal_archetype(archetype_name: str) -> Union[dict, bool]:
 
 def get_cloud_instance_archetype(archetype_name: str, provider: str) -> Union[dict, bool]:
     arch = False
-    if os.path.exists(data_dir + "/archetypes/cloud/" + provider + ".csv"):
-        arch = get_archetype(archetype_name, os.path.join(data_dir, "archetypes/cloud/" + provider + ".csv"))
+    if os.path.exists(data_dir + "/archetypes/cloud_instance/" + provider + ".csv"):
+        arch = get_archetype(archetype_name, os.path.join(data_dir, "archetypes/cloud_instance/" + provider + ".csv"))
+    if not arch:
+        return False
+    return arch
+
+
+def get_cloud_platform_archetype(archetype_name: str, provider: str) -> Union[dict, bool]:
+    arch = False
+    if os.path.exists(data_dir + "/archetypes/cloud_platform/" + provider + ".csv"):
+        arch = get_archetype(archetype_name, os.path.join(data_dir, "archetypes/cloud_platform/" + provider + ".csv"))
     if not arch:
         return False
     return arch

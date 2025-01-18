@@ -1,30 +1,11 @@
 from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.device.server import DeviceServer
-from boaviztapi.model.impact import Assessable, ImpactFactor
-from boaviztapi.model.usage import ModelUsage
+from boaviztapi.model.impact import ImpactFactor
+from boaviztapi.model.services.service import Service
 from boaviztapi.service.archetype import get_server_archetype, get_cloud_instance_archetype, get_arch_value
 
 
-class Service(Assessable):
-    def __init__(self, archetype=None, **kwargs):
-        super().__init__(**kwargs)
-        self.units = Boattribute(
-            default=1,
-            min=1,
-            max=1
-        )
-        self.archetype = archetype
-        self._usage = None
-        self._impacts = {}
-
-    @property
-    def usage(self) -> ModelUsage:
-        return self._usage
-
-    @usage.setter
-    def usage(self, value: int) -> None:
-        self._usage = value
 
 
 class ServiceCloudInstance(Service):

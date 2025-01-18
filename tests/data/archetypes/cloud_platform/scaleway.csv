@@ -1,0 +1,14 @@
+id,servers_quantity,server_id,PUE
+scw_coparm1,10,scw_coparm1.base,1.5
+scw_dev1,10,scw_dev1.base,1.5
+scw_ent1,10,scw_ent1.base,1.5
+scw_gp1,10,scw_gp1.base,1.5
+scw_h100,10,scw_h100.base,1.5
+scw_l4,10,scw_l4.base,1.5
+scw_play2,10,scw_play2.base,1.5
+scw_pop2,10,scw_pop2.base,1.5
+scw_pop2hc,10,scw_pop2hc.base,1.5
+scw_pop2hm,10,scw_pop2hm.base,1.5
+scw_pro2,10,scw_pro2.base,1.5
+scw_renders,10,scw_renders.base,1.5
+scw_stardust1,10,scw_stardust1.base,1.5

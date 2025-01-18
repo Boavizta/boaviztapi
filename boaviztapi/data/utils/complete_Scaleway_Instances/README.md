@@ -10,7 +10,7 @@ This does the following:
 
 To add to Boavizta:
 
-- Copy `instances.csv` to `boaviztapi/data/archetypes/cloud/scaleway.csv` (simply overwrite if updating)
+- Copy `instances.csv` to `boaviztapi/data/archetypes/cloud_instance/scaleway.csv` (simply overwrite if updating)
 - Add the lines form `servers.csv` to `boaviztapi/data/archetypes/server.csv` (delete all existing servers starting with `scw_` if you are updating)
 
 ## Testing

@@ -1,5 +1,6 @@
 from typing import Optional, List
 
+from boaviztapi.model.services.cloud_platform import ServiceCloudPlatform
 from fastapi import HTTPException
 
 from boaviztapi import config
@@ -10,13 +11,13 @@ from boaviztapi.dto.component.other import mapper_power_supply
 from boaviztapi.dto.component.ram import mapper_ram
 from boaviztapi.dto.usage import UsageServer, UsageCloud
 from boaviztapi.dto import BaseDTO
-from boaviztapi.dto.usage.usage import mapper_usage_server, mapper_usage_cloud
+from boaviztapi.dto.usage.usage import mapper_usage_platform, mapper_usage_server, mapper_usage_cloud
 from boaviztapi.model.boattribute import Status, Boattribute
 from boaviztapi.model.component import ComponentCase
 from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.model.services.cloud_instance import ServiceCloudInstance
 from boaviztapi.model.usage import ModelUsage
-from boaviztapi.service.archetype import get_server_archetype, get_arch_component, get_cloud_instance_archetype, \
+from boaviztapi.service.archetype import get_cloud_platform_archetype, get_server_archetype, get_arch_component, get_cloud_instance_archetype, \
     get_arch_value
 
 
@@ -71,13 +72,13 @@ def complete_usage(usage_component, usage_device):
             usage_component.__setattr__(attr, usage_device.__getattribute__(attr))
 
 
-class Cloud(Server):
+class CloudInstance(Server):
     provider: Optional[str] = None
     instance_type: Optional[str] = None
     usage: Optional[UsageCloud] = None
 
 
-def mapper_cloud_instance(cloud_dto: Cloud, archetype=get_cloud_instance_archetype(config["default_cloud_instance"], config["default_cloud_provider"])) -> ServiceCloudInstance:
+def mapper_cloud_instance(cloud_dto: CloudInstance, archetype=get_cloud_instance_archetype(config["default_cloud_instance"], config["default_cloud_provider"])) -> ServiceCloudInstance:
     if get_server_archetype(archetype_name=get_arch_value(archetype, 'platform', 'default')) is False:
         raise HTTPException(status_code=404, detail=f"Cloud platform {get_arch_value(archetype, 'platform', 'default')} not found. Please add it to the server archetypes. For more information, please check the documentation https://doc.api.boavizta.org/contributing/server/.")
 
@@ -90,6 +91,22 @@ def mapper_cloud_instance(cloud_dto: Cloud, archetype=get_cloud_instance_archety
 
     return model_cloud_instance
 
+class CloudPlatform(Server):
+    provider: Optional[str] = None
+    platform_type: Optional[str] = None
+    usage: Optional[UsageCloud] = None
+
+def mapper_cloud_platform(platform_dto: CloudPlatform, archetype=get_cloud_platform_archetype(config["default_platform_type"], config["default_cloud_provider"])) -> ServiceCloudPlatform:
+    if get_server_archetype(archetype_name=get_arch_value(archetype, 'server_id', 'default')) is False:
+        raise HTTPException(status_code=404, detail=f"Server archetype {get_arch_value(archetype, 'server_id', 'default')} not found. Please add it to the server archetypes. For more information, please check the documentation https://doc.api.boavizta.org/contributing/server/.")
+
+    model_cloud_platform = ServiceCloudPlatform(archetype=archetype)
+    model_cloud_platform.usage = mapper_usage_platform(platform_dto.usage or UsageCloud(), archetype=get_arch_component(model_cloud_platform.archetype, "USAGE"))
+
+    complete_components_usage(model=model_cloud_platform.server, usage=model_cloud_platform.usage)
+    complete_usage(model_cloud_platform.server.usage, model_cloud_platform.usage)
+
+    return model_cloud_platform
 
 def device_mapper(device_dto, device_model):
     if device_dto.configuration is not None:
