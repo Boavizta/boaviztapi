@@ -648,4 +648,12 @@ impacts_functions = {
         "use": simple_impact_use,
         "embedded": iot_functional_blocks_impact_embedded
     },
+    "VR_CONTROLLER": {
+        "use": simple_impact_use, 
+        "embedded": simple_embedded
+    },
+    "VR_HEADSET": {
+        "use": simple_impact_use, 
+        "embedded": simple_embedded
+    },
 }
