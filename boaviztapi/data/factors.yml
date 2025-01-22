@@ -2919,83 +2919,83 @@
 
 "VR_CONTROLLER": {
   "adpe": {
-    "impact": 1.07E-03,
+    "impact": 1.07e-03,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "adpf": {
-    "impact": 5.45E+01,
+    "impact": 5.45e+01,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "ap": {
-    "impact": 4.28E-02,
+    "impact": 4.28e-02,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "ctue": {
-    "impact": 5.11E+01,
+    "impact": 5.11e+01,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "ctuh-c": {
-    "impact": 5.95E-08,
+    "impact": 5.95e-08,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "ctuh-nc": {
-    "impact": 1.85E-07,
+    "impact": 1.85e-07,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "epf": {
-    "impact": 9.87E-05,
+    "impact": 9.87e-05,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "epm": {
-    "impact": 4.28E-03,
+    "impact": 4.28e-03,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "ept": {
-    "impact": 4.49E-02,
+    "impact": 4.49e-02,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "gwp": {
-    "impact": 4.22E+00,
+    "impact": 4.22e+00,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "gwpb": {
-    "impact": 1.97E-02,
+    "impact": 1.97e-02,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "gwpf": {
-    "impact": 4.20E+00,
+    "impact": 4.20e+00,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "gwplu": {
-    "impact": 4.14E-06,
+    "impact": 4.14e-06,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "ir": {
-    "impact": 2.50E+00,
+    "impact": 2.50e+00,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "lu": {
-    "impact": 5.73E-01,
+    "impact": 5.73e-01,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "odp": {
-    "impact": 7.66E-07,
+    "impact": 7.66e-07,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "pm": {
-    "impact": 2.22E-07,
+    "impact": 2.22e-07,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "pocp": {
-    "impact": 1.46E-02,
+    "impact": 1.46e-02,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "wu": {
-    "impact": 3.99E+01,
+    "impact": 3.99e+01,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   },
   "mips": {
-    "impact": 5.47E+01,
+    "impact": 5.47e+01,
     "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
   }
 }
