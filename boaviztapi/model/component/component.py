@@ -1,6 +1,7 @@
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.impact import Assessable
 from boaviztapi.model.usage import ModelUsage
+from boaviztapi.model.usage.usage import ModelUsageServer
 from boaviztapi.service.archetype import get_arch_value, get_arch_component
 
 
@@ -29,5 +30,15 @@ class Component(Assessable):
         return self._usage
 
     @usage.setter
-    def usage(self, value: int) -> None:
+    def usage(self, value: ModelUsage) -> None:
         self._usage = value
+
+    def complete_usage(self, server_usage: ModelUsageServer):
+        """
+        Complete usage attributes following those of the server
+        """
+        if server_usage.avg_power.is_set():
+            return
+        for attr, val in self.usage.__iter__():
+            if isinstance(val, Boattribute) and not val.is_set() and server_usage.__getattribute__(attr).is_set():
+                self.usage.__setattr__(attr, server_usage.__getattribute__(attr))

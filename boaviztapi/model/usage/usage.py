@@ -2,7 +2,7 @@ import os
 
 from boaviztapi import config, data_dir
 from boaviztapi.model.boattribute import Boattribute
-from boaviztapi.service.archetype import get_arch_value, get_server_archetype, get_cloud_instance_archetype
+from boaviztapi.service.archetype import get_arch_value, get_cloud_platform_archetype, get_server_archetype, get_cloud_instance_archetype
 from boaviztapi.service.factor_provider import get_available_countries, get_electrical_impact_factor, \
     get_electrical_min_max
 
@@ -146,21 +146,28 @@ class ModelUsage:
 
 class ModelUsageServer(ModelUsage):
 
-    def __init__(self, archetype=get_server_archetype(config["default_server"]).get("USAGE"), **kwargs):
-        super().__init__(archetype=archetype, **kwargs)
+    def __init__(self, archetype=get_server_archetype(config["default_server"]), **kwargs):
+        super().__init__(archetype=archetype.get("USAGE"), **kwargs)
 
         self.other_consumption_ratio = Boattribute(
             unit="ratio /1",
-            default=get_arch_value(archetype, 'other_consumption_ratio', 'default'),
-            min=get_arch_value(archetype, 'other_consumption_ratio', 'min'),
-            max=get_arch_value(archetype, 'other_consumption_ratio', 'max')
+            default=get_arch_value(archetype.get("USAGE"), 'other_consumption_ratio', 'default'),
+            min=get_arch_value(archetype.get("USAGE"), 'other_consumption_ratio', 'min'),
+            max=get_arch_value(archetype.get("USAGE"), 'other_consumption_ratio', 'max')
         )
 
-class ModelUsageCloud(ModelUsageServer):
-    def __init__(self, archetype=get_cloud_instance_archetype(config["default_cloud_instance"], config["default_cloud_provider"]).get("USAGE"), **kwargs):
-        super().__init__(archetype=archetype, **kwargs)
+class ModelUsageCloudPlatform(ModelUsageServer):
+    def __init__(self, archetype=get_cloud_platform_archetype(config["default_cloud_platform"], config["default_cloud_provider"]), **kwargs):
+        server_archetype = get_server_archetype(get_arch_value(archetype, 'server_id', 'default'))
+        super().__init__(archetype=server_archetype, **kwargs)
+
+class ModelUsageCloudInstance(ModelUsageCloudPlatform):
+    def __init__(self, archetype=get_cloud_instance_archetype(config["default_cloud_instance"], config["default_cloud_provider"]), **kwargs):
+        cp_archetype = get_cloud_platform_archetype(get_arch_value(archetype,'platform', 'default'),get_arch_value(archetype, 'provider', 'default'))
+        super().__init__(archetype=cp_archetype, **kwargs)
         self.instance_per_server = Boattribute(
             default=get_arch_value(archetype, 'instance_per_server', 'default'),
             min=get_arch_value(archetype, 'instance_per_server', 'min'),
             max=get_arch_value(archetype, 'instance_per_server', 'max')
         )
+        # TODO je pense qu'instnace par serveur devrait virer

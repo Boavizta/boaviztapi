@@ -446,7 +446,7 @@ def server_impact_use(impact_type: str, duration: int, server: DeviceServer) -> 
     return impact, min_impact, max_impact, []
 
 
-def cloud_impact_embedded(impact_type: str, duration: int, cloud_instance: ServiceCloudInstance) -> ComputedImpacts:
+def cloud_instance_impact_embedded(impact_type: str, duration: int, cloud_instance: ServiceCloudInstance) -> ComputedImpacts:
     impacts = []
     min_impacts = []
     max_impacts = []
@@ -454,7 +454,7 @@ def cloud_impact_embedded(impact_type: str, duration: int, cloud_instance: Servi
     default_allocation = cloud_instance.vcpu.value / cloud_instance.platform.get_total_vcpu()
 
     try:
-        for component in cloud_instance.platform.components:
+        for component in cloud_instance.platform.get_components():
             component.usage.hours_life_time = cloud_instance.platform.usage.hours_life_time
             allocation = default_allocation
             if component.NAME == "RAM":
@@ -493,7 +493,7 @@ def cloud_impact_embedded(impact_type: str, duration: int, cloud_instance: Servi
         return impact.value * default_allocation, impact.min * default_allocation, impact.max * default_allocation, warnings
 
 
-def cloud_impact_use(impact_type: str, duration: int, cloud_instance: ServiceCloudInstance) -> ComputedImpacts:
+def cloud_instance_impact_use(impact_type: str, duration: int, cloud_instance: ServiceCloudInstance) -> ComputedImpacts:
     platform = cloud_instance.platform
     impact_factor = platform.usage.elec_factors[impact_type]
 
@@ -505,9 +505,9 @@ def cloud_impact_use(impact_type: str, duration: int, cloud_instance: ServiceClo
             max=modeled_consumption.max
         )
 
-    # Compute impacts at component level
-    compute_single_impact(platform.cpu, USE, impact_type, duration)
-    for ram in platform.ram:
+   # Compute impacts at component level
+    compute_single_impact(platform.server.cpu, USE, impact_type, duration)
+    for ram in platform.server.ram:
         compute_single_impact(ram, USE, impact_type, duration)
 
     impact = impact_factor.value * (cloud_instance.usage.avg_power.value / 1000) * platform.usage.use_time_ratio.value * duration
@@ -525,7 +525,7 @@ def cloud_platform_impact_embedded(impact_type: str, duration: int, cloud_platfo
 
     try:
         server_impact = server_impact_embedded(impact_type=impact_type, duration=duration, server=cloud_platform.server)
-        return server_impact
+        return server_impact * cloud_platform.server_quantity
     #TODO multiply server impact by the number of servers
         # for component in cloud_platform.platform.components:
         #     component.usage.hours_life_time = cloud_instance.platform.usage.hours_life_time
@@ -674,8 +674,8 @@ impacts_functions = {
         "embedded": simple_embedded
     },
     "CLOUD_INSTANCE": {
-        "use": cloud_impact_use,
-        "embedded": cloud_impact_embedded
+        "use": cloud_instance_impact_use,
+        "embedded": cloud_instance_impact_embedded
     },
     "CLOUD_PLATFORM": {
         "use": cloud_platform_impact_use,

@@ -18,7 +18,7 @@ pytest_plugins = ("pytest_asyncio",)
 
 
 @dataclass
-class CloudTest:
+class CloudInstanceTest:
     request: CloudInstanceRequest
 
     adp: ADPImpact
@@ -51,7 +51,7 @@ class CloudTest:
 
 @pytest.mark.asyncio
 async def test_empty_usage():
-    test = CloudTest(
+    test = CloudInstanceTest(
         CloudInstanceRequest("aws", "a1.4xlarge"),
         ADPImpact(
             ImpactOutput(0.1414, 0.06512, 0.099, END_OF_LIFE_WARNING),
@@ -72,7 +72,7 @@ async def test_empty_usage():
 
 @pytest.mark.asyncio
 async def test_empty_usage_m6gxlarge():
-    test = CloudTest(
+    test = CloudInstanceTest(
         CloudInstanceRequest("aws", "m6g.xlarge"),
         ADPImpact(
             ImpactOutput(0.01088, 0.005075, 0.0075, END_OF_LIFE_WARNING),
@@ -93,7 +93,7 @@ async def test_empty_usage_m6gxlarge():
 
 @pytest.mark.asyncio
 async def test_empty_usage_with_url_params_a1():
-    test = CloudTest(
+    test = CloudInstanceTest(
         CloudInstanceRequest("aws", "a1.2xlarge", use_url_params=True),
         ADPImpact(
             ImpactOutput(0.07069, 0.03256, 0.049, END_OF_LIFE_WARNING),
@@ -114,7 +114,7 @@ async def test_empty_usage_with_url_params_a1():
 
 @pytest.mark.asyncio
 async def test_empty_usage_with_url_params_r5ad():
-    test = CloudTest(
+    test = CloudInstanceTest(
         CloudInstanceRequest("aws", "r5ad.12xlarge", use_url_params=True),
         ADPImpact(
             ImpactOutput(0.1206, 0.06419, 0.086, END_OF_LIFE_WARNING),
@@ -157,7 +157,7 @@ async def test_wrong_input_1():
 
 @pytest.mark.asyncio
 async def test_usage_with_complex_time_workload():
-    test = CloudTest(
+    test = CloudInstanceTest(
         CloudInstanceRequest(
             "aws",
             "c5a.24xlarge",
@@ -188,7 +188,7 @@ async def test_usage_with_complex_time_workload():
 
 @pytest.mark.asyncio
 async def test_usage_with_simple_time_workload():
-    test = CloudTest(
+    test = CloudInstanceTest(
         CloudInstanceRequest(
             "aws",
             "c5a.24xlarge",
@@ -213,7 +213,7 @@ async def test_usage_with_simple_time_workload():
 
 @pytest.mark.asyncio
 async def test_usage_with_duration():
-    test = CloudTest(
+    test = CloudInstanceTest(
         CloudInstanceRequest(
             "aws",
             "c5a.24xlarge",
@@ -238,7 +238,7 @@ async def test_usage_with_duration():
 
 @pytest.mark.asyncio
 async def test_usage_with_duration_and_time_workload():
-    test = CloudTest(
+    test = CloudInstanceTest(
         CloudInstanceRequest(
             "aws",
             "a1.4xlarge",
@@ -270,7 +270,7 @@ async def test_usage_with_duration_and_time_workload():
 
 @pytest.mark.asyncio
 async def test_verbose_output_with_empty_usage():
-    test = CloudTest(
+    test = CloudInstanceTest(
         CloudInstanceRequest("aws", "r5ad.12xlarge", use_url_params=True),
         ADPImpact(
             ImpactOutput(0.1206, 0.06419, 0.086, END_OF_LIFE_WARNING),
@@ -922,7 +922,7 @@ async def test_verbose_output_with_empty_usage():
 
 @pytest.mark.asyncio
 async def test_empty_usage_e8ads_v5():
-    test = CloudTest(
+    test = CloudInstanceTest(
         CloudInstanceRequest("azure", "e8ads_v5"),
         ADPImpact(
             ImpactOutput(0.02211, 0.0127, 0.0163, END_OF_LIFE_WARNING),
@@ -943,7 +943,7 @@ async def test_empty_usage_e8ads_v5():
 
 @pytest.mark.asyncio
 async def test_usage_with_complex_time_workload_e8ads_v5():
-    test = CloudTest(
+    test = CloudInstanceTest(
         CloudInstanceRequest(
             "azure",
             "e8ads_v5",
@@ -974,7 +974,7 @@ async def test_usage_with_complex_time_workload_e8ads_v5():
 
 @pytest.mark.asyncio
 async def test_empty_usage_scw_dev1_l():
-    test = CloudTest(
+    test = CloudInstanceTest(
         CloudInstanceRequest("scaleway", "dev1-l"),
         ADPImpact(
             ImpactOutput(0.007718, 0.006189, 0.0064, END_OF_LIFE_WARNING),

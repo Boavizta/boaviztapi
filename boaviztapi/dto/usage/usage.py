@@ -3,8 +3,9 @@ from typing import Optional, List, Union
 from boaviztapi import config
 from boaviztapi.dto import BaseDTO
 from boaviztapi.model.boattribute import Status
-from boaviztapi.model.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
-from boaviztapi.service.archetype import get_cloud_instance_archetype, get_server_archetype
+from boaviztapi.model.usage import ModelUsage, ModelUsageServer, ModelUsageCloudInstance
+from boaviztapi.model.usage.usage import ModelUsageCloudPlatform
+from boaviztapi.service.archetype import get_cloud_instance_archetype, get_cloud_platform_archetype, get_server_archetype
 from boaviztapi.service.factor_provider import get_available_countries
 
 
@@ -100,7 +101,7 @@ def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
 
 
 def mapper_usage_server(usage_dto: UsageServer,
-                        archetype=get_server_archetype(config["default_server"]).get("USAGE")) -> ModelUsageServer:
+                        archetype=get_server_archetype(config["default_server"])) -> ModelUsageServer:
     usage_model_server = ModelUsageServer(archetype=archetype)
 
     for elec_factor in usage_dto.elec_factors.__dict__.keys():
@@ -131,11 +132,12 @@ def mapper_usage_server(usage_dto: UsageServer,
     return usage_model_server
 
 
-def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_archetype(config["default_cloud_instance"],
-                                                                                     config[
-                                                                                         "default_cloud_provider"]).get(
-    "USAGE")) -> ModelUsageCloud:
-    usage_model_cloud = ModelUsageCloud(archetype=archetype)
+def mapper_usage_cloud_instance(usage_dto: UsageCloud, archetype=
+                                    get_cloud_instance_archetype(
+                                        config["default_cloud_instance"],
+                                        config["default_cloud_provider"])
+                                ) -> ModelUsageCloudInstance:
+    usage_model_cloud = ModelUsageCloudInstance(archetype=archetype)
 
     for elec_factor in usage_dto.elec_factors.__dict__.keys():
         if usage_dto.elec_factors.__dict__[elec_factor] is not None:
@@ -169,11 +171,12 @@ def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_arche
     return usage_model_cloud
 
 
-def mapper_usage_platform(usage_dto: UsageCloud, archetype=get_cloud_instance_archetype(config["default_cloud_instance"],
-                                                                                     config[
-                                                                                         "default_cloud_provider"]).get(
-    "USAGE")) -> ModelUsageCloud:
-    usage_model_cloud = ModelUsageCloud(archetype=archetype)
+def mapper_usage_platform(usage_dto:UsageCloud, archetype=
+                            get_cloud_platform_archetype(
+                                config["default_cloud_platform"],
+                                config["default_cloud_provider"])
+                            ) -> ModelUsageCloudPlatform:
+    usage_model_cloud = ModelUsageCloudPlatform(archetype)
 
     for elec_factor in usage_dto.elec_factors.__dict__.keys():
         if usage_dto.elec_factors.__dict__[elec_factor] is not None:
@@ -205,4 +208,3 @@ def mapper_usage_platform(usage_dto: UsageCloud, archetype=get_cloud_instance_ar
         usage_model_cloud.instance_per_server.set_input(usage_dto.instance_per_server)
 
     return usage_model_cloud
-    # TODO REFAIRE CETTE FONCTION

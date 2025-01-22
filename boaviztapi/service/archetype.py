@@ -46,6 +46,7 @@ def get_cloud_instance_archetype(archetype_name: str, provider: str) -> Union[di
         arch = get_archetype(archetype_name, os.path.join(data_dir, "archetypes/cloud_instance/" + provider + ".csv"))
     if not arch:
         return False
+    arch['provider']={'default': provider}
     return arch
 
 
@@ -55,6 +56,7 @@ def get_cloud_platform_archetype(archetype_name: str, provider: str) -> Union[di
         arch = get_archetype(archetype_name, os.path.join(data_dir, "archetypes/cloud_platform/" + provider + ".csv"))
     if not arch:
         return False
+    arch['provider']={'default': provider}
     return arch
 
 

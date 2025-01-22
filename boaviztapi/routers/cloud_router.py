@@ -103,7 +103,7 @@ async def cloud_instance_impact(cloud_instance: ServiceCloudInstance,
                                 duration: Optional[float] = config["default_duration"],
                                 criteria: List[str] = Query(config["default_criteria"])) -> dict:
     if duration is None:
-        duration = cloud_instance.platform.usage.hours_life_time.value
+        duration = cloud_instance.platform.server.usage.hours_life_time.value
 
     impacts = compute_impacts(model=cloud_instance, selected_criteria=criteria, duration=duration)
 
@@ -118,8 +118,8 @@ async def cloud_instance_impact(cloud_instance: ServiceCloudInstance,
 @cloud_router.get('/platform/platform_config',
                   description=get_platform_config_desc)
 async def get_platform_config(
-        provider: str = Query(config["default_platform_provider"], example=config["default_platform_provider"]),
-        platform_type: str = Query(config["default_platform_type"], example=config["default_platform_type"])):
+        provider: str = Query(config["default_cloud_provider"], example=config["default_cloud_provider"]),
+        platform_type: str = Query(config["default_cloud_platform"], example=config["default_cloud_platform"])):
     result = get_cloud_platform_archetype(platform_type, provider)
     if not result:
         raise HTTPException(status_code=404, detail=f"{platform_type} at {provider} not found")

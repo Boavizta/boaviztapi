@@ -112,12 +112,18 @@ class DeviceServer(Device):
     @property
     def usage(self) -> ModelUsageServer:
         if self._usage is None:
-            self._usage = ModelUsageServer(archetype=get_arch_component(self.archetype, "USAGE"))
+            self._usage = ModelUsageServer(archetype=self.archetype)
         return self._usage
 
     @usage.setter
     def usage(self, value: ModelUsageServer) -> None:
         self._usage = value
+        self.cpu.complete_usage(self.usage)
+        self.case.complete_usage(self.usage)
+        for ram_unit in self.ram:
+            ram_unit.complete_usage(self.usage)
+        for disk_unit in self.disk:
+            disk_unit.complete_usage(self.usage)
 
     @property
     def components(self) -> List[Component]:
