@@ -1,6 +1,5 @@
 from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
-from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.model.impact import ImpactFactor
 from boaviztapi.model.services.cloud_platform import ServiceCloudPlatform
 from boaviztapi.model.services.service import Service
