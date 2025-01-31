@@ -525,35 +525,7 @@ def cloud_platform_impact_embedded(impact_type: str, duration: int, cloud_platfo
 
     try:
         server_impact = server_impact_embedded(impact_type=impact_type, duration=duration, server=cloud_platform.server)
-        return server_impact * cloud_platform.server_quantity
-    #TODO multiply server impact by the number of servers
-        # for component in cloud_platform.platform.components:
-        #     component.usage.hours_life_time = cloud_instance.platform.usage.hours_life_time
-        #     allocation = default_allocation
-        #     if component.NAME == "RAM":
-        #         allocation = cloud_instance.memory.value / cloud_instance.platform.get_total_memory()
-        #     if component.NAME == "SSD":
-        #         if cloud_instance.ssd_storage.has_value():
-        #             allocation = cloud_instance.ssd_storage.value / cloud_instance.platform.get_total_disk_capacity("SSD")
-        #         else:
-        #             continue
-        #     if component.NAME == "HDD":
-        #         if cloud_instance.hdd_storage.has_value():
-        #             allocation = cloud_instance.hdd_storage.value / cloud_instance.platform.get_total_disk_capacity("HDD")
-        #         else:
-        #             continue
-
-        #     single_impact = compute_single_impact(component, "embedded", impact_type, duration, allocation)
-
-        #     if single_impact is None:
-        #         raise NotImplementedError
-
-        #     impacts.append(single_impact.value)
-        #     min_impacts.append(single_impact.min)
-        #     max_impacts.append(single_impact.max)
-        #     warnings = warnings + single_impact.warnings
-        # return sum(impacts), sum(min_impacts), sum(max_impacts), warnings
-
+        return tuple(x * cloud_platform.server_quantity if isinstance(x, float) else x for x in server_impact)
     except NotImplementedError:
         impact = Impact(value=get_impact_factor(item='SERVER', impact_type=impact_type)["impact"],
                         min=get_impact_factor(item='SERVER', impact_type=impact_type)["impact"],

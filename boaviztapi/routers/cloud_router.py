@@ -148,6 +148,32 @@ async def platform_impact(platform: CloudPlatform = Body(None, example=platform_
     )
     return t
 
+@cloud_router.get('/platform',
+                  description=cloud_platform_description)
+async def platform_impact(
+        provider: str = Query(config["default_cloud_provider"], example=config["default_cloud_provider"]),
+        platform_type: str = Query(config["default_cloud_platform"], example=config["default_cloud_platform"]),
+        verbose: bool = True,
+        duration: Optional[float] = config["default_duration"],
+        criteria: List[str] = Query(config["default_criteria"])):
+
+    cloud_platform = CloudPlatform()
+    cloud_platform.usage = {}
+    platform_archetype = get_cloud_platform_archetype(platform_type, provider)
+
+    if not platform_archetype:
+        raise HTTPException(status_code=404,
+                            detail=f"{platform_type} at {provider} not found")
+
+    platform_model = mapper_cloud_platform(cloud_platform, archetype=platform_archetype)
+
+    return await cloud_platform_impact(
+        cloud_platform=platform_model,
+        verbose=verbose,
+        duration=duration,
+        criteria=criteria
+    )
+
 
 @cloud_router.get('/platform/all_platforms',
                   description=all_default_cloud_platforms)
