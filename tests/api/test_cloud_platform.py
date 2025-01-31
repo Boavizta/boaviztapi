@@ -55,15 +55,15 @@ async def test_empty_usage():
         CloudPlatformRequest("aws", "a1.metal"),
         ADPImpact(
             manufacture=ImpactOutput(0.1414, 0.06512, 0.099, END_OF_LIFE_WARNING),
-            use=ImpactOutput(0.000581, 2.165e-05, 0.00012),
+            use=ImpactOutput(0.0007552, 2.815e-05, 0.00015),
         ),
         GWPImpact(
             manufacture=ImpactOutput(635.6, 258.0, 450.0, END_OF_LIFE_WARNING),
-            use=ImpactOutput(1969.0, 37.73, 700.0),
+            use=ImpactOutput(2559, 49.05, 900.0),
         ),
         PEImpact(
             manufacture=ImpactOutput(8833.0, 3529.0, 6300.0, END_OF_LIFE_WARNING),
-            use=ImpactOutput(1024000.0, 21.33, 20000.0, UNCERTAINTY_WARNING),
+            use=ImpactOutput(1331000.0, 27.72, 30000.0, UNCERTAINTY_WARNING),
         ),
     )
 
@@ -76,15 +76,15 @@ async def test_empty_usage_m6gmetal():
         CloudPlatformRequest("aws", "m6g.metal"),
         ADPImpact(
             manufacture=ImpactOutput(0.1741, 0.0812, 0.12, END_OF_LIFE_WARNING),
-            use=ImpactOutput(0.002754, 0.0001026, 0.0006),
+            use=ImpactOutput(0.00358, 0.0001334, 0.0007),
         ),
         GWPImpact(
             manufacture=ImpactOutput(1427.0, 504.3, 880.0, END_OF_LIFE_WARNING),
-            use=ImpactOutput(9331.0, 178.9, 3300.0),
+            use=ImpactOutput(12130, 232.5, 4000.0),
         ),
         PEImpact(
             manufacture=ImpactOutput(18680.0, 6649.0, 12000.0, END_OF_LIFE_WARNING),
-            use=ImpactOutput(4854000.0, 101.1, 100000.0),
+            use=ImpactOutput(6310000.0, 131.4, 100000.0),
         ),
     )
 
@@ -97,15 +97,15 @@ async def test_empty_usage_with_url_params_a1():
         CloudPlatformRequest("aws", "a1.metal", use_url_params=True),
         ADPImpact(
             ImpactOutput(0.1414, 0.06512, 0.099, END_OF_LIFE_WARNING),
-            ImpactOutput(0.000581, 2.165e-05, 0.00012),
+            ImpactOutput(0.0007552, 2.815e-05, 0.00015),
         ),
         GWPImpact(
             ImpactOutput(635.6, 258.0, 450.0, END_OF_LIFE_WARNING),
-            ImpactOutput(1969.0, 37.73, 700.0),
+            ImpactOutput(2559.0, 49.05, 900.0),
         ),
         PEImpact(
             ImpactOutput(8833.0, 3529.0, 6300.0, END_OF_LIFE_WARNING),
-            ImpactOutput(1024000.0, 21.33, 20000.0, UNCERTAINTY_WARNING),
+            ImpactOutput(1331000.0, 27.72, 30000.0, UNCERTAINTY_WARNING),
         ),
     )
 
@@ -118,15 +118,15 @@ async def test_empty_usage_with_url_params_r5ad():
         CloudPlatformRequest("aws", "r5ad.24xlarge", use_url_params=True),
         ADPImpact(
             ImpactOutput(0.2801, 0.1487, 0.2, END_OF_LIFE_WARNING),
-            ImpactOutput(0.007704, 0.0002872, 0.0015),
+            ImpactOutput(0.01002, 0.0003733, 0.002),
         ),
         GWPImpact(
             ImpactOutput(3510.0, 1244.0, 2100.0, END_OF_LIFE_WARNING),
-            ImpactOutput(26110.0, 500.4, 9000.0),
+            ImpactOutput(33940.0, 650.5, 12000.0),
         ),
         PEImpact(
             ImpactOutput(44690.0, 16000.0, 26000.0, END_OF_LIFE_WARNING),
-            ImpactOutput(13580000.0, 282.8, 300000.0, UNCERTAINTY_WARNING),
+            ImpactOutput(17650000.0, 367.7, 400000.0, UNCERTAINTY_WARNING),
         ),
     )
 
@@ -171,15 +171,15 @@ async def test_usage_with_complex_time_workload():
         ),
         ADPImpact(
             ImpactOutput(0.1744, 0.08626, 0.124, END_OF_LIFE_WARNING),
-            ImpactOutput(0.002975, 0.0001109, 0.0006),
+            ImpactOutput(0.003867, 0.0001442, 0.0008),
         ),
         GWPImpact(
             ImpactOutput(1215.0, 458.4, 780.0, END_OF_LIFE_WARNING),
-            ImpactOutput(10080.0, 193.2, 3500.0),
+            ImpactOutput(13110.0, 251.2, 5000.0),
         ),
         PEImpact(
             ImpactOutput(16070.0, 6108.0, 10500.0, END_OF_LIFE_WARNING),
-            ImpactOutput(5244000.0, 109.2, 100000.0),
+            ImpactOutput(6817000.0, 142.0, 200000.0),
         ),
     )
 
@@ -196,15 +196,15 @@ async def test_usage_with_simple_time_workload():
         ),
         ADPImpact(
             ImpactOutput(0.1744, 0.08626, 0.124, END_OF_LIFE_WARNING),
-            ImpactOutput(0.005068, 0.0001889, 0.001),
+            ImpactOutput(0.006589, 0.0002456, 0.0013),
         ),
         GWPImpact(
             ImpactOutput(1215.0, 458.4, 780.0, END_OF_LIFE_WARNING),
-            ImpactOutput(17170.0, 329.2, 6000.0),
+            ImpactOutput(22330.0, 427.9, 8000.0),
         ),
         PEImpact(
             ImpactOutput(16070.0, 6108.0, 10500.0, END_OF_LIFE_WARNING),
-            ImpactOutput(8934000.0, 186.1, 200000.0),
+            ImpactOutput(11610000.0, 241.9, 300000.0, UNCERTAINTY_WARNING),
         ),
     )
 
@@ -221,15 +221,15 @@ async def test_usage_with_duration():
         ),
         ADPImpact(
             ImpactOutput(4.977e-06, 2.462e-06, 3.5e-06, END_OF_LIFE_WARNING),
-            ImpactOutput(1.122e-07, 4.182e-09, 2e-08),
+            ImpactOutput(1.459e-07, 5.437e-09, 3e-08),
         ),
         GWPImpact(
             ImpactOutput(0.03467, 0.01308, 0.022, END_OF_LIFE_WARNING),
-            ImpactOutput(0.3802, 0.007287, 0.13),
+            ImpactOutput(0.4942, 0.009473, 0.17),
         ),
         PEImpact(
             ImpactOutput(0.4588, 0.1743, 0.3, END_OF_LIFE_WARNING),
-            ImpactOutput(197.8, 0.004119, 5.0, UNCERTAINTY_WARNING),
+            ImpactOutput(257.1, 0.005354, 10.0),
         ),
     )
 
@@ -253,15 +253,15 @@ async def test_usage_with_duration_and_time_workload():
         ),
         ADPImpact(
             ImpactOutput(8.07e-06, 3.717e-06, 5.6e-06, END_OF_LIFE_WARNING),
-            ImpactOutput(4.11e-09, 3.082e-09, 3.4e-09),
+            ImpactOutput(5.343e-09, 4.007e-09, 4.4e-09),
         ),
         GWPImpact(
             ImpactOutput(0.03628, 0.01472, 0.026, END_OF_LIFE_WARNING),
-            ImpactOutput(0.008291, 0.006218, 0.0069),
+            ImpactOutput(0.01078, 0.008083, 0.009),
         ),
         PEImpact(
             ImpactOutput(0.5041, 0.2014, 0.36, END_OF_LIFE_WARNING),
-            ImpactOutput(0.955, 0.7163, 0.79),
+            ImpactOutput(1.242, 0.9312, 1.03),
         ),
     )
 
@@ -274,15 +274,15 @@ async def test_verbose_output_with_empty_usage():
         CloudPlatformRequest("aws", "r5ad.24xlarge", use_url_params=True),
         ADPImpact(
             ImpactOutput(0.2801, 0.1487, 0.2, END_OF_LIFE_WARNING),
-            ImpactOutput(0.007704, 0.0002872, 0.0015),
+            ImpactOutput(0.01002, 0.0003733, 0.002),
         ),
         GWPImpact(
             ImpactOutput(3510.0, 1244.0, 2100.0, END_OF_LIFE_WARNING),
-            ImpactOutput(26110.0, 500.4, 9000.0),
+            ImpactOutput(33940.0, 650.5, 12000.0),
         ),
         PEImpact(
             ImpactOutput(44690.0, 16000.0, 26000.0, END_OF_LIFE_WARNING),
-            ImpactOutput(13580000.0, 282.8, 300000.0, UNCERTAINTY_WARNING),
+            ImpactOutput(17650000.0, 367.7, 400000.0, UNCERTAINTY_WARNING),
         ),
         verbose_output={
             "ASSEMBLY-1": {
@@ -926,15 +926,15 @@ async def test_empty_usage_eadsv5_type1():
         CloudPlatformRequest("azure", "Eadsv5-Type1"),
         ADPImpact(
             ImpactOutput(0.2998, 0.1683, 0.22, END_OF_LIFE_WARNING),
-            ImpactOutput(0.009551, 0.000356, 0.0019),
+            ImpactOutput(0.01242, 0.0004628, 0.002),
         ),
         GWPImpact(
             ImpactOutput(3648.0, 1380.0, 2200.0, END_OF_LIFE_WARNING),
-            ImpactOutput(32360.0, 620.3, 11000.0),
+            ImpactOutput(42070.0, 806.4, 15000.0),
         ),
         PEImpact(
             ImpactOutput(46610.0, 17890.0, 28000.0, END_OF_LIFE_WARNING),
-            ImpactOutput(16830000.0, 350.6, 400000.0, UNCERTAINTY_WARNING),
+            ImpactOutput(21880000.0, 455.8, 1000000.0),
         ),
     )
 
@@ -957,15 +957,15 @@ async def test_usage_with_complex_time_workload_eadsv5_type1():
         ),
         ADPImpact(
             ImpactOutput(0.2998, 0.1683, 0.22, END_OF_LIFE_WARNING),
-            ImpactOutput(0.008116, 0.0003025, 0.0016),
+            ImpactOutput(0.01055, 0.0003933, 0.002),
         ),
         GWPImpact(
             ImpactOutput(3648.0, 1380.0, 2200.0, END_OF_LIFE_WARNING),
-            ImpactOutput(27500.0, 527.1, 10000.0),
+            ImpactOutput(35750.0, 685.3, 13000.0),
         ),
         PEImpact(
             ImpactOutput(46610.0, 17890.0, 28000.0, END_OF_LIFE_WARNING),
-            ImpactOutput(14310000.0, 297.9, 300000.0, UNCERTAINTY_WARNING),
+            ImpactOutput(18600000.0, 387.3, 400000.0, UNCERTAINTY_WARNING),
         ),
     )
 
@@ -978,15 +978,15 @@ async def test_empty_usage_scw_dev1():
         CloudPlatformRequest("scaleway", "scw_dev1.base"),
         ADPImpact(
             ImpactOutput(0.1002, 0.07315, 0.08, END_OF_LIFE_WARNING),
-            ImpactOutput(0.004465, 0.0001664, 0.0009),
+            ImpactOutput(0.005804, 0.0002163, 0.0012),
         ),
         GWPImpact(
             ImpactOutput(1432.0, 682.9, 970.0, END_OF_LIFE_WARNING),
-            ImpactOutput(15130.0, 290.0, 5000.0),
+            ImpactOutput(19670.0, 377.0, 7000.0),
         ),
         PEImpact(
             ImpactOutput(18210.0, 8736.0, 12500.0, END_OF_LIFE_WARNING),
-            ImpactOutput(7870000.0, 163.9, 200000.0),
+            ImpactOutput(10230000.0, 213.1, 200000.0, UNCERTAINTY_WARNING),
         ),
     )
 

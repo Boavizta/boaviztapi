@@ -556,7 +556,7 @@ def cloud_platform_impact_use(impact_type: str, duration: int, cloud_platform: S
     impact = impact_factor.value * (cloud_platform.usage.avg_power.value / 1000) * cloud_platform.usage.use_time_ratio.value * duration
     min_impact = impact_factor.min * (cloud_platform.usage.avg_power.min / 1000) * cloud_platform.usage.use_time_ratio.min * duration
     max_impact = impact_factor.max * (cloud_platform.usage.avg_power.max / 1000) * cloud_platform.usage.use_time_ratio.max * duration
-
+    
     # TODO multiply by the number of servers and add PUE
     return impact, min_impact, max_impact, []
 
