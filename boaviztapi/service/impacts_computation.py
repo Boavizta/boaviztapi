@@ -475,9 +475,9 @@ def cloud_instance_impact_embedded(impact_type: str, duration: int, cloud_instan
             if single_impact is None:
                 raise NotImplementedError
 
-            impacts.append(single_impact.value)
-            min_impacts.append(single_impact.min)
-            max_impacts.append(single_impact.max)
+            impacts.append(single_impact.value * cloud_instance.platform.server_quantity)
+            min_impacts.append(single_impact.min * cloud_instance.platform.server_quantity)
+            max_impacts.append(single_impact.max * cloud_instance.platform.server_quantity)
             warnings = warnings + single_impact.warnings
         return sum(impacts), sum(min_impacts), sum(max_impacts), warnings
 
@@ -505,10 +505,10 @@ def cloud_instance_impact_use(impact_type: str, duration: int, cloud_instance: S
             max=modeled_consumption.max
         )
 
-   # Compute impacts at component level
-    compute_single_impact(platform.server.cpu, USE, impact_type, duration)
-    for ram in platform.server.ram:
-        compute_single_impact(ram, USE, impact_type, duration)
+#    # Compute impacts at component level
+#     compute_single_impact(platform.server.cpu, USE, impact_type, duration)
+#     for ram in platform.server.ram:
+#         compute_single_impact(ram, USE, impact_type, duration)
 
     impact = impact_factor.value * (cloud_instance.usage.avg_power.value / 1000) * platform.usage.use_time_ratio.value * duration
     min_impact = impact_factor.min * (cloud_instance.usage.avg_power.min / 1000) * platform.usage.use_time_ratio.min * duration
@@ -518,9 +518,6 @@ def cloud_instance_impact_use(impact_type: str, duration: int, cloud_instance: S
 
 
 def cloud_platform_impact_embedded(impact_type: str, duration: int, cloud_platform: ServiceCloudPlatform) -> ComputedImpacts:
-    impacts = []
-    min_impacts = []
-    max_impacts = []
     warnings = []
 
     try:

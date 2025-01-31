@@ -77,10 +77,6 @@ class ServiceCloudPlatform(Service):
         for ram in self.server.ram:
             ram_consumption = ram.model_power_consumption()
 
-            ram.usage.avg_power.set_completed(value=ram_consumption.value * self.server_quantity * self._pue,
-                                              min=ram_consumption.min * self.server_quantity * self._pue,
-                                              max=ram_consumption.max * self.server_quantity * self._pue)
-
             total_conso_ram.value += ram_consumption.value * self.server_quantity * self._pue
             total_conso_ram.min += ram_consumption.min * self.server_quantity * self._pue
             total_conso_ram.max += ram_consumption.max * self.server_quantity * self._pue
