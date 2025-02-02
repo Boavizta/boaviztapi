@@ -75,18 +75,21 @@ def simple_impact_use(impact_type: str, duration: int, model: Union[Component, D
 
 def simple_embedded(impact_type: str, duration: int, model: [Device, Component, Service]) -> ComputedImpacts:
     if hasattr(model, 'type') and model.type is not None:
-        impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)[model.type.value]["impact"]) * model.units.value
-        min_impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)[model.type.value]["impact"]) * model.units.min
-        max_impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)[model.type.value]["impact"]) * model.units.max
-
+        impact = Impact(
+            value=float(get_impact_factor(item=model.NAME, impact_type=impact_type)[model.type.value]["impact"]) * model.units.value,
+            min=float(get_impact_factor(item=model.NAME, impact_type=impact_type)[model.type.value]["impact"]) * model.units.min,
+            max=float(get_impact_factor(item=model.NAME, impact_type=impact_type)[model.type.value]["impact"]) * model.units.max)
     else:
-        impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)["impact"]) * model.units.value
-        min_impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)["impact"]) * model.units.min
-        max_impact = float(get_impact_factor(item=model.NAME, impact_type=impact_type)["impact"]) * model.units.max
+        impact = Impact(
+            value=float(get_impact_factor(item=model.NAME, impact_type=impact_type)["impact"]) * model.units.value,
+            min=float(get_impact_factor(item=model.NAME, impact_type=impact_type)["impact"]) * model.units.min,
+            max=float(get_impact_factor(item=model.NAME, impact_type=impact_type)["impact"]) * model.units.max)
+
+    impact.allocate(duration, model.usage.hours_life_time)
 
     warnings = ["Generic data used for impact calculation."]
 
-    return impact, min_impact, max_impact, warnings
+    return impact.value, impact.min, impact.max, warnings
 
 
 def cpu_impact_use(impact_type: str, duration: int, cpu: ComponentCPU) -> ComputedImpacts:
