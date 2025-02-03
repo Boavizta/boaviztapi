@@ -19093,83 +19093,83 @@
 "VR_CONTROLLER": {
   "adpe": {
     "impact": 1.07e-03,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "adpf": {
     "impact": 5.45e+01,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "ap": {
     "impact": 4.28e-02,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "ctue": {
     "impact": 5.11e+01,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "ctuh-c": {
     "impact": 5.95e-08,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "ctuh-nc": {
     "impact": 1.85e-07,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "epf": {
     "impact": 9.87e-05,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "epm": {
     "impact": 4.28e-03,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "ept": {
     "impact": 4.49e-02,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "gwp": {
     "impact": 4.22e+00,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "gwpb": {
     "impact": 1.97e-02,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "gwpf": {
     "impact": 4.20e+00,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "gwplu": {
     "impact": 4.14e-06,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "ir": {
     "impact": 2.50e+00,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "lu": {
     "impact": 5.73e-01,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "odp": {
     "impact": 7.66e-07,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "pm": {
     "impact": 2.22e-07,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "pocp": {
     "impact": 1.46e-02,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "wu": {
     "impact": 3.99e+01,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   },
   "mips": {
     "impact": 5.47e+01,
-    "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+    "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
   }
 }
 
@@ -19177,201 +19177,201 @@
   "adpe": {
     "lcd": {
       "impact": 3.33e-03,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "olded": {
       "impact": 4.54e-03,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "adpf": {
     "lcd": {
       "impact": 6.11e+02,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 1.35e+03,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "ap": {
     "lcd": {
       "impact": 2.64e-01,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 5.96e-01,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "ctue": {
     "lcd": {
       "impact": 6.82e+02,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 1.68e+03,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "ctuh-c": {
     "lcd": {
       "impact": 1.31e-06,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 5.00e-06,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "ctuh-nc": {
     "lcd": {
       "impact": 6.84e-07,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 1.02e-06,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "epf": {
     "lcd": {
       "impact": 7.00e-04,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 1.11e-04,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "epm": {
     "lcd": {
       "impact": 3.74e-02,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 1.22e-01,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "ept": {
     "lcd": {
       "impact": 3.69e-01,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 7.69e-01,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "gwp": {
     "lcd": {
       "impact": 4.59e+01,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 8.94e+01,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "gwpb": {
     "lcd": {
       "impact": 8.83e-02,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 4.33e-01,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "gwpf": {
     "lcd": {
       "impact": 4.30e+02,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 8.89e+01,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "gwplu": {
     "lcd": {
       "impact": 9.55e-05,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 4.73e-08,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "ir": {
     "lcd": {
       "impact": 1.54e+01,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 2.12e+02,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "lu": {
     "lcd": {
       "impact": 1.71e+00,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 1.18e+00,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "odp": {
     "lcd": {
       "impact": 1.52e-05,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 8.39e-06,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "pm": {
     "lcd": {
       "impact": 1.50e-06,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 3.30e-06,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "pocp": {
     "lcd": {
       "impact": 1.15e-01,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 2.41e-01,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "wu": {
     "lcd": {
       "impact": 1.27e+02,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 4.29e+02,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   },
   "mips": {
     "lcd": {
       "impact": 1.54e+02,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     },
     "oled": {
       "impact": 3.03e+02,
-      "source": "Adapted by Tide from 'Assessing the embodied carbon footprint of IoT edge devices with a bottom-up life-cycle approach', 2021; Thibault Pirson et David Bol (Université catholique de Louvain, ICTEAM/ECS, Louvain-la-Neuve, Belgique)"
+      "source": "CEPIR : Cas d'Étude Pour un Immersif Responsable, 2022"
     }
   }
 }
