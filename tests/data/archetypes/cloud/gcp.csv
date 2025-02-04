@@ -1,0 +1,2 @@
+id,vcpu,memory,ssd_storage,hdd_storage,gpu_units,platform,source
+c3-standard-192-metal ,192,768,0,0,0,c3-standard-192-metal,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3-standard
