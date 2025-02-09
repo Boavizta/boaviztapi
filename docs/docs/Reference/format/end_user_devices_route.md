@@ -37,7 +37,7 @@ For some devices, you can set a type. See [end user device](../../Explanations/d
 ``` json
 {
     "usage":{...}
-}
+}git c
 ```
 
 See [usage](usage.md)
