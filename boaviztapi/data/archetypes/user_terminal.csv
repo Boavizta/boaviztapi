@@ -13,3 +13,6 @@ box-default,terminal,box,default,1,43800,10;5;20
 usb-stick-default,peripheral,usb_stick,default,0.05,43800,0.3;0.12;0.63
 external-ssd-default,peripheral,external_ssd,default,0.05,43800,2.5;0.5;5
 hdd-default,peripheral,external_hdd,default,0.05,43800,7.75;6.5;9
+vr-headset-oled,terminal,vr_headset,oled,0.01,43800,710;710;710
+vr-headset-lcd,terminal,vr_headset,lcd,0.01,43800,692;692;692
+vr-controller-default,peripheral,vr_controller,default,0.01,43800,7.90;7.90;7.90

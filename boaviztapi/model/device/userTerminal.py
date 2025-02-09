@@ -115,3 +115,20 @@ class DeviceMonitor(EndUserDevice, ABC):
 
     def __init__(self, archetype=get_user_terminal_archetype(config["default_monitor"]), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
+
+class DeviceVrHeadset(EndUserDevice, ABC):
+    NAME = "VR_HEADSET"
+
+    def __init__(self, archetype=get_user_terminal_archetype(config["default_vr_headset"]), **kwargs):
+        super().__init__(archetype=archetype, **kwargs)
+        self.type = Boattribute(
+            default=get_arch_value(archetype, 'type', 'default'),
+            min=get_arch_value(archetype, 'type', 'min'),
+            max=get_arch_value(archetype, 'type', 'max')
+        )
+
+class DeviceVrController(EndUserDevice, ABC):
+    NAME = "VR_CONTROLLER"
+
+    def __init__(self, archetype=get_user_terminal_archetype(config["default_vr_controller"]), **kwargs):
+        super().__init__(archetype=archetype, **kwargs)
