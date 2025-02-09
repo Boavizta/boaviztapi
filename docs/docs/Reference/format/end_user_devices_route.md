@@ -12,6 +12,8 @@ Available device :
 * usb_stick   
 * external_ssd
 * external_hdd
+* vr headset
+* vr controller
 
 ## POST ```/v1/user_terminal/<name>```
 
