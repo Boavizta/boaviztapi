@@ -22,7 +22,5 @@ jobs:
     - uses: actions/checkout@main
     - uses: byrnereese/github-action-mkdocs-link-check@1.0       
       with:
-        folder-path: 'docs/**'
-        file-path: './README.md'
+        folder-path: 'docs/'
         local-only: true
-
