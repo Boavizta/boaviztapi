@@ -11,6 +11,8 @@ Terminals & peripherals may have several types (typically ```pro``` and ```perso
 
 ## Embedded impacts
 
+Most embedded impacts are taken from the [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip) database. When the data comes from another source, it is specified.
+
 | Criteria | Implemented | Source                                                                        | 
 |----------|-------------|-------------------------------------------------------------------------------|
 | gwp      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
@@ -428,3 +430,89 @@ In progress...
 | Name       | Unit                         | Default values (default;min;max)  | Description                                   | Example |
 |------------|------------------------------|-----------------------------------|-----------------------------------------------|---------|
 | avg_power  | Watt/hour                    | 0.0;0.0;0.0                       | Average electrical consumption per hour       | 1       |
+
+
+## VR headset
+
+VR headset has two ```types```: ```lcd``` and ```oled```.
+
+### Embedded impacts
+
+| Criteria | Unit               | lcd          | oled      |
+|----------|--------------------|--------------|-----------|
+| gwp      | kgCO2eq            | 4.59e+01     | 8.94e+01  |
+| gwpb     | kg CO2 eq.         | 8.83e-02     | 4.33e-01  |
+| gwpf     | kg CO2 eq.         | 4.30e+02     | 8.89e+01  |
+| gwplu    | kg CO2 eq.         | 9.55e-05     | 4.73e-08  |
+| ir       | kg U235 eq.        | 1.54e+01     | 2.12e+02  |
+| lu       | No dimension       | 1.71e+00     | 1.18e+00  |
+| odp      | kg CFC-11 eq.      | 1.52e-05     | 8.39e-06  |
+| pm       | Disease occurrence | 1.50e-06     | 3.30e-06  |
+| pocp     | kg NMVOC eq.       | 1.15e-01     | 2.41e-01  |
+| wu       | m3 eq.             | 1.27e+02     | 4.29e+02  |
+| mips     | kg                 | 1.54e+02     | 3.03e+02  |
+| adpe     | kg SB eq.          | 3.33e-03     | 4.54e-03  |
+| adpf     | MJ                 | 6.11e+02     | 1.35e+03  |
+| ap       | mol H+ eq.         | 2.64e-01     | 5.96e-01  |
+| ctue     | CTUe               | 6.82e+02     | 1.68e+03  |
+| ctuh-c   | CTUh               | 1.31e-06     | 5.00e-06  |
+| ctuh-nc  | CTUh               | 6.84e-07     | 1.02e-06  |
+| epf      | kg P eq.           | 7.00e-04     | 1.11e-04  |
+| epm      | kg N eq.           | 3.74e-02     | 1.22e-01  |
+| ept      | mol N eq.          | 3.69e-01     | 7.69e-01  |
+
+### Usage
+
+#### lcd
+
+| Name             | Unit         | Default values (default;min;max) | Description                                                      | Example  |
+|------------------|--------------|----------------------------------|------------------------------------------------------------------|----------|
+| avg_power        | Watt/hour    | 692;692;692                      | Average electrical consumption per hour                          | 1        |
+| use_time_ratio   | /1           | 0.01                             | Proportion of time the device is used during the given duration. | 0.2      |
+| hours_life_time  | hours        | 43800                            | Life time of the device in hours                                 | 1000     |
+ 
+#### oled
+
+| Name            | Unit        | Default values (default;min;max) | Description                                                      | Example  |
+|-----------------|-------------|----------------------------------|------------------------------------------------------------------|----------|
+| avg_power       | Watt/hour   | 710;710;710                      | Average electrical consumption per hour                          | 1        |
+| use_time_ratio  | /1          | 0.01                             | Proportion of time the device is used during the given duration. | 0.2      |
+| hours_life_time | hours       | 43800                            | Life time of the device in hours                                 | 1000     |
+
+
+## VR controller
+
+### Embedded impacts
+
+| Criteria | Unit               | value     |
+|----------|--------------------|-----------|
+| gwp      | kgCO2eq            | 4.22e+00  |
+| gwpb     | kg CO2 eq.         | 1.97e-02  |
+| gwpf     | kg CO2 eq.         | 4.20e+00  |
+| gwplu    | kg CO2 eq.         | 4.14e-06  |
+| ir       | kg U235 eq.        | 2.50e+00  |
+| lu       | No dimension       | 5.73e-01  |
+| odp      | kg CFC-11 eq.      | 7.66e-07  |
+| pm       | Disease occurrence | 2.22e-07  |
+| pocp     | kg NMVOC eq.       | 1.46e-02  |
+| wu       | m3 eq.             | 3.99e+01  |
+| mips     | kg                 | 5.47e+01  |
+| adpe     | kg SB eq.          | 1.07e-03  |
+| adpf     | MJ                 | 5.45e+01  |
+| ap       | mol H+ eq.         | 4.28e-02  |
+| ctue     | CTUe               | 5.11e+01  |
+| ctuh-c   | CTUh               | 5.95e-08  |
+| ctuh-nc  | CTUh               | 1.85e-07  |
+| epf      | kg P eq.           | 9.87e-05  |
+| epm      | kg N eq.           | 4.28e-03  |
+| ept      | mol N eq.          | 4.49e-02  |
+
+### Usage
+
+#### lcd
+
+| Name              | Unit         | Default values (default;min;max) | Description                                                      | Example  |
+|-------------------|--------------|----------------------------------|------------------------------------------------------------------|----------|
+| avg_power         | Watt/hour    | 7.90;7.90;7.90                   | Average electrical consumption per hour                          | 1        |
+| use_time_ratio    | /1           | 0.01                             | Proportion of time the device is used during the given duration. | 0.2      |
+| hours_life_time   | hours        | 43800                            | Life time of the device in hours                                 | 1000     |

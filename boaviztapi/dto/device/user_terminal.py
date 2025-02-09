@@ -5,7 +5,7 @@ from boaviztapi.dto.usage import Usage
 from boaviztapi.dto.usage.usage import mapper_usage
 from boaviztapi.model.device import Device
 from boaviztapi.model.device.userTerminal import DeviceLaptop, DeviceDesktop, DeviceTablet, DeviceSmartphone, \
-    DeviceTelevision, DeviceBox, DeviceUsbStick, DeviceSmartWatch, DeviceExternalHDD, DeviceMonitor, DeviceExternalSSD
+    DeviceTelevision, DeviceBox, DeviceUsbStick, DeviceSmartWatch, DeviceExternalHDD, DeviceMonitor, DeviceExternalSSD, DeviceVrController, DeviceVrHeadset
 from boaviztapi.service.archetype import get_arch_component
 
 
@@ -56,6 +56,11 @@ class Monitor(UserTerminal):
 class ExternalSSD(UserTerminal):
     pass
 
+class VrHeadset(UserTerminal):
+    type: Optional[str] = None
+
+class VrController(UserTerminal):
+    pass
 
 def mapper_user_terminal(user_terminal_dto: UserTerminal, archetype) -> Device:
     if type(user_terminal_dto) == Laptop:
@@ -83,6 +88,11 @@ def mapper_user_terminal(user_terminal_dto: UserTerminal, archetype) -> Device:
         model = DeviceExternalSSD(archetype=archetype)
     elif type(user_terminal_dto) == Monitor:
         model = DeviceMonitor(archetype=archetype)
+    elif type(user_terminal_dto) == VrController:
+        model = DeviceVrController(archetype=archetype)
+    elif type(user_terminal_dto) == VrHeadset:
+        model = DeviceVrHeadset(archetype=archetype)
+        model.type.set_input(user_terminal_dto.type)
     else:
         raise Exception("User Terminal Type not found")
 

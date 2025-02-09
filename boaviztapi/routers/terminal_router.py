@@ -4,7 +4,7 @@ from typing import List, Union, Optional
 from fastapi import APIRouter, Query, Body, HTTPException
 
 from boaviztapi import config, data_dir
-from boaviztapi.dto.device.user_terminal import UserTerminal, mapper_user_terminal, Laptop, Desktop, Smartphone, \
+from boaviztapi.dto.device.user_terminal import UserTerminal, VrHeadset, mapper_user_terminal, Laptop, Desktop, Smartphone, \
     Television, Tablet, Box
 from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals, all_terminal_categories, \
     get_archetype_config_desc, terminal_description
@@ -28,7 +28,8 @@ async def terminal_get_all_categories():
         "smartphone": "v1/terminal/smartphone",
         "television": "v1/terminal/television",
         "tablet": "v1/terminal/tablet",
-        "box": "v1/terminal/box"
+        "box": "v1/terminal/box",
+        "vr_headset": "v1/terminal/vr_headset"
     }
 
 
@@ -248,6 +249,42 @@ async def box_impact(archetype: str = config["default_box"],
                      duration: Optional[float] = config["default_duration"],
                      criteria: List[str] = Query(config["default_criteria"])):
     return await user_terminal_impact(user_terminal_dto=Box(),
+                                      verbose=verbose,
+                                      duration=duration,
+                                      criteria=criteria,
+                                      archetype=archetype)
+
+@terminal_router.get('/vr_headset/archetypes',
+                       description=all_archetype_user_terminals)
+async def vr_headset_get_all_archetype_name():
+    return get_all_archetype_name('vr_headset')
+
+
+@terminal_router.get('/vr_headset/archetype_config',
+                       description=get_archetype_config_desc)
+async def vr_headset_get_archetype_config(archetype: str = Query(example=config["default_vr_headset"])):
+    return get_archetype_config(archetype)
+
+
+@terminal_router.post('/vr_headset', description=terminal_description)
+async def vr_headset_impact_from_configuration(vr_headset: VrHeadset = Body(None, example=end_user_terminal),
+                              verbose: bool = True,
+                              duration: Optional[float] = config["default_duration"],
+                              archetype: str = config["default_vr_headset"],
+                              criteria: List[str] = Query(config["default_criteria"])):
+    return await user_terminal_impact(user_terminal_dto=vr_headset,
+                                      verbose=verbose,
+                                      duration=duration,
+                                      criteria=criteria,
+                                      archetype=archetype)
+
+
+@terminal_router.get('/vr_headset', description=terminal_description)
+async def vr_headset_impact(archetype: str = config["default_vr_headset"],
+                              verbose: bool = True,
+                              duration: Optional[float] = config["default_duration"],
+                              criteria: List[str] = Query(config["default_criteria"])):
+    return await user_terminal_impact(user_terminal_dto=VrHeadset(),
                                       verbose=verbose,
                                       duration=duration,
                                       criteria=criteria,

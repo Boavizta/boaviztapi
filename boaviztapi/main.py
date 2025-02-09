@@ -27,13 +27,27 @@ from boaviztapi.routers.utils_router import utils_router
 
 from fastapi.responses import HTMLResponse
 
+def get_version_from_pyproject():
+    # List of potential locations for the pyproject.toml file
+    potential_paths = [
+        os.path.join(os.path.dirname(__file__), '../pyproject.toml'),
+        os.path.join(os.path.dirname(__file__), 'pyproject.toml'),
+    ]
+
+    for path in potential_paths:
+        if os.path.exists(path):
+            with open(path, 'r') as f:
+                return toml.loads(f.read())['tool']['poetry']['version']
+
+    # Raise an error if the file is not found in any of the locations
+    raise FileNotFoundError("pyproject.toml not found in expected locations")
+
 # Serverless frameworks adds a 'stage' prefix to the route used to serve applications
 # We have to manage it to expose openapi doc on aws and generate proper links.
 stage = os.environ.get('STAGE', None)
 openapi_prefix = f"/{stage}" if stage else "/"
 app = FastAPI(root_path=openapi_prefix)  # Here is the magic
-version = toml.loads(open(os.path.join(os.path.dirname(__file__), '../pyproject.toml'), 'r').read())['tool']['poetry'][
-    'version']
+version = get_version_from_pyproject()
 _logger = logging.getLogger(__name__)
 
 origins = json.loads(os.getenv("ALLOWED_ORIGINS", '["*"]'))

@@ -11,18 +11,33 @@ Content:
 5. Getting started: some basic API queries explained.
 6. How to guides - for developers who want to use the API
 
-## Install & launch a local documentation server
+## Work on the documentation
+
+### Install the documentation tools
 
 Documentation is generated from markdown using `mkdocs` with the `material` theme.
 
 ```bash
-# install mkdocs and its extensions
+# (preferred) Install mkdocs and its extensions
+poetry install --with docs
+
+# (old way) install mkdocs and its extensions
 pip install mkdocs mkdocs-render-swagger-plugin mkdocs-material mkdocs-macros-plugin
 ```
 
 💡 Do not mixup _pip_ and _brew_ installation of `mkdocs` (see [troubleshooting](https://jimandreas.github.io/mkdocs-material/troubleshooting/)).
 
+### Launch a local documentation server
+
 ```bash
+# If mkdocs is installed via poetry (preferred)
+# from the root of the cloned repository
+cd docs
+poetry run mkdocs serve
+```
+
+```bash
+# If mkdocs is installed globally
 # from the root of the cloned repository
 cd docs
 mkdocs serve
@@ -30,8 +45,12 @@ mkdocs serve
 
 Open <http://localhost:8080>
 
-## Access latest published documentation using docker
+### Verify the links
 
 ```bash
-docker run ghcr.io/boavizta/tools-doc:latest
+cd docs
+# Check the warnings in the output for broken links 
+poetry run mkdocs build
+# Test validity of external links 
+poetry run poetry run linkcheckMarkdown --recurse --verbose docs
 ```
