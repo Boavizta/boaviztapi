@@ -202,3 +202,8 @@ scw_pro2.base,Scaleway,rack,2,32,,AMD EPYC 7543,128,24,32,2,468,0,0,0,,0,2,0,50;
 scw_renders.base,Scaleway,rack,2,20,,Intel Xeon Gold 6148,40,12,32,2,3750,0,0,8,Nvidia Tesla P100,24,4,0,50;0;100,1,52560,0.33;0.2;0.6,
 scw_stardust1.base,Scaleway,rack,1,16,,AMD EPYC 7281,64,8,32,5,976,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
 platform_aws_t4g,AWS,rack,1,,,Annapurna Labs Graviton2,,8,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+c8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
+m8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
+r8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
+x8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,128,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
+i8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,64,6,3750,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
