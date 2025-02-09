@@ -2,7 +2,7 @@ from typing import List, Union, Optional
 from fastapi import APIRouter, Query, Body
 
 from boaviztapi import config
-from boaviztapi.dto.device.user_terminal import Monitor, UsbStick, ExternalSSD, ExternalHDD
+from boaviztapi.dto.device.user_terminal import Monitor, UsbStick, ExternalSSD, ExternalHDD, VrController
 from boaviztapi.routers.openapi_doc.descriptions import all_archetype_user_terminals, all_peripheral_categories, \
     get_archetype_config_desc, peripheral_description
 from boaviztapi.routers.openapi_doc.examples import end_user_terminal
@@ -21,7 +21,8 @@ async def peripheral_get_all_categories():
         "monitor": "v1/peripheral/monitor",
         "usb_stick": "v1/peripheral/usb_stick",
         "external_ssd": "v1/peripheral/external_ssd",
-        "external_hdd": "v1/peripheral/external_hdd"
+        "external_hdd": "v1/peripheral/external_hdd",
+        "vr_controller": "v1/peripheral/vr_controller"
     }
 
 
@@ -167,6 +168,42 @@ async def external_hdd_impact(archetype: str = config["default_external_hdd"],
                               duration: Optional[float] = config["default_duration"],
                               criteria: List[str] = Query(config["default_criteria"])):
     return await user_terminal_impact(user_terminal_dto=ExternalHDD(),
+                                      verbose=verbose,
+                                      duration=duration,
+                                      criteria=criteria,
+                                      archetype=archetype)
+
+@peripheral_router.get('/vr_controller/archetypes',
+                       description=all_archetype_user_terminals)
+async def vr_controller_get_all_archetype_name():
+    return get_all_archetype_name('vr_controller')
+
+
+@peripheral_router.get('/vr_controller/archetype_config',
+                       description=get_archetype_config_desc)
+async def vr_controller_get_archetype_config(archetype: str = Query(example=config["default_vr_controller"])):
+    return get_archetype_config(archetype)
+
+
+@peripheral_router.post('/vr_controller', description=peripheral_description)
+async def vr_controller_impact_from_configuration(vr_controller: VrController = Body(None, example=end_user_terminal),
+                              verbose: bool = True,
+                              duration: Optional[float] = config["default_duration"],
+                              archetype: str = config["default_vr_controller"],
+                              criteria: List[str] = Query(config["default_criteria"])):
+    return await user_terminal_impact(user_terminal_dto=vr_controller,
+                                      verbose=verbose,
+                                      duration=duration,
+                                      criteria=criteria,
+                                      archetype=archetype)
+
+
+@peripheral_router.get('/vr_controller', description=peripheral_description)
+async def vr_controller_impact(archetype: str = config["default_vr_controller"],
+                              verbose: bool = True,
+                              duration: Optional[float] = config["default_duration"],
+                              criteria: List[str] = Query(config["default_criteria"])):
+    return await user_terminal_impact(user_terminal_dto=VrController(),
                                       verbose=verbose,
                                       duration=duration,
                                       criteria=criteria,

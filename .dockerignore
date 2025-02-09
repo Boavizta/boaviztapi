@@ -1,0 +1,17 @@
+# Ignore git related files
+.github/
+.gitignore
+
+# Ignore folders not necessary for the docker image
+docs/
+tests/
+
+# Ignore venv if any
+venv/
+
+# Ignore files not necessary for the docker image
+CONTRIBUTING.md
+*.png
+*.json
+LICENSE
+Makefile

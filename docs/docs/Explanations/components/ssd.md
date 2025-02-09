@@ -79,4 +79,4 @@ with:
 
 ## Usage impact
 
-Only [power consumption](../usage/elec_conso.md) is implemented.
+Only [power consumption](../usage/power.md) is implemented.

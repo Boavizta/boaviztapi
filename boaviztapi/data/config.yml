@@ -26,6 +26,8 @@ default_usb_stick: "usb-stick-default"
 default_external_ssd: "external-ssd-default"
 default_external_hdd: "hdd-default"
 default_iot_device: "iot-device-default"
+default_vr_headset: "vr-headset-lcd"
+default_vr_controller: "vr-controller-default"
 
 default_criteria: ["gwp", "adp", "pe"]
 
