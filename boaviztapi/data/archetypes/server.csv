@@ -207,3 +207,4 @@ m8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,32,0,0,0,0,0,,0,2;2;2,2
 r8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 x8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,128,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 i8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,64,6,3750,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
+platform_aws_t4g,AWS,rack,1,,,Annapurna Labs Graviton2,,8,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
