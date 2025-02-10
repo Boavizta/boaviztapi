@@ -78,6 +78,19 @@ cloud_example = {
             ]}
 }
 
+platform_example = {
+    "provider": "scaleway",
+    "platform_type": "scw_stardust1",
+    "usage":
+            {
+            "usage_location": "FRA",
+            "time_workload": [
+                {"time_percentage": 50, "load_percentage": 0},
+                {"time_percentage": 25, "load_percentage": 60},
+                {"time_percentage": 25, "load_percentage": 100}
+            ]}
+}
+
 cpu_consumption_profiles = {
         "cpu": {
             "name": "intel xeon gold 6134"
