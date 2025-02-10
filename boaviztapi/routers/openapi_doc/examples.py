@@ -1,4 +1,10 @@
+def convert_to_openapi_example(configuration_examples):
+    return{k: {"summary": "{example} payload".format(example=k),"value":v} for k, v in configuration_examples.items()}
+
+
+
 server_configuration_examples = {
+    "emptyserver": {},
     "DellR740": {"model":
             {
                 "type": "rack"
@@ -34,6 +40,8 @@ server_configuration_examples = {
             "usage_location": "FRA"
         }
     }}
+
+server_configuration_examples_openapi = convert_to_openapi_example(server_configuration_examples)
 
 components_examples = {
     "cpu": {
