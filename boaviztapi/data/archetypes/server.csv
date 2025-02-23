@@ -208,3 +208,15 @@ r8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,64,0,0,0,0,0,,0,2;2;2,2
 x8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,128,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 i8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,64,6,3750,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 platform_aws_t4g,AWS,rack,1,,,Annapurna Labs Graviton2,,8,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+c3-standard-192-metal,GCP,rack,2,,,Intel Xeon Platinum 8481C,,192,768,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+c3-highcpu-192-metal,GCP,rack,2,,,Intel Xeon Platinum 8481C,,128,512,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+c3-highmem-192-metal,GCP,rack,2,,,Intel Xeon Platinum 8481C,,384,1536,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+x4-megamem-960-metal ,GCP,rack,8,,,Intel Xeon Platinum 8490H,,4096,16384,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+x4-megamem-1440-metal,GCP,rack,12,,,Intel Xeon Platinum 8490H,,6144,24576,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+x4-megamem-1920-metal,GCP,rack,16,,,Intel Xeon Platinum 8490H,,8192,32768,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+c4a-standard,GCP,rack,1,,,Google Axion,72,72,288,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+c4-standard,GCP,rack,2,,,Intel Xeon Platinum 8581C,,372,1488,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+n4-standard,GCP,rack,2,,,Intel Xeon Platinum 8581C,,160,640,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+c3d-standard,GCP,rack,2,,,AMD EPYC 9B14,,720,2880,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+c3-standard,GCP,rack,2,,,Intel Xeon Platinum 8481C,,352,1408,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+n2d-standard,GCP,rack,2,,,AMD EPYC 7B12,,224,896,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified, might also run on AMD EPYC 7B13"
