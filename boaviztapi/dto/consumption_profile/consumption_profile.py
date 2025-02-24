@@ -34,10 +34,12 @@ def mapper_cp(cp_dto: ConsumptionProfile) -> CPUConsumptionProfileModel:
 
 def mapper_cp_cpu(cp_dto: ConsumptionProfileCPU) -> Tuple[CPUConsumptionProfileModel, ComponentCPU]:
     cpu = ComponentCPU()
-    manufacturer, model_range, family = None, None, None
+    manufacturer, model_range, family, tdp = None, None, None, None
 
     if cp_dto.cpu.name is not None:
-        name, manufacturer, family, model_range, tdp, cores, threads, die_size, die_size_source, source = attributes_from_cpu_name(cp_dto.cpu.name)
+        fuzzy_match = attributes_from_cpu_name(cp_dto.cpu.name)
+        if fuzzy_match is not None:
+            manufacturer, family, model_range, tdp = fuzzy_match[1:5]
 
     if cp_dto.cpu.manufacturer is not None:
         cpu.manufacturer.set_input(cp_dto.cpu.manufacturer)
@@ -47,6 +49,16 @@ def mapper_cp_cpu(cp_dto: ConsumptionProfileCPU) -> Tuple[CPUConsumptionProfileM
     if cp_dto.cpu.model_range is not None:
         cpu.model_range.set_input(cp_dto.cpu.model_range)
     elif model_range is not None:
-        cpu.model_range.set_input(model_range)
+        cpu.model_range.set_completed(model_range)
+
+    if cp_dto.cpu.family is not None:
+        cpu.model_range.set_input(cp_dto.cpu.family)
+    elif family is not None:
+        cpu.family.set_completed(family)
+
+    if cp_dto.cpu.tdp is not None:
+        cpu.tdp.set_input(cp_dto.cpu.tdp)
+    elif tdp is not None:
+        cpu.tdp.set_completed(tdp)
 
     return mapper_cp(cp_dto), cpu
