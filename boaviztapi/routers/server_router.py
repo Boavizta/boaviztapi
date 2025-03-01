@@ -10,7 +10,7 @@ from boaviztapi.model.device import Device
 from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.routers.openapi_doc.descriptions import server_impact_by_model_description, \
     server_impact_by_config_description, all_archetype_servers, get_archetype_config_desc
-from boaviztapi.routers.openapi_doc.examples import server_configuration_examples
+from boaviztapi.routers.openapi_doc.examples import server_configuration_examples,server_configuration_examples_openapi
 from boaviztapi.service.archetype import get_server_archetype, get_device_archetype_lst
 from boaviztapi.service.verbose import verbose_device
 from boaviztapi.service.impacts_computation import compute_impacts
@@ -60,7 +60,8 @@ async def server_impact_from_model(archetype: str = config["default_server"],
 @server_router.post('/',
                     description=server_impact_by_config_description)
 async def server_impact_from_configuration(
-        server: Server = Body(None, example=server_configuration_examples["DellR740"]),
+        server: Server = Body(None,examples=server_configuration_examples,
+            openapi_examples=server_configuration_examples_openapi),
         verbose: bool = True,
         duration: Optional[float] = config["default_duration"],
         archetype: str = config["default_server"],
