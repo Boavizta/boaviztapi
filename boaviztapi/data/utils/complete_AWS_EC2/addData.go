@@ -74,7 +74,7 @@ type BoaviztaAWSData struct {
 
 func main() {
 	vantageExportPath := "vantage-export.csv"
-	awsFilePath := "../../boaviztapi/data/archetypes/cloud/aws.csv"
+	awsFilePath := "../../boaviztapi/data/archetypes/cloud_instance/aws.csv"
 	cpuSpecFilePath := "../../boaviztapi/data/crowdsourcing/cpu_specs.csv"
 
 	vantageExport := loadVantageExport(vantageExportPath)

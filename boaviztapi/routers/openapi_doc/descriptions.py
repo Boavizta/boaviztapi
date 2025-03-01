@@ -31,6 +31,7 @@ all_default_usage_values = "# ✔️ Get all default usage values for a given us
 
 get_archetype_config_desc = "# ✔️ Get the configuration of a given archetype\n"
 get_instance_config = "# ✔️ Get the configuration of a given instance\n"
+get_platform_config_desc = "# ✔️ Get the configuration of a given platform\n"
 
 cpu_description = "# ✔ ️CPU impacts from configuration\n" \
                   "### Features\n\n" \
@@ -111,7 +112,7 @@ case_description = "# ✔ ️Case impacts from configuration\n" \
                    "* ⏺️  Given : when the enclosure consumes energy \n\n" \
                    "⏬ Allocation"
 
-cloud_provider_description = "# ✔ ️Cloud instance impacts from provider, instance type and usage \n" \
+cloud_instance_description = "# ✔ ️Cloud instance impacts from provider, instance type and usage \n" \
                              "Retrieve the impacts of a given Cloud instance and usage.\n\n" \
                              "### Features\n\n" \
                              "📋 Provider \n\n" \
@@ -119,7 +120,23 @@ cloud_provider_description = "# ✔ ️Cloud instance impacts from provider, ins
                              "#/cloud_instance/server_get_all_cloud_providers).\n\n" \
                              "📋 Instance type \n\n" \
                              "Name of the chosen instance. You can retrieve the [list here](" \
-                             "#/cloud/server_get_archetype_name_v1_cloud_all_aws_instances_get).\n\n" \
+                             "#/cloud/instance/all_instances).\n\n" \
+                             "👄 Verbose\n\n" \
+                             "🔨 Embedded\n\n" \
+                             "🔌 Usage \n\n" \
+                             "* 📈 Modeled\n\n" \
+                             "📋 Archetype : The configuration is set by the API, only usage is given by the user\n\n" \
+                             "⏬ Allocation"
+
+cloud_platform_description = "# ✔ ️Cloud platform impacts from provider, instance type and usage \n" \
+                             "Retrieve the impacts of a given Cloud instance and usage.\n\n" \
+                             "### Features\n\n" \
+                             "📋 Provider \n\n" \
+                             "Name of the cloud provider. You can retrieve the [list here](" \
+                             "#/cloud_platform/server_get_all_cloud_providers).\n\n" \
+                             "📋 Platform type \n\n" \
+                             "Name of the chosen platform. You can retrieve the [list here](" \
+                             "#/cloud_platform/platform/all_platforms).\n\n" \
                              "👄 Verbose\n\n" \
                              "🔨 Embedded\n\n" \
                              "🔌 Usage \n\n" \
@@ -129,7 +146,8 @@ cloud_provider_description = "# ✔ ️Cloud instance impacts from provider, ins
 
 all_default_cloud_instances = "# ✔ ️Get all the available instances for a given Cloud provider\n" \
                               "📜 Return the name of all pre-registered instances for the Cloud provider"
-
+all_default_cloud_platforms = "# ✔ ️Get all the available platforms for a given Cloud provider\n" \
+                              "📜 Return the name of all pre-registered platforms for the Cloud provider"
 all_default_cloud_providers = "# ✔ ️Get all the available Cloud providers\n" \
                               "📜 Return the names of all pre-registered Cloud providers"
 
