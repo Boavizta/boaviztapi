@@ -16,8 +16,8 @@ def clear():
     """
     os.system('cls' if os.name == 'nt' else 'echo -e \\\\033c')
     
-AWS_INSTANCES = "../../archetypes/cloud/aws.csv"
-AZURE_INSTANCES = "../../archetypes/cloud/azure.csv"
+AWS_INSTANCES = "../../archetypes/cloud_instance/aws.csv"
+AZURE_INSTANCES = "../../archetypes/cloud_instance/azure.csv"
 BOAVIZTAPI_BASE_URL = "https://api.boavizta.org/v1/cloud/"
 BOAVIZTAPI_LOCAL_CONTAINER = "http://0.0.0.0:5000/v1"
 RESULT_FILE = "result.csv"

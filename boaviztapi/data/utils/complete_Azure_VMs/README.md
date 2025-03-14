@@ -15,7 +15,7 @@ We'd like to thank [GreenPixie](https://greenpixie.com/) who sponsored this PR.
 
 ![Updating Azure's data in BoaviztAPI workflow](azure_update_workflow.webp)
 
-Then, we (as of now) manually update the Azure specific servers/platforms in data/archetypes/server.csv and instances in data/archetypes/cloud/azure.csv.
+Then, we (as of now) manually update the Azure specific servers/platforms in data/archetypes/server.csv and instances in data/archetypes/cloud_instance/azure.csv.
 
 Next, run a local version of BoaviztAPI by running `docker build -t boaviztapi-dev . && docker run -p "5000:5000" -t boaviztapi-dev` at the root of the project, building the container with the freshly generated data.
 

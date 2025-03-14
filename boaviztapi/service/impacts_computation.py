@@ -11,6 +11,7 @@ from boaviztapi.model.component.functional_block import ComponentFunctionalBlock
 from boaviztapi.model.device import Device
 from boaviztapi.model.device.iot import DeviceIoT
 from boaviztapi.model.impact import ImpactFactor, IMPACT_PHASES, IMPACT_CRITERIAS, Impact, USE
+from boaviztapi.model.services.cloud_platform import ServiceCloudPlatform
 from boaviztapi.service.factor_provider import get_impact_factor, get_iot_impact_factor
 
 
@@ -448,7 +449,7 @@ def server_impact_use(impact_type: str, duration: int, server: DeviceServer) -> 
     return impact, min_impact, max_impact, []
 
 
-def cloud_impact_embedded(impact_type: str, duration: int, cloud_instance: ServiceCloudInstance) -> ComputedImpacts:
+def cloud_instance_impact_embedded(impact_type: str, duration: int, cloud_instance: ServiceCloudInstance) -> ComputedImpacts:
     impacts = []
     min_impacts = []
     max_impacts = []
@@ -456,7 +457,7 @@ def cloud_impact_embedded(impact_type: str, duration: int, cloud_instance: Servi
     default_allocation = cloud_instance.vcpu.value / cloud_instance.platform.get_total_vcpu()
 
     try:
-        for component in cloud_instance.platform.components:
+        for component in cloud_instance.platform.get_components():
             component.usage.hours_life_time = cloud_instance.platform.usage.hours_life_time
             allocation = default_allocation
             if component.NAME == "RAM":
@@ -477,9 +478,9 @@ def cloud_impact_embedded(impact_type: str, duration: int, cloud_instance: Servi
             if single_impact is None:
                 raise NotImplementedError
 
-            impacts.append(single_impact.value)
-            min_impacts.append(single_impact.min)
-            max_impacts.append(single_impact.max)
+            impacts.append(single_impact.value * cloud_instance.platform.server_quantity)
+            min_impacts.append(single_impact.min * cloud_instance.platform.server_quantity)
+            max_impacts.append(single_impact.max * cloud_instance.platform.server_quantity)
             warnings = warnings + single_impact.warnings
         return sum(impacts), sum(min_impacts), sum(max_impacts), warnings
 
@@ -495,7 +496,7 @@ def cloud_impact_embedded(impact_type: str, duration: int, cloud_instance: Servi
         return impact.value * default_allocation, impact.min * default_allocation, impact.max * default_allocation, warnings
 
 
-def cloud_impact_use(impact_type: str, duration: int, cloud_instance: ServiceCloudInstance) -> ComputedImpacts:
+def cloud_instance_impact_use(impact_type: str, duration: int, cloud_instance: ServiceCloudInstance) -> ComputedImpacts:
     platform = cloud_instance.platform
     impact_factor = platform.usage.elec_factors[impact_type]
 
@@ -507,10 +508,10 @@ def cloud_impact_use(impact_type: str, duration: int, cloud_instance: ServiceClo
             max=modeled_consumption.max
         )
 
-    # Compute impacts at component level
-    compute_single_impact(platform.cpu, USE, impact_type, duration)
-    for ram in platform.ram:
-        compute_single_impact(ram, USE, impact_type, duration)
+#    # Compute impacts at component level
+#     compute_single_impact(platform.server.cpu, USE, impact_type, duration)
+#     for ram in platform.server.ram:
+#         compute_single_impact(ram, USE, impact_type, duration)
 
     impact = impact_factor.value * (cloud_instance.usage.avg_power.value / 1000) * platform.usage.use_time_ratio.value * duration
     min_impact = impact_factor.min * (cloud_instance.usage.avg_power.min / 1000) * platform.usage.use_time_ratio.min * duration
@@ -518,6 +519,46 @@ def cloud_impact_use(impact_type: str, duration: int, cloud_instance: ServiceClo
 
     return impact, min_impact, max_impact, []
 
+
+def cloud_platform_impact_embedded(impact_type: str, duration: int, cloud_platform: ServiceCloudPlatform) -> ComputedImpacts:
+    warnings = []
+
+    try:
+        server_impact = server_impact_embedded(impact_type=impact_type, duration=duration, server=cloud_platform.server)
+        return tuple(x * cloud_platform.server_quantity if isinstance(x, float) else x for x in server_impact)
+    except NotImplementedError:
+        impact = Impact(value=get_impact_factor(item='SERVER', impact_type=impact_type)["impact"],
+                        min=get_impact_factor(item='SERVER', impact_type=impact_type)["impact"],
+                        max=get_impact_factor(item='SERVER', impact_type=impact_type)["impact"])
+
+        warnings = ["Generic data used for impact calculation."]
+
+        return impact.value, impact.min, impact.max, warnings
+
+
+def cloud_platform_impact_use(impact_type: str, duration: int, cloud_platform: ServiceCloudPlatform) -> ComputedImpacts:
+    server = cloud_platform.server
+    impact_factor = server.usage.elec_factors[impact_type]
+
+    if not cloud_platform.usage.avg_power.is_set():
+        modeled_consumption = cloud_platform.model_power_consumption()
+        cloud_platform.usage.avg_power.set_completed(
+            value=modeled_consumption.value,
+            min=modeled_consumption.min,
+            max=modeled_consumption.max
+        )
+
+    # Compute impacts at component level
+    compute_single_impact(server.cpu, USE, impact_type, duration)
+    for ram in server.ram:
+        compute_single_impact(ram, USE, impact_type, duration)
+
+    impact = impact_factor.value * (cloud_platform.usage.avg_power.value / 1000) * cloud_platform.usage.use_time_ratio.value * duration
+    min_impact = impact_factor.min * (cloud_platform.usage.avg_power.min / 1000) * cloud_platform.usage.use_time_ratio.min * duration
+    max_impact = impact_factor.max * (cloud_platform.usage.avg_power.max / 1000) * cloud_platform.usage.use_time_ratio.max * duration
+    
+    # TODO multiply by the number of servers and add PUE
+    return impact, min_impact, max_impact, []
 
 impacts_functions = {
     "CPU": {
@@ -605,8 +646,12 @@ impacts_functions = {
         "embedded": simple_embedded
     },
     "CLOUD_INSTANCE": {
-        "use": cloud_impact_use,
-        "embedded": cloud_impact_embedded
+        "use": cloud_instance_impact_use,
+        "embedded": cloud_instance_impact_embedded
+    },
+    "CLOUD_PLATFORM": {
+        "use": cloud_platform_impact_use,
+        "embedded": cloud_platform_impact_embedded
     },
     "ACTUATORS": {
         "use": simple_impact_use,

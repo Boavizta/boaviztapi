@@ -12,6 +12,7 @@ default_server: "DEFAULT"
 
 default_cloud_instance: "a1.4xlarge"
 default_cloud_provider: "aws"
+default_cloud_platform: "a1.metal"
 
 default_laptop: "laptop-pro"
 default_desktop: "desktop-pro"

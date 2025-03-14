@@ -95,3 +95,38 @@ class CloudInstanceRequest:
             url = f"{url}&duration={self.duration}"
 
         return url
+
+@dataclass
+class CloudPlatformRequest:
+    provider: str
+    platform_type: str
+
+    usage: dict = None
+    duration: int = None
+
+    use_url_params: bool = False
+
+    def to_dict(self) -> dict:
+        if self.use_url_params:
+            return None
+
+        res = {
+            "provider": self.provider,
+            "platform_type": self.platform_type,
+        }
+
+        if self.usage:
+            res["usage"] = self.usage
+
+        return res
+
+    def to_url(self) -> str:
+        url = "/v1/cloud/platform?verbose=false"
+
+        if self.use_url_params:
+            url = f"{url}&platform_type={self.platform_type}&provider={self.provider}"
+
+        if self.duration:
+            url = f"{url}&duration={self.duration}"
+
+        return url
