@@ -1,8 +1,12 @@
+def convert_to_openapi_example(configuration_examples):
+    return{k: {"summary": "{example}".format(example=k),"value":v} for k, v in configuration_examples.items()}
+
+
 server_configuration_examples = {
+    "emptyserver": {},
     "DellR740": {"model":
             {
                 "type": "rack"
-
             },
         "configuration":
             {
@@ -35,25 +39,67 @@ server_configuration_examples = {
         }
     }}
 
+server_configuration_examples_openapi = convert_to_openapi_example(server_configuration_examples)
+
 components_examples = {
     "cpu": {
-        "name": "intel xeon gold 6134",
+        "intel xeon gold 6134":{
+            "name": "intel xeon gold 6134",
+        },
+        "empty cpu":{},
+        "custom cpu":{
+            "core_units":64,
+            "tdp": 150,
+            "die_size": 400,
+            "usage":{
+                "usage_location":"FRA"
+            }
+        }
     },
     "ssd": {
-        "capacity": 24,
-        "manufacturer": "Samsung",
+        "custom ssd" :{
+            "capacity": 500,
+            "manufacturer": "Samsung",
+        },
+        "empty ssd":{}
     },
     "ram": {
-        "capacity": 32,
-        "manufacturer": "Samsung",
-        "process": 30.0
+        "custom ram":{
+            "capacity": 32,
+            "manufacturer": "Samsung",
+            "process": 30.0
+        },
+        "empty ram":{}
     },
-    "hdd": {},
-    "motherboard": {},
+    "hdd": {
+        "empty HDD":{}
+    },
+    "motherboard": {
+        "empty motherboard":{}
+    },
     "power_supply": {
-        "unit_weight": 10
+        "custom power supply":{
+            "unit_weight": 10
+        }
     },
-    "case": {"case_type": "rack"},
+    "case": {
+        "rack":{
+            "case_type": "rack"
+        },
+        "blade":{
+            "case_type": "blade"
+        }
+    }
+}
+
+components_examples_openapi = {
+    "cpu": convert_to_openapi_example(components_examples["cpu"]),
+    "ram": convert_to_openapi_example(components_examples["ram"]),
+    "ssd": convert_to_openapi_example(components_examples["ssd"]),
+    "hdd": convert_to_openapi_example(components_examples["hdd"]),
+    "motherboard": convert_to_openapi_example(components_examples["motherboard"]),
+    "power_supply": convert_to_openapi_example(components_examples["power_supply"]),
+    "case": convert_to_openapi_example(components_examples["case"]),
 }
 
 cloud_usage_example = {
