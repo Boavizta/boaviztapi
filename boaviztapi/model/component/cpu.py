@@ -207,7 +207,7 @@ class ComponentCPU(Component):
             )
 
         # If all rows have the same number of cores but different from the given cores_units
-        elif len(df.index) == 1 or (not df.isnull and (df["cores"] == df["cores"].iloc[0]).all()):
+        elif len(df.index) == 1 or (not df.empty and (df["cores"] == df["cores"].iloc[0]).all()):
             self.die_size.set_completed(
                 value=rd.round_to_sigfig((df["total_die_size"].iloc[0] * self.core_units.value / df['cores'].iloc[0]),
                                          3),
