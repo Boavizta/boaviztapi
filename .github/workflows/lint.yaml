@@ -1,0 +1,45 @@
+name: Ruff Linting
+
+on:
+    push:
+      branches:
+        - main
+        - dev
+      paths:
+        - 'boaviztapi/**'
+        - 'tests/**'
+        - 'poetry.lock'
+        - 'pyproject.toml'
+        - 'requirements.txt'
+    pull_request:
+      paths:
+        - 'boaviztapi/**'
+        - 'tests/**'
+        - 'poetry.lock'
+        - 'pyproject.toml'
+        - 'requirements.txt'
+      branches:
+        - main
+        - dev
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Install dependencies (including dev)
+        run: poetry install --with dev
+
+      - name: Run Ruff
+        run: poetry run ruff check .
