@@ -15,6 +15,18 @@ install: install_pip
 install_pip:
 		poetry install --with dev
 
+install_only_dev:
+		poetry install --only dev
+
+checkcsv: install_only_dev
+	poetry run chkcsv.py boaviztapi/data/archetypes/server.csv --linelength
+	poetry run chkcsv.py boaviztapi/data/crowdsourcing/cpu_specs.csv --linelength
+	poetry run chkcsv.py boaviztapi/data/archetypes/cloud/aws.csv --linelength
+	poetry run chkcsv.py boaviztapi/data/archetypes/cloud/azure.csv --linelength
+	poetry run chkcsv.py boaviztapi/data/archetypes/cloud/gcp.csv --linelength
+	poetry run chkcsv.py boaviztapi/data/archetypes/cloud/scaleway.csv --linelength
+
+
 test:
 		poetry run pytest
 
@@ -85,3 +97,5 @@ docker-build-development:
 
 docker-run-development:
 		docker run -p 5000:5000 boavizta/boaviztapi:${TIMESTAMP}
+docker-run-debug:
+		docker container prune -f && docker run --name=boavizta -e WATCHFILES_FORCE_POLLING=true --volume $(pwd)/boaviztapi/:/usr/local/lib/python3.12/site-packages/boaviztapi/ -p 5000:5000/tcp -p 5678:5678/tcp boavizta/boaviztapi:01-21-25 python3 -m debugpy --listen 0.0.0.0:5678 /usr/local/bin/uvicorn boaviztapi.main:app --host 0.0.0.0 --port 5000
