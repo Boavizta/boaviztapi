@@ -1,0 +1,13 @@
+[id]
+data_required=True
+type=string
+[vcpu]
+data_required=True
+type=int
+[memory]
+data_required=True
+type=int
+[hdd_storage]
+[gpu_units]
+[platform]
+[source]

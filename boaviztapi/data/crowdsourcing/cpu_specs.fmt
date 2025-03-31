@@ -1,0 +1,15 @@
+[name]
+data_required=True
+type=string
+[code_name]
+[tdp]
+type=float
+[cores]
+type=float
+[threads]
+type=float
+[transistors]
+[process_size]
+type=float
+[total_die_size]
+type=float
