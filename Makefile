@@ -97,5 +97,3 @@ docker-build-development:
 
 docker-run-development:
 		docker run -p 5000:5000 boavizta/boaviztapi:${TIMESTAMP}
-docker-run-debug:
-		docker container prune -f && docker run --name=boavizta -e WATCHFILES_FORCE_POLLING=true --volume $(pwd)/boaviztapi/:/usr/local/lib/python3.12/site-packages/boaviztapi/ -p 5000:5000/tcp -p 5678:5678/tcp boavizta/boaviztapi:01-21-25 python3 -m debugpy --listen 0.0.0.0:5678 /usr/local/bin/uvicorn boaviztapi.main:app --host 0.0.0.0 --port 5000
