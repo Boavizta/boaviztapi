@@ -1010,16 +1010,19 @@ async def test_all_instances():
                         reader = csv.DictReader(f)
                         for row in reader:
                             instance = row.get('id')
-                            request = CloudInstanceRequest(provider_name, instance)
+                            request = CloudInstanceRequest(provider_name, instance, use_url_params=True)
 
                             url = request.to_url()
 
                             transport = ASGITransport(app=app)
                             async with AsyncClient(transport=transport, base_url="http://test") as ac:
                                 try:
+                                    print(f"provider: {provider_name} instance: {instance}")
                                     res = await ac.get(url)
+                                    if res.status_code == 500:
+                                        print(f"Error 500 for {url}")
                                 except Exception as e:
-                                    pytest.fail(e)
+                                    pytest.fail(str(e))
 
                 except FileNotFoundError:
                     pytest.fail(f"CSV file for provider '{provider_name}' not found: {provider_csv_path}")

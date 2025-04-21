@@ -86,7 +86,7 @@ class CloudInstanceRequest:
         return res
 
     def to_url(self) -> str:
-        url = "/v1/cloud/instance?verbose=false"
+        url = "/v1/cloud/instance?verbose=true"
 
         if self.use_url_params:
             url = f"{url}&instance_type={self.instance_type}&provider={self.provider}"
