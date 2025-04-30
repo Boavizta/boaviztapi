@@ -1,12 +1,11 @@
 import os
 from pathlib import Path
 
-import pandas as pd
 import yaml
 from boaviztapi import data_dir
 
 config_file = os.path.join(data_dir, 'factors.yml')
-impact_factors = yaml.safe_load(Path(config_file).read_text())
+impact_factors = yaml.load(Path(config_file).read_text(), Loader=yaml.CSafeLoader)
 
 
 def get_impact_factor(item, impact_type) -> dict:
