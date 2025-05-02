@@ -35,6 +35,11 @@ requests = "^2.32.3"
 [tool.poetry.group.docs]
 optional = true
 
+[tool.pytest.ini_options]
+markers = [
+    "prod_fixtures: marks tests that needs prod data to pass"
+]
+
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.5.3"
 mkdocs-material = "^9.4.4"
