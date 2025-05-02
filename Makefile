@@ -16,7 +16,8 @@ install_pip:
 		poetry install --with dev
 
 test:
-		poetry run pytest
+		BOAVIZTA_API_DATA_DIR=$(shell pwd)/tests/data poetry run pytest -m "not prod_fixtures"
+		poetry run pytest -m "prod_fixtures"
 
 define compat-check
 		docker build -t boavizta/boaviztapi-py$(1) \
@@ -67,3 +68,4 @@ docker-build-development:
 
 docker-run-development:
 		docker run -p 5000:5000 boavizta/boaviztapi:${TIMESTAMP}
+		

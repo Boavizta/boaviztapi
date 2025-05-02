@@ -1024,10 +1024,11 @@ def pytest_generate_tests(metafunc):
         metafunc.parametrize("cloud_provider_url", cloud_provider_urls)
 
 
+@pytest.mark.prod_fixtures
 @pytest.mark.asyncio
 async def test_all_instances(cloud_provider_url):
     #use prod data 
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get(cloud_provider_url)
-        assert res.status_code in [200,201], f"Error in {cloud_provider_url} status code {res.status_code}"
+        assert res.status_code in [200,201], f"Http error status code {res.status_code}"
