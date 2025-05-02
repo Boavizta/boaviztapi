@@ -996,9 +996,8 @@ async def test_empty_usage_scw_dev1_l():
 
     await test.check_result()
 
-
-@pytest.mark.asyncio
-async def test_all_instances():
+def _generate_cloud_provider_urls():
+    urls = []
     try:
         with open(f"{cloud_path}/providers.csv", 'r') as f:
             reader = csv.DictReader(f)
@@ -1010,20 +1009,25 @@ async def test_all_instances():
                         reader = csv.DictReader(f)
                         for row in reader:
                             instance = row.get('id')
-                            request = CloudInstanceRequest(provider_name, instance)
-
-                            url = request.to_url()
-
-                            transport = ASGITransport(app=app)
-                            async with AsyncClient(transport=transport, base_url="http://test") as ac:
-                                try:
-                                    res = await ac.get(url)
-                                except Exception as e:
-                                    pytest.fail(e)
-
+                            request = CloudInstanceRequest(provider_name, instance, use_url_params=True)
+                            urls.append((request.to_url()))
                 except FileNotFoundError:
                     pytest.fail(f"CSV file for provider '{provider_name}' not found: {provider_csv_path}")
     except FileNotFoundError:
         pytest.fail(f"provider file not found : {cloud_path}/providers.csv")
+    return urls
 
-    assert True
+
+def pytest_generate_tests(metafunc):
+    if "cloud_provider_url" in metafunc.fixturenames:
+        cloud_provider_urls = _generate_cloud_provider_urls()
+        metafunc.parametrize("cloud_provider_url", cloud_provider_urls)
+
+
+@pytest.mark.asyncio
+async def test_all_instances(cloud_provider_url):
+    #use prod data 
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.get(cloud_provider_url)
+        assert res.status_code in [200,201], f"Error in {cloud_provider_url} status code {res.status_code}"
