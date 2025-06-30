@@ -101,6 +101,7 @@ r7a.metal-48xl,AWS,rack,2,,,AMD EPYC 9R14,,48,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;
 r7g.metal,AWS,rack,1,,,Annapurna Labs Graviton3,,16,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r7gd.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton3,,16,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r7iz.32xlarge,AWS,rack,2,,,Intel Xeon Gold 6455B,,32,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r7i.metal-48xl,AWS,rack,2,,,Intel Xeon Platinum 8488C,,6,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 trn1.32xlarge,AWS,rack,2,,,Intel Xeon Platinum 8375C,,16,32,4,1900,0,0,16,AWS Inferentia,32,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 vt1.24xlarge,AWS,rack,2,,,Intel Xeon Platinum 8259CL,,6,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 x2idn.metal,AWS,rack,2,,,Intel Xeon Platinum 8375C,,64,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
