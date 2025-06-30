@@ -238,6 +238,14 @@ g5.12xlarge,48,192,3800,0,4,g5.48xlarge,
 g5.16xlarge,64,256,1900,0,1,g5.48xlarge,
 g5.24xlarge,96,384,3800,0,4,g5.48xlarge,
 g5.48xlarge,192,768,7600,0,8,g5.48xlarge,
+g6.xlarge,4,16,250,0,1,g6.48xlarge,https://aws.amazon.com/ec2/instance-types/g6/
+g6.2xlarge,8,32,450,0,1,g6.48xlarge,https://aws.amazon.com/ec2/instance-types/g6/
+g6.4xlarge,16,64,600,0,1,g6.48xlarge,https://aws.amazon.com/ec2/instance-types/g6/
+g6.8xlarge,32,128,900,0,1,g6.48xlarge,https://aws.amazon.com/ec2/instance-types/g6/
+g6.16xlarge,64,256,1880,0,1,g6.48xlarge,https://aws.amazon.com/ec2/instance-types/g6/
+g6.12xlarge,48,192,3760,0,4,g6.48xlarge,https://aws.amazon.com/ec2/instance-types/g6/
+g6.24xlarge,96,384,3760,0,4,g6.48xlarge,https://aws.amazon.com/ec2/instance-types/g6/
+g6.48xlarge,192,768,7520,0,8,g6.48xlarge,https://aws.amazon.com/ec2/instance-types/g6/
 g5g.xlarge,4,8,0,0,1,g5g.metal,
 g5g.2xlarge,8,16,0,0,1,g5g.metal,
 g5g.4xlarge,16,32,0,0,1,g5g.metal,
