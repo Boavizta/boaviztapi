@@ -30,7 +30,8 @@ pytest-asyncio = "^0.24.0"
 atomicwrites = "^1.4.1"
 httpx = "^0.28.1"
 requests = "^2.32.3"
-
+pre-commit = "^4.2.0"
+chkcsv = "^1.2.0"
 [tool.poetry.group.docs]
 optional = true
 

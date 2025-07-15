@@ -1,0 +1,17 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: local
+    hooks:
+      - id: chkcsv
+        name: chkcsv
+        entry: chkcsv.py
+        files: >-
+            boaviztapi/data/(archetypes/server.csv|
+            crowdsourcing/cpu_specs.csv|
+            archetypes/cloud/aws.csv|archetypes/cloud/azure.csv|archetypes/cloud/gcp.csv|archetypes/cloud/scaleway.csv)$
+        args: ["--linelength"]
+        language: python
+        types: [csv]
+        require_serial: false
+        additional_dependencies: []

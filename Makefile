@@ -15,6 +15,18 @@ install: install_pip
 install_pip:
 		poetry install --with dev
 
+install_only_dev:
+		poetry install --only dev
+
+checkcsv: install_only_dev
+	poetry run chkcsv.py boaviztapi/data/archetypes/server.csv --linelength
+	poetry run chkcsv.py boaviztapi/data/crowdsourcing/cpu_specs.csv --linelength
+	poetry run chkcsv.py boaviztapi/data/archetypes/cloud/aws.csv --linelength
+	poetry run chkcsv.py boaviztapi/data/archetypes/cloud/azure.csv --linelength
+	poetry run chkcsv.py boaviztapi/data/archetypes/cloud/gcp.csv --linelength
+	poetry run chkcsv.py boaviztapi/data/archetypes/cloud/scaleway.csv --linelength
+
+
 test:
 		poetry run pytest
 
