@@ -67,7 +67,7 @@ async def instance_cloud_impact(
     cloud_instance = Cloud()
     cloud_instance.usage = {}
     instance_archetype = get_cloud_instance_archetype(instance_type, provider)
-
+    
     if not instance_archetype:
         raise HTTPException(status_code=404,
                             detail=f"{instance_type} at {provider} not found")

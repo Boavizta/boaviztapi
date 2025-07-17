@@ -20,6 +20,7 @@ mangum = "^0.17"
 importlib-metadata = "^6.6.0"
 pyyaml = "^6.0"
 toml = "^0.10.2"
+pydantic-settings = "^2.9.1"
 
 [tool.poetry.group.dev]
 optional = true
@@ -33,6 +34,11 @@ requests = "^2.32.3"
 
 [tool.poetry.group.docs]
 optional = true
+
+[tool.pytest.ini_options]
+markers = [
+    "prod_fixtures: marks tests that needs prod data to pass"
+]
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.5.3"
