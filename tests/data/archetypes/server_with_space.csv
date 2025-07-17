@@ -1,0 +1,2 @@
+id,manufacturer,CASE.case_type,CPU.units,CPU.core_units,CPU.die_size_per_core,CPU.name,CPU.vcpu,RAM.units,RAM.density,RAM.capacity,SSD.units,SSD.capacity,SSD.density,HDD.units,HDD.capacity,GPU.units,GPU.name,GPU.memory_capacity,POWER_SUPPLY.units,POWER_SUPPLY.unit_weight,USAGE.time_workload,USAGE.use_time_ratio,USAGE.hours_life_time,USAGE.other_consumption_ratio,WARNINGS
+dellR740 ,Dell,rack,2,24,24.5,,,12,1.79,32,1,400,50.6,,,,,,2;1;2,2.99;1;5,50;0;100,1,26280,0.33,
