@@ -4,7 +4,7 @@ DOCKER_NAME := boavizta/boaviztapi:${CURRENT_VERSION}
 SEMVERS := major minor patch
 
 MINIMUM_PY_VERSION=3.10
-MAXIMUM_PY_VERSION=3.12
+MAXIMUM_PY_VERSION=3.13
 
 clean:
 		find . -name "*.pyc" -exec rm -rf {} \;

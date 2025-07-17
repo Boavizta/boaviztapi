@@ -1,4 +1,4 @@
-ARG PY_VERSION=3.12
+ARG PY_VERSION=3.13
 
 #---------------------------------------------------------------------------------------
 # Stage 1 → Builder image
@@ -42,7 +42,7 @@ COPY --from=build-env /app/boaviztapi-$VERSION.tar.gz /app/
 RUN pip install --no-cache-dir /app/boaviztapi-$VERSION.tar.gz
 
 # Required in main.py
-COPY --from=build-env /app/pyproject.toml /usr/local/lib/python3.12/site-packages/boaviztapi/
+COPY --from=build-env /app/pyproject.toml /usr/local/lib/python3.13/site-packages/boaviztapi/
 
 # Copy uvicorn executable
 RUN pip install --no-cache-dir uvicorn
