@@ -50,10 +50,11 @@ def get_cloud_instance_archetype(archetype_name: str, provider: str) -> Union[di
 
 
 def get_archetype(archetype_name: str, csv_path: str) -> Union[dict, bool]:
-    reader = csv.DictReader(open(csv_path, encoding='utf-8'))
-    for row in reader:
-        if row["id"] == archetype_name:
-            return row2json(row)
+    with open(csv_path, encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row["id"].strip() == archetype_name.strip():
+                return row2json(row)
     return False
 
 

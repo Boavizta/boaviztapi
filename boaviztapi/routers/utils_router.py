@@ -11,6 +11,7 @@ from boaviztapi.model.component.cpu import attributes_from_cpu_name
 from boaviztapi.routers.openapi_doc.descriptions import country_code, cpu_family, cpu_model_range, ssd_manufacturer, \
     ram_manufacturer, case_type, name_to_cpu, cpu_names, impacts_criteria
 from boaviztapi.service.factor_provider import get_available_countries
+from boaviztapi.utils.get_version import get_version_from_pyproject
 
 utils_router = APIRouter(
     prefix='/v1/utils',
@@ -26,8 +27,7 @@ _ram_manuf = pd.read_csv(os.path.join(data_dir, 'crowdsourcing/ram_manufacture.c
 
 @utils_router.get('/version', description="Get the version of the API")
 async def version():
-    return toml.loads(open(os.path.join(os.path.dirname(__file__), '../../pyproject.toml'), 'r').read())['tool']['poetry'][
-    'version']
+    return get_version_from_pyproject()
 
 @utils_router.get('/country_code', description=country_code)
 async def utils_get_all_countries():
