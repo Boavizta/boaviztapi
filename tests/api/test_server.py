@@ -523,3 +523,10 @@ async def test_dellR740_server():
                                                'the calculation']},
                      'unit': 'kgCO2eq',
                      'use': {'max': 14900.0, 'min': 380.7, 'value': 6000.0}}}}
+
+@pytest.mark.asyncio
+async def test_utils_version():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.get('/v1/utils/version')
+        assert res.status_code == 200

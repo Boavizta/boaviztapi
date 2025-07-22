@@ -7,15 +7,7 @@ from tests.unit import data_dir
 
 pytest_plugins = ('pytest_asyncio',)
 
-
-@pytest.mark.asyncio
-async def test_get_server_archetype_none():
-    assert not get_archetype("nothing", csv_path=os.path.join(data_dir, "archetypes/server.csv"))
-
-
-@pytest.mark.asyncio
-async def test_get_server_archetype_dellr740():
-    assert get_archetype("dellR740", csv_path=os.path.join(data_dir, "archetypes/server.csv")) == {
+EXPECTED_ARCHETYPE = {
     'CASE': {'case_type': {'default': 'rack'}},
     'CPU': {'core_units': {'default': 24.0},
              'die_size_per_core': {'default': 24.5},
@@ -38,3 +30,18 @@ async def test_get_server_archetype_dellr740():
                'use_time_ratio': {'default': 1.0}},
     'WARNINGS': {},
     'manufacturer': {'default': 'Dell'}}
+
+@pytest.mark.asyncio
+async def test_get_server_archetype_none():
+    assert not get_archetype("nothing", csv_path=os.path.join(data_dir, "archetypes/server.csv"))
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("archetype_id", ["dellR740", "dellR740 "])
+async def test_get_server_archetype_dellr740(archetype_id):
+    assert get_archetype(archetype_id, csv_path=os.path.join(data_dir, "archetypes/server.csv")) == EXPECTED_ARCHETYPE
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("archetype_id", ["dellR740", "dellR740 "])
+async def test_get_server_archetype_dellr740_faulty_csv(archetype_id):
+    assert get_archetype(archetype_id, csv_path=os.path.join(data_dir, "archetypes/server_with_space.csv")) == EXPECTED_ARCHETYPE

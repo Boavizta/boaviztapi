@@ -2,4 +2,4 @@ provider.name,provider.description
 aws,Amazon Web Services
 azure,Microsoft Azure
 scaleway,Scaleway
-gcp, Google Cloud Platform
+gcp,Google Cloud Platform
