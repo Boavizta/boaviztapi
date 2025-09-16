@@ -54,7 +54,7 @@ r5dn.metal,AWS,rack,2,,,Intel Xeon Platinum 8259CL,,24,32,4,900,0,0,0,,0,2;2;2,2
 r5n.metal,AWS,rack,2,,,Intel Xeon Platinum 8259CL,,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r6g.metal,AWS,rack,1,,,Annapurna Labs Graviton2,,16,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r6gd.metal,AWS,rack,1,,,Annapurna Labs Graviton2,,16,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
-ra3.16xlarge,AWS,rack,2,,,Intel Xeon E5-2676 v3,,12,32,0,64000,6,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+ra3.16xlarge,AWS,rack,2,,,Intel Xeon E5-2676 v3,,12,32,1,64000,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 u-12tb1.metal,AWS,rack,8,,,Intel Xeon Platinum 8176M,,96,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 u-18tb1.metal,AWS,rack,8,,,Intel Xeon Platinum 8176M,,96,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 u-24tb1.metal,AWS,rack,8,,,Intel Xeon Platinum 8176M,,96,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
