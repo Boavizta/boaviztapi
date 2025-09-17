@@ -50,9 +50,9 @@ def test_cpu_with_model_range(model_range: str, expected_model_params: Dict[str,
 
 
 @pytest.mark.parametrize('model_range,expected_model_params', [
-    ('xeon gold', {'a': 35.5688, 'b': 0.2438, 'c': 9.6694, 'd': -0.6087}),
+    ('Xeon Gold', {'a': 35.5688, 'b': 0.2438, 'c': 9.6694, 'd': -0.6087}),
 ])
-def test_cpu_with_model_range_fuzzy(model_range: str, expected_model_params: Dict[str, float]):
+def test_cpu_with_model_range_exact_case(model_range: str, expected_model_params: Dict[str, float]):
     cpu_cp = CPUConsumptionProfileModel()
     cpu_cp.compute_consumption_profile_model(cpu_model_range=model_range)
     expected_model = CPUConsumptionProfileModel()
@@ -198,3 +198,63 @@ def test_ram_with_capacity(capacity: int, expected_model_params: Dict[str, float
     expected_model = RAMConsumptionProfileModel()
     expected_model.params.value = expected_model_params
     validate_models_approx(ram_cp, expected_model)
+
+
+class TestLookupConsumptionProfile:
+    def test_no_criteria(self):
+        """Test with no manufacturer or model_range, should return None."""
+        assert CPUConsumptionProfileModel.lookup_consumption_profile() is None
+
+    def test_manufacturer_only_no_single_match(self):
+        """Test with manufacturer only, but since all are Intel, it returns multiple, so None."""
+        assert CPUConsumptionProfileModel.lookup_consumption_profile(cpu_manufacturer="Intel") is None
+
+    def test_model_range_exact_match(self):
+        """Test with an exact model_range."""
+        result = CPUConsumptionProfileModel.lookup_consumption_profile(cpu_model_range="Xeon E5")
+        assert result is not None
+        assert result['a'] == 48.9167
+
+    def test_model_range_exact_case_match_single_result(self):
+        """Test with an exact case model_range that should yield a single result."""
+        result = CPUConsumptionProfileModel.lookup_consumption_profile(cpu_model_range="Xeon Gold")
+        assert result is not None
+        assert result['a'] == 35.5688
+
+    def test_model_range_partial_match_no_result(self):
+        """Test with a partial model_range that should yield no results with exact matching."""
+        result = CPUConsumptionProfileModel.lookup_consumption_profile(cpu_model_range="Xeon")
+        assert result is None
+
+    def test_manufacturer_and_model_range_ok(self):
+        """Test with both manufacturer and model_range."""
+        result = CPUConsumptionProfileModel.lookup_consumption_profile(
+            cpu_manufacturer="Intel",
+            cpu_model_range="Xeon Silver"
+        )
+        assert result is not None
+        assert result['a'] == 20.7794
+
+    def test_manufacturer_and_model_range_no_match(self):
+        """Test with manufacturer and model_range that don't match."""
+        result = CPUConsumptionProfileModel.lookup_consumption_profile(
+            cpu_manufacturer="Intel",
+            cpu_model_range="NonExistent"
+        )
+        assert result is None
+
+    def test_no_match(self):
+        """Test with criteria that match nothing."""
+        result = CPUConsumptionProfileModel.lookup_consumption_profile(cpu_model_range="Ryzen")
+        assert result is None
+
+    def test_whitespace_handling(self):
+        """Test that whitespace differences are handled correctly (but case must still match)."""
+        result = CPUConsumptionProfileModel.lookup_consumption_profile(cpu_model_range="  Xeon Gold  ")
+        assert result is not None
+        assert result['a'] == 35.5688
+
+    def test_case_sensitivity(self):
+        """Test that case differences are NOT handled (case sensitive matching)."""
+        result = CPUConsumptionProfileModel.lookup_consumption_profile(cpu_model_range="xeon gold")
+        assert result is None

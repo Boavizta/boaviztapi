@@ -167,20 +167,17 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         sub = _cpu_profile_consumption_df
 
         if cpu_manufacturer is not None:
-            tmp = sub[sub['manufacturer'].fuzzymatch(cpu_manufacturer)]
+            tmp = sub[sub['manufacturer'].str.strip() == cpu_manufacturer.strip()]
             if len(tmp) > 0:
                 sub = tmp.copy()
 
         if cpu_model_range is not None:
-            tmp = sub[sub['model_range'].fuzzymatch(cpu_model_range)]
+            tmp = sub[sub['model_range'].str.strip() == cpu_model_range.strip()]
             if len(tmp) > 0:
                 sub = tmp.copy()
-
+            
         if len(sub) == 1:
             row = sub.iloc[0]
-            return {
-                'a': row.a,
-                'b': row.b,
-                'c': row.c,
-                'd': row.d,
-            }
+            return {k: row[k] for k in ['a', 'b', 'c', 'd']}
+
+        return None  # No matching profile found, return None
