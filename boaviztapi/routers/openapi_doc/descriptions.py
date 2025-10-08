@@ -1,8 +1,9 @@
 server_impact_by_model_description = "# ✔ ️Server impacts from model name\n" \
-                                     "Retrieve the impacts of a given server archetype.\n" \
+                                     "Retrieve the impacts and running costs of a given server archetype.\n" \
                                      "### Features\n\n" \
                                      "👄 Verbose\n\n" \
                                      "🔃 Auto-complete\n\n" \
+                                     "💵 Costs\n\n" \
                                      "🔨 Embedded\n\n" \
                                      "🔌 Usage\n\n" \
                                      "📋 Archetype: " \
@@ -10,10 +11,11 @@ server_impact_by_model_description = "# ✔ ️Server impacts from model name\n"
                                      "⏬ Allocation"
 
 server_impact_by_config_description = "# ✔️ Server impacts from configuration\n" \
-                                      "Retrieve the impacts of a given server configuration.\n" \
+                                      "Retrieve the impacts and running costs of a given server configuration.\n" \
                                       "### Features\n\n" \
                                       "👄 Verbose\n\n" \
                                       "🔃 Auto-complete\n\n" \
+                                      "💵 Costs\n\n" \
                                       "🔨 Embedded\n\n" \
                                       "🔌 Usage\n\n" \
                                       "* ⏺️  Given\n\n" \
@@ -166,3 +168,6 @@ peripheral_description = "# ✔ Peripheral impacts\n" \
                           "* ⏺️  Given\n\n" \
                           "* 📋 Archetype\n\n" \
                           "⏬ Allocation"
+
+electricity_available_countries = "# ✔ ️Get a list of all the countries supported by the electricity pricing API\n"
+electricity_price = "# ✔ ️Get the average yearly electricity cost of running an on-premise device.\n"

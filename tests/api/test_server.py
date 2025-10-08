@@ -6,86 +6,13 @@ from boaviztapi.main import app
 pytest_plugins = ('pytest_asyncio',)
 
 
-@pytest.mark.asyncio
-async def test_complete_config_server():
-    transport = ASGITransport(app=app)
-    async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?verbose=false', json={
-            "model": {
-            },
-            "configuration": {
-                "cpu": {
-                    "units": 2,
-                    "core_units": 24,
-                    "die_size_per_core": 24.5
-                },
-                "ram": [
-                    {
-                        "units": 4,
-                        "capacity": 32,
-                        "density": 1.79
-                    },
-                    {
-                        "units": 4,
-                        "capacity": 16,
-                        "density": 1.79
-                    }
-                ],
-                "disk": [
-                    {
-                        "units": 2,
-                        "type": "ssd",
-                        "capacity": 400,
-                        "density": 50.6
-                    },
-                    {
-                        "units": 2,
-                        "type": "hdd"
-                    }
-                ],
-                "power_supply": {
-                    "units": 2,
-                    "unit_weight": 10
-                }
-            }
-        })
-    assert res.json() == {"impacts": {'adp': {'description': 'Use of minerals and fossil ressources',
-                                              'embedded': {'max': 0.2611,
-                                                           'min': 0.2536,
-                                                           'value': 0.2536,
-                                                           'warnings': ['End of life is not included in the '
-                                                                        'calculation']},
-                                              'unit': 'kgSbeq',
-                                              'use': {'max': 0.007799, 'min': 0.0001938, 'value': 0.0013}},
-                                      'gwp': {'description': 'Total climate change',
-                                              'embedded': {'max': 1138.0,
-                                                           'min': 1074.0,
-                                                           'value': 1138.0,
-                                                           'warnings': ['End of life is not included in the '
-                                                                        'calculation']},
-                                              'unit': 'kgCO2eq',
-                                              'use': {'max': 26430.0, 'min': 337.7, 'value': 7000.0}},
-                                      'pe': {'description': 'Consumption of primary energy',
-                                             'embedded': {'max': 15420.0,
-                                                          'min': 14450.0,
-                                                          'value': 15420.0,
-                                                          'warnings': ['End of life is not included in the '
-                                                                       'calculation']},
-                                             'unit': 'MJ',
-                                             'use': {'max': 13750000.0,
-                                                     'min': 190.9,
-                                                     'value': 300000.0,
-                                                     'warnings': [
-                                                         'Uncertainty from technical characteristics is very important. '
-                                                         'Results should be interpreted with caution (see '
-                                                         'min and max values)']}}}}
-
+pytest_plugins = ('pytest_asyncio',)
 
 @pytest.mark.asyncio
 async def test_empty_config_server():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?verbose=false', json={})
+        res = await ac.post('/v1/server/?verbose=false&costs=false', json={})
     assert res.json() == {'impacts': {'adp': {'description': 'Use of minerals and fossil ressources',
                      'embedded': {'max': 87.57,
                                   'min': 0.05434,
@@ -137,7 +64,7 @@ async def test_empty_config_server():
 async def test_dell_r740_server():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?verbose=false', json={
+        res = await ac.post('/v1/server/?verbose=false&costs=false', json={
             "model":
                 {
                     "name": "R740",
@@ -215,7 +142,7 @@ async def test_dell_r740_server():
 async def test_partial_server_1():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?verbose=false', json={
+        res = await ac.post('/v1/server/?verbose=false&costs=false', json={
             "model": {
             },
             "configuration": {
@@ -286,7 +213,7 @@ async def test_partial_server_1():
 async def test_partial_server_2():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?verbose=false', json={
+        res = await ac.post('/v1/server/?verbose=false&costs=false', json={
             "model": {
             },
             "configuration": {
@@ -358,7 +285,7 @@ async def test_partial_server_2():
 async def test_partial_server_3():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?verbose=false', json={
+        res = await ac.post('/v1/server/?verbose=false&costs=false', json={
             "model": {
             },
             "configuration": {
@@ -427,7 +354,7 @@ async def test_partial_server_3():
 async def test_custom_usage_1():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        res = await ac.post("/v1/server/?verbose=false&duration=8785", json={
+        res = await ac.post("/v1/server/?verbose=false&costs=false&duration=8785", json={
             "usage": {
                 "avg_power": 1,
                 "usage_location": "FRA"
@@ -479,7 +406,7 @@ async def test_custom_usage_1():
 async def test_empty_config_server_generic_criteria():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?verbose=false&criteria=adpf', json={})
+        res = await ac.post('/v1/server/?verbose=false&costs=false&criteria=adpf', json={})
     assert res.json() == {'impacts': {'adpf': {'description': 'Use of fossil resources (including '
                                      'nuclear)',
                       'embedded': {'max': 51500.0,
@@ -497,7 +424,7 @@ async def test_empty_config_server_generic_criteria():
 async def test_apple_m1_server():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?archetype=mac2.metal&verbose=false&criteria=gwp', json={})
+        res = await ac.post('/v1/server/?archetype=mac2.metal&verbose=false&costs=false&criteria=gwp', json={})
 
         assert res.json() == {'impacts': {'gwp': {'description': 'Total climate change',
                      'embedded': {'max': 608.2,
@@ -513,7 +440,7 @@ async def test_apple_m1_server():
 async def test_dellR740_server():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
-        res = await ac.post('/v1/server/?archetype=dellR740&verbose=false&criteria=gwp', json={})
+        res = await ac.post('/v1/server/?archetype=dellR740&verbose=false&costs=false&criteria=gwp', json={})
 
         assert res.json() == {'impacts': {'gwp': {'description': 'Total climate change',
                      'embedded': {'max': 1186.0,

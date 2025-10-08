@@ -14,6 +14,7 @@ from boaviztapi.routers.openapi_doc.examples import server_configuration_example
 from boaviztapi.service.archetype import get_server_archetype, get_device_archetype_lst
 from boaviztapi.service.verbose import verbose_device
 from boaviztapi.service.impacts_computation import compute_impacts
+from boaviztapi.service.costs_computation import compute_electricity_costs
 
 server_router = APIRouter(
     prefix='/v1/server',
@@ -40,6 +41,7 @@ async def get_archetype_config(archetype: str = Query(example=config["default_se
                    description=server_impact_by_model_description)
 async def server_impact_from_model(archetype: str = config["default_server"],
                                    verbose: bool = True,
+                                   costs: bool = True,
                                    duration: Optional[float] = config["default_duration"],
                                    criteria: List[str] = Query(config["default_criteria"])):
     archetype_config = get_server_archetype(archetype)
@@ -52,6 +54,7 @@ async def server_impact_from_model(archetype: str = config["default_server"],
     return await server_impact(
         device=model_server,
         verbose=verbose,
+        costs=costs,
         duration=duration,
         criteria=criteria
     )
@@ -62,6 +65,7 @@ async def server_impact_from_model(archetype: str = config["default_server"],
 async def server_impact_from_configuration(
         server: Server = Body(None, openapi_examples=server_configuration_examples_openapi),
         verbose: bool = True,
+        costs: bool = True,
         duration: Optional[float] = config["default_duration"],
         archetype: str = config["default_server"],
         criteria: List[str] = Query(config["default_criteria"])):
@@ -75,6 +79,7 @@ async def server_impact_from_configuration(
     return await server_impact(
         device=completed_server,
         verbose=verbose,
+        costs=costs,
         duration=duration,
         criteria=criteria
     )
@@ -82,6 +87,7 @@ async def server_impact_from_configuration(
 
 async def server_impact(device: Device,
                         verbose: bool,
+                        costs: bool,
                         duration: Optional[float] = config["default_duration"],
                         criteria: List[str] = Query(config["default_criteria"])) -> dict:
     if duration is None:
@@ -89,9 +95,11 @@ async def server_impact(device: Device,
 
     impacts = compute_impacts(model=device, selected_criteria=criteria, duration=duration)
 
+    result = {
+        "impacts": impacts
+    }
     if verbose:
-        return {
-            "impacts": impacts,
-            "verbose": verbose_device(device, selected_criteria=criteria, duration=duration)
-        }
-    return {"impacts": impacts}
+        result["verbose"] = verbose_device(device, selected_criteria=criteria, duration=duration)
+    if costs:
+        result["costs"] = compute_electricity_costs(model=device, duration=duration)
+    return result

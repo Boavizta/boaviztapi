@@ -20,6 +20,10 @@ mangum = "^0.17"
 importlib-metadata = "^6.6.0"
 pyyaml = "^6.0"
 toml = "^0.10.2"
+fastapi-cache2 = "^0.2.2"
+python-dotenv = "^1.1.1"
+requests = "^2.32.5"
+xmltodict = "^1.0.2"
 
 [tool.poetry.group.dev]
 optional = true
@@ -30,6 +34,7 @@ pytest-asyncio = "^0.24.0"
 atomicwrites = "^1.4.1"
 httpx = "^0.28.1"
 requests = "^2.32.3"
+jsonschema = "^4.25.1"
 
 [tool.poetry.group.docs]
 optional = true

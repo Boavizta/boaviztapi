@@ -16,7 +16,7 @@ install_pip:
 		poetry install --with dev
 
 test:
-		poetry run pytest
+		poetry run pytest -vv
 
 define compat-check
 		docker build -t boavizta/boaviztapi-py$(1) \

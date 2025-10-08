@@ -10,8 +10,8 @@ _cpu_profile_path = os.path.join(data_dir, 'consumption_profile/cpu/cpu_profile.
 _cloud_profile_path = os.path.join(data_dir, 'consumption_profile/cloud/cpu_profile.csv')
 _server_profile_path = os.path.join(data_dir, 'consumption_profile/server/server_profile.csv')
 
-class ModelUsage:
 
+class ModelUsage:
     _DAYS_IN_HOURS = 24
     _YEARS_IN_HOURS = 24 * 365
 
@@ -92,57 +92,79 @@ class ModelUsage:
         if self.usage_location.is_default():
             self.elec_factors.get(impact_criteria).set_default(factor["value"], source=str(factor["source"]))
             self.elec_factors.get(impact_criteria).min = float(get_electrical_min_max(impact_criteria_proxy, "min"))
-            self.elec_factors.get(impact_criteria).max =  float(get_electrical_min_max(impact_criteria_proxy, "max"))
+            self.elec_factors.get(impact_criteria).max = float(get_electrical_min_max(impact_criteria_proxy, "max"))
         else:
             self.elec_factors.get(impact_criteria).set_completed(factor["value"],
-                                                             source=str(factor["source"]),
-                                                             min=factor["value"],
-                                                             max=factor["value"])
+                                                                 source=str(factor["source"]),
+                                                                 min=factor["value"],
+                                                                 max=factor["value"])
 
     def _complete_gwp(self):
         self._complete_impact_factor("gwp", "gwp")
+
     def _complete_adp(self):
         self._complete_impact_factor("adp", "adpe")
+
     def _complete_pe(self):
         self._complete_impact_factor("pe", "pe")
+
     def _complete_gwppb(self):
         self._complete_impact_factor("gwppb", "gwppb")
+
     def _complete_gwppf(self):
         self._complete_impact_factor("gwppf", "gwppf")
+
     def _complete_gwpplu(self):
         self._complete_impact_factor("gwpplu", "gwpplu")
+
     def _complete_ir(self):
         self._complete_impact_factor("ir", "ir")
+
     def _complete_lu(self):
         self._complete_impact_factor("lu", "lu")
+
     def _complete_odp(self):
         self._complete_impact_factor("odp", "odp")
+
     def _complete_pm(self):
         self._complete_impact_factor("pm", "pm")
+
     def _complete_pocp(self):
         self._complete_impact_factor("pocp", "pocp")
+
     def _complete_wu(self):
         self._complete_impact_factor("wu", "wu")
+
     def _complete_mips(self):
         self._complete_impact_factor("mips", "mips")
+
     def _complete_adpe(self):
         self._complete_impact_factor("adpe", "adpe")
+
     def _complete_adpf(self):
         self._complete_impact_factor("adpf", "adpf")
+
     def _complete_ap(self):
         self._complete_impact_factor("ap", "ap")
+
     def _complete_ctue(self):
         self._complete_impact_factor("ctue", "ctue")
+
     def _complete_ctuh_c(self):
         self._complete_impact_factor("ctuh_c", "ctuh_c")
+
     def _complete_ctuh_nc(self):
         self._complete_impact_factor("ctuh_nc", "ctuh_nc")
+
     def _complete_epf(self):
         self._complete_impact_factor("epf", "epf")
+
     def _complete_epm(self):
         self._complete_impact_factor("epm", "epm")
+
     def _complete_ept(self):
         self._complete_impact_factor("ept", "ept")
+
 
 class ModelUsageServer(ModelUsage):
 
@@ -156,8 +178,10 @@ class ModelUsageServer(ModelUsage):
             max=get_arch_value(archetype, 'other_consumption_ratio', 'max')
         )
 
+
 class ModelUsageCloud(ModelUsageServer):
-    def __init__(self, archetype=get_cloud_instance_archetype(config["default_cloud_instance"], config["default_cloud_provider"]).get("USAGE"), **kwargs):
+    def __init__(self, archetype=get_cloud_instance_archetype(config["default_cloud_instance"],
+                                                              config["default_cloud_provider"]).get("USAGE"), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
         self.instance_per_server = Boattribute(
             default=get_arch_value(archetype, 'instance_per_server', 'default'),

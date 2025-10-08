@@ -11,3 +11,5 @@ else:
 
 config_file = os.path.join(data_dir, 'config.yml')
 config = yaml.safe_load(Path(config_file).read_text())
+factors_file = os.path.join(data_dir, 'factors.yml')
+factors = yaml.safe_load(Path(factors_file).read_text())
