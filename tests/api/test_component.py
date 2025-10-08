@@ -103,7 +103,7 @@ async def test_complete_cpu_verbose():
             "adp_factor": {
                 "max": 2.656e-07,
                 "min": 1.32e-08,
-                "source": "ADEME Base IMPACTS Â®",
+                "source": "ADEME Base IMPACTS ®",
                 "status": "DEFAULT",
                 "unit": "kg Sbeq/kWh",
                 "value": 6.42e-08
@@ -557,7 +557,7 @@ async def test_incomplete_cpu_verbose():
                 "value": 6.42e-08,
                 "status": "DEFAULT",
                 "unit": "kg Sbeq/kWh",
-                "source": "ADEME Base IMPACTS Â®",
+                "source": "ADEME Base IMPACTS ®",
                 "min": 1.32e-08,
                 "max": 2.656e-07
             },
@@ -773,7 +773,7 @@ async def test_incomplete_cpu_verbose_2():
                 "value": 6.42e-08,
                 "status": "DEFAULT",
                 "unit": "kg Sbeq/kWh",
-                "source": "ADEME Base IMPACTS Â®",
+                "source": "ADEME Base IMPACTS ®",
                 "min": 1.32e-08,
                 "max": 2.656e-07
             },

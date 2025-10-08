@@ -70,7 +70,7 @@ async def test_smartphone():
                                                      "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149: \nAverage of 27 european countries",
                                                      "min": 0.023, "max": 0.9},
                                       "adp_factor": {"value": 6.42e-08, "status": "DEFAULT", "unit": "kg Sbeq/kWh",
-                                                     "source": "ADEME Base IMPACTS Â®", "min": 1.32e-08,
+                                                     "source": "ADEME Base IMPACTS ®", "min": 1.32e-08,
                                                      "max": 2.656e-07},
                                       "pe_factor": {"value": 12.874, "status": "DEFAULT", "unit": "MJ/kWh",
                                                     "source": "ADPf / (1-%renewable_energy)", "min": 0.013,
@@ -99,7 +99,7 @@ async def test_box():
                                       "hours_life_time": {"value": 43800.0, "status": "ARCHETYPE", "unit": "hours",
                                                           "min": 43800.0, "max": 43800.0},
                                       "adpe_factor": {"value": 6.42e-08, "status": "DEFAULT", "unit": "kg Sbeq/kWh",
-                                                      "source": "ADEME Base IMPACTS Â®", "min": 1.32e-08,
+                                                      "source": "ADEME Base IMPACTS ®", "min": 1.32e-08,
                                                       "max": 2.656e-07},
                                       "units": {"value": 1, "status": "ARCHETYPE", "min": 1, "max": 1}}}
 
@@ -125,7 +125,7 @@ async def test_tv_archetype_perso():
                                       "hours_life_time": {"value": 70080.0, "status": "ARCHETYPE", "unit": "hours",
                                                           "min": 70080.0, "max": 70080.0},
                                       "adpe_factor": {"value": 6.42e-08, "status": "DEFAULT", "unit": "kg Sbeq/kWh",
-                                                          "source": "ADEME Base IMPACTS Â®", "min": 1.32e-08,
+                                                          "source": "ADEME Base IMPACTS ®", "min": 1.32e-08,
                                                           "max": 2.656e-07},
                                       "type": {"value": "perso", "status": "ARCHETYPE"},
                                       "units": {"value": 1, "status": "ARCHETYPE", "min": 1, "max": 1}}}
