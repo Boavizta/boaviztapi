@@ -42,8 +42,7 @@ async def test_complete_valid_cpu_manufacturer_family():
 
 @pytest.mark.asyncio
 async def test_complete_valid_cpu_overrides_tdp_if_present():
-    await (CPUConsumptionProfileTest(name="intel xeon gold 6134", tdp=100, expected=(50.8479, 0.0630, 20.4511, -0.9979))
-           .run())
+    await CPUConsumptionProfileTest(name="intel xeon gold 6134", tdp=100, expected=(50.8479, 0.0630, 20.4511, -0.9990)).run()
 
 @pytest.mark.asyncio
 async def test_complete_alternative_valid_cpu_manufacturer_family():
