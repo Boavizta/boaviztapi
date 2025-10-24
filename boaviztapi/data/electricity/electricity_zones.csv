@@ -1,0 +1,351 @@
+zone_code,name,subdivision_name,EIC_code,alpha_3
+AE,United Arab Emirates,United Arab Emirates,,ARE
+AF,Afghanistan,Afghanistan,,AFG
+AG,Antigua and Barbuda,Antigua and Barbuda,,ATG
+AL,Albania,Albania,10YAL-KESH-----5,ALB
+AM,Armenia,Armenia,,ARM
+AO,Angola,Angola,,AGO
+AR,Argentina,Argentina,,ARG
+AT,Austria,Austria,10YAT-APG------L,AUT
+AU,Australia,Australia,,AUS
+AU-NSW,Australia,New South Wales,,AUS
+AU-NT,Australia,Northern Territory,,AUS
+AU-QLD,Australia,Queensland,,AUS
+AU-SA,Australia,South Australia,,AUS
+AU-TAS,Australia,Tasmania,,AUS
+AU-TAS-FI,Australia,Flinders Island,,AUS
+AU-TAS-KI,Australia,King Island,,AUS
+AU-VIC,Australia,Victoria,,AUS
+AU-WA,Australia,Western Australia,,AUS
+AU-WA-RI,Australia,Rottnest Island,,AUS
+AW,Aruba,Aruba,,ABW
+AX,Åland Islands,Åland Islands,,ALA
+AZ,Azerbaijan,Azerbaijan,,AZE
+BA,Bosnia and Herzegovina,Bosnia and Herzegovina,10YBA-JPCC-----D,BIH
+BB,Barbados,Barbados,,BRB
+BD,Bangladesh,Bangladesh,,BGD
+BE,Belgium,Belgium,10YBE----------2,BEL
+BF,Burkina Faso,Burkina Faso,,BFA
+BG,Bulgaria,Bulgaria,10YCA-BULGARIA-R,BGR
+BH,Bahrain,Bahrain,,BHR
+BI,Burundi,Burundi,,BDI
+BJ,Benin,Benin,,BEN
+BN,Brunei,Brunei,,BRN
+BO,Bolivia,Bolivia,,BOL
+BR,Brazil,Brazil,,BRA
+BR-CS,Brazil,Central Brazil,,BRA
+BR-N,Brazil,North Brazil,,BRA
+BR-NE,Brazil,North-East Brazil,,BRA
+BR-S,Brazil,South Brazil,,BRA
+BS,Bahamas,Bahamas,,BHS
+BT,Bhutan,Bhutan,,BTN
+BW,Botswana,Botswana,,BWA
+BY,Belarus,Belarus,10Y1001A1001A51S,BLR
+BZ,Belize,Belize,,BLZ
+CA,Canada,Canada,,CAN
+CA-AB,Canada,Alberta,,CAN
+CA-BC,Canada,British Columbia,,CAN
+CA-MB,Canada,Manitoba,,CAN
+CA-NB,Canada,New Brunswick,,CAN
+CA-NL,Canada,Newfoundland and Labrador,,CAN
+CA-NS,Canada,Nova Scotia,,CAN
+CA-NT,Canada,Northwest Territories,,CAN
+CA-NU,Canada,Nunavut,,CAN
+CA-ON,Canada,Ontario,,CAN
+CA-PE,Canada,Prince Edward Island,,CAN
+CA-QC,Canada,Québec,,CAN
+CA-SK,Canada,Saskatchewan,,CAN
+CA-YT,Canada,Yukon,,CAN
+CD,Democratic Republic of the Congo,Democratic Republic of the Congo,,COD
+CF,Central African Republic,Central African Republic,,CAF
+CG,Congo,Congo,,COG
+CH,Switzerland,Switzerland,10YCH-SWISSGRIDZ,CHE
+CI,Ivory Coast,Ivory Coast,,CIV
+CL-SEN,Chile,Sistema Eléctrico Nacional,,CHL
+CM,Cameroon,Cameroon,,CMR
+CN,China,China,,CHN
+CO,Colombia,Colombia,,COL
+CR,Costa Rica,Costa Rica,,CRI
+CU,Cuba,Cuba,,CUB
+CV,Cabo Verde,Cabo Verde,,CPV
+CW,Curaçao,Curaçao,,CUW
+CY,Cyprus,Cyprus,10YCY-1001A0003J,CYP
+CZ,Czechia,Czechia,,CZE
+DE,Germany,Germany,10Y1001A1001A82H,DEU
+DJ,Djibouti,Djibouti,,DJI
+DK,Denmark,Denmark,10YDK-1--------W,DNK
+DK-BHM,Denmark,Bornholm,10YDK-1--------W,DNK
+DK-DK1,Denmark,West Denmark,10YDK-1--------W,DNK
+DK-DK2,Denmark,East Denmark,10YDK-1--------W,DNK
+DM,Dominica,Dominica,,DMA
+DO,Dominican Republic,Dominican Republic,,DOM
+DZ,Algeria,Algeria,,DZA
+EC,Ecuador,Ecuador,,ECU
+EE,Estonia,Estonia,10Y1001A1001A39I,EST
+EG,Egypt,Egypt,,EGY
+ER,Eritrea,Eritrea,,ERI
+ES,Spain,Spain,10YES-REE------0,ESP
+ES-CE,Spain,Ceuta,10YES-REE------0,ESP
+ES-CN-FV,Spain,Fuerteventura,10YES-REE------0,ESP
+ES-CN-GC,Spain,Gran Canaria,10YES-REE------0,ESP
+ES-CN-HI,Spain,El Hierro,10YES-REE------0,ESP
+ES-CN-IG,Spain,Isla de la Gomera,10YES-REE------0,ESP
+ES-CN-LP,Spain,La Palma,10YES-REE------0,ESP
+ES-CN-LZ,Spain,Lanzarote,10YES-REE------0,ESP
+ES-CN-TE,Spain,Tenerife,10YES-REE------0,ESP
+ES-IB-FO,Spain,Formentera,10YES-REE------0,ESP
+ES-IB-IZ,Spain,Ibiza,10YES-REE------0,ESP
+ES-IB-MA,Spain,Mallorca,10YES-REE------0,ESP
+ES-IB-ME,Spain,Menorca,10YES-REE------0,ESP
+ES-ML,Spain,Melilla,10YES-REE------0,ESP
+ET,Ethiopia,Ethiopia,,ETH
+FI,Finland,Finland,10YFI-1--------U,FIN
+FJ,Fiji,Fiji,,FJI
+FK,Falkland Islands,Falkland Islands,,FLK
+FM,Micronesia,Micronesia,,FSM
+FO,Faroe Islands,Faroe Islands,,FRO
+FO-MI,Faroe Islands,Main Islands,,FRO
+FO-SI,Faroe Islands,South Island,,FRO
+FR,France,France,10YFR-RTE------C,FRA
+FR-COR,France,Corsica,10YFR-RTE------C,FRA
+GA,Gabon,Gabon,,GAB
+GB,Great Britain,Great Britain,,GBR
+GB-NIR,Great Britain,Northern Ireland,,GBR
+GB-ORK,Great Britain,Orkney Islands,,GBR
+GE,Georgia,Georgia,,GEO
+GF,French Guiana,French Guiana,,GUF
+GH,Ghana,Ghana,,GHA
+GI,Gibraltar,Gibraltar,,GIB
+GL,Greenland,Greenland,,GRL
+GL,Greenland,Greenland,,GRL
+GN,Guinea,Guinea,,GIN
+GP,Guadeloupe,Guadeloupe,,GLP
+GQ,Equatorial Guinea,Equatorial Guinea,,GNQ
+GR,Greece,Greece,10YGR-HTSO-----Y,GRC
+GS,South Georgia and the South Sandwich Islands,South Georgia and the South Sandwich Islands,,SGS
+GT,Guatemala,Guatemala,,GTM
+GU,Guam,Guam,,GUM
+GW,Guinea-Bissau,Guinea-Bissau,,GNB
+GY,Guyana,Guyana,,GUY
+HK,Hong Kong,Hong Kong,,HKG
+HN,Honduras,Honduras,,HND
+HR,Croatia,Croatia,10YHR-HEP------M,HRV
+HT,Haiti,Haiti,,HTI
+HU,Hungary,Hungary,10YHU-MAVIR----U,HUN
+ID,Indonesia,Indonesia,,IDN
+IE,Ireland,Ireland,10Y1001A1001A59C,IRL
+IL,Israel,Israel,,ISR
+IN,Mainland India,Mainland India,,IND
+IN-EA,India,Eastern India,,IND
+IN-NE,India,North Eastern India,,IND
+IN-NO,India,Northern India,,IND
+IN-SO,India,Southern India,,IND
+IN-WE,India,Western India,,IND
+IQ,Iraq,Iraq,,IRQ
+IR,Iran,Iran,,IRN
+IS,Iceland,Iceland,,ISL
+IT,Italy,Italy,10Y1001A1001A73I,ITA
+IT-CNO,Italy,Central North Italy,10Y1001A1001A73I,ITA
+IT-CSO,Italy,Central South Italy,10Y1001A1001A73I,ITA
+IT-NO,Italy,North Italy,10Y1001A1001A73I,ITA
+IT-SAR,Italy,Sardinia,10Y1001A1001A73I,ITA
+IT-SIC,Italy,Sicily,10Y1001A1001A73I,ITA
+IT-SO,Italy,South Italy,10Y1001A1001A73I,ITA
+JM,Jamaica,Jamaica,,JAM
+JO,Jordan,Jordan,,JOR
+JP,Japan,Japan,,JPN
+JP-CB,Japan,Chūbu,,JPN
+JP-CG,Japan,Chūgoku,,JPN
+JP-HKD,Japan,Hokkaidō,,JPN
+JP-HR,Japan,Hokuriku,,JPN
+JP-KN,Japan,Kansai,,JPN
+JP-KY,Japan,Kyūshū,,JPN
+JP-ON,Japan,Okinawa,,JPN
+JP-SK,Japan,Shikoku,,JPN
+JP-TH,Japan,Tōhoku,,JPN
+JP-TK,Japan,Tōkyō,,JPN
+KE,Kenya,Kenya,,KEN
+KG,Kyrgyzstan,Kyrgyzstan,,KGZ
+KH,Cambodia,Cambodia,,KHM
+KM,Comoros,Comoros,,COM
+KP,North Korea,North Korea,,PRK
+KR,South Korea,South Korea,,KOR
+KW,Kuwait,Kuwait,,KWT
+KY,Cayman Islands,Cayman Islands,,CYM
+KZ,Kazakhstan,Kazakhstan,,KAZ
+LA,Laos,Laos,,LAO
+LB,Lebanon,Lebanon,,LBN
+LC,Saint Lucia,Saint Lucia,,LCA
+LK,Sri Lanka,Sri Lanka,,LKA
+LR,Liberia,Liberia,,LBR
+LS,Lesotho,Lesotho,,LSO
+LT,Lithuania,Lithuania,10YLT-1001A0008Q,LTU
+LU,Luxembourg,Luxembourg,,LUX
+LV,Latvia,Latvia,10YLV-1001A00074,LVA
+LY,Libya,Libya,,LBY
+MA,Morocco,Morocco,,MAR
+MD,Moldova,Moldova,10Y1001A1001A990,MDA
+ME,Montenegro,Montenegro,10YCS-CG-TSO---S,MNE
+MG,Madagascar,Madagascar,,MDG
+MK,North Macedonia,North Macedonia,,MKD
+ML,Mali,Mali,,MLI
+MM,Myanmar,Myanmar,,MMR
+MN,Mongolia,Mongolia,,MNG
+MO,Macao3,Macao3,,MCO
+MQ,Martinique,Martinique,,MTQ
+MR,Mauritania,Mauritania,,MRT
+MT,Malta,Malta,,MLT
+MU,Mauritius,Mauritius,,MUS
+MV,Maldives,Maldives,,MDV
+MW,Malawi,Malawi,,MWI
+MX,Mexico,Mexico,,MEX
+MY,Malaysia,Malaysia,,MYS
+MY-EM,Malaysia,Borneo,,MYS
+MY-WM,Malaysia,Peninsula,,MYS
+MZ,Mozambique,Mozambique,,MOZ
+,Namibia,Namibia,,NAM
+NC,New Caledonia,New Caledonia,,NCL
+NE,Niger,Niger,,NER
+NG,Nigeria,Nigeria,,NGA
+NI,Nicaragua,Nicaragua,,NIC
+NL,Netherlands,Netherlands,10YNL----------L,NLD
+NO,Norway,Norway,10YNO-1--------2,NOR
+NO-NO1,Norway,Southeast Norway,10YNO-1--------2,NOR
+NO-NO2,Norway,Southwest Norway,10YNO-1--------2,NOR
+NO-NO3,Norway,Middle Norway,10YNO-1--------2,NOR
+NO-NO4,Norway,North Norway,10YNO-1--------2,NOR
+NO-NO5,Norway,West Norway,10YNO-1--------2,NOR
+NP,Nepal,Nepal,,NPL
+NZ,New Zealand,New Zealand,,NZL
+OM,Oman,Oman,,OMN
+PA,Panama,Panama,,PAN
+PE,Peru,Peru,,PER
+PF,French Polynesia,French Polynesia,,PYF
+PG,Papua New Guinea,Papua New Guinea,,PNG
+PH,Philippines,Philippines,,PHL
+PH-LU,Philippines,Luzon,,PHL
+PH-MI,Philippines,Mindanao,,PHL
+PH-VI,Philippines,Visayas,,PHL
+PK,Pakistan,Pakistan,,PAK
+PL,Poland,Poland,10YPL-AREA-----S,POL
+PM,Saint Pierre and Miquelon,Saint Pierre and Miquelon,,SPM
+PR,Puerto Rico,Puerto Rico,,PRI
+PS,State of Palestine,State of Palestine,,PSE
+PT,Portugal,Portugal,10YPT-REN------W,PRT
+PT-MA,Portugal,Madeira,10YPT-REN------W,PRT
+PW,Palau,Palau,,PLW
+PY,Paraguay,Paraguay,,PRY
+QA,Qatar,Qatar,,QAT
+RE,Réunion,Réunion,,GBR
+RO,Romania,Romania,10YRO-TEL------P,ROU
+RS,Serbia,Serbia,10YCS-CG-TSO---S,SRB
+RU-1,Russia,Europe-Ural,,RUS
+RU-2,Russia,Siberia,,RUS
+RU-AS,Russia,East,,RUS
+RW,Rwanda,Rwanda,,RWA
+SA,Saudi Arabia,Saudi Arabia,,SAU
+SB,Solomon Islands,Solomon Islands,,SLB
+SC,Seychelles,Seychelles,,SYC
+SD,Sudan,Sudan,,SDN
+SE,Sweden,Sweden,10Y1001A1001A44P,SWE
+SE-SE1,Sweden,North Sweden,10Y1001A1001A44P,SWE
+SE-SE2,Sweden,North Central Sweden,10Y1001A1001A44P,SWE
+SE-SE3,Sweden,South Central Sweden,10Y1001A1001A44P,SWE
+SE-SE4,Sweden,South Sweden,10Y1001A1001A44P,SWE
+SG,Singapore,Singapore,,SGP
+SI,Slovenia,Slovenia,10YSI-ELES-----O,SVN
+SK,Slovakia,Slovakia,10YSK-SEPS-----K,SVK
+SL,Sierra Leone,Sierra Leone,,SLE
+SN,Senegal,Senegal,,SEN
+SO,Somalia,Somalia,,SOM
+SR,Suriname,Suriname,,SUR
+SS,South Sudan,South Sudan,,SSD
+SV,El Salvador,El Salvador,,SLV
+SY,Syria,Syria,,SYR
+SZ,Eswatini,Eswatini,,SWZ
+TD,Chad,Chad,,TCD
+TG,Togo,Togo,,TGO
+TH,Thailand,Thailand,,THA
+TJ,Tajikistan,Tajikistan,,TJK
+TL,Timor-Leste,Timor-Leste,,TLS
+TM,Turkmenistan,Turkmenistan,,TKM
+TN,Tunisia,Tunisia,,TUN
+TO,Tonga,Tonga,,TON
+TR,Turkey,Turkey,10XTR-TEIAS----9,TUR
+TT,Trinidad and Tobago,Trinidad and Tobago,,TTO
+TW,Taiwan,Taiwan,,TWN
+TZ,Tanzania,Tanzania,,TZA
+UG,Uganda,Uganda,,UGA
+US,Contiguous United States,Contiguous United States,,USA
+US-AK,USA,Alaska,,USA
+US-AK-SEAPA,USA,Southeast Alaska Power Agency,,USA
+US-CAL-BANC,USA,Balancing Authority of Northern California,,USA
+US-CAL-CISO,USA,CAISO,,USA
+US-CAL-IID,USA,Imperial Irrigation District,,USA
+US-CAL-LDWP,USA,Los Angeles Department of Water and Power,,USA
+US-CAL-TIDC,USA,Turlock Irrigation District,,USA
+US-CAR-CPLE,USA,Duke Energy Progress East,,USA
+US-CAR-CPLW,USA,Duke Energy Progress West,,USA
+US-CAR-DUK,USA,Duke Energy Carolinas,,USA
+US-CAR-SC,USA,South Carolina Public Service Authority,,USA
+US-CAR-SCEG,USA,South Carolina Electric & Gas Company,,USA
+US-CAR-YAD,USA,Alcoa Power Generating,,USA
+US-CENT-SPA,USA,Southwestern Power Administration,,USA
+US-CENT-SWPP,USA,Southwest Power Pool,,USA
+US-FLA-FMPP,USA,Florida Municipal Power Pool,,USA
+US-FLA-FPC,USA,Duke Energy Florida,,USA
+US-FLA-FPL,USA,Florida Power and Light Company,,USA
+US-FLA-GVL,USA,Gainesville Regional Utilities,,USA
+US-FLA-HST,USA,City of Homestead,,USA
+US-FLA-JEA,USA,Jacksonville Electric Authority,,USA
+US-FLA-SEC,USA,Seminole Electric Cooperative,,USA
+US-FLA-TAL,USA,City of Tallahassee,,USA
+US-FLA-TEC,USA,Tampa Electric Company,,USA
+US-MIDA-PJM,USA,PJM Interconnection,,USA
+US-MIDW-AECI,USA,Associated Electric Cooperative,,USA
+US-MIDW-LGEE,USA,Louisville Gas and Electric Company and Kentucky Utilities,,USA
+US-MIDW-MISO,USA,Midcontinent ISO,,USA
+US-NE-ISNE,USA,ISO New England,,USA
+US-NW-AVA,USA,Avista Corporation,,USA
+US-NW-BPAT,USA,Bonneville Power Administration,,USA
+US-NW-CHPD,USA,Chelan County,,USA
+US-NW-DOPD,USA,Douglas County,,USA
+US-NW-GCPD,USA,Grant County,,USA
+US-NW-GRID,USA,Gridforce Energy Management,,USA
+US-NW-IPCO,USA,Idaho Power Company,,USA
+US-NW-NEVP,USA,Nevada Power Company,,USA
+US-NW-NWMT,USA,Northwestern Energy,,USA
+US-NW-PACE,USA,Pacificorp East,,USA
+US-NW-PACW,USA,Pacificorp West,,USA
+US-NW-PGE,USA,Portland General Electric Company,,USA
+US-NW-PSCO,USA,Public Service Company of Colorado,,USA
+US-NW-PSEI,USA,Puget Sound Energy,,USA
+US-NW-SCL,USA,Seattle City Light,,USA
+US-NW-TPWR,USA,City of Tacoma,,USA
+US-NW-WACM,USA,Western Area Power Administration - Rocky Mountain Region,,USA
+US-NW-WAUW,USA,Western Area Power Administration - Upper Great Plains West,,USA
+US-NY-NYIS,USA,New York ISO,,USA
+US-SE-SEPA,USA,Southeastern Power Administration,,USA
+US-SE-SOCO,USA,Southern Company Services,,USA
+US-SW-AZPS,USA,Arizona Public Service Company,,USA
+US-SW-EPE,USA,El Paso Electric Company,,USA
+US-SW-PNM,USA,Public Service Company of New Mexico,,USA
+US-SW-SRP,USA,Salt River Project,,USA
+US-SW-TEPC,USA,Tucson Electric Power Company,,USA
+US-SW-WALC,USA,Western Area Power Administration - Desert Southwest Region,,USA
+US-TEN-TVA,USA,Tennessee Valley Authority,,USA
+US-TEX-ERCO,USA,Electric Reliability Council of Texas,,USA
+UY,Uruguay,Uruguay,,URY
+UZ,Uzbekistan,Uzbekistan,,UZB
+VC,Saint Vincent and the Grenadines,Saint Vincent and the Grenadines,,VCT
+VE,Venezuela,Venezuela,,VEN
+VI,USA,Virgin Islands,,VIR
+VN,Vietnam,Vietnam,,VNM
+VU,Vanuatu,Vanuatu,,VUT
+WS,Samoa,Samoa,,WSM
+XK,Kosovo,Kosovo,10Y1001C--00100H,SRB
+YE,Yemen,Yemen,,YEM
+YT,Mayotte,Mayotte,,MYT
+ZA,South Africa,South Africa,,ZAF
+ZM,Zambia,Zambia,,ZMB
+ZW,Zimbabwe,Zimbabwe,,ZWE

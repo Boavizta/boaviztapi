@@ -171,3 +171,5 @@ peripheral_description = "# ✔ Peripheral impacts\n" \
 
 electricity_available_countries = "# ✔ ️Get a list of all the countries supported by the electricity pricing API\n"
 electricity_price = "# ✔ ️Get the average yearly electricity cost of running an on-premise device.\n"
+carbon_intensity = "# ✔ ️Get the latest carbon intensity values for a given electricity zone.\n"
+power_breakdown = "# ✔ ️Get the power breakdown values for a given electricity zone (percentage of fossil vs renewable resources used to procure the energy).\n"

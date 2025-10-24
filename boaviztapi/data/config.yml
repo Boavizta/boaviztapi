@@ -30,6 +30,7 @@ default_vr_headset: "vr-headset-lcd"
 default_vr_controller: "vr-controller-default"
 
 default_criteria: ["gwp", "adp", "pe"]
+default_electricitymaps_temporal_granularity: "hourly"
 
 default_duration:
 

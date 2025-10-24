@@ -1,11 +1,18 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Query, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 from fastapi_cache.decorator import cache
+from pydantic import AfterValidator
 
-from boaviztapi import factors
-from boaviztapi.routers.openapi_doc.descriptions import electricity_available_countries, electricity_price
-from boaviztapi.service.costs_provider import get_eic_countries, get_price_for_country
+from boaviztapi.dto.electricity.electricity import Country
+from boaviztapi.routers.openapi_doc.descriptions import electricity_available_countries, electricity_price, \
+    carbon_intensity, power_breakdown
+from boaviztapi.routers.openapi_doc.examples import electricity_carbon_intensity, electricity_power_breakdown, \
+    electricity_maps_price
+from boaviztapi.service.carbon_intensity_provider import CarbonIntensityProvider
+from boaviztapi.service.costs_provider import ElectricityCostsProvider
+from boaviztapi.service.exceptions import APIMissingValueError, APIError, APIAuthenticationError
+from boaviztapi.utils.validators import check_zone_code_in_electricity_maps
 
 electricity_prices_router = APIRouter(
     prefix='/v1/electricity',
@@ -13,32 +20,68 @@ electricity_prices_router = APIRouter(
 )
 
 
-@cache(expire=60 * 60 * 24)
-@electricity_prices_router.get('/available_countries', description=electricity_available_countries)
+@electricity_prices_router.get('/available_countries', description=electricity_available_countries,
+                               response_model=list[Country])
+@cache(expire=60 * 60 * 24)  # 1 day
 async def get_available_countries():
-    return get_eic_countries()
+    return ElectricityCostsProvider.get_eic_countries()
 
 
-@electricity_prices_router.get('/price', description=electricity_price)
+@electricity_prices_router.get('/price', description=electricity_price,
+                               responses={200: {
+                                   "description": "Successful Response",
+                                   "content": {"application/json": {"example": electricity_maps_price}}
+                               }})
 @cache(expire=3600)
 async def get_electricity_price(
-        iso3_country: Annotated[str | None, Query(example=factors["electricity"]["entsoe_supported_countries"])] = None):
-    if iso3_country is None:
-        raise HTTPException(status_code=400, detail="iso3_country cannot be empty!")
-    if iso3_country not in [c["ISO3 Code"] for c in get_eic_countries()]:
-        raise HTTPException(status_code=400, detail="iso3_country is not valid!")
+        zone: Annotated[str, Query(
+            description="Zone code as defined in the ElectricityMaps API",
+            examples=["AT"]
+        ), AfterValidator(check_zone_code_in_electricity_maps)],
+        temporalGranularity: str = Query(examples=["5_minutes", "15_minutes", "hourly"], default="hourly")):
+    try:
+        return ElectricityCostsProvider.get_price_for_country_elecmaps(zone, temporalGranularity)
+    except APIMissingValueError as e:
+        raise HTTPException(status_code=404, detail=str(e)) from e
+    except APIError as e:
+        raise HTTPException(status_code=500, detail=str(e)) from e
 
-    result = get_price_for_country(iso3_country)
-    if not result:
-        raise HTTPException(status_code=404, detail=f"Could not reach the pricing API. Please try again later or"
-                                                    f" contact system administrator")
-    if "Acknowledgement_MarketDocument" in result:
-        # error case
-        error_msg = result["Acknowledgement_MarketDocument"]["Reason"]["text"]
-        raise HTTPException(status_code=404, detail=f"{error_msg} not found")
-    timeseries = result["Publication_MarketDocument"]["TimeSeries"]
-    if len(timeseries) > 1:
-        timeseries = timeseries[0]
-    values = timeseries["Period"]["Point"]
-    avg_price = ([float(record["price.amount"]) for record in values])
-    return sum(avg_price) / len(avg_price)
+
+@electricity_prices_router.get('/carbon_intensity', description=carbon_intensity,
+                               responses={200: {
+                                   "description": "Successful Response",
+                                   "content": {"application/json": {"example": electricity_carbon_intensity}}
+                               }})
+@cache(expire=3600)
+async def get_carbon_intensity(
+        zone: Annotated[str, Query(
+            description="Zone code as defined in the ElectricityMaps API",
+            examples=["AT"]
+        ), AfterValidator(check_zone_code_in_electricity_maps)],
+        temporalGranularity: str = Query(examples=["5_minutes", "15_minutes", "hourly"], default="hourly")):
+    try:
+        return CarbonIntensityProvider.get_carbon_intensity(zone, temporalGranularity)
+    except APIAuthenticationError as e:
+        raise HTTPException(status_code=401, detail=str(e)) from e
+    except APIError as e:
+        raise HTTPException(status_code=500, detail=str(e)) from e
+
+
+@electricity_prices_router.get('/power_breakdown', description=power_breakdown,
+                               responses={200: {
+                                   "description": "Successful Response",
+                                   "content": {"application/json": {"example": electricity_power_breakdown}}
+                               }})
+@cache(expire=3600)
+async def get_power_breakdown(
+        zone: Annotated[str, Query(
+            description="Zone code as defined in the ElectricityMaps API",
+            examples=["AT"]
+        ), AfterValidator(check_zone_code_in_electricity_maps)],
+        temporalGranularity: str = Query(examples=["5_minutes", "15_minutes", "hourly"], default="hourly")):
+    try:
+        return CarbonIntensityProvider.get_power_breakdown(zone, temporalGranularity)
+    except APIAuthenticationError as e:
+        raise HTTPException(status_code=401, detail=str(e)) from e
+    except APIError as e:
+        raise HTTPException(status_code=500, detail=str(e)) from e
