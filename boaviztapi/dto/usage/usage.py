@@ -58,8 +58,14 @@ class UsageCloud(UsageServer):
     instance_per_server: Optional[int] = None
 
 
+def _reset_usage_dto_if_matches_config_defaults(usage_dto: Usage):
+    """Reset usage_dto fields to None if they match the config default values."""
+    if usage_dto.usage_location and usage_dto.usage_location.strip().upper() == config["default_location"].upper():
+        usage_dto.usage_location = None
+
 def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
     usage_model = ModelUsage(archetype=archetype)
+    _reset_usage_dto_if_matches_config_defaults(usage_dto)
 
     for elec_factor in usage_dto.elec_factors.__dict__.keys():
         if usage_dto.elec_factors.__dict__[elec_factor] is not None:
@@ -98,6 +104,7 @@ def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
 def mapper_usage_server(usage_dto: UsageServer,
                         archetype=get_server_archetype(config["default_server"]).get("USAGE")) -> ModelUsageServer:
     usage_model_server = ModelUsageServer(archetype=archetype)
+    _reset_usage_dto_if_matches_config_defaults(usage_dto)
 
     for elec_factor in usage_dto.elec_factors.__dict__.keys():
         if usage_dto.elec_factors.__dict__[elec_factor] is not None:
@@ -132,6 +139,7 @@ def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_arche
                                                                                          "default_cloud_provider"]).get(
     "USAGE")) -> ModelUsageCloud:
     usage_model_cloud = ModelUsageCloud(archetype=archetype)
+    _reset_usage_dto_if_matches_config_defaults(usage_dto)
 
     for elec_factor in usage_dto.elec_factors.__dict__.keys():
         if usage_dto.elec_factors.__dict__[elec_factor] is not None:

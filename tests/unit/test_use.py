@@ -1,6 +1,7 @@
-from boaviztapi.dto.usage.usage import mapper_usage_server
+from boaviztapi.dto.usage.usage import mapper_usage_server, _reset_usage_dto_if_matches_config_defaults, UsageServer
 from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.service.impacts_computation import compute_single_impact
+from boaviztapi import config
 
 
 def test_usage_server_french_mix_1_kw(french_mix_1_kw_dto):
@@ -36,3 +37,33 @@ def test_usage_server_empty_usage(empty_usage_dto):
                                                                                               'be interpreted with caution (see min and max values)']}
     assert compute_single_impact(server, 'use', 'gwp', duration=365 * 24).to_json() == {'max': 64320.0, 'min': 38.55,
                                                                                           'value': 3000.0}
+
+
+def test_reset_usage_dto_if_matches_config_defaults():
+    """Test that usage_location is reset to None when it matches config default"""
+
+    usage_dto = UsageServer()
+    usage_dto.usage_location = "EEE"
+    _reset_usage_dto_if_matches_config_defaults(usage_dto)
+    assert usage_dto.usage_location is None
+
+    usage_dto = UsageServer()
+    usage_dto.usage_location = "eee"
+    _reset_usage_dto_if_matches_config_defaults(usage_dto)
+    assert usage_dto.usage_location is None
+
+    usage_dto = UsageServer()
+    usage_dto.usage_location = "Eee "
+    _reset_usage_dto_if_matches_config_defaults(usage_dto)
+    assert usage_dto.usage_location is None
+
+    usage_dto = UsageServer()
+    usage_dto.usage_location = "FRA"
+    _reset_usage_dto_if_matches_config_defaults(usage_dto)
+    assert usage_dto.usage_location == "FRA"
+
+    usage_dto = UsageServer()
+    usage_dto.usage_location = None
+    _reset_usage_dto_if_matches_config_defaults(usage_dto)
+    assert usage_dto.usage_location is None
+
