@@ -11,8 +11,12 @@ _logger = logging.getLogger(__name__)
 class ApplicationContext:
     ENTSOE_API_KEY: str | None = None
     ELECTRICITYMAPS_API_KEY: str | None = None
+    GOOGLE_CLIENT_ID: str | None = None
+    GOOGLE_CLIENT_SECRET: str | None = None
+    SESSION_MIDDLEWARE_SECRET_KEY: str | None = None
 
-    dependencies = ["ENTSOE_API_KEY", "ELECTRICITYMAPS_API_KEY"]
+    dependencies = ["ENTSOE_API_KEY", "ELECTRICITYMAPS_API_KEY", "GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET",
+                    "SESSION_MIDDLEWARE_SECRET_KEY"]
 
     def load_secrets(self):
         # Check docker secrets first

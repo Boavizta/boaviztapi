@@ -16,10 +16,12 @@ from fastapi.responses import HTMLResponse
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.inmemory import InMemoryBackend
 from mangum import Mangum
+from starlette.middleware.sessions import SessionMiddleware
+from starlette.middleware.authentication import AuthenticationMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
-
 from boaviztapi.application_context import get_app_context
+from boaviztapi.routers.auth_router import auth_router
 from boaviztapi.routers.cloud_router import cloud_router
 from boaviztapi.routers.component_router import component_router
 from boaviztapi.routers.consumption_profile_router import consumption_profile
@@ -29,6 +31,7 @@ from boaviztapi.routers.peripheral_router import peripheral_router
 from boaviztapi.routers.server_router import server_router
 from boaviztapi.routers.terminal_router import terminal_router
 from boaviztapi.routers.utils_router import utils_router
+from boaviztapi.service.auth.session_backend import SessionAuthBackend
 from boaviztapi.utils.get_version import get_version_from_pyproject
 
 
@@ -45,9 +48,10 @@ async def lifespan(_: FastAPI) -> AsyncIterator[None]:
 stage = os.environ.get('STAGE', None)
 openapi_prefix = f"/{stage}" if stage else "/"
 app = FastAPI(lifespan=lifespan, root_path=openapi_prefix)  # Here is the magic
+origins = json.loads(os.getenv("ALLOWED_ORIGINS", '["*"]'))
 version = get_version_from_pyproject()
 _logger = logging.getLogger(__name__)
-origins = json.loads(os.getenv("ALLOWED_ORIGINS", '["*"]'))
+ctx = get_app_context()
 
 
 # Ensure that even an uncaught exception includes CORS headers.
@@ -62,15 +66,20 @@ async def catch_exceptions_middleware(request: Request, call_next):
         _logger.exception(str(e), exc_info=e)
         return Response('Internal Server Error', status_code=500)
 
+app.add_middleware(AuthenticationMiddleware, backend=SessionAuthBackend())
+
+app.add_middleware(SessionMiddleware,
+                   secret_key=ctx.SESSION_MIDDLEWARE_SECRET_KEY,
+                   https_only=os.getenv("SESSION_MIDDLEWARE_HTTPS_ONLY", False),
+                   max_age=os.getenv("SESSION_MIDDLEWARE_MAX_AGE", 3600))
+
+app.add_middleware(CORSMiddleware,
+                   allow_origins=origins,
+                   allow_credentials=True,
+                   allow_methods=["*"],
+                   allow_headers=["*"])
 
 app.middleware('http')(catch_exceptions_middleware)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 app.include_router(server_router)
 app.include_router(cloud_router)
@@ -81,6 +90,8 @@ app.include_router(iot)
 app.include_router(consumption_profile)
 app.include_router(utils_router)
 app.include_router(electricity_prices_router)
+
+app.include_router(auth_router)
 
 if __name__ == '__main__':
     import uvicorn
