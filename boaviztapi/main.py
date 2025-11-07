@@ -27,6 +27,7 @@ from boaviztapi.routers.component_router import component_router
 from boaviztapi.routers.consumption_profile_router import consumption_profile
 from boaviztapi.routers.electricity_prices_router import electricity_prices_router
 from boaviztapi.routers.iot_router import iot
+from boaviztapi.routers.options_router import options_router
 from boaviztapi.routers.peripheral_router import peripheral_router
 from boaviztapi.routers.server_router import server_router
 from boaviztapi.routers.terminal_router import terminal_router
@@ -90,6 +91,7 @@ app.include_router(iot)
 app.include_router(consumption_profile)
 app.include_router(utils_router)
 app.include_router(electricity_prices_router)
+app.include_router(options_router)
 
 app.include_router(auth_router)
 

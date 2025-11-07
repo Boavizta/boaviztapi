@@ -1,7 +1,6 @@
 import os
+import boaviztapi.service.cloud_provider as utils
 from typing import List, Optional
-
-import pandas as pd
 
 from fastapi import APIRouter, Query, Body, HTTPException
 
@@ -14,7 +13,7 @@ from boaviztapi.routers.openapi_doc.descriptions import cloud_provider_descripti
 from boaviztapi.routers.openapi_doc.examples import cloud_example
 from boaviztapi.service.archetype import get_cloud_instance_archetype, get_device_archetype_lst
 from boaviztapi.service.impacts_computation import compute_impacts
-from boaviztapi.service.verbose import verbose_device, verbose_cloud
+from boaviztapi.service.verbose import verbose_cloud
 
 cloud_router = APIRouter(
     prefix='/v1/cloud',
@@ -85,16 +84,15 @@ async def instance_cloud_impact(
 @cloud_router.get('/instance/all_instances',
                   description=all_default_cloud_instances)
 async def server_get_all_archetype_name(provider: str = Query(None, example="aws")):
-    if not os.path.exists(data_dir + '/archetypes/cloud/' + provider + '.csv'):
-        raise HTTPException(status_code=404, detail=f"No available data for this cloud provider ({provider})")
-    return get_device_archetype_lst(os.path.join(data_dir, 'archetypes/cloud/' + provider + '.csv'))
-
+    try:
+        return utils.get_cloud_instance_types(provider)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=e)
 
 @cloud_router.get('/instance/all_providers',
                   description=all_default_cloud_providers)
 async def server_get_all_provider_name():
-    df = pd.read_csv(os.path.join(data_dir, 'archetypes/cloud/providers.csv'))
-    return df['provider.name'].tolist()
+    return utils.get_cloud_providers()
 
 
 async def cloud_instance_impact(cloud_instance: ServiceCloudInstance,

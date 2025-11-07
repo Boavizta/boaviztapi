@@ -1,8 +1,6 @@
 from fastapi import APIRouter, Request, HTTPException
 from fastapi.params import Depends
 from fastapi.responses import RedirectResponse
-from starlette.authentication import requires
-from starlette.responses import PlainTextResponse
 
 from boaviztapi.dto.auth.user_dto import UserPublicDTO
 from boaviztapi.service.auth.dependencies import get_current_user
