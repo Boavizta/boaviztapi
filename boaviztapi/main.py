@@ -15,15 +15,21 @@ from fastapi.openapi.utils import get_openapi
 from fastapi.responses import HTMLResponse
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.inmemory import InMemoryBackend
+from pymongo import AsyncMongoClient
 from mangum import Mangum
 from starlette.middleware.sessions import SessionMiddleware
 from starlette.middleware.authentication import AuthenticationMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
+
+from boaviztapi.routers.portfolio_router import portfolio_router
+from boaviztapi.routers.user_router import user_router
+from boaviztapi.utils.get_version import get_version_from_pyproject
 from boaviztapi.application_context import get_app_context
 from boaviztapi.routers.auth_router import auth_router
 from boaviztapi.routers.cloud_router import cloud_router
 from boaviztapi.routers.component_router import component_router
+from boaviztapi.routers.configuration_router import configuration_router
 from boaviztapi.routers.consumption_profile_router import consumption_profile
 from boaviztapi.routers.electricity_prices_router import electricity_prices_router
 from boaviztapi.routers.iot_router import iot
@@ -33,15 +39,17 @@ from boaviztapi.routers.server_router import server_router
 from boaviztapi.routers.terminal_router import terminal_router
 from boaviztapi.routers.utils_router import utils_router
 from boaviztapi.service.auth.session_backend import SessionAuthBackend
-from boaviztapi.utils.get_version import get_version_from_pyproject
 
 
 @contextlib.asynccontextmanager
 async def lifespan(_: FastAPI) -> AsyncIterator[None]:
     # TODO: persist cache using postgres/redis, etc.
     FastAPICache.init(InMemoryBackend(), prefix="fastapi-cache")  # initialize in-memory cache
-    _ = get_app_context()
+    _ctx = get_app_context()
+    _ctx.load_secrets()
+    await _ctx.create_db_connection()
     yield
+    await _ctx.close_db_connection()
 
 
 # Serverless frameworks adds a 'stage' prefix to the route used to serve applications
@@ -92,8 +100,12 @@ app.include_router(consumption_profile)
 app.include_router(utils_router)
 app.include_router(electricity_prices_router)
 app.include_router(options_router)
+app.include_router(configuration_router)
 
 app.include_router(auth_router)
+app.include_router(user_router)
+
+app.include_router(portfolio_router)
 
 if __name__ == '__main__':
     import uvicorn

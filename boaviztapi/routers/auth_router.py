@@ -1,8 +1,14 @@
+from typing import Mapping, Any
+from datetime import datetime, UTC
 from fastapi import APIRouter, Request, HTTPException
 from fastapi.params import Depends
 from fastapi.responses import RedirectResponse
+from pymongo.asynchronous.collection import AsyncCollection
 
+from boaviztapi.application_context import get_app_context
 from boaviztapi.dto.auth.user_dto import UserPublicDTO
+from boaviztapi.model.crud_models.user_model import UserModel, UserCollection
+from boaviztapi.routers.pydantic_based_router import GenericPydanticCRUDService
 from boaviztapi.service.auth.dependencies import get_current_user
 from boaviztapi.service.auth.google_auth_service import GoogleAuthService
 
@@ -31,6 +37,19 @@ async def google_signin_callback(request: Request):
             request.session['user'] = UserPublicDTO.from_google_jwt(google_jwt_payload).model_dump_json()
         except ValueError as e:
             raise HTTPException(status_code=401, detail=str(e)) from e
+
+        service = get_crud_service()
+        try:
+            if (
+                user := await service.get_one_by_filter({"sub": google_jwt_payload.sub})
+            ) is not None:
+                # The user already exists, just update his/her last seen date
+                user_model = UserModel(sub=user.sub, registration_date=user.registration_date,
+                                       last_seen_date=datetime.now(UTC))
+                await service.update(user.id, user_model)
+        except HTTPException as e:
+            # The user does not exist, create a new one
+            await service.create(UserModel.from_user_dto(await get_current_user(request)))
 
         #TODO: add nonce verification by sending it to the frontend on nextjs startup
         return RedirectResponse(status_code=303, url=request_origin)
@@ -62,3 +81,19 @@ def verify_double_submit_cookie(csrf_token_cookie: str, csrf_token_body: str):
     if csrf_token_cookie != csrf_token_body:
         raise HTTPException(status_code=400,
                             detail="Google CSRF token mismatch. Failed to verify double submit cookie.")
+
+def get_user_collection() -> AsyncCollection[Mapping[str, Any] | Any]:
+    ctx = get_app_context()
+    if ctx.mongodb_client is None:
+        raise HTTPException(status_code=503, detail="MongoDB is not available!")
+
+    db = ctx.mongodb_client.get_database(name="development")
+    return db.get_collection(name="users")
+
+def get_crud_service() -> GenericPydanticCRUDService[UserModel]:
+    return GenericPydanticCRUDService(
+        model_class=UserModel,
+        collection_class=UserCollection,
+        mongo_collection=get_user_collection(),
+        collection_name="users"
+    )

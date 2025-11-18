@@ -1,0 +1,39 @@
+services:
+
+  mongodb:
+    image: mongo:8.2.1
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_volume:/data/db
+    networks:
+      default:
+        aliases:
+          - mongodb
+
+  backend:
+    restart: on-failure:2
+    pull_policy: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - path: .env.docker
+        required: true
+    ports:
+      - "5000:5000"
+    expose:
+      - 5000
+    depends_on:
+      - mongodb
+    networks:
+      - default
+
+
+
+volumes:
+  mongodb_volume:
+
+networks:
+  default:
+
