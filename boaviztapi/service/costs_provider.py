@@ -10,7 +10,6 @@ from boaviztapi import data_dir
 from boaviztapi.application_context import get_app_context
 from boaviztapi.dto.electricity.electricity import Country
 from boaviztapi.service.base import BaseService
-from boaviztapi.service.cache.cache import CacheService
 from boaviztapi.service.electricitymaps_service import ElectricityMapsService
 from boaviztapi.service.exceptions import APIError, APIAuthenticationError, APIMissingValueError, \
     APIResponseParsingError
@@ -154,13 +153,3 @@ class ElectricityCostsProvider(ElectricityMapsService):
             raise APIResponseParsingError("Unexpected error response format from the API") from e
         except (ValueError, TypeError) as e:
             raise APIResponseParsingError("Error parsing price data") from e
-
-    @staticmethod
-    def get_cache_scheduler(temporalGranularity: str = 'hourly') -> CacheService:
-        endpoints = []
-        for country in ElectricityCostsProvider.get_eic_countries():
-            url = f"{ElectricityMapsService.base_url}/price-day-ahead/latest?zone={country.zone_code}&temporalGranularity={temporalGranularity}"
-            endpoints.append(url)
-        #TODO: Add temporal granularity as an environment variable, or make it configurable during runtime
-        api_token = ElectricityMapsService._get_api_key()
-        return CacheService(name="electricity_prices_cache", endpoints=endpoints, ttl=3600, headers={"auth-token": api_token})
