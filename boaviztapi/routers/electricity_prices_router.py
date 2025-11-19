@@ -6,7 +6,7 @@ from pydantic import AfterValidator
 
 from boaviztapi.dto.electricity.electricity import Country
 from boaviztapi.routers.openapi_doc.descriptions import electricity_available_countries, electricity_price, \
-    carbon_intensity, power_breakdown
+    carbon_intensity, power_breakdown, electricity_prices_cache, power_breakdowns_cache
 from boaviztapi.routers.openapi_doc.examples import electricity_carbon_intensity, electricity_power_breakdown, \
     electricity_maps_price
 from boaviztapi.service.carbon_intensity_provider import CarbonIntensityProvider
@@ -28,6 +28,7 @@ async def get_available_countries():
 
 
 @electricity_prices_router.get('/price', description=electricity_price,
+                               response_model=Country,
                                responses={200: {
                                    "description": "Successful Response",
                                    "content": {"application/json": {"example": electricity_maps_price}}
@@ -45,6 +46,20 @@ async def get_electricity_price(
         raise HTTPException(status_code=404, detail=str(e)) from e
     except APIError as e:
         raise HTTPException(status_code=500, detail=str(e)) from e
+
+
+@electricity_prices_router.get('/prices', description=electricity_prices_cache,
+                               responses={200: {
+                                   "description": "Successful Response",
+                                   "content": {"application/json": {"example": {
+                                       "https://api.electricitymaps.com/v3/price-day-ahead/latest?zone=AT&temporalGranularity=hourly": {
+                                           "zone": "AT", "datetime": "2025-11-19T20:00:00.000Z",
+                                           "createdAt": "2025-11-18T12:21:16.175Z",
+                                           "updatedAt": "2025-11-18T12:21:16.175Z", "value": 124.81, "unit": "EUR/MWh",
+                                           "source": "nordpool.com", "temporalGranularity": "hourly"}}}}
+                               }})
+async def get_electricity_prices():
+    return await ElectricityCostsProvider.get_cache_scheduler().get_results()
 
 
 @electricity_prices_router.get('/carbon_intensity', description=carbon_intensity,
@@ -85,3 +100,56 @@ async def get_power_breakdown(
         raise HTTPException(status_code=401, detail=str(e)) from e
     except APIError as e:
         raise HTTPException(status_code=500, detail=str(e)) from e
+
+
+@electricity_prices_router.get('/power-breakdowns', description=power_breakdowns_cache,
+                               responses={200: {
+                                   "description": "Successful Response",
+                                   "content": {"application/json": {"example": {
+                                       "https://api.electricitymaps.com/v3/power-breakdown/latest?zone=AE&temporalGranularity=hourly": {
+                                           "zone": "AE",
+                                           "datetime": "2025-11-19T20:00:00.000Z",
+                                           "updatedAt": "2025-11-19T19:26:32.561Z",
+                                           "createdAt": "2025-11-19T13:25:30.600Z",
+                                           "powerConsumptionBreakdown": {
+                                               "nuclear": 5020,
+                                               "geothermal": 0,
+                                               "biomass": 0,
+                                               "coal": 0,
+                                               "wind": 5,
+                                               "solar": 0,
+                                               "hydro": 0,
+                                               "gas": 12655,
+                                               "oil": 113,
+                                               "unknown": 0,
+                                               "hydro discharge": 0,
+                                               "battery discharge": 0
+                                           },
+                                           "powerProductionBreakdown": {
+                                               "nuclear": 5020,
+                                               "geothermal": None,
+                                               "biomass": None,
+                                               "coal": None,
+                                               "wind": 5,
+                                               "solar": 0,
+                                               "hydro": None,
+                                               "gas": 12655,
+                                               "oil": 113,
+                                               "unknown": None,
+                                               "hydro discharge": None,
+                                               "battery discharge": None
+                                           },
+                                           "powerImportBreakdown": {},
+                                           "powerExportBreakdown": {},
+                                           "fossilFreePercentage": 28,
+                                           "renewablePercentage": 0,
+                                           "powerConsumptionTotal": 17794,
+                                           "powerProductionTotal": 17794,
+                                           "powerImportTotal": None,
+                                           "powerExportTotal": None,
+                                           "isEstimated": True,
+                                           "estimationMethod": "GENERAL_PURPOSE_ZONE_MODEL",
+                                           "temporalGranularity": "hourly"
+                                       }}}}}})
+async def get_electricity_prices():
+    return await CarbonIntensityProvider.get_cache_scheduler().get_results()

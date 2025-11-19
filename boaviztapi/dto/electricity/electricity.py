@@ -1,5 +1,7 @@
 from typing import Optional
 
+from pydantic import ConfigDict
+
 from boaviztapi.dto import BaseDTO
 
 
@@ -19,4 +21,14 @@ class Country(BaseDTO):
     subdivision_name: str
     EIC_code: Optional[str] = None
     alpha_3: str
-
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "zone_code": "DK-DK2",
+                "name": "Denmark",
+                "subdivision_name": "East Denmark",
+                "EIC_code": "10YDK-1--------W",
+                "alpha_3": "DNK"
+            }
+        }
+    )
