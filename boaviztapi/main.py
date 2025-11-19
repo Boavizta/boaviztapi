@@ -24,6 +24,8 @@ from starlette.responses import Response
 
 from boaviztapi.routers.portfolio_router import portfolio_router
 from boaviztapi.routers.user_router import user_router
+from boaviztapi.service.cache.cache import CacheService
+from boaviztapi.service.costs_provider import ElectricityCostsProvider
 from boaviztapi.utils.get_version import get_version_from_pyproject
 from boaviztapi.application_context import get_app_context
 from boaviztapi.routers.auth_router import auth_router
@@ -40,14 +42,23 @@ from boaviztapi.routers.terminal_router import terminal_router
 from boaviztapi.routers.utils_router import utils_router
 from boaviztapi.service.auth.session_backend import SessionAuthBackend
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
+_logger = logging.getLogger(__name__)
 
 @contextlib.asynccontextmanager
 async def lifespan(_: FastAPI) -> AsyncIterator[None]:
     # TODO: persist cache using postgres/redis, etc.
     FastAPICache.init(InMemoryBackend(), prefix="fastapi-cache")  # initialize in-memory cache
+
     _ctx = get_app_context()
     _ctx.load_secrets()
     await _ctx.create_db_connection()
+    _logger.info("Starting caches...")
+    electricity_prices_cache = ElectricityCostsProvider.get_cache_scheduler()
+    await electricity_prices_cache.startup()
     yield
     await _ctx.close_db_connection()
 
@@ -59,7 +70,6 @@ openapi_prefix = f"/{stage}" if stage else "/"
 app = FastAPI(lifespan=lifespan, root_path=openapi_prefix)  # Here is the magic
 origins = json.loads(os.getenv("ALLOWED_ORIGINS", '["*"]'))
 version = get_version_from_pyproject()
-_logger = logging.getLogger(__name__)
 ctx = get_app_context()
 
 
@@ -101,10 +111,8 @@ app.include_router(utils_router)
 app.include_router(electricity_prices_router)
 app.include_router(options_router)
 app.include_router(configuration_router)
-
 app.include_router(auth_router)
 app.include_router(user_router)
-
 app.include_router(portfolio_router)
 
 if __name__ == '__main__':

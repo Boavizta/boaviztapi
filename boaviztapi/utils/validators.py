@@ -1,5 +1,3 @@
-from fastapi import HTTPException
-
 from boaviztapi.service.costs_provider import ElectricityCostsProvider
 
 
@@ -10,6 +8,5 @@ def check_alpha3_in_electricity_prices(alpha3: str):
 
 def check_zone_code_in_electricity_maps(zone: str):
     if zone not in [c.zone_code for c in ElectricityCostsProvider.get_eic_countries()]:
-        print("test")
         raise ValueError("This zone code is not supported!")
     return zone
