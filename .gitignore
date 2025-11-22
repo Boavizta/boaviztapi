@@ -140,4 +140,6 @@ dmypy.json
 .serverless
 node_modules
 
+stack.env
+
 #boaviztAPI

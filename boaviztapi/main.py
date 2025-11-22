@@ -97,9 +97,11 @@ app.add_middleware(SessionMiddleware,
                    secret_key=ctx.SESSION_MIDDLEWARE_SECRET_KEY,
                    https_only=os.getenv("SESSION_MIDDLEWARE_HTTPS_ONLY", False),
                    max_age=os.getenv("SESSION_MIDDLEWARE_MAX_AGE", 3600))
-
+# FIXME: Fix the CORS middleware for production
 app.add_middleware(CORSMiddleware,
-                   allow_origins=origins,
+                   # allow_origins=origins,
+                   allow_origins=[],
+                   allow_origin_regex=r"https?://.*",
                    allow_credentials=True,
                    allow_methods=["*"],
                    allow_headers=["*"])
