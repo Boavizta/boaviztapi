@@ -1,3 +1,4 @@
+import os
 from typing import Mapping, Any
 from datetime import datetime, UTC
 from fastapi import APIRouter, Request, HTTPException
@@ -24,10 +25,13 @@ async def google_signin_callback(request: Request):
         if not form:
             raise HTTPException(status_code=400, detail="Google sign-in failed, missing request body!")
 
-        # Check double submit cookie
-        csrf_token_cookie = request.cookies.get('g_csrf_token')
-        csrf_token_body = form['g_csrf_token']
-        verify_double_submit_cookie(csrf_token_cookie, csrf_token_body)
+        # Check double submit cookie only in development environment (prone to CSRF attacks)
+        # For prod environments, we verify the token using google's public key only (cookies can get deleted
+        # due to domain mismatch)
+        if (os.getenv("PROD_ENVIRONMENT", 0)) == 0:
+            csrf_token_cookie = request.cookies.get('g_csrf_token')
+            csrf_token_body = form['g_csrf_token']
+            verify_double_submit_cookie(csrf_token_cookie, csrf_token_body)
 
         # Verify the ID token
         try:
