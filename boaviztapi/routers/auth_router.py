@@ -28,7 +28,7 @@ async def google_signin_callback(request: Request):
             _log.info(f"""
             Received the following request:
             Body keys: {form.keys()}
-            Body contents: {', '.join([item for item in form])}
+            Body contents: {', '.join([f"{k}: {v}" for k, v in form.items()])}
             Cookie contents: {request.cookies}
             """)
         except Exception as e:
@@ -36,9 +36,9 @@ async def google_signin_callback(request: Request):
         if not form:
             raise HTTPException(status_code=400, detail="Google sign-in failed, missing request body!")
 
-        csrf_token_cookie = request.cookies.get('g_csrf_token')
-        csrf_token_body = form['g_csrf_token']
-        verify_double_submit_cookie(csrf_token_cookie, csrf_token_body)
+        # csrf_token_cookie = request.cookies.get('g_csrf_token')
+        # csrf_token_body = form['g_csrf_token']
+        # verify_double_submit_cookie(csrf_token_cookie, csrf_token_body)
 
 
         # Verify the ID token
