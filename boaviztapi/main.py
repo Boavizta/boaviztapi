@@ -28,6 +28,7 @@ from boaviztapi.routers.user_router import user_router
 from boaviztapi.service.cache.cache import CacheService
 from boaviztapi.service.carbon_intensity_provider import CarbonIntensityProvider
 from boaviztapi.service.costs_provider import ElectricityCostsProvider
+from boaviztapi.utils.auth_backend import JWTAuthBackend
 from boaviztapi.utils.get_version import get_version_from_pyproject
 from boaviztapi.application_context import get_app_context
 from boaviztapi.routers.auth_router import auth_router
@@ -91,12 +92,14 @@ async def catch_exceptions_middleware(request: Request, call_next):
         _logger.exception(str(e), exc_info=e)
         return Response('Internal Server Error', status_code=500)
 
-app.add_middleware(AuthenticationMiddleware, backend=SessionAuthBackend())
+# app.add_middleware(AuthenticationMiddleware, backend=SessionAuthBackend())
 
-app.add_middleware(SessionMiddleware,
-                   secret_key=ctx.SESSION_MIDDLEWARE_SECRET_KEY,
-                   https_only=os.getenv("SESSION_MIDDLEWARE_HTTPS_ONLY", False),
-                   max_age=os.getenv("SESSION_MIDDLEWARE_MAX_AGE", 3600))
+# app.add_middleware(SessionMiddleware,
+#                    secret_key=ctx.SESSION_MIDDLEWARE_SECRET_KEY,
+#                    https_only=os.getenv("SESSION_MIDDLEWARE_HTTPS_ONLY", False),
+#                    max_age=os.getenv("SESSION_MIDDLEWARE_MAX_AGE", 3600))
+
+app.add_middleware(AuthenticationMiddleware, backend=JWTAuthBackend())
 
 app.add_middleware(CORSMiddleware,
                    allow_origins=origins,

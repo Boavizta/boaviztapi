@@ -1,4 +1,7 @@
-from typing import Optional
+from typing import Optional, Any
+
+from pydantic import BaseModel
+from starlette.authentication import BaseUser
 
 from boaviztapi.dto import BaseDTO
 
@@ -19,13 +22,34 @@ class GoogleJwtPayload(BaseDTO):
     exp: int = None
     jti: str = None
 
-class UserPublicDTO(BaseDTO):
+class UserPublicDTO(BaseModel, BaseUser):
     sub: str = None
-    email: str = None
-    picture: str = None
-    name: str = None
+    email: Optional[str] = None
+    picture: Optional[str] = None
+    name: Optional[str] = None
     given_name: Optional[str] = None
     family_name: Optional[str] = None
+
+    def __init__(self, /, **data: Any) -> None:
+        super().__init__(**data)
+
+
+    @property
+    def is_authenticated(self) -> bool:
+        if self.sub is None:
+            return False
+        return True
+
+    @property
+    def display_name(self) -> str:
+        return self.name
+
+    @property
+    def identity(self) -> str:
+        return self.sub
+
+    def __str__(self):
+        return f"{self.name} ({self.email})"
 
     @classmethod
     def from_google_jwt(cls, jwt_payload: GoogleJwtPayload) -> "UserPublicDTO":
