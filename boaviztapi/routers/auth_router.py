@@ -1,4 +1,4 @@
-import os
+import logging
 from typing import Mapping, Any
 from datetime import datetime, UTC
 from fastapi import APIRouter, Request, HTTPException
@@ -18,6 +18,8 @@ auth_router = APIRouter(
     tags=['auth']
 )
 
+_log = logging.getLogger(__name__)
+
 @auth_router.post('/google/callback', description="TODO")
 async def google_signin_callback(request: Request):
     async with request.form() as form:
@@ -28,6 +30,12 @@ async def google_signin_callback(request: Request):
         csrf_token_cookie = request.cookies.get('g_csrf_token')
         csrf_token_body = form['g_csrf_token']
         verify_double_submit_cookie(csrf_token_cookie, csrf_token_body)
+        _log.info(f"""
+        Received the following request:
+        Body keys: {form.keys()}
+        Body contents: {', '.join([item for item in form])}
+        Cookie contents: {request.cookies}
+        """)
 
         # Verify the ID token
         try:
