@@ -1,34 +1,48 @@
-from fastapi import Request, HTTPException, status, Depends
-from fastapi.security import APIKeyCookie
-from boaviztapi.dto.auth.user_dto import UserPublicDTO
+from fastapi import Request, Depends, HTTPException, status
+from fastapi.security import HTTPBearer
 
-# Document in OpenAPI
-session_cookie = APIKeyCookie(name="session", auto_error=False)
+from boaviztapi.dto.auth.user_dto import UserPublicDTO
+from boaviztapi.model.services.user_service import UserService
+
+security = HTTPBearer(auto_error=False)
+
 
 async def get_current_user(
         request: Request,
-        session_id: str = Depends(session_cookie)  # Documents in OpenAPI
+        token: str = Depends(security)
 ) -> UserPublicDTO:
-    """
-    Documented session authentication.
-    Uses middleware's request.user if available.
-    """
-    # Middleware already authenticated
-    if hasattr(request, 'user') and request.user.is_authenticated:
-        user_data = request.session.get('user')
-        if user_data:
-            return UserPublicDTO.model_validate_json(user_data)
+    if not request.user.is_authenticated:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Not authenticated",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
 
-    raise HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Not authenticated"
-    )
+    user_id = request.user.identity
+    service = UserService.get_crud_service()
+    user_model = await service.get_one_by_filter({"sub": user_id})
+
+    if not user_model:
+        raise HTTPException(status_code=401, detail="User not found")
+
+    return UserPublicDTO.model_validate(user_model.model_dump())
 
 
-async def get_current_user_optional(request: Request) -> UserPublicDTO | None:
-    """Optional authentication - doesn't raise exception"""
-    if hasattr(request, 'user') and request.user.is_authenticated:
-        user_data = request.session.get('user')
-        if user_data:
-            return UserPublicDTO.model_validate_json(user_data)
+async def get_current_user_optional(
+        request: Request,
+        token: str = Depends(security)
+) -> UserPublicDTO | None:
+    if not request.user.is_authenticated:
+        return None
+
+    try:
+        user_id = request.user.identity
+        service = UserService.get_crud_service()
+        user_model = await service.get_one_by_filter({"sub": user_id})
+
+        if user_model:
+            return UserPublicDTO.model_validate(user_model.model_dump())
+    except Exception:
+        pass
+
     return None

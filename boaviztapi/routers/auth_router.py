@@ -1,58 +1,69 @@
-import os
-from typing import Mapping, Any
+import logging
+
+from typing import Mapping, Any, Annotated
 from datetime import datetime, UTC
-from fastapi import APIRouter, Request, HTTPException
+from urllib.parse import urlencode
+
+from fastapi import APIRouter, Request, HTTPException, Form, Query
 from fastapi.params import Depends
 from fastapi.responses import RedirectResponse
 from pymongo.asynchronous.collection import AsyncCollection
 
 from boaviztapi.application_context import get_app_context
-from boaviztapi.dto.auth.user_dto import UserPublicDTO
+from boaviztapi.dto.auth.user_dto import UserPublicDTO, GoogleJwtPayload
 from boaviztapi.model.crud_models.user_model import UserModel, UserCollection
 from boaviztapi.routers.pydantic_based_router import GenericPydanticCRUDService
 from boaviztapi.service.auth.dependencies import get_current_user
 from boaviztapi.service.auth.google_auth_service import GoogleAuthService
+from boaviztapi.utils.auth_backend import create_access_token
 
 auth_router = APIRouter(
     prefix='/auth',
     tags=['auth']
 )
 
-@auth_router.post('/google/callback', description="TODO")
-async def google_signin_callback(request: Request):
-    async with request.form() as form:
-        request_origin = request.headers.get('origin')
-        if not form:
-            raise HTTPException(status_code=400, detail="Google sign-in failed, missing request body!")
+_log = logging.getLogger(__name__)
 
-        csrf_token_cookie = request.cookies.get('g_csrf_token')
-        csrf_token_body = form['g_csrf_token']
-        verify_double_submit_cookie(csrf_token_cookie, csrf_token_body)
+@auth_router.post('/google/callback', description="TODO")
+async def google_signin_callback(
+        request: Request,
+        credential: Annotated[str, Form()],
+        next: Annotated[str, Query()] = "/",
+        g_csrf_token: Annotated[str | None, Form()] = None
+        ):
+
+        # csrf_token_cookie = request.cookies.get('g_csrf_token')
+        # csrf_token_body = form['g_csrf_token']
+        # verify_double_submit_cookie(csrf_token_cookie, csrf_token_body)
 
         # Verify the ID token
         try:
-            google_jwt_payload = GoogleAuthService.verify_jwt(form['credential'])
+            google_jwt_payload = GoogleAuthService.verify_jwt(credential)
             if not google_jwt_payload:
                 raise HTTPException(status_code=401, detail="Google sign-in failed, missing credential!")
-            request.session['user'] = UserPublicDTO.from_google_jwt(google_jwt_payload).model_dump_json()
-        except ValueError as e:
-            raise HTTPException(status_code=401, detail=str(e)) from e
+            access_token = create_access_token(data=google_jwt_payload.model_dump(exclude={"aud"}))
+            params = urlencode({"token": access_token, "next": next})
 
-        service = get_crud_service()
-        try:
-            if (
-                user := await service.get_one_by_filter({"sub": google_jwt_payload.sub})
-            ) is not None:
-                # The user already exists, just update his/her last seen date
-                user_model = UserModel(sub=user.sub, registration_date=user.registration_date,
-                                       last_seen_date=datetime.now(UTC))
-                await service.update(user.id, user_model)
-        except HTTPException as e:
-            # The user does not exist, create a new one
-            await service.create(UserModel.from_user_dto(await get_current_user(request)))
-
+            service = get_crud_service()
+            try:
+                if (
+                    user := await service.get_one_by_filter({"sub": google_jwt_payload.sub})
+                ) is not None:
+                    # The user already exists, just update his/her last seen date
+                    user_model = UserModel(sub=user.sub,
+                                           registration_date=user.registration_date,
+                                           last_seen_date=datetime.now(UTC),
+                                           **user.model_dump(exclude={"sub", "registration_date", "last_seen_date"}))
+                    await service.update(user.id, user_model)
+            except HTTPException as e:
+                # The user does not exist, create a new one
+                await service.create(UserModel.from_user_dto(UserPublicDTO.from_google_jwt(google_jwt_payload)))
+        except Exception as e:
+            _log.exception(e)
+            error_params = urlencode({"error": str(e), "next": next})
+            return RedirectResponse(f"{request.headers.get('origin')}?{error_params}", status_code=303)
         #TODO: add nonce verification by sending it to the frontend on nextjs startup
-        return RedirectResponse(status_code=303, url=request_origin)
+        return RedirectResponse(status_code=303, url=f"{request.headers.get('origin')}/google-success#{params}")
 
 @auth_router.post('/logout')
 async def logout(request: Request):
@@ -87,7 +98,7 @@ def get_user_collection() -> AsyncCollection[Mapping[str, Any] | Any]:
     if ctx.mongodb_client is None:
         raise HTTPException(status_code=503, detail="MongoDB is not available!")
 
-    db = ctx.mongodb_client.get_database(name="development")
+    db = ctx.mongodb_client.get_database(ctx.database_name)
     return db.get_collection(name="users")
 
 def get_crud_service() -> GenericPydanticCRUDService[UserModel]:

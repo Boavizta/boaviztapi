@@ -101,7 +101,7 @@ class CacheService:
         if not self.db_cache:
             self._logger.info("Initializing database cache")
             _ctx = get_app_context()
-            _db : AsyncDatabase = _ctx.mongodb_client.get_database("development")
+            _db : AsyncDatabase = _ctx.mongodb_client.get_database(_ctx.database_name)
             self.db_cache : AsyncCollection = _db.get_collection("electricity_prices_cache")
 
         # pre-warm the cache
