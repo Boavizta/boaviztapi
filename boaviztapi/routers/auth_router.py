@@ -24,18 +24,22 @@ _log = logging.getLogger(__name__)
 async def google_signin_callback(request: Request):
     async with request.form() as form:
         request_origin = request.headers.get('origin')
+        try:
+            _log.info(f"""
+            Received the following request:
+            Body keys: {form.keys()}
+            Body contents: {', '.join([item for item in form])}
+            Cookie contents: {request.cookies}
+            """)
+        except Exception as e:
+            _log.error(f"Failed to log request: {e}")
         if not form:
             raise HTTPException(status_code=400, detail="Google sign-in failed, missing request body!")
 
         csrf_token_cookie = request.cookies.get('g_csrf_token')
         csrf_token_body = form['g_csrf_token']
         verify_double_submit_cookie(csrf_token_cookie, csrf_token_body)
-        _log.info(f"""
-        Received the following request:
-        Body keys: {form.keys()}
-        Body contents: {', '.join([item for item in form])}
-        Cookie contents: {request.cookies}
-        """)
+
 
         # Verify the ID token
         try:
