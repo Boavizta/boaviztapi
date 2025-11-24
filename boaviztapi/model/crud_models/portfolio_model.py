@@ -57,12 +57,18 @@ class ExtendedPortfolioModel(PortfolioModel):
             datetime: lambda dt: dt.isoformat() if dt else None
         },
         json_schema_extra={
-            "example": [{'_id': ObjectId('6919eb29d50531ad3f572173'), 'name': 'Development', 'created': datetime(2023, 1, 1, 0, 0), 'configuration_ids': ['6919df6f4e03b99d4d2f6373', '6919df764e03b99d4d2f6374'], 'user_id': '118250194734512207866', 'configurations': [{'_id': ObjectId('6919df6f4e03b99d4d2f6373'), 'name': 'Development 1', 'created': datetime(2023, 1, 1, 0, 0), 'cpu_quantity': 2, 'cpu_core_units': 16, 'cpu_tdp': 120, 'cpu_architecture': 'Intel Xeon', 'ram_quantity': 1, 'ram_capacity': 16, 'ram_manufacturer': 'Micron', 'ssd_quantity': 1, 'ssd_capacity': 1000, 'ssd_manufacturer': 'Samsung', 'hdd_quantity': 1, 'server_type': 'Blade', 'psu_quantity': 1, 'user_id': '118250194734512207866'}, {'_id': ObjectId('6919df764e03b99d4d2f6374'), 'name': 'Development 2', 'created': datetime(2023, 1, 1, 0, 0), 'cpu_quantity': 2, 'cpu_core_units': 16, 'cpu_tdp': 120, 'cpu_architecture': 'Intel Xeon', 'ram_quantity': 1, 'ram_capacity': 16, 'ram_manufacturer': 'Micron', 'ssd_quantity': 1, 'ssd_capacity': 1000, 'ssd_manufacturer': 'Samsung', 'hdd_quantity': 1, 'server_type': 'Blade', 'psu_quantity': 1, 'user_id': '118250194734512207866'}]}]
+            "example": [{'_id': '6919eb29d50531ad3f572173', 'name': 'Development', 'created': datetime(2023, 1, 1, 0, 0), 'configuration_ids': ['6919df6f4e03b99d4d2f6373', '6919df764e03b99d4d2f6374'], 'user_id': '118250194734512207866', 'configurations': [{'_id': '6919df6f4e03b99d4d2f6373', 'name': 'Development 1', 'created': datetime(2023, 1, 1, 0, 0), 'cpu_quantity': 2, 'cpu_core_units': 16, 'cpu_tdp': 120, 'cpu_architecture': 'Intel Xeon', 'ram_quantity': 1, 'ram_capacity': 16, 'ram_manufacturer': 'Micron', 'ssd_quantity': 1, 'ssd_capacity': 1000, 'ssd_manufacturer': 'Samsung', 'hdd_quantity': 1, 'server_type': 'Blade', 'psu_quantity': 1, 'user_id': '118250194734512207866'}, {'_id': '6919df764e03b99d4d2f6374', 'name': 'Development 2', 'created': datetime(2023, 1, 1, 0, 0), 'cpu_quantity': 2, 'cpu_core_units': 16, 'cpu_tdp': 120, 'cpu_architecture': 'Intel Xeon', 'ram_quantity': 1, 'ram_capacity': 16, 'ram_manufacturer': 'Micron', 'ssd_quantity': 1, 'ssd_capacity': 1000, 'ssd_manufacturer': 'Samsung', 'hdd_quantity': 1, 'server_type': 'Blade', 'psu_quantity': 1, 'user_id': '118250194734512207866'}]}]
         }
     )
 
 class PortfolioCollection(BaseCRUDCollection[PortfolioModel]):
     """
     A container holding a list of `PortfolioModel` objects.
+    This exists because providing a top-level array in a JSON response can be a [vulnerability](https://haacked.com/archive/2009/06/25/json-hijacking.aspx/)
+    """
+
+class ExtendedPortfolioCollection(BaseCRUDCollection[ExtendedPortfolioModel]):
+    """
+    A container holding a list of `ExtendedPortfolioModel` objects.
     This exists because providing a top-level array in a JSON response can be a [vulnerability](https://haacked.com/archive/2009/06/25/json-hijacking.aspx/)
     """

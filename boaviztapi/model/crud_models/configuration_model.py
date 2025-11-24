@@ -27,6 +27,7 @@ class ConfigurationModel(BaseCRUDModel):
     model_config = ConfigDict(
         populate_by_name=True,
         arbitrary_types_allowed=True,
+        json_encoders={ObjectId: str},
         json_schema_extra={
             "example": {
                 "name": "Development",

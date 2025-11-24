@@ -29,19 +29,31 @@ class GenericPydanticCRUDService(Generic[TModel]):
             collection_class: Type[BaseCRUDCollection[TModel]],
             mongo_collection: AsyncCollection[Mapping[str, Any] | Any],
             collection_name: str,
+            user_id: Optional[str] = None
     ):
         self.model_class = model_class
         self.collection_class = collection_class
         self.mongo_collection = mongo_collection
         self.collection_name = collection_name
         self.app_context = get_app_context()
+        self._user_id = user_id
         self._logger = logging.getLogger(collection_name + "_router")
 
+    def _scope(self, base: Optional[Mapping[str, Any]] = None) -> dict[str, Any]:
+        """
+        Merge the provided filter with the current user scope when user_id is set.
+        """
+        scoped = dict(base or {})
+        if self._user_id:
+            scoped["user_id"] = self._user_id
+        return scoped
     async def create(self, item: TModel = Body(...)):
         """
         Create a new record in the database.
         """
-        new_item = item.model_dump(by_alias=True, exclude={"id"})
+        new_item = item.model_dump(by_alias=True, exclude={"id", "user_id"})
+        if self._user_id:
+            new_item["user_id"] = self._user_id
         result = await self.mongo_collection.insert_one(new_item)
         new_item["_id"] = result.inserted_id
 
@@ -52,14 +64,15 @@ class GenericPydanticCRUDService(Generic[TModel]):
         List all the record collection data in the database.
         The response is unpaginated and limited to 1000 results.
         """
-        return self.collection_class(items = [self.model_class(**item) for item in await self.mongo_collection.find().to_list(max_count)])
+        cursor = self.mongo_collection.find(self._scope({}))
+        return self.collection_class(items = [self.model_class(**item) for item in await cursor.to_list(max_count)])
 
     async def get_by_id(self, id: str) -> TModel:
         """
         Get the record for a specific `id`.
         """
         if (
-            item := await self.mongo_collection.find_one({"_id": ObjectId(id)})
+            item := await self.mongo_collection.find_one(self._scope({"_id": ObjectId(id)}))
         ) is not None:
             return self.model_class(**item)
 
@@ -77,7 +90,8 @@ class GenericPydanticCRUDService(Generic[TModel]):
                 kwargs["projection"] = projection
             if options:
                 kwargs["options"] = options
-            return self.collection_class(items = await self.mongo_collection.find(filter, **kwargs).to_list(max_count))
+            cursor = self.mongo_collection.find(self._scope(dict(filter)), **kwargs)
+            return self.collection_class(items = await cursor.to_list(max_count))
         except PyMongoError:
             raise HTTPException(status_code=400, detail="Invalid query filter, cannot return items!")
 
@@ -88,13 +102,11 @@ class GenericPydanticCRUDService(Generic[TModel]):
         if options:
             kwargs["options"] = options
         if (
-            item := await self.mongo_collection.find_one(filter, **kwargs)
+            item := await self.mongo_collection.find_one(self._scope(dict(filter)), **kwargs)
         ) is not None:
             return self.model_class(**item)
         self._logger.warning(f"No item was found in the '{self.collection_name}' collection with the specified filter: {filter}.")
         raise HTTPException(status_code=404, detail="No item found with the specified filter!")
-
-
 
     async def update(self, id: str, item: TModel = Body(...)) -> TModel:
         """
@@ -104,12 +116,12 @@ class GenericPydanticCRUDService(Generic[TModel]):
         Any missing or `null` fields will be ignored.
         """
         item = {
-            k: v for k, v in item.model_dump(by_alias=True).items() if v is not None and k != '_id'
+            k: v for k, v in item.model_dump(by_alias=True).items() if v is not None and k != '_id' and k != 'user_id'
         }
 
         if len(item) >= 1:
             update_result = await self.mongo_collection.find_one_and_update(
-                {"_id": ObjectId(id)},
+                self._scope({"_id": ObjectId(id)}),
                 {"$set": item},
                 return_document=ReturnDocument.AFTER,
             )
@@ -119,7 +131,7 @@ class GenericPydanticCRUDService(Generic[TModel]):
                 raise HTTPException(status_code=404, detail=f"Item from collection '{self.collection_name}' with id={id} was not found")
 
         # The update is empty, but we should still return the matching document:
-        if (existing_item := await self.mongo_collection.find_one({"_id": ObjectId(id)})) is not None:
+        if (existing_item := await self.mongo_collection.find_one(self._scope({"_id": ObjectId(id)}))) is not None:
             return self.model_class(**existing_item)
 
         raise HTTPException(status_code=404, detail=f"Item from collection '{self.collection_name}' with id={id} was not found")
@@ -128,7 +140,7 @@ class GenericPydanticCRUDService(Generic[TModel]):
         """
         Remove a single record from the database.
         """
-        delete_result = await self.mongo_collection.delete_one({"_id": ObjectId(id)})
+        delete_result = await self.mongo_collection.delete_one(self._scope({"_id": ObjectId(id)}))
 
         if delete_result.deleted_count == 1:
             return Response(status_code=status.HTTP_204_NO_CONTENT)

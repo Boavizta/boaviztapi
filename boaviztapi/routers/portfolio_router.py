@@ -1,7 +1,9 @@
-from fastapi import APIRouter, status, Body
+from bson import ObjectId
+from fastapi import APIRouter, status, Body, HTTPException
 from fastapi.params import Depends
 
-from boaviztapi.model.crud_models.portfolio_model import PortfolioCollection, PortfolioModel
+from boaviztapi.dto.auth.user_dto import UserPublicDTO
+from boaviztapi.model.crud_models.portfolio_model import PortfolioCollection, PortfolioModel, ExtendedPortfolioModel
 from boaviztapi.model.services.portfolio_service import PortfolioService
 from boaviztapi.routers.pydantic_based_router import validate_id
 from boaviztapi.service.auth.dependencies import get_current_user
@@ -12,13 +14,16 @@ portfolio_router = APIRouter(
     dependencies=[Depends(get_current_user)]
 )
 
+def get_scoped_portfolio_service(current_user: UserPublicDTO = Depends(get_current_user)) -> PortfolioService:
+    return PortfolioService(user_id=current_user.sub)
+
 @portfolio_router.post("/",
                        response_description="Add a new portfolio",
                        response_model=PortfolioModel,
                        status_code=status.HTTP_201_CREATED,
                        response_model_by_alias=False,
                        )
-async def create_portfolio(portfolio: PortfolioModel = Body(...), service: PortfolioService = Depends(PortfolioService.get_crud_service)):
+async def create_portfolio(portfolio: PortfolioModel = Body(...), service: PortfolioService = Depends(get_scoped_portfolio_service)):
     """
     Insert a new portfolio record.
 
@@ -31,7 +36,7 @@ async def create_portfolio(portfolio: PortfolioModel = Body(...), service: Portf
                       response_model=PortfolioCollection,
                       response_model_by_alias=False,
                       )
-async def list_portfolios(service: PortfolioService = Depends(PortfolioService.get_crud_service)):
+async def list_portfolios(service: PortfolioService = Depends(get_scoped_portfolio_service)):
     return await service.get_all()
 
 @portfolio_router.get("/{id}",
@@ -39,8 +44,32 @@ async def list_portfolios(service: PortfolioService = Depends(PortfolioService.g
                       response_model=PortfolioModel,
                       response_model_by_alias=False,
                       )
-async def find_portfolio(id: str = Depends(validate_id), service: PortfolioService = Depends(PortfolioService.get_crud_service)):
+async def find_portfolio(id: str = Depends(validate_id), service: PortfolioService = Depends(get_scoped_portfolio_service)):
     return await service.get_by_id(id)
+
+@portfolio_router.get("/extended/{id}",
+                      response_description="Get a single portfolio with the configuration objects nested inside",
+                      response_model=ExtendedPortfolioModel,
+                      response_model_by_alias=False,
+                      )
+async def find_extended_portfolio(id: str = Depends(validate_id), service: PortfolioService = Depends(get_scoped_portfolio_service)):
+    if (
+        item := await service.get_mongo_collection().find_one({"_id": ObjectId(id)})
+    ) is not None:
+        pipeline = [
+            {"$match": {"_id": ObjectId(id)}},
+            {"$lookup": {
+                "from": "configurations",
+                "localField": "configurationIds",
+                "foreignField": "_id",
+                "as": "configurations"
+            }}
+        ]
+        portfolio = await service.get_mongo_collection().aggregate(pipeline).to_list(length=1)
+        if len(portfolio) > 0:
+            return ExtendedPortfolioModel(**portfolio[0])
+    raise HTTPException(status_code=404, detail="No item found with the specified filter!")
+
 
 @portfolio_router.put("/{id}",
                       response_description="Update a portfolio",

@@ -1,10 +1,12 @@
+from typing import Optional
+
 from boaviztapi.application_context import get_app_context
 from boaviztapi.model.crud_models.portfolio_model import PortfolioModel, PortfolioCollection
 from boaviztapi.routers.pydantic_based_router import GenericPydanticCRUDService
 
 
 class PortfolioService(GenericPydanticCRUDService[PortfolioModel]):
-    def __init__(self):
+    def __init__(self, user_id: Optional[str] = None):
         ctx = get_app_context()
         if ctx.mongodb_client is None:
             raise RuntimeError("MongoDB is not available!")
@@ -18,7 +20,8 @@ class PortfolioService(GenericPydanticCRUDService[PortfolioModel]):
             model_class=PortfolioModel,
             collection_class=PortfolioCollection,
             mongo_collection=collection,
-            collection_name="portfolios"
+            collection_name="portfolios",
+            user_id=user_id
         )
 
     @classmethod

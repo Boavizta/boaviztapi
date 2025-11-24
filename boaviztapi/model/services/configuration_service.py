@@ -1,10 +1,12 @@
+from typing import Optional
+
 from boaviztapi.application_context import get_app_context
 from boaviztapi.model.crud_models.configuration_model import ConfigurationModel, ConfigurationCollection
 from boaviztapi.routers.pydantic_based_router import GenericPydanticCRUDService
 
 
 class ConfigurationService(GenericPydanticCRUDService[ConfigurationModel]):
-    def __init__(self):
+    def __init__(self, user_id: Optional[str] = None):
         ctx = get_app_context()
         if ctx.mongodb_client is None:
             raise RuntimeError("MongoDB is not available!")
@@ -18,7 +20,8 @@ class ConfigurationService(GenericPydanticCRUDService[ConfigurationModel]):
             model_class=ConfigurationModel,
             collection_class=ConfigurationCollection,
             mongo_collection=collection,
-            collection_name="configurations"
+            collection_name="configurations",
+            user_id=user_id
         )
 
     @classmethod
