@@ -104,7 +104,7 @@ class GenericPydanticCRUDService(Generic[TModel]):
         Any missing or `null` fields will be ignored.
         """
         item = {
-            k: v for k, v in item.model_dump(by_alias=True).items() if v is not None
+            k: v for k, v in item.model_dump(by_alias=True).items() if v is not None and k != '_id'
         }
 
         if len(item) >= 1:
