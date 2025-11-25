@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 
 from bson import ObjectId
 from pydantic import Field, ConfigDict, field_validator
@@ -47,8 +47,8 @@ class UpdatePortfolioModel(BaseCRUDUpdateModel):
     )
 
 class ExtendedPortfolioModel(PortfolioModel):
-    configuration_ids: list[str] = Field(...)
-    configurations: list[ConfigurationModel] = Field(...)
+    configuration_ids: List[PyObjectId] = Field(...)
+    configurations: List[ConfigurationModel] = Field(...)
     model_config = ConfigDict(
         populate_by_name=True,
         arbitrary_types_allowed=True,
@@ -57,7 +57,48 @@ class ExtendedPortfolioModel(PortfolioModel):
             datetime: lambda dt: dt.isoformat() if dt else None
         },
         json_schema_extra={
-            "example": [{'_id': '6919eb29d50531ad3f572173', 'name': 'Development', 'created': datetime(2023, 1, 1, 0, 0), 'configuration_ids': ['6919df6f4e03b99d4d2f6373', '6919df764e03b99d4d2f6374'], 'user_id': '118250194734512207866', 'configurations': [{'_id': '6919df6f4e03b99d4d2f6373', 'name': 'Development 1', 'created': datetime(2023, 1, 1, 0, 0), 'cpu_quantity': 2, 'cpu_core_units': 16, 'cpu_tdp': 120, 'cpu_architecture': 'Intel Xeon', 'ram_quantity': 1, 'ram_capacity': 16, 'ram_manufacturer': 'Micron', 'ssd_quantity': 1, 'ssd_capacity': 1000, 'ssd_manufacturer': 'Samsung', 'hdd_quantity': 1, 'server_type': 'Blade', 'psu_quantity': 1, 'user_id': '118250194734512207866'}, {'_id': '6919df764e03b99d4d2f6374', 'name': 'Development 2', 'created': datetime(2023, 1, 1, 0, 0), 'cpu_quantity': 2, 'cpu_core_units': 16, 'cpu_tdp': 120, 'cpu_architecture': 'Intel Xeon', 'ram_quantity': 1, 'ram_capacity': 16, 'ram_manufacturer': 'Micron', 'ssd_quantity': 1, 'ssd_capacity': 1000, 'ssd_manufacturer': 'Samsung', 'hdd_quantity': 1, 'server_type': 'Blade', 'psu_quantity': 1, 'user_id': '118250194734512207866'}]}]
+            "example": [
+                {
+                '_id': '6919eb29d50531ad3f572173',
+                'name': 'Development',
+                'created': '2023-01-01T00:00:00',
+                'configuration_ids': ['6919df6f4e03b99d4d2f6373', '6919df764e03b99d4d2f6374'],
+                'user_id': '118250194734512207866',
+                'configurations': [
+                    {
+                        "type": "on-premise",
+                        "name": "Development",
+                        "created": "2023-01-01T00:00:00.000Z",
+                        "cpu_quantity": 2,
+                        "cpu_core_units": 16,
+                        "cpu_tdp": 120,
+                        "cpu_architecture": "Intel Xeon",
+                        "ram_quantity": 1,
+                        "ram_capacity": 16,
+                        "ram_manufacturer": "Micron",
+                        "ssd_quantity": 1,
+                        "ssd_capacity": 1000,
+                        "ssd_manufacturer": "Samsung",
+                        "hdd_quantity": 1,
+                        "server_type": "Blade",
+                        "psu_quantity": 1,
+                        "user_id": "118250194734512207866"
+                    },
+                    {
+                        "type": "cloud",
+                        "name": "Development Cloud",
+                        "created": "2023-01-01T00:00:00.000Z",
+                        "localisation": "NL",
+                        "lifespan": 1000,
+                        "method": "Load",
+                        "serverLoad": 100,
+                        "instancePricingType": "OnDemand",
+                        "reservedPlan": "1y",
+                        "user_id": "118250194734512207866"
+                    }
+                ]
+                }
+            ]
         }
     )
 

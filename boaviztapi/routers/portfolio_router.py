@@ -2,6 +2,7 @@ from bson import ObjectId
 from fastapi import APIRouter, status, Body, HTTPException
 from fastapi.params import Depends
 
+from pydantic import TypeAdapter
 from boaviztapi.dto.auth.user_dto import UserPublicDTO
 from boaviztapi.model.crud_models.portfolio_model import PortfolioCollection, PortfolioModel, ExtendedPortfolioModel
 from boaviztapi.model.services.portfolio_service import PortfolioService
@@ -54,20 +55,29 @@ async def find_portfolio(id: str = Depends(validate_id), service: PortfolioServi
                       )
 async def find_extended_portfolio(id: str = Depends(validate_id), service: PortfolioService = Depends(get_scoped_portfolio_service)):
     if (
-        item := await service.get_mongo_collection().find_one({"_id": ObjectId(id)})
+        await service.get_mongo_collection().find_one({"_id": ObjectId(id)})
     ) is not None:
         pipeline = [
             {"$match": {"_id": ObjectId(id)}},
             {"$lookup": {
                 "from": "configurations",
-                "localField": "configurationIds",
-                "foreignField": "_id",
+                "let": {
+                    "config_ids": "$configuration_ids"
+                },
+                "pipeline": [
+                    {
+                        "$match": {
+                            "$expr": { "$in": [ { "$toString": "$_id" }, "$$config_ids"]}
+                        }
+                    }
+                ],
                 "as": "configurations"
             }}
         ]
-        portfolio = await service.get_mongo_collection().aggregate(pipeline).to_list(length=1)
+        cursor = await service.get_mongo_collection().aggregate(pipeline)
+        portfolio = await cursor.to_list(length=1)
         if len(portfolio) > 0:
-            return ExtendedPortfolioModel(**portfolio[0])
+            return TypeAdapter(ExtendedPortfolioModel).validate_python(portfolio[0])
     raise HTTPException(status_code=404, detail="No item found with the specified filter!")
 
 

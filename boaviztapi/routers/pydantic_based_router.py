@@ -1,5 +1,6 @@
 import logging
 from typing import Any, Mapping, TypeVar, Generic, Type, Optional
+from pydantic import TypeAdapter
 
 from bson import ObjectId
 from bson.errors import InvalidId
@@ -38,6 +39,16 @@ class GenericPydanticCRUDService(Generic[TModel]):
         self.app_context = get_app_context()
         self._user_id = user_id
         self._logger = logging.getLogger(collection_name + "_router")
+        self.adapter = TypeAdapter(self.model_class)
+
+    def _scope(self, base: Optional[Mapping[str, Any]] = None) -> dict[str, Any]:
+        """
+        Merge the provided filter with the current user scope when user_id is set.
+        """
+        scoped = dict(base or {})
+        if self._user_id:
+            scoped["user_id"] = self._user_id
+        return scoped
 
     def _scope(self, base: Optional[Mapping[str, Any]] = None) -> dict[str, Any]:
         """
@@ -57,7 +68,7 @@ class GenericPydanticCRUDService(Generic[TModel]):
         result = await self.mongo_collection.insert_one(new_item)
         new_item["_id"] = result.inserted_id
 
-        return self.model_class(**new_item)
+        return self.adapter.validate_python(new_item)
 
     async def get_all(self) -> BaseCRUDCollection[TModel]:
         """
@@ -65,7 +76,7 @@ class GenericPydanticCRUDService(Generic[TModel]):
         The response is unpaginated and limited to 1000 results.
         """
         cursor = self.mongo_collection.find(self._scope({}))
-        return self.collection_class(items = [self.model_class(**item) for item in await cursor.to_list(max_count)])
+        return self.collection_class(items = [self.adapter.validate_python(item) for item in await cursor.to_list(max_count)])
 
     async def get_by_id(self, id: str) -> TModel:
         """
@@ -74,7 +85,7 @@ class GenericPydanticCRUDService(Generic[TModel]):
         if (
             item := await self.mongo_collection.find_one(self._scope({"_id": ObjectId(id)}))
         ) is not None:
-            return self.model_class(**item)
+            return self.adapter.validate_python(item)
 
         raise HTTPException(status_code=404, detail=f"Item from collection '{self.collection_name}' with id={id} was not found")
 
@@ -104,7 +115,7 @@ class GenericPydanticCRUDService(Generic[TModel]):
         if (
             item := await self.mongo_collection.find_one(self._scope(dict(filter)), **kwargs)
         ) is not None:
-            return self.model_class(**item)
+            return self.adapter.validate_python(item)
         self._logger.warning(f"No item was found in the '{self.collection_name}' collection with the specified filter: {filter}.")
         raise HTTPException(status_code=404, detail="No item found with the specified filter!")
 
@@ -126,13 +137,13 @@ class GenericPydanticCRUDService(Generic[TModel]):
                 return_document=ReturnDocument.AFTER,
             )
             if update_result is not None:
-                return self.model_class(**update_result)
+                return self.adapter.validate_python(update_result)
             else:
                 raise HTTPException(status_code=404, detail=f"Item from collection '{self.collection_name}' with id={id} was not found")
 
         # The update is empty, but we should still return the matching document:
         if (existing_item := await self.mongo_collection.find_one(self._scope({"_id": ObjectId(id)}))) is not None:
-            return self.model_class(**existing_item)
+            return self.adapter.validate_python(existing_item)
 
         raise HTTPException(status_code=404, detail=f"Item from collection '{self.collection_name}' with id={id} was not found")
 
