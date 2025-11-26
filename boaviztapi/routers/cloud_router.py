@@ -1,17 +1,16 @@
-import os
-import boaviztapi.service.cloud_provider as utils
 from typing import List, Optional
 
 from fastapi import APIRouter, Query, Body, HTTPException
 
-from boaviztapi import config, data_dir
+import boaviztapi.service.cloud_provider as utils
+from boaviztapi import config
 from boaviztapi.dto.device import Cloud
 from boaviztapi.dto.device.device import mapper_cloud_instance
 from boaviztapi.model.services.cloud_instance import ServiceCloudInstance
 from boaviztapi.routers.openapi_doc.descriptions import cloud_provider_description, all_default_cloud_instances, \
     all_default_cloud_providers, get_instance_config
 from boaviztapi.routers.openapi_doc.examples import cloud_example
-from boaviztapi.service.archetype import get_cloud_instance_archetype, get_device_archetype_lst
+from boaviztapi.service.archetype import get_cloud_instance_archetype
 from boaviztapi.service.impacts_computation import compute_impacts
 from boaviztapi.service.verbose import verbose_cloud
 
