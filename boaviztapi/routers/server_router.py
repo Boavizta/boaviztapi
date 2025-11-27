@@ -89,10 +89,10 @@ async def server_impact(device: Device,
                         verbose: bool,
                         costs: bool,
                         duration: Optional[float] = config["default_duration"],
-                        criteria: List[str] = Query(config["default_criteria"])) -> dict:
+                        criteria: List[str] = Query(config["default_criteria"]),
+                        location: str = None) -> dict:
     if duration is None:
         duration = device.usage.hours_life_time.value
-
     impacts = compute_impacts(model=device, selected_criteria=criteria, duration=duration)
 
     result = {
@@ -101,5 +101,5 @@ async def server_impact(device: Device,
     if verbose:
         result["verbose"] = verbose_device(device, selected_criteria=criteria, duration=duration)
     if costs:
-        result["costs"] = compute_electricity_costs(model=device, duration=duration)
+        result["costs"] = compute_electricity_costs(model=device, duration=duration, location=location)
     return result
