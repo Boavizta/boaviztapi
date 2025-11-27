@@ -123,9 +123,11 @@ def mapper_usage_server(usage_dto: UsageServer,
         usage_model_server.time_workload.set_input(usage_dto.time_workload)
 
     if usage_dto.usage_location is not None:
+        usage_model_server.usage_location.set_input(usage_dto.usage_location)
         if usage_dto.usage_location in get_available_countries(reverse=True):
             usage_model_server.usage_location.set_input(usage_dto.usage_location)
         else:
+            pass
             usage_model_server.usage_location.set_changed(usage_model_server.usage_location.default)
             usage_model_server.usage_location.add_warning("Location not found. Default value used.")
     if usage_dto.other_consumption_ratio is not None:
