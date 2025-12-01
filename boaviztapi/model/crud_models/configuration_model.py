@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional, Union, Annotated, Literal
+from typing import Optional, Union, Annotated, Literal, List, Dict, Any
 
 from pydantic import BaseModel, Field, ConfigDict
 from bson import ObjectId
@@ -124,6 +124,10 @@ ConfigurationModel = Annotated[
     Field(discriminator="type"),
 ]
 
+class ConfigurationModelWithResults(BaseModel):
+    configuration: ConfigurationModel
+    results: Optional[Dict[str, Any]] = Field(default=None)
+
 
 class UpdateServerLoadAdvancedSlot(BaseModel):
     time: Optional[int] = Field(default=None, ge=1, le=100)
@@ -245,5 +249,10 @@ UpdateConfigurationModel = Annotated[
 class ConfigurationCollection(BaseCRUDCollection[ConfigurationModel]):
     """
     A container holding a list of `ConfigurationModel` objects.
+    This exists because providing a top-level array in a JSON response can be a [vulnerability](https://haacked.com/archive/2009/06/25/json-hijacking.aspx/)
+    """
+class ConfigurationWithResultsCollection(BaseCRUDCollection[ConfigurationModelWithResults]):
+    """
+    A container holding a list of `ConfigurationModelWithResults` objects.
     This exists because providing a top-level array in a JSON response can be a [vulnerability](https://haacked.com/archive/2009/06/25/json-hijacking.aspx/)
     """

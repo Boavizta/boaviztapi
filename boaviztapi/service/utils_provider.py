@@ -1,4 +1,5 @@
 import os
+
 import pandas as pd
 
 from boaviztapi.dto.component import CPU

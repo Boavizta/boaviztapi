@@ -1,11 +1,11 @@
 from datetime import datetime
-from typing import Optional, List
+from typing import Optional, List, Annotated, Union
 
 from bson import ObjectId
 from pydantic import Field, ConfigDict, field_validator
 
 from boaviztapi.model.crud_models.basemodel import BaseCRUDModel, BaseCRUDCollection, BaseCRUDUpdateModel, PyObjectId
-from boaviztapi.model.crud_models.configuration_model import ConfigurationModel
+from boaviztapi.model.crud_models.configuration_model import ConfigurationModel, ConfigurationModelWithResults
 
 
 class PortfolioModel(BaseCRUDModel):
@@ -102,6 +102,9 @@ class ExtendedPortfolioModel(PortfolioModel):
         }
     )
 
+class ExtendedPortfolioWithResultsModel(ExtendedPortfolioModel):
+    configurations: List[ConfigurationModelWithResults] = Field(...)
+
 class PortfolioCollection(BaseCRUDCollection[PortfolioModel]):
     """
     A container holding a list of `PortfolioModel` objects.
@@ -111,5 +114,11 @@ class PortfolioCollection(BaseCRUDCollection[PortfolioModel]):
 class ExtendedPortfolioCollection(BaseCRUDCollection[ExtendedPortfolioModel]):
     """
     A container holding a list of `ExtendedPortfolioModel` objects.
+    This exists because providing a top-level array in a JSON response can be a [vulnerability](https://haacked.com/archive/2009/06/25/json-hijacking.aspx/)
+    """
+
+class ExtendedPortfolioWithResultsCollection(BaseCRUDCollection[ExtendedPortfolioWithResultsModel]):
+    """
+    A container holding a list of `ExtendedPortfolioWithResultsModel` objects.
     This exists because providing a top-level array in a JSON response can be a [vulnerability](https://haacked.com/archive/2009/06/25/json-hijacking.aspx/)
     """

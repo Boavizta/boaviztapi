@@ -24,7 +24,7 @@ from starlette.responses import Response
 
 from boaviztapi.routers.openapi_doc.descriptions import carbon_intensity
 from boaviztapi.routers.portfolio_router import portfolio_router
-from boaviztapi.routers.results_router import sustainability_router
+from boaviztapi.routers.sustainability_router import sustainability_router
 from boaviztapi.routers.user_router import user_router
 from boaviztapi.service.cache.cache import CacheService
 from boaviztapi.service.carbon_intensity_provider import CarbonIntensityProvider

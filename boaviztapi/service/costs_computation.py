@@ -47,7 +47,7 @@ def is_valid_zone_code(zone_code: str) -> bool:
 def compute_single_cost(power: float, duration: int, location: str) -> dict[str, str]:
     """
     Compute the electricity costs of running the device/component for the specified duration.
-    The electricity costs is deduced by averaging the monthly costs over an entire year.
+    The electricity costs are deduced by averaging the monthly costs over an entire year.
 
     @param power: The electricity power in W (Watts)
     @param duration: The duration of the electricity cost calculation in hours

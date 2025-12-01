@@ -4,10 +4,13 @@ from fastapi.params import Depends
 
 from pydantic import TypeAdapter
 from boaviztapi.dto.auth.user_dto import UserPublicDTO
-from boaviztapi.model.crud_models.portfolio_model import PortfolioCollection, PortfolioModel, ExtendedPortfolioModel
+from boaviztapi.model.crud_models.configuration_model import ConfigurationModel
+from boaviztapi.model.crud_models.portfolio_model import PortfolioCollection, PortfolioModel, ExtendedPortfolioModel, \
+    ExtendedPortfolioWithResultsModel
 from boaviztapi.model.services.portfolio_service import PortfolioService
 from boaviztapi.routers.pydantic_based_router import validate_id
 from boaviztapi.service.auth.dependencies import get_current_user
+from boaviztapi.service.sustainability_provider import add_results_to_configuration
 
 portfolio_router = APIRouter(
     prefix='/v1/portfolio',
@@ -50,7 +53,7 @@ async def find_portfolio(id: str = Depends(validate_id), service: PortfolioServi
 
 @portfolio_router.get("/extended/{id}",
                       response_description="Get a single portfolio with the configuration objects nested inside",
-                      response_model=ExtendedPortfolioModel,
+                      response_model=ExtendedPortfolioWithResultsModel,
                       response_model_by_alias=False,
                       )
 async def find_extended_portfolio(id: str = Depends(validate_id), service: PortfolioService = Depends(get_scoped_portfolio_service)):
@@ -76,9 +79,15 @@ async def find_extended_portfolio(id: str = Depends(validate_id), service: Portf
         ]
         cursor = await service.get_mongo_collection().aggregate(pipeline)
         portfolio = await cursor.to_list(length=1)
-        if len(portfolio) > 0:
-            return TypeAdapter(ExtendedPortfolioModel).validate_python(portfolio[0])
-    raise HTTPException(status_code=404, detail="No item found with the specified filter!")
+        if len(portfolio) < 1:
+            raise HTTPException(status_code=404, detail="No item found with the specified filter!")
+
+        portfolio = TypeAdapter(ExtendedPortfolioModel).validate_python(portfolio[0])
+        configs = portfolio.configurations
+        extended_configs = []
+        for c in configs:
+            extended_configs.append(await add_results_to_configuration(c))
+        return ExtendedPortfolioWithResultsModel(configurations=extended_configs, **portfolio.model_dump(exclude={"configurations"}))
 
 
 @portfolio_router.put("/{id}",
