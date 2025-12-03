@@ -39,7 +39,7 @@ class GenericPydanticCRUDService(Generic[TModel]):
         self.app_context = get_app_context()
         self._user_id = user_id
         self._logger = logging.getLogger(collection_name + "_router")
-        self.adapter = TypeAdapter(self.model_class)
+        self.adapter = TypeAdapter(self.model_class, )
 
     def _scope(self, base: Optional[Mapping[str, Any]] = None) -> dict[str, Any]:
         """
@@ -62,13 +62,14 @@ class GenericPydanticCRUDService(Generic[TModel]):
         """
         Create a new record in the database.
         """
-        new_item = item.model_dump(by_alias=True, exclude={"id", "user_id"})
+        new_item = item.model_dump(by_alias=True, exclude={"id", "user_id"}, exclude_none=True)
         if self._user_id:
             new_item["user_id"] = self._user_id
         result = await self.mongo_collection.insert_one(new_item)
         new_item["_id"] = result.inserted_id
 
-        return self.adapter.validate_python(new_item)
+        result = self.adapter.validate_python(new_item)
+        return self.adapter.dump_python(result, exclude_none=True, mode='json')
 
     async def get_all(self) -> BaseCRUDCollection[TModel]:
         """
@@ -76,7 +77,9 @@ class GenericPydanticCRUDService(Generic[TModel]):
         The response is unpaginated and limited to 1000 results.
         """
         cursor = self.mongo_collection.find(self._scope({}))
-        return self.collection_class(items = [self.adapter.validate_python(item) for item in await cursor.to_list(max_count)])
+        items = [self.adapter.validate_python(item) for item in await cursor.to_list(max_count)]
+        items = [self.adapter.dump_python(item, exclude_none=True, mode='json') for item in items]
+        return self.collection_class(items=items)
 
     async def get_by_id(self, id: str) -> TModel:
         """
@@ -85,7 +88,8 @@ class GenericPydanticCRUDService(Generic[TModel]):
         if (
             item := await self.mongo_collection.find_one(self._scope({"_id": ObjectId(id)}))
         ) is not None:
-            return self.adapter.validate_python(item)
+            result = self.adapter.validate_python(item)
+            return self.adapter.dump_python(result, exclude_none=True, mode='json')
 
         raise HTTPException(status_code=404, detail=f"Item from collection '{self.collection_name}' with id={id} was not found")
 
@@ -115,7 +119,8 @@ class GenericPydanticCRUDService(Generic[TModel]):
         if (
             item := await self.mongo_collection.find_one(self._scope(dict(filter)), **kwargs)
         ) is not None:
-            return self.adapter.validate_python(item)
+            result = self.adapter.validate_python(item)
+            return self.adapter.dump_python(result, exclude_none=True, mode='json')
         self._logger.warning(f"No item was found in the '{self.collection_name}' collection with the specified filter: {filter}.")
         raise HTTPException(status_code=404, detail="No item found with the specified filter!")
 
@@ -127,7 +132,7 @@ class GenericPydanticCRUDService(Generic[TModel]):
         Any missing or `null` fields will be ignored.
         """
         item = {
-            k: v for k, v in item.model_dump(by_alias=True).items() if v is not None and k != '_id' and k != 'user_id'
+            k: v for k, v in item.model_dump(by_alias=True, exclude_none=True).items() if v is not None and k != '_id' and k != 'user_id'
         }
 
         if len(item) >= 1:
@@ -137,13 +142,15 @@ class GenericPydanticCRUDService(Generic[TModel]):
                 return_document=ReturnDocument.AFTER,
             )
             if update_result is not None:
-                return self.adapter.validate_python(update_result)
+                result = self.adapter.validate_python(update_result)
+                return self.adapter.dump_python(result, exclude_none=True, mode='json')
             else:
                 raise HTTPException(status_code=404, detail=f"Item from collection '{self.collection_name}' with id={id} was not found")
 
         # The update is empty, but we should still return the matching document:
         if (existing_item := await self.mongo_collection.find_one(self._scope({"_id": ObjectId(id)}))) is not None:
-            return self.adapter.validate_python(existing_item)
+            result = self.adapter.validate_python(existing_item)
+            return self.adapter.dump_python(result, exclude_none=True, mode='json')
 
         raise HTTPException(status_code=404, detail=f"Item from collection '{self.collection_name}' with id={id} was not found")
 

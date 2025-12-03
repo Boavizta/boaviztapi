@@ -1,10 +1,11 @@
 from datetime import datetime
-from typing import Optional, Union, Annotated, Literal, List, Dict, Any
+from typing import Optional, Union, Annotated, Literal, Dict, Any
 
-from pydantic import BaseModel, Field, ConfigDict
 from bson import ObjectId
+from pydantic import BaseModel, Field, ConfigDict
 
-from boaviztapi.model.crud_models.basemodel import BaseCRUDCollection, BaseCRUDModel, PyObjectId, BaseCRUDUpdateModel
+from boaviztapi.model.crud_models.basemodel import BaseCRUDCollection, BaseCRUDModel, BaseCRUDUpdateModel
+
 
 class ServerLoadAdvancedSlot(BaseModel):
     time: int = Field(..., ge=1, le=100)
@@ -19,10 +20,10 @@ class OnPremiseServerUsage(BaseModel):
     localisation: str = Field(...)
     lifespan: int = Field(...)
     method: str = Field(...)
-    avgConsumption: Optional[float] = Field(default=1, ge=1, le=100000)
-    serverLoad: Optional[float] = Field(default=1, ge=1, le=100)
+    avgConsumption: Optional[float] = Field(default=None, ge=1, le=100000)
+    serverLoad: Optional[float] = Field(default=None, ge=1, le=100)
     serverLoadAdvanced: Optional[ServerLoadAdvanced] = Field(default=None)
-    operatingCosts: Optional[int] = Field(default=0, ge=0, le=100000000)
+    operatingCosts: Optional[int] = Field(default=None, ge=0, le=100000000)
 
 class OnPremiseConfigurationModel(BaseCRUDModel):
     type: Literal['on-premise']
@@ -82,7 +83,7 @@ class CloudServerUsage(BaseModel):
     localisation: str = Field(...)
     lifespan: int = Field(..., ge=1, le=10000)
     method: str = Field(...)
-    serverLoad: Optional[float] = Field(default=1, ge=1, le=100)
+    serverLoad: Optional[float] = Field(default=None, ge=1, le=100)
     serverLoadAdvanced: Optional[ServerLoadAdvanced] = Field(default=None)
     instancePricingType: Optional[str] = Field(default=None)
     reservedPlan: Optional[str] = Field(default=None),

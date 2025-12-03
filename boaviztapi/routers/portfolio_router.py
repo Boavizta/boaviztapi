@@ -1,10 +1,9 @@
 from bson import ObjectId
 from fastapi import APIRouter, status, Body, HTTPException
 from fastapi.params import Depends
-
 from pydantic import TypeAdapter
+
 from boaviztapi.dto.auth.user_dto import UserPublicDTO
-from boaviztapi.model.crud_models.configuration_model import ConfigurationModel
 from boaviztapi.model.crud_models.portfolio_model import PortfolioCollection, PortfolioModel, ExtendedPortfolioModel, \
     ExtendedPortfolioWithResultsModel
 from boaviztapi.model.services.portfolio_service import PortfolioService
