@@ -44,6 +44,7 @@ from boaviztapi.routers.peripheral_router import peripheral_router
 from boaviztapi.routers.server_router import server_router
 from boaviztapi.routers.terminal_router import terminal_router
 from boaviztapi.routers.utils_router import utils_router
+from boaviztapi.routers.costs_router import costs_router
 from boaviztapi.service.auth.session_backend import SessionAuthBackend
 
 logging.basicConfig(
@@ -126,6 +127,7 @@ app.include_router(auth_router)
 app.include_router(user_router)
 app.include_router(portfolio_router)
 app.include_router(sustainability_router)
+app.include_router(costs_router)
 
 if __name__ == '__main__':
     import uvicorn
