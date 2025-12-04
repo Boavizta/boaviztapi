@@ -1,0 +1,51 @@
+Instance Name,API Name,Instance Memory,vCPUs,Linux On Demand cost,Linux Spot cost,Windows On Demand cost,Windows Spot cost
+C2 Standard 16,c2-standard-16,64 GiB,16,€0.802 hourly,€0.2127 hourly,€1.4328 hourly,€0.8435 hourly
+C2 Standard 30,c2-standard-30,120 GiB,30,€1.5038 hourly,€0.3988 hourly,€2.6866 hourly,€1.5816 hourly
+C2 Standard 4,c2-standard-4,16 GiB,4,€0.2005 hourly,€0.0532 hourly,€0.3582 hourly,€0.2109 hourly
+C2 Standard 60,c2-standard-60,240 GiB,60,€3.0077 hourly,€0.7977 hourly,€5.3731 hourly,€3.1632 hourly
+C2 Standard 8,c2-standard-8,32 GiB,8,€0.401 hourly,€0.1064 hourly,€0.7164 hourly,€0.4218 hourly
+E2 Standard 16,e2-standard-16,64 GiB,16,€0.592 hourly,€0.2367 hourly,€1.2228 hourly,€0.8675 hourly
+E2 Standard 2,e2-standard-2,8 GiB,2,€0.074 hourly,€0.0296 hourly,€0.1528 hourly,€0.1084 hourly
+E2 Standard 32,e2-standard-32,128 GiB,32,€1.1839 hourly,€0.4734 hourly,€2.4455 hourly,€1.735 hourly
+E2 Standard 4,e2-standard-4,16 GiB,4,€0.148 hourly,€0.0592 hourly,€0.3057 hourly,€0.2169 hourly
+E2 Standard 8,e2-standard-8,32 GiB,8,€0.296 hourly,€0.1183 hourly,€0.6114 hourly,€0.4337 hourly
+N1 High CPU 16,n1-highcpu-16,14.4 GiB,16,€0.6259 hourly,€0.1435 hourly,€1.2567 hourly,€0.7743 hourly
+N1 High CPU 2,n1-highcpu-2,1.8 GiB,2,€0.0782 hourly,€0.0179 hourly,€0.1571 hourly,€0.0968 hourly
+N1 High CPU 32,n1-highcpu-32,28.8 GiB,32,€1.2518 hourly,€0.2871 hourly,€2.5134 hourly,€1.5487 hourly
+N1 High CPU 4,n1-highcpu-4,3.6 GiB,4,€0.1565 hourly,€0.0359 hourly,€0.3142 hourly,€0.1936 hourly
+N1 High CPU 64,n1-highcpu-64,57.6 GiB,64,€2.5036 hourly,€0.5742 hourly,€5.0267 hourly,€3.0974 hourly
+N1 High CPU 8,n1-highcpu-8,7.2 GiB,8,€0.3129 hourly,€0.0718 hourly,€0.6283 hourly,€0.3872 hourly
+N1 High CPU 96,n1-highcpu-96,86.4 GiB,96,€3.7553 hourly,€0.8613 hourly,€7.5401 hourly,€4.646 hourly
+N1 High Memory 16,n1-highmem-16,104 GiB,16,€1.045 hourly,€0.2398 hourly,€1.6758 hourly,€0.8706 hourly
+N1 High Memory 2,n1-highmem-2,13 GiB,2,€0.1306 hourly,€0.03 hourly,€0.2095 hourly,€0.1088 hourly
+N1 High Memory 32,n1-highmem-32,208 GiB,32,€2.09 hourly,€0.4795 hourly,€3.3516 hourly,€1.7411 hourly
+N1 High Memory 4,n1-highmem-4,26 GiB,4,€0.2613 hourly,€0.0599 hourly,€0.419 hourly,€0.2176 hourly
+N1 High Memory 64,n1-highmem-64,416 GiB,64,€4.1801 hourly,€0.9591 hourly,€6.7033 hourly,€3.4822 hourly
+N1 High Memory 8,n1-highmem-8,52 GiB,8,€0.5225 hourly,€0.1199 hourly,€0.8379 hourly,€0.4353 hourly
+N1 High Memory 96,n1-highmem-96,624 GiB,96,€6.2701 hourly,€1.4386 hourly,€10.0549 hourly,€5.2234 hourly
+N1 Standard 1,n1-standard-1,3.75 GiB,1,€0.0524 hourly,€0.012 hourly,€0.0919 hourly,€0.0515 hourly
+N1 Standard 16,n1-standard-16,60 GiB,16,€0.8392 hourly,€0.1925 hourly,€1.47 hourly,€0.8233 hourly
+N1 Standard 2,n1-standard-2,7.5 GiB,2,€0.1049 hourly,€0.0241 hourly,€0.1837 hourly,€0.1029 hourly
+N1 Standard 32,n1-standard-32,120 GiB,32,€1.6784 hourly,€0.385 hourly,€2.94 hourly,€1.6466 hourly
+N1 Standard 4,n1-standard-4,15 GiB,4,€0.2098 hourly,€0.0481 hourly,€0.3675 hourly,€0.2058 hourly
+N1 Standard 64,n1-standard-64,240 GiB,64,€3.3568 hourly,€0.7701 hourly,€5.88 hourly,€3.2932 hourly
+N1 Standard 8,n1-standard-8,30 GiB,8,€0.4196 hourly,€0.0963 hourly,€0.735 hourly,€0.4117 hourly
+N1 Standard 96,n1-standard-96,360 GiB,96,€5.0352 hourly,€1.1551 hourly,€8.82 hourly,€4.9398 hourly
+N2 Standard 128,n2-standard-128,512 GiB,128,€1.4927 hourly,€2.2818 hourly,€6.5391 hourly,€7.3282 hourly
+N2 Standard 16,n2-standard-16,64 GiB,16,€0.1866 hourly,€0.2852 hourly,€0.8174 hourly,€0.916 hourly
+N2 Standard 2,n2-standard-2,8 GiB,2,€0.0233 hourly,€0.0357 hourly,€0.1022 hourly,€0.1145 hourly
+N2 Standard 32,n2-standard-32,128 GiB,32,€0.3732 hourly,€0.5705 hourly,€1.6348 hourly,€1.832 hourly
+N2 Standard 4,n2-standard-4,16 GiB,4,€0.0466 hourly,€0.0713 hourly,€0.2043 hourly,€0.229 hourly
+N2 Standard 48,n2-standard-48,192 GiB,48,€0.5598 hourly,€0.8557 hourly,€2.4522 hourly,€2.7481 hourly
+N2 Standard 64,n2-standard-64,256 GiB,64,€0.7464 hourly,€1.1409 hourly,€3.2695 hourly,€3.6641 hourly
+N2 Standard 8,n2-standard-8,32 GiB,8,€0.0933 hourly,€0.1426 hourly,€0.4087 hourly,€0.458 hourly
+N2 Standard 80,n2-standard-80,320 GiB,80,€0.9329 hourly,€1.4261 hourly,€4.0869 hourly,€4.5801 hourly
+N2 Standard 96,n2-standard-96,384 GiB,96,€1.1195 hourly,€1.7114 hourly,€4.9043 hourly,€5.4961 hourly
+T2A Standard 1,t2a-standard-1,4 GiB,1,unavailable,unavailable,unavailable,unavailable
+T2A Standard 2,t2a-standard-2,8 GiB,2,unavailable,unavailable,unavailable,unavailable
+T2A Standard 4,t2a-standard-4,16 GiB,4,unavailable,unavailable,unavailable,unavailable
+T2A Standard 8,t2a-standard-8,32 GiB,8,unavailable,unavailable,unavailable,unavailable
+T2D Standard 1,t2d-standard-1,4 GiB,1,€0.0466 hourly,€0.0107 hourly,€0.0861 hourly,€0.0501 hourly
+T2D Standard 2,t2d-standard-2,8 GiB,2,€0.0933 hourly,€0.0214 hourly,€0.1721 hourly,€0.1002 hourly
+T2D Standard 4,t2d-standard-4,16 GiB,4,€0.1866 hourly,€0.0427 hourly,€0.3443 hourly,€0.2004 hourly
+T2D Standard 8,t2d-standard-8,32 GiB,8,€0.3732 hourly,€0.0854 hourly,€0.6886 hourly,€0.4008 hourly

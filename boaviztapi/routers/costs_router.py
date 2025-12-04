@@ -9,11 +9,14 @@ from boaviztapi.model.services.configuration_service import ConfigurationService
 from fastapi.params import Depends
 
 from boaviztapi.model.services.portfolio_service import PortfolioService
+from boaviztapi.routers.electricity_prices_router import get_electricity_price
 from boaviztapi.routers.pydantic_based_router import validate_id
 from boaviztapi.service.auth.dependencies import get_current_user
 from boaviztapi.service.costs_computation import compute_electricity_costs
 from boaviztapi.service.sustainability_provider import get_server_impact_on_premise, get_cloud_impact
 from bson import ObjectId
+
+from boaviztapi.utils.get_vantage import get_vantage_price
 
 costs_router = APIRouter(
     prefix='/v1/costs',
@@ -54,8 +57,7 @@ async def get_costs_on_premise(
     avg_energy_cost = elec_costs["avg"]["price"]
 
     yearly_op_costs = getattr(server.usage, "operatingCosts", 0.0)
-    days = duration or 365
-    operating_costs = yearly_op_costs / 365 * days
+    operating_costs = yearly_op_costs / 8760 * duration
 
     total_cost = avg_energy_cost + operating_costs
 
@@ -67,11 +69,13 @@ async def get_costs_on_premise(
         }
     }
 
+# Currently the price from vantage is not scraped.
+# Will need to add this later to make sure that all inputs will result in correct costs.
 @costs_router.get("/cloud/{id}")
 async def get_costs_cloud(
     configuration_service: ConfigurationService = Depends(get_scoped_configuration_service),
     id: str = Depends(validate_id),
-    duration: Optional[float] = config["default_duration"]
+    duration: Optional[float] = config["default_duration"],
 ):
     cloud_instance = await configuration_service.get_by_id(id)
     if not cloud_instance:
@@ -79,69 +83,80 @@ async def get_costs_cloud(
     if cloud_instance.type != "cloud":
         raise HTTPException(400, "Configuration is not cloud")
 
-    elec_costs = compute_electricity_costs(
-        cloud_instance,
-        duration=duration,
-        location=cloud_instance.usage.localisation
+    usage = cloud_instance.usage
+
+    # Get Vantage price from CSV
+    vantage_cost = get_vantage_price(
+        cloud_provider=cloud_instance.cloud_provider,
+        instance_type=cloud_instance.instance_type,
+        instancePricingType=usage.instancePricingType,
+        region=usage.localisation
     )
 
-    avg_energy_cost = elec_costs["avg"]["price"]
+    # Compute energy costs
+    # pe_mj = cloud_instance.results["impacts"]["pe"]["embedded"]["value"]
+    # mwh = pe_mj / 3600
+    # electricity_price = get_electricity_price(usage["localisation"])
+    # energy_costs = mwh * float(electricity_price)
 
-    # Cloud total yearly cost from Vantage
-    yearly_total_cost = getattr(cloud_instance, "vantage_total_cost", 0.0)
-
-    days = duration or 365
-
-    total_cloud_cost = yearly_total_cost / 365 * days
-
-    operating_costs = total_cloud_cost - avg_energy_cost
+    operating_costs = vantage_cost * duration
 
     return {
-        "total_cost": total_cloud_cost,
+        "total_cost": operating_costs,
         "breakdown": {
-            "operating_costs": operating_costs,
-            "energy_costs": avg_energy_cost
+            "operating_costs": operating_costs
         }
     }
 
+
 @costs_router.get("/portfolio/{id}")
 async def get_portfolio_costs(
-    portfolio_id: str = Depends(validate_id),
-    configuration_service: ConfigurationService = Depends(get_scoped_configuration_service),
-    portfolio_service: PortfolioService = Depends(get_scoped_portfolio_service),
-    duration: Optional[float] = config["default_duration"],
+        portfolio_id: str = Depends(validate_id),
+        configuration_service: ConfigurationService = Depends(get_scoped_configuration_service),
+        portfolio_service: PortfolioService = Depends(get_scoped_portfolio_service),
+        duration: Optional[float] = config["default_duration"],
 ):
     portfolio = await portfolio_service.get_by_id(portfolio_id)
     if not portfolio:
         raise HTTPException(404, f"Portfolio with id {portfolio_id} not found")
+
     portfolio_id_str = str(portfolio.id)
     configuration_ids = [str(cid) for cid in portfolio.configuration_ids]
     total_cost = 0.0
     total_breakdown = {"operating_costs": 0.0, "energy_costs": 0.0}
     detailed_costs = []
 
-    # Get the config costs for all the configurations listed in the portfolio.
     for config_id in configuration_ids:
         server = await configuration_service.get_by_id(config_id)
         if not server:
             raise HTTPException(404, f"Configuration with id {config_id} not found")
 
-        elec_costs = compute_electricity_costs(
-            server,
-            duration=duration,
-            location=server.usage.localisation
-        )
-        avg_energy_cost = elec_costs["avg"]["price"]
-        days = duration or 365
-
         if server.type == "on-premise":
+            if not hasattr(server, "usage") or not hasattr(server.usage, "localisation"):
+                raise HTTPException(400, f"Configuration {config_id} missing usage or localisation info")
+
+            elec_costs = compute_electricity_costs(
+                server,
+                duration=duration,
+                location=server.usage.localisation
+            )
+            avg_energy_cost = elec_costs["avg"]["price"]
             yearly_op_costs = getattr(server.usage, "operatingCosts", 0.0)
-            operating_costs = yearly_op_costs / 365 * days
+            operating_costs = yearly_op_costs / 8760 * duration
             config_total = avg_energy_cost + operating_costs
+
         elif server.type == "cloud":
-            yearly_total_cost = getattr(server, "vantage_total_cost", 0.0)
-            config_total = yearly_total_cost / 365 * days
-            operating_costs = config_total - avg_energy_cost
+            usage = server.usage
+            vantage_cost = get_vantage_price(
+                cloud_provider=server.cloud_provider,
+                instance_type=server.instance_type,
+                instancePricingType=usage.instancePricingType,
+                region=usage.localisation
+            )
+            operating_costs = vantage_cost * duration
+            avg_energy_cost = 0.0  # Look into in the future.
+            config_total = operating_costs
+
         else:
             raise HTTPException(400, f"Configuration type inapplicable: {server.type}")
 
