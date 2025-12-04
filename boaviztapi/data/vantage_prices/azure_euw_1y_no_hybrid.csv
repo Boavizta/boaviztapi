@@ -1,0 +1,1171 @@
+Name,API Name,Instance Memory,vCPUs,Storage,Linux On Demand cost,Linux Savings Plan,Linux Reserved cost,Linux Spot cost,Windows On Demand cost,Windows Savings Plan,Windows Reserved cost,Windows Spot cost
+A0,A0,0.75 GiB,1,20 GiB,€0.0171 hourly,unavailable,unavailable,€0.0154 hourly,€0.0171 hourly,unavailable,unavailable,€0.0154 hourly
+A1,A1,1.75 GiB,1,70 GiB,€0.0514 hourly,unavailable,unavailable,€0.0463 hourly,€0.0771 hourly,unavailable,unavailable,€0.0694 hourly
+A1 v2,A1 v2,2 GiB,1,10 GiB,€0.0351 hourly,€0.0263 hourly,€0.0207 hourly,€0.0072 hourly,€0.0531 hourly,€0.0657 hourly,€0.0602 hourly,€0.0108 hourly
+A2,A2,3.5 GiB,2,135 GiB,€0.1028 hourly,unavailable,unavailable,€0.0926 hourly,€0.1543 hourly,unavailable,unavailable,€0.1388 hourly
+A2m v2,A2m v2,16 GiB,2,20 GiB,€0.0968 hourly,€0.0724 hourly,€0.0572 hourly,€0.0197 hourly,€0.1611 hourly,€0.1513 hourly,€0.1361 hourly,€0.0329 hourly
+A2 v2,A2 v2,4 GiB,2,20 GiB,€0.0738 hourly,€0.0552 hourly,€0.0435 hourly,€0.015 hourly,€0.1114 hourly,€0.134 hourly,€0.1224 hourly,€0.0227 hourly
+A3,A3,7 GiB,4,285 GiB,€0.2057 hourly,unavailable,unavailable,€0.1851 hourly,€0.3085 hourly,unavailable,unavailable,€0.2777 hourly
+A4,A4,14 GiB,8,605 GiB,€0.4114 hourly,unavailable,unavailable,€0.3702 hourly,€0.6171 hourly,unavailable,unavailable,€0.5554 hourly
+A4m v2,A4m v2,32 GiB,4,40 GiB,€0.1937 hourly,€0.1448 hourly,€0.1145 hourly,€0.0395 hourly,€0.3377 hourly,€0.3025 hourly,€0.2722 hourly,€0.0689 hourly
+A4 v2,A4 v2,8 GiB,4,40 GiB,€0.156 hourly,€0.1166 hourly,€0.0921 hourly,€0.0318 hourly,€0.2348 hourly,€0.2743 hourly,€0.2498 hourly,€0.0479 hourly
+A5,A5,14 GiB,2,135 GiB,€0.2314 hourly,unavailable,unavailable,€0.2083 hourly,€0.2914 hourly,unavailable,unavailable,€0.2623 hourly
+A6,A6,28 GiB,4,285 GiB,€0.4628 hourly,unavailable,unavailable,€0.4165 hourly,€0.5828 hourly,unavailable,unavailable,€0.5245 hourly
+A7,A7,56 GiB,8,605 GiB,€0.9256 hourly,unavailable,unavailable,€0.8331 hourly,€1.1656 hourly,unavailable,unavailable,€1.049 hourly
+A8m v2,A8m v2,64 GiB,8,80 GiB,€0.3882 hourly,€0.2903 hourly,€0.2288 hourly,€0.0792 hourly,€0.7036 hourly,€0.6057 hourly,€0.5442 hourly,€0.1435 hourly
+A8 v2,A8 v2,16 GiB,8,80 GiB,€0.3257 hourly,€0.2435 hourly,€0.1923 hourly,€0.0664 hourly,€0.4928 hourly,€0.5589 hourly,€0.5077 hourly,€0.1005 hourly
+B12ms,B12ms,48 GiB,12,96 GiB,€0.4937 hourly,€0.3752 hourly,€0.2889 hourly,unavailable,€0.5348 hourly,€0.4163 hourly,€0.3301 hourly,unavailable
+B16als v2,B16als v2,32 GiB,16,0 GiB,€0.5245 hourly,€0.3986 hourly,€0.3095 hourly,€0.4721 hourly,€0.5879 hourly,€0.4535 hourly,€0.3643 hourly,€0.5291 hourly
+B16as v2,B16as v2,64 GiB,16,0 GiB,€0.5922 hourly,€0.4501 hourly,€0.3495 hourly,€0.533 hourly,€0.6556 hourly,€0.5049 hourly,€0.4043 hourly,€0.5901 hourly
+B16ls v2,B16ls v2,32 GiB,16,0 GiB,€0.5828 hourly,€0.4429 hourly,€0.3439 hourly,€0.5245 hourly,€0.6462 hourly,€0.4978 hourly,€0.3988 hourly,€0.5816 hourly
+B16ms,B16ms,64 GiB,16,128 GiB,€0.6582 hourly,€0.5002 hourly,€0.3852 hourly,unavailable,€0.7131 hourly,€0.5551 hourly,€0.44 hourly,unavailable
+Standard B16pls v2,B16pls v2,32 GiB,16,0 GiB,€0.4662 hourly,€0.3543 hourly,€0.2751 hourly,€0.4196 hourly,unavailable,unavailable,unavailable,unavailable
+Standard B16ps v2,B16ps v2,64 GiB,16,0 GiB,€0.5262 hourly,€0.3999 hourly,€0.3106 hourly,€0.4736 hourly,unavailable,unavailable,unavailable,unavailable
+B16s v2,B16s v2,64 GiB,16,0 GiB,€0.6582 hourly,€0.5002 hourly,€0.3883 hourly,€0.5924 hourly,€0.7216 hourly,€0.5551 hourly,€0.4432 hourly,€0.6495 hourly
+Standard B1ls,B1ls,0.5 GiB,1,4 GiB,€0.0051 hourly,€0.0039 hourly,€0.003 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+B1ms,B1ms,2 GiB,1,4 GiB,€0.0206 hourly,€0.0156 hourly,€0.012 hourly,unavailable,€0.0237 hourly,€0.0191 hourly,€0.0155 hourly,unavailable
+B1s,B1s,1 GiB,1,4 GiB,€0.0103 hourly,€0.0078 hourly,€0.006 hourly,unavailable,€0.0137 hourly,€0.0112 hourly,€0.0094 hourly,unavailable
+B20ms,B20ms,80 GiB,20,160 GiB,€0.8228 hourly,€0.6253 hourly,€0.4815 hourly,unavailable,€0.8913 hourly,€0.6939 hourly,€0.55 hourly,unavailable
+B2als v2,B2als v2,4 GiB,2,0 GiB,€0.037 hourly,€0.0281 hourly,€0.0218 hourly,€0.0333 hourly,€0.0449 hourly,€0.035 hourly,€0.0287 hourly,€0.0404 hourly
+B2as v2,B2as v2,8 GiB,2,0 GiB,€0.074 hourly,€0.0563 hourly,€0.0437 hourly,€0.0666 hourly,€0.0819 hourly,€0.0631 hourly,€0.0506 hourly,€0.0737 hourly
+B2ats v2,B2ats v2,1 GiB,2,0 GiB,€0.0093 hourly,€0.007 hourly,€0.0055 hourly,€0.0083 hourly,€0.0171 hourly,€0.0139 hourly,€0.0123 hourly,€0.0154 hourly
+B2ls v2,B2ls v2,4 GiB,2,0 GiB,€0.0411 hourly,€0.0313 hourly,€0.0243 hourly,€0.037 hourly,€0.049 hourly,€0.0381 hourly,€0.0311 hourly,€0.0441 hourly
+B2ms,B2ms,8 GiB,2,16 GiB,€0.0823 hourly,€0.0625 hourly,€0.0481 hourly,unavailable,€0.0891 hourly,€0.0694 hourly,€0.055 hourly,unavailable
+Standard B2pls v2,B2pls v2,4 GiB,2,0 GiB,€0.0329 hourly,€0.025 hourly,€0.0194 hourly,€0.0296 hourly,unavailable,unavailable,unavailable,unavailable
+Standard B2ps v2,B2ps v2,8 GiB,2,0 GiB,€0.0658 hourly,€0.05 hourly,€0.0388 hourly,€0.0592 hourly,unavailable,unavailable,unavailable,unavailable
+Standard B2pts v2,B2pts v2,1 GiB,2,0 GiB,€0.0082 hourly,€0.0063 hourly,€0.0049 hourly,€0.0074 hourly,unavailable,unavailable,unavailable,unavailable
+B2s,B2s,4 GiB,2,8 GiB,€0.0411 hourly,€0.0313 hourly,€0.0241 hourly,unavailable,€0.048 hourly,€0.0381 hourly,€0.0309 hourly,unavailable
+B2s v2,B2s v2,8 GiB,2,0 GiB,€0.0823 hourly,€0.0625 hourly,€0.0485 hourly,€0.074 hourly,€0.09 hourly,€0.0694 hourly,€0.0554 hourly,€0.081 hourly
+B2ts v2,B2ts v2,1 GiB,2,0 GiB,€0.0103 hourly,€0.0078 hourly,€0.0061 hourly,€0.0093 hourly,€0.0182 hourly,€0.0147 hourly,€0.0129 hourly,€0.0164 hourly
+B32als v2,B32als v2,64 GiB,32,0 GiB,€1.049 hourly,€0.7973 hourly,€0.619 hourly,€0.9441 hourly,€1.175 hourly,€0.907 hourly,€0.7287 hourly,€1.0575 hourly
+B32as v2,B32as v2,128 GiB,32,0 GiB,€1.1845 hourly,€0.9002 hourly,€0.6991 hourly,€1.066 hourly,€1.3113 hourly,€1.0099 hourly,€0.8088 hourly,€1.1802 hourly
+B32ls v2,B32ls v2,64 GiB,32,0 GiB,€1.1656 hourly,€0.8859 hourly,€0.6878 hourly,€1.049 hourly,€1.2916 hourly,€0.9956 hourly,€0.7975 hourly,€1.1624 hourly
+B32s v2,B32s v2,128 GiB,32,0 GiB,€1.3164 hourly,€1.0005 hourly,€0.7767 hourly,€1.1848 hourly,€1.4424 hourly,€1.1102 hourly,€0.8864 hourly,€1.2982 hourly
+B4als v2,B4als v2,8 GiB,4,0 GiB,€0.1311 hourly,€0.0997 hourly,€0.0774 hourly,€0.118 hourly,€0.1466 hourly,€0.1134 hourly,€0.0911 hourly,€0.1319 hourly
+B4as v2,B4as v2,16 GiB,4,0 GiB,€0.1483 hourly,€0.1127 hourly,€0.0874 hourly,€0.1334 hourly,€0.1637 hourly,€0.1264 hourly,€0.1011 hourly,€0.1473 hourly
+B4ls v2,B4ls v2,8 GiB,4,0 GiB,€0.1457 hourly,€0.1107 hourly,€0.086 hourly,€0.1311 hourly,€0.1611 hourly,€0.1244 hourly,€0.0997 hourly,€0.145 hourly
+B4ms,B4ms,16 GiB,4,32 GiB,€0.1646 hourly,€0.1251 hourly,€0.0963 hourly,unavailable,€0.1783 hourly,€0.1388 hourly,€0.11 hourly,unavailable
+Standard B4pls v2,B4pls v2,8 GiB,4,0 GiB,€0.1166 hourly,€0.0886 hourly,€0.0688 hourly,€0.1049 hourly,unavailable,unavailable,unavailable,unavailable
+Standard B4ps v2,B4ps v2,16 GiB,4,0 GiB,€0.132 hourly,€0.1003 hourly,€0.0777 hourly,€0.1188 hourly,unavailable,unavailable,unavailable,unavailable
+B4s v2,B4s v2,16 GiB,4,0 GiB,€0.1646 hourly,€0.1251 hourly,€0.0971 hourly,€0.1481 hourly,€0.18 hourly,€0.1388 hourly,€0.1108 hourly,€0.162 hourly
+B8als v2,B8als v2,16 GiB,8,0 GiB,€0.2623 hourly,€0.1993 hourly,€0.1548 hourly,€0.236 hourly,€0.294 hourly,€0.2267 hourly,€0.1822 hourly,€0.2646 hourly
+B8as v2,B8as v2,32 GiB,8,0 GiB,€0.2965 hourly,€0.2254 hourly,€0.1747 hourly,€0.2669 hourly,€0.3274 hourly,€0.2528 hourly,€0.2022 hourly,€0.2947 hourly
+B8ls v2,B8ls v2,16 GiB,8,0 GiB,€0.2914 hourly,€0.2215 hourly,€0.172 hourly,€0.2623 hourly,€0.3231 hourly,€0.2489 hourly,€0.1994 hourly,€0.2908 hourly
+B8ms,B8ms,32 GiB,8,64 GiB,€0.3291 hourly,€0.2501 hourly,€0.1925 hourly,unavailable,€0.3565 hourly,€0.2775 hourly,€0.22 hourly,unavailable
+Standard B8pls v2,B8pls v2,16 GiB,8,0 GiB,€0.2331 hourly,€0.1772 hourly,€0.1376 hourly,€0.2098 hourly,unavailable,unavailable,unavailable,unavailable
+Standard B8ps v2,B8ps v2,32 GiB,8,0 GiB,€0.2631 hourly,€0.20 hourly,€0.1554 hourly,€0.2368 hourly,unavailable,unavailable,unavailable,unavailable
+B8s v2,B8s v2,32 GiB,8,0 GiB,€0.3291 hourly,€0.2501 hourly,€0.1942 hourly,€0.2962 hourly,€0.3608 hourly,€0.2775 hourly,€0.2216 hourly,€0.3247 hourly
+D1,D1,3.5 GiB,1,50 GiB,€0.072 hourly,€0.0547 hourly,€0.0459 hourly,€0.0147 hourly,€0.1268 hourly,€0.0941 hourly,€0.0853 hourly,€0.0259 hourly
+D11,D11,14 GiB,2,100 GiB,€0.1894 hourly,€0.144 hourly,€0.1384 hourly,€0.0386 hourly,€0.2391 hourly,€0.2228 hourly,€0.2173 hourly,€0.0488 hourly
+D11s,D11s,14 GiB,2,28 GiB,€0.1894 hourly,€0.144 hourly,€0.1384 hourly,€0.0386 hourly,€0.2391 hourly,€0.2228 hourly,€0.2173 hourly,€0.0488 hourly
+D11 v2,D11 v2,14 GiB,2,100 GiB,€0.1628 hourly,€0.1238 hourly,€0.1056 hourly,€0.0332 hourly,€0.2391 hourly,€0.2026 hourly,€0.1844 hourly,€0.0488 hourly
+D12,D12,28 GiB,4,200 GiB,€0.3788 hourly,€0.2879 hourly,€0.277 hourly,€0.0772 hourly,€0.4791 hourly,€0.4456 hourly,€0.4347 hourly,€0.0977 hourly
+D128ads v7,D128ads v7,512 GiB,128,7040 GiB,€7.5695 hourly,€5.3744 hourly,€4.466 hourly,€1.3989 hourly,€12.6159 hourly,€10.4207 hourly,€9.5124 hourly,€2.5232 hourly
+D128alds v7,D128alds v7,512 GiB,128,7040 GiB,€6.3191 hourly,€4.4866 hourly,€3.7282 hourly,€1.1678 hourly,€11.3655 hourly,€9.5329 hourly,€8.7746 hourly,€2.2731 hourly
+D128als v7,D128als v7,256 GiB,128,0 GiB,€5.3318 hourly,€3.7856 hourly,€3.1457 hourly,€0.9853 hourly,€10.3781 hourly,€8.8319 hourly,€8.192 hourly,€1.9179 hourly
+D128as v7,D128as v7,512 GiB,128,0 GiB,€6.0226 hourly,€4.276 hourly,€3.5534 hourly,€1.113 hourly,€11.0689 hourly,€9.3224 hourly,€8.5997 hourly,€2.0455 hourly
+D128ds v6,D128ds v6,512 GiB,128,7040 GiB,€8.1858 hourly,€5.6482 hourly,€5.0753 hourly,€1.5127 hourly,€13.2321 hourly,€10.6945 hourly,€10.1217 hourly,€2.4453 hourly
+D128lds v6,D128lds v6,256 GiB,128,7040 GiB,€6.9045 hourly,€4.626 hourly,€4.2809 hourly,€1.2759 hourly,€11.9508 hourly,€9.6724 hourly,€9.3273 hourly,€2.2085 hourly
+D128ls v6,D128ls v6,256 GiB,128,0 GiB,€5.5872 hourly,€3.7434 hourly,€3.464 hourly,€1.0839 hourly,€10.6335 hourly,€8.7898 hourly,€8.5104 hourly,€2.0629 hourly
+D128nds v6,D128nds v6,512 GiB,128,7040 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D128nlds v6,D128nlds v6,256 GiB,128,7040 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D128nls v6,D128nls v6,256 GiB,128,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D128ns v6,D128ns v6,512 GiB,128,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D128s v6,D128s v6,512 GiB,128,0 GiB,€6.6242 hourly,€4.5707 hourly,€4.1068 hourly,€1.2851 hourly,€11.6706 hourly,€9.6171 hourly,€9.1532 hourly,€2.2641 hourly
+D12s,D12s,28 GiB,4,56 GiB,€0.3788 hourly,€0.2879 hourly,€0.277 hourly,€0.0772 hourly,€0.4791 hourly,€0.4456 hourly,€0.4347 hourly,€0.0977 hourly
+D12 v2,D12 v2,28 GiB,4,200 GiB,€0.3248 hourly,€0.2469 hourly,€0.2111 hourly,€0.0662 hourly,€0.4774 hourly,€0.4046 hourly,€0.3688 hourly,€0.0973 hourly
+D13,D13,56 GiB,8,400 GiB,€0.7585 hourly,€0.5765 hourly,€0.554 hourly,€0.1547 hourly,€0.9582 hourly,€0.8919 hourly,€0.8694 hourly,€0.1954 hourly
+D13s,D13s,56 GiB,8,112 GiB,€0.7585 hourly,€0.5765 hourly,€0.554 hourly,€0.1547 hourly,€0.9582 hourly,€0.8919 hourly,€0.8694 hourly,€0.1954 hourly
+D13 v2,D13 v2,56 GiB,8,400 GiB,€0.6505 hourly,€0.4944 hourly,€0.4226 hourly,€0.1326 hourly,€0.9548 hourly,€0.8098 hourly,€0.738 hourly,€0.1947 hourly
+D14,D14,112 GiB,16,800 GiB,€1.5161 hourly,€1.1523 hourly,€1.108 hourly,€0.3091 hourly,€1.9164 hourly,€1.7831 hourly,€1.7388 hourly,€0.3908 hourly
+D14s,D14s,112 GiB,16,224 GiB,€1.5161 hourly,€1.1523 hourly,€1.108 hourly,€0.3091 hourly,€1.9164 hourly,€1.7831 hourly,€1.7388 hourly,€0.3908 hourly
+D14 v2,D14 v2,112 GiB,16,800 GiB,€1.301 hourly,€0.9888 hourly,€0.8452 hourly,€0.2653 hourly,€1.9095 hourly,€1.6196 hourly,€1.476 hourly,€0.3894 hourly
+D15i v2,D15i v2,140 GiB,20,1000 GiB,€1.6258 hourly,€1.2356 hourly,unavailable,€0.3315 hourly,€2.3869 hourly,€2.0241 hourly,unavailable,€0.4867 hourly
+D15 v2,D15 v2,140 GiB,20,1000 GiB,€1.6258 hourly,€1.2356 hourly,€1.0565 hourly,€0.3315 hourly,€2.3869 hourly,€2.0241 hourly,€1.8449 hourly,€0.4867 hourly
+D160ads v7,D160ads v7,640 GiB,160,8800 GiB,€9.4619 hourly,€6.718 hourly,€5.5825 hourly,€1.7486 hourly,unavailable,€6.718 hourly,€5.5825 hourly,unavailable
+D160alds v7,D160alds v7,320 GiB,160,8800 GiB,€7.8987 hourly,€5.608 hourly,€4.6602 hourly,€1.4597 hourly,unavailable,€5.608 hourly,€4.6602 hourly,unavailable
+D160als v7,D160als v7,320 GiB,160,0 GiB,€6.6645 hourly,€4.7318 hourly,€3.932 hourly,€1.2316 hourly,unavailable,€4.7318 hourly,€3.932 hourly,unavailable
+D160as v7,D160as v7,640 GiB,160,0 GiB,€7.5284 hourly,€5.3452 hourly,€4.4417 hourly,€1.3912 hourly,unavailable,€5.3452 hourly,€4.4417 hourly,unavailable
+D16ads v5,D16ads v5,64 GiB,16,600 GiB,€0.8571 hourly,€0.6514 hourly,€0.5056 hourly,€0.176 hourly,€1.4879 hourly,€1.2822 hourly,€1.1364 hourly,€0.3056 hourly
+D16ads v6,D16ads v6,64 GiB,16,600 GiB,€0.9462 hourly,€0.6718 hourly,€0.5583 hourly,€0.19 hourly,€1.577 hourly,€1.3026 hourly,€1.1891 hourly,€0.3167 hourly
+D16ads v7,D16ads v7,64 GiB,16,880 GiB,€0.9462 hourly,€0.6718 hourly,€0.5583 hourly,€0.1749 hourly,€1.577 hourly,€1.3026 hourly,€1.1891 hourly,€0.3154 hourly
+D16alds v6,D16alds v6,32 GiB,16,600 GiB,€0.7902 hourly,€0.561 hourly,€0.466 hourly,€0.1587 hourly,€1.421 hourly,€1.1918 hourly,€1.0968 hourly,€0.2853 hourly
+D16alds v7,D16alds v7,32 GiB,16,880 GiB,€0.7902 hourly,€0.561 hourly,€0.466 hourly,€0.146 hourly,€1.421 hourly,€1.1918 hourly,€1.0968 hourly,€0.2842 hourly
+D16als v6,D16als v6,32 GiB,16,0 GiB,€0.6668 hourly,€0.4734 hourly,€0.3932 hourly,€0.1232 hourly,€1.2976 hourly,€1.1042 hourly,€1.024 hourly,€0.2398 hourly
+D16als v7,D16als v7,32 GiB,16,0 GiB,€0.6668 hourly,€0.4734 hourly,€0.3932 hourly,€0.1232 hourly,€1.2976 hourly,€1.1042 hourly,€1.024 hourly,€0.2398 hourly
+D16as v4,D16as v4,64 GiB,16,128 GiB,€0.7885 hourly,€0.5993 hourly,€0.5244 hourly,€0.162 hourly,€1.4193 hourly,€1.2301 hourly,€1.1552 hourly,€0.2915 hourly
+D16as v5,D16as v5,64 GiB,16,0 GiB,€0.7131 hourly,€0.5419 hourly,€0.4207 hourly,€0.1465 hourly,€1.3439 hourly,€1.1727 hourly,€1.0515 hourly,€0.276 hourly
+D16as v6,D16as v6,64 GiB,16,0 GiB,€0.7525 hourly,€0.5343 hourly,€0.4442 hourly,€0.1391 hourly,€1.3833 hourly,€1.1651 hourly,€1.075 hourly,€0.2556 hourly
+D16as v7,D16as v7,64 GiB,16,0 GiB,€0.7525 hourly,€0.5343 hourly,€0.4442 hourly,€0.1391 hourly,€1.3833 hourly,€1.1651 hourly,€1.075 hourly,€0.2556 hourly
+D16a v4,D16a v4,64 GiB,16,400 GiB,€0.7885 hourly,€0.5993 hourly,€0.5244 hourly,€0.162 hourly,€1.4193 hourly,€1.2301 hourly,€1.1552 hourly,€0.2915 hourly
+D16ds v4,D16ds v4,64 GiB,16,600 GiB,€0.9325 hourly,€0.7087 hourly,€0.5501 hourly,€0.187 hourly,€1.5633 hourly,€1.3395 hourly,€1.1809 hourly,€0.3134 hourly
+D16ds v5,D16ds v5,64 GiB,16,600 GiB,€0.9325 hourly,€0.7087 hourly,€0.5501 hourly,€0.187 hourly,€1.5633 hourly,€1.3395 hourly,€1.1809 hourly,€0.3134 hourly
+D16ds v6,D16ds v6,64 GiB,16,880 GiB,€1.0233 hourly,€0.7061 hourly,€0.6344 hourly,€0.1891 hourly,€1.6541 hourly,€1.3369 hourly,€1.2652 hourly,€0.3057 hourly
+D16d v4,D16d v4,64 GiB,16,600 GiB,€0.9325 hourly,€0.7087 hourly,€0.5501 hourly,€0.187 hourly,€1.5633 hourly,€1.3395 hourly,€1.1809 hourly,€0.3134 hourly
+D16d v5,D16d v5,64 GiB,16,600 GiB,€0.9325 hourly,€0.7087 hourly,€0.5501 hourly,€0.187 hourly,€1.5633 hourly,€1.3395 hourly,€1.1809 hourly,€0.3134 hourly
+D16lds v5,D16lds v5,32 GiB,16,600 GiB,€0.7611 hourly,€0.5632 hourly,€0.4491 hourly,€0.1526 hourly,€1.3919 hourly,€1.194 hourly,€1.0799 hourly,€0.2791 hourly
+D16lds v6,D16lds v6,32 GiB,16,880 GiB,€0.8631 hourly,€0.5782 hourly,€0.5351 hourly,€0.1595 hourly,€1.4939 hourly,€1.209 hourly,€1.1659 hourly,€0.2761 hourly
+D16ls v5,D16ls v5,32 GiB,16,0 GiB,€0.6651 hourly,€0.4722 hourly,€0.3924 hourly,€0.1333 hourly,€1.2959 hourly,€1.103 hourly,€1.0232 hourly,€0.2598 hourly
+D16ls v6,D16ls v6,32 GiB,16,0 GiB,€0.6985 hourly,€0.468 hourly,€0.433 hourly,€0.1355 hourly,€1.3293 hourly,€1.0988 hourly,€1.0638 hourly,€0.2579 hourly
+D16nds v6,D16nds v6,64 GiB,16,880 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D16nlds v6,D16nlds v6,32 GiB,16,880 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D16nls v6,D16nls v6,32 GiB,16,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D16ns v6,D16ns v6,64 GiB,16,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard D16pds v5,D16pds v5,64 GiB,16,600 GiB,€0.7474 hourly,€0.568 hourly,€0.441 hourly,€0.2984 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D16pds v6,D16pds v6,64 GiB,16,880 GiB,€0.7525 hourly,€0.5117 hourly,€0.4442 hourly,€0.1391 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D16plds v5,D16plds v5,32 GiB,16,600 GiB,€0.6102 hourly,€0.4502 hourly,€0.36 hourly,€0.2437 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D16plds v6,D16plds v6,32 GiB,16,880 GiB,€0.6394 hourly,€0.4348 hourly,€0.3771 hourly,€0.1182 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D16pls v5,D16pls v5,32 GiB,16,0 GiB,€0.5322 hourly,€0.396 hourly,€0.314 hourly,€0.2125 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D16pls v6,D16pls v6,32 GiB,16,0 GiB,€0.5091 hourly,€0.3462 hourly,€0.3002 hourly,€0.0941 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D16ps v5,D16ps v5,64 GiB,16,0 GiB,€0.6308 hourly,€0.449 hourly,€0.3722 hourly,€0.2519 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D16ps v6,D16ps v6,64 GiB,16,0 GiB,€0.5742 hourly,€0.3905 hourly,€0.339 hourly,€0.1061 hourly,unavailable,unavailable,unavailable,unavailable
+D16s v3,D16s v3,64 GiB,16,128 GiB,€0.8228 hourly,€0.6253 hourly,€0.5241 hourly,€0.1678 hourly,€1.4536 hourly,€1.2561 hourly,€1.1549 hourly,€0.2964 hourly
+D16s v4,D16s v4,64 GiB,16,0 GiB,€0.7885 hourly,€0.5993 hourly,€0.4652 hourly,€0.1581 hourly,€1.4193 hourly,€1.2301 hourly,€1.096 hourly,€0.2846 hourly
+D16s v5,D16s v5,64 GiB,16,0 GiB,€0.7885 hourly,€0.5993 hourly,€0.4495 hourly,€0.1581 hourly,€1.4193 hourly,€1.2301 hourly,€1.0803 hourly,€0.2846 hourly
+D16s v6,D16s v6,64 GiB,16,0 GiB,€0.8279 hourly,€0.5713 hourly,€0.5134 hourly,€0.1606 hourly,€1.4587 hourly,€1.2021 hourly,€1.1441 hourly,€0.283 hourly
+D16 v3,D16 v3,64 GiB,16,400 GiB,€0.8228 hourly,€0.6253 hourly,€0.5241 hourly,€0.1678 hourly,€1.4536 hourly,€1.2561 hourly,€1.1549 hourly,€0.2964 hourly
+D16 v4,D16 v4,64 GiB,16,0 GiB,€0.7885 hourly,€0.5993 hourly,€0.4652 hourly,€0.1581 hourly,€1.4193 hourly,€1.2301 hourly,€1.096 hourly,€0.2846 hourly
+D16 v5,D16 v5,64 GiB,16,0 GiB,€0.7885 hourly,€0.5993 hourly,€0.4495 hourly,€0.1581 hourly,€1.4193 hourly,€1.2301 hourly,€1.0803 hourly,€0.2846 hourly
+D1s,D1s,3.5 GiB,1,7 GiB,€0.072 hourly,€0.0547 hourly,€0.0459 hourly,€0.0147 hourly,€0.1268 hourly,€0.0941 hourly,€0.0853 hourly,€0.0259 hourly
+D1 v2,D1 v2,3.5 GiB,1,50 GiB,€0.0582 hourly,€0.0442 hourly,€0.0352 hourly,€0.0119 hourly,€0.114 hourly,€0.0836 hourly,€0.0746 hourly,€0.0232 hourly
+D2,D2,7 GiB,2,100 GiB,€0.144 hourly,€0.1094 hourly,€0.0926 hourly,€0.0294 hourly,€0.2545 hourly,€0.1883 hourly,€0.1714 hourly,€0.0519 hourly
+D2ads v5,D2ads v5,8 GiB,2,75 GiB,€0.1071 hourly,€0.0814 hourly,€0.0632 hourly,€0.022 hourly,€0.186 hourly,€0.1603 hourly,€0.1421 hourly,€0.0382 hourly
+D2ads v6,D2ads v6,8 GiB,2,75 GiB,€0.1183 hourly,€0.084 hourly,€0.0698 hourly,€0.0237 hourly,€0.1971 hourly,€0.1628 hourly,€0.1486 hourly,€0.0396 hourly
+D2ads v7,D2ads v7,8 GiB,2,110 GiB,€0.1183 hourly,€0.084 hourly,€0.0698 hourly,€0.0219 hourly,€0.1971 hourly,€0.1628 hourly,€0.1486 hourly,€0.0394 hourly
+D2alds v6,D2alds v6,4 GiB,2,75 GiB,€0.0986 hourly,€0.07 hourly,€0.0582 hourly,€0.0198 hourly,€0.1774 hourly,€0.1488 hourly,€0.1371 hourly,€0.0356 hourly
+D2alds v7,D2alds v7,4 GiB,2,110 GiB,€0.0986 hourly,€0.07 hourly,€0.0582 hourly,€0.0182 hourly,€0.1774 hourly,€0.1488 hourly,€0.1371 hourly,€0.0355 hourly
+D2als v6,D2als v6,4 GiB,2,0 GiB,€0.0833 hourly,€0.0591 hourly,€0.0491 hourly,€0.0154 hourly,€0.162 hourly,€0.138 hourly,€0.128 hourly,€0.0299 hourly
+D2als v7,D2als v7,4 GiB,2,0 GiB,€0.0833 hourly,€0.0591 hourly,€0.0491 hourly,€0.0154 hourly,€0.162 hourly,€0.138 hourly,€0.128 hourly,€0.0299 hourly
+D2as v4,D2as v4,8 GiB,2,16 GiB,€0.0986 hourly,€0.0749 hourly,€0.0656 hourly,€0.0202 hourly,€0.1774 hourly,€0.1538 hourly,€0.1444 hourly,€0.0364 hourly
+D2as v5,D2as v5,8 GiB,2,0 GiB,€0.0891 hourly,€0.0677 hourly,€0.0526 hourly,€0.0183 hourly,€0.168 hourly,€0.1466 hourly,€0.1315 hourly,€0.0345 hourly
+D2as v6,D2as v6,8 GiB,2,0 GiB,€0.0943 hourly,€0.0669 hourly,€0.0555 hourly,€0.0174 hourly,€0.1731 hourly,€0.1458 hourly,€0.1343 hourly,€0.032 hourly
+D2as v7,D2as v7,8 GiB,2,0 GiB,€0.0943 hourly,€0.0669 hourly,€0.0555 hourly,€0.0174 hourly,€0.1731 hourly,€0.1458 hourly,€0.1343 hourly,€0.032 hourly
+D2a v4,D2a v4,8 GiB,2,50 GiB,€0.0986 hourly,€0.0749 hourly,€0.0656 hourly,€0.0202 hourly,€0.1774 hourly,€0.1538 hourly,€0.1444 hourly,€0.0364 hourly
+D2ds v4,D2ds v4,8 GiB,2,75 GiB,€0.1166 hourly,€0.0886 hourly,€0.0688 hourly,€0.0234 hourly,€0.1954 hourly,€0.1674 hourly,€0.1476 hourly,€0.0392 hourly
+D2ds v5,D2ds v5,8 GiB,2,75 GiB,€0.1166 hourly,€0.0886 hourly,€0.0688 hourly,€0.0234 hourly,€0.1954 hourly,€0.1674 hourly,€0.1476 hourly,€0.0392 hourly
+D2ds v6,D2ds v6,8 GiB,2,110 GiB,€0.1277 hourly,€0.0881 hourly,€0.0793 hourly,€0.0236 hourly,€0.2066 hourly,€0.167 hourly,€0.1582 hourly,€0.0382 hourly
+D2d v4,D2d v4,8 GiB,2,75 GiB,€0.1166 hourly,€0.0886 hourly,€0.0688 hourly,€0.0234 hourly,€0.1954 hourly,€0.1674 hourly,€0.1476 hourly,€0.0392 hourly
+D2d v5,D2d v5,8 GiB,2,75 GiB,€0.1166 hourly,€0.0886 hourly,€0.0688 hourly,€0.0234 hourly,€0.1954 hourly,€0.1674 hourly,€0.1476 hourly,€0.0392 hourly
+D2lds v5,D2lds v5,4 GiB,2,75 GiB,€0.0951 hourly,€0.0704 hourly,€0.0562 hourly,€0.0191 hourly,€0.174 hourly,€0.1492 hourly,€0.135 hourly,€0.0349 hourly
+D2lds v6,D2lds v6,4 GiB,2,110 GiB,€0.108 hourly,€0.0724 hourly,€0.0669 hourly,€0.02 hourly,€0.1868 hourly,€0.1512 hourly,€0.1458 hourly,€0.0345 hourly
+D2ls v5,D2ls v5,4 GiB,2,0 GiB,€0.0831 hourly,€0.059 hourly,€0.049 hourly,€0.0167 hourly,€0.162 hourly,€0.1379 hourly,€0.1279 hourly,€0.0325 hourly
+D2ls v6,D2ls v6,4 GiB,2,0 GiB,€0.0874 hourly,€0.0586 hourly,€0.0541 hourly,€0.017 hourly,€0.1663 hourly,€0.1374 hourly,€0.133 hourly,€0.0323 hourly
+D2nds v6,D2nds v6,8 GiB,2,110 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D2nlds v6,D2nlds v6,4 GiB,2,110 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D2nls v6,D2nls v6,4 GiB,2,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D2ns v6,D2ns v6,8 GiB,2,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard D2pds v5,D2pds v5,8 GiB,2,75 GiB,€0.0934 hourly,€0.071 hourly,€0.0551 hourly,€0.0373 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D2pds v6,D2pds v6,8 GiB,2,110 GiB,€0.0943 hourly,€0.0641 hourly,€0.0555 hourly,€0.0174 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D2plds v5,D2plds v5,4 GiB,2,75 GiB,€0.0763 hourly,€0.0563 hourly,€0.045 hourly,€0.0305 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D2plds v6,D2plds v6,4 GiB,2,110 GiB,€0.0799 hourly,€0.0543 hourly,€0.0472 hourly,€0.0148 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D2pls v5,D2pls v5,4 GiB,2,0 GiB,€0.0665 hourly,€0.0495 hourly,€0.0392 hourly,€0.0266 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D2pls v6,D2pls v6,4 GiB,2,0 GiB,€0.0636 hourly,€0.0432 hourly,€0.0375 hourly,€0.0118 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D2ps v5,D2ps v5,8 GiB,2,0 GiB,€0.0788 hourly,€0.0561 hourly,€0.0465 hourly,€0.0315 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D2ps v6,D2ps v6,8 GiB,2,0 GiB,€0.0718 hourly,€0.0488 hourly,€0.0424 hourly,€0.0133 hourly,unavailable,unavailable,unavailable,unavailable
+D2s,D2s,7 GiB,2,14 GiB,€0.144 hourly,€0.1094 hourly,€0.0926 hourly,€0.0294 hourly,€0.2545 hourly,€0.1883 hourly,€0.1714 hourly,€0.0519 hourly
+D2s v3,D2s v3,8 GiB,2,16 GiB,€0.1028 hourly,€0.0782 hourly,€0.0656 hourly,€0.021 hourly,€0.1817 hourly,€0.157 hourly,€0.1444 hourly,€0.037 hourly
+D2s v4,D2s v4,8 GiB,2,0 GiB,€0.0986 hourly,€0.0749 hourly,€0.0581 hourly,€0.0198 hourly,€0.1774 hourly,€0.1538 hourly,€0.137 hourly,€0.0356 hourly
+D2s v5,D2s v5,8 GiB,2,0 GiB,€0.0986 hourly,€0.0749 hourly,€0.0562 hourly,€0.0198 hourly,€0.1774 hourly,€0.1538 hourly,€0.135 hourly,€0.0356 hourly
+D2s v6,D2s v6,8 GiB,2,0 GiB,€0.1037 hourly,€0.0716 hourly,€0.0642 hourly,€0.0201 hourly,€0.1826 hourly,€0.1504 hourly,€0.143 hourly,€0.0354 hourly
+D2 v2,D2 v2,7 GiB,2,100 GiB,€0.1166 hourly,€0.0886 hourly,€0.0705 hourly,€0.0238 hourly,€0.228 hourly,€0.1674 hourly,€0.1494 hourly,€0.0465 hourly
+D2 v3,D2 v3,8 GiB,2,50 GiB,€0.1028 hourly,€0.0782 hourly,€0.0656 hourly,€0.021 hourly,€0.1817 hourly,€0.157 hourly,€0.1444 hourly,€0.037 hourly
+D2 v4,D2 v4,8 GiB,2,0 GiB,€0.0986 hourly,€0.0749 hourly,€0.0581 hourly,€0.0198 hourly,€0.1774 hourly,€0.1538 hourly,€0.137 hourly,€0.0356 hourly
+D2 v5,D2 v5,8 GiB,2,0 GiB,€0.0986 hourly,€0.0749 hourly,€0.0562 hourly,€0.0198 hourly,€0.1774 hourly,€0.1538 hourly,€0.135 hourly,€0.0356 hourly
+D3,D3,14 GiB,4,200 GiB,€0.288 hourly,€0.2189 hourly,€0.1845 hourly,€0.0587 hourly,€0.5082 hourly,€0.3766 hourly,€0.3422 hourly,€0.1036 hourly
+D32ads v5,D32ads v5,128 GiB,32,1200 GiB,€1.7141 hourly,€1.3027 hourly,€1.0113 hourly,€0.3521 hourly,€2.9757 hourly,€2.5643 hourly,€2.2729 hourly,€0.6112 hourly
+D32ads v6,D32ads v6,128 GiB,32,750 GiB,€1.8924 hourly,€1.3436 hourly,€1.1165 hourly,€0.38 hourly,€3.154 hourly,€2.6052 hourly,€2.3781 hourly,€0.6333 hourly
+D32ads v7,D32ads v7,128 GiB,32,1760 GiB,€1.8924 hourly,€1.3436 hourly,€1.1165 hourly,€0.3497 hourly,€3.154 hourly,€2.6052 hourly,€2.3781 hourly,€0.6308 hourly
+D32alds v6,D32alds v6,64 GiB,32,750 GiB,€1.5796 hourly,€1.1215 hourly,€0.932 hourly,€0.3172 hourly,€2.8411 hourly,€2.3831 hourly,€2.1936 hourly,€0.5705 hourly
+D32alds v7,D32alds v7,64 GiB,32,1760 GiB,€1.5796 hourly,€1.1215 hourly,€0.932 hourly,€0.2919 hourly,€2.8411 hourly,€2.3831 hourly,€2.1936 hourly,€0.5682 hourly
+D32als v6,D32als v6,64 GiB,32,0 GiB,€1.3327 hourly,€0.9462 hourly,€0.7864 hourly,€0.2463 hourly,€2.5943 hourly,€2.2078 hourly,€2.048 hourly,€0.4794 hourly
+D32als v7,D32als v7,64 GiB,32,0 GiB,€1.3327 hourly,€0.9462 hourly,€0.7864 hourly,€0.2463 hourly,€2.5943 hourly,€2.2078 hourly,€2.048 hourly,€0.4794 hourly
+D32as v4,D32as v4,128 GiB,32,256 GiB,€1.577 hourly,€1.1985 hourly,€1.0488 hourly,€0.3239 hourly,€2.8386 hourly,€2.4601 hourly,€2.3104 hourly,€0.583 hourly
+D32as v5,D32as v5,128 GiB,32,0 GiB,€1.4261 hourly,€1.0839 hourly,€0.8414 hourly,€0.2929 hourly,€2.6877 hourly,€2.3455 hourly,€2.103 hourly,€0.5521 hourly
+D32as v6,D32as v6,128 GiB,32,0 GiB,€1.5059 hourly,€1.0692 hourly,€0.8884 hourly,€0.2783 hourly,€2.7674 hourly,€2.3307 hourly,€2.15 hourly,€0.5114 hourly
+D32as v7,D32as v7,128 GiB,32,0 GiB,€1.5059 hourly,€1.0692 hourly,€0.8884 hourly,€0.2783 hourly,€2.7674 hourly,€2.3307 hourly,€2.15 hourly,€0.5114 hourly
+D32a v4,D32a v4,128 GiB,32,800 GiB,€1.577 hourly,€1.1985 hourly,€1.0488 hourly,€0.3239 hourly,€2.8386 hourly,€2.4601 hourly,€2.3104 hourly,€0.583 hourly
+D32ds v4,D32ds v4,128 GiB,32,1200 GiB,€1.865 hourly,€1.4174 hourly,€1.1003 hourly,€0.3739 hourly,€3.1266 hourly,€2.679 hourly,€2.3619 hourly,€0.6269 hourly
+D32ds v5,D32ds v5,128 GiB,32,1200 GiB,€1.865 hourly,€1.4174 hourly,€1.1003 hourly,€0.3739 hourly,€3.1266 hourly,€2.679 hourly,€2.3619 hourly,€0.6269 hourly
+D32ds v6,D32ds v6,128 GiB,32,1760 GiB,€2.0467 hourly,€1.4122 hourly,€1.2689 hourly,€0.3782 hourly,€3.3082 hourly,€2.6738 hourly,€2.5304 hourly,€0.6114 hourly
+D32d v4,D32d v4,128 GiB,32,1200 GiB,€1.865 hourly,€1.4174 hourly,€1.1003 hourly,€0.3739 hourly,€3.1266 hourly,€2.679 hourly,€2.3619 hourly,€0.6269 hourly
+D32d v5,D32d v5,128 GiB,32,1200 GiB,€1.865 hourly,€1.4174 hourly,€1.1003 hourly,€0.3739 hourly,€3.1266 hourly,€2.679 hourly,€2.3619 hourly,€0.6269 hourly
+D32lds v5,D32lds v5,64 GiB,32,1200 GiB,€1.5221 hourly,€1.1264 hourly,€0.8981 hourly,€0.3052 hourly,€2.7837 hourly,€2.388 hourly,€2.1596 hourly,€0.5581 hourly
+D32lds v6,D32lds v6,64 GiB,32,1760 GiB,€1.7261 hourly,€1.1565 hourly,€1.0702 hourly,€0.319 hourly,€2.9877 hourly,€2.4181 hourly,€2.3318 hourly,€0.5521 hourly
+D32ls v5,D32ls v5,64 GiB,32,0 GiB,€1.3302 hourly,€0.9444 hourly,€0.7848 hourly,€0.2667 hourly,€2.5917 hourly,€2.206 hourly,€2.0463 hourly,€0.5196 hourly
+D32ls v6,D32ls v6,64 GiB,32,0 GiB,€1.397 hourly,€0.936 hourly,€0.8661 hourly,€0.271 hourly,€2.6586 hourly,€2.1976 hourly,€2.1277 hourly,€0.5158 hourly
+D32nds v6,D32nds v6,128 GiB,32,1760 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D32nlds v6,D32nlds v6,64 GiB,32,1760 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D32nls v6,D32nls v6,64 GiB,32,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D32ns v6,D32ns v6,128 GiB,32,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard D32pds v5,D32pds v5,128 GiB,32,1200 GiB,€1.4947 hourly,€1.136 hourly,€0.8819 hourly,€0.5968 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D32pds v6,D32pds v6,128 GiB,32,1760 GiB,€1.5059 hourly,€1.024 hourly,€0.8884 hourly,€0.2783 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D32plds v5,D32plds v5,64 GiB,32,1200 GiB,€1.2205 hourly,€0.9005 hourly,€0.7201 hourly,€0.4873 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D32plds v6,D32plds v6,64 GiB,32,1760 GiB,€1.2779 hourly,€0.869 hourly,€0.754 hourly,€0.2362 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D32pls v5,D32pls v5,64 GiB,32,0 GiB,€1.0645 hourly,€0.7921 hourly,€0.6278 hourly,€0.425 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D32pls v6,D32pls v6,64 GiB,32,0 GiB,€1.0173 hourly,€0.6918 hourly,€0.6003 hourly,€0.188 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D32ps v5,D32ps v5,128 GiB,32,0 GiB,€1.2616 hourly,€0.898 hourly,€0.7443 hourly,€0.5038 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D32ps v6,D32ps v6,128 GiB,32,0 GiB,€1.1493 hourly,€0.7815 hourly,€0.678 hourly,€0.2124 hourly,unavailable,unavailable,unavailable,unavailable
+D32s v3,D32s v3,128 GiB,32,256 GiB,€1.6456 hourly,€1.2506 hourly,€1.0482 hourly,€0.3355 hourly,€2.9071 hourly,€2.5122 hourly,€2.3098 hourly,€0.5928 hourly
+D32s v4,D32s v4,128 GiB,32,0 GiB,€1.577 hourly,€1.1985 hourly,€0.9304 hourly,€0.3162 hourly,€2.8386 hourly,€2.4601 hourly,€2.192 hourly,€0.5691 hourly
+D32s v5,D32s v5,128 GiB,32,0 GiB,€1.577 hourly,€1.1985 hourly,€0.8988 hourly,€0.3162 hourly,€2.8386 hourly,€2.4601 hourly,€2.1604 hourly,€0.5691 hourly
+D32s v6,D32s v6,128 GiB,32,0 GiB,€1.6558 hourly,€1.1425 hourly,€1.0267 hourly,€0.3212 hourly,€2.9174 hourly,€2.4041 hourly,€2.2883 hourly,€0.566 hourly
+D32 v3,D32 v3,128 GiB,32,800 GiB,€1.6456 hourly,€1.2506 hourly,€1.0482 hourly,€0.3355 hourly,€2.9071 hourly,€2.5122 hourly,€2.3098 hourly,€0.5928 hourly
+D32 v4,D32 v4,128 GiB,32,0 GiB,€1.577 hourly,€1.1985 hourly,€0.9304 hourly,€0.3162 hourly,€2.8386 hourly,€2.4601 hourly,€2.192 hourly,€0.5691 hourly
+D32 v5,D32 v5,128 GiB,32,0 GiB,€1.577 hourly,€1.1985 hourly,€0.8988 hourly,€0.3162 hourly,€2.8386 hourly,€2.4601 hourly,€2.1604 hourly,€0.5691 hourly
+D3s,D3s,14 GiB,4,28 GiB,€0.288 hourly,€0.2189 hourly,€0.1845 hourly,€0.0587 hourly,€0.5082 hourly,€0.3766 hourly,€0.3422 hourly,€0.1036 hourly
+D3 v2,D3 v2,14 GiB,4,200 GiB,€0.2331 hourly,€0.1772 hourly,€0.1403 hourly,€0.0475 hourly,€0.4568 hourly,€0.3349 hourly,€0.298 hourly,€0.0931 hourly
+D4,D4,28 GiB,8,400 GiB,€0.5759 hourly,€0.4377 hourly,€0.3682 hourly,€0.1174 hourly,€1.0173 hourly,€0.7531 hourly,€0.6836 hourly,€0.2074 hourly
+D48ads v5,D48ads v5,192 GiB,48,1800 GiB,€2.5712 hourly,€1.9541 hourly,€1.517 hourly,€0.5281 hourly,€4.4636 hourly,€3.8465 hourly,€3.4094 hourly,€0.9168 hourly
+D48ads v6,D48ads v6,192 GiB,48,1700 GiB,€2.8386 hourly,€2.0154 hourly,€1.6748 hourly,€0.57 hourly,€4.731 hourly,€3.9078 hourly,€3.5672 hourly,€0.95 hourly
+D48ads v7,D48ads v7,192 GiB,48,2640 GiB,€2.8386 hourly,€2.0154 hourly,€1.6748 hourly,€0.5246 hourly,€4.731 hourly,€3.9078 hourly,€3.5672 hourly,€0.9462 hourly
+D48alds v6,D48alds v6,96 GiB,48,1700 GiB,€2.3698 hourly,€1.6825 hourly,€1.3981 hourly,€0.4758 hourly,€4.2622 hourly,€3.5749 hourly,€3.2905 hourly,€0.8558 hourly
+D48alds v7,D48alds v7,96 GiB,48,2640 GiB,€2.3698 hourly,€1.6825 hourly,€1.3981 hourly,€0.4379 hourly,€4.2622 hourly,€3.5749 hourly,€3.2905 hourly,€0.8524 hourly
+D48als v6,D48als v6,96 GiB,48,0 GiB,€1.9995 hourly,€1.4197 hourly,€1.1796 hourly,€0.3695 hourly,€3.8919 hourly,€3.312 hourly,€3.072 hourly,€0.7192 hourly
+D48als v7,D48als v7,96 GiB,48,0 GiB,€1.9995 hourly,€1.4197 hourly,€1.1796 hourly,€0.3695 hourly,€3.8919 hourly,€3.312 hourly,€3.072 hourly,€0.7192 hourly
+D48as v4,D48as v4,192 GiB,48,384 GiB,€2.3655 hourly,€1.7978 hourly,€1.5732 hourly,€0.4859 hourly,€4.2579 hourly,€3.6902 hourly,€3.4656 hourly,€0.8746 hourly
+D48as v5,D48as v5,192 GiB,48,0 GiB,€2.1392 hourly,€1.6258 hourly,€1.2621 hourly,€0.4394 hourly,€4.0316 hourly,€3.5182 hourly,€3.1545 hourly,€0.8281 hourly
+D48as v6,D48as v6,192 GiB,48,0 GiB,€2.2583 hourly,€1.6034 hourly,€1.3326 hourly,€0.4173 hourly,€4.1507 hourly,€3.4958 hourly,€3.2249 hourly,€0.7671 hourly
+D48as v7,D48as v7,192 GiB,48,0 GiB,€2.2583 hourly,€1.6034 hourly,€1.3326 hourly,€0.4173 hourly,€4.1507 hourly,€3.4958 hourly,€3.2249 hourly,€0.7671 hourly
+D48a v4,D48a v4,192 GiB,48,1200 GiB,€2.3655 hourly,€1.7978 hourly,€1.5732 hourly,€0.4859 hourly,€4.2579 hourly,€3.6902 hourly,€3.4656 hourly,€0.8746 hourly
+D48ds v4,D48ds v4,192 GiB,48,1800 GiB,€2.7974 hourly,€2.1261 hourly,€1.6504 hourly,€0.5609 hourly,€4.6898 hourly,€4.0184 hourly,€3.5428 hourly,€0.9403 hourly
+D48ds v5,D48ds v5,192 GiB,48,1800 GiB,€2.7974 hourly,€2.1261 hourly,€1.6505 hourly,€0.5609 hourly,€4.6898 hourly,€4.0184 hourly,€3.5429 hourly,€0.9403 hourly
+D48ds v6,D48ds v6,192 GiB,48,2640 GiB,€3.07 hourly,€2.1183 hourly,€1.9032 hourly,€0.5673 hourly,€4.9624 hourly,€4.0107 hourly,€3.7956 hourly,€0.917 hourly
+D48d v4,D48d v4,192 GiB,48,1800 GiB,€2.7974 hourly,€2.1261 hourly,€1.6504 hourly,€0.5609 hourly,€4.6898 hourly,€4.0184 hourly,€3.5428 hourly,€0.9403 hourly
+D48d v5,D48d v5,192 GiB,48,1800 GiB,€2.7974 hourly,€2.1261 hourly,€1.6505 hourly,€0.5609 hourly,€4.6898 hourly,€4.0184 hourly,€3.5429 hourly,€0.9403 hourly
+D48lds v5,D48lds v5,96 GiB,48,1800 GiB,€2.2832 hourly,€1.6896 hourly,€1.3471 hourly,€0.4578 hourly,€4.1756 hourly,€3.582 hourly,€3.2395 hourly,€0.8372 hourly
+D48lds v6,D48lds v6,96 GiB,48,2640 GiB,€2.5892 hourly,€1.7347 hourly,€1.6053 hourly,€0.4785 hourly,€4.4816 hourly,€3.6271 hourly,€3.4977 hourly,€0.8282 hourly
+D48ls v5,D48ls v5,96 GiB,48,0 GiB,€1.9952 hourly,€1.4166 hourly,€1.1772 hourly,€0.40 hourly,€3.8876 hourly,€3.309 hourly,€3.0696 hourly,€0.7795 hourly
+D48ls v6,D48ls v6,96 GiB,48,0 GiB,€2.0955 hourly,€1.404 hourly,€1.299 hourly,€0.4065 hourly,€3.9879 hourly,€3.2964 hourly,€3.1914 hourly,€0.7737 hourly
+D48nds v6,D48nds v6,192 GiB,48,2640 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D48nlds v6,D48nlds v6,96 GiB,48,2640 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D48nls v6,D48nls v6,96 GiB,48,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D48ns v6,D48ns v6,192 GiB,48,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard D48pds v5,D48pds v5,192 GiB,48,1800 GiB,€2.2421 hourly,€1.704 hourly,€1.3229 hourly,€0.8953 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D48pds v6,D48pds v6,192 GiB,48,2640 GiB,€2.2583 hourly,€1.5357 hourly,€1.3326 hourly,€0.4173 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D48plds v5,D48plds v5,96 GiB,48,1800 GiB,€1.8307 hourly,€1.3507 hourly,€1.0801 hourly,€0.731 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D48plds v6,D48plds v6,96 GiB,48,2640 GiB,€1.9172 hourly,€1.3037 hourly,€1.1311 hourly,€0.3543 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D48pls v5,D48pls v5,96 GiB,48,0 GiB,€1.5958 hourly,€1.1875 hourly,€0.9418 hourly,€0.6372 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D48pls v6,D48pls v6,96 GiB,48,0 GiB,€1.5264 hourly,€1.038 hourly,€0.9005 hourly,€0.2821 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D48ps v5,D48ps v5,192 GiB,48,0 GiB,€1.8924 hourly,€1.347 hourly,€1.1165 hourly,€0.7556 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D48ps v6,D48ps v6,192 GiB,48,0 GiB,€1.7235 hourly,€1.172 hourly,€1.017 hourly,€0.3185 hourly,unavailable,unavailable,unavailable,unavailable
+D48s v3,D48s v3,192 GiB,48,384 GiB,€2.4683 hourly,€1.8759 hourly,€1.4232 hourly,€0.5033 hourly,€4.3607 hourly,€3.7683 hourly,€3.3156 hourly,€0.8891 hourly
+D48s v4,D48s v4,192 GiB,48,0 GiB,€2.3655 hourly,€1.7978 hourly,€1.3957 hourly,€0.4743 hourly,€4.2579 hourly,€3.6902 hourly,€3.288 hourly,€0.8537 hourly
+D48s v5,D48s v5,192 GiB,48,0 GiB,€2.3655 hourly,€1.7978 hourly,€1.3483 hourly,€0.4743 hourly,€4.2579 hourly,€3.6902 hourly,€3.2407 hourly,€0.8537 hourly
+D48s v6,D48s v6,192 GiB,48,0 GiB,€2.4838 hourly,€1.7138 hourly,€1.5401 hourly,€0.4818 hourly,€4.3761 hourly,€3.6062 hourly,€3.4324 hourly,€0.849 hourly
+D48 v3,D48 v3,192 GiB,48,1200 GiB,€2.4683 hourly,€1.8759 hourly,€1.4232 hourly,€0.5033 hourly,€4.3607 hourly,€3.7683 hourly,€3.3156 hourly,€0.8891 hourly
+D48 v4,D48 v4,192 GiB,48,0 GiB,€2.3655 hourly,€1.7978 hourly,€1.3957 hourly,€0.4743 hourly,€4.2579 hourly,€3.6902 hourly,€3.288 hourly,€0.8537 hourly
+D48 v5,D48 v5,192 GiB,48,0 GiB,€2.3655 hourly,€1.7978 hourly,€1.3483 hourly,€0.4743 hourly,€4.2579 hourly,€3.6902 hourly,€3.2407 hourly,€0.8537 hourly
+D4ads v5,D4ads v5,16 GiB,4,150 GiB,€0.2143 hourly,€0.1628 hourly,€0.1264 hourly,€0.044 hourly,€0.372 hourly,€0.3205 hourly,€0.2841 hourly,€0.0764 hourly
+D4ads v6,D4ads v6,16 GiB,4,150 GiB,€0.2365 hourly,€0.1679 hourly,€0.1395 hourly,€0.0475 hourly,€0.3942 hourly,€0.3256 hourly,€0.2972 hourly,€0.0792 hourly
+D4ads v7,D4ads v7,16 GiB,4,220 GiB,€0.2365 hourly,€0.1679 hourly,€0.1395 hourly,€0.0437 hourly,€0.3942 hourly,€0.3256 hourly,€0.2972 hourly,€0.0788 hourly
+D4alds v6,D4alds v6,8 GiB,4,150 GiB,€0.1971 hourly,€0.14 hourly,€0.1165 hourly,€0.0396 hourly,€0.3548 hourly,€0.2977 hourly,€0.2742 hourly,€0.0712 hourly
+D4alds v7,D4alds v7,8 GiB,4,220 GiB,€0.1971 hourly,€0.14 hourly,€0.1165 hourly,€0.0364 hourly,€0.3548 hourly,€0.2977 hourly,€0.2742 hourly,€0.071 hourly
+D4als v6,D4als v6,8 GiB,4,0 GiB,€0.1663 hourly,€0.1181 hourly,€0.0983 hourly,€0.0307 hourly,€0.324 hourly,€0.2758 hourly,€0.256 hourly,€0.0599 hourly
+D4als v7,D4als v7,8 GiB,4,0 GiB,€0.1663 hourly,€0.1181 hourly,€0.0983 hourly,€0.0307 hourly,€0.324 hourly,€0.2758 hourly,€0.256 hourly,€0.0599 hourly
+D4as v4,D4as v4,16 GiB,4,32 GiB,€0.1971 hourly,€0.1498 hourly,€0.1311 hourly,€0.0405 hourly,€0.3548 hourly,€0.3075 hourly,€0.2888 hourly,€0.0729 hourly
+D4as v5,D4as v5,16 GiB,4,0 GiB,€0.1783 hourly,€0.1355 hourly,€0.1052 hourly,€0.0366 hourly,€0.336 hourly,€0.2932 hourly,€0.2629 hourly,€0.069 hourly
+D4as v6,D4as v6,16 GiB,4,0 GiB,€0.1886 hourly,€0.1339 hourly,€0.111 hourly,€0.0348 hourly,€0.3463 hourly,€0.2916 hourly,€0.2687 hourly,€0.064 hourly
+D4as v7,D4as v7,16 GiB,4,0 GiB,€0.1886 hourly,€0.1339 hourly,€0.111 hourly,€0.0348 hourly,€0.3463 hourly,€0.2916 hourly,€0.2687 hourly,€0.064 hourly
+D4a v4,D4a v4,16 GiB,4,100 GiB,€0.1971 hourly,€0.1498 hourly,€0.1311 hourly,€0.0405 hourly,€0.3548 hourly,€0.3075 hourly,€0.2888 hourly,€0.0729 hourly
+D4ds v4,D4ds v4,16 GiB,4,150 GiB,€0.2331 hourly,€0.1772 hourly,€0.1376 hourly,€0.0467 hourly,€0.3908 hourly,€0.3349 hourly,€0.2953 hourly,€0.0784 hourly
+D4ds v5,D4ds v5,16 GiB,4,150 GiB,€0.2331 hourly,€0.1772 hourly,€0.1376 hourly,€0.0467 hourly,€0.3908 hourly,€0.3349 hourly,€0.2953 hourly,€0.0784 hourly
+D4ds v6,D4ds v6,16 GiB,4,220 GiB,€0.2554 hourly,€0.1762 hourly,€0.1586 hourly,€0.0472 hourly,€0.4131 hourly,€0.3339 hourly,€0.3163 hourly,€0.0763 hourly
+D4d v4,D4d v4,16 GiB,4,150 GiB,€0.2331 hourly,€0.1772 hourly,€0.1376 hourly,€0.0467 hourly,€0.3908 hourly,€0.3349 hourly,€0.2953 hourly,€0.0784 hourly
+D4d v5,D4d v5,16 GiB,4,150 GiB,€0.2331 hourly,€0.1772 hourly,€0.1376 hourly,€0.0467 hourly,€0.3908 hourly,€0.3349 hourly,€0.2953 hourly,€0.0784 hourly
+D4lds v5,D4lds v5,8 GiB,4,150 GiB,€0.1903 hourly,€0.1408 hourly,€0.1122 hourly,€0.0381 hourly,€0.348 hourly,€0.2985 hourly,€0.2699 hourly,€0.0698 hourly
+D4lds v6,D4lds v6,8 GiB,4,220 GiB,€0.216 hourly,€0.1447 hourly,€0.1337 hourly,€0.0399 hourly,€0.3737 hourly,€0.3024 hourly,€0.2914 hourly,€0.0691 hourly
+D4ls v5,D4ls v5,8 GiB,4,0 GiB,€0.1663 hourly,€0.1181 hourly,€0.0981 hourly,€0.0333 hourly,€0.324 hourly,€0.2758 hourly,€0.2558 hourly,€0.065 hourly
+D4ls v6,D4ls v6,8 GiB,4,0 GiB,€0.1748 hourly,€0.1171 hourly,€0.1082 hourly,€0.0339 hourly,€0.3325 hourly,€0.2748 hourly,€0.2659 hourly,€0.0645 hourly
+D4nds v6,D4nds v6,16 GiB,4,220 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D4nlds v6,D4nlds v6,8 GiB,4,220 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D4nls v6,D4nls v6,8 GiB,4,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D4ns v6,D4ns v6,16 GiB,4,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard D4pds v5,D4pds v5,16 GiB,4,150 GiB,€0.1868 hourly,€0.142 hourly,€0.1103 hourly,€0.0746 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D4pds v6,D4pds v6,16 GiB,4,220 GiB,€0.1886 hourly,€0.1282 hourly,€0.111 hourly,€0.0348 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D4plds v5,D4plds v5,8 GiB,4,150 GiB,€0.1526 hourly,€0.1126 hourly,€0.09 hourly,€0.0609 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D4plds v6,D4plds v6,8 GiB,4,220 GiB,€0.1594 hourly,€0.1084 hourly,€0.0942 hourly,€0.0295 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D4pls v5,D4pls v5,8 GiB,4,0 GiB,€0.1328 hourly,€0.0989 hourly,€0.0785 hourly,€0.053 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D4pls v6,D4pls v6,8 GiB,4,0 GiB,€0.1268 hourly,€0.0863 hourly,€0.075 hourly,€0.0234 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D4ps v5,D4ps v5,16 GiB,4,0 GiB,€0.1577 hourly,€0.1122 hourly,€0.093 hourly,€0.063 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D4ps v6,D4ps v6,16 GiB,4,0 GiB,€0.144 hourly,€0.0979 hourly,€0.0847 hourly,€0.0266 hourly,unavailable,unavailable,unavailable,unavailable
+D4s,D4s,28 GiB,8,56 GiB,€0.5759 hourly,€0.4377 hourly,€0.3682 hourly,€0.1174 hourly,€1.0173 hourly,€0.7531 hourly,€0.6836 hourly,€0.2074 hourly
+D4s v3,D4s v3,16 GiB,4,32 GiB,€0.2057 hourly,€0.1563 hourly,€0.131 hourly,€0.0419 hourly,€0.3634 hourly,€0.314 hourly,€0.2887 hourly,€0.0741 hourly
+D4s v4,D4s v4,16 GiB,4,0 GiB,€0.1971 hourly,€0.1498 hourly,€0.1163 hourly,€0.0395 hourly,€0.3548 hourly,€0.3075 hourly,€0.274 hourly,€0.0711 hourly
+D4s v5,D4s v5,16 GiB,4,0 GiB,€0.1971 hourly,€0.1498 hourly,€0.1123 hourly,€0.0395 hourly,€0.3548 hourly,€0.3075 hourly,€0.27 hourly,€0.0711 hourly
+D4s v6,D4s v6,16 GiB,4,0 GiB,€0.2074 hourly,€0.1431 hourly,€0.1284 hourly,€0.0402 hourly,€0.3651 hourly,€0.3008 hourly,€0.2861 hourly,€0.0708 hourly
+D4 v2,D4 v2,28 GiB,8,400 GiB,€0.4662 hourly,€0.3543 hourly,€0.2814 hourly,€0.0951 hourly,€0.9136 hourly,€0.6697 hourly,€0.5968 hourly,€0.1863 hourly
+D4 v3,D4 v3,16 GiB,4,100 GiB,€0.2057 hourly,€0.1563 hourly,€0.131 hourly,€0.0419 hourly,€0.3634 hourly,€0.314 hourly,€0.2887 hourly,€0.0741 hourly
+D4 v4,D4 v4,16 GiB,4,0 GiB,€0.1971 hourly,€0.1498 hourly,€0.1163 hourly,€0.0395 hourly,€0.3548 hourly,€0.3075 hourly,€0.274 hourly,€0.0711 hourly
+D4 v5,D4 v5,16 GiB,4,0 GiB,€0.1971 hourly,€0.1498 hourly,€0.1123 hourly,€0.0395 hourly,€0.3548 hourly,€0.3075 hourly,€0.27 hourly,€0.0711 hourly
+D5 v2,D5 v2,56 GiB,16,800 GiB,€0.9316 hourly,€0.708 hourly,€0.5628 hourly,€0.19 hourly,€1.8264 hourly,€1.3388 hourly,€1.1936 hourly,€0.3724 hourly
+D64ads v5,D64ads v5,256 GiB,64,2400 GiB,€3.4282 hourly,€2.6055 hourly,€2.0227 hourly,€0.7042 hourly,€5.9514 hourly,€5.1286 hourly,€4.5459 hourly,€1.2224 hourly
+D64ads v6,D64ads v6,256 GiB,64,2400 GiB,€3.7848 hourly,€2.6872 hourly,€2.233 hourly,€0.76 hourly,€6.308 hourly,€5.2104 hourly,€4.7562 hourly,€1.2666 hourly
+D64ads v7,D64ads v7,256 GiB,64,3520 GiB,€3.7848 hourly,€2.6872 hourly,€2.233 hourly,€0.6994 hourly,€6.308 hourly,€5.2104 hourly,€4.7562 hourly,€1.2616 hourly
+D64alds v6,D64alds v6,128 GiB,64,2400 GiB,€3.1591 hourly,€2.243 hourly,€1.8641 hourly,€0.6344 hourly,€5.6823 hourly,€4.7662 hourly,€4.3873 hourly,€1.141 hourly
+D64alds v7,D64alds v7,128 GiB,64,3520 GiB,€3.1591 hourly,€2.243 hourly,€1.8641 hourly,€0.5838 hourly,€5.6823 hourly,€4.7662 hourly,€4.3873 hourly,€1.1365 hourly
+D64als v6,D64als v6,128 GiB,64,0 GiB,€2.6655 hourly,€1.8925 hourly,€1.5728 hourly,€0.4926 hourly,€5.1886 hourly,€4.4157 hourly,€4.096 hourly,€0.9589 hourly
+D64als v7,D64als v7,128 GiB,64,0 GiB,€2.6655 hourly,€1.8925 hourly,€1.5728 hourly,€0.4926 hourly,€5.1886 hourly,€4.4157 hourly,€4.096 hourly,€0.9589 hourly
+D64as v4,D64as v4,256 GiB,64,512 GiB,€3.154 hourly,€2.397 hourly,€2.0976 hourly,€0.6478 hourly,€5.6772 hourly,€4.9202 hourly,€4.6208 hourly,€1.1661 hourly
+D64as v5,D64as v5,256 GiB,64,0 GiB,€2.8523 hourly,€2.1677 hourly,€1.6828 hourly,€0.5859 hourly,€5.3755 hourly,€4.6909 hourly,€4.206 hourly,€1.1041 hourly
+D64as v6,D64as v6,256 GiB,64,0 GiB,€3.0117 hourly,€2.1383 hourly,€1.7767 hourly,€0.5566 hourly,€5.5349 hourly,€4.6615 hourly,€4.2999 hourly,€1.0228 hourly
+D64as v7,D64as v7,256 GiB,64,0 GiB,€3.0117 hourly,€2.1383 hourly,€1.7767 hourly,€0.5566 hourly,€5.5349 hourly,€4.6615 hourly,€4.2999 hourly,€1.0228 hourly
+D64a v4,D64a v4,256 GiB,64,1600 GiB,€3.154 hourly,€2.397 hourly,€2.0976 hourly,€0.6478 hourly,€5.6772 hourly,€4.9202 hourly,€4.6208 hourly,€1.1661 hourly
+D64ds v4,D64ds v4,256 GiB,64,2400 GiB,€3.7299 hourly,€2.8347 hourly,€2.2006 hourly,€0.7478 hourly,€6.2531 hourly,€5.3579 hourly,€4.7237 hourly,€1.2537 hourly
+D64ds v5,D64ds v5,256 GiB,64,2400 GiB,€3.7299 hourly,€2.8347 hourly,€2.2007 hourly,€0.7478 hourly,€6.2531 hourly,€5.3579 hourly,€4.7238 hourly,€1.2537 hourly
+D64ds v6,D64ds v6,256 GiB,64,3520 GiB,€4.0933 hourly,€2.8244 hourly,€2.5377 hourly,€0.7564 hourly,€6.6165 hourly,€5.3476 hourly,€5.0609 hourly,€1.2227 hourly
+D64d v4,D64d v4,256 GiB,64,2400 GiB,€3.7299 hourly,€2.8347 hourly,€2.2006 hourly,€0.7478 hourly,€6.2531 hourly,€5.3579 hourly,€4.7237 hourly,€1.2537 hourly
+D64d v5,D64d v5,256 GiB,64,2400 GiB,€3.7299 hourly,€2.8347 hourly,€2.2007 hourly,€0.7478 hourly,€6.2531 hourly,€5.3579 hourly,€4.7238 hourly,€1.2537 hourly
+D64lds v5,D64lds v5,128 GiB,64,2400 GiB,€3.0443 hourly,€2.2528 hourly,€1.7961 hourly,€0.6104 hourly,€5.5675 hourly,€4.7759 hourly,€4.3193 hourly,€1.1163 hourly
+D64lds v6,D64lds v6,128 GiB,64,3520 GiB,€3.4522 hourly,€2.313 hourly,€2.1405 hourly,€0.638 hourly,€5.9754 hourly,€4.8362 hourly,€4.6637 hourly,€1.1043 hourly
+D64ls v5,D64ls v5,128 GiB,64,0 GiB,€2.6603 hourly,€1.8888 hourly,€1.5696 hourly,€0.5334 hourly,€5.1835 hourly,€4.412 hourly,€4.0928 hourly,€1.0393 hourly
+D64ls v6,D64ls v6,128 GiB,64,0 GiB,€2.794 hourly,€1.872 hourly,€1.732 hourly,€0.542 hourly,€5.3172 hourly,€4.3952 hourly,€4.2552 hourly,€1.0315 hourly
+D64nds v6,D64nds v6,256 GiB,64,3520 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D64nlds v6,D64nlds v6,128 GiB,64,3520 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D64nls v6,D64nls v6,128 GiB,64,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D64ns v6,D64ns v6,256 GiB,64,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard D64pds v5,D64pds v5,208 GiB,64,2400 GiB,€2.9894 hourly,€2.272 hourly,€1.7637 hourly,€1.1937 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D64pds v6,D64pds v6,256 GiB,64,3520 GiB,€3.0117 hourly,€2.048 hourly,€1.7767 hourly,€0.5566 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D64plds v5,D64plds v5,128 GiB,64,2400 GiB,€2.4409 hourly,€1.8009 hourly,€1.4402 hourly,€0.9747 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D64plds v6,D64plds v6,128 GiB,64,3520 GiB,€2.5557 hourly,€1.7379 hourly,€1.5081 hourly,€0.4723 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D64pls v5,D64pls v5,128 GiB,64,0 GiB,€2.1281 hourly,€1.5835 hourly,€1.2556 hourly,€0.8497 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D64pls v6,D64pls v6,128 GiB,64,0 GiB,€2.0347 hourly,€1.3836 hourly,€1.2007 hourly,€0.376 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D64ps v5,D64ps v5,208 GiB,64,0 GiB,€2.5232 hourly,€1.796 hourly,€1.4887 hourly,€1.0075 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D64ps v6,D64ps v6,256 GiB,64,0 GiB,€2.2986 hourly,€1.5631 hourly,€1.356 hourly,€0.4248 hourly,unavailable,unavailable,unavailable,unavailable
+D64s v3,D64s v3,256 GiB,64,512 GiB,€3.2911 hourly,€2.5012 hourly,€2.0965 hourly,€0.6711 hourly,€5.8143 hourly,€5.0244 hourly,€4.6196 hourly,€1.1855 hourly
+D64s v4,D64s v4,256 GiB,64,0 GiB,€3.154 hourly,€2.397 hourly,€1.8608 hourly,€0.6324 hourly,€5.6772 hourly,€4.9202 hourly,€4.384 hourly,€1.1383 hourly
+D64s v5,D64s v5,256 GiB,64,0 GiB,€3.154 hourly,€2.397 hourly,€1.7978 hourly,€0.6324 hourly,€5.6772 hourly,€4.9202 hourly,€4.3209 hourly,€1.1383 hourly
+D64s v6,D64s v6,256 GiB,64,0 GiB,€3.3117 hourly,€2.2851 hourly,€2.0534 hourly,€0.6425 hourly,€5.8349 hourly,€4.8082 hourly,€4.5766 hourly,€1.132 hourly
+D64 v3,D64 v3,256 GiB,64,1600 GiB,€3.2911 hourly,€2.5012 hourly,€2.0965 hourly,€0.6711 hourly,€5.8143 hourly,€5.0244 hourly,€4.6196 hourly,€1.1855 hourly
+D64 v4,D64 v4,256 GiB,64,0 GiB,€3.154 hourly,€2.397 hourly,€1.8608 hourly,€0.6324 hourly,€5.6772 hourly,€4.9202 hourly,€4.384 hourly,€1.1383 hourly
+D64 v5,D64 v5,256 GiB,64,0 GiB,€3.154 hourly,€2.397 hourly,€1.7978 hourly,€0.6324 hourly,€5.6772 hourly,€4.9202 hourly,€4.3209 hourly,€1.1383 hourly
+D8ads v5,D8ads v5,32 GiB,8,300 GiB,€0.4285 hourly,€0.3257 hourly,€0.2528 hourly,€0.088 hourly,€0.7439 hourly,€0.6411 hourly,€0.5682 hourly,€0.1528 hourly
+D8ads v6,D8ads v6,32 GiB,8,300 GiB,€0.4731 hourly,€0.3359 hourly,€0.2791 hourly,€0.095 hourly,€0.7885 hourly,€0.6513 hourly,€0.5945 hourly,€0.1583 hourly
+D8ads v7,D8ads v7,32 GiB,8,440 GiB,€0.4731 hourly,€0.3359 hourly,€0.2791 hourly,€0.0874 hourly,€0.7885 hourly,€0.6513 hourly,€0.5945 hourly,€0.1577 hourly
+D8alds v6,D8alds v6,16 GiB,8,300 GiB,€0.3951 hourly,€0.2805 hourly,€0.233 hourly,€0.0793 hourly,€0.7105 hourly,€0.5959 hourly,€0.5484 hourly,€0.1427 hourly
+D8alds v7,D8alds v7,16 GiB,8,440 GiB,€0.3951 hourly,€0.2805 hourly,€0.233 hourly,€0.073 hourly,€0.7105 hourly,€0.5959 hourly,€0.5484 hourly,€0.1421 hourly
+D8als v6,D8als v6,16 GiB,8,0 GiB,€0.3334 hourly,€0.2367 hourly,€0.1966 hourly,€0.0616 hourly,€0.6488 hourly,€0.5521 hourly,€0.512 hourly,€0.1199 hourly
+D8als v7,D8als v7,16 GiB,8,0 GiB,€0.3334 hourly,€0.2367 hourly,€0.1966 hourly,€0.0616 hourly,€0.6488 hourly,€0.5521 hourly,€0.512 hourly,€0.1199 hourly
+D8as v4,D8as v4,32 GiB,8,64 GiB,€0.3942 hourly,€0.2996 hourly,€0.2622 hourly,€0.081 hourly,€0.7096 hourly,€0.615 hourly,€0.5776 hourly,€0.1458 hourly
+D8as v5,D8as v5,32 GiB,8,0 GiB,€0.3565 hourly,€0.271 hourly,€0.2104 hourly,€0.0732 hourly,€0.6719 hourly,€0.5864 hourly,€0.5257 hourly,€0.138 hourly
+D8as v6,D8as v6,32 GiB,8,0 GiB,€0.3762 hourly,€0.2671 hourly,€0.2221 hourly,€0.0695 hourly,€0.6916 hourly,€0.5825 hourly,€0.5375 hourly,€0.1278 hourly
+D8as v7,D8as v7,32 GiB,8,0 GiB,€0.3762 hourly,€0.2671 hourly,€0.2221 hourly,€0.0695 hourly,€0.6916 hourly,€0.5825 hourly,€0.5375 hourly,€0.1278 hourly
+D8a v4,D8a v4,32 GiB,8,200 GiB,€0.3942 hourly,€0.2996 hourly,€0.2622 hourly,€0.081 hourly,€0.7096 hourly,€0.615 hourly,€0.5776 hourly,€0.1458 hourly
+D8ds v4,D8ds v4,32 GiB,8,300 GiB,€0.4662 hourly,€0.3543 hourly,€0.2751 hourly,€0.0935 hourly,€0.7816 hourly,€0.6697 hourly,€0.5905 hourly,€0.1567 hourly
+D8ds v5,D8ds v5,32 GiB,8,300 GiB,€0.4662 hourly,€0.3543 hourly,€0.2751 hourly,€0.0935 hourly,€0.7816 hourly,€0.6697 hourly,€0.5905 hourly,€0.1567 hourly
+D8ds v6,D8ds v6,32 GiB,8,440 GiB,€0.5117 hourly,€0.353 hourly,€0.3172 hourly,€0.0946 hourly,€0.8271 hourly,€0.6684 hourly,€0.6326 hourly,€0.1528 hourly
+D8d v4,D8d v4,32 GiB,8,300 GiB,€0.4662 hourly,€0.3543 hourly,€0.2751 hourly,€0.0935 hourly,€0.7816 hourly,€0.6697 hourly,€0.5905 hourly,€0.1567 hourly
+D8d v5,D8d v5,32 GiB,8,300 GiB,€0.4662 hourly,€0.3543 hourly,€0.2751 hourly,€0.0935 hourly,€0.7816 hourly,€0.6697 hourly,€0.5905 hourly,€0.1567 hourly
+D8lds v5,D8lds v5,16 GiB,8,300 GiB,€0.3805 hourly,€0.2816 hourly,€0.2245 hourly,€0.0763 hourly,€0.6959 hourly,€0.597 hourly,€0.5399 hourly,€0.1395 hourly
+D8lds v6,D8lds v6,16 GiB,8,440 GiB,€0.432 hourly,€0.2894 hourly,€0.2676 hourly,€0.0798 hourly,€0.7474 hourly,€0.6048 hourly,€0.583 hourly,€0.1381 hourly
+D8ls v5,D8ls v5,16 GiB,8,0 GiB,€0.3325 hourly,€0.2361 hourly,€0.1962 hourly,€0.0667 hourly,€0.6479 hourly,€0.5515 hourly,€0.5116 hourly,€0.1299 hourly
+D8ls v6,D8ls v6,16 GiB,8,0 GiB,€0.3488 hourly,€0.2337 hourly,€0.2165 hourly,€0.0677 hourly,€0.6642 hourly,€0.5491 hourly,€0.5319 hourly,€0.1289 hourly
+D8nds v6,D8nds v6,32 GiB,8,440 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D8nlds v6,D8nlds v6,16 GiB,8,440 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D8nls v6,D8nls v6,16 GiB,8,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D8ns v6,D8ns v6,32 GiB,8,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard D8pds v5,D8pds v5,32 GiB,8,300 GiB,€0.3737 hourly,€0.284 hourly,€0.2204 hourly,€0.1492 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D8pds v6,D8pds v6,32 GiB,8,440 GiB,€0.3762 hourly,€0.2558 hourly,€0.2221 hourly,€0.0695 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D8plds v5,D8plds v5,16 GiB,8,300 GiB,€0.3051 hourly,€0.2251 hourly,€0.18 hourly,€0.1218 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D8plds v6,D8plds v6,16 GiB,8,440 GiB,€0.3197 hourly,€0.2174 hourly,€0.1885 hourly,€0.0591 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D8pls v5,D8pls v5,16 GiB,8,0 GiB,€0.2657 hourly,€0.1977 hourly,€0.1569 hourly,€0.1061 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D8pls v6,D8pls v6,16 GiB,8,0 GiB,€0.2545 hourly,€0.1731 hourly,€0.1501 hourly,€0.047 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D8ps v5,D8ps v5,32 GiB,8,0 GiB,€0.3154 hourly,€0.2245 hourly,€0.1861 hourly,€0.1259 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D8ps v6,D8ps v6,32 GiB,8,0 GiB,€0.2871 hourly,€0.1952 hourly,€0.1695 hourly,€0.0531 hourly,unavailable,unavailable,unavailable,unavailable
+D8s v3,D8s v3,32 GiB,8,64 GiB,€0.4114 hourly,€0.3127 hourly,€0.262 hourly,€0.0839 hourly,€0.7268 hourly,€0.6281 hourly,€0.5774 hourly,€0.1482 hourly
+D8s v4,D8s v4,32 GiB,8,0 GiB,€0.3942 hourly,€0.2996 hourly,€0.2326 hourly,€0.079 hourly,€0.7096 hourly,€0.615 hourly,€0.548 hourly,€0.1423 hourly
+D8s v5,D8s v5,32 GiB,8,0 GiB,€0.3942 hourly,€0.2996 hourly,€0.2247 hourly,€0.079 hourly,€0.7096 hourly,€0.615 hourly,€0.5401 hourly,€0.1423 hourly
+D8s v6,D8s v6,32 GiB,8,0 GiB,€0.414 hourly,€0.2856 hourly,€0.2566 hourly,€0.0803 hourly,€0.7294 hourly,€0.601 hourly,€0.572 hourly,€0.1415 hourly
+D8 v3,D8 v3,32 GiB,8,200 GiB,€0.4114 hourly,€0.3127 hourly,€0.262 hourly,€0.0839 hourly,€0.7268 hourly,€0.6281 hourly,€0.5774 hourly,€0.1482 hourly
+D8 v4,D8 v4,32 GiB,8,0 GiB,€0.3942 hourly,€0.2996 hourly,€0.2326 hourly,€0.079 hourly,€0.7096 hourly,€0.615 hourly,€0.548 hourly,€0.1423 hourly
+D8 v5,D8 v5,32 GiB,8,0 GiB,€0.3942 hourly,€0.2996 hourly,€0.2247 hourly,€0.079 hourly,€0.7096 hourly,€0.615 hourly,€0.5401 hourly,€0.1423 hourly
+D96ads v5,D96ads v5,384 GiB,96,3600 GiB,€5.1424 hourly,€3.9082 hourly,€3.0339 hourly,€1.0562 hourly,€8.9271 hourly,€7.693 hourly,€6.8187 hourly,€1.8336 hourly
+D96ads v6,D96ads v6,384 GiB,96,3400 GiB,€5.6772 hourly,€4.0308 hourly,€3.3495 hourly,€1.14 hourly,€9.4619 hourly,€7.8156 hourly,€7.1342 hourly,€1.90 hourly
+D96ads v7,D96ads v7,384 GiB,96,5280 GiB,€5.6772 hourly,€4.0308 hourly,€3.3495 hourly,€1.0491 hourly,€9.4619 hourly,€7.8156 hourly,€7.1342 hourly,€1.8924 hourly
+D96alds v6,D96alds v6,192 GiB,96,3400 GiB,€4.7395 hourly,€3.3651 hourly,€2.7961 hourly,€0.9517 hourly,€8.5243 hourly,€7.1498 hourly,€6.5809 hourly,€1.7117 hourly
+D96alds v7,D96alds v7,192 GiB,96,5280 GiB,€4.7395 hourly,€3.3651 hourly,€2.7961 hourly,€0.8759 hourly,€8.5243 hourly,€7.1498 hourly,€6.5809 hourly,€1.7049 hourly
+D96als v6,D96als v6,192 GiB,96,0 GiB,€3.999 hourly,€2.8393 hourly,€2.3593 hourly,€0.739 hourly,€7.7838 hourly,€6.6241 hourly,€6.144 hourly,€1.4384 hourly
+D96als v7,D96als v7,192 GiB,96,0 GiB,€3.999 hourly,€2.8393 hourly,€2.3593 hourly,€0.739 hourly,€7.7838 hourly,€6.6241 hourly,€6.144 hourly,€1.4384 hourly
+D96as v4,D96as v4,384 GiB,96,768 GiB,€4.731 hourly,€3.5955 hourly,€3.1465 hourly,€0.9717 hourly,€8.5157 hourly,€7.3803 hourly,€6.9312 hourly,€1.7491 hourly
+D96as v5,D96as v5,384 GiB,96,0 GiB,€4.2784 hourly,€3.2516 hourly,€2.5243 hourly,€0.8788 hourly,€8.0632 hourly,€7.0364 hourly,€6.3091 hourly,€1.6562 hourly
+D96as v6,D96as v6,384 GiB,96,0 GiB,€4.5167 hourly,€3.2069 hourly,€2.6651 hourly,€0.8347 hourly,€8.3015 hourly,€6.9916 hourly,€6.4499 hourly,€1.5341 hourly
+D96as v7,D96as v7,384 GiB,96,0 GiB,€4.5167 hourly,€3.2069 hourly,€2.6651 hourly,€0.8347 hourly,€8.3015 hourly,€6.9916 hourly,€6.4499 hourly,€1.5341 hourly
+D96a v4,D96a v4,384 GiB,96,2400 GiB,€4.731 hourly,€3.5955 hourly,€3.1465 hourly,€0.9717 hourly,€8.5157 hourly,€7.3803 hourly,€6.9312 hourly,€1.7491 hourly
+D96ds v5,D96ds v5,384 GiB,96,3600 GiB,€5.5949 hourly,€4.2521 hourly,€3.3009 hourly,€1.1218 hourly,€9.3797 hourly,€8.0369 hourly,€7.0857 hourly,€1.8806 hourly
+D96ds v6,D96ds v6,384 GiB,96,5280 GiB,€6.14 hourly,€4.2366 hourly,€3.8066 hourly,€1.1347 hourly,€9.9247 hourly,€8.0213 hourly,€7.5913 hourly,€1.8341 hourly
+D96d v5,D96d v5,384 GiB,96,3600 GiB,€5.5949 hourly,€4.2521 hourly,€3.3009 hourly,€1.1218 hourly,€9.3797 hourly,€8.0369 hourly,€7.0857 hourly,€1.8806 hourly
+D96lds v5,D96lds v5,192 GiB,96,3600 GiB,€4.5664 hourly,€3.3791 hourly,€2.6942 hourly,€0.9156 hourly,€8.3512 hourly,€7.1639 hourly,€6.4789 hourly,€1.6744 hourly
+D96lds v6,D96lds v6,192 GiB,96,5280 GiB,€5.1783 hourly,€3.4695 hourly,€3.2107 hourly,€0.957 hourly,€8.9631 hourly,€7.2543 hourly,€6.9955 hourly,€1.6564 hourly
+D96ls v5,D96ls v5,192 GiB,96,0 GiB,€3.9905 hourly,€2.8332 hourly,€2.3544 hourly,€0.8001 hourly,€7.7752 hourly,€6.618 hourly,€6.1391 hourly,€1.5589 hourly
+D96ls v6,D96ls v6,192 GiB,96,0 GiB,€4.1902 hourly,€2.8074 hourly,€2.5981 hourly,€0.8129 hourly,€7.9749 hourly,€6.5922 hourly,€6.3829 hourly,€1.5471 hourly
+D96nds v6,D96nds v6,384 GiB,96,5280 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D96nlds v6,D96nlds v6,192 GiB,96,5280 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D96nls v6,D96nls v6,192 GiB,96,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+D96ns v6,D96ns v6,384 GiB,96,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard D96pds v6,D96pds v6,384 GiB,96,5280 GiB,€4.5167 hourly,€3.0714 hourly,€2.6651 hourly,€0.8347 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D96plds v6,D96plds v6,192 GiB,96,5280 GiB,€3.8345 hourly,€2.6074 hourly,€2.2621 hourly,€0.7086 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D96pls v6,D96pls v6,192 GiB,96,0 GiB,€3.0528 hourly,€2.0759 hourly,€1.801 hourly,€0.5642 hourly,unavailable,unavailable,unavailable,unavailable
+Standard D96ps v6,D96ps v6,384 GiB,96,0 GiB,€3.4471 hourly,€2.344 hourly,€2.0339 hourly,€0.637 hourly,unavailable,unavailable,unavailable,unavailable
+D96s v5,D96s v5,384 GiB,96,0 GiB,€4.731 hourly,€3.5955 hourly,€2.6966 hourly,€0.9486 hourly,€8.5157 hourly,€7.3803 hourly,€6.4814 hourly,€1.7074 hourly
+D96s v6,D96s v6,384 GiB,96,0 GiB,€4.9675 hourly,€3.4276 hourly,€3.0801 hourly,€0.9637 hourly,€8.7523 hourly,€7.2124 hourly,€6.8649 hourly,€1.6979 hourly
+D96 v5,D96 v5,384 GiB,96,0 GiB,€4.731 hourly,€3.5955 hourly,€2.6966 hourly,€0.9486 hourly,€8.5157 hourly,€7.3803 hourly,€6.4814 hourly,€1.7074 hourly
+DC16ads v5,DC16ads v5,64 GiB,16,600 GiB,€0.8571 hourly,€0.7716 hourly,€0.6856 hourly,€0.2022 hourly,€1.4879 hourly,€1.4024 hourly,€1.3164 hourly,€0.351 hourly
+DC16ads v6,DC16ads v6,64 GiB,16,300 GiB,€0.9462 hourly,€0.6718 hourly,€0.5583 hourly,€0.1749 hourly,€1.577 hourly,€1.3026 hourly,€1.1891 hourly,€0.2914 hourly
+DC16as v5,DC16as v5,64 GiB,16,0 GiB,€0.7131 hourly,€0.6451 hourly,€0.5705 hourly,€0.1682 hourly,€1.3439 hourly,€1.2759 hourly,€1.2013 hourly,€0.317 hourly
+DC16as v6,DC16as v6,64 GiB,16,0 GiB,€0.7525 hourly,€0.5343 hourly,€0.4442 hourly,€0.1391 hourly,€1.3833 hourly,€1.1651 hourly,€1.075 hourly,€0.2556 hourly
+DC16ds v3,DC16ds v3,128 GiB,16,1200 GiB,€1.865 hourly,€1.6492 hourly,€1.4919 hourly,€0.3446 hourly,€2.4958 hourly,€2.28 hourly,€2.1227 hourly,€0.4612 hourly
+Standard DC16es v5,DC16es v5,64 GiB,16,0 GiB,€0.7885 hourly,unavailable,unavailable,€0.1457 hourly,unavailable,unavailable,unavailable,unavailable
+DC16s v3,DC16s v3,128 GiB,16,0 GiB,€1.577 hourly,€1.3958 hourly,€1.2616 hourly,€0.2914 hourly,€2.2078 hourly,€2.0266 hourly,€1.8924 hourly,€0.408 hourly
+DC1ds v3,DC1ds v3,8 GiB,1,75 GiB,€0.1166 hourly,€0.1031 hourly,€0.0932 hourly,€0.0215 hourly,€0.156 hourly,€0.1425 hourly,€0.1327 hourly,€0.0288 hourly
+DC1s v2,DC1s v2,4 GiB,1,50 GiB,€0.0986 hourly,€0.082 hourly,unavailable,€0.0182 hourly,€0.138 hourly,€0.1215 hourly,unavailable,€0.0255 hourly
+DC1s v3,DC1s v3,8 GiB,1,0 GiB,€0.0986 hourly,€0.0872 hourly,€0.0789 hourly,€0.0182 hourly,€0.138 hourly,€0.1267 hourly,€0.1183 hourly,€0.0255 hourly
+DC24ds v3,DC24ds v3,192 GiB,24,1800 GiB,€2.7974 hourly,€2.4738 hourly,€2.2379 hourly,€0.517 hourly,€3.7436 hourly,€3.42 hourly,€3.1841 hourly,€0.6918 hourly
+DC24s v3,DC24s v3,192 GiB,24,0 GiB,€2.3655 hourly,€2.0937 hourly,€1.8924 hourly,€0.4371 hourly,€3.3117 hourly,€3.0399 hourly,€2.8386 hourly,€0.612 hourly
+DC2ads v5,DC2ads v5,8 GiB,2,75 GiB,€0.1071 hourly,€0.0965 hourly,€0.0857 hourly,€0.0253 hourly,€0.186 hourly,€0.1753 hourly,€0.1646 hourly,€0.0439 hourly
+DC2ads v6,DC2ads v6,8 GiB,2,75 GiB,€0.1183 hourly,€0.084 hourly,€0.0698 hourly,€0.0219 hourly,€0.1971 hourly,€0.1628 hourly,€0.1486 hourly,€0.0364 hourly
+DC2as v5,DC2as v5,8 GiB,2,0 GiB,€0.0891 hourly,€0.0806 hourly,€0.0713 hourly,€0.021 hourly,€0.168 hourly,€0.1595 hourly,€0.1502 hourly,€0.0396 hourly
+DC2as v6,DC2as v6,8 GiB,2,0 GiB,€0.0943 hourly,€0.0669 hourly,€0.0555 hourly,€0.0174 hourly,€0.1731 hourly,€0.1458 hourly,€0.1343 hourly,€0.032 hourly
+DC2ds v3,DC2ds v3,16 GiB,2,150 GiB,€0.2331 hourly,€0.2061 hourly,€0.1865 hourly,€0.0431 hourly,€0.312 hourly,€0.285 hourly,€0.2653 hourly,€0.0577 hourly
+Standard DC2es v5,DC2es v5,8 GiB,2,0 GiB,€0.0986 hourly,unavailable,unavailable,€0.0182 hourly,unavailable,unavailable,unavailable,unavailable
+DC2s v2,DC2s v2,8 GiB,2,100 GiB,€0.1971 hourly,€0.1641 hourly,unavailable,€0.0364 hourly,€0.276 hourly,€0.2429 hourly,unavailable,€0.051 hourly
+DC2s v3,DC2s v3,16 GiB,2,0 GiB,€0.1971 hourly,€0.1745 hourly,€0.1577 hourly,€0.0364 hourly,€0.276 hourly,€0.2533 hourly,€0.2366 hourly,€0.051 hourly
+DC32ads v5,DC32ads v5,128 GiB,32,1200 GiB,€1.7141 hourly,€1.5432 hourly,€1.3713 hourly,€0.4044 hourly,€2.9757 hourly,€2.8048 hourly,€2.6329 hourly,€0.702 hourly
+DC32ads v6,DC32ads v6,128 GiB,32,600 GiB,€1.8924 hourly,€1.3436 hourly,€1.1165 hourly,€0.3497 hourly,€3.154 hourly,€2.6052 hourly,€2.3781 hourly,€0.5829 hourly
+DC32as v5,DC32as v5,128 GiB,32,0 GiB,€1.4261 hourly,€1.2902 hourly,€1.1409 hourly,€0.3364 hourly,€2.6877 hourly,€2.5518 hourly,€2.4025 hourly,€0.634 hourly
+DC32as v6,DC32as v6,128 GiB,32,0 GiB,€1.5059 hourly,€1.0692 hourly,€0.8884 hourly,€0.2783 hourly,€2.7674 hourly,€2.3307 hourly,€2.15 hourly,€0.5114 hourly
+DC32ds v3,DC32ds v3,256 GiB,32,2400 GiB,€3.7299 hourly,€3.2984 hourly,€2.984 hourly,€0.6893 hourly,€4.9915 hourly,€4.56 hourly,€4.2455 hourly,€0.9224 hourly
+Standard DC32es v5,DC32es v5,128 GiB,32,0 GiB,€1.577 hourly,unavailable,unavailable,€0.2914 hourly,unavailable,unavailable,unavailable,unavailable
+DC32s v3,DC32s v3,256 GiB,32,0 GiB,€3.154 hourly,€2.7916 hourly,€2.5231 hourly,€0.5829 hourly,€4.4156 hourly,€4.0532 hourly,€3.7847 hourly,€0.816 hourly
+DC48ads v5,DC48ads v5,192 GiB,48,1800 GiB,€2.5712 hourly,€2.3148 hourly,€2.0569 hourly,€0.6065 hourly,€4.4636 hourly,€4.2072 hourly,€3.9493 hourly,€1.053 hourly
+DC48ads v6,DC48ads v6,192 GiB,48,850 GiB,€2.8386 hourly,€2.0154 hourly,€1.6748 hourly,€0.5246 hourly,€4.731 hourly,€3.9078 hourly,€3.5672 hourly,€0.8743 hourly
+DC48as v5,DC48as v5,192 GiB,48,0 GiB,€2.1392 hourly,€1.9353 hourly,€1.7114 hourly,€0.5046 hourly,€4.0316 hourly,€3.8277 hourly,€3.6038 hourly,€0.9511 hourly
+DC48as v6,DC48as v6,192 GiB,48,0 GiB,€2.2583 hourly,€1.6034 hourly,€1.3326 hourly,€0.4173 hourly,€4.1507 hourly,€3.4958 hourly,€3.2249 hourly,€0.7671 hourly
+DC48ds v3,DC48ds v3,384 GiB,48,2400 GiB,€5.5949 hourly,€4.9476 hourly,€4.4759 hourly,€1.0339 hourly,€7.4873 hourly,€6.8399 hourly,€6.3683 hourly,€1.3836 hourly
+Standard DC48es v5,DC48es v5,192 GiB,48,0 GiB,€2.3655 hourly,unavailable,unavailable,€0.4371 hourly,unavailable,unavailable,unavailable,unavailable
+DC48s v3,DC48s v3,384 GiB,48,0 GiB,€4.731 hourly,€4.1874 hourly,€3.7848 hourly,€0.8743 hourly,€6.6233 hourly,€6.0798 hourly,€5.6771 hourly,€1.224 hourly
+DC4ads v5,DC4ads v5,16 GiB,4,150 GiB,€0.2143 hourly,€0.1929 hourly,€0.1714 hourly,€0.0505 hourly,€0.372 hourly,€0.3506 hourly,€0.3291 hourly,€0.0877 hourly
+DC4ads v6,DC4ads v6,16 GiB,4,150 GiB,€0.2365 hourly,€0.1679 hourly,€0.1395 hourly,€0.0437 hourly,€0.3942 hourly,€0.3256 hourly,€0.2972 hourly,€0.0729 hourly
+DC4as v5,DC4as v5,16 GiB,4,0 GiB,€0.1783 hourly,€0.1613 hourly,€0.1426 hourly,€0.0421 hourly,€0.336 hourly,€0.319 hourly,€0.3003 hourly,€0.0793 hourly
+DC4as v6,DC4as v6,16 GiB,4,0 GiB,€0.1886 hourly,€0.1339 hourly,€0.111 hourly,€0.0348 hourly,€0.3463 hourly,€0.2916 hourly,€0.2687 hourly,€0.064 hourly
+DC4ds v3,DC4ds v3,32 GiB,4,300 GiB,€0.4662 hourly,€0.4123 hourly,€0.373 hourly,€0.0862 hourly,€0.6239 hourly,€0.57 hourly,€0.5307 hourly,€0.1153 hourly
+Standard DC4es v5,DC4es v5,16 GiB,4,0 GiB,€0.1971 hourly,unavailable,unavailable,€0.0364 hourly,unavailable,unavailable,unavailable,unavailable
+DC4s v2,DC4s v2,16 GiB,4,200 GiB,€0.3942 hourly,€0.3282 hourly,unavailable,€0.0729 hourly,€0.5519 hourly,€0.4859 hourly,unavailable,€0.102 hourly
+DC4s v3,DC4s v3,32 GiB,4,0 GiB,€0.3942 hourly,€0.349 hourly,€0.3154 hourly,€0.0729 hourly,€0.5519 hourly,€0.5067 hourly,€0.4731 hourly,€0.102 hourly
+DC64ads v5,DC64ads v5,256 GiB,64,2400 GiB,€3.4282 hourly,€3.0864 hourly,€2.7426 hourly,€0.8087 hourly,€5.9514 hourly,€5.6096 hourly,€5.2658 hourly,€1.4039 hourly
+DC64ads v6,DC64ads v6,256 GiB,64,600 GiB,€3.7848 hourly,€2.6872 hourly,€2.233 hourly,€0.6994 hourly,€6.308 hourly,€5.2104 hourly,€4.7562 hourly,€1.1657 hourly
+DC64as v5,DC64as v5,256 GiB,64,0 GiB,€2.8523 hourly,€2.5805 hourly,€2.2819 hourly,€0.6729 hourly,€5.3755 hourly,€5.1036 hourly,€4.8051 hourly,€1.2681 hourly
+DC64as v6,DC64as v6,256 GiB,64,0 GiB,€3.0117 hourly,€2.1383 hourly,€1.7767 hourly,€0.5566 hourly,€5.5349 hourly,€4.6615 hourly,€4.2999 hourly,€1.0228 hourly
+Standard DC64es v5,DC64es v5,256 GiB,64,0 GiB,€3.154 hourly,unavailable,unavailable,€0.5829 hourly,unavailable,unavailable,unavailable,unavailable
+DC8ads v5,DC8ads v5,32 GiB,8,300 GiB,€0.4285 hourly,€0.3858 hourly,€0.3428 hourly,€0.1011 hourly,€0.7439 hourly,€0.7012 hourly,€0.6582 hourly,€0.1755 hourly
+DC8ads v6,DC8ads v6,32 GiB,8,300 GiB,€0.4731 hourly,€0.3359 hourly,€0.2791 hourly,€0.0874 hourly,€0.7885 hourly,€0.6513 hourly,€0.5945 hourly,€0.1457 hourly
+DC8as v5,DC8as v5,32 GiB,8,0 GiB,€0.3565 hourly,€0.3226 hourly,€0.2852 hourly,€0.0841 hourly,€0.6719 hourly,€0.638 hourly,€0.6006 hourly,€0.1585 hourly
+DC8as v6,DC8as v6,32 GiB,8,0 GiB,€0.3762 hourly,€0.2671 hourly,€0.2221 hourly,€0.0695 hourly,€0.6916 hourly,€0.5825 hourly,€0.5375 hourly,€0.1278 hourly
+DC8ds v3,DC8ds v3,64 GiB,8,600 GiB,€0.9325 hourly,€0.8246 hourly,€0.746 hourly,€0.1723 hourly,€1.2479 hourly,€1.14 hourly,€1.0614 hourly,€0.2306 hourly
+Standard DC8es v5,DC8es v5,32 GiB,8,0 GiB,€0.3942 hourly,unavailable,unavailable,€0.0729 hourly,unavailable,unavailable,unavailable,unavailable
+DC8 v2,DC8 v2,32 GiB,8,400 GiB,€0.7885 hourly,€0.6563 hourly,unavailable,€0.1457 hourly,€1.1039 hourly,€0.9717 hourly,unavailable,€0.204 hourly
+DC8s v3,DC8s v3,64 GiB,8,0 GiB,€0.7885 hourly,€0.6979 hourly,€0.6308 hourly,€0.1457 hourly,€1.1039 hourly,€1.0133 hourly,€0.9462 hourly,€0.204 hourly
+DC96ads v5,DC96ads v5,384 GiB,96,3600 GiB,€5.1424 hourly,€4.6297 hourly,€4.1139 hourly,€1.2131 hourly,€8.9271 hourly,€8.4144 hourly,€7.8987 hourly,€2.1059 hourly
+DC96ads v6,DC96ads v6,384 GiB,96,600 GiB,€5.6772 hourly,€4.0308 hourly,€3.3495 hourly,€1.0491 hourly,€9.4619 hourly,€7.8156 hourly,€7.1342 hourly,€1.7486 hourly
+DC96as v5,DC96as v5,384 GiB,96,0 GiB,€4.2784 hourly,€3.8707 hourly,€3.4228 hourly,€1.0093 hourly,€8.0632 hourly,€7.6555 hourly,€7.2075 hourly,€1.9021 hourly
+DC96as v6,DC96as v6,384 GiB,96,0 GiB,€4.5167 hourly,€3.2069 hourly,€2.6651 hourly,€0.8347 hourly,€8.3015 hourly,€6.9916 hourly,€6.4499 hourly,€1.5341 hourly
+Standard DC96es v5,DC96es v5,384 GiB,96,0 GiB,€4.731 hourly,unavailable,unavailable,€0.8743 hourly,unavailable,unavailable,unavailable,unavailable
+DS11-1 v2,DS11-1 v2,14 GiB,2,28 GiB,€0.1628 hourly,€0.1238 hourly,€0.1056 hourly,€0.0332 hourly,€0.2391 hourly,€0.2026 hourly,€0.1844 hourly,€0.0488 hourly
+DS11 v2,DS11 v2,14 GiB,2,28 GiB,€0.1628 hourly,€0.1238 hourly,€0.1056 hourly,€0.0332 hourly,€0.2391 hourly,€0.2026 hourly,€0.1844 hourly,€0.0488 hourly
+DS12-2 v2,DS12-2 v2,28 GiB,4,56 GiB,€0.3248 hourly,€0.2469 hourly,€0.2111 hourly,€0.0662 hourly,€0.4774 hourly,€0.4046 hourly,€0.3688 hourly,€0.0973 hourly
+DS12 v2,DS12 v2,28 GiB,4,56 GiB,€0.3248 hourly,€0.2469 hourly,€0.2111 hourly,€0.0662 hourly,€0.4774 hourly,€0.4046 hourly,€0.3688 hourly,€0.0973 hourly
+DS13-4 v2,DS13-4 v2,56 GiB,8,112 GiB,€0.6505 hourly,€0.4944 hourly,€0.4226 hourly,€0.1326 hourly,€0.9548 hourly,€0.8098 hourly,€0.738 hourly,€0.1947 hourly
+DS13 v2,DS13 v2,56 GiB,8,112 GiB,€0.6505 hourly,€0.4944 hourly,€0.4226 hourly,€0.1326 hourly,€0.9548 hourly,€0.8098 hourly,€0.738 hourly,€0.1947 hourly
+DS14-8 v2,DS14-8 v2,112 GiB,16,224 GiB,€1.301 hourly,€0.9888 hourly,€0.8452 hourly,€0.2653 hourly,€1.9095 hourly,€1.6196 hourly,€1.476 hourly,€0.3894 hourly
+DS14 v2,DS14 v2,112 GiB,16,224 GiB,€1.301 hourly,€0.9888 hourly,€0.8452 hourly,€0.2653 hourly,€1.9095 hourly,€1.6196 hourly,€1.476 hourly,€0.3894 hourly
+DS15i v2,DS15i v2,140 GiB,20,280 GiB,€1.6258 hourly,€1.2356 hourly,unavailable,€0.3315 hourly,€2.3869 hourly,€2.0241 hourly,unavailable,€0.4867 hourly
+DS15 v2,DS15 v2,140 GiB,20,280 GiB,€1.6258 hourly,€1.2356 hourly,€1.0565 hourly,€0.3315 hourly,€2.3869 hourly,€2.0241 hourly,€1.8449 hourly,€0.4867 hourly
+DS1 v2,DS1 v2,3.5 GiB,1,7 GiB,€0.0582 hourly,€0.0442 hourly,€0.0352 hourly,€0.0119 hourly,€0.114 hourly,€0.0836 hourly,€0.0746 hourly,€0.0232 hourly
+DS2 v2,DS2 v2,7 GiB,2,14 GiB,€0.1166 hourly,€0.0886 hourly,€0.0705 hourly,€0.0238 hourly,€0.228 hourly,€0.1674 hourly,€0.1494 hourly,€0.0465 hourly
+DS3 v2,DS3 v2,14 GiB,4,28 GiB,€0.2331 hourly,€0.1772 hourly,€0.1403 hourly,€0.0475 hourly,€0.4568 hourly,€0.3349 hourly,€0.298 hourly,€0.0931 hourly
+DS4 v2,DS4 v2,28 GiB,8,56 GiB,€0.4662 hourly,€0.3543 hourly,€0.2814 hourly,€0.0951 hourly,€0.9136 hourly,€0.6697 hourly,€0.5968 hourly,€0.1863 hourly
+DS5 v2,DS5 v2,56 GiB,16,112 GiB,€0.9316 hourly,€0.708 hourly,€0.5628 hourly,€0.19 hourly,€1.8264 hourly,€1.3388 hourly,€1.1936 hourly,€0.3724 hourly
+E104ids v5,E104ids v5,672 GiB,104,3900 GiB,€8.4815 hourly,€5.8098 hourly,€5.0038 hourly,€1.7005 hourly,€12.5816 hourly,€9.91 hourly,€9.104 hourly,€2.5226 hourly
+E104id v5,E104id v5,672 GiB,104,3900 GiB,€8.4815 hourly,€5.8098 hourly,€5.0038 hourly,€1.7005 hourly,€12.5816 hourly,€9.91 hourly,€9.104 hourly,€2.5226 hourly
+E104is v5,E104is v5,672 GiB,104,0 GiB,€7.4513 hourly,€5.0385 hourly,€4.322 hourly,€1.494 hourly,€11.5514 hourly,€9.1387 hourly,€8.4222 hourly,€2.3161 hourly
+E104i v5,E104i v5,672 GiB,104,0 GiB,€7.4513 hourly,€5.0385 hourly,€4.322 hourly,€1.494 hourly,€11.5514 hourly,€9.1387 hourly,€8.4222 hourly,€2.3161 hourly
+E112ibds v5,E112ibds v5,672 GiB,112,3800 GiB,€10.5058 hourly,€7.1755 hourly,€6.1986 hourly,€2.1064 hourly,€14.9214 hourly,€11.591 hourly,€10.6142 hourly,€2.9917 hourly
+E112ibs v5,E112ibs v5,672 GiB,112,0 GiB,€9.3976 hourly,€6.4186 hourly,€5.5445 hourly,€1.8842 hourly,€13.8132 hourly,€10.8342 hourly,€9.96 hourly,€2.7695 hourly
+E128-64s v6,E128-64s v6,1024 GiB,128,0 GiB,€10.8204 hourly,€7.3578 hourly,€6.7084 hourly,€1.9996 hourly,€14.6677 hourly,€11.5889 hourly,€10.7227 hourly,€2.7106 hourly
+E128ads v7,E128ads v7,1024 GiB,128,7040 GiB,€9.6213 hourly,€6.5425 hourly,€5.6764 hourly,€1.778 hourly,€9.6213 hourly,€11.5889 hourly,€10.7227 hourly,€1.778 hourly
+E128as v7,E128as v7,1024 GiB,128,0 GiB,€7.9098 hourly,€5.3787 hourly,€4.6667 hourly,€1.4617 hourly,€12.9562 hourly,€10.425 hourly,€9.713 hourly,€2.3943 hourly
+E128ds v6,E128ds v6,1024 GiB,128,7040 GiB,€10.8204 hourly,€7.3578 hourly,€6.7084 hourly,€1.9996 hourly,€15.8667 hourly,€12.4042 hourly,€11.7548 hourly,€2.9322 hourly
+E128nds v6,E128nds v6,1024 GiB,128,7040 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+E128ns v6,E128ns v6,1024 GiB,128,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+E128s v6,E128s v6,1024 GiB,128,0 GiB,€8.754 hourly,€5.9527 hourly,€5.4276 hourly,€1.6177 hourly,€13.8004 hourly,€10.9991 hourly,€10.474 hourly,€2.5503 hourly
+E16-8s v6,E16-8s v6,128 GiB,16,0 GiB,€1.0422 hourly,€0.7047 hourly,€0.6044 hourly,€0.209 hourly,€1.7253 hourly,€1.375 hourly,€1.3093 hourly,€0.3188 hourly
+E160ads v7,E160ads v7,1280 GiB,160,8800 GiB,€12.0262 hourly,€8.1778 hourly,€7.0955 hourly,€2.2225 hourly,unavailable,€8.1778 hourly,€7.0955 hourly,unavailable
+E160as v7,E160as v7,1280 GiB,160,0 GiB,€9.887 hourly,€6.7232 hourly,€5.8334 hourly,€1.8271 hourly,unavailable,€6.7232 hourly,€5.8334 hourly,unavailable
+E16ads v5,E16ads v5,128 GiB,16,600 GiB,€1.0833 hourly,€0.7394 hourly,€0.6392 hourly,€0.2207 hourly,€1.7141 hourly,€1.3702 hourly,€1.27 hourly,€0.3492 hourly
+E16ads v6,E16ads v6,128 GiB,16,600 GiB,€1.2025 hourly,€0.8177 hourly,€0.7095 hourly,€0.2222 hourly,€1.8332 hourly,€1.4485 hourly,€1.3403 hourly,€0.3388 hourly
+E16ads v7,E16ads v7,128 GiB,16,880 GiB,€1.2025 hourly,€0.8177 hourly,€0.7095 hourly,€0.2222 hourly,€1.2025 hourly,€1.4485 hourly,€1.3403 hourly,€0.2222 hourly
+E16as v4,E16as v4,128 GiB,16,256 GiB,€1.0422 hourly,€0.7047 hourly,€0.6129 hourly,€0.2132 hourly,€1.673 hourly,€1.3355 hourly,€1.2437 hourly,€0.3423 hourly
+E16as v5,E16as v5,128 GiB,16,0 GiB,€0.9393 hourly,€0.6342 hourly,€0.5543 hourly,€0.1913 hourly,€1.5701 hourly,€1.265 hourly,€1.185 hourly,€0.3198 hourly
+E16as v6,E16as v6,128 GiB,16,0 GiB,€0.989 hourly,€0.6726 hourly,€0.5833 hourly,€0.1828 hourly,€1.6198 hourly,€1.3033 hourly,€1.2141 hourly,€0.2993 hourly
+E16as v7,E16as v7,128 GiB,16,0 GiB,€0.989 hourly,€0.6726 hourly,€0.5833 hourly,€0.1828 hourly,€1.6198 hourly,€1.3033 hourly,€1.2141 hourly,€0.2993 hourly
+E16a v4,E16a v4,128 GiB,16,400 GiB,€1.0422 hourly,€0.7047 hourly,€0.6129 hourly,€0.2132 hourly,€1.673 hourly,€1.3355 hourly,€1.2437 hourly,€0.3423 hourly
+E16bds v5,E16bds v5,128 GiB,16,600 GiB,€1.3644 hourly,€0.9319 hourly,€0.805 hourly,€0.2736 hourly,€1.9952 hourly,€1.5627 hourly,€1.4358 hourly,€0.40 hourly
+E16bs v5,E16bs v5,128 GiB,16,0 GiB,€1.2205 hourly,€0.8336 hourly,€0.7201 hourly,€0.2447 hourly,€1.8512 hourly,€1.4644 hourly,€1.3509 hourly,€0.3712 hourly
+E16ds v4,E16ds v4,128 GiB,16,600 GiB,€1.1862 hourly,€0.8125 hourly,€0.6998 hourly,€0.2379 hourly,€1.817 hourly,€1.4433 hourly,€1.3306 hourly,€0.3645 hourly
+E16ds v5,E16ds v5,128 GiB,16,600 GiB,€1.1862 hourly,€0.8125 hourly,€0.6998 hourly,€0.2378 hourly,€1.817 hourly,€1.4433 hourly,€1.3306 hourly,€0.3643 hourly
+E16ds v6,E16ds v6,128 GiB,16,880 GiB,€1.3524 hourly,€0.9197 hourly,€0.8386 hourly,€0.2499 hourly,€1.9832 hourly,€1.5505 hourly,€1.4694 hourly,€0.3665 hourly
+E16d v4,E16d v4,128 GiB,16,600 GiB,€1.1862 hourly,€0.8125 hourly,€0.6998 hourly,€0.2379 hourly,€1.817 hourly,€1.4433 hourly,€1.3306 hourly,€0.3645 hourly
+E16d v5,E16d v5,128 GiB,16,600 GiB,€1.1862 hourly,€0.8125 hourly,€0.6998 hourly,€0.2378 hourly,€1.817 hourly,€1.4433 hourly,€1.3306 hourly,€0.3643 hourly
+E16nds v6,E16nds v6,128 GiB,16,880 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+E16ns v6,E16ns v6,128 GiB,16,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard E16pds v5,E16pds v5,128 GiB,16,600 GiB,€0.9462 hourly,€0.645 hourly,€0.5583 hourly,€0.3778 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E16pds v6,E16pds v6,128 GiB,16,880 GiB,€0.9582 hourly,€0.6516 hourly,€0.5655 hourly,€0.2061 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E16ps v5,E16ps v5,128 GiB,16,0 GiB,€0.8339 hourly,€0.5612 hourly,€0.4919 hourly,€0.333 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E16ps v6,E16ps v6,128 GiB,16,0 GiB,€0.7559 hourly,€0.514 hourly,€0.4457 hourly,€0.1626 hourly,unavailable,unavailable,unavailable,unavailable
+E16s v3,E16s v3,128 GiB,16,256 GiB,€1.097 hourly,€0.8337 hourly,€0.6452 hourly,€0.2237 hourly,€1.7278 hourly,€1.4645 hourly,€1.276 hourly,€0.3523 hourly
+E16s v4,E16s v4,128 GiB,16,0 GiB,€1.0422 hourly,€0.7047 hourly,€0.6149 hourly,€0.209 hourly,€1.673 hourly,€1.3355 hourly,€1.2457 hourly,€0.3354 hourly
+E16s v5,E16s v5,128 GiB,16,0 GiB,€1.0422 hourly,€0.7047 hourly,€0.6044 hourly,€0.209 hourly,€1.673 hourly,€1.3355 hourly,€1.2352 hourly,€0.3354 hourly
+E16s v6,E16s v6,128 GiB,16,0 GiB,€1.0945 hourly,€0.7442 hourly,€0.6785 hourly,€0.2023 hourly,€1.7253 hourly,€1.375 hourly,€1.3093 hourly,€0.3188 hourly
+E16 v3,E16 v3,128 GiB,16,400 GiB,€1.097 hourly,€0.8337 hourly,€0.6452 hourly,€0.2237 hourly,€1.7278 hourly,€1.4645 hourly,€1.276 hourly,€0.3523 hourly
+E16 v4,E16 v4,128 GiB,16,0 GiB,€1.0422 hourly,€0.7047 hourly,€0.6149 hourly,€0.209 hourly,€1.673 hourly,€1.3355 hourly,€1.2457 hourly,€0.3354 hourly
+E16 v5,E16 v5,128 GiB,16,0 GiB,€1.0422 hourly,€0.7047 hourly,€0.6044 hourly,€0.209 hourly,€1.673 hourly,€1.3355 hourly,€1.2352 hourly,€0.3354 hourly
+E192ids v6,E192ids v6,1832 GiB,192,10560 GiB,€17.8534 hourly,€12.1403 hourly,€11.0689 hourly,€3.2993 hourly,€25.4229 hourly,€19.7098 hourly,€18.6384 hourly,€4.6982 hourly
+E20ads v5,E20ads v5,160 GiB,20,750 GiB,€1.3542 hourly,€0.9242 hourly,€0.7989 hourly,€0.2758 hourly,€2.1426 hourly,€1.7127 hourly,€1.5874 hourly,€0.4365 hourly
+E20ads v6,E20ads v6,160 GiB,20,750 GiB,€1.5033 hourly,€1.0222 hourly,€0.8869 hourly,€0.2778 hourly,€2.2918 hourly,€1.8107 hourly,€1.6754 hourly,€0.4235 hourly
+E20as v4,E20as v4,160 GiB,20,320 GiB,€1.3027 hourly,€0.8809 hourly,€0.7661 hourly,€0.2665 hourly,€2.0912 hourly,€1.6694 hourly,€1.5546 hourly,€0.4279 hourly
+E20as v5,E20as v5,160 GiB,20,0 GiB,€1.1742 hourly,€0.7928 hourly,€0.6928 hourly,€0.2392 hourly,€1.9627 hourly,€1.5813 hourly,€1.4813 hourly,€0.3998 hourly
+E20as v6,E20as v6,160 GiB,20,0 GiB,€1.2359 hourly,€0.8404 hourly,€0.7292 hourly,€0.2284 hourly,€2.0244 hourly,€1.6289 hourly,€1.5177 hourly,€0.3741 hourly
+E20a v4,E20a v4,160 GiB,20,500 GiB,€1.3027 hourly,€0.8809 hourly,€0.7661 hourly,€0.2665 hourly,€2.0912 hourly,€1.6694 hourly,€1.5546 hourly,€0.4279 hourly
+E20ds v4,E20ds v4,160 GiB,20,750 GiB,€1.4827 hourly,€1.0157 hourly,€0.8748 hourly,€0.2974 hourly,€2.2712 hourly,€1.8042 hourly,€1.6633 hourly,€0.4556 hourly
+E20ds v5,E20ds v5,160 GiB,20,750 GiB,€1.4827 hourly,€1.0157 hourly,€0.8748 hourly,€0.2973 hourly,€2.2712 hourly,€1.8042 hourly,€1.6633 hourly,€0.4554 hourly
+E20ds v6,E20ds v6,160 GiB,20,1100 GiB,€1.691 hourly,€1.1499 hourly,€1.0482 hourly,€0.3125 hourly,€2.4795 hourly,€1.9384 hourly,€1.8367 hourly,€0.4582 hourly
+E20d v4,E20d v4,160 GiB,20,750 GiB,€1.4827 hourly,€1.0157 hourly,€0.8748 hourly,€0.2974 hourly,€2.2712 hourly,€1.8042 hourly,€1.6633 hourly,€0.4556 hourly
+E20d v5,E20d v5,160 GiB,20,750 GiB,€1.4827 hourly,€1.0157 hourly,€0.8748 hourly,€0.2973 hourly,€2.2712 hourly,€1.8042 hourly,€1.6633 hourly,€0.4554 hourly
+Standard E20pds v5,E20pds v5,160 GiB,20,750 GiB,€1.1827 hourly,€0.8063 hourly,€0.6978 hourly,€0.4723 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E20ps v5,E20ps v5,160 GiB,20,0 GiB,€1.0422 hourly,€0.7014 hourly,€0.6149 hourly,€0.4161 hourly,unavailable,unavailable,unavailable,unavailable
+E20s v3,E20s v3,160 GiB,20,320 GiB,€1.3713 hourly,€1.0422 hourly,€0.7658 hourly,€0.2796 hourly,€2.1598 hourly,€1.8307 hourly,€1.5543 hourly,€0.4404 hourly
+E20s v4,E20s v4,160 GiB,20,0 GiB,€1.3027 hourly,€0.8809 hourly,€0.7686 hourly,€0.2612 hourly,€2.0912 hourly,€1.6694 hourly,€1.5571 hourly,€0.4193 hourly
+E20s v5,E20s v5,160 GiB,20,0 GiB,€1.3027 hourly,€0.8809 hourly,€0.7556 hourly,€0.2612 hourly,€2.0912 hourly,€1.6694 hourly,€1.5441 hourly,€0.4193 hourly
+E20s v6,E20s v6,160 GiB,20,0 GiB,€1.3679 hourly,€0.9301 hourly,€0.8481 hourly,€0.2528 hourly,€2.1564 hourly,€1.7186 hourly,€1.6366 hourly,€0.3985 hourly
+E20 v3,E20 v3,160 GiB,20,600 GiB,€1.3713 hourly,€1.0422 hourly,€0.7658 hourly,€0.2796 hourly,€2.1598 hourly,€1.8307 hourly,€1.5543 hourly,€0.4404 hourly
+E20 v4,E20 v4,160 GiB,20,0 GiB,€1.3027 hourly,€0.8809 hourly,€0.7686 hourly,€0.2612 hourly,€2.0912 hourly,€1.6694 hourly,€1.5571 hourly,€0.4193 hourly
+E20 v5,E20 v5,160 GiB,20,0 GiB,€1.3027 hourly,€0.8809 hourly,€0.7556 hourly,€0.2612 hourly,€2.0912 hourly,€1.6694 hourly,€1.5441 hourly,€0.4193 hourly
+E2ads v5,E2ads v5,16 GiB,2,75 GiB,€0.1354 hourly,€0.0924 hourly,€0.0799 hourly,€0.0276 hourly,€0.2143 hourly,€0.1713 hourly,€0.1588 hourly,€0.0436 hourly
+E2ads v6,E2ads v6,16 GiB,2,75 GiB,€0.15 hourly,€0.102 hourly,€0.0887 hourly,€0.0277 hourly,€0.2288 hourly,€0.1808 hourly,€0.1676 hourly,€0.0423 hourly
+E2ads v7,E2ads v7,16 GiB,2,110 GiB,€0.15 hourly,€0.102 hourly,€0.0887 hourly,€0.0277 hourly,€0.15 hourly,€0.1808 hourly,€0.1676 hourly,€0.0277 hourly
+E2as v4,E2as v4,16 GiB,2,32 GiB,€0.1303 hourly,€0.0881 hourly,€0.0766 hourly,€0.0267 hourly,€0.2091 hourly,€0.1669 hourly,€0.1555 hourly,€0.0428 hourly
+E2as v5,E2as v5,16 GiB,2,0 GiB,€0.1174 hourly,€0.0793 hourly,€0.0693 hourly,€0.0239 hourly,€0.1963 hourly,€0.1581 hourly,€0.1481 hourly,€0.04 hourly
+E2as v6,E2as v6,16 GiB,2,0 GiB,€0.1234 hourly,€0.0839 hourly,€0.0729 hourly,€0.0228 hourly,€0.2023 hourly,€0.1628 hourly,€0.1517 hourly,€0.0374 hourly
+E2as v7,E2as v7,16 GiB,2,0 GiB,€0.1234 hourly,€0.0839 hourly,€0.0729 hourly,€0.0228 hourly,€0.2023 hourly,€0.1628 hourly,€0.1517 hourly,€0.0374 hourly
+E2a v4,E2a v4,16 GiB,2,50 GiB,€0.1303 hourly,€0.0881 hourly,€0.0766 hourly,€0.0267 hourly,€0.2091 hourly,€0.1669 hourly,€0.1555 hourly,€0.0428 hourly
+E2bds v5,E2bds v5,16 GiB,2,75 GiB,€0.1706 hourly,€0.1165 hourly,€0.1007 hourly,€0.0342 hourly,€0.2494 hourly,€0.1953 hourly,€0.1795 hourly,€0.05 hourly
+E2bs v5,E2bs v5,16 GiB,2,0 GiB,€0.1526 hourly,€0.1042 hourly,€0.09 hourly,€0.0306 hourly,€0.2314 hourly,€0.183 hourly,€0.1689 hourly,€0.0464 hourly
+E2ds v4,E2ds v4,16 GiB,2,75 GiB,€0.1483 hourly,€0.1016 hourly,€0.0875 hourly,€0.0297 hourly,€0.2271 hourly,€0.1804 hourly,€0.1663 hourly,€0.0456 hourly
+E2ds v5,E2ds v5,16 GiB,2,75 GiB,€0.1483 hourly,€0.1016 hourly,€0.0875 hourly,€0.0297 hourly,€0.2271 hourly,€0.1804 hourly,€0.1663 hourly,€0.0455 hourly
+E2ds v6,E2ds v6,16 GiB,2,110 GiB,€0.1688 hourly,€0.1148 hourly,€0.1048 hourly,€0.0312 hourly,€0.2477 hourly,€0.1937 hourly,€0.1836 hourly,€0.0458 hourly
+E2d v4,E2d v4,16 GiB,2,75 GiB,€0.1483 hourly,€0.1016 hourly,€0.0875 hourly,€0.0297 hourly,€0.2271 hourly,€0.1804 hourly,€0.1663 hourly,€0.0456 hourly
+E2d v5,E2d v5,16 GiB,2,75 GiB,€0.1483 hourly,€0.1016 hourly,€0.0875 hourly,€0.0297 hourly,€0.2271 hourly,€0.1804 hourly,€0.1663 hourly,€0.0455 hourly
+E2nds v6,E2nds v6,16 GiB,2,110 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+E2ns v6,E2ns v6,16 GiB,2,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard E2pds v5,E2pds v5,16 GiB,2,75 GiB,€0.1183 hourly,€0.0806 hourly,€0.0698 hourly,€0.0472 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E2pds v6,E2pds v6,16 GiB,2,110 GiB,€0.12 hourly,€0.0816 hourly,€0.0707 hourly,€0.0258 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E2ps v5,E2ps v5,16 GiB,2,0 GiB,€0.1046 hourly,€0.0704 hourly,€0.0614 hourly,€0.0418 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E2ps v6,E2ps v6,16 GiB,2,0 GiB,€0.0943 hourly,€0.0641 hourly,€0.0558 hourly,€0.0203 hourly,unavailable,unavailable,unavailable,unavailable
+E2s v3,E2s v3,16 GiB,2,32 GiB,€0.1371 hourly,€0.1042 hourly,€0.0806 hourly,€0.028 hourly,€0.216 hourly,€0.1831 hourly,€0.1595 hourly,€0.044 hourly
+E2s v4,E2s v4,16 GiB,2,0 GiB,€0.1303 hourly,€0.0881 hourly,€0.0769 hourly,€0.0261 hourly,€0.2091 hourly,€0.1669 hourly,€0.1557 hourly,€0.0419 hourly
+E2s v5,E2s v5,16 GiB,2,0 GiB,€0.1303 hourly,€0.0881 hourly,€0.0755 hourly,€0.0261 hourly,€0.2091 hourly,€0.1669 hourly,€0.1544 hourly,€0.0419 hourly
+E2s v6,E2s v6,16 GiB,2,0 GiB,€0.1371 hourly,€0.0932 hourly,€0.0848 hourly,€0.0253 hourly,€0.216 hourly,€0.1721 hourly,€0.1637 hourly,€0.0399 hourly
+E2 v3,E2 v3,16 GiB,2,50 GiB,€0.1371 hourly,€0.1042 hourly,€0.0806 hourly,€0.028 hourly,€0.216 hourly,€0.1831 hourly,€0.1595 hourly,€0.044 hourly
+E2 v4,E2 v4,16 GiB,2,0 GiB,€0.1303 hourly,€0.0881 hourly,€0.0769 hourly,€0.0261 hourly,€0.2091 hourly,€0.1669 hourly,€0.1557 hourly,€0.0419 hourly
+E2 v5,E2 v5,16 GiB,2,0 GiB,€0.1303 hourly,€0.0881 hourly,€0.0755 hourly,€0.0261 hourly,€0.2091 hourly,€0.1669 hourly,€0.1544 hourly,€0.0419 hourly
+E32-8s v6,E32-8s v6,256 GiB,32,0 GiB,€2.0844 hourly,€1.4095 hourly,€1.209 hourly,€0.4179 hourly,€3.346 hourly,€2.671 hourly,€2.5123 hourly,€0.6846 hourly
+E32ads v5,E32ads v5,256 GiB,32,1200 GiB,€2.1666 hourly,€1.4787 hourly,€1.2783 hourly,€0.4413 hourly,€3.4282 hourly,€2.7403 hourly,€2.5399 hourly,€0.6983 hourly
+E32ads v6,E32ads v6,256 GiB,32,1200 GiB,€2.4049 hourly,€1.6353 hourly,€1.4191 hourly,€0.4444 hourly,€3.6665 hourly,€2.8969 hourly,€2.6807 hourly,€0.6776 hourly
+E32ads v7,E32ads v7,256 GiB,32,1760 GiB,€2.4049 hourly,€1.6353 hourly,€1.4191 hourly,€0.4444 hourly,€2.4049 hourly,€2.8969 hourly,€2.6807 hourly,€0.4444 hourly
+E32as v4,E32as v4,256 GiB,32,512 GiB,€2.0844 hourly,€1.4095 hourly,€1.2257 hourly,€0.4265 hourly,€3.346 hourly,€2.671 hourly,€2.4873 hourly,€0.6846 hourly
+E32as v5,E32as v5,256 GiB,32,0 GiB,€1.8787 hourly,€1.2685 hourly,€1.1084 hourly,€0.3827 hourly,€3.1403 hourly,€2.5301 hourly,€2.37 hourly,€0.6397 hourly
+E32as v6,E32as v6,256 GiB,32,0 GiB,€1.9772 hourly,€1.3445 hourly,€1.1667 hourly,€0.3654 hourly,€3.2388 hourly,€2.6061 hourly,€2.4283 hourly,€0.5985 hourly
+E32as v7,E32as v7,256 GiB,32,0 GiB,€1.9772 hourly,€1.3445 hourly,€1.1667 hourly,€0.3654 hourly,€3.2388 hourly,€2.6061 hourly,€2.4283 hourly,€0.5985 hourly
+E32a v4,E32a v4,256 GiB,32,800 GiB,€2.0844 hourly,€1.4095 hourly,€1.2257 hourly,€0.4265 hourly,€3.346 hourly,€2.671 hourly,€2.4873 hourly,€0.6846 hourly
+E32bds v5,E32bds v5,256 GiB,32,1200 GiB,€2.7289 hourly,€1.8638 hourly,€1.61 hourly,€0.5471 hourly,€3.9905 hourly,€3.1254 hourly,€2.8716 hourly,€0.8001 hourly
+E32bs v5,E32bs v5,256 GiB,32,0 GiB,€2.4409 hourly,€1.6671 hourly,€1.4402 hourly,€0.4894 hourly,€3.7025 hourly,€2.9287 hourly,€2.7018 hourly,€0.7423 hourly
+E32ds v4,E32ds v4,256 GiB,32,1200 GiB,€2.3723 hourly,€1.6251 hourly,€1.3997 hourly,€0.4759 hourly,€3.6339 hourly,€2.8866 hourly,€2.6613 hourly,€0.729 hourly
+E32ds v5,E32ds v5,256 GiB,32,1200 GiB,€2.3723 hourly,€1.6251 hourly,€1.3997 hourly,€0.4757 hourly,€3.6339 hourly,€2.8866 hourly,€2.6613 hourly,€0.7286 hourly
+E32ds v6,E32ds v6,256 GiB,32,1760 GiB,€2.7049 hourly,€1.8393 hourly,€1.6771 hourly,€0.4999 hourly,€3.9665 hourly,€3.1009 hourly,€2.9387 hourly,€0.733 hourly
+E32d v4,E32d v4,256 GiB,32,1200 GiB,€2.3723 hourly,€1.6251 hourly,€1.3997 hourly,€0.4759 hourly,€3.6339 hourly,€2.8866 hourly,€2.6613 hourly,€0.729 hourly
+E32d v5,E32d v5,256 GiB,32,1200 GiB,€2.3723 hourly,€1.6251 hourly,€1.3997 hourly,€0.4757 hourly,€3.6339 hourly,€2.8866 hourly,€2.6613 hourly,€0.7286 hourly
+E32nds v6,E32nds v6,256 GiB,32,1760 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+E32ns v6,E32ns v6,256 GiB,32,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard E32pds v5,E32pds v5,208 GiB,32,1200 GiB,€1.8924 hourly,€1.29 hourly,€1.1165 hourly,€0.7556 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E32pds v6,E32pds v6,256 GiB,32,1760 GiB,€1.9172 hourly,€1.3037 hourly,€1.1311 hourly,€0.4124 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E32ps v5,E32ps v5,208 GiB,32,0 GiB,€1.6678 hourly,€1.1225 hourly,€0.9839 hourly,€0.666 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E32ps v6,E32ps v6,256 GiB,32,0 GiB,€1.511 hourly,€1.0275 hourly,€0.8916 hourly,€0.325 hourly,unavailable,unavailable,unavailable,unavailable
+E32s v3,E32s v3,256 GiB,32,512 GiB,€2.1941 hourly,€1.6675 hourly,€1.2905 hourly,€0.4474 hourly,€3.4557 hourly,€2.9291 hourly,€2.5521 hourly,€0.7046 hourly
+E32s v4,E32s v4,256 GiB,32,0 GiB,€2.0844 hourly,€1.4095 hourly,€1.2298 hourly,€0.4179 hourly,€3.346 hourly,€2.671 hourly,€2.4914 hourly,€0.6709 hourly
+E32s v5,E32s v5,256 GiB,32,0 GiB,€2.0844 hourly,€1.4095 hourly,€1.209 hourly,€0.4179 hourly,€3.346 hourly,€2.671 hourly,€2.4706 hourly,€0.6709 hourly
+E32s v6,E32s v6,256 GiB,32,0 GiB,€2.1889 hourly,€1.4885 hourly,€1.3569 hourly,€0.4045 hourly,€3.4505 hourly,€2.7501 hourly,€2.6185 hourly,€0.6377 hourly
+E32 v3,E32 v3,256 GiB,32,800 GiB,€2.1941 hourly,€1.6675 hourly,€1.2905 hourly,€0.4474 hourly,€3.4557 hourly,€2.9291 hourly,€2.5521 hourly,€0.7046 hourly
+E32 v4,E32 v4,256 GiB,32,0 GiB,€2.0844 hourly,€1.4095 hourly,€1.2298 hourly,€0.4179 hourly,€3.346 hourly,€2.671 hourly,€2.4914 hourly,€0.6709 hourly
+E32 v5,E32 v5,256 GiB,32,0 GiB,€2.0844 hourly,€1.4095 hourly,€1.209 hourly,€0.4179 hourly,€3.346 hourly,€2.671 hourly,€2.4706 hourly,€0.6709 hourly
+E4-2s v6,E4-2s v6,32 GiB,4,0 GiB,€0.2605 hourly,€0.1762 hourly,€0.1537 hourly,€0.0522 hourly,€0.4285 hourly,€0.3425 hourly,€0.3175 hourly,€0.0873 hourly
+E48ads v5,E48ads v5,384 GiB,48,1800 GiB,€3.25 hourly,€2.2181 hourly,€1.9175 hourly,€0.662 hourly,€5.1424 hourly,€4.1105 hourly,€3.8099 hourly,€1.0475 hourly
+E48ads v6,E48ads v6,384 GiB,48,1700 GiB,€3.6082 hourly,€2.4536 hourly,€2.1287 hourly,€0.6668 hourly,€5.5006 hourly,€4.346 hourly,€4.021 hourly,€1.0165 hourly
+E48ads v7,E48ads v7,384 GiB,48,2640 GiB,€3.6082 hourly,€2.4536 hourly,€2.1287 hourly,€0.6668 hourly,€3.6082 hourly,€4.346 hourly,€4.021 hourly,€0.6668 hourly
+E48as v4,E48as v4,384 GiB,48,768 GiB,€3.1266 hourly,€2.1142 hourly,€1.8386 hourly,€0.6397 hourly,€5.0189 hourly,€4.0066 hourly,€3.731 hourly,€1.0269 hourly
+E48as v5,E48as v5,384 GiB,48,0 GiB,€2.818 hourly,€1.9027 hourly,€1.6627 hourly,€0.574 hourly,€4.7104 hourly,€3.7951 hourly,€3.555 hourly,€0.9595 hourly
+E48as v6,E48as v6,384 GiB,48,0 GiB,€2.9663 hourly,€2.0171 hourly,€1.75 hourly,€0.5482 hourly,€4.8587 hourly,€3.9095 hourly,€3.6424 hourly,€0.8979 hourly
+E48as v7,E48as v7,384 GiB,48,0 GiB,€2.9663 hourly,€2.0171 hourly,€1.75 hourly,€0.5482 hourly,€4.8587 hourly,€3.9095 hourly,€3.6424 hourly,€0.8979 hourly
+E48a v4,E48a v4,384 GiB,48,1200 GiB,€3.1266 hourly,€2.1142 hourly,€1.8386 hourly,€0.6397 hourly,€5.0189 hourly,€4.0066 hourly,€3.731 hourly,€1.0269 hourly
+E48bds v5,E48bds v5,384 GiB,48,1800 GiB,€4.0933 hourly,€2.7957 hourly,€2.415 hourly,€0.8207 hourly,€5.9857 hourly,€4.6881 hourly,€4.3074 hourly,€1.2001 hourly
+E48bs v5,E48bs v5,384 GiB,48,0 GiB,€3.6614 hourly,€2.5007 hourly,€2.1602 hourly,€0.7341 hourly,€5.5537 hourly,€4.3931 hourly,€4.0525 hourly,€1.1135 hourly
+E48ds v4,E48ds v4,384 GiB,48,1800 GiB,€3.5585 hourly,€2.4376 hourly,€2.0995 hourly,€0.7138 hourly,€5.4509 hourly,€4.33 hourly,€3.9919 hourly,€1.0934 hourly
+E48ds v5,E48ds v5,384 GiB,48,1800 GiB,€3.5585 hourly,€2.4376 hourly,€2.0995 hourly,€0.7135 hourly,€5.4509 hourly,€4.33 hourly,€3.9919 hourly,€1.0929 hourly
+E48ds v6,E48ds v6,384 GiB,48,2640 GiB,€4.0573 hourly,€2.759 hourly,€2.5157 hourly,€0.7498 hourly,€5.9497 hourly,€4.6514 hourly,€4.4081 hourly,€1.0995 hourly
+E48d v4,E48d v4,384 GiB,48,1800 GiB,€3.5585 hourly,€2.4376 hourly,€2.0995 hourly,€0.7138 hourly,€5.4509 hourly,€4.33 hourly,€3.9919 hourly,€1.0934 hourly
+E48d v5,E48d v5,384 GiB,48,1800 GiB,€3.5585 hourly,€2.4376 hourly,€2.0995 hourly,€0.7135 hourly,€5.4509 hourly,€4.33 hourly,€3.9919 hourly,€1.0929 hourly
+E48nds v6,E48nds v6,384 GiB,48,2640 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+E48ns v6,E48ns v6,384 GiB,48,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard E48pds v6,E48pds v6,384 GiB,48,2640 GiB,€2.8754 hourly,€1.9553 hourly,€1.6966 hourly,€0.6185 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E48ps v6,E48ps v6,384 GiB,48,0 GiB,€2.2669 hourly,€1.5415 hourly,€1.3373 hourly,€0.4876 hourly,unavailable,unavailable,unavailable,unavailable
+E48s v3,E48s v3,384 GiB,48,768 GiB,€3.1257 hourly,€2.3755 hourly,€1.8379 hourly,€0.6373 hourly,€5.0181 hourly,€4.2679 hourly,€3.7303 hourly,€1.0232 hourly
+E48s v4,E48s v4,384 GiB,48,0 GiB,€3.1266 hourly,€2.1142 hourly,€1.8446 hourly,€0.6269 hourly,€5.0189 hourly,€4.0066 hourly,€3.737 hourly,€1.0063 hourly
+E48s v5,E48s v5,384 GiB,48,0 GiB,€3.1266 hourly,€2.1142 hourly,€1.8134 hourly,€0.6269 hourly,€5.0189 hourly,€4.0066 hourly,€3.7058 hourly,€1.0063 hourly
+E48s v6,E48s v6,384 GiB,48,0 GiB,€3.2825 hourly,€2.2321 hourly,€2.0354 hourly,€0.6066 hourly,€5.1749 hourly,€4.1245 hourly,€3.9278 hourly,€0.9563 hourly
+E48 v3,E48 v3,384 GiB,48,1200 GiB,€3.1257 hourly,€2.3755 hourly,€1.8379 hourly,€0.6373 hourly,€5.0181 hourly,€4.2679 hourly,€3.7303 hourly,€1.0232 hourly
+E48 v4,E48 v4,384 GiB,48,0 GiB,€3.1266 hourly,€2.1142 hourly,€1.8446 hourly,€0.6269 hourly,€5.0189 hourly,€4.0066 hourly,€3.737 hourly,€1.0063 hourly
+E48 v5,E48 v5,384 GiB,48,0 GiB,€3.1266 hourly,€2.1142 hourly,€1.8134 hourly,€0.6269 hourly,€5.0189 hourly,€4.0066 hourly,€3.7058 hourly,€1.0063 hourly
+E4ads v5,E4ads v5,32 GiB,4,150 GiB,€0.2708 hourly,€0.1848 hourly,€0.1598 hourly,€0.0552 hourly,€0.4285 hourly,€0.3425 hourly,€0.3175 hourly,€0.0873 hourly
+E4ads v6,E4ads v6,32 GiB,4,150 GiB,€0.3008 hourly,€0.2046 hourly,€0.1774 hourly,€0.0556 hourly,€0.4585 hourly,€0.3623 hourly,€0.3351 hourly,€0.0847 hourly
+E4ads v7,E4ads v7,32 GiB,4,220 GiB,€0.3008 hourly,€0.2046 hourly,€0.1774 hourly,€0.0556 hourly,€0.3008 hourly,€0.3623 hourly,€0.3351 hourly,€0.0556 hourly
+E4as v4,E4as v4,32 GiB,4,64 GiB,€0.2605 hourly,€0.1762 hourly,€0.1532 hourly,€0.0533 hourly,€0.4182 hourly,€0.3339 hourly,€0.3109 hourly,€0.0856 hourly
+E4as v5,E4as v5,32 GiB,4,0 GiB,€0.2348 hourly,€0.1586 hourly,€0.1385 hourly,€0.0478 hourly,€0.3925 hourly,€0.3163 hourly,€0.2962 hourly,€0.08 hourly
+E4as v6,E4as v6,32 GiB,4,0 GiB,€0.2468 hourly,€0.1678 hourly,€0.1459 hourly,€0.0456 hourly,€0.4045 hourly,€0.3255 hourly,€0.3036 hourly,€0.0748 hourly
+E4as v7,E4as v7,32 GiB,4,0 GiB,€0.2468 hourly,€0.1678 hourly,€0.1459 hourly,€0.0456 hourly,€0.4045 hourly,€0.3255 hourly,€0.3036 hourly,€0.0748 hourly
+E4a v4,E4a v4,32 GiB,4,100 GiB,€0.2605 hourly,€0.1762 hourly,€0.1532 hourly,€0.0533 hourly,€0.4182 hourly,€0.3339 hourly,€0.3109 hourly,€0.0856 hourly
+E4bds v5,E4bds v5,32 GiB,4,150 GiB,€0.3411 hourly,€0.233 hourly,€0.2013 hourly,€0.0684 hourly,€0.4988 hourly,€0.3907 hourly,€0.359 hourly,€0.10 hourly
+E4bs v5,E4bs v5,32 GiB,4,0 GiB,€0.3051 hourly,€0.2084 hourly,€0.18 hourly,€0.0612 hourly,€0.4628 hourly,€0.3661 hourly,€0.3377 hourly,€0.0928 hourly
+E4ds v4,E4ds v4,32 GiB,4,150 GiB,€0.2965 hourly,€0.2031 hourly,€0.1749 hourly,€0.0595 hourly,€0.4542 hourly,€0.3608 hourly,€0.3326 hourly,€0.0911 hourly
+E4ds v5,E4ds v5,32 GiB,4,150 GiB,€0.2965 hourly,€0.2031 hourly,€0.1749 hourly,€0.0595 hourly,€0.4542 hourly,€0.3608 hourly,€0.3326 hourly,€0.0911 hourly
+E4ds v6,E4ds v6,32 GiB,4,220 GiB,€0.3385 hourly,€0.2302 hourly,€0.2097 hourly,€0.0626 hourly,€0.4962 hourly,€0.3879 hourly,€0.3674 hourly,€0.0917 hourly
+E4d v4,E4d v4,32 GiB,4,150 GiB,€0.2965 hourly,€0.2031 hourly,€0.1749 hourly,€0.0595 hourly,€0.4542 hourly,€0.3608 hourly,€0.3326 hourly,€0.0911 hourly
+E4d v5,E4d v5,32 GiB,4,150 GiB,€0.2965 hourly,€0.2031 hourly,€0.1749 hourly,€0.0595 hourly,€0.4542 hourly,€0.3608 hourly,€0.3326 hourly,€0.0911 hourly
+E4nds v6,E4nds v6,32 GiB,4,220 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+E4ns v6,E4ns v6,32 GiB,4,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard E4pds v5,E4pds v5,32 GiB,4,150 GiB,€0.2365 hourly,€0.1613 hourly,€0.1395 hourly,€0.0945 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E4pds v6,E4pds v6,32 GiB,4,220 GiB,€0.24 hourly,€0.1632 hourly,€0.1414 hourly,€0.0516 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E4ps v5,E4ps v5,32 GiB,4,0 GiB,€0.2083 hourly,€0.1402 hourly,€0.123 hourly,€0.0832 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E4ps v6,E4ps v6,32 GiB,4,0 GiB,€0.1886 hourly,€0.1282 hourly,€0.1114 hourly,€0.0406 hourly,unavailable,unavailable,unavailable,unavailable
+E4s v3,E4s v3,32 GiB,4,64 GiB,€0.2743 hourly,€0.2084 hourly,€0.1613 hourly,€0.0559 hourly,€0.432 hourly,€0.3661 hourly,€0.319 hourly,€0.0881 hourly
+E4s v4,E4s v4,32 GiB,4,0 GiB,€0.2605 hourly,€0.1762 hourly,€0.1537 hourly,€0.0522 hourly,€0.4182 hourly,€0.3339 hourly,€0.3114 hourly,€0.0839 hourly
+E4s v5,E4s v5,32 GiB,4,0 GiB,€0.2605 hourly,€0.1762 hourly,€0.1512 hourly,€0.0522 hourly,€0.4182 hourly,€0.3339 hourly,€0.3089 hourly,€0.0839 hourly
+E4s v6,E4s v6,32 GiB,4,0 GiB,€0.2734 hourly,€0.1859 hourly,€0.1697 hourly,€0.0505 hourly,€0.4311 hourly,€0.3436 hourly,€0.3273 hourly,€0.0797 hourly
+E4 v3,E4 v3,32 GiB,4,100 GiB,€0.2743 hourly,€0.2084 hourly,€0.1613 hourly,€0.0559 hourly,€0.432 hourly,€0.3661 hourly,€0.319 hourly,€0.0881 hourly
+E4 v4,E4 v4,32 GiB,4,0 GiB,€0.2605 hourly,€0.1762 hourly,€0.1537 hourly,€0.0522 hourly,€0.4182 hourly,€0.3339 hourly,€0.3114 hourly,€0.0839 hourly
+E4 v5,E4 v5,32 GiB,4,0 GiB,€0.2605 hourly,€0.1762 hourly,€0.1512 hourly,€0.0522 hourly,€0.4182 hourly,€0.3339 hourly,€0.3089 hourly,€0.0839 hourly
+E64-32s v6,E64-32s v6,512 GiB,32,0 GiB,€4.7447 hourly,€3.2501 hourly,€2.7994 hourly,€0.9518 hourly,€7.9329 hourly,€6.2018 hourly,€5.8774 hourly,€1.466 hourly
+E64ads v5,E64ads v5,512 GiB,64,2400 GiB,€4.3333 hourly,€2.9575 hourly,€2.5566 hourly,€0.8827 hourly,€6.8565 hourly,€5.4807 hourly,€5.0798 hourly,€1.3967 hourly
+E64ads v6,E64ads v6,512 GiB,64,2400 GiB,€4.8107 hourly,€3.2713 hourly,€2.8382 hourly,€0.889 hourly,€7.3339 hourly,€5.7944 hourly,€5.3614 hourly,€1.3553 hourly
+E64ads v7,E64ads v7,512 GiB,64,3520 GiB,€4.8107 hourly,€3.2713 hourly,€2.8382 hourly,€0.889 hourly,€4.8107 hourly,€5.7944 hourly,€5.3614 hourly,€0.889 hourly
+E64as v4,E64as v4,512 GiB,64,1024 GiB,€4.1687 hourly,€2.8189 hourly,€2.4514 hourly,€0.8529 hourly,€6.6919 hourly,€5.3421 hourly,€4.9746 hourly,€1.3692 hourly
+E64as v5,E64as v5,512 GiB,64,0 GiB,€3.7573 hourly,€2.537 hourly,€2.2168 hourly,€0.7654 hourly,€6.2805 hourly,€5.0601 hourly,€4.74 hourly,€1.2793 hourly
+E64as v6,E64as v6,512 GiB,64,0 GiB,€3.9545 hourly,€2.689 hourly,€2.3333 hourly,€0.7308 hourly,€6.4776 hourly,€5.2122 hourly,€4.8565 hourly,€1.1971 hourly
+E64as v7,E64as v7,512 GiB,64,0 GiB,€3.9545 hourly,€2.689 hourly,€2.3333 hourly,€0.7308 hourly,€6.4776 hourly,€5.2122 hourly,€4.8565 hourly,€1.1971 hourly
+E64a v4,E64a v4,512 GiB,64,1600 GiB,€4.1687 hourly,€2.8189 hourly,€2.4514 hourly,€0.8529 hourly,€6.6919 hourly,€5.3421 hourly,€4.9746 hourly,€1.3692 hourly
+E64bds v5,E64bds v5,512 GiB,64,2400 GiB,€5.4577 hourly,€3.7276 hourly,€3.22 hourly,€1.0943 hourly,€7.9809 hourly,€6.2508 hourly,€5.7432 hourly,€1.6002 hourly
+E64bs v5,E64bs v5,512 GiB,64,0 GiB,€4.8818 hourly,€3.3343 hourly,€2.8802 hourly,€0.9788 hourly,€7.405 hourly,€5.8575 hourly,€5.4034 hourly,€1.4847 hourly
+E64ds v4,E64ds v4,504 GiB,64,2400 GiB,€4.7447 hourly,€3.2501 hourly,€2.7994 hourly,€0.9518 hourly,€7.2679 hourly,€5.7733 hourly,€5.3226 hourly,€1.4579 hourly
+E64ds v5,E64ds v5,512 GiB,64,2400 GiB,€4.7447 hourly,€3.2501 hourly,€2.7993 hourly,€0.9513 hourly,€7.2679 hourly,€5.7733 hourly,€5.3225 hourly,€1.4572 hourly
+E64ds v6,E64ds v6,512 GiB,64,3520 GiB,€5.4098 hourly,€3.6786 hourly,€3.3542 hourly,€0.9997 hourly,€7.9329 hourly,€6.2018 hourly,€5.8774 hourly,€1.466 hourly
+E64d v4,E64d v4,504 GiB,64,2400 GiB,€4.7447 hourly,€3.2501 hourly,€2.7994 hourly,€0.9518 hourly,€7.2679 hourly,€5.7733 hourly,€5.3226 hourly,€1.4579 hourly
+E64d v5,E64d v5,512 GiB,64,2400 GiB,€4.7447 hourly,€3.2501 hourly,€2.7993 hourly,€0.9513 hourly,€7.2679 hourly,€5.7733 hourly,€5.3225 hourly,€1.4572 hourly
+E64is v3,E64is v3,432 GiB,64,864 GiB,€3.7505 hourly,€2.8504 hourly,€2.2045 hourly,€0.7647 hourly,€6.2737 hourly,€5.3736 hourly,€4.7277 hourly,€1.2792 hourly
+E64i v3,E64i v3,432 GiB,64,1600 GiB,€3.7505 hourly,€2.8504 hourly,€2.2045 hourly,€0.7647 hourly,€6.2737 hourly,€5.3736 hourly,€4.7277 hourly,€1.2792 hourly
+E64nds v6,E64nds v6,512 GiB,64,3520 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+E64ns v6,E64ns v6,512 GiB,64,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard E64pds v6,E64pds v6,512 GiB,64,3520 GiB,€3.8345 hourly,€2.6074 hourly,€2.2621 hourly,€0.8248 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E64ps v6,E64ps v6,512 GiB,64,0 GiB,€3.022 hourly,€2.055 hourly,€1.7832 hourly,€0.65 hourly,unavailable,unavailable,unavailable,unavailable
+E64s v3,E64s v3,432 GiB,64,864 GiB,€3.7505 hourly,€2.8504 hourly,€2.4326 hourly,€0.7647 hourly,€6.2737 hourly,€5.3736 hourly,€4.9558 hourly,€1.2792 hourly
+E64s v4,E64s v4,504 GiB,64,0 GiB,€4.1687 hourly,€2.8189 hourly,€2.4595 hourly,€0.8358 hourly,€6.6919 hourly,€5.3421 hourly,€4.9827 hourly,€1.3417 hourly
+E64s v5,E64s v5,512 GiB,64,0 GiB,€4.1687 hourly,€2.8189 hourly,€2.4179 hourly,€0.8358 hourly,€6.6919 hourly,€5.3421 hourly,€4.941 hourly,€1.3417 hourly
+E64s v6,E64s v6,512 GiB,64,0 GiB,€4.377 hourly,€2.9764 hourly,€2.7138 hourly,€0.8089 hourly,€6.9002 hourly,€5.4995 hourly,€5.237 hourly,€1.2752 hourly
+E64 v3,E64 v3,432 GiB,64,1600 GiB,€3.7505 hourly,€2.8504 hourly,€2.4326 hourly,€0.7647 hourly,€6.2737 hourly,€5.3736 hourly,€4.9558 hourly,€1.2792 hourly
+E64 v4,E64 v4,504 GiB,64,0 GiB,€4.1687 hourly,€2.8189 hourly,€2.4595 hourly,€0.8358 hourly,€6.6919 hourly,€5.3421 hourly,€4.9827 hourly,€1.3417 hourly
+E64 v5,E64 v5,512 GiB,64,0 GiB,€4.1687 hourly,€2.8189 hourly,€2.4179 hourly,€0.8358 hourly,€6.6919 hourly,€5.3421 hourly,€4.941 hourly,€1.3417 hourly
+E8-4s v6,E8-4s v6,64 GiB,8,0 GiB,€0.5931 hourly,€0.4063 hourly,€0.35 hourly,€0.119 hourly,€0.8099 hourly,€0.6517 hourly,€0.6071 hourly,€0.1497 hourly
+E80ids v4,E80ids v4,504 GiB,80,2400 GiB,€5.9308 hourly,€4.0626 hourly,€3.4993 hourly,€1.1897 hourly,€9.0848 hourly,€7.2166 hourly,€6.6532 hourly,€1.8224 hourly
+E80is v4,E80is v4,504 GiB,80,2400 GiB,€5.2109 hourly,€3.5236 hourly,€3.0744 hourly,€1.0448 hourly,€8.3649 hourly,€6.6776 hourly,€6.2283 hourly,€1.6772 hourly
+E8ads v5,E8ads v5,64 GiB,8,300 GiB,€0.5417 hourly,€0.3697 hourly,€0.3195 hourly,€0.1103 hourly,€0.8571 hourly,€0.6851 hourly,€0.6349 hourly,€0.1746 hourly
+E8ads v6,E8ads v6,64 GiB,8,300 GiB,€0.6017 hourly,€0.4091 hourly,€0.3548 hourly,€0.1112 hourly,€0.9171 hourly,€0.7245 hourly,€0.6702 hourly,€0.1695 hourly
+E8ads v7,E8ads v7,64 GiB,8,440 GiB,€0.6017 hourly,€0.4091 hourly,€0.3548 hourly,€0.1112 hourly,€0.6017 hourly,€0.7245 hourly,€0.6702 hourly,€0.1112 hourly
+E8as v4,E8as v4,64 GiB,8,128 GiB,€0.5211 hourly,€0.3524 hourly,€0.3064 hourly,€0.1066 hourly,€0.8365 hourly,€0.6678 hourly,€0.6218 hourly,€0.1711 hourly
+E8as v5,E8as v5,64 GiB,8,0 GiB,€0.4697 hourly,€0.3171 hourly,€0.2771 hourly,€0.0957 hourly,€0.7851 hourly,€0.6325 hourly,€0.5925 hourly,€0.1599 hourly
+E8as v6,E8as v6,64 GiB,8,0 GiB,€0.4945 hourly,€0.3363 hourly,€0.2917 hourly,€0.0914 hourly,€0.8099 hourly,€0.6517 hourly,€0.6071 hourly,€0.1497 hourly
+E8as v7,E8as v7,64 GiB,8,0 GiB,€0.4945 hourly,€0.3363 hourly,€0.2917 hourly,€0.0914 hourly,€0.8099 hourly,€0.6517 hourly,€0.6071 hourly,€0.1497 hourly
+E8a v4,E8a v4,64 GiB,8,200 GiB,€0.5211 hourly,€0.3524 hourly,€0.3064 hourly,€0.1066 hourly,€0.8365 hourly,€0.6678 hourly,€0.6218 hourly,€0.1711 hourly
+E8bds v5,E8bds v5,64 GiB,8,300 GiB,€0.6822 hourly,€0.466 hourly,€0.4025 hourly,€0.1368 hourly,€0.9976 hourly,€0.7814 hourly,€0.7179 hourly,€0.20 hourly
+E8bs v5,E8bs v5,64 GiB,8,0 GiB,€0.6102 hourly,€0.4168 hourly,€0.36 hourly,€0.1224 hourly,€0.9256 hourly,€0.7322 hourly,€0.6754 hourly,€0.1856 hourly
+E8ds v4,E8ds v4,64 GiB,8,300 GiB,€0.5931 hourly,€0.4063 hourly,€0.35 hourly,€0.119 hourly,€0.9085 hourly,€0.7217 hourly,€0.6654 hourly,€0.1822 hourly
+E8ds v5,E8ds v5,64 GiB,8,300 GiB,€0.5931 hourly,€0.4063 hourly,€0.35 hourly,€0.1189 hourly,€0.9085 hourly,€0.7217 hourly,€0.6654 hourly,€0.1822 hourly
+E8ds v6,E8ds v6,64 GiB,8,440 GiB,€0.6762 hourly,€0.4598 hourly,€0.4192 hourly,€0.125 hourly,€0.9916 hourly,€0.7752 hourly,€0.7346 hourly,€0.1833 hourly
+E8d v4,E8d v4,64 GiB,8,300 GiB,€0.5931 hourly,€0.4063 hourly,€0.35 hourly,€0.119 hourly,€0.9085 hourly,€0.7217 hourly,€0.6654 hourly,€0.1822 hourly
+E8d v5,E8d v5,64 GiB,8,300 GiB,€0.5931 hourly,€0.4063 hourly,€0.35 hourly,€0.1189 hourly,€0.9085 hourly,€0.7217 hourly,€0.6654 hourly,€0.1822 hourly
+E8nds v6,E8nds v6,64 GiB,8,440 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+E8ns v6,E8ns v6,64 GiB,8,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard E8pds v5,E8pds v5,64 GiB,8,300 GiB,€0.4731 hourly,€0.3225 hourly,€0.2791 hourly,€0.1889 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E8pds v6,E8pds v6,64 GiB,8,440 GiB,€0.4791 hourly,€0.3258 hourly,€0.2828 hourly,€0.1031 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E8ps v5,E8ps v5,64 GiB,8,0 GiB,€0.4165 hourly,€0.2803 hourly,€0.246 hourly,€0.1663 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E8ps v6,E8ps v6,64 GiB,8,0 GiB,€0.378 hourly,€0.257 hourly,€0.2229 hourly,€0.0813 hourly,unavailable,unavailable,unavailable,unavailable
+E8s v3,E8s v3,64 GiB,8,128 GiB,€0.5485 hourly,€0.4169 hourly,€0.3227 hourly,€0.1118 hourly,€0.8639 hourly,€0.7323 hourly,€0.6381 hourly,€0.1762 hourly
+E8s v4,E8s v4,64 GiB,8,0 GiB,€0.5211 hourly,€0.3524 hourly,€0.3074 hourly,€0.1045 hourly,€0.8365 hourly,€0.6678 hourly,€0.6228 hourly,€0.1677 hourly
+E8s v5,E8s v5,64 GiB,8,0 GiB,€0.5211 hourly,€0.3524 hourly,€0.3022 hourly,€0.1045 hourly,€0.8365 hourly,€0.6678 hourly,€0.6176 hourly,€0.1677 hourly
+E8s v6,E8s v6,64 GiB,8,0 GiB,€0.5468 hourly,€0.3718 hourly,€0.3392 hourly,€0.101 hourly,€0.8622 hourly,€0.6872 hourly,€0.6546 hourly,€0.1593 hourly
+E8 v3,E8 v3,64 GiB,8,200 GiB,€0.5485 hourly,€0.4169 hourly,€0.3227 hourly,€0.1118 hourly,€0.8639 hourly,€0.7323 hourly,€0.6381 hourly,€0.1762 hourly
+E8 v4,E8 v4,64 GiB,8,0 GiB,€0.5211 hourly,€0.3524 hourly,€0.3074 hourly,€0.1045 hourly,€0.8365 hourly,€0.6678 hourly,€0.6228 hourly,€0.1677 hourly
+E8 v5,E8 v5,64 GiB,8,0 GiB,€0.5211 hourly,€0.3524 hourly,€0.3022 hourly,€0.1045 hourly,€0.8365 hourly,€0.6678 hourly,€0.6176 hourly,€0.1677 hourly
+E96-48s v6,E96-48s v6,768 GiB,96,0 GiB,€6.4999 hourly,€4.4362 hourly,€3.8349 hourly,€1.324 hourly,€11.8994 hourly,€9.3027 hourly,€8.8161 hourly,€2.199 hourly
+E96ads v5,E96ads v5,672 GiB,96,3600 GiB,€6.4999 hourly,€4.4362 hourly,€3.8349 hourly,€1.324 hourly,€10.2847 hourly,€8.221 hourly,€7.6197 hourly,€2.095 hourly
+E96ads v6,E96ads v6,672 GiB,96,3400 GiB,€7.2156 hourly,€4.9066 hourly,€4.2573 hourly,€1.3334 hourly,€11.0003 hourly,€8.6914 hourly,€8.0421 hourly,€2.0329 hourly
+E96ads v7,E96ads v7,768 GiB,96,5280 GiB,€7.2156 hourly,€4.9066 hourly,€4.2573 hourly,€1.3334 hourly,€7.2156 hourly,€8.6914 hourly,€8.0421 hourly,€1.3334 hourly
+E96as v4,E96as v4,672 GiB,96,1344 GiB,€6.2531 hourly,€4.2284 hourly,€3.6771 hourly,€1.2794 hourly,€10.0379 hourly,€8.0131 hourly,€7.4619 hourly,€2.0537 hourly
+E96as v5,E96as v5,672 GiB,96,0 GiB,€5.636 hourly,€3.8054 hourly,€3.3252 hourly,€1.1481 hourly,€9.4208 hourly,€7.5902 hourly,€7.11 hourly,€1.919 hourly
+E96as v6,E96as v6,672 GiB,96,0 GiB,€5.9326 hourly,€4.0341 hourly,€3.50 hourly,€1.0963 hourly,€9.7173 hourly,€7.8189 hourly,€7.2848 hourly,€1.7958 hourly
+E96as v7,E96as v7,768 GiB,96,0 GiB,€5.9326 hourly,€4.0341 hourly,€3.50 hourly,€1.0963 hourly,€9.7173 hourly,€7.8189 hourly,€7.2848 hourly,€1.7958 hourly
+E96a v4,E96a v4,672 GiB,96,2400 GiB,€6.2531 hourly,€4.2284 hourly,€3.6771 hourly,€1.2794 hourly,€10.0379 hourly,€8.0131 hourly,€7.4619 hourly,€2.0537 hourly
+E96bds v5,E96bds v5,672 GiB,96,3600 GiB,€8.1866 hourly,€5.5915 hourly,€4.8302 hourly,€1.6414 hourly,€11.9714 hourly,€9.3762 hourly,€8.6149 hourly,€2.4003 hourly
+E96bs v5,E96bs v5,672 GiB,96,0 GiB,€7.3227 hourly,€5.0014 hourly,€4.3204 hourly,€1.4682 hourly,€11.1075 hourly,€8.7862 hourly,€8.1052 hourly,€2.227 hourly
+E96ds v5,E96ds v5,672 GiB,96,3600 GiB,€7.117 hourly,€4.8752 hourly,€4.199 hourly,€1.427 hourly,€10.9018 hourly,€8.6599 hourly,€7.9838 hourly,€2.1858 hourly
+E96ds v6,E96ds v6,768 GiB,96,5280 GiB,€8.1146 hourly,€5.5179 hourly,€5.0313 hourly,€1.4996 hourly,€11.8994 hourly,€9.3027 hourly,€8.8161 hourly,€2.199 hourly
+E96d v5,E96d v5,672 GiB,96,3600 GiB,€7.117 hourly,€4.8752 hourly,€4.199 hourly,€1.427 hourly,€10.9018 hourly,€8.6599 hourly,€7.9838 hourly,€2.1858 hourly
+E96nds v4,E96nds v4,768 GiB,96,5280 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+E96ns v4,E96ns v4,768 GiB,96,0 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+Standard E96pds v6,E96pds v6,672 GiB,96,5280 GiB,€5.7509 hourly,€3.9106 hourly,€3.3932 hourly,€1.237 hourly,unavailable,unavailable,unavailable,unavailable
+Standard E96ps v6,E96ps v6,672 GiB,96,0 GiB,€4.5338 hourly,€3.083 hourly,€2.6748 hourly,€0.9752 hourly,unavailable,unavailable,unavailable,unavailable
+E96s v5,E96s v5,672 GiB,96,0 GiB,€6.2531 hourly,€4.2284 hourly,€3.6268 hourly,€1.2537 hourly,€10.0379 hourly,€8.0131 hourly,€7.4116 hourly,€2.0126 hourly
+E96s v6,E96s v6,768 GiB,96,0 GiB,€6.5659 hourly,€4.4648 hourly,€4.0707 hourly,€1.2134 hourly,€10.3507 hourly,€8.2496 hourly,€7.8555 hourly,€1.9128 hourly
+E96 v5,E96 v5,672 GiB,96,0 GiB,€6.2531 hourly,€4.2284 hourly,€3.6268 hourly,€1.2537 hourly,€10.0379 hourly,€8.0131 hourly,€7.4116 hourly,€2.0126 hourly
+EC16ads v5,EC16ads v5,128 GiB,16,600 GiB,€1.0148 hourly,€0.8604 hourly,€0.8118 hourly,€0.2394 hourly,€1.6456 hourly,€1.4912 hourly,€1.4426 hourly,€0.3882 hourly
+EC16ads v6,EC16ads v6,128 GiB,16,300 GiB,€1.2025 hourly,€0.8177 hourly,€0.7095 hourly,€0.2222 hourly,€1.8332 hourly,€1.4485 hourly,€1.3403 hourly,€0.3388 hourly
+EC16as v5,EC16as v5,128 GiB,16,0 GiB,€0.9393 hourly,€0.7925 hourly,€0.7515 hourly,€0.2216 hourly,€1.5701 hourly,€1.4233 hourly,€1.3823 hourly,€0.3704 hourly
+EC16as v6,EC16as v6,128 GiB,16,0 GiB,€0.989 hourly,€0.6726 hourly,€0.5833 hourly,€0.1828 hourly,€1.6198 hourly,€1.3033 hourly,€1.2141 hourly,€0.2993 hourly
+Standard EC16es v5,EC16es v5,128 GiB,16,0 GiB,€1.0422 hourly,unavailable,unavailable,€0.1926 hourly,unavailable,unavailable,unavailable,unavailable
+EC20ads v5,EC20ads v5,160 GiB,20,750 GiB,€1.2684 hourly,€1.0755 hourly,€1.0148 hourly,€0.2992 hourly,€2.0569 hourly,€1.864 hourly,€1.8033 hourly,€0.4852 hourly
+EC20as v5,EC20as v5,160 GiB,20,0 GiB,€1.1742 hourly,€0.9906 hourly,€0.9393 hourly,€0.277 hourly,€1.9627 hourly,€1.7791 hourly,€1.7278 hourly,€0.463 hourly
+EC2ads v5,EC2ads v5,16 GiB,2,75 GiB,€0.1268 hourly,€0.1076 hourly,€0.1015 hourly,€0.0299 hourly,€0.2057 hourly,€0.1864 hourly,€0.1803 hourly,€0.0485 hourly
+EC2ads v6,EC2ads v6,16 GiB,2,75 GiB,€0.15 hourly,€0.102 hourly,€0.0887 hourly,€0.0277 hourly,€0.2288 hourly,€0.1808 hourly,€0.1676 hourly,€0.0423 hourly
+EC2as v5,EC2as v5,16 GiB,2,0 GiB,€0.1174 hourly,€0.0991 hourly,€0.0939 hourly,€0.0277 hourly,€0.1963 hourly,€0.1779 hourly,€0.1728 hourly,€0.0463 hourly
+EC2as v6,EC2as v6,16 GiB,2,0 GiB,€0.1234 hourly,€0.0839 hourly,€0.0729 hourly,€0.0228 hourly,€0.2023 hourly,€0.1628 hourly,€0.1517 hourly,€0.0374 hourly
+Standard EC2es v5,EC2es v5,16 GiB,2,0 GiB,€0.1303 hourly,unavailable,unavailable,€0.0241 hourly,unavailable,unavailable,unavailable,unavailable
+EC32ads v5,EC32ads v5,192 GiB,32,1200 GiB,€2.0295 hourly,€1.7208 hourly,€1.6236 hourly,€0.4788 hourly,€3.2911 hourly,€2.9824 hourly,€2.8852 hourly,€0.7764 hourly
+EC32ads v6,EC32ads v6,192 GiB,32,600 GiB,€2.4049 hourly,€1.6353 hourly,€1.4191 hourly,€0.4444 hourly,€3.6665 hourly,€2.8969 hourly,€2.6807 hourly,€0.6776 hourly
+EC32as v5,EC32as v5,192 GiB,32,0 GiB,€1.8787 hourly,€1.585 hourly,€1.503 hourly,€0.4432 hourly,€3.1403 hourly,€2.8466 hourly,€2.7646 hourly,€0.7408 hourly
+EC32as v6,EC32as v6,192 GiB,32,0 GiB,€1.9772 hourly,€1.3445 hourly,€1.1667 hourly,€0.3654 hourly,€3.2388 hourly,€2.6061 hourly,€2.4283 hourly,€0.5985 hourly
+Standard EC32es v5,EC32es v5,256 GiB,32,0 GiB,€2.0844 hourly,unavailable,unavailable,€0.3852 hourly,unavailable,unavailable,unavailable,unavailable
+EC48ads v5,EC48ads v5,384 GiB,48,1800 GiB,€3.0443 hourly,€2.5812 hourly,€2.4354 hourly,€0.7181 hourly,€4.9367 hourly,€4.4736 hourly,€4.3278 hourly,€1.1646 hourly
+EC48ads v6,EC48ads v6,256 GiB,48,850 GiB,€3.6082 hourly,€2.4536 hourly,€2.1287 hourly,€0.6668 hourly,€5.5006 hourly,€4.346 hourly,€4.021 hourly,€1.0165 hourly
+EC48as v5,EC48as v5,384 GiB,48,0 GiB,€2.818 hourly,€2.3776 hourly,€2.2544 hourly,€0.6648 hourly,€4.7104 hourly,€4.2699 hourly,€4.1468 hourly,€1.1112 hourly
+EC48as v6,EC48as v6,256 GiB,48,0 GiB,€2.9663 hourly,€2.0171 hourly,€1.75 hourly,€0.5482 hourly,€4.8587 hourly,€3.9095 hourly,€3.6424 hourly,€0.8979 hourly
+Standard EC48es v5,EC48es v5,384 GiB,48,0 GiB,€3.1266 hourly,unavailable,unavailable,€0.5778 hourly,unavailable,unavailable,unavailable,unavailable
+EC4ads v5,EC4ads v5,32 GiB,4,150 GiB,€0.2537 hourly,€0.2151 hourly,€0.2029 hourly,€0.0598 hourly,€0.4114 hourly,€0.3728 hourly,€0.3606 hourly,€0.097 hourly
+EC4ads v6,EC4ads v6,32 GiB,4,150 GiB,€0.3008 hourly,€0.2046 hourly,€0.1774 hourly,€0.0556 hourly,€0.4585 hourly,€0.3623 hourly,€0.3351 hourly,€0.0847 hourly
+EC4as v5,EC4as v5,32 GiB,4,0 GiB,€0.2348 hourly,€0.1981 hourly,€0.1878 hourly,€0.0554 hourly,€0.3925 hourly,€0.3558 hourly,€0.3455 hourly,€0.0926 hourly
+EC4as v6,EC4as v6,32 GiB,4,0 GiB,€0.2468 hourly,€0.1678 hourly,€0.1459 hourly,€0.0456 hourly,€0.4045 hourly,€0.3255 hourly,€0.3036 hourly,€0.0748 hourly
+Standard EC4es v5,EC4es v5,32 GiB,4,0 GiB,€0.2605 hourly,unavailable,unavailable,€0.0481 hourly,unavailable,unavailable,unavailable,unavailable
+EC64ads v5,EC64ads v5,512 GiB,64,2400 GiB,€4.059 hourly,€3.4416 hourly,€3.2472 hourly,€0.9575 hourly,€6.5822 hourly,€5.9648 hourly,€5.7704 hourly,€1.5527 hourly
+EC64ads v6,EC64ads v6,384 GiB,64,600 GiB,€4.8107 hourly,€3.2713 hourly,€2.8382 hourly,€0.889 hourly,€7.3339 hourly,€5.7944 hourly,€5.3614 hourly,€1.3553 hourly
+EC64as v5,EC64as v5,512 GiB,64,0 GiB,€3.7573 hourly,€3.1701 hourly,€3.0059 hourly,€0.8864 hourly,€6.2805 hourly,€5.6933 hourly,€5.529 hourly,€1.4816 hourly
+EC64as v6,EC64as v6,384 GiB,64,0 GiB,€3.9545 hourly,€2.689 hourly,€2.3333 hourly,€0.7308 hourly,€6.4776 hourly,€5.2122 hourly,€4.8565 hourly,€1.1971 hourly
+Standard EC64es v5,EC64es v5,512 GiB,64,0 GiB,€4.1687 hourly,unavailable,unavailable,€0.7704 hourly,unavailable,unavailable,unavailable,unavailable
+EC8ads v5,EC8ads v5,64 GiB,8,300 GiB,€0.5074 hourly,€0.4302 hourly,€0.4059 hourly,€0.1197 hourly,€0.8228 hourly,€0.7456 hourly,€0.7213 hourly,€0.1941 hourly
+EC8ads v6,EC8ads v6,64 GiB,8,300 GiB,€0.6017 hourly,€0.4091 hourly,€0.3548 hourly,€0.1112 hourly,€0.9171 hourly,€0.7245 hourly,€0.6702 hourly,€0.1695 hourly
+EC8as v5,EC8as v5,64 GiB,8,0 GiB,€0.4697 hourly,€0.3963 hourly,€0.3757 hourly,€0.1108 hourly,€0.7851 hourly,€0.7117 hourly,€0.6911 hourly,€0.1852 hourly
+EC8as v6,EC8as v6,64 GiB,8,0 GiB,€0.4945 hourly,€0.3363 hourly,€0.2917 hourly,€0.0914 hourly,€0.8099 hourly,€0.6517 hourly,€0.6071 hourly,€0.1497 hourly
+Standard EC8es v5,EC8es v5,64 GiB,8,0 GiB,€0.5211 hourly,unavailable,unavailable,€0.0963 hourly,unavailable,unavailable,unavailable,unavailable
+EC96ads v5,EC96ads v5,672 GiB,96,2400 GiB,€6.0885 hourly,€5.1625 hourly,€4.8709 hourly,€1.4363 hourly,€9.8733 hourly,€8.9472 hourly,€8.6556 hourly,€2.3291 hourly
+EC96ads v6,EC96ads v6,672 GiB,96,600 GiB,€7.2156 hourly,€4.9066 hourly,€4.2573 hourly,€1.3334 hourly,€11.0003 hourly,€8.6914 hourly,€8.0421 hourly,€2.0329 hourly
+EC96as v5,EC96as v5,672 GiB,96,0 GiB,€5.636 hourly,€4.7551 hourly,€4.5089 hourly,€1.3295 hourly,€9.4208 hourly,€8.5399 hourly,€8.2936 hourly,€2.2224 hourly
+EC96as v6,EC96as v6,672 GiB,96,0 GiB,€5.9326 hourly,€4.0341 hourly,€3.50 hourly,€1.0963 hourly,€9.7173 hourly,€7.8189 hourly,€7.2848 hourly,€1.7958 hourly
+EC96iads v5,EC96iads v5,672 GiB,96,2400 GiB,€6.6971 hourly,€5.6784 hourly,€5.3579 hourly,€1.5798 hourly,€10.4818 hourly,€9.4632 hourly,€9.1427 hourly,€2.4727 hourly
+EC96ias v5,EC96ias v5,672 GiB,96,0 GiB,€6.20 hourly,€5.2309 hourly,€4.9597 hourly,€1.4626 hourly,€9.9847 hourly,€9.0157 hourly,€8.7445 hourly,€2.3554 hourly
+F1,F1,2 GiB,1,16 GiB,€0.0487 hourly,€0.037 hourly,€0.0354 hourly,€0.0099 hourly,€0.0883 hourly,€0.0764 hourly,€0.0748 hourly,€0.018 hourly
+F16,F16,32 GiB,16,256 GiB,€0.7791 hourly,€0.5921 hourly,€0.5693 hourly,€0.1589 hourly,€2.4383 hourly,€1.8599 hourly,€1.7513 hourly,€0.4877 hourly
+F16ads v7,F16ads v7,64 GiB,16,1760 GiB,€1.4219 hourly,€1.0095 hourly,€0.8817 hourly,€0.2628 hourly,€2.0527 hourly,€1.6403 hourly,€1.5125 hourly,€0.4105 hourly
+F16alds v7,F16alds v7,32 GiB,16,1760 GiB,€1.1853 hourly,€0.8416 hourly,€0.735 hourly,€0.219 hourly,€1.8161 hourly,€1.4724 hourly,€1.3658 hourly,€0.3632 hourly
+F16als v6,F16als v6,32 GiB,16,0 GiB,€1.0028 hourly,€0.712 hourly,€0.6215 hourly,€0.2043 hourly,€1.6336 hourly,€1.3428 hourly,€1.2523 hourly,€0.3328 hourly
+F16als v7,F16als v7,32 GiB,16,0 GiB,€1.0028 hourly,€0.712 hourly,€0.6215 hourly,€0.1853 hourly,€1.6336 hourly,€1.3428 hourly,€1.2523 hourly,€0.3267 hourly
+F16amds v7,F16amds v7,128 GiB,16,1760 GiB,€1.8075 hourly,€1.2291 hourly,€1.1205 hourly,€0.334 hourly,€2.4383 hourly,€1.8599 hourly,€1.7513 hourly,€0.4877 hourly
+F16ams v6,F16ams v6,128 GiB,16,0 GiB,€1.4836 hourly,€1.0088 hourly,€0.9199 hourly,€0.3022 hourly,€2.1144 hourly,€1.6396 hourly,€1.5507 hourly,€0.4307 hourly
+F16ams v7,F16ams v7,128 GiB,16,0 GiB,€1.4836 hourly,€1.0088 hourly,€0.9199 hourly,€0.2742 hourly,€2.1144 hourly,€1.6396 hourly,€1.5507 hourly,€0.4229 hourly
+F16as v6,F16as v6,64 GiB,16,0 GiB,€1.133 hourly,€0.8045 hourly,€0.7023 hourly,€0.2308 hourly,€1.7638 hourly,€1.4352 hourly,€1.3331 hourly,€0.3593 hourly
+F16as v7,F16as v7,64 GiB,16,0 GiB,€1.133 hourly,€0.8045 hourly,€0.7023 hourly,€0.2094 hourly,€1.7638 hourly,€1.4352 hourly,€1.3331 hourly,€0.3528 hourly
+F16s,F16s,32 GiB,16,64 GiB,€0.7791 hourly,€0.5921 hourly,€0.5693 hourly,€0.1589 hourly,€1.4099 hourly,€1.2229 hourly,€1.2001 hourly,€0.2875 hourly
+F16s v2,F16s v2,32 GiB,16,128 GiB,€0.6651 hourly,€0.4926 hourly,€0.3939 hourly,€0.1397 hourly,€1.2693 hourly,€1.1234 hourly,€1.0247 hourly,€0.2667 hourly
+F1ads v7,F1ads v7,4 GiB,1,110 GiB,€0.0891 hourly,€0.0633 hourly,€0.0551 hourly,€0.0165 hourly,€0.1286 hourly,€0.1027 hourly,€0.0945 hourly,€0.0257 hourly
+F1alds v7,F1alds v7,2 GiB,1,110 GiB,€0.074 hourly,€0.0526 hourly,€0.046 hourly,€0.0137 hourly,€0.1131 hourly,€0.092 hourly,€0.0854 hourly,€0.0226 hourly
+F1als v7,F1als v7,2 GiB,1,0 GiB,€0.0627 hourly,€0.0445 hourly,€0.0388 hourly,€0.0116 hourly,€0.102 hourly,€0.0839 hourly,€0.0783 hourly,€0.0204 hourly
+F1amds v7,F1amds v7,8 GiB,1,110 GiB,€0.1131 hourly,€0.0769 hourly,€0.0701 hourly,€0.0209 hourly,€0.1526 hourly,€0.1164 hourly,€0.1095 hourly,€0.0305 hourly
+F1ams v7,F1ams v7,8 GiB,1,0 GiB,€0.0926 hourly,€0.0629 hourly,€0.0575 hourly,€0.0171 hourly,€0.132 hourly,€0.1024 hourly,€0.097 hourly,€0.0264 hourly
+F1as v7,F1as v7,4 GiB,1,0 GiB,€0.0708 hourly,€0.0503 hourly,€0.0439 hourly,€0.0131 hourly,€0.1106 hourly,€0.0897 hourly,€0.0834 hourly,€0.0221 hourly
+F1s,F1s,2 GiB,1,4 GiB,€0.0487 hourly,€0.037 hourly,€0.0354 hourly,€0.0099 hourly,€0.0883 hourly,€0.0764 hourly,€0.0748 hourly,€0.018 hourly
+F2,F2,4 GiB,2,32 GiB,€0.0977 hourly,€0.0743 hourly,€0.0708 hourly,€0.0199 hourly,€0.264 hourly,€0.2047 hourly,€0.1938 hourly,€0.0528 hourly
+F2ads v7,F2ads v7,8 GiB,2,220 GiB,€0.1774 hourly,€0.126 hourly,€0.1102 hourly,€0.0328 hourly,€0.2563 hourly,€0.2048 hourly,€0.189 hourly,€0.0513 hourly
+F2alds v7,F2alds v7,4 GiB,2,220 GiB,€0.1483 hourly,€0.1053 hourly,€0.0919 hourly,€0.0274 hourly,€0.2271 hourly,€0.1841 hourly,€0.1707 hourly,€0.0454 hourly
+F2als v6,F2als v6,4 GiB,2,0 GiB,€0.1251 hourly,€0.0888 hourly,€0.0777 hourly,€0.0255 hourly,€0.204 hourly,€0.1677 hourly,€0.1565 hourly,€0.0416 hourly
+F2als v7,F2als v7,4 GiB,2,0 GiB,€0.1251 hourly,€0.0888 hourly,€0.0777 hourly,€0.0231 hourly,€0.204 hourly,€0.1677 hourly,€0.1565 hourly,€0.0408 hourly
+F2amds v7,F2amds v7,16 GiB,2,220 GiB,€0.2263 hourly,€0.1539 hourly,€0.1401 hourly,€0.0418 hourly,€0.3051 hourly,€0.2327 hourly,€0.219 hourly,€0.061 hourly
+F2ams v6,F2ams v6,16 GiB,2,0 GiB,€0.1851 hourly,€0.1259 hourly,€0.115 hourly,€0.0377 hourly,€0.264 hourly,€0.2047 hourly,€0.1938 hourly,€0.0538 hourly
+F2ams v7,F2ams v7,16 GiB,2,0 GiB,€0.1851 hourly,€0.1259 hourly,€0.115 hourly,€0.0342 hourly,€0.264 hourly,€0.2047 hourly,€0.1938 hourly,€0.0528 hourly
+F2as v6,F2as v6,8 GiB,2,0 GiB,€0.1414 hourly,€0.1004 hourly,€0.0878 hourly,€0.0288 hourly,€0.2203 hourly,€0.1793 hourly,€0.1666 hourly,€0.0449 hourly
+F2as v7,F2as v7,8 GiB,2,0 GiB,€0.1414 hourly,€0.1004 hourly,€0.0878 hourly,€0.0261 hourly,€0.2203 hourly,€0.1793 hourly,€0.1666 hourly,€0.0441 hourly
+F2s,F2s,4 GiB,2,8 GiB,€0.0977 hourly,€0.0743 hourly,€0.0708 hourly,€0.0199 hourly,€0.1766 hourly,€0.1531 hourly,€0.1497 hourly,€0.036 hourly
+F2s v2,F2s v2,4 GiB,2,16 GiB,€0.0831 hourly,€0.0616 hourly,€0.0492 hourly,€0.0175 hourly,€0.1586 hourly,€0.1404 hourly,€0.1281 hourly,€0.0333 hourly
+F32-8ams v7,F32-8ams v7,256 GiB,32,0 GiB,€3.6151 hourly,€2.4582 hourly,€2.2411 hourly,€0.6681 hourly,€4.2287 hourly,€3.2792 hourly,€3.1014 hourly,€0.8457 hourly
+F32ads v7,F32ads v7,128 GiB,32,3520 GiB,€2.8446 hourly,€2.0197 hourly,€1.7634 hourly,€0.5257 hourly,€4.1062 hourly,€3.2812 hourly,€3.025 hourly,€0.8212 hourly
+F32alds v7,F32alds v7,64 GiB,32,3520 GiB,€2.3706 hourly,€1.6831 hourly,€1.47 hourly,€0.4381 hourly,€3.6322 hourly,€2.9447 hourly,€2.7316 hourly,€0.7264 hourly
+F32als v6,F32als v6,64 GiB,32,0 GiB,€2.0047 hourly,€1.4233 hourly,€1.243 hourly,€0.4083 hourly,€3.2663 hourly,€2.6849 hourly,€2.5046 hourly,€0.6653 hourly
+F32als v7,F32als v7,64 GiB,32,0 GiB,€2.0047 hourly,€1.4233 hourly,€1.243 hourly,€0.3705 hourly,€3.2663 hourly,€2.6849 hourly,€2.5046 hourly,€0.6533 hourly
+F32amds v7,F32amds v7,256 GiB,32,3520 GiB,€3.6151 hourly,€2.4582 hourly,€2.2411 hourly,€0.6681 hourly,€4.8767 hourly,€3.7198 hourly,€3.5027 hourly,€0.9753 hourly
+F32ams v6,F32ams v6,256 GiB,32,0 GiB,€2.9671 hourly,€2.0177 hourly,€1.8398 hourly,€0.6044 hourly,€4.2287 hourly,€3.2792 hourly,€3.1014 hourly,€0.8614 hourly
+F32ams v7,F32ams v7,256 GiB,32,0 GiB,€2.9671 hourly,€2.0177 hourly,€1.8398 hourly,€0.5483 hourly,€4.2287 hourly,€3.2792 hourly,€3.1014 hourly,€0.8457 hourly
+F32as v6,F32as v6,128 GiB,32,0 GiB,€2.2652 hourly,€1.6083 hourly,€1.4046 hourly,€0.4614 hourly,€3.5268 hourly,€2.8699 hourly,€2.6661 hourly,€0.7184 hourly
+F32as v7,F32as v7,128 GiB,32,0 GiB,€2.2652 hourly,€1.6083 hourly,€1.4046 hourly,€0.4186 hourly,€3.5268 hourly,€2.8699 hourly,€2.6661 hourly,€0.7054 hourly
+F32s v2,F32s v2,64 GiB,32,256 GiB,€1.3302 hourly,€0.9852 hourly,€0.7879 hourly,€0.2795 hourly,€2.5378 hourly,€2.2468 hourly,€2.0495 hourly,€0.5332 hourly
+F4,F4,8 GiB,4,64 GiB,€0.4517 hourly,€0.3071 hourly,€0.2801 hourly,€0.0835 hourly,€0.5288 hourly,€0.4101 hourly,€0.3877 hourly,€0.1058 hourly
+F48ads v7,F48ads v7,192 GiB,48,5280 GiB,€4.2664 hourly,€3.0292 hourly,€2.645 hourly,€0.7884 hourly,€6.1588 hourly,€4.9216 hourly,€4.5374 hourly,€1.2318 hourly
+F48alds v7,F48alds v7,96 GiB,48,5280 GiB,€3.5568 hourly,€2.5253 hourly,€2.205 hourly,€0.6573 hourly,€5.4492 hourly,€4.4177 hourly,€4.0974 hourly,€1.0898 hourly
+F48als v6,F48als v6,96 GiB,48,0 GiB,€3.0074 hourly,€2.1353 hourly,€1.8645 hourly,€0.6126 hourly,€4.8998 hourly,€4.0277 hourly,€3.7569 hourly,€0.9981 hourly
+F48als v7,F48als v7,96 GiB,48,0 GiB,€3.0074 hourly,€2.1353 hourly,€1.8645 hourly,€0.5558 hourly,€4.8998 hourly,€4.0277 hourly,€3.7569 hourly,€0.98 hourly
+F48amds v7,F48amds v7,384 GiB,48,5280 GiB,€5.4218 hourly,€3.6868 hourly,€3.3616 hourly,€1.0019 hourly,€7.3141 hourly,€5.5792 hourly,€5.254 hourly,€1.4628 hourly
+F48ams v6,F48ams v6,384 GiB,48,0 GiB,€4.4516 hourly,€3.0271 hourly,€2.7597 hourly,€0.9068 hourly,€6.3439 hourly,€4.9194 hourly,€4.6521 hourly,€1.2923 hourly
+F48ams v7,F48ams v7,384 GiB,48,0 GiB,€4.4516 hourly,€3.0271 hourly,€2.7597 hourly,€0.8226 hourly,€6.3439 hourly,€4.9194 hourly,€4.6521 hourly,€1.2688 hourly
+F48as v6,F48as v6,192 GiB,48,0 GiB,€3.3982 hourly,€2.4127 hourly,€2.1068 hourly,€0.6922 hourly,€5.2906 hourly,€4.3051 hourly,€3.9992 hourly,€1.0777 hourly
+F48as v7,F48as v7,192 GiB,48,0 GiB,€3.3982 hourly,€2.4127 hourly,€2.1068 hourly,€0.628 hourly,€5.2906 hourly,€4.3051 hourly,€3.9992 hourly,€1.0581 hourly
+F48s v2,F48s v2,96 GiB,48,384 GiB,€1.9952 hourly,€1.4779 hourly,€1.1818 hourly,€0.4192 hourly,€3.8885 hourly,€3.3703 hourly,€3.0742 hourly,€0.817 hourly
+F4ads v7,F4ads v7,16 GiB,4,440 GiB,€0.3557 hourly,€0.2525 hourly,€0.2204 hourly,€0.0657 hourly,€0.5134 hourly,€0.4102 hourly,€0.3781 hourly,€0.1027 hourly
+F4alds v7,F4alds v7,8 GiB,4,440 GiB,€0.2965 hourly,€0.2105 hourly,€0.1837 hourly,€0.0548 hourly,€0.4542 hourly,€0.3682 hourly,€0.3414 hourly,€0.0908 hourly
+F4als v6,F4als v6,8 GiB,4,0 GiB,€0.2503 hourly,€0.1777 hourly,€0.1554 hourly,€0.051 hourly,€0.408 hourly,€0.3354 hourly,€0.3131 hourly,€0.0831 hourly
+F4als v7,F4als v7,8 GiB,4,0 GiB,€0.2503 hourly,€0.1777 hourly,€0.1554 hourly,€0.0462 hourly,€0.408 hourly,€0.3354 hourly,€0.3131 hourly,€0.0816 hourly
+F4amds v7,F4amds v7,32 GiB,4,440 GiB,€0.4517 hourly,€0.3071 hourly,€0.2801 hourly,€0.0835 hourly,€0.6094 hourly,€0.4648 hourly,€0.4378 hourly,€0.1219 hourly
+F4ams v6,F4ams v6,32 GiB,4,0 GiB,€0.3711 hourly,€0.2524 hourly,€0.23 hourly,€0.0756 hourly,€0.5288 hourly,€0.4101 hourly,€0.3877 hourly,€0.1077 hourly
+F4ams v7,F4ams v7,32 GiB,4,0 GiB,€0.3711 hourly,€0.2524 hourly,€0.23 hourly,€0.0686 hourly,€0.5288 hourly,€0.4101 hourly,€0.3877 hourly,€0.1058 hourly
+F4as v6,F4as v6,16 GiB,4,0 GiB,€0.2828 hourly,€0.2008 hourly,€0.1755 hourly,€0.0576 hourly,€0.4405 hourly,€0.3585 hourly,€0.3332 hourly,€0.0897 hourly
+F4as v7,F4as v7,16 GiB,4,0 GiB,€0.2828 hourly,€0.2008 hourly,€0.1755 hourly,€0.0523 hourly,€0.4405 hourly,€0.3585 hourly,€0.3332 hourly,€0.0881 hourly
+F4s,F4s,8 GiB,4,16 GiB,€0.1946 hourly,€0.1479 hourly,€0.1427 hourly,€0.0397 hourly,€0.3523 hourly,€0.3056 hourly,€0.3004 hourly,€0.0718 hourly
+F4s v2,F4s v2,8 GiB,4,32 GiB,€0.1663 hourly,€0.1232 hourly,€0.0985 hourly,€0.0349 hourly,€0.3171 hourly,€0.2809 hourly,€0.2562 hourly,€0.0666 hourly
+F64-32ams v7,F64-32ams v7,512 GiB,64,0 GiB,€7.2293 hourly,€4.9159 hourly,€4.4822 hourly,€1.336 hourly,€9.7525 hourly,€7.4391 hourly,€7.0054 hourly,€1.9505 hourly
+F64ads v7,F64ads v7,256 GiB,64,7040 GiB,€5.6883 hourly,€4.0387 hourly,€3.5268 hourly,€1.0512 hourly,€8.2115 hourly,€6.5619 hourly,€6.0499 hourly,€1.6423 hourly
+F64alds v7,F64alds v7,128 GiB,64,7040 GiB,€4.7421 hourly,€3.3669 hourly,€2.9399 hourly,€0.8763 hourly,€7.2653 hourly,€5.8901 hourly,€5.4631 hourly,€1.4531 hourly
+F64als v6,F64als v6,128 GiB,64,0 GiB,€4.0093 hourly,€2.8466 hourly,€2.486 hourly,€0.8167 hourly,€6.5325 hourly,€5.3698 hourly,€5.0091 hourly,€1.3307 hourly
+F64als v7,F64als v7,128 GiB,64,0 GiB,€4.0093 hourly,€2.8466 hourly,€2.486 hourly,€0.7409 hourly,€6.5325 hourly,€5.3698 hourly,€5.0091 hourly,€1.3065 hourly
+F64amds v7,F64amds v7,512 GiB,64,7040 GiB,€7.2293 hourly,€4.9159 hourly,€4.4822 hourly,€1.336 hourly,€9.7525 hourly,€7.4391 hourly,€7.0054 hourly,€1.9505 hourly
+F64ams v6,F64ams v6,512 GiB,64,0 GiB,€5.9351 hourly,€4.0359 hourly,€3.6797 hourly,€1.209 hourly,€8.4583 hourly,€6.5591 hourly,€6.2029 hourly,€1.723 hourly
+F64ams v7,F64ams v7,512 GiB,64,0 GiB,€5.9351 hourly,€4.0359 hourly,€3.6797 hourly,€1.0968 hourly,€8.4583 hourly,€6.5591 hourly,€6.2029 hourly,€1.6917 hourly
+F64as v6,F64as v6,256 GiB,64,0 GiB,€4.5304 hourly,€3.2166 hourly,€2.809 hourly,€0.9228 hourly,€7.0536 hourly,€5.7398 hourly,€5.3322 hourly,€1.4368 hourly
+F64as v7,F64as v7,256 GiB,64,0 GiB,€4.5304 hourly,€3.2166 hourly,€2.809 hourly,€0.8372 hourly,€7.0536 hourly,€5.7398 hourly,€5.3322 hourly,€1.4107 hourly
+F64s v2,F64s v2,128 GiB,64,512 GiB,€2.6603 hourly,€1.9705 hourly,€1.5758 hourly,€0.5589 hourly,€5.0755 hourly,€4.4937 hourly,€4.099 hourly,€1.0664 hourly
+F72s v2,F72s v2,144 GiB,72,576 GiB,€2.9928 hourly,€2.2168 hourly,€1.7727 hourly,€0.6288 hourly,€5.7097 hourly,€5.0554 hourly,€4.6113 hourly,€1.1996 hourly
+F8,F8,16 GiB,8,128 GiB,€0.9033 hourly,€0.6143 hourly,€0.5603 hourly,€0.1669 hourly,€1.2187 hourly,€0.9297 hourly,€0.8757 hourly,€0.2437 hourly
+F80ads v7,F80ads v7,320 GiB,80,8800 GiB,€7.1102 hourly,€5.0482 hourly,€4.4085 hourly,€1.314 hourly,€10.2641 hourly,€8.2022 hourly,€7.5624 hourly,€2.0528 hourly
+F80alds v7,F80alds v7,160 GiB,80,8800 GiB,€5.9274 hourly,€4.2085 hourly,€3.6749 hourly,€1.0954 hourly,€9.0814 hourly,€7.3624 hourly,€6.8289 hourly,€1.8163 hourly
+F80als v7,F80als v7,160 GiB,80,0 GiB,€5.0121 hourly,€3.5586 hourly,€3.1075 hourly,€0.9262 hourly,€8.1661 hourly,€6.7126 hourly,€6.2615 hourly,€1.6332 hourly
+F80amds v7,F80amds v7,640 GiB,80,8000 GiB,€9.0368 hourly,€6.145 hourly,€5.6028 hourly,€1.67 hourly,€12.1908 hourly,€9.299 hourly,€8.7568 hourly,€2.4382 hourly
+F80ams v7,F80ams v7,640 GiB,80,0 GiB,€7.4187 hourly,€5.0447 hourly,€4.5995 hourly,€1.371 hourly,€10.5727 hourly,€8.1987 hourly,€7.7535 hourly,€2.1145 hourly
+F80as v7,F80as v7,320 GiB,80,0 GiB,€5.6634 hourly,€4.021 hourly,€3.5113 hourly,€1.0466 hourly,€8.8174 hourly,€7.175 hourly,€6.6653 hourly,€1.7635 hourly
+F8ads v7,F8ads v7,32 GiB,8,880 GiB,€0.7114 hourly,€0.5051 hourly,€0.4409 hourly,€0.1315 hourly,€1.0268 hourly,€0.8205 hourly,€0.7563 hourly,€0.2054 hourly
+F8alds v7,F8alds v7,16 GiB,8,880 GiB,€0.5931 hourly,€0.4211 hourly,€0.3675 hourly,€0.1096 hourly,€0.9085 hourly,€0.7365 hourly,€0.6829 hourly,€0.1817 hourly
+F8als v6,F8als v6,16 GiB,8,0 GiB,€0.5014 hourly,€0.356 hourly,€0.3107 hourly,€0.1021 hourly,€0.8168 hourly,€0.6714 hourly,€0.6261 hourly,€0.1664 hourly
+F8als v7,F8als v7,16 GiB,8,0 GiB,€0.5014 hourly,€0.356 hourly,€0.3107 hourly,€0.0927 hourly,€0.8168 hourly,€0.6714 hourly,€0.6261 hourly,€0.1634 hourly
+F8amds v7,F8amds v7,64 GiB,8,880 GiB,€0.9033 hourly,€0.6143 hourly,€0.5603 hourly,€0.1669 hourly,€1.2187 hourly,€0.9297 hourly,€0.8757 hourly,€0.2437 hourly
+F8ams v6,F8ams v6,64 GiB,8,0 GiB,€0.7422 hourly,€0.5047 hourly,€0.4599 hourly,€0.1512 hourly,€1.0576 hourly,€0.8201 hourly,€0.7753 hourly,€0.2154 hourly
+F8ams v7,F8ams v7,64 GiB,8,0 GiB,€0.7422 hourly,€0.5047 hourly,€0.4599 hourly,€0.1372 hourly,€1.0576 hourly,€0.8201 hourly,€0.7753 hourly,€0.2115 hourly
+F8as v6,F8as v6,32 GiB,8,0 GiB,€0.5665 hourly,€0.4022 hourly,€0.3511 hourly,€0.1154 hourly,€0.8819 hourly,€0.7176 hourly,€0.6665 hourly,€0.1796 hourly
+F8as v7,F8as v7,32 GiB,8,0 GiB,€0.5665 hourly,€0.4022 hourly,€0.3511 hourly,€0.1047 hourly,€0.8819 hourly,€0.7176 hourly,€0.6665 hourly,€0.1764 hourly
+F8s,F8s,16 GiB,8,32 GiB,€0.3891 hourly,€0.2957 hourly,€0.2846 hourly,€0.0793 hourly,€0.7045 hourly,€0.6111 hourly,€0.60 hourly,€0.1436 hourly
+F8s v2,F8s v2,16 GiB,8,64 GiB,€0.3325 hourly,€0.2463 hourly,€0.1969 hourly,€0.0699 hourly,€0.6342 hourly,€0.5617 hourly,€0.5123 hourly,€0.1333 hourly
+FX12-6ms v2,FX12-6ms v2,252 GiB,12,0 GiB,€1.9695 hourly,€1.359 hourly,€1.1228 hourly,€0.4012 hourly,€2.0672 hourly,€1.573 hourly,€1.3816 hourly,€0.4211 hourly
+FX12mds,FX12mds,252 GiB,12,504 GiB,€1.157 hourly,€0.8793 hourly,€0.6826 hourly,€0.2138 hourly,€1.6301 hourly,€1.3524 hourly,€1.1557 hourly,€0.3012 hourly
+FX12mds v2,FX12mds v2,252 GiB,12,880 GiB,€1.9695 hourly,€1.359 hourly,€1.1228 hourly,€0.4012 hourly,€2.4426 hourly,€1.8321 hourly,€1.5959 hourly,€0.4976 hourly
+FX12ms v2,FX12ms v2,252 GiB,12,0 GiB,€1.5941 hourly,€1.0999 hourly,€0.9085 hourly,€0.3247 hourly,€2.0672 hourly,€1.573 hourly,€1.3816 hourly,€0.4211 hourly
+FX16-8ms v2,FX16-8ms v2,336 GiB,16,0 GiB,€2.6269 hourly,€1.8126 hourly,€1.4971 hourly,€0.5351 hourly,€3.2577 hourly,€2.4433 hourly,€2.1279 hourly,€0.6636 hourly
+FX16mds v2,FX16mds v2,336 GiB,16,880 GiB,€2.6269 hourly,€1.8126 hourly,€1.4971 hourly,€0.5351 hourly,€3.2577 hourly,€2.4433 hourly,€2.1279 hourly,€0.6636 hourly
+FX16ms v2,FX16ms v2,336 GiB,16,0 GiB,€2.1255 hourly,€1.4666 hourly,€1.2113 hourly,€0.433 hourly,€2.7563 hourly,€2.0974 hourly,€1.8421 hourly,€0.5615 hourly
+FX24-6ms v2,FX24-6ms v2,504 GiB,24,0 GiB,€3.1874 hourly,€2.1993 hourly,€1.8169 hourly,€0.6493 hourly,€4.8861 hourly,€3.6647 hourly,€3.1919 hourly,€0.9953 hourly
+FX24mds,FX24mds,504 GiB,24,1008 GiB,€2.3141 hourly,€1.7587 hourly,€1.3653 hourly,€0.4276 hourly,€3.2603 hourly,€2.7049 hourly,€2.3115 hourly,€0.6025 hourly
+FX24mds v2,FX24mds v2,504 GiB,24,1320 GiB,€3.9399 hourly,€2.7185 hourly,€2.2457 hourly,€0.8026 hourly,€4.8861 hourly,€3.6647 hourly,€3.1919 hourly,€0.9953 hourly
+FX24ms v2,FX24ms v2,504 GiB,24,0 GiB,€3.1874 hourly,€2.1993 hourly,€1.8169 hourly,€0.6493 hourly,€4.1336 hourly,€3.1455 hourly,€2.7631 hourly,€0.842 hourly
+FX2mds v2,FX2mds v2,42 GiB,2,110 GiB,€0.3283 hourly,€0.2265 hourly,€0.1872 hourly,€0.0669 hourly,€0.4071 hourly,€0.3053 hourly,€0.266 hourly,€0.0829 hourly
+FX2ms v2,FX2ms v2,42 GiB,2,0 GiB,€0.2657 hourly,€0.1833 hourly,€0.1515 hourly,€0.0541 hourly,€0.3445 hourly,€0.2622 hourly,€0.2303 hourly,€0.0702 hourly
+FX32-8ms v2,FX32-8ms v2,672 GiB,32,0 GiB,€4.2502 hourly,€2.9326 hourly,€2.4226 hourly,€0.8658 hourly,€5.5117 hourly,€4.1942 hourly,€3.6842 hourly,€1.1227 hourly
+FX32mds v2,FX32mds v2,672 GiB,32,1760 GiB,€5.2529 hourly,€3.6245 hourly,€2.9942 hourly,€1.07 hourly,€6.5145 hourly,€4.8861 hourly,€4.2558 hourly,€1.327 hourly
+FX32ms v2,FX32ms v2,672 GiB,32,0 GiB,€4.2502 hourly,€2.9326 hourly,€2.4226 hourly,€0.8658 hourly,€5.5117 hourly,€4.1942 hourly,€3.6842 hourly,€1.1227 hourly
+FX36mds,FX36mds,756 GiB,36,1512 GiB,€3.4711 hourly,€2.638 hourly,€2.0479 hourly,€0.6415 hourly,€4.8904 hourly,€4.0573 hourly,€3.4672 hourly,€0.9037 hourly
+FX4-2ms v2,FX4-2ms v2,84 GiB,4,0 GiB,€0.5314 hourly,€0.3666 hourly,€0.3028 hourly,€0.1082 hourly,€0.6891 hourly,€0.5243 hourly,€0.4605 hourly,€0.1404 hourly
+FX48-24ms v2,FX48-24ms v2,1008 GiB,48,0 GiB,€6.3757 hourly,€4.3992 hourly,€3.6339 hourly,€1.2987 hourly,€9.7722 hourly,€7.3294 hourly,€6.3837 hourly,€1.9906 hourly
+FX48mds,FX48mds,1008 GiB,48,2016 GiB,€4.6281 hourly,€3.5174 hourly,€2.7306 hourly,€0.8553 hourly,€6.5205 hourly,€5.4098 hourly,€4.6229 hourly,€1.205 hourly
+FX48mds v2,FX48mds v2,1008 GiB,48,2640 GiB,€7.8798 hourly,€5.4371 hourly,€4.4913 hourly,€1.6051 hourly,€9.7722 hourly,€7.3294 hourly,€6.3837 hourly,€1.9906 hourly
+FX48ms v2,FX48ms v2,1008 GiB,48,0 GiB,€6.3757 hourly,€4.3992 hourly,€3.6339 hourly,€1.2987 hourly,€8.268 hourly,€6.2916 hourly,€5.5263 hourly,€1.6842 hourly
+FX4mds,FX4mds,84 GiB,4,168 GiB,€0.3857 hourly,€0.2931 hourly,€0.2276 hourly,€0.0713 hourly,€0.5434 hourly,€0.4508 hourly,€0.3853 hourly,€0.1004 hourly
+FX4mds v2,FX4mds v2,84 GiB,4,220 GiB,€0.6565 hourly,€0.453 hourly,€0.3742 hourly,€0.1337 hourly,€0.8142 hourly,€0.6107 hourly,€0.5319 hourly,€0.1659 hourly
+FX4ms v2,FX4ms v2,84 GiB,4,0 GiB,€0.5314 hourly,€0.3666 hourly,€0.3028 hourly,€0.1082 hourly,€0.6891 hourly,€0.5243 hourly,€0.4605 hourly,€0.1404 hourly
+FX64-32ms v2,FX64-32ms v2,1344 GiB,64,0 GiB,€8.5003 hourly,€5.8652 hourly,€4.8452 hourly,€1.7315 hourly,€11.0235 hourly,€8.3884 hourly,€7.3684 hourly,€2.2455 hourly
+FX64mds v2,FX64mds v2,1344 GiB,64,3520 GiB,€10.5058 hourly,€7.249 hourly,€5.9885 hourly,€2.14 hourly,€13.029 hourly,€9.7722 hourly,€8.5116 hourly,€2.654 hourly
+FX64ms v2,FX64ms v2,1344 GiB,64,0 GiB,€8.5003 hourly,€5.8652 hourly,€4.8452 hourly,€1.7315 hourly,€11.0235 hourly,€8.3884 hourly,€7.3684 hourly,€2.2455 hourly
+FX8-4ms v2,FX8-4ms v2,168 GiB,8,0 GiB,€1.0628 hourly,€0.7333 hourly,€0.6056 hourly,€0.2165 hourly,€1.6284 hourly,€1.2214 hourly,€1.064 hourly,€0.3317 hourly
+FX8mds v2,FX8mds v2,168 GiB,8,440 GiB,€1.313 hourly,€0.906 hourly,€0.7486 hourly,€0.2675 hourly,€1.6284 hourly,€1.2214 hourly,€1.064 hourly,€0.3317 hourly
+FX8ms v2,FX8ms v2,168 GiB,8,0 GiB,€1.0628 hourly,€0.7333 hourly,€0.6056 hourly,€0.2165 hourly,€1.3782 hourly,€1.0487 hourly,€0.921 hourly,€0.2807 hourly
+FX96-48ms v2,FX96-48ms v2,1832 GiB,96,0 GiB,€12.7505 hourly,€8.7978 hourly,€7.2678 hourly,€2.5973 hourly,€16.5352 hourly,€12.5826 hourly,€11.0526 hourly,€3.3682 hourly
+FX96mds v2,FX96mds v2,1832 GiB,96,5280 GiB,€15.7587 hourly,€10.8735 hourly,€8.9826 hourly,€3.2101 hourly,€19.5435 hourly,€14.6583 hourly,€12.7674 hourly,€3.981 hourly
+FX96ms v2,FX96ms v2,1832 GiB,96,0 GiB,€12.7505 hourly,€8.7978 hourly,€7.2678 hourly,€2.5973 hourly,€16.5352 hourly,€12.5826 hourly,€11.0526 hourly,€3.3682 hourly
+G1,G1,28 GiB,2,384 GiB,€0.5999 hourly,€0.456 hourly,€0.354 hourly,€0.1109 hourly,€0.6599 hourly,€0.5348 hourly,€0.4328 hourly,€0.122 hourly
+G2,G2,56 GiB,4,768 GiB,€1.1999 hourly,€0.9119 hourly,€0.708 hourly,€0.2217 hourly,€1.3199 hourly,€1.0696 hourly,€0.8657 hourly,€0.2439 hourly
+G3,G3,112 GiB,8,1536 GiB,€2.3998 hourly,€1.8238 hourly,€1.4159 hourly,€0.4435 hourly,€2.6397 hourly,€2.1392 hourly,€1.7313 hourly,€0.4878 hourly
+G4,G4,224 GiB,16,3072 GiB,€4.7995 hourly,€3.6476 hourly,€2.8317 hourly,€0.887 hourly,€5.2795 hourly,€4.2784 hourly,€3.4625 hourly,€0.9756 hourly
+G5,G5,448 GiB,32,6144 GiB,€8.562 hourly,€6.5071 hourly,€5.0516 hourly,€1.5823 hourly,€9.5134 hourly,€7.7687 hourly,€6.3131 hourly,€1.7581 hourly
+GS1,Gs1,28 GiB,2,56 GiB,€0.5999 hourly,€0.456 hourly,€0.354 hourly,€0.1109 hourly,€0.6599 hourly,€0.5348 hourly,€0.4328 hourly,€0.122 hourly
+GS2,Gs2,56 GiB,4,112 GiB,€1.1999 hourly,€0.9119 hourly,€0.708 hourly,€0.2217 hourly,€1.3199 hourly,€1.0696 hourly,€0.8657 hourly,€0.2439 hourly
+GS3,Gs3,112 GiB,8,224 GiB,€2.3998 hourly,€1.8238 hourly,€1.4159 hourly,€0.4435 hourly,€2.6397 hourly,€2.1392 hourly,€1.7313 hourly,€0.4878 hourly
+GS4,Gs4,224 GiB,16,448 GiB,€4.7995 hourly,€3.6476 hourly,€2.8317 hourly,€0.887 hourly,€5.2795 hourly,€4.2784 hourly,€3.4625 hourly,€0.9756 hourly
+GS5,Gs5,448 GiB,32,896 GiB,€8.562 hourly,€6.5071 hourly,€5.0516 hourly,€1.5823 hourly,€9.5134 hourly,€7.7687 hourly,€6.3131 hourly,€1.7581 hourly
+H16,H16,112 GiB,16,2000 GiB,€1.7698 hourly,€1.4732 hourly,unavailable,€0.3271 hourly,€2.9234 hourly,€2.104 hourly,unavailable,€0.5402 hourly
+H16m,H16m,224 GiB,16,2000 GiB,€2.3715 hourly,€1.974 hourly,unavailable,€0.4383 hourly,€3.9168 hourly,€2.6048 hourly,unavailable,€0.7238 hourly
+H16mr,H16mr,224 GiB,16,2000 GiB,€2.608 hourly,€2.1709 hourly,unavailable,€0.482 hourly,€4.3084 hourly,€2.8017 hourly,unavailable,€0.7962 hourly
+H16r,H16r,112 GiB,16,2000 GiB,€1.9464 hourly,€1.6202 hourly,unavailable,€0.3597 hourly,€3.2157 hourly,€2.251 hourly,unavailable,€0.5943 hourly
+H8,H8,56 GiB,8,1000 GiB,€0.8845 hourly,€0.7362 hourly,unavailable,€0.1635 hourly,€1.4621 hourly,€1.0516 hourly,unavailable,€0.2702 hourly
+H8m,H8m,112 GiB,8,1000 GiB,€1.1853 hourly,€0.9867 hourly,unavailable,€0.219 hourly,€1.9584 hourly,€1.3021 hourly,unavailable,€0.3619 hourly
+HB120-96rs v3,HB120-96rs v3,456 GiB,120,2100 GiB,€4.011 hourly,€3.3388 hourly,€3.0083 hourly,€1.1564 hourly,€8.742 hourly,€8.0697 hourly,€7.7393 hourly,€1.9844 hourly
+HB120rs v2,HB120rs v2,456 GiB,120,480 GiB,€4.011 hourly,€3.3388 hourly,€3.0083 hourly,€1.1564 hourly,€8.742 hourly,€8.0697 hourly,€7.7393 hourly,€3.5003 hourly
+HB120rs v3,HB120rs v3,456 GiB,120,2100 GiB,€4.011 hourly,€3.3388 hourly,€3.0083 hourly,€0.9105 hourly,€8.742 hourly,€8.0697 hourly,€7.7393 hourly,€1.9844 hourly
+HB176-96rs v4,HB176-96rs v4,768 GiB,176,3600 GiB,€8.0221 hourly,€6.6776 hourly,€6.0167 hourly,€1.4825 hourly,€14.9608 hourly,€13.6163 hourly,€12.9555 hourly,€2.7648 hourly
+HB176rs v4,HB176rs v4,768 GiB,176,3600 GiB,€8.0221 hourly,€6.6776 hourly,€6.0167 hourly,€1.4825 hourly,€14.9608 hourly,€13.6163 hourly,€12.9555 hourly,€2.7648 hourly
+HB368-96rs v5,HB368-96rs v5,438 GiB,368,15 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+HB368rs v5,HB368rs v5,438 GiB,368,15 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+HB60-45rs,HB60-45rs,228 GiB,60,700 GiB,€2.5403 hourly,€2.1999 hourly,€2.1593 hourly,€0.4695 hourly,€4.9058 hourly,€4.5654 hourly,€4.5248 hourly,€0.9066 hourly
+HB60rs,HB60rs,228 GiB,60,700 GiB,€2.5403 hourly,€2.1999 hourly,€2.1593 hourly,€0.4695 hourly,€4.9058 hourly,€4.5654 hourly,€4.5248 hourly,€0.9066 hourly
+HC44-32rs,HC44-32rs,352 GiB,44,700 GiB,€3.5294 hourly,€3.0564 hourly,€3.0003 hourly,€0.6522 hourly,€5.2641 hourly,€4.7911 hourly,€4.735 hourly,€0.9728 hourly
+HC44rs,HC44rs,352 GiB,44,700 GiB,€3.5294 hourly,€3.0564 hourly,€3.0003 hourly,€0.6522 hourly,€5.2641 hourly,€4.7911 hourly,€4.735 hourly,€0.9728 hourly
+HX176-96rs,HX176-96rs,1408 GiB,176,3600 GiB,€9.6265 hourly,€8.0131 hourly,€7.2197 hourly,€1.779 hourly,€16.5652 hourly,€14.9518 hourly,€14.1585 hourly,€3.0613 hourly
+HX176rs,HX176rs,1408 GiB,176,3600 GiB,€9.6265 hourly,€8.0131 hourly,€7.2197 hourly,€1.779 hourly,€16.5652 hourly,€14.9518 hourly,€14.1585 hourly,€3.0613 hourly
+L12aos v4,L12aos v4,96 GiB,12,8640 GiB,€1.3884 hourly,€1.0136 hourly,€0.8886 hourly,€0.2566 hourly,€1.8615 hourly,€1.4867 hourly,€1.3617 hourly,€0.344 hourly
+L16aos v4,L16aos v4,128 GiB,16,11520 GiB,€1.8512 hourly,€1.3514 hourly,€1.1848 hourly,€0.3421 hourly,€2.482 hourly,€1.9822 hourly,€1.8156 hourly,€0.4587 hourly
+L16as v3,L16as v3,128 GiB,16,160 GiB,€1.2753 hourly,€0.9271 hourly,€0.8162 hourly,€0.2598 hourly,€1.9061 hourly,€1.5579 hourly,€1.447 hourly,€0.3883 hourly
+L16as v4,L16as v4,128 GiB,16,3840 GiB,€1.3987 hourly,€1.0071 hourly,€0.8532 hourly,€0.2585 hourly,€2.0295 hourly,€1.6379 hourly,€1.484 hourly,€0.3751 hourly
+L16s,L16s,128 GiB,16,2807 GiB,€1.2753 hourly,€0.9692 hourly,€1.1253 hourly,€0.2357 hourly,€1.9061 hourly,€1.60 hourly,€1.7561 hourly,€0.3522 hourly
+L16s v2,L16s v2,128 GiB,16,160 GiB,€1.2753 hourly,€0.9271 hourly,€0.8123 hourly,€0.2357 hourly,€1.9061 hourly,€1.5579 hourly,€1.4431 hourly,€0.3522 hourly
+L16s v3,L16s v3,128 GiB,16,160 GiB,€1.4261 hourly,€1.0369 hourly,€0.9127 hourly,€0.2859 hourly,€2.0569 hourly,€1.6677 hourly,€1.5435 hourly,€0.4124 hourly
+L16s v4,L16s v4,128 GiB,16,3840 GiB,€1.4261 hourly,€1.0411 hourly,€0.87 hourly,€0.2636 hourly,€2.0569 hourly,€1.6719 hourly,€1.5008 hourly,€0.3801 hourly
+L24aos v4,L24aos v4,192 GiB,24,17280 GiB,€2.7769 hourly,€2.0271 hourly,€1.7772 hourly,€0.5132 hourly,€3.7231 hourly,€2.9733 hourly,€2.7234 hourly,€0.688 hourly
+L2aos v4,L2aos v4,16 GiB,2,1440 GiB,€0.2314 hourly,€0.1689 hourly,€0.1481 hourly,€0.0428 hourly,€0.3103 hourly,€0.2478 hourly,€0.227 hourly,€0.0573 hourly
+L2as v4,L2as v4,16 GiB,2,480 GiB,€0.1748 hourly,€0.1259 hourly,€0.1066 hourly,€0.0323 hourly,€0.2537 hourly,€0.2047 hourly,€0.1855 hourly,€0.0469 hourly
+L2s v4,L2s v4,16 GiB,2,480 GiB,€0.1783 hourly,€0.1301 hourly,€0.1087 hourly,€0.0329 hourly,€0.2571 hourly,€0.209 hourly,€0.1875 hourly,€0.0475 hourly
+L32aos v4,L32aos v4,256 GiB,32,23040 GiB,€3.7025 hourly,€2.7028 hourly,€2.3696 hourly,€0.6842 hourly,€4.9641 hourly,€3.9644 hourly,€3.6312 hourly,€0.9174 hourly
+L32as v3,L32as v3,256 GiB,32,320 GiB,€2.5506 hourly,€1.8543 hourly,€1.6324 hourly,€0.5196 hourly,€3.8122 hourly,€3.1159 hourly,€2.894 hourly,€0.7765 hourly
+L32as v4,L32as v4,256 GiB,32,7680 GiB,€2.7974 hourly,€2.0142 hourly,€1.7065 hourly,€0.517 hourly,€4.059 hourly,€3.2757 hourly,€2.9681 hourly,€0.7501 hourly
+L32s,L32s,256 GiB,32,5630 GiB,€2.5506 hourly,€1.9385 hourly,€2.2507 hourly,€0.4714 hourly,€3.8122 hourly,€3.2001 hourly,€3.5122 hourly,€0.7045 hourly
+L32s v2,L32s v2,256 GiB,32,320 GiB,€2.5506 hourly,€1.8543 hourly,€1.6247 hourly,€0.4714 hourly,€3.8122 hourly,€3.1159 hourly,€2.8863 hourly,€0.7045 hourly
+L32s v3,L32s v3,256 GiB,32,320 GiB,€2.8523 hourly,€2.0739 hourly,€1.8255 hourly,€0.5719 hourly,€4.1139 hourly,€3.3355 hourly,€3.087 hourly,€0.8248 hourly
+L32s v4,L32s v4,256 GiB,32,7680 GiB,€2.8523 hourly,€2.0822 hourly,€1.7399 hourly,€0.5271 hourly,€4.1139 hourly,€3.3438 hourly,€3.0015 hourly,€0.7602 hourly
+L48as v3,L48as v3,384 GiB,48,480 GiB,€3.8259 hourly,€2.7814 hourly,€2.4486 hourly,€0.7793 hourly,€5.7183 hourly,€4.6738 hourly,€4.341 hourly,€1.1648 hourly
+L48as v4,L48as v4,384 GiB,48,11520 GiB,€4.1962 hourly,€3.0212 hourly,€2.5596 hourly,€0.7755 hourly,€6.0885 hourly,€4.9136 hourly,€4.452 hourly,€1.1252 hourly
+L48s v2,L48s v2,384 GiB,48,480 GiB,€3.8259 hourly,€2.7814 hourly,€2.437 hourly,€0.707 hourly,€5.7183 hourly,€4.6738 hourly,€4.3294 hourly,€1.0567 hourly
+L48s v3,L48s v3,384 GiB,48,480 GiB,€4.2784 hourly,€3.1108 hourly,€2.7382 hourly,€0.8578 hourly,€6.1708 hourly,€5.0032 hourly,€4.6306 hourly,€1.2372 hourly
+L48s v4,L48s v4,384 GiB,48,11520 GiB,€4.2784 hourly,€3.1233 hourly,€2.6098 hourly,€0.7907 hourly,€6.1708 hourly,€5.0156 hourly,€4.5022 hourly,€1.1404 hourly
+L4aos v4,L4aos v4,32 GiB,4,2880 GiB,€0.4628 hourly,€0.3379 hourly,€0.2962 hourly,€0.0855 hourly,€0.6205 hourly,€0.4956 hourly,€0.4539 hourly,€0.1147 hourly
+L4as v4,L4as v4,32 GiB,4,960 GiB,€0.3497 hourly,€0.2518 hourly,€0.2133 hourly,€0.0646 hourly,€0.5074 hourly,€0.4095 hourly,€0.371 hourly,€0.0938 hourly
+L4s,L4s,32 GiB,4,678 GiB,€0.3188 hourly,€0.2423 hourly,€0.2813 hourly,€0.0589 hourly,€0.4765 hourly,€0.40 hourly,€0.439 hourly,€0.0881 hourly
+L4s v4,L4s v4,32 GiB,4,960 GiB,€0.3565 hourly,€0.2603 hourly,€0.2175 hourly,€0.0659 hourly,€0.5142 hourly,€0.418 hourly,€0.3752 hourly,€0.095 hourly
+L64as v3,L64as v3,512 GiB,64,640 GiB,€5.1012 hourly,€3.7086 hourly,€3.2647 hourly,€1.0391 hourly,€7.6244 hourly,€6.2318 hourly,€5.7879 hourly,€1.5531 hourly
+L64as v4,L64as v4,512 GiB,64,15360 GiB,€5.5949 hourly,€4.0283 hourly,€3.4129 hourly,€1.0339 hourly,€8.1181 hourly,€6.5515 hourly,€5.9361 hourly,€1.5002 hourly
+L64s v2,L64s v2,512 GiB,64,640 GiB,€5.1012 hourly,€3.7086 hourly,€3.2495 hourly,€0.9427 hourly,€7.6244 hourly,€6.2318 hourly,€5.7727 hourly,€1.409 hourly
+L64s v3,L64s v3,512 GiB,64,640 GiB,€5.7046 hourly,€4.1478 hourly,€3.6509 hourly,€1.1438 hourly,€8.2278 hourly,€6.671 hourly,€6.1741 hourly,€1.6497 hourly
+L64s v4,L64s v4,512 GiB,64,15360 GiB,€5.7046 hourly,€4.1643 hourly,€3.4798 hourly,€1.0542 hourly,€8.2278 hourly,€6.6875 hourly,€6.003 hourly,€1.5205 hourly
+L80as v3,L80as v3,640 GiB,80,800 GiB,€6.3765 hourly,€4.6357 hourly,€4.081 hourly,€1.2989 hourly,€9.5305 hourly,€7.7897 hourly,€7.235 hourly,€1.9414 hourly
+L80as v4,L80as v4,640 GiB,80,19200 GiB,€6.9936 hourly,€5.0354 hourly,€4.2661 hourly,€1.2924 hourly,€10.1476 hourly,€8.1894 hourly,€7.4201 hourly,€1.8753 hourly
+L80s v2,L80s v2,640 GiB,80,800 GiB,€6.3765 hourly,€4.6357 hourly,€4.0618 hourly,€1.1784 hourly,€9.5305 hourly,€7.7897 hourly,€7.2158 hourly,€1.7612 hourly
+L80s v3,L80s v3,640 GiB,80,800 GiB,€7.1307 hourly,€5.1848 hourly,€4.5636 hourly,€1.4297 hourly,€10.2847 hourly,€8.3387 hourly,€7.7176 hourly,€2.0621 hourly
+L80s v4,L80s v4,640 GiB,80,19200 GiB,€7.1307 hourly,€5.2054 hourly,€4.3498 hourly,€1.3178 hourly,€10.2847 hourly,€8.3594 hourly,€7.5037 hourly,€1.9006 hourly
+L8aos v4,L8aos v4,64 GiB,8,5760 GiB,€0.9256 hourly,€0.6757 hourly,€0.5924 hourly,€0.1711 hourly,€1.241 hourly,€0.9911 hourly,€0.9078 hourly,€0.2293 hourly
+L8as v3,L8as v3,64 GiB,8,80 GiB,€0.6377 hourly,€0.4636 hourly,€0.4081 hourly,€0.1299 hourly,€0.953 hourly,€0.779 hourly,€0.7235 hourly,€0.1941 hourly
+L8as v4,L8as v4,64 GiB,8,1920 GiB,€0.6994 hourly,€0.5035 hourly,€0.4266 hourly,€0.1292 hourly,€1.0148 hourly,€0.8189 hourly,€0.742 hourly,€0.1875 hourly
+L8s,L8s,64 GiB,8,1388 GiB,€0.6377 hourly,€0.4846 hourly,€0.5627 hourly,€0.1178 hourly,€0.953 hourly,€0.80 hourly,€0.8781 hourly,€0.1761 hourly
+L8s v2,L8s v2,64 GiB,8,80 GiB,€0.6377 hourly,€0.4636 hourly,€0.4062 hourly,€0.1178 hourly,€0.953 hourly,€0.779 hourly,€0.7216 hourly,€0.1761 hourly
+L8s v3,L8s v3,64 GiB,8,80 GiB,€0.7131 hourly,€0.5185 hourly,€0.4564 hourly,€0.143 hourly,€1.0285 hourly,€0.8339 hourly,€0.7718 hourly,€0.2062 hourly
+L8s v4,L8s v4,64 GiB,8,1920 GiB,€0.7131 hourly,€0.5205 hourly,€0.435 hourly,€0.1318 hourly,€1.0148 hourly,€0.8359 hourly,€0.7504 hourly,€0.1875 hourly
+L96as v4,L96as v4,768 GiB,96,23040 GiB,€8.3923 hourly,€6.0425 hourly,€5.1194 hourly,€1.5509 hourly,€12.1771 hourly,€9.8272 hourly,€8.9041 hourly,€2.2503 hourly
+L96s v4,L96s v4,768 GiB,96,23040 GiB,€8.5569 hourly,€6.2465 hourly,€5.2197 hourly,€1.5813 hourly,€12.3416 hourly,€10.0313 hourly,€9.0045 hourly,€2.2807 hourly
+M128,M128,2048 GiB,128,14336 GiB,€32.0225 hourly,€22.0923 hourly,€18.3655 hourly,€5.9177 hourly,€39.844 hourly,€27.1387 hourly,€23.4119 hourly,€7.3632 hourly
+M128bds 3 v3,M128bds3 v3,2794 GiB,128,6000 GiB,€51.2007 hourly,€34.8165 hourly,€30.2105 hourly,€9.5387 hourly,€56.2488 hourly,€39.8628 hourly,€35.2569 hourly,€10.4791 hourly
+M128bds v3,M128bds v3,1024 GiB,128,400 GiB,€13.053 hourly,€8.876 hourly,€7.7009 hourly,€2.4318 hourly,€18.1011 hourly,€13.9224 hourly,€12.7473 hourly,€3.3722 hourly
+M128bs v3,M128bs v3,1024 GiB,128,0 GiB,€12.4274 hourly,€8.4506 hourly,€7.3342 hourly,€2.2966 hourly,unavailable,unavailable,unavailable,€2.9412 hourly
+M128dms v2,M128dms v2,3892 GiB,128,4096 GiB,€32.0249 hourly,€22.0939 hourly,€18.6257 hourly,€5.9182 hourly,€37.0712 hourly,€27.1403 hourly,€23.672 hourly,€6.8508 hourly
+M128ds v2,M128ds v2,2048 GiB,128,4096 GiB,€16.0064 hourly,€11.0428 hourly,€9.3094 hourly,€2.958 hourly,€21.0528 hourly,€16.0892 hourly,€14.3557 hourly,€3.8906 hourly
+M128m,M128m,3892 GiB,128,14336 GiB,€32.0225 hourly,€22.0923 hourly,€18.3655 hourly,€5.9177 hourly,€39.844 hourly,€27.1387 hourly,€23.4119 hourly,€7.3632 hourly
+M128ms,M128ms,3892 GiB,128,4096 GiB,€32.0225 hourly,€22.0923 hourly,€18.3655 hourly,€5.9177 hourly,€39.844 hourly,€27.1387 hourly,€23.4119 hourly,€7.3632 hourly
+M128ms v2,M128ms v2,3892 GiB,128,0 GiB,€31.52 hourly,€21.7457 hourly,€18.332 hourly,€5.8249 hourly,€36.5664 hourly,€26.792 hourly,€23.3783 hourly,€6.7575 hourly
+M128s,M128s,2048 GiB,128,4096 GiB,€16.0039 hourly,€11.0411 hourly,€9.179 hourly,€2.9575 hourly,€21.0511 hourly,€16.0874 hourly,€14.2254 hourly,€3.8902 hourly
+M128s v2,M128s v2,2048 GiB,128,0 GiB,€15.5016 hourly,€10.6946 hourly,€9.0157 hourly,€2.8647 hourly,€20.548 hourly,€15.7409 hourly,€14.062 hourly,€3.7973 hourly
+M12ds v3,M12ds v3,240 GiB,12,400 GiB,€1.9541 hourly,€1.3481 hourly,€1.1365 hourly,€0.364 hourly,€2.434 hourly,€1.8212 hourly,€1.6096 hourly,€0.4535 hourly
+M12s v3,M12s v3,240 GiB,12,0 GiB,€1.8427 hourly,€1.2713 hourly,€1.0717 hourly,€0.3405 hourly,€2.3141 hourly,€1.7444 hourly,€1.5448 hourly,€0.4276 hourly
+M16-8ms,M16-8ms,437.5 GiB,16,256 GiB,€3.6872 hourly,€2.5438 hourly,€2.1204 hourly,€0.6814 hourly,€4.665 hourly,€3.1746 hourly,€2.7512 hourly,€0.8621 hourly
+M16bds v3,M16bds v3,128 GiB,16,400 GiB,€1.6284 hourly,€1.1073 hourly,€0.9629 hourly,€0.3034 hourly,€2.2626 hourly,€1.7381 hourly,€1.5937 hourly,€0.4215 hourly
+M16bs v3,M16bs v3,128 GiB,16,0 GiB,€1.5513 hourly,€1.0549 hourly,€0.917 hourly,€0.2867 hourly,€2.1855 hourly,€1.6857 hourly,€1.5478 hourly,€0.4039 hourly
+M16ms,M16ms,437.5 GiB,16,512 GiB,€3.6872 hourly,€2.5438 hourly,€2.1204 hourly,€0.6814 hourly,€4.665 hourly,€3.1746 hourly,€2.7512 hourly,€0.8621 hourly
+M176-88bds v3,M176-88bds v3,1536 GiB,176,400 GiB,€17.9468 hourly,€12.2038 hourly,€10.5889 hourly,€3.3435 hourly,unavailable,unavailable,unavailable,unavailable
+M176bds 4 v3,M176bds4 v3,3892 GiB,176,8000 GiB,€70.0046 hourly,€47.6031 hourly,€41.3035 hourly,€13.0418 hourly,€76.9467 hourly,€54.5418 hourly,€48.2422 hourly,€14.3352 hourly
+M176bds v3,M176bds v3,1536 GiB,176,400 GiB,€17.9468 hourly,€12.2038 hourly,€10.5889 hourly,€3.3435 hourly,€24.889 hourly,€19.1426 hourly,€17.5276 hourly,€4.6368 hourly
+M176bs v3,M176bs v3,1536 GiB,176,0 GiB,€17.0897 hourly,€11.621 hourly,€10.0846 hourly,€3.1582 hourly,unavailable,unavailable,unavailable,€4.0436 hourly
+M176ds 3 v3,M176ds3 v3,2794 GiB,176,400 GiB,€22.7978 hourly,€15.7282 hourly,€13.2592 hourly,€4.2472 hourly,€29.7314 hourly,€22.6669 hourly,€20.1979 hourly,€5.539 hourly
+M176ds 4 v3,M176ds4 v3,3892 GiB,176,400 GiB,€31.754 hourly,€21.9071 hourly,€18.4681 hourly,€5.9158 hourly,€41.4731 hourly,€28.8459 hourly,€25.4069 hourly,€7.7264 hourly
+M176s 3 v3,M176s3 v3,2794 GiB,176,0 GiB,€21.4522 hourly,€14.7999 hourly,€12.4766 hourly,€3.9644 hourly,€28.3944 hourly,€21.7386 hourly,€19.4153 hourly,€5.2473 hourly
+M176s 4 v3,M176s4 v3,3892 GiB,176,0 GiB,€29.8856 hourly,€20.6181 hourly,€17.3815 hourly,€5.5229 hourly,€39.6047 hourly,€27.5568 hourly,€24.3202 hourly,€7.3189 hourly
+M192idms v2,M192idms v2,4096 GiB,192,4096 GiB,€38.4725 hourly,€26.5422 hourly,€22.3758 hourly,€7.1097 hourly,€46.042 hourly,€34.1117 hourly,€29.9453 hourly,€8.5086 hourly
+M192ids v2,M192ids v2,2048 GiB,192,4096 GiB,€19.2367 hourly,€13.2714 hourly,€11.1878 hourly,€3.5549 hourly,€26.8054 hourly,€20.8409 hourly,€18.7574 hourly,€4.9536 hourly
+M192ims v2,M192ims v2,4096 GiB,192,0 GiB,€37.9677 hourly,€26.1939 hourly,€22.0821 hourly,€7.0164 hourly,€45.5372 hourly,€33.7635 hourly,€29.6516 hourly,€8.4153 hourly
+M192is v2,M192is v2,2048 GiB,192,0 GiB,€18.7319 hourly,€12.9231 hourly,€10.8942 hourly,€3.4617 hourly,€26.3014 hourly,€20.4927 hourly,€18.4638 hourly,€4.8605 hourly
+M208ms v2,M208ms v2,5700 GiB,208,4096 GiB,€45.8903 hourly,€31.6598 hourly,€26.6894 hourly,€8.4805 hourly,€54.0907 hourly,€39.8601 hourly,€34.8897 hourly,€9.996 hourly
+M208s v2,M208s v2,2850 GiB,208,4096 GiB,€22.9452 hourly,€15.8299 hourly,€13.3447 hourly,€4.2403 hourly,€31.1455 hourly,€24.0302 hourly,€21.545 hourly,€5.7557 hourly
+M24ds v3,M24ds v3,480 GiB,24,400 GiB,€3.9168 hourly,€2.7022 hourly,€2.278 hourly,€0.7297 hourly,€4.8595 hourly,€3.6484 hourly,€3.2241 hourly,€0.9053 hourly
+M24s v3,M24s v3,480 GiB,24,0 GiB,€3.6854 hourly,€2.5425 hourly,€2.1434 hourly,€0.6811 hourly,€4.6281 hourly,€3.4887 hourly,€3.0896 hourly,€0.8553 hourly
+M32-8ms,M32-8ms,875 GiB,32,1024 GiB,€7.3745 hourly,€5.0877 hourly,€4.2409 hourly,€1.3628 hourly,€9.3299 hourly,€6.3492 hourly,€5.5025 hourly,€1.7242 hourly
+M32bds v3,M32bds v3,256 GiB,32,400 GiB,€3.2654 hourly,€2.2205 hourly,€1.9251 hourly,€0.6083 hourly,€4.5253 hourly,€3.4821 hourly,€3.1866 hourly,€0.8431 hourly
+M32bs v3,M32bs v3,256 GiB,32,0 GiB,€3.1111 hourly,€2.1156 hourly,€1.8334 hourly,€0.5749 hourly,€4.371 hourly,€3.3772 hourly,€3.095 hourly,€0.8078 hourly
+M32dms v2,M32dms v2,875 GiB,32,1024 GiB,€7.3741 hourly,€5.0874 hourly,€4.289 hourly,€1.3627 hourly,€8.6357 hourly,€6.349 hourly,€5.5506 hourly,€1.5959 hourly
+M32ls,M32ls,256 GiB,32,1024 GiB,€2.9548 hourly,€2.0385 hourly,€1.6992 hourly,€0.546 hourly,€4.2073 hourly,€3.3001 hourly,€2.9608 hourly,€0.7775 hourly
+M32ms,M32ms,875 GiB,32,1024 GiB,€7.3745 hourly,€5.0877 hourly,€4.2409 hourly,€1.3628 hourly,€9.3299 hourly,€6.3492 hourly,€5.5025 hourly,€1.7242 hourly
+M32ms v2,M32ms v2,875 GiB,32,0 GiB,€7.2481 hourly,€5.0005 hourly,€4.2155 hourly,€1.3395 hourly,€8.5097 hourly,€6.2621 hourly,€5.4771 hourly,€1.5726 hourly
+M32ts,M32ts,192 GiB,32,1024 GiB,€2.7837 hourly,€1.9205 hourly,€1.6011 hourly,€0.5144 hourly,€4.0453 hourly,€3.1821 hourly,€2.8627 hourly,€0.7476 hourly
+M416ds 6 v3,M416ds6 v3,5700 GiB,416,400 GiB,€66.3552 hourly,€45.7784 hourly,€38.5922 hourly,€12.2624 hourly,€82.7558 hourly,€62.1791 hourly,€54.9929 hourly,€15.2933 hourly
+M416ds 8 v3,M416ds8 v3,7600 GiB,416,400 GiB,€88.4735 hourly,€61.0379 hourly,€51.4562 hourly,€16.3499 hourly,€104.8742 hourly,€77.4386 hourly,€67.8569 hourly,€19.3808 hourly
+M416ms v2,M416ms v2,11400 GiB,416,8192 GiB,€101.9728 hourly,€70.3511 hourly,€59.3063 hourly,€18.8446 hourly,€118.3684 hourly,€86.7517 hourly,€75.707 hourly,€21.8745 hourly
+M416s 6 v3,M416s6 v3,5700 GiB,416,0 GiB,€63.1954 hourly,€43.5985 hourly,€36.7544 hourly,€11.7733 hourly,€79.5961 hourly,€59.9992 hourly,€53.1551 hourly,€14.8287 hourly
+M416s 8 v2,M416s_8_v2,7600 GiB,416,4096 GiB,€68.3504 hourly,€47.155 hourly,€39.7504 hourly,€12.6312 hourly,€84.7545 hourly,€63.5556 hourly,€56.1511 hourly,€15.6626 hourly
+M416s 8 v3,M416s8 v3,7600 GiB,416,0 GiB,€84.2605 hourly,€58.1313 hourly,€49.0059 hourly,€15.6977 hourly,€100.6612 hourly,€74.532 hourly,€65.4066 hourly,€18.7532 hourly
+M416s v2,M416s v2,5700 GiB,416,8192 GiB,€50.9916 hourly,€35.1791 hourly,€29.6561 hourly,€9.4232 hourly,€67.3922 hourly,€51.5798 hourly,€46.0568 hourly,€12.4541 hourly
+M48bds v3,M48bds v3,384 GiB,48,400 GiB,€4.8938 hourly,€3.3278 hourly,€2.888 hourly,€0.9117 hourly,€6.7879 hourly,€5.2202 hourly,€4.7804 hourly,€1.2646 hourly
+M48bs v3,M48bs v3,384 GiB,48,0 GiB,€4.6624 hourly,€3.1704 hourly,€2.7504 hourly,€0.8616 hourly,€6.5565 hourly,€5.0628 hourly,€4.6428 hourly,€1.2116 hourly
+M48ds 1 v3,M48ds1 v3,974 GiB,48,400 GiB,€7.9449 hourly,€5.4812 hourly,€4.6208 hourly,€1.4801 hourly,€9.839 hourly,€7.3736 hourly,€6.5132 hourly,€1.833 hourly
+M48s 1 v3,M48s1 v3,974 GiB,48,0 GiB,€7.4821 hourly,€5.1619 hourly,€4.3516 hourly,€1.3827 hourly,€9.3762 hourly,€7.0543 hourly,€6.244 hourly,€1.7327 hourly
+M624ds 12 v3,M624ds12 v3,11400 GiB,624,400 GiB,€132.7103 hourly,€91.5568 hourly,€77.1843 hourly,€24.5249 hourly,unavailable,€91.5568 hourly,€77.1843 hourly,unavailable
+M624s 12 v3,M624s12 v3,11400 GiB,624,0 GiB,€126.3908 hourly,€87.197 hourly,€73.5089 hourly,€23.5466 hourly,unavailable,€87.197 hourly,€73.5089 hourly,unavailable
+M64,M64,1024 GiB,64,7168 GiB,€8.0024 hourly,€5.5208 hourly,€4.5895 hourly,€1.4788 hourly,€16.315 hourly,€11.0803 hourly,€9.6368 hourly,€3.015 hourly
+M64-32bds1 v3,M64-32bds1 v3,1397 GiB,64,3000 GiB,€25.6003 hourly,€17.4082 hourly,€15.1053 hourly,€4.7693 hourly,€28.1287 hourly,€19.9314 hourly,€17.6284 hourly,€5.2404 hourly
+M64bds 1 v3,M64bds1 v3,1397 GiB,64,3000 GiB,€25.6003 hourly,€17.4082 hourly,€15.1053 hourly,€4.7693 hourly,unavailable,unavailable,unavailable,€5.2404 hourly
+M64bds v3,M64bds v3,512 GiB,64,400 GiB,€6.5308 hourly,€4.4409 hourly,€3.8508 hourly,€1.2167 hourly,€9.0505 hourly,€6.9641 hourly,€6.374 hourly,€1.6861 hourly
+M64bs v3,M64bs v3,512 GiB,64,0 GiB,€6.2137 hourly,€4.2253 hourly,€3.6674 hourly,€1.1483 hourly,unavailable,unavailable,unavailable,€1.6155 hourly
+M64dms v2,M64dms v2,1792 GiB,64,2048 GiB,€12.4068 hourly,€8.5594 hourly,€7.2158 hourly,€2.2928 hourly,€14.93 hourly,€11.0826 hourly,€9.739 hourly,€2.7591 hourly
+M64ds v2,M64ds v2,1024 GiB,64,2048 GiB,€8.0024 hourly,€5.5208 hourly,€4.6539 hourly,€1.4788 hourly,€10.5255 hourly,€8.044 hourly,€7.1771 hourly,€1.9451 hourly
+M64ls,M64ls,512 GiB,64,2048 GiB,€5.5692 hourly,€3.8422 hourly,€3.2027 hourly,€1.0292 hourly,€8.0923 hourly,€6.3653 hourly,€5.7259 hourly,€1.4955 hourly
+M64m,M64m,1792 GiB,64,7168 GiB,€12.4034 hourly,€8.5571 hourly,€7.1136 hourly,€2.2921 hourly,€16.315 hourly,€11.0803 hourly,€9.6368 hourly,€3.015 hourly
+M64ms,M64ms,1792 GiB,64,2048 GiB,€12.4034 hourly,€8.5571 hourly,€7.1136 hourly,€2.2921 hourly,€16.315 hourly,€11.0803 hourly,€9.6368 hourly,€3.015 hourly
+M64ms v2,M64ms v2,1792 GiB,64,0 GiB,€12.1539 hourly,€8.385 hourly,€7.069 hourly,€2.246 hourly,€14.6771 hourly,€10.9082 hourly,€9.5922 hourly,€2.7123 hourly
+M64s,M64s,1024 GiB,64,2048 GiB,€8.0024 hourly,€5.5208 hourly,€4.5895 hourly,€1.4788 hourly,€10.5255 hourly,€8.044 hourly,€7.1127 hourly,€1.9451 hourly
+M64s v2,M64s v2,1024 GiB,64,0 GiB,€7.7495 hourly,€5.3464 hourly,€4.5071 hourly,€1.4321 hourly,€10.2727 hourly,€7.8696 hourly,€7.0303 hourly,€1.8984 hourly
+M8-4ms,M8-4ms,218.75 GiB,8,256 GiB,€1.8436 hourly,€1.2719 hourly,€1.0602 hourly,€0.3407 hourly,€2.3321 hourly,€1.5873 hourly,€1.3756 hourly,€0.431 hourly
+M832ds 12 v3,M832ds12 v3,11400 GiB,832,400 GiB,€145.9813 hourly,€100.7125 hourly,€84.9027 hourly,€26.9774 hourly,unavailable,€100.7125 hourly,€84.9027 hourly,unavailable
+M832ids 16 v3,M832ids16 v3,15200 GiB,832,400 GiB,€176.9471 hourly,€122.0758 hourly,€102.9124 hourly,€32.6998 hourly,unavailable,€122.0758 hourly,€102.9124 hourly,unavailable
+M832is 16 v3,M832is16 v3,15200 GiB,832,0 GiB,€168.521 hourly,€116.2627 hourly,€98.0118 hourly,€31.3955 hourly,unavailable,€116.2627 hourly,€98.0118 hourly,unavailable
+M832s 12 v3,M832s12 v3,11400 GiB,832,0 GiB,€139.0298 hourly,€95.9167 hourly,€80.8598 hourly,€25.9013 hourly,unavailable,€95.9167 hourly,€80.8598 hourly,unavailable
+M896ixds32 v3,M896ixds32 v3,30400 GiB,896,4096 GiB,€422.0843 hourly,€291.1959 hourly,€245.4842 hourly,€78.0012 hourly,unavailable,€291.1959 hourly,€245.4842 hourly,unavailable
+M8ms,M8ms,218.75 GiB,8,256 GiB,€1.8436 hourly,€1.2719 hourly,€1.0602 hourly,€0.3407 hourly,€2.3321 hourly,€1.5873 hourly,€1.3756 hourly,€0.431 hourly
+M96-48bds2 v3,M96-48bds2 v3,1946 GiB,96,4500 GiB,€38.4048 hourly,€26.1153 hourly,€22.658 hourly,€7.1548 hourly,unavailable,unavailable,unavailable,unavailable
+M96bds 2 v3,M96bds2 v3,1946 GiB,96,4500 GiB,€38.4048 hourly,€26.1153 hourly,€22.658 hourly,€7.1548 hourly,€42.1844 hourly,€29.90 hourly,€26.4427 hourly,€7.859 hourly
+M96bds v3,M96bds v3,768 GiB,96,400 GiB,€9.7876 hourly,€6.6556 hourly,€5.7759 hourly,€1.8234 hourly,unavailable,unavailable,unavailable,€2.5292 hourly
+M96bs v3,M96bs v3,768 GiB,96,0 GiB,€9.3248 hourly,€6.3409 hourly,€5.5008 hourly,€1.7232 hourly,unavailable,unavailable,unavailable,€2.4217 hourly
+M96ds 1 v3,M96ds1 v3,974 GiB,96,400 GiB,€11.9131 hourly,€8.2189 hourly,€6.9287 hourly,€2.2194 hourly,€15.7013 hourly,€12.0036 hourly,€10.7134 hourly,€2.9252 hourly
+M96ds 2 v3,M96ds2 v3,1946 GiB,96,400 GiB,€15.8813 hourly,€10.9565 hourly,€9.2366 hourly,€2.9587 hourly,€19.6609 hourly,€14.7413 hourly,€13.0213 hourly,€3.6628 hourly
+M96s 1 v3,M96s1 v3,974 GiB,96,0 GiB,€11.2103 hourly,€7.734 hourly,€6.5199 hourly,€2.0717 hourly,€14.9985 hourly,€11.5188 hourly,€10.3047 hourly,€2.7717 hourly
+M96s 2 v3,M96s2 v3,1946 GiB,96,0 GiB,€14.9471 hourly,€10.312 hourly,€8.6933 hourly,€2.7622 hourly,€18.7267 hourly,€14.0968 hourly,€12.478 hourly,€3.4607 hourly
+NC12,NC12,112 GiB,12,680 GiB,€1.9995 hourly,€1.4127 hourly,unavailable,€0.3695 hourly,unavailable,unavailable,unavailable,unavailable
+NC12s v2,NC12s v2,224 GiB,12,672 GiB,€4.5973 hourly,€3.8268 hourly,unavailable,€0.8496 hourly,unavailable,unavailable,unavailable,unavailable
+NC12s v3,NC12s v3,224 GiB,12,672 GiB,€6.5531 hourly,€4.8034 hourly,unavailable,€1.211 hourly,€7.0262 hourly,€5.2765 hourly,unavailable,€1.2984 hourly
+NC16ads A10 v4,NC16ads A10 v4,220 GiB,16,1460 GiB,€2.4512 hourly,€2.0404 hourly,€1.5197 hourly,€0.453 hourly,€3.082 hourly,€2.6712 hourly,€2.1505 hourly,€0.5696 hourly
+NC16as T4 v3,NC16as T4 v3,110 GiB,16,360 GiB,€1.2899 hourly,€0.9447 hourly,€0.8256 hourly,€0.5227 hourly,€1.9207 hourly,€1.5755 hourly,€1.4564 hourly,€0.7846 hourly
+NC24,NC24,224 GiB,24,1440 GiB,€3.999 hourly,€2.8253 hourly,unavailable,€0.739 hourly,€4.7558 hourly,€3.7715 hourly,unavailable,€0.8789 hourly
+NC24ads A100 v4,NC24ads A100 v4,220 GiB,24,958 GiB,€4.0925 hourly,€3.4066 hourly,€2.6752 hourly,€1.558 hourly,€5.0386 hourly,€4.3528 hourly,€3.6214 hourly,€2.1706 hourly
+NC24r,NC24r,224 GiB,24,1440 GiB,€4.3984 hourly,€3.1075 hourly,unavailable,€0.8128 hourly,unavailable,unavailable,unavailable,unavailable
+NC24rs v2,NC24rs v2,448 GiB,24,1344 GiB,€10.1167 hourly,€8.4212 hourly,unavailable,€1.8696 hourly,unavailable,unavailable,unavailable,unavailable
+NC24rs v3,NC24rs v3,448 GiB,24,1344 GiB,€14.4166 hourly,€10.5674 hourly,unavailable,€2.6642 hourly,€15.4579 hourly,€11.5135 hourly,unavailable,€2.8566 hourly
+NC24s v2,NC24s v2,448 GiB,24,1344 GiB,€9.1945 hourly,€7.6535 hourly,unavailable,€1.6991 hourly,unavailable,unavailable,unavailable,unavailable
+NC24s v3,NC24s v3,448 GiB,24,1344 GiB,€13.1061 hourly,€9.6068 hourly,unavailable,€2.422 hourly,€14.0523 hourly,€10.553 hourly,unavailable,€2.5969 hourly
+NC32ads A10 v4,NC32ads A10 v4,440 GiB,32,2920 GiB,€4.9024 hourly,€4.0807 hourly,€3.0394 hourly,€0.906 hourly,€6.164 hourly,€5.3423 hourly,€4.301 hourly,€1.1391 hourly
+NC40ads H100 v5,NC40ads H100 v5,320 GiB,40,3576 GiB,€7.7821 hourly,€6.4739 hourly,€5.8366 hourly,€7.0039 hourly,€9.3591 hourly,€8.0509 hourly,€7.4136 hourly,€8.4232 hourly
+NC48ads A100 v4,NC48ads A100 v4,440 GiB,48,1916 GiB,€8.1849 hourly,€6.8131 hourly,€5.3504 hourly,€3.116 hourly,€10.0773 hourly,€8.7055 hourly,€7.2427 hourly,€4.3413 hourly
+NC4as T4 v3,NC4as T4 v3,28 GiB,4,180 GiB,€0.5639 hourly,€0.413 hourly,€0.3606 hourly,€0.2285 hourly,€0.7216 hourly,€0.5707 hourly,€0.5183 hourly,€0.2948 hourly
+NC6,NC6,56 GiB,6,340 GiB,€0.9993 hourly,€0.706 hourly,unavailable,€0.1847 hourly,unavailable,unavailable,unavailable,unavailable
+NC64as T4 v3,NC64as T4 v3,440 GiB,64,2880 GiB,€4.6624 hourly,€3.4147 hourly,€2.984 hourly,€1.8892 hourly,€7.1856 hourly,€5.9379 hourly,€5.5071 hourly,€2.9353 hourly
+NC6s v2,NC6s v2,112 GiB,6,336 GiB,€2.2986 hourly,€1.9134 hourly,unavailable,€0.4248 hourly,unavailable,unavailable,unavailable,unavailable
+NC6s v3,NC6s v3,112 GiB,6,336 GiB,€3.2765 hourly,€2.4017 hourly,unavailable,€0.6055 hourly,€3.5131 hourly,€2.6382 hourly,unavailable,€0.6492 hourly
+NC80adis H100 v5,NC80adis H100 v5,640 GiB,80,7152 GiB,€15.5642 hourly,€12.9478 hourly,€11.6731 hourly,€14.0078 hourly,€18.7182 hourly,€16.1018 hourly,€14.8271 hourly,€16.8463 hourly
+NC8ads A10 v4,NC8ads A10 v4,110 GiB,8,730 GiB,€1.2256 hourly,€1.0202 hourly,€0.7599 hourly,€0.2265 hourly,€1.541 hourly,€1.3356 hourly,€1.0753 hourly,€0.2848 hourly
+NC8as T4 v3,NC8as T4 v3,56 GiB,8,360 GiB,€0.8056 hourly,€0.5901 hourly,€0.5156 hourly,€0.3264 hourly,€1.121 hourly,€0.9054 hourly,€0.831 hourly,€0.4579 hourly
+NC96ads A100 v4,NC96ads A100 v4,880 GiB,96,3832 GiB,€16.3698 hourly,€13.6262 hourly,€10.7007 hourly,€6.232 hourly,€20.1546 hourly,€17.411 hourly,€14.4855 hourly,€8.6826 hourly
+NCC40ads H100 v5,NCC40ads H100 v5,320 GiB,40,3576 GiB,€7.6278 hourly,€6.3456 hourly,€5.7209 hourly,€2.00 hourly,€9.2048 hourly,€7.9226 hourly,€7.2979 hourly,€2.4135 hourly
+ND12s,ND12s,224 GiB,12,672 GiB,€4.5964 hourly,€3.826 hourly,unavailable,€0.8494 hourly,unavailable,unavailable,unavailable,unavailable
+ND24rs,ND24rs,448 GiB,24,1344 GiB,€10.1167 hourly,€8.4212 hourly,unavailable,€1.8696 hourly,unavailable,unavailable,unavailable,unavailable
+ND24s,ND24s,448 GiB,24,1344 GiB,€9.1937 hourly,€7.6528 hourly,unavailable,€1.699 hourly,unavailable,unavailable,unavailable,unavailable
+ND40rs v2,ND40rs v2,672 GiB,40,2900 GiB,€23.5914 hourly,€19.6375 hourly,€11.5597 hourly,€4.3597 hourly,€25.1684 hourly,€21.2145 hourly,€13.1367 hourly,€4.6511 hourly
+ND6s,ND6s,112 GiB,6,336 GiB,€2.2986 hourly,€1.9134 hourly,unavailable,€0.4248 hourly,unavailable,unavailable,unavailable,unavailable
+ND96amsr A100 v4,ND96amsr A100 v4,1900 GiB,96,6400 GiB,€35.1068 hourly,€30.2586 hourly,€22.4686 hourly,€9.1278 hourly,€38.8916 hourly,€34.0434 hourly,€26.2534 hourly,€10.1118 hourly
+ND96asr A100 v4,ND96asr A100 v4,900 GiB,96,6500 GiB,€30.303 hourly,€25.203 hourly,€20.9787 hourly,€6.6667 hourly,€34.0878 hourly,€28.9878 hourly,€24.7634 hourly,€7.4993 hourly
+ND96isr H100 v5,ND96isr H100 v5,1900 GiB,96,28000 GiB,€109.5458 hourly,unavailable,€70.1094 hourly,€23.2566 hourly,€113.3306 hourly,unavailable,€73.8941 hourly,€24.0601 hourly
+ND96isr H200 v5,ND96isr H200 v5,1900 GiB,96,28000 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+NG16ads V620 v1,NG16ads V620 v1,32 GiB,16,512 GiB,€1.415 hourly,€1.0754 hourly,€0.9905 hourly,€0.2769 hourly,€2.0458 hourly,€1.7062 hourly,€1.6213 hourly,€0.4012 hourly
+NG32adms V620 v1,NG32adms V620 v1,176 GiB,32,1024 GiB,€3.6794 hourly,€2.7963 hourly,€2.5753 hourly,€0.72 hourly,€4.9409 hourly,€4.0579 hourly,€3.8369 hourly,€0.9689 hourly
+NG32ads V620 v1,NG32ads V620 v1,64 GiB,32,1024 GiB,€2.83 hourly,€2.1508 hourly,€1.981 hourly,€0.5538 hourly,€4.0916 hourly,€3.4124 hourly,€3.2426 hourly,€0.8024 hourly
+NG8ads V620 v1,NG8ads V620 v1,16 GiB,8,256 GiB,€0.7079 hourly,€0.538 hourly,€0.4953 hourly,€0.1385 hourly,€1.0233 hourly,€0.8534 hourly,€0.8107 hourly,€0.2007 hourly
+NM16ads MA35D,NM16ads MA35D,30 GiB,16,71 GiB,€2.1726 hourly,unavailable,€1.3905 hourly,€0.4015 hourly,€2.8034 hourly,unavailable,€2.0213 hourly,€0.5181 hourly
+Standard NP10s,NP10s,168 GiB,10,700 GiB,€1.8384 hourly,€1.326 hourly,€1.1601 hourly,€0.3397 hourly,unavailable,unavailable,unavailable,unavailable
+Standard NP20s,NP20s,336 GiB,20,1400 GiB,€3.6768 hourly,€2.6521 hourly,€2.32 hourly,€0.6795 hourly,unavailable,unavailable,unavailable,unavailable
+Standard NP40s,NP40s,672 GiB,40,2800 GiB,€7.3536 hourly,€5.3041 hourly,€4.6401 hourly,€1.3589 hourly,unavailable,unavailable,unavailable,unavailable
+NV12,NV12,112 GiB,12,680 GiB,€2.3398 hourly,€1.9476 hourly,unavailable,€0.4324 hourly,unavailable,unavailable,unavailable,unavailable
+NV12ads A10 v5,NV12ads A10 v5,110 GiB,12,320 GiB,€1.0113 hourly,€0.8418 hourly,€0.6475 hourly,€0.2266 hourly,€1.4844 hourly,€1.3149 hourly,€1.1206 hourly,€0.3327 hourly
+NV12ads V710 v5,NV12ads v710 v5,64 GiB,12,768 GiB,€1.1142 hourly,€0.9136 hourly,€0.8635 hourly,€0.2059 hourly,€1.5873 hourly,€1.3867 hourly,€1.3366 hourly,€0.2933 hourly
+NV12s v3,NV12s v3,112 GiB,12,736 GiB,€1.2222 hourly,€0.955 hourly,unavailable,€0.2259 hourly,€1.6953 hourly,€1.4281 hourly,unavailable,€0.3133 hourly
+Standard NV16as v4,NV16as v4,56 GiB,16,352 GiB,unavailable,unavailable,unavailable,unavailable,€1.6293 hourly,€1.4619 hourly,unavailable,€0.3011 hourly
+NV18ads A10 v5,NV18ads A10 v5,220 GiB,18,720 GiB,€1.7827 hourly,€1.4839 hourly,€1.1409 hourly,€0.3995 hourly,€2.4923 hourly,€2.1935 hourly,€1.8505 hourly,€0.5585 hourly
+NV24,NV24,224 GiB,24,1440 GiB,€4.6795 hourly,€3.8952 hourly,unavailable,€0.8648 hourly,unavailable,unavailable,unavailable,unavailable
+NV24ads V710 v5,NV24ads V710 v5,128 GiB,24,1536 GiB,€2.2284 hourly,€1.8272 hourly,€1.7269 hourly,€0.4118 hourly,€3.1745 hourly,€2.7734 hourly,€2.6731 hourly,€0.5867 hourly
+NV24s v3,NV24s v3,224 GiB,24,1474 GiB,€2.4426 hourly,€1.9087 hourly,unavailable,€0.4514 hourly,€3.3888 hourly,€2.8549 hourly,unavailable,€0.6263 hourly
+NV28ads v710 v5,NV28ads v710 v5,160 GiB,28,1536 GiB,€2.674 hourly,€2.1927 hourly,€2.0724 hourly,€0.4942 hourly,unavailable,€2.1927 hourly,€2.0724 hourly,unavailable
+Standard NV32as v4,NV32as v4,112 GiB,32,700 GiB,unavailable,unavailable,unavailable,unavailable,€3.2585 hourly,€2.9238 hourly,unavailable,€0.6022 hourly
+NV36adms A10 v5,NV36adms A10 v5,880 GiB,36,720 GiB,€5.0361 hourly,€4.192 hourly,€3.2231 hourly,€1.1286 hourly,€6.4554 hourly,€5.6113 hourly,€4.6424 hourly,€1.4466 hourly
+NV36ads A10 v5,NV36ads A10 v5,440 GiB,36,720 GiB,€3.5654 hourly,€2.9678 hourly,€2.2819 hourly,€0.799 hourly,€4.9847 hourly,€4.3871 hourly,€3.7012 hourly,€1.1171 hourly
+NV48s v3,NV48s v3,448 GiB,48,2948 GiB,€4.8852 hourly,€3.8173 hourly,unavailable,€0.9028 hourly,€6.7776 hourly,€5.7097 hourly,unavailable,€1.2525 hourly
+NV4ads V710 v5,NV4ads V710 v5,16 GiB,4,256 GiB,€0.3711 hourly,€0.3043 hourly,€0.2878 hourly,€0.0686 hourly,€0.5288 hourly,€0.462 hourly,€0.4455 hourly,€0.0977 hourly
+Standard NV4as v4,NV4as v4,14 GiB,4,88 GiB,unavailable,unavailable,unavailable,unavailable,€0.4071 hourly,€0.3653 hourly,unavailable,€0.0752 hourly
+NV6,NV6,56 GiB,6,340 GiB,€1.1699 hourly,€0.9738 hourly,unavailable,€0.2162 hourly,unavailable,unavailable,unavailable,unavailable
+NV6adsv5,NV6adsv5,55 GiB,6,180 GiB,€0.5057 hourly,€0.4209 hourly,€0.3237 hourly,€0.1133 hourly,€0.7422 hourly,€0.6575 hourly,€0.5603 hourly,€0.1663 hourly
+NV72ads A10 v5,NV72ads A10 v5,880 GiB,72,1400 GiB,€7.2644 hourly,€6.0469 hourly,€4.6492 hourly,€1.628 hourly,€10.103 hourly,€8.8855 hourly,€7.4878 hourly,€2.2641 hourly
+NV8ads V710 v5,NV8ads v710 v5,32 GiB,8,512 GiB,€0.7431 hourly,€0.6093 hourly,€0.5757 hourly,€0.1373 hourly,€1.0585 hourly,€0.9247 hourly,€0.8911 hourly,€0.1956 hourly
+Standard NV8as v4,NV8as v4,28 GiB,8,176 GiB,unavailable,unavailable,unavailable,unavailable,€0.8142 hourly,€0.7306 hourly,unavailable,€0.1505 hourly
+S192,S192,2048 GiB,192,8192 GiB,unavailable,unavailable,€10.9286 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S192m,S192m,4096 GiB,192,16384 GiB,unavailable,unavailable,€21.1569 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S192xm,S192xm,6144 GiB,192,16384 GiB,unavailable,unavailable,€31.736 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S224,S224,3072 GiB,224,6125 GiB,unavailable,unavailable,€27.5802 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S224m,S224m,6144 GiB,224,10250 GiB,unavailable,unavailable,€40.8595 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S224om,S224om,3072 GiB,224,10250 GiB,unavailable,unavailable,€31.2575 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S224oo,S224oo,1536 GiB,224,8187 GiB,unavailable,unavailable,€28.1318 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S224oom,S224oom,3072 GiB,224,14375 GiB,unavailable,unavailable,€42.8266 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S224ooo,S224ooo,1536 GiB,224,12312 GiB,unavailable,unavailable,€35.6889 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S32m,S32m,1536 GiB,32,0 GiB,unavailable,unavailable,€12.1853 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S384,S384,4096 GiB,384,16384 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+S384m,S384m,6144 GiB,384,18432 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+S384xm,S384xm,8192 GiB,384,22528 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+S384xxm,S384xxm,12000 GiB,384,28250 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+S448,S448,6144 GiB,448,10250 GiB,unavailable,unavailable,€55.1603 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S448m,S448m,12288 GiB,448,18500 GiB,unavailable,unavailable,€81.719 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S448om,S448om,6144 GiB,448,18500 GiB,unavailable,unavailable,€62.515 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S448oo,S448oo,3072 GiB,448,14375 GiB,unavailable,unavailable,€56.2635 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S448oom,S448oom,6144 GiB,448,26750 GiB,unavailable,unavailable,€85.6532 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S448ooo,S448ooo,3840 GiB,448,22625 GiB,unavailable,unavailable,€71.3777 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S576m,S576m,12000 GiB,576,28250 GiB,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable,unavailable
+S64m,S64m,3072 GiB,64,0 GiB,unavailable,unavailable,€24.3665 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S672,S672,9216 GiB,672,14375 GiB,unavailable,unavailable,€82.7405 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S672m,S672m,18432 GiB,672,26750 GiB,unavailable,unavailable,€122.5784 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S672om,S672om,9216 GiB,672,26750 GiB,unavailable,unavailable,€93.7725 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S672oo,S672oo,4608 GiB,672,20563 GiB,unavailable,unavailable,€84.3953 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S672oom,S672oom,9216 GiB,672,39125 GiB,unavailable,unavailable,€128.4798 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S672ooo,S672ooo,5760 GiB,672,32938 GiB,unavailable,unavailable,€107.0665 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S896,S896,12288 GiB,896,18500 GiB,unavailable,unavailable,€121.3527 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S896m,S896m,24576 GiB,896,35000 GiB,unavailable,unavailable,€179.7817 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S896om,S896om,12288 GiB,896,35000 GiB,unavailable,unavailable,€137.533 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S896oo,S896oo,6144 GiB,896,26750 GiB,unavailable,unavailable,€123.7797 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S896oom,S896oom,12288 GiB,896,51500 GiB,unavailable,unavailable,€188.4372 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S896ooo,S896ooo,7680 GiB,896,43250 GiB,unavailable,unavailable,€157.0309 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
+S96,S96,768 GiB,96,3072 GiB,unavailable,unavailable,€4.197 hourly,unavailable,unavailable,unavailable,unavailable,unavailable
