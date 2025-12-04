@@ -50,22 +50,31 @@ async def get_costs_on_premise(
 
     elec_costs = compute_electricity_costs(
         server,
-        duration=duration,
+        duration=duration*24,
         location=server.usage.localisation
     )
 
-    avg_energy_cost = elec_costs["avg"]["price"]
+    impact = await get_server_impact_on_premise(
+        server,
+        verbose=False,
+        costs=False,
+        duration=duration
+    )
 
+    pe_mj = impact["impacts"]["pe"]["use"]["value"]
+
+    price_per_MWh = elec_costs["avg"]["price"]
+    energy_costs = compute_energy_cost(pe_mj, price_per_MWh)
     yearly_op_costs = getattr(server.usage, "operatingCosts", 0.0)
-    operating_costs = yearly_op_costs / 8760 * duration
+    operating_costs = yearly_op_costs / 365 * duration
 
-    total_cost = avg_energy_cost + operating_costs
+    total_cost = energy_costs + operating_costs
 
     return {
         "total_cost": total_cost,
         "breakdown": {
             "operating_costs": operating_costs,
-            "energy_costs": avg_energy_cost
+            "energy_costs": energy_costs
         }
     }
 
@@ -99,7 +108,7 @@ async def get_costs_cloud(
     # electricity_price = get_electricity_price(usage["localisation"])
     # energy_costs = mwh * float(electricity_price)
 
-    operating_costs = vantage_cost * duration
+    operating_costs = vantage_cost * duration * 24
 
     return {
         "total_cost": operating_costs,
@@ -137,13 +146,21 @@ async def get_portfolio_costs(
 
             elec_costs = compute_electricity_costs(
                 server,
-                duration=duration,
+                duration=duration*24,
                 location=server.usage.localisation
             )
-            avg_energy_cost = elec_costs["avg"]["price"]
+            impact = await get_server_impact_on_premise(
+                server,
+                verbose=False,
+                costs=False,
+                duration=duration
+            )
+            pe_mj = impact["impacts"]["pe"]["use"]["value"]
+            price_per_mwh = elec_costs["avg"]["price"]
+            avg_energy_costs = compute_energy_cost(pe_mj, price_per_mwh)
             yearly_op_costs = getattr(server.usage, "operatingCosts", 0.0)
-            operating_costs = yearly_op_costs / 8760 * duration
-            config_total = avg_energy_cost + operating_costs
+            operating_costs = yearly_op_costs / 365 * duration
+            config_total = avg_energy_costs + operating_costs
 
         elif server.type == "cloud":
             usage = server.usage
@@ -153,8 +170,8 @@ async def get_portfolio_costs(
                 instancePricingType=usage.instancePricingType,
                 region=usage.localisation
             )
-            operating_costs = vantage_cost * duration
-            avg_energy_cost = 0.0  # Look into in the future.
+            operating_costs = vantage_cost * duration * 24
+            avg_energy_costs = 0.0  # Look into in the future.
             config_total = operating_costs
 
         else:
@@ -162,7 +179,7 @@ async def get_portfolio_costs(
 
         total_cost += config_total
         total_breakdown["operating_costs"] += operating_costs
-        total_breakdown["energy_costs"] += avg_energy_cost
+        total_breakdown["energy_costs"] += avg_energy_costs
 
         detailed_costs.append({
             "id": config_id,
@@ -170,7 +187,7 @@ async def get_portfolio_costs(
             "total_cost": config_total,
             "breakdown": {
                 "operating_costs": operating_costs,
-                "energy_costs": avg_energy_cost
+                "energy_costs": avg_energy_costs
             }
         })
 
