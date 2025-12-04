@@ -78,7 +78,6 @@ class GenericPydanticCRUDService(Generic[TModel]):
         """
         cursor = self.mongo_collection.find(self._scope({}))
         items = [self.adapter.validate_python(item) for item in await cursor.to_list(max_count)]
-        items = [self.adapter.dump_python(item, exclude_none=True, mode='json') for item in items]
         return self.collection_class(items=items)
 
     async def get_by_id(self, id: str) -> TModel:
