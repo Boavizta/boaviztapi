@@ -17,13 +17,23 @@ def compute_electricity_costs(model: Union[Component, Device], duration=config["
         location = model.usage.usage_location.value
     if not is_valid_zone_code(location):
         return {"error": f"Invalid zone code '{location}'!"}
-    if not model.usage.avg_power.is_set():
-        return {"error": "Avg power is not set!"}
+
+    power_attr = None
+    if hasattr(model.usage, "avg_power") and model.usage.avg_power is not None:
+        power_attr = model.usage.avg_power
+    elif hasattr(model.usage, "avgConsumption") and model.usage.avgConsumption is not None:
+        power_attr = model.usage.avgConsumption
+    else:
+        return {"error": "Neither attribute is set."}
+
+    min_val = getattr(power_attr, "min", power_attr)
+    avg_val = getattr(power_attr, "value", power_attr)
+    max_val = getattr(power_attr, "max", power_attr)
 
     return {
-        "min": compute_single_cost(model.usage.avg_power.min, duration, location),
-        "avg": compute_single_cost(model.usage.avg_power.value, duration, location),
-        "max": compute_single_cost(model.usage.avg_power.max, duration, location),
+        "min": compute_single_cost(min_val, duration, location),
+        "avg": compute_single_cost(avg_val, duration, location),
+        "max": compute_single_cost(max_val, duration, location),
         "warnings": [
             "Default energy prices were used in this calculation. The energy price default"
             " is the average yearly energy price in the given location."
