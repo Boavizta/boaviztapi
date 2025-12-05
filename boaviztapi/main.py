@@ -15,18 +15,14 @@ from fastapi.openapi.utils import get_openapi
 from fastapi.responses import HTMLResponse
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.inmemory import InMemoryBackend
-from pymongo import AsyncMongoClient
 from mangum import Mangum
-from starlette.middleware.sessions import SessionMiddleware
 from starlette.middleware.authentication import AuthenticationMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
 
-from boaviztapi.routers.openapi_doc.descriptions import carbon_intensity
 from boaviztapi.routers.portfolio_router import portfolio_router
 from boaviztapi.routers.sustainability_router import sustainability_router
 from boaviztapi.routers.user_router import user_router
-from boaviztapi.service.cache.cache import CacheService
 from boaviztapi.service.carbon_intensity_provider import CarbonIntensityProvider
 from boaviztapi.service.costs_provider import ElectricityCostsProvider
 from boaviztapi.utils.auth_backend import JWTAuthBackend
@@ -44,8 +40,6 @@ from boaviztapi.routers.peripheral_router import peripheral_router
 from boaviztapi.routers.server_router import server_router
 from boaviztapi.routers.terminal_router import terminal_router
 from boaviztapi.routers.utils_router import utils_router
-from boaviztapi.routers.costs_router import costs_router
-from boaviztapi.service.auth.session_backend import SessionAuthBackend
 
 logging.basicConfig(
     level=logging.INFO,
@@ -127,7 +121,6 @@ app.include_router(auth_router)
 app.include_router(user_router)
 app.include_router(portfolio_router)
 app.include_router(sustainability_router)
-app.include_router(costs_router)
 
 if __name__ == '__main__':
     import uvicorn

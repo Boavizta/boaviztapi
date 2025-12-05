@@ -10,6 +10,7 @@ from boaviztapi.model.services.configuration_service import ConfigurationService
 from boaviztapi.routers.pydantic_based_router import validate_id
 from boaviztapi.service.auth.dependencies import get_current_user
 from boaviztapi.service.sustainability_provider import get_cloud_impact, get_server_impact_on_premise
+from boaviztapi.utils.costs_calculator import CostCalculator
 
 sustainability_router = APIRouter(
     prefix='/v1/sustainability',
@@ -46,13 +47,28 @@ async def post_results_on_premise_configuration(
         server: OnPremiseConfigurationModel,
         verbose: bool = True,
         costs: bool = True,
-        duration: Optional[float] = config["default_duration"],
+        duration: Optional[float] = Query(None),
         criteria: List[str] = Query(config["default_criteria"]),
 ):
     try:
-        result = await get_server_impact_on_premise(server, verbose, costs, duration, criteria)
+        final_duration = duration if duration is not None else getattr(server.usage, "lifespan", 1)
+
+        result = await get_server_impact_on_premise(server, verbose, costs, final_duration, criteria)
+
+        calculator = CostCalculator(duration=final_duration)
+        cost_results = await calculator.configuration_costs(server)
+
+        if "costs" in result:
+            result["costs"].update({
+                "total_cost": cost_results.get("total_cost"),
+                "breakdown": cost_results.get("breakdown")
+            })
+        else:
+            result["costs"] = cost_results
+
     except ValueError as e:
         raise HTTPException(status_code=400, detail=f"An error occurred! Details: {str(e)}")
+
     return result
 
 @sustainability_router.get('/cloud/{id}')
