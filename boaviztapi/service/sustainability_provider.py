@@ -19,7 +19,7 @@ async def get_cloud_impact(
         criteria: List[str] = config["default_criteria"]):
     cloud_archetype = get_cloud_instance_archetype(cloud_instance.instance_type, cloud_instance.cloud_provider)
     if not cloud_archetype:
-        raise ValueError(f"{cloud_instance.instance_type} at {cloud_instance.provider} not found")
+        raise ValueError(f"{cloud_instance.instance_type} at {cloud_instance.cloud_provider} not found")
     cloud_model = mapper_config_to_server(cloud_instance)
     instance_model = mapper_cloud_instance(cloud_model, archetype=cloud_archetype)
     return await cloud_instance_impact(
