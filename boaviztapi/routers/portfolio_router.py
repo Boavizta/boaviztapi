@@ -10,6 +10,7 @@ from boaviztapi.model.services.portfolio_service import PortfolioService
 from boaviztapi.routers.pydantic_based_router import validate_id
 from boaviztapi.service.auth.dependencies import get_current_user
 from boaviztapi.service.sustainability_provider import add_results_to_configuration
+from boaviztapi.utils.costs_calculator import CostCalculator
 
 portfolio_router = APIRouter(
     prefix='/v1/portfolio',
@@ -55,7 +56,11 @@ async def find_portfolio(id: str = Depends(validate_id), service: PortfolioServi
                       response_model=ExtendedPortfolioWithResultsModel,
                       response_model_by_alias=False,
                       )
-async def find_extended_portfolio(id: str = Depends(validate_id), service: PortfolioService = Depends(get_scoped_portfolio_service)):
+async def find_extended_portfolio(
+    id: str = Depends(validate_id),
+    service: PortfolioService = Depends(get_scoped_portfolio_service),
+    duration: float = 1.0,
+):
     if (
         await service.get_mongo_collection().find_one({"_id": ObjectId(id)})
     ) is not None:
@@ -85,8 +90,20 @@ async def find_extended_portfolio(id: str = Depends(validate_id), service: Portf
         configs = portfolio.configurations
         extended_configs = []
         for c in configs:
-            extended_configs.append(await add_results_to_configuration(c))
-        return ExtendedPortfolioWithResultsModel(configurations=extended_configs, **portfolio.model_dump(exclude={"configurations"}))
+            extended_c = await add_results_to_configuration(c)
+
+            config_duration = getattr(c.usage, "lifespan", duration)
+            cost_calculator = CostCalculator(duration=config_duration)
+            costs = await cost_calculator.configuration_costs(c)
+
+            extended_c.configuration.costs = costs
+
+            extended_configs.append(extended_c)
+
+        return ExtendedPortfolioWithResultsModel(
+            configurations=extended_configs,
+            **portfolio.model_dump(exclude={"configurations"})
+        )
 
 
 @portfolio_router.put("/{id}",

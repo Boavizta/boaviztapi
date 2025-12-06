@@ -96,12 +96,26 @@ async def get_results_cloud_configuration(
 async def post_results_cloud_configuration(
     cloud_instance: CloudConfigurationModel,
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
+    duration: Optional[float] = Query(None),
     criteria: List[str] = Query(config["default_criteria"])
 ):
     try:
-        result = await get_cloud_impact(cloud_instance, verbose, duration, criteria)
+        final_duration = duration if duration is not None else getattr(cloud_instance.usage, "lifespan", 1)
+
+        result = await get_cloud_impact(cloud_instance, verbose, final_duration, criteria)
+
+        calculator = CostCalculator(duration=final_duration)
+        cost_results = await calculator.configuration_costs(cloud_instance)
+
+        if "costs" in result:
+            result["costs"].update({
+                "total_cost": cost_results.get("total_cost"),
+                "breakdown": cost_results.get("breakdown")
+            })
+        else:
+            result["costs"] = cost_results
+
     except ValueError as e:
         raise HTTPException(status_code=400, detail=f"An error occurred! Details: {str(e)}")
-    return result
 
+    return result

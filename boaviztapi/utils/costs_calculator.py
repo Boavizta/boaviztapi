@@ -1,11 +1,8 @@
 from typing import Optional, Dict, Any, List
-import logging
 
 from boaviztapi.service.costs_computation import compute_electricity_costs
 from boaviztapi.service.sustainability_provider import get_server_impact_on_premise
 from boaviztapi.utils.get_vantage import get_vantage_price
-
-logger = logging.getLogger("boaviztapi.main")
 
 
 class CostCalculator:
@@ -28,7 +25,6 @@ class CostCalculator:
         )
 
         if not elec_costs.get("avg") or not elec_costs["avg"].get("price"):
-            logger.warning(f"No electricity costs available for server {server.id} at location {server.usage.localisation}")
             price_per_mWh = 0.0
             warnings = [f"No electricity costs available for location '{server.usage.localisation}'."]
         else:
