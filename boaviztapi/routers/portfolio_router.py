@@ -89,22 +89,27 @@ async def find_extended_portfolio(
     configs = portfolio.configurations
 
     extended_configs = []
+    calculator = CostCalculator()
 
     for c in configs:
 
         extended_c = await add_results_to_configuration(c)
-        # Check if duration is given as param, otherwise use standard config lifespan.
+
         effective_duration = duration if duration is not None else getattr(c.usage, "lifespan", 1)
 
-        calculator = CostCalculator(duration=effective_duration)
+        calculator.duration = effective_duration
         costs = await calculator.configuration_costs(c)
 
         extended_c.configuration.costs = costs
-
         extended_configs.append(extended_c)
+
+    portfolio_costs = await calculator.portfolio_costs(
+        [cfg.configuration for cfg in extended_configs]
+    )
 
     return ExtendedPortfolioWithResultsModel(
         configurations=extended_configs,
+        portfolio_costs=portfolio_costs,
         **portfolio.model_dump(exclude={"configurations"})
     )
 

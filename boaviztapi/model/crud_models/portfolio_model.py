@@ -104,6 +104,7 @@ class ExtendedPortfolioModel(PortfolioModel):
 
 class ExtendedPortfolioWithResultsModel(ExtendedPortfolioModel):
     configurations: List[ConfigurationModelWithResults] = Field(...)
+    portfolio_costs: dict | None = None
 
 class PortfolioCollection(BaseCRUDCollection[PortfolioModel]):
     """
