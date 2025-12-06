@@ -11,13 +11,13 @@ from boaviztapi.routers.server_router import server_impact
 from boaviztapi.service.archetype import get_cloud_instance_archetype, get_server_archetype
 from boaviztapi.service.results_provider import mapper_config_to_server
 
-
 async def get_cloud_impact(
         cloud_instance: CloudConfigurationModel,
         verbose: bool = True,
         duration: Optional[float] = config["default_duration"],
         criteria: List[str] = config["default_criteria"]):
-    cloud_archetype = get_cloud_instance_archetype(cloud_instance.instance_type, cloud_instance.cloud_provider)
+    cloud_provider = cloud_instance.cloud_provider.lower() # Solves the path not being found issue.
+    cloud_archetype = get_cloud_instance_archetype(cloud_instance.instance_type, cloud_provider)
     if not cloud_archetype:
         raise ValueError(f"{cloud_instance.instance_type} at {cloud_instance.cloud_provider} not found")
     cloud_model = mapper_config_to_server(cloud_instance)

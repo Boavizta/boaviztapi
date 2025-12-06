@@ -51,59 +51,62 @@ async def list_portfolios(service: PortfolioService = Depends(get_scoped_portfol
 async def find_portfolio(id: str = Depends(validate_id), service: PortfolioService = Depends(get_scoped_portfolio_service)):
     return await service.get_by_id(id)
 
-@portfolio_router.get("/extended/{id}",
-                      response_description="Get a single portfolio with the configuration objects nested inside",
-                      response_model=ExtendedPortfolioWithResultsModel,
-                      response_model_by_alias=False,
-                      )
+@portfolio_router.get(
+    "/extended/{id}",
+    response_description="Get a single portfolio with the configuration objects nested inside",
+    response_model=ExtendedPortfolioWithResultsModel,
+    response_model_by_alias=False,
+)
 async def find_extended_portfolio(
     id: str = Depends(validate_id),
     service: PortfolioService = Depends(get_scoped_portfolio_service),
-    duration: float = 1.0,
+    duration: float | None = None,
 ):
     if (
         await service.get_mongo_collection().find_one({"_id": ObjectId(id)})
-    ) is not None:
-        pipeline = [
-            {"$match": {"_id": ObjectId(id)}},
-            {"$lookup": {
-                "from": "configurations",
-                "let": {
-                    "config_ids": "$configuration_ids"
-                },
-                "pipeline": [
-                    {
-                        "$match": {
-                            "$expr": { "$in": [ { "$toString": "$_id" }, "$$config_ids"]}
-                        }
-                    }
-                ],
-                "as": "configurations"
-            }}
-        ]
-        cursor = await service.get_mongo_collection().aggregate(pipeline)
-        portfolio = await cursor.to_list(length=1)
-        if len(portfolio) < 1:
-            raise HTTPException(status_code=404, detail="No item found with the specified filter!")
+    ) is None:
+        raise HTTPException(status_code=404, detail="No item found with the specified filter!")
 
-        portfolio = TypeAdapter(ExtendedPortfolioModel).validate_python(portfolio[0])
-        configs = portfolio.configurations
-        extended_configs = []
-        for c in configs:
-            extended_c = await add_results_to_configuration(c)
+    pipeline = [
+        {"$match": {"_id": ObjectId(id)}},
+        {"$lookup": {
+            "from": "configurations",
+            "let": {"config_ids": "$configuration_ids"},
+            "pipeline": [
+                {"$match": {"$expr": {"$in": [{"$toString": "$_id"}, "$$config_ids"]}}}
+            ],
+            "as": "configurations"
+        }},
+    ]
 
-            config_duration = getattr(c.usage, "lifespan", duration)
-            cost_calculator = CostCalculator(duration=config_duration)
-            costs = await cost_calculator.configuration_costs(c)
+    cursor = await service.get_mongo_collection().aggregate(pipeline)
+    portfolio_data = await cursor.to_list(length=1)
 
-            extended_c.configuration.costs = costs
+    if not portfolio_data:
+        raise HTTPException(status_code=404, detail="No item found with the specified filter!")
 
-            extended_configs.append(extended_c)
+    portfolio = TypeAdapter(ExtendedPortfolioModel).validate_python(portfolio_data[0])
+    configs = portfolio.configurations
 
-        return ExtendedPortfolioWithResultsModel(
-            configurations=extended_configs,
-            **portfolio.model_dump(exclude={"configurations"})
-        )
+    extended_configs = []
+
+    for c in configs:
+
+        extended_c = await add_results_to_configuration(c)
+        # Check if duration is given as param, otherwise use standard config lifespan.
+        effective_duration = duration if duration is not None else getattr(c.usage, "lifespan", 1)
+
+        calculator = CostCalculator(duration=effective_duration)
+        costs = await calculator.configuration_costs(c)
+
+        extended_c.configuration.costs = costs
+
+        extended_configs.append(extended_c)
+
+    return ExtendedPortfolioWithResultsModel(
+        configurations=extended_configs,
+        **portfolio.model_dump(exclude={"configurations"})
+    )
 
 
 @portfolio_router.put("/{id}",
