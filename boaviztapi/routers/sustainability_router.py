@@ -37,9 +37,11 @@ async def get_results_on_premise_configuration(
     try:
         result = await get_server_impact_on_premise(server, verbose, duration, criteria)
         if costs:
-            final_duration = duration if duration is not None else getattr(server.usage, "lifespan", 1)
-
-            calculator = CostCalculator(duration=final_duration)
+            if duration is not None:
+                effective_duration = duration / 8760
+            else:
+                effective_duration = getattr(server.usage, "lifespan", 1)
+            calculator = CostCalculator(duration=effective_duration)
             cost_results = await calculator.configuration_costs(server)
 
             if costs:
@@ -65,11 +67,14 @@ async def post_results_on_premise_configuration(
         criteria: List[str] = Query(config["default_criteria"]),
 ):
     try:
-        final_duration = duration if duration is not None else getattr(server.usage, "lifespan", 1)
+        if duration is not None:
+            effective_duration = duration / 8760
+        else:
+            effective_duration = getattr(server.usage, "lifespan", 1)
 
-        result = await get_server_impact_on_premise(server, verbose, final_duration, criteria)
+        result = await get_server_impact_on_premise(server, verbose, effective_duration, criteria)
 
-        calculator = CostCalculator(duration=final_duration)
+        calculator = CostCalculator(duration=effective_duration)
         cost_results = await calculator.configuration_costs(server)
 
         if costs:
@@ -103,8 +108,11 @@ async def get_results_cloud_configuration(
     try:
         result = await get_cloud_impact(cloud_instance, verbose, duration, criteria)
         if costs:
-            final_duration = duration if duration is not None else getattr(cloud_instance.usage, "lifespan", 1)
-            calculator = CostCalculator(duration=final_duration)
+            if duration is not None:
+                effective_duration = duration / 8760
+            else:
+                effective_duration = getattr(cloud_instance.usage, "lifespan", 1)
+            calculator = CostCalculator(duration=effective_duration)
             cost_results = await calculator.configuration_costs(cloud_instance)
             if costs:
                 if "costs" in result:
@@ -128,11 +136,14 @@ async def post_results_cloud_configuration(
     criteria: List[str] = Query(config["default_criteria"])
 ):
     try:
-        final_duration = duration if duration is not None else getattr(cloud_instance.usage, "lifespan", 1)
+        if duration is not None:
+            effective_duration = duration / 8760
+        else:
+            effective_duration = getattr(cloud_instance.usage, "lifespan", 1)
 
-        result = await get_cloud_impact(cloud_instance, verbose, final_duration, criteria)
+        result = await get_cloud_impact(cloud_instance, verbose, effective_duration, criteria)
 
-        calculator = CostCalculator(duration=final_duration)
+        calculator = CostCalculator(duration=effective_duration)
         cost_results = await calculator.configuration_costs(cloud_instance)
         if costs:
             if "costs" in result:

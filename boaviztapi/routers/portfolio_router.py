@@ -98,16 +98,17 @@ async def find_extended_portfolio(
 
             wrapper.results = await add_results_to_configuration(wrapper)
 
-            effective_duration = duration if duration is not None else getattr(wrapper.configuration.usage, "lifespan", 1)
+            if duration is not None:
+                effective_duration = duration / 8760
+            else:
+                effective_duration = getattr(wrapper.configuration.usage, "lifespan", 1)
 
             cost_calculator.duration = effective_duration
-            costs = await cost_calculator.configuration_costs(wrapper.configuration)
 
-            wrapper.results['costs'] = costs
+            computed_costs = await cost_calculator.configuration_costs(wrapper.configuration)
+            wrapper.results["costs"] = computed_costs
 
-        totals['costs'] = await cost_calculator.portfolio_costs(
-            [wrapper.configuration for wrapper in configs]
-        )
+        totals["costs"] = cost_calculator.sum_portfolio_costs([w.results["costs"] for w in configs])
     if impacts:
         for wrapper in configs:
             wrapper.results = await add_results_to_configuration(wrapper)
