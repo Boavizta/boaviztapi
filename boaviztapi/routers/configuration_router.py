@@ -1,9 +1,12 @@
+from typing import Dict, List, Any
+
 from fastapi import APIRouter, Body, status, HTTPException
-from fastapi.params import Depends
+from fastapi.params import Depends, Query
 
 from boaviztapi.dto.auth.user_dto import UserPublicDTO
+from boaviztapi.model.crud_models.basemodel import PyObjectId
 from boaviztapi.model.crud_models.configuration_model import ConfigurationModel, ConfigurationCollection, \
-    ConfigurationWithResultsCollection
+    ConfigurationWithResultsCollection, ConfigurationModelWithResults
 from boaviztapi.model.services.configuration_service import ConfigurationService
 from boaviztapi.routers.pydantic_based_router import validate_id
 from boaviztapi.service.sustainability_provider import add_results_to_configuration
@@ -38,65 +41,81 @@ async def create_configuration(configuration: ConfigurationModel = Body(...), se
 @configuration_router.get(
     "/",
     response_description="List all configurations",
-    response_model=ConfigurationCollection,
-    response_model_by_alias=False,
-)
-async def list_configurations(service: ConfigurationService = Depends(get_scoped_configuration_service)):
-    items = await service.get_all()
-    extended_configs = []
-
-    for config in items.items:
-        duration = getattr(config.usage, "lifespan", 1)
-        calculator = CostCalculator(duration=duration)
-        config.costs = await calculator.configuration_costs(config)
-
-        extended_configs.append(config)
-
-    return ConfigurationCollection(items=extended_configs)
-
-@configuration_router.get(
-    "/with-results",
-    response_description="List all configurations with their sustainability and cost results",
     response_model=ConfigurationWithResultsCollection,
     response_model_by_alias=False,
 )
-async def list_configurations_with_results(
-    service: ConfigurationService = Depends(get_scoped_configuration_service)
+async def list_configurations(
+        service: ConfigurationService = Depends(get_scoped_configuration_service),
+        impacts: bool = False,
+        costs: bool = False
 ):
     items = await service.get_all()
-    extended_configs = []
+    extended_configs = [ConfigurationModelWithResults(results={}, configuration=config) for config in items.items]
 
-    for config in items.items:
-        config_with_results = await add_results_to_configuration(config)
+    if impacts:
+        for wrapper in extended_configs:
+            wrapper.results = await add_results_to_configuration(wrapper)
 
-        duration = getattr(config.usage, "lifespan", 1)
-        calculator = CostCalculator(duration=duration)
-        cost_results = await calculator.configuration_costs(config)
-
-        config_with_results.configuration.costs = cost_results
-
-        extended_configs.append(config_with_results)
+    if costs:
+        for wrapper in extended_configs:
+            duration = getattr(wrapper.configuration.usage, "lifespan", 1)
+            calculator = CostCalculator(duration=duration)
+            wrapper.results['costs'] = await calculator.configuration_costs(wrapper.configuration)
 
     return ConfigurationWithResultsCollection(items=extended_configs)
+
+# @configuration_router.get(
+#     "/with-results",
+#     response_description="List all configurations with their sustainability and cost results",
+#     response_model=ConfigurationWithResultsCollection,
+#     response_model_by_alias=False,
+# )
+# async def list_configurations_with_results(
+#     service: ConfigurationService = Depends(get_scoped_configuration_service),
+#     costs: bool = False,
+#     impacts: bool = False
+# ):
+#     items = await service.get_all()
+#     extended_configs = []
+#
+#     for config in items.items:
+#         config_with_results = await add_results_to_configuration(config)
+#
+#         duration = getattr(config.usage, "lifespan", 1)
+#         calculator = CostCalculator(duration=duration)
+#         cost_results = await calculator.configuration_costs(config)
+#
+#         config_with_results.configuration.costs = cost_results
+#
+#         extended_configs.append(config_with_results)
+#
+#     return ConfigurationWithResultsCollection(items=extended_configs)
 @configuration_router.get("/{id}",
                           response_description="Get a single configuration",
-                          response_model=ConfigurationModel,
+                          response_model=ConfigurationModelWithResults,
                           response_model_by_alias=False,
                           )
 async def find_configuration(
     id: str = Depends(validate_id),
-    service: ConfigurationService = Depends(get_scoped_configuration_service)
+    service: ConfigurationService = Depends(get_scoped_configuration_service),
+    impacts: bool = False,
+    costs: bool = False
 ):
     config = await service.get_by_id(id)
     if not config:
         raise HTTPException(404, f"Configuration with id {id} not found")
 
-    # add costs directly
-    duration = getattr(config.usage, "lifespan", 1)
-    calculator = CostCalculator(duration=duration)
-    config.costs = await calculator.configuration_costs(config)
+    wrapper = ConfigurationModelWithResults(results={}, configuration=config)
 
-    return config
+    if impacts:
+        wrapper.results = await add_results_to_configuration(wrapper)
+
+    if costs:
+        duration = getattr(wrapper.configuration.usage, "lifespan", 1)
+        calculator = CostCalculator(duration=duration)
+        wrapper.results["costs"] = await calculator.configuration_costs(wrapper.configuration)
+
+    return wrapper
 
 @configuration_router.put(
     "/{id}",

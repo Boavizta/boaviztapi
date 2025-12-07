@@ -1,22 +1,24 @@
-from typing import Optional, List
-
-from pydantic import TypeAdapter
+import logging
+from copy import deepcopy
+from typing import Optional, List, Dict, Any
 
 from boaviztapi import config
 from boaviztapi.dto.device.device import mapper_cloud_instance, mapper_server
 from boaviztapi.model.crud_models.configuration_model import CloudConfigurationModel, OnPremiseConfigurationModel, \
-    ConfigurationModel, ConfigurationModelWithResults
+    ConfigurationModelWithResults
 from boaviztapi.routers.cloud_router import cloud_instance_impact
 from boaviztapi.routers.server_router import server_impact
 from boaviztapi.service.archetype import get_cloud_instance_archetype, get_server_archetype
 from boaviztapi.service.results_provider import mapper_config_to_server
+
+_log = logging.getLogger(__name__)
 
 async def get_cloud_impact(
         cloud_instance: CloudConfigurationModel,
         verbose: bool = True,
         duration: Optional[float] = config["default_duration"],
         criteria: List[str] = config["default_criteria"]):
-    cloud_provider = cloud_instance.cloud_provider.lower() # Solves the path not being found issue.
+    cloud_provider = cloud_instance.cloud_provider.lower()  # Solves the path not being found issue.
     cloud_archetype = get_cloud_instance_archetype(cloud_instance.instance_type, cloud_provider)
     if not cloud_archetype:
         raise ValueError(f"{cloud_instance.instance_type} at {cloud_instance.cloud_provider} not found")
@@ -49,11 +51,56 @@ async def get_server_impact_on_premise(
         location=server.usage.localisation)
 
 
-async def add_results_to_configuration(c: ConfigurationModel):
-    _type = c['type'] if isinstance(c, dict) else c.type
+async def add_results_to_configuration(c: ConfigurationModelWithResults):
+    _type = c['configuration']['type'] if isinstance(c, dict) else c.configuration.type
+    config = c['configuration'] if isinstance(c, dict) else c.configuration
     if _type == 'cloud':
-        results = await get_cloud_impact(CloudConfigurationModel.model_validate(c), verbose=False)
+        results = await get_cloud_impact(CloudConfigurationModel.model_validate(config),
+                                         verbose=False,
+                                         criteria=["gwp", "pe"])
     else:
-        results = await get_server_impact_on_premise(OnPremiseConfigurationModel.model_validate(c), verbose=False,
+        results = await get_server_impact_on_premise(OnPremiseConfigurationModel.model_validate(config),
+                                                     verbose=False,
+                                                     criteria=["gwp", "pe"],
                                                      costs=True)
-    return ConfigurationModelWithResults(results=results, configuration=c)
+    return c.results | results
+
+
+async def compute_portfolio_totals(configs: List[ConfigurationModelWithResults]) -> Dict[str, Any] | None:
+    """
+    Compute the total impact values of an entire portfolio by summing each configuration's impact results.
+
+    Raises:
+        ValueError if mandatory impact results of one of the configurations are missing (gwp or pe).
+    """
+    if len(configs) == 0:
+        return None
+    if len(configs) == 1:
+        return configs[0].results
+
+    total = deepcopy(configs[0].results['impacts'])
+    try:
+        for conf in configs[1:]:
+            results = conf.results
+            gwp = results['impacts']['gwp']
+            pe = results['impacts']['pe']
+
+            _add_all_to_total(total['gwp'], gwp)
+            _add_all_to_total(total['pe'], pe)
+    except KeyError as e:
+        _log.error(e)
+        raise ValueError("Mandatory impact results of one of the configurations are missing! (gwp, pe)")
+    return total
+
+
+def _add_all_to_total(total: Dict[str, Any], impact: Dict[str, Any]) -> None:
+    if 'embedded' in total and 'embedded' in impact:
+        _add_values_to_total(total['embedded'], impact['embedded'])
+    if 'use' in total and 'use' in impact:
+        _add_values_to_total(total['use'], impact['use'])
+
+
+def _add_values_to_total(total: Dict[str, Any], impact: Dict[str, Any]) -> None:
+    total['value'] += impact['value']
+    total['min'] += impact['min']
+    total['max'] += impact['max']

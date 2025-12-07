@@ -101,5 +101,5 @@ async def server_impact(device: Device,
     if verbose:
         result["verbose"] = verbose_device(device, selected_criteria=criteria, duration=duration)
     if costs:
-        result["costs"] = compute_electricity_costs(model=device, duration=duration, location=location)
+        result["costs"] = await compute_electricity_costs(model=device, duration=duration, location=location)
     return result

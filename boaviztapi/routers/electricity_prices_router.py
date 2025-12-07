@@ -41,7 +41,7 @@ async def get_electricity_price(
         ), AfterValidator(check_zone_code_in_electricity_maps)],
         temporalGranularity: str = Query(examples=["5_minutes", "15_minutes", "hourly"], default="hourly")):
     try:
-        return ElectricityCostsProvider.get_price_for_country_elecmaps(zone, temporalGranularity)
+        return await ElectricityCostsProvider.get_price_for_country_elecmaps(zone, temporalGranularity)
     except APIMissingValueError as e:
         raise HTTPException(status_code=404, detail=str(e)) from e
     except APIError as e:

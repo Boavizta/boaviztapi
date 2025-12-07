@@ -12,7 +12,7 @@ _electricity_prices_df = pd.read_csv(os.path.join(data_dir,
                                                   'electricity/european_wholesale_electricity_price_data_monthly.csv'))
 
 
-def compute_electricity_costs(model: Union[Component, Device], duration=config["default_duration"], location: str = None) -> dict:
+async def compute_electricity_costs(model: Union[Component, Device], duration=config["default_duration"], location: str = None) -> dict:
     if not location:
         location = model.usage.usage_location.value
     if not is_valid_zone_code(location):
@@ -31,9 +31,9 @@ def compute_electricity_costs(model: Union[Component, Device], duration=config["
     max_val = getattr(power_attr, "max", power_attr)
 
     return {
-        "min": compute_single_cost(min_val, duration, location),
-        "avg": compute_single_cost(avg_val, duration, location),
-        "max": compute_single_cost(max_val, duration, location),
+        "min": await compute_single_cost(min_val, duration, location),
+        "avg": await compute_single_cost(avg_val, duration, location),
+        "max": await compute_single_cost(max_val, duration, location),
         "warnings": [
             "Default energy prices were used in this calculation. The energy price default"
             " is the average yearly energy price in the given location."
@@ -54,7 +54,7 @@ def is_valid_zone_code(zone_code: str) -> bool:
     return False
 
 
-def compute_single_cost(power: float, duration: int, location: str) -> dict[str, str]:
+async def compute_single_cost(power: float, duration: int, location: str) -> dict[str, str]:
     """
     Compute the electricity costs of running the device/component for the specified duration.
     The electricity costs are deduced by averaging the monthly costs over an entire year.
@@ -64,7 +64,7 @@ def compute_single_cost(power: float, duration: int, location: str) -> dict[str,
     @param location: The location of the electricity cost calculation in ISO3 letter codification
     """
     # Eur / MWh
-    realtime_price = ElectricityCostsProvider.get_price_for_country_elecmaps(location)
+    realtime_price = await ElectricityCostsProvider.get_price_for_country_elecmaps(location)
     if realtime_price and realtime_price['value'] and realtime_price['unit']:
         yearly_price = realtime_price['value'] * duration * (power * 10 ** -6)
         return {

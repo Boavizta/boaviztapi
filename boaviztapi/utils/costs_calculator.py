@@ -18,7 +18,7 @@ class CostCalculator:
         if not hasattr(server, "usage") or not hasattr(server.usage, "localisation"):
             raise ValueError(f"Configuration {server.id} missing usage or localisation info")
 
-        elec_costs = compute_electricity_costs(
+        elec_costs = await compute_electricity_costs(
             server,
             duration=self.duration,
             location=server.usage.localisation
@@ -86,7 +86,7 @@ class CostCalculator:
     async def portfolio_costs(self, servers: List) -> Dict[str, Any]:
         total_cost = 0.0
         total_breakdown = {"operating_costs": 0.0, "energy_costs": 0.0}
-        detailed_costs = []
+        # detailed_costs = []
         portfolio_warnings = []
 
         for server in servers:
@@ -99,18 +99,18 @@ class CostCalculator:
             if warnings:
                 portfolio_warnings.extend([f"{server.id}: {w}" for w in warnings])
 
-            detailed_costs.append({
-                "configuration_id": getattr(server, "id", None),
-                "type": getattr(server, "type", None),
-                "total_cost": cost_data["total_cost"],
-                "breakdown": cost_data["breakdown"],
-                **({"warnings": warnings} if warnings else {})
-            })
+            # detailed_costs.append({
+            #     "configuration_id": getattr(server, "id", None),
+            #     "type": getattr(server, "type", None),
+            #     "total_cost": cost_data["total_cost"],
+            #     "breakdown": cost_data["breakdown"],
+            #     **({"warnings": warnings} if warnings else {})
+            # })
 
         response = {
             "total_cost": total_cost,
             "breakdown": total_breakdown,
-            "details": detailed_costs
+            # "details": detailed_costs
         }
 
         if portfolio_warnings:

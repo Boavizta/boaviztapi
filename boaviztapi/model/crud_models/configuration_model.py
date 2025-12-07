@@ -44,7 +44,6 @@ class OnPremiseConfigurationModel(BaseCRUDModel):
     psu_quantity: int = Field(..., ge=1, le=4)
     user_id: str = Field(..., pattern=r'(\d)+')
     usage: OnPremiseServerUsage = Field(...)
-    costs: Optional[Dict[str, Any]] = Field(default=None)
     model_config = ConfigDict(
         populate_by_name=True,
         arbitrary_types_allowed=True,
@@ -96,7 +95,6 @@ class CloudConfigurationModel(BaseCRUDModel):
     cloud_provider: str = Field(...)
     instance_type: str = Field(...)
     usage: CloudServerUsage = Field(...)
-    costs: Optional[Dict[str, Any]] = Field(default=None)
     user_id: str = Field(..., pattern=r'(\d)+')
     model_config = ConfigDict(
         populate_by_name=True,

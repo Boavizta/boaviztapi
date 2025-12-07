@@ -4,12 +4,13 @@ from fastapi.params import Depends
 from pydantic import TypeAdapter
 
 from boaviztapi.dto.auth.user_dto import UserPublicDTO
+from boaviztapi.model.crud_models.configuration_model import ConfigurationModelWithResults
 from boaviztapi.model.crud_models.portfolio_model import PortfolioCollection, PortfolioModel, ExtendedPortfolioModel, \
     ExtendedPortfolioWithResultsModel
 from boaviztapi.model.services.portfolio_service import PortfolioService
 from boaviztapi.routers.pydantic_based_router import validate_id
 from boaviztapi.service.auth.dependencies import get_current_user
-from boaviztapi.service.sustainability_provider import add_results_to_configuration
+from boaviztapi.service.sustainability_provider import add_results_to_configuration, compute_portfolio_totals
 from boaviztapi.utils.costs_calculator import CostCalculator
 
 portfolio_router = APIRouter(
@@ -60,6 +61,8 @@ async def find_portfolio(id: str = Depends(validate_id), service: PortfolioServi
 async def find_extended_portfolio(
     id: str = Depends(validate_id),
     service: PortfolioService = Depends(get_scoped_portfolio_service),
+    impacts: bool = False,
+    costs: bool = False,
     duration: float | None = None,
 ):
     if (
@@ -86,30 +89,33 @@ async def find_extended_portfolio(
         raise HTTPException(status_code=404, detail="No item found with the specified filter!")
 
     portfolio = TypeAdapter(ExtendedPortfolioModel).validate_python(portfolio_data[0])
-    configs = portfolio.configurations
+    configs = [ConfigurationModelWithResults(results={}, configuration=c) for c in portfolio.configurations]
+    totals = {}
+    if costs:
+        cost_calculator = CostCalculator()
 
-    extended_configs = []
-    calculator = CostCalculator()
+        for wrapper in configs:
 
-    for c in configs:
+            wrapper.results = await add_results_to_configuration(wrapper)
 
-        extended_c = await add_results_to_configuration(c)
+            effective_duration = duration if duration is not None else getattr(wrapper.configuration.usage, "lifespan", 1)
 
-        effective_duration = duration if duration is not None else getattr(c.usage, "lifespan", 1)
+            cost_calculator.duration = effective_duration
+            costs = await cost_calculator.configuration_costs(wrapper.configuration)
 
-        calculator.duration = effective_duration
-        costs = await calculator.configuration_costs(c)
+            wrapper.results['costs'] = costs
 
-        extended_c.configuration.costs = costs
-        extended_configs.append(extended_c)
-
-    portfolio_costs = await calculator.portfolio_costs(
-        [cfg.configuration for cfg in extended_configs]
-    )
+        totals['costs'] = await cost_calculator.portfolio_costs(
+            [wrapper.configuration for wrapper in configs]
+        )
+    if impacts:
+        for wrapper in configs:
+            wrapper.results = await add_results_to_configuration(wrapper)
+        totals['impacts'] = await compute_portfolio_totals(configs)
 
     return ExtendedPortfolioWithResultsModel(
-        configurations=extended_configs,
-        portfolio_costs=portfolio_costs,
+        configurations=configs,
+        results=totals,
         **portfolio.model_dump(exclude={"configurations"})
     )
 

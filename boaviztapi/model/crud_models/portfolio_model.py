@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional, List, Annotated, Union
+from typing import Optional, List, Annotated, Union, Dict, Any
 
 from bson import ObjectId
 from pydantic import Field, ConfigDict, field_validator
@@ -104,7 +104,7 @@ class ExtendedPortfolioModel(PortfolioModel):
 
 class ExtendedPortfolioWithResultsModel(ExtendedPortfolioModel):
     configurations: List[ConfigurationModelWithResults] = Field(...)
-    portfolio_costs: dict | None = None
+    results: Dict[str, Any] | None = None
 
 class PortfolioCollection(BaseCRUDCollection[PortfolioModel]):
     """

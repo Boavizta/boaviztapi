@@ -9,7 +9,6 @@ import xmltodict
 from boaviztapi import data_dir
 from boaviztapi.application_context import get_app_context
 from boaviztapi.dto.electricity.electricity import Country
-from boaviztapi.service.base import BaseService
 from boaviztapi.service.cache.cache import CacheService
 from boaviztapi.service.electricitymaps_service import ElectricityMapsService
 from boaviztapi.service.exceptions import APIError, APIAuthenticationError, APIMissingValueError, \
@@ -40,7 +39,7 @@ class ElectricityCostsProvider(ElectricityMapsService):
         return df.query(f"alpha_3 == '{iso3_country}' ")["EIC_code"].iloc[0]
 
     @staticmethod
-    def get_price_for_country_elecmaps(zone: str, temporalGranularity: str = 'hourly') -> dict | None:
+    async def get_price_for_country_elecmaps(zone: str, temporalGranularity: str = 'hourly') -> dict | None:
         """
         Get the latest electricity price for a country using the ElectricityMaps API.
 
@@ -56,6 +55,10 @@ class ElectricityCostsProvider(ElectricityMapsService):
             APIError: When the API returns an unexpected response status code or it cannot be reached
         """
         url = f"{ElectricityMapsService.base_url}/price-day-ahead/latest?zone={zone}&temporalGranularity={temporalGranularity}"
+        cached_results = await ElectricityCostsProvider.get_cache_scheduler().get_results()
+        if cached_results and url in cached_results:
+            return cached_results[url]
+
         return ElectricityMapsService._perform_request(url)
 
     @staticmethod
