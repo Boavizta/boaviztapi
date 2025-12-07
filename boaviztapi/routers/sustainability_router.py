@@ -35,7 +35,21 @@ async def get_results_on_premise_configuration(
     if server.type != 'on-premise':
         raise HTTPException(status_code=400, detail=f"Configuration with id {id} is not an on-premise server")
     try:
-        result = await get_server_impact_on_premise(server, verbose, costs, duration, criteria)
+        result = await get_server_impact_on_premise(server, verbose, duration, criteria)
+        if costs:
+            final_duration = duration if duration is not None else getattr(server.usage, "lifespan", 1)
+
+            calculator = CostCalculator(duration=final_duration)
+            cost_results = await calculator.configuration_costs(server)
+
+            if costs:
+                if "costs" in result:
+                    result["costs"].update({
+                        "total_cost": cost_results.get("total_cost"),
+                        "breakdown": cost_results.get("breakdown")
+                    })
+                else:
+                    result["costs"] = cost_results
     except ValueError as e:
         raise HTTPException(status_code=400, detail=f"An error occurred! Details: {str(e)}")
 
@@ -53,19 +67,19 @@ async def post_results_on_premise_configuration(
     try:
         final_duration = duration if duration is not None else getattr(server.usage, "lifespan", 1)
 
-        result = await get_server_impact_on_premise(server, verbose, costs, final_duration, criteria)
+        result = await get_server_impact_on_premise(server, verbose, final_duration, criteria)
 
         calculator = CostCalculator(duration=final_duration)
         cost_results = await calculator.configuration_costs(server)
 
-        if "costs" in result:
-            result["costs"].update({
-                "total_cost": cost_results.get("total_cost"),
-                "breakdown": cost_results.get("breakdown")
-            })
-        else:
-            result["costs"] = cost_results
-
+        if costs:
+            if "costs" in result:
+                result["costs"].update({
+                    "total_cost": cost_results.get("total_cost"),
+                    "breakdown": cost_results.get("breakdown")
+                })
+            else:
+                result["costs"] = cost_results
     except ValueError as e:
         raise HTTPException(status_code=400, detail=f"An error occurred! Details: {str(e)}")
 
@@ -77,6 +91,7 @@ async def get_results_cloud_configuration(
         current_user: UserPublicDTO = Depends(get_current_user),
         id: str = Depends(validate_id),
         verbose: bool = True,
+        costs: bool = True,
         duration: Optional[float] = config["default_duration"],
         criteria: List[str] = Query(config["default_criteria"])
 ):
@@ -87,6 +102,18 @@ async def get_results_cloud_configuration(
         raise HTTPException(status_code=400, detail=f"Configuration with id {id} is not a cloud instance")
     try:
         result = await get_cloud_impact(cloud_instance, verbose, duration, criteria)
+        if costs:
+            final_duration = duration if duration is not None else getattr(cloud_instance.usage, "lifespan", 1)
+            calculator = CostCalculator(duration=final_duration)
+            cost_results = await calculator.configuration_costs(cloud_instance)
+            if costs:
+                if "costs" in result:
+                    result["costs"].update({
+                        "total_cost": cost_results.get("total_cost"),
+                        "breakdown": cost_results.get("breakdown")
+                    })
+                else:
+                    result["costs"] = cost_results
     except ValueError as e:
         raise HTTPException(status_code=400, detail=f"An error occurred! Details: {str(e)}")
     return result
@@ -96,6 +123,7 @@ async def get_results_cloud_configuration(
 async def post_results_cloud_configuration(
     cloud_instance: CloudConfigurationModel,
     verbose: bool = True,
+    costs: bool = True,
     duration: Optional[float] = Query(None),
     criteria: List[str] = Query(config["default_criteria"])
 ):
@@ -106,15 +134,14 @@ async def post_results_cloud_configuration(
 
         calculator = CostCalculator(duration=final_duration)
         cost_results = await calculator.configuration_costs(cloud_instance)
-
-        if "costs" in result:
-            result["costs"].update({
-                "total_cost": cost_results.get("total_cost"),
-                "breakdown": cost_results.get("breakdown")
-            })
-        else:
-            result["costs"] = cost_results
-
+        if costs:
+            if "costs" in result:
+                result["costs"].update({
+                    "total_cost": cost_results.get("total_cost"),
+                    "breakdown": cost_results.get("breakdown")
+                })
+            else:
+                result["costs"] = cost_results
     except ValueError as e:
         raise HTTPException(status_code=400, detail=f"An error occurred! Details: {str(e)}")
 

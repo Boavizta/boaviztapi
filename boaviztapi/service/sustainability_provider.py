@@ -35,7 +35,6 @@ async def get_cloud_impact(
 async def get_server_impact_on_premise(
         server: OnPremiseConfigurationModel,
         verbose: bool = True,
-        costs: bool = True,
         duration: Optional[float] = config["default_duration"],
         criteria: List[str] = config["default_criteria"]
 ):
@@ -46,9 +45,7 @@ async def get_server_impact_on_premise(
         device=completed_server,
         verbose=verbose,
         duration=duration,
-        criteria=criteria,
-        costs=costs,
-        location=server.usage.localisation)
+        criteria=criteria)
 
 
 async def add_results_to_configuration(c: ConfigurationModelWithResults):
@@ -61,8 +58,7 @@ async def add_results_to_configuration(c: ConfigurationModelWithResults):
     else:
         results = await get_server_impact_on_premise(OnPremiseConfigurationModel.model_validate(config),
                                                      verbose=False,
-                                                     criteria=["gwp", "pe"],
-                                                     costs=True)
+                                                     criteria=["gwp", "pe"])
     return c.results | results
 
 

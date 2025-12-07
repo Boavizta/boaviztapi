@@ -34,7 +34,6 @@ class CostCalculator:
         impact = await get_server_impact_on_premise(
             server,
             verbose=False,
-            costs=False,
             duration=self.duration
         )
 
@@ -46,6 +45,7 @@ class CostCalculator:
 
         response = {
             "total_cost": total_cost,
+            "unit": elec_costs['avg']['unit'],
             "breakdown": {
                 "operating_costs": operating_costs,
                 "energy_costs": energy_costs
@@ -70,6 +70,7 @@ class CostCalculator:
 
         return {
             "total_cost": operating_costs,
+            "unit": "EUR",
             "breakdown": {
                 "operating_costs": operating_costs
             }
