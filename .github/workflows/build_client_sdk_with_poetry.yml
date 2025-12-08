@@ -74,4 +74,4 @@ jobs:
         python3 setup.py sdist
         # Publish
         pip3 install pipenv twine
-        pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.PYPI_TOKEN }} dist/*
+        pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.PYPI_TOKEN_2025_2026 }} dist/*
