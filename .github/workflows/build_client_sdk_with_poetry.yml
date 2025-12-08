@@ -58,18 +58,20 @@ jobs:
         sudo chown -R "$(whoami)" boaviztapi_sdk
         SDK_VERSION=$(poetry version -s)
         DESCRIPTION="BoaviztAPI SDK"
+        LONG_DESCRIPTION="BoaviztAPI SDK for Python applications."
         echo "SDK_VERSION == ${SDK_VERSION}"
         cd boaviztapi_sdk
-        sed -i "s/^VERSION.*/VERSION = \"${SDK_VERSION}\"/" setup.py
-        sed -i "s/^    long_description=.*/    long_description=\"${DESCRIPTION}\"',/" setup.py
+        # Package metadata used by PyPi
+        sed -i "s/^VERSION.*/VERSION = ${SDK_VERSION}/" setup.py
+        sed -i "s/long_description=.*/long_description=\"${DESCRIPTION}\",/" setup.py
+        sed -i "s/author=.*/author=\"Boavizta\",/" setup.py
+        sed -i "s/author_email=.*/author_email=\"open-source@boavizta.org\",/" setup.py
         sed -i '/    &lt;p&gt;.*/d' setup.py
         sed -i '/    """.*/d' setup.py
-        # Package metadata used by PyPi
-        sed -i "s/BOAVIZTAPI - DEMO/\"${DESCRIPTION}\"/" pyproject.toml
+        sed -i "s/BOAVIZTAPI - DEMO/${LONG_DESCRIPTION}/" pyproject.toml
         sed -i "s/GIT_USER_ID/boavizta/" pyproject.toml
         sed -i "s/GIT_REPO_ID/boaviztapi/" pyproject.toml
         python3 setup.py sdist
         # Publish
         pip3 install pipenv twine
-        pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.BOAVIZTAPI_SDK_PYPI_TOKEN }} dist/*
-
+        pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.PYPI_TOKEN }} dist/*
