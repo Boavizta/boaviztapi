@@ -1,4 +1,4 @@
-Zone Code,Country,Zone name,EIC_code,alpha_3
+zone_code,name,subdivision_name,EIC_code,alpha_3
 AE,United Arab Emirates,United Arab Emirates,,ARE
 AF,Afghanistan,Afghanistan,,AFG
 AG,Antigua and Barbuda,Antigua and Barbuda,,ATG
