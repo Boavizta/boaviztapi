@@ -124,6 +124,14 @@ class DeviceServer(Device):
         return [self.assembly] + [self.cpu] + self.ram + self.disk + [self.power_supply] + [self.case] + [
             self.motherboard]
 
+    def __str__(self):
+        string_repr = {}
+        for component in self.components:
+            string_repr[component.NAME] = {}
+            for attr, value in component:
+                string_repr[component.NAME][attr] = value
+        return str(string_repr)
+
     def model_power_consumption(self):
         conso_cpu = ImpactFactor(
             value=self.cpu.model_power_consumption().value,

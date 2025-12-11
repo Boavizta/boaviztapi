@@ -65,8 +65,8 @@ async def post_results_on_premise_configuration(
         criteria: List[str] = Query(config["default_criteria"]),
 ):
     try:
+        # Final duration from the frontend is given in years
         final_duration = duration if duration is not None else getattr(server.usage, "lifespan", 1)
-
         result = await get_server_impact_on_premise(server, verbose, final_duration, criteria)
 
         calculator = CostCalculator(duration=final_duration)
