@@ -63,7 +63,7 @@ async def google_signin_callback(
             error_params = urlencode({"error": str(e), "next": next})
             return RedirectResponse(f"{request.headers.get('origin')}?{error_params}", status_code=303)
         #TODO: add nonce verification by sending it to the frontend on nextjs startup
-        return RedirectResponse(status_code=303, url=f"{request.headers.get('origin')}/google-success#{params}")
+        return RedirectResponse(status_code=303, url=f"{request.headers.get('origin')}/#{params}")
 
 @auth_router.post('/logout')
 async def logout(request: Request):
