@@ -1,4 +1,4 @@
-zone_code,name,subdivision_name,EIC_code,alpha_3
+Zone Code,Country,Zone name,EIC_code,alpha_3
 AE,United Arab Emirates,United Arab Emirates,,ARE
 AF,Afghanistan,Afghanistan,,AFG
 AG,Antigua and Barbuda,Antigua and Barbuda,,ATG
@@ -7,7 +7,6 @@ AM,Armenia,Armenia,,ARM
 AO,Angola,Angola,,AGO
 AR,Argentina,Argentina,,ARG
 AT,Austria,Austria,10YAT-APG------L,AUT
-AU,Australia,Australia,,AUS
 AU-NSW,Australia,New South Wales,,AUS
 AU-NT,Australia,Northern Territory,,AUS
 AU-QLD,Australia,Queensland,,AUS
@@ -32,7 +31,6 @@ BI,Burundi,Burundi,,BDI
 BJ,Benin,Benin,,BEN
 BN,Brunei,Brunei,,BRN
 BO,Bolivia,Bolivia,,BOL
-BR,Brazil,Brazil,,BRA
 BR-CS,Brazil,Central Brazil,,BRA
 BR-N,Brazil,North Brazil,,BRA
 BR-NE,Brazil,North-East Brazil,,BRA
@@ -42,7 +40,6 @@ BT,Bhutan,Bhutan,,BTN
 BW,Botswana,Botswana,,BWA
 BY,Belarus,Belarus,10Y1001A1001A51S,BLR
 BZ,Belize,Belize,,BLZ
-CA,Canada,Canada,,CAN
 CA-AB,Canada,Alberta,,CAN
 CA-BC,Canada,British Columbia,,CAN
 CA-MB,Canada,Manitoba,,CAN
@@ -73,7 +70,6 @@ CY,Cyprus,Cyprus,10YCY-1001A0003J,CYP
 CZ,Czechia,Czechia,,CZE
 DE,Germany,Germany,10Y1001A1001A82H,DEU
 DJ,Djibouti,Djibouti,,DJI
-DK,Denmark,Denmark,10YDK-1--------W,DNK
 DK-BHM,Denmark,Bornholm,10YDK-1--------W,DNK
 DK-DK1,Denmark,West Denmark,10YDK-1--------W,DNK
 DK-DK2,Denmark,East Denmark,10YDK-1--------W,DNK
@@ -84,7 +80,6 @@ EC,Ecuador,Ecuador,,ECU
 EE,Estonia,Estonia,10Y1001A1001A39I,EST
 EG,Egypt,Egypt,,EGY
 ER,Eritrea,Eritrea,,ERI
-ES,Spain,Spain,10YES-REE------0,ESP
 ES-CE,Spain,Ceuta,10YES-REE------0,ESP
 ES-CN-FV,Spain,Fuerteventura,10YES-REE------0,ESP
 ES-CN-GC,Spain,Gran Canaria,10YES-REE------0,ESP
@@ -103,7 +98,6 @@ FI,Finland,Finland,10YFI-1--------U,FIN
 FJ,Fiji,Fiji,,FJI
 FK,Falkland Islands,Falkland Islands,,FLK
 FM,Micronesia,Micronesia,,FSM
-FO,Faroe Islands,Faroe Islands,,FRO
 FO-MI,Faroe Islands,Main Islands,,FRO
 FO-SI,Faroe Islands,South Island,,FRO
 FR,France,France,10YFR-RTE------C,FRA
@@ -135,7 +129,6 @@ HU,Hungary,Hungary,10YHU-MAVIR----U,HUN
 ID,Indonesia,Indonesia,,IDN
 IE,Ireland,Ireland,10Y1001A1001A59C,IRL
 IL,Israel,Israel,,ISR
-IN,Mainland India,Mainland India,,IND
 IN-EA,India,Eastern India,,IND
 IN-NE,India,North Eastern India,,IND
 IN-NO,India,Northern India,,IND
@@ -144,7 +137,6 @@ IN-WE,India,Western India,,IND
 IQ,Iraq,Iraq,,IRQ
 IR,Iran,Iran,,IRN
 IS,Iceland,Iceland,,ISL
-IT,Italy,Italy,10Y1001A1001A73I,ITA
 IT-CNO,Italy,Central North Italy,10Y1001A1001A73I,ITA
 IT-CSO,Italy,Central South Italy,10Y1001A1001A73I,ITA
 IT-NO,Italy,North Italy,10Y1001A1001A73I,ITA
@@ -153,7 +145,6 @@ IT-SIC,Italy,Sicily,10Y1001A1001A73I,ITA
 IT-SO,Italy,South Italy,10Y1001A1001A73I,ITA
 JM,Jamaica,Jamaica,,JAM
 JO,Jordan,Jordan,,JOR
-JP,Japan,Japan,,JPN
 JP-CB,Japan,Chūbu,,JPN
 JP-CG,Japan,Chūgoku,,JPN
 JP-HKD,Japan,Hokkaidō,,JPN
@@ -199,7 +190,6 @@ MU,Mauritius,Mauritius,,MUS
 MV,Maldives,Maldives,,MDV
 MW,Malawi,Malawi,,MWI
 MX,Mexico,Mexico,,MEX
-MY,Malaysia,Malaysia,,MYS
 MY-EM,Malaysia,Borneo,,MYS
 MY-WM,Malaysia,Peninsula,,MYS
 MZ,Mozambique,Mozambique,,MOZ
@@ -209,7 +199,6 @@ NE,Niger,Niger,,NER
 NG,Nigeria,Nigeria,,NGA
 NI,Nicaragua,Nicaragua,,NIC
 NL,Netherlands,Netherlands,10YNL----------L,NLD
-NO,Norway,Norway,10YNO-1--------2,NOR
 NO-NO1,Norway,Southeast Norway,10YNO-1--------2,NOR
 NO-NO2,Norway,Southwest Norway,10YNO-1--------2,NOR
 NO-NO3,Norway,Middle Norway,10YNO-1--------2,NOR
@@ -247,7 +236,6 @@ SA,Saudi Arabia,Saudi Arabia,,SAU
 SB,Solomon Islands,Solomon Islands,,SLB
 SC,Seychelles,Seychelles,,SYC
 SD,Sudan,Sudan,,SDN
-SE,Sweden,Sweden,10Y1001A1001A44P,SWE
 SE-SE1,Sweden,North Sweden,10Y1001A1001A44P,SWE
 SE-SE2,Sweden,North Central Sweden,10Y1001A1001A44P,SWE
 SE-SE3,Sweden,South Central Sweden,10Y1001A1001A44P,SWE
@@ -276,7 +264,6 @@ TT,Trinidad and Tobago,Trinidad and Tobago,,TTO
 TW,Taiwan,Taiwan,,TWN
 TZ,Tanzania,Tanzania,,TZA
 UG,Uganda,Uganda,,UGA
-US,Contiguous United States,Contiguous United States,,USA
 US-AK,USA,Alaska,,USA
 US-AK-SEAPA,USA,Southeast Alaska Power Agency,,USA
 US-CAL-BANC,USA,Balancing Authority of Northern California,,USA
