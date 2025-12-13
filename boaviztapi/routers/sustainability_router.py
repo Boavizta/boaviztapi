@@ -43,6 +43,7 @@ async def get_results_on_premise_configuration(
                 effective_duration = getattr(server.usage, "lifespan", 1)
             calculator = CostCalculator(duration=effective_duration)
             cost_results = await calculator.configuration_costs(server)
+            cost_results = cost_results.model_dump(exclude_none=True)
 
             if costs:
                 if "costs" in result:
@@ -76,6 +77,7 @@ async def post_results_on_premise_configuration(
 
         calculator = CostCalculator(duration=effective_duration)
         cost_results = await calculator.configuration_costs(server)
+        cost_results = cost_results.model_dump(exclude_none=True)
 
         if costs:
             if "costs" in result:
@@ -114,6 +116,7 @@ async def get_results_cloud_configuration(
                 effective_duration = getattr(cloud_instance.usage, "lifespan", 1)
             calculator = CostCalculator(duration=effective_duration)
             cost_results = await calculator.configuration_costs(cloud_instance)
+            cost_results = cost_results.model_dump(exclude_none=True)
             if costs:
                 if "costs" in result:
                     result["costs"].update({
@@ -145,6 +148,7 @@ async def post_results_cloud_configuration(
 
         calculator = CostCalculator(duration=effective_duration)
         cost_results = await calculator.configuration_costs(cloud_instance)
+        cost_results = cost_results.model_dump(exclude_none=True)
         if costs:
             if "costs" in result:
                 result["costs"].update({

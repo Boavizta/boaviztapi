@@ -106,9 +106,10 @@ async def find_extended_portfolio(
             cost_calculator.duration = effective_duration
 
             computed_costs = await cost_calculator.configuration_costs(wrapper.configuration)
-            wrapper.results["costs"] = computed_costs
-
-        totals["costs"] = cost_calculator.sum_portfolio_costs([w.results["costs"] for w in configs])
+            wrapper.results["costs"] = computed_costs.model_dump(exclude_none=True)
+        totals["costs"] = {}
+        totals["costs"]["eur"] = cost_calculator.sum_portfolio_costs([w.results["costs"]["eur"] for w in configs], "EUR")
+        totals["costs"]["usd"] = cost_calculator.sum_portfolio_costs([w.results["costs"]["usd"] for w in configs], "USD")
     if impacts:
         for wrapper in configs:
             wrapper.results = await add_results_to_configuration(wrapper)

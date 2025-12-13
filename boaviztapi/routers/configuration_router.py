@@ -113,7 +113,8 @@ async def find_configuration(
     if costs:
         duration = getattr(wrapper.configuration.usage, "lifespan", 1)
         calculator = CostCalculator(duration=duration)
-        wrapper.results["costs"] = await calculator.configuration_costs(wrapper.configuration)
+        cost_results = await calculator.configuration_costs(wrapper.configuration)
+        wrapper.results["costs"] = cost_results.model_dump(exclude_none=True)
 
     return wrapper
 

@@ -1,3 +1,4 @@
+from copy import deepcopy
 from typing import Annotated
 
 from fastapi import APIRouter, HTTPException, Query
@@ -11,6 +12,7 @@ from boaviztapi.routers.openapi_doc.examples import electricity_carbon_intensity
     electricity_maps_price
 from boaviztapi.service.carbon_intensity_provider import CarbonIntensityProvider
 from boaviztapi.service.costs_provider import ElectricityCostsProvider
+from boaviztapi.service.currency_converter import CurrencyConverter
 from boaviztapi.service.exceptions import APIMissingValueError, APIError, APIAuthenticationError
 from boaviztapi.utils.validators import check_zone_code_in_electricity_maps
 
@@ -58,9 +60,22 @@ async def get_electricity_price(
                                            "updatedAt": "2025-11-18T12:21:16.175Z", "value": 124.81, "unit": "EUR/MWh",
                                            "source": "nordpool.com", "temporalGranularity": "hourly"}}}}
                                }})
-async def get_electricity_prices():
-    return await ElectricityCostsProvider.get_cache_scheduler().get_results()
-
+async def get_electricity_prices(currency: Annotated[str | None, AfterValidator(CurrencyConverter.validate_currency)] = None):
+    results = await ElectricityCostsProvider.get_cache_scheduler().get_results()
+    if currency is None:
+        return results
+    results = deepcopy(results)
+    for url in results:
+        source_currency = str(results[url]["unit"]).split('/')[0]
+        source_electricity_unit = str(results[url]["unit"]).split('/')[1]
+        source_amt = results[url]["value"]
+        try:
+            target_amt = await CurrencyConverter.convert(source_currency, currency, source_amt)
+            results[url]["value"] = target_amt.value
+            results[url]["unit"] = f"{target_amt.symbol}/{source_electricity_unit}"
+        except ValueError:
+            results[url]["warning"] = "Could not convert this price to the requested currency!"
+    return results
 
 @electricity_prices_router.get('/carbon_intensity', description=carbon_intensity,
                                responses={200: {

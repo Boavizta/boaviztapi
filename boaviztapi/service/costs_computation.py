@@ -1,5 +1,5 @@
 import os
-from typing import Union, Any
+from typing import Union
 
 import pandas as pd
 from boaviztapi import config
@@ -18,13 +18,12 @@ async def compute_electricity_costs(model: Union[Component, Device], duration=co
     if not is_valid_zone_code(location):
         return {"error": f"Invalid zone code '{location}'!"}
 
-    power_attr = None
     if hasattr(model.usage, "avg_power") and model.usage.avg_power is not None:
         power_attr = model.usage.avg_power
     elif hasattr(model.usage, "avgConsumption") and model.usage.avgConsumption is not None:
         power_attr = model.usage.avgConsumption
     else:
-        return {"error": "Neither attribute is set."}
+        return {"error": "At least one of the attributes 'avgConsumption' or 'avg_power' must be set in the usage section of the model."}
 
     min_val = getattr(power_attr, "min", power_attr)
     avg_val = getattr(power_attr, "value", power_attr)
