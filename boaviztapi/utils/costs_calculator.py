@@ -92,7 +92,7 @@ class CostCalculator:
         )
 
         pe_mj = impact["impacts"]["pe"]["use"]["value"]
-        energy_costs = self.compute_energy_cost(pe_mj, price_per_mwh) * 24 * 365 * self.duration
+        energy_costs = self.compute_energy_cost(pe_mj, price_per_mwh) * self.duration
         yearly_op_costs = getattr(server.usage, "operatingCosts", 0.0)
         operating_costs = yearly_op_costs * self.duration
         total_cost = energy_costs + operating_costs
@@ -131,7 +131,7 @@ class CostCalculator:
             region=usage.localisation
         )
 
-        operating_costs = vantage_cost * self.duration * 24 * 365
+        operating_costs = vantage_cost * self.duration
 
         local_costs = CostBreakdown(
             total_cost=operating_costs,
