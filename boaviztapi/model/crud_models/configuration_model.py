@@ -8,8 +8,8 @@ from boaviztapi.model.crud_models.basemodel import BaseCRUDCollection, BaseCRUDM
 
 
 class ServerLoadAdvancedSlot(BaseModel):
-    time: int = Field(..., ge=1, le=100)
-    load: int = Field(..., ge=1, le=100)
+    time: int = Field(..., ge=0, le=100)
+    load: int = Field(..., ge=0, le=100)
 
 class ServerLoadAdvanced(BaseModel):
     slot1: ServerLoadAdvancedSlot = Field(...)
@@ -81,7 +81,7 @@ class OnPremiseConfigurationModel(BaseCRUDModel):
 
 class CloudServerUsage(BaseModel):
     localisation: str = Field(...)
-    lifespan: int = Field(..., ge=1, le=10000)
+    lifespan: int = Field(..., ge=1)
     method: str = Field(...)
     serverLoad: Optional[float] = Field(default=None, ge=1, le=100)
     serverLoadAdvanced: Optional[ServerLoadAdvanced] = Field(default=None)
@@ -204,7 +204,7 @@ class UpdateOnPremiseConfigurationModel(BaseCRUDUpdateModel):
 
 class UpdateCloudServerUsage(BaseModel):
     localisation: Optional[str] = None
-    lifespan: Optional[int] = Field(default=None, ge=1, le=10000)
+    lifespan: Optional[int] = Field(default=None, ge=1)
     method: Optional[str] = None
     serverLoad: Optional[float] = Field(default=None, ge=1, le=100000)
     serverLoadAdvanced: Optional[UpdateServerLoadAdvanced] = None

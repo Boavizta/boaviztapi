@@ -7,6 +7,7 @@ from boaviztapi.model.crud_models.configuration_model import ConfigurationModel,
     CloudConfigurationModel
 from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.service.archetype import get_server_archetype
+from boaviztapi.service.costs_provider import ElectricityCostsProvider
 
 
 def mapper_config_to_server(onprem: ConfigurationModel) -> Server | Cloud:
@@ -58,9 +59,9 @@ def _map_onpremise_to_boaviztaserver(onprem : OnPremiseConfigurationModel) -> Se
     boavizta_server.configuration = ConfigurationServer(cpu=cpu, ram=[ram], disk=[hdd, ssd], power_supply=power_supply)
 
     usage = UsageServer()
-    usage.use_time_ratio = onprem.usage.serverLoad
+    usage.use_time_ratio = onprem.usage.serverLoad / 100 if onprem.usage.serverLoad is not None else 1
     usage.hours_life_time = onprem.usage.lifespan
-    usage.avg_power = onprem.usage.avgConsumption
+    usage.avg_power = None  #FIXME - This is a good fix to get similar results to Boavizta, however, we should see if it can be removed altogether.
 
     if onprem.usage.serverLoadAdvanced is not None:
         slot1 = WorkloadTime(time_percentage=onprem.usage.serverLoadAdvanced.slot1.time,
@@ -71,7 +72,7 @@ def _map_onpremise_to_boaviztaserver(onprem : OnPremiseConfigurationModel) -> Se
                              load_percentage=onprem.usage.serverLoadAdvanced.slot3.load)
         usage.time_workload = [slot1, slot2, slot3]
 
-    usage.usage_location = onprem.usage.localisation
+    usage.usage_location = _get_country_alpha3_from_zone_code(onprem.usage.localisation)
 
     boavizta_server.usage = usage
     return boavizta_server
@@ -83,7 +84,7 @@ def _map_cloud_to_boaviztaserver(cloud : CloudConfigurationModel) -> Cloud:
     boavizta_cloud.instance_type = cloud.instance_type
 
     usage = UsageCloud()
-    usage.use_time_ratio = cloud.usage.serverLoad
+    usage.use_time_ratio = cloud.usage.serverLoad / 100 if cloud.usage.serverLoad is not None else 1
     usage.hours_life_time = cloud.usage.lifespan
     if cloud.usage.serverLoadAdvanced is not None:
         slot1 = WorkloadTime(time_percentage=cloud.usage.serverLoadAdvanced.slot1.time,
@@ -94,7 +95,14 @@ def _map_cloud_to_boaviztaserver(cloud : CloudConfigurationModel) -> Cloud:
                              load_percentage=cloud.usage.serverLoadAdvanced.slot3.load)
         usage.time_workload = [slot1, slot2, slot3]
 
-    usage.usage_location = cloud.usage.localisation
+    usage.usage_location = _get_country_alpha3_from_zone_code(cloud.usage.localisation)
 
     boavizta_cloud.usage = usage
     return boavizta_cloud
+
+def _get_country_alpha3_from_zone_code(zone_code: str) -> str:
+    supported_countries = ElectricityCostsProvider.get_eic_countries()
+    for country in supported_countries:
+        if country.zone_code == zone_code:
+            return country.alpha_3
+    return "WOR"

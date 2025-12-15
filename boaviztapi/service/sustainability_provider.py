@@ -40,7 +40,7 @@ async def get_server_impact_on_premise(
 ):
     archetype_config = get_server_archetype(config["default_server"])
     configured_server = mapper_config_to_server(server)
-    completed_server = mapper_server(configured_server, archetype_config)
+    completed_server = mapper_server(configured_server, archetype=archetype_config)
     return await server_impact(
         device=completed_server,
         verbose=verbose,
