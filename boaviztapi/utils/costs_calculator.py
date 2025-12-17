@@ -2,8 +2,9 @@ from typing import Optional, Dict, Any, List
 
 from pydantic import BaseModel, Field
 
+from boaviztapi.model.crud_models.configuration_model import ConfigurationModelWithResults, OnPremiseConfigurationModel
 from boaviztapi.model.currency.currency_models import Currency
-from boaviztapi.service.costs_computation import compute_electricity_costs
+from boaviztapi.service.costs_computation import get_electricity_price
 from boaviztapi.service.currency_converter import CurrencyConverter
 from boaviztapi.service.sustainability_provider import get_server_impact_on_premise
 from boaviztapi.utils.get_vantage import get_vantage_price
@@ -70,31 +71,24 @@ class CostCalculator:
         if not hasattr(server, "usage") or not hasattr(server.usage, "localisation"):
             raise ValueError(f"Configuration {server.id} missing usage or localisation info")
 
-        elec_costs = await compute_electricity_costs(
+        electricity_price_for_location = await get_electricity_price(
             server,
-            duration=self.duration,
             location=server.usage.localisation
         )
-        avg_block = elec_costs.get("avg") if isinstance(elec_costs, dict) else None
-        if not avg_block or "price" not in avg_block:
+        warnings = []
+        if not electricity_price_for_location:
             price_per_mwh = 0.0
-            unit = "EUR/MWh"
-            warnings = [f"No electricity costs available for location '{server.usage.localisation}'."]
+            unit = "EUR"
+            warnings += [f"No electricity costs available for location '{server.usage.localisation}'."]
         else:
-            price_per_mwh = avg_block["price"]
-            unit = avg_block.get("unit", "EUR/MWh")
-            warnings = elec_costs.get("warnings", [])
+            price_per_mwh = electricity_price_for_location["value"]
+            unit = electricity_price_for_location.get("unit", "EUR/MWh")
 
-        impact = await get_server_impact_on_premise(
-            server,
-            verbose=False,
-            duration=self.duration
-        )
+        consumed_mwh_per_hour = await self.get_avg_power_consumption(server)
+        energy_costs = price_per_mwh * consumed_mwh_per_hour * self.duration
 
-        pe_mj = impact["impacts"]["pe"]["use"]["value"]
-        energy_costs = self.compute_energy_cost(pe_mj, price_per_mwh) * self.duration
-        yearly_op_costs = getattr(server.usage, "operatingCosts", 0.0)
-        operating_costs = yearly_op_costs * self.duration
+        yearly_operational_costs = getattr(server.usage, "operatingCosts", 0.0)
+        operating_costs = yearly_operational_costs * (self.duration / 8765.81277) # Hours to years
         total_cost = energy_costs + operating_costs
 
         _currency = None
@@ -107,10 +101,9 @@ class CostCalculator:
             total_cost=total_cost,
             unit=unit,
             currency=_currency,
-            breakdown=Breakdown(operating_costs=operating_costs, energy_costs=energy_costs)
+            breakdown=Breakdown(operating_costs=operating_costs, energy_costs=energy_costs),
+            warnings=warnings
         )
-        if warnings:
-            local_costs.warnings += warnings
 
         eur_costs = local_costs
         if local_costs.currency.symbol != "EUR":
@@ -120,6 +113,31 @@ class CostCalculator:
                                                   target_currency=CurrencyConverter.get_currency_by_symbol("USD"))
 
         return CurrencyConvertedCostBreakdown(local=local_costs, eur=eur_costs, usd=usd_costs)
+
+    async def get_avg_power_consumption(self, server: OnPremiseConfigurationModel) -> float:
+        """
+        Return the average power consumption of the server in MWh.
+        """
+        if server.usage.avgConsumption is not None:
+            # Convert Wh to MWh
+            print("Average wattage from avgConsumption is returned: ", server.usage.avgConsumption * (10**-6))
+            return server.usage.avgConsumption * (10**-6)
+
+        impact = await get_server_impact_on_premise(
+            server,
+            verbose=True,
+            duration=self.duration
+        )
+        if avg_wattage := impact["verbose"]["avg_power"]["value"]:
+            # Convert W to MWh
+            print("Average wattage from verbose is returned: ", avg_wattage * (10**-6))
+            return avg_wattage * (10**-6)
+        else:
+            # There is no average power consumption available, so we compute it ourselves using the primary energy output
+            megajoules_usage = impact["impacts"]["pe"]["use"]["value"]
+            mwh_used = megajoules_usage / 3600
+            print("Average power consumption computed from primary energy output: ", mwh_used)
+            return mwh_used
 
     async def cloud_costs(self, server) -> CurrencyConvertedCostBreakdown:
         usage = server.usage
@@ -146,7 +164,7 @@ class CostCalculator:
 
         return CurrencyConvertedCostBreakdown(local=local_costs, eur=eur_costs, usd=usd_costs)
 
-    async def configuration_costs(self, server) -> CurrencyConvertedCostBreakdown:
+    async def configuration_costs(self, server: ConfigurationModelWithResults) -> CurrencyConvertedCostBreakdown:
         if server.type == "on-premise":
             return await self.on_premise_costs(server)
         elif server.type == "cloud":

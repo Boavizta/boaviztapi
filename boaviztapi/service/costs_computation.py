@@ -12,32 +12,16 @@ _electricity_prices_df = pd.read_csv(os.path.join(data_dir,
                                                   'electricity/european_wholesale_electricity_price_data_monthly.csv'))
 
 
-async def compute_electricity_costs(model: Union[Component, Device], duration=config["default_duration"], location: str = None) -> dict:
+async def get_electricity_price(model: Union[Component, Device], location: str = None) -> dict:
+    """
+    Get the electricity price per MWh
+    """
     if not location:
         location = model.usage.usage_location.value
     if not is_valid_zone_code(location):
         return {"error": f"Invalid zone code '{location}'!"}
 
-    if hasattr(model.usage, "avg_power") and model.usage.avg_power is not None:
-        power_attr = model.usage.avg_power
-    elif hasattr(model.usage, "avgConsumption") and model.usage.avgConsumption is not None:
-        power_attr = model.usage.avgConsumption
-    else:
-        return {"error": "At least one of the attributes 'avgConsumption' or 'avg_power' must be set in the usage section of the model."}
-
-    min_val = getattr(power_attr, "min", power_attr)
-    avg_val = getattr(power_attr, "value", power_attr)
-    max_val = getattr(power_attr, "max", power_attr)
-
-    return {
-        "min": await compute_single_cost(min_val, duration, location),
-        "avg": await compute_single_cost(avg_val, duration, location),
-        "max": await compute_single_cost(max_val, duration, location),
-        "warnings": [
-            "Default energy prices were used in this calculation. The energy price default"
-            " is the average yearly energy price in the given location."
-        ]
-    }
+    return await ElectricityCostsProvider.get_price_for_country_elecmaps(location)
 
 
 def is_valid_iso3country(country_code: str) -> bool:
@@ -63,11 +47,14 @@ async def compute_single_cost(power: float, duration: int, location: str) -> dic
     @param location: The location of the electricity cost calculation in ISO3 letter codification
     """
     # Eur / MWh
+    power_in_mwh = power * (10**-6)
     realtime_price = await ElectricityCostsProvider.get_price_for_country_elecmaps(location)
     if realtime_price and realtime_price['value'] and realtime_price['unit']:
-        yearly_price = realtime_price['value'] * duration * (power * 10 ** -6)
+        price_per_mwh = realtime_price['value']
         return {
-            "price": yearly_price,
+            "price_per_mwh": price_per_mwh,
+            "duration": duration,
+            "price": power_in_mwh * price_per_mwh * duration,
             "unit": realtime_price['unit']
         }
     country_list = ElectricityCostsProvider.get_eic_countries()
@@ -77,8 +64,10 @@ async def compute_single_cost(power: float, duration: int, location: str) -> dic
             country_alpha3 = item.alpha_3
     if not country_alpha3:
         raise ValueError(f"Invalid zone code: {location}")
-    yearly_price = _electricity_prices_df.query(f"`ISO3 Code` == '{country_alpha3}'")["Price (EUR/MWhe)"].mean()
+    price_per_mwh = _electricity_prices_df.query(f"`ISO3 Code` == '{country_alpha3}'")["Price (EUR/MWhe)"].mean()
     return {
-        "price": yearly_price * duration * (power * 10 ** -6),
-        "unit": "EUR/MWh"
+        "price_per_mwh": price_per_mwh,
+        "duration": duration,
+        "price": power_in_mwh * price_per_mwh * duration,
+        "unit": "EUR"
     }
