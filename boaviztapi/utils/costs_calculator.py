@@ -87,8 +87,8 @@ class CostCalculator:
         consumed_mwh_per_hour = await self.get_avg_power_consumption(server)
         energy_costs = price_per_mwh * consumed_mwh_per_hour * self.duration
 
-        yearly_operational_costs = getattr(server.usage, "operatingCosts", 0.0)
-        operating_costs = yearly_operational_costs * (self.duration / 8765.81277) # Hours to years
+        hourly_operating_costs = getattr(server.usage, "operatingCosts", 0.0)
+        operating_costs = hourly_operating_costs * self.duration
         total_cost = energy_costs + operating_costs
 
         _currency = None
