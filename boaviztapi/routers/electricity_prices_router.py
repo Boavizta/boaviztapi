@@ -21,6 +21,10 @@ electricity_prices_router = APIRouter(
     tags=['electricity'],
 )
 
+def validate_temporal_granularity(temporal_granularity: str) -> str:
+    if temporal_granularity not in ["15_minutes", "hourly", "daily", "monthly", "quarterly", "yearly"]:
+        raise ValueError("Temporal granularity must be one of '15_minutes', 'hourly', 'daily', 'monthly', 'quarterly' or 'yearly'")
+    return temporal_granularity
 
 @electricity_prices_router.get('/available_countries', description=electricity_available_countries,
                                response_model=list[Country])
@@ -41,7 +45,7 @@ async def get_electricity_price(
             description="Zone code as defined in the ElectricityMaps API",
             examples=["AT"]
         ), AfterValidator(check_zone_code_in_electricity_maps)],
-        temporalGranularity: str = Query(examples=["5_minutes", "15_minutes", "hourly"], default="hourly")):
+        temporalGranularity: str = Query(examples=["15_minutes", "hourly"], default="hourly")):
     try:
         return await ElectricityCostsProvider.get_price_for_country_elecmaps(zone, temporalGranularity)
     except APIMissingValueError as e:
@@ -60,8 +64,15 @@ async def get_electricity_price(
                                            "updatedAt": "2025-11-18T12:21:16.175Z", "value": 124.81, "unit": "EUR/MWh",
                                            "source": "nordpool.com", "temporalGranularity": "hourly"}}}}
                                }})
-async def get_electricity_prices(currency: Annotated[str | None, AfterValidator(CurrencyConverter.validate_currency)] = None):
-    results = await ElectricityCostsProvider.get_cache_scheduler().get_results()
+async def get_electricity_prices(currency: Annotated[str | None, AfterValidator(CurrencyConverter.validate_currency)] = None,
+    temporal_granularity: Annotated[
+        str,
+        Query(
+            examples=["15_minutes", "hourly", "daily", "monthly", "quarterly", "yearly"]
+        ),
+        AfterValidator(validate_temporal_granularity)
+    ] = 'hourly'):
+    results = await ElectricityCostsProvider.get_cache_scheduler(temporal_granularity).get_results()
     if currency is None:
         return results
     results = deepcopy(results)
@@ -75,6 +86,8 @@ async def get_electricity_prices(currency: Annotated[str | None, AfterValidator(
             results[url]["unit"] = f"{target_amt.symbol}/{source_electricity_unit}"
         except ValueError:
             results[url]["warning"] = "Could not convert this price to the requested currency!"
+        except AttributeError:
+            results[url]["warning"] = "Could not find a value or a unit for this price!"
     return results
 
 @electricity_prices_router.get('/carbon_intensity', description=carbon_intensity,

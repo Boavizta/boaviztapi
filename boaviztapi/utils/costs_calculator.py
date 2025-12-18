@@ -120,7 +120,6 @@ class CostCalculator:
         """
         if server.usage.avgConsumption is not None:
             # Convert Wh to MWh
-            print("Average wattage from avgConsumption is returned: ", server.usage.avgConsumption * (10**-6))
             return server.usage.avgConsumption * (10**-6)
 
         impact = await get_server_impact_on_premise(
@@ -130,13 +129,11 @@ class CostCalculator:
         )
         if avg_wattage := impact["verbose"]["avg_power"]["value"]:
             # Convert W to MWh
-            print("Average wattage from verbose is returned: ", avg_wattage * (10**-6))
             return avg_wattage * (10**-6)
         else:
             # There is no average power consumption available, so we compute it ourselves using the primary energy output
             megajoules_usage = impact["impacts"]["pe"]["use"]["value"]
             mwh_used = megajoules_usage / 3600
-            print("Average power consumption computed from primary energy output: ", mwh_used)
             return mwh_used
 
     async def cloud_costs(self, server) -> CurrencyConvertedCostBreakdown:

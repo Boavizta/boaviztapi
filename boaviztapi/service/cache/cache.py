@@ -57,7 +57,8 @@ class CacheService:
         """
         # First, check if the database cache is not expired.
         cached_results = await self.get_results()
-        if cached_results and cached_results.get("expires_at"):
+
+        if cached_results and cached_results.get("expires_at") and cached_results.get("data"):
             expires_at = cached_results["expires_at"]
             if isinstance(expires_at, datetime):
                 expires_at = expires_at.replace(tzinfo=UTC)
@@ -120,7 +121,10 @@ class CacheService:
         It first tries to get the results from the memory cache. If it fails, it tries to get the results from the database.
         """
         if self.db_cache is None:
-            raise RuntimeError("CacheService is not fully initialized. Please ensure `startup()` is called first.")
+            self._logger.info("Database cache not initialized, lazily trying to start the cache service")
+            await self.startup()
+            if self.db_cache is None:
+                raise RuntimeError("The database cache was not initialized on application startup and lazy startup failed.")
 
         if self.memory_cache:
            return self.memory_cache
