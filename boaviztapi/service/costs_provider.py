@@ -52,10 +52,12 @@ class ElectricityCostsProvider(ElectricityMapsService):
 
         Raises:
             APIAuthenticationError: When the API key is not authorized to access this resource
-            APIError: When the API returns an unexpected response status code or it cannot be reached
+            APIError: When the API returns an unexpected response status code, or it cannot be reached
         """
+        if temporalGranularity.lower() != 'hourly':
+            raise APIError("Please use the /prices endpoint for other temporal granularity parameters than 'hourly'.")
         url = f"{ElectricityMapsService.base_url}/price-day-ahead/latest?zone={zone}&temporalGranularity={temporalGranularity}"
-        cached_results = await ElectricityCostsProvider.get_cache_scheduler().get_results()
+        cached_results = await ElectricityCostsProvider.get_cache_scheduler(temporalGranularity).get_results()
         if cached_results and url in cached_results:
             return cached_results[url]
 
