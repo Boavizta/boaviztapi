@@ -75,8 +75,8 @@ def test_round_based_on_min_max_corner_cases():
     #  min == max : must retun the original value without any rounding
     assert rd.round_based_on_min_max(1, 1, 1, 1) == 1
     #  precision == 0 : must raise ValueError
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(ValueError):
         rd.round_based_on_min_max(1, 1, 1, 0)
     # min > max
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(ValueError):
         rd.round_based_on_min_max(5, 10, 5, 10)

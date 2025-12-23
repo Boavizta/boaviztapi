@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 
 import requests
-from shutil import copyfile
-from csv import reader, writer
-from pprint import pprint
 import json
 import pandas as pd
 import os

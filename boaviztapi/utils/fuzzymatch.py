@@ -16,7 +16,8 @@ def fuzzymatch_attr_from_cpu_name(cpu_name: str, df: pd.DataFrame) -> Union[
     else:
         best = df.iloc[score.idxmax()]
         best = best.mask(best.isnull(), None)  # replace all NaN by None
-        safe_int = lambda x: x if x is None else int(x)  # float to int but keep None
+        def safe_int(x):
+            return x if x is None else int(x)  # float to int but keep None
 
         return (
             best["name"],  # .name is reserved by pandas for indexes

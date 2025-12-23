@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-import pandas as pd
 import yaml
 from boaviztapi import data_dir
 

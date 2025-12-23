@@ -13,10 +13,3 @@ repos:
         entry: venv/bin/ruff
         args: [check, --force-exclude, --fix, --exit-non-zero-on-fix]
         types: ["python"]
-
-      - id: ruff-format
-        name: ruff-format
-        language: system
-        entry: venv/bin/ruff
-        args: [format, --check]
-        types: ["python"]

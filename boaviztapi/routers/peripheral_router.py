@@ -1,4 +1,4 @@
-from typing import List, Union, Optional
+from typing import List, Optional
 from fastapi import APIRouter, Query, Body
 
 from boaviztapi import config

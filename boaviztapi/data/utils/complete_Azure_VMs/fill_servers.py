@@ -71,7 +71,7 @@ def compute_ram_sticks(ram_total_capacity):
         if stick_capacity < 64:
             stick_capacity = stick_capacity * 2
         else:
-            break;
+            break
         nb_of_sticks = ram_total_capacity / stick_capacity
     return nb_of_sticks, stick_capacity
 

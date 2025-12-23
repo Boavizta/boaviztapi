@@ -49,7 +49,19 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 line-length = 88
-target-version = "py312"
+target-version = "py313"
+force-exclude = true
+
+[tool.ruff.lint]
+# TODO - uncomment these ignores one by one and fix in separate PRs
+ignore = [
+    "E701", # Multiple statements on one line
+    "E721", # Use is and is not for type comparisons
+    "F401", # Exports unused
+    "F403", # Unable to detect undefined names
+    "F405", # Potentially missing imports
+    "F811", # Redefinition of unused
+]
 
 [tool.ruff.format]
 quote-style = "double"
