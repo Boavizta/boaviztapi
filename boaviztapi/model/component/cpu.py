@@ -141,8 +141,8 @@ class ComponentCPU(Component):
                 name_max, manufacturer_max, family_max, model_range_max, tdp_max, cores_max, threads_max, die_size_max, die_size_source_max, source_max = cpu_attributes_max if (
                         cpu_attributes_max is not None) else (None, None, None, None, None, None, None, None, None, None)
             else:
-                name_min, manufacturer_min, family_min, model_range_min, tdp_min, cores_min, threads_min, die_size_min, die_size_source_min, source_min = name, manufacturer, family, model_range, tdp, cores, threads, die_size, die_size_source, source
-                name_max, manufacturer_max, family_max, model_range_max, tdp_max, cores_max, threads_max, die_size_max, die_size_source_max, source_max = name, manufacturer, family, model_range, tdp, cores, threads, die_size, die_size_source, source
+                name_min, manufacturer_min, family_min, model_range_min, tdp_min, cores_min, threads_min, die_size_min, _die_size_source_min, _source_min = name, manufacturer, family, model_range, tdp, cores, threads, die_size, die_size_source, source
+                name_max, manufacturer_max, family_max, model_range_max, tdp_max, cores_max, threads_max, die_size_max, _die_size_source_max, _source_max = name, manufacturer, family, model_range, tdp, cores, threads, die_size, die_size_source, source
 
             if name is not None:
                 self.name.set_completed(name, min=name_min, max=name_max, source="fuzzy match")

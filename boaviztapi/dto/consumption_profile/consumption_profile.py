@@ -1,7 +1,5 @@
-import os
 from typing import List, Tuple
 
-import pandas as pd
 
 from boaviztapi.dto import BaseDTO
 from boaviztapi.dto.component import CPU

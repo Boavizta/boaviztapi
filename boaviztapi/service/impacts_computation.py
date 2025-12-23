@@ -1,7 +1,6 @@
 from typing import Tuple, Union, Optional
 
 from boaviztapi import config
-from boaviztapi.dto.component import Motherboard
 from boaviztapi.model import ComputedImpacts
 from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.model.services.cloud_instance import Service, ServiceCloudInstance

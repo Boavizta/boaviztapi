@@ -62,30 +62,26 @@ $ uvicorn boaviztapi.main:app --host=localhost --port 5000
 
 ### Prerequisite
 
-Python 3 mandatory, Python >=3.10 and [Poetry](https://python-poetry.org/) strongly recommended.
+- Python >=3.12
+- [Poetry](https://python-poetry.org/) (see the [install instructions](https://python-poetry.org/docs/))
+- `make`
 
 ### Setup poetry
 
-Install poetry (see the [install instructions](https://python-poetry.org/docs/) for more details):
-
-```bash
-$ pip3 install poetry
-```
-
-Install dependencies and create a Python virtual environment:
+Install dependencies and check the environment is set up correctly:
 
 ```bash
 $ make install
-$ poetry shell
+$ make test
+$ make lint
 ```
 
 ### Launch a development server
 
-**Once in the poetry environment**
-
 The development server uses [uvicorn](https://www.uvicorn.org/) and [FastAPI](https://fastapi.tiangolo.com/). You can launch the development server with the `uvicorn` CLI.
 
 ```bash
+$ poetry shell
 $ uvicorn boaviztapi.main:app --host=localhost --port 5000
 ```
 

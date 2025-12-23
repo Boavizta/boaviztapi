@@ -1,8 +1,3 @@
-import filecmp
-import shutil
-
-import pytest
-
 from docs.utils.script_tutorial_output_automation import *
 
 
@@ -41,10 +36,10 @@ def test_execute_curl():
 
 
 def test_replace_curl_command():
-    curl_commands = ["""curl -X 'POST' 
-  '{{ endpoint }}/v1/component/cpu?verbose=false&allocation=TOTAL' 
-  -H 'accept: application/json' 
-  -H 'Content-Type: application/json' 
+    curl_commands = ["""curl -X 'POST'
+  '{{ endpoint }}/v1/component/cpu?verbose=false&allocation=TOTAL'
+  -H 'accept: application/json'
+  -H 'Content-Type: application/json'
   -d '{
   "name": "intel xeon gold 6134"
 }'"""]

@@ -14,7 +14,7 @@ from boaviztapi.routers.openapi_doc.descriptions import cloud_provider_descripti
 from boaviztapi.routers.openapi_doc.examples import cloud_example
 from boaviztapi.service.archetype import get_cloud_instance_archetype, get_device_archetype_lst
 from boaviztapi.service.impacts_computation import compute_impacts
-from boaviztapi.service.verbose import verbose_device, verbose_cloud
+from boaviztapi.service.verbose import verbose_cloud
 
 cloud_router = APIRouter(
     prefix='/v1/cloud',
