@@ -1,6 +1,4 @@
 from boaviztapi.model.device import DeviceServer
-from boaviztapi.model.device.userTerminal import DeviceLaptop, DeviceDesktop, DeviceTablet, DeviceSmartphone, \
-    DeviceTelevision, DeviceSmartWatch, DeviceBox, DeviceUsbStick, DeviceExternalSSD, DeviceExternalHDD, DeviceMonitor
 from boaviztapi.model.impact import IMPACT_CRITERIAS
 
 if __name__ == '__main__':
@@ -16,7 +14,7 @@ if __name__ == '__main__':
         d_pro.type.value = "pro"
 
     if type :
-        str = str + f""
+        str = str + ""
 
         str = str + f"## {d_perso.NAME.lower()}\n\n{d_perso.NAME.lower()} has two ```types```: ```pro``` and ```perso```.\n\n### Embedded impacts\n\n| Criteria | Unit | pro | perso |\n|----------|------|-------|------|\n"
 

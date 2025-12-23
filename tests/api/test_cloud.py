@@ -1017,7 +1017,7 @@ async def test_all_instances():
                             transport = ASGITransport(app=app)
                             async with AsyncClient(transport=transport, base_url="http://test") as ac:
                                 try:
-                                    res = await ac.get(url)
+                                    await ac.get(url)
                                 except Exception as e:
                                     pytest.fail(e)
 

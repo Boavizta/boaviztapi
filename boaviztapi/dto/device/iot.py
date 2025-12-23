@@ -5,7 +5,7 @@ from boaviztapi.dto.device import DeviceDTO
 from boaviztapi.dto.usage import Usage
 from boaviztapi.dto.usage.usage import mapper_usage
 from boaviztapi.model.component.functional_block import get_functional_block
-from boaviztapi.model.device.iot import DeviceIoT, ComponentFunctionalBlock
+from boaviztapi.model.device.iot import DeviceIoT
 from boaviztapi.service.archetype import get_arch_component
 
 
