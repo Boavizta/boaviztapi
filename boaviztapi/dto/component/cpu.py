@@ -18,9 +18,14 @@ class CPU(ComponentDTO):
     name: Optional[str] = None
     tdp: Optional[int] = None
 
-def mapper_cpu(cpu_dto: CPU, archetype=get_component_archetype(config["default_cpu"], "cpu")) -> ComponentCPU:
+
+def mapper_cpu(
+    cpu_dto: CPU, archetype=get_component_archetype(config["default_cpu"], "cpu")
+) -> ComponentCPU:
     cpu_component = ComponentCPU(archetype=archetype)
-    cpu_component.usage = mapper_usage(cpu_dto.usage or Usage(), archetype=archetype.get("USAGE"))
+    cpu_component.usage = mapper_usage(
+        cpu_dto.usage or Usage(), archetype=archetype.get("USAGE")
+    )
 
     if cpu_dto.units is not None:
         cpu_component.units.set_input(cpu_dto.units)
@@ -49,7 +54,7 @@ def mapper_cpu(cpu_dto: CPU, archetype=get_component_archetype(config["default_c
             die_size_per_core,
             source="INPUT : die_size / core_units",
             min=die_size_per_core,
-            max=die_size_per_core
+            max=die_size_per_core,
         )
 
     return cpu_component

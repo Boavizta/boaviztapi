@@ -31,7 +31,7 @@ from fastapi.responses import HTMLResponse
 
 # Serverless frameworks adds a 'stage' prefix to the route used to serve applications
 # We have to manage it to expose openapi doc on aws and generate proper links.
-stage = os.environ.get('STAGE', None)
+stage = os.environ.get("STAGE", None)
 openapi_prefix = f"/{stage}" if stage else "/"
 app = FastAPI(root_path=openapi_prefix)  # Here is the magic
 version = get_version_from_pyproject()
@@ -50,10 +50,10 @@ async def catch_exceptions_middleware(request: Request, call_next):
             e.__suppress_context__ = True
 
         _logger.exception(str(e), exc_info=e)
-        return Response('Internal Server Error', status_code=500)
+        return Response("Internal Server Error", status_code=500)
 
 
-app.middleware('http')(catch_exceptions_middleware)
+app.middleware("http")(catch_exceptions_middleware)
 
 app.add_middleware(
     CORSMiddleware,
@@ -71,15 +71,19 @@ app.include_router(iot)
 app.include_router(consumption_profile)
 app.include_router(utils_router)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run('main:app', host='localhost', port=5000, reload=True)
+    uvicorn.run("main:app", host="localhost", port=5000, reload=True)
 
 
 @app.on_event("startup")
 def my_schema():
-    intro = open(os.path.join(os.path.dirname(__file__), 'routers/openapi_doc/intro_openapi.md'), 'r', encoding='utf-8')
+    intro = open(
+        os.path.join(os.path.dirname(__file__), "routers/openapi_doc/intro_openapi.md"),
+        "r",
+        encoding="utf-8",
+    )
     openapi_schema = get_openapi(
         title="BOAVIZTAPI - DEMO",
         version=version,
@@ -126,7 +130,7 @@ async def welcome_page():
             %s
         </body>
     </html>
-    """ % os.getenv('SPECIAL_MESSAGE', '')
+    """ % os.getenv("SPECIAL_MESSAGE", "")
     return HTMLResponse(content=html_content, status_code=200)
 
 

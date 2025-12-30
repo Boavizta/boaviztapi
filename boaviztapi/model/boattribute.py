@@ -13,7 +13,6 @@ class Status(Enum):
 
 class Boattribute:
     def __init__(self, **kwargs):
-
         self._min = None
         self._max = None
         self._value = None
@@ -68,11 +67,20 @@ class Boattribute:
 
     def to_json(self):
         json = {"value": self._value, "status": self.status.value}
-        if self.unit: json['unit'] = self.unit
-        if self.source: json['source'] = self.source
-        if (self._min or self._min==0) and (self.is_default() or self.is_completed() or self.is_archetype()): json['min'] = self._min
-        if (self._max or self._max==0) and (self.is_default() or self.is_completed() or self.is_archetype()): json['max'] = self._max
-        if self.warnings: json['warnings'] = self.warnings
+        if self.unit:
+            json["unit"] = self.unit
+        if self.source:
+            json["source"] = self.source
+        if (self._min or self._min == 0) and (
+            self.is_default() or self.is_completed() or self.is_archetype()
+        ):
+            json["min"] = self._min
+        if (self._max or self._max == 0) and (
+            self.is_default() or self.is_completed() or self.is_archetype()
+        ):
+            json["max"] = self._max
+        if self.warnings:
+            json["warnings"] = self.warnings
 
         return json
 
@@ -100,7 +108,9 @@ class Boattribute:
     def set_input(self, value: Any, *, source: Optional[str] = None) -> None:
         self.__set_value_and_status(value, Status.INPUT, source, min=value, max=value)
 
-    def set_completed(self, value: Any, *, source: Optional[str] = None, min = None, max = None) -> None:
+    def set_completed(
+        self, value: Any, *, source: Optional[str] = None, min=None, max=None
+    ) -> None:
         self.__set_value_and_status(value, Status.COMPLETED, source, min=min, max=max)
 
     def set_default(self, value: Any, *, source: Optional[str] = None) -> None:
@@ -112,7 +122,14 @@ class Boattribute:
     def set_archetype(self, value: Any, *, source: Optional[str] = None) -> None:
         self.__set_value_and_status(value, Status.ARCHETYPE, source)
 
-    def __set_value_and_status(self, value: Any, status: Status, source: str, min:float = None, max:float=None) -> None:
+    def __set_value_and_status(
+        self,
+        value: Any,
+        status: Status,
+        source: str,
+        min: float = None,
+        max: float = None,
+    ) -> None:
         self._value = value
         self.status = status
         if source is not None:
@@ -124,5 +141,3 @@ class Boattribute:
 
     def has_value(self):
         return (self._value is not None) or (self.default is not None)
-
-

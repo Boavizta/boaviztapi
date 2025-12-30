@@ -17,9 +17,12 @@ from .util import (
     UNCERTAINTY_WARNING,
 )
 
-cloud_path =  os.path.join(os.path.dirname(__file__), "../../boaviztapi/data/archetypes/cloud/")
+cloud_path = os.path.join(
+    os.path.dirname(__file__), "../../boaviztapi/data/archetypes/cloud/"
+)
 
 pytest_plugins = ("pytest_asyncio",)
+
 
 @dataclass
 class CloudTest:
@@ -547,7 +550,7 @@ async def test_verbose_output_with_empty_usage():
                 "units": {"max": 2.0, "min": 2.0, "status": "ARCHETYPE", "value": 2.0},
                 "usage_location": {
                     "status": "DEFAULT",
-                    "unit": "CodSP3 - NCS Country Codes " "- NATO",
+                    "unit": "CodSP3 - NCS Country Codes - NATO",
                     "value": "EEE",
                 },
                 "use_time_ratio": {
@@ -716,7 +719,7 @@ async def test_verbose_output_with_empty_usage():
                 },
                 "impacts": {
                     "adp": {
-                        "description": "Use of minerals and " "fossil ressources",
+                        "description": "Use of minerals and fossil ressources",
                         "embedded": {
                             "max": 0.05899,
                             "min": 0.03047,
@@ -783,7 +786,7 @@ async def test_verbose_output_with_empty_usage():
                 },
                 "usage_location": {
                     "status": "DEFAULT",
-                    "unit": "CodSP3 - NCS Country Codes " "- NATO",
+                    "unit": "CodSP3 - NCS Country Codes - NATO",
                     "value": "EEE",
                 },
                 "use_time_ratio": {
@@ -813,7 +816,7 @@ async def test_verbose_output_with_empty_usage():
                 "duration": {"unit": "hours", "value": 35040.0},
                 "impacts": {
                     "adp": {
-                        "description": "Use of minerals and " "fossil ressources",
+                        "description": "Use of minerals and fossil ressources",
                         "embedded": {
                             "max": 0.003464,
                             "min": 0.003242,
@@ -826,7 +829,7 @@ async def test_verbose_output_with_empty_usage():
                         "use": "not implemented",
                     },
                     "gwp": {
-                        "description": "Total climate " "change",
+                        "description": "Total climate change",
                         "embedded": {
                             "max": 94.33,
                             "min": 86.56,
@@ -839,7 +842,7 @@ async def test_verbose_output_with_empty_usage():
                         "use": "not implemented",
                     },
                     "pe": {
-                        "description": "Consumption of " "primary energy",
+                        "description": "Consumption of primary energy",
                         "embedded": {
                             "max": 1167.0,
                             "min": 1071.0,
@@ -1000,29 +1003,33 @@ async def test_empty_usage_scw_dev1_l():
 @pytest.mark.asyncio
 async def test_all_instances():
     try:
-        with open(f"{cloud_path}/providers.csv", 'r') as f:
+        with open(f"{cloud_path}/providers.csv", "r") as f:
             reader = csv.DictReader(f)
             for row in reader:
-                provider_name = row.get('provider.name')
+                provider_name = row.get("provider.name")
                 provider_csv_path = f"{cloud_path}/{provider_name}.csv"
                 try:
-                    with open(provider_csv_path, 'r') as f:
+                    with open(provider_csv_path, "r") as f:
                         reader = csv.DictReader(f)
                         for row in reader:
-                            instance = row.get('id')
+                            instance = row.get("id")
                             request = CloudInstanceRequest(provider_name, instance)
 
                             url = request.to_url()
 
                             transport = ASGITransport(app=app)
-                            async with AsyncClient(transport=transport, base_url="http://test") as ac:
+                            async with AsyncClient(
+                                transport=transport, base_url="http://test"
+                            ) as ac:
                                 try:
                                     await ac.get(url)
                                 except Exception as e:
                                     pytest.fail(e)
 
                 except FileNotFoundError:
-                    pytest.fail(f"CSV file for provider '{provider_name}' not found: {provider_csv_path}")
+                    pytest.fail(
+                        f"CSV file for provider '{provider_name}' not found: {provider_csv_path}"
+                    )
     except FileNotFoundError:
         pytest.fail(f"provider file not found : {cloud_path}/providers.csv")
 

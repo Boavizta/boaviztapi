@@ -13,11 +13,7 @@ class Device(Assessable):
         super().__init__(**kwargs)
         self.archetype = archetype
         self.type = None
-        self.units = Boattribute(
-            default=1,
-            min=1,
-            max=1
-        )
+        self.units = Boattribute(default=1, min=1, max=1)
         self._usage = None
         self._impacts = {}
 

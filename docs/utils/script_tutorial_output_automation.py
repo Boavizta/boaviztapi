@@ -19,7 +19,9 @@ def change_json_to_tempvalue(read_file: str, index_to_change):
     regex_to_find_json_in_md = r"```json\w*[^`]+```*"
     json_to_change = read_file[index_to_change:]
     file_until_json = read_file[:index_to_change]
-    json_to_change = re.sub(regex_to_find_json_in_md, "changeThis", json_to_change, count=1)
+    json_to_change = re.sub(
+        regex_to_find_json_in_md, "changeThis", json_to_change, count=1
+    )
     return f"{file_until_json}{json_to_change}"
 
 
@@ -30,7 +32,7 @@ def find_curl_commands(read_file: str):
     for bash_command in result:
         bash_found = bash_command.group()
         if "curl" in bash_found:
-            bash_found = re.sub(r'^```bash\n|\n```|#.*\n', '', bash_found)
+            bash_found = re.sub(r"^```bash\n|\n```|#.*\n", "", bash_found)
             curl_command.append([bash_found, bash_command.end()])
     return curl_command
 
@@ -57,13 +59,20 @@ def replace_placeholder_by_json(curl_results: str, file_to_replace: str):
     return file_to_replace.replace("changeThis", curl_results, 1)
 
 
-def add_all_json_results_to_md(found_curl_commands: typing.List[str], read_file_to_replace: str, index_of_curl_commands:
-typing.List[str]):
+def add_all_json_results_to_md(
+    found_curl_commands: typing.List[str],
+    read_file_to_replace: str,
+    index_of_curl_commands: typing.List[str],
+):
     for i in range(0, len(found_curl_commands)):
-        read_file_to_replace = change_json_to_tempvalue(read_file_to_replace, int(index_of_curl_commands[i]))
+        read_file_to_replace = change_json_to_tempvalue(
+            read_file_to_replace, int(index_of_curl_commands[i])
+        )
         curl_result = execute_curl(found_curl_commands[i])
         curl_result = parse_result_to_json(curl_result)
-        read_file_to_replace = replace_placeholder_by_json(curl_result, read_file_to_replace)
+        read_file_to_replace = replace_placeholder_by_json(
+            curl_result, read_file_to_replace
+        )
     return read_file_to_replace
 
 
@@ -72,13 +81,17 @@ def change_one_read_file(file_content: str):
     list_of_curl_commands = [curl_commands[0] for curl_commands in found_curl_commands]
     index_curl_commands = [index[1] for index in found_curl_commands]
     found_curl_commands = replace_curl_with_localhost(list_of_curl_commands)
-    return add_all_json_results_to_md(found_curl_commands, file_content, index_curl_commands)
+    return add_all_json_results_to_md(
+        found_curl_commands, file_content, index_curl_commands
+    )
 
 
 def generate_tutorial_output(directory_to_check: str):
-    list_of_files = [file for file in os.listdir(directory_to_check) if file.endswith(".md")]
+    list_of_files = [
+        file for file in os.listdir(directory_to_check) if file.endswith(".md")
+    ]
     for file_name in list_of_files:
-        with(open(f"{directory_to_check}/{file_name}", "r+") as file):
+        with open(f"{directory_to_check}/{file_name}", "r+") as file:
             changed_file = change_one_read_file(file.read())
             file.seek(0)
             file.write(changed_file)
@@ -86,7 +99,7 @@ def generate_tutorial_output(directory_to_check: str):
 
 
 if __name__ == "__main__":
-    config = Config(app=app, host='localhost', port=5000, reload=True)
+    config = Config(app=app, host="localhost", port=5000, reload=True)
     server = UvicornServerThreaded(config=config)
     with server.run_in_thread():
         # run the script

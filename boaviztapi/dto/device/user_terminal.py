@@ -4,8 +4,21 @@ from boaviztapi.dto.device import DeviceDTO
 from boaviztapi.dto.usage import Usage
 from boaviztapi.dto.usage.usage import mapper_usage
 from boaviztapi.model.device import Device
-from boaviztapi.model.device.userTerminal import DeviceLaptop, DeviceDesktop, DeviceTablet, DeviceSmartphone, \
-    DeviceTelevision, DeviceBox, DeviceUsbStick, DeviceSmartWatch, DeviceExternalHDD, DeviceMonitor, DeviceExternalSSD, DeviceVrController, DeviceVrHeadset
+from boaviztapi.model.device.userTerminal import (
+    DeviceLaptop,
+    DeviceDesktop,
+    DeviceTablet,
+    DeviceSmartphone,
+    DeviceTelevision,
+    DeviceBox,
+    DeviceUsbStick,
+    DeviceSmartWatch,
+    DeviceExternalHDD,
+    DeviceMonitor,
+    DeviceExternalSSD,
+    DeviceVrController,
+    DeviceVrHeadset,
+)
 from boaviztapi.service.archetype import get_arch_component
 
 
@@ -56,11 +69,14 @@ class Monitor(UserTerminal):
 class ExternalSSD(UserTerminal):
     pass
 
+
 class VrHeadset(UserTerminal):
     type: Optional[str] = None
 
+
 class VrController(UserTerminal):
     pass
+
 
 def mapper_user_terminal(user_terminal_dto: UserTerminal, archetype) -> Device:
     if type(user_terminal_dto) == Laptop:
@@ -97,6 +113,8 @@ def mapper_user_terminal(user_terminal_dto: UserTerminal, archetype) -> Device:
         raise Exception("User Terminal Type not found")
 
     if user_terminal_dto.usage is not None:
-        model.usage = mapper_usage(user_terminal_dto.usage, archetype=get_arch_component(archetype, "USAGE"))
+        model.usage = mapper_usage(
+            user_terminal_dto.usage, archetype=get_arch_component(archetype, "USAGE")
+        )
 
     return model

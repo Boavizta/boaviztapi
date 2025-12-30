@@ -4,7 +4,11 @@ from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.device import Device
 from boaviztapi.model.usage import ModelUsage
-from boaviztapi.service.archetype import get_arch_value, get_user_terminal_archetype, get_arch_component
+from boaviztapi.service.archetype import (
+    get_arch_value,
+    get_user_terminal_archetype,
+    get_arch_component,
+)
 
 
 class EndUserDevice(Device):
@@ -16,7 +20,9 @@ class EndUserDevice(Device):
     @property
     def usage(self) -> ModelUsage:
         if self._usage is None:
-            self._usage = ModelUsage(archetype=get_arch_component(self.archetype, "USAGE"))
+            self._usage = ModelUsage(
+                archetype=get_arch_component(self.archetype, "USAGE")
+            )
         return self._usage
 
     @usage.setter
@@ -31,104 +37,151 @@ class EndUserDevice(Device):
 class DeviceLaptop(EndUserDevice, ABC):
     NAME = "LAPTOP"
 
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_laptop"]), **kwargs):
+    def __init__(
+        self, archetype=get_user_terminal_archetype(config["default_laptop"]), **kwargs
+    ):
         super().__init__(archetype=archetype, **kwargs)
         self.type = Boattribute(
-            default=get_arch_value(archetype, 'type', 'default'),
-            min=get_arch_value(archetype, 'type', 'min'),
-            max=get_arch_value(archetype, 'type', 'max')
+            default=get_arch_value(archetype, "type", "default"),
+            min=get_arch_value(archetype, "type", "min"),
+            max=get_arch_value(archetype, "type", "max"),
         )
+
 
 class DeviceDesktop(EndUserDevice, ABC):
     NAME = "DESKTOP"
 
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_desktop"]), **kwargs):
+    def __init__(
+        self, archetype=get_user_terminal_archetype(config["default_desktop"]), **kwargs
+    ):
         super().__init__(archetype=archetype, **kwargs)
         self.type = Boattribute(
-            default=get_arch_value(archetype, 'type', 'default'),
-            min=get_arch_value(archetype, 'type', 'min'),
-            max=get_arch_value(archetype, 'type', 'max')
+            default=get_arch_value(archetype, "type", "default"),
+            min=get_arch_value(archetype, "type", "min"),
+            max=get_arch_value(archetype, "type", "max"),
         )
+
 
 class DeviceTablet(EndUserDevice, ABC):
     NAME = "TABLET"
 
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_tablet"]), **kwargs):
+    def __init__(
+        self, archetype=get_user_terminal_archetype(config["default_tablet"]), **kwargs
+    ):
         super().__init__(archetype=archetype, **kwargs)
 
 
 class DeviceSmartphone(EndUserDevice, ABC):
     NAME = "SMARTPHONE"
 
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_smartphone"]), **kwargs):
+    def __init__(
+        self,
+        archetype=get_user_terminal_archetype(config["default_smartphone"]),
+        **kwargs,
+    ):
         super().__init__(archetype=archetype, **kwargs)
 
 
 class DeviceTelevision(EndUserDevice, ABC):
     NAME = "TELEVISION"
 
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_television"]), **kwargs):
+    def __init__(
+        self,
+        archetype=get_user_terminal_archetype(config["default_television"]),
+        **kwargs,
+    ):
         super().__init__(archetype=archetype, **kwargs)
         self.type = Boattribute(
-            default=get_arch_value(archetype, 'type', 'default'),
-            min=get_arch_value(archetype, 'type', 'min'),
-            max=get_arch_value(archetype, 'type', 'max')
+            default=get_arch_value(archetype, "type", "default"),
+            min=get_arch_value(archetype, "type", "min"),
+            max=get_arch_value(archetype, "type", "max"),
         )
+
 
 class DeviceSmartWatch(EndUserDevice, ABC):
     NAME = "SMARTWATCH"
 
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_smartwatch"]), **kwargs):
+    def __init__(
+        self,
+        archetype=get_user_terminal_archetype(config["default_smartwatch"]),
+        **kwargs,
+    ):
         super().__init__(archetype=archetype, **kwargs)
 
 
 class DeviceBox(EndUserDevice, ABC):
     NAME = "BOX"
 
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_box"]), **kwargs):
+    def __init__(
+        self, archetype=get_user_terminal_archetype(config["default_box"]), **kwargs
+    ):
         super().__init__(archetype=archetype, **kwargs)
 
 
 class DeviceUsbStick(EndUserDevice, ABC):
     NAME = "USB_STICK"
 
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_usb_stick"]), **kwargs):
+    def __init__(
+        self,
+        archetype=get_user_terminal_archetype(config["default_usb_stick"]),
+        **kwargs,
+    ):
         super().__init__(archetype=archetype, **kwargs)
 
 
 class DeviceExternalSSD(EndUserDevice, ABC):
     NAME = "EXTERNAL_SSD"
 
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_external_ssd"]), **kwargs):
+    def __init__(
+        self,
+        archetype=get_user_terminal_archetype(config["default_external_ssd"]),
+        **kwargs,
+    ):
         super().__init__(archetype=archetype, **kwargs)
 
 
 class DeviceExternalHDD(EndUserDevice, ABC):
     NAME = "EXTERNAL_HDD"
 
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_external_hdd"]), **kwargs):
+    def __init__(
+        self,
+        archetype=get_user_terminal_archetype(config["default_external_hdd"]),
+        **kwargs,
+    ):
         super().__init__(archetype=archetype, **kwargs)
 
 
 class DeviceMonitor(EndUserDevice, ABC):
     NAME = "MONITOR"
 
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_monitor"]), **kwargs):
+    def __init__(
+        self, archetype=get_user_terminal_archetype(config["default_monitor"]), **kwargs
+    ):
         super().__init__(archetype=archetype, **kwargs)
+
 
 class DeviceVrHeadset(EndUserDevice, ABC):
     NAME = "VR_HEADSET"
 
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_vr_headset"]), **kwargs):
+    def __init__(
+        self,
+        archetype=get_user_terminal_archetype(config["default_vr_headset"]),
+        **kwargs,
+    ):
         super().__init__(archetype=archetype, **kwargs)
         self.type = Boattribute(
-            default=get_arch_value(archetype, 'type', 'default'),
-            min=get_arch_value(archetype, 'type', 'min'),
-            max=get_arch_value(archetype, 'type', 'max')
+            default=get_arch_value(archetype, "type", "default"),
+            min=get_arch_value(archetype, "type", "min"),
+            max=get_arch_value(archetype, "type", "max"),
         )
+
 
 class DeviceVrController(EndUserDevice, ABC):
     NAME = "VR_CONTROLLER"
 
-    def __init__(self, archetype=get_user_terminal_archetype(config["default_vr_controller"]), **kwargs):
+    def __init__(
+        self,
+        archetype=get_user_terminal_archetype(config["default_vr_controller"]),
+        **kwargs,
+    ):
         super().__init__(archetype=archetype, **kwargs)

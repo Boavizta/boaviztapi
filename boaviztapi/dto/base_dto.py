@@ -5,4 +5,5 @@ class BaseDTO(BaseModel):
     """
     BaseDTO is simple BaseModel object
     """
+
     pass

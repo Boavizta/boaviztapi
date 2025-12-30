@@ -12,9 +12,9 @@ class Component(Assessable):
         self.impact_factor = {}
         self.archetype = archetype
         self.units = Boattribute(
-            default=get_arch_value(archetype, 'units', 'default', default=1),
-            min=get_arch_value(archetype, 'units', 'min'),
-            max=get_arch_value(archetype, 'units', 'max')
+            default=get_arch_value(archetype, "units", "default", default=1),
+            min=get_arch_value(archetype, "units", "min"),
+            max=get_arch_value(archetype, "units", "max"),
         )
         self._usage = None
 
@@ -25,7 +25,9 @@ class Component(Assessable):
     @property
     def usage(self) -> ModelUsage:
         if self._usage is None:
-            self._usage = ModelUsage(archetype=get_arch_component(self.archetype, "USAGE"))
+            self._usage = ModelUsage(
+                archetype=get_arch_component(self.archetype, "USAGE")
+            )
         return self._usage
 
     @usage.setter

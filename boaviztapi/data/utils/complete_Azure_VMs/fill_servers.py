@@ -5,37 +5,43 @@ from pprint import pprint
 import re
 from math import ceil
 
-target_data = pd.DataFrame({
-    "id": [],
-    "manufacturer": [],
-    "CASE.case_type": [],
-    "CPU.units": [],
-    "CPU.core_units": [],
-    "CPU.die_size_per_core": [],
-    #"CPU.tdp": [],
-    "CPU.name": [],
-    "CPU.vcpu": [],
-    "RAM.units": [],
-    "RAM.capacity": [],
-    "SSD.units": [],
-    "SSD.capacity": [],
-    "HDD.units": [],
-    "HDD.capacity": [],
-    "GPU.units": [],
-    "GPU.name": [],
-    "GPU.memory_capacity": [],
-    "POWER_SUPPLY.units": [],
-    "POWER_SUPPLY.unit_weight": [],
-    "USAGE.time_workload": [],
-    "USAGE.use_time_ratio": [],
-    "USAGE.hours_life_time": [],
-    "USAGE.other_consumption_ratio": [],
-    "WARNINGS": []
-})
+target_data = pd.DataFrame(
+    {
+        "id": [],
+        "manufacturer": [],
+        "CASE.case_type": [],
+        "CPU.units": [],
+        "CPU.core_units": [],
+        "CPU.die_size_per_core": [],
+        # "CPU.tdp": [],
+        "CPU.name": [],
+        "CPU.vcpu": [],
+        "RAM.units": [],
+        "RAM.capacity": [],
+        "SSD.units": [],
+        "SSD.capacity": [],
+        "HDD.units": [],
+        "HDD.capacity": [],
+        "GPU.units": [],
+        "GPU.name": [],
+        "GPU.memory_capacity": [],
+        "POWER_SUPPLY.units": [],
+        "POWER_SUPPLY.unit_weight": [],
+        "USAGE.time_workload": [],
+        "USAGE.use_time_ratio": [],
+        "USAGE.hours_life_time": [],
+        "USAGE.other_consumption_ratio": [],
+        "WARNINGS": [],
+    }
+)
 
-source_columns = ["Dedicated Host SKUs (VM series and Host Type)",
-            "Available vCPUs","Available RAM","CPU",
-            "Pay as you go"]
+source_columns = [
+    "Dedicated Host SKUs (VM series and Host Type)",
+    "Available vCPUs",
+    "Available RAM",
+    "CPU",
+    "Pay as you go",
+]
 
 source_dedicated_hosts_file = "cleaned_dedicated_hosts.csv"
 source_cpu_spec_file = "../../crowdsourcing/cpu_specs.csv"
@@ -49,6 +55,7 @@ data = pd.read_csv(source_dedicated_hosts_file)
 manual_instances_host_mapping = pd.read_csv(source_manual_instances_host_mapping)
 instances_host_mapping = pd.read_csv(source_instances_host_mapping, header=None)
 vantage_data = pd.read_csv(source_vantage_instances_file)
+
 
 def compute_ram_sticks(ram_total_capacity):
     """
@@ -75,30 +82,59 @@ def compute_ram_sticks(ram_total_capacity):
         nb_of_sticks = ram_total_capacity / stick_capacity
     return nb_of_sticks, stick_capacity
 
+
 def get_cpu_spec(cpu_specs, cpu_ref_string):
-    cpu_ref_string = re.sub(r"(\w+) Generation ", '', cpu_ref_string)
-    cpu_ref_string = re.sub(r"([0-9]+\.[0-9]+) (GHz|Ghz) ", '', cpu_ref_string)
-    cpu_ref_string = re.sub(r" (\(\w+\)).*", '', cpu_ref_string)
+    cpu_ref_string = re.sub(r"(\w+) Generation ", "", cpu_ref_string)
+    cpu_ref_string = re.sub(r"([0-9]+\.[0-9]+) (GHz|Ghz) ", "", cpu_ref_string)
+    cpu_ref_string = re.sub(r" (\(\w+\)).*", "", cpu_ref_string)
     cpu_ref_string = cpu_ref_string.replace("Scalable Processor", "Platinum")
-    #exp = r"(AMD|Intel|Ampere)( Xeon|EPYC|Epyc)( Platinum|Gold|Silver|Bronze|Scalable)( [0-9]+\w*(-)?\w*)"
-    #print("parsing {}".format(cpu_ref_string))
-    #res = re.finditer(exp, cpu_ref_string)
+    # exp = r"(AMD|Intel|Ampere)( Xeon|EPYC|Epyc)( Platinum|Gold|Silver|Bronze|Scalable)( [0-9]+\w*(-)?\w*)"
+    # print("parsing {}".format(cpu_ref_string))
+    # res = re.finditer(exp, cpu_ref_string)
     spec = None
-    #if res is not None:
+    # if res is not None:
     #    for match in res:
     #        print("parsing {} gives: {}".format(cpu_ref_string, match))
-    for s in cpu_specs[["name", "code_name", "generation", "manufacturer", "foundry", "manufacturer", "release_date", "frequency", "tdp", "cores", "threads", "process_size", "die_size", "io_die_size", "io_process_size", "total_die_size", "model_range"]].iterrows():
-        if cpu_ref_string in s[1]["name"] or s[1]["name"] in cpu_ref_string or s[1]["name"].replace(" Xeon", "") in cpu_ref_string.replace("v", "V"):
+    for s in cpu_specs[
+        [
+            "name",
+            "code_name",
+            "generation",
+            "manufacturer",
+            "foundry",
+            "manufacturer",
+            "release_date",
+            "frequency",
+            "tdp",
+            "cores",
+            "threads",
+            "process_size",
+            "die_size",
+            "io_die_size",
+            "io_process_size",
+            "total_die_size",
+            "model_range",
+        ]
+    ].iterrows():
+        if (
+            cpu_ref_string in s[1]["name"]
+            or s[1]["name"] in cpu_ref_string
+            or s[1]["name"].replace(" Xeon", "") in cpu_ref_string.replace("v", "V")
+        ):
             spec = s[1]
     return spec
 
+
 def get_gpu_from_string(cpu_gpu_string):
-    exp = re.compile("(AMD|NVIDIA).?.?.? (Radeon|Tesla) (\w+)?( (\w+)?(-)?(\w)*)? (GPUs)?")
+    exp = re.compile(
+        "(AMD|NVIDIA).?.?.? (Radeon|Tesla) (\w+)?( (\w+)?(-)?(\w)*)? (GPUs)?"
+    )
     res = exp.search(cpu_gpu_string)
     if res is not None:
         return res.group().replace("GPUs", "")
     else:
         return None
+
 
 def get_cpu_units(host_data, cpu_data):
     if cpu_data["threads"] != "nan":
@@ -114,30 +150,35 @@ def get_cpu_units(host_data, cpu_data):
     else:
         return None
 
+
 def get_instances_per_host(instances_host_mapping, host_name):
     manual_data = manual_instances_host_mapping.copy()
     manual_data.columns = range(manual_data.shape[1])
-    instances_host_mapping = pd.concat([
-        instances_host_mapping, manual_data[[0, 1]]
-    ])
+    instances_host_mapping = pd.concat([instances_host_mapping, manual_data[[0, 1]]])
     # TODO: mapping instance -> hostS, when multiple instance refs with different hosts
     # build a min;avg;max mapping, put it in host cell for this instance in the resulting dataframe
     # gen both result.csv in the old fashion way and new result.csv with the new mapping, compare differences in per-instance impact
     mapping = instances_host_mapping[instances_host_mapping[1] == host_name.lower()][0]
-    instances_data = pd.DataFrame({
-        "id": [],
-        "vcpu": [],
-        "memory": [],
-        "ssd_storage": [],
-        "hdd_storage": [],
-        "gpu_units": [],
-        "platform": [],
-        "source": []
-    })
+    instances_data = pd.DataFrame(
+        {
+            "id": [],
+            "vcpu": [],
+            "memory": [],
+            "ssd_storage": [],
+            "hdd_storage": [],
+            "gpu_units": [],
+            "platform": [],
+            "source": [],
+        }
+    )
     for instance in mapping:
         instance = instance.replace(" ", "_")
-        from_vantage = vantage_data[vantage_data["Name"].str.lower() == instance.replace("_", " ")]
-        from_vantage_by_api_name = vantage_data[vantage_data["API Name"].str.lower() == instance.replace("_", " ")]
+        from_vantage = vantage_data[
+            vantage_data["Name"].str.lower() == instance.replace("_", " ")
+        ]
+        from_vantage_by_api_name = vantage_data[
+            vantage_data["API Name"].str.lower() == instance.replace("_", " ")
+        ]
 
         vcpus = from_vantage["vCPUs"].str.replace(" vCPUs", "")
         if len(vcpus.index) == 0:
@@ -156,62 +197,86 @@ def get_instances_per_host(instances_host_mapping, host_name):
         else:
             ssd_sto_value = 0
         # if we also have NVMe local ssd storage for the instance, add it to ssd_sto
-        data_from_manual_mapping = manual_instances_host_mapping[manual_instances_host_mapping["instance"] == instance.replace("standard_", "")]
+        data_from_manual_mapping = manual_instances_host_mapping[
+            manual_instances_host_mapping["instance"]
+            == instance.replace("standard_", "")
+        ]
         if len(data_from_manual_mapping.index) > 0:
-            if data_from_manual_mapping["nvme_units"].values[0] != "NaN" and data_from_manual_mapping["nvme_units"].values[0] > 0:
-                if data_from_manual_mapping["nvme_capacity"].values[0] != "NaN" and data_from_manual_mapping["nvme_capacity"].values[0] > 0:
-                    ssd_sto_value = float(ssd_sto_value) + float(data_from_manual_mapping["nvme_units"].values[0]) * float(data_from_manual_mapping["nvme_capacity"].values[0])
+            if (
+                data_from_manual_mapping["nvme_units"].values[0] != "NaN"
+                and data_from_manual_mapping["nvme_units"].values[0] > 0
+            ):
+                if (
+                    data_from_manual_mapping["nvme_capacity"].values[0] != "NaN"
+                    and data_from_manual_mapping["nvme_capacity"].values[0] > 0
+                ):
+                    ssd_sto_value = float(ssd_sto_value) + float(
+                        data_from_manual_mapping["nvme_units"].values[0]
+                    ) * float(data_from_manual_mapping["nvme_capacity"].values[0])
         else:
-            print("Couldn't find {} in manual_instance_mapping".format(instance.replace("standard_", "")))
+            print(
+                "Couldn't find {} in manual_instance_mapping".format(
+                    instance.replace("standard_", "")
+                )
+            )
         # if we have so bad data that we don't know at least for vcpus and memory, discard the instance
         if len(vcpus.index) > 0 or len(mem.index) > 0:
             instances_data = pd.concat(
                 [
                     instances_data,
-                    pd.DataFrame({
-                        "id": [instance],
-                        "vcpu": [vcpus.values[0] if len(vcpus.index) > 0 else 0],
-                        "memory": [mem.values[0] if len(mem.index) > 0 else 0],
-                        "ssd_storage": [ssd_sto_value],
-                        # TODO: change default SSD value for average of all default storage
-                        "hdd_storage": [0],
-                        "gpu_units": [gpus.values[0] if len(gpus.index) > 0 else 0],
-                        # TODO fetch GPU units per instance
-                        "platform": [host_name],
-                        "source": ["Vantage for instance specs (https://instances.vantage.sh/azure/), Azure docs for instance-host mapping, see README for details."]
-                    })
+                    pd.DataFrame(
+                        {
+                            "id": [instance],
+                            "vcpu": [vcpus.values[0] if len(vcpus.index) > 0 else 0],
+                            "memory": [mem.values[0] if len(mem.index) > 0 else 0],
+                            "ssd_storage": [ssd_sto_value],
+                            # TODO: change default SSD value for average of all default storage
+                            "hdd_storage": [0],
+                            "gpu_units": [gpus.values[0] if len(gpus.index) > 0 else 0],
+                            # TODO fetch GPU units per instance
+                            "platform": [host_name],
+                            "source": [
+                                "Vantage for instance specs (https://instances.vantage.sh/azure/), Azure docs for instance-host mapping, see README for details."
+                            ],
+                        }
+                    ),
                 ]
             )
     return instances_data
+
 
 def get_instance_gpus_from_vantage(instance_name):
     res = vantage_data.loc[vantage_data["Name"].str.lower() == instance_name]
     return res
 
+
 def get_disks_per_platform(platform_data, instances_per_host):
-    res = {
-        "ssd": {
-            "units": 0,
-            "capacity": 0
-        },
-        "hdd": {
-            "units": 0,
-            "capacity": 0
-        }
-    }
+    res = {"ssd": {"units": 0, "capacity": 0}, "hdd": {"units": 0, "capacity": 0}}
     ssd_sto_platform = 0
     hdd_sto_platform = 0
     # if we have the max number of instance per host in the manual mapping data
-    manual_data = manual_instances_host_mapping[manual_instances_host_mapping["host"] == platform_data["id"].lower()]
+    manual_data = manual_instances_host_mapping[
+        manual_instances_host_mapping["host"] == platform_data["id"].lower()
+    ]
     if len(manual_data.index) > 0:
         for i in manual_data[["instance", "host", "nbinstancesmax"]].iterrows():
             if float(i[1]["nbinstancesmax"]) > 0.0:
-                instance_data = instances_per_host[instances_per_host["id"] == i[1]["instance"]]
-                if len(instance_data["ssd_storage"].index) > 0 and instance_data["ssd_storage"].values[0] * i[1]["nbinstancesmax"] > ssd_sto_platform:
-                    ssd_sto_platform = float(instance_data["ssd_storage"].values[0]) * float(i[1]["nbinstancesmax"])
-    else: 
-    #  else get instance with highest vcpus count
-        max_vcpu_instances = instances_per_host[instances_per_host["vcpu"]==instances_per_host["vcpu"].max()]
+                instance_data = instances_per_host[
+                    instances_per_host["id"] == i[1]["instance"]
+                ]
+                if (
+                    len(instance_data["ssd_storage"].index) > 0
+                    and instance_data["ssd_storage"].values[0] * i[1]["nbinstancesmax"]
+                    > ssd_sto_platform
+                ):
+                    ssd_sto_platform = float(
+                        instance_data["ssd_storage"].values[0]
+                    ) * float(i[1]["nbinstancesmax"])
+    else:
+        #  else get instance with highest vcpus count
+        max_vcpu_instances = instances_per_host[
+            instances_per_host["vcpu"] == instances_per_host["vcpu"].max()
+        ]
         if len(max_vcpu_instances.index) > 0:
             max_vcpus_per_instance = max_vcpu_instances["vcpu"].values[0]
             # divide the maximum vcpus count of the host by this max instance vcpus
@@ -237,6 +302,7 @@ def get_disks_per_platform(platform_data, instances_per_host):
         res["hdd"]["capacity"] = 0
     return res
 
+
 cpu_specs = pd.read_csv(source_cpu_spec_file)
 hosts_matching_no_instance = []
 instance_host_mapping = pd.DataFrame(
@@ -248,11 +314,18 @@ instance_host_mapping = pd.DataFrame(
         "hdd_storage": [],
         "gpu_units": [],
         "platform": [],
-        "source": []
+        "source": [],
     }
 )
 
-for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vCPUs","Available RAM","CPU"]].iterrows():
+for host in data[
+    [
+        "Dedicated Host SKUs (VM series and Host Type)",
+        "Available vCPUs",
+        "Available RAM",
+        "CPU",
+    ]
+].iterrows():
     #
     # Get CPU specification for the current host
     #
@@ -261,9 +334,18 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
     if current_cpu_spec is None:
         print("No spec found for: {}".format(host[1]["CPU"]))
     else:
-        print("CPU: {} threads: {} host max vCPU : {} supposed CPU units: {}".format(current_cpu_spec["name"], current_cpu_spec["threads"], host[1]["Available vCPUs"], get_cpu_units(host[1], current_cpu_spec)))
+        print(
+            "CPU: {} threads: {} host max vCPU : {} supposed CPU units: {}".format(
+                current_cpu_spec["name"],
+                current_cpu_spec["threads"],
+                host[1]["Available vCPUs"],
+                get_cpu_units(host[1], current_cpu_spec),
+            )
+        )
     current_gpu = get_gpu_from_string(host[1]["CPU"])
-    instances_per_host = get_instances_per_host(instances_host_mapping, current_host_name)
+    instances_per_host = get_instances_per_host(
+        instances_host_mapping, current_host_name
+    )
     if instances_per_host is None or len(instances_per_host.index) == 0:
         print("host {} not macthing any instance !!!".format(current_host_name))
         hosts_matching_no_instance.append(current_host_name)
@@ -277,7 +359,7 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
     # Get how many GPUs are allocated to virtual machines deployed on current host, as a maximum
     # TODO FIX
     #
-    #if current_gpu is not None:
+    # if current_gpu is not None:
     #    print("Current GPU: {}".format(current_gpu))
     #    for i in instances_per_host:
     #        instance_gpus = get_instance_gpus_from_vantage(i["instance_name"])
@@ -290,36 +372,57 @@ for host in data[["Dedicated Host SKUs (VM series and Host Type)", "Available vC
     platform_id = host[1]["Dedicated Host SKUs (VM series and Host Type)"]
     cpu_units = get_cpu_units(host[1], current_cpu_spec)
     disks_hypothesis = get_disks_per_platform(
-        {"id": platform_id, "vcpus": host[1]["Available vCPUs"]},
-        instances_per_host
+        {"id": platform_id, "vcpus": host[1]["Available vCPUs"]}, instances_per_host
     )
-    new_data = pd.DataFrame({
-        "id": [platform_id],
-        "manufacturer": ["Azure"],
-        "CASE.case_type": ["rack"], # TODO: source from Azure docs which platform is blade, which is rack
-        "CPU.units": [cpu_units],
-        "CPU.core_units": [""],
-        "CPU.die_size_per_core": [""],
-        #"CPU.tdp": [current_cpu_spec["tdp"] if current_cpu_spec is not None else ""],
-        "CPU.name": [current_cpu_spec["name"] if current_cpu_spec is not None else ""],
-        "CPU.vcpu": [host[1]["Available vCPUs"]],
-        "RAM.units": [nb_of_sticks],
-        "RAM.capacity": [stick_capacity],
-        "SSD.units": [disks_hypothesis["ssd"]["units"]], # TODO: get hypothesis that seem close to what users see on those machines
-        "SSD.capacity": [disks_hypothesis["ssd"]["capacity"]],
-        "HDD.units": [disks_hypothesis["hdd"]["units"]],
-        "HDD.capacity": [disks_hypothesis["hdd"]["capacity"]],
-        "GPU.units": [0], # TODO: guess it from how many GPUs have the biggest instances hosted on this platform
-        "GPU.name": [current_gpu],
-        "GPU.memory_capacity": [""],
-        "POWER_SUPPLY.units": ["2;2;2"], # TODO: source from Azure docs which platform is blade, which is rack
-        "POWER_SUPPLY.unit_weight": ["2.99;1;5"], # TODO: source from Azure docs which platform is blade, which is rack
-        "USAGE.time_workload": ["50;0;100"],
-        "USAGE.use_time_ratio": ["1"],
-        "USAGE.hours_life_time": [52560], # According to latest news, Azure extended servers lifetime from 4 to 6 years. (https://www.networkworld.com/article/971373/microsoft-extends-azure-server-lifetimes-by-50.html)
-        "USAGE.other_consumption_ratio": ["0.33;0.2;0.6"], # TODO: challenge those factors based on azure actual hardware
-        "WARNINGS": ["RAM units and per unit capacity not verified. RAM capacity from Azure docs was: {}".format(host[1]["Available RAM"])]
-    })
+    new_data = pd.DataFrame(
+        {
+            "id": [platform_id],
+            "manufacturer": ["Azure"],
+            "CASE.case_type": [
+                "rack"
+            ],  # TODO: source from Azure docs which platform is blade, which is rack
+            "CPU.units": [cpu_units],
+            "CPU.core_units": [""],
+            "CPU.die_size_per_core": [""],
+            # "CPU.tdp": [current_cpu_spec["tdp"] if current_cpu_spec is not None else ""],
+            "CPU.name": [
+                current_cpu_spec["name"] if current_cpu_spec is not None else ""
+            ],
+            "CPU.vcpu": [host[1]["Available vCPUs"]],
+            "RAM.units": [nb_of_sticks],
+            "RAM.capacity": [stick_capacity],
+            "SSD.units": [
+                disks_hypothesis["ssd"]["units"]
+            ],  # TODO: get hypothesis that seem close to what users see on those machines
+            "SSD.capacity": [disks_hypothesis["ssd"]["capacity"]],
+            "HDD.units": [disks_hypothesis["hdd"]["units"]],
+            "HDD.capacity": [disks_hypothesis["hdd"]["capacity"]],
+            "GPU.units": [
+                0
+            ],  # TODO: guess it from how many GPUs have the biggest instances hosted on this platform
+            "GPU.name": [current_gpu],
+            "GPU.memory_capacity": [""],
+            "POWER_SUPPLY.units": [
+                "2;2;2"
+            ],  # TODO: source from Azure docs which platform is blade, which is rack
+            "POWER_SUPPLY.unit_weight": [
+                "2.99;1;5"
+            ],  # TODO: source from Azure docs which platform is blade, which is rack
+            "USAGE.time_workload": ["50;0;100"],
+            "USAGE.use_time_ratio": ["1"],
+            "USAGE.hours_life_time": [
+                52560
+            ],  # According to latest news, Azure extended servers lifetime from 4 to 6 years. (https://www.networkworld.com/article/971373/microsoft-extends-azure-server-lifetimes-by-50.html)
+            "USAGE.other_consumption_ratio": [
+                "0.33;0.2;0.6"
+            ],  # TODO: challenge those factors based on azure actual hardware
+            "WARNINGS": [
+                "RAM units and per unit capacity not verified. RAM capacity from Azure docs was: {}".format(
+                    host[1]["Available RAM"]
+                )
+            ],
+        }
+    )
     target_data = pd.concat([target_data, new_data])
 
 print("Hosts matching no instance: ")

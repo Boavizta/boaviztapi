@@ -4,7 +4,10 @@ from boaviztapi import config
 from boaviztapi.dto import BaseDTO
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
-from boaviztapi.service.archetype import get_cloud_instance_archetype, get_server_archetype
+from boaviztapi.service.archetype import (
+    get_cloud_instance_archetype,
+    get_server_archetype,
+)
 from boaviztapi.service.factor_provider import get_available_countries
 
 
@@ -60,8 +63,13 @@ class UsageCloud(UsageServer):
 
 def _reset_usage_dto_if_matches_config_defaults(usage_dto: Usage):
     """Reset usage_dto fields to None if they match the config default values."""
-    if usage_dto.usage_location and usage_dto.usage_location.strip().upper() == config["default_location"].upper():
+    if (
+        usage_dto.usage_location
+        and usage_dto.usage_location.strip().upper()
+        == config["default_location"].upper()
+    ):
         usage_dto.usage_location = None
+
 
 def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
     usage_model = ModelUsage(archetype=archetype)
@@ -69,7 +77,9 @@ def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
 
     for elec_factor in usage_dto.elec_factors.__dict__.keys():
         if usage_dto.elec_factors.__dict__[elec_factor] is not None:
-            usage_model.elec_factors.get(elec_factor).set_input(usage_dto.elec_factors.__dict__[elec_factor])
+            usage_model.elec_factors.get(elec_factor).set_input(
+                usage_dto.elec_factors.__dict__[elec_factor]
+            )
 
     if usage_dto.time_workload is not None:
         usage_model.time_workload.value = usage_dto.time_workload
@@ -96,19 +106,25 @@ def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
             usage_model.usage_location.set_input(usage_dto.usage_location)
         else:
             usage_model.usage_location.set_changed(usage_model.usage_location.default)
-            usage_model.usage_location.add_warning("Location not found. Default value used.")
+            usage_model.usage_location.add_warning(
+                "Location not found. Default value used."
+            )
 
     return usage_model
 
 
-def mapper_usage_server(usage_dto: UsageServer,
-                        archetype=get_server_archetype(config["default_server"]).get("USAGE")) -> ModelUsageServer:
+def mapper_usage_server(
+    usage_dto: UsageServer,
+    archetype=get_server_archetype(config["default_server"]).get("USAGE"),
+) -> ModelUsageServer:
     usage_model_server = ModelUsageServer(archetype=archetype)
     _reset_usage_dto_if_matches_config_defaults(usage_dto)
 
     for elec_factor in usage_dto.elec_factors.__dict__.keys():
         if usage_dto.elec_factors.__dict__[elec_factor] is not None:
-            usage_model_server.elec_factors.get(elec_factor).set_input(usage_dto.elec_factors.__dict__[elec_factor])
+            usage_model_server.elec_factors.get(elec_factor).set_input(
+                usage_dto.elec_factors.__dict__[elec_factor]
+            )
 
     if usage_dto.avg_power is not None:
         usage_model_server.avg_power.set_input(usage_dto.avg_power)
@@ -126,24 +142,34 @@ def mapper_usage_server(usage_dto: UsageServer,
         if usage_dto.usage_location in get_available_countries(reverse=True):
             usage_model_server.usage_location.set_input(usage_dto.usage_location)
         else:
-            usage_model_server.usage_location.set_changed(usage_model_server.usage_location.default)
-            usage_model_server.usage_location.add_warning("Location not found. Default value used.")
+            usage_model_server.usage_location.set_changed(
+                usage_model_server.usage_location.default
+            )
+            usage_model_server.usage_location.add_warning(
+                "Location not found. Default value used."
+            )
     if usage_dto.other_consumption_ratio is not None:
-        usage_model_server.other_consumption_ratio.set_input(usage_dto.other_consumption_ratio)
+        usage_model_server.other_consumption_ratio.set_input(
+            usage_dto.other_consumption_ratio
+        )
 
     return usage_model_server
 
 
-def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_archetype(config["default_cloud_instance"],
-                                                                                     config[
-                                                                                         "default_cloud_provider"]).get(
-    "USAGE")) -> ModelUsageCloud:
+def mapper_usage_cloud(
+    usage_dto: UsageCloud,
+    archetype=get_cloud_instance_archetype(
+        config["default_cloud_instance"], config["default_cloud_provider"]
+    ).get("USAGE"),
+) -> ModelUsageCloud:
     usage_model_cloud = ModelUsageCloud(archetype=archetype)
     _reset_usage_dto_if_matches_config_defaults(usage_dto)
 
     for elec_factor in usage_dto.elec_factors.__dict__.keys():
         if usage_dto.elec_factors.__dict__[elec_factor] is not None:
-            usage_model_cloud.elec_factors.get(elec_factor).set_input(usage_dto.elec_factors.__dict__[elec_factor])
+            usage_model_cloud.elec_factors.get(elec_factor).set_input(
+                usage_dto.elec_factors.__dict__[elec_factor]
+            )
 
     if usage_dto.avg_power is not None:
         usage_model_cloud.avg_power.set_input(usage_dto.avg_power)
@@ -161,11 +187,17 @@ def mapper_usage_cloud(usage_dto: UsageCloud, archetype=get_cloud_instance_arche
         if usage_dto.usage_location in get_available_countries(reverse=True):
             usage_model_cloud.usage_location.set_input(usage_dto.usage_location)
         else:
-            usage_model_cloud.usage_location.set_changed(usage_model_cloud.usage_location.default)
-            usage_model_cloud.usage_location.add_warning("Location not found. Default value used.")
+            usage_model_cloud.usage_location.set_changed(
+                usage_model_cloud.usage_location.default
+            )
+            usage_model_cloud.usage_location.add_warning(
+                "Location not found. Default value used."
+            )
 
     if usage_dto.other_consumption_ratio is not None:
-        usage_model_cloud.other_consumption_ratio.set_input(usage_dto.other_consumption_ratio)
+        usage_model_cloud.other_consumption_ratio.set_input(
+            usage_dto.other_consumption_ratio
+        )
 
     if usage_dto.instance_per_server is not None:
         usage_model_cloud.instance_per_server.set_input(usage_dto.instance_per_server)

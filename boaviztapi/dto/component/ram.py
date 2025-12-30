@@ -10,7 +10,11 @@ from boaviztapi.dto.usage.usage import mapper_usage
 from boaviztapi.model.component import ComponentRAM
 from boaviztapi.service.archetype import get_component_archetype
 
-_ram_df = pd.read_csv(os.path.join(os.path.dirname(__file__), '../../data/crowdsourcing/ram_manufacture.csv'))
+_ram_df = pd.read_csv(
+    os.path.join(
+        os.path.dirname(__file__), "../../data/crowdsourcing/ram_manufacture.csv"
+    )
+)
 
 
 class RAM(ComponentDTO):
@@ -21,9 +25,13 @@ class RAM(ComponentDTO):
     model: Optional[str] = None
 
 
-def mapper_ram(ram_dto: RAM, archetype=get_component_archetype(config["default_ram"], "ram")) -> ComponentRAM:
+def mapper_ram(
+    ram_dto: RAM, archetype=get_component_archetype(config["default_ram"], "ram")
+) -> ComponentRAM:
     ram_component = ComponentRAM(archetype=archetype)
-    ram_component.usage = mapper_usage(ram_dto.usage or Usage(), archetype=archetype.get("USAGE"))
+    ram_component.usage = mapper_usage(
+        ram_dto.usage or Usage(), archetype=archetype.get("USAGE")
+    )
 
     if ram_dto.units is not None:
         ram_component.units.set_input(ram_dto.units)
@@ -41,4 +49,3 @@ def mapper_ram(ram_dto: RAM, archetype=get_component_archetype(config["default_r
         ram_component.process.set_input(ram_dto.process)
 
     return ram_component
-
