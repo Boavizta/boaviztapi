@@ -18,6 +18,18 @@ install_pip:
 test:
 		poetry run pytest
 
+lint:
+		poetry run ruff check
+
+lint-fix:
+		poetry run ruff check --fix
+
+pre-commit-install:
+		poetry run pre-commit install
+
+pre-commit:
+		poetry run pre-commit run --all-files
+
 define compat-check
 		docker build -t boavizta/boaviztapi-py$(1) \
 			--target build-env \

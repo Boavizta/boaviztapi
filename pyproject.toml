@@ -30,6 +30,8 @@ pytest-asyncio = "^0.24.0"
 atomicwrites = "^1.4.1"
 httpx = "^0.28.1"
 requests = "^2.32.3"
+pre-commit = "^4.2.0"
+ruff = "^0.11.2"
 
 [tool.poetry.group.docs]
 optional = true
@@ -44,3 +46,25 @@ linkcheckmd = "^1.4.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+force-exclude = true
+
+[tool.ruff.lint]
+# TODO - uncomment these ignores one by one and fix in separate PRs
+ignore = [
+    "E701", # Multiple statements on one line
+    "E721", # Use is and is not for type comparisons
+    "F401", # Exports unused
+    "F403", # Unable to detect undefined names
+    "F405", # Potentially missing imports
+    "F811", # Redefinition of unused
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+docstring-code-format = true

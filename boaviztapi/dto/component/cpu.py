@@ -1,7 +1,5 @@
-import os
 from typing import Optional
 
-import pandas as pd
 
 from boaviztapi import config
 from boaviztapi.dto.component import ComponentDTO

@@ -6,6 +6,9 @@
 docs/
 tests/
 
+# Ignore pre-commit related files
+.pre-commit-config.yaml
+
 # Ignore venv if any
 venv/
 
