@@ -141,7 +141,6 @@ _Fisrt packaging/deployment may takes a several minutes_
 
 Once API server is launched API swagger is available at [httsp://localhost:5000/docs](https://localhost:5000/docs).
 
-
 ## :woman: Contributing
 
 See [contributing.md](./CONTRIBUTING.md).
@@ -158,13 +157,9 @@ We use [Semantic Versioning 2.0.0](https://semver.org/)
 | MINOR       | version when you add functionality in a backwards compatible manner  | ```make minor```  |
 | PATCH       | version when you make backwards compatible bug fixes                 | ```make patch```  |
 
-## :two: Publishing
+## :two: Releasing
 
-You can run:
-
-```shell
-API_TOKEN=<your_token> make distribute
-```
+See the [Release Process wiki](https://github.com/Boavizta/boaviztapi/wiki/Release-Process).
 
 ## :scroll: License
 
