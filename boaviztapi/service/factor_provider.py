@@ -4,7 +4,7 @@ from pathlib import Path
 import yaml
 from boaviztapi import data_dir
 
-config_file = os.path.join(data_dir, 'factors.yml')
+config_file = os.path.join(data_dir, "factors.yml")
 impact_factors = yaml.load(Path(config_file).read_text(), Loader=yaml.CSafeLoader)
 
 
@@ -25,13 +25,18 @@ def get_electrical_impact_factor(usage_location, impact_type) -> dict:
 def get_electrical_min_max(impact_type, type) -> float:
     if impact_factors["electricity"].get("min-max").get(impact_type):
         if impact_factors["electricity"].get("min-max").get(impact_type).get(type):
-            return impact_factors["electricity"].get("min-max").get(impact_type).get(type)
+            return (
+                impact_factors["electricity"].get("min-max").get(impact_type).get(type)
+            )
     raise NotImplementedError
 
 
 def get_available_countries(reverse=False):
     if reverse:
-        return {v: k for k, v in impact_factors["electricity"]["available_countries"].items()}
+        return {
+            v: k
+            for k, v in impact_factors["electricity"]["available_countries"].items()
+        }
     return impact_factors["electricity"]["available_countries"]
 
 
@@ -43,16 +48,35 @@ def get_available_iot_functional_block():
 def get_available_iot_hsl():
     response = {}
     for functional_block in get_available_iot_functional_block():
-        response[functional_block] = impact_factors.get("IoT").get(functional_block).keys()
+        response[functional_block] = (
+            impact_factors.get("IoT").get(functional_block).keys()
+        )
     return response
 
 
 def get_iot_impact_factor(functional_block, hsl, impact_type):
     if impact_factors["IoT"].get(functional_block):
         if impact_factors["IoT"].get(functional_block).get(hsl):
-            if impact_factors["IoT"].get(functional_block).get(hsl)["manufacture"].get(impact_type) is not None and impact_factors["IoT"].get(functional_block).get(hsl)["eol"].get(impact_type) is not None:
-                return (impact_factors["IoT"].get(functional_block).get(hsl)["manufacture"][impact_type]
-                        + impact_factors["IoT"].get(functional_block).get(hsl)["eol"][impact_type])
+            if (
+                impact_factors["IoT"]
+                .get(functional_block)
+                .get(hsl)["manufacture"]
+                .get(impact_type)
+                is not None
+                and impact_factors["IoT"]
+                .get(functional_block)
+                .get(hsl)["eol"]
+                .get(impact_type)
+                is not None
+            ):
+                return (
+                    impact_factors["IoT"]
+                    .get(functional_block)
+                    .get(hsl)["manufacture"][impact_type]
+                    + impact_factors["IoT"]
+                    .get(functional_block)
+                    .get(hsl)["eol"][impact_type]
+                )
     raise NotImplementedError
 
 

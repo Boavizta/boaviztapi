@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-END_OF_LIFE_WARNING = ["End of life is not included in the " "calculation"]
+END_OF_LIFE_WARNING = ["End of life is not included in the calculation"]
 UNCERTAINTY_WARNING = [
     "Uncertainty from technical characteristics is "
     "very important. Results should be interpreted "

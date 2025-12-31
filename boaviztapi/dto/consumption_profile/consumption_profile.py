@@ -30,7 +30,9 @@ def mapper_cp(cp_dto: ConsumptionProfile) -> CPUConsumptionProfileModel:
     return cp
 
 
-def mapper_cp_cpu(cp_dto: ConsumptionProfileCPU) -> Tuple[CPUConsumptionProfileModel, ComponentCPU]:
+def mapper_cp_cpu(
+    cp_dto: ConsumptionProfileCPU,
+) -> Tuple[CPUConsumptionProfileModel, ComponentCPU]:
     cpu = ComponentCPU()
     manufacturer, model_range, family, tdp = None, None, None, None
 

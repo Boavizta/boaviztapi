@@ -1,8 +1,9 @@
 import requests
 
-CLOUD_URL="http://localhost:5000/v1/cloud/instance"
-PROVIDERS_URL=f"{CLOUD_URL}/all_providers"
-VALID_INSTANCE_TYPE="dev1-l"
+CLOUD_URL = "http://localhost:5000/v1/cloud/instance"
+PROVIDERS_URL = f"{CLOUD_URL}/all_providers"
+VALID_INSTANCE_TYPE = "dev1-l"
+
 
 def main():
     resp = requests.get(PROVIDERS_URL)
@@ -22,7 +23,7 @@ def main():
         "instance_type": VALID_INSTANCE_TYPE,
         "verbose": True,
         "duration": "100",
-        }
+    }
 
     resp = requests.get(CLOUD_URL, params=url_params)
     if resp.ok:
@@ -37,6 +38,7 @@ def main():
 
     cpu = resp_body["verbose"]["CPU-1"]["model_range"]["value"]
     print(f"\nGot CPU model: {cpu}")
+
 
 if __name__ == "__main__":
     main()

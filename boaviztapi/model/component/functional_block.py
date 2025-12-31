@@ -11,9 +11,9 @@ class ComponentFunctionalBlock(Component):
         super().__init__(archetype=archetype, **kwargs)
         self.hsl_level = Boattribute(
             unit="none",
-            default=get_arch_value(archetype, 'hsl_level', 'default'),
-            min=get_arch_value(archetype, 'hsl_level', 'min'),
-            max=get_arch_value(archetype, 'hsl_level', 'max')
+            default=get_arch_value(archetype, "hsl_level", "default"),
+            min=get_arch_value(archetype, "hsl_level", "min"),
+            max=get_arch_value(archetype, "hsl_level", "max"),
         )
 
 

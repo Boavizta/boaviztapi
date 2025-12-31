@@ -1,7 +1,10 @@
 from typing import List
 
 from boaviztapi import config
-from boaviztapi.model.component.functional_block import ComponentFunctionalBlock, get_functional_block
+from boaviztapi.model.component.functional_block import (
+    ComponentFunctionalBlock,
+    get_functional_block,
+)
 from boaviztapi.model.device import Device
 from boaviztapi.model.usage import ModelUsage
 from boaviztapi.service.archetype import get_arch_component, get_iot_device_archetype
@@ -9,11 +12,17 @@ from boaviztapi.service.archetype import get_arch_component, get_iot_device_arch
 
 class DeviceIoT(Device):
     NAME = "IOT_DEVICE"
-    WARNINGS = ["Connected object, not including associated digital services (use of network, datacenter, "
-                "virtual machines or other terminals not included)", "Do not include the impact of distribution"]
+    WARNINGS = [
+        "Connected object, not including associated digital services (use of network, datacenter, "
+        "virtual machines or other terminals not included)",
+        "Do not include the impact of distribution",
+    ]
 
-    def __init__(self, archetype=get_iot_device_archetype(config["default_iot_device"]),
-                 functional_block: List[ComponentFunctionalBlock] = None):
+    def __init__(
+        self,
+        archetype=get_iot_device_archetype(config["default_iot_device"]),
+        functional_block: List[ComponentFunctionalBlock] = None,
+    ):
         super().__init__(archetype=archetype)
 
         if functional_block is None:
@@ -28,8 +37,11 @@ class DeviceIoT(Device):
                 if fb == "USAGE":
                     continue
                 if self.archetype[fb]["hsl_level"] != {}:
-                    self._functional_block.append(get_functional_block(fb)(
-                        archetype=get_arch_component(self.archetype, fb)))
+                    self._functional_block.append(
+                        get_functional_block(fb)(
+                            archetype=get_arch_component(self.archetype, fb)
+                        )
+                    )
         return self._functional_block
 
     def add_functional_block(self, functional_block):
@@ -38,7 +50,9 @@ class DeviceIoT(Device):
     @property
     def usage(self) -> ModelUsage:
         if self._usage is None:
-            self._usage = ModelUsage(archetype=get_arch_component(self.archetype, "USAGE"))
+            self._usage = ModelUsage(
+                archetype=get_arch_component(self.archetype, "USAGE")
+            )
         return self._usage
 
     @usage.setter

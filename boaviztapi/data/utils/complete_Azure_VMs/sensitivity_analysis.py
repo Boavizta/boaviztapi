@@ -66,7 +66,6 @@ hosts = {
 
 
 def get_manufacturing_impact_with_ssd(host, ssd_units, ssd_capacity):
-
     host["configuration"]["disk"][0]["units"] = ssd_units
     host["configuration"]["disk"][0]["capacity"] = ssd_capacity
 

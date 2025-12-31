@@ -17,9 +17,13 @@ class Disk(ComponentDTO):
     layers: Optional[int] = None
 
 
-def mapper_ssd(disk_dto: Disk, archetype=get_component_archetype(config["default_ssd"], "ssd")) -> ComponentSSD:
+def mapper_ssd(
+    disk_dto: Disk, archetype=get_component_archetype(config["default_ssd"], "ssd")
+) -> ComponentSSD:
     disk_component = ComponentSSD(archetype=archetype)
-    disk_component.usage = mapper_usage(disk_dto.usage or Usage(), archetype=archetype.get("USAGE"))
+    disk_component.usage = mapper_usage(
+        disk_dto.usage or Usage(), archetype=archetype.get("USAGE")
+    )
 
     if disk_dto.units is not None:
         disk_component.units.set_input(disk_dto.units)
@@ -39,9 +43,13 @@ def mapper_ssd(disk_dto: Disk, archetype=get_component_archetype(config["default
     return disk_component
 
 
-def mapper_hdd(disk_dto: Disk, archetype=get_component_archetype(config["default_hdd"], "hdd")) -> ComponentHDD:
+def mapper_hdd(
+    disk_dto: Disk, archetype=get_component_archetype(config["default_hdd"], "hdd")
+) -> ComponentHDD:
     disk_component = ComponentHDD(archetype=archetype)
-    disk_component.usage = mapper_usage(disk_dto.usage or Usage(), archetype=archetype.get("USAGE"))
+    disk_component.usage = mapper_usage(
+        disk_dto.usage or Usage(), archetype=archetype.get("USAGE")
+    )
 
     if disk_dto.units is not None:
         disk_component.units.set_input(disk_dto.units)

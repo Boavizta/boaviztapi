@@ -5,20 +5,36 @@ from boaviztapi.model.component import Component
 from boaviztapi.model.services.cloud_instance import ServiceCloudInstance, Service
 
 
-def verbose_cloud(cloud_instance: ServiceCloudInstance, selected_criteria=config["default_criteria"],
-                  duration=config["default_duration"]):
-    json_output = {**iter_boattribute(cloud_instance),
-                   **verbose_usage(cloud_instance),
-                   **verbose_device(cloud_instance.platform, selected_criteria=selected_criteria, duration=duration)}
+def verbose_cloud(
+    cloud_instance: ServiceCloudInstance,
+    selected_criteria=config["default_criteria"],
+    duration=config["default_duration"],
+):
+    json_output = {
+        **iter_boattribute(cloud_instance),
+        **verbose_usage(cloud_instance),
+        **verbose_device(
+            cloud_instance.platform,
+            selected_criteria=selected_criteria,
+            duration=duration,
+        ),
+    }
     return json_output
 
 
-def verbose_device(device: Device, selected_criteria=config["default_criteria"], duration=config["default_duration"]):
+def verbose_device(
+    device: Device,
+    selected_criteria=config["default_criteria"],
+    duration=config["default_duration"],
+):
     json_output = {"duration": {"value": duration, "unit": "hours"}}
     for component in device.components:
-        component.usage.hours_life_time.set_completed(device.usage.hours_life_time.value,
-                                                      min=device.usage.hours_life_time.min,
-                                                      max=device.usage.hours_life_time.max, source="from device")
+        component.usage.hours_life_time.set_completed(
+            device.usage.hours_life_time.value,
+            min=device.usage.hours_life_time.min,
+            max=device.usage.hours_life_time.max,
+            source="from device",
+        )
         if f"{component.NAME}-1" in json_output:
             i = 2
             while f"{component.NAME}-{i}" in json_output:
@@ -38,10 +54,16 @@ def verbose_usage(device: [Device, Component, Service]):
     json_output = {**iter_boattribute(device.usage)}
     if device.usage.consumption_profile is not None:
         if device.usage.consumption_profile.workloads.is_set():
-            json_output["workloads"] = device.usage.consumption_profile.workloads.to_json()
+            json_output["workloads"] = (
+                device.usage.consumption_profile.workloads.to_json()
+            )
             json_output["workloads"]["value"] = [
-                {"load_percentage": workload.load_percentage, "power_watt": workload.power_watt} for workload in
-                json_output["workloads"]["value"]]
+                {
+                    "load_percentage": workload.load_percentage,
+                    "power_watt": workload.power_watt,
+                }
+                for workload in json_output["workloads"]["value"]
+            ]
         if device.usage.consumption_profile.params.is_set():
             json_output["params"] = device.usage.consumption_profile.params.to_json()
     for elec in device.usage.elec_factors:
@@ -51,10 +73,16 @@ def verbose_usage(device: [Device, Component, Service]):
     return json_output
 
 
-def verbose_component(component: Component, selected_criteria=config["default_criteria"],
-                      duration=config["default_duration"]):
-    json_output = {"impacts": component.get_impacts(selected_criteria), **iter_boattribute(component),
-                   "duration": {"value": duration, "unit": "hours"}}
+def verbose_component(
+    component: Component,
+    selected_criteria=config["default_criteria"],
+    duration=config["default_duration"],
+):
+    json_output = {
+        "impacts": component.get_impacts(selected_criteria),
+        **iter_boattribute(component),
+        "duration": {"value": duration, "unit": "hours"},
+    }
 
     if component.usage.avg_power.is_set():
         json_output = {**json_output, **verbose_usage(component)}

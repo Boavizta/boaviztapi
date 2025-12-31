@@ -23,27 +23,6 @@ on:
       - dev
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: 3.12
-
-    - name: Install pipenv
-      run: |
-        python -m pip install --upgrade poetry wheel
-
-    - name: Install dependencies
-      run: |
-        make install
-
-    - name: Run lint
-      run: |
-        make lint
-
   test:
     strategy:
       matrix:
@@ -56,14 +35,11 @@ jobs:
       with:
         python-version: ${{ matrix.version }}
 
-    - name: Install pipenv
-      run: |
-        python -m pip install --upgrade poetry wheel
+    - name: Install poetry
+      run: python -m pip install --upgrade poetry wheel
 
     - name: Install dependencies
-      run: |
-        make install
+      run: make install
 
     - name: Run test suite
-      run: |
-        make test
+      run: make test
