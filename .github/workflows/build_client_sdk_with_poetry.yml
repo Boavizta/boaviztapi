@@ -63,8 +63,4 @@ jobs:
 
     - name: Publish package
       working-directory: boaviztapi_sdk
-      run: twine upload \
-        --repository pypi \
-        --username __token__ \
-        --password ${{ secrets.PYPI_TOKEN_2025_2026 }} \
-        dist/*
+      run: twine upload --username __token__ --password ${{ secrets.PYPI_TOKEN_2025_2026 }} dist/*
