@@ -17,61 +17,54 @@ jobs:
       with:
         python-version: '3.12'
 
-    - name: Install pipenv
-      run: |
-        python -m pip install --upgrade poetry wheel twine
+    - name: Install Python packages
+      run: pip3 install --upgrade poetry setuptools twine wheel
 
-    - id: cache-pipenv
-      uses: actions/cache@v4
-      with:
-        path: ~/.local/share/virtualenvs
-        key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
-
-    - name: Install dependencies
-      if: steps.cache-pipenv.outputs.cache-hit != 'true'
-      run: |
-        make install
-
-    - name: Build local api package
-      run: make build
-
-    - name: Build the api Docker image
-      run: docker build --build-arg VERSION=$(poetry version -s) . --file Dockerfile  --tag boaviztapi:latest
+    - name: Build the API image
+      run: docker build --build-arg VERSION=$(poetry version -s) --tag boaviztapi:latest .
 
     - name: Run the API locally
-      run: |
-        docker run -p "5000:5000" --name=boaviztapi -tid boaviztapi:latest
+      run: docker run -p "5000:5000" --name=boaviztapi -tid boaviztapi:latest
 
     - name: Get logs from the API container in case of a failure
-      run: |
-        docker logs boaviztapi
+      run: docker logs boaviztapi
+
+    - name: Wait for the container to be up
+      run: while [[ ! $(docker ps | grep boaviztapi) ]]; do sleep 1; echo "Waiting for BoaviztAPI container to boot"; done
 
     - name: Get the openapi.json definition and generate the code
       run: |
-        while [[ ! $(docker ps | grep boaviztapi) ]]; do sleep 1; echo "Waiting for BoaviztAPI container to boot"; done
         wget http://127.0.0.1:5000/openapi.json
-        docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i /local/openapi.json -g python -o /local/boaviztapi_sdk --package-name boaviztapi_sdk --additional-properties=packageVersion=${SDK_VERSION}
+        docker run --rm -v .:/local \
+          openapitools/openapi-generator-cli generate \
+          -i /local/openapi.json -g python -o /local/boaviztapi_sdk \
+          --git-user-id=boavizta \
+          --git-repo-id=boaviztapi \
+          --package-name=boaviztapi_sdk \
+          --additional-properties=packageVersion=$(poetry version -s)
+        sudo chown -R "$(whoami):$(whoami)" boaviztapi_sdk
 
-    # Publish client SDK package
-    - name: Build the pip package and push it
+    - name: Manually fix generated properties
+      working-directory: boaviztapi_sdk
       run: |
-        sudo chown -R "$(whoami)" boaviztapi_sdk
-        SDK_VERSION=$(poetry version -s)
         DESCRIPTION="BoaviztAPI SDK"
         LONG_DESCRIPTION="BoaviztAPI SDK for Python applications."
-        echo "SDK_VERSION == ${SDK_VERSION}"
-        cd boaviztapi_sdk
-        # Package metadata used by PyPi
-        sed -i "s/^VERSION.*/VERSION = ${SDK_VERSION}/" setup.py
         sed -i "s/long_description=.*/long_description=\"${DESCRIPTION}\",/" setup.py
         sed -i "s/author=.*/author=\"Boavizta\",/" setup.py
         sed -i "s/author_email=.*/author_email=\"open-source@boavizta.org\",/" setup.py
         sed -i '/    &lt;p&gt;.*/d' setup.py
         sed -i '/    """.*/d' setup.py
+        sed -i "s/BOAVIZTAPI - DEMO/${LONG_DESCRIPTION}/" setup.py
         sed -i "s/BOAVIZTAPI - DEMO/${LONG_DESCRIPTION}/" pyproject.toml
-        sed -i "s/GIT_USER_ID/boavizta/" pyproject.toml
-        sed -i "s/GIT_REPO_ID/boaviztapi/" pyproject.toml
-        python3 setup.py sdist
-        # Publish
-        pip3 install pipenv twine
-        pipenv run twine upload --repository pypi --username __token__ --password ${{ secrets.PYPI_TOKEN_2025_2026 }} dist/*
+
+    - name: Build package
+      working-directory: boaviztapi_sdk
+      run: python3 setup.py sdist
+
+    - name: Publish package
+      working-directory: boaviztapi_sdk
+      run: twine upload \
+        --repository pypi \
+        --username __token__ \
+        --password ${{ secrets.PYPI_TOKEN_2025_2026 }} \
+        dist/*
