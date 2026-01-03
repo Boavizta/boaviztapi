@@ -10,15 +10,20 @@ repos:
       - id: ruff-lint
         name: ruff-lint
         language: system
-        entry: venv/bin/ruff
-        args: [check, --force-exclude, --fix, --exit-non-zero-on-fix]
+        entry: poetry
+        args: [run, ruff, check, --force-exclude, --fix, --exit-non-zero-on-fix]
         types: ["python"]
 
-  - repo: local
-    hooks:
       - id: ruff-format
         name: ruff-format
         language: system
-        entry: venv/bin/ruff
-        args: [format, --check]
+        entry: poetry
+        args: [run, ruff, format, --check]
         types: ["python"]
+
+      - id: chkcsv
+        name: chkcsv
+        language: system
+        entry: poetry
+        args: [run, python3, validate_csv.py]
+        types: ["csv"]

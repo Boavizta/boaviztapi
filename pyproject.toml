@@ -23,6 +23,7 @@ toml = "^0.10.2"
 
 [tool.poetry.group.dev]
 optional = true
+include-groups = ["csv"]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
@@ -32,6 +33,12 @@ httpx = "^0.28.1"
 requests = "^2.32.3"
 pre-commit = "^4.2.0"
 ruff = "^0.11.2"
+
+[tool.poetry.group.csv]
+optional = true
+
+[tool.poetry.group.csv.dependencies]
+chkcsv = "^1.2.0"
 
 [tool.poetry.group.docs]
 optional = true
