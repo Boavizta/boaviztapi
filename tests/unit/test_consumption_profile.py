@@ -53,6 +53,7 @@ def validate_models_approx(
         ("Xeon Platinum", {"a": 171.1813, "b": 0.0354, "c": 36.8953, "d": -10.1336}),
         ("Xeon Gold", {"a": 35.5688, "b": 0.2438, "c": 9.6694, "d": -0.6087}),
         ("Xeon Silver", {"a": 20.7794, "b": 0.3043, "c": 8.4241, "d": 0.8613}),
+        ("Xeon E", {"a": 55.6501, "b": 0.0467, "c": 20.4146, "d": 4.24362}),
     ],
 )
 def test_cpu_with_model_range(
@@ -69,6 +70,8 @@ def test_cpu_with_model_range(
     "model_range,expected_model_params",
     [
         ("xeon gold", {"a": 35.5688, "b": 0.2438, "c": 9.6694, "d": -0.6087}),
+        ("xeon E5", {"a": 48.9167, "b": 0.1349, "c": 15.7262, "d": -4.654}),
+        ("xeon E", {"a": 55.6501, "b": 0.0467, "c": 20.4146, "d": 4.24362}),
     ],
 )
 def test_cpu_with_model_range_fuzzy(
@@ -79,6 +82,15 @@ def test_cpu_with_model_range_fuzzy(
     expected_model = CPUConsumptionProfileModel()
     expected_model.params.value = expected_model_params
     validate_models_approx(cpu_cp, expected_model)
+
+
+def test_cpu_with_nonexistent_model_range():
+    """Test that a dummy/non-existent CPU model range returns default values"""
+    cpu_cp = CPUConsumptionProfileModel()
+    model = cpu_cp.compute_consumption_profile_model(
+        cpu_model_range="NonExistent CPU XYZ 9999"
+    )
+    assert model == DEFAULT_CPU_PARAMS
 
 
 @pytest.mark.parametrize(

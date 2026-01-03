@@ -119,6 +119,7 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         cpu_manufacturer: str = None,
         cpu_model_range: str = None,
         cpu_tdp: int = None,
+        cpu_name: str = None,
     ) -> Union[Dict[str, float], None]:
         model = self.lookup_consumption_profile(cpu_manufacturer, cpu_model_range)
         if self.workloads.is_set():
@@ -196,7 +197,7 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
 
     @staticmethod
     def lookup_consumption_profile(
-        cpu_manufacturer: str = None, cpu_model_range: str = None
+        cpu_manufacturer: str = None, cpu_model_range: str = None, cpu_name: str = None
     ) -> Optional[Dict[str, float]]:
         sub = _cpu_profile_consumption_df
 
@@ -212,9 +213,14 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
 
         if len(sub) == 1:
             row = sub.iloc[0]
-            return {
-                "a": row.a,
-                "b": row.b,
-                "c": row.c,
-                "d": row.d,
-            }
+            return {k: row[k] for k in ["a", "b", "c", "d"]}
+        elif len(sub) > 1:
+            # Multiple matches found - select the best match
+            if cpu_model_range is not None:
+                # First, try to find an exact match (case-insensitive)
+                exact_match = sub[
+                    sub["model_range"].str.lower() == cpu_model_range.lower()
+                ]
+                if len(exact_match) > 0:
+                    row = exact_match.iloc[0]
+                    return {k: row[k] for k in ["a", "b", "c", "d"]}
