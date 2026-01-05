@@ -224,4 +224,4 @@ async def test_incorrect_provider():
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
         response = await ac.post("/v1/wizard/lift-shift", params={"provider_name": "invalid"},
                                  json=small_tier_onprem_config.model_dump(mode='json'))
-        assert response.status_code == 500
+        assert response.status_code == 400

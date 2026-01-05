@@ -1,4 +1,4 @@
-from fastapi import APIRouter, status, Response, Depends
+from fastapi import APIRouter, status, Response, Depends, HTTPException
 
 from boaviztapi.model.crud_models.configuration_model import OnPremiseConfigurationModel, CloudConfigurationModel
 from boaviztapi.service.cloud_provider import get_cloud_providers
@@ -12,7 +12,10 @@ wizard_router = APIRouter(
 def _validate_provider(provider_name: str) -> str:
     cloud_providers = [p.strip().lower() for p in get_cloud_providers()]
     if provider_name not in cloud_providers:
-        raise ValueError(f"Provider {provider_name} not found. Available providers: {cloud_providers}")
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Provider {provider_name} not found. Available providers: {cloud_providers}"
+        )
     return provider_name
 
 
