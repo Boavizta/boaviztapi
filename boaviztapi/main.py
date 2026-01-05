@@ -24,6 +24,7 @@ from boaviztapi.routers.currency_router import currency_router
 from boaviztapi.routers.portfolio_router import portfolio_router
 from boaviztapi.routers.sustainability_router import sustainability_router
 from boaviztapi.routers.user_router import user_router
+from boaviztapi.routers.wizard_router import wizard_router
 from boaviztapi.service.carbon_intensity_provider import CarbonIntensityProvider
 from boaviztapi.service.costs_provider import ElectricityCostsProvider
 from boaviztapi.service.currency_converter import CurrencyConverter
@@ -125,6 +126,7 @@ app.include_router(user_router)
 app.include_router(portfolio_router)
 app.include_router(sustainability_router)
 app.include_router(currency_router)
+app.include_router(wizard_router)
 
 if __name__ == '__main__':
     import uvicorn

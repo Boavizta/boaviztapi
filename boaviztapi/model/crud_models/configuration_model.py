@@ -27,7 +27,7 @@ class OnPremiseServerUsage(BaseModel):
 
 class OnPremiseConfigurationModel(BaseCRUDModel):
     type: Literal['on-premise']
-    name: str = Field(...),
+    name: str = Field(...)
     created: datetime = Field(...)
     cpu_quantity: int = Field(..., ge=1, le=64)
     cpu_core_units: int = Field(..., ge=1, le=1000)
@@ -86,7 +86,7 @@ class CloudServerUsage(BaseModel):
     serverLoad: Optional[float] = Field(default=None, ge=1, le=100)
     serverLoadAdvanced: Optional[ServerLoadAdvanced] = Field(default=None)
     instancePricingType: Optional[str] = Field(default=None)
-    reservedPlan: Optional[str] = Field(default=None),
+    reservedPlan: Optional[str] = Field(default=None)
 
 class CloudConfigurationModel(BaseCRUDModel):
     type: Literal['cloud']
