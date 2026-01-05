@@ -81,8 +81,11 @@ $ make lint
 The development server uses [uvicorn](https://www.uvicorn.org/) and [FastAPI](https://fastapi.tiangolo.com/). You can launch the development server with the `uvicorn` CLI.
 
 ```bash
-$ poetry shell
-$ uvicorn boaviztapi.main:app --host=localhost --port 5000
+# Using uvicorn
+$ make run
+
+# Using Python directly (adds watcher)
+$ make run-py
 ```
 
 You can run the tests with `pytest` via `make test`.
