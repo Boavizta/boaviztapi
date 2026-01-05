@@ -32,6 +32,8 @@ itsdangerous = "^2.2.0"
 pymongo = "^4.15.4"
 apscheduler = "^3.11.1"
 pyjwt = "^2.10.1"
+respx = "^0.22.0"
+pytest-regressions = "^2.8.3"
 
 [tool.poetry.group.dev]
 optional = true
@@ -44,6 +46,7 @@ httpx = "^0.28.1"
 requests = "^2.32.3"
 jsonschema = "^4.25.1"
 pycountry = "^24.6.1"
+coverage = "^7.13.1"
 
 [tool.poetry.group.docs]
 optional = true

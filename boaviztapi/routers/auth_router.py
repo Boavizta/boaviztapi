@@ -1,7 +1,7 @@
 import logging
 
 from typing import Mapping, Any, Annotated
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 from urllib.parse import urlencode
 
 from fastapi import APIRouter, Request, HTTPException, Form, Query
@@ -52,7 +52,7 @@ async def google_signin_callback(
                     # The user already exists, just update his/her last seen date
                     user_model = UserModel(sub=user.sub,
                                            registration_date=user.registration_date,
-                                           last_seen_date=datetime.now(UTC),
+                                           last_seen_date=datetime.now(timezone.utc),
                                            **user.model_dump(exclude={"sub", "registration_date", "last_seen_date"}))
                     await service.update(user.id, user_model)
             except HTTPException as e:

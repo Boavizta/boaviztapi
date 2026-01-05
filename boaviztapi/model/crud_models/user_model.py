@@ -1,4 +1,4 @@
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 from typing import Optional
 
 from bson import ObjectId
@@ -44,8 +44,8 @@ class UserModel(BaseCRUDModel):
             name=user.name,
             given_name=user.given_name,
             family_name=user.family_name,
-            registration_date=datetime.now(UTC),
-            last_seen_date=datetime.now(UTC)
+            registration_date=datetime.now(timezone.utc),
+            last_seen_date=datetime.now(timezone.utc)
         )
 
 

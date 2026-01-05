@@ -3,7 +3,7 @@ from typing import Dict, Any
 
 import httpx
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from datetime import datetime, UTC, timedelta
+from datetime import datetime, timezone, timedelta
 import logging
 
 from pymongo.asynchronous.collection import AsyncCollection
@@ -61,10 +61,10 @@ class CacheService:
         if cached_results and cached_results.get("expires_at") and cached_results.get("data"):
             expires_at = cached_results["expires_at"]
             if isinstance(expires_at, datetime):
-                expires_at = expires_at.replace(tzinfo=UTC)
+                expires_at = expires_at.replace(tzinfo=timezone.utc)
             if isinstance(expires_at, str):
                 expires_at = datetime.fromisoformat(expires_at)
-            if datetime.now(UTC) < expires_at:
+            if datetime.now(timezone.utc) < expires_at:
                 self._logger.info("Using cached results")
                 # The cache is not expired, use the cached results.
                 self.memory_cache = cached_results["data"]
@@ -90,7 +90,7 @@ class CacheService:
             filter={"name": self.name},
             update={"$set":{
                 "data": self.memory_cache,
-                "expires_at": datetime.now(UTC) + timedelta(seconds=self.ttl)}},
+                "expires_at": datetime.now(timezone.utc) + timedelta(seconds=self.ttl)}},
             upsert=True
         )
 

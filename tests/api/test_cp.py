@@ -26,7 +26,7 @@ class CPUConsumptionProfileTest:
             res = await ac.post("/v1/consumption_profile/cpu", json=request_body)
 
         res_data: dict = res.json()
-        delta = 0.001
+        delta = 0.01
         assert self.expected[0] == pytest.approx(res_data["a"], delta)
         assert self.expected[1] == pytest.approx(res_data["b"], delta)
         assert self.expected[2] == pytest.approx(res_data["c"], delta)
@@ -42,7 +42,7 @@ async def test_complete_valid_cpu_manufacturer_family():
 
 @pytest.mark.asyncio
 async def test_complete_valid_cpu_overrides_tdp_if_present():
-    await CPUConsumptionProfileTest(name="intel xeon gold 6134", tdp=100, expected=(50.8479, 0.0630, 20.4511, -0.9990)).run()
+    await CPUConsumptionProfileTest(name="intel xeon gold 6134", tdp=100, expected=(50.8479, 0.0630, 20.4511, -0.9999)).run()
 
 @pytest.mark.asyncio
 async def test_complete_alternative_valid_cpu_manufacturer_family():

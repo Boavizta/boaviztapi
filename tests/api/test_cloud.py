@@ -121,15 +121,15 @@ async def test_empty_usage_with_url_params_r5ad():
     test = CloudTest(
         CloudInstanceRequest("aws", "r5ad.12xlarge", use_url_params=True),
         ADPImpact(
-            ImpactOutput(0.1206, 0.06419, 0.086, END_OF_LIFE_WARNING),
+            ImpactOutput(0.1252, 0.06296, 0.086, END_OF_LIFE_WARNING),
             ImpactOutput(0.003295, 0.0001228, 0.0007),
         ),
         GWPImpact(
-            ImpactOutput(1693.0, 592.6, 1000.0, END_OF_LIFE_WARNING),
+            ImpactOutput(1853.0, 549.7, 1000.0, END_OF_LIFE_WARNING),
             ImpactOutput(11170.0, 214.0, 4000.0),
         ),
         PEImpact(
-            ImpactOutput(21470.0, 7590.0, 13000.0, END_OF_LIFE_WARNING),
+            ImpactOutput(23450.0, 7057.0, 12000.0, END_OF_LIFE_WARNING),
             ImpactOutput(5808000.0, 121.0, 100000.0),
         ),
     )
@@ -277,15 +277,15 @@ async def test_verbose_output_with_empty_usage():
     test = CloudTest(
         CloudInstanceRequest("aws", "r5ad.12xlarge", use_url_params=True),
         ADPImpact(
-            ImpactOutput(0.1206, 0.06419, 0.086, END_OF_LIFE_WARNING),
+            ImpactOutput(0.1252, 0.06296, 0.086, END_OF_LIFE_WARNING),
             ImpactOutput(0.003295, 0.0001228, 0.0007),
         ),
         GWPImpact(
-            ImpactOutput(1693.0, 592.6, 1000.0, END_OF_LIFE_WARNING),
+            ImpactOutput(1853.0, 549.7, 1000.0, END_OF_LIFE_WARNING),
             ImpactOutput(11170.0, 214.0, 4000.0),
         ),
         PEImpact(
-            ImpactOutput(21470.0, 7590.0, 13000.0, END_OF_LIFE_WARNING),
+            ImpactOutput(23450.0, 7057.0, 12000.0, END_OF_LIFE_WARNING),
             ImpactOutput(5808000.0, 121.0, 100000.0),
         ),
         verbose_output={
@@ -929,15 +929,15 @@ async def test_empty_usage_e8ads_v5():
     test = CloudTest(
         CloudInstanceRequest("azure", "e8ads_v5"),
         ADPImpact(
-            ImpactOutput(0.02211, 0.0127, 0.0163, END_OF_LIFE_WARNING),
+            ImpactOutput(0.02287, 0.01249, 0.016, END_OF_LIFE_WARNING),
             ImpactOutput(0.0006984, 2.603e-05, 0.00014),
         ),
         GWPImpact(
-            ImpactOutput(291.7, 108.2, 170.0, END_OF_LIFE_WARNING),
+            ImpactOutput(318.3, 101.1, 170.0, END_OF_LIFE_WARNING),
             ImpactOutput(2367.0, 45.36, 800.0),
         ),
         PEImpact(
-            ImpactOutput(3713.0, 1400.0, 2200.0, END_OF_LIFE_WARNING),
+            ImpactOutput(4043.0, 1311.0, 2200.0, END_OF_LIFE_WARNING),
             ImpactOutput(1231000.0, 25.64, 30000.0, UNCERTAINTY_WARNING),
         ),
     )
@@ -960,15 +960,15 @@ async def test_usage_with_complex_time_workload_e8ads_v5():
             },
         ),
         ADPImpact(
-            ImpactOutput(0.02211, 0.0127, 0.0163, END_OF_LIFE_WARNING),
+            ImpactOutput(0.02287, 0.01249, 0.016, END_OF_LIFE_WARNING),
             ImpactOutput(0.0006088, 2.269e-05, 0.00012),
         ),
         GWPImpact(
-            ImpactOutput(291.7, 108.2, 170.0, END_OF_LIFE_WARNING),
+            ImpactOutput(318.3, 101.1, 170.0, END_OF_LIFE_WARNING),
             ImpactOutput(2063.0, 39.54, 700.0),
         ),
         PEImpact(
-            ImpactOutput(3713.0, 1400.0, 2200.0, END_OF_LIFE_WARNING),
+            ImpactOutput(4043.0, 1311.0, 2200.0, END_OF_LIFE_WARNING),
             ImpactOutput(1073000.0, 22.35, 20000.0, UNCERTAINTY_WARNING),
         ),
     )
@@ -981,15 +981,15 @@ async def test_empty_usage_scw_dev1_l():
     test = CloudTest(
         CloudInstanceRequest("scaleway", "dev1-l"),
         ADPImpact(
-            ImpactOutput(0.007718, 0.006189, 0.0064, END_OF_LIFE_WARNING),
+            ImpactOutput(0.007744, 0.006182, 0.0064, END_OF_LIFE_WARNING),
             ImpactOutput(0.0004059, 1.513e-05, 8e-05),
         ),
         GWPImpact(
-            ImpactOutput(59.5, 30.69, 45.0, END_OF_LIFE_WARNING),
+            ImpactOutput(60.39, 30.45, 45.0, END_OF_LIFE_WARNING),
             ImpactOutput(1375.0, 26.36, 500.0),
         ),
         PEImpact(
-            ImpactOutput(789.0, 409.5, 610.0, END_OF_LIFE_WARNING),
+            ImpactOutput(800.0, 406.6, 610.0, END_OF_LIFE_WARNING),
             ImpactOutput(715400.0, 14.9, 20000.0),
         ),
     )

@@ -21,6 +21,7 @@ def validate_id(id: str) -> ObjectId:
     try:
         return ObjectId(id)
     except InvalidId:
+        logging.error(f"Invalid ObjectId format: {id}")
         raise HTTPException(status_code=400, detail="Invalid ObjectId format")
 
 class GenericPydanticCRUDService(Generic[TModel]):
