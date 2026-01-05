@@ -30,3 +30,7 @@ class PortfolioService(GenericPydanticCRUDService[PortfolioModel]):
 
     def get_mongo_collection(self):
         return self.mongo_collection
+
+    async def delete_many(self, filter: dict) -> int:
+        result = await self.mongo_collection.delete_many(filter)
+        return result.deleted_count
