@@ -9,6 +9,9 @@ tests/
 # Ignore pre-commit related files
 .pre-commit-config.yaml
 
+# Ignore all CSV format files
+*.fmt
+
 # Ignore venv if any
 venv/
 

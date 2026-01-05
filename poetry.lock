@@ -411,6 +411,17 @@ files = [
 ]
 
 [[package]]
+name = "chkcsv"
+version = "1.2.0"
+description = "Checks the format of a CSV file with respect to a specifed set of column names and types."
+optional = false
+python-versions = ">=2.7"
+groups = ["csv", "dev"]
+files = [
+    {file = "chkcsv-1.2.0.tar.gz", hash = "sha256:a5c3c23a464a5528bef437a7f843a185e910b86e81de0ef8046d0a23788bb1a1"},
+]
+
+[[package]]
 name = "click"
 version = "8.1.7"
 description = "Composable command line interface toolkit"
@@ -2486,4 +2497,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "2faa34da56af71cb9429318e8c7535c9a7fac1f0d0bf5e50208897540bc784dc"
+content-hash = "c5e4c343d7352d1836f729f49c516e61b4054baa50e8d6d5a919abad4ced3915"

@@ -1,0 +1,36 @@
+name: Validate CSV format
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+    paths:
+      - "boaviztapi/data/**"
+  pull_request:
+    branches:
+      - main
+      - dev
+    paths:
+      - "boaviztapi/data/**"
+
+jobs:
+  check-csv:
+    name: Check CSV format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: 3.12.0
+
+      - name: Install poetry
+        run: pipx install poetry
+
+      - name: Install dependencies
+        run: poetry install --only csv
+
+      - name: Run CSV check
+        run: make check-csv

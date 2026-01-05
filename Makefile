@@ -15,6 +15,9 @@ install: install_pip
 install_pip:
 		poetry install --with dev
 
+check-csv:
+		poetry run python3 validate_csv.py
+
 test:
 		poetry run pytest
 
