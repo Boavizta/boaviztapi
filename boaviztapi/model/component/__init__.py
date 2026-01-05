@@ -1,5 +1,6 @@
 from .component import Component
 from .cpu import ComponentCPU
+from .gpu import ComponentGPU
 from .ram import ComponentRAM
 from .hdd import ComponentHDD
 from .ssd import ComponentSSD

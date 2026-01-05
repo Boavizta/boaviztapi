@@ -58,6 +58,9 @@ cpu_description = (
     "⏬ Allocation"
 )
 
+# TODO - fill in description
+gpu_description = "Foobar"
+
 ssd_description = (
     "# ✔ ️SSD impacts from configuration\n"
     "### Features\n\n"

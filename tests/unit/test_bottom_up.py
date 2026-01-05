@@ -81,6 +81,33 @@ def test_bottom_up_component_cpu_complete(complete_cpu_model):
     }
 
 
+def test_bottom_up_component_gpu_complete(empty_gpu_model):
+    assert compute_impacts(
+        empty_gpu_model,
+        selected_criteria=["adpe", "gwp", "wu"],
+        duration=empty_gpu_model.usage.hours_life_time.value,
+    ) == {
+        "adpe": {
+            "description": "Use of mineral and metal resources",
+            "embedded": {"max": 0.005826, "min": 0.005826, "value": 0.005826},
+            "unit": "kg SB eq.",
+            "use": "not implemented",
+        },
+        "gwp": {
+            "description": "Total climate change",
+            "embedded": {"max": 575.1, "min": 575.1, "value": 575.1},
+            "unit": "kgCO2eq",
+            "use": "not implemented",
+        },
+        "wu": {
+            "description": "Use of water resources",
+            "embedded": {"max": 1459.0, "min": 1459.0, "value": 1459.0},
+            "unit": "m3 eq.",
+            "use": "not implemented",
+        },
+    }
+
+
 def test_bottom_up_component_cpu_incomplete(incomplete_cpu_model):
     assert compute_impacts(
         incomplete_cpu_model, duration=incomplete_cpu_model.usage.hours_life_time.value
