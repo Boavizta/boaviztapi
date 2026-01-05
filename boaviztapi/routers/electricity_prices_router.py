@@ -34,7 +34,6 @@ async def get_available_countries():
 
 
 @electricity_prices_router.get('/price', description=electricity_price,
-                               response_model=Country,
                                responses={200: {
                                    "description": "Successful Response",
                                    "content": {"application/json": {"example": electricity_maps_price}}
@@ -45,7 +44,7 @@ async def get_electricity_price(
             description="Zone code as defined in the ElectricityMaps API",
             examples=["AT"]
         ), AfterValidator(check_zone_code_in_electricity_maps)],
-        temporalGranularity: str = Query(examples=["15_minutes", "hourly"], default="hourly")):
+        temporalGranularity: str = Query(examples=["hourly"], default="hourly")):
     try:
         return await ElectricityCostsProvider.get_price_for_country_elecmaps(zone, temporalGranularity)
     except APIMissingValueError as e:
