@@ -54,11 +54,11 @@ async def add_results_to_configuration(c: ConfigurationModelWithResults):
     if _type == 'cloud':
         results = await get_cloud_impact(CloudConfigurationModel.model_validate(config),
                                          verbose=True,
-                                         criteria=["gwp", "pe"])
+                                         criteria=["gwp", "pe", "adp"])
     else:
         results = await get_server_impact_on_premise(OnPremiseConfigurationModel.model_validate(config),
                                                      verbose=True,
-                                                     criteria=["gwp", "pe"])
+                                                     criteria=["gwp", "pe", "adp"])
     return c.results | results
 
 
