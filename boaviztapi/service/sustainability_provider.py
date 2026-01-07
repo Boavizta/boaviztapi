@@ -53,11 +53,11 @@ async def add_results_to_configuration(c: ConfigurationModelWithResults):
     config = c['configuration'] if isinstance(c, dict) else c.configuration
     if _type == 'cloud':
         results = await get_cloud_impact(CloudConfigurationModel.model_validate(config),
-                                         verbose=False,
+                                         verbose=True,
                                          criteria=["gwp", "pe", "adp"])
     else:
         results = await get_server_impact_on_premise(OnPremiseConfigurationModel.model_validate(config),
-                                                     verbose=False,
+                                                     verbose=True,
                                                      criteria=["gwp", "pe", "adp"])
     return c.results | results
 
@@ -71,34 +71,69 @@ async def compute_portfolio_totals(configs: List[ConfigurationModelWithResults])
     """
     if len(configs) == 0:
         return None
-    if len(configs) == 1:
-        return configs[0].results
 
-    total = deepcopy(configs[0].results['impacts'])
-    try:
-        for conf in configs[1:]:
-            results = conf.results
-            gwp = results['impacts']['gwp']
-            pe = results['impacts']['pe']
-            adp = results['impacts']['adp']
+    aggregated_results = deepcopy(configs[0].results)
 
-            _add_all_to_total(total['gwp'], gwp)
-            _add_all_to_total(total['pe'], pe)
-            _add_all_to_total(total['adp'], adp)
-    except KeyError as e:
-        _log.error(e)
-        raise ValueError("Mandatory impact results of one of the configurations are missing! (gwp, pe)")
-    return total
+    for conf in configs[1:]:
+        results = conf.results
+        if 'impacts' in aggregated_results and 'impacts' in results:
+            for criteria, impact_data in results['impacts'].items():
+                if criteria in aggregated_results['impacts']:
+                    _add_all_to_total(aggregated_results['impacts'][criteria], impact_data)
+                else:
+                    aggregated_results['impacts'][criteria] = deepcopy(impact_data)
+
+        if 'costs' in aggregated_results and 'costs' in results:
+            _add_costs_to_total(aggregated_results['costs'], results['costs'])
+
+        if 'verbose' in aggregated_results and 'verbose' in results:
+            _add_verbose_to_total(aggregated_results['verbose'], results['verbose'])
+
+    return aggregated_results
 
 
 def _add_all_to_total(total: Dict[str, Any], impact: Dict[str, Any]) -> None:
-    if 'embedded' in total and 'embedded' in impact:
+    if 'embedded' in total and 'embedded' in impact and isinstance(total['embedded'], dict) and isinstance(impact['embedded'], dict):
         _add_values_to_total(total['embedded'], impact['embedded'])
-    if 'use' in total and 'use' in impact:
+    if 'use' in total and 'use' in impact and isinstance(total['use'], dict) and isinstance(impact['use'], dict):
         _add_values_to_total(total['use'], impact['use'])
 
 
 def _add_values_to_total(total: Dict[str, Any], impact: Dict[str, Any]) -> None:
-    total['value'] += impact['value']
-    total['min'] += impact['min']
-    total['max'] += impact['max']
+    if 'value' in total and 'value' in impact:
+        total['value'] += impact['value']
+    if 'min' in total and 'min' in impact:
+        total['min'] += impact['min']
+    if 'max' in total and 'max' in impact:
+        total['max'] += impact['max']
+
+
+def _add_costs_to_total(total: Dict[str, Any], costs: Dict[str, Any]) -> None:
+    for currency, data in costs.items():
+        if currency in total:
+            total[currency]['total_cost'] += data.get('total_cost', 0)
+            if 'breakdown' in total[currency] and 'breakdown' in data:
+                for k, v in data['breakdown'].items():
+                    if k in total[currency]['breakdown']:
+                        total[currency]['breakdown'][k] += v
+                    else:
+                        total[currency]['breakdown'][k] = v
+        else:
+            total[currency] = deepcopy(data)
+
+
+def _add_verbose_to_total(total: Dict[str, Any], verbose: Dict[str, Any]) -> None:
+    for key, data in verbose.items():
+        if key not in total:
+            total[key] = deepcopy(data)
+            continue
+
+        if isinstance(data, dict):
+            if 'impacts' in data and 'impacts' in total[key]:
+                for criteria, impact_data in data['impacts'].items():
+                    if criteria in total[key]['impacts']:
+                        _add_all_to_total(total[key]['impacts'][criteria], impact_data)
+                    else:
+                        total[key]['impacts'][criteria] = deepcopy(impact_data)
+            elif 'value' in data and isinstance(data['value'], (int, float)) and 'value' in total[key]:
+                _add_values_to_total(total[key], data)
