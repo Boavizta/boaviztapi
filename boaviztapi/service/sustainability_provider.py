@@ -54,11 +54,11 @@ async def add_results_to_configuration(c: ConfigurationModelWithResults):
     if _type == 'cloud':
         results = await get_cloud_impact(CloudConfigurationModel.model_validate(config),
                                          verbose=False,
-                                         criteria=["gwp", "pe"])
+                                         criteria=["gwp", "pe", "adp"])
     else:
         results = await get_server_impact_on_premise(OnPremiseConfigurationModel.model_validate(config),
                                                      verbose=False,
-                                                     criteria=["gwp", "pe"])
+                                                     criteria=["gwp", "pe", "adp"])
     return c.results | results
 
 
@@ -80,9 +80,11 @@ async def compute_portfolio_totals(configs: List[ConfigurationModelWithResults])
             results = conf.results
             gwp = results['impacts']['gwp']
             pe = results['impacts']['pe']
+            adp = results['impacts']['adp']
 
             _add_all_to_total(total['gwp'], gwp)
             _add_all_to_total(total['pe'], pe)
+            _add_all_to_total(total['adp'], adp)
     except KeyError as e:
         _log.error(e)
         raise ValueError("Mandatory impact results of one of the configurations are missing! (gwp, pe)")
