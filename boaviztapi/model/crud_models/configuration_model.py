@@ -20,7 +20,7 @@ class OnPremiseServerUsage(BaseModel):
     localisation: str = Field(...)
     lifespan: int = Field(...)
     method: str = Field(...)
-    avgConsumption: Optional[float] = Field(default=None, ge=1, le=100000)
+    avgConsumption: Optional[float] = Field(default=None, ge=0, le=100000)
     serverLoad: Optional[float] = Field(default=None, ge=1, le=100)
     serverLoadAdvanced: Optional[ServerLoadAdvanced] = Field(default=None)
     operatingCosts: Optional[float] = Field(default=None, ge=0, le=100000000)
