@@ -46,7 +46,7 @@ def get_vantage_price(cloud_provider, instance_type, instancePricingType, region
     row = df[df["API Name"] == instance_type]
     if row.empty:
         raise ValueError(f"Instance {instance_type} not found in {provider} CSV")
-
+    #FIXME: normalise azure instance IDs (see archetypes/azure.csv and the parquet ids)
     if instancePricingType not in price_map:
         raise ValueError(f"Pricing type '{instancePricingType}' not valid for {provider}")
 

@@ -2,8 +2,12 @@ from typing import Optional, Dict, Any, List
 
 from pydantic import BaseModel, Field
 
-from boaviztapi.model.crud_models.configuration_model import ConfigurationModelWithResults, OnPremiseConfigurationModel
+from boaviztapi.model.cloud_prices.cloud_prices import GcpPriceModel, AWSPriceModel, AzurePriceModel
+from boaviztapi.model.crud_models.configuration_model import ConfigurationModelWithResults, OnPremiseConfigurationModel, \
+    CloudConfigurationModel
 from boaviztapi.model.currency.currency_models import Currency
+from boaviztapi.service.cloud_pricing_provider import GcpPriceProvider, AWSPriceProvider, AzurePriceProvider, \
+    _estimate_cloud_region
 from boaviztapi.service.costs_computation import get_electricity_price
 from boaviztapi.service.currency_converter import CurrencyConverter
 from boaviztapi.service.sustainability_provider import get_server_impact_on_premise
@@ -139,14 +143,34 @@ class CostCalculator:
     async def cloud_costs(self, server) -> CurrencyConvertedCostBreakdown:
         usage = server.usage
 
-        vantage_cost = get_vantage_price(
-            cloud_provider=server.cloud_provider,
-            instance_type=server.instance_type,
-            instancePricingType=usage.instancePricingType,
-            region=usage.localisation
-        )
+        # FIXME: this is now deprecated
+        # vantage_cost = get_vantage_price(
+        #     cloud_provider=server.cloud_provider,
+        #     instance_type=server.instance_type,
+        #     instancePricingType=usage.instancePricingType,
+        #     region=usage.localisation
+        # )
 
-        operating_costs = vantage_cost * self.duration
+        if 'gcp' == server.cloud_provider.lower():
+            price_provider = GcpPriceProvider()
+            cloud_region = _estimate_cloud_region(usage.localisation, server.cloud_provider)
+            hourly_costs: GcpPriceModel = price_provider.get_all(region=cloud_region, instance_id=server.instance_type)
+            hourly_cost = hourly_costs.linux_spot_cost
+        elif 'aws' == server.cloud_provider.lower():
+            price_provider = AWSPriceProvider()
+            cloud_region = _estimate_cloud_region(usage.localisation, server.cloud_provider)
+            hourly_costs: list[AWSPriceModel] = price_provider.get_prices_with_saving(region=cloud_region, instance_id=server.instance_type, savings_type=usage.reservedPlan)
+            hourly_cost = hourly_costs[0].linux_spot_min_cost
+        elif 'azure' == server.cloud_provider.lower():
+            price_provider = AzurePriceProvider()
+            cloud_region = _estimate_cloud_region(usage.localisation, server.cloud_provider)
+            hourly_costs: list[AzurePriceModel] = price_provider.get_prices_with_saving(region=cloud_region, instance_id=server.instance_type, savings_type=usage.reservedPlan)
+            hourly_cost = hourly_costs[0].linux_spot_min_cost
+        else:
+            raise ValueError(f"Unknown cloud provider: {server.cloud_provider}")
+
+
+        operating_costs = hourly_cost * self.duration
 
         local_costs = CostBreakdown(
             total_cost=operating_costs,

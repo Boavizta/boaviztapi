@@ -47,6 +47,8 @@ requests = "^2.32.3"
 jsonschema = "^4.25.1"
 pycountry = "^24.6.1"
 coverage = "^7.13.1"
+pyarrow = "^22.0.0"
+fastparquet = "^2025.12.0"
 
 [tool.poetry.group.docs]
 optional = true

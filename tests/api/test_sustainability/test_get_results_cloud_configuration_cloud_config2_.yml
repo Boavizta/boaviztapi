@@ -1,0 +1,639 @@
+costs:
+  eur:
+    breakdown:
+      operating_costs: 312.4
+    currency:
+      name: Euro
+      symbol: EUR
+    total_cost: 312.4
+    warnings: []
+  local:
+    breakdown:
+      operating_costs: 312.4
+    currency:
+      name: Euro
+      symbol: EUR
+    total_cost: 312.4
+    warnings: []
+  usd:
+    breakdown:
+      operating_costs: 366.1
+    currency:
+      name: United States Dollar
+      symbol: USD
+    total_cost: 366.1
+    warnings: []
+impacts:
+  adp:
+    description: Use of minerals and fossil ressources
+    embedded:
+      max: 0.9
+      min: 0.4
+      value: 0.6
+      warnings:
+      - End of life is not included in the calculation
+    unit: kgSbeq
+    use:
+      max: 0.0
+      min: 0.0
+      value: 0.0
+  gwp:
+    description: Total climate change
+    embedded:
+      max: 5703.0
+      min: 2160.0
+      value: 3800.0
+      warnings:
+      - End of life is not included in the calculation
+    unit: kgCO2eq
+    use:
+      max: 70.7
+      min: 53.0
+      value: 59.0
+  pe:
+    description: Consumption of primary energy
+    embedded:
+      max: 76340.0
+      min: 28900.0
+      value: 51000.0
+      warnings:
+      - End of life is not included in the calculation
+    unit: MJ
+    use:
+      max: 1336.0
+      min: 1002.0
+      value: 1110.0
+verbose:
+  ASSEMBLY-1:
+    duration:
+      unit: hours
+      value: 100
+    impacts:
+      adp:
+        description: Use of minerals and fossil ressources
+        embedded:
+          max: 0.0
+          min: 0.0
+          value: 0.0
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgSbeq
+        use: not implemented
+      gwp:
+        description: Total climate change
+        embedded:
+          max: 40.1
+          min: 40.1
+          value: 40.1
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgCO2eq
+        use: not implemented
+      pe:
+        description: Consumption of primary energy
+        embedded:
+          max: 411.6
+          min: 411.6
+          value: 411.6
+          warnings:
+          - End of life is not included in the calculation
+        unit: MJ
+        use: not implemented
+    units:
+      max: 1
+      min: 1
+      status: ARCHETYPE
+      value: 1
+  CASE-1:
+    case_type:
+      status: ARCHETYPE
+      value: rack
+    duration:
+      unit: hours
+      value: 100
+    impacts:
+      adp:
+        description: Use of minerals and fossil ressources
+        embedded:
+          max: 0.2
+          min: 0.1
+          value: 0.1
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgSbeq
+        use: not implemented
+      gwp:
+        description: Total climate change
+        embedded:
+          max: 900.0
+          min: 515.4
+          value: 900.0
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgCO2eq
+        use: not implemented
+      pe:
+        description: Consumption of primary energy
+        embedded:
+          max: 13200.0
+          min: 7373.0
+          value: 13200.0
+          warnings:
+          - End of life is not included in the calculation
+        unit: MJ
+        use: not implemented
+    units:
+      max: 1
+      min: 1
+      status: ARCHETYPE
+      value: 1
+  CPU-1:
+    adp_factor:
+      max: 0.0
+      min: 0.0
+      source: ADEME Base IMPACTS ®
+      status: COMPLETED
+      unit: kg Sbeq/kWh
+      value: 0.0
+    avg_power:
+      max: 763.1
+      min: 763.1
+      status: COMPLETED
+      unit: W
+      value: 763.1
+    core_units:
+      max: 16
+      min: 16
+      source: Completed from name name based on https://www.techpowerup.com/cpu-specs/epyc-7281.c1927.
+      status: COMPLETED
+      value: 16
+    die_size:
+      max: 213
+      min: 213
+      source: 'io_die_size () + die_size (213 mm²) : Completed from name name based
+        on https://www.techpowerup.com/cpu-specs/epyc-7281.c1927.'
+      status: COMPLETED
+      unit: mm2
+      value: 213
+    duration:
+      unit: hours
+      value: 100
+    family:
+      max: Naples
+      min: Naples
+      source: Completed from name name based on https://www.techpowerup.com/cpu-specs/epyc-7281.c1927.
+      status: COMPLETED
+      value: Naples
+    gwp_factor:
+      max: 0.5
+      min: 0.5
+      source: https://www.sciencedirect.com/science/article/pii/S0306261921012149
+      status: COMPLETED
+      unit: kg CO2eq/kWh
+      value: 0.5
+    hours_life_time:
+      max: 100
+      min: 100
+      source: from device
+      status: COMPLETED
+      unit: hours
+      value: 100
+    impacts:
+      adp:
+        description: Use of minerals and fossil ressources
+        embedded:
+          max: 0.1
+          min: 0.1
+          value: 0.1
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgSbeq
+        use:
+          max: 0.0
+          min: 0.0
+          value: 0.0
+      gwp:
+        description: Total climate change
+        embedded:
+          max: 80.0
+          min: 80.0
+          value: 80.0
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgCO2eq
+        use:
+          max: 34.3
+          min: 34.3
+          value: 34.3
+      pe:
+        description: Consumption of primary energy
+        embedded:
+          max: 1275.0
+          min: 1275.0
+          value: 1275.0
+          warnings:
+          - End of life is not included in the calculation
+        unit: MJ
+        use:
+          max: 649.5
+          min: 649.5
+          value: 649.5
+    manufacturer:
+      max: AMD
+      min: AMD
+      source: Completed from name name based on https://www.techpowerup.com/cpu-specs/epyc-7281.c1927.
+      status: COMPLETED
+      value: AMD
+    model_range:
+      max: EPYC
+      min: EPYC
+      source: Completed from name name based on https://www.techpowerup.com/cpu-specs/epyc-7281.c1927.
+      status: COMPLETED
+      value: EPYC
+    name:
+      max: AMD EPYC 7281
+      min: AMD EPYC 7281
+      source: fuzzy match
+      status: COMPLETED
+      value: AMD EPYC 7281
+    params:
+      source: From TDP
+      status: COMPLETED
+      value:
+        a: 86.4
+        b: 0.1
+        c: 20.5
+        d: -4.1
+    pe_factor:
+      max: 8.5
+      min: 8.5
+      source: ADPf / (1-%renewable_energy)
+      status: COMPLETED
+      unit: MJ/kWh
+      value: 8.5
+    tdp:
+      max: 170
+      min: 170
+      source: Completed from name name based on https://www.techpowerup.com/cpu-specs/epyc-7281.c1927.
+      status: COMPLETED
+      unit: W
+      value: 170
+    threads:
+      max: 32
+      min: 32
+      source: Completed from name name based on https://www.techpowerup.com/cpu-specs/epyc-7281.c1927.
+      status: COMPLETED
+      value: 32
+    time_workload:
+      max: 100.0
+      min: 0.0
+      status: ARCHETYPE
+      unit: '%'
+      value: 50.0
+    units:
+      max: 1.0
+      min: 1.0
+      status: ARCHETYPE
+      value: 1.0
+    usage_location:
+      status: INPUT
+      unit: CodSP3 - NCS Country Codes - NATO
+      value: NLD
+    use_time_ratio:
+      status: INPUT
+      unit: /1
+      value: 1.0
+    workloads:
+      status: COMPLETED
+      unit: workload_rate:W
+      value:
+      - load_percentage: 0
+        power_watt: 20.4
+      - load_percentage: 10
+        power_watt: 54.4
+      - load_percentage: 50
+        power_watt: 127.5
+      - load_percentage: 100
+        power_watt: 173.4
+  MOTHERBOARD-1:
+    duration:
+      unit: hours
+      value: 100
+    impacts:
+      adp:
+        description: Use of minerals and fossil ressources
+        embedded:
+          max: 0.0
+          min: 0.0
+          value: 0.0
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgSbeq
+        use: not implemented
+      gwp:
+        description: Total climate change
+        embedded:
+          max: 396.6
+          min: 396.6
+          value: 396.6
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgCO2eq
+        use: not implemented
+      pe:
+        description: Consumption of primary energy
+        embedded:
+          max: 5016.0
+          min: 5016.0
+          value: 5016.0
+          warnings:
+          - End of life is not included in the calculation
+        unit: MJ
+        use: not implemented
+    units:
+      max: 1
+      min: 1
+      status: ARCHETYPE
+      value: 1
+  POWER_SUPPLY-1:
+    duration:
+      unit: hours
+      value: 100
+    impacts:
+      adp:
+        description: Use of minerals and fossil ressources
+        embedded:
+          max: 0.5
+          min: 0.1
+          value: 0.3
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgSbeq
+        use: not implemented
+      gwp:
+        description: Total climate change
+        embedded:
+          max: 1458.0
+          min: 291.6
+          value: 900.0
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgCO2eq
+        use: not implemented
+      pe:
+        description: Consumption of primary energy
+        embedded:
+          max: 21120.0
+          min: 4224.0
+          value: 13000.0
+          warnings:
+          - End of life is not included in the calculation
+        unit: MJ
+        use: not implemented
+    unit_weight:
+      max: 5.0
+      min: 1.0
+      status: ARCHETYPE
+      unit: kg
+      value: 3.0
+    units:
+      max: 2.0
+      min: 2.0
+      status: ARCHETYPE
+      value: 2.0
+  RAM-1:
+    adp_factor:
+      max: 0.0
+      min: 0.0
+      source: ADEME Base IMPACTS ®
+      status: COMPLETED
+      unit: kg Sbeq/kWh
+      value: 0.0
+    avg_power:
+      max: 218.1
+      min: 218.1
+      status: COMPLETED
+      unit: W
+      value: 218.1
+    capacity:
+      max: 32.0
+      min: 32.0
+      status: ARCHETYPE
+      unit: GB
+      value: 32.0
+    density:
+      max: 2.4
+      min: 0.6
+      source: Average of 11 rows
+      status: COMPLETED
+      unit: GB/cm2
+      value: 1.2
+    duration:
+      unit: hours
+      value: 100
+    gwp_factor:
+      max: 0.5
+      min: 0.5
+      source: https://www.sciencedirect.com/science/article/pii/S0306261921012149
+      status: COMPLETED
+      unit: kg CO2eq/kWh
+      value: 0.5
+    hours_life_time:
+      max: 100
+      min: 100
+      source: from device
+      status: COMPLETED
+      unit: hours
+      value: 100
+    impacts:
+      adp:
+        description: Use of minerals and fossil ressources
+        embedded:
+          max: 0.1
+          min: 0.1
+          value: 0.1
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgSbeq
+        use:
+          max: 0.0
+          min: 0.0
+          value: 0.0
+      gwp:
+        description: Total climate change
+        embedded:
+          max: 2829.0
+          min: 836.7
+          value: 1500.0
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgCO2eq
+        use:
+          max: 9.8
+          min: 9.8
+          value: 9.8
+      pe:
+        description: Consumption of primary energy
+        embedded:
+          max: 35320.0
+          min: 10600.0
+          value: 19000.0
+          warnings:
+          - End of life is not included in the calculation
+        unit: MJ
+        use:
+          max: 185.6
+          min: 185.6
+          value: 185.6
+    params:
+      source: '(ram_electrical_factor_per_go : 0.284) * (ram_capacity: 32.0) '
+      status: COMPLETED
+      value:
+        a: 9.1
+    pe_factor:
+      max: 8.5
+      min: 8.5
+      source: ADPf / (1-%renewable_energy)
+      status: COMPLETED
+      unit: MJ/kWh
+      value: 8.5
+    time_workload:
+      max: 100.0
+      min: 0.0
+      status: ARCHETYPE
+      unit: '%'
+      value: 50.0
+    units:
+      max: 8.0
+      min: 8.0
+      status: ARCHETYPE
+      value: 8.0
+    usage_location:
+      status: INPUT
+      unit: CodSP3 - NCS Country Codes - NATO
+      value: NLD
+    use_time_ratio:
+      status: INPUT
+      unit: /1
+      value: 1.0
+  SSD-1:
+    capacity:
+      max: 976.0
+      min: 976.0
+      status: ARCHETYPE
+      unit: GB
+      value: 976.0
+    density:
+      max: 128.0
+      min: 16.4
+      source: Average of 19 rows
+      status: COMPLETED
+      unit: GB/cm2
+      value: 54.9
+    duration:
+      unit: hours
+      value: 100
+    impacts:
+      adp:
+        description: Use of minerals and fossil ressources
+        embedded:
+          max: 0.0
+          min: 0.0
+          value: 0.0
+          warnings:
+          - End of life is not included in the calculation
+          - Uncertainty from technical characteristics is very important. Results
+            should be interpreted with caution (see min and max values)
+        unit: kgSbeq
+        use: not implemented
+      gwp:
+        description: Total climate change
+        embedded:
+          max: 0.0
+          min: 0.0
+          value: 0.0
+          warnings:
+          - End of life is not included in the calculation
+          - Uncertainty from technical characteristics is very important. Results
+            should be interpreted with caution (see min and max values)
+        unit: kgCO2eq
+        use: not implemented
+      pe:
+        description: Consumption of primary energy
+        embedded:
+          max: 0.0
+          min: 0.0
+          value: 0.0
+          warnings:
+          - End of life is not included in the calculation
+          - Uncertainty from technical characteristics is very important. Results
+            should be interpreted with caution (see min and max values)
+        unit: MJ
+        use: not implemented
+    units:
+      max: 5.0
+      min: 5.0
+      status: ARCHETYPE
+      value: 5.0
+  adp_factor:
+    max: 0.0
+    min: 0.0
+    source: ADEME Base IMPACTS ®
+    status: COMPLETED
+    unit: kg Sbeq/kWh
+    value: 0.0
+  avg_power:
+    max: 1570.0
+    min: 1177.5
+    status: COMPLETED
+    unit: W
+    value: 1305.1
+  duration:
+    unit: hours
+    value: 100
+  gwp_factor:
+    max: 0.5
+    min: 0.5
+    source: https://www.sciencedirect.com/science/article/pii/S0306261921012149
+    status: COMPLETED
+    unit: kg CO2eq/kWh
+    value: 0.5
+  hours_life_time:
+    max: 100
+    min: 100
+    source: from device
+    status: COMPLETED
+    unit: hours
+    value: 100
+  memory:
+    status: ARCHETYPE
+    unit: GB
+    value: 768.0
+  other_consumption_ratio:
+    max: 0.6
+    min: 0.2
+    status: ARCHETYPE
+    unit: ratio /1
+    value: 0.3
+  pe_factor:
+    max: 8.5
+    min: 8.5
+    source: ADPf / (1-%renewable_energy)
+    status: COMPLETED
+    unit: MJ/kWh
+    value: 8.5
+  ssd_storage:
+    status: ARCHETYPE
+    unit: GB
+    value: 0.0
+  usage_location:
+    status: INPUT
+    unit: CodSP3 - NCS Country Codes - NATO
+    value: NLD
+  use_time_ratio:
+    status: INPUT
+    unit: /1
+    value: 1.0
+  vcpu:
+    status: ARCHETYPE
+    value: 192.0

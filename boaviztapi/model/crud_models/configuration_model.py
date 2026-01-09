@@ -11,10 +11,12 @@ class ServerLoadAdvancedSlot(BaseModel):
     time: int = Field(..., ge=0, le=100)
     load: int = Field(..., ge=0, le=100)
 
+
 class ServerLoadAdvanced(BaseModel):
     slot1: ServerLoadAdvancedSlot = Field(...)
     slot2: ServerLoadAdvancedSlot = Field(...)
     slot3: ServerLoadAdvancedSlot = Field(...)
+
 
 class OnPremiseServerUsage(BaseModel):
     localisation: str = Field(...)
@@ -24,6 +26,7 @@ class OnPremiseServerUsage(BaseModel):
     serverLoad: Optional[float] = Field(default=None, ge=1, le=100)
     serverLoadAdvanced: Optional[ServerLoadAdvanced] = Field(default=None)
     operatingCosts: Optional[float] = Field(default=None, ge=0, le=100000000)
+
 
 class OnPremiseConfigurationModel(BaseCRUDModel):
     type: Literal['on-premise']
@@ -79,6 +82,7 @@ class OnPremiseConfigurationModel(BaseCRUDModel):
         }
     )
 
+
 class CloudServerUsage(BaseModel):
     localisation: str = Field(...)
     lifespan: int = Field(..., ge=1)
@@ -87,6 +91,7 @@ class CloudServerUsage(BaseModel):
     serverLoadAdvanced: Optional[ServerLoadAdvanced] = Field(default=None)
     instancePricingType: Optional[str] = Field(default=None)
     reservedPlan: Optional[str] = Field(default=None)
+
 
 class CloudConfigurationModel(BaseCRUDModel):
     type: Literal['cloud']
@@ -105,25 +110,27 @@ class CloudConfigurationModel(BaseCRUDModel):
                 "type": "cloud",
                 "name": "Development Cloud",
                 "created": "2023-01-01T00:00:00.000Z",
-                "cloud_provider": "AWS",
-                "instance_type": "a1.medium",
+                "cloud_provider": "aws",
+                "instance_type": "a1.large",
+                "user_id": "1234567890",
                 "usage": {
                     "localisation": "NL",
-                    "lifespan": 1000,
+                    "lifespan": 43830,
                     "method": "Load",
                     "serverLoad": 100,
                     "instancePricingType": "OnDemand",
-                    "reservedPlan": "1y"
-                },
-                "user_id": "1234567890"
+                    "reservedPlan": "yrTerm1Standard.noUpfront"
+                }
             }
         }
     )
+
 
 ConfigurationModel = Annotated[
     Union[OnPremiseConfigurationModel, CloudConfigurationModel],
     Field(discriminator="type"),
 ]
+
 
 class ConfigurationModelWithResults(BaseModel):
     configuration: ConfigurationModel
@@ -134,10 +141,12 @@ class UpdateServerLoadAdvancedSlot(BaseModel):
     time: Optional[int] = Field(default=None, ge=1, le=100)
     load: Optional[int] = Field(default=None, ge=1, le=100)
 
+
 class UpdateServerLoadAdvanced(BaseModel):
     slot1: Optional[ServerLoadAdvancedSlot] = None
     slot2: Optional[ServerLoadAdvancedSlot] = None
     slot3: Optional[ServerLoadAdvancedSlot] = None
+
 
 class UpdateOnPremiseServerUsage(BaseModel):
     localisation: Optional[str] = None
@@ -147,6 +156,7 @@ class UpdateOnPremiseServerUsage(BaseModel):
     serverLoad: Optional[float] = None
     serverLoadAdvanced: Optional[UpdateServerLoadAdvanced] = None
     operatingCosts: Optional[int] = None
+
 
 class UpdateOnPremiseConfigurationModel(BaseCRUDUpdateModel):
     type: Literal['on-premise']
@@ -202,6 +212,7 @@ class UpdateOnPremiseConfigurationModel(BaseCRUDUpdateModel):
         }
     )
 
+
 class UpdateCloudServerUsage(BaseModel):
     localisation: Optional[str] = None
     lifespan: Optional[int] = Field(default=None, ge=1)
@@ -210,6 +221,7 @@ class UpdateCloudServerUsage(BaseModel):
     serverLoadAdvanced: Optional[UpdateServerLoadAdvanced] = None
     instancePricingType: Optional[str] = None
     reservedPlan: Optional[str] = None
+
 
 class UpdateCloudConfigurationModel(BaseCRUDUpdateModel):
     type: Literal['cloud']
@@ -242,16 +254,21 @@ class UpdateCloudConfigurationModel(BaseCRUDUpdateModel):
             }
         }
     )
+
+
 UpdateConfigurationModel = Annotated[
     Union[UpdateOnPremiseConfigurationModel, UpdateCloudConfigurationModel],
     Field(discriminator="type")
 ]
+
 
 class ConfigurationCollection(BaseCRUDCollection[ConfigurationModel]):
     """
     A container holding a list of `ConfigurationModel` objects.
     This exists because providing a top-level array in a JSON response can be a [vulnerability](https://haacked.com/archive/2009/06/25/json-hijacking.aspx/)
     """
+
+
 class ConfigurationWithResultsCollection(BaseCRUDCollection[ConfigurationModelWithResults]):
     """
     A container holding a list of `ConfigurationModelWithResults` objects.

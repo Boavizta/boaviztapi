@@ -1,32 +1,32 @@
 costs:
   eur:
     breakdown:
-      energy_costs: 546.67
+      energy_costs: 546.7
       operating_costs: 30660000.0
     currency:
       name: Euro
       symbol: EUR
-    total_cost: 30660546.67
+    total_cost: 30660546.7
     unit: EUR/MWh
     warnings: []
   local:
     breakdown:
-      energy_costs: 546.67
+      energy_costs: 546.7
       operating_costs: 30660000.0
     currency:
       name: Euro
       symbol: EUR
-    total_cost: 30660546.67
+    total_cost: 30660546.7
     unit: EUR/MWh
     warnings: []
   usd:
     breakdown:
-      energy_costs: 640.75
+      energy_costs: 640.7
       operating_costs: 35936586.0
     currency:
       name: United States Dollar
       symbol: USD
-    total_cost: 35937226.75
+    total_cost: 35937226.7
     unit: USD/MWh
     warnings: []
 impacts:
@@ -34,8 +34,8 @@ impacts:
     description: Use of minerals and fossil ressources
     embedded:
       max: 0.8
-      min: 0.16
-      value: 0.13
+      min: 0.2
+      value: 0.1
       warnings:
       - End of life is not included in the calculation
     unit: kgSbeq
@@ -88,9 +88,9 @@ verbose:
       gwp:
         description: Total climate change
         embedded:
-          max: 6.68
-          min: 6.68
-          value: 6.68
+          max: 6.7
+          min: 6.7
+          value: 6.7
           warnings:
           - End of life is not included in the calculation
         unit: kgCO2eq
@@ -121,9 +121,9 @@ verbose:
       adp:
         description: Use of minerals and fossil ressources
         embedded:
-          max: 0.02
-          min: 0.02
-          value: 0.02
+          max: 0.0
+          min: 0.0
+          value: 0.0
           warnings:
           - End of life is not included in the calculation
         unit: kgSbeq
@@ -162,11 +162,11 @@ verbose:
       unit: kg Sbeq/kWh
       value: 0.0
     avg_power:
-      max: 179.56
-      min: 179.56
+      max: 179.6
+      min: 179.6
       status: COMPLETED
       unit: W
-      value: 179.56
+      value: 179.6
     core_units:
       status: INPUT
       value: 24
@@ -184,12 +184,12 @@ verbose:
       status: INPUT
       value: SKYLAKE
     gwp_factor:
-      max: 0.45
-      min: 0.45
+      max: 0.5
+      min: 0.5
       source: https://www.sciencedirect.com/science/article/pii/S0306261921012149
       status: COMPLETED
       unit: kg CO2eq/kWh
-      value: 0.45
+      value: 0.5
     hours_life_time:
       max: 43800
       min: 43800
@@ -201,9 +201,9 @@ verbose:
       adp:
         description: Use of minerals and fossil ressources
         embedded:
-          max: 0.04
-          min: 0.04
-          value: 0.04
+          max: 0.0
+          min: 0.0
+          value: 0.0
           warnings:
           - End of life is not included in the calculation
         unit: kgSbeq
@@ -214,7 +214,7 @@ verbose:
       gwp:
         description: Total climate change
         embedded:
-          max: 93.53
+          max: 93.5
           min: 21.2
           value: 37.0
           warnings:
@@ -241,17 +241,17 @@ verbose:
       source: From TDP
       status: COMPLETED
       value:
-        a: 61.02
-        b: 0.07
-        c: 20.45
-        d: -5.55
+        a: 61.0
+        b: 0.1
+        c: 20.5
+        d: -5.5
     pe_factor:
-      max: 8.51
-      min: 8.51
+      max: 8.5
+      min: 8.5
       source: ADPf / (1-%renewable_energy)
       status: COMPLETED
       unit: MJ/kWh
-      value: 8.51
+      value: 8.5
     tdp:
       status: INPUT
       unit: W
@@ -333,9 +333,9 @@ verbose:
       adp:
         description: Use of minerals and fossil ressources
         embedded:
-          max: 0.08
-          min: 0.02
-          value: 0.05
+          max: 0.1
+          min: 0.0
+          value: 0.1
           warnings:
           - End of life is not included in the calculation
         unit: kgSbeq
@@ -365,7 +365,7 @@ verbose:
       min: 1.0
       status: ARCHETYPE
       unit: kg
-      value: 2.99
+      value: 3.0
     units:
       status: INPUT
       value: 2
@@ -378,32 +378,32 @@ verbose:
       unit: kg Sbeq/kWh
       value: 0.0
     avg_power:
-      max: 36.35
-      min: 36.35
+      max: 36.4
+      min: 36.4
       status: COMPLETED
       unit: W
-      value: 36.35
+      value: 36.4
     capacity:
       status: INPUT
       unit: GB
       value: 32
     density:
-      max: 1.12
-      min: 0.75
+      max: 1.1
+      min: 0.8
       source: Average of 3 rows
       status: COMPLETED
       unit: GB/cm2
-      value: 0.92
+      value: 0.9
     duration:
       unit: hours
       value: 43800
     gwp_factor:
-      max: 0.45
-      min: 0.45
+      max: 0.5
+      min: 0.5
       source: https://www.sciencedirect.com/science/article/pii/S0306261921012149
       status: COMPLETED
       unit: kg CO2eq/kWh
-      value: 0.45
+      value: 0.5
     hours_life_time:
       max: 43800
       min: 43800
@@ -415,9 +415,9 @@ verbose:
       adp:
         description: Use of minerals and fossil ressources
         embedded:
-          max: 0.02
-          min: 0.01
-          value: 0.02
+          max: 0.0
+          min: 0.0
+          value: 0.0
           warnings:
           - End of life is not included in the calculation
         unit: kgSbeq
@@ -458,14 +458,14 @@ verbose:
       source: '(ram_electrical_factor_per_go : 0.284) * (ram_capacity: 32) '
       status: COMPLETED
       value:
-        a: 9.09
+        a: 9.1
     pe_factor:
-      max: 8.51
-      min: 8.51
+      max: 8.5
+      min: 8.5
       source: ADPf / (1-%renewable_energy)
       status: COMPLETED
       unit: MJ/kWh
-      value: 8.51
+      value: 8.5
     time_workload:
       max: 100.0
       min: 0.0
@@ -501,8 +501,8 @@ verbose:
       adp:
         description: Use of minerals and fossil ressources
         embedded:
-          max: 0.63
-          min: 0.06
+          max: 0.6
+          min: 0.1
           value: 0.0
           warnings:
           - End of life is not included in the calculation
@@ -548,7 +548,7 @@ verbose:
       source: Average of 7 rows
       status: COMPLETED
       unit: GB/cm2
-      value: 42.51
+      value: 42.5
     duration:
       unit: hours
       value: 43800
@@ -567,7 +567,7 @@ verbose:
         description: Total climate change
         embedded:
           max: 122.1
-          min: 37.33
+          min: 37.3
           value: 58.0
           warnings:
           - End of life is not included in the calculation
@@ -597,21 +597,21 @@ verbose:
     unit: kg Sbeq/kWh
     value: 0.0
   avg_power:
-    max: 431.83
-    min: 215.92
+    max: 431.8
+    min: 215.9
     status: COMPLETED
     unit: W
-    value: 287.17
+    value: 287.2
   duration:
     unit: hours
     value: 43800
   gwp_factor:
-    max: 0.45
-    min: 0.45
+    max: 0.5
+    min: 0.5
     source: https://www.sciencedirect.com/science/article/pii/S0306261921012149
     status: COMPLETED
     unit: kg CO2eq/kWh
-    value: 0.45
+    value: 0.5
   hours_life_time:
     max: 43800
     min: 43800
@@ -624,14 +624,14 @@ verbose:
     min: 0.0
     status: ARCHETYPE
     unit: ratio /1
-    value: 0.33
+    value: 0.3
   pe_factor:
-    max: 8.51
-    min: 8.51
+    max: 8.5
+    min: 8.5
     source: ADPf / (1-%renewable_energy)
     status: COMPLETED
     unit: MJ/kWh
-    value: 8.51
+    value: 8.5
   units:
     max: 1
     min: 1

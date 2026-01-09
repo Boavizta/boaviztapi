@@ -1,0 +1,1012 @@
+name,subdivision_name,zone_code,provider,region
+United Arab Emirates,United Arab Emirates,AE,aws,me-central-1
+United Arab Emirates,United Arab Emirates,AE,azure,uae-central
+United Arab Emirates,United Arab Emirates,AE,gcp,me-central1
+Afghanistan,Afghanistan,AF,aws,me-central-1
+Afghanistan,Afghanistan,AF,azure,uae-central
+Afghanistan,Afghanistan,AF,gcp,asia-south1
+Antigua and Barbuda,Antigua and Barbuda,AG,aws,us-east-1
+Antigua and Barbuda,Antigua and Barbuda,AG,azure,brazil-south
+Antigua and Barbuda,Antigua and Barbuda,AG,gcp,us-east4
+Albania,Albania,AL,aws,eu-south-1
+Albania,Albania,AL,azure,switzerland-north
+Albania,Albania,AL,gcp,europe-west12
+Armenia,Armenia,AM,aws,il-central-1
+Armenia,Armenia,AM,azure,qatar-central
+Armenia,Armenia,AM,gcp,me-west1
+Angola,Angola,AO,aws,af-south-1
+Angola,Angola,AO,azure,south-africa-north
+Angola,Angola,AO,gcp,africa-south1
+Argentina,Argentina,AR,aws,sa-east-1
+Argentina,Argentina,AR,azure,brazil-south
+Argentina,Argentina,AR,gcp,southamerica-west1
+Austria,Austria,AT,aws,eu-central-1
+Austria,Austria,AT,azure,germany-north
+Austria,Austria,AT,gcp,europe-west10
+Australia,New South Wales,AU-NSW,aws,ap-southeast-2
+Australia,New South Wales,AU-NSW,azure,australia-central
+Australia,New South Wales,AU-NSW,gcp,australia-southeast1
+Australia,Northern Territory,AU-NT,aws,ap-southeast-2
+Australia,Northern Territory,AU-NT,azure,australia-central
+Australia,Northern Territory,AU-NT,gcp,australia-southeast1
+Australia,Queensland,AU-QLD,aws,ap-southeast-2
+Australia,Queensland,AU-QLD,azure,australia-central
+Australia,Queensland,AU-QLD,gcp,australia-southeast1
+Australia,South Australia,AU-SA,aws,ap-southeast-2
+Australia,South Australia,AU-SA,azure,australia-central
+Australia,South Australia,AU-SA,gcp,australia-southeast1
+Australia,Tasmania,AU-TAS,aws,ap-southeast-2
+Australia,Tasmania,AU-TAS,azure,australia-central
+Australia,Tasmania,AU-TAS,gcp,australia-southeast1
+Australia,Flinders Island,AU-TAS-FI,aws,ap-southeast-2
+Australia,Flinders Island,AU-TAS-FI,azure,australia-central
+Australia,Flinders Island,AU-TAS-FI,gcp,australia-southeast1
+Australia,King Island,AU-TAS-KI,aws,ap-southeast-2
+Australia,King Island,AU-TAS-KI,azure,australia-central
+Australia,King Island,AU-TAS-KI,gcp,australia-southeast1
+Australia,Victoria,AU-VIC,aws,ap-southeast-2
+Australia,Victoria,AU-VIC,azure,australia-central
+Australia,Victoria,AU-VIC,gcp,australia-southeast1
+Australia,Western Australia,AU-WA,aws,ap-southeast-2
+Australia,Western Australia,AU-WA,azure,australia-central
+Australia,Western Australia,AU-WA,gcp,australia-southeast1
+Australia,Rottnest Island,AU-WA-RI,aws,ap-southeast-2
+Australia,Rottnest Island,AU-WA-RI,azure,australia-central
+Australia,Rottnest Island,AU-WA-RI,gcp,australia-southeast1
+Aruba,Aruba,AW,aws,us-east-1
+Aruba,Aruba,AW,azure,brazil-south
+Aruba,Aruba,AW,gcp,us-east4
+�land Islands,�land Islands,AX,aws,eu-north-1
+�land Islands,�land Islands,AX,azure,sweden-central
+�land Islands,�land Islands,AX,gcp,europe-north1
+Azerbaijan,Azerbaijan,AZ,aws,me-south-1
+Azerbaijan,Azerbaijan,AZ,azure,qatar-central
+Azerbaijan,Azerbaijan,AZ,gcp,me-central1
+Bosnia and Herzegovina,Bosnia and Herzegovina,BA,aws,eu-south-1
+Bosnia and Herzegovina,Bosnia and Herzegovina,BA,azure,switzerland-north
+Bosnia and Herzegovina,Bosnia and Herzegovina,BA,gcp,europe-west12
+Barbados,Barbados,BB,aws,us-east-1
+Barbados,Barbados,BB,azure,brazil-south
+Barbados,Barbados,BB,gcp,us-east4
+Bangladesh,Bangladesh,BD,aws,ap-south-1
+Bangladesh,Bangladesh,BD,azure,central-india
+Bangladesh,Bangladesh,BD,gcp,asia-south1
+Belgium,Belgium,BE,aws,eu-west-3
+Belgium,Belgium,BE,azure,europe-west
+Belgium,Belgium,BE,gcp,europe-west1
+Burkina Faso,Burkina Faso,BF,aws,eu-south-2
+Burkina Faso,Burkina Faso,BF,azure,france-central
+Burkina Faso,Burkina Faso,BF,gcp,europe-southwest1
+Bulgaria,Bulgaria,BG,aws,eu-south-1
+Bulgaria,Bulgaria,BG,azure,germany-north
+Bulgaria,Bulgaria,BG,gcp,europe-central2
+Bahrain,Bahrain,BH,aws,me-south-1
+Bahrain,Bahrain,BH,azure,qatar-central
+Bahrain,Bahrain,BH,gcp,me-central1
+Burundi,Burundi,BI,aws,af-south-1
+Burundi,Burundi,BI,azure,south-africa-north
+Burundi,Burundi,BI,gcp,africa-south1
+Benin,Benin,BJ,aws,eu-south-2
+Benin,Benin,BJ,azure,france-central
+Benin,Benin,BJ,gcp,europe-southwest1
+Brunei,Brunei,BN,aws,ap-southeast-3
+Brunei,Brunei,BN,azure,asia-pacific-southeast
+Brunei,Brunei,BN,gcp,asia-southeast2
+Bolivia,Bolivia,BO,aws,sa-east-1
+Bolivia,Bolivia,BO,azure,brazil-south
+Bolivia,Bolivia,BO,gcp,southamerica-east1paulo
+Brazil,Central Brazil,BR-CS,aws,sa-east-1
+Brazil,Central Brazil,BR-CS,azure,brazil-south
+Brazil,Central Brazil,BR-CS,gcp,southamerica-east1paulo
+Brazil,North Brazil,BR-N,aws,sa-east-1
+Brazil,North Brazil,BR-N,azure,brazil-south
+Brazil,North Brazil,BR-N,gcp,southamerica-east1paulo
+Brazil,North-East Brazil,BR-NE,aws,sa-east-1
+Brazil,North-East Brazil,BR-NE,azure,brazil-south
+Brazil,North-East Brazil,BR-NE,gcp,southamerica-east1paulo
+Brazil,South Brazil,BR-S,aws,sa-east-1
+Brazil,South Brazil,BR-S,azure,brazil-south
+Brazil,South Brazil,BR-S,gcp,southamerica-east1paulo
+Bahamas,Bahamas,BS,aws,us-east-1
+Bahamas,Bahamas,BS,azure,us-east
+Bahamas,Bahamas,BS,gcp,us-east4
+Bhutan,Bhutan,BT,aws,ap-south-1
+Bhutan,Bhutan,BT,azure,central-india
+Bhutan,Bhutan,BT,gcp,asia-south1
+Botswana,Botswana,BW,aws,af-south-1
+Botswana,Botswana,BW,azure,south-africa-north
+Botswana,Botswana,BW,gcp,africa-south1
+Belarus,Belarus,BY,aws,eu-north-1
+Belarus,Belarus,BY,azure,sweden-central
+Belarus,Belarus,BY,gcp,europe-north1
+Belize,Belize,BZ,aws,mx-central-1
+Belize,Belize,BZ,azure,us-central
+Belize,Belize,BZ,gcp,northamerica-south1
+Canada,Alberta,CA-AB,aws,ca-central-1
+Canada,Alberta,CA-AB,azure,canada-central
+Canada,Alberta,CA-AB,gcp,northamerica-northeast1
+Canada,British Columbia,CA-BC,aws,ca-central-1
+Canada,British Columbia,CA-BC,azure,canada-central
+Canada,British Columbia,CA-BC,gcp,northamerica-northeast1
+Canada,Manitoba,CA-MB,aws,ca-central-1
+Canada,Manitoba,CA-MB,azure,canada-central
+Canada,Manitoba,CA-MB,gcp,northamerica-northeast1
+Canada,New Brunswick,CA-NB,aws,ca-central-1
+Canada,New Brunswick,CA-NB,azure,canada-central
+Canada,New Brunswick,CA-NB,gcp,northamerica-northeast1
+Canada,Newfoundland and Labrador,CA-NL,aws,ca-central-1
+Canada,Newfoundland and Labrador,CA-NL,azure,canada-central
+Canada,Newfoundland and Labrador,CA-NL,gcp,northamerica-northeast1
+Canada,Nova Scotia,CA-NS,aws,ca-central-1
+Canada,Nova Scotia,CA-NS,azure,canada-central
+Canada,Nova Scotia,CA-NS,gcp,northamerica-northeast1
+Canada,Northwest Territories,CA-NT,aws,ca-central-1
+Canada,Northwest Territories,CA-NT,azure,canada-central
+Canada,Northwest Territories,CA-NT,gcp,northamerica-northeast1
+Canada,Nunavut,CA-NU,aws,ca-central-1
+Canada,Nunavut,CA-NU,azure,canada-central
+Canada,Nunavut,CA-NU,gcp,northamerica-northeast1
+Canada,Ontario,CA-ON,aws,ca-central-1
+Canada,Ontario,CA-ON,azure,canada-central
+Canada,Ontario,CA-ON,gcp,northamerica-northeast1
+Canada,Prince Edward Island,CA-PE,aws,ca-central-1
+Canada,Prince Edward Island,CA-PE,azure,canada-central
+Canada,Prince Edward Island,CA-PE,gcp,northamerica-northeast1
+Canada,Qu�bec,CA-QC,aws,ca-central-1
+Canada,Qu�bec,CA-QC,azure,canada-central
+Canada,Qu�bec,CA-QC,gcp,northamerica-northeast1
+Canada,Saskatchewan,CA-SK,aws,ca-central-1
+Canada,Saskatchewan,CA-SK,azure,canada-central
+Canada,Saskatchewan,CA-SK,gcp,northamerica-northeast1
+Canada,Yukon,CA-YT,aws,ca-central-1
+Canada,Yukon,CA-YT,azure,canada-central
+Canada,Yukon,CA-YT,gcp,northamerica-northeast1
+Democratic Republic of the Congo,Democratic Republic of the Congo,CD,aws,af-south-1
+Democratic Republic of the Congo,Democratic Republic of the Congo,CD,azure,south-africa-north
+Democratic Republic of the Congo,Democratic Republic of the Congo,CD,gcp,africa-south1
+Central African Republic,Central African Republic,CF,aws,il-central-1
+Central African Republic,Central African Republic,CF,azure,qatar-central
+Central African Republic,Central African Republic,CF,gcp,me-west1
+Congo,Congo,CG,aws,af-south-1
+Congo,Congo,CG,azure,south-africa-north
+Congo,Congo,CG,gcp,africa-south1
+Switzerland,Switzerland,CH,aws,eu-central-2
+Switzerland,Switzerland,CH,azure,switzerland-north
+Switzerland,Switzerland,CH,gcp,europe-west6
+Ivory Coast,Ivory Coast,CI,aws,eu-south-2
+Ivory Coast,Ivory Coast,CI,azure,france-central
+Ivory Coast,Ivory Coast,CI,gcp,europe-southwest1
+Chile,Sistema El�ctrico Nacional,CL-SEN,aws,sa-east-1
+Chile,Sistema El�ctrico Nacional,CL-SEN,azure,brazil-south
+Chile,Sistema El�ctrico Nacional,CL-SEN,gcp,southamerica-west1
+Cameroon,Cameroon,CM,aws,il-central-1
+Cameroon,Cameroon,CM,azure,south-africa-north
+Cameroon,Cameroon,CM,gcp,me-west1
+China,China,CN,aws,ap-east-1
+China,China,CN,azure,asia-pacific-east
+China,China,CN,gcp,asia-east2
+Colombia,Colombia,CO,aws,sa-east-1
+Colombia,Colombia,CO,azure,brazil-south
+Colombia,Colombia,CO,gcp,southamerica-east1paulo
+Costa Rica,Costa Rica,CR,aws,mx-central-1
+Costa Rica,Costa Rica,CR,azure,us-central
+Costa Rica,Costa Rica,CR,gcp,northamerica-south1
+Cuba,Cuba,CU,aws,us-east-1
+Cuba,Cuba,CU,azure,us-east
+Cuba,Cuba,CU,gcp,us-east4
+Cabo Verde,Cabo Verde,CV,aws,eu-south-2
+Cabo Verde,Cabo Verde,CV,azure,france-central
+Cabo Verde,Cabo Verde,CV,gcp,europe-southwest1
+Cura�ao,Cura�ao,CW,aws,sa-east-1
+Cura�ao,Cura�ao,CW,azure,brazil-south
+Cura�ao,Cura�ao,CW,gcp,southamerica-east1paulo
+Cyprus,Cyprus,CY,aws,il-central-1
+Cyprus,Cyprus,CY,azure,qatar-central
+Cyprus,Cyprus,CY,gcp,me-west1
+Czechia,Czechia,CZ,aws,eu-central-1
+Czechia,Czechia,CZ,azure,germany-north
+Czechia,Czechia,CZ,gcp,europe-central2
+Germany,Germany,DE,aws,eu-central-1
+Germany,Germany,DE,azure,germany-north
+Germany,Germany,DE,gcp,europe-west10
+Djibouti,Djibouti,DJ,aws,me-central-1
+Djibouti,Djibouti,DJ,azure,qatar-central
+Djibouti,Djibouti,DJ,gcp,me-central2
+Denmark,Bornholm,DK-BHM,aws,eu-central-1
+Denmark,Bornholm,DK-BHM,azure,norway-east
+Denmark,Bornholm,DK-BHM,gcp,europe-west10
+Denmark,West Denmark,DK-DK1,aws,eu-central-1
+Denmark,West Denmark,DK-DK1,azure,norway-east
+Denmark,West Denmark,DK-DK1,gcp,europe-west10
+Denmark,East Denmark,DK-DK2,aws,eu-central-1
+Denmark,East Denmark,DK-DK2,azure,norway-east
+Denmark,East Denmark,DK-DK2,gcp,europe-west10
+Dominica,Dominica,DM,aws,us-east-1
+Dominica,Dominica,DM,azure,brazil-south
+Dominica,Dominica,DM,gcp,us-east4
+Dominican Republic,Dominican Republic,DO,aws,us-east-1
+Dominican Republic,Dominican Republic,DO,azure,us-east
+Dominican Republic,Dominican Republic,DO,gcp,us-east4
+Algeria,Algeria,DZ,aws,eu-south-2
+Algeria,Algeria,DZ,azure,france-central
+Algeria,Algeria,DZ,gcp,europe-southwest1
+Ecuador,Ecuador,EC,aws,sa-east-1
+Ecuador,Ecuador,EC,azure,brazil-south
+Ecuador,Ecuador,EC,gcp,southamerica-east1paulo
+Estonia,Estonia,EE,aws,eu-north-1
+Estonia,Estonia,EE,azure,sweden-central
+Estonia,Estonia,EE,gcp,europe-north1
+Egypt,Egypt,EG,aws,il-central-1
+Egypt,Egypt,EG,azure,qatar-central
+Egypt,Egypt,EG,gcp,me-west1
+Eritrea,Eritrea,ER,aws,me-south-1
+Eritrea,Eritrea,ER,azure,qatar-central
+Eritrea,Eritrea,ER,gcp,me-central2
+Spain,Ceuta,ES-CE,aws,eu-south-2
+Spain,Ceuta,ES-CE,azure,france-central
+Spain,Ceuta,ES-CE,gcp,europe-southwest1
+Spain,Fuerteventura,ES-CN-FV,aws,eu-south-2
+Spain,Fuerteventura,ES-CN-FV,azure,france-central
+Spain,Fuerteventura,ES-CN-FV,gcp,europe-southwest1
+Spain,Gran Canaria,ES-CN-GC,aws,eu-south-2
+Spain,Gran Canaria,ES-CN-GC,azure,france-central
+Spain,Gran Canaria,ES-CN-GC,gcp,europe-southwest1
+Spain,El Hierro,ES-CN-HI,aws,eu-south-2
+Spain,El Hierro,ES-CN-HI,azure,france-central
+Spain,El Hierro,ES-CN-HI,gcp,europe-southwest1
+Spain,Isla de la Gomera,ES-CN-IG,aws,eu-south-2
+Spain,Isla de la Gomera,ES-CN-IG,azure,france-central
+Spain,Isla de la Gomera,ES-CN-IG,gcp,europe-southwest1
+Spain,La Palma,ES-CN-LP,aws,eu-south-2
+Spain,La Palma,ES-CN-LP,azure,france-central
+Spain,La Palma,ES-CN-LP,gcp,europe-southwest1
+Spain,Lanzarote,ES-CN-LZ,aws,eu-south-2
+Spain,Lanzarote,ES-CN-LZ,azure,france-central
+Spain,Lanzarote,ES-CN-LZ,gcp,europe-southwest1
+Spain,Tenerife,ES-CN-TE,aws,eu-south-2
+Spain,Tenerife,ES-CN-TE,azure,france-central
+Spain,Tenerife,ES-CN-TE,gcp,europe-southwest1
+Spain,Formentera,ES-IB-FO,aws,eu-south-2
+Spain,Formentera,ES-IB-FO,azure,france-central
+Spain,Formentera,ES-IB-FO,gcp,europe-southwest1
+Spain,Ibiza,ES-IB-IZ,aws,eu-south-2
+Spain,Ibiza,ES-IB-IZ,azure,france-central
+Spain,Ibiza,ES-IB-IZ,gcp,europe-southwest1
+Spain,Mallorca,ES-IB-MA,aws,eu-south-2
+Spain,Mallorca,ES-IB-MA,azure,france-central
+Spain,Mallorca,ES-IB-MA,gcp,europe-southwest1
+Spain,Menorca,ES-IB-ME,aws,eu-south-2
+Spain,Menorca,ES-IB-ME,azure,france-central
+Spain,Menorca,ES-IB-ME,gcp,europe-southwest1
+Spain,Melilla,ES-ML,aws,eu-south-2
+Spain,Melilla,ES-ML,azure,france-central
+Spain,Melilla,ES-ML,gcp,europe-southwest1
+Ethiopia,Ethiopia,ET,aws,me-central-1
+Ethiopia,Ethiopia,ET,azure,qatar-central
+Ethiopia,Ethiopia,ET,gcp,me-central2
+Finland,Finland,FI,aws,eu-north-1
+Finland,Finland,FI,azure,sweden-central
+Finland,Finland,FI,gcp,europe-north1
+Fiji,Fiji,FJ,aws,ap-southeast-2
+Fiji,Fiji,FJ,azure,australia-central
+Fiji,Fiji,FJ,gcp,australia-southeast1
+Falkland Islands,Falkland Islands,FK,aws,sa-east-1
+Falkland Islands,Falkland Islands,FK,azure,brazil-south
+Falkland Islands,Falkland Islands,FK,gcp,southamerica-west1
+Micronesia,Micronesia,FM,aws,ap-northeast-1
+Micronesia,Micronesia,FM,azure,japan-east
+Micronesia,Micronesia,FM,gcp,asia-northeast1
+Faroe Islands,Main Islands,FO-MI,aws,eu-west-2
+Faroe Islands,Main Islands,FO-MI,azure,united-kingdom-south
+Faroe Islands,Main Islands,FO-MI,gcp,europe-west2
+Faroe Islands,South Island,FO-SI,aws,eu-west-2
+Faroe Islands,South Island,FO-SI,azure,united-kingdom-south
+Faroe Islands,South Island,FO-SI,gcp,europe-west2
+France,France,FR,aws,eu-west-3
+France,France,FR,azure,france-central
+France,France,FR,gcp,europe-west9
+France,Corsica,FR-COR,aws,eu-west-3
+France,Corsica,FR-COR,azure,france-central
+France,Corsica,FR-COR,gcp,europe-west9
+Gabon,Gabon,GA,aws,af-south-1
+Gabon,Gabon,GA,azure,south-africa-north
+Gabon,Gabon,GA,gcp,africa-south1
+Great Britain,Great Britain,GB,aws,eu-west-2
+Great Britain,Great Britain,GB,azure,united-kingdom-south
+Great Britain,Great Britain,GB,gcp,europe-west2
+Great Britain,Northern Ireland,GB-NIR,aws,eu-west-2
+Great Britain,Northern Ireland,GB-NIR,azure,united-kingdom-south
+Great Britain,Northern Ireland,GB-NIR,gcp,europe-west2
+Great Britain,Orkney Islands,GB-ORK,aws,eu-west-2
+Great Britain,Orkney Islands,GB-ORK,azure,united-kingdom-south
+Great Britain,Orkney Islands,GB-ORK,gcp,europe-west2
+Georgia,Georgia,GE,aws,il-central-1
+Georgia,Georgia,GE,azure,qatar-central
+Georgia,Georgia,GE,gcp,me-west1
+French Guiana,French Guiana,GF,aws,sa-east-1
+French Guiana,French Guiana,GF,azure,brazil-south
+French Guiana,French Guiana,GF,gcp,southamerica-east1paulo
+Ghana,Ghana,GH,aws,eu-south-2
+Ghana,Ghana,GH,azure,france-central
+Ghana,Ghana,GH,gcp,europe-southwest1
+Gibraltar,Gibraltar,GI,aws,eu-south-2
+Gibraltar,Gibraltar,GI,azure,france-central
+Gibraltar,Gibraltar,GI,gcp,europe-southwest1
+Greenland,Greenland,GL,aws,ca-central-1
+Greenland,Greenland,GL,azure,northamerica-northeast1
+Greenland,Greenland,GL,gcp,europe-west2
+Greenland,Greenland,GL,aws,eu-west-1
+Greenland,Greenland,GL,azure,europe-north
+Greenland,Greenland,GL,gcp,europe-west2
+Guinea,Guinea,GN,aws,eu-south-2
+Guinea,Guinea,GN,azure,france-central
+Guinea,Guinea,GN,gcp,europe-southwest1
+Guadeloupe,Guadeloupe,GP,aws,us-east-1
+Guadeloupe,Guadeloupe,GP,azure,brazil-south
+Guadeloupe,Guadeloupe,GP,gcp,us-east4
+Equatorial Guinea,Equatorial Guinea,GQ,aws,af-south-1
+Equatorial Guinea,Equatorial Guinea,GQ,azure,south-africa-north
+Equatorial Guinea,Equatorial Guinea,GQ,gcp,africa-south1
+Greece,Greece,GR,aws,eu-south-1
+Greece,Greece,GR,azure,switzerland-north
+Greece,Greece,GR,gcp,europe-west12
+South Georgia and the South Sandwich Islands,South Georgia and the South Sandwich Islands,GS,aws,sa-east-1
+South Georgia and the South Sandwich Islands,South Georgia and the South Sandwich Islands,GS,azure,brazil-south
+South Georgia and the South Sandwich Islands,South Georgia and the South Sandwich Islands,GS,gcp,southamerica-west1
+Guatemala,Guatemala,GT,aws,mx-central-1
+Guatemala,Guatemala,GT,azure,us-central
+Guatemala,Guatemala,GT,gcp,northamerica-south1
+Guam,Guam,GU,aws,ap-northeast-1
+Guam,Guam,GU,azure,japan-east
+Guam,Guam,GU,gcp,asia-northeast1
+Guinea-Bissau,Guinea-Bissau,GW,aws,eu-south-2
+Guinea-Bissau,Guinea-Bissau,GW,azure,france-central
+Guinea-Bissau,Guinea-Bissau,GW,gcp,europe-southwest1
+Guyana,Guyana,GY,aws,sa-east-1
+Guyana,Guyana,GY,azure,brazil-south
+Guyana,Guyana,GY,gcp,southamerica-east1paulo
+Hong Kong,Hong Kong,HK,aws,ap-east-1
+Hong Kong,Hong Kong,HK,azure,asia-pacific-east
+Hong Kong,Hong Kong,HK,gcp,asia-east2
+Honduras,Honduras,HN,aws,mx-central-1
+Honduras,Honduras,HN,azure,us-central
+Honduras,Honduras,HN,gcp,northamerica-south1
+Croatia,Croatia,HR,aws,eu-south-1
+Croatia,Croatia,HR,azure,switzerland-north
+Croatia,Croatia,HR,gcp,europe-west12
+Haiti,Haiti,HT,aws,us-east-1
+Haiti,Haiti,HT,azure,us-east
+Haiti,Haiti,HT,gcp,us-east4
+Hungary,Hungary,HU,aws,eu-south-1
+Hungary,Hungary,HU,azure,germany-north
+Hungary,Hungary,HU,gcp,europe-central2
+Indonesia,Indonesia,ID,aws,ap-southeast-3
+Indonesia,Indonesia,ID,azure,asia-pacific-southeast
+Indonesia,Indonesia,ID,gcp,asia-southeast2
+Ireland,Ireland,IE,aws,eu-west-1
+Ireland,Ireland,IE,azure,europe-north
+Ireland,Ireland,IE,gcp,europe-west2
+Israel,Israel,IL,aws,il-central-1
+Israel,Israel,IL,azure,qatar-central
+Israel,Israel,IL,gcp,me-west1
+India,Eastern India,IN-EA,aws,ap-south-1
+India,Eastern India,IN-EA,azure,central-india
+India,Eastern India,IN-EA,gcp,asia-south1
+India,North Eastern India,IN-NE,aws,ap-south-1
+India,North Eastern India,IN-NE,azure,central-india
+India,North Eastern India,IN-NE,gcp,asia-south1
+India,Northern India,IN-NO,aws,ap-south-1
+India,Northern India,IN-NO,azure,central-india
+India,Northern India,IN-NO,gcp,asia-south1
+India,Southern India,IN-SO,aws,ap-south-1
+India,Southern India,IN-SO,azure,central-india
+India,Southern India,IN-SO,gcp,asia-south1
+India,Western India,IN-WE,aws,ap-south-1
+India,Western India,IN-WE,azure,central-india
+India,Western India,IN-WE,gcp,asia-south1
+Iraq,Iraq,IQ,aws,il-central-1
+Iraq,Iraq,IQ,azure,qatar-central
+Iraq,Iraq,IQ,gcp,me-west1
+Iran,Iran,IR,aws,me-south-1
+Iran,Iran,IR,azure,qatar-central
+Iran,Iran,IR,gcp,me-central1
+Iceland,Iceland,IS,aws,eu-west-1
+Iceland,Iceland,IS,azure,europe-north
+Iceland,Iceland,IS,gcp,europe-west2
+Italy,Central North Italy,IT-CNO,aws,eu-south-1
+Italy,Central North Italy,IT-CNO,azure,switzerland-north
+Italy,Central North Italy,IT-CNO,gcp,europe-west12
+Italy,Central South Italy,IT-CSO,aws,eu-south-1
+Italy,Central South Italy,IT-CSO,azure,switzerland-north
+Italy,Central South Italy,IT-CSO,gcp,europe-west12
+Italy,North Italy,IT-NO,aws,eu-south-1
+Italy,North Italy,IT-NO,azure,switzerland-north
+Italy,North Italy,IT-NO,gcp,europe-west12
+Italy,Sardinia,IT-SAR,aws,eu-south-1
+Italy,Sardinia,IT-SAR,azure,switzerland-north
+Italy,Sardinia,IT-SAR,gcp,europe-west12
+Italy,Sicily,IT-SIC,aws,eu-south-1
+Italy,Sicily,IT-SIC,azure,switzerland-north
+Italy,Sicily,IT-SIC,gcp,europe-west12
+Italy,South Italy,IT-SO,aws,eu-south-1
+Italy,South Italy,IT-SO,azure,switzerland-north
+Italy,South Italy,IT-SO,gcp,europe-west12
+Jamaica,Jamaica,JM,aws,mx-central-1
+Jamaica,Jamaica,JM,azure,us-central
+Jamaica,Jamaica,JM,gcp,northamerica-south1
+Jordan,Jordan,JO,aws,il-central-1
+Jordan,Jordan,JO,azure,qatar-central
+Jordan,Jordan,JO,gcp,me-west1
+Japan,Ch?bu,JP-CB,aws,ap-northeast-1
+Japan,Ch?bu,JP-CB,azure,japan-east
+Japan,Ch?bu,JP-CB,gcp,asia-northeast1
+Japan,Ch?goku,JP-CG,aws,ap-northeast-1
+Japan,Ch?goku,JP-CG,azure,japan-east
+Japan,Ch?goku,JP-CG,gcp,asia-northeast1
+Japan,Hokkaid?,JP-HKD,aws,ap-northeast-1
+Japan,Hokkaid?,JP-HKD,azure,japan-east
+Japan,Hokkaid?,JP-HKD,gcp,asia-northeast1
+Japan,Hokuriku,JP-HR,aws,ap-northeast-1
+Japan,Hokuriku,JP-HR,azure,japan-east
+Japan,Hokuriku,JP-HR,gcp,asia-northeast1
+Japan,Kansai,JP-KN,aws,ap-northeast-1
+Japan,Kansai,JP-KN,azure,japan-east
+Japan,Kansai,JP-KN,gcp,asia-northeast1
+Japan,Ky?sh?,JP-KY,aws,ap-northeast-1
+Japan,Ky?sh?,JP-KY,azure,japan-east
+Japan,Ky?sh?,JP-KY,gcp,asia-northeast1
+Japan,Okinawa,JP-ON,aws,ap-northeast-1
+Japan,Okinawa,JP-ON,azure,japan-east
+Japan,Okinawa,JP-ON,gcp,asia-northeast1
+Japan,Shikoku,JP-SK,aws,ap-northeast-1
+Japan,Shikoku,JP-SK,azure,japan-east
+Japan,Shikoku,JP-SK,gcp,asia-northeast1
+Japan,T?hoku,JP-TH,aws,ap-northeast-1
+Japan,T?hoku,JP-TH,azure,japan-east
+Japan,T?hoku,JP-TH,gcp,asia-northeast1
+Japan,T?ky?,JP-TK,aws,ap-northeast-1
+Japan,T?ky?,JP-TK,azure,japan-east
+Japan,T?ky?,JP-TK,gcp,asia-northeast1
+Kenya,Kenya,KE,aws,me-central-1
+Kenya,Kenya,KE,azure,uae-central
+Kenya,Kenya,KE,gcp,me-central2
+Kyrgyzstan,Kyrgyzstan,KG,aws,ap-south-1
+Kyrgyzstan,Kyrgyzstan,KG,azure,central-india
+Kyrgyzstan,Kyrgyzstan,KG,gcp,asia-south1
+Cambodia,Cambodia,KH,aws,ap-southeast-7
+Cambodia,Cambodia,KH,azure,asia-pacific-southeast
+Cambodia,Cambodia,KH,gcp,asia-southeast1
+Comoros,Comoros,KM,aws,af-south-1
+Comoros,Comoros,KM,azure,south-africa-north
+Comoros,Comoros,KM,gcp,africa-south1
+North Korea,North Korea,KP,aws,ap-northeast-2
+North Korea,North Korea,KP,azure,korea-central
+North Korea,North Korea,KP,gcp,asia-northeast3
+South Korea,South Korea,KR,aws,ap-northeast-2
+South Korea,South Korea,KR,azure,korea-central
+South Korea,South Korea,KR,gcp,asia-northeast3
+Kuwait,Kuwait,KW,aws,me-south-1
+Kuwait,Kuwait,KW,azure,qatar-central
+Kuwait,Kuwait,KW,gcp,me-central1
+Cayman Islands,Cayman Islands,KY,aws,us-east-1
+Cayman Islands,Cayman Islands,KY,azure,us-central
+Cayman Islands,Cayman Islands,KY,gcp,us-east4
+Kazakhstan,Kazakhstan,KZ,aws,me-south-1
+Kazakhstan,Kazakhstan,KZ,azure,qatar-central
+Kazakhstan,Kazakhstan,KZ,gcp,me-central1
+Laos,Laos,LA,aws,ap-southeast-7
+Laos,Laos,LA,azure,asia-pacific-east
+Laos,Laos,LA,gcp,asia-east2
+Lebanon,Lebanon,LB,aws,il-central-1
+Lebanon,Lebanon,LB,azure,qatar-central
+Lebanon,Lebanon,LB,gcp,me-west1
+Saint Lucia,Saint Lucia,LC,aws,us-east-1
+Saint Lucia,Saint Lucia,LC,azure,brazil-south
+Saint Lucia,Saint Lucia,LC,gcp,us-east4
+Sri Lanka,Sri Lanka,LK,aws,ap-south-1
+Sri Lanka,Sri Lanka,LK,azure,central-india
+Sri Lanka,Sri Lanka,LK,gcp,asia-south1
+Liberia,Liberia,LR,aws,eu-south-2
+Liberia,Liberia,LR,azure,france-central
+Liberia,Liberia,LR,gcp,europe-southwest1
+Lesotho,Lesotho,LS,aws,af-south-1
+Lesotho,Lesotho,LS,azure,south-africa-north
+Lesotho,Lesotho,LS,gcp,africa-south1
+Lithuania,Lithuania,LT,aws,eu-north-1
+Lithuania,Lithuania,LT,azure,sweden-central
+Lithuania,Lithuania,LT,gcp,europe-central2
+Luxembourg,Luxembourg,LU,aws,eu-central-2
+Luxembourg,Luxembourg,LU,azure,europe-west
+Luxembourg,Luxembourg,LU,gcp,europe-west1
+Latvia,Latvia,LV,aws,eu-north-1
+Latvia,Latvia,LV,azure,sweden-central
+Latvia,Latvia,LV,gcp,europe-north1
+Libya,Libya,LY,aws,eu-south-1
+Libya,Libya,LY,azure,switzerland-north
+Libya,Libya,LY,gcp,europe-west12
+Morocco,Morocco,MA,aws,eu-south-2
+Morocco,Morocco,MA,azure,france-central
+Morocco,Morocco,MA,gcp,europe-southwest1
+Moldova,Moldova,MD,aws,eu-north-1
+Moldova,Moldova,MD,azure,sweden-central
+Moldova,Moldova,MD,gcp,europe-central2
+Montenegro,Montenegro,ME,aws,eu-south-1
+Montenegro,Montenegro,ME,azure,switzerland-north
+Montenegro,Montenegro,ME,gcp,europe-west12
+Madagascar,Madagascar,MG,aws,af-south-1
+Madagascar,Madagascar,MG,azure,south-africa-north
+Madagascar,Madagascar,MG,gcp,africa-south1
+North Macedonia,North Macedonia,MK,aws,eu-south-1
+North Macedonia,North Macedonia,MK,azure,switzerland-north
+North Macedonia,North Macedonia,MK,gcp,europe-west12
+Mali,Mali,ML,aws,eu-south-2
+Mali,Mali,ML,azure,france-central
+Mali,Mali,ML,gcp,europe-southwest1
+Myanmar,Myanmar,MM,aws,ap-southeast-7
+Myanmar,Myanmar,MM,azure,central-india
+Myanmar,Myanmar,MM,gcp,asia-south1
+Mongolia,Mongolia,MN,aws,ap-northeast-2
+Mongolia,Mongolia,MN,azure,korea-central
+Mongolia,Mongolia,MN,gcp,asia-northeast3
+Macao3,Macao3,MO,aws,ap-east-1
+Macao3,Macao3,MO,azure,asia-pacific-east
+Macao3,Macao3,MO,gcp,asia-east2
+Martinique,Martinique,MQ,aws,us-east-1
+Martinique,Martinique,MQ,azure,brazil-south
+Martinique,Martinique,MQ,gcp,us-east4
+Mauritania,Mauritania,MR,aws,eu-south-2
+Mauritania,Mauritania,MR,azure,france-central
+Mauritania,Mauritania,MR,gcp,europe-southwest1
+Malta,Malta,MT,aws,eu-south-1
+Malta,Malta,MT,azure,switzerland-north
+Malta,Malta,MT,gcp,europe-west12
+Mauritius,Mauritius,MU,aws,af-south-1
+Mauritius,Mauritius,MU,azure,south-africa-north
+Mauritius,Mauritius,MU,gcp,africa-south1
+Maldives,Maldives,MV,aws,ap-south-1
+Maldives,Maldives,MV,azure,central-india
+Maldives,Maldives,MV,gcp,asia-south1
+Malawi,Malawi,MW,aws,af-south-1
+Malawi,Malawi,MW,azure,south-africa-north
+Malawi,Malawi,MW,gcp,africa-south1
+Mexico,Mexico,MX,aws,mx-central-1
+Mexico,Mexico,MX,azure,us-central
+Mexico,Mexico,MX,gcp,northamerica-south1
+Malaysia,Borneo,MY-EM,aws,ap-southeast-5
+Malaysia,Borneo,MY-EM,azure,asia-pacific-southeast
+Malaysia,Borneo,MY-EM,gcp,asia-southeast1
+Malaysia,Peninsula,MY-WM,aws,ap-southeast-5
+Malaysia,Peninsula,MY-WM,azure,asia-pacific-southeast
+Malaysia,Peninsula,MY-WM,gcp,asia-southeast1
+Mozambique,Mozambique,MZ,aws,af-south-1
+Mozambique,Mozambique,MZ,azure,south-africa-north
+Mozambique,Mozambique,MZ,gcp,africa-south1
+Namibia,Namibia,nan,aws,af-south-1
+Namibia,Namibia,nan,azure,south-africa-north
+Namibia,Namibia,nan,gcp,africa-south1
+New Caledonia,New Caledonia,NC,aws,ap-southeast-2
+New Caledonia,New Caledonia,NC,azure,australia-central
+New Caledonia,New Caledonia,NC,gcp,australia-southeast1
+Niger,Niger,NE,aws,eu-south-1
+Niger,Niger,NE,azure,switzerland-north
+Niger,Niger,NE,gcp,europe-west12
+Nigeria,Nigeria,NG,aws,eu-south-1
+Nigeria,Nigeria,NG,azure,france-central
+Nigeria,Nigeria,NG,gcp,europe-west12
+Nicaragua,Nicaragua,NI,aws,mx-central-1
+Nicaragua,Nicaragua,NI,azure,us-central
+Nicaragua,Nicaragua,NI,gcp,northamerica-south1
+Netherlands,Netherlands,NL,aws,eu-central-1
+Netherlands,Netherlands,NL,azure,europe-west
+Netherlands,Netherlands,NL,gcp,europe-west4
+Norway,Southeast Norway,NO-NO1,aws,eu-central-1
+Norway,Southeast Norway,NO-NO1,azure,norway-east
+Norway,Southeast Norway,NO-NO1,gcp,europe-west4
+Norway,Southwest Norway,NO-NO2,aws,eu-central-1
+Norway,Southwest Norway,NO-NO2,azure,norway-east
+Norway,Southwest Norway,NO-NO2,gcp,europe-west4
+Norway,Middle Norway,NO-NO3,aws,eu-central-1
+Norway,Middle Norway,NO-NO3,azure,norway-east
+Norway,Middle Norway,NO-NO3,gcp,europe-west4
+Norway,North Norway,NO-NO4,aws,eu-central-1
+Norway,North Norway,NO-NO4,azure,norway-east
+Norway,North Norway,NO-NO4,gcp,europe-west4
+Norway,West Norway,NO-NO5,aws,eu-central-1
+Norway,West Norway,NO-NO5,azure,norway-east
+Norway,West Norway,NO-NO5,gcp,europe-west4
+Nepal,Nepal,NP,aws,ap-south-1
+Nepal,Nepal,NP,azure,central-india
+Nepal,Nepal,NP,gcp,asia-south1
+New Zealand,New Zealand,NZ,aws,ap-southeast-2
+New Zealand,New Zealand,NZ,azure,australia-central
+New Zealand,New Zealand,NZ,gcp,australia-southeast1
+Oman,Oman,OM,aws,me-central-1
+Oman,Oman,OM,azure,uae-central
+Oman,Oman,OM,gcp,me-central1
+Panama,Panama,PA,aws,mx-central-1
+Panama,Panama,PA,azure,us-central
+Panama,Panama,PA,gcp,northamerica-south1
+Peru,Peru,PE,aws,sa-east-1
+Peru,Peru,PE,azure,brazil-south
+Peru,Peru,PE,gcp,southamerica-east1paulo
+French Polynesia,French Polynesia,PF,aws,mx-central-1
+French Polynesia,French Polynesia,PF,azure,us-central
+French Polynesia,French Polynesia,PF,gcp,northamerica-south1
+Papua New Guinea,Papua New Guinea,PG,aws,ap-southeast-2
+Papua New Guinea,Papua New Guinea,PG,azure,australia-central
+Papua New Guinea,Papua New Guinea,PG,gcp,australia-southeast1
+Philippines,Philippines,PH,aws,ap-east-1
+Philippines,Philippines,PH,azure,asia-pacific-east
+Philippines,Philippines,PH,gcp,asia-east1
+Philippines,Luzon,PH-LU,aws,ap-east-1
+Philippines,Luzon,PH-LU,azure,asia-pacific-east
+Philippines,Luzon,PH-LU,gcp,asia-east1
+Philippines,Mindanao,PH-MI,aws,ap-east-1
+Philippines,Mindanao,PH-MI,azure,asia-pacific-east
+Philippines,Mindanao,PH-MI,gcp,asia-east1
+Philippines,Visayas,PH-VI,aws,ap-east-1
+Philippines,Visayas,PH-VI,azure,asia-pacific-east
+Philippines,Visayas,PH-VI,gcp,asia-east1
+Pakistan,Pakistan,PK,aws,ap-south-1
+Pakistan,Pakistan,PK,azure,central-india
+Pakistan,Pakistan,PK,gcp,asia-south1
+Poland,Poland,PL,aws,eu-north-1
+Poland,Poland,PL,azure,sweden-central
+Poland,Poland,PL,gcp,europe-central2
+Saint Pierre and Miquelon,Saint Pierre and Miquelon,PM,aws,us-east-1
+Saint Pierre and Miquelon,Saint Pierre and Miquelon,PM,azure,us-central
+Saint Pierre and Miquelon,Saint Pierre and Miquelon,PM,gcp,multi-americas
+Puerto Rico,Puerto Rico,PR,aws,us-east-1
+Puerto Rico,Puerto Rico,PR,azure,us-central
+Puerto Rico,Puerto Rico,PR,gcp,multi-americas
+State of Palestine,State of Palestine,PS,aws,il-central-1
+State of Palestine,State of Palestine,PS,azure,qatar-central
+State of Palestine,State of Palestine,PS,gcp,me-west1
+Portugal,Portugal,PT,aws,eu-south-2
+Portugal,Portugal,PT,azure,france-central
+Portugal,Portugal,PT,gcp,europe-southwest1
+Portugal,Madeira,PT-MA,aws,eu-south-2
+Portugal,Madeira,PT-MA,azure,france-central
+Portugal,Madeira,PT-MA,gcp,europe-southwest1
+Palau,Palau,PW,aws,ap-southeast-3
+Palau,Palau,PW,azure,asia-pacific-east
+Palau,Palau,PW,gcp,asia-east1
+Paraguay,Paraguay,PY,aws,sa-east-1
+Paraguay,Paraguay,PY,azure,brazil-south
+Paraguay,Paraguay,PY,gcp,southamerica-east1paulo
+Qatar,Qatar,QA,aws,me-south-1
+Qatar,Qatar,QA,azure,qatar-central
+Qatar,Qatar,QA,gcp,me-central1
+R�union,R�union,RE,aws,af-south-1
+R�union,R�union,RE,azure,south-africa-north
+R�union,R�union,RE,gcp,africa-south1
+Romania,Romania,RO,aws,eu-south-1
+Romania,Romania,RO,azure,germany-north
+Romania,Romania,RO,gcp,europe-central2
+Serbia,Serbia,RS,aws,eu-south-1
+Serbia,Serbia,RS,azure,germany-north
+Serbia,Serbia,RS,gcp,europe-central2
+Russia,Europe-Ural,RU-1,aws,ap-northeast-2
+Russia,Europe-Ural,RU-1,azure,korea-central
+Russia,Europe-Ural,RU-1,gcp,asia-northeast3
+Russia,Siberia,RU-2,aws,ap-northeast-2
+Russia,Siberia,RU-2,azure,korea-central
+Russia,Siberia,RU-2,gcp,asia-northeast3
+Russia,East,RU-AS,aws,ap-northeast-2
+Russia,East,RU-AS,azure,korea-central
+Russia,East,RU-AS,gcp,asia-northeast3
+Rwanda,Rwanda,RW,aws,af-south-1
+Rwanda,Rwanda,RW,azure,south-africa-north
+Rwanda,Rwanda,RW,gcp,africa-south1
+Saudi Arabia,Saudi Arabia,SA,aws,me-south-1
+Saudi Arabia,Saudi Arabia,SA,azure,qatar-central
+Saudi Arabia,Saudi Arabia,SA,gcp,me-central2
+Solomon Islands,Solomon Islands,SB,aws,ap-southeast-2
+Solomon Islands,Solomon Islands,SB,azure,australia-central
+Solomon Islands,Solomon Islands,SB,gcp,australia-southeast1
+Seychelles,Seychelles,SC,aws,me-central-1
+Seychelles,Seychelles,SC,azure,uae-central
+Seychelles,Seychelles,SC,gcp,me-central1
+Sudan,Sudan,SD,aws,il-central-1
+Sudan,Sudan,SD,azure,qatar-central
+Sudan,Sudan,SD,gcp,me-central2
+Sweden,North Sweden,SE-SE1,aws,eu-north-1
+Sweden,North Sweden,SE-SE1,azure,sweden-central
+Sweden,North Sweden,SE-SE1,gcp,europe-north2
+Sweden,North Central Sweden,SE-SE2,aws,eu-north-1
+Sweden,North Central Sweden,SE-SE2,azure,sweden-central
+Sweden,North Central Sweden,SE-SE2,gcp,europe-north2
+Sweden,South Central Sweden,SE-SE3,aws,eu-north-1
+Sweden,South Central Sweden,SE-SE3,azure,sweden-central
+Sweden,South Central Sweden,SE-SE3,gcp,europe-north2
+Sweden,South Sweden,SE-SE4,aws,eu-north-1
+Sweden,South Sweden,SE-SE4,azure,sweden-central
+Sweden,South Sweden,SE-SE4,gcp,europe-north2
+Singapore,Singapore,SG,aws,ap-southeast-1
+Singapore,Singapore,SG,azure,asia-pacific-southeast
+Singapore,Singapore,SG,gcp,asia-southeast1
+Slovenia,Slovenia,SI,aws,eu-south-1
+Slovenia,Slovenia,SI,azure,germany-north
+Slovenia,Slovenia,SI,gcp,europe-west12
+Slovakia,Slovakia,SK,aws,eu-central-1
+Slovakia,Slovakia,SK,azure,germany-north
+Slovakia,Slovakia,SK,gcp,europe-central2
+Sierra Leone,Sierra Leone,SL,aws,eu-south-2
+Sierra Leone,Sierra Leone,SL,azure,france-central
+Sierra Leone,Sierra Leone,SL,gcp,europe-southwest1
+Senegal,Senegal,SN,aws,eu-south-2
+Senegal,Senegal,SN,azure,france-central
+Senegal,Senegal,SN,gcp,europe-southwest1
+Somalia,Somalia,SO,aws,me-central-1
+Somalia,Somalia,SO,azure,uae-central
+Somalia,Somalia,SO,gcp,me-central2
+Suriname,Suriname,SR,aws,sa-east-1
+Suriname,Suriname,SR,azure,brazil-south
+Suriname,Suriname,SR,gcp,southamerica-east1paulo
+South Sudan,South Sudan,SS,aws,il-central-1
+South Sudan,South Sudan,SS,azure,qatar-central
+South Sudan,South Sudan,SS,gcp,me-central2
+El Salvador,El Salvador,SV,aws,mx-central-1
+El Salvador,El Salvador,SV,azure,us-central
+El Salvador,El Salvador,SV,gcp,northamerica-south1
+Syria,Syria,SY,aws,il-central-1
+Syria,Syria,SY,azure,qatar-central
+Syria,Syria,SY,gcp,me-west1
+Eswatini,Eswatini,SZ,aws,af-south-1
+Eswatini,Eswatini,SZ,azure,south-africa-north
+Eswatini,Eswatini,SZ,gcp,africa-south1
+Chad,Chad,TD,aws,il-central-1
+Chad,Chad,TD,azure,switzerland-north
+Chad,Chad,TD,gcp,me-west1
+Togo,Togo,TG,aws,eu-south-2
+Togo,Togo,TG,azure,france-central
+Togo,Togo,TG,gcp,europe-southwest1
+Thailand,Thailand,TH,aws,ap-southeast-7
+Thailand,Thailand,TH,azure,asia-pacific-east
+Thailand,Thailand,TH,gcp,asia-east2
+Tajikistan,Tajikistan,TJ,aws,ap-south-1
+Tajikistan,Tajikistan,TJ,azure,central-india
+Tajikistan,Tajikistan,TJ,gcp,asia-south1
+Timor-Leste,Timor-Leste,TL,aws,ap-southeast-3
+Timor-Leste,Timor-Leste,TL,azure,australia-central
+Timor-Leste,Timor-Leste,TL,gcp,asia-southeast2
+Turkmenistan,Turkmenistan,TM,aws,me-south-1
+Turkmenistan,Turkmenistan,TM,azure,qatar-central
+Turkmenistan,Turkmenistan,TM,gcp,me-central1
+Tunisia,Tunisia,TN,aws,eu-south-1
+Tunisia,Tunisia,TN,azure,switzerland-north
+Tunisia,Tunisia,TN,gcp,europe-west12
+Tonga,Tonga,TO,aws,mx-central-1
+Tonga,Tonga,TO,azure,us-central
+Tonga,Tonga,TO,gcp,northamerica-south1
+Turkey,Turkey,TR,aws,il-central-1
+Turkey,Turkey,TR,azure,qatar-central
+Turkey,Turkey,TR,gcp,me-west1
+Trinidad and Tobago,Trinidad and Tobago,TT,aws,sa-east-1
+Trinidad and Tobago,Trinidad and Tobago,TT,azure,brazil-south
+Trinidad and Tobago,Trinidad and Tobago,TT,gcp,southamerica-east1paulo
+Taiwan,Taiwan,TW,aws,ap-east-1
+Taiwan,Taiwan,TW,azure,asia-pacific-east
+Taiwan,Taiwan,TW,gcp,asia-east1
+Tanzania,Tanzania,TZ,aws,af-south-1
+Tanzania,Tanzania,TZ,azure,south-africa-north
+Tanzania,Tanzania,TZ,gcp,africa-south1
+Uganda,Uganda,UG,aws,il-central-1
+Uganda,Uganda,UG,azure,qatar-central
+Uganda,Uganda,UG,gcp,me-central2
+USA,Alaska,US-AK,aws,us-east-1
+USA,Alaska,US-AK,azure,us-central
+USA,Alaska,US-AK,gcp,multi-americas
+USA,Southeast Alaska Power Agency,US-AK-SEAPA,aws,us-east-1
+USA,Southeast Alaska Power Agency,US-AK-SEAPA,azure,us-central
+USA,Southeast Alaska Power Agency,US-AK-SEAPA,gcp,multi-americas
+USA,Balancing Authority of Northern California,US-CAL-BANC,aws,us-east-1
+USA,Balancing Authority of Northern California,US-CAL-BANC,azure,us-central
+USA,Balancing Authority of Northern California,US-CAL-BANC,gcp,multi-americas
+USA,CAISO,US-CAL-CISO,aws,us-east-1
+USA,CAISO,US-CAL-CISO,azure,us-central
+USA,CAISO,US-CAL-CISO,gcp,multi-americas
+USA,Imperial Irrigation District,US-CAL-IID,aws,us-east-1
+USA,Imperial Irrigation District,US-CAL-IID,azure,us-central
+USA,Imperial Irrigation District,US-CAL-IID,gcp,multi-americas
+USA,Los Angeles Department of Water and Power,US-CAL-LDWP,aws,us-east-1
+USA,Los Angeles Department of Water and Power,US-CAL-LDWP,azure,us-central
+USA,Los Angeles Department of Water and Power,US-CAL-LDWP,gcp,multi-americas
+USA,Turlock Irrigation District,US-CAL-TIDC,aws,us-east-1
+USA,Turlock Irrigation District,US-CAL-TIDC,azure,us-central
+USA,Turlock Irrigation District,US-CAL-TIDC,gcp,multi-americas
+USA,Duke Energy Progress East,US-CAR-CPLE,aws,us-east-1
+USA,Duke Energy Progress East,US-CAR-CPLE,azure,us-central
+USA,Duke Energy Progress East,US-CAR-CPLE,gcp,multi-americas
+USA,Duke Energy Progress West,US-CAR-CPLW,aws,us-east-1
+USA,Duke Energy Progress West,US-CAR-CPLW,azure,us-central
+USA,Duke Energy Progress West,US-CAR-CPLW,gcp,multi-americas
+USA,Duke Energy Carolinas,US-CAR-DUK,aws,us-east-1
+USA,Duke Energy Carolinas,US-CAR-DUK,azure,us-central
+USA,Duke Energy Carolinas,US-CAR-DUK,gcp,multi-americas
+USA,South Carolina Public Service Authority,US-CAR-SC,aws,us-east-1
+USA,South Carolina Public Service Authority,US-CAR-SC,azure,us-central
+USA,South Carolina Public Service Authority,US-CAR-SC,gcp,multi-americas
+USA,South Carolina Electric & Gas Company,US-CAR-SCEG,aws,us-east-1
+USA,South Carolina Electric & Gas Company,US-CAR-SCEG,azure,us-central
+USA,South Carolina Electric & Gas Company,US-CAR-SCEG,gcp,multi-americas
+USA,Alcoa Power Generating,US-CAR-YAD,aws,us-east-1
+USA,Alcoa Power Generating,US-CAR-YAD,azure,us-central
+USA,Alcoa Power Generating,US-CAR-YAD,gcp,multi-americas
+USA,Southwestern Power Administration,US-CENT-SPA,aws,us-east-1
+USA,Southwestern Power Administration,US-CENT-SPA,azure,us-central
+USA,Southwestern Power Administration,US-CENT-SPA,gcp,multi-americas
+USA,Southwest Power Pool,US-CENT-SWPP,aws,us-east-1
+USA,Southwest Power Pool,US-CENT-SWPP,azure,us-central
+USA,Southwest Power Pool,US-CENT-SWPP,gcp,multi-americas
+USA,Florida Municipal Power Pool,US-FLA-FMPP,aws,us-east-1
+USA,Florida Municipal Power Pool,US-FLA-FMPP,azure,us-central
+USA,Florida Municipal Power Pool,US-FLA-FMPP,gcp,multi-americas
+USA,Duke Energy Florida,US-FLA-FPC,aws,us-east-1
+USA,Duke Energy Florida,US-FLA-FPC,azure,us-central
+USA,Duke Energy Florida,US-FLA-FPC,gcp,multi-americas
+USA,Florida Power and Light Company,US-FLA-FPL,aws,us-east-1
+USA,Florida Power and Light Company,US-FLA-FPL,azure,us-central
+USA,Florida Power and Light Company,US-FLA-FPL,gcp,multi-americas
+USA,Gainesville Regional Utilities,US-FLA-GVL,aws,us-east-1
+USA,Gainesville Regional Utilities,US-FLA-GVL,azure,us-central
+USA,Gainesville Regional Utilities,US-FLA-GVL,gcp,multi-americas
+USA,City of Homestead,US-FLA-HST,aws,us-east-1
+USA,City of Homestead,US-FLA-HST,azure,us-central
+USA,City of Homestead,US-FLA-HST,gcp,multi-americas
+USA,Jacksonville Electric Authority,US-FLA-JEA,aws,us-east-1
+USA,Jacksonville Electric Authority,US-FLA-JEA,azure,us-central
+USA,Jacksonville Electric Authority,US-FLA-JEA,gcp,multi-americas
+USA,Seminole Electric Cooperative,US-FLA-SEC,aws,us-east-1
+USA,Seminole Electric Cooperative,US-FLA-SEC,azure,us-central
+USA,Seminole Electric Cooperative,US-FLA-SEC,gcp,multi-americas
+USA,City of Tallahassee,US-FLA-TAL,aws,us-east-1
+USA,City of Tallahassee,US-FLA-TAL,azure,us-central
+USA,City of Tallahassee,US-FLA-TAL,gcp,multi-americas
+USA,Tampa Electric Company,US-FLA-TEC,aws,us-east-1
+USA,Tampa Electric Company,US-FLA-TEC,azure,us-central
+USA,Tampa Electric Company,US-FLA-TEC,gcp,multi-americas
+USA,PJM Interconnection,US-MIDA-PJM,aws,us-east-1
+USA,PJM Interconnection,US-MIDA-PJM,azure,us-central
+USA,PJM Interconnection,US-MIDA-PJM,gcp,multi-americas
+USA,Associated Electric Cooperative,US-MIDW-AECI,aws,us-east-1
+USA,Associated Electric Cooperative,US-MIDW-AECI,azure,us-central
+USA,Associated Electric Cooperative,US-MIDW-AECI,gcp,multi-americas
+USA,Louisville Gas and Electric Company and Kentucky Utilities,US-MIDW-LGEE,aws,us-east-1
+USA,Louisville Gas and Electric Company and Kentucky Utilities,US-MIDW-LGEE,azure,us-central
+USA,Louisville Gas and Electric Company and Kentucky Utilities,US-MIDW-LGEE,gcp,multi-americas
+USA,Midcontinent ISO,US-MIDW-MISO,aws,us-east-1
+USA,Midcontinent ISO,US-MIDW-MISO,azure,us-central
+USA,Midcontinent ISO,US-MIDW-MISO,gcp,multi-americas
+USA,ISO New England,US-NE-ISNE,aws,us-east-1
+USA,ISO New England,US-NE-ISNE,azure,us-central
+USA,ISO New England,US-NE-ISNE,gcp,multi-americas
+USA,Avista Corporation,US-NW-AVA,aws,us-east-1
+USA,Avista Corporation,US-NW-AVA,azure,us-central
+USA,Avista Corporation,US-NW-AVA,gcp,multi-americas
+USA,Bonneville Power Administration,US-NW-BPAT,aws,us-east-1
+USA,Bonneville Power Administration,US-NW-BPAT,azure,us-central
+USA,Bonneville Power Administration,US-NW-BPAT,gcp,multi-americas
+USA,Chelan County,US-NW-CHPD,aws,us-east-1
+USA,Chelan County,US-NW-CHPD,azure,us-central
+USA,Chelan County,US-NW-CHPD,gcp,multi-americas
+USA,Douglas County,US-NW-DOPD,aws,us-east-1
+USA,Douglas County,US-NW-DOPD,azure,us-central
+USA,Douglas County,US-NW-DOPD,gcp,multi-americas
+USA,Grant County,US-NW-GCPD,aws,us-east-1
+USA,Grant County,US-NW-GCPD,azure,us-central
+USA,Grant County,US-NW-GCPD,gcp,multi-americas
+USA,Gridforce Energy Management,US-NW-GRID,aws,us-east-1
+USA,Gridforce Energy Management,US-NW-GRID,azure,us-central
+USA,Gridforce Energy Management,US-NW-GRID,gcp,multi-americas
+USA,Idaho Power Company,US-NW-IPCO,aws,us-east-1
+USA,Idaho Power Company,US-NW-IPCO,azure,us-central
+USA,Idaho Power Company,US-NW-IPCO,gcp,multi-americas
+USA,Nevada Power Company,US-NW-NEVP,aws,us-east-1
+USA,Nevada Power Company,US-NW-NEVP,azure,us-central
+USA,Nevada Power Company,US-NW-NEVP,gcp,multi-americas
+USA,Northwestern Energy,US-NW-NWMT,aws,us-east-1
+USA,Northwestern Energy,US-NW-NWMT,azure,us-central
+USA,Northwestern Energy,US-NW-NWMT,gcp,multi-americas
+USA,Pacificorp East,US-NW-PACE,aws,us-east-1
+USA,Pacificorp East,US-NW-PACE,azure,us-central
+USA,Pacificorp East,US-NW-PACE,gcp,multi-americas
+USA,Pacificorp West,US-NW-PACW,aws,us-east-1
+USA,Pacificorp West,US-NW-PACW,azure,us-central
+USA,Pacificorp West,US-NW-PACW,gcp,multi-americas
+USA,Portland General Electric Company,US-NW-PGE,aws,us-east-1
+USA,Portland General Electric Company,US-NW-PGE,azure,us-central
+USA,Portland General Electric Company,US-NW-PGE,gcp,multi-americas
+USA,Public Service Company of Colorado,US-NW-PSCO,aws,us-east-1
+USA,Public Service Company of Colorado,US-NW-PSCO,azure,us-central
+USA,Public Service Company of Colorado,US-NW-PSCO,gcp,multi-americas
+USA,Puget Sound Energy,US-NW-PSEI,aws,us-east-1
+USA,Puget Sound Energy,US-NW-PSEI,azure,us-central
+USA,Puget Sound Energy,US-NW-PSEI,gcp,multi-americas
+USA,Seattle City Light,US-NW-SCL,aws,us-east-1
+USA,Seattle City Light,US-NW-SCL,azure,us-central
+USA,Seattle City Light,US-NW-SCL,gcp,multi-americas
+USA,City of Tacoma,US-NW-TPWR,aws,us-east-1
+USA,City of Tacoma,US-NW-TPWR,azure,us-central
+USA,City of Tacoma,US-NW-TPWR,gcp,multi-americas
+USA,Western Area Power Administration - Rocky Mountain Region,US-NW-WACM,aws,us-east-1
+USA,Western Area Power Administration - Rocky Mountain Region,US-NW-WACM,azure,us-central
+USA,Western Area Power Administration - Rocky Mountain Region,US-NW-WACM,gcp,multi-americas
+USA,Western Area Power Administration - Upper Great Plains West,US-NW-WAUW,aws,us-east-1
+USA,Western Area Power Administration - Upper Great Plains West,US-NW-WAUW,azure,us-central
+USA,Western Area Power Administration - Upper Great Plains West,US-NW-WAUW,gcp,multi-americas
+USA,New York ISO,US-NY-NYIS,aws,us-east-1
+USA,New York ISO,US-NY-NYIS,azure,us-central
+USA,New York ISO,US-NY-NYIS,gcp,multi-americas
+USA,Southeastern Power Administration,US-SE-SEPA,aws,us-east-1
+USA,Southeastern Power Administration,US-SE-SEPA,azure,us-central
+USA,Southeastern Power Administration,US-SE-SEPA,gcp,multi-americas
+USA,Southern Company Services,US-SE-SOCO,aws,us-east-1
+USA,Southern Company Services,US-SE-SOCO,azure,us-central
+USA,Southern Company Services,US-SE-SOCO,gcp,multi-americas
+USA,Arizona Public Service Company,US-SW-AZPS,aws,us-east-1
+USA,Arizona Public Service Company,US-SW-AZPS,azure,us-central
+USA,Arizona Public Service Company,US-SW-AZPS,gcp,multi-americas
+USA,El Paso Electric Company,US-SW-EPE,aws,us-east-1
+USA,El Paso Electric Company,US-SW-EPE,azure,us-central
+USA,El Paso Electric Company,US-SW-EPE,gcp,multi-americas
+USA,Public Service Company of New Mexico,US-SW-PNM,aws,us-east-1
+USA,Public Service Company of New Mexico,US-SW-PNM,azure,us-central
+USA,Public Service Company of New Mexico,US-SW-PNM,gcp,multi-americas
+USA,Salt River Project,US-SW-SRP,aws,us-east-1
+USA,Salt River Project,US-SW-SRP,azure,us-central
+USA,Salt River Project,US-SW-SRP,gcp,multi-americas
+USA,Tucson Electric Power Company,US-SW-TEPC,aws,us-east-1
+USA,Tucson Electric Power Company,US-SW-TEPC,azure,us-central
+USA,Tucson Electric Power Company,US-SW-TEPC,gcp,multi-americas
+USA,Western Area Power Administration - Desert Southwest Region,US-SW-WALC,aws,us-east-1
+USA,Western Area Power Administration - Desert Southwest Region,US-SW-WALC,azure,us-central
+USA,Western Area Power Administration - Desert Southwest Region,US-SW-WALC,gcp,multi-americas
+USA,Tennessee Valley Authority,US-TEN-TVA,aws,us-east-1
+USA,Tennessee Valley Authority,US-TEN-TVA,azure,us-central
+USA,Tennessee Valley Authority,US-TEN-TVA,gcp,multi-americas
+USA,Electric Reliability Council of Texas,US-TEX-ERCO,aws,us-east-1
+USA,Electric Reliability Council of Texas,US-TEX-ERCO,azure,us-central
+USA,Electric Reliability Council of Texas,US-TEX-ERCO,gcp,multi-americas
+Uruguay,Uruguay,UY,aws,sa-east-1
+Uruguay,Uruguay,UY,azure,brazil-south
+Uruguay,Uruguay,UY,gcp,southamerica-west1
+Uzbekistan,Uzbekistan,UZ,aws,me-south-1
+Uzbekistan,Uzbekistan,UZ,azure,qatar-central
+Uzbekistan,Uzbekistan,UZ,gcp,me-central1
+Saint Vincent and the Grenadines,Saint Vincent and the Grenadines,VC,aws,us-east-1
+Saint Vincent and the Grenadines,Saint Vincent and the Grenadines,VC,azure,brazil-south
+Saint Vincent and the Grenadines,Saint Vincent and the Grenadines,VC,gcp,us-east4
+Venezuela,Venezuela,VE,aws,sa-east-1
+Venezuela,Venezuela,VE,azure,brazil-south
+Venezuela,Venezuela,VE,gcp,southamerica-east1paulo
+USA,Virgin Islands,VI,aws,us-east-1
+USA,Virgin Islands,VI,azure,brazil-south
+USA,Virgin Islands,VI,gcp,us-east4
+Vietnam,Vietnam,VN,aws,ap-southeast-7
+Vietnam,Vietnam,VN,azure,asia-pacific-east
+Vietnam,Vietnam,VN,gcp,asia-east2
+Vanuatu,Vanuatu,VU,aws,ap-southeast-2
+Vanuatu,Vanuatu,VU,azure,australia-central
+Vanuatu,Vanuatu,VU,gcp,australia-southeast1
+Samoa,Samoa,WS,aws,mx-central-1
+Samoa,Samoa,WS,azure,us-central
+Samoa,Samoa,WS,gcp,northamerica-south1
+Kosovo,Kosovo,XK,aws,eu-south-1
+Kosovo,Kosovo,XK,azure,switzerland-north
+Kosovo,Kosovo,XK,gcp,europe-west12
+Yemen,Yemen,YE,aws,me-central-1
+Yemen,Yemen,YE,azure,uae-central
+Yemen,Yemen,YE,gcp,me-central2
+Mayotte,Mayotte,YT,aws,af-south-1
+Mayotte,Mayotte,YT,azure,south-africa-north
+Mayotte,Mayotte,YT,gcp,africa-south1
+South Africa,South Africa,ZA,aws,af-south-1
+South Africa,South Africa,ZA,azure,south-africa-north
+South Africa,South Africa,ZA,gcp,africa-south1
+Zambia,Zambia,ZM,aws,af-south-1
+Zambia,Zambia,ZM,azure,south-africa-north
+Zambia,Zambia,ZM,gcp,africa-south1
+Zimbabwe,Zimbabwe,ZW,aws,af-south-1
+Zimbabwe,Zimbabwe,ZW,azure,south-africa-north
+Zimbabwe,Zimbabwe,ZW,gcp,africa-south1
