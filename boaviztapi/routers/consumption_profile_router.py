@@ -11,7 +11,7 @@ consumption_profile = APIRouter(
 
 @consumption_profile.post("/cpu", description="cpu consumption profile generator")
 async def cpu_consumption_profile(
-    cp_dto: ConsumptionProfileCPU = Body(None, example=cpu_consumption_profiles),
+    cp_dto: ConsumptionProfileCPU = Body(None, examples=[cpu_consumption_profiles]),
     verbose: bool = True,
 ):
     cp, cpu = mapper_cp_cpu(cp_dto)

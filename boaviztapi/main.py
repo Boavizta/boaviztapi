@@ -6,6 +6,7 @@ import markdown
 import toml
 from fastapi.middleware.cors import CORSMiddleware
 import os
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from mangum import Mangum
@@ -29,11 +30,30 @@ from boaviztapi.utils.get_version import get_version_from_pyproject
 from fastapi.responses import HTMLResponse
 
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    intro = open(
+        os.path.join(os.path.dirname(__file__), "routers/openapi_doc/intro_openapi.md"),
+        "r",
+        encoding="utf-8",
+    )
+    openapi_schema = get_openapi(
+        title="BOAVIZTAPI - DEMO",
+        version=version,
+        description=markdown.markdown(intro.read()),
+        routes=app.routes,
+        servers=app.servers,
+    )
+    app.openapi_schema = openapi_schema
+    yield
+
+
 # Serverless frameworks adds a 'stage' prefix to the route used to serve applications
 # We have to manage it to expose openapi doc on aws and generate proper links.
 stage = os.environ.get("STAGE", None)
 openapi_prefix = f"/{stage}" if stage else "/"
-app = FastAPI(root_path=openapi_prefix)  # Here is the magic
+app = FastAPI(root_path=openapi_prefix, lifespan=lifespan)
 version = get_version_from_pyproject()
 _logger = logging.getLogger(__name__)
 
@@ -75,25 +95,6 @@ if __name__ == "__main__":
     import uvicorn
 
     uvicorn.run("main:app", host="localhost", port=5000, reload=True)
-
-
-@app.on_event("startup")
-def my_schema():
-    intro = open(
-        os.path.join(os.path.dirname(__file__), "routers/openapi_doc/intro_openapi.md"),
-        "r",
-        encoding="utf-8",
-    )
-    openapi_schema = get_openapi(
-        title="BOAVIZTAPI - DEMO",
-        version=version,
-        description=markdown.markdown(intro.read()),
-        routes=app.routes,
-        servers=app.servers,
-    )
-    app.openapi_schema = openapi_schema
-
-    return app.openapi_schema
 
 
 # Wrapper for aws/lambda serverless app

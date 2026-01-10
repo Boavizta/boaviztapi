@@ -245,143 +245,151 @@ def assembly_model():
 
 @pytest.fixture(scope="function")
 def dell_r740_dto():
-    return Server.parse_obj(
-        Server.parse_file(data_dir + "/fixtures/server/dellR740.json")
+    return Server.model_validate(
+        Server.model_validate_json(
+            open(data_dir + "/fixtures/server/dellR740.json").read()
+        )
     )
 
 
 @pytest.fixture(scope="function")
 def empty_server_dto():
-    return Server.parse_obj({})
+    return Server.model_validate({})
 
 
 @pytest.fixture(scope="function")
 def incomplete_server_dto():
-    return Server.parse_file(data_dir + "/fixtures/server/incomplete.json")
+    return Server.model_validate_json(
+        open(data_dir + "/fixtures/server/incomplete.json").read()
+    )
 
 
 @pytest.fixture(scope="function")
 def completed_server_with_dellr740_dto():
-    return Server.parse_file(
-        data_dir + "/fixtures/server/completed_server_with_dellr740.json"
+    return Server.model_validate_json(
+        open(data_dir + "/fixtures/server/completed_server_with_dellr740.json").read()
     )
 
 
 @pytest.fixture(scope="function")
 def complete_cpu_dto():
-    return CPU.parse_obj({"units": 2, "core_units": 24, "die_size_per_core": 24.5})
+    return CPU.model_validate({"units": 2, "core_units": 24, "die_size_per_core": 24.5})
 
 
 @pytest.fixture(scope="function")
 def empty_cpu_dto():
-    return CPU.parse_obj({})
+    return CPU.model_validate({})
 
 
 @pytest.fixture(scope="function")
 def incomplete_cpu_dto():
-    return CPU.parse_obj(
+    return CPU.model_validate(
         {"core_units": 12, "family": "Skylake", "manufacture_date": 2017}
     )
 
 
 @pytest.fixture(scope="function")
 def complete_ram_dto():
-    return RAM.parse_obj({"units": 12, "capacity": 32, "density": 1.79})
+    return RAM.model_validate({"units": 12, "capacity": 32, "density": 1.79})
 
 
 @pytest.fixture(scope="function")
 def empty_ram_dto():
-    return RAM.parse_obj({})
+    return RAM.model_validate({})
 
 
 @pytest.fixture(scope="function")
 def incomplete_ram():
-    return RAM.parse_obj({"manufacturer": "Samsung", "process": 30})
+    return RAM.model_validate({"manufacturer": "Samsung", "process": 30})
 
 
 @pytest.fixture(scope="function")
 def complete_ssd_dto():
-    return Disk.parse_obj({"capacity": 400, "density": 50.6, "type": "ssd"})
+    return Disk.model_validate({"capacity": 400, "density": 50.6, "type": "ssd"})
 
 
 @pytest.fixture(scope="function")
 def empty_ssd_dto():
-    return Disk.parse_obj({"type": "ssd"})
+    return Disk.model_validate({"type": "ssd"})
 
 
 @pytest.fixture(scope="function")
 def incomplete_ssd_dto():
-    return Disk.parse_obj({"manufacturer": "Samsung", "type": "ssd"})
+    return Disk.model_validate({"manufacturer": "Samsung", "type": "ssd"})
 
 
 @pytest.fixture(scope="function")
 def hdd():
-    return Disk.parse_obj({"type": "hdd"})
+    return Disk.model_validate({"type": "hdd"})
 
 
 @pytest.fixture(scope="function")
 def empty_case_dto():
-    return Case.parse_obj({})
+    return Case.model_validate({})
 
 
 @pytest.fixture(scope="function")
 def blade_case_dto():
-    case = Case.parse_obj({})
+    case = Case.model_validate({})
     case.case_type = "blade"
     return case
 
 
 @pytest.fixture(scope="function")
 def motherboard_dto():
-    return Motherboard.parse_obj({})
+    return Motherboard.model_validate({})
 
 
 @pytest.fixture(scope="function")
 def empty_power_supply_dto():
-    return PowerSupply.parse_obj({})
+    return PowerSupply.model_validate({})
 
 
 @pytest.fixture(scope="function")
 def complete_power_supply_dto():
-    return PowerSupply.parse_obj({"unit": 2, "unit_weight": 2.99})
+    return PowerSupply.model_validate({"unit": 2, "unit_weight": 2.99})
 
 
 @pytest.fixture(scope="function")
 def cloud_instance_1_dto():
-    cloud_server = Server.parse_file(data_dir + "/fixtures/cloud/cloud_instance_1.json")
+    cloud_server = Server.model_validate_json(
+        open(data_dir + "/fixtures/cloud/cloud_instance_1.json").read()
+    )
     return cloud_server
 
 
 @pytest.fixture(scope="function")
 def incomplete_usage_dto():
-    incomplete_usage = Server.parse_file(
-        data_dir + "/fixtures/cloud/incomplete_usage.json"
+    incomplete_usage = Server.model_validate_json(
+        open(data_dir + "/fixtures/cloud/incomplete_usage.json").read()
     )
     return incomplete_usage
 
 
 @pytest.fixture(scope="function")
 def complete_usage_dto():
-    complete_usage = Server.parse_file(data_dir + "/fixtures/cloud/complete_usage.json")
+    complete_usage = Server.model_validate_json(
+        open(data_dir + "/fixtures/cloud/complete_usage.json").read()
+    )
     return complete_usage
 
 
 @pytest.fixture(scope="function")
 def cloud_instance_1_completed_dto():
-    cloud_instance_1_completed = Server.parse_file(
-        data_dir + "/fixtures/cloud/cloud_instance_1_completed.json"
+    cloud_instance_1_completed = Server.model_validate_json(
+        open(data_dir + "/fixtures/cloud/cloud_instance_1_completed.json").read()
     )
     return cloud_instance_1_completed
 
 
 @pytest.fixture(scope="function")
 def french_mix_1_kw_dto():
-    return UsageServer.parse_obj({"usage_location": "FRA", "avg_power": 1})
+    return UsageServer.model_validate({"usage_location": "FRA", "avg_power": 1})
 
 
 @pytest.fixture(scope="function")
 def empty_usage_dto():
-    return UsageServer.parse_obj({})
+    return UsageServer.model_validate({})
 
 
 @pytest.fixture(scope="function")

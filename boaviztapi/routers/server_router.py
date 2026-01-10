@@ -31,7 +31,7 @@ async def server_get_all_archetype_name():
 
 @server_router.get("/archetype_config", description=get_archetype_config_desc)
 async def get_archetype_config(
-    archetype: str = Query(example=config["default_server"]),
+    archetype: str = Query(examples=[config["default_server"]]),
 ):
     result = get_server_archetype(archetype)
     if not result:

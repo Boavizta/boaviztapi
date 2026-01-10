@@ -45,14 +45,14 @@ async def monitor_get_all_archetype_name():
     "/monitor/archetype_config", description=get_archetype_config_desc
 )
 async def monitor_get_archetype_config(
-    archetype: str = Query(example=config["default_monitor"]),
+    archetype: str = Query(examples=[config["default_monitor"]]),
 ):
     return get_archetype_config(archetype)
 
 
 @peripheral_router.post("/monitor", description=peripheral_description)
 async def monitor_impact(
-    monitor: Monitor = Body(None, example=end_user_terminal),
+    monitor: Monitor = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config["default_duration"],
     archetype: str = config["default_monitor"],
@@ -94,14 +94,14 @@ async def usb_stick_get_all_archetype_name():
     "/usb_stick/archetype_config", description=get_archetype_config_desc
 )
 async def usb_stick_get_archetype_config(
-    archetype: str = Query(example=config["default_usb_stick"]),
+    archetype: str = Query(examples=[config["default_usb_stick"]]),
 ):
     return get_archetype_config(archetype)
 
 
 @peripheral_router.post("/usb_stick", description=peripheral_description)
 async def usb_stick_impact(
-    usb_stick: UsbStick = Body(None, example=end_user_terminal),
+    usb_stick: UsbStick = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config["default_duration"],
     archetype: str = config["default_usb_stick"],
@@ -143,14 +143,14 @@ async def external_ssd_get_all_archetype_name():
     "/external_ssd/archetype_config", description=get_archetype_config_desc
 )
 async def external_ssd_get_archetype_config(
-    archetype: str = Query(example=config["default_external_ssd"]),
+    archetype: str = Query(examples=[config["default_external_ssd"]]),
 ):
     return get_archetype_config(archetype)
 
 
 @peripheral_router.post("/external_ssd", description=peripheral_description)
 async def external_ssd_impact(
-    external_ssd: ExternalSSD = Body(None, example=end_user_terminal),
+    external_ssd: ExternalSSD = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config["default_duration"],
     archetype: str = config["default_external_ssd"],
@@ -192,14 +192,14 @@ async def external_hdd_get_all_archetype_name():
     "/external_hdd/archetype_config", description=get_archetype_config_desc
 )
 async def external_hdd_get_archetype_config(
-    archetype: str = Query(example=config["default_external_hdd"]),
+    archetype: str = Query(examples=[config["default_external_hdd"]]),
 ):
     return get_archetype_config(archetype)
 
 
 @peripheral_router.post("/external_hdd", description=peripheral_description)
 async def external_hdd_impact(
-    external_hdd: ExternalHDD = Body(None, example=end_user_terminal),
+    external_hdd: ExternalHDD = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config["default_duration"],
     archetype: str = config["default_external_hdd"],
@@ -241,14 +241,14 @@ async def vr_controller_get_all_archetype_name():
     "/vr_controller/archetype_config", description=get_archetype_config_desc
 )
 async def vr_controller_get_archetype_config(
-    archetype: str = Query(example=config["default_vr_controller"]),
+    archetype: str = Query(examples=[config["default_vr_controller"]]),
 ):
     return get_archetype_config(archetype)
 
 
 @peripheral_router.post("/vr_controller", description=peripheral_description)
 async def vr_controller_impact_from_configuration(
-    vr_controller: VrController = Body(None, example=end_user_terminal),
+    vr_controller: VrController = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config["default_duration"],
     archetype: str = config["default_vr_controller"],
