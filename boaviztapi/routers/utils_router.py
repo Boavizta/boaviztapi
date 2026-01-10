@@ -72,7 +72,7 @@ async def utils_get_all_case_type():
 
 
 @utils_router.get("/name_to_cpu", description=name_to_cpu)
-async def name_to_cpu(cpu_name: str = Query(example="Intel Core i7-9700K")):
+async def name_to_cpu(cpu_name: str = Query(examples=["Intel Core i7-9700K"])):
     cpu_attributes = attributes_from_cpu_name(cpu_name)
     if cpu_attributes is not None:
         (

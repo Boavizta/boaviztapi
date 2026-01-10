@@ -21,7 +21,7 @@ async def iot_device_get_all_archetype_name():
 
 @iot.get("/iot_device/archetype_config", description="")
 async def get_archetype_config(
-    archetype: str = Query(example=config["default_iot_device"]),
+    archetype: str = Query(examples=[config["default_iot_device"]]),
 ):
     archetype_config = get_iot_device_archetype(archetype)
     if not archetype_config:
@@ -31,7 +31,7 @@ async def get_archetype_config(
 
 @iot.post("/iot_device", description="")
 async def iot_device_impact(
-    iot: IoT = Body(None, example=""),
+    iot: IoT = Body(None, examples=[""]),
     verbose: bool = True,
     duration: Optional[float] = config["default_duration"],
     archetype: str = config["default_iot_device"],

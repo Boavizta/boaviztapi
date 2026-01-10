@@ -54,7 +54,9 @@ async def cpu_all_archetype_name():
 
 
 @component_router.get("/cpu/archetype_config", description=cpu_description)
-async def cpu_archetype_config(archetype: str = Query(example=config["default_cpu"])):
+async def cpu_archetype_config(
+    archetype: str = Query(examples=[config["default_cpu"]]),
+):
     archetype_config = get_archetype_config(archetype, "cpu")
     return archetype_config
 
@@ -105,7 +107,9 @@ async def ram_all_archetype_name():
 
 
 @component_router.get("/ram/archetype_config", description=ram_description)
-async def ram_archetype_config(archetype: str = Query(example=config["default_ram"])):
+async def ram_archetype_config(
+    archetype: str = Query(examples=[config["default_ram"]]),
+):
     archetype_config = get_archetype_config(archetype, "ram")
     return archetype_config
 
@@ -156,7 +160,9 @@ async def ssd_all_archetype_name():
 
 
 @component_router.get("/ssd/archetype_config", description=ssd_description)
-async def ssd_archetype_config(archetype: str = Query(example=config["default_ssd"])):
+async def ssd_archetype_config(
+    archetype: str = Query(examples=[config["default_ssd"]]),
+):
     archetype_config = get_archetype_config(archetype, "ssd")
     return archetype_config
 
@@ -210,7 +216,9 @@ async def hdd_all_archetype_name():
 
 
 @component_router.get("/hdd/archetype_config", description=hdd_description)
-async def hdd_archetype_config(archetype: str = Query(example=config["default_hdd"])):
+async def hdd_archetype_config(
+    archetype: str = Query(examples=[config["default_hdd"]]),
+):
     archetype_config = get_archetype_config(archetype, "hdd")
     return archetype_config
 
@@ -267,7 +275,7 @@ async def motherboard_all_archetype_name():
     "/motherboard/archetype_config", description=motherboard_description
 )
 async def motherboard_archetype_config(
-    archetype: str = Query(example=config["default_motherboard"]),
+    archetype: str = Query(examples=[config["default_motherboard"]]),
 ):
     archetype_config = get_archetype_config(archetype, "motherboard")
     return archetype_config
@@ -318,7 +326,7 @@ async def power_supply_all_archetype_name():
     "/power_supply/archetype_config", description=power_supply_description
 )
 async def power_supply_archetype_config(
-    archetype: str = Query(example=config["default_power_supply"]),
+    archetype: str = Query(examples=[config["default_power_supply"]]),
 ):
     archetype_config = get_archetype_config(archetype, "power_supply")
     return archetype_config
@@ -378,7 +386,9 @@ async def case_all_archetype_name():
 
 
 @component_router.get("/case/archetype_config", description=case_description)
-async def case_archetype_config(archetype: str = Query(example=config["default_case"])):
+async def case_archetype_config(
+    archetype: str = Query(examples=[config["default_case"]]),
+):
     archetype_config = get_archetype_config(archetype, "case")
     return archetype_config
 

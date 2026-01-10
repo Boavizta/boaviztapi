@@ -52,14 +52,14 @@ async def laptop_get_all_archetype_name():
 
 @terminal_router.get("/laptop/archetype_config", description=get_archetype_config_desc)
 async def laptop_get_archetype_config(
-    archetype: str = Query(example=config["default_laptop"]),
+    archetype: str = Query(examples=[config["default_laptop"]]),
 ):
     return get_archetype_config(archetype)
 
 
 @terminal_router.post("/laptop", description=terminal_description)
 async def laptop_impact(
-    laptop: Laptop = Body(None, example=end_user_terminal),
+    laptop: Laptop = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config["default_duration"],
     archetype: str = config["default_laptop"],
@@ -97,14 +97,14 @@ async def desktop_get_all_archetype_name():
 
 @terminal_router.get("/desktop/archetype_config", description=get_archetype_config_desc)
 async def desktop_get_archetype_config(
-    archetype: str = Query(example=config["default_desktop"]),
+    archetype: str = Query(examples=[config["default_desktop"]]),
 ):
     return get_archetype_config(archetype)
 
 
 @terminal_router.post("/desktop", description=terminal_description)
 async def desktop_impact(
-    desktop: Desktop = Body(None, example=end_user_terminal),
+    desktop: Desktop = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config["default_duration"],
     archetype: str = config["default_desktop"],
@@ -144,14 +144,14 @@ async def smartphone_get_all_archetype_name():
     "/smartphone/archetype_config", description=get_archetype_config_desc
 )
 async def smartphone_get_archetype_config(
-    archetype: str = Query(example=config["default_smartphone"]),
+    archetype: str = Query(examples=[config["default_smartphone"]]),
 ):
     return get_archetype_config(archetype)
 
 
 @terminal_router.post("/smartphone", description=terminal_description)
 async def smartphone_impact(
-    smartphone: Smartphone = Body(None, example=end_user_terminal),
+    smartphone: Smartphone = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config["default_duration"],
     archetype: str = config["default_smartphone"],
@@ -189,14 +189,14 @@ async def tablet_get_all_archetype_name():
 
 @terminal_router.get("/tablet/archetype_config", description=get_archetype_config_desc)
 async def tablet_get_archetype_config(
-    archetype: str = Query(example=config["default_tablet"]),
+    archetype: str = Query(examples=[config["default_tablet"]]),
 ):
     return get_archetype_config(archetype)
 
 
 @terminal_router.post("/tablet", description=terminal_description)
 async def tablet_impact(
-    tablet: Tablet = Body(None, example=end_user_terminal),
+    tablet: Tablet = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config["default_duration"],
     archetype: str = config["default_tablet"],
@@ -236,14 +236,14 @@ async def television_get_all_archetype_name():
     "/television/archetype_config", description=get_archetype_config_desc
 )
 async def television_get_archetype_config(
-    archetype: str = Query(example=config["default_television"]),
+    archetype: str = Query(examples=[config["default_television"]]),
 ):
     return get_archetype_config(archetype)
 
 
 @terminal_router.post("/television", description=terminal_description)
 async def television_impact(
-    television: Television = Body(None, example=end_user_terminal),
+    television: Television = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config["default_duration"],
     archetype: str = config["default_television"],
@@ -281,14 +281,14 @@ async def box_get_all_archetype_name():
 
 @terminal_router.get("/box/archetype_config", description=get_archetype_config_desc)
 async def box_get_archetype_config(
-    archetype: str = Query(example=config["default_box"]),
+    archetype: str = Query(examples=[config["default_box"]]),
 ):
     return get_archetype_config(archetype)
 
 
 @terminal_router.post("/box", description=terminal_description)
 async def box_impact(
-    box: Box = Body(None, example=end_user_terminal),
+    box: Box = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config["default_duration"],
     archetype: str = config["default_box"],
@@ -328,14 +328,14 @@ async def vr_headset_get_all_archetype_name():
     "/vr_headset/archetype_config", description=get_archetype_config_desc
 )
 async def vr_headset_get_archetype_config(
-    archetype: str = Query(example=config["default_vr_headset"]),
+    archetype: str = Query(examples=[config["default_vr_headset"]]),
 ):
     return get_archetype_config(archetype)
 
 
 @terminal_router.post("/vr_headset", description=terminal_description)
 async def vr_headset_impact_from_configuration(
-    vr_headset: VrHeadset = Body(None, example=end_user_terminal),
+    vr_headset: VrHeadset = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config["default_duration"],
     archetype: str = config["default_vr_headset"],
