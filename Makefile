@@ -58,7 +58,10 @@ test-compat-max:
 	$(call compat-check,${MAXIMUM_PY_VERSION})
 
 run:
-		poetry run uvicorn boaviztapi.main:app
+		poetry run uvicorn boaviztapi.main:app --port 5000
+
+run-py:
+		python boaviztapi/main.py
 
 $(SEMVERS):
 		poetry version $@

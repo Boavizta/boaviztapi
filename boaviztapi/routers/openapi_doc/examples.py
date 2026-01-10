@@ -35,6 +35,21 @@ components_examples = {
             "usage": {"usage_location": "FRA"},
         },
     },
+    "gpu": {
+        "custom gpu": {
+            "weight": 1.69,
+            "heatsink_weight": 0.90077,
+            "pwb_surface": 296.37,
+            "casing_weight": 0.78923,
+            "gpu_surface": 2810.4,
+            "vram": 80,
+            "vram_dies": 6,
+            "transport_boat": 19000,
+            "transport_truck": 1000,
+            "transport_plane": 0,
+            "usage": {"usage_location": "FRA"},
+        },
+    },
     "ssd": {
         "custom ssd": {
             "capacity": 500,
@@ -54,6 +69,7 @@ components_examples = {
 
 components_examples_openapi = {
     "cpu": convert_to_openapi_example(components_examples["cpu"]),
+    "gpu": convert_to_openapi_example(components_examples["gpu"]),
     "ram": convert_to_openapi_example(components_examples["ram"]),
     "ssd": convert_to_openapi_example(components_examples["ssd"]),
     "hdd": convert_to_openapi_example(components_examples["hdd"]),

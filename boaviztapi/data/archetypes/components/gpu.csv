@@ -1,0 +1,2 @@
+id,weight,heatsink_weight,pwb_surface,pwb_weight,casing_weight,gpu_surface,vram,vram_dies,vram_surface,transport_boat,transport_truck,transport_plane,USAGE.time_workload,USAGE.use_time_ratio,USAGE.hours_life_time
+DEFAULT,1.69,0.90,296,,0.79,814,80,6,,19000,1000,0,50;0;100,1,26280
