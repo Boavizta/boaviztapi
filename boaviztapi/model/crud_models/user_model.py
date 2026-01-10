@@ -48,6 +48,20 @@ class UserModel(BaseCRUDModel):
             last_seen_date=datetime.now(timezone.utc)
         )
 
+    @classmethod
+    def from_discord_user(cls, discord_payload: dict):
+        """Create UserModel from Discord user data"""
+        return cls(
+            sub=discord_payload["sub"],
+            email=discord_payload.get("email", ""),
+            name=discord_payload.get("name", ""),
+            given_name="",  # Discord doesn't provide this
+            family_name="",  # Discord doesn't provide this
+            picture=discord_payload.get("picture", ""),
+            registration_date=datetime.now(timezone.utc),
+            last_seen_date=datetime.now(timezone.utc)
+        )
+
 
 class UpdateUserModel(BaseCRUDUpdateModel):
     sub: Optional[str] = None

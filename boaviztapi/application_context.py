@@ -22,12 +22,15 @@ class ApplicationContext:
     ELECTRICITYMAPS_API_KEY: str | None = None
     GOOGLE_CLIENT_ID: str | None = None
     GOOGLE_CLIENT_SECRET: str | None = None
+    DISCORD_CLIENT_ID: str | None = None
+    DISCORD_CLIENT_SECRET: str | None = None
+    DISCORD_REDIRECT_URL: str | None = None
     SESSION_MIDDLEWARE_SECRET_KEY: str | None = None
     mongodb_client: AsyncMongoClient | None = None
     database_name: str = None
 
     dependencies = ["ENTSOE_API_KEY", "ELECTRICITYMAPS_API_KEY", "GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET",
-                    "SESSION_MIDDLEWARE_SECRET_KEY"]
+                    "SESSION_MIDDLEWARE_SECRET_KEY", "DISCORD_CLIENT_ID", "DISCORD_CLIENT_SECRET", "DISCORD_REDIRECT_URL"]
 
     def load_secrets(self):
         # Check docker secrets first

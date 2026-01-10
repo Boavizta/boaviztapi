@@ -1,5 +1,7 @@
 import logging
 
+import requests
+
 from typing import Mapping, Any, Annotated
 from datetime import datetime, timezone
 from urllib.parse import urlencode
@@ -8,6 +10,9 @@ from fastapi import APIRouter, Request, HTTPException, Form, Query
 from fastapi.params import Depends
 from fastapi.responses import RedirectResponse
 from pymongo.asynchronous.collection import AsyncCollection
+from respx import router
+
+import jwt
 
 from boaviztapi.application_context import get_app_context
 from boaviztapi.dto.auth.user_dto import UserPublicDTO, GoogleJwtPayload
@@ -23,6 +28,8 @@ auth_router = APIRouter(
 )
 
 _log = logging.getLogger(__name__)
+
+FRONTEND_URL = "http://localhost:3000"
 
 @auth_router.post('/google/callback', description="TODO")
 async def google_signin_callback(
@@ -64,6 +71,67 @@ async def google_signin_callback(
             return RedirectResponse(f"{request.headers.get('origin')}?{error_params}", status_code=303)
         #TODO: add nonce verification by sending it to the frontend on nextjs startup
         return RedirectResponse(status_code=303, url=f"{request.headers.get('origin')}/#{params}")
+
+@auth_router.get('/discord/callback', description="TODO")
+async def discord_signin_callback(
+        req: Request,
+        code: str = Query(),
+        next: Annotated[str, Query()] = "/"
+        ):
+    app = get_app_context()
+
+    data = {
+        'grant_type': 'authorization_code',
+        'code': code,
+        'redirect_uri': app.DISCORD_REDIRECT_URL
+    }
+
+    headers = {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+
+    token_response = requests.post("https://discord.com/api/v10/oauth2/token", data=data, headers=headers, auth=(app.DISCORD_CLIENT_ID, app.DISCORD_CLIENT_SECRET))
+    token_response.raise_for_status()
+
+    token_json = token_response.json()
+    access_token = token_json['access_token']
+
+    user_response = requests.get("https://discord.com/api/v10/users/@me", headers={
+        'Authorization': 'Bearer ' + token_json['access_token']
+    })
+    user_response.raise_for_status()
+
+    discord_user = user_response.json()
+
+    discord_payload = {
+        "sub": discord_user['id'],
+        "email": discord_user.get('email'),
+        "name": discord_user.get('global_name') or discord_user['username'],
+        "picture": f"https://cdn.discordapp.com/avatars/{discord_user['id']}/{discord_user['avatar']}.png" if discord_user.get(
+            'avatar') else None,
+    }
+
+    params = urlencode({"token": create_access_token(discord_payload), "next": next})
+
+    service = get_crud_service()
+    try:
+        if (user := await service.get_one_by_filter({"sub": discord_payload["sub"]})) is not None:
+            user_model = UserModel(
+                sub=user.sub,
+                registration_date=user.registration_date,
+                last_seen_date=datetime.now(timezone.utc),
+                **user.model_dump(exclude={"sub", "registration_date", "last_seen_date"})
+            )
+            await service.update(user.id, user_model)
+        else:
+            await service.create(UserModel.from_discord_user(discord_payload))
+    except HTTPException:
+        await service.create(UserModel.from_discord_user(discord_payload))
+
+    return RedirectResponse(
+        status_code=303,
+        url=f"{FRONTEND_URL}/#{params}"
+    )
 
 @auth_router.post('/logout')
 async def logout(request: Request):
