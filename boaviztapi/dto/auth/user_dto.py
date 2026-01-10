@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from typing import Optional, Any
 
 from pydantic import BaseModel
@@ -62,4 +63,3 @@ class UserPublicDTO(BaseModel, BaseUser):
             given_name=jwt_payload.given_name,
             family_name=jwt_payload.family_name
         )
-
