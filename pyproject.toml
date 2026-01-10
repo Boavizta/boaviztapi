@@ -21,6 +21,10 @@ importlib-metadata = "^6.6.0"
 pyyaml = "^6.0"
 toml = "^0.10.2"
 
+# Security updates
+aiohttp = "^3.13.3"
+urllib3 = "^2.6.3"
+
 [tool.poetry.group.dev]
 optional = true
 include-groups = ["csv"]
