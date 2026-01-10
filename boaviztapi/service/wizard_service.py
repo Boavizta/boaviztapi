@@ -1,11 +1,17 @@
 import glob
 import os
+
+import numpy as np
 import pandas as pd
 import logging
+import json
 from datetime import datetime
 
 from boaviztapi.model.crud_models.configuration_model import CloudConfigurationModel, OnPremiseConfigurationModel, \
     CloudServerUsage
+from boaviztapi.service.carbon_intensity_provider import CarbonIntensityProvider
+from boaviztapi.service.cloud_pricing_provider import _estimate_localisation, AWSPriceProvider, AzurePriceProvider, \
+    GcpPriceProvider
 
 from boaviztapi.service.utils_provider import data_dir
 
@@ -59,6 +65,17 @@ def _cloud_instance_to_cloud_config(input_onprem_config: OnPremiseConfigurationM
         raise ValueError(f"Error while converting cloud instance to cloud configuration: {e}") from e
     return model
 
+def _provider_factory(provider: str):
+    if provider == 'aws':
+        return AWSPriceProvider()
+    elif provider == 'azure':
+        return AzurePriceProvider()
+    elif provider == 'gcp':
+        return GcpPriceProvider()
+    else:
+        raise ValueError(f"Unknown cloud provider: {provider}")
+
+
 def strategy_lift_shift(input_config: OnPremiseConfigurationModel, provider_name: str) -> CloudConfigurationModel:
     provider_name = provider_name.strip().lower()
     if provider_name not in all_cloud_configs['provider.name'].unique():
@@ -102,5 +119,49 @@ def strategy_lift_shift(input_config: OnPremiseConfigurationModel, provider_name
 def strategy_right_sizing(input_config: CloudConfigurationModel) -> CloudConfigurationModel:
     return CloudConfigurationModel()
 
-def strategy_greener_region(input_config: CloudConfigurationModel) -> CloudConfigurationModel:
-    return CloudConfigurationModel()
+async def strategy_greener_region(input_config: CloudConfigurationModel) -> CloudConfigurationModel:
+    if not input_config.usage.localisation:
+        raise ValueError("A localisation is required to compute the greener cloud strategy")
+    # Gather all the regions for the given provider and instance type
+
+    provider_data = _provider_factory(input_config.cloud_provider)
+    regions = provider_data.get_regions_for_instance(input_config.instance_type)
+
+    if len(regions) == 1:
+        log.info(
+            f"No better configuration option was found for {input_config.cloud_provider}/{input_config.instance_type}")
+        return input_config
+    # Check the carbon footprint of each region
+    locations = []
+    for region in regions:
+        try:
+            locations.append(_estimate_localisation(region, input_config.cloud_provider))
+        except Exception as e:
+            log.warning(f"Error while computing carbon intensity for {region}: {e}")
+            continue
+    locations = np.unique(locations)
+    intensities = {}
+    carbon_intensity_cache = await CarbonIntensityProvider.get_cache_scheduler('monthly').get_results()
+    carbon_intensity_cache = {key: (json.loads(value) if isinstance(value, str) else value) 
+                                  for key, value in carbon_intensity_cache.items()}
+    for location in locations:
+        try:
+            for carbon_intensity in carbon_intensity_cache.values():
+                if carbon_intensity['zone'] == location:
+                    intensities[location] = carbon_intensity['carbonIntensity']
+        except Exception as e:
+            log.warning(f"Error while computing carbon intensity for {location}: {e}")
+            continue
+    greenest_location = min(intensities, key=intensities.get)
+    if not greenest_location:
+        raise ValueError('Could not compute the greenest location for the given cloud configuration')
+
+    # If the greenest location is the current one, return the same config
+    if greenest_location == input_config.usage.localisation:
+        log.info(
+            f"No better configuration option was found for {input_config.cloud_provider}/{input_config.instance_type}")
+        return input_config
+
+    # Set the new location to the cloud configuration and send it back
+    input_config.usage.localisation = greenest_location
+    return input_config

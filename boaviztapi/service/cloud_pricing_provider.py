@@ -33,6 +33,29 @@ def _estimate_cloud_region(localisation: str, provider: str) -> str:
         raise ValueError(f"No cloud region found for localisation {localisation} and provider {provider}!")
     return region
 
+def _estimate_localisation(cloud_region: str, provider: str) -> str:
+    """
+    Estimate the approximate country/electricity maps zone in which the configuration is located by using a mapping file.
+
+    Args:
+        cloud_region: str - The cloud region in which the device is located
+        provider: str - cloud provider, e.g. 'aws'
+
+    Returns:
+        Nearest Electricity Maps zone
+    """
+    cloud_region = cloud_region.lower().strip()
+    provider = provider.lower().strip()
+    if cloud_region not in cloud_region_map['region'].unique():
+        raise ValueError(f"Given cloud region {cloud_region} is not mapped to any Electricity Maps zone of provider {provider}!")
+    if provider not in cloud_region_map['provider'].unique():
+        raise ValueError(f"Given provider {provider} is not recognised!")
+    zone = cloud_region_map[(cloud_region_map['region'] == cloud_region)
+            & (cloud_region_map['provider'] == provider)]['zone_code'].values[0]
+    if not zone:
+        raise ValueError(f"No Electricity Maps zone found for cloud region {cloud_region} and provider {provider}!")
+    return zone
+
 
 class AWSPriceProvider:
     _instance = None
@@ -86,6 +109,12 @@ class AWSPriceProvider:
         if instance_id not in self.instance_ids:
             raise ValueError(f"Instance {instance_id} is not a valid AWS instance!")
         return self._df_to_pydantic(df=self.aws_prices.xs((region, savings_type, instance_id), level=('region', 'saving', 'id')), region=region, saving=savings_type, instance_id=instance_id)
+
+    def get_regions_for_instance(self, instance_id: str):
+        instance_id = instance_id.lower().strip()
+        if instance_id not in self.instance_ids:
+            raise ValueError(f"Instance {instance_id} is not a valid AWS instance!")
+        return self.aws_prices.xs(instance_id, level='id').index.get_level_values('region').unique().tolist()
 
 class AzurePriceProvider:
     _instance = None
@@ -151,6 +180,12 @@ class AzurePriceProvider:
             raise ValueError(f"Instance {instance_id} is not a valid Azure instance!")
         return self._df_to_pydantic(df=self.azure_prices.xs((region, savings_type, instance_id), level=('region', 'saving', 'id')), region=region, saving=savings_type, instance_id=instance_id)
 
+    def get_regions_for_instance(self, instance_id: str):
+        instance_id = self._normalise_instance_id(instance_id)
+        if instance_id not in self.instance_ids:
+            raise ValueError(f"Instance {instance_id} is not a valid AWS instance!")
+        return self.azure_prices.xs(instance_id, level='id').index.get_level_values('region').unique().tolist()
+
 
 class GcpPriceProvider:
     _instance = None
@@ -187,6 +222,12 @@ class GcpPriceProvider:
         if instance_id not in self.instance_ids:
             raise ValueError(f"Instance {instance_id} is not a valid GCP instance!")
         return self._df_to_pydantic(self.gcp_prices.xs((region, instance_id), level=('region', 'id')), region, instance_id)
+
+    def get_regions_for_instance(self, instance_id: str):
+        instance_id = instance_id.lower().strip()
+        if instance_id not in self.instance_ids:
+            raise ValueError(f"Instance {instance_id} is not a valid AWS instance!")
+        return self.gcp_prices.xs(instance_id, level='id').index.get_level_values('region').unique().tolist()
 
 
 
