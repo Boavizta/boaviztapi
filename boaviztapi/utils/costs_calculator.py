@@ -155,16 +155,22 @@ class CostCalculator:
             price_provider = GcpPriceProvider()
             cloud_region = _estimate_cloud_region(usage.localisation, server.cloud_provider)
             hourly_costs: GcpPriceModel = price_provider.get_all(region=cloud_region, instance_id=server.instance_type)
+            if not hourly_costs:
+                raise ValueError(f"There is no pricing information for the cloud region {cloud_region} ({usage.localisation}) and instance type {server.instance_type}")
             hourly_cost = hourly_costs.linux_spot_cost
         elif 'aws' == server.cloud_provider.lower():
             price_provider = AWSPriceProvider()
             cloud_region = _estimate_cloud_region(usage.localisation, server.cloud_provider)
             hourly_costs: list[AWSPriceModel] = price_provider.get_prices_with_saving(region=cloud_region, instance_id=server.instance_type, savings_type=usage.reservedPlan)
+            if len(hourly_costs) < 1:
+                raise ValueError(f"There is no pricing information for the cloud region {cloud_region} ({usage.localisation}) and instance type {server.instance_type}")
             hourly_cost = hourly_costs[0].linux_spot_min_cost
         elif 'azure' == server.cloud_provider.lower():
             price_provider = AzurePriceProvider()
             cloud_region = _estimate_cloud_region(usage.localisation, server.cloud_provider)
             hourly_costs: list[AzurePriceModel] = price_provider.get_prices_with_saving(region=cloud_region, instance_id=server.instance_type, savings_type=usage.reservedPlan)
+            if len(hourly_costs) < 1:
+                raise ValueError(f"There is no pricing information for the cloud region {cloud_region} ({usage.localisation}) and instance type {server.instance_type}")
             hourly_cost = hourly_costs[0].linux_spot_min_cost
         else:
             raise ValueError(f"Unknown cloud provider: {server.cloud_provider}")
