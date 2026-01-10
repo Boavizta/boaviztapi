@@ -15,6 +15,7 @@ on:
     paths:
       - 'boaviztapi/**'
       - 'tests/**'
+      - 'Makefile'
       - 'poetry.lock'
       - 'pyproject.toml'
       - 'requirements.txt'
