@@ -137,55 +137,22 @@ async def get_power_breakdown(
         raise HTTPException(status_code=500, detail=str(e)) from e
 
 
-@electricity_prices_router.get('/power-breakdowns', description=power_breakdowns_cache,
+@electricity_prices_router.get('/carbon-intensities', description=power_breakdowns_cache,
                                responses={200: {
                                    "description": "Successful Response",
                                    "content": {"application/json": {"example": {
-                                       "https://api.electricitymaps.com/v3/power-breakdown/latest?zone=AE&temporalGranularity=hourly": {
+                                       "https://api.electricitymaps.com/v3/carbon-intensity/latest?zone=AE&temporalGranularity=hourly": {
                                            "zone": "AE",
-                                           "datetime": "2025-11-19T20:00:00.000Z",
-                                           "updatedAt": "2025-11-19T19:26:32.561Z",
-                                           "createdAt": "2025-11-19T13:25:30.600Z",
-                                           "powerConsumptionBreakdown": {
-                                               "nuclear": 5020,
-                                               "geothermal": 0,
-                                               "biomass": 0,
-                                               "coal": 0,
-                                               "wind": 5,
-                                               "solar": 0,
-                                               "hydro": 0,
-                                               "gas": 12655,
-                                               "oil": 113,
-                                               "unknown": 0,
-                                               "hydro discharge": 0,
-                                               "battery discharge": 0
-                                           },
-                                           "powerProductionBreakdown": {
-                                               "nuclear": 5020,
-                                               "geothermal": None,
-                                               "biomass": None,
-                                               "coal": None,
-                                               "wind": 5,
-                                               "solar": 0,
-                                               "hydro": None,
-                                               "gas": 12655,
-                                               "oil": 113,
-                                               "unknown": None,
-                                               "hydro discharge": None,
-                                               "battery discharge": None
-                                           },
-                                           "powerImportBreakdown": {},
-                                           "powerExportBreakdown": {},
-                                           "fossilFreePercentage": 28,
-                                           "renewablePercentage": 0,
-                                           "powerConsumptionTotal": 17794,
-                                           "powerProductionTotal": 17794,
-                                           "powerImportTotal": None,
-                                           "powerExportTotal": None,
+                                           "carbonIntensity": "359",
+                                           "datetime": "2026-01-11T19:00:00.000Z",
+                                           "updatedAt": "2026-01-11T19:24:37.878Z",
+                                           "createdAt": "2026-01-11T13:24:49.595Z",
+                                           "emissionFactorType": "lifecycle",
                                            "isEstimated": True,
                                            "estimationMethod": "GENERAL_PURPOSE_ZONE_MODEL",
-                                           "temporalGranularity": "hourly"
-                                       }}}}}})
+                                           "temporalGranularity": "hourly"}}}}}
+
+                               })
 async def get_electricity_prices():
     return await CarbonIntensityProvider.get_cache_scheduler().get_results()
 
@@ -206,34 +173,35 @@ async def get_electricity_prices():
                                            "temporalGranularity": "hourly"
                                        }}}}}})
 async def get_carbon_free_energy(temporal_granularity: Annotated[
-            str,
-            Query(
-                examples=["15_minutes", "hourly", "daily", "monthly", "quarterly", "yearly"]
-            ),
-            AfterValidator(validate_temporal_granularity)
-        ] = 'hourly'):
+    str,
+    Query(
+        examples=["15_minutes", "hourly", "daily", "monthly", "quarterly", "yearly"]
+    ),
+    AfterValidator(validate_temporal_granularity)
+] = 'hourly'):
     return await CarbonFreeEnergyProvider.get_cache_scheduler(temporal_granularity).get_results()
+
 
 @electricity_prices_router.get('/renewable-energy', description=renewable_energy_cache,
                                responses={200: {
                                    "description": "Successful Response",
                                    "content": {"application/json": {"example": {
                                        "https://api.electricitymaps.com/v3/renewable-energy/latest?zone=DE&temporalGranularity=hourly": {
-  "zone": "DE",
-  "datetime": "2018-04-25T18:07:00.350Z",
-  "updatedAt": "2018-04-25T18:07:01.000Z",
-  "createdAt": "2018-04-22T18:07:01.000Z",
-  "unit": "%",
-  "value": "89",
-  "isEstimated": True,
-  "estimationMethod": "FORECASTS_HIERARCHY",
-  "temporalGranularity": "hourly"
-}}}}}})
+                                           "zone": "DE",
+                                           "datetime": "2018-04-25T18:07:00.350Z",
+                                           "updatedAt": "2018-04-25T18:07:01.000Z",
+                                           "createdAt": "2018-04-22T18:07:01.000Z",
+                                           "unit": "%",
+                                           "value": "89",
+                                           "isEstimated": True,
+                                           "estimationMethod": "FORECASTS_HIERARCHY",
+                                           "temporalGranularity": "hourly"
+                                       }}}}}})
 async def get_renewable_energy(temporal_granularity: Annotated[
-            str,
-            Query(
-                examples=["15_minutes", "hourly", "daily", "monthly", "quarterly", "yearly"]
-            ),
-            AfterValidator(validate_temporal_granularity)
-        ] = 'hourly'):
+    str,
+    Query(
+        examples=["15_minutes", "hourly", "daily", "monthly", "quarterly", "yearly"]
+    ),
+    AfterValidator(validate_temporal_granularity)
+] = 'hourly'):
     return await RenewableEnergyProvider.get_cache_scheduler(temporal_granularity).get_results()
