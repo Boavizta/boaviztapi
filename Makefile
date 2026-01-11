@@ -3,7 +3,7 @@ TIMESTAMP := $(shell date "+%m-%d-%y")
 DOCKER_NAME := boavizta/boaviztapi:${CURRENT_VERSION}
 SEMVERS := major minor patch
 
-MINIMUM_PY_VERSION=3.10
+MINIMUM_PY_VERSION=3.11
 MAXIMUM_PY_VERSION=3.13
 
 clean:
