@@ -34,6 +34,7 @@ FROM python:$PY_VERSION-slim AS run-env
 ENV LC_ALL=C.UTF-8 \
     LANG=C.UTF-8
 
+ARG PY_VERSION=3.13
 ARG VERSION
 WORKDIR /app
 
@@ -42,7 +43,7 @@ COPY --from=build-env /app/boaviztapi-$VERSION.tar.gz /app/
 RUN pip install --no-cache-dir /app/boaviztapi-$VERSION.tar.gz
 
 # Required in main.py
-COPY --from=build-env /app/pyproject.toml /usr/local/lib/python3.12/site-packages/boaviztapi/
+COPY --from=build-env /app/pyproject.toml /usr/local/lib/python$PY_VERSION/site-packages/boaviztapi/
 
 # Copy uvicorn executable
 RUN pip install --no-cache-dir uvicorn
