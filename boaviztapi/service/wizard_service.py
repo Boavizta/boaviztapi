@@ -43,6 +43,10 @@ for filename in all_files:
 # The parsed dataframe with all the cloud configurations
 all_cloud_configs: pd.DataFrame = pd.concat(df_list, join="outer", axis=0, ignore_index=True, sort=False)
 
+# Dataframe with pricing availability
+pricing_availability = pd.read_csv(os.path.join(data_dir, 'electricity/electricitymaps_zones.csv'),
+                                   header=0)
+
 def _cloud_instance_to_cloud_config(input_onprem_config: OnPremiseConfigurationModel, cloud_instance: dict) -> CloudConfigurationModel:
     try:
         cloud_usage_model = CloudServerUsage(
@@ -146,15 +150,22 @@ async def strategy_greener_region(input_config: CloudConfigurationModel) -> Clou
                                   for key, value in carbon_intensity_cache.items()}
     for location in locations:
         try:
+            # FIXME: Remove this filter after demo!
+            # Only return regions with prices
+            if pricing_availability.loc[pricing_availability['Zone Code'] == location, 'Day-ahead price'].values[0] == 'False':
+                continue
+
             for carbon_intensity in carbon_intensity_cache.values():
                 if carbon_intensity['zone'] == location:
                     intensities[location] = carbon_intensity['carbonIntensity']
         except Exception as e:
             log.warning(f"Error while computing carbon intensity for {location}: {e}")
             continue
+    if intensities == {}:
+        raise ValueError('Could not compute the carbon intensity for any of the regions of the given cloud configuration!')
     greenest_location = min(intensities, key=intensities.get)
     if not greenest_location:
-        raise ValueError('Could not compute the greenest location for the given cloud configuration')
+        raise ValueError('Could not compute the greenest location for the given cloud configuration!')
 
     # If the greenest location is the current one, return the same config
     if greenest_location == input_config.usage.localisation:
