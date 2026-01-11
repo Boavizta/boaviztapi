@@ -47,14 +47,26 @@ all_cloud_configs: pd.DataFrame = pd.concat(df_list, join="outer", axis=0, ignor
 pricing_availability = pd.read_csv(os.path.join(data_dir, 'electricity/electricitymaps_zones.csv'),
                                    header=0)
 
+def _get_pricing_type(provider: str, instance_type: str):
+    if provider == 'aws':
+        return 'OnDemand', 'yrTerm1Standard.allUpfront'
+    elif provider == 'azure':
+        return 'LinuxOnDemand', 'yrTerm1Standard.allUpfront'
+    elif provider == 'gcp':
+        return 'Linux On Demand cost', None
+    else:
+        raise ValueError(f"Unknown cloud provider: {provider}")
+
 def _cloud_instance_to_cloud_config(input_onprem_config: OnPremiseConfigurationModel, cloud_instance: dict) -> CloudConfigurationModel:
     try:
         cloud_usage_model = CloudServerUsage(
             localisation=input_onprem_config.usage.localisation,
             lifespan=input_onprem_config.usage.lifespan,
-            method=input_onprem_config.usage.method,
+            method=input_onprem_config.usage.method if input_onprem_config.usage.method.lower() != 'electricity' else 'Load',
             serverLoad=input_onprem_config.usage.serverLoad,
-            serverLoadAdvanced=input_onprem_config.usage.serverLoadAdvanced
+            serverLoadAdvanced=input_onprem_config.usage.serverLoadAdvanced,
+            instancePricingType=_get_pricing_type(cloud_instance['provider.name'], cloud_instance['id'])[0],
+            reservedPlan=_get_pricing_type(cloud_instance['provider.name'], cloud_instance['id'])[1]
         )
         model = CloudConfigurationModel(
             type='cloud',
