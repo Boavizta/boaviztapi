@@ -1,5 +1,5 @@
 import logging
-from unittest.mock import MagicMock, AsyncMock
+from unittest.mock import AsyncMock
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -43,8 +43,8 @@ def pytest_configure(config):
     cache_mod.CacheService.startup = _noop_startup
 
     # Patch electricity and carbon providers to return deterministic sample data
-    import boaviztapi.service.costs_provider as costs_mod
-    import boaviztapi.service.carbon_intensity_provider as carbon_mod
+    import boaviztapi.service.electricity_maps.costs_provider as costs_mod
+    import boaviztapi.service.electricity_maps.carbon_intensity_provider as carbon_mod
 
     async def _fake_price(zone: str, temporalGranularity: str = 'hourly'):
         return {

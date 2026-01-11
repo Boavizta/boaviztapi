@@ -25,9 +25,11 @@ from boaviztapi.routers.portfolio_router import portfolio_router
 from boaviztapi.routers.sustainability_router import sustainability_router
 from boaviztapi.routers.user_router import user_router
 from boaviztapi.routers.wizard_router import wizard_router
-from boaviztapi.service.carbon_intensity_provider import CarbonIntensityProvider
-from boaviztapi.service.costs_provider import ElectricityCostsProvider
+from boaviztapi.service.electricity_maps.carbon_free_energy_provider import CarbonFreeEnergyProvider
+from boaviztapi.service.electricity_maps.carbon_intensity_provider import CarbonIntensityProvider
+from boaviztapi.service.electricity_maps.costs_provider import ElectricityCostsProvider
 from boaviztapi.service.currency_converter import CurrencyConverter
+from boaviztapi.service.electricity_maps.renewable_energy_provider import RenewableEnergyProvider
 from boaviztapi.utils.auth_backend import JWTAuthBackend
 from boaviztapi.utils.get_version import get_version_from_pyproject
 from boaviztapi.application_context import get_app_context
@@ -62,9 +64,13 @@ async def lifespan(_: FastAPI) -> AsyncIterator[None]:
     _logger.info("Starting caches...")
     electricity_prices_cache = ElectricityCostsProvider.get_cache_scheduler()
     carbon_intensity_cache = CarbonIntensityProvider.get_cache_scheduler()
+    carbon_free_energy_cache = CarbonFreeEnergyProvider.get_cache_scheduler()
+    renewable_energy_cache = RenewableEnergyProvider.get_cache_scheduler()
     currency_converter_cache = await CurrencyConverter.get_cache_scheduler()
     await electricity_prices_cache.startup()
     await carbon_intensity_cache.startup()
+    await carbon_free_energy_cache.startup()
+    await renewable_energy_cache.startup()
     await currency_converter_cache.startup()
     yield
     await _ctx.close_db_connection()

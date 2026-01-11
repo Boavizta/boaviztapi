@@ -2,11 +2,10 @@ import os
 from typing import Union
 
 import pandas as pd
-from boaviztapi import config
 from boaviztapi import data_dir
 from boaviztapi.model.component import Component
 from boaviztapi.model.device import Device
-from boaviztapi.service.costs_provider import ElectricityCostsProvider
+from boaviztapi.service.electricity_maps.costs_provider import ElectricityCostsProvider
 
 _electricity_prices_df = pd.read_csv(os.path.join(data_dir,
                                                   'electricity/european_wholesale_electricity_price_data_monthly.csv'))

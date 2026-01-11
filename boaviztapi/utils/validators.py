@@ -1,4 +1,4 @@
-from boaviztapi.service.costs_provider import ElectricityCostsProvider
+from boaviztapi.service.electricity_maps.costs_provider import ElectricityCostsProvider
 
 
 def check_alpha3_in_electricity_prices(alpha3: str):

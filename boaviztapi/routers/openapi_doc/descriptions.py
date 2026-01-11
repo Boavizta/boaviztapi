@@ -173,5 +173,7 @@ electricity_available_countries = "# ✔ ️Get a list of all the countries supp
 electricity_price = "# ✔Get the latest electricity day-ahead price for one location.\n"
 electricity_prices_cache = "# ✔ ️Get the latest electricity day-ahead prices for all the available locations.\n"
 carbon_intensity = "# ✔ ️Get the latest carbon intensity values for a given electricity zone.\n"
+carbon_free_energy_cache = "✔ ️Get the last known carbon-free energy percentage (in %) of electricity consumed in all the available locations.\n"
+renewable_energy_cache = "✔ ️Get the last known renewable energy percentage (in %) of electricity consumed in all the available locations.\n"
 power_breakdown = "# ✔ ️Get the power breakdown values for a given electricity zone (percentage of fossil vs renewable resources used to procure the energy).\n"
 power_breakdowns_cache = "# ✔ ️Get the power breakdown values for all the electricity zones (percentage of fossil vs renewable resources used to procure the energy).\n"

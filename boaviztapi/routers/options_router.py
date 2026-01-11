@@ -6,7 +6,7 @@ from fastapi_cache.decorator import cache
 import boaviztapi.service.cloud_provider as cloud_provider
 import boaviztapi.service.utils_provider as utils_provider
 from boaviztapi import config
-from boaviztapi.service.costs_provider import ElectricityCostsProvider
+from boaviztapi.service.electricity_maps.costs_provider import ElectricityCostsProvider
 
 options_router = APIRouter(
     prefix='/v1/options',

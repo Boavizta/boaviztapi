@@ -9,7 +9,7 @@ from datetime import datetime
 
 from boaviztapi.model.crud_models.configuration_model import CloudConfigurationModel, OnPremiseConfigurationModel, \
     CloudServerUsage
-from boaviztapi.service.carbon_intensity_provider import CarbonIntensityProvider
+from boaviztapi.service.electricity_maps.carbon_intensity_provider import CarbonIntensityProvider
 from boaviztapi.service.cloud_pricing_provider import _estimate_localisation, AWSPriceProvider, AzurePriceProvider, \
     GcpPriceProvider
 

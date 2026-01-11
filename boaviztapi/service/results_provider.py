@@ -1,13 +1,10 @@
-from boaviztapi import config
 from boaviztapi.dto.component import Disk, PowerSupply, RAM, CPU
-from boaviztapi.dto.device.device import device_mapper, Server, ConfigurationServer, ModelServer, Cloud
+from boaviztapi.dto.device.device import Server, ConfigurationServer, ModelServer, Cloud
 from boaviztapi.dto.usage import UsageServer, UsageCloud
 from boaviztapi.dto.usage.usage import WorkloadTime
 from boaviztapi.model.crud_models.configuration_model import ConfigurationModel, OnPremiseConfigurationModel, \
     CloudConfigurationModel
-from boaviztapi.model.device.server import DeviceServer
-from boaviztapi.service.archetype import get_server_archetype
-from boaviztapi.service.costs_provider import ElectricityCostsProvider
+from boaviztapi.service.electricity_maps.costs_provider import ElectricityCostsProvider
 
 
 def mapper_config_to_server(onprem: ConfigurationModel) -> Server | Cloud:
