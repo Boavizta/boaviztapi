@@ -10,7 +10,7 @@ from boaviztapi.service.cloud_pricing_provider import GcpPriceProvider, AWSPrice
     _estimate_cloud_region
 from boaviztapi.service.costs_computation import get_electricity_price
 from boaviztapi.service.currency_converter import CurrencyConverter
-from boaviztapi.service.sustainability_provider import get_server_impact_on_premise
+from boaviztapi.service.sustainability_provider import get_server_impact_on_premise, get_cloud_impact
 from boaviztapi.utils.get_vantage import get_vantage_price
 
 class Breakdown(BaseModel):
@@ -93,8 +93,8 @@ class CostCalculator:
 
         hourly_operating_costs = getattr(server.usage, "operatingCosts", 0.0)
         operating_costs = hourly_operating_costs * self.duration
-        total_cost = energy_costs + operating_costs
 
+        total_cost = energy_costs + operating_costs
         _currency = None
         try:
             _currency = CurrencyConverter.get_currency_by_symbol(unit.split("/")[0])
@@ -174,15 +174,38 @@ class CostCalculator:
             hourly_cost = hourly_costs[0].linux_spot_min_cost
         else:
             raise ValueError(f"Unknown cloud provider: {server.cloud_provider}")
+        impact = await get_cloud_impact(
+            server,
+            verbose=True,
+            duration=self.duration
+        )
 
+        megajoules_usage = impact["impacts"]["pe"]["use"]["value"]
+        mwh_used = megajoules_usage / 3600
+
+        electricity_price_for_location = await get_electricity_price(
+            server,
+            location=server.usage.localisation
+        )
+        warnings = []
+        if not electricity_price_for_location:
+            price_per_mwh = 0.0
+            unit = "EUR"
+            warnings += [f"No electricity costs available for location '{server.usage.localisation}'."]
+        else:
+            price_per_mwh = electricity_price_for_location["value"]
+            unit = electricity_price_for_location.get("unit", "EUR/MWh")
+
+        energy_costs = price_per_mwh * mwh_used
 
         operating_costs = hourly_cost * self.duration
+        total_costs = energy_costs + operating_costs
 
         local_costs = CostBreakdown(
-            total_cost=operating_costs,
+            total_cost=total_costs,
             currency=CurrencyConverter.get_currency_by_symbol("EUR"),
-            breakdown=Breakdown(operating_costs=operating_costs, energy_costs=None),
-            unit=None
+            breakdown=Breakdown(operating_costs=operating_costs, energy_costs=energy_costs),
+            unit=unit
         )
         eur_costs = local_costs
         if local_costs.currency.symbol != "EUR":
