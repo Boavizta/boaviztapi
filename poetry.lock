@@ -311,6 +311,19 @@ files = [
 dev = ["backports.zoneinfo ; python_version < \"3.9\"", "freezegun (>=1.0,<2.0)", "jinja2 (>=3.0)", "pytest (>=6.0)", "pytest-cov", "pytz", "setuptools", "tzdata ; sys_platform == \"win32\""]
 
 [[package]]
+name = "backports-asyncio-runner"
+version = "1.2.0"
+description = "Backport of asyncio.Runner, a context manager that controls event loop life cycle."
+optional = false
+python-versions = "<3.11,>=3.8"
+groups = ["main"]
+markers = "python_version == \"3.10\""
+files = [
+    {file = "backports_asyncio_runner-1.2.0-py3-none-any.whl", hash = "sha256:0da0a936a8aeb554eccb426dc55af3ba63bcdc69fa1a600b5bb305413a4477b5"},
+    {file = "backports_asyncio_runner-1.2.0.tar.gz", hash = "sha256:a5aa7b2b7d8f8bfcaa2b57313f70792df84e32a2a746f585213373f900b42162"},
+]
+
+[[package]]
 name = "backrefs"
 version = "5.9"
 description = "A wrapper around re and regex that adds additional back references."
@@ -2765,21 +2778,23 @@ dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "requests
 
 [[package]]
 name = "pytest-asyncio"
-version = "0.24.0"
+version = "1.3.0"
 description = "Pytest support for asyncio"
 optional = false
-python-versions = ">=3.8"
-groups = ["dev"]
+python-versions = ">=3.10"
+groups = ["main"]
 files = [
-    {file = "pytest_asyncio-0.24.0-py3-none-any.whl", hash = "sha256:a811296ed596b69bf0b6f3dc40f83bcaf341b155a269052d82efa2b25ac7037b"},
-    {file = "pytest_asyncio-0.24.0.tar.gz", hash = "sha256:d081d828e576d85f875399194281e92bf8a68d60d72d1a2faf2feddb6c46b276"},
+    {file = "pytest_asyncio-1.3.0-py3-none-any.whl", hash = "sha256:611e26147c7f77640e6d0a92a38ed17c3e9848063698d5c93d5aa7aa11cebff5"},
+    {file = "pytest_asyncio-1.3.0.tar.gz", hash = "sha256:d7f52f36d231b80ee124cd216ffb19369aa168fc10095013c6b014a34d3ee9e5"},
 ]
 
 [package.dependencies]
-pytest = ">=8.2,<9"
+backports-asyncio-runner = {version = ">=1.1,<2", markers = "python_version < \"3.11\""}
+pytest = ">=8.2,<10"
+typing-extensions = {version = ">=4.12", markers = "python_version < \"3.13\""}
 
 [package.extras]
-docs = ["sphinx (>=5.3)", "sphinx-rtd-theme (>=1.0)"]
+docs = ["sphinx (>=5.3)", "sphinx-rtd-theme (>=1)"]
 testing = ["coverage (>=6.2)", "hypothesis (>=5.7.1)"]
 
 [[package]]
@@ -3882,4 +3897,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "00381c5fb5bff9b499adf18f1d508a225113424c1e70583286f10a2a6c0967af"
+content-hash = "960f628e84b6442ad1326e00c27c829a3181bcc1da991144ffc875024d801e45"

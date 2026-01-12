@@ -1,27 +1,33 @@
 costs:
   eur:
     breakdown:
-      operating_costs: 2.3
+      energy_costs: 0.3
+      operating_costs: 2.0
     currency:
       name: Euro
       symbol: EUR
     total_cost: 2.3
+    unit: EUR/MWh
     warnings: []
   local:
     breakdown:
-      operating_costs: 2.3
+      energy_costs: 0.3
+      operating_costs: 2.0
     currency:
       name: Euro
       symbol: EUR
     total_cost: 2.3
+    unit: EUR/MWh
     warnings: []
   usd:
     breakdown:
-      operating_costs: 2.7
+      energy_costs: 0.4
+      operating_costs: 2.4
     currency:
       name: United States Dollar
       symbol: USD
     total_cost: 2.7
+    unit: USD/MWh
     warnings: []
 impacts:
   adp:

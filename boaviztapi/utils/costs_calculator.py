@@ -3,15 +3,17 @@ from typing import Optional, Dict, Any, List
 from pydantic import BaseModel, Field
 
 from boaviztapi.model.cloud_prices.cloud_prices import GcpPriceModel, AWSPriceModel, AzurePriceModel
-from boaviztapi.model.crud_models.configuration_model import ConfigurationModelWithResults, OnPremiseConfigurationModel, \
-    CloudConfigurationModel
+from boaviztapi.model.crud_models.configuration_model import ConfigurationModelWithResults, OnPremiseConfigurationModel
 from boaviztapi.model.currency.currency_models import Currency
 from boaviztapi.service.cloud_pricing_provider import GcpPriceProvider, AWSPriceProvider, AzurePriceProvider, \
     _estimate_cloud_region
 from boaviztapi.service.costs_computation import get_electricity_price
 from boaviztapi.service.currency_converter import CurrencyConverter
 from boaviztapi.service.sustainability_provider import get_server_impact_on_premise, get_cloud_impact
-from boaviztapi.utils.get_vantage import get_vantage_price
+
+import logging
+
+log = logging.getLogger(__name__)
 
 class Breakdown(BaseModel):
     operating_costs: float
@@ -157,21 +159,34 @@ class CostCalculator:
             hourly_costs: GcpPriceModel = price_provider.get_all(region=cloud_region, instance_id=server.instance_type)
             if not hourly_costs:
                 raise ValueError(f"There is no pricing information for the cloud region {cloud_region} ({usage.localisation}) and instance type {server.instance_type}")
-            hourly_cost = hourly_costs.linux_spot_cost
+            try:
+                hourly_cost = hourly_costs.model_dump(by_alias=True)[usage.instancePricingType]
+            except:
+                log.warning(f"Unknown instance pricing type '{usage.instancePricingType}'! Will default to 'LinuxSpotCost'.")
+                hourly_cost = hourly_costs.linux_spot_cost
         elif 'aws' == server.cloud_provider.lower():
             price_provider = AWSPriceProvider()
             cloud_region = _estimate_cloud_region(usage.localisation, server.cloud_provider)
             hourly_costs: list[AWSPriceModel] = price_provider.get_prices_with_saving(region=cloud_region, instance_id=server.instance_type, savings_type=usage.reservedPlan)
             if len(hourly_costs) < 1:
                 raise ValueError(f"There is no pricing information for the cloud region {cloud_region} ({usage.localisation}) and instance type {server.instance_type}")
-            hourly_cost = hourly_costs[0].linux_spot_min_cost
+            try:
+                hourly_cost = hourly_costs[0].model_dump(by_alias=True)[usage.instancePricingType]
+            except:
+                log.warning(f"Unknown instance pricing type '{usage.instancePricingType}'! Will default to 'LinuxSpotCost'.")
+                hourly_cost = hourly_costs[0].linux_spot_min_cost
         elif 'azure' == server.cloud_provider.lower():
             price_provider = AzurePriceProvider()
             cloud_region = _estimate_cloud_region(usage.localisation, server.cloud_provider)
             hourly_costs: list[AzurePriceModel] = price_provider.get_prices_with_saving(region=cloud_region, instance_id=server.instance_type, savings_type=usage.reservedPlan)
             if len(hourly_costs) < 1:
                 raise ValueError(f"There is no pricing information for the cloud region {cloud_region} ({usage.localisation}) and instance type {server.instance_type}")
-            hourly_cost = hourly_costs[0].linux_spot_min_cost
+            try:
+                hourly_cost = hourly_costs[0].model_dump(by_alias=True)[usage.instancePricingType]
+            except:
+                log.warning(
+                    f"Unknown instance pricing type '{usage.instancePricingType}'! Will default to 'LinuxSpotCost'.")
+                hourly_cost = hourly_costs[0].linux_spot_min_cost
         else:
             raise ValueError(f"Unknown cloud provider: {server.cloud_provider}")
         impact = await get_cloud_impact(
