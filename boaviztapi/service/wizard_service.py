@@ -62,7 +62,7 @@ def _cloud_instance_to_cloud_config(input_onprem_config: OnPremiseConfigurationM
         cloud_usage_model = CloudServerUsage(
             localisation=input_onprem_config.usage.localisation,
             lifespan=input_onprem_config.usage.lifespan,
-            method=input_onprem_config.usage.method if input_onprem_config.usage.method.lower() != 'electricity' else 'Load',
+            method=input_onprem_config.usage.method if input_onprem_config.usage.method.lower() != 'electricity' else 'load',
             serverLoad=input_onprem_config.usage.serverLoad,
             serverLoadAdvanced=input_onprem_config.usage.serverLoadAdvanced,
             instancePricingType=_get_pricing_type(cloud_instance['provider.name'], cloud_instance['id'])[0],

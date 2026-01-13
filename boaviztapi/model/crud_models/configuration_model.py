@@ -2,7 +2,8 @@ from datetime import datetime
 from typing import Optional, Union, Annotated, Literal, Dict, Any
 
 from bson import ObjectId
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, Field, ConfigDict, field_validator
+from pydantic_core.core_schema import ValidationInfo
 
 from boaviztapi.model.crud_models.basemodel import BaseCRUDCollection, BaseCRUDModel, BaseCRUDUpdateModel
 
@@ -23,7 +24,7 @@ class OnPremiseServerUsage(BaseModel):
     lifespan: int = Field(...)
     method: str = Field(...)
     avgConsumption: Optional[float] = Field(default=None, ge=0, le=100000)
-    serverLoad: Optional[float] = Field(default=None, ge=1, le=100)
+    serverLoad: Optional[float] = Field(default=None, ge=1, le=100, validate_default=True)
     serverLoadAdvanced: Optional[ServerLoadAdvanced] = Field(default=None)
     operatingCosts: Optional[float] = Field(default=None, ge=0, le=100000000)
 
@@ -82,15 +83,21 @@ class OnPremiseConfigurationModel(BaseCRUDModel):
         }
     )
 
-
 class CloudServerUsage(BaseModel):
     localisation: str = Field(...)
     lifespan: int = Field(..., ge=1)
     method: str = Field(...)
-    serverLoad: Optional[float] = Field(default=None, ge=1, le=100)
+    serverLoad: Optional[float] = Field(default=80, ge=1, le=100)
     serverLoadAdvanced: Optional[ServerLoadAdvanced] = Field(default=None)
     instancePricingType: Optional[str] = Field(default=None)
     reservedPlan: Optional[str] = Field(default=None)
+
+    @field_validator('serverLoad')
+    @classmethod
+    def check_none(cls, v: Optional[float], info: ValidationInfo) -> float:
+        if v is None:
+            return cls.model_fields[info.field_name].get_default()
+        return v
 
 
 class CloudConfigurationModel(BaseCRUDModel):
