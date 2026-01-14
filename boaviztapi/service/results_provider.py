@@ -39,10 +39,12 @@ def _map_onpremise_to_boaviztaserver(onprem : OnPremiseConfigurationModel) -> Se
     ssd.units = onprem.ssd_quantity
     ssd.capacity = onprem.ssd_capacity
     ssd.manufacturer = onprem.ssd_manufacturer
+    ssd.type = 'ssd'
 
     hdd = Disk()
     hdd.units = onprem.hdd_quantity
     hdd.capacity = onprem.ssd_capacity #FIXME: This is also the same in Boavizta... there is no setting for hdd capacity
+    hdd.type = 'hdd'
 
     power_supply = PowerSupply()
     power_supply.units = onprem.psu_quantity

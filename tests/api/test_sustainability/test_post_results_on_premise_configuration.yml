@@ -33,7 +33,7 @@ impacts:
   adp:
     description: Use of minerals and fossil ressources
     embedded:
-      max: 0.5
+      max: 0.2
       min: 0.1
       value: 0.2
       warnings:
@@ -46,9 +46,9 @@ impacts:
   gwp:
     description: Total climate change
     embedded:
-      max: 10610.0
-      min: 2011.0
-      value: 1400.0
+      max: 1832.0
+      min: 1156.0
+      value: 1450.0
       warnings:
       - End of life is not included in the calculation
     unit: kgCO2eq
@@ -59,9 +59,9 @@ impacts:
   pe:
     description: Consumption of primary energy
     embedded:
-      max: 132700.0
-      min: 25590.0
-      value: 20000.0
+      max: 23740.0
+      min: 14870.0
+      value: 18700.0
       warnings:
       - End of life is not included in the calculation
     unit: MJ
@@ -285,6 +285,48 @@ verbose:
         power_watt: 90.0
       - load_percentage: 100
         power_watt: 122.4
+  HDD-1:
+    capacity:
+      status: INPUT
+      unit: GB
+      value: 400
+    duration:
+      unit: hours
+      value: 5
+    impacts:
+      adp:
+        description: Use of minerals and fossil ressources
+        embedded:
+          max: 0.0
+          min: 0.0
+          value: 0.0
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgSbeq
+        use: not implemented
+      gwp:
+        description: Total climate change
+        embedded:
+          max: 31.1
+          min: 31.1
+          value: 31.1
+          warnings:
+          - End of life is not included in the calculation
+        unit: kgCO2eq
+        use: not implemented
+      pe:
+        description: Consumption of primary energy
+        embedded:
+          max: 276.0
+          min: 276.0
+          value: 276.0
+          warnings:
+          - End of life is not included in the calculation
+        unit: MJ
+        use: not implemented
+    units:
+      status: INPUT
+      value: 1
   MOTHERBOARD-1:
     duration:
       unit: hours
@@ -484,60 +526,6 @@ verbose:
       unit: /1
       value: 0.5
   SSD-1:
-    capacity:
-      status: INPUT
-      unit: GB
-      value: 400
-    density:
-      max: 1.0
-      min: 0.1
-      status: ARCHETYPE
-      unit: GB/cm2
-      value: 48.5
-    duration:
-      unit: hours
-      value: 5
-    impacts:
-      adp:
-        description: Use of minerals and fossil ressources
-        embedded:
-          max: 0.3
-          min: 0.0
-          value: 0.0
-          warnings:
-          - End of life is not included in the calculation
-          - Uncertainty from technical characteristics is very important. Results
-            should be interpreted with caution (see min and max values)
-        unit: kgSbeq
-        use: not implemented
-      gwp:
-        description: Total climate change
-        embedded:
-          max: 8806.0
-          min: 886.3
-          value: 20.0
-          warnings:
-          - End of life is not included in the calculation
-          - Uncertainty from technical characteristics is very important. Results
-            should be interpreted with caution (see min and max values)
-        unit: kgCO2eq
-        use: not implemented
-      pe:
-        description: Consumption of primary energy
-        embedded:
-          max: 109300.0
-          min: 10990.0
-          value: 300.0
-          warnings:
-          - End of life is not included in the calculation
-          - Uncertainty from technical characteristics is very important. Results
-            should be interpreted with caution (see min and max values)
-        unit: MJ
-        use: not implemented
-    units:
-      status: INPUT
-      value: 1
-  SSD-2:
     capacity:
       status: INPUT
       unit: GB
