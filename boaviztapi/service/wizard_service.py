@@ -162,11 +162,6 @@ async def strategy_greener_region(input_config: CloudConfigurationModel) -> Clou
                                   for key, value in carbon_intensity_cache.items()}
     for location in locations:
         try:
-            # FIXME: Remove this filter after demo!
-            # Only return regions with prices
-            if pricing_availability.loc[pricing_availability['Zone Code'] == location, 'Day-ahead price'].values[0] == 'False':
-                continue
-
             for carbon_intensity in carbon_intensity_cache.values():
                 if carbon_intensity['zone'] == location:
                     intensities[location] = carbon_intensity['carbonIntensity']
