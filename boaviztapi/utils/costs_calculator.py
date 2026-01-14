@@ -145,26 +145,20 @@ class CostCalculator:
             mwh_used = megajoules_usage / 3600
             return mwh_used
 
-    async def cloud_costs(self, server) -> CurrencyConvertedCostBreakdown:
-        usage = server.usage
-
-        # FIXME: this is now deprecated
-        # vantage_cost = get_vantage_price(
-        #     cloud_provider=server.cloud_provider,
-        #     instance_type=server.instance_type,
-        #     instancePricingType=usage.instancePricingType,
-        #     region=usage.localisation
-        # )
-
+    @staticmethod
+    def _get_hourly_cost(server, usage):
+        hourly_cost = 0.0
+        warnings = []
         if 'gcp' == server.cloud_provider.lower():
             price_provider = GcpPriceProvider()
             cloud_region = _estimate_cloud_region(usage.localisation, server.cloud_provider)
             hourly_costs: GcpPriceModel = price_provider.get_all(region=cloud_region, instance_id=server.instance_type)
             if not hourly_costs:
-                raise ValueError(f"There is no pricing information for the cloud region {cloud_region} ({usage.localisation}) and instance type {server.instance_type}")
+                warnings.append(f"There is no pricing information for the cloud region {cloud_region} ({usage.localisation}) and instance type {server.instance_type}")
+                return hourly_cost, warnings
             try:
                 hourly_cost = hourly_costs.model_dump(by_alias=True)[usage.instancePricingType]
-            except:
+            except KeyError:
                 log.warning(f"Unknown instance pricing type '{usage.instancePricingType}'! Will default to 'LinuxSpotCost'.")
                 hourly_cost = hourly_costs.linux_spot_cost
         elif 'aws' == server.cloud_provider.lower():
@@ -172,10 +166,11 @@ class CostCalculator:
             cloud_region = _estimate_cloud_region(usage.localisation, server.cloud_provider)
             hourly_costs: list[AWSPriceModel] = price_provider.get_prices_with_saving(region=cloud_region, instance_id=server.instance_type, savings_type=usage.reservedPlan)
             if len(hourly_costs) < 1:
-                raise ValueError(f"There is no pricing information for the cloud region {cloud_region} ({usage.localisation}) and instance type {server.instance_type}")
+                warnings.append(f"There is no pricing information for the cloud region {cloud_region} ({usage.localisation}) and instance type {server.instance_type}")
+                return hourly_cost, warnings
             try:
                 hourly_cost = hourly_costs[0].model_dump(by_alias=True)[usage.instancePricingType]
-            except:
+            except KeyError:
                 log.warning(f"Unknown instance pricing type '{usage.instancePricingType}'! Will default to 'LinuxSpotCost'.")
                 hourly_cost = hourly_costs[0].linux_spot_min_cost
         elif 'azure' == server.cloud_provider.lower():
@@ -183,15 +178,23 @@ class CostCalculator:
             cloud_region = _estimate_cloud_region(usage.localisation, server.cloud_provider)
             hourly_costs: list[AzurePriceModel] = price_provider.get_prices_with_saving(region=cloud_region, instance_id=server.instance_type, savings_type=usage.reservedPlan)
             if len(hourly_costs) < 1:
-                raise ValueError(f"There is no pricing information for the cloud region {cloud_region} ({usage.localisation}) and instance type {server.instance_type}")
+                warnings.append(f"There is no pricing information for the cloud region {cloud_region} ({usage.localisation}) and instance type {server.instance_type}")
+                return hourly_cost, warnings
             try:
                 hourly_cost = hourly_costs[0].model_dump(by_alias=True)[usage.instancePricingType]
-            except:
+            except KeyError:
                 log.warning(
                     f"Unknown instance pricing type '{usage.instancePricingType}'! Will default to 'LinuxSpotCost'.")
                 hourly_cost = hourly_costs[0].linux_spot_min_cost
         else:
             raise ValueError(f"Unknown cloud provider: {server.cloud_provider}")
+        return hourly_cost, warnings
+
+    async def cloud_costs(self, server) -> CurrencyConvertedCostBreakdown:
+        usage = server.usage
+
+        hourly_cost, warnings = CostCalculator._get_hourly_cost(server, usage)
+
         impact = await get_cloud_impact(
             server,
             verbose=True,
@@ -201,15 +204,18 @@ class CostCalculator:
         megajoules_usage = impact["impacts"]["pe"]["use"]["value"]
         mwh_used = megajoules_usage / 3600
 
-        electricity_price_for_location = await get_electricity_price(
-            server,
-            location=server.usage.localisation
-        )
-        warnings = []
+        try:
+            electricity_price_for_location = await get_electricity_price(
+                server,
+                location=server.usage.localisation
+            )
+        except APIError:
+            electricity_price_for_location = None
+
         if not electricity_price_for_location:
             price_per_mwh = 0.0
             unit = "EUR"
-            warnings += [f"No electricity costs available for location '{server.usage.localisation}'."]
+            warnings.append(f"No electricity costs available for location '{server.usage.localisation}'.")
         else:
             price_per_mwh = electricity_price_for_location["value"]
             unit = electricity_price_for_location.get("unit", "EUR/MWh")
@@ -223,7 +229,8 @@ class CostCalculator:
             total_cost=total_costs,
             currency=CurrencyConverter.get_currency_by_symbol("EUR"),
             breakdown=Breakdown(operating_costs=operating_costs, energy_costs=energy_costs),
-            unit=unit
+            unit=unit,
+            warnings=warnings
         )
         eur_costs = local_costs
         if local_costs.currency.symbol != "EUR":
