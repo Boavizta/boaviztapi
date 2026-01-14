@@ -223,7 +223,7 @@ class CostCalculator:
         energy_costs = price_per_mwh * mwh_used
 
         total_costs = hourly_cost * self.duration
-        operating_costs = total_costs - energy_costs
+        operating_costs = total_costs - energy_costs if total_costs != 0.0 else 0.0
 
         local_costs = CostBreakdown(
             total_cost=total_costs,
