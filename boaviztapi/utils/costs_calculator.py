@@ -1,3 +1,4 @@
+import logging
 from typing import Optional, Dict, Any, List
 
 from pydantic import BaseModel, Field
@@ -9,9 +10,8 @@ from boaviztapi.service.cloud_pricing_provider import GcpPriceProvider, AWSPrice
     _estimate_cloud_region
 from boaviztapi.service.costs_computation import get_electricity_price
 from boaviztapi.service.currency_converter import CurrencyConverter
+from boaviztapi.service.exceptions import APIError
 from boaviztapi.service.sustainability_provider import get_server_impact_on_premise, get_cloud_impact
-
-import logging
 
 log = logging.getLogger(__name__)
 
@@ -77,10 +77,13 @@ class CostCalculator:
         if not hasattr(server, "usage") or not hasattr(server.usage, "localisation"):
             raise ValueError(f"Configuration {server.id} missing usage or localisation info")
 
-        electricity_price_for_location = await get_electricity_price(
-            server,
-            location=server.usage.localisation
-        )
+        try:
+            electricity_price_for_location = await get_electricity_price(
+                server,
+                location=server.usage.localisation
+            )
+        except APIError:
+            electricity_price_for_location = None
         warnings = []
         if not electricity_price_for_location:
             price_per_mwh = 0.0
