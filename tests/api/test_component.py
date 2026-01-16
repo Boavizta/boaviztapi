@@ -679,6 +679,152 @@ async def test_incomplete_cpu_verbose_2():
 
 
 @pytest.mark.asyncio
+async def test_empty_gpu():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.post("/v1/component/gpu?verbose=false", json={})
+
+    assert res.json() == {
+        "impacts": {
+            "adpe": {
+                "description": "Use of mineral and metal resources",
+                "embedded": {"max": 0.005826, "min": 0.005826, "value": 0.005826},
+                "unit": "kg SB eq.",
+                "use": "not implemented",
+            },
+            "gwp": {
+                "description": "Total climate change",
+                "embedded": {"max": 575.1, "min": 575.1, "value": 575.1},
+                "unit": "kgCO2eq",
+                "use": "not implemented",
+            },
+            "wu": {
+                "description": "Use of water resources",
+                "embedded": {"max": 1459.0, "min": 1459.0, "value": 1459.0},
+                "unit": "m3 eq.",
+                "use": "not implemented",
+            },
+        }
+    }
+
+
+@pytest.mark.asyncio
+async def test_complete_gpu_verbose():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.post(
+            "/v1/component/gpu?verbose=true",
+            json={"units": 2, "weight": 2.2, "vram": 24, "vram_dies": 12},
+        )
+
+    assert res.json() == {
+        "impacts": {
+            "adpe": {
+                "description": "Use of mineral and metal resources",
+                "embedded": {"max": 0.005819, "min": 0.005819, "value": 0.005819},
+                "unit": "kg SB eq.",
+                "use": "not implemented",
+            },
+            "gwp": {
+                "description": "Total climate change",
+                "embedded": {"max": 238.6, "min": 238.6, "value": 238.6},
+                "unit": "kgCO2eq",
+                "use": "not implemented",
+            },
+            "wu": {
+                "description": "Use of water resources",
+                "embedded": {"max": 1701.0, "min": 1701.0, "value": 1701.0},
+                "unit": "m3 eq.",
+                "use": "not implemented",
+            },
+        },
+        "verbose": {
+            "casing_weight": {
+                "max": 0.79,
+                "min": 0.79,
+                "status": "ARCHETYPE",
+                "unit": "kg",
+                "value": 0.79,
+            },
+            "duration": {"unit": "hours", "value": 26280.0},
+            "gpu_surface": {
+                "max": 2808.445102929598,
+                "min": 2808.445102929598,
+                "status": "ARCHETYPE",
+                "unit": "mm2",
+                "value": 2808.445102929598,
+            },
+            "heatsink_weight": {
+                "max": 0.9,
+                "min": 0.9,
+                "status": "ARCHETYPE",
+                "unit": "kg",
+                "value": 0.9,
+            },
+            "impacts": {
+                "adp": {
+                    "description": "Use of minerals and fossil ressources",
+                    "embedded": "not implemented",
+                    "unit": "kgSbeq",
+                    "use": "not implemented",
+                },
+                "gwp": {
+                    "description": "Total climate change",
+                    "embedded": {"max": 238.6, "min": 238.6, "value": 238.6},
+                    "unit": "kgCO2eq",
+                    "use": "not implemented",
+                },
+                "pe": {
+                    "description": "Consumption of primary energy",
+                    "embedded": "not implemented",
+                    "unit": "MJ",
+                    "use": "not implemented",
+                },
+            },
+            "pwb_surface": {
+                "max": 296.0,
+                "min": 296.0,
+                "status": "ARCHETYPE",
+                "unit": "cm2",
+                "value": 296.0,
+            },
+            "transport_boat": {
+                "max": 19000.0,
+                "min": 19000.0,
+                "status": "ARCHETYPE",
+                "unit": "km",
+                "value": 19000.0,
+            },
+            "transport_plane": {
+                "max": 0.0,
+                "min": 0.0,
+                "status": "ARCHETYPE",
+                "unit": "km",
+                "value": 0.0,
+            },
+            "transport_truck": {
+                "max": 1000.0,
+                "min": 1000.0,
+                "status": "ARCHETYPE",
+                "unit": "km",
+                "value": 1000.0,
+            },
+            "units": {"status": "INPUT", "value": 2},
+            "vram": {"status": "INPUT", "unit": "gb", "value": 24},
+            "vram_dies": {"status": "INPUT", "value": 12},
+            "vram_surface": {
+                "max": 506.6304769903343,
+                "min": 506.6304769903343,
+                "status": "COMPLETED",
+                "unit": "mm2",
+                "value": 506.6304769903343,
+            },
+            "weight": {"status": "INPUT", "unit": "kg", "value": 2.2},
+        },
+    }
+
+
+@pytest.mark.asyncio
 async def test_complete_ram():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:

@@ -1,6 +1,7 @@
 default_location: "EEE"
 default_usage: "DEFAULT"
 default_cpu: "DEFAULT"
+default_gpu: "DEFAULT"
 default_ram: "DEFAULT"
 default_ssd: "DEFAULT"
 default_hdd: "DEFAULT"
@@ -29,6 +30,7 @@ default_vr_headset: "vr-headset-lcd"
 default_vr_controller: "vr-controller-default"
 
 default_criteria: ["gwp", "adp", "pe"]
+default_gpu_criteria: ["gwp", "adpe", "wu"]
 
 default_duration:
 

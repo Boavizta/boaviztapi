@@ -1,4 +1,5 @@
 from boaviztapi.service.impacts_computation import compute_impacts
+from pprint import pprint
 
 
 def test_bottom_up_component_cpu_empty(empty_cpu_model):
@@ -117,6 +118,95 @@ def test_bottom_up_component_cpu_incomplete(incomplete_cpu_model):
             },
             "unit": "MJ",
             "use": {"max": 2242000.0, "min": 62.25, "value": 100000.0},
+        },
+    }
+
+
+def test_bottom_up_component_gpu_empty(empty_gpu_model):
+    assert compute_impacts(
+        empty_gpu_model,
+        selected_criteria=["adpe", "gwp", "wu"],
+        duration=empty_gpu_model.usage.hours_life_time.value,
+    ) == {
+        "adpe": {
+            "description": "Use of mineral and metal resources",
+            "embedded": {"max": 0.005826, "min": 0.005826, "value": 0.005826},
+            "unit": "kg SB eq.",
+            "use": "not implemented",
+        },
+        "gwp": {
+            "description": "Total climate change",
+            "embedded": {"max": 575.1, "min": 575.1, "value": 575.1},
+            "unit": "kgCO2eq",
+            "use": "not implemented",
+        },
+        "wu": {
+            "description": "Use of water resources",
+            "embedded": {"max": 1459.0, "min": 1459.0, "value": 1459.0},
+            "unit": "m3 eq.",
+            "use": "not implemented",
+        },
+    }
+
+
+def test_bottom_up_component_gpu_complete(complete_gpu_model):
+    assert compute_impacts(
+        complete_gpu_model,
+        selected_criteria=["adpe", "gwp", "wu"],
+        duration=complete_gpu_model.usage.hours_life_time.value,
+    ) == {
+        "adpe": {
+            "description": "Use of mineral and metal resources",
+            "embedded": {"max": 0.005819, "min": 0.005819, "value": 0.005819},
+            "unit": "kg SB eq.",
+            "use": "not implemented",
+        },
+        "gwp": {
+            "description": "Total climate change",
+            "embedded": {"max": 238.6, "min": 238.6, "value": 238.6},
+            "unit": "kgCO2eq",
+            "use": "not implemented",
+        },
+        "wu": {
+            "description": "Use of water resources",
+            "embedded": {"max": 1701.0, "min": 1701.0, "value": 1701.0},
+            "unit": "m3 eq.",
+            "use": "not implemented",
+        },
+    }
+
+
+def test_bottom_up_component_gpu_incomplete(incomplete_gpu_model):
+    res = compute_impacts(
+        incomplete_gpu_model,
+        selected_criteria=["adpe", "gwp", "wu"],
+        duration=incomplete_gpu_model.usage.hours_life_time.value,
+    )
+
+    pprint(res)
+
+    assert compute_impacts(
+        incomplete_gpu_model,
+        selected_criteria=["adpe", "gwp", "wu"],
+        duration=incomplete_gpu_model.usage.hours_life_time.value,
+    ) == {
+        "adpe": {
+            "description": "Use of mineral and metal resources",
+            "embedded": {"max": 0.005818, "min": 0.005818, "value": 0.005818},
+            "unit": "kg SB eq.",
+            "use": "not implemented",
+        },
+        "gwp": {
+            "description": "Total climate change",
+            "embedded": {"max": 284.4, "min": 284.4, "value": 284.4},
+            "unit": "kgCO2eq",
+            "use": "not implemented",
+        },
+        "wu": {
+            "description": "Use of water resources",
+            "embedded": {"max": 1347.0, "min": 1347.0, "value": 1347.0},
+            "unit": "m3 eq.",
+            "use": "not implemented",
         },
     }
 

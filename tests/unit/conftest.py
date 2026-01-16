@@ -7,6 +7,7 @@ from boaviztapi.dto.usage import UsageServer
 from boaviztapi.model.boattribute import Status
 from boaviztapi.model.component import (
     ComponentCPU,
+    ComponentGPU,
     ComponentRAM,
     ComponentSSD,
     ComponentHDD,
@@ -105,6 +106,30 @@ def incomplete_cpu_model():
     cpu.die_size_per_core.set_input(40.4)
 
     return cpu
+
+
+@pytest.fixture(scope="function")
+def empty_gpu_model():
+    return ComponentGPU()
+
+
+@pytest.fixture(scope="function")
+def incomplete_gpu_model():
+    gpu = ComponentGPU()
+    gpu.vram.set_input(32)
+    return gpu
+
+
+@pytest.fixture(scope="function")
+def complete_gpu_model():
+    gpu = ComponentGPU()
+
+    gpu.units.set_input(2)
+    gpu.weight.set_input(2.2)
+    gpu.vram.set_input(24)
+    gpu.vram_dies.set_input(12)
+
+    return gpu
 
 
 @pytest.fixture(scope="function")
