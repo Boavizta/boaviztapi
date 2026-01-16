@@ -114,6 +114,25 @@ def empty_gpu_model():
 
 
 @pytest.fixture(scope="function")
+def incomplete_gpu_model():
+    gpu = ComponentGPU()
+    gpu.vram.set_input(32)
+    return gpu
+
+
+@pytest.fixture(scope="function")
+def complete_gpu_model():
+    gpu = ComponentGPU()
+
+    gpu.units.set_input(2)
+    gpu.weight.set_input(2.2)
+    gpu.vram.set_input(24)
+    gpu.vram_dies.set_input(12)
+
+    return gpu
+
+
+@pytest.fixture(scope="function")
 def complete_ram_model():
     ram = ComponentRAM()
 
