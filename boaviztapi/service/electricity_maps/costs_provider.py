@@ -10,6 +10,7 @@ from boaviztapi import data_dir
 from boaviztapi.application_context import get_app_context
 from boaviztapi.dto.electricity.electricity import Country
 from boaviztapi.service.cache.cache import CacheService
+from boaviztapi.service.cloud_pricing_provider import get_localisations_for_instance
 from boaviztapi.service.electricitymaps_service import ElectricityMapsService
 from boaviztapi.service.exceptions import APIError, APIAuthenticationError, APIMissingValueError, \
     APIResponseParsingError
@@ -179,3 +180,17 @@ class ElectricityCostsProvider(ElectricityMapsService):
                                      ttl=temporal_granularity_to_ttl(temporalGranularity),
                                      headers={"auth-token": api_token})
         return cache_service
+
+    @staticmethod
+    def get_eic_countries_for_instance(provider: str, instance_type: str):
+        supported_zones = get_localisations_for_instance(provider, instance_type)
+        all_zones = ElectricityCostsProvider.get_eic_countries()
+
+        return [
+            zone
+            for zone in all_zones
+            if zone.zone_code in supported_zones
+               or zone.zone_code.split("-")[0] in {
+                   z.split("-")[0] for z in supported_zones
+               }
+        ]

@@ -48,7 +48,12 @@ async def get_cloud_instance_usage(
 
 @options_router.get('/localisation', description="Return the available locations for electricity cost estimation")
 @cache(expire=60 * 60 * 24)
-async def get_localisations():
+async def get_localisations(provider: str | None = None, instance_type: str | None = None,):
+    if provider and instance_type:
+        return ElectricityCostsProvider.get_eic_countries_for_instance(
+            provider=provider,
+            instance_type=instance_type,
+        )
     return ElectricityCostsProvider.get_eic_countries()
 
 

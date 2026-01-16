@@ -56,6 +56,33 @@ def _estimate_localisation(cloud_region: str, provider: str) -> str:
         raise ValueError(f"No Electricity Maps zone found for cloud region {cloud_region} and provider {provider}!")
     return zone
 
+def get_regions_for_instance(provider: str, instance_id: str) -> list[str]:
+    provider = provider.lower().strip()
+
+    if provider == "aws":
+        return AWSPriceProvider().get_regions_for_instance(instance_id)
+
+    if provider == "azure":
+        return AzurePriceProvider().get_regions_for_instance(instance_id)
+
+    if provider == "gcp":
+        return GcpPriceProvider().get_regions_for_instance(instance_id)
+
+    raise ValueError(f"Unsupported cloud provider: {provider}")
+
+def get_localisations_for_instance(provider: str, instance_id: str) -> set[str]:
+    regions = get_regions_for_instance(provider, instance_id)
+
+    localisations = set()
+    for region in regions:
+        try:
+            zone = _estimate_localisation(region, provider)
+            localisations.add(zone)
+        except ValueError:
+            continue
+
+    return localisations
+
 
 class AWSPriceProvider:
     _instance = None
