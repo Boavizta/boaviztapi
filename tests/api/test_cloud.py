@@ -994,3 +994,24 @@ async def test_empty_usage_scw_dev1_l():
     )
 
     await test.check_result()
+
+
+@pytest.mark.asyncio
+async def test_empty_usage_ovh_b3_8():
+    test = CloudTest(
+        CloudInstanceRequest("ovhcloud", "b3-8"),
+        ADPImpact(
+            ImpactOutput(0.002222, 0.001645, 0.0019, END_OF_LIFE_WARNING),
+            ImpactOutput(0.0001239, 4.617e-06, 2e-05),
+        ),
+        GWPImpact(
+            ImpactOutput(10.81, 8.792, 10.0, END_OF_LIFE_WARNING),
+            ImpactOutput(419.7, 8.044, 150.0),
+        ),
+        PEImpact(
+            ImpactOutput(145.8, 116.2, 135.0, END_OF_LIFE_WARNING),
+            ImpactOutput(218300.0, 4.547, 5000.0, UNCERTAINTY_WARNING),
+        ),
+    )
+
+    await test.check_result()

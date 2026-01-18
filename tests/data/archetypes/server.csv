@@ -140,3 +140,4 @@ platform_aws_t4g,AWS,rack,1,,,Annapurna Labs Graviton2,,8,,32,0,0,,0,0,0,,0,2;2;
 Eadsv5-Type1,Azure,rack,1.0,,,AMD EPYC 7763,112.0,48.0,,16.0,2.0,2048.0,,0.0,0.0,0.0,,,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,RAM units and per unit capacity not verified. RAM capacity from Azure docs was: 768 GiB
 scw_dev1.base,Scaleway,rack,1,16,,AMD EPYC 7281,64,8,,32,5,976,,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,
 c3-standard-192-metal,GCP,rack,2,,,Intel Xeon Platinum 8481C,,192,768,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+General_Purpose_b3,OVHcloud,rack,2,64,16.625,AMD EPYC 7763,128,8,16,16,1,400,50,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, CPU not verified, CPU can be from any of the AMD EPYC Milan family"
