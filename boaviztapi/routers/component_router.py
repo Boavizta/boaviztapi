@@ -109,7 +109,9 @@ async def gpu_all_archetype_name():
 
 
 @component_router.get("/gpu/archetype_config", description=gpu_description)
-async def gpu_archetype_config(archetype: str = Query(examples=config["default_gpu"])):
+async def gpu_archetype_config(
+    archetype: str = Query(examples=[config["default_gpu"]]),
+):
     return get_archetype_config(archetype, "gpu")
 
 
