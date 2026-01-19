@@ -2,10 +2,12 @@ from typing import Tuple, Union, Optional
 
 from boaviztapi import config
 from boaviztapi.model import ComputedImpacts
+from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.model.services.cloud_instance import Service, ServiceCloudInstance
 from boaviztapi.model.component import (
     ComponentCPU,
+    ComponentGPU,
     ComponentCase,
     ComponentPowerSupply,
     ComponentRAM,
@@ -25,7 +27,11 @@ from boaviztapi.model.impact import (
     Impact,
     USE,
 )
-from boaviztapi.service.factor_provider import get_impact_factor, get_iot_impact_factor
+from boaviztapi.service.factor_provider import (
+    get_impact_factor,
+    get_iot_impact_factor,
+    get_gpu_impact_factor,
+)
 
 
 def compute_single_impact(
@@ -222,6 +228,90 @@ def cpu_impact_embedded(
         impact.min,
         impact.max,
         ["End of life is not included in the calculation"],
+    )
+
+
+def gpu_impact_embedded(
+    impact_type: str, duration: int, gpu: ComponentGPU
+) -> ComputedImpacts:
+    def _component_impact(component: str, phase: str, attribute: Boattribute) -> Impact:
+        impact_factor = get_gpu_impact_factor(component, phase, impact_type)["impact"]
+
+        return Impact(
+            value=impact_factor * attribute.value,
+            min=impact_factor * attribute.min,
+            max=impact_factor * attribute.max,
+        )
+
+    # Manufacture
+    casing_impact = _component_impact("casing", "manufacture", gpu.casing_weight)
+    heatsink_impact = _component_impact("heatsink", "manufacture", gpu.heatsink_weight)
+    pwb_impact = _component_impact("pwb", "manufacture", gpu.pwb_surface)
+    gpu_impact = _component_impact("gpu", "manufacture", gpu.gpu_surface)
+    vram_impact = _component_impact("vram", "manufacture", gpu.vram_surface)
+    upstream_transport_impact = _component_impact(
+        "upstream_transport", "manufacture", gpu.weight
+    )
+
+    def _transport_impact(component: str, attribute: Boattribute) -> Impact:
+        impact_factor = get_gpu_impact_factor(component, "distribution", impact_type)[
+            "impact"
+        ]
+
+        return Impact(
+            value=impact_factor * attribute.value * gpu.weight.value,
+            min=impact_factor * attribute.min * gpu.weight.min,
+            max=impact_factor * attribute.max * gpu.weight.max,
+        )
+
+    # Distribution
+    transport_boat_impact = _transport_impact("transport_boat", gpu.transport_boat)
+    transport_truck_impact = _transport_impact("transport_truck", gpu.transport_truck)
+    transport_plane_impact = _transport_impact("transport_plane", gpu.transport_plane)
+
+    # End of life
+    end_of_life_impact = _component_impact("end_of_life", "eol", gpu.weight)
+
+    impact = Impact(
+        value=casing_impact.value
+        + heatsink_impact.value
+        + pwb_impact.value
+        + gpu_impact.value
+        + vram_impact.value
+        + upstream_transport_impact.value
+        + transport_boat_impact.value
+        + transport_truck_impact.value
+        + transport_plane_impact.value
+        + end_of_life_impact.value,
+        min=casing_impact.min
+        + heatsink_impact.min
+        + pwb_impact.min
+        + gpu_impact.min
+        + vram_impact.min
+        + upstream_transport_impact.min
+        + transport_boat_impact.min
+        + transport_truck_impact.min
+        + transport_plane_impact.min
+        + end_of_life_impact.min,
+        max=casing_impact.max
+        + heatsink_impact.max
+        + pwb_impact.max
+        + gpu_impact.max
+        + vram_impact.max
+        + upstream_transport_impact.max
+        + transport_boat_impact.max
+        + transport_truck_impact.max
+        + transport_plane_impact.max
+        + end_of_life_impact.max,
+    )
+
+    impact.allocate(duration, gpu.usage.hours_life_time)
+
+    return (
+        impact.value,
+        impact.min,
+        impact.max,
+        list(),
     )
 
 
@@ -842,6 +932,7 @@ def cloud_impact_use(
 
 impacts_functions = {
     "CPU": {"use": cpu_impact_use, "embedded": cpu_impact_embedded},
+    "GPU": {"use": simple_impact_use, "embedded": gpu_impact_embedded},
     "RAM": {"use": ram_impact_use, "embedded": ram_impact_embedded},
     "SSD": {"use": simple_impact_use, "embedded": ssd_impact_embedded},
     "HDD": {"use": simple_impact_use, "embedded": hdd_impact_embedded},

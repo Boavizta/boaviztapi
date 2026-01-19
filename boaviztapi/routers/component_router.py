@@ -4,8 +4,9 @@ from typing import List, Optional
 from fastapi import APIRouter, Body, HTTPException, Query
 
 from boaviztapi import config, data_dir
-from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply, Motherboard, Case
+from boaviztapi.dto.component import CPU, GPU, RAM, Disk, PowerSupply, Motherboard, Case
 from boaviztapi.dto.component.cpu import mapper_cpu
+from boaviztapi.dto.component.gpu import mapper_gpu
 from boaviztapi.dto.component.other import (
     mapper_motherboard,
     mapper_power_supply,
@@ -16,6 +17,7 @@ from boaviztapi.dto.component.disk import mapper_ssd, mapper_hdd
 from boaviztapi.model.component import Component
 from boaviztapi.routers.openapi_doc.descriptions import (
     cpu_description,
+    gpu_description,
     ram_description,
     ssd_description,
     hdd_description,
@@ -35,9 +37,10 @@ component_router = APIRouter(prefix="/v1/component", tags=["component"])
 
 
 @component_router.get("/all", description=cpu_description)
-async def cpu_all_archetype_name():
+async def all_routes():
     return {
         "cpu": "v1/component/cpu",
+        "gpu": "v1/component/gpu",
         "ram": "v1/component/ram",
         "ssd": "v1/component/ssd",
         "hdd": "v1/component/hdd",
@@ -94,6 +97,55 @@ async def cpu_impact_bottom_up(
         raise HTTPException(status_code=404, detail=f"{archetype} not found")
 
     component = mapper_cpu(CPU(), archetype_config)
+
+    return await component_impact_bottom_up(
+        component=component, verbose=verbose, duration=duration, criteria=criteria
+    )
+
+
+@component_router.get("/gpu/archetype", description=gpu_description)
+async def gpu_all_archetype_name():
+    return get_all_archetype_name("gpu")
+
+
+@component_router.get("/gpu/archetype_config", description=gpu_description)
+async def gpu_archetype_config(archetype: str = Query(examples=config["default_gpu"])):
+    return get_archetype_config(archetype, "gpu")
+
+
+@component_router.post("/gpu", description=gpu_description)
+async def gpu_impact_bottom_up(
+    gpu: GPU = Body(None, openapi_examples=components_examples_openapi["gpu"]),
+    verbose: bool = True,
+    duration: Optional[float] = config["default_duration"],
+    archetype: str = config["default_gpu"],
+    criteria: List[str] = Query(config["default_gpu_criteria"]),
+):
+    archetype_config = get_component_archetype(archetype, "gpu")
+
+    if not archetype_config:
+        raise HTTPException(status_code=404, detail=f"{archetype} not found")
+
+    component = mapper_gpu(gpu, archetype_config)
+
+    return await component_impact_bottom_up(
+        component=component, verbose=verbose, duration=duration, criteria=criteria
+    )
+
+
+@component_router.get("/gpu", description=gpu_description)
+async def gpu_impact_bottom_up(
+    verbose: bool = True,
+    duration: Optional[float] = config["default_duration"],
+    archetype: str = config["default_gpu"],
+    criteria: List[str] = Query(config["default_criteria"]),
+):
+    archetype_config = get_component_archetype(archetype, "gpu")
+
+    if not archetype_config:
+        raise HTTPException(status_code=404, detail=f"{archetype} not found")
+
+    component = mapper_gpu(GPU(), archetype_config)
 
     return await component_impact_bottom_up(
         component=component, verbose=verbose, duration=duration, criteria=criteria

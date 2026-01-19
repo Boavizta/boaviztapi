@@ -58,6 +58,26 @@ cpu_description = (
     "⏬ Allocation"
 )
 
+gpu_description = (
+    "# ✔ ️GPU impacts from configuration\n"
+    "### Features\n\n"
+    "👄 Verbose\n\n"
+    "🔃 Auto-complete\n\n"
+    "🔨 Embedded\n\n"
+    "<h3>gpu<sub>manuf<sub><em>criteria</em></sub></sub> = "
+    "gpu<sub>casing_weight</sub> x gpu<sub>manuf_casing<sub><em>criteria</em></sub></sub> + "
+    "gpu<sub>heatsink_weight</sub> x gpu<sub>manuf_heatsink<sub><em>criteria</em></sub></sub> + "
+    "gpu<sub>pwb_surface</sub> x gpu<sub>manuf_pwb<sub><em>criteria</em></sub></sub> + "
+    "gpu<sub>surface</sub> x gpu<sub>manuf_gpu_die<sub><em>criteria</em></sub></sub> + "
+    "gpu<sub>vram_surface</sub> x gpu<sub>manuf_vram_die<sub><em>criteria</em></sub></sub> + "
+    "gpu<sub>transport_distance_boat</sub> x gpu<sub>impact_boat<sub><em>criteria</em></sub></sub> + "
+    "gpu<sub>transport_distance_truck</sub> x gpu<sub>impact_truck<sub><em>criteria</em></sub></sub> + "
+    "gpu<sub>transport_distance_plane</sub> x gpu<sub>impact_plane<sub><em>criteria</em></sub></sub></h3> "
+    "🔌 Usage\n\n"
+    "* ❌ Not implemented\n\n"
+    "⏬ Allocation"
+)
+
 ssd_description = (
     "# ✔ ️SSD impacts from configuration\n"
     "### Features\n\n"

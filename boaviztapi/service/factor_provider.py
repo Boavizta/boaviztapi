@@ -15,6 +15,16 @@ def get_impact_factor(item, impact_type) -> dict:
     raise NotImplementedError
 
 
+def get_gpu_impact_factor(component, phase, impact_type) -> dict:
+    if impact_factors.get("gpu"):
+        if impact_factors.get("gpu").get(component):
+            if impact_factors.get("gpu").get(component).get(phase):
+                return (
+                    impact_factors.get("gpu").get(component).get(phase).get(impact_type)
+                )
+    raise NotImplementedError
+
+
 def get_electrical_impact_factor(usage_location, impact_type) -> dict:
     if impact_factors["electricity"].get(usage_location):
         if impact_factors["electricity"].get(usage_location).get(impact_type):
