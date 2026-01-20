@@ -3,15 +3,12 @@ import os.path
 
 import pytest
 
-cloud_path = os.path.join(
-    os.path.dirname(__file__), "../../boaviztapi/data/archetypes/cloud/"
-)
-providers_path = os.path.join(
-    os.path.dirname(__file__), "../../boaviztapi/data/archetypes/cloud/providers.csv"
-)
-servers_patch = os.path.join(
-    os.path.dirname(__file__), "../../boaviztapi/data/archetypes/server.csv"
-)
+from boaviztapi import data_dir_prod
+
+# Always use prod data for these tests
+cloud_path = os.path.join(data_dir_prod, "archetypes/cloud")
+providers_path = os.path.join(data_dir_prod, "archetypes/cloud/providers.csv")
+servers_path = os.path.join(data_dir_prod, "archetypes/server.csv")
 
 
 @pytest.fixture
@@ -23,7 +20,7 @@ def providers():
 
 @pytest.fixture
 def valid_platforms():
-    with open(servers_patch, "r") as f:
+    with open(servers_path, "r") as f:
         reader = csv.DictReader(f)
         return {row["id"] for row in reader}
 
