@@ -25,7 +25,9 @@ poetry install --with docs
 pip install mkdocs mkdocs-render-swagger-plugin mkdocs-material mkdocs-macros-plugin
 ```
 
-💡 Do not mixup _pip_ and _brew_ installation of `mkdocs` (see [troubleshooting](https://jimandreas.github.io/mkdocs-material/troubleshooting/)).
+💡 Do not mixup _pip_ and _brew_ installation of `mkdocs`.
+
+See the "getting started" docs for [mkdocs](https://www.mkdocs.org/getting-started/), and [material](https://squidfunk.github.io/mkdocs-material/getting-started/) if you run into issues.
 
 ### Launch a local documentation server
 
@@ -49,8 +51,8 @@ Open <http://localhost:8080>
 
 ```bash
 cd docs
-# Check the warnings in the output for broken links 
+# Check the warnings in the output for broken links
 poetry run mkdocs build
-# Test validity of external links 
+# Test validity of external links
 poetry run poetry run linkcheckMarkdown --recurse --verbose docs
 ```
