@@ -3,10 +3,11 @@ from typing import Optional, List
 from fastapi import HTTPException
 
 from boaviztapi import config
-from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply
+from boaviztapi.dto.component import CPU, RAM, Disk, PowerSupply, GPU
 from boaviztapi.dto.component.cpu import mapper_cpu
 from boaviztapi.dto.component.disk import mapper_ssd, mapper_hdd
 from boaviztapi.dto.component.other import mapper_power_supply
+from boaviztapi.dto.component.gpu import mapper_gpu
 from boaviztapi.dto.component.ram import mapper_ram
 from boaviztapi.dto.usage import UsageServer, UsageCloud
 from boaviztapi.dto import BaseDTO
@@ -38,6 +39,7 @@ class ConfigurationServer(BaseDTO):
     cpu: Optional[CPU] = None
     ram: Optional[List[RAM]] = None
     disk: Optional[List[Disk]] = None
+    gpu: Optional[GPU] = None
     power_supply: Optional[PowerSupply] = None
 
 
@@ -162,6 +164,11 @@ def device_mapper(device_dto, device_model):
             device_model.power_supply = mapper_power_supply(
                 device_dto.configuration.power_supply,
                 archetype=get_arch_component(device_model.archetype, "POWER_SUPPLY"),
+            )
+        if device_dto.configuration.gpu is not None:
+            device_model.gpu = mapper_gpu(
+                device_dto.configuration.gpu,
+                archetype=get_arch_component(device_model.archetype, "GPU"),
             )
 
     if device_dto.model is not None and device_dto.model.type is not None:
