@@ -235,7 +235,10 @@ def gpu_impact_embedded(
     impact_type: str, duration: int, gpu: ComponentGPU
 ) -> ComputedImpacts:
     def _component_impact(component: str, phase: str, attribute: Boattribute) -> Impact:
-        impact_factor = get_gpu_impact_factor(component, phase, impact_type)["impact"]
+        impact_factor_data = get_gpu_impact_factor(component, phase, impact_type)
+        if impact_factor_data is None:
+            return Impact(value=0, min=0, max=0)
+        impact_factor = impact_factor_data["impact"]
 
         return Impact(
             value=impact_factor * attribute.value,
@@ -254,9 +257,12 @@ def gpu_impact_embedded(
     )
 
     def _transport_impact(component: str, attribute: Boattribute) -> Impact:
-        impact_factor = get_gpu_impact_factor(component, "distribution", impact_type)[
-            "impact"
-        ]
+        impact_factor_data = get_gpu_impact_factor(
+            component, "distribution", impact_type
+        )
+        if impact_factor_data is None:
+            return Impact(value=0, min=0, max=0)
+        impact_factor = impact_factor_data["impact"]
 
         return Impact(
             value=impact_factor * attribute.value * gpu.weight.value,

@@ -16,7 +16,7 @@ type=string
 [HDD.capacity]
 [GPU.units]
 [GPU.name]
-[GPU.memory_capacity]
+[GPU.vram]
 [POWER_SUPPLY.units]
 [POWER_SUPPLY.unit_weight]
 [USAGE.time_workload]
