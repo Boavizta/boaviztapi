@@ -26,7 +26,25 @@ RUN PROJECT_VERSION=$(poetry version -s) && \
     cp /app/dist/boaviztapi-$PROJECT_VERSION.tar.gz ./boaviztapi-$VERSION.tar.gz
 
 #---------------------------------------------------------------------------------------
-# Stage 2 → Runtime image
+# Stage 2 → Lambda runtime image
+#---------------------------------------------------------------------------------------
+FROM public.ecr.aws/lambda/python:$PY_VERSION AS lambda-env
+
+ARG PY_VERSION=3.13
+ARG VERSION
+
+# Copy the built package from build stage and install
+COPY --from=build-env /app/boaviztapi-$VERSION.tar.gz ${LAMBDA_TASK_ROOT}/
+RUN pip install --no-cache-dir ${LAMBDA_TASK_ROOT}/boaviztapi-$VERSION.tar.gz
+
+# Copy pyproject.toml for version info
+COPY --from=build-env /app/pyproject.toml /var/lang/lib/python${PY_VERSION}/site-packages/boaviztapi/
+
+# Set the handler
+CMD ["boaviztapi.main.handler"]
+
+#---------------------------------------------------------------------------------------
+# Stage 3 → Runtime image
 #---------------------------------------------------------------------------------------
 FROM python:$PY_VERSION-slim AS run-env
 # Python 3 surrogate unicode handling
