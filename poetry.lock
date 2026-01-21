@@ -836,14 +836,14 @@ tests = ["pytest"]
 
 [[package]]
 name = "mangum"
-version = "0.17.0"
+version = "0.20.0"
 description = "AWS Lambda support for ASGI applications"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "mangum-0.17.0-py3-none-any.whl", hash = "sha256:f00be705605bc4793958df62e4d249abf58d254c39d90bb410d069570206f4a2"},
-    {file = "mangum-0.17.0.tar.gz", hash = "sha256:5b4e26375e12eed051687670466d17968f8b74beecaca432edd4eb4127f78509"},
+    {file = "mangum-0.20.0-py3-none-any.whl", hash = "sha256:c945eadc41916f73b6086c0c69935ef4b1d23d27de8dc74ed47b20e204335407"},
+    {file = "mangum-0.20.0.tar.gz", hash = "sha256:0050447b60d832dcc45cc9d917c9e0f4e9174e2d9630f621d567510d51d286bd"},
 ]
 
 [package.dependencies]
@@ -2597,4 +2597,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "180503d954bc02db5852b659ebe6fde50f7d0373ff18764cb52bdce535fa893e"
+content-hash = "73f763ff2524df60389ae243ec37b831ab13ea4b5332ec101e2c7e974c502932"

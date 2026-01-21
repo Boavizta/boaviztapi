@@ -10,7 +10,6 @@ on:
       - 'tests/**'
       - 'poetry.lock'
       - 'pyproject.toml'
-      - 'requirements.txt'
   pull_request:
     paths:
       - 'boaviztapi/**'
@@ -18,7 +17,6 @@ on:
       - 'Makefile'
       - 'poetry.lock'
       - 'pyproject.toml'
-      - 'requirements.txt'
     branches:
       - main
       - dev

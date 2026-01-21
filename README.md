@@ -124,21 +124,31 @@ make docker-run-development
 
 ### Deploy to AWS as serverless application
 
-⚠ This is currently not working , see  [Deployment as serverless application does not work · Issue #153 · Boavizta/boaviztapi](https://github.com/Boavizta/boaviztapi/issues/153)
+You can self-host BoaviztAPI as an AWS Lambda function using [Serverless Framework](https://www.serverless.com/framework).
 
-Api can be self hosted to your own AWS account using the serverless framework.
+You must first configure:
+
+- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
+- [Serverless Framework CLI](https://www.serverless.com/framework/docs/getting-started)
+
+Once done, you can deploy the API with:
 
 ```sh
-# Install the serverless framework and plugins
-npm install -g serverless
-npm i
-# Authenticate
-export AWS_PROFILE=your-own-profile
-# Deploy to dev
 serverless deploy
 ```
 
-_Fisrt packaging/deployment may takes a several minutes_
+When the deploy succeeds, it will show you the URLs for the deployed function, and you can call the API as normal, e.g.
+
+```sh
+# Replace the base URL with your own
+curl -s "https://k9wllbzcc2.execute-api.eu-west-1.amazonaws.com/v1/server/?archetype=dellR740"
+```
+
+You can check your Lambda URL at any time with:
+
+```sh
+serverless info
+```
 
 ### OpenAPI specification (Swagger)
 
