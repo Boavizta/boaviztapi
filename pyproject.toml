@@ -6,19 +6,19 @@ authors = []
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
-pydantic = "^2.9.2"
-fastapi = "^0.115.0"
-uvicorn = "^0.22"
-pandas = "^2.2.3"
-aiofile = "^3.8"
-numpy = "^2.2.0"
-scipy = "^1.14.1"
-rapidfuzz = "^3.0"
-markdown = "^3.4"
+python = "^3.11"
+pydantic = "^2.12.5"
+fastapi = "^0.128.0"
+uvicorn = "^0.40"
+pandas = "^2.3.3"
+aiofile = "^3.9.0"
+numpy = "^2.4.1"
+scipy = "^1.17.0"
+rapidfuzz = "^3.14.3"
+markdown = "^3.10"
 mangum = "^0.20.0"
-importlib-metadata = "^6.6.0"
-pyyaml = "^6.0"
+importlib-metadata = "^8.7.1"
+pyyaml = "^6.0.3"
 toml = "^0.10.2"
 
 # Security updates
@@ -30,13 +30,13 @@ optional = true
 include-groups = ["csv"]
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.3.4"
-pytest-asyncio = "^0.24.0"
+pytest = "^9.0.2"
+pytest-asyncio = "^1.3.0"
 atomicwrites = "^1.4.1"
 httpx = "^0.28.1"
 requests = "^2.32.3"
 pre-commit = "^4.2.0"
-ruff = "^0.11.2"
+ruff = "^0.14.14"
 
 [tool.poetry.group.csv]
 optional = true
