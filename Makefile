@@ -42,7 +42,6 @@ pre-commit:
 define compat-check
 		docker build -t boavizta/boaviztapi-py$(1) \
 			--target build-env \
-			--build-arg VERSION=0.0.1 \
 			--build-arg PY_VERSION=$(1) \
 			.
 		docker run \
@@ -84,10 +83,10 @@ distribute:
 		poetry publish --build
 
 docker-build:
-		docker build -t $(DOCKER_NAME) .  --build-arg VERSION=${CURRENT_VERSION}
+		docker build -t $(DOCKER_NAME) .
 
 docker-build-development:
-		docker build -t boavizta/boaviztapi:${TIMESTAMP} .  --build-arg VERSION=${TIMESTAMP}
+		docker build -t boavizta/boaviztapi:${TIMESTAMP} .
 
 docker-run-development:
 		docker run -p 5000:5000 boavizta/boaviztapi:${TIMESTAMP}
