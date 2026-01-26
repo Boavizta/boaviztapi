@@ -3,9 +3,6 @@ TIMESTAMP := $(shell date "+%m-%d-%y")
 DOCKER_NAME := boavizta/boaviztapi:${CURRENT_VERSION}
 SEMVERS := major minor patch
 
-MINIMUM_PY_VERSION=3.11
-MAXIMUM_PY_VERSION=3.13
-
 clean:
 		find . -name "*.pyc" -exec rm -rf {} \;
 		rm -rf dist *.egg-info __pycache__
@@ -39,23 +36,6 @@ pre-commit-install:
 pre-commit:
 		poetry run pre-commit run --all-files
 
-define compat-check
-		docker build -t boavizta/boaviztapi-py$(1) \
-			--target build-env \
-			--build-arg PY_VERSION=$(1) \
-			.
-		docker run \
-			-v $(shell pwd):/app \
- 			boavizta/boaviztapi-py$(1) \
-			poetry run pytest
-endef
-
-test-compat-min:
-	$(call compat-check,${MINIMUM_PY_VERSION})
-
-test-compat-max:
-	$(call compat-check,${MAXIMUM_PY_VERSION})
-
 run:
 		poetry run uvicorn boaviztapi.main:app --port 5000
 
@@ -69,7 +49,6 @@ $(SEMVERS):
 
 npm_version:
 		npm version --no-git-tag-version ${CURRENT_VERSION}
-
 
 tag_version:
 		git commit -m "release: bump to ${CURRENT_VERSION}" pyproject.toml package.json package-lock.json
