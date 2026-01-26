@@ -1,23 +1,10 @@
-# Ignore git related files
-.github/
-.gitignore
+# Exclude everything
+*
 
-# Ignore folders not necessary for the docker image
-docs/
-tests/
+# Include files needed for build and release
+!pyproject.toml
+!poetry.lock
+!README.md
 
-# Ignore pre-commit related files
-.pre-commit-config.yaml
-
-# Ignore all CSV format files
-*.fmt
-
-# Ignore venv if any
-venv/
-
-# Ignore files not necessary for the docker image
-CONTRIBUTING.md
-*.png
-*.json
-LICENSE
-Makefile
+# Include code
+!boaviztapi/

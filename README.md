@@ -105,7 +105,7 @@ Build Docker image:
 make docker-build
 
 # manual build (requires to set version)
-docker build --build-arg VERSION=`poetry version -s` .
+docker build .
 ```
 
 Run Docker image:

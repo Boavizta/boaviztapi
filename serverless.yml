@@ -9,8 +9,6 @@ provider:
       boavizta-api:
         path: ./
         file: Dockerfile
-        buildArgs:
-          VERSION: "2.0.0"
         buildOptions:
           - "--provenance=false"
           - "--target=lambda-env"
