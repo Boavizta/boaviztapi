@@ -17,10 +17,6 @@ from .util import (
     UNCERTAINTY_WARNING,
 )
 
-cloud_path = os.path.join(
-    os.path.dirname(__file__), "../../boaviztapi/data/archetypes/cloud/"
-)
-
 pytest_plugins = ("pytest_asyncio",)
 
 
@@ -998,39 +994,3 @@ async def test_empty_usage_scw_dev1_l():
     )
 
     await test.check_result()
-
-
-@pytest.mark.asyncio
-async def test_all_instances():
-    try:
-        with open(f"{cloud_path}/providers.csv", "r") as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                provider_name = row.get("provider.name")
-                provider_csv_path = f"{cloud_path}/{provider_name}.csv"
-                try:
-                    with open(provider_csv_path, "r") as f:
-                        reader = csv.DictReader(f)
-                        for row in reader:
-                            instance = row.get("id")
-                            request = CloudInstanceRequest(provider_name, instance)
-
-                            url = request.to_url()
-
-                            transport = ASGITransport(app=app)
-                            async with AsyncClient(
-                                transport=transport, base_url="http://test"
-                            ) as ac:
-                                try:
-                                    await ac.get(url)
-                                except Exception as e:
-                                    pytest.fail(e)
-
-                except FileNotFoundError:
-                    pytest.fail(
-                        f"CSV file for provider '{provider_name}' not found: {provider_csv_path}"
-                    )
-    except FileNotFoundError:
-        pytest.fail(f"provider file not found : {cloud_path}/providers.csv")
-
-    assert True

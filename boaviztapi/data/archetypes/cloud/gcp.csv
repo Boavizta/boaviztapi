@@ -63,7 +63,7 @@ c4-highmem-16,16,124,0,0,0,c4-highmem,https://cloud.google.com/compute/docs/gene
 c4-highmem-32,32,248,0,0,0,c4-highmem,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c4a-standard_1
 c4-highmem-48,48,372,0,0,0,c4-highmem,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c4a-standard_1
 c4-highmem-96,96,744,0,0,0,c4-highmem,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c4a-standard_1
-c4-highmem-192,192,"1,488",0,0,0,c4-highmem,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c4a-standard_1
+c4-highmem-192,192,1488,0,0,0,c4-highmem,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c4a-standard_1
 n4-standard-2,2,8,0,0,0,n4-standard,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#n4_series
 n4-standard-4,4,16,0,0,0,n4-standard,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#n4_series
 n4-standard-8,8,32,0,0,0,n4-standard,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#n4_series
@@ -95,7 +95,7 @@ c3d-standard-30,30,120,0,0,0,c3d-standard,https://cloud.google.com/compute/docs/
 c3d-standard-60,60,240,0,0,0,c3d-standard,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-standard
 c3d-standard-90,90,360,0,0,0,c3d-standard,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-standard
 c3d-standard-180,180,720,0,0,0,c3d-standard,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-standard
-c3d-standard-360,360,"1,44",0,0,0,c3d-standard,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-standard
+c3d-standard-360,360,1440,0,0,0,c3d-standard,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-standard
 c3d-highcpu-4,4,8,0,0,0,c3d-highcpu,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-highcpu
 c3d-highcpu-8,8,16,0,0,0,c3d-highcpu,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-highcpu
 c3d-highcpu-16,16,32,0,0,0,c3d-highcpu,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-highcpu
@@ -110,8 +110,8 @@ c3d-highmem-16,16,128,0,0,0,c3d-highmem,https://cloud.google.com/compute/docs/ge
 c3d-highmem-30,30,240,0,0,0,c3d-highmem,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-highmem
 c3d-highmem-60,60,480,0,0,0,c3d-highmem,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-highmem
 c3d-highmem-90,90,720,0,0,0,c3d-highmem,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-highmem
-c3d-highmem-180,180,"1,44",0,0,0,c3d-highmem,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-highmem
-c3d-highmem-360,360,"2,88",0,0,0,c3d-highmem,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-highmem
+c3d-highmem-180,180,1440,0,0,0,c3d-highmem,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-highmem
+c3d-highmem-360,360,2880,0,0,0,c3d-highmem,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-highmem
 c3d-standard-8-lssd,8,32,0,0,0,c3d-standard,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-standard-with-local-ssd
 c3d-standard-16-lssd,16,64,0,0,0,c3d-standard,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-standard-with-local-ssd
 c3d-standard-30-lssd,30,120,0,0,0,c3d-standard,https://cloud.google.com/compute/docs/general-purpose-machines?hl=en#c3d-standard-with-local-ssd

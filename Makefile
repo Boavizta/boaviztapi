@@ -18,6 +18,9 @@ check-csv:
 test:
 		poetry run pytest
 
+test-e2e:
+		poetry run pytest --rune2e
+
 lint:
 		poetry run ruff check
 

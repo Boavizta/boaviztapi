@@ -18,8 +18,7 @@ from boaviztapi.model.component import (
 )
 from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.model.usage import ModelUsageServer
-from tests.unit import data_dir
-
+from boaviztapi import data_dir
 
 # MODEL
 

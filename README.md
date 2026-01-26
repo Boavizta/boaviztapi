@@ -88,7 +88,12 @@ $ make run
 $ make run-py
 ```
 
-You can run the tests with `pytest` via `make test`.
+### Tests
+
+You can run the tests with `pytest` via:
+
+- `make test` to run all unit tests (using test data)
+- `make test-e2e` to run end-to-end tests (using "real" data)
 
 ### Create your own docker image and run it
 

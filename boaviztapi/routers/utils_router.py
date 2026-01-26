@@ -4,6 +4,7 @@ import pandas as pd
 import toml
 from fastapi import APIRouter, Query
 
+from boaviztapi import data_dir
 from boaviztapi.dto.component.cpu import CPU
 from boaviztapi.model import impact
 from boaviztapi.model.component import ComponentCase
@@ -24,7 +25,6 @@ from boaviztapi.utils.get_version import get_version_from_pyproject
 
 utils_router = APIRouter(prefix="/v1/utils", tags=["utils"])
 
-data_dir = os.path.join(os.path.dirname(__file__), "../data")
 _cpu_specs = pd.read_csv(os.path.join(data_dir, "crowdsourcing/cpu_specs.csv"))
 _ssd_manuf = pd.read_csv(os.path.join(data_dir, "crowdsourcing/ssd_manufacture.csv"))
 _ram_manuf = pd.read_csv(os.path.join(data_dir, "crowdsourcing/ram_manufacture.csv"))
