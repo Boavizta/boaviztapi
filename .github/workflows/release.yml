@@ -1,4 +1,4 @@
-name: Publish release (Docker & Pip)
+name: Publish release (Docker and PyPI)
 
 on:
   release:
@@ -8,12 +8,66 @@ permissions:
   packages: write
 
 jobs:
-
-  build:
+  compat-tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install poetry
+      run: python -m pip install --upgrade poetry wheel
+
+    - name: Install dependencies
+      run: make install
+
+    - name: Run test suite
+      run: make test
+
+  pypi:
+    runs-on: ubuntu-latest
+    needs: compat-tests
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Install poetry
+      run: python -m pip install --upgrade poetry wheel
+
+    - name: Push package on PyPI
+      run: API_TOKEN=${{ secrets.DAVID_PYPI_TOKEN }} make distribute
+
+    - name: Get version
+      id: version
+      run: echo "version=$(poetry version -s)" >> $GITHUB_OUTPUT
+
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: pypi
+    strategy:
+      matrix:
+        include:
+          - context: .
+            file: Dockerfile
+            image: ghcr.io/boavizta/boaviztapi
+          - context: docs
+            file: docs/Dockerfile
+            image: ghcr.io/boavizta/boaviztapi-doc
+    steps:
+    - uses: actions/checkout@v4
 
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v3
@@ -22,50 +76,19 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v6
       with:
-        python-version: '3.12'
-
-    - name: Install pipenv
-      run: |
-          python -m pip install --upgrade poetry wheel
-
-    - id: cache-pipenv
-      uses: actions/cache@v4
-      with:
-        path: ~/.local/share/virtualenvs
-        key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
-
-    - name: Install dependencies
-      if: steps.cache-pipenv.outputs.cache-hit != 'true'
-      run: |
-        make install
-
-    - name: Run test suite
-      run: make test
-
-    - name: Run compatibility tests
-      run: make test-compat-min && make test-compat-max
-
-    - name: Push package on pypi
-      run: API_TOKEN=${{ secrets.DAVID_PYPI_TOKEN }} make distribute
-
-    - name: Build the api Docker image
-      run: docker build --build-arg VERSION=$(poetry version -s) . --file Dockerfile --tag ghcr.io/boavizta/boaviztapi:latest
-
-    - name : Tag api Docker image
-      run: docker tag ghcr.io/boavizta/boaviztapi:latest ghcr.io/boavizta/boaviztapi:$(poetry version -s)
-
-    - name: Push api images
-      run: docker push -a ghcr.io/boavizta/boaviztapi
-
-    - name: Build doc the Docker image
-      run: docker build docs --file docs/Dockerfile --tag ghcr.io/boavizta/boaviztapi-doc:latest
-
-    - name: Tag doc the Docker image
-      run: docker tag ghcr.io/boavizta/boaviztapi-doc:latest ghcr.io/boavizta/boaviztapi-doc:$(poetry version -s)
-
-    - name: Push doc images
-      run: docker push -a ghcr.io/boavizta/boaviztapi-doc
+        context: ${{ matrix.context }}
+        file: ${{ matrix.file }}
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: |
+          ${{ matrix.image }}:latest
+          ${{ matrix.image }}:${{ needs.pypi.outputs.version }}
