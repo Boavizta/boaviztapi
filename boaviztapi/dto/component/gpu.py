@@ -8,6 +8,7 @@ from boaviztapi.service.archetype import get_component_archetype
 
 
 class GPU(ComponentDTO):
+    name: Optional[str] = None
     weight: Optional[float] = None
     heatsink_weight: Optional[float] = None
     pwb_surface: Optional[float] = None
@@ -33,6 +34,9 @@ def mapper_gpu(
 
     if gpu_dto.units is not None:
         gpu_component.units.set_input(gpu_dto.units)
+
+    if gpu_dto.name is not None:
+        gpu_component.name.set_input(gpu_dto.name)
 
     if gpu_dto.weight is not None:
         gpu_component.weight.set_input(gpu_dto.weight)

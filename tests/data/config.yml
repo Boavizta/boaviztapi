@@ -30,7 +30,6 @@ default_vr_headset: "vr-headset-lcd"
 default_vr_controller: "vr-controller-default"
 
 default_criteria: ["gwp", "adp", "pe"]
-default_gpu_criteria: ["gwp", "adpe", "wu"]
 
 default_duration:
 

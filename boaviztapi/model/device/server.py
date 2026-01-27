@@ -1,9 +1,10 @@
-from typing import List, Union
+from typing import List, Optional, Union
 
 from boaviztapi import config
 from boaviztapi.model.component import (
     Component,
     ComponentCPU,
+    ComponentGPU,
     ComponentRAM,
     ComponentSSD,
     ComponentHDD,
@@ -26,6 +27,7 @@ class DeviceServer(Device):
     ):
         super().__init__(archetype=archetype, **kwargs)
         self._cpu = None
+        self._gpu = None
         self._ram_list = None
         self._disk_list = []
         self._power_supply = None
@@ -49,6 +51,22 @@ class DeviceServer(Device):
     @cpu.setter
     def cpu(self, value: List[ComponentCPU]) -> None:
         self._cpu = value
+
+    @property
+    def gpu(self) -> Optional[ComponentGPU]:
+        if self._gpu is None:
+            if get_arch_component(self.archetype, "GPU")["units"] not in [
+                {},
+                {"default": 0},
+            ]:
+                self._gpu = ComponentGPU(
+                    archetype=get_arch_component(self.archetype, "GPU")
+                )
+        return self._gpu
+
+    @gpu.setter
+    def gpu(self, value: ComponentGPU) -> None:
+        self._gpu = value
 
     @property
     def ram(self) -> List[ComponentRAM]:
@@ -159,6 +177,7 @@ class DeviceServer(Device):
         return (
             [self.assembly]
             + [self.cpu]
+            + ([self.gpu] if self.gpu else [])
             + self.ram
             + self.disk
             + [self.power_supply]

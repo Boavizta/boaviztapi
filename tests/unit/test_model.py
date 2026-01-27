@@ -23,6 +23,27 @@ class TestComponentGPU:
         assert not gpu.pwb_weight.has_value()
         assert not gpu.vram_surface.has_value()
 
+    def test_all_fields_have_values_with_minimal_archetype(self):
+        minimal_archetype = {
+            "id": {"default": "test_gpu"},
+            "name": {"default": "Test GPU"},
+            "vram": {"default": 40},
+        }
+        gpu = ComponentGPU(archetype=minimal_archetype)
+
+        # All fields should have values (from completion functions or defaults)
+        assert gpu.weight.value is not None
+        assert gpu.heatsink_weight.value is not None
+        assert gpu.pwb_surface.value is not None
+        assert gpu.casing_weight.value is not None
+        assert gpu.gpu_surface.value is not None
+        assert gpu.vram.value is not None
+        assert gpu.vram_dies.value is not None
+        assert gpu.vram_surface.value is not None
+        assert gpu.transport_boat.value is not None
+        assert gpu.transport_truck.value is not None
+        assert gpu.transport_plane.value is not None
+
     def test_vram_surface_completion(self):
         gpu = ComponentGPU()
 
