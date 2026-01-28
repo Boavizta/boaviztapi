@@ -18,7 +18,7 @@ class Disk(ComponentDTO):
 
 
 def mapper_ssd(
-    disk_dto: Disk, archetype=get_component_archetype(config["default_ssd"], "ssd")
+    disk_dto: Disk, archetype=get_component_archetype(config.default_ssd, "ssd")
 ) -> ComponentSSD:
     disk_component = ComponentSSD(archetype=archetype)
     disk_component.usage = mapper_usage(
@@ -44,7 +44,7 @@ def mapper_ssd(
 
 
 def mapper_hdd(
-    disk_dto: Disk, archetype=get_component_archetype(config["default_hdd"], "hdd")
+    disk_dto: Disk, archetype=get_component_archetype(config.default_hdd, "hdd")
 ) -> ComponentHDD:
     disk_component = ComponentHDD(archetype=archetype)
     disk_component.usage = mapper_usage(

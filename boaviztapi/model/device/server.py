@@ -21,9 +21,7 @@ from boaviztapi.service.archetype import get_server_archetype, get_arch_componen
 class DeviceServer(Device):
     NAME = "SERVER"
 
-    def __init__(
-        self, archetype=get_server_archetype(config["default_server"]), **kwargs
-    ):
+    def __init__(self, archetype=get_server_archetype(config.default_server), **kwargs):
         super().__init__(archetype=archetype, **kwargs)
         self._cpu = None
         self._ram_list = None

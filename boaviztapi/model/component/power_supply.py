@@ -9,9 +9,7 @@ class ComponentPowerSupply(Component):
 
     def __init__(
         self,
-        archetype=get_component_archetype(
-            config["default_power_supply"], "power_supply"
-        ),
+        archetype=get_component_archetype(config.default_power_supply, "power_supply"),
         **kwargs,
     ):
         super().__init__(archetype=archetype, **kwargs)

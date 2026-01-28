@@ -16,7 +16,7 @@ def significant_number(x):
     return precision_and_scale(x)[0]
 
 
-def round_based_on_min_max(val, min_val, max_val, uncertainty=config["uncertainty"]):
+def round_based_on_min_max(val, min_val, max_val, uncertainty=config.uncertainty):
     """
     Returns a rounded values for `val`.
 

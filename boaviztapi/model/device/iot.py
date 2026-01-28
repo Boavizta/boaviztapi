@@ -20,7 +20,7 @@ class DeviceIoT(Device):
 
     def __init__(
         self,
-        archetype=get_iot_device_archetype(config["default_iot_device"]),
+        archetype=get_iot_device_archetype(config.default_iot_device),
         functional_block: List[ComponentFunctionalBlock] = None,
     ):
         super().__init__(archetype=archetype)

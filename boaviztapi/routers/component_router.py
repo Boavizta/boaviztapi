@@ -58,7 +58,7 @@ async def cpu_all_archetype_name():
 
 @component_router.get("/cpu/archetype_config", description=cpu_description)
 async def cpu_archetype_config(
-    archetype: str = Query(examples=[config["default_cpu"]]),
+    archetype: str = Query(examples=[config.default_cpu]),
 ):
     archetype_config = get_archetype_config(archetype, "cpu")
     return archetype_config
@@ -68,9 +68,9 @@ async def cpu_archetype_config(
 async def cpu_impact_bottom_up(
     cpu: CPU = Body(None, openapi_examples=components_examples_openapi["cpu"]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_cpu"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_cpu,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "cpu")
 
@@ -87,9 +87,9 @@ async def cpu_impact_bottom_up(
 @component_router.get("/cpu", description=cpu_description)
 async def cpu_impact_bottom_up(
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_cpu"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_cpu,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "cpu")
 
@@ -110,7 +110,7 @@ async def gpu_all_archetype_name():
 
 @component_router.get("/gpu/archetype_config", description=gpu_description)
 async def gpu_archetype_config(
-    archetype: str = Query(examples=[config["default_gpu"]]),
+    archetype: str = Query(examples=[config.default_gpu]),
 ):
     return get_archetype_config(archetype, "gpu")
 
@@ -119,9 +119,9 @@ async def gpu_archetype_config(
 async def gpu_impact_bottom_up(
     gpu: GPU = Body(None, openapi_examples=components_examples_openapi["gpu"]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_gpu"],
-    criteria: List[str] = Query(config["default_gpu_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_gpu,
+    criteria: List[str] = Query(config.default_gpu_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "gpu")
 
@@ -138,9 +138,9 @@ async def gpu_impact_bottom_up(
 @component_router.get("/gpu", description=gpu_description)
 async def gpu_impact_bottom_up(
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_gpu"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_gpu,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "gpu")
 
@@ -162,7 +162,7 @@ async def ram_all_archetype_name():
 
 @component_router.get("/ram/archetype_config", description=ram_description)
 async def ram_archetype_config(
-    archetype: str = Query(examples=[config["default_ram"]]),
+    archetype: str = Query(examples=[config.default_ram]),
 ):
     archetype_config = get_archetype_config(archetype, "ram")
     return archetype_config
@@ -172,9 +172,9 @@ async def ram_archetype_config(
 async def ram_impact_bottom_up(
     ram: RAM = Body(None, openapi_examples=components_examples_openapi["ram"]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_ram"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_ram,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "ram")
 
@@ -191,9 +191,9 @@ async def ram_impact_bottom_up(
 @component_router.get("/ram", description=ram_description)
 async def ram_impact_bottom_up(
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_ram"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_ram,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "ram")
 
@@ -215,7 +215,7 @@ async def ssd_all_archetype_name():
 
 @component_router.get("/ssd/archetype_config", description=ssd_description)
 async def ssd_archetype_config(
-    archetype: str = Query(examples=[config["default_ssd"]]),
+    archetype: str = Query(examples=[config.default_ssd]),
 ):
     archetype_config = get_archetype_config(archetype, "ssd")
     return archetype_config
@@ -225,9 +225,9 @@ async def ssd_archetype_config(
 async def disk_impact_bottom_up(
     disk: Disk = Body(None, openapi_examples=components_examples_openapi["ssd"]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_ssd"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_ssd,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     disk.type = "ssd"
     archetype_config = get_component_archetype(archetype, "ssd")
@@ -245,9 +245,9 @@ async def disk_impact_bottom_up(
 @component_router.get("/ssd", description=ssd_description)
 async def disk_impact_bottom_up(
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_ssd"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_ssd,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     disk = Disk()
     disk.type = "ssd"
@@ -271,7 +271,7 @@ async def hdd_all_archetype_name():
 
 @component_router.get("/hdd/archetype_config", description=hdd_description)
 async def hdd_archetype_config(
-    archetype: str = Query(examples=[config["default_hdd"]]),
+    archetype: str = Query(examples=[config.default_hdd]),
 ):
     archetype_config = get_archetype_config(archetype, "hdd")
     return archetype_config
@@ -281,9 +281,9 @@ async def hdd_archetype_config(
 async def disk_impact_bottom_up(
     disk: Disk = Body(None, openapi_examples=components_examples_openapi["hdd"]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_hdd"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_hdd,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     disk.type = "hdd"
     archetype_config = get_component_archetype(archetype, "hdd")
@@ -301,9 +301,9 @@ async def disk_impact_bottom_up(
 @component_router.get("/hdd", description=hdd_description)
 async def disk_impact_bottom_up(
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_hdd"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_hdd,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     disk = Disk()
     disk.type = "hdd"
@@ -329,7 +329,7 @@ async def motherboard_all_archetype_name():
     "/motherboard/archetype_config", description=motherboard_description
 )
 async def motherboard_archetype_config(
-    archetype: str = Query(examples=[config["default_motherboard"]]),
+    archetype: str = Query(examples=[config.default_motherboard]),
 ):
     archetype_config = get_archetype_config(archetype, "motherboard")
     return archetype_config
@@ -341,8 +341,8 @@ async def motherboard_impact_bottom_up(
         None, openapi_examples=components_examples_openapi["motherboard"]
     ),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     completed_motherboard = mapper_motherboard(motherboard)
 
@@ -357,8 +357,8 @@ async def motherboard_impact_bottom_up(
 @component_router.get("/motherboard", description=motherboard_description)
 async def motherboard_impact_bottom_up(
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     completed_motherboard = mapper_motherboard(Motherboard())
 
@@ -380,7 +380,7 @@ async def power_supply_all_archetype_name():
     "/power_supply/archetype_config", description=power_supply_description
 )
 async def power_supply_archetype_config(
-    archetype: str = Query(examples=[config["default_power_supply"]]),
+    archetype: str = Query(examples=[config.default_power_supply]),
 ):
     archetype_config = get_archetype_config(archetype, "power_supply")
     return archetype_config
@@ -392,9 +392,9 @@ async def power_supply_impact_bottom_up(
         None, openapi_examples=components_examples_openapi["power_supply"]
     ),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_power_supply"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_power_supply,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "power_supply")
 
@@ -414,9 +414,9 @@ async def power_supply_impact_bottom_up(
 @component_router.get("/power_supply", description=power_supply_description)
 async def power_supply_impact_bottom_up(
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_power_supply"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_power_supply,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "power_supply")
 
@@ -441,7 +441,7 @@ async def case_all_archetype_name():
 
 @component_router.get("/case/archetype_config", description=case_description)
 async def case_archetype_config(
-    archetype: str = Query(examples=[config["default_case"]]),
+    archetype: str = Query(examples=[config.default_case]),
 ):
     archetype_config = get_archetype_config(archetype, "case")
     return archetype_config
@@ -451,9 +451,9 @@ async def case_archetype_config(
 async def case_impact_bottom_up(
     case: Case = Body(None, openapi_examples=components_examples_openapi["case"]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_case"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_case,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "case")
 
@@ -470,9 +470,9 @@ async def case_impact_bottom_up(
 @component_router.get("/case", description=case_description)
 async def case_impact_bottom_up(
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_case"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_case,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "case")
 
@@ -489,8 +489,8 @@ async def case_impact_bottom_up(
 async def component_impact_bottom_up(
     component: Component,
     verbose: bool,
-    duration: Optional[float] = config["default_duration"],
-    criteria=config["default_criteria"],
+    duration: Optional[float] = config.default_duration,
+    criteria=config.default_criteria,
 ) -> dict:
     if duration is None:
         duration = component.usage.hours_life_time.value

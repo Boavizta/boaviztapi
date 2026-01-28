@@ -38,7 +38,7 @@ def compute_single_impact(
     model: Union[Component, Device, Service],
     phase: str,
     criteria: str,
-    duration: Union[int, str] = config["default_duration"],
+    duration: Union[int, str] = config.default_duration,
     allocation: float = 1,
 ) -> Optional[Impact]:
     try:
@@ -65,8 +65,8 @@ def compute_single_impact(
 
 def compute_impacts(
     model: Union[Component, Device, Service],
-    selected_criteria=config["default_criteria"],
-    duration=config["default_duration"],
+    selected_criteria=config.default_criteria,
+    duration=config.default_duration,
 ) -> dict:
     for c in IMPACT_CRITERIAS.keys():
         criteria = IMPACT_CRITERIAS[c]
