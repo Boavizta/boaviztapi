@@ -47,7 +47,7 @@ class TestComponentGPU:
         assert gpu.gpu_surface.is_archetype()
 
     def test_wafer_calculation_increases_surface_values(self):
-        archetype = get_component_archetype(config["default_gpu"], "gpu")
+        archetype = get_component_archetype(config.default_gpu, "gpu")
         gpu = ComponentGPU()
 
         # GPU surface computed value should be larger than raw archetype value

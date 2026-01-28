@@ -26,7 +26,7 @@ class RAM(ComponentDTO):
 
 
 def mapper_ram(
-    ram_dto: RAM, archetype=get_component_archetype(config["default_ram"], "ram")
+    ram_dto: RAM, archetype=get_component_archetype(config.default_ram, "ram")
 ) -> ComponentRAM:
     ram_component = ComponentRAM(archetype=archetype)
     ram_component.usage = mapper_usage(

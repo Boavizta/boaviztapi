@@ -25,7 +25,7 @@ class Case(ComponentDTO):
 
 def mapper_power_supply(
     power_supply_dto: PowerSupply,
-    archetype=get_component_archetype(config["default_power_supply"], "power_supply"),
+    archetype=get_component_archetype(config.default_power_supply, "power_supply"),
 ) -> ComponentPowerSupply:
     power_supply_component = ComponentPowerSupply(archetype=archetype)
     power_supply_component.usage = mapper_usage(
@@ -52,7 +52,7 @@ def mapper_motherboard(motherboard_dto: Motherboard) -> ComponentMotherboard:
 
 
 def mapper_case(
-    case_dto: Case, archetype=get_component_archetype(config["default_case"], "case")
+    case_dto: Case, archetype=get_component_archetype(config.default_case, "case")
 ) -> ComponentCase:
     case_component = ComponentCase(archetype=archetype)
     case_component.usage = mapper_usage(

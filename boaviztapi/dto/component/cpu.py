@@ -20,7 +20,7 @@ class CPU(ComponentDTO):
 
 
 def mapper_cpu(
-    cpu_dto: CPU, archetype=get_component_archetype(config["default_cpu"], "cpu")
+    cpu_dto: CPU, archetype=get_component_archetype(config.default_cpu, "cpu")
 ) -> ComponentCPU:
     cpu_component = ComponentCPU(archetype=archetype)
     cpu_component.usage = mapper_usage(

@@ -1,4 +1,3 @@
-import json
 import logging
 
 import anyio
@@ -17,6 +16,7 @@ import time
 import threading
 import uvicorn
 
+from boaviztapi import config
 from boaviztapi.routers.component_router import component_router
 from boaviztapi.routers.consumption_profile_router import consumption_profile
 from boaviztapi.routers.iot_router import iot
@@ -57,7 +57,7 @@ app = FastAPI(root_path=openapi_prefix, lifespan=lifespan)
 version = get_version_from_pyproject()
 _logger = logging.getLogger(__name__)
 
-origins = json.loads(os.getenv("ALLOWED_ORIGINS", '["*"]'))
+origins = config.allowed_origins
 
 
 # Ensure that even an uncaught exception includes CORS headers.
@@ -103,7 +103,8 @@ handler = Mangum(app)
 
 @app.get("/", response_class=HTMLResponse)
 async def welcome_page():
-    html_content = """
+    html_content = (
+        """
     <html>
         <head>
             <title>BOAVIZTAPI</title>
@@ -131,7 +132,9 @@ async def welcome_page():
             %s
         </body>
     </html>
-    """ % os.getenv("SPECIAL_MESSAGE", "")
+    """
+        % config.special_message
+    )
     return HTMLResponse(content=html_content, status_code=200)
 
 

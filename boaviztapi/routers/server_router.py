@@ -31,7 +31,7 @@ async def server_get_all_archetype_name():
 
 @server_router.get("/archetype_config", description=get_archetype_config_desc)
 async def get_archetype_config(
-    archetype: str = Query(examples=[config["default_server"]]),
+    archetype: str = Query(examples=[config.default_server]),
 ):
     result = get_server_archetype(archetype)
     if not result:
@@ -41,10 +41,10 @@ async def get_archetype_config(
 
 @server_router.get("/", description=server_impact_by_model_description)
 async def server_impact_from_model(
-    archetype: str = config["default_server"],
+    archetype: str = config.default_server,
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     archetype_config = get_server_archetype(archetype)
 
@@ -62,9 +62,9 @@ async def server_impact_from_model(
 async def server_impact_from_configuration(
     server: Server = Body(None, openapi_examples=server_configuration_examples_openapi),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_server"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_server,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     archetype_config = get_server_archetype(archetype)
 
@@ -81,8 +81,8 @@ async def server_impact_from_configuration(
 async def server_impact(
     device: Device,
     verbose: bool,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ) -> dict:
     if duration is None:
         duration = device.usage.hours_life_time.value

@@ -54,7 +54,7 @@ class ComponentGPU(Component):
     NAME = "GPU"
 
     def __init__(
-        self, archetype=get_component_archetype(config["default_gpu"], "gpu"), **kwargs
+        self, archetype=get_component_archetype(config.default_gpu, "gpu"), **kwargs
     ):
         super().__init__(archetype=archetype, **kwargs)
 
