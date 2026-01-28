@@ -33,9 +33,7 @@ See the "getting started" docs for [mkdocs](https://www.mkdocs.org/getting-start
 
 ```bash
 # If mkdocs is installed via poetry (preferred)
-# from the root of the cloned repository
-cd docs
-poetry run mkdocs serve
+make run-doc
 ```
 
 ```bash
