@@ -23,7 +23,7 @@ class GPU(ComponentDTO):
 
 
 def mapper_gpu(
-    gpu_dto: GPU, archetype=get_component_archetype(config["default_gpu"], "gpu")
+    gpu_dto: GPU, archetype=get_component_archetype(config.default_gpu, "gpu")
 ) -> ComponentGPU:
     gpu_component = ComponentGPU(archetype=archetype)
 

@@ -38,7 +38,7 @@ class DeviceLaptop(EndUserDevice, ABC):
     NAME = "LAPTOP"
 
     def __init__(
-        self, archetype=get_user_terminal_archetype(config["default_laptop"]), **kwargs
+        self, archetype=get_user_terminal_archetype(config.default_laptop), **kwargs
     ):
         super().__init__(archetype=archetype, **kwargs)
         self.type = Boattribute(
@@ -52,7 +52,7 @@ class DeviceDesktop(EndUserDevice, ABC):
     NAME = "DESKTOP"
 
     def __init__(
-        self, archetype=get_user_terminal_archetype(config["default_desktop"]), **kwargs
+        self, archetype=get_user_terminal_archetype(config.default_desktop), **kwargs
     ):
         super().__init__(archetype=archetype, **kwargs)
         self.type = Boattribute(
@@ -66,7 +66,7 @@ class DeviceTablet(EndUserDevice, ABC):
     NAME = "TABLET"
 
     def __init__(
-        self, archetype=get_user_terminal_archetype(config["default_tablet"]), **kwargs
+        self, archetype=get_user_terminal_archetype(config.default_tablet), **kwargs
     ):
         super().__init__(archetype=archetype, **kwargs)
 
@@ -76,7 +76,7 @@ class DeviceSmartphone(EndUserDevice, ABC):
 
     def __init__(
         self,
-        archetype=get_user_terminal_archetype(config["default_smartphone"]),
+        archetype=get_user_terminal_archetype(config.default_smartphone),
         **kwargs,
     ):
         super().__init__(archetype=archetype, **kwargs)
@@ -87,7 +87,7 @@ class DeviceTelevision(EndUserDevice, ABC):
 
     def __init__(
         self,
-        archetype=get_user_terminal_archetype(config["default_television"]),
+        archetype=get_user_terminal_archetype(config.default_television),
         **kwargs,
     ):
         super().__init__(archetype=archetype, **kwargs)
@@ -103,7 +103,7 @@ class DeviceSmartWatch(EndUserDevice, ABC):
 
     def __init__(
         self,
-        archetype=get_user_terminal_archetype(config["default_smartwatch"]),
+        archetype=get_user_terminal_archetype(config.default_smartwatch),
         **kwargs,
     ):
         super().__init__(archetype=archetype, **kwargs)
@@ -113,7 +113,7 @@ class DeviceBox(EndUserDevice, ABC):
     NAME = "BOX"
 
     def __init__(
-        self, archetype=get_user_terminal_archetype(config["default_box"]), **kwargs
+        self, archetype=get_user_terminal_archetype(config.default_box), **kwargs
     ):
         super().__init__(archetype=archetype, **kwargs)
 
@@ -123,7 +123,7 @@ class DeviceUsbStick(EndUserDevice, ABC):
 
     def __init__(
         self,
-        archetype=get_user_terminal_archetype(config["default_usb_stick"]),
+        archetype=get_user_terminal_archetype(config.default_usb_stick),
         **kwargs,
     ):
         super().__init__(archetype=archetype, **kwargs)
@@ -134,7 +134,7 @@ class DeviceExternalSSD(EndUserDevice, ABC):
 
     def __init__(
         self,
-        archetype=get_user_terminal_archetype(config["default_external_ssd"]),
+        archetype=get_user_terminal_archetype(config.default_external_ssd),
         **kwargs,
     ):
         super().__init__(archetype=archetype, **kwargs)
@@ -145,7 +145,7 @@ class DeviceExternalHDD(EndUserDevice, ABC):
 
     def __init__(
         self,
-        archetype=get_user_terminal_archetype(config["default_external_hdd"]),
+        archetype=get_user_terminal_archetype(config.default_external_hdd),
         **kwargs,
     ):
         super().__init__(archetype=archetype, **kwargs)
@@ -155,7 +155,7 @@ class DeviceMonitor(EndUserDevice, ABC):
     NAME = "MONITOR"
 
     def __init__(
-        self, archetype=get_user_terminal_archetype(config["default_monitor"]), **kwargs
+        self, archetype=get_user_terminal_archetype(config.default_monitor), **kwargs
     ):
         super().__init__(archetype=archetype, **kwargs)
 
@@ -165,7 +165,7 @@ class DeviceVrHeadset(EndUserDevice, ABC):
 
     def __init__(
         self,
-        archetype=get_user_terminal_archetype(config["default_vr_headset"]),
+        archetype=get_user_terminal_archetype(config.default_vr_headset),
         **kwargs,
     ):
         super().__init__(archetype=archetype, **kwargs)
@@ -181,7 +181,7 @@ class DeviceVrController(EndUserDevice, ABC):
 
     def __init__(
         self,
-        archetype=get_user_terminal_archetype(config["default_vr_controller"]),
+        archetype=get_user_terminal_archetype(config.default_vr_controller),
         **kwargs,
     ):
         super().__init__(archetype=archetype, **kwargs)

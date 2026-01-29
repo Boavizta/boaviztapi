@@ -21,7 +21,7 @@ async def iot_device_get_all_archetype_name():
 
 @iot.get("/iot_device/archetype_config", description="")
 async def get_archetype_config(
-    archetype: str = Query(examples=[config["default_iot_device"]]),
+    archetype: str = Query(examples=[config.default_iot_device]),
 ):
     archetype_config = get_iot_device_archetype(archetype)
     if not archetype_config:
@@ -33,9 +33,9 @@ async def get_archetype_config(
 async def iot_device_impact(
     iot: IoT = Body(None, examples=[""]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_iot_device"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_iot_device,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await device_iot_impact(
         iot_dto=iot,
@@ -48,10 +48,10 @@ async def iot_device_impact(
 
 @iot.get("/iot_device", description="")
 async def iot_device_impact(
-    archetype: str = config["default_iot_device"],
+    archetype: str = config.default_iot_device,
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await device_iot_impact(
         iot_dto=IoT(),
@@ -66,8 +66,8 @@ async def device_iot_impact(
     iot_dto: IoT,
     archetype: str,
     verbose: bool,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ) -> dict:
     archetype_config = get_iot_device_archetype(archetype)
 

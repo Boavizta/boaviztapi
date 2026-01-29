@@ -26,7 +26,7 @@ class ComponentCPU(Component):
     name_completion = False
 
     def __init__(
-        self, archetype=get_component_archetype(config["default_cpu"], "cpu"), **kwargs
+        self, archetype=get_component_archetype(config.default_cpu, "cpu"), **kwargs
     ):
         super().__init__(archetype=archetype, **kwargs)
         self.core_units = Boattribute(

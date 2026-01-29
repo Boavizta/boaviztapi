@@ -10,7 +10,7 @@ class ComponentCase(Component):
 
     def __init__(
         self,
-        archetype=get_component_archetype(config["default_case"], "case"),
+        archetype=get_component_archetype(config.default_case, "case"),
         **kwargs,
     ):
         super().__init__(archetype=archetype, **kwargs)

@@ -7,8 +7,8 @@ from boaviztapi.model.services.cloud_instance import ServiceCloudInstance, Servi
 
 def verbose_cloud(
     cloud_instance: ServiceCloudInstance,
-    selected_criteria=config["default_criteria"],
-    duration=config["default_duration"],
+    selected_criteria=config.default_criteria,
+    duration=config.default_duration,
 ):
     json_output = {
         **iter_boattribute(cloud_instance),
@@ -24,8 +24,8 @@ def verbose_cloud(
 
 def verbose_device(
     device: Device,
-    selected_criteria=config["default_criteria"],
-    duration=config["default_duration"],
+    selected_criteria=config.default_criteria,
+    duration=config.default_duration,
 ):
     json_output = {"duration": {"value": duration, "unit": "hours"}}
     for component in device.components:
@@ -75,8 +75,8 @@ def verbose_usage(device: [Device, Component, Service]):
 
 def verbose_component(
     component: Component,
-    selected_criteria=config["default_criteria"],
-    duration=config["default_duration"],
+    selected_criteria=config.default_criteria,
+    duration=config.default_duration,
 ):
     json_output = {
         "impacts": component.get_impacts(selected_criteria),

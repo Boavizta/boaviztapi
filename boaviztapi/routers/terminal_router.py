@@ -52,7 +52,7 @@ async def laptop_get_all_archetype_name():
 
 @terminal_router.get("/laptop/archetype_config", description=get_archetype_config_desc)
 async def laptop_get_archetype_config(
-    archetype: str = Query(examples=[config["default_laptop"]]),
+    archetype: str = Query(examples=[config.default_laptop]),
 ):
     return get_archetype_config(archetype)
 
@@ -61,9 +61,9 @@ async def laptop_get_archetype_config(
 async def laptop_impact(
     laptop: Laptop = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_laptop"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_laptop,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=laptop,
@@ -76,10 +76,10 @@ async def laptop_impact(
 
 @terminal_router.get("/laptop", description=terminal_description)
 async def laptop_impact(
-    archetype: str = config["default_laptop"],
+    archetype: str = config.default_laptop,
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=Laptop(),
@@ -97,7 +97,7 @@ async def desktop_get_all_archetype_name():
 
 @terminal_router.get("/desktop/archetype_config", description=get_archetype_config_desc)
 async def desktop_get_archetype_config(
-    archetype: str = Query(examples=[config["default_desktop"]]),
+    archetype: str = Query(examples=[config.default_desktop]),
 ):
     return get_archetype_config(archetype)
 
@@ -106,9 +106,9 @@ async def desktop_get_archetype_config(
 async def desktop_impact(
     desktop: Desktop = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_desktop"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_desktop,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=desktop,
@@ -121,10 +121,10 @@ async def desktop_impact(
 
 @terminal_router.get("/desktop", description=terminal_description)
 async def desktop_impact(
-    archetype: str = config["default_desktop"],
+    archetype: str = config.default_desktop,
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=Desktop(),
@@ -144,7 +144,7 @@ async def smartphone_get_all_archetype_name():
     "/smartphone/archetype_config", description=get_archetype_config_desc
 )
 async def smartphone_get_archetype_config(
-    archetype: str = Query(examples=[config["default_smartphone"]]),
+    archetype: str = Query(examples=[config.default_smartphone]),
 ):
     return get_archetype_config(archetype)
 
@@ -153,9 +153,9 @@ async def smartphone_get_archetype_config(
 async def smartphone_impact(
     smartphone: Smartphone = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_smartphone"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_smartphone,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=smartphone,
@@ -168,10 +168,10 @@ async def smartphone_impact(
 
 @terminal_router.get("/smartphone", description=terminal_description)
 async def smartphone_impact(
-    archetype: str = config["default_smartphone"],
+    archetype: str = config.default_smartphone,
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=Smartphone(),
@@ -189,7 +189,7 @@ async def tablet_get_all_archetype_name():
 
 @terminal_router.get("/tablet/archetype_config", description=get_archetype_config_desc)
 async def tablet_get_archetype_config(
-    archetype: str = Query(examples=[config["default_tablet"]]),
+    archetype: str = Query(examples=[config.default_tablet]),
 ):
     return get_archetype_config(archetype)
 
@@ -198,9 +198,9 @@ async def tablet_get_archetype_config(
 async def tablet_impact(
     tablet: Tablet = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_tablet"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_tablet,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=tablet,
@@ -213,10 +213,10 @@ async def tablet_impact(
 
 @terminal_router.get("/tablet", description=terminal_description)
 async def tablet_impact(
-    archetype: str = config["default_tablet"],
+    archetype: str = config.default_tablet,
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=Tablet(),
@@ -236,7 +236,7 @@ async def television_get_all_archetype_name():
     "/television/archetype_config", description=get_archetype_config_desc
 )
 async def television_get_archetype_config(
-    archetype: str = Query(examples=[config["default_television"]]),
+    archetype: str = Query(examples=[config.default_television]),
 ):
     return get_archetype_config(archetype)
 
@@ -245,9 +245,9 @@ async def television_get_archetype_config(
 async def television_impact(
     television: Television = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_television"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_television,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=television,
@@ -260,10 +260,10 @@ async def television_impact(
 
 @terminal_router.get("/television", description=terminal_description)
 async def television_impact(
-    archetype: str = config["default_television"],
+    archetype: str = config.default_television,
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=Television(),
@@ -281,7 +281,7 @@ async def box_get_all_archetype_name():
 
 @terminal_router.get("/box/archetype_config", description=get_archetype_config_desc)
 async def box_get_archetype_config(
-    archetype: str = Query(examples=[config["default_box"]]),
+    archetype: str = Query(examples=[config.default_box]),
 ):
     return get_archetype_config(archetype)
 
@@ -290,9 +290,9 @@ async def box_get_archetype_config(
 async def box_impact(
     box: Box = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_box"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_box,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=box,
@@ -305,10 +305,10 @@ async def box_impact(
 
 @terminal_router.get("/box", description=terminal_description)
 async def box_impact(
-    archetype: str = config["default_box"],
+    archetype: str = config.default_box,
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=Box(),
@@ -328,7 +328,7 @@ async def vr_headset_get_all_archetype_name():
     "/vr_headset/archetype_config", description=get_archetype_config_desc
 )
 async def vr_headset_get_archetype_config(
-    archetype: str = Query(examples=[config["default_vr_headset"]]),
+    archetype: str = Query(examples=[config.default_vr_headset]),
 ):
     return get_archetype_config(archetype)
 
@@ -337,9 +337,9 @@ async def vr_headset_get_archetype_config(
 async def vr_headset_impact_from_configuration(
     vr_headset: VrHeadset = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    archetype: str = config["default_vr_headset"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    archetype: str = config.default_vr_headset,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=vr_headset,
@@ -352,10 +352,10 @@ async def vr_headset_impact_from_configuration(
 
 @terminal_router.get("/vr_headset", description=terminal_description)
 async def vr_headset_impact(
-    archetype: str = config["default_vr_headset"],
+    archetype: str = config.default_vr_headset,
     verbose: bool = True,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=VrHeadset(),
@@ -370,8 +370,8 @@ async def user_terminal_impact(
     user_terminal_dto: UserTerminal,
     archetype: str,
     verbose: bool,
-    duration: Optional[float] = config["default_duration"],
-    criteria: List[str] = Query(config["default_criteria"]),
+    duration: Optional[float] = config.default_duration,
+    criteria: List[str] = Query(config.default_criteria),
 ) -> dict:
     archetype_config = get_user_terminal_archetype(archetype)
 

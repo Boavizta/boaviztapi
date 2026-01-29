@@ -121,7 +121,7 @@ class ModelUsage:
             raise NotImplementedError
 
         if not self.usage_location.has_value():
-            self.usage_location.set_default(config["default_location"])
+            self.usage_location.set_default(config.default_location)
 
         if self.usage_location.value not in get_available_countries(reverse=True):
             raise NotImplementedError
@@ -218,7 +218,7 @@ class ModelUsage:
 class ModelUsageServer(ModelUsage):
     def __init__(
         self,
-        archetype=get_server_archetype(config["default_server"]).get("USAGE"),
+        archetype=get_server_archetype(config.default_server).get("USAGE"),
         **kwargs,
     ):
         super().__init__(archetype=archetype, **kwargs)
@@ -235,7 +235,7 @@ class ModelUsageCloud(ModelUsageServer):
     def __init__(
         self,
         archetype=get_cloud_instance_archetype(
-            config["default_cloud_instance"], config["default_cloud_provider"]
+            config.default_cloud_instance, config.default_cloud_provider
         ).get("USAGE"),
         **kwargs,
     ):

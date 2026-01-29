@@ -65,8 +65,7 @@ def _reset_usage_dto_if_matches_config_defaults(usage_dto: Usage):
     """Reset usage_dto fields to None if they match the config default values."""
     if (
         usage_dto.usage_location
-        and usage_dto.usage_location.strip().upper()
-        == config["default_location"].upper()
+        and usage_dto.usage_location.strip().upper() == config.default_location.upper()
     ):
         usage_dto.usage_location = None
 
@@ -115,7 +114,7 @@ def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
 
 def mapper_usage_server(
     usage_dto: UsageServer,
-    archetype=get_server_archetype(config["default_server"]).get("USAGE"),
+    archetype=get_server_archetype(config.default_server).get("USAGE"),
 ) -> ModelUsageServer:
     usage_model_server = ModelUsageServer(archetype=archetype)
     _reset_usage_dto_if_matches_config_defaults(usage_dto)
@@ -159,7 +158,7 @@ def mapper_usage_server(
 def mapper_usage_cloud(
     usage_dto: UsageCloud,
     archetype=get_cloud_instance_archetype(
-        config["default_cloud_instance"], config["default_cloud_provider"]
+        config.default_cloud_instance, config.default_cloud_provider
     ).get("USAGE"),
 ) -> ModelUsageCloud:
     usage_model_cloud = ModelUsageCloud(archetype=archetype)

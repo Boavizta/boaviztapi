@@ -20,7 +20,7 @@ class ComponentRAM(Component):
     _ram_df = pd.read_csv(os.path.join(data_dir, "crowdsourcing/ram_manufacture.csv"))
 
     def __init__(
-        self, archetype=get_component_archetype(config["default_ram"], "ram"), **kwargs
+        self, archetype=get_component_archetype(config.default_ram, "ram"), **kwargs
     ):
         super().__init__(archetype=archetype, **kwargs)
 

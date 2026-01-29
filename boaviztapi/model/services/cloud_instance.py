@@ -33,7 +33,7 @@ class ServiceCloudInstance(Service):
     def __init__(
         self,
         archetype=get_cloud_instance_archetype(
-            config["default_cloud_instance"], config["default_cloud_provider"]
+            config.default_cloud_instance, config.default_cloud_provider
         ),
         **kwargs,
     ):
