@@ -1,96 +1,70 @@
 # Deploy the API
 
-## Deploy
-
-### with docker
+## Docker
 
 ```bash
-$ docker run  -p 5000:5000 ghcr.io/boavizta/boaviztapi:latest
+$ docker run -p 5000:5000 ghcr.io/boavizta/boaviztapi:latest
 ```
 
-Then access api at <http://localhost:5000>
+Exposes the API at <http://localhost:5000>.
 
-### with docker-compose
-
-```yaml
-version: "3.9"
-services:
-  boaviztapi:
-    image: ghcr.io/boavizta/boaviztapi:latest
-    environment:
-      - SPECIAL_MESSAGE="<p>my welcome message in HTML format</p>"
-    ports:
-      - "5000:5000"
-  boaviztapi-doc:
-    image: ghcr.io/boavizta/boaviztapi-doc:latest
-    environment:
-      - API_URL=http://boaviztapi_url.com
-    ports:
-      - "8080:8080"
-```
-
-### with pip
-
-boaviztapi pip package : [https://pypi.org/project/boaviztapi/](https://pypi.org/project/boaviztapi/)
+## Docker Compose
 
 ```bash
-$ pip3 install boaviztapi
+# Using Docker images from GCR
+docker compose -f compose-prod.yaml up
+
+# Building images from source
+docker compose up
 ```
 
-### from source
+Exposes the API at <http://localhost:5000>, and the docs at <http://localhost:8080>.
 
-#### Prerequisite
+## AWS Lambda
 
-Python 3 mandatory, python >=3.9 recommended, poetry recommended
+### Prerequisites
 
-#### clone the repo
+- [AWS](https://aws.amazon.com/) and [Serverless Framework](https://www.serverless.com/) accounts
+- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
+- [Serverless Framework CLI](https://www.serverless.com/framework/docs/getting-started)
+
+### Deployment
+
+```sh
+serverless deploy
+```
+
+When the deploy succeeds, it will show you the URLs for the deployed function, and you can call the API as normal. You can query these URLs at any time with `serverless info`.
+
+## From source
+
+### Prerequisites
+
+- Python >=3.12
+- [Poetry](https://python-poetry.org/)
+- `make`
+
+### Clone the repo
 
 ```bash
 $ git clone https://github.com/Boavizta/boaviztapi.git
 ```
 
-#### Setup poetry
-
-Install poetry.
-
-```bash
-$ pip3 install poetry
-```
-
-Install dependencies and create a python virtual environment.
+### Install
 
 ```bash
 $ make install
-$ poetry shell
 ```
 
-#### Launch a development server
-
-**Once in the poetry environment**
-
-Development server uses [uvicorn](https://www.uvicorn.org/) and [fastapi](https://fastapi.tiangolo.com/), you can launch development server with the `uvicorn` CLI.
+### Launch the server
 
 ```bash
-$ uvicorn boaviztapi.main:app --host=localhost --port 5000
+$ make run
 ```
-
-You can run the tests with `pytest`.
-
-### CORS
-
-By default, all origin are allowed. If you need to limit them set env value ```ALLOWED_ORIGINS``` with the following format : ```ALLOWED_ORIGINS = '["url1", "url2", ...]'```
-
-Example : ```ALLOWED_ORIGINS='["https://datavizta.boavizta.org","https://boavizta.org"]'```
-
-### Special message
-
-You can customize the home page with a special message by setting the env value ```SPECIAL_MESSAGE`` in HTML format.
-
-Example : ```SPECIAL_MESSAGE="<p>my welcome message in HTML format</p>"```
-
 
 ## SDK
 
-**python-sdk** : [https://pypi.org/project/boaviztapi-sdk/](https://pypi.org/project/boaviztapi-sdk/)
+You can also use BoaviztaAPI directly in code with the SDKs:
 
-**rust-sdk** : [https://github.com/Boavizta/boaviztapi-sdk-rust](https://github.com/Boavizta/boaviztapi-sdk-rust)
+- **python-sdk** : [https://pypi.org/project/boaviztapi-sdk/](https://pypi.org/project/boaviztapi-sdk/)
+- **rust-sdk** : [https://github.com/Boavizta/boaviztapi-sdk-rust](https://github.com/Boavizta/boaviztapi-sdk-rust)
