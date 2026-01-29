@@ -46,19 +46,19 @@ class Impact:
         rd_value = rd.round_based_on_min_max(self.value, self.min, self.max)
         nb_sig_fig = rd.significant_number(rd_value)
 
-        if nb_sig_fig > config["max_sig_fig"]:
-            return rd.round_to_sigfig(rd_value, config["max_sig_fig"])
+        if nb_sig_fig > config.max_sig_fig:
+            return rd.round_to_sigfig(rd_value, config.max_sig_fig)
         elif rd_value == 0:
             self.add_warning(WARNING_IMPORTANT_UNCERTAINTY)
-            return rd.round_to_sigfig(self.value, config["min_sig_fig"])
+            return rd.round_to_sigfig(self.value, config.min_sig_fig)
         else:
             return rd_value
 
     def rounded_min(self):
-        return rd.round_to_sigfig(self.min, config["max_sig_fig"])
+        return rd.round_to_sigfig(self.min, config.max_sig_fig)
 
     def rounded_max(self):
-        return rd.round_to_sigfig(self.max, config["max_sig_fig"])
+        return rd.round_to_sigfig(self.max, config.max_sig_fig)
 
     def allocate(self, duration, life_time):
         if duration > life_time.value:

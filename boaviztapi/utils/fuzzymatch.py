@@ -12,7 +12,7 @@ def fuzzymatch_attr_from_cpu_name(
     cpu_name = cpu_name.lower()
     score = df["name"].str.lower().apply(lambda x: fuzz.token_set_ratio(x, cpu_name))
     max_score = score.max()
-    if max_score <= config["cpu_name_fuzzymatch_threshold"]:
+    if max_score <= config.cpu_name_fuzzymatch_threshold:
         return None
     else:
         best = df.iloc[score.idxmax()]

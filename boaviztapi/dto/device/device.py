@@ -48,7 +48,7 @@ class Server(DeviceDTO):
 
 
 def mapper_server(
-    server_dto: Server, archetype=get_server_archetype(config["default_server"])
+    server_dto: Server, archetype=get_server_archetype(config.default_server)
 ) -> DeviceServer:
     server_model = DeviceServer(archetype=archetype)
 
@@ -93,7 +93,7 @@ class Cloud(Server):
 def mapper_cloud_instance(
     cloud_dto: Cloud,
     archetype=get_cloud_instance_archetype(
-        config["default_cloud_instance"], config["default_cloud_provider"]
+        config.default_cloud_instance, config.default_cloud_provider
     ),
 ) -> ServiceCloudInstance:
     if (

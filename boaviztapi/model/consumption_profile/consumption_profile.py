@@ -33,7 +33,7 @@ class RAMConsumptionProfileModel(ConsumptionProfileModel):
 
     def __init__(
         self,
-        archetype=get_component_archetype(config["default_ram"], "ram").get(
+        archetype=get_component_archetype(config.default_ram, "ram").get(
             "consumption_profile"
         ),
     ):
@@ -73,7 +73,7 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
 
     def __init__(
         self,
-        archetype=get_component_archetype(config["default_cpu"], "cpu").get(
+        archetype=get_component_archetype(config.default_cpu, "cpu").get(
             "CONSUMPTION_PROFILE"
         ),
     ):

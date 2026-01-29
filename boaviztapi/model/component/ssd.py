@@ -17,7 +17,7 @@ class ComponentSSD(Component):
     __DISK_TYPE = "ssd"
 
     def __init__(
-        self, archetype=get_component_archetype(config["default_ssd"], "ssd"), **kwargs
+        self, archetype=get_component_archetype(config.default_ssd, "ssd"), **kwargs
     ):
         super().__init__(archetype=archetype, **kwargs)
         self.manufacturer = Boattribute(

@@ -4,7 +4,7 @@ import os
 import pytest
 from httpx import ASGITransport, AsyncClient
 
-from boaviztapi import data_dir
+from boaviztapi import config, data_dir
 from boaviztapi.main import app
 
 from .util import CloudInstanceRequest
