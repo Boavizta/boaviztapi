@@ -46,18 +46,6 @@ $ docker run -p 5000:5000 ghcr.io/boavizta/boaviztapi:latest
 
 Access the API at http://localhost:5000.
 
-### Install using pip package
-
-```bash
-$ pip3 install boaviztapi
-```
-
-Run the server locally with:
-
-```bash
-$ uvicorn boaviztapi.main:app --host=localhost --port 5000
-```
-
 ## :computer: Development
 
 ### Prerequisite
@@ -97,34 +85,16 @@ You can run the tests with `pytest` via:
 
 ### Create your own docker image and run it
 
-Build application package:
-
-```sh
-make install
-```
-
 Build Docker image:
 
 ```sh
-# using the makefile (recommended)
-make docker-build
-
-# manual build (requires to set version)
-docker build .
-```
-
-Run Docker image:
-
-```sh
-docker run -p 5000:5000/tcp boavizta/boaviztapi:`poetry version -s`
-```
-
-#### Alternative (if you don't have Python or Poetry)
-
-```sh
+# Using the makefile (recommended)
 make docker-build-development
-
 make docker-run-development
+
+# Manual build
+docker build . -t boavizta-test
+docker run -p 5000:5000 boavizta-test
 ```
 
 ### Deploy to AWS as serverless application
