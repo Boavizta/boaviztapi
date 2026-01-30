@@ -1,0 +1,10 @@
+services:
+  boaviztapi:
+    image: ghcr.io/boavizta/boaviztapi:latest
+    ports:
+      - "5000:5000"
+
+  boaviztapi-doc:
+    image: ghcr.io/boavizta/boaviztapi-doc:latest
+    ports:
+      - "8080:8080"

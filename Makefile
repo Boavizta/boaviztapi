@@ -45,6 +45,9 @@ run:
 run-py:
 		python boaviztapi/main.py
 
+run-doc:
+		cd docs && poetry run mkdocs serve
+
 $(SEMVERS):
 		poetry version $@
 		$(MAKE) npm_version
@@ -72,3 +75,9 @@ docker-build-development:
 
 docker-run-development:
 		docker run -p 5000:5000 boavizta/boaviztapi:${TIMESTAMP}
+
+compose-build:
+		docker compose build
+
+compose-up:
+		docker compose up --build
