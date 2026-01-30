@@ -116,7 +116,7 @@ async def welcome_page():
         </head>
         <body>
             <p align="center">
-                <img src="https://boavizta.org/media/site/d84925bc94-1642413712/boavizta-logo-4.png" width="100">
+                <img src="https://boavizta.org/media/boavizta-logo-4.png" width="100">
             </p>
             <h1 align="center">
               Welcome to BOAVIZTAPI
