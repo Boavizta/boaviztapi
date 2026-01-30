@@ -1,0 +1,4439 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>End user devices - Boavizta API documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#terminals-peripherals" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Boavizta API documentation" class="md-header__button md-logo" aria-label="Boavizta API documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Boavizta API documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              End user devices
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Boavizta API documentation" class="md-nav__button md-logo" aria-label="Boavizta API documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Boavizta API documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../q%26a/" class="md-nav__link">
+        Q&A
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://datavizta.boavizta.org/" target="_blank" class="md-nav__link">
+        Datavizta
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://api.boavizta.org/docs" target="_blank" class="md-nav__link">
+        Try the API (OpenAPI)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/cpu_component/" class="md-nav__link">
+        Get the impacts of a cpu
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/single_server/" class="md-nav__link">
+        Get the impacts of a server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/single_cloud_instance/" class="md-nav__link">
+        Get the impacts of a cloud instance (AWS)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/consumption_profile/" class="md-nav__link">
+        Get started with consumption profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/end_user_devices/" class="md-nav__link">
+        Get started with terminal and peripherals
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Explanations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Explanations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Explanations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../boavizta_db/" class="md-nav__link">
+        Boavizta database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../impacts/" class="md-nav__link">
+        Impacts criteria
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded_methodology/" class="md-nav__link">
+        Embedded impacts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Usage impacts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Usage impacts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Usage impacts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/usage/" class="md-nav__link">
+        Methodology
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/duration/" class="md-nav__link">
+        Duration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/elec_factors/" class="md-nav__link">
+        Electrical impacts factors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/power/" class="md-nav__link">
+        Power
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/countries/" class="md-nav__link">
+        Countries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consumption_profile/" class="md-nav__link">
+        Consumption profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../auto_complete/" class="md-nav__link">
+        Auto-complete
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archetypes/" class="md-nav__link">
+        Archetypes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../verbose/" class="md-nav__link">
+        Verbose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../error_margin/" class="md-nav__link">
+        Error margin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_10" type="checkbox" id="__nav_4_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_10">
+          Components
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Components" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_10">
+          <span class="md-nav__icon md-icon"></span>
+          Components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/component/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/cpu/" class="md-nav__link">
+        CPU
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/ram/" class="md-nav__link">
+        RAM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/ssd/" class="md-nav__link">
+        SSD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/hdd/" class="md-nav__link">
+        HDD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/motherboard/" class="md-nav__link">
+        Motherboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/power_supply/" class="md-nav__link">
+        Power supply
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/assembly/" class="md-nav__link">
+        Assembly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/case/" class="md-nav__link">
+        Case
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/functional_blocks/" class="md-nav__link">
+        Functional block (IoT)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_11" type="checkbox" id="__nav_4_11" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11">
+          Devices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Devices" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_11">
+          <span class="md-nav__icon md-icon"></span>
+          Devices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devices/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          End user devices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        End user devices
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-description" class="md-nav__link">
+    General description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedded-impacts" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-impact" class="md-nav__link">
+    Usage impact
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#laptop" class="md-nav__link">
+    Laptop
+  </a>
+  
+    <nav class="md-nav" aria-label="Laptop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_1" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pro" class="md-nav__link">
+    Pro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perso" class="md-nav__link">
+    Perso
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desktop" class="md-nav__link">
+    Desktop
+  </a>
+  
+    <nav class="md-nav" aria-label="Desktop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_2" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_1" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pro_1" class="md-nav__link">
+    Pro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perso_1" class="md-nav__link">
+    Perso
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tablet" class="md-nav__link">
+    Tablet
+  </a>
+  
+    <nav class="md-nav" aria-label="Tablet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_3" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_2" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smartphone" class="md-nav__link">
+    Smartphone
+  </a>
+  
+    <nav class="md-nav" aria-label="Smartphone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_4" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_3" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#television" class="md-nav__link">
+    Television
+  </a>
+  
+    <nav class="md-nav" aria-label="Television">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_5" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_4" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pro_2" class="md-nav__link">
+    Pro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perso_2" class="md-nav__link">
+    Perso
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usb-stick" class="md-nav__link">
+    USB stick
+  </a>
+  
+    <nav class="md-nav" aria-label="USB stick">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_6" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_5" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-ssd" class="md-nav__link">
+    External SSD
+  </a>
+  
+    <nav class="md-nav" aria-label="External SSD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_7" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_6" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-hdd" class="md-nav__link">
+    External HDD
+  </a>
+  
+    <nav class="md-nav" aria-label="External HDD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_8" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_7" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitor" class="md-nav__link">
+    Monitor
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_9" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_8" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#box" class="md-nav__link">
+    Box
+  </a>
+  
+    <nav class="md-nav" aria-label="Box">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_10" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_9" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smartwatch" class="md-nav__link">
+    Smartwatch
+  </a>
+  
+    <nav class="md-nav" aria-label="Smartwatch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_11" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_10" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vr-headset" class="md-nav__link">
+    VR headset
+  </a>
+  
+    <nav class="md-nav" aria-label="VR headset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_12" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_11" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lcd" class="md-nav__link">
+    lcd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oled" class="md-nav__link">
+    oled
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vr-controller" class="md-nav__link">
+    VR controller
+  </a>
+  
+    <nav class="md-nav" aria-label="VR controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_13" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_12" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lcd_1" class="md-nav__link">
+    lcd
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iot_devices/" class="md-nav__link">
+        IoT device
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_12" type="checkbox" id="__nav_4_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_12">
+          Services
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Services" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_12">
+          <span class="md-nav__icon md-icon"></span>
+          Services
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/services/" class="md-nav__link">
+        Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/cloud/" class="md-nav__link">
+        Cloud instances
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../useful_resources/" class="md-nav__link">
+        Useful resources
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/routes/" class="md-nav__link">
+        Routes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Format
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Format" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Format
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/return_format/" class="md-nav__link">
+        Return format
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/server_route/" class="md-nav__link">
+        Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/cloud_route/" class="md-nav__link">
+        Cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/component_route/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/end_user_devices_route/" class="md-nav__link">
+        End user devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/iot_device_route/" class="md-nav__link">
+        IoT devices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/" class="md-nav__link">
+        Deploy
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../config/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release_notes/" class="md-nav__link">
+        Release notes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Contributing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Contributing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/cloud_provider/" class="md-nav__link">
+        Add a cloud provider
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/cloud_instance/" class="md-nav__link">
+        Add a cloud instance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/server/" class="md-nav__link">
+        Add a server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/cpu/" class="md-nav__link">
+        Add a CPU
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-description" class="md-nav__link">
+    General description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedded-impacts" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-impact" class="md-nav__link">
+    Usage impact
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#laptop" class="md-nav__link">
+    Laptop
+  </a>
+  
+    <nav class="md-nav" aria-label="Laptop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_1" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pro" class="md-nav__link">
+    Pro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perso" class="md-nav__link">
+    Perso
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desktop" class="md-nav__link">
+    Desktop
+  </a>
+  
+    <nav class="md-nav" aria-label="Desktop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_2" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_1" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pro_1" class="md-nav__link">
+    Pro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perso_1" class="md-nav__link">
+    Perso
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tablet" class="md-nav__link">
+    Tablet
+  </a>
+  
+    <nav class="md-nav" aria-label="Tablet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_3" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_2" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smartphone" class="md-nav__link">
+    Smartphone
+  </a>
+  
+    <nav class="md-nav" aria-label="Smartphone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_4" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_3" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#television" class="md-nav__link">
+    Television
+  </a>
+  
+    <nav class="md-nav" aria-label="Television">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_5" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_4" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pro_2" class="md-nav__link">
+    Pro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perso_2" class="md-nav__link">
+    Perso
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usb-stick" class="md-nav__link">
+    USB stick
+  </a>
+  
+    <nav class="md-nav" aria-label="USB stick">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_6" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_5" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-ssd" class="md-nav__link">
+    External SSD
+  </a>
+  
+    <nav class="md-nav" aria-label="External SSD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_7" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_6" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-hdd" class="md-nav__link">
+    External HDD
+  </a>
+  
+    <nav class="md-nav" aria-label="External HDD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_8" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_7" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitor" class="md-nav__link">
+    Monitor
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_9" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_8" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#box" class="md-nav__link">
+    Box
+  </a>
+  
+    <nav class="md-nav" aria-label="Box">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_10" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_9" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smartwatch" class="md-nav__link">
+    Smartwatch
+  </a>
+  
+    <nav class="md-nav" aria-label="Smartwatch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_11" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_10" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vr-headset" class="md-nav__link">
+    VR headset
+  </a>
+  
+    <nav class="md-nav" aria-label="VR headset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_12" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_11" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lcd" class="md-nav__link">
+    lcd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oled" class="md-nav__link">
+    oled
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vr-controller" class="md-nav__link">
+    VR controller
+  </a>
+  
+    <nav class="md-nav" aria-label="VR controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-impacts_13" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_12" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lcd_1" class="md-nav__link">
+    lcd
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="terminals-peripherals">Terminals &amp; Peripherals</h1>
+<h2 id="general-description">General description</h2>
+<p>Terminals &amp; peripherals may have several types (typically <code>pro</code> and <code>perso</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default value</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>None</td>
+<td>None</td>
+<td>A subcategory of device</td>
+<td>perso</td>
+</tr>
+</tbody>
+</table>
+<h2 id="embedded-impacts">Embedded impacts</h2>
+<p>Most embedded impacts are taken from the <a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a> database. When the data comes from another source, it is specified.</p>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Implemented</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>adp</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>pe</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>gwppb</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>gwppf</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>gwpplu</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>ir</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>lu</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>odp</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>pm</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>wu</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>mips</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>ap</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>ctuh_c</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>ctuh_nc</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>epf</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>epm</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+<tr>
+<td>ept</td>
+<td>yes</td>
+<td><a href="https://base-impacts.ademe.fr/documents/Negaoctet.zip">Base IMPACTS® ADEME</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage-impact">Usage impact</h2>
+<p>We use the classic <a href="../../usage/usage/">usage</a> method. Default, minimal and maximal power consumptions are given for each device.</p>
+<h2 id="laptop">Laptop</h2>
+<p>Laptop has two <code>types</code>: <code>pro</code> and <code>perso</code>.</p>
+<h3 id="embedded-impacts_1">Embedded impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Unit</th>
+<th>pro</th>
+<th>perso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>kgCO2eq</td>
+<td>181.0</td>
+<td>175.0</td>
+</tr>
+<tr>
+<td>gwpb</td>
+<td>kg CO2 eq.</td>
+<td>0.318</td>
+<td>0.377</td>
+</tr>
+<tr>
+<td>gwpf</td>
+<td>kg CO2 eq.</td>
+<td>181.0</td>
+<td>175.0</td>
+</tr>
+<tr>
+<td>gwplu</td>
+<td>kg CO2 eq.</td>
+<td>3.37e-06</td>
+<td>3.78e-06</td>
+</tr>
+<tr>
+<td>ir</td>
+<td>kg U235 eq.</td>
+<td>73.6</td>
+<td>75.5</td>
+</tr>
+<tr>
+<td>lu</td>
+<td>No dimension</td>
+<td>-56.0</td>
+<td>-59.5</td>
+</tr>
+<tr>
+<td>odp</td>
+<td>kg CFC-11 eq.</td>
+<td>5.56e-05</td>
+<td>5.05e-05</td>
+</tr>
+<tr>
+<td>pm</td>
+<td>Disease occurrence</td>
+<td>6.08e-06</td>
+<td>5.85e-06</td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>kg NMVOC eq.</td>
+<td>0.46</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>wu</td>
+<td>m3 eq.</td>
+<td>-812.0</td>
+<td>-820.0</td>
+</tr>
+<tr>
+<td>mips</td>
+<td>kg</td>
+<td>680.0</td>
+<td>680.0</td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>kg SB eq.</td>
+<td>0.0086</td>
+<td>0.008</td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>MJ</td>
+<td>2410.0</td>
+<td>2360.0</td>
+</tr>
+<tr>
+<td>ap</td>
+<td>mol H+ eq.</td>
+<td>1.04</td>
+<td>0.995</td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>CTUe</td>
+<td>2920.0</td>
+<td>3050.0</td>
+</tr>
+<tr>
+<td>ctuh-c</td>
+<td>CTUh</td>
+<td>3.98e-08</td>
+<td>4.53e-08</td>
+</tr>
+<tr>
+<td>ctuh-nc</td>
+<td>CTUh</td>
+<td>1.3e-06</td>
+<td>1.08e-06</td>
+</tr>
+<tr>
+<td>epf</td>
+<td>kg P eq.</td>
+<td>-0.0126</td>
+<td>-0.0182</td>
+</tr>
+<tr>
+<td>epm</td>
+<td>kg N eq.</td>
+<td>0.154</td>
+<td>0.199</td>
+</tr>
+<tr>
+<td>ept</td>
+<td>mol N eq.</td>
+<td>1.46</td>
+<td>1.41</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usage">Usage</h3>
+<h4 id="pro">Pro</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>75.0;50.0;100.0</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td></td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="perso">Perso</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>75.0;50.0;100.0</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td></td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="desktop">Desktop</h2>
+<p>desktop has two <code>types</code>: <code>pro</code> and <code>perso</code>.</p>
+<h3 id="embedded-impacts_2">Embedded impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Unit</th>
+<th>pro</th>
+<th>perso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>kgCO2eq</td>
+<td>277.0</td>
+<td>277.0</td>
+</tr>
+<tr>
+<td>gwpb</td>
+<td>kg CO2 eq.</td>
+<td>0.924</td>
+<td>0.924</td>
+</tr>
+<tr>
+<td>gwpf</td>
+<td>kg CO2 eq.</td>
+<td>275.0</td>
+<td>275.0</td>
+</tr>
+<tr>
+<td>gwplu</td>
+<td>kg CO2 eq.</td>
+<td>2.27e-07</td>
+<td>2.27e-07</td>
+</tr>
+<tr>
+<td>ir</td>
+<td>kg U235 eq.</td>
+<td>870.0</td>
+<td>870.0</td>
+</tr>
+<tr>
+<td>lu</td>
+<td>No dimension</td>
+<td>-101.0</td>
+<td>-101.0</td>
+</tr>
+<tr>
+<td>odp</td>
+<td>kg CFC-11 eq.</td>
+<td>6.24e-05</td>
+<td>6.24e-05</td>
+</tr>
+<tr>
+<td>pm</td>
+<td>Disease occurrence</td>
+<td>9.6e-06</td>
+<td>9.6e-06</td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>kg NMVOC eq.</td>
+<td>0.72</td>
+<td>0.72</td>
+</tr>
+<tr>
+<td>wu</td>
+<td>m3 eq.</td>
+<td>-4490.0</td>
+<td>-4490.0</td>
+</tr>
+<tr>
+<td>mips</td>
+<td>kg</td>
+<td>1460.0</td>
+<td>1460.0</td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>kg SB eq.</td>
+<td>0.00852</td>
+<td>0.00852</td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>MJ</td>
+<td>5110.0</td>
+<td>5110.0</td>
+</tr>
+<tr>
+<td>ap</td>
+<td>mol H+ eq.</td>
+<td>1.55</td>
+<td>1.55</td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>CTUe</td>
+<td>4640.0</td>
+<td>4640.0</td>
+</tr>
+<tr>
+<td>ctuh-c</td>
+<td>CTUh</td>
+<td>-2.83e-08</td>
+<td>-2.83e-08</td>
+</tr>
+<tr>
+<td>ctuh-nc</td>
+<td>CTUh</td>
+<td>1.49e-06</td>
+<td>1.49e-06</td>
+</tr>
+<tr>
+<td>epf</td>
+<td>kg P eq.</td>
+<td>-0.0852</td>
+<td>-0.0852</td>
+</tr>
+<tr>
+<td>epm</td>
+<td>kg N eq.</td>
+<td>0.309</td>
+<td>0.309</td>
+</tr>
+<tr>
+<td>ept</td>
+<td>mol N eq.</td>
+<td>2.28</td>
+<td>2.28</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usage_1">Usage</h3>
+<h4 id="pro_1">Pro</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>175.0;100.0;450.0</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td></td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="perso_1">Perso</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>175.0;100.0;450.0</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td></td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tablet">Tablet</h2>
+<h3 id="embedded-impacts_3">Embedded impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Unit</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>kgCO2eq</td>
+<td>75.9</td>
+</tr>
+<tr>
+<td>gwpb</td>
+<td>kg CO2 eq.</td>
+<td>0.149</td>
+</tr>
+<tr>
+<td>gwpf</td>
+<td>kg CO2 eq.</td>
+<td>75.9</td>
+</tr>
+<tr>
+<td>gwplu</td>
+<td>kg CO2 eq.</td>
+<td>3.18e-06</td>
+</tr>
+<tr>
+<td>ir</td>
+<td>kg U235 eq.</td>
+<td>32.4</td>
+</tr>
+<tr>
+<td>lu</td>
+<td>No dimension</td>
+<td>-1.34</td>
+</tr>
+<tr>
+<td>odp</td>
+<td>kg CFC-11 eq.</td>
+<td>2.4e-05</td>
+</tr>
+<tr>
+<td>pm</td>
+<td>Disease occurrence</td>
+<td>2.62e-06</td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>kg NMVOC eq.</td>
+<td>0.196</td>
+</tr>
+<tr>
+<td>wu</td>
+<td>m3 eq.</td>
+<td>-84.6</td>
+</tr>
+<tr>
+<td>mips</td>
+<td>kg</td>
+<td>279.0</td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>kg SB eq.</td>
+<td>0.00375</td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>MJ</td>
+<td>1000.0</td>
+</tr>
+<tr>
+<td>ap</td>
+<td>mol H+ eq.</td>
+<td>0.465</td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>CTUe</td>
+<td>1540.0</td>
+</tr>
+<tr>
+<td>ctuh-c</td>
+<td>CTUh</td>
+<td>1.79e-08</td>
+</tr>
+<tr>
+<td>ctuh-nc</td>
+<td>CTUh</td>
+<td>6.99e-07</td>
+</tr>
+<tr>
+<td>epf</td>
+<td>kg P eq.</td>
+<td>-0.0028</td>
+</tr>
+<tr>
+<td>epm</td>
+<td>kg N eq.</td>
+<td>0.063</td>
+</tr>
+<tr>
+<td>ept</td>
+<td>mol N eq.</td>
+<td>0.609</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usage_2">Usage</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>7.5;5.0;10.0</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td></td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="smartphone">Smartphone</h2>
+<h3 id="embedded-impacts_4">Embedded impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Unit</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>kgCO2eq</td>
+<td>84.0</td>
+</tr>
+<tr>
+<td>gwpb</td>
+<td>kg CO2 eq.</td>
+<td>0.116</td>
+</tr>
+<tr>
+<td>gwpf</td>
+<td>kg CO2 eq.</td>
+<td>84.0</td>
+</tr>
+<tr>
+<td>gwplu</td>
+<td>kg CO2 eq.</td>
+<td>1.05e-06</td>
+</tr>
+<tr>
+<td>ir</td>
+<td>kg U235 eq.</td>
+<td>13.7</td>
+</tr>
+<tr>
+<td>lu</td>
+<td>No dimension</td>
+<td>-2.27</td>
+</tr>
+<tr>
+<td>odp</td>
+<td>kg CFC-11 eq.</td>
+<td>2.68e-05</td>
+</tr>
+<tr>
+<td>pm</td>
+<td>Disease occurrence</td>
+<td>2.7e-06</td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>kg NMVOC eq.</td>
+<td>0.198</td>
+</tr>
+<tr>
+<td>wu</td>
+<td>m3 eq.</td>
+<td>-107.0</td>
+</tr>
+<tr>
+<td>mips</td>
+<td>kg</td>
+<td>250.0</td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>kg SB eq.</td>
+<td>0.00205</td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>MJ</td>
+<td>1110.0</td>
+</tr>
+<tr>
+<td>ap</td>
+<td>mol H+ eq.</td>
+<td>0.48</td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>CTUe</td>
+<td>1340.0</td>
+</tr>
+<tr>
+<td>ctuh-c</td>
+<td>CTUh</td>
+<td>1.66e-08</td>
+</tr>
+<tr>
+<td>ctuh-nc</td>
+<td>CTUh</td>
+<td>5.65e-07</td>
+</tr>
+<tr>
+<td>epf</td>
+<td>kg P eq.</td>
+<td>-0.00295</td>
+</tr>
+<tr>
+<td>epm</td>
+<td>kg N eq.</td>
+<td>0.105</td>
+</tr>
+<tr>
+<td>ept</td>
+<td>mol N eq.</td>
+<td>0.61</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usage_3">Usage</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>1.0;0.5;3.0</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td></td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="television">Television</h2>
+<p>television has two <code>types</code>: <code>pro</code> and <code>perso</code>.</p>
+<h3 id="embedded-impacts_5">Embedded impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Unit</th>
+<th>pro</th>
+<th>perso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>kgCO2eq</td>
+<td>152.0</td>
+<td>360.0</td>
+</tr>
+<tr>
+<td>gwpb</td>
+<td>kg CO2 eq.</td>
+<td>0.737</td>
+<td>1.56</td>
+</tr>
+<tr>
+<td>gwpf</td>
+<td>kg CO2 eq.</td>
+<td>151.0</td>
+<td>358.0</td>
+</tr>
+<tr>
+<td>gwplu</td>
+<td>kg CO2 eq.</td>
+<td>6.43e-06</td>
+<td>1e-05</td>
+</tr>
+<tr>
+<td>ir</td>
+<td>kg U235 eq.</td>
+<td>330.0</td>
+<td>960.0</td>
+</tr>
+<tr>
+<td>lu</td>
+<td>No dimension</td>
+<td>-224.0</td>
+<td>-339.0</td>
+</tr>
+<tr>
+<td>odp</td>
+<td>kg CFC-11 eq.</td>
+<td>1.14e-05</td>
+<td>1.86e-05</td>
+</tr>
+<tr>
+<td>pm</td>
+<td>Disease occurrence</td>
+<td>5.94e-06</td>
+<td>1.39e-05</td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>kg NMVOC eq.</td>
+<td>0.469</td>
+<td>1.06</td>
+</tr>
+<tr>
+<td>wu</td>
+<td>m3 eq.</td>
+<td>-808.0</td>
+<td>-920.0</td>
+</tr>
+<tr>
+<td>mips</td>
+<td>kg</td>
+<td>1000.0</td>
+<td>1880.0</td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>kg SB eq.</td>
+<td>0.0249</td>
+<td>0.0383</td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>MJ</td>
+<td>3030.0</td>
+<td>6610.0</td>
+</tr>
+<tr>
+<td>ap</td>
+<td>mol H+ eq.</td>
+<td>0.944</td>
+<td>2.38</td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>CTUe</td>
+<td>1730.0</td>
+<td>5300.0</td>
+</tr>
+<tr>
+<td>ctuh-c</td>
+<td>CTUh</td>
+<td>2.06e-08</td>
+<td>5.21e-08</td>
+</tr>
+<tr>
+<td>ctuh-nc</td>
+<td>CTUh</td>
+<td>2.18e-06</td>
+<td>4.56e-06</td>
+</tr>
+<tr>
+<td>epf</td>
+<td>kg P eq.</td>
+<td>-0.017</td>
+<td>-0.0227</td>
+</tr>
+<tr>
+<td>epm</td>
+<td>kg N eq.</td>
+<td>0.282</td>
+<td>0.589</td>
+</tr>
+<tr>
+<td>ept</td>
+<td>mol N eq.</td>
+<td>1.53</td>
+<td>3.44</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usage_4">Usage</h3>
+<h4 id="pro_2">Pro</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>300.0;17.0;1200.0</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td></td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="perso_2">Perso</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>300.0;17.0;1200.0</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td></td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usb-stick">USB stick</h2>
+<h3 id="embedded-impacts_6">Embedded impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Unit</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>kgCO2eq</td>
+<td>6.25</td>
+</tr>
+<tr>
+<td>gwpb</td>
+<td>kg CO2 eq.</td>
+<td>0.00454</td>
+</tr>
+<tr>
+<td>gwpf</td>
+<td>kg CO2 eq.</td>
+<td>6.25</td>
+</tr>
+<tr>
+<td>gwplu</td>
+<td>kg CO2 eq.</td>
+<td>9.15e-10</td>
+</tr>
+<tr>
+<td>ir</td>
+<td>kg U235 eq.</td>
+<td>1.47</td>
+</tr>
+<tr>
+<td>lu</td>
+<td>No dimension</td>
+<td>-0.285</td>
+</tr>
+<tr>
+<td>odp</td>
+<td>kg CFC-11 eq.</td>
+<td>2.35e-06</td>
+</tr>
+<tr>
+<td>pm</td>
+<td>Disease occurrence</td>
+<td>1.94e-07</td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>kg NMVOC eq.</td>
+<td>0.0138</td>
+</tr>
+<tr>
+<td>wu</td>
+<td>m3 eq.</td>
+<td>-2.02</td>
+</tr>
+<tr>
+<td>mips</td>
+<td>kg</td>
+<td>20.0</td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>kg SB eq.</td>
+<td>9.6e-05</td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>MJ</td>
+<td>82.0</td>
+</tr>
+<tr>
+<td>ap</td>
+<td>mol H+ eq.</td>
+<td>0.0346</td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>CTUe</td>
+<td>74.5</td>
+</tr>
+<tr>
+<td>ctuh-c</td>
+<td>CTUh</td>
+<td>8.95e-10</td>
+</tr>
+<tr>
+<td>ctuh-nc</td>
+<td>CTUh</td>
+<td>3.57e-08</td>
+</tr>
+<tr>
+<td>epf</td>
+<td>kg P eq.</td>
+<td>-0.00045</td>
+</tr>
+<tr>
+<td>epm</td>
+<td>kg N eq.</td>
+<td>0.00448</td>
+</tr>
+<tr>
+<td>ept</td>
+<td>mol N eq.</td>
+<td>0.0429</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usage_5">Usage</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>0.3;0.12;0.63</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td></td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="external-ssd">External SSD</h2>
+<h3 id="embedded-impacts_7">Embedded impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Unit</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>kgCO2eq</td>
+<td>109.0</td>
+</tr>
+<tr>
+<td>gwpb</td>
+<td>kg CO2 eq.</td>
+<td>0.0765</td>
+</tr>
+<tr>
+<td>gwpf</td>
+<td>kg CO2 eq.</td>
+<td>109.0</td>
+</tr>
+<tr>
+<td>gwplu</td>
+<td>kg CO2 eq.</td>
+<td>3.89e-09</td>
+</tr>
+<tr>
+<td>ir</td>
+<td>kg U235 eq.</td>
+<td>6.9</td>
+</tr>
+<tr>
+<td>lu</td>
+<td>No dimension</td>
+<td>-1.05</td>
+</tr>
+<tr>
+<td>odp</td>
+<td>kg CFC-11 eq.</td>
+<td>4.56e-05</td>
+</tr>
+<tr>
+<td>pm</td>
+<td>Disease occurrence</td>
+<td>3.33e-06</td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>kg NMVOC eq.</td>
+<td>0.238</td>
+</tr>
+<tr>
+<td>wu</td>
+<td>m3 eq.</td>
+<td>-4.78</td>
+</tr>
+<tr>
+<td>mips</td>
+<td>kg</td>
+<td>264.0</td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>kg SB eq.</td>
+<td>0.000397</td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>MJ</td>
+<td>1430.0</td>
+</tr>
+<tr>
+<td>ap</td>
+<td>mol H+ eq.</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>CTUe</td>
+<td>1380.0</td>
+</tr>
+<tr>
+<td>ctuh-c</td>
+<td>CTUh</td>
+<td>1.15e-08</td>
+</tr>
+<tr>
+<td>ctuh-nc</td>
+<td>CTUh</td>
+<td>5.95e-07</td>
+</tr>
+<tr>
+<td>epf</td>
+<td>kg P eq.</td>
+<td>-0.00171</td>
+</tr>
+<tr>
+<td>epm</td>
+<td>kg N eq.</td>
+<td>0.074</td>
+</tr>
+<tr>
+<td>ept</td>
+<td>mol N eq.</td>
+<td>0.75</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usage_6">Usage</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>2.5;0.5;5.0</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td></td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="external-hdd">External HDD</h2>
+<h3 id="embedded-impacts_8">Embedded impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Unit</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>kgCO2eq</td>
+<td>15.8</td>
+</tr>
+<tr>
+<td>gwpb</td>
+<td>kg CO2 eq.</td>
+<td>0.066</td>
+</tr>
+<tr>
+<td>gwpf</td>
+<td>kg CO2 eq.</td>
+<td>15.7</td>
+</tr>
+<tr>
+<td>gwplu</td>
+<td>kg CO2 eq.</td>
+<td>6.9e-09</td>
+</tr>
+<tr>
+<td>ir</td>
+<td>kg U235 eq.</td>
+<td>19.7</td>
+</tr>
+<tr>
+<td>lu</td>
+<td>No dimension</td>
+<td>-3.09</td>
+</tr>
+<tr>
+<td>odp</td>
+<td>kg CFC-11 eq.</td>
+<td>1.64e-06</td>
+</tr>
+<tr>
+<td>pm</td>
+<td>Disease occurrence</td>
+<td>6.5e-07</td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>kg NMVOC eq.</td>
+<td>0.051</td>
+</tr>
+<tr>
+<td>wu</td>
+<td>m3 eq.</td>
+<td>-488.0</td>
+</tr>
+<tr>
+<td>mips</td>
+<td>kg</td>
+<td>96.5</td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>kg SB eq.</td>
+<td>0.00234</td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>MJ</td>
+<td>225.0</td>
+</tr>
+<tr>
+<td>ap</td>
+<td>mol H+ eq.</td>
+<td>0.086</td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>CTUe</td>
+<td>344.0</td>
+</tr>
+<tr>
+<td>ctuh-c</td>
+<td>CTUh</td>
+<td>2.65e-09</td>
+</tr>
+<tr>
+<td>ctuh-nc</td>
+<td>CTUh</td>
+<td>2.51e-07</td>
+</tr>
+<tr>
+<td>epf</td>
+<td>kg P eq.</td>
+<td>-0.00165</td>
+</tr>
+<tr>
+<td>epm</td>
+<td>kg N eq.</td>
+<td>0.0184</td>
+</tr>
+<tr>
+<td>ept</td>
+<td>mol N eq.</td>
+<td>0.181</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usage_7">Usage</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>7.75;6.5;9.0</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td></td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="monitor">Monitor</h2>
+<h3 id="embedded-impacts_9">Embedded impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Unit</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>kgCO2eq</td>
+<td>64.7</td>
+</tr>
+<tr>
+<td>gwpb</td>
+<td>kg CO2 eq.</td>
+<td>0.309</td>
+</tr>
+<tr>
+<td>gwpf</td>
+<td>kg CO2 eq.</td>
+<td>64.5</td>
+</tr>
+<tr>
+<td>gwplu</td>
+<td>kg CO2 eq.</td>
+<td>2.83e-06</td>
+</tr>
+<tr>
+<td>ir</td>
+<td>kg U235 eq.</td>
+<td>145.0</td>
+</tr>
+<tr>
+<td>lu</td>
+<td>No dimension</td>
+<td>-101.0</td>
+</tr>
+<tr>
+<td>odp</td>
+<td>kg CFC-11 eq.</td>
+<td>4.95e-06</td>
+</tr>
+<tr>
+<td>pm</td>
+<td>Disease occurrence</td>
+<td>2.57e-06</td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>kg NMVOC eq.</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>wu</td>
+<td>m3 eq.</td>
+<td>-640.0</td>
+</tr>
+<tr>
+<td>mips</td>
+<td>kg</td>
+<td>423.0</td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>kg SB eq.</td>
+<td>0.0108</td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>MJ</td>
+<td>1300.0</td>
+</tr>
+<tr>
+<td>ap</td>
+<td>mol H+ eq.</td>
+<td>0.382</td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>CTUe</td>
+<td>477.0</td>
+</tr>
+<tr>
+<td>ctuh-c</td>
+<td>CTUh</td>
+<td>4.57e-10</td>
+</tr>
+<tr>
+<td>ctuh-nc</td>
+<td>CTUh</td>
+<td>5.93e-07</td>
+</tr>
+<tr>
+<td>epf</td>
+<td>kg P eq.</td>
+<td>-0.0108</td>
+</tr>
+<tr>
+<td>epm</td>
+<td>kg N eq.</td>
+<td>0.109</td>
+</tr>
+<tr>
+<td>ept</td>
+<td>mol N eq.</td>
+<td>0.65</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usage_8">Usage</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>55.0;20.0;100.0</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td></td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="box">Box</h2>
+<h3 id="embedded-impacts_10">Embedded impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Unit</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>kgCO2eq</td>
+<td>36.1</td>
+</tr>
+<tr>
+<td>gwpb</td>
+<td>kg CO2 eq.</td>
+<td>0.089</td>
+</tr>
+<tr>
+<td>gwpf</td>
+<td>kg CO2 eq.</td>
+<td>36.0</td>
+</tr>
+<tr>
+<td>gwplu</td>
+<td>kg CO2 eq.</td>
+<td>1.21e-08</td>
+</tr>
+<tr>
+<td>ir</td>
+<td>kg U235 eq.</td>
+<td>135.0</td>
+</tr>
+<tr>
+<td>lu</td>
+<td>No dimension</td>
+<td>-46.3</td>
+</tr>
+<tr>
+<td>odp</td>
+<td>kg CFC-11 eq.</td>
+<td>4.66e-06</td>
+</tr>
+<tr>
+<td>pm</td>
+<td>Disease occurrence</td>
+<td>1.27e-06</td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>kg NMVOC eq.</td>
+<td>0.087</td>
+</tr>
+<tr>
+<td>wu</td>
+<td>m3 eq.</td>
+<td>-422.0</td>
+</tr>
+<tr>
+<td>mips</td>
+<td>kg</td>
+<td>257.0</td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>kg SB eq.</td>
+<td>4.41e-05</td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>MJ</td>
+<td>525.0</td>
+</tr>
+<tr>
+<td>ap</td>
+<td>mol H+ eq.</td>
+<td>0.179</td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>CTUe</td>
+<td>-42.8</td>
+</tr>
+<tr>
+<td>ctuh-c</td>
+<td>CTUh</td>
+<td>9.6e-08</td>
+</tr>
+<tr>
+<td>ctuh-nc</td>
+<td>CTUh</td>
+<td>-3.29e-07</td>
+</tr>
+<tr>
+<td>epf</td>
+<td>kg P eq.</td>
+<td>-0.02</td>
+</tr>
+<tr>
+<td>epm</td>
+<td>kg N eq.</td>
+<td>0.0375</td>
+</tr>
+<tr>
+<td>ept</td>
+<td>mol N eq.</td>
+<td>0.25</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usage_9">Usage</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>10.0;5.0;20.0</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td></td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="smartwatch">Smartwatch</h2>
+<p>In progress...</p>
+<h3 id="embedded-impacts_11">Embedded impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Unit</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="usage_10">Usage</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>0.0;0.0;0.0</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vr-headset">VR headset</h2>
+<p>VR headset has two <code>types</code>: <code>lcd</code> and <code>oled</code>.</p>
+<h3 id="embedded-impacts_12">Embedded impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Unit</th>
+<th>lcd</th>
+<th>oled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>kgCO2eq</td>
+<td>4.59e+01</td>
+<td>8.94e+01</td>
+</tr>
+<tr>
+<td>gwpb</td>
+<td>kg CO2 eq.</td>
+<td>8.83e-02</td>
+<td>4.33e-01</td>
+</tr>
+<tr>
+<td>gwpf</td>
+<td>kg CO2 eq.</td>
+<td>4.30e+02</td>
+<td>8.89e+01</td>
+</tr>
+<tr>
+<td>gwplu</td>
+<td>kg CO2 eq.</td>
+<td>9.55e-05</td>
+<td>4.73e-08</td>
+</tr>
+<tr>
+<td>ir</td>
+<td>kg U235 eq.</td>
+<td>1.54e+01</td>
+<td>2.12e+02</td>
+</tr>
+<tr>
+<td>lu</td>
+<td>No dimension</td>
+<td>1.71e+00</td>
+<td>1.18e+00</td>
+</tr>
+<tr>
+<td>odp</td>
+<td>kg CFC-11 eq.</td>
+<td>1.52e-05</td>
+<td>8.39e-06</td>
+</tr>
+<tr>
+<td>pm</td>
+<td>Disease occurrence</td>
+<td>1.50e-06</td>
+<td>3.30e-06</td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>kg NMVOC eq.</td>
+<td>1.15e-01</td>
+<td>2.41e-01</td>
+</tr>
+<tr>
+<td>wu</td>
+<td>m3 eq.</td>
+<td>1.27e+02</td>
+<td>4.29e+02</td>
+</tr>
+<tr>
+<td>mips</td>
+<td>kg</td>
+<td>1.54e+02</td>
+<td>3.03e+02</td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>kg SB eq.</td>
+<td>3.33e-03</td>
+<td>4.54e-03</td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>MJ</td>
+<td>6.11e+02</td>
+<td>1.35e+03</td>
+</tr>
+<tr>
+<td>ap</td>
+<td>mol H+ eq.</td>
+<td>2.64e-01</td>
+<td>5.96e-01</td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>CTUe</td>
+<td>6.82e+02</td>
+<td>1.68e+03</td>
+</tr>
+<tr>
+<td>ctuh-c</td>
+<td>CTUh</td>
+<td>1.31e-06</td>
+<td>5.00e-06</td>
+</tr>
+<tr>
+<td>ctuh-nc</td>
+<td>CTUh</td>
+<td>6.84e-07</td>
+<td>1.02e-06</td>
+</tr>
+<tr>
+<td>epf</td>
+<td>kg P eq.</td>
+<td>7.00e-04</td>
+<td>1.11e-04</td>
+</tr>
+<tr>
+<td>epm</td>
+<td>kg N eq.</td>
+<td>3.74e-02</td>
+<td>1.22e-01</td>
+</tr>
+<tr>
+<td>ept</td>
+<td>mol N eq.</td>
+<td>3.69e-01</td>
+<td>7.69e-01</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usage_11">Usage</h3>
+<h4 id="lcd">lcd</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>692;692;692</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td>0.01</td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>hours_life_time</td>
+<td>hours</td>
+<td>43800</td>
+<td>Life time of the device in hours</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<h4 id="oled">oled</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>710;710;710</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td>0.01</td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>hours_life_time</td>
+<td>hours</td>
+<td>43800</td>
+<td>Life time of the device in hours</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vr-controller">VR controller</h2>
+<h3 id="embedded-impacts_13">Embedded impacts</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Unit</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>kgCO2eq</td>
+<td>4.22e+00</td>
+</tr>
+<tr>
+<td>gwpb</td>
+<td>kg CO2 eq.</td>
+<td>1.97e-02</td>
+</tr>
+<tr>
+<td>gwpf</td>
+<td>kg CO2 eq.</td>
+<td>4.20e+00</td>
+</tr>
+<tr>
+<td>gwplu</td>
+<td>kg CO2 eq.</td>
+<td>4.14e-06</td>
+</tr>
+<tr>
+<td>ir</td>
+<td>kg U235 eq.</td>
+<td>2.50e+00</td>
+</tr>
+<tr>
+<td>lu</td>
+<td>No dimension</td>
+<td>5.73e-01</td>
+</tr>
+<tr>
+<td>odp</td>
+<td>kg CFC-11 eq.</td>
+<td>7.66e-07</td>
+</tr>
+<tr>
+<td>pm</td>
+<td>Disease occurrence</td>
+<td>2.22e-07</td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>kg NMVOC eq.</td>
+<td>1.46e-02</td>
+</tr>
+<tr>
+<td>wu</td>
+<td>m3 eq.</td>
+<td>3.99e+01</td>
+</tr>
+<tr>
+<td>mips</td>
+<td>kg</td>
+<td>5.47e+01</td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>kg SB eq.</td>
+<td>1.07e-03</td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>MJ</td>
+<td>5.45e+01</td>
+</tr>
+<tr>
+<td>ap</td>
+<td>mol H+ eq.</td>
+<td>4.28e-02</td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>CTUe</td>
+<td>5.11e+01</td>
+</tr>
+<tr>
+<td>ctuh-c</td>
+<td>CTUh</td>
+<td>5.95e-08</td>
+</tr>
+<tr>
+<td>ctuh-nc</td>
+<td>CTUh</td>
+<td>1.85e-07</td>
+</tr>
+<tr>
+<td>epf</td>
+<td>kg P eq.</td>
+<td>9.87e-05</td>
+</tr>
+<tr>
+<td>epm</td>
+<td>kg N eq.</td>
+<td>4.28e-03</td>
+</tr>
+<tr>
+<td>ept</td>
+<td>mol N eq.</td>
+<td>4.49e-02</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usage_12">Usage</h3>
+<h4 id="lcd_1">lcd</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default values (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg_power</td>
+<td>Watt/hour</td>
+<td>7.90;7.90;7.90</td>
+<td>Average electrical consumption per hour</td>
+<td>1</td>
+</tr>
+<tr>
+<td>use_time_ratio</td>
+<td>/1</td>
+<td>0.01</td>
+<td>Proportion of time the device is used during the given duration.</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>hours_life_time</td>
+<td>hours</td>
+<td>43800</td>
+<td>Life time of the device in hours</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../server/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Server" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Server
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../iot_devices/" class="md-footer__link md-footer__link--next" aria-label="Next: IoT device" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              IoT device
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
