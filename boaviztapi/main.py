@@ -2,7 +2,6 @@ import logging
 
 import anyio
 import markdown
-import toml
 from fastapi.middleware.cors import CORSMiddleware
 import os
 from contextlib import asynccontextmanager

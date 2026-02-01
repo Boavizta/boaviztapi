@@ -4,3 +4,14 @@ from .gpu import GPU
 from .disk import Disk
 from .other import Case, Motherboard, PowerSupply
 from .ram import RAM
+
+__all__ = [
+    "ComponentDTO",
+    "CPU",
+    "GPU",
+    "Disk",
+    "Case",
+    "Motherboard",
+    "PowerSupply",
+    "RAM",
+]

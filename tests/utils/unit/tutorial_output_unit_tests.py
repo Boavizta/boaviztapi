@@ -1,4 +1,14 @@
-from docs.utils.script_tutorial_output_automation import *
+from uvicorn.config import Config
+
+from boaviztapi.main import app, UvicornServerThreaded
+from docs.utils.script_tutorial_output_automation import (
+    change_json_to_tempvalue,
+    find_curl_commands,
+    execute_curl,
+    parse_result_to_json,
+    replace_curl_with_localhost,
+    replace_placeholder_by_json,
+)
 
 
 def test_change_json():

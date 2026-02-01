@@ -5,7 +5,6 @@ from boaviztapi.dto.usage.usage import (
 )
 from boaviztapi.model.device.server import DeviceServer
 from boaviztapi.service.impacts_computation import compute_single_impact
-from boaviztapi import config
 
 
 def test_usage_server_french_mix_1_kw(french_mix_1_kw_dto):
