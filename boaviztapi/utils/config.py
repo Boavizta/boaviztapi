@@ -13,6 +13,10 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
+    # Electricity Maps API key (if set, real-time GWP factors are fetched)
+    electricity_maps_api_key: Optional[str] = None
+    electricity_maps_cache_expiry_seconds: int = 600
+
     # Location and usage defaults
     default_location: str = "EEE"
     default_usage: str = "DEFAULT"
