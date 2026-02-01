@@ -8,3 +8,16 @@ from .motherboard import ComponentMotherboard
 from .power_supply import ComponentPowerSupply
 from .case import ComponentCase
 from .assembly import ComponentAssembly
+
+__all__ = [
+    "Component",
+    "ComponentCPU",
+    "ComponentGPU",
+    "ComponentRAM",
+    "ComponentHDD",
+    "ComponentSSD",
+    "ComponentMotherboard",
+    "ComponentPowerSupply",
+    "ComponentCase",
+    "ComponentAssembly",
+]

@@ -1,7 +1,6 @@
 import os
 
 import pandas as pd
-import toml
 from fastapi import APIRouter, Query
 
 from boaviztapi import data_dir
