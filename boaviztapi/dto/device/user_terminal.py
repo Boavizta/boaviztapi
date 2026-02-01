@@ -79,34 +79,34 @@ class VrController(UserTerminal):
 
 
 def mapper_user_terminal(user_terminal_dto: UserTerminal, archetype) -> Device:
-    if type(user_terminal_dto) == Laptop:
+    if type(user_terminal_dto) is Laptop:
         model = DeviceLaptop(archetype=archetype)
         model.type.set_input(user_terminal_dto.type)
-    elif type(user_terminal_dto) == Desktop:
+    elif type(user_terminal_dto) is Desktop:
         model = DeviceDesktop(archetype=archetype)
         model.type.set_input(user_terminal_dto.type)
-    elif type(user_terminal_dto) == Tablet:
+    elif type(user_terminal_dto) is Tablet:
         model = DeviceTablet(archetype=archetype)
-    elif type(user_terminal_dto) == Smartphone:
+    elif type(user_terminal_dto) is Smartphone:
         model = DeviceSmartphone(archetype=archetype)
-    elif type(user_terminal_dto) == Television:
+    elif type(user_terminal_dto) is Television:
         model = DeviceTelevision(archetype=archetype)
         model.type.set_input(user_terminal_dto.type)
-    elif type(user_terminal_dto) == Smartwatch:
+    elif type(user_terminal_dto) is Smartwatch:
         model = DeviceSmartWatch(archetype=archetype)
-    elif type(user_terminal_dto) == Box:
+    elif type(user_terminal_dto) is Box:
         model = DeviceBox(archetype=archetype)
-    elif type(user_terminal_dto) == UsbStick:
+    elif type(user_terminal_dto) is UsbStick:
         model = DeviceUsbStick(archetype=archetype)
-    elif type(user_terminal_dto) == ExternalHDD:
+    elif type(user_terminal_dto) is ExternalHDD:
         model = DeviceExternalHDD(archetype=archetype)
-    elif type(user_terminal_dto) == ExternalSSD:
+    elif type(user_terminal_dto) is ExternalSSD:
         model = DeviceExternalSSD(archetype=archetype)
-    elif type(user_terminal_dto) == Monitor:
+    elif type(user_terminal_dto) is Monitor:
         model = DeviceMonitor(archetype=archetype)
-    elif type(user_terminal_dto) == VrController:
+    elif type(user_terminal_dto) is VrController:
         model = DeviceVrController(archetype=archetype)
-    elif type(user_terminal_dto) == VrHeadset:
+    elif type(user_terminal_dto) is VrHeadset:
         model = DeviceVrHeadset(archetype=archetype)
         model.type.set_input(user_terminal_dto.type)
     else:

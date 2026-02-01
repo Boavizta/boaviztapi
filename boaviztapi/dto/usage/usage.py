@@ -85,7 +85,7 @@ def mapper_usage(usage_dto: Usage, archetype=None) -> ModelUsage:
         usage_model.time_workload.min = usage_dto.time_workload
         usage_model.time_workload.max = usage_dto.time_workload
 
-        if type(usage_dto.time_workload) == float:
+        if type(usage_dto.time_workload) is float:
             usage_model.time_workload.unit = "%"
         else:
             usage_model.time_workload.unit = "(time_percentage:%, load_percentage: %)"

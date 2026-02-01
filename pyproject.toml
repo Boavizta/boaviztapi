@@ -67,8 +67,6 @@ force-exclude = true
 [tool.ruff.lint]
 # TODO - uncomment these ignores one by one and fix in separate PRs
 ignore = [
-    "E701", # Multiple statements on one line
-    "E721", # Use is and is not for type comparisons
     "F401", # Unused imports and exports
     "F403", # Unable to detect undefined names
     "F405", # Potentially missing imports
