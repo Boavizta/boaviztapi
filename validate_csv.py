@@ -18,6 +18,7 @@ CSV_FILES = (
     (CLOUD_DIR.joinpath("aws.csv"), CLOUD_FORMAT_SPEC),
     (CLOUD_DIR.joinpath("azure.csv"), CLOUD_FORMAT_SPEC),
     (CLOUD_DIR.joinpath("gcp.csv"), CLOUD_FORMAT_SPEC),
+    (CLOUD_DIR.joinpath("ovhcloud.csv"), CLOUD_FORMAT_SPEC),
     (CLOUD_DIR.joinpath("scaleway.csv"), CLOUD_FORMAT_SPEC),
     (ARCHETYPES_DIR.joinpath("server.csv"), None),
     (CROWDSOURCING_DIR.joinpath("cpu_specs.csv"), None),

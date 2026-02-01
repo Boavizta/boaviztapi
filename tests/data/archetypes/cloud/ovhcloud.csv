@@ -1,0 +1,2 @@
+id,vcpu,memory,ssd_storage,hdd_storage,gpu_units,platform,source
+b3-8,2,8.0,50.0,0.0,0,General_Purpose_b3,https://www.ovhcloud.com/en/public-cloud/prices/
