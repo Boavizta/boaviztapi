@@ -1,6 +1,17 @@
 import pytest
 
-from boaviztapi.utils.country import iso3_to_iso2
+from boaviztapi.utils.country import iso3_to_iso2, is_iso3
+
+
+class TestIsIso3:
+    def test_fra_is_iso3(self):
+        assert is_iso3("FRA")
+
+    def test_wor_is_not_iso3(self):
+        assert not is_iso3("WOR")
+
+    def test_unknown_code_is_not_iso3(self):
+        assert not is_iso3("XYZ")
 
 
 class TestIso3ToIso2:

@@ -5,7 +5,7 @@ import yaml
 from boaviztapi import data_dir
 from boaviztapi.service.electricitymaps import fetch_carbon_intensity
 from boaviztapi.utils.config import config
-from boaviztapi.utils.country import iso3_to_iso2
+from boaviztapi.utils.country import iso3_to_iso2, is_iso3
 
 config_file = os.path.join(data_dir, "factors.yml")
 impact_factors = yaml.load(Path(config_file).read_text(), Loader=yaml.CSafeLoader)
@@ -29,13 +29,15 @@ def get_gpu_impact_factor(component, phase, impact_type) -> dict:
 
 
 def get_electrical_impact_factor(usage_location, impact_type) -> dict:
-    if config.electricity_maps_api_key and impact_type == "gwp":
-        try:
-            zone = iso3_to_iso2(usage_location)
-            return fetch_carbon_intensity(config.electricity_maps_api_key, zone)
-        except ValueError:
-            # If we don't have a valid ISO3 location, continue
-            pass
+    # Use Electricity Maps if we have an API key, are looking up GWP, and the location is a valid in ISO 3166-1 alpha-3 country.
+    # Note that calling code may pass non-country locations like WOR or EEE, which cannot be used with Electricity Maps.
+    if (
+        config.electricity_maps_api_key
+        and impact_type == "gwp"
+        and is_iso3(usage_location)
+    ):
+        zone = iso3_to_iso2(usage_location)
+        return fetch_carbon_intensity(config.electricity_maps_api_key, zone)
 
     if impact_factors["electricity"].get(usage_location):
         if impact_factors["electricity"].get(usage_location).get(impact_type):
