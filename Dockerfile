@@ -1,4 +1,4 @@
-ARG PY_VERSION=3.13
+ARG PY_VERSION=3.14
 
 #---------------------------------------------------------------------------------------
 # Stage 1 →  Builder image
@@ -20,7 +20,7 @@ RUN poetry build --format wheel
 #---------------------------------------------------------------------------------------
 FROM public.ecr.aws/lambda/python:$PY_VERSION AS lambda-env
 
-ARG PY_VERSION=3.13
+ARG PY_VERSION=3.14
 
 # Copy the built wheel from build stage, install, and clean up
 COPY --from=build-env /app/dist/*.whl ${LAMBDA_TASK_ROOT}/
@@ -44,7 +44,7 @@ FROM python:$PY_VERSION-alpine AS run-env
 ENV LC_ALL=C.UTF-8 \
     LANG=C.UTF-8
 
-ARG PY_VERSION=3.13
+ARG PY_VERSION=3.14
 WORKDIR /app
 
 # Copy wheel, install, and clean up in single layer
