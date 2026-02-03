@@ -1,0 +1,2018 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>CPU - Boavizta API documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cpu" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Boavizta API documentation" class="md-header__button md-logo" aria-label="Boavizta API documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Boavizta API documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CPU
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Boavizta API documentation" class="md-nav__button md-logo" aria-label="Boavizta API documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Boavizta API documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../q%26a/" class="md-nav__link">
+        Q&A
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://datavizta.boavizta.org/" target="_blank" class="md-nav__link">
+        Datavizta
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://api.boavizta.org/docs" target="_blank" class="md-nav__link">
+        Try the API (OpenAPI)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/cpu_component/" class="md-nav__link">
+        Get the impacts of a cpu
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/single_server/" class="md-nav__link">
+        Get the impacts of a server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/single_cloud_instance/" class="md-nav__link">
+        Get the impacts of a cloud instance (AWS)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/consumption_profile/" class="md-nav__link">
+        Get started with consumption profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/end_user_devices/" class="md-nav__link">
+        Get started with terminal and peripherals
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Explanations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Explanations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Explanations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../boavizta_db/" class="md-nav__link">
+        Boavizta database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../impacts/" class="md-nav__link">
+        Impacts criteria
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded_methodology/" class="md-nav__link">
+        Embedded impacts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Usage impacts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Usage impacts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Usage impacts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/usage/" class="md-nav__link">
+        Methodology
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/duration/" class="md-nav__link">
+        Duration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/elec_factors/" class="md-nav__link">
+        Electrical impacts factors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/power/" class="md-nav__link">
+        Power
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/countries/" class="md-nav__link">
+        Countries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consumption_profile/" class="md-nav__link">
+        Consumption profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../auto_complete/" class="md-nav__link">
+        Auto-complete
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archetypes/" class="md-nav__link">
+        Archetypes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../verbose/" class="md-nav__link">
+        Verbose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../error_margin/" class="md-nav__link">
+        Error margin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_10" type="checkbox" id="__nav_4_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_10">
+          Components
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Components" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_10">
+          <span class="md-nav__icon md-icon"></span>
+          Components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../component/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          CPU
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        CPU
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#characteristics" class="md-nav__link">
+    Characteristics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete" class="md-nav__link">
+    Complete
+  </a>
+  
+    <nav class="md-nav" aria-label="Complete">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#completion-from-cpu-name" class="md-nav__link">
+    Completion from CPU name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completion-of-the-die_size-from-family-andor-core_units" class="md-nav__link">
+    Completion of the die_size from family and/or core_units
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedded-impacts" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedded impacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impacts-criteria" class="md-nav__link">
+    Impacts criteria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#impact-factors" class="md-nav__link">
+    Impact factors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-impacts" class="md-nav__link">
+    Usage impacts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-consumption-profile" class="md-nav__link">
+    Power Consumption profile
+  </a>
+  
+    <nav class="md-nav" aria-label="Power Consumption profile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#determining-the-parameters" class="md-nav__link">
+    Determining the parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Determining the parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-model-range" class="md-nav__link">
+    From model range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-adaptation-from-punctual-measurement" class="md-nav__link">
+    Model adaptation from punctual measurement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-adaptation-from-tdp" class="md-nav__link">
+    Model adaptation from TDP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ram/" class="md-nav__link">
+        RAM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssd/" class="md-nav__link">
+        SSD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hdd/" class="md-nav__link">
+        HDD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../motherboard/" class="md-nav__link">
+        Motherboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../power_supply/" class="md-nav__link">
+        Power supply
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assembly/" class="md-nav__link">
+        Assembly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case/" class="md-nav__link">
+        Case
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functional_blocks/" class="md-nav__link">
+        Functional block (IoT)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_11" type="checkbox" id="__nav_4_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11">
+          Devices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Devices" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_11">
+          <span class="md-nav__icon md-icon"></span>
+          Devices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/devices/" class="md-nav__link">
+        Devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/server/" class="md-nav__link">
+        Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/terminals_%26_peripherals/" class="md-nav__link">
+        End user devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devices/iot_devices/" class="md-nav__link">
+        IoT device
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_12" type="checkbox" id="__nav_4_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_12">
+          Services
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Services" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_12">
+          <span class="md-nav__icon md-icon"></span>
+          Services
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/services/" class="md-nav__link">
+        Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/cloud/" class="md-nav__link">
+        Cloud instances
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../useful_resources/" class="md-nav__link">
+        Useful resources
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/routes/" class="md-nav__link">
+        Routes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Format
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Format" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Format
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/return_format/" class="md-nav__link">
+        Return format
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/server_route/" class="md-nav__link">
+        Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/cloud_route/" class="md-nav__link">
+        Cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/component_route/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/end_user_devices_route/" class="md-nav__link">
+        End user devices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Reference/format/iot_device_route/" class="md-nav__link">
+        IoT devices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/" class="md-nav__link">
+        Deploy
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../config/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release_notes/" class="md-nav__link">
+        Release notes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Contributing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Contributing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/cloud_provider/" class="md-nav__link">
+        Add a cloud provider
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/cloud_instance/" class="md-nav__link">
+        Add a cloud instance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/server/" class="md-nav__link">
+        Add a server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/cpu/" class="md-nav__link">
+        Add a CPU
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#characteristics" class="md-nav__link">
+    Characteristics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete" class="md-nav__link">
+    Complete
+  </a>
+  
+    <nav class="md-nav" aria-label="Complete">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#completion-from-cpu-name" class="md-nav__link">
+    Completion from CPU name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completion-of-the-die_size-from-family-andor-core_units" class="md-nav__link">
+    Completion of the die_size from family and/or core_units
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedded-impacts" class="md-nav__link">
+    Embedded impacts
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedded impacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impacts-criteria" class="md-nav__link">
+    Impacts criteria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#impact-factors" class="md-nav__link">
+    Impact factors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-impacts" class="md-nav__link">
+    Usage impacts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-consumption-profile" class="md-nav__link">
+    Power Consumption profile
+  </a>
+  
+    <nav class="md-nav" aria-label="Power Consumption profile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#determining-the-parameters" class="md-nav__link">
+    Determining the parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Determining the parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-model-range" class="md-nav__link">
+    From model range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-adaptation-from-punctual-measurement" class="md-nav__link">
+    Model adaptation from punctual measurement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-adaptation-from-tdp" class="md-nav__link">
+    Model adaptation from TDP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="cpu">CPU</h1>
+<h2 id="characteristics">Characteristics</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Unit</th>
+<th>Default value (default;min;max)</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>units</td>
+<td>None</td>
+<td>1;1;1</td>
+<td>CPU quantity</td>
+<td>2</td>
+</tr>
+<tr>
+<td>usage</td>
+<td>None</td>
+<td>See Usage</td>
+<td>See usage</td>
+<td>..</td>
+</tr>
+<tr>
+<td>core_units</td>
+<td>None</td>
+<td>24;1;64</td>
+<td>Number of physical core on one CPU</td>
+<td>12</td>
+</tr>
+<tr>
+<td>die_size</td>
+<td>mm2</td>
+<td>None</td>
+<td>Size of the die</td>
+<td>1.1</td>
+</tr>
+<tr>
+<td>embedded</td>
+<td>None</td>
+<td>None</td>
+<td>Name of the CPU embedded</td>
+<td>AMD</td>
+</tr>
+<tr>
+<td>die_size_per_core</td>
+<td>mm2</td>
+<td>None</td>
+<td>Size of the die divided by the number of core</td>
+<td>0.245</td>
+</tr>
+<tr>
+<td>model_range</td>
+<td>None</td>
+<td>None</td>
+<td>Name of the cpu range or brand</td>
+<td>i7</td>
+</tr>
+<tr>
+<td>family</td>
+<td>None</td>
+<td>None</td>
+<td>Name of the architectural family (Generation)</td>
+<td>Skylake</td>
+</tr>
+<tr>
+<td>name</td>
+<td>None</td>
+<td>None</td>
+<td>Complete commercial name of the CPU</td>
+<td>Intel Core i7-1065</td>
+</tr>
+<tr>
+<td>tdp</td>
+<td>Watt</td>
+<td>None</td>
+<td>Thermal Design Point</td>
+<td>250</td>
+</tr>
+</tbody>
+</table>
+<h2 id="complete">Complete</h2>
+<p><strong>The following <a href="../../auto_complete/">completion</a> strategies can be used</strong></p>
+<h3 id="completion-from-cpu-name">Completion from CPU <code>name</code></h3>
+<p>If CPU <code>name</code> is given, <code>model_range</code>, <code>tdp</code>, <code>die_size</code> and <code>family</code> can be retrieved from a fuzzy matching on our cpu name repository. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that the cpu name repository is not complete and the completion can return a different cpu than the one given by the user. You can set a threshold for the fuzzy matching in the <a href="../../../config/">config file</a> to control the behavior of the fuzzy matching. You can contribute to the cpu name repository by following the instructions in the <a href="../../../contributing/cpu/">documentation</a>.</p>
+</div>
+<h3 id="completion-of-the-die_size-from-family-andor-core_units">Completion of the <code>die_size</code> from <code>family</code> and/or <code>core_units</code></h3>
+<p>if <code>die_size_per_core</code> and <code>core_units</code> are given :</p>
+<div class="arithmatex">\[ \text{die_size} = {\text{core_units}}*{\text{die_size_per_core}}\]</div>
+<p>Otherwise, if <code>family</code> is given, <code>die_size</code> can be retrieved from a fuzzy matching on our cpu repository. </p>
+<p>If several cpu matches the given <code>family</code>, we use the <code>core_units</code> attributes : </p>
+<ul>
+<li>If <code>core_units</code> matches one to many cpu, the average value is given and min and max value are used as <code>min</code> and <code>max</code> fields.</li>
+<li>If <code>core_units</code> does not match any cpu, we infer the <code>die_size</code> with a rule of three or a linear regression (when multiple cpus are available).</li>
+<li>If <code>core_units</code> is not provided, the average value is given and min and max value are used as <code>min</code> and <code>max</code> fields.</li>
+</ul>
+<h2 id="embedded-impacts">Embedded impacts</h2>
+<h3 id="impacts-criteria">Impacts criteria</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Implemented</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gwp</td>
+<td>yes</td>
+<td><a href="https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf">Green Cloud Computing, 2021</a></td>
+</tr>
+<tr>
+<td>adp</td>
+<td>yes</td>
+<td><a href="https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf">Green Cloud Computing, 2021</a></td>
+</tr>
+<tr>
+<td>pe</td>
+<td>yes</td>
+<td><a href="https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf">Green Cloud Computing, 2021</a></td>
+</tr>
+<tr>
+<td>gwppb</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>gwppf</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>gwpplu</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>ir</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>lu</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>odp</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>pm</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>pocp</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>wu</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>mips</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>adpe</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>adpf</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>ap</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>ctue</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>ctuh_c</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>ctuh_nc</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>epf</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>epm</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>ept</td>
+<td>no</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="impact-factors">Impact factors</h3>
+<p>For one CPU the embedded impact is:</p>
+<div class="arithmatex">\[ 
+\text{CPU}_\text{embedded}^\text{criteria} = (\text{CPU}_{\text{die_size}}) * \text{CPU}_\text{embedded_die}^\text{criteria} + \text{CPU}_\text{embedded_base}^\text{criteria}
+\]</div>
+<p>with:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Units</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\text{CPU}_\text{embedded_die}^{\text{gwp}}\)</span></td>
+<td>kgCO2eq/mm2</td>
+<td>1.97e−02</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\text{CPU}_\text{embedded_die}^{\text{adp}}\)</span></td>
+<td>kgSbeq/mm2</td>
+<td>5.87e-09</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\text{CPU}_\text{embedded_die}^{\text{pe}}\)</span></td>
+<td>MJ/mm2</td>
+<td>0.265</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\text{CPU}_\text{embedded_base}^{\text{gwp}}\)</span></td>
+<td>kgCO2eq</td>
+<td>9.14</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\text{CPU}_\text{embedded_base}^{\text{adp}}\)</span></td>
+<td>kgSbeq</td>
+<td>2.04E-02</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\text{CPU}_\text{embedded_base}^{\text{pe}}\)</span></td>
+<td>MJ</td>
+<td>156.00</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If there are more than 1 CPU we multiply <span class="arithmatex">\(\text{CPU}_\text{embedded}^\text{criteria}\)</span> by the number of CPU given in <code>units</code>.</p>
+</div>
+<h2 id="usage-impacts">Usage impacts</h2>
+<p>Both <a href="../../usage/power/">power consumption</a> and <a href="../../consumption_profile/">consumption profile</a> are implemented.</p>
+<h2 id="power-consumption-profile">Power Consumption profile</h2>
+<p>The CPU consumption profile is of the form: </p>
+<div class="arithmatex">\[
+PowerConsumption(workload) = a * \ln(b * (workload + c)) + d
+\]</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We apply a log regression to fit data points <span class="arithmatex">\((workload, power)\)</span> starting from a default consumption profile that can be found using the CPU <code>model_range</code>. This process can (in some cases) yield very low or negative power values due to wrong input data or model initialization. <strong>That is why there is a minimum power consumption limit set to 1W for any input workload</strong>.</p>
+</div>
+<h3 id="determining-the-parameters">Determining the parameters</h3>
+<h4 id="from-model-range">From model range</h4>
+<p>If <code>model_range</code> is given or is completed from the <code>cpu_name</code>, we use the averaged parameter for the specific model range.</p>
+<table>
+<thead>
+<tr>
+<th>manufacturer</th>
+<th>model_range</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intel</td>
+<td>Xeon Platinum</td>
+<td>171.1813</td>
+<td>0.0354</td>
+<td>36.8953</td>
+<td>-10.1336</td>
+</tr>
+<tr>
+<td>Intel</td>
+<td>Xeon Gold</td>
+<td>35.5688</td>
+<td>0.2438</td>
+<td>9.6694</td>
+<td>-0.6087</td>
+</tr>
+<tr>
+<td>Intel</td>
+<td>Xeon Silver</td>
+<td>20.7794</td>
+<td>0.3043</td>
+<td>8.4241</td>
+<td>0.8613</td>
+</tr>
+<tr>
+<td>Intel</td>
+<td>Xeon E5</td>
+<td>48.9167</td>
+<td>0.1349</td>
+<td>15.7262</td>
+<td>-4.654</td>
+</tr>
+<tr>
+<td>Intel</td>
+<td>Xeon E3</td>
+<td>342.3624</td>
+<td>0.0347</td>
+<td>36.8952</td>
+<td>-16.4022</td>
+</tr>
+<tr>
+<td>Intel</td>
+<td>Xeon E</td>
+<td>55.6501</td>
+<td>0.0467</td>
+<td>20.4146</td>
+<td>4.24362</td>
+</tr>
+</tbody>
+</table>
+<p>By default, we use the consumption profile of <strong>Intel Xeon Platinum</strong></p>
+<p><img alt="cp_cpu_xeon_platinum.svg" src="../cp_cpu_xeon_platinum.svg" /></p>
+<h4 id="model-adaptation-from-punctual-measurement">Model adaptation from punctual measurement</h4>
+<p>In case punctual power measurement (load;power_consumption) are given by a user, we adapt the selected consumption
+profile to match the given point.</p>
+<p><img alt="cp_cpu_fine_tuned.svg" src="../cp_cpu_fine_tuned.svg" /></p>
+<h4 id="model-adaptation-from-tdp">Model adaptation from TDP</h4>
+<p>If the TDP is given we use the average power consumption per unit of TDP (given by TEADS) multiplied by the given TDP as power measurement and compute a model adaptation as describe above. </p>
+<table>
+<thead>
+<tr>
+<th>0%</th>
+<th>10%</th>
+<th>50%</th>
+<th>100%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.12</td>
+<td>0.32</td>
+<td>0.75</td>
+<td>1.02</td>
+</tr>
+<tr>
+<td><em>Average power consumption per unit of TDP</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../component/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Components" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Components
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../ram/" class="md-footer__link md-footer__link--next" aria-label="Next: RAM" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              RAM
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
