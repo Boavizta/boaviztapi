@@ -121,7 +121,7 @@ async def gpu_impact_bottom_up_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_gpu,
-    criteria: List[str] = Query(config.default_gpu_criteria),
+    criteria: List[str] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "gpu")
 
