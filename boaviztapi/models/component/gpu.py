@@ -3,7 +3,6 @@ from boaviztapi import config
 from boaviztapi.models.boattribute import Boattribute
 from boaviztapi.models.component.component import Component
 from boaviztapi.data.archetype import get_arch_value, get_component_archetype
-from typing import Union
 
 _KERF = 0.2  # in mm
 _WAFER_DIAMETER = 300  # in mm

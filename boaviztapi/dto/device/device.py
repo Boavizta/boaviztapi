@@ -72,6 +72,8 @@ def complete_components_usage(model: DeviceServer, usage: ModelUsage):
         complete_usage(ram_unit.usage, usage)
     for disk_unit in model.disk:
         complete_usage(disk_unit.usage, usage)
+    if model.gpu is not None:
+        complete_usage(model.gpu.usage, usage)
 
 
 def complete_usage(usage_component, usage_device):
