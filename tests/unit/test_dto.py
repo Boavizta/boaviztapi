@@ -5,6 +5,7 @@ class TestGPUMapping:
     def test_maps_all_fields(self):
         gpu_dto = GPU(
             units=2,
+            name="NVIDIA A100",
             weight=1.5,
             heatsink_weight=0.3,
             pwb_surface=100.0,
@@ -22,6 +23,7 @@ class TestGPUMapping:
         component = mapper_gpu(gpu_dto)
 
         assert component.units.value == gpu_dto.units
+        assert component.name.value == gpu_dto.name
         assert component.weight.value == gpu_dto.weight
         assert component.heatsink_weight.value == gpu_dto.heatsink_weight
         assert component.pwb_surface.value == gpu_dto.pwb_surface
