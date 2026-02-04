@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "boaviztapi"
-version = "2.0.1"
+version = "2.0.2"
 description = "An API to access Boavizta's methodologies and footprint reference data"
 authors = []
 readme = "README.md"
