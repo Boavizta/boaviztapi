@@ -24,7 +24,7 @@ target_data = pd.DataFrame(
         "HDD.capacity": [],
         "GPU.units": [],
         "GPU.name": [],
-        "GPU.memory_capacity": [],
+        "GPU.vram": [],
         "POWER_SUPPLY.units": [],
         "POWER_SUPPLY.unit_weight": [],
         "USAGE.time_workload": [],
@@ -401,7 +401,7 @@ for host in data[
                 0
             ],  # TODO: guess it from how many GPUs have the biggest instances hosted on this platform
             "GPU.name": [current_gpu],
-            "GPU.memory_capacity": [""],
+            "GPU.vram": [""],
             "POWER_SUPPLY.units": [
                 "2;2;2"
             ],  # TODO: source from Azure docs which platform is blade, which is rack
