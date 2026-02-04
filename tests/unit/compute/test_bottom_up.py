@@ -211,6 +211,26 @@ def test_bottom_up_component_gpu_incomplete(incomplete_gpu_model):
     }
 
 
+def test_bottom_up_cpu_incomplete_with_larger_vram_gives_more_impact(
+    incomplete_gpu_model, incomplete_large_gpu_model
+):
+    small_gpu_impacts = compute_impacts(
+        incomplete_gpu_model,
+        selected_criteria=["gwp"],
+        duration=incomplete_gpu_model.usage.hours_life_time.value,
+    )
+    large_gpu_impacts = compute_impacts(
+        incomplete_large_gpu_model,
+        selected_criteria=["gwp"],
+        duration=incomplete_large_gpu_model.usage.hours_life_time.value,
+    )
+
+    small_gwp = small_gpu_impacts["gwp"]["embedded"]["value"]
+    large_gwp = large_gpu_impacts["gwp"]["embedded"]["value"]
+
+    assert large_gwp > small_gwp
+
+
 def test_bottom_up_component_ssd_empty(empty_ssd_model):
     assert compute_impacts(
         empty_ssd_model, duration=empty_ssd_model.usage.hours_life_time.value
