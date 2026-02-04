@@ -46,7 +46,7 @@
 "gpu": {
   "casing": {
     "manufacture": {
-      "adpe":     { "impact": 4.0835E-04 },
+      "adp":      { "impact": 4.0835E-04 },
       "adpf":     { "impact": 2.4302E+02 },
       "ap":       { "impact": 5.9556E-02 },
       "ctue":     { "impact": 4.0931E+02 },
@@ -67,12 +67,12 @@
       "wu":       { "impact": 3.8931E+00 },
       "mips":     { "impact": 0.0000E+00 },
       "weee":     { "impact": 0.0000E+00 },
-      "tpe":      { "impact": 2.4588E+02 }
+      "pe":       { "impact": 2.4588E+02 }
     }
   },
   "heatsink": {
     "manufacture": {
-      "adpe":     { "impact": 1.8669E-03 },
+      "adp":      { "impact": 1.8669E-03 },
       "adpf":     { "impact": 8.5042E+01 },
       "ap":       { "impact": 2.1808E-01 },
       "ctue":     { "impact": 4.2042E+02 },
@@ -93,12 +93,12 @@
       "wu":       { "impact": 1.0459E+01 },
       "mips":     { "impact": 0.0000E+00 },
       "weee":     { "impact": 0.0000E+00 },
-      "tpe":      { "impact": 9.2287E+01 }
+      "pe":       { "impact": 9.2287E+01 }
     }
   },
   "pwb": {
     "manufacture": {
-      "adpe":     { "impact": 1.2707E-05 },
+      "adp":      { "impact": 1.2707E-05 },
       "adpf":     { "impact": 5.1018E-01 },
       "ap":       { "impact": 3.1602E-04 },
       "ctue":     { "impact": 5.2409E-01 },
@@ -119,12 +119,12 @@
       "wu":       { "impact": 1.6173E-02 },
       "mips":     { "impact": 0.0000E+00 },
       "weee":     { "impact": 0.0000E+00 },
-      "tpe":      { "impact": 8.2969E-01 }
+      "pe":       { "impact": 8.2969E-01 }
     }
   },
   "gpu": {
     "manufacture": {
-      "adpe":     { "impact": 1.5550E-08 },
+      "adp":      { "impact": 1.5550E-08 },
       "adpf":     { "impact": 5.5650E-01 },
       "ap":       { "impact": 2.3502E-04 },
       "ctue":     { "impact": 5.4374E-01 },
@@ -145,12 +145,12 @@
       "wu":       { "impact": 1.4831E-02 },
       "mips":     { "impact": 0.0000E+00 },
       "weee":     { "impact": 0.0000E+00 },
-      "tpe":      { "impact": 5.6728E-01 }
+      "pe":       { "impact": 5.6728E-01 }
     }
   },
   "vram": {
     "manufacture": {
-      "adpe":     { "impact": 5.0731E-09 },
+      "adp":      { "impact": 5.0731E-09 },
       "adpf":     { "impact": 2.4002E+00 },
       "ap":       { "impact": 1.0127E-03 },
       "ctue":     { "impact": 2.3457E+00 },
@@ -171,12 +171,12 @@
       "wu":       { "impact": 7.0829E-02 },
       "mips":     { "impact": 0.0000E+00 },
       "weee":     { "impact": 0.0000E+00 },
-      "tpe":      { "impact": 2.4520E+00 }
+      "pe":       { "impact": 2.4520E+00 }
     }
   },
   "upstream_transport": {
     "manufacture": {
-      "adpe":     { "impact": 1.0196E-08 },
+      "adp":      { "impact": 1.0196E-08 },
       "adpf":     { "impact": 3.6131E+00 },
       "ap":       { "impact": 1.7311E-03 },
       "ctue":     { "impact": 1.7464E-01 },
@@ -197,12 +197,12 @@
       "wu":       { "impact": 9.8353E-04 },
       "mips":     { "impact": 0.0000E+00 },
       "weee":     { "impact": 0.0000E+00 },
-      "tpe":      { "impact": 3.6190E+00 }
+      "pe":       { "impact": 3.6190E+00 }
     }
   },
   "transport_truck": {
     "distribution": {
-      "adpe":     { "impact": 1.9800E-12 },
+      "adp":      { "impact": 1.9800E-12 },
       "adpf":     { "impact": 7.0300E-04 },
       "ap":       { "impact": 3.1900E-07 },
       "ctue":     { "impact": 3.3900E-05 },
@@ -223,12 +223,12 @@
       "wu":       { "impact": 1.9100E-07 },
       "mips":     { "impact": 2.2700E-05 },
       "weee":     { "impact": 0.0000E+00 },
-      "tpe":      { "impact": 7.0400E-04 }
+      "pe":       { "impact": 7.0400E-04 }
     }
   },
   "transport_boat": {
     "distribution": {
-      "adpe":     { "impact": 4.6200E-13 },
+      "adp":      { "impact": 4.6200E-13 },
       "adpf":     { "impact": 1.6300E-04 },
       "ap":       { "impact": 5.3400E-07 },
       "ctue":     { "impact": 7.9200E-06 },
@@ -249,12 +249,12 @@
       "wu":       { "impact": 4.2000E-08 },
       "mips":     { "impact": 5.2500E-06 },
       "weee":     { "impact": 0.0000E+00 },
-      "tpe":      { "impact": 1.6400E-04 }
+      "pe":       { "impact": 1.6400E-04 }
     }
   },
   "transport_plane": {
     "distribution": {
-      "adpe":     { "impact": 8.3100E-11 },
+      "adp":      { "impact": 8.3100E-11 },
       "adpf":     { "impact": 2.9500E-02 },
       "ap":       { "impact": 8.7700E-06 },
       "ctue":     { "impact": 1.3700E-03 },
@@ -275,12 +275,12 @@
       "wu":       { "impact": 8.3800E-06 },
       "mips":     { "impact": 9.3700E-04 },
       "weee":     { "impact": 0.0000E+00 },
-      "tpe":      { "impact": 2.9500E-02 }
+      "pe":       { "impact": 2.9500E-02 }
     }
   },
   "end_of_life": {
     "eol": {
-      "adpe":     { "impact": 3.7140E-06 },
+      "adp":      { "impact": 3.7140E-06 },
       "adpf":     { "impact": 1.9490E+01 },
       "ap":       { "impact": 3.1717E-02 },
       "ctue":     { "impact": 7.6213E+02 },
@@ -301,7 +301,7 @@
       "wu":       { "impact": 7.3015E+02 },
       "mips":     { "impact": 0.0000E+00 },
       "weee":     { "impact": 1.0000E+00 },
-      "tpe":      { "impact": 2.2348E+01 }
+      "pe":       { "impact": 2.2348E+01 }
     }
   }
 }
