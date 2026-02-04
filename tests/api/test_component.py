@@ -686,10 +686,10 @@ async def test_empty_gpu():
 
     assert res.json() == {
         "impacts": {
-            "adpe": {
-                "description": "Use of mineral and metal resources",
+            "adp": {
+                "description": "Use of minerals and fossil ressources",
                 "embedded": {"max": 0.005826, "min": 0.005826, "value": 0.005826},
-                "unit": "kg SB eq.",
+                "unit": "kgSbeq",
                 "use": "not implemented",
             },
             "gwp": {
@@ -698,10 +698,10 @@ async def test_empty_gpu():
                 "unit": "kgCO2eq",
                 "use": "not implemented",
             },
-            "wu": {
-                "description": "Use of water resources",
-                "embedded": {"max": 1459.0, "min": 1459.0, "value": 1459.0},
-                "unit": "m3 eq.",
+            "pe": {
+                "description": "Consumption of primary energy",
+                "embedded": {"max": 7912.0, "min": 7912.0, "value": 7912.0},
+                "unit": "MJ",
                 "use": "not implemented",
             },
         }
@@ -719,10 +719,10 @@ async def test_complete_gpu_verbose():
 
     assert res.json() == {
         "impacts": {
-            "adpe": {
-                "description": "Use of mineral and metal resources",
+            "adp": {
+                "description": "Use of minerals and fossil ressources",
                 "embedded": {"max": 0.005819, "min": 0.005819, "value": 0.005819},
-                "unit": "kg SB eq.",
+                "unit": "kgSbeq",
                 "use": "not implemented",
             },
             "gwp": {
@@ -731,10 +731,10 @@ async def test_complete_gpu_verbose():
                 "unit": "kgCO2eq",
                 "use": "not implemented",
             },
-            "wu": {
-                "description": "Use of water resources",
-                "embedded": {"max": 1701.0, "min": 1701.0, "value": 1701.0},
-                "unit": "m3 eq.",
+            "pe": {
+                "description": "Consumption of primary energy",
+                "embedded": {"max": 3424.0, "min": 3424.0, "value": 3424.0},
+                "unit": "MJ",
                 "use": "not implemented",
             },
         },
@@ -764,7 +764,7 @@ async def test_complete_gpu_verbose():
             "impacts": {
                 "adp": {
                     "description": "Use of minerals and fossil ressources",
-                    "embedded": "not implemented",
+                    "embedded": {"max": 0.005819, "min": 0.005819, "value": 0.005819},
                     "unit": "kgSbeq",
                     "use": "not implemented",
                 },
@@ -776,7 +776,7 @@ async def test_complete_gpu_verbose():
                 },
                 "pe": {
                     "description": "Consumption of primary energy",
-                    "embedded": "not implemented",
+                    "embedded": {"max": 3424.0, "min": 3424.0, "value": 3424.0},
                     "unit": "MJ",
                     "use": "not implemented",
                 },
