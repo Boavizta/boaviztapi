@@ -30,7 +30,7 @@ async def get_archetype_config(
 
 
 @iot.post("/iot_device", description="")
-async def iot_device_impact(
+async def iot_device_impact_from_configuration(
     iot: IoT = Body(None, examples=[""]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -47,7 +47,7 @@ async def iot_device_impact(
 
 
 @iot.get("/iot_device", description="")
-async def iot_device_impact(
+async def iot_device_impact_from_model(
     archetype: str = config.default_iot_device,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,

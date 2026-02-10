@@ -64,13 +64,6 @@ line-length = 88
 target-version = "py313"
 force-exclude = true
 
-[tool.ruff.lint]
-# TODO - uncomment these ignores one by one and fix in separate PRs
-ignore = [
-    "F403", # Unable to detect undefined names
-    "F811", # Redefinition of unused
-]
-
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"

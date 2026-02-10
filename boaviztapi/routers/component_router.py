@@ -65,7 +65,7 @@ async def cpu_archetype_config(
 
 
 @component_router.post("/cpu", description=cpu_description)
-async def cpu_impact_bottom_up(
+async def cpu_impact_bottom_up_from_configuration(
     cpu: CPU = Body(None, openapi_examples=components_examples_openapi["cpu"]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -85,7 +85,7 @@ async def cpu_impact_bottom_up(
 
 
 @component_router.get("/cpu", description=cpu_description)
-async def cpu_impact_bottom_up(
+async def cpu_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_cpu,
@@ -116,7 +116,7 @@ async def gpu_archetype_config(
 
 
 @component_router.post("/gpu", description=gpu_description)
-async def gpu_impact_bottom_up(
+async def gpu_impact_bottom_up_from_configuration(
     gpu: GPU = Body(None, openapi_examples=components_examples_openapi["gpu"]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -136,7 +136,7 @@ async def gpu_impact_bottom_up(
 
 
 @component_router.get("/gpu", description=gpu_description)
-async def gpu_impact_bottom_up(
+async def gpu_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_gpu,
@@ -169,7 +169,7 @@ async def ram_archetype_config(
 
 
 @component_router.post("/ram", description=ram_description)
-async def ram_impact_bottom_up(
+async def ram_impact_bottom_up_from_configuration(
     ram: RAM = Body(None, openapi_examples=components_examples_openapi["ram"]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -189,7 +189,7 @@ async def ram_impact_bottom_up(
 
 
 @component_router.get("/ram", description=ram_description)
-async def ram_impact_bottom_up(
+async def ram_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_ram,
@@ -222,7 +222,7 @@ async def ssd_archetype_config(
 
 
 @component_router.post("/ssd", description=ssd_description)
-async def disk_impact_bottom_up(
+async def ssd_disk_impact_bottom_up_from_configuration(
     disk: Disk = Body(None, openapi_examples=components_examples_openapi["ssd"]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -243,7 +243,7 @@ async def disk_impact_bottom_up(
 
 
 @component_router.get("/ssd", description=ssd_description)
-async def disk_impact_bottom_up(
+async def ssd_disk_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_ssd,
@@ -278,7 +278,7 @@ async def hdd_archetype_config(
 
 
 @component_router.post("/hdd", description=hdd_description)
-async def disk_impact_bottom_up(
+async def hdd_disk_impact_bottom_up_from_configuration(
     disk: Disk = Body(None, openapi_examples=components_examples_openapi["hdd"]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -299,7 +299,7 @@ async def disk_impact_bottom_up(
 
 
 @component_router.get("/hdd", description=hdd_description)
-async def disk_impact_bottom_up(
+async def hdd_disk_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_hdd,
@@ -336,7 +336,7 @@ async def motherboard_archetype_config(
 
 
 @component_router.post("/motherboard", description=motherboard_description)
-async def motherboard_impact_bottom_up(
+async def motherboard_impact_bottom_up_from_configuration(
     motherboard: Motherboard = Body(
         None, openapi_examples=components_examples_openapi["motherboard"]
     ),
@@ -355,7 +355,7 @@ async def motherboard_impact_bottom_up(
 
 
 @component_router.get("/motherboard", description=motherboard_description)
-async def motherboard_impact_bottom_up(
+async def motherboard_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     criteria: List[str] = Query(config.default_criteria),
@@ -387,7 +387,7 @@ async def power_supply_archetype_config(
 
 
 @component_router.post("/power_supply", description=power_supply_description)
-async def power_supply_impact_bottom_up(
+async def power_supply_impact_bottom_up_from_configuration(
     power_supply: PowerSupply = Body(
         None, openapi_examples=components_examples_openapi["power_supply"]
     ),
@@ -412,7 +412,7 @@ async def power_supply_impact_bottom_up(
 
 
 @component_router.get("/power_supply", description=power_supply_description)
-async def power_supply_impact_bottom_up(
+async def power_supply_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_power_supply,
@@ -448,7 +448,7 @@ async def case_archetype_config(
 
 
 @component_router.post("/case", description=case_description)
-async def case_impact_bottom_up(
+async def case_impact_bottom_up_from_configuration(
     case: Case = Body(None, openapi_examples=components_examples_openapi["case"]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -468,7 +468,7 @@ async def case_impact_bottom_up(
 
 
 @component_router.get("/case", description=case_description)
-async def case_impact_bottom_up(
+async def case_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_case,

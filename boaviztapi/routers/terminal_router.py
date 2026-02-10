@@ -58,7 +58,7 @@ async def laptop_get_archetype_config(
 
 
 @terminal_router.post("/laptop", description=terminal_description)
-async def laptop_impact(
+async def laptop_impact_from_configuration(
     laptop: Laptop = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -75,7 +75,7 @@ async def laptop_impact(
 
 
 @terminal_router.get("/laptop", description=terminal_description)
-async def laptop_impact(
+async def laptop_impact_from_model(
     archetype: str = config.default_laptop,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -103,7 +103,7 @@ async def desktop_get_archetype_config(
 
 
 @terminal_router.post("/desktop", description=terminal_description)
-async def desktop_impact(
+async def desktop_impact_from_configuration(
     desktop: Desktop = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -120,7 +120,7 @@ async def desktop_impact(
 
 
 @terminal_router.get("/desktop", description=terminal_description)
-async def desktop_impact(
+async def desktop_impact_from_model(
     archetype: str = config.default_desktop,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -150,7 +150,7 @@ async def smartphone_get_archetype_config(
 
 
 @terminal_router.post("/smartphone", description=terminal_description)
-async def smartphone_impact(
+async def smartphone_impact_from_configuration(
     smartphone: Smartphone = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -167,7 +167,7 @@ async def smartphone_impact(
 
 
 @terminal_router.get("/smartphone", description=terminal_description)
-async def smartphone_impact(
+async def smartphone_impact_from_model(
     archetype: str = config.default_smartphone,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -195,7 +195,7 @@ async def tablet_get_archetype_config(
 
 
 @terminal_router.post("/tablet", description=terminal_description)
-async def tablet_impact(
+async def tablet_impact_from_configuration(
     tablet: Tablet = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -212,7 +212,7 @@ async def tablet_impact(
 
 
 @terminal_router.get("/tablet", description=terminal_description)
-async def tablet_impact(
+async def tablet_impact_from_model(
     archetype: str = config.default_tablet,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -242,7 +242,7 @@ async def television_get_archetype_config(
 
 
 @terminal_router.post("/television", description=terminal_description)
-async def television_impact(
+async def television_impact_from_configuration(
     television: Television = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -259,7 +259,7 @@ async def television_impact(
 
 
 @terminal_router.get("/television", description=terminal_description)
-async def television_impact(
+async def television_impact_from_model(
     archetype: str = config.default_television,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -287,7 +287,7 @@ async def box_get_archetype_config(
 
 
 @terminal_router.post("/box", description=terminal_description)
-async def box_impact(
+async def box_impact_from_configuration(
     box: Box = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -304,7 +304,7 @@ async def box_impact(
 
 
 @terminal_router.get("/box", description=terminal_description)
-async def box_impact(
+async def box_impact_from_model(
     archetype: str = config.default_box,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -351,7 +351,7 @@ async def vr_headset_impact_from_configuration(
 
 
 @terminal_router.get("/vr_headset", description=terminal_description)
-async def vr_headset_impact(
+async def vr_headset_impact_from_model(
     archetype: str = config.default_vr_headset,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
