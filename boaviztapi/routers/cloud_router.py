@@ -44,7 +44,7 @@ async def get_archetype_config(
 
 
 @cloud_router.post("/instance", description=cloud_provider_description)
-async def instance_cloud_impact(
+async def instance_cloud_impact_from_configuration(
     cloud_instance: Cloud = Body(None, examples=[cloud_example]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -71,7 +71,7 @@ async def instance_cloud_impact(
 
 
 @cloud_router.get("/instance", description=cloud_provider_description)
-async def instance_cloud_impact(
+async def instance_cloud_impact_from_model(
     provider: str = Query(
         config.default_cloud_provider, examples=[config.default_cloud_provider]
     ),

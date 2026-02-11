@@ -51,7 +51,7 @@ async def monitor_get_archetype_config(
 
 
 @peripheral_router.post("/monitor", description=peripheral_description)
-async def monitor_impact(
+async def monitor_impact_from_configuration(
     monitor: Monitor = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -68,7 +68,7 @@ async def monitor_impact(
 
 
 @peripheral_router.get("/monitor", description=peripheral_description)
-async def monitor_impact(
+async def monitor_impact_from_model(
     archetype: str = config.default_monitor,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -100,7 +100,7 @@ async def usb_stick_get_archetype_config(
 
 
 @peripheral_router.post("/usb_stick", description=peripheral_description)
-async def usb_stick_impact(
+async def usb_stick_impact_from_configuration(
     usb_stick: UsbStick = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -117,7 +117,7 @@ async def usb_stick_impact(
 
 
 @peripheral_router.get("/usb_stick", description=peripheral_description)
-async def usb_stick_impact(
+async def usb_stick_impact_from_model(
     archetype: str = config.default_usb_stick,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -149,7 +149,7 @@ async def external_ssd_get_archetype_config(
 
 
 @peripheral_router.post("/external_ssd", description=peripheral_description)
-async def external_ssd_impact(
+async def external_ssd_impact_from_configuration(
     external_ssd: ExternalSSD = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -166,7 +166,7 @@ async def external_ssd_impact(
 
 
 @peripheral_router.get("/external_ssd", description=peripheral_description)
-async def external_ssd_impact(
+async def external_ssd_impact_from_model(
     archetype: str = config.default_external_ssd,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -198,7 +198,7 @@ async def external_hdd_get_archetype_config(
 
 
 @peripheral_router.post("/external_hdd", description=peripheral_description)
-async def external_hdd_impact(
+async def external_hdd_impact_from_configuration(
     external_hdd: ExternalHDD = Body(None, examples=[end_user_terminal]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -215,7 +215,7 @@ async def external_hdd_impact(
 
 
 @peripheral_router.get("/external_hdd", description=peripheral_description)
-async def external_hdd_impact(
+async def external_hdd_impact_from_model(
     archetype: str = config.default_external_hdd,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
@@ -264,7 +264,7 @@ async def vr_controller_impact_from_configuration(
 
 
 @peripheral_router.get("/vr_controller", description=peripheral_description)
-async def vr_controller_impact(
+async def vr_controller_impact_from_model(
     archetype: str = config.default_vr_controller,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
