@@ -44,6 +44,8 @@ jobs:
 
   test-e2e:
     runs-on: ubuntu-latest
+    env:
+      BOAVIZTA_ELECTRICITY_MAPS_API_KEY: ${{ secrets.SIMON_ELECTRICITYMAPS_SANDBOX_KEY }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
