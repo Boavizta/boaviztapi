@@ -16,7 +16,7 @@ EXPECTED_ARCHETYPE = {
         "units": {"default": 2.0},
         "vcpu": {},
     },
-    "GPU": {"memory_capacity": {}, "name": {}, "units": {}},
+    "GPU": {"vram": {}, "name": {}, "units": {}},
     "HDD": {"capacity": {}, "units": {}},
     "POWER_SUPPLY": {
         "unit_weight": {"default": 2.99, "max": 5.0, "min": 1.0},

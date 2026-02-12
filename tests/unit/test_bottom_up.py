@@ -125,13 +125,13 @@ def test_bottom_up_component_cpu_incomplete(incomplete_cpu_model):
 def test_bottom_up_component_gpu_empty(empty_gpu_model):
     assert compute_impacts(
         empty_gpu_model,
-        selected_criteria=["adpe", "gwp", "wu"],
+        selected_criteria=["adp", "gwp", "pe"],
         duration=empty_gpu_model.usage.hours_life_time.value,
     ) == {
-        "adpe": {
-            "description": "Use of mineral and metal resources",
+        "adp": {
+            "description": "Use of minerals and fossil ressources",
             "embedded": {"max": 0.005826, "min": 0.005826, "value": 0.005826},
-            "unit": "kg SB eq.",
+            "unit": "kgSbeq",
             "use": "not implemented",
         },
         "gwp": {
@@ -140,10 +140,10 @@ def test_bottom_up_component_gpu_empty(empty_gpu_model):
             "unit": "kgCO2eq",
             "use": "not implemented",
         },
-        "wu": {
-            "description": "Use of water resources",
-            "embedded": {"max": 1459.0, "min": 1459.0, "value": 1459.0},
-            "unit": "m3 eq.",
+        "pe": {
+            "description": "Consumption of primary energy",
+            "embedded": {"max": 7912.0, "min": 7912.0, "value": 7912.0},
+            "unit": "MJ",
             "use": "not implemented",
         },
     }
@@ -152,13 +152,13 @@ def test_bottom_up_component_gpu_empty(empty_gpu_model):
 def test_bottom_up_component_gpu_complete(complete_gpu_model):
     assert compute_impacts(
         complete_gpu_model,
-        selected_criteria=["adpe", "gwp", "wu"],
+        selected_criteria=["adp", "gwp", "pe"],
         duration=complete_gpu_model.usage.hours_life_time.value,
     ) == {
-        "adpe": {
-            "description": "Use of mineral and metal resources",
+        "adp": {
+            "description": "Use of minerals and fossil ressources",
             "embedded": {"max": 0.005819, "min": 0.005819, "value": 0.005819},
-            "unit": "kg SB eq.",
+            "unit": "kgSbeq",
             "use": "not implemented",
         },
         "gwp": {
@@ -167,10 +167,10 @@ def test_bottom_up_component_gpu_complete(complete_gpu_model):
             "unit": "kgCO2eq",
             "use": "not implemented",
         },
-        "wu": {
-            "description": "Use of water resources",
-            "embedded": {"max": 1701.0, "min": 1701.0, "value": 1701.0},
-            "unit": "m3 eq.",
+        "pe": {
+            "description": "Consumption of primary energy",
+            "embedded": {"max": 3424.0, "min": 3424.0, "value": 3424.0},
+            "unit": "MJ",
             "use": "not implemented",
         },
     }
@@ -179,7 +179,7 @@ def test_bottom_up_component_gpu_complete(complete_gpu_model):
 def test_bottom_up_component_gpu_incomplete(incomplete_gpu_model):
     res = compute_impacts(
         incomplete_gpu_model,
-        selected_criteria=["adpe", "gwp", "wu"],
+        selected_criteria=["adp", "gwp", "pe"],
         duration=incomplete_gpu_model.usage.hours_life_time.value,
     )
 
@@ -187,13 +187,13 @@ def test_bottom_up_component_gpu_incomplete(incomplete_gpu_model):
 
     assert compute_impacts(
         incomplete_gpu_model,
-        selected_criteria=["adpe", "gwp", "wu"],
+        selected_criteria=["adp", "gwp", "pe"],
         duration=incomplete_gpu_model.usage.hours_life_time.value,
     ) == {
-        "adpe": {
-            "description": "Use of mineral and metal resources",
+        "adp": {
+            "description": "Use of minerals and fossil ressources",
             "embedded": {"max": 0.005818, "min": 0.005818, "value": 0.005818},
-            "unit": "kg SB eq.",
+            "unit": "kgSbeq",
             "use": "not implemented",
         },
         "gwp": {
@@ -202,13 +202,33 @@ def test_bottom_up_component_gpu_incomplete(incomplete_gpu_model):
             "unit": "kgCO2eq",
             "use": "not implemented",
         },
-        "wu": {
-            "description": "Use of water resources",
-            "embedded": {"max": 1347.0, "min": 1347.0, "value": 1347.0},
-            "unit": "m3 eq.",
+        "pe": {
+            "description": "Consumption of primary energy",
+            "embedded": {"max": 4034.0, "min": 4034.0, "value": 4034.0},
+            "unit": "MJ",
             "use": "not implemented",
         },
     }
+
+
+def test_bottom_up_cpu_incomplete_with_larger_vram_gives_more_impact(
+    incomplete_gpu_model, incomplete_large_gpu_model
+):
+    small_gpu_impacts = compute_impacts(
+        incomplete_gpu_model,
+        selected_criteria=["gwp"],
+        duration=incomplete_gpu_model.usage.hours_life_time.value,
+    )
+    large_gpu_impacts = compute_impacts(
+        incomplete_large_gpu_model,
+        selected_criteria=["gwp"],
+        duration=incomplete_large_gpu_model.usage.hours_life_time.value,
+    )
+
+    small_gwp = small_gpu_impacts["gwp"]["embedded"]["value"]
+    large_gwp = large_gpu_impacts["gwp"]["embedded"]["value"]
+
+    assert large_gwp > small_gwp
 
 
 def test_bottom_up_component_ssd_empty(empty_ssd_model):

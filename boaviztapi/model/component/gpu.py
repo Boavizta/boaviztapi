@@ -3,7 +3,6 @@ from boaviztapi import config
 from boaviztapi.model.boattribute import Boattribute
 from boaviztapi.model.component.component import Component
 from boaviztapi.service.archetype import get_arch_value, get_component_archetype
-from typing import Union
 
 _KERF = 0.2  # in mm
 _WAFER_DIAMETER = 300  # in mm
@@ -39,39 +38,63 @@ def _calculate_effective_area_on_circular_wafer(die_area: float | None) -> float
     return effective_die_area / usable_ratio
 
 
-def _get_archetype_value(
-    archetype: Union[dict, bool], attribute: str, unit: str | None = None
-) -> Boattribute:
-    return Boattribute(
-        unit=unit,
-        default=get_arch_value(archetype, attribute, "default"),
-        min=get_arch_value(archetype, attribute, "min"),
-        max=get_arch_value(archetype, attribute, "max"),
-    )
-
-
 class ComponentGPU(Component):
     NAME = "GPU"
+    _default_archetype = get_component_archetype(config.default_gpu, "gpu")
 
     def __init__(
         self, archetype=get_component_archetype(config.default_gpu, "gpu"), **kwargs
     ):
         super().__init__(archetype=archetype, **kwargs)
 
-        self.weight = _get_archetype_value(archetype, "weight", unit="kg")
-
-        self.heatsink_weight = _get_archetype_value(
-            archetype, "heatsink_weight", unit="kg"
+        self.name = Boattribute(
+            default=get_arch_value(archetype, "name", "default"),
+            min=get_arch_value(archetype, "name", "min"),
+            max=get_arch_value(archetype, "name", "max"),
         )
 
-        self.pwb_surface = _get_archetype_value(archetype, "pwb_surface", unit="cm2")
+        self.weight = Boattribute(
+            complete_function=self._complete_weight,
+            unit="kg",
+            default=get_arch_value(archetype, "weight", "default"),
+            min=get_arch_value(archetype, "weight", "min"),
+            max=get_arch_value(archetype, "weight", "max"),
+        )
 
-        self.pwb_weight = _get_archetype_value(archetype, "pwb_weight", unit="kg")
+        self.heatsink_weight = Boattribute(
+            complete_function=self._complete_heatsink_weight,
+            unit="kg",
+            default=get_arch_value(archetype, "heatsink_weight", "default"),
+            min=get_arch_value(archetype, "heatsink_weight", "min"),
+            max=get_arch_value(archetype, "heatsink_weight", "max"),
+        )
 
-        self.casing_weight = _get_archetype_value(archetype, "casing_weight", unit="kg")
+        self.pwb_surface = Boattribute(
+            complete_function=self._complete_pwb_surface,
+            unit="cm2",
+            default=get_arch_value(archetype, "pwb_surface", "default"),
+            min=get_arch_value(archetype, "pwb_surface", "min"),
+            max=get_arch_value(archetype, "pwb_surface", "max"),
+        )
 
-        # Total effective GPU area including losses
+        self.pwb_weight = Boattribute(
+            complete_function=self._complete_pwb_weight,
+            unit="kg",
+            default=get_arch_value(archetype, "pwb_weight", "default"),
+            min=get_arch_value(archetype, "pwb_weight", "min"),
+            max=get_arch_value(archetype, "pwb_weight", "max"),
+        )
+
+        self.casing_weight = Boattribute(
+            complete_function=self._complete_casing_weight,
+            unit="kg",
+            default=get_arch_value(archetype, "casing_weight", "default"),
+            min=get_arch_value(archetype, "casing_weight", "min"),
+            max=get_arch_value(archetype, "casing_weight", "max"),
+        )
+
         self.gpu_surface = Boattribute(
+            complete_function=self._complete_gpu_surface,
             unit="mm2",
             default=_calculate_effective_area_on_circular_wafer(
                 get_arch_value(archetype, "gpu_surface", "default"),
@@ -84,9 +107,19 @@ class ComponentGPU(Component):
             ),
         )
 
-        self.vram = _get_archetype_value(archetype, "vram", unit="gb")
+        self.vram = Boattribute(
+            unit="gb",
+            default=get_arch_value(archetype, "vram", "default"),
+            min=get_arch_value(archetype, "vram", "min"),
+            max=get_arch_value(archetype, "vram", "max"),
+        )
 
-        self.vram_dies = _get_archetype_value(archetype, "vram_dies")
+        self.vram_dies = Boattribute(
+            complete_function=self._complete_vram_dies,
+            default=get_arch_value(archetype, "vram_dies", "default"),
+            min=get_arch_value(archetype, "vram_dies", "min"),
+            max=get_arch_value(archetype, "vram_dies", "max"),
+        )
 
         self.vram_surface = Boattribute(
             complete_function=self._complete_vram_surface,
@@ -96,26 +129,110 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, "vram_surface", "max"),
         )
 
-        self.transport_boat = _get_archetype_value(
-            archetype, "transport_boat", unit="km"
+        self.transport_boat = Boattribute(
+            complete_function=self._complete_transport_boat,
+            unit="km",
+            default=get_arch_value(archetype, "transport_boat", "default"),
+            min=get_arch_value(archetype, "transport_boat", "min"),
+            max=get_arch_value(archetype, "transport_boat", "max"),
         )
 
-        self.transport_truck = _get_archetype_value(
-            archetype, "transport_truck", unit="km"
+        self.transport_truck = Boattribute(
+            complete_function=self._complete_transport_truck,
+            unit="km",
+            default=get_arch_value(archetype, "transport_truck", "default"),
+            min=get_arch_value(archetype, "transport_truck", "min"),
+            max=get_arch_value(archetype, "transport_truck", "max"),
         )
 
-        self.transport_plane = _get_archetype_value(
-            archetype, "transport_plane", unit="km"
+        self.transport_plane = Boattribute(
+            complete_function=self._complete_transport_plane,
+            unit="km",
+            default=get_arch_value(archetype, "transport_plane", "default"),
+            min=get_arch_value(archetype, "transport_plane", "min"),
+            max=get_arch_value(archetype, "transport_plane", "max"),
+        )
+
+    def _complete_weight(self):
+        if self.weight.is_set():
+            return
+        self.weight.set_archetype(
+            get_arch_value(self._default_archetype, "weight", "default")
+        )
+
+    def _complete_heatsink_weight(self):
+        if self.heatsink_weight.is_set():
+            return
+        self.heatsink_weight.set_archetype(
+            get_arch_value(self._default_archetype, "heatsink_weight", "default")
+        )
+
+    def _complete_pwb_surface(self):
+        if self.pwb_surface.is_set():
+            return
+        self.pwb_surface.set_archetype(
+            get_arch_value(self._default_archetype, "pwb_surface", "default")
+        )
+
+    def _complete_pwb_weight(self):
+        if self.pwb_weight.is_set():
+            return
+        self.pwb_weight.set_archetype(
+            get_arch_value(self._default_archetype, "pwb_weight", "default")
+        )
+
+    def _complete_casing_weight(self):
+        if self.casing_weight.is_set():
+            return
+        self.casing_weight.set_archetype(
+            get_arch_value(self._default_archetype, "casing_weight", "default")
+        )
+
+    def _complete_gpu_surface(self):
+        if self.gpu_surface.is_set():
+            return
+        self.gpu_surface.set_archetype(
+            _calculate_effective_area_on_circular_wafer(
+                get_arch_value(self._default_archetype, "gpu_surface", "default")
+            )
+        )
+
+    def _complete_vram_dies(self):
+        if self.vram_dies.is_set():
+            return
+        self.vram_dies.set_archetype(
+            get_arch_value(self._default_archetype, "vram_dies", "default")
+        )
+
+    def _complete_transport_boat(self):
+        if self.transport_boat.is_set():
+            return
+        self.transport_boat.set_archetype(
+            get_arch_value(self._default_archetype, "transport_boat", "default")
+        )
+
+    def _complete_transport_truck(self):
+        if self.transport_truck.is_set():
+            return
+        self.transport_truck.set_archetype(
+            get_arch_value(self._default_archetype, "transport_truck", "default")
+        )
+
+    def _complete_transport_plane(self):
+        if self.transport_plane.is_set():
+            return
+        self.transport_plane.set_archetype(
+            get_arch_value(self._default_archetype, "transport_plane", "default")
         )
 
     def _complete_vram_surface(self):
         if self.vram_surface.is_set():
-            # Ignore if explicitly set
             return
 
         # If we have no vram or vram_dies, we have to set to zero
-        if not self.vram.is_set() and not self.vram_dies.is_set():
+        if not self.vram.has_value() and not self.vram_dies.has_value():
             self.vram_surface.set_completed(0)
+            return
 
         # Area per die using the model
         die_area = (self.vram.value * VRAM_DIE_SURFACE_PER_GB) / self.vram_dies.value

@@ -24,6 +24,7 @@ async def test_complete_config_server():
                         {"units": 2, "type": "ssd", "capacity": 400, "density": 50.6},
                         {"units": 2, "type": "hdd"},
                     ],
+                    "gpu": {"units": 2, "vram": 40},
                     "power_supply": {"units": 2, "unit_weight": 10},
                 },
             },
@@ -33,9 +34,9 @@ async def test_complete_config_server():
             "adp": {
                 "description": "Use of minerals and fossil ressources",
                 "embedded": {
-                    "max": 0.2611,
-                    "min": 0.2536,
-                    "value": 0.2536,
+                    "max": 0.2669,
+                    "min": 0.2594,
+                    "value": 0.2594,
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgSbeq",
@@ -44,9 +45,9 @@ async def test_complete_config_server():
             "gwp": {
                 "description": "Total climate change",
                 "embedded": {
-                    "max": 1138.0,
-                    "min": 1074.0,
-                    "value": 1138.0,
+                    "max": 1464.0,
+                    "min": 1400.0,
+                    "value": 1464.0,
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgCO2eq",
@@ -55,9 +56,9 @@ async def test_complete_config_server():
             "pe": {
                 "description": "Consumption of primary energy",
                 "embedded": {
-                    "max": 15420.0,
-                    "min": 14450.0,
-                    "value": 15420.0,
+                    "max": 20020.0,
+                    "min": 19050.0,
+                    "value": 20020.0,
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",

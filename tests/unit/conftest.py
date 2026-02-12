@@ -120,6 +120,13 @@ def incomplete_gpu_model():
 
 
 @pytest.fixture(scope="function")
+def incomplete_large_gpu_model():
+    gpu = ComponentGPU()
+    gpu.vram.set_input(80)
+    return gpu
+
+
+@pytest.fixture(scope="function")
 def complete_gpu_model():
     gpu = ComponentGPU()
 
