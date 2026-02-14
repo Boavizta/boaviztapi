@@ -46,6 +46,18 @@ $ docker run -p 5000:5000 ghcr.io/boavizta/boaviztapi:latest
 
 Access the API at http://localhost:5000.
 
+### Install using pip package
+
+```bash
+$ pip3 install boaviztapi
+```
+
+Run the server locally with:
+
+```bash
+$ uvicorn boaviztapi.main:app --host=localhost --port 5000
+```
+
 ## :computer: Development
 
 ### Prerequisite
