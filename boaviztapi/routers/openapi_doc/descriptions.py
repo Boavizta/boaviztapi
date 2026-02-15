@@ -183,6 +183,11 @@ all_default_cloud_providers = (
 )
 
 country_code = "# ✔ ️Get all the available countries with their trigram code (*usage:{usage_location: 'FRA'}*)\n"
+cloud_regions = (
+    "# ✔ ️Get all available cloud regions\n"
+    "📜 Return the list of available cloud regions for each provider, optionally filtered by a specific provider.\n"
+    "Can be used in cloud instance requests with *usage:{region: 'eu-west-3'}*"
+)
 cpu_family = (
     "# ✔ ️Get all the available cpu family in the API (*cpu:{family:'skylake'}*)\n"
 )

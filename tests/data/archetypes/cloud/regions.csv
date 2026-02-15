@@ -1,0 +1,11 @@
+provider,region,usage_location
+aws,us-east-1,USA
+aws,eu-west-1,IRL
+aws,eu-west-3,FRA
+azure,eastus,USA
+azure,francecentral,FRA
+azure,westeurope,NLD
+gcp,us-central1,USA
+gcp,europe-west9,FRA
+scaleway,fr-par,FRA
+ovhcloud,eu-west-par,FRA
