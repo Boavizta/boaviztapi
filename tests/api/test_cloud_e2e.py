@@ -29,10 +29,13 @@ def _generate_cloud_provider_urls():
                         for instances_row in instances_reader:
                             instance_id = instances_row.get("id")
                             request = CloudInstanceRequest(
-                                provider_name, instance_id, use_url_params=True
+                                provider_name,
+                                instance_id,
+                                use_url_params=True,
+                                usage={
+                                    "usage_location": "FRA",
+                                },
                             )
-
-                            print(f"{provider_name} - {instance_id}")
 
                             urls.append((request.to_url()))
 
