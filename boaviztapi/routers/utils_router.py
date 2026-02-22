@@ -18,8 +18,10 @@ from boaviztapi.routers.openapi_doc.descriptions import (
     name_to_cpu,
     cpu_names,
     impacts_criteria,
+    cloud_regions,
 )
 from boaviztapi.service.factor_provider import get_available_countries
+from boaviztapi.service.archetype import list_cloud_regions
 from boaviztapi.utils.get_version import get_version_from_pyproject
 
 utils_router = APIRouter(prefix="/v1/utils", tags=["utils"])
@@ -37,6 +39,15 @@ async def version():
 @utils_router.get("/country_code", description=country_code)
 async def utils_get_all_countries():
     return get_available_countries()
+
+
+@utils_router.get("/cloud_regions", description=cloud_regions)
+async def utils_get_cloud_regions(
+    provider: str = Query(
+        None, description="Cloud provider name (aws, azure, gcp, etc.)"
+    ),
+):
+    return list_cloud_regions(provider)
 
 
 @utils_router.get("/cpu_family", description=cpu_family)

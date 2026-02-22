@@ -7,6 +7,7 @@ from boaviztapi.model.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
 from boaviztapi.service.archetype import (
     get_cloud_instance_archetype,
     get_server_archetype,
+    get_cloud_region_mapping,
 )
 from boaviztapi.service.factor_provider import get_available_countries
 
@@ -59,6 +60,7 @@ class UsageServer(Usage):
 
 class UsageCloud(UsageServer):
     instance_per_server: Optional[int] = None
+    region: Optional[str] = None
 
 
 def _reset_usage_dto_if_matches_config_defaults(usage_dto: Usage):
@@ -157,12 +159,28 @@ def mapper_usage_server(
 
 def mapper_usage_cloud(
     usage_dto: UsageCloud,
+    provider: str = None,
     archetype=get_cloud_instance_archetype(
         config.default_cloud_instance, config.default_cloud_provider
     ).get("USAGE"),
 ) -> ModelUsageCloud:
     usage_model_cloud = ModelUsageCloud(archetype=archetype)
     _reset_usage_dto_if_matches_config_defaults(usage_dto)
+
+    # Handle region to usage_location completion (region takes precedence)
+    resolved_usage_location = None
+    if usage_dto.region is not None and provider is not None:
+        mapped_location = get_cloud_region_mapping(provider, usage_dto.region)
+        if mapped_location:
+            resolved_usage_location = mapped_location
+        else:
+            usage_model_cloud.usage_location.add_warning(
+                f"Region '{usage_dto.region}' not found for provider '{provider}'. Falling back to usage_location if provided."
+            )
+
+    # Fallback to usage_location if region didn't resolve
+    if resolved_usage_location is None and usage_dto.usage_location is not None:
+        resolved_usage_location = usage_dto.usage_location
 
     for elec_factor in usage_dto.elec_factors.__dict__.keys():
         if usage_dto.elec_factors.__dict__[elec_factor] is not None:
@@ -182,9 +200,14 @@ def mapper_usage_cloud(
     if usage_dto.time_workload is not None:
         usage_model_cloud.time_workload.set_input(usage_dto.time_workload)
 
-    if usage_dto.usage_location is not None:
-        if usage_dto.usage_location in get_available_countries(reverse=True):
-            usage_model_cloud.usage_location.set_input(usage_dto.usage_location)
+    if resolved_usage_location is not None:
+        if resolved_usage_location in get_available_countries(reverse=True):
+            if usage_dto.region is not None and provider is not None:
+                # Mark as completed from region
+                usage_model_cloud.usage_location.set_completed(resolved_usage_location)
+            else:
+                # Mark as input from direct usage_location
+                usage_model_cloud.usage_location.set_input(resolved_usage_location)
         else:
             usage_model_cloud.usage_location.set_changed(
                 usage_model_cloud.usage_location.default

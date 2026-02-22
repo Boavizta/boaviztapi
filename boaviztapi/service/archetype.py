@@ -167,3 +167,57 @@ def convert(value):
                 pass
 
     return value
+
+
+def get_cloud_region_mapping(provider: str, region: str) -> Union[str, None]:
+    """
+    Map a cloud provider region to a NATO usage_location code.
+
+    Args:
+        provider: Cloud provider name (aws, azure, gcp, etc.)
+        region: Cloud region identifier
+
+    Returns:
+        NATO country code if mapping exists, None otherwise
+    """
+    regions_path = os.path.join(data_dir, "archetypes/cloud/regions.csv")
+    if not os.path.exists(regions_path):
+        return None
+
+    with open(regions_path, encoding="utf-8") as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if (
+                row["provider"].strip() == provider.strip()
+                and row["region"].strip() == region.strip()
+            ):
+                return row["usage_location"].strip()
+    return None
+
+
+def list_cloud_regions(provider: str = None) -> list[dict]:
+    """
+    List of available cloud regions, optionally filtered by provider.
+
+    Args:
+        provider: Optional cloud provider name to filter by
+
+    Returns:
+        List of dicts with 'provider' and 'region' keys
+    """
+    regions_path = os.path.join(data_dir, "archetypes/cloud/regions.csv")
+    if not os.path.exists(regions_path):
+        return []
+
+    regions = []
+    with open(regions_path, encoding="utf-8") as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if provider is None or row["provider"].strip() == provider.strip():
+                regions.append(
+                    {
+                        "provider": row["provider"].strip(),
+                        "region": row["region"].strip(),
+                    }
+                )
+    return regions

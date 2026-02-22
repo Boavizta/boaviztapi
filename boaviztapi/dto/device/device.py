@@ -111,6 +111,7 @@ def mapper_cloud_instance(
 
     model_cloud_instance.usage = mapper_usage_cloud(
         cloud_dto.usage or UsageCloud(),
+        provider=cloud_dto.provider,
         archetype=get_arch_component(model_cloud_instance.archetype, "USAGE"),
     )
 

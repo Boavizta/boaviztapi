@@ -1012,3 +1012,76 @@ async def test_empty_usage_ovh_b3_8():
     )
 
     await test.check_result()
+
+
+@pytest.mark.asyncio
+async def test_cloud_region_completion():
+    """Test that region is properly mapped to usage_location"""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.post(
+            "/v1/cloud/instance?verbose=true",
+            json={
+                "provider": "aws",
+                "instance_type": "a1.medium",
+                "usage": {"region": "eu-west-3"},
+            },
+        )
+
+    assert res.status_code == 200
+    data = res.json()
+    # Check that usage_location is completed to FRA from eu-west-3
+    assert data["verbose"]["usage_location"]["value"] == "FRA"
+    assert data["verbose"]["usage_location"]["status"] == "COMPLETED"
+
+
+@pytest.mark.asyncio
+async def test_cloud_region_precedence_over_usage_location():
+    """Test that region takes precedence over usage_location"""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.post(
+            "/v1/cloud/instance?verbose=true",
+            json={
+                "provider": "aws",
+                "instance_type": "a1.medium",
+                "usage": {
+                    "region": "eu-west-1",  # Should map to IRL
+                    "usage_location": "DEU",  # Should be overridden
+                },
+            },
+        )
+
+    assert res.status_code == 200
+    data = res.json()
+    # Check that usage_location is completed to IRL from eu-west-1, not DEU
+    assert data["verbose"]["usage_location"]["value"] == "IRL"
+    assert data["verbose"]["usage_location"]["status"] == "COMPLETED"
+
+
+@pytest.mark.asyncio
+async def test_cloud_region_fallback_to_usage_location():
+    """Test that invalid region falls back to usage_location"""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.post(
+            "/v1/cloud/instance?verbose=true",
+            json={
+                "provider": "aws",
+                "instance_type": "a1.medium",
+                "usage": {
+                    "region": "invalid-region",  # Invalid region
+                    "usage_location": "GBR",  # Should fall back to this
+                },
+            },
+        )
+
+    assert res.status_code == 200
+    data = res.json()
+    # Check that it falls back to usage_location
+    assert data["verbose"]["usage_location"]["value"] == "GBR"
+    # Check that a warning is present about region not found
+    assert any(
+        "Region 'invalid-region' not found" in warning
+        for warning in data["verbose"]["usage_location"].get("warnings", [])
+    )
