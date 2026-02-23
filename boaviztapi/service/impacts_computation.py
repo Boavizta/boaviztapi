@@ -107,14 +107,14 @@ def simple_impact_use(
     max_impact = (
         impact_factor.max
         * (model.usage.avg_power.max / 1000)
-        * model.usage.use_time_ratio.min
+        * model.usage.use_time_ratio.max
         * duration
         * model.units.max
     )
     min_impact = (
         impact_factor.min
         * (model.usage.avg_power.min / 1000)
-        * model.usage.use_time_ratio.max
+        * model.usage.use_time_ratio.min
         * duration
         * model.units.min
     )
