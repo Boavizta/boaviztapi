@@ -83,7 +83,6 @@ class ComponentCPU(Component):
             max=get_arch_value(archetype, "threads", "max"),
         )
 
-    # TODO: compute min & max
     def model_power_consumption(self) -> ImpactFactor:
         self.usage.consumption_profile = CPUConsumptionProfileModel()
 
@@ -97,19 +96,31 @@ class ComponentCPU(Component):
             self.usage.avg_power.set_completed(
                 self.usage.consumption_profile.apply_consumption_profile(
                     self.usage.time_workload.value
-                )
+                ),
+                min=self.usage.consumption_profile.apply_consumption_profile(
+                    self.usage.time_workload.min
+                ),
+                max=self.usage.consumption_profile.apply_consumption_profile(
+                    self.usage.time_workload.max
+                ),
             )
         else:
             self.usage.avg_power.set_completed(
                 self.usage.consumption_profile.apply_multiple_workloads(
                     self.usage.time_workload.value
-                )
+                ),
+                min=self.usage.consumption_profile.apply_multiple_workloads(
+                    self.usage.time_workload.min
+                ),
+                max=self.usage.consumption_profile.apply_multiple_workloads(
+                    self.usage.time_workload.max
+                ),
             )
 
         return ImpactFactor(
             value=rd.round_to_sigfig(self.usage.avg_power.value, 5) * self.units.value,
-            min=rd.round_to_sigfig(self.usage.avg_power.value, 5) * self.units.min,
-            max=rd.round_to_sigfig(self.usage.avg_power.value, 5) * self.units.max,
+            min=rd.round_to_sigfig(self.usage.avg_power.min, 5) * self.units.min,
+            max=rd.round_to_sigfig(self.usage.avg_power.max, 5) * self.units.max,
         )
 
     def _complete_die_size(self):

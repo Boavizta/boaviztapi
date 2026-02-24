@@ -73,8 +73,8 @@ class ComponentRAM(Component):
 
         return ImpactFactor(
             value=rd.round_to_sigfig(self.usage.avg_power.value, 5) * self.units.value,
-            min=rd.round_to_sigfig(self.usage.avg_power.value, 5) * self.units.min,
-            max=rd.round_to_sigfig(self.usage.avg_power.value, 5) * self.units.max,
+            min=rd.round_to_sigfig(self.usage.avg_power.min, 5) * self.units.min,
+            max=rd.round_to_sigfig(self.usage.avg_power.max, 5) * self.units.max,
         )
 
     # COMPLETION

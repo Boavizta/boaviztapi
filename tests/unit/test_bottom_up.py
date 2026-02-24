@@ -15,7 +15,7 @@ def test_bottom_up_component_cpu_empty(empty_cpu_model):
                 "warnings": ["End of life is not included in the calculation"],
             },
             "unit": "kgSbeq",
-            "use": {"max": 0.001272, "min": 6.321e-05, "value": 0.0003},
+            "use": {"max": 0.001815, "min": 1.234e-05, "value": 0.0003},
         },
         "gwp": {
             "description": "Total climate change",
@@ -26,7 +26,7 @@ def test_bottom_up_component_cpu_empty(empty_cpu_model):
                 "warnings": ["End of life is not included in the calculation"],
             },
             "unit": "kgCO2eq",
-            "use": {"max": 4310.0, "min": 110.1, "value": 1800.0},
+            "use": {"max": 6150.0, "min": 21.51, "value": 1800.0},
         },
         "pe": {
             "description": "Consumption of primary energy",
@@ -37,7 +37,7 @@ def test_bottom_up_component_cpu_empty(empty_cpu_model):
                 "warnings": ["End of life is not included in the calculation"],
             },
             "unit": "MJ",
-            "use": {"max": 2242000.0, "min": 62.25, "value": 100000.0},
+            "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
         },
     }
 
@@ -55,7 +55,7 @@ def test_bottom_up_component_cpu_complete(complete_cpu_model):
                 "warnings": ["End of life is not included in the calculation"],
             },
             "unit": "kgSbeq",
-            "use": {"max": 0.002544, "min": 0.0001264, "value": 0.0006},
+            "use": {"max": 0.00363, "min": 2.468e-05, "value": 0.0006},
         },
         "gwp": {
             "description": "Total climate change",
@@ -66,7 +66,7 @@ def test_bottom_up_component_cpu_complete(complete_cpu_model):
                 "warnings": ["End of life is not included in the calculation"],
             },
             "unit": "kgCO2eq",
-            "use": {"max": 8620.0, "min": 220.3, "value": 3600.0},
+            "use": {"max": 12300.0, "min": 43.01, "value": 4000.0},
         },
         "pe": {
             "description": "Consumption of primary energy",
@@ -77,7 +77,7 @@ def test_bottom_up_component_cpu_complete(complete_cpu_model):
                 "warnings": ["End of life is not included in the calculation"],
             },
             "unit": "MJ",
-            "use": {"max": 4484000.0, "min": 124.5, "value": 100000.0},
+            "use": {"max": 6398000.0, "min": 24.31, "value": 100000.0},
         },
     }
 
@@ -95,7 +95,7 @@ def test_bottom_up_component_cpu_incomplete(incomplete_cpu_model):
                 "warnings": ["End of life is not included in the calculation"],
             },
             "unit": "kgSbeq",
-            "use": {"max": 0.001272, "min": 6.321e-05, "value": 0.0003},
+            "use": {"max": 0.001815, "min": 1.234e-05, "value": 0.0003},
         },
         "gwp": {
             "description": "Total climate change",
@@ -106,7 +106,7 @@ def test_bottom_up_component_cpu_incomplete(incomplete_cpu_model):
                 "warnings": ["End of life is not included in the calculation"],
             },
             "unit": "kgCO2eq",
-            "use": {"max": 4310.0, "min": 110.1, "value": 1800.0},
+            "use": {"max": 6150.0, "min": 21.51, "value": 1800.0},
         },
         "pe": {
             "description": "Consumption of primary energy",
@@ -117,7 +117,7 @@ def test_bottom_up_component_cpu_incomplete(incomplete_cpu_model):
                 "warnings": ["End of life is not included in the calculation"],
             },
             "unit": "MJ",
-            "use": {"max": 2242000.0, "min": 62.25, "value": 100000.0},
+            "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
         },
     }
 
