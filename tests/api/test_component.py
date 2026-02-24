@@ -26,7 +26,7 @@ async def test_complete_cpu():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgSbeq",
-                "use": {"max": 0.001272, "min": 6.321e-05, "value": 0.0003},
+                "use": {"max": 0.001815, "min": 1.234e-05, "value": 0.0003},
             },
             "gwp": {
                 "description": "Total climate change",
@@ -37,7 +37,7 @@ async def test_complete_cpu():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 4310.0, "min": 110.1, "value": 1800.0},
+                "use": {"max": 6150.0, "min": 21.51, "value": 1800.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -48,7 +48,7 @@ async def test_complete_cpu():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 2242000.0, "min": 62.25, "value": 100000.0},
+                "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
             },
         }
     }
@@ -74,7 +74,7 @@ async def test_complete_cpu_verbose():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgSbeq",
-                "use": {"max": 0.001272, "min": 6.321e-05, "value": 0.0003},
+                "use": {"max": 0.001815, "min": 1.234e-05, "value": 0.0003},
             },
             "gwp": {
                 "description": "Total climate change",
@@ -85,7 +85,7 @@ async def test_complete_cpu_verbose():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 4310.0, "min": 110.1, "value": 1800.0},
+                "use": {"max": 6150.0, "min": 21.51, "value": 1800.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -96,7 +96,7 @@ async def test_complete_cpu_verbose():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 2242000.0, "min": 62.25, "value": 100000.0},
+                "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
             },
         },
         "verbose": {
@@ -109,8 +109,8 @@ async def test_complete_cpu_verbose():
                 "value": 6.42e-08,
             },
             "avg_power": {
-                "max": 182.22,
-                "min": 182.22,
+                "max": 260.02,
+                "min": 35.579,
                 "status": "COMPLETED",
                 "unit": "W",
                 "value": 182.22,
@@ -152,7 +152,7 @@ async def test_complete_cpu_verbose():
                         "warnings": ["End of life is not included in the calculation"],
                     },
                     "unit": "kgSbeq",
-                    "use": {"max": 0.001272, "min": 6.321e-05, "value": 0.0003},
+                    "use": {"max": 0.001815, "min": 1.234e-05, "value": 0.0003},
                 },
                 "gwp": {
                     "description": "Total climate change",
@@ -163,7 +163,7 @@ async def test_complete_cpu_verbose():
                         "warnings": ["End of life is not included in the calculation"],
                     },
                     "unit": "kgCO2eq",
-                    "use": {"max": 4310.0, "min": 110.1, "value": 1800.0},
+                    "use": {"max": 6150.0, "min": 21.51, "value": 1800.0},
                 },
                 "pe": {
                     "description": "Consumption of primary energy",
@@ -174,7 +174,7 @@ async def test_complete_cpu_verbose():
                         "warnings": ["End of life is not included in the calculation"],
                     },
                     "unit": "MJ",
-                    "use": {"max": 2242000.0, "min": 62.25, "value": 100000.0},
+                    "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
                 },
             },
             "model_range": {"status": "ARCHETYPE", "value": "Xeon Platinum"},
@@ -235,7 +235,7 @@ async def test_complete_cpu_with_low_precision():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgSbeq",
-                "use": {"max": 0.001272, "min": 6.321e-05, "value": 0.0003},
+                "use": {"max": 0.001815, "min": 1.234e-05, "value": 0.0003},
             },
             "gwp": {
                 "description": "Total climate change",
@@ -246,7 +246,7 @@ async def test_complete_cpu_with_low_precision():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 4310.0, "min": 110.1, "value": 1800.0},
+                "use": {"max": 6150.0, "min": 21.51, "value": 1800.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -257,7 +257,7 @@ async def test_complete_cpu_with_low_precision():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 2242000.0, "min": 62.25, "value": 100000.0},
+                "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
             },
         }
     }
@@ -280,7 +280,7 @@ async def test_empty_cpu():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgSbeq",
-                "use": {"max": 0.001272, "min": 6.321e-05, "value": 0.0003},
+                "use": {"max": 0.001815, "min": 1.234e-05, "value": 0.0003},
             },
             "gwp": {
                 "description": "Total climate change",
@@ -291,7 +291,7 @@ async def test_empty_cpu():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 4310.0, "min": 110.1, "value": 1800.0},
+                "use": {"max": 6150.0, "min": 21.51, "value": 1800.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -302,7 +302,7 @@ async def test_empty_cpu():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 2242000.0, "min": 62.25, "value": 100000.0},
+                "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
             },
         }
     }
@@ -328,7 +328,7 @@ async def test_multiple_cpu():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgSbeq",
-                "use": {"max": 0.003816, "min": 0.0001896, "value": 0.0009},
+                "use": {"max": 0.005445, "min": 3.703e-05, "value": 0.0009},
             },
             "gwp": {
                 "description": "Total climate change",
@@ -339,7 +339,7 @@ async def test_multiple_cpu():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 12930.0, "min": 330.4, "value": 5000.0},
+                "use": {"max": 18450.0, "min": 64.52, "value": 5000.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -350,7 +350,7 @@ async def test_multiple_cpu():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 6726000.0, "min": 186.8, "value": 200000.0},
+                "use": {"max": 9597000.0, "min": 36.47, "value": 200000.0},
             },
         }
     }
@@ -376,7 +376,7 @@ async def test_incomplete_cpu_verbose():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgSbeq",
-                "use": {"max": 0.001272, "min": 6.321e-05, "value": 0.0003},
+                "use": {"max": 0.001815, "min": 1.234e-05, "value": 0.0003},
             },
             "gwp": {
                 "description": "Total climate change",
@@ -387,7 +387,7 @@ async def test_incomplete_cpu_verbose():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 4310.0, "min": 110.1, "value": 1800.0},
+                "use": {"max": 6150.0, "min": 21.51, "value": 1800.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -398,7 +398,7 @@ async def test_incomplete_cpu_verbose():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 2242000.0, "min": 62.25, "value": 100000.0},
+                "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
             },
         },
         "verbose": {
@@ -411,8 +411,8 @@ async def test_incomplete_cpu_verbose():
                 "value": 6.42e-08,
             },
             "avg_power": {
-                "max": 182.22,
-                "min": 182.22,
+                "max": 260.02,
+                "min": 35.579,
                 "status": "COMPLETED",
                 "unit": "W",
                 "value": 182.22,
@@ -454,7 +454,7 @@ async def test_incomplete_cpu_verbose():
                         "warnings": ["End of life is not included in the calculation"],
                     },
                     "unit": "kgSbeq",
-                    "use": {"max": 0.001272, "min": 6.321e-05, "value": 0.0003},
+                    "use": {"max": 0.001815, "min": 1.234e-05, "value": 0.0003},
                 },
                 "gwp": {
                     "description": "Total climate change",
@@ -465,7 +465,7 @@ async def test_incomplete_cpu_verbose():
                         "warnings": ["End of life is not included in the calculation"],
                     },
                     "unit": "kgCO2eq",
-                    "use": {"max": 4310.0, "min": 110.1, "value": 1800.0},
+                    "use": {"max": 6150.0, "min": 21.51, "value": 1800.0},
                 },
                 "pe": {
                     "description": "Consumption of primary energy",
@@ -476,7 +476,7 @@ async def test_incomplete_cpu_verbose():
                         "warnings": ["End of life is not included in the calculation"],
                     },
                     "unit": "MJ",
-                    "use": {"max": 2242000.0, "min": 62.25, "value": 100000.0},
+                    "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
                 },
             },
             "model_range": {"status": "ARCHETYPE", "value": "Xeon Platinum"},
@@ -537,7 +537,7 @@ async def test_incomplete_cpu_verbose_2():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgSbeq",
-                "use": {"max": 0.001272, "min": 6.321e-05, "value": 0.0003},
+                "use": {"max": 0.001815, "min": 1.234e-05, "value": 0.0003},
             },
             "gwp": {
                 "description": "Total climate change",
@@ -548,7 +548,7 @@ async def test_incomplete_cpu_verbose_2():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 4310.0, "min": 110.1, "value": 1800.0},
+                "use": {"max": 6150.0, "min": 21.51, "value": 1800.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -559,7 +559,7 @@ async def test_incomplete_cpu_verbose_2():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 2242000.0, "min": 62.25, "value": 100000.0},
+                "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
             },
         },
         "verbose": {
@@ -572,8 +572,8 @@ async def test_incomplete_cpu_verbose_2():
                 "value": 6.42e-08,
             },
             "avg_power": {
-                "max": 182.22,
-                "min": 182.22,
+                "max": 260.02,
+                "min": 35.579,
                 "status": "COMPLETED",
                 "unit": "W",
                 "value": 182.22,
@@ -615,7 +615,7 @@ async def test_incomplete_cpu_verbose_2():
                         "warnings": ["End of life is not included in the calculation"],
                     },
                     "unit": "kgSbeq",
-                    "use": {"max": 0.001272, "min": 6.321e-05, "value": 0.0003},
+                    "use": {"max": 0.001815, "min": 1.234e-05, "value": 0.0003},
                 },
                 "gwp": {
                     "description": "Total climate change",
@@ -626,7 +626,7 @@ async def test_incomplete_cpu_verbose_2():
                         "warnings": ["End of life is not included in the calculation"],
                     },
                     "unit": "kgCO2eq",
-                    "use": {"max": 4310.0, "min": 110.1, "value": 1800.0},
+                    "use": {"max": 6150.0, "min": 21.51, "value": 1800.0},
                 },
                 "pe": {
                     "description": "Consumption of primary energy",
@@ -637,7 +637,7 @@ async def test_incomplete_cpu_verbose_2():
                         "warnings": ["End of life is not included in the calculation"],
                     },
                     "unit": "MJ",
-                    "use": {"max": 2242000.0, "min": 62.25, "value": 100000.0},
+                    "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
                 },
             },
             "model_range": {"status": "ARCHETYPE", "value": "Xeon Platinum"},
