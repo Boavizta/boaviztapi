@@ -209,3 +209,11 @@ __what__ : Terrestrial eutrophication
 __Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
 
 __Unit__ : mol N eq.
+
+## fw - Net use of freshwater
+
+__what__: Net use of freshwater
+
+__Source__: [ISO 14046: Environmental management — Water footprint — Principles, requirements and guidelines](https://www.iso.org/standard/43263.html)
+
+__Unit__: m3

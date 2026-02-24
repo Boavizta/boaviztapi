@@ -1,5 +1,7 @@
 from boaviztapi import config
 from boaviztapi.model.component.gpu import ComponentGPU, VRAM_DIE_SURFACE_PER_GB
+from boaviztapi.model.impact import IMPACT_CRITERIAS
+from boaviztapi.model.usage import ModelUsage
 from boaviztapi.service.archetype import get_arch_value, get_component_archetype
 
 
@@ -60,3 +62,30 @@ class TestComponentGPU:
         raw_vram_dies = get_arch_value(archetype, "vram_dies", "default")
         raw_die_area = (raw_vram * VRAM_DIE_SURFACE_PER_GB) / raw_vram_dies
         assert gpu.vram_surface.value > raw_die_area
+
+
+class TestModelUsage:
+    def test_all_impact_criterias_available_in_elec_factors(self):
+        """Test that all factors in IMPACT_CRITERIAS are available in ModelUsage.elec_factors"""
+        usage = ModelUsage(archetype={})
+
+        # Get all keys in lowercase for comparison
+        expected_factors = set(key.lower() for key in IMPACT_CRITERIAS.keys())
+        actual_factors = set(key.lower() for key in usage.elec_factors.keys())
+
+        # Check that all expected factors are present
+        missing_factors = expected_factors - actual_factors
+        assert not missing_factors, (
+            f"Missing impact factors in ModelUsage.elec_factors: {missing_factors}"
+        )
+
+        # Check that all factors in elec_factors are valid (present in IMPACT_CRITERIAS)
+        extra_factors = actual_factors - expected_factors
+        assert not extra_factors, (
+            f"Extra/invalid impact factors in ModelUsage.elec_factors: {extra_factors}"
+        )
+
+        # Verify exact match
+        assert actual_factors == expected_factors, (
+            f"Impact factors mismatch. Expected: {expected_factors}, Got: {actual_factors}"
+        )
