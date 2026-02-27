@@ -14,6 +14,10 @@ See the [documentation](https://doc.api.boavizta.org/) for API usage and methodo
 
 💬 [Join us on our public chat](https://chat.boavizta.org/signup_user_complete/?id=97a1cpe35by49jdc66ej7ktrjc)
 
+## :handshake: Who uses Boaviztapi?
+
+See [ADOPTERS.md](ADOPTERS.md). If your organization uses boaviztapi, feel free to add yourself via pull request.
+
 ## :dart: Objective
 
 Boavizta aims to enhance the assessment of environmental impacts induced by ICTs in organizations by providing widespread access to our work in an automated and efficient manner.
