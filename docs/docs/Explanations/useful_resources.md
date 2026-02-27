@@ -16,3 +16,9 @@
 ## From others
 
 - [NegaOctet public database on Base Empreinte® ADEME](https://base-empreinte.ademe.fr/documentation/base-impact?idDocument=167) (Requires a free account)
+
+## Projects using BoaviztAPI
+
+Several tools and projects use BoaviztAPI to power their environmental impact assessments, including [Datavizta](https://datavizta.boavizta.org/), [CloudScanner](https://github.com/Boavizta/cloud-scanner), [EcoLogits](https://ecologits.ai), and [SPRUCE](https://github.com/DigitalPebble/spruce).
+
+See the full [adopters list](https://github.com/Boavizta/boaviztapi/blob/main/ADOPTERS.md).

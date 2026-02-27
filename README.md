@@ -141,6 +141,10 @@ serverless info
 
 Once API server is launched API swagger is available at [httsp://localhost:5000/docs](https://localhost:5000/docs).
 
+## :handshake: Adopters
+
+BoaviztAPI is used by several open-source projects and tools. See [ADOPTERS.md](./ADOPTERS.md) for the full list.
+
 ## :woman: Contributing
 
 See [contributing.md](./CONTRIBUTING.md).
