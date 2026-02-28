@@ -78,7 +78,7 @@ nav:
           - IoT devices: Reference/format/iot_device_route.md
     - Deploy: deploy.md
     - Configuration: config.md
-    - Release notes: release_notes.md
+    - Release notes: https://github.com/Boavizta/boaviztapi/releases" target="_blank
     - Contributing:
         - 'Add a cloud provider': contributing/cloud_provider.md
         - 'Add a cloud instance': contributing/cloud_instance.md
