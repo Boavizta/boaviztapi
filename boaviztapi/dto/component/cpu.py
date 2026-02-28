@@ -48,13 +48,16 @@ def mapper_cpu(
     if cpu_dto.die_size_per_core is not None:
         cpu_component.die_size_per_core.set_input(cpu_dto.die_size_per_core)
 
-    elif cpu_dto.die_size is not None and cpu_dto.core_units is not None:
-        die_size_per_core = cpu_dto.die_size / cpu_dto.core_units
-        cpu_component.die_size_per_core.set_completed(
-            die_size_per_core,
-            source="INPUT : die_size / core_units",
-            min=die_size_per_core,
-            max=die_size_per_core,
-        )
+    if cpu_dto.die_size is not None:
+        cpu_component.die_size.set_input(cpu_dto.die_size)
+
+        if cpu_dto.core_units is not None and cpu_dto.die_size_per_core is None:
+            die_size_per_core = cpu_dto.die_size / cpu_dto.core_units
+            cpu_component.die_size_per_core.set_completed(
+                die_size_per_core,
+                source="INPUT : die_size / core_units",
+                min=die_size_per_core,
+                max=die_size_per_core,
+            )
 
     return cpu_component
