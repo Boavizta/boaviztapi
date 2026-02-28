@@ -44,7 +44,7 @@ __resource__:
 
 __what__ : Climate change - Contribution of biogenic emissions 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : kg CO2 eq.
 
@@ -53,7 +53,7 @@ __Unit__ : kg CO2 eq.
 
 __what__ : Climate change - Contribution of fossil fuel emissions 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : kg CO2 eq.
 
@@ -62,7 +62,7 @@ __Unit__ : kg CO2 eq.
 
 __what__ : Climate change - Contribution of emissions from land use change 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : kg CO2 eq.
 
@@ -71,7 +71,7 @@ __Unit__ : kg CO2 eq.
 
 __what__ : Emissions of radionizing substances 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : kg U235 eq.
 
@@ -80,7 +80,7 @@ __Unit__ : kg U235 eq.
 
 __what__ : Land use 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : No dimension
 
@@ -89,7 +89,7 @@ __Unit__ : No dimension
 
 __what__ : Depletion of the ozone layer 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : kg CFC-11 eq.
 
@@ -98,7 +98,7 @@ __Unit__ : kg CFC-11 eq.
 
 __what__ : Fine particle emissions 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : Disease occurrence
 
@@ -107,7 +107,7 @@ __Unit__ : Disease occurrence
 
 __what__ : Photochemical ozone formation 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : kg NMVOC eq.
 
@@ -116,7 +116,7 @@ __Unit__ : kg NMVOC eq.
 
 __what__ : Use of water resources 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : m3 eq.
 
@@ -125,7 +125,7 @@ __Unit__ : m3 eq.
 
 __what__ : Material input per unit of service 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : kg
 
@@ -134,7 +134,7 @@ __Unit__ : kg
 
 __what__ : Use of mineral and metal resources 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : kg SB eq.
 
@@ -143,7 +143,7 @@ __Unit__ : kg SB eq.
 
 __what__ : Use of fossil resources (including nuclear) 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : MJ
 
@@ -152,7 +152,7 @@ __Unit__ : MJ
 
 __what__ : Acidification 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : mol H+ eq.
 
@@ -161,7 +161,7 @@ __Unit__ : mol H+ eq.
 
 __what__ : Freshwater ecotoxicity 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : CTUe
 
@@ -170,7 +170,7 @@ __Unit__ : CTUe
 
 __what__ : Human Toxicity - Carcinogenic Effects 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : CTUh
 
@@ -179,7 +179,7 @@ __Unit__ : CTUh
 
 __what__ : Human toxicity - non-carcinogenic effects 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : CTUh
 
@@ -188,7 +188,7 @@ __Unit__ : CTUh
 
 __what__ : Eutrophication of freshwater 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : kg P eq.
 
@@ -197,7 +197,7 @@ __Unit__ : kg P eq.
 
 __what__ : Eutrophication of marine waters 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : kg N eq.
 
@@ -206,7 +206,7 @@ __Unit__ : kg N eq.
 
 __what__ : Terrestrial eutrophication 
 
-__Source__ : [Product Environmental Footprint (PEF)](https://ec.europa.eu/environment/eussd/pdf/footprint/PEF%20methodology%20final%20draft.pdf)
+__Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 
 __Unit__ : mol N eq.
 
