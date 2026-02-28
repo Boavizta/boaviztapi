@@ -26,7 +26,7 @@ All available servers are stored in a CSV file named `servers.csv` located at `b
 | HDD.capacity                  |               | GB    | HDD storage quantity             | 0                       |
 | GPU.units                     | **Required**  | unit  | GPU quantity (not supported yet) | 0                       |
 | GPU.name                      |               |       | GPU name                         |                         |
-| GPU.memory_capacity           |               | GB    | GPU memory capacity              |                         |
+| GPU.vram                      |               | GB    | GPU memory capacity              |                         |
 | POWER_SUPPLY.units            | **Required**  | unit  | Number of power supply[^2]       | 2                       |
 | POWER_SUPPLY.unit_weight      | **Required**  | kg    | Power supply weight[^2]          | 2.99;1;5                |
 | USAGE.time_workload           | **Required**  | %     | Time workload [^3]               | 50;0;100                |
@@ -45,4 +45,4 @@ All available servers are stored in a CSV file named `servers.csv` located at `b
 
 ### Value ranges
 
-Some values can be inputted using ranges like the following: `default;min;max`. For example, if the value is `4;2;8`, it means that the default value is `4` and the range is from `2` to `8`. 
+Some values can be inputted using ranges like the following: `default;min;max`. For example, if the value is `4;2;8`, it means that the default value is `4` and the range is from `2` to `8`.
