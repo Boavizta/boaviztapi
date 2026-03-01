@@ -330,8 +330,8 @@ async def test_partial_server_2():
             "gwp": {
                 "description": "Total climate change",
                 "embedded": {
-                    "max": 9901.0,
-                    "min": 902.9,
+                    "max": 9758.0,
+                    "min": 902.8,
                     "value": 1400.0,
                     "warnings": ["End of life is not included in the calculation"],
                 },
@@ -341,7 +341,7 @@ async def test_partial_server_2():
             "pe": {
                 "description": "Consumption of primary energy",
                 "embedded": {
-                    "max": 124300.0,
+                    "max": 122400.0,
                     "min": 12310.0,
                     "value": 20000.0,
                     "warnings": ["End of life is not included in the calculation"],

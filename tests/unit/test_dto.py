@@ -1,4 +1,31 @@
+from boaviztapi.dto.component.cpu import CPU, mapper_cpu
 from boaviztapi.dto.component.gpu import GPU, mapper_gpu
+
+
+class TestCPUMapping:
+    def test_maps_all_fields(self):
+        cpu_dto = CPU(
+            units=2,
+            core_units=12,
+            die_size=245.0,
+            die_size_per_core=24.5,
+            manufacturer="Intel",
+            model_range="Xeon Gold",
+            family="Skylake",
+            name="Xeon Gold 6140",
+            tdp=140,
+        )
+
+        component = mapper_cpu(cpu_dto)
+
+        assert component.units.value == cpu_dto.units
+        assert component.core_units.value == cpu_dto.core_units
+        assert component.die_size.value == cpu_dto.die_size
+        assert component.die_size_per_core.value == cpu_dto.die_size_per_core
+        assert component.family.value == cpu_dto.family
+        assert component.name.value == cpu_dto.name
+        assert component.model_range.value == cpu_dto.model_range
+        assert component.tdp.value == cpu_dto.tdp
 
 
 class TestGPUMapping:
