@@ -4,6 +4,8 @@
 
 Try [datavizta](https://datavizta.boavizta.org/), our pedagogical frontend, try [accessing the demo API]({{ endpoint }}/docs) or follow a [a short tutorial](getting_started/single_server.md) to get started and retrieve impacts data.
 
+BoaviztAPI is used by a growing number of tools and projects. See the [adopters list](https://github.com/Boavizta/boaviztapi/blob/main/ADOPTERS.md).
+
 Read the [explanations](Explanations/boavizta_db.md) section to get information about the source of data, the details of the methodology and theoretical model.
 
 Have a look at the [reference](Reference/format/component_route.md) section to get technical details about the routes and data formats of the API.

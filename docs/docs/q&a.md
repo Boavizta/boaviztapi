@@ -1,5 +1,9 @@
 ## General
 
+#### Who is using BoaviztAPI?
+
+Several tools and projects use BoaviztAPI to power their environmental impact assessments. See the [adopters list](https://github.com/Boavizta/boaviztapi/blob/main/ADOPTERS.md).
+
 #### How does the API data set differ from other Boavizta' data set?
 While the [digital product carbon footprint repository](https://github.com/Boavizta/environmental-footprint-data) aggregates non-transparent manufacturer data, the API reports impacts via an open, auditable and improvable bottom-up approach. 
 Our impacts factors relies mostly on peered reviewed publications taken from scientific or industrial literature.
