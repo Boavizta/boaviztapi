@@ -12,18 +12,16 @@ The official interactive front-end for BoaviztAPI. Datavizta provides a web dash
 
 A CLI tool and service that scans an AWS account, inventories running EC2 instances, and returns real-time environmental impact estimates (GWP, ADP, PE). CloudScanner calls BoaviztAPI's `/v1/cloud/instance` endpoint, passing instance type and usage data to retrieve per-instance impact figures.
 
----
-
-## [DigitalPebble](https://digitalpebble.com)
-
-### [SPRUCE](https://github.com/DigitalPebble/spruce)
+## [SPRUCE](https://github.com/DigitalPebble/spruce)
 
 An open-source enrichment platform for GreenOps which helps measure and reduce the environmental impact of cloud computing. SPRUCE uses BoaviztAPI to retrieve hardware impact data for the servers powering cloud workloads.
 
----
-
-## [GenAI Impact](https://github.com/genai-impact)
-
-### [EcoLogits](https://ecologits.ai)
+## [EcoLogits](https://ecologits.ai)
 
 A Python library that tracks the energy consumption and environmental impacts of generative AI inference across major LLM API providers (OpenAI, Anthropic, Mistral, etc.). EcoLogits uses BoaviztAPI as its underlying methodology engine to compute the embedded (manufacturing) and use-phase (electricity) environmental impacts of the GPU servers running LLM inference. See the [LLM inference methodology](https://ecologits.ai/latest/methodology/llm_inference/) for details.
+
+## [Scaleway](https://www.scaleway.com/)
+
+Scaleway use the BoaviztAPI for their [environmental footprint calculator](https://www.scaleway.com/en/docs/environmental-footprint/additional-content/environmental-footprint-calculator/).
+
+
