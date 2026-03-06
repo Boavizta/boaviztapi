@@ -4731,6 +4731,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.37
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.003132125
     }
   },
   "UKR": {
@@ -4846,6 +4853,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.492
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0021305903
     }
   },
   "TZA": {
@@ -5076,6 +5090,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.563
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0014886308
     }
   },
   "TTO": {
@@ -5306,6 +5327,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.588
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0049197356
     }
   },
   "TUN": {
@@ -5766,6 +5794,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.507
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0028902215
     }
   },
   "TGO": {
@@ -6341,6 +6376,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.346
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0057952062
     }
   },
   "SVN": {
@@ -6456,6 +6498,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.307
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0029769165
     }
   },
   "SGP": {
@@ -6686,6 +6735,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.04
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0060315101
     }
   },
   "SDN": {
@@ -7031,6 +7087,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.347
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0034595506
     }
   },
   "SCG": {
@@ -7261,6 +7324,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.464
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0073563061
     }
   },
   "QAT": {
@@ -7606,6 +7676,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.324
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0095932022
     }
   },
   "POL": {
@@ -7721,6 +7798,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.805
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0025134737
     }
   },
   "PAK": {
@@ -8411,6 +8495,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.149
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.014968107
     }
   },
   "NPL": {
@@ -8641,6 +8732,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.031
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0066633633
     }
   },
   "NLD": {
@@ -8756,6 +8854,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.45
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0034330403
     }
   },
   "NIC": {
@@ -9331,6 +9436,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.589
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.001677809
     }
   },
   "MEX": {
@@ -9446,6 +9558,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.411
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0053047285
     }
   },
   "MLT": {
@@ -9561,6 +9680,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.463
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0011184881
     }
   },
   "MNG": {
@@ -10366,6 +10492,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.325
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0025526062
     }
   },
   "LUX": {
@@ -10481,6 +10614,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.338
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0127784
     }
   },
   "LTU": {
@@ -10596,6 +10736,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.321
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0058993947
     }
   },
   "LKA": {
@@ -11171,6 +11318,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.444
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.001887679
     }
   },
   "PRK": {
@@ -11746,6 +11900,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.473
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0023063545
     }
   },
   "JOR": {
@@ -12091,6 +12252,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.356
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0048374076
     }
   },
   "ISL": {
@@ -12206,6 +12374,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.026
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0061408786
     }
   },
   "IRN": {
@@ -12551,6 +12726,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.626
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0034368443
     }
   },
   "ISR": {
@@ -12781,6 +12963,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.384
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0014769299
     }
   },
   "IDN": {
@@ -12896,6 +13085,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.663
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0022553672
     }
   },
   "HUN": {
@@ -13011,6 +13207,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.338
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0036874018
     }
   },
   "HTI": {
@@ -13694,6 +13897,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.78
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0051451235
     }
   },
   "GIB": {
@@ -14147,6 +14357,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.246
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0023289996
     }
   },
   "GAB": {
@@ -14377,6 +14594,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.098
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0036736961
     }
   },
   "FIN": {
@@ -14492,6 +14716,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.141
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0045289299
     }
   },
   "ETH": {
@@ -14722,6 +14953,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.279
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0062087837
     }
   },
   "ERI": {
@@ -15067,6 +15305,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.472
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0021985632
     }
   },
   "ECU": {
@@ -15527,6 +15772,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.158
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0031934825
     }
   },
   "DEU": {
@@ -15642,6 +15894,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.422
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.001946974
     }
   },
   "CZE": {
@@ -15757,6 +16016,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.397
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.003213345
     }
   },
   "CYP": {
@@ -15872,6 +16138,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.791
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0012947021
     }
   },
   "CUB": {
@@ -16332,6 +16605,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.55
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0060064707
     }
   },
   "CMR": {
@@ -16562,6 +16842,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.387
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.010522585
     }
   },
   "CIV": {
@@ -16792,6 +17079,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.078
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0056641574
     }
   },
   "COG": {
@@ -17137,6 +17431,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.12
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0081662622
     }
   },
   "BLR": {
@@ -17482,6 +17783,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.113
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.018603389
     }
   },
   "BOL": {
@@ -18057,6 +18365,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.544
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0046228332
     }
   },
   "BEL": {
@@ -18172,6 +18487,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.23
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0026198402
     }
   },
   "BGD": {
@@ -18632,6 +18954,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.56
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0047293108
     }
   },
   "AUT": {
@@ -18747,6 +19076,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.264
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.0057221817
     }
   },
   "ARG": {
@@ -18862,6 +19198,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.353
+    },
+    "wu": {
+      "unit": "m3/kWh",
+      "source": "https://www.wri.org/data/dataset-guidance-calculating-water-use-embedded-purchased-electricity",
+      "priority": 3.0,
+      "reference_year": "2020",
+      "value": 0.011455862
     }
   },
   "AGO": {
@@ -19496,6 +19839,10 @@
     "gwp": {
       "min": 0.023,
       "max": 1.13161
+    },
+    "wu": {
+      "min": 0.0011184881,
+      "max": 0.018603389
     }
   },
   "available_countries": {
