@@ -1,4 +1,4 @@
-name: Validate CSV format
+name: Validate CSV
 
 on:
   push:
@@ -16,7 +16,7 @@ on:
 
 jobs:
   check-csv:
-    name: Check CSV format
+    name: Check CSV
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
