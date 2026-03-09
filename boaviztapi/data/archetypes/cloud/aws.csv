@@ -208,7 +208,7 @@ dc2.large,2,15,160,0,0,platform_aws_dc2,
 dc2.8xlarge,32,244,5120,0,0,platform_aws_dc2,
 dl1.24xlarge,96,768,4000,0,8,platform_aws_dl1,
 ds2.xlarge,4,31,0,2000,0,platform_aws_ds2,
-ds2.8xlarge,36,244,0,1600,0,platform_aws_ds2,
+ds2.8xlarge,36,244,0,16000,0,platform_aws_ds2,
 f1.2xlarge,8,122,470,0,0,platform_aws_f1,https://aws.amazon.com/fr/ec2/instance-types/f1/
 f1.4xlarge,16,244,940,0,0,platform_aws_f1,https://aws.amazon.com/fr/ec2/instance-types/f1/
 f1.16xlarge,64,976,3760,0,0,platform_aws_f1,https://aws.amazon.com/fr/ec2/instance-types/f1/
@@ -227,8 +227,8 @@ g4dn.xlarge,4,16,125,0,1,g4dn.metal,
 g4dn.2xlarge,8,32,450,0,1,g4dn.metal,
 g4dn.4xlarge,16,64,450,0,1,g4dn.metal,
 g4dn.8xlarge,32,128,900,0,1,g4dn.metal,
-g4dn.12xlarge,48,192,900,0,1,g4dn.metal,
-g4dn.16xlarge,64,256,900,0,4,g4dn.metal,
+g4dn.12xlarge,48,192,900,0,4,g4dn.metal,
+g4dn.16xlarge,64,256,900,0,1,g4dn.metal,
 g4dn.metal,96,384,1800,0,8,g4dn.metal,
 g5.xlarge,4,16,250,0,1,g5.48xlarge,
 g5.2xlarge,8,32,450,0,1,g5.48xlarge,
@@ -250,7 +250,7 @@ g6e.xlarge,4,32,250,0,1,g6e.48xlarge,https://aws.amazon.com/ec2/instance-types/g
 g6e.2xlarge,8,64,450,0,1,g6e.48xlarge,https://aws.amazon.com/ec2/instance-types/g6e/
 g6e.4xlarge,16,128,600,0,1,g6e.48xlarge,https://aws.amazon.com/ec2/instance-types/g6e/
 g6e.8xlarge,32,256,900,0,1,g6e.48xlarge,https://aws.amazon.com/ec2/instance-types/g6e/
-g6e.16xlarge,64,192,1900,0,1,g6e.48xlarge,https://aws.amazon.com/ec2/instance-types/g6e/
+g6e.16xlarge,64,512,1900,0,1,g6e.48xlarge,https://aws.amazon.com/ec2/instance-types/g6e/
 g6e.12xlarge,48,384,3800,0,4,g6e.48xlarge,https://aws.amazon.com/ec2/instance-types/g6e/
 g6e.24xlarge,96,768,3800,0,4,g6e.48xlarge,https://aws.amazon.com/ec2/instance-types/g6e/
 g6e.48xlarge,192,1536,7600,0,8,g6e.48xlarge,https://aws.amazon.com/ec2/instance-types/g6e/
