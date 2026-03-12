@@ -14,7 +14,7 @@ from boaviztapi.dto.component.other import (
 )
 from boaviztapi.dto.component.ram import mapper_ram
 from boaviztapi.dto.component.disk import mapper_ssd, mapper_hdd
-from boaviztapi.model.component import Component
+from boaviztapi.models.component import Component
 from boaviztapi.routers.openapi_doc.descriptions import (
     cpu_description,
     gpu_description,
@@ -26,12 +26,12 @@ from boaviztapi.routers.openapi_doc.descriptions import (
     case_description,
 )
 from boaviztapi.routers.openapi_doc.examples import components_examples_openapi
-from boaviztapi.service.archetype import (
+from boaviztapi.data.archetype import (
     get_component_archetype,
     get_device_archetype_lst,
 )
-from boaviztapi.service.impacts_computation import compute_impacts
-from boaviztapi.service.verbose import verbose_component
+from boaviztapi.compute.impacts_computation import compute_impacts
+from boaviztapi.compute.verbose import verbose_component
 
 component_router = APIRouter(prefix="/v1/component", tags=["component"])
 

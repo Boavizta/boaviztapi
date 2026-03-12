@@ -5,9 +5,9 @@ from fastapi import APIRouter, Query
 
 from boaviztapi import data_dir
 from boaviztapi.dto.component.cpu import CPU
-from boaviztapi.model import impact
-from boaviztapi.model.component import ComponentCase
-from boaviztapi.model.component.cpu import attributes_from_cpu_name
+from boaviztapi.models import impact
+from boaviztapi.models.component import ComponentCase
+from boaviztapi.models.component.cpu import attributes_from_cpu_name
 from boaviztapi.routers.openapi_doc.descriptions import (
     country_code,
     cpu_family,
@@ -20,8 +20,8 @@ from boaviztapi.routers.openapi_doc.descriptions import (
     impacts_criteria,
     cloud_regions,
 )
-from boaviztapi.service.factor_provider import get_available_countries
-from boaviztapi.service.archetype import list_cloud_regions
+from boaviztapi.data.factor_provider import get_available_countries
+from boaviztapi.data.archetype import list_cloud_regions
 from boaviztapi.utils.get_version import get_version_from_pyproject
 
 utils_router = APIRouter(prefix="/v1/utils", tags=["utils"])

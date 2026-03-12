@@ -11,12 +11,12 @@ from boaviztapi.dto.component.ram import mapper_ram
 from boaviztapi.dto.usage import UsageServer, UsageCloud
 from boaviztapi.dto import BaseDTO
 from boaviztapi.dto.usage.usage import mapper_usage_server, mapper_usage_cloud
-from boaviztapi.model.boattribute import Status, Boattribute
-from boaviztapi.model.component import ComponentCase
-from boaviztapi.model.device.server import DeviceServer
-from boaviztapi.model.services.cloud_instance import ServiceCloudInstance
-from boaviztapi.model.usage import ModelUsage
-from boaviztapi.service.archetype import (
+from boaviztapi.models.boattribute import Status, Boattribute
+from boaviztapi.models.component import ComponentCase
+from boaviztapi.models.device.server import DeviceServer
+from boaviztapi.models.services.cloud_instance import ServiceCloudInstance
+from boaviztapi.models.usage import ModelUsage
+from boaviztapi.data.archetype import (
     get_server_archetype,
     get_arch_component,
     get_cloud_instance_archetype,

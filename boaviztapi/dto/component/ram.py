@@ -7,8 +7,8 @@ from boaviztapi import config
 from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.usage import Usage
 from boaviztapi.dto.usage.usage import mapper_usage
-from boaviztapi.model.component import ComponentRAM
-from boaviztapi.service.archetype import get_component_archetype
+from boaviztapi.models.component import ComponentRAM
+from boaviztapi.data.archetype import get_component_archetype
 
 _ram_df = pd.read_csv(
     os.path.join(
