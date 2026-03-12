@@ -4,7 +4,7 @@ import os.path
 import pytest
 
 from boaviztapi import data_dir_prod
-from boaviztapi.service.factor_provider import get_available_countries
+from boaviztapi.data.factor_provider import get_available_countries
 
 # Always use prod data for these tests
 cloud_path = os.path.join(data_dir_prod, "archetypes/cloud")

@@ -3,8 +3,8 @@ from boaviztapi.dto.usage.usage import (
     _reset_usage_dto_if_matches_config_defaults,
     UsageServer,
 )
-from boaviztapi.model.device.server import DeviceServer
-from boaviztapi.service.impacts_computation import compute_single_impact
+from boaviztapi.models.device.server import DeviceServer
+from boaviztapi.compute.impacts_computation import compute_single_impact
 
 
 def test_usage_server_french_mix_1_kw(french_mix_1_kw_dto):

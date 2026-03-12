@@ -1,6 +1,6 @@
 import pytest
 
-from boaviztapi.service.factor_provider import (
+from boaviztapi.data.factor_provider import (
     get_electrical_impact_factor,
     get_electrical_min_max,
 )

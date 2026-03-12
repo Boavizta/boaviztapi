@@ -1,8 +1,8 @@
 from boaviztapi import config
-from boaviztapi.model.component.gpu import ComponentGPU, VRAM_DIE_SURFACE_PER_GB
-from boaviztapi.model.impact import IMPACT_CRITERIAS
-from boaviztapi.model.usage import ModelUsage
-from boaviztapi.service.archetype import get_arch_value, get_component_archetype
+from boaviztapi.models.component.gpu import ComponentGPU, VRAM_DIE_SURFACE_PER_GB
+from boaviztapi.models.impact import IMPACT_CRITERIAS
+from boaviztapi.models.usage import ModelUsage
+from boaviztapi.data.archetype import get_arch_value, get_component_archetype
 
 
 class TestComponentGPU:

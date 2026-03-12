@@ -1,4 +1,4 @@
-from boaviztapi.service.impacts_computation import compute_impacts
+from boaviztapi.compute.impacts_computation import compute_impacts
 from pprint import pprint
 
 

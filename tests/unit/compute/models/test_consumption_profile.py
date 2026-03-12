@@ -3,7 +3,7 @@ from typing import Dict, Union, List, Tuple
 import pytest
 
 from boaviztapi.dto.consumption_profile.consumption_profile import WorkloadPower
-from boaviztapi.model.consumption_profile import (
+from boaviztapi.models.consumption_profile import (
     CPUConsumptionProfileModel,
     RAMConsumptionProfileModel,
 )

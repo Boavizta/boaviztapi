@@ -1,6 +1,6 @@
-from boaviztapi.model.component import Component
-from boaviztapi.model.impact import Impact
-from boaviztapi.model.usage import ModelUsage
+from boaviztapi.models.component import Component
+from boaviztapi.models.impact import Impact
+from boaviztapi.models.usage import ModelUsage
 
 
 def test_allocate_():

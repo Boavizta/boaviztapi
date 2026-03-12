@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from boaviztapi.service.archetype import get_archetype
+from boaviztapi.data.archetype import get_archetype
 from boaviztapi import data_dir
 
 pytest_plugins = ("pytest_asyncio",)

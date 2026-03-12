@@ -1,5 +1,5 @@
-from boaviztapi.service.impacts_computation import compute_impacts
-from boaviztapi.service.verbose import verbose_component, verbose_device
+from boaviztapi.compute.impacts_computation import compute_impacts
+from boaviztapi.compute.verbose import verbose_component, verbose_device
 
 
 def test_verbose_component_cpu_1(complete_cpu_model):
