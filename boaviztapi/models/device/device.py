@@ -1,9 +1,9 @@
 from typing import List
 
-from boaviztapi.model.boattribute import Boattribute
-from boaviztapi.model.component import Component
-from boaviztapi.model.impact import Assessable
-from boaviztapi.model.usage import ModelUsage
+from boaviztapi.models.boattribute import Boattribute
+from boaviztapi.models.component import Component
+from boaviztapi.models.impact import Assessable
+from boaviztapi.models.usage import ModelUsage
 
 
 class Device(Assessable):

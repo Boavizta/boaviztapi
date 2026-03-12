@@ -1,4 +1,4 @@
-from boaviztapi.model.component.component import Component
+from boaviztapi.models.component.component import Component
 
 
 class ComponentAssembly(Component):
