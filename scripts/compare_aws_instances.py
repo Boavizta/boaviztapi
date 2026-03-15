@@ -134,7 +134,7 @@ def print_report(result: dict, aws: dict):
     print("=" * 70)
 
     print(f"\nTotal in AWS API:      {len(aws)}")
-    print(f"Total in BoaviztAPI:   (see common + only_in_boavizta)")
+    print("Total in BoaviztAPI:   (see common + only_in_boavizta)")
     print(f"Common instances:      {result['common_count']}")
     print(f"Only in AWS:           {len(result['only_in_aws'])}")
     print(f"Only in BoaviztAPI:    {len(result['only_in_boavizta'])}")
