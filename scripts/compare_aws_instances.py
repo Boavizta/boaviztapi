@@ -17,7 +17,14 @@ import subprocess
 import sys
 from pathlib import Path
 
-BOAVIZTA_AWS_CSV = Path(__file__).resolve().parent.parent / "boaviztapi" / "data" / "archetypes" / "cloud" / "aws.csv"
+BOAVIZTA_AWS_CSV = (
+    Path(__file__).resolve().parent.parent
+    / "boaviztapi"
+    / "data"
+    / "archetypes"
+    / "cloud"
+    / "aws.csv"
+)
 
 
 def load_boavizta_instances(csv_path: Path) -> dict:
@@ -44,9 +51,13 @@ def fetch_aws_instance_types(region: str) -> dict:
 
     while True:
         cmd = [
-            "aws", "ec2", "describe-instance-types",
-            "--region", region,
-            "--output", "json",
+            "aws",
+            "ec2",
+            "describe-instance-types",
+            "--region",
+            region,
+            "--output",
+            "json",
         ]
         if next_token:
             cmd.extend(["--next-token", next_token])
@@ -78,7 +89,9 @@ def fetch_aws_instance_types(region: str) -> dict:
                 "ssd_storage": ssd_gb,
                 "hdd_storage": hdd_gb,
                 "gpu_units": gpu_count,
-                "family": instance_id.split(".")[0] if "." in instance_id else instance_id,
+                "family": instance_id.split(".")[0]
+                if "." in instance_id
+                else instance_id,
                 "arch": it["ProcessorInfo"].get("SupportedArchitectures", []),
                 "hypervisor": it.get("Hypervisor", ""),
                 "bare_metal": it.get("BareMetal", False),
@@ -111,9 +124,15 @@ def compare(boavizta: dict, aws: dict) -> dict:
         if abs(b["memory"] - a["memory"]) > 0.01 * max(a["memory"], 1):
             diffs["memory"] = {"boavizta": b["memory"], "aws": a["memory"]}
         if b["ssd_storage"] != a["ssd_storage"]:
-            diffs["ssd_storage"] = {"boavizta": b["ssd_storage"], "aws": a["ssd_storage"]}
+            diffs["ssd_storage"] = {
+                "boavizta": b["ssd_storage"],
+                "aws": a["ssd_storage"],
+            }
         if b["hdd_storage"] != a["hdd_storage"]:
-            diffs["hdd_storage"] = {"boavizta": b["hdd_storage"], "aws": a["hdd_storage"]}
+            diffs["hdd_storage"] = {
+                "boavizta": b["hdd_storage"],
+                "aws": a["hdd_storage"],
+            }
         if b["gpu_units"] != a["gpu_units"]:
             diffs["gpu_units"] = {"boavizta": b["gpu_units"], "aws": a["gpu_units"]}
         if diffs:
@@ -152,7 +171,9 @@ def print_report(result: dict, aws: dict):
             print(f"  {family}: {', '.join(instances)}")
 
     if result["only_in_boavizta"]:
-        print(f"\n--- Instances only in BoaviztAPI ({len(result['only_in_boavizta'])}) ---")
+        print(
+            f"\n--- Instances only in BoaviztAPI ({len(result['only_in_boavizta'])}) ---"
+        )
         for iid in result["only_in_boavizta"]:
             print(f"  {iid}")
 
@@ -168,39 +189,90 @@ def write_csv_report(result: dict, aws: dict, output_path: str):
     """Write detailed CSV report of missing instances."""
     with open(output_path, "w", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow([
-            "status", "id", "vcpu", "memory_gib", "ssd_storage_gb",
-            "hdd_storage_gb", "gpu_units", "family", "architectures",
-            "diff_field", "boavizta_value", "aws_value",
-        ])
+        writer.writerow(
+            [
+                "status",
+                "id",
+                "vcpu",
+                "memory_gib",
+                "ssd_storage_gb",
+                "hdd_storage_gb",
+                "gpu_units",
+                "family",
+                "architectures",
+                "diff_field",
+                "boavizta_value",
+                "aws_value",
+            ]
+        )
         for iid in result["only_in_aws"]:
             a = aws[iid]
-            writer.writerow([
-                "missing_from_boavizta", iid, a["vcpu"], a["memory"],
-                a["ssd_storage"], a["hdd_storage"], a["gpu_units"],
-                a["family"], ";".join(a["arch"]), "", "", "",
-            ])
+            writer.writerow(
+                [
+                    "missing_from_boavizta",
+                    iid,
+                    a["vcpu"],
+                    a["memory"],
+                    a["ssd_storage"],
+                    a["hdd_storage"],
+                    a["gpu_units"],
+                    a["family"],
+                    ";".join(a["arch"]),
+                    "",
+                    "",
+                    "",
+                ]
+            )
         for iid in result["only_in_boavizta"]:
-            writer.writerow([
-                "missing_from_aws", iid, "", "", "", "", "", "", "", "", "", "",
-            ])
+            writer.writerow(
+                [
+                    "missing_from_aws",
+                    iid,
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                ]
+            )
         for m in result["mismatches"]:
             for field, vals in m["diffs"].items():
                 a = aws[m["id"]]
-                writer.writerow([
-                    "mismatch", m["id"], a["vcpu"], a["memory"],
-                    a["ssd_storage"], a["hdd_storage"], a["gpu_units"],
-                    a["family"], ";".join(a["arch"]),
-                    field, vals["boavizta"], vals["aws"],
-                ])
+                writer.writerow(
+                    [
+                        "mismatch",
+                        m["id"],
+                        a["vcpu"],
+                        a["memory"],
+                        a["ssd_storage"],
+                        a["hdd_storage"],
+                        a["gpu_units"],
+                        a["family"],
+                        ";".join(a["arch"]),
+                        field,
+                        vals["boavizta"],
+                        vals["aws"],
+                    ]
+                )
     print(f"\nCSV report written to: {output_path}")
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Compare AWS EC2 instance types with BoaviztAPI data")
-    parser.add_argument("--region", default="us-east-1", help="AWS region to query (default: us-east-1)")
+    parser = argparse.ArgumentParser(
+        description="Compare AWS EC2 instance types with BoaviztAPI data"
+    )
+    parser.add_argument(
+        "--region", default="us-east-1", help="AWS region to query (default: us-east-1)"
+    )
     parser.add_argument("--output", default=None, help="Path for CSV output report")
-    parser.add_argument("--csv-path", default=str(BOAVIZTA_AWS_CSV), help="Path to BoaviztAPI aws.csv")
+    parser.add_argument(
+        "--csv-path", default=str(BOAVIZTA_AWS_CSV), help="Path to BoaviztAPI aws.csv"
+    )
     args = parser.parse_args()
 
     csv_path = Path(args.csv_path)
@@ -219,7 +291,10 @@ def main():
         print(f"Error calling AWS CLI: {e.stderr}", file=sys.stderr)
         sys.exit(1)
     except FileNotFoundError:
-        print("Error: AWS CLI not found. Install it with: pip install awscli", file=sys.stderr)
+        print(
+            "Error: AWS CLI not found. Install it with: pip install awscli",
+            file=sys.stderr,
+        )
         sys.exit(1)
     print(f"  Found {len(aws)} instances")
 
