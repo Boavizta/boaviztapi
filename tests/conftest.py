@@ -12,6 +12,9 @@ if not _running_e2e:
     bv_config.cpu_name_fuzzymatch_threshold = 60
     bv_config.default_case = "DEFAULT"
     bv_config.default_server = "DEFAULT"
+    bv_config.electricity_maps_api_key = (
+        ""  # Deactivate Electricity Maps integration for unit tests
+    )
 
 
 def pytest_configure(config):

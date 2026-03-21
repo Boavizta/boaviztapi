@@ -102,3 +102,7 @@ cpu_name_fuzzymatch_threshold: 62
 ```
 
 This can be overridden with the `BOAVIZTA_CPU_NAME_FUZZYMATCH_THRESHOLD` environment variable.
+
+## Electricity Maps integration
+
+The Electricity Maps integration can be activated by setting the `electricity_maps_api_key` parameter. This can be overridden with the `BOAVIZTA_ELECTRICITY_MAPS_API_KEY` environment variable.
