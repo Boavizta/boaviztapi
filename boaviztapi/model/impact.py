@@ -177,6 +177,7 @@ Ept = ImpactCriteria(
 FW = ImpactCriteria(
     name="fw", unit="m3", method="", description="Net use of freshwater"
 )
+FE = ImpactCriteria(name="fe", unit="MJ", description="Final energy consumption")
 
 IMPACT_CRITERIAS = {
     "gwp": GWP,
@@ -202,6 +203,7 @@ IMPACT_CRITERIAS = {
     "epm": Epm,
     "ept": Ept,
     "fw": FW,
+    "fe": FE,
 }
 
 EMBEDDED = "embedded"
