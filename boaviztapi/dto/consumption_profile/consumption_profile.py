@@ -3,9 +3,9 @@ from typing import List, Tuple
 
 from boaviztapi.dto import BaseDTO
 from boaviztapi.dto.component import CPU
-from boaviztapi.model.component import ComponentCPU
-from boaviztapi.model.consumption_profile import CPUConsumptionProfileModel
-from boaviztapi.model.component.cpu import attributes_from_cpu_name
+from boaviztapi.models.component import ComponentCPU
+from boaviztapi.models.consumption_profile import CPUConsumptionProfileModel
+from boaviztapi.models.component.cpu import attributes_from_cpu_name
 from pydantic import ConfigDict
 
 

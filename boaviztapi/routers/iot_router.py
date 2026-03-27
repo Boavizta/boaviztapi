@@ -6,9 +6,9 @@ from fastapi import APIRouter, Body, Query, HTTPException
 
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device.iot import IoT, mapper_iot_device
-from boaviztapi.service.archetype import get_iot_device_archetype
-from boaviztapi.service.impacts_computation import compute_impacts
-from boaviztapi.service.verbose import verbose_device
+from boaviztapi.data.archetype import get_iot_device_archetype
+from boaviztapi.compute.impacts_computation import compute_impacts
+from boaviztapi.compute.verbose import verbose_device
 
 iot = APIRouter(prefix="/v1/iot", tags=["iot"])
 

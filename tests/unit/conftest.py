@@ -4,8 +4,8 @@ import pytest
 from boaviztapi.dto.component import CPU, RAM, Disk, Case, Motherboard, PowerSupply
 from boaviztapi.dto.device import Server
 from boaviztapi.dto.usage import UsageServer
-from boaviztapi.model.boattribute import Status
-from boaviztapi.model.component import (
+from boaviztapi.models.boattribute import Status
+from boaviztapi.models.component import (
     ComponentCPU,
     ComponentGPU,
     ComponentRAM,
@@ -16,8 +16,8 @@ from boaviztapi.model.component import (
     ComponentPowerSupply,
     ComponentAssembly,
 )
-from boaviztapi.model.device.server import DeviceServer
-from boaviztapi.model.usage import ModelUsageServer
+from boaviztapi.models.device.server import DeviceServer
+from boaviztapi.models.usage import ModelUsageServer
 from boaviztapi import data_dir
 
 # MODEL
