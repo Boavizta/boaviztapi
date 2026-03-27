@@ -8,7 +8,7 @@ from fastapi import APIRouter, Query, Body, HTTPException
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device import Cloud
 from boaviztapi.dto.device.device import mapper_cloud_instance
-from boaviztapi.model.services.cloud_instance import ServiceCloudInstance
+from boaviztapi.models.services.cloud_instance import ServiceCloudInstance
 from boaviztapi.routers.openapi_doc.descriptions import (
     cloud_provider_description,
     all_default_cloud_instances,
@@ -16,12 +16,12 @@ from boaviztapi.routers.openapi_doc.descriptions import (
     get_instance_config,
 )
 from boaviztapi.routers.openapi_doc.examples import cloud_example
-from boaviztapi.service.archetype import (
+from boaviztapi.data.archetype import (
     get_cloud_instance_archetype,
     get_device_archetype_lst,
 )
-from boaviztapi.service.impacts_computation import compute_impacts
-from boaviztapi.service.verbose import verbose_cloud
+from boaviztapi.compute.impacts_computation import compute_impacts
+from boaviztapi.compute.verbose import verbose_cloud
 
 cloud_router = APIRouter(prefix="/v1/cloud", tags=["cloud"])
 

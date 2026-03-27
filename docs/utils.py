@@ -1,5 +1,5 @@
-from boaviztapi.model.device import DeviceServer
-from boaviztapi.model.impact import IMPACT_CRITERIAS
+from boaviztapi.models.device import DeviceServer
+from boaviztapi.models.impact import IMPACT_CRITERIAS
 
 if __name__ == "__main__":
     type = False

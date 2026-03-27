@@ -6,8 +6,8 @@ from fastapi import APIRouter, Body, HTTPException, Query
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device import Server
 from boaviztapi.dto.device.device import mapper_server
-from boaviztapi.model.device import Device
-from boaviztapi.model.device.server import DeviceServer
+from boaviztapi.models.device import Device
+from boaviztapi.models.device.server import DeviceServer
 from boaviztapi.routers.openapi_doc.descriptions import (
     server_impact_by_model_description,
     server_impact_by_config_description,
@@ -17,9 +17,9 @@ from boaviztapi.routers.openapi_doc.descriptions import (
 from boaviztapi.routers.openapi_doc.examples import (
     server_configuration_examples_openapi,
 )
-from boaviztapi.service.archetype import get_server_archetype, get_device_archetype_lst
-from boaviztapi.service.verbose import verbose_device
-from boaviztapi.service.impacts_computation import compute_impacts
+from boaviztapi.data.archetype import get_server_archetype, get_device_archetype_lst
+from boaviztapi.compute.verbose import verbose_device
+from boaviztapi.compute.impacts_computation import compute_impacts
 
 server_router = APIRouter(prefix="/v1/server", tags=["server"])
 

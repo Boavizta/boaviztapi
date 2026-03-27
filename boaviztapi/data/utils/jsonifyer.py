@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 from boaviztapi import data_dir
-from boaviztapi.model.impact import IMPACT_CRITERIAS
+from boaviztapi.models.impact import IMPACT_CRITERIAS
 
 _electricity_emission_factors_df = pd.read_csv(
     os.path.join(data_dir, "crowdsourcing/electrical_mix.csv")

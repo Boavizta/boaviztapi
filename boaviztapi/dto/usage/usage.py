@@ -2,14 +2,14 @@ from typing import Optional, List, Union
 
 from boaviztapi import config
 from boaviztapi.dto import BaseDTO
-from boaviztapi.model.boattribute import Status
-from boaviztapi.model.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
-from boaviztapi.service.archetype import (
+from boaviztapi.models.boattribute import Status
+from boaviztapi.models.usage import ModelUsage, ModelUsageServer, ModelUsageCloud
+from boaviztapi.data.archetype import (
     get_cloud_instance_archetype,
     get_server_archetype,
     get_cloud_region_mapping,
 )
-from boaviztapi.service.factor_provider import get_available_countries
+from boaviztapi.data.factor_provider import get_available_countries
 
 
 class WorkloadTime(BaseDTO):

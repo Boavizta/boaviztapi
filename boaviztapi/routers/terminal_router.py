@@ -22,12 +22,12 @@ from boaviztapi.routers.openapi_doc.descriptions import (
     terminal_description,
 )
 from boaviztapi.routers.openapi_doc.examples import end_user_terminal
-from boaviztapi.service.archetype import (
+from boaviztapi.data.archetype import (
     get_user_terminal_archetype,
     get_device_archetype_lst_with_type,
 )
-from boaviztapi.service.impacts_computation import compute_impacts
-from boaviztapi.service.verbose import verbose_device
+from boaviztapi.compute.impacts_computation import compute_impacts
+from boaviztapi.compute.verbose import verbose_device
 
 terminal_router = APIRouter(prefix="/v1/terminal", tags=["terminal"])
 

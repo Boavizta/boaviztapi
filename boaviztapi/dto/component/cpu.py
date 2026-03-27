@@ -4,8 +4,8 @@ from typing import Optional
 from boaviztapi import config
 from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.usage.usage import mapper_usage, Usage
-from boaviztapi.model.component import ComponentCPU
-from boaviztapi.service.archetype import get_component_archetype
+from boaviztapi.models.component import ComponentCPU
+from boaviztapi.data.archetype import get_component_archetype
 
 
 class CPU(ComponentDTO):

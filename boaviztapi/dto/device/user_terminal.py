@@ -3,8 +3,8 @@ from typing import Optional
 from boaviztapi.dto.device import DeviceDTO
 from boaviztapi.dto.usage import Usage
 from boaviztapi.dto.usage.usage import mapper_usage
-from boaviztapi.model.device import Device
-from boaviztapi.model.device.userTerminal import (
+from boaviztapi.models.device import Device
+from boaviztapi.models.device.userTerminal import (
     DeviceLaptop,
     DeviceDesktop,
     DeviceTablet,
@@ -19,7 +19,7 @@ from boaviztapi.model.device.userTerminal import (
     DeviceVrController,
     DeviceVrHeadset,
 )
-from boaviztapi.service.archetype import get_arch_component
+from boaviztapi.data.archetype import get_arch_component
 
 
 class UserTerminal(DeviceDTO):
