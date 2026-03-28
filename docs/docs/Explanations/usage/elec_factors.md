@@ -79,7 +79,7 @@ This is useful when you need the actual electricity consumed by a device, withou
 | epf      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
 | epm      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
 | ept      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| fe       | yes         | Constant factor of 1 (final energy = raw electricity consumed) |
+| fe       | yes         | [OurWorldInData](https://ourworldindata.org/energy-definitions) |
 
 ## Electricity map integration
 

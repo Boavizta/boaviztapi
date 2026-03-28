@@ -228,4 +228,4 @@ __Unit__ : MJ
     FE is only available for the **use** phase. The embedded phase is not applicable.
 
 !!!tip
-    Requesting both `pe` and `fe` allows you to see the difference between the primary energy required to generate electricity and the actual electricity consumed. This is useful for scenarios where datacentres use a different generation mix than the national grid.
+    Requesting both `pe` and `fe` allows you to see the difference between the primary energy required to generate electricity and the actual electricity consumed.
