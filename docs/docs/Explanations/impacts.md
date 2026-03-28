@@ -217,3 +217,15 @@ __what__: Net use of freshwater
 __Source__: [ISO 14046: Environmental management — Water footprint — Principles, requirements and guidelines](https://www.iso.org/standard/43263.html)
 
 __Unit__: m3
+
+## fe - Final energy consumption
+
+__What__ : Final energy (FE), also called secondary energy, is the energy actually consumed by the device (i.e. the electricity delivered), as opposed to primary energy (PE) which includes upstream conversion losses from fossil fuel generation. Unlike PE, which varies by country depending on the energy mix, FE is independent of the usage location.
+
+__Unit__ : MJ
+
+!!!info
+    FE is only available for the **use** phase. The embedded phase is not applicable.
+
+!!!tip
+    Requesting both `pe` and `fe` allows you to see the difference between the primary energy required to generate electricity and the actual electricity consumed.

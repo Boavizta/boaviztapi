@@ -111,6 +111,7 @@ class ModelUsage:
                 unit="mol Neq/kWh", complete_function=self._complete_ept
             ),
             "fw": Boattribute(unit="m3", complete_function=self._complete_fw),
+            "fe": Boattribute(unit="MJ/kWh", complete_function=self._complete_fe),
         }
 
     def __iter__(self):
@@ -217,6 +218,9 @@ class ModelUsage:
 
     def _complete_fw(self):
         self._complete_impact_factor("fw", "fw")
+
+    def _complete_fe(self):
+        self._complete_impact_factor("fe", "fe")
 
 
 class ModelUsageServer(ModelUsage):

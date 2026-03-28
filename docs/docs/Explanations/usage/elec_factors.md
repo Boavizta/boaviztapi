@@ -45,6 +45,16 @@ We use the consumption of fossil resources per kwh (APDf/kwh) per country and ex
 * `%RenewableEnergyInMix` (2016): [List of countries by renewable electricity production](https://en.wikipedia.org/wiki/List_of_countries_by_renewable_electricity_production) from IRENA
 * `ADPf` (2011): [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) 
 
+### FE - Final energy factor
+
+_Source_ :
+
+The FE impact factor is always **1** for every country. Since the use-phase impact is computed as `power * duration * impact_factor`, a factor of 1 yields the raw electricity consumption (final energy), independent of the country's energy mix.
+
+This is useful when you need the actual electricity consumed by a device, without the primary-to-secondary energy conversion applied by the PE criterion.
+
+```FE/kWh = 1```
+
 ### Other impact factors
 
 | Criteria | Implemented | Source                                                   | 
@@ -69,6 +79,7 @@ We use the consumption of fossil resources per kwh (APDf/kwh) per country and ex
 | epf      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
 | epm      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
 | ept      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
+| fe       | yes         | [OurWorldInData](https://ourworldindata.org/energy-definitions) |
 
 ## Electricity map integration
 

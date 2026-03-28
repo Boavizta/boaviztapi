@@ -3581,6 +3581,13 @@
       "priority": 2.0,
       "reference_year": "2020 & 2019",
       "value": 0.39
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "EEE": {
@@ -3696,6 +3703,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.38
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ZWE": {
@@ -3811,6 +3825,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.288
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ZMB": {
@@ -3926,6 +3947,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.121
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ZAF": {
@@ -4041,6 +4069,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.72
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "YEM": {
@@ -4156,6 +4191,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.541
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "VNM": {
@@ -4271,6 +4313,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.546
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "VEN": {
@@ -4386,6 +4435,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.192
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "UZB": {
@@ -4501,6 +4557,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.497
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "URY": {
@@ -4616,6 +4679,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.106
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "USA": {
@@ -4738,6 +4808,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.003132125
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "UKR": {
@@ -4860,6 +4937,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0021305903
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "TZA": {
@@ -4975,6 +5059,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.387
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "TWN": {
@@ -5097,6 +5188,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0014886308
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "TTO": {
@@ -5212,6 +5310,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.52
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "TUR": {
@@ -5334,6 +5439,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0049197356
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "TUN": {
@@ -5449,6 +5561,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.471
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "TKM": {
@@ -5564,6 +5683,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.544
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "TJK": {
@@ -5679,6 +5805,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.073
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "THA": {
@@ -5801,6 +5934,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0028902215
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "TGO": {
@@ -5916,6 +6056,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.593
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "SYR": {
@@ -6031,6 +6178,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.539
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "SLV": {
@@ -6146,6 +6300,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.183
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "SEN": {
@@ -6261,6 +6422,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.545
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "SVK": {
@@ -6383,6 +6551,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0057952062
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "SVN": {
@@ -6505,6 +6680,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0029769165
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "SGP": {
@@ -6620,6 +6802,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.489
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "SWE": {
@@ -6742,6 +6931,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0060315101
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "SDN": {
@@ -6857,6 +7053,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.266
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "SAU": {
@@ -6972,6 +7175,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.57
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "RUS": {
@@ -7094,6 +7304,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0034595506
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "SCG": {
@@ -7209,6 +7426,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.9
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ROU": {
@@ -7331,6 +7555,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0073563061
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "QAT": {
@@ -7446,6 +7677,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.49
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "PRY": {
@@ -7561,6 +7799,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.024
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "PRT": {
@@ -7683,6 +7928,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0095932022
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "POL": {
@@ -7805,6 +8057,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0025134737
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "PAK": {
@@ -7920,6 +8179,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.356
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "PHL": {
@@ -8035,6 +8301,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.578
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "PER": {
@@ -8150,6 +8423,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.231
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "PAN": {
@@ -8265,6 +8545,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.243
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "OMN": {
@@ -8380,6 +8667,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.49
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "NZL": {
@@ -8502,6 +8796,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.014968107
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "NPL": {
@@ -8617,6 +8918,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.023
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "NOR": {
@@ -8739,6 +9047,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0066633633
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "NLD": {
@@ -8861,6 +9176,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0034330403
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "NIC": {
@@ -8976,6 +9298,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.351
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "NGA": {
@@ -9091,6 +9420,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.398
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "NAM": {
@@ -9206,6 +9542,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.048
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "MOZ": {
@@ -9321,6 +9664,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.134
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "MYS": {
@@ -9443,6 +9793,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.001677809
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "MEX": {
@@ -9565,6 +9922,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0053047285
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "MLT": {
@@ -9687,6 +10051,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0011184881
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "MNG": {
@@ -9802,6 +10173,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.733
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "MMR": {
@@ -9917,6 +10295,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.313
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "MKD": {
@@ -10032,6 +10417,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.528
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "MDA": {
@@ -10147,6 +10539,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.488
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "MAR": {
@@ -10262,6 +10661,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.625
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "LBY": {
@@ -10377,6 +10783,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.552
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "LVA": {
@@ -10499,6 +10912,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0025526062
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "LUX": {
@@ -10621,6 +11041,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0127784
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "LTU": {
@@ -10743,6 +11170,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0058993947
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "LKA": {
@@ -10858,6 +11292,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.494
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "LBN": {
@@ -10973,6 +11414,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.546
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "KAZ": {
@@ -11088,6 +11536,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.655
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "KWT": {
@@ -11203,6 +11658,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.49
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "KOR": {
@@ -11325,6 +11787,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.001887679
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "PRK": {
@@ -11440,6 +11909,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.155
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "KHM": {
@@ -11555,6 +12031,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.424
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "KGZ": {
@@ -11670,6 +12153,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.081
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "KEN": {
@@ -11785,6 +12275,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.08
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "JPN": {
@@ -11907,6 +12404,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0023063545
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "JOR": {
@@ -12022,6 +12526,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.435
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "JAM": {
@@ -12137,6 +12648,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.544
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ITA": {
@@ -12259,6 +12777,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0048374076
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ISL": {
@@ -12381,6 +12906,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0061408786
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "IRN": {
@@ -12496,6 +13028,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.488
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "IRQ": {
@@ -12611,6 +13150,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.518
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "IND": {
@@ -12733,6 +13279,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0034368443
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ISR": {
@@ -12848,6 +13401,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.557
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "IRL": {
@@ -12970,6 +13530,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0014769299
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "IDN": {
@@ -13092,6 +13659,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0022553672
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "HUN": {
@@ -13214,6 +13788,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0036874018
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "HTI": {
@@ -13329,6 +13910,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.612
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "HRV": {
@@ -13444,6 +14032,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.372
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "HND": {
@@ -13559,6 +14154,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.346
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "HKG": {
@@ -13667,6 +14269,13 @@
       "priority": 3.0,
       "reference_year": "2011",
       "value": 0.95888
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "GTM": {
@@ -13782,6 +14391,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.278
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "GRC": {
@@ -13904,6 +14520,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0051451235
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "GIB": {
@@ -14012,6 +14635,13 @@
       "priority": 3.0,
       "reference_year": "2011",
       "value": 0.977477
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "GHA": {
@@ -14127,6 +14757,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.344
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "GEO": {
@@ -14242,6 +14879,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.136
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "GBR": {
@@ -14364,6 +15008,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0023289996
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "GAB": {
@@ -14479,6 +15130,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.306
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "FRA": {
@@ -14601,6 +15259,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0036736961
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "FIN": {
@@ -14723,6 +15388,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0045289299
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ETH": {
@@ -14838,6 +15510,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.025
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ESP": {
@@ -14960,6 +15639,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0062087837
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ERI": {
@@ -15075,6 +15761,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.652
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "EGY": {
@@ -15190,6 +15883,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.471
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "EST": {
@@ -15312,6 +16012,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0021985632
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ECU": {
@@ -15427,6 +16134,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.135
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "DZA": {
@@ -15542,6 +16256,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.485
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "DOM": {
@@ -15657,6 +16378,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.625
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "DNK": {
@@ -15779,6 +16507,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0031934825
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "DEU": {
@@ -15901,6 +16636,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.001946974
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "CZE": {
@@ -16023,6 +16765,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.003213345
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "CYP": {
@@ -16145,6 +16894,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0012947021
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "CUB": {
@@ -16260,6 +17016,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.61
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "CRI": {
@@ -16375,6 +17138,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.033
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "COL": {
@@ -16490,6 +17260,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.211
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "CHN": {
@@ -16612,6 +17389,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0060064707
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "CMR": {
@@ -16727,6 +17511,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.254
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "CHL": {
@@ -16849,6 +17640,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.010522585
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "CIV": {
@@ -16964,6 +17762,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.421
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "CHE": {
@@ -17086,6 +17891,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0056641574
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "COG": {
@@ -17201,6 +18013,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.375
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "COD": {
@@ -17316,6 +18135,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.026
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "CAN": {
@@ -17438,6 +18264,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0081662622
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "BLR": {
@@ -17553,6 +18386,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.516
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "BWA": {
@@ -17668,6 +18508,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.8
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "BRA": {
@@ -17790,6 +18637,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.018603389
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "BOL": {
@@ -17905,6 +18759,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.32
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "BRN": {
@@ -18020,6 +18881,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.659
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "BEN": {
@@ -18135,6 +19003,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.652
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "BHR": {
@@ -18250,6 +19125,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.49
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "BGR": {
@@ -18372,6 +19254,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0046228332
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "BEL": {
@@ -18494,6 +19383,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0026198402
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "BGD": {
@@ -18609,6 +19505,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.55
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "BIH": {
@@ -18724,6 +19627,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.522
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "AZE": {
@@ -18839,6 +19749,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.537
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "AUS": {
@@ -18961,6 +19878,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0047293108
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "AUT": {
@@ -19083,6 +20007,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.0057221817
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ARG": {
@@ -19205,6 +20136,13 @@
       "priority": 3.0,
       "reference_year": "2020",
       "value": 0.011455862
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "AGO": {
@@ -19320,6 +20258,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.173
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ANT": {
@@ -19428,6 +20373,13 @@
       "priority": 3.0,
       "reference_year": "2011",
       "value": 1.13161
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ARM": {
@@ -19543,6 +20495,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.209
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ALB": {
@@ -19658,6 +20617,13 @@
       "priority": 1.0,
       "reference_year": "2019",
       "value": 0.024
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "ARE": {
@@ -19773,6 +20739,13 @@
       "priority": 2.0,
       "reference_year": "2020",
       "value": 0.472
+    },
+    "fe": {
+      "unit": "MJ",
+      "source": "Final energy (factor = 1 by definition)",
+      "priority": 1.0,
+      "reference_year": "",
+      "value": 1
     }
   },
   "min-max": {
@@ -19843,6 +20816,10 @@
     "wu": {
       "min": 0.0011184881,
       "max": 0.018603389
+    },
+    "fe": {
+      "min": 1,
+      "max": 1
     }
   },
   "available_countries": {
