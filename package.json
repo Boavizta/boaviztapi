@@ -3,6 +3,7 @@
     "version": "2.0.3",
     "author": "<YOUR_NAME>",
     "dependencies": {
-        "serverless-python-requirements": "^6.1.2"
+        "serverless-python-requirements": "^6.1.2",
+        "brace-expansion": "~1.1.13"
     }
 }
