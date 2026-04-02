@@ -23,7 +23,7 @@ pyyaml = "^6.0.3"
 toml = "^0.10.2"
 
 # Security updates
-aiohttp = "^3.13.3"
+aiohttp = "~3.13.5"
 urllib3 = "^2.6.3"
 
 [tool.poetry.group.dev]
@@ -54,6 +54,7 @@ mkdocs-material = "^9.4.4"
 mkdocs-render-swagger-plugin = "^0.1.0"
 mkdocs-macros-plugin = "^1.0.4"
 linkcheckmd = "^1.4.0"
+pygments = "~2.20.0"
 
 [build-system]
 requires = ["poetry-core"]
