@@ -11,32 +11,32 @@ Terminals & peripherals may have several types (typically ```pro``` and ```perso
 
 ## Embedded impacts
 
-Most embedded impacts are taken from the [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip) database. When the data comes from another source, it is specified.
+Most embedded impacts are taken from the [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/) database. When the data comes from another source, it is specified.
 
 | Criteria | Implemented | Source                                                                        | 
 |----------|-------------|-------------------------------------------------------------------------------|
-| gwp      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| adp      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
+| gwp      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| adp      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
 | pe       | no          |                                                                               |
-| gwppb    | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| gwppf    | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| gwpplu   | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| ir       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| lu       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| odp      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| pm       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| pocp     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| wu       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| mips     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| adpe     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| adpf     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| ap       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| ctue     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| ctuh_c   | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| ctuh_nc  | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| epf      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| epm      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
-| ept      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)  |
+| gwppb    | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| gwppf    | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| gwpplu   | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| ir       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| lu       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| odp      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| pm       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| pocp     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| wu       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| mips     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| adpe     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| adpf     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| ap       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| ctue     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| ctuh_c   | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| ctuh_nc  | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| epf      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| epm      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
+| ept      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)  |
 
 ## Usage impact
 
