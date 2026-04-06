@@ -42,25 +42,25 @@ The following components are [completed](../auto_complete.md) with the character
 | gwp      | yes         | Bottom-up approach based on [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
 | adp      | yes         | Bottom-up approach based on [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
 | pe       | yes         | Bottom-up approach based on [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
-| gwppb    | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| gwppf    | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| gwpplu   | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| ir       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| lu       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| odp      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| pm       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| pocp     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| wu       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| mips     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| adpe     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| adpf     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| ap       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| ctue     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| ctuh_c   | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| ctuh_nc  | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| epf      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| epm      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
-| ept      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/documents/Negaoctet.zip)                                                                                                               |
+| gwppb    | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| gwppf    | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| gwpplu   | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| ir       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| lu       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| odp      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| pm       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| pocp     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| wu       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| mips     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| adpe     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| adpf     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| ap       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| ctue     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| ctuh_c   | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| ctuh_nc  | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| epf      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| epm      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
+| ept      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
 
 ### Bottom-up approach
 

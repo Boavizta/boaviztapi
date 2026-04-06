@@ -375,87 +375,87 @@
 "SERVER": {
   "gwp": {
     "impact": 3.66e+03,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwppb": {
     "impact": 4.19,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwppf": {
     "impact": 3.66e+03,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpplu": {
     "impact": 6.65e-07,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ir": {
     "impact": 2.32e+03,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "lu": {
     "impact": -1.47e+02,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "odp": {
     "impact": 1.35e-03,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pm": {
     "impact": 1.13e-04,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pocp": {
     "impact": 8.40,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "wu": {
     "impact": -3.71e+03,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "mips": {
     "impact": 1.06e+04,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "adpe": {
     "impact": 3.78e-02,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "adpf": {
     "impact": 5.15e+04,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "adp": {
     "impact": null,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ap": {
     "impact": 1.97e+01,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctue": {
     "impact": 4.84e+04,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-c": {
     "impact": 1.94e-07,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-nc": {
     "impact": 1.87e-05,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epf": {
     "impact": -2.58e-01,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epm": {
     "impact": 2.94e+00,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ept": {
     "impact": 2.70e+01,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   }
 }
 
@@ -463,201 +463,201 @@
   "adpe": {
     "perso": {
       "impact": 0.008,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 0.0086,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "adpf": {
     "perso": {
       "impact": 2360.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 2410.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ap": {
     "perso": {
       "impact": 0.995,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 1.04,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ctue": {
     "perso": {
       "impact": 3050.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 2920.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ctuh-c": {
     "perso": {
       "impact": 4.53e-08,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 3.98e-08,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ctuh-nc": {
     "perso": {
       "impact": 1.08e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 1.3e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "epf": {
     "perso": {
       "impact": -0.0182,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": -0.0126,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "epm": {
     "perso": {
       "impact": 0.199,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 0.154,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ept": {
     "perso": {
       "impact": 1.41,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 1.46,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "gwp": {
     "perso": {
       "impact": 175.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 181.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "gwpb": {
     "perso": {
       "impact": 0.377,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 0.318,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "gwpf": {
     "perso": {
       "impact": 175.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 181.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "gwplu": {
     "perso": {
       "impact": 3.78e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 3.37e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ir": {
     "perso": {
       "impact": 75.5,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 73.6,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "lu": {
     "perso": {
       "impact": -59.5,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": -56.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "odp": {
     "perso": {
       "impact": 5.05e-05,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 5.56e-05,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "pm": {
     "perso": {
       "impact": 5.85e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 6.08e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "pocp": {
     "perso": {
       "impact": 0.45,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 0.46,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "wu": {
     "perso": {
       "impact": -820.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": -812.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "mips": {
     "perso": {
       "impact": 680.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 680.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   }
 }
@@ -665,166 +665,166 @@
 "TABLET": {
   "adpe": {
     "impact": 0.00375,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "adpf": {
     "impact": 1000.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ap": {
     "impact": 0.465,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctue": {
     "impact": 1540.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-c": {
     "impact": 1.79e-08,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-nc": {
     "impact": 6.99e-07,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epf": {
     "impact": -0.0028,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epm": {
     "impact": 0.063,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ept": {
     "impact": 0.609,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwp": {
     "impact": 75.9,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpb": {
     "impact": 0.149,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpf": {
     "impact": 75.9,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwplu": {
     "impact": 3.18e-06,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ir": {
     "impact": 32.4,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "lu": {
     "impact": -1.34,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "odp": {
     "impact": 2.4e-05,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pm": {
     "impact": 2.62e-06,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pocp": {
     "impact": 0.196,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "wu": {
     "impact": -84.6,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "mips": {
     "impact": 279.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   }
 }
 
 "SMARTPHONE": {
   "adpe": {
     "impact": 0.00205,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "adpf": {
     "impact": 1110.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ap": {
     "impact": 0.48,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctue": {
     "impact": 1340.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-c": {
     "impact": 1.66e-08,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-nc": {
     "impact": 5.65e-07,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epf": {
     "impact": -0.00295,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epm": {
     "impact": 0.105,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ept": {
     "impact": 0.61,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwp": {
     "impact": 84.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpb": {
     "impact": 0.116,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpf": {
     "impact": 84.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwplu": {
     "impact": 1.05e-06,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ir": {
     "impact": 13.7,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "lu": {
     "impact": -2.27,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "odp": {
     "impact": 2.68e-05,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pm": {
     "impact": 2.7e-06,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pocp": {
     "impact": 0.198,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "wu": {
     "impact": -107.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "mips": {
     "impact": 250.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   }
 }
 
@@ -832,201 +832,201 @@
   "adpe": {
     "perso": {
       "impact": 0.00852,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 0.00852,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "adpf": {
     "perso": {
       "impact": 5110.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 5110.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ap": {
     "perso": {
       "impact": 1.55,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 1.55,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ctue": {
     "perso": {
       "impact": 4640.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 4640.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ctuh-c": {
     "perso": {
       "impact": -2.83e-08,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": -2.83e-08,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ctuh-nc": {
     "perso": {
       "impact": 1.49e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 1.49e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "epf": {
     "perso": {
       "impact": -0.0852,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": -0.0852,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "epm": {
     "perso": {
       "impact": 0.309,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 0.309,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ept": {
     "perso": {
       "impact": 2.28,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 2.28,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "gwp": {
     "perso": {
       "impact": 277.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 277.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "gwpb": {
     "perso": {
       "impact": 0.924,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 0.924,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "gwpf": {
     "perso": {
       "impact": 275.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 275.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "gwplu": {
     "perso": {
       "impact": 2.27e-07,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 2.27e-07,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ir": {
     "perso": {
       "impact": 870.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 870.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "lu": {
     "perso": {
       "impact": -101.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": -101.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "odp": {
     "perso": {
       "impact": 6.24e-05,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 6.24e-05,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "pm": {
     "perso": {
       "impact": 9.6e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 9.6e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "pocp": {
     "perso": {
       "impact": 0.72,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 0.72,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "wu": {
     "perso": {
       "impact": -4490.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": -4490.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "mips": {
     "perso": {
       "impact": 1460.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 1460.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   }
 }
@@ -1034,83 +1034,83 @@
 "MONITOR": {
   "adpe": {
     "impact": 0.0108,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "adpf": {
     "impact": 1300.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ap": {
     "impact": 0.382,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctue": {
     "impact": 477.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-c": {
     "impact": 4.57e-10,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-nc": {
     "impact": 5.93e-07,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epf": {
     "impact": -0.0108,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epm": {
     "impact": 0.109,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ept": {
     "impact": 0.65,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwp": {
     "impact": 64.7,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpb": {
     "impact": 0.309,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpf": {
     "impact": 64.5,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwplu": {
     "impact": 2.83e-06,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ir": {
     "impact": 145.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "lu": {
     "impact": -101.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "odp": {
     "impact": 4.95e-06,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pm": {
     "impact": 2.57e-06,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pocp": {
     "impact": 0.2,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "wu": {
     "impact": -640.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "mips": {
     "impact": 423.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   }
 }
 
@@ -1118,201 +1118,201 @@
   "adpe": {
     "perso": {
       "impact": 0.0383,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 0.0249,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "adpf": {
     "perso": {
       "impact": 6610.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 3030.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ap": {
     "perso": {
       "impact": 2.38,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 0.944,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ctue": {
     "perso": {
       "impact": 5300.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 1730.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ctuh-c": {
     "perso": {
       "impact": 5.21e-08,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 2.06e-08,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ctuh-nc": {
     "perso": {
       "impact": 4.56e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 2.18e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "epf": {
     "perso": {
       "impact": -0.0227,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": -0.017,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "epm": {
     "perso": {
       "impact": 0.589,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 0.282,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ept": {
     "perso": {
       "impact": 3.44,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 1.53,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "gwp": {
     "perso": {
       "impact": 360.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 152.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "gwpb": {
     "perso": {
       "impact": 1.56,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 0.737,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "gwpf": {
     "perso": {
       "impact": 358.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 151.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "gwplu": {
     "perso": {
       "impact": 1e-05,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 6.43e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "ir": {
     "perso": {
       "impact": 960.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 330.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "lu": {
     "perso": {
       "impact": -339.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": -224.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "odp": {
     "perso": {
       "impact": 1.86e-05,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 1.14e-05,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "pm": {
     "perso": {
       "impact": 1.39e-05,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 5.94e-06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "pocp": {
     "perso": {
       "impact": 1.06,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 0.469,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "wu": {
     "perso": {
       "impact": -920.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": -808.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   },
   "mips": {
     "perso": {
       "impact": 1880.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     },
     "pro": {
       "impact": 1000.0,
-      "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+      "source": "https://base-empreinte.ademe.fr/"
     }
   }
 }
@@ -1320,332 +1320,332 @@
 "EXTERNAL_HDD": {
   "adpe": {
     "impact": 0.00234,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "adpf": {
     "impact": 225.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ap": {
     "impact": 0.086,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctue": {
     "impact": 344.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-c": {
     "impact": 2.65e-09,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-nc": {
     "impact": 2.51e-07,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epf": {
     "impact": -0.00165,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epm": {
     "impact": 0.0184,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ept": {
     "impact": 0.181,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwp": {
     "impact": 15.8,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpb": {
     "impact": 0.066,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpf": {
     "impact": 15.7,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwplu": {
     "impact": 6.9e-09,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ir": {
     "impact": 19.7,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "lu": {
     "impact": -3.09,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "odp": {
     "impact": 1.64e-06,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pm": {
     "impact": 6.5e-07,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pocp": {
     "impact": 0.051,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "wu": {
     "impact": -488.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "mips": {
     "impact": 96.5,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   }
 }
 
 "EXTERNAL_SSD": {
   "adpe": {
     "impact": 0.000397,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "adpf": {
     "impact": 1430.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ap": {
     "impact": 0.6,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctue": {
     "impact": 1380.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-c": {
     "impact": 1.15e-08,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-nc": {
     "impact": 5.95e-07,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epf": {
     "impact": -0.00171,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epm": {
     "impact": 0.074,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ept": {
     "impact": 0.75,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwp": {
     "impact": 109.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpb": {
     "impact": 0.0765,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpf": {
     "impact": 109.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwplu": {
     "impact": 3.89e-09,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ir": {
     "impact": 6.9,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "lu": {
     "impact": -1.05,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "odp": {
     "impact": 4.56e-05,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pm": {
     "impact": 3.33e-06,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pocp": {
     "impact": 0.238,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "wu": {
     "impact": -4.78,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "mips": {
     "impact": 264.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   }
 }
 
 "USB_STICK": {
   "adpe": {
     "impact": 9.6e-05,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "adpf": {
     "impact": 82.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ap": {
     "impact": 0.0346,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctue": {
     "impact": 74.5,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-c": {
     "impact": 8.95e-10,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-nc": {
     "impact": 3.57e-08,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epf": {
     "impact": -0.00045,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epm": {
     "impact": 0.00448,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ept": {
     "impact": 0.0429,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwp": {
     "impact": 6.25,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpb": {
     "impact": 0.00454,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpf": {
     "impact": 6.25,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwplu": {
     "impact": 9.15e-10,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ir": {
     "impact": 1.47,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "lu": {
     "impact": -0.285,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "odp": {
     "impact": 2.35e-06,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pm": {
     "impact": 1.94e-07,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pocp": {
     "impact": 0.0138,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "wu": {
     "impact": -2.02,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "mips": {
     "impact": 20.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   }
 }
 
 "BOX": {
   "adpe": {
     "impact": 4.41e-05,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "adpf": {
     "impact": 525.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ap": {
     "impact": 0.179,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctue": {
     "impact": -42.8,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-c": {
     "impact": 9.6e-08,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ctuh-nc": {
     "impact": -3.29e-07,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epf": {
     "impact": -0.02,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "epm": {
     "impact": 0.0375,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ept": {
     "impact": 0.25,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwp": {
     "impact": 36.1,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpb": {
     "impact": 0.089,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwpf": {
     "impact": 36.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "gwplu": {
     "impact": 1.21e-08,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "ir": {
     "impact": 135.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "lu": {
     "impact": -46.3,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "odp": {
     "impact": 4.66e-06,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pm": {
     "impact": 1.27e-06,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "pocp": {
     "impact": 0.087,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "wu": {
     "impact": -422.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   },
   "mips": {
     "impact": 257.0,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "source": "https://base-empreinte.ademe.fr/"
   }
 }
 

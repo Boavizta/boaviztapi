@@ -62,6 +62,4 @@ if __name__ == "__main__":
         "| Criteria | Implemented   | Source |\n|-----------------------------------------------------|---------|----------|"
     )
     for crit in IMPACT_CRITERIAS:
-        print(
-            f"| {crit.name} | no | https://base-impacts.ademe.fr/documents/Negaoctet.zip |"
-        )
+        print(f"| {crit.name} | no | https://base-empreinte.ademe.fr/ |")
