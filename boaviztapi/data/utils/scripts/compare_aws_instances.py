@@ -18,10 +18,7 @@ import sys
 from pathlib import Path
 
 BOAVIZTA_AWS_CSV = (
-    Path(__file__).resolve().parent.parent.parent
-    / "archetypes"
-    / "cloud"
-    / "aws.csv"
+    Path(__file__).resolve().parent.parent.parent / "archetypes" / "cloud" / "aws.csv"
 )
 
 
