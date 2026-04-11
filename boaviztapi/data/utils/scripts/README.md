@@ -12,9 +12,9 @@ Reports:
 - Spec mismatches (vCPU, memory, storage, GPUs) for instances present in both
 
 ```sh
-python scripts/compare_aws_instances.py
-python scripts/compare_aws_instances.py --region eu-west-1
-python scripts/compare_aws_instances.py --output report.csv
+python3 compare_aws_instances.py
+python3 compare_aws_instances.py --region eu-west-1
+python3 compare_aws_instances.py --output report.csv
 ```
 
 ## update_aws_instances.py
@@ -23,16 +23,16 @@ Adds or updates instance entries in `aws.csv` and creates platform entries in `s
 
 ```sh
 # Add/update all instances in a family
-python scripts/update_aws_instances.py c7g
+python3 update_aws_instances.py c7g
 
 # Add/update specific instance types
-python scripts/update_aws_instances.py c7g.xlarge c7g.2xlarge
+python3 update_aws_instances.py c7g.xlarge c7g.2xlarge
 
 # Multiple families at once
-python scripts/update_aws_instances.py c7g m7g r7g
+python3 update_aws_instances.py c7g m7g r7g
 
 # Preview changes without writing files
-python scripts/update_aws_instances.py --dry-run c7g
+python3 update_aws_instances.py --dry-run c7g
 ```
 
 New platform entries in `server.csv` require manual review: the AWS API does not expose the CPU model name, so `CPU.name` must be filled in by hand. `RAM.units` and `RAM.capacity` are estimated and should also be verified.

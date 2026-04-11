@@ -31,13 +31,11 @@ import subprocess
 import sys
 from pathlib import Path
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "boaviztapi" / "data" / "archetypes"
+DATA_DIR = Path(__file__).resolve().parent.parent.parent / "archetypes"
 AWS_CSV = DATA_DIR / "cloud" / "aws.csv"
 SERVER_CSV = DATA_DIR / "server.csv"
 CPU_SPECS_CSV = (
-    Path(__file__).resolve().parent.parent
-    / "boaviztapi"
-    / "data"
+    Path(__file__).resolve().parent.parent.parent
     / "crowdsourcing"
     / "cpu_specs.csv"
 )
