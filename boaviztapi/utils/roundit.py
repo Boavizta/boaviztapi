@@ -37,6 +37,12 @@ def round_based_on_min_max(val, min_val, max_val, uncertainty=config.uncertainty
         return val
     significant = math.floor(math.log10(approx))
 
+    # Nver round coarser than the value's own order of magnitude.
+    # Prevents a wide min/max band from erasing the central estimae (see #514)
+    if val != 0:
+        val_order = math.floor(math.log10(val))
+        significant = min(significant, val_order)
+
     # Mathematically, these two calculation should be equivalent, but
     # dividing by very small number and multiplying by very large number
     # cause issues with floats.

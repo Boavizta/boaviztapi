@@ -94,7 +94,7 @@ def test_verbose_component_cpu_2(incomplete_cpu_model):
                 "warnings": ["End of life is not included in the calculation"],
             },
             "unit": "MJ",
-            "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
+            "use": {"max": 3199000.0, "min": 12.16, "value": 60000.0},
         },
     }
 
