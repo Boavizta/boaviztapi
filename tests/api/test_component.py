@@ -48,7 +48,7 @@ async def test_complete_cpu():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
+                "use": {"max": 3199000.0, "min": 12.16, "value": 60000.0},
             },
         }
     }
@@ -96,7 +96,7 @@ async def test_complete_cpu_verbose():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
+                "use": {"max": 3199000.0, "min": 12.16, "value": 60000.0},
             },
         },
         "verbose": {
@@ -174,7 +174,7 @@ async def test_complete_cpu_verbose():
                         "warnings": ["End of life is not included in the calculation"],
                     },
                     "unit": "MJ",
-                    "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
+                    "use": {"max": 3199000.0, "min": 12.16, "value": 60000.0},
                 },
             },
             "model_range": {"status": "ARCHETYPE", "value": "Xeon Platinum"},
@@ -257,7 +257,7 @@ async def test_complete_cpu_with_low_precision():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
+                "use": {"max": 3199000.0, "min": 12.16, "value": 60000.0},
             },
         }
     }
@@ -302,7 +302,7 @@ async def test_empty_cpu():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
+                "use": {"max": 3199000.0, "min": 12.16, "value": 60000.0},
             },
         }
     }
@@ -398,7 +398,7 @@ async def test_incomplete_cpu_verbose():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
+                "use": {"max": 3199000.0, "min": 12.16, "value": 60000.0},
             },
         },
         "verbose": {
@@ -476,7 +476,7 @@ async def test_incomplete_cpu_verbose():
                         "warnings": ["End of life is not included in the calculation"],
                     },
                     "unit": "MJ",
-                    "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
+                    "use": {"max": 3199000.0, "min": 12.16, "value": 60000.0},
                 },
             },
             "model_range": {"status": "ARCHETYPE", "value": "Xeon Platinum"},
@@ -559,7 +559,7 @@ async def test_incomplete_cpu_verbose_2():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
+                "use": {"max": 3199000.0, "min": 12.16, "value": 60000.0},
             },
         },
         "verbose": {
@@ -637,7 +637,7 @@ async def test_incomplete_cpu_verbose_2():
                         "warnings": ["End of life is not included in the calculation"],
                     },
                     "unit": "MJ",
-                    "use": {"max": 3199000.0, "min": 12.16, "value": 100000.0},
+                    "use": {"max": 3199000.0, "min": 12.16, "value": 60000.0},
                 },
             },
             "model_range": {"status": "ARCHETYPE", "value": "Xeon Platinum"},

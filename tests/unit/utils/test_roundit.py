@@ -76,8 +76,11 @@ def test_round_based_on_min_max():
     assert rd.round_based_on_min_max(306.0165, 179.92950000000002, 1133.6115, 10) == 310
     assert (
         rd.round_based_on_min_max(61648.853641199996, 62.2570572, 2241972.40986, 10)
-        == 100000
+        == 60000
     )
+    # Wide PE factor band (min/max span 5 orders of magnitude): central value must
+    # retain at least one sig fig at its own scale, not be rounded to the nearest MJ.
+    assert rd.round_based_on_min_max(0.668, 0.0002162, 37.4, 10) == 0.7
 
 
 def test_round_based_on_min_max_corner_cases():
