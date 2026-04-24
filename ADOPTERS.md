@@ -26,4 +26,4 @@ Scaleway use the BoaviztAPI for their [environmental footprint calculator](https
 
 ## [SPRUCE](https://github.com/DigitalPebble/spruce)
 
-An open-source enrichment platform for GreenOps which helps measure and reduce the environmental impact of cloud computing. SPRUCE uses BoaviztAPI to retrieve hardware impact data for the servers powering cloud workloads.
+An [open-source enrichment platform for GreenOps](https://opensourcegreenops.cloud/) which helps measure and reduce the environmental impact of cloud computing. SPRUCE uses BoaviztAPI to retrieve hardware impact data for the servers powering cloud workloads.
