@@ -1,3 +1,4 @@
+import math
 from dataclasses import dataclass
 from typing import Optional
 
@@ -43,16 +44,32 @@ class Impact:
         return json
 
     def rounded_value(self):
+        """Return the rounded impact value while accounting for uncertainty.
+
+        The primary rounding is computed from ``value``, ``min``, and ``max``.
+        High-uncertainty warnings are added when the rounded value is 0
+        or when the uncertainty interval is too wide relative to the precision of ``value``.
+
+        The returned result is capped to ``max_sig_fig`` from the configuration.
+        """
         rd_value = rd.round_based_on_min_max(self.value, self.min, self.max)
         nb_sig_fig = rd.significant_number(rd_value)
 
-        if nb_sig_fig > config.max_sig_fig:
-            return rd.round_to_sigfig(rd_value, config.max_sig_fig)
-        elif rd_value == 0:
+        if rd_value == 0:
             self.add_warning(WARNING_IMPORTANT_UNCERTAINTY)
             return rd.round_to_sigfig(self.value, config.min_sig_fig)
-        else:
-            return rd_value
+
+        if self.value != 0 and self.max > self.min:
+            approx = (self.max - self.min) / (100 / config.uncertainty)
+            if approx > 0:
+                uncapped_sig = math.floor(math.log10(approx))
+                if round(self.value / pow(10, uncapped_sig)) == 0:
+                    self.add_warning(WARNING_IMPORTANT_UNCERTAINTY)
+
+        if nb_sig_fig > config.max_sig_fig:
+            return rd.round_to_sigfig(rd_value, config.max_sig_fig)
+
+        return rd_value
 
     def rounded_min(self):
         return rd.round_to_sigfig(self.min, config.max_sig_fig)

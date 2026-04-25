@@ -412,7 +412,7 @@ async def test_partial_server_3():
                     ],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 263600.0, "min": 43.31, "value": 10000.0},
+                "use": {"max": 263600.0, "min": 43.31, "value": 7000.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",

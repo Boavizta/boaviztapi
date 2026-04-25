@@ -76,8 +76,11 @@ def test_round_based_on_min_max():
     assert rd.round_based_on_min_max(306.0165, 179.92950000000002, 1133.6115, 10) == 310
     assert (
         rd.round_based_on_min_max(61648.853641199996, 62.2570572, 2241972.40986, 10)
-        == 100000
+        == 60000
     )
+    # Wide PE factor band (min/max span 5 orders of magnitude): central value must
+    # retain at least one sig fig at its own scale, not be rounded to the nearest MJ.
+    assert rd.round_based_on_min_max(0.668, 0.0002162, 37.4, 10) == 0.7
 
 
 def test_round_based_on_min_max_corner_cases():
@@ -89,3 +92,24 @@ def test_round_based_on_min_max_corner_cases():
     # min > max
     with pytest.raises(ValueError):
         rd.round_based_on_min_max(5, 10, 5, 10)
+
+
+def test_round_based_on_min_max_val_zero():
+    # When val == 0, the new constraint (lines 42-44) should not execute
+    # and rounding should proceed normally
+    assert rd.round_based_on_min_max(0, -100, 100, 10) == 0
+
+
+def test_round_based_on_min_max_prevents_aggressive_rounding():
+    # Issue #514: Wide min/max band should not erase central estimate
+    # The fix (lines 42-44) ensures val retains at least one sig fig at its own scale
+    # Example: small value with wide band should not round to 0 or next order of magnitude
+    result = rd.round_based_on_min_max(0.668, 0.0002162, 37.4, 10)
+    # Should be 0.7 (keeping value's order of magnitude), not 0 or 40
+    assert result == 0.7
+
+    # Another case: value should stay in its order of magnitude
+    result = rd.round_based_on_min_max(0.002, 0.00001, 10, 10)
+    # Should stay around 0.002 range, not round to 0 or 10
+    assert result != 0
+    assert result < 1

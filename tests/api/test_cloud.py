@@ -84,7 +84,7 @@ async def test_empty_usage_m6gxlarge():
         ),
         PEImpact(
             ImpactOutput(1167.0, 415.6, 730.0, END_OF_LIFE_WARNING),
-            ImpactOutput(370500.0, 3.095, 10000.0),
+            ImpactOutput(370500.0, 3.095, 7000.0),
         ),
     )
 

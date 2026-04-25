@@ -84,7 +84,7 @@ async def test_smartphone():
                 "description": "Consumption of primary energy",
                 "embedded": "not implemented",
                 "unit": "MJ",
-                "use": {"max": 9227.0, "min": 0.0427, "value": 100.0},
+                "use": {"max": 9227.0, "min": 0.0427, "value": 80.0},
             },
         },
         "verbose": {
