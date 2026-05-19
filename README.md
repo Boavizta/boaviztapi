@@ -3,7 +3,7 @@
 </p>
 
 <h3 align="center">
-   An API to access <a href="https://boavizta.cmakers.io/">Boavizta's</a> methodologies and data</a>
+   An API to access <a href="https://boavizta.org/">Boavizta's</a> methodologies and data</a>
 </h3>
 
 ---
