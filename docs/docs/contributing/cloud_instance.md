@@ -13,7 +13,7 @@ To add cloud instances for a cloud provider, you will need to create a new CSV f
 | memory      | **Required** | GB    | RAM quantity                     | 96          |
 | ssd_storage |              | GB    | SSD storage quantity (can be 0)  | 0           |
 | hdd_storage |              | GB    | HDD storage quantity (can be 0)  | 0           |
-| gpu_units   |              | unit  | GPU quantity (not supported yet) | 0           |
+| gpu_units   |              | unit  | GPU quantity                     | 0           |
 | platform    | **Required** |       |                                  | c5.metal    |
 
 
@@ -33,3 +33,6 @@ The `platform` field must match one of the `id` of the available server archetyp
 ### Value ranges
 
 Some values can be inputted using ranges like the following: `default;min;max`. For example, if the value is `2;1;8`, it means that the default value is `2` and the range is from `1` to `8`.
+
+!!! note
+    GPU impacts are now calculated and included in the results. The gpu_units field represents the number of GPUs allocated to the cloud instance.

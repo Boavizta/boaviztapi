@@ -24,9 +24,9 @@ All available servers are stored in a CSV file named `servers.csv` located at `b
 | SSD.capacity                  |               | GB    | SSD storage quantity             | 0                       |
 | HDD.units                     | **Required**  | unit  | Number of HDD                    | 0                       |
 | HDD.capacity                  |               | GB    | HDD storage quantity             | 0                       |
-| GPU.units                     | **Required**  | unit  | GPU quantity (not supported yet) | 0                       |
+| GPU.units                     | **Required**  | unit  | GPU quantity                     | 0                       |
 | GPU.name                      |               |       | GPU name                         |                         |
-| GPU.vram                      |               | GB    | GPU memory capacity              |                         |
+| GPU.vram                      |               | GB    | GPU memory capacity [^5]         |                         |
 | POWER_SUPPLY.units            | **Required**  | unit  | Number of power supply[^2]       | 2                       |
 | POWER_SUPPLY.unit_weight      | **Required**  | kg    | Power supply weight[^2]          | 2.99;1;5                |
 | USAGE.time_workload           | **Required**  | %     | Time workload [^3]               | 50;0;100                |
@@ -36,6 +36,8 @@ All available servers are stored in a CSV file named `servers.csv` located at `b
 | WARNINGS                      |               |       | Warnings                         |                         |
 
 [^1]: If CPU.name is set and the CPU is available in [cpu_specs.csv](./cpu.md), you do not need to fill in the other CPU attributes. The API will complete them based on the CPU.name.
+
+[^5]: GPU impacts are now calculated and included in the results. The GPU.vram field represents the video RAM capacity in GB.
 
 [^2]: (Usually power supply duplicated so POWER_SUPPLY.units = 2. Usually POWER_SUPPLY.unit_weight is unknown, in that case use a range such as 2.99;1;5)
 
