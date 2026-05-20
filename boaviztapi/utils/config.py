@@ -53,7 +53,6 @@ class Settings(BaseSettings):
 
     # Criteria defaults
     default_criteria: List[str] = ["gwp", "adp", "pe"]
-    default_gpu_criteria: List[str] = ["gwp", "adpe", "wu"]
 
     # Duration default (None means not set)
     default_duration: Optional[float] = None
