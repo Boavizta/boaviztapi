@@ -129,3 +129,77 @@ async def test_get_cloud_regions_aws_filter():
         regions = [region["region"] for region in data]
         assert "us-east-1" in regions
         assert "eu-west-3" in regions
+
+
+@pytest.mark.asyncio
+async def test_complete_gpu_from_name_detail():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.get("/v1/utils/name_to_gpu?gpu_name=H100+SXM+80GB")
+
+        assert res.status_code == 200
+        assert res.json() == {
+            "units": None,
+            "usage": {
+                "use_time_ratio": None,
+                "hours_life_time": None,
+                "avg_power": None,
+                "time_workload": None,
+                "usage_location": None,
+                "elec_factors": {
+                    "gwp": None,
+                    "adp": None,
+                    "pe": None,
+                    "gwppb": None,
+                    "gwppf": None,
+                    "gwpplu": None,
+                    "ir": None,
+                    "lu": None,
+                    "odp": None,
+                    "pm": None,
+                    "pocp": None,
+                    "wu": None,
+                    "mips": None,
+                    "adpe": None,
+                    "adpf": None,
+                    "ap": None,
+                    "ctue": None,
+                    "ctuh_c": None,
+                    "ctuh_nc": None,
+                    "epf": None,
+                    "epm": None,
+                    "ept": None,
+                },
+            },
+            "name": "NVIDIA H100 SXM 80GB",
+            "weight": 1.69,
+            "heatsink_weight": 0.90077,
+            "pwb_surface": 296.37,
+            "pwb_weight": None,
+            "casing_weight": 0.78923,
+            "gpu_surface": 2810.4,
+            "vram": 80,
+            "vram_dies": 6,
+            "vram_surface": None,
+            "transport_boat": 19000.0,
+            "transport_truck": 1000.0,
+            "transport_plane": 0.0,
+        }
+
+
+@pytest.mark.asyncio
+async def test_complete_gpu_from_name_not_found():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.get("/v1/utils/name_to_gpu?gpu_name=xyznotgpu123")
+        assert res.json() == "GPU name xyznotgpu123 is not found in our database"
+
+
+@pytest.mark.asyncio
+async def test_get_all_gpu_names():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.get("/v1/utils/gpu_name")
+        assert res.status_code == 200
+        assert isinstance(res.json(), list)
+        assert "NVIDIA H100 SXM 80GB" in res.json()

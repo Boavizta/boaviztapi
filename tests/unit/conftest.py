@@ -434,6 +434,11 @@ def cpu_dataframe():
 
 
 @pytest.fixture(scope="function")
+def gpu_specs_dataframe():
+    return pd.read_csv(data_dir + "/crowdsourcing/gpu_specs.csv")
+
+
+@pytest.fixture(scope="function")
 def ram_dataframe():
     return pd.read_csv(data_dir + "/crowdsourcing/ram_manufacture.csv")
 

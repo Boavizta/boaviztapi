@@ -1,0 +1,2 @@
+name,unit,number,vram,die_surface,pwb_surface,distance_boat,distance_truck,distance_plane,mass_casing,mass_heatsink,mass
+NVIDIA H100 SXM 80GB,1,6,80,2810.4,296.37,19000,1000,0,0.789230,0.900770,1.690000

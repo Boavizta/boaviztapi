@@ -1,6 +1,7 @@
 from boaviztapi.utils.fuzzymatch import (
     fuzzymatch_attr_from_pdf,
     fuzzymatch_attr_from_cpu_name,
+    fuzzymatch_attr_from_gpu_name,
 )
 import pytest
 
@@ -216,3 +217,70 @@ def test_fuzzymatch_ram(ram_dataframe):
         == fuzzymatch_attr_from_pdf("samesung", "manufacturer", ram_dataframe).lower()
     )
     assert fuzzymatch_attr_from_pdf("4R", "manufacturer", ram_dataframe) is None
+
+
+@pytest.mark.parametrize(
+    "gpu_name_input, name, vram_dies, vram, die_surface, pwb_surface, distance_boat, distance_truck, distance_plane, mass_casing, mass_heatsink, mass",
+    [
+        (
+            "H100 SXM 80GB",
+            "NVIDIA H100 SXM 80GB",
+            6,
+            80.0,
+            2810.4,
+            296.37,
+            19000.0,
+            1000.0,
+            0.0,
+            0.78923,
+            0.90077,
+            1.69,
+        ),
+        (
+            "NVIDIA H100 SXM",
+            "NVIDIA H100 SXM 80GB",
+            6,
+            80.0,
+            2810.4,
+            296.37,
+            19000.0,
+            1000.0,
+            0.0,
+            0.78923,
+            0.90077,
+            1.69,
+        ),
+    ],
+)
+def test_fuzzymatch_attr_from_gpu_name(
+    gpu_specs_dataframe,
+    gpu_name_input,
+    name,
+    vram_dies,
+    vram,
+    die_surface,
+    pwb_surface,
+    distance_boat,
+    distance_truck,
+    distance_plane,
+    mass_casing,
+    mass_heatsink,
+    mass,
+):
+    assert (
+        name,
+        vram_dies,
+        vram,
+        die_surface,
+        pwb_surface,
+        distance_boat,
+        distance_truck,
+        distance_plane,
+        mass_casing,
+        mass_heatsink,
+        mass,
+    ) == fuzzymatch_attr_from_gpu_name(gpu_name_input, gpu_specs_dataframe)
+
+
+def test_fuzzymatch_gpu_not_found(gpu_specs_dataframe):
+    assert fuzzymatch_attr_from_gpu_name("xyznotgpu123", gpu_specs_dataframe) is None

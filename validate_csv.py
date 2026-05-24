@@ -65,6 +65,7 @@ print("Validating CSV format with chkcsv...")
 CSV_FILES = PROVIDER_CSV_FILES + (
     (ARCHETYPES_DIR.joinpath("server.csv"), None),
     (CROWDSOURCING_DIR.joinpath("cpu_specs.csv"), None),
+    (CROWDSOURCING_DIR.joinpath("gpu_specs.csv"), None),
 )
 
 for csv_file, format_spec in CSV_FILES:

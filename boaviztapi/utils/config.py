@@ -64,6 +64,7 @@ class Settings(BaseSettings):
 
     # Fuzzy matching
     cpu_name_fuzzymatch_threshold: int = 80
+    gpu_name_fuzzymatch_threshold: int = 80
 
     # Application settings (support both BOAVIZTA_ prefix and legacy non-prefixed)
     allowed_origins: List[str] = Field(

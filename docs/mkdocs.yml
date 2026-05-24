@@ -56,6 +56,7 @@ nav:
               - Assembly: Explanations/components/assembly.md
               - Case: Explanations/components/case.md
               - Functional block (IoT): Explanations/components/functional_blocks.md
+              - GPU: Explanations/components/gpu.md
         - Devices:
               - Devices: Explanations/devices/devices.md
               - Server: Explanations/devices/server.md
@@ -84,6 +85,7 @@ nav:
         - 'Add a cloud instance': contributing/cloud_instance.md
         - 'Add a server': contributing/server.md
         - 'Add a CPU' : contributing/cpu.md
+        - 'Add a GPU' : contributing/gpu.md
 
 theme: material
 
