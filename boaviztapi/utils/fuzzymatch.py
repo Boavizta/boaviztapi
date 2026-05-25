@@ -38,7 +38,21 @@ def fuzzymatch_attr_from_cpu_name(
 def fuzzymatch_attr_from_gpu_name(
     gpu_name: str, df: pd.DataFrame
 ) -> Union[
-    Tuple[str, float, float, float, float, float, float, float, float, float, float],
+    Tuple[
+        str,
+        str,
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+        str,
+    ],
     None,
 ]:
     gpu_name = gpu_name.lower()
@@ -55,6 +69,7 @@ def fuzzymatch_attr_from_gpu_name(
 
         return (
             best["name"],  # .name is reserved by pandas for indexes
+            best.manufacturer,
             safe_float(best.number),  # number of VRAM dies
             safe_float(best.vram),
             safe_float(best.die_surface),  # effective area, already includes losses
@@ -65,6 +80,7 @@ def fuzzymatch_attr_from_gpu_name(
             safe_float(best.mass_casing),
             safe_float(best.mass_heatsink),
             safe_float(best.mass),
+            best.source,
         )
 
 

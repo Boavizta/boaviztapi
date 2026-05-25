@@ -1,6 +1,8 @@
 [name]
 data_required=True
 type=string
+[manufacturer]
+type=string
 [unit]
 type=float
 [number]
@@ -23,3 +25,5 @@ type=float
 type=float
 [mass]
 type=float
+[source]
+type=string

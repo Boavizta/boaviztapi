@@ -67,6 +67,12 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, "name", "max"),
         )
 
+        self.manufacturer = Boattribute(
+            default=get_arch_value(archetype, "manufacturer", "default"),
+            min=get_arch_value(archetype, "manufacturer", "min"),
+            max=get_arch_value(archetype, "manufacturer", "max"),
+        )
+
         self.weight = Boattribute(
             complete_function=self._complete_weight,
             unit="kg",
@@ -172,6 +178,7 @@ class ComponentGPU(Component):
             gpu_attributes = attributes_from_gpu_name(self.name.value)
             (
                 name,
+                manufacturer,
                 vram_dies,
                 vram,
                 die_surface,
@@ -182,64 +189,84 @@ class ComponentGPU(Component):
                 mass_casing,
                 mass_heatsink,
                 mass,
+                source,
             ) = (
                 gpu_attributes
                 if gpu_attributes is not None
-                else (None, None, None, None, None, None, None, None, None, None, None)
+                else (
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                )
             )
 
             if name is not None:
                 self.name.set_completed(name, source="fuzzy match")
-            if vram is not None and not self.vram.is_set():
+            if manufacturer is not None and self.manufacturer.is_none():
+                self.manufacturer.set_completed(
+                    manufacturer,
+                    source=f"Completed from name based on {source}.",
+                )
+            if vram is not None and self.vram.is_none():
                 self.vram.set_completed(
                     int(vram),
-                    source="Completed from name via gpu_specs.",
+                    source=f"Completed from name based on {source}.",
                 )
-            if vram_dies is not None and not self.vram_dies.is_set():
+            if vram_dies is not None and self.vram_dies.is_none():
                 self.vram_dies.set_completed(
                     int(vram_dies),
-                    source="Completed from name via gpu_specs.",
+                    source=f"Completed from name based on {source}.",
                 )
             # die_surface already includes wafer losses — use directly
-            if die_surface is not None and not self.gpu_surface.is_set():
+            if die_surface is not None and self.gpu_surface.is_none():
                 self.gpu_surface.set_completed(
                     die_surface,
-                    source="Completed from name via gpu_specs.",
+                    source=f"Completed from name based on {source}.",
                 )
-            if pwb_surface is not None and not self.pwb_surface.is_set():
+            if pwb_surface is not None and self.pwb_surface.is_none():
                 self.pwb_surface.set_completed(
                     pwb_surface,
-                    source="Completed from name via gpu_specs.",
+                    source=f"Completed from name based on {source}.",
                 )
-            if distance_boat is not None and not self.transport_boat.is_set():
+            if distance_boat is not None and self.transport_boat.is_none():
                 self.transport_boat.set_completed(
                     distance_boat,
-                    source="Completed from name via gpu_specs.",
+                    source=f"Completed from name based on {source}.",
                 )
-            if distance_truck is not None and not self.transport_truck.is_set():
+            if distance_truck is not None and self.transport_truck.is_none():
                 self.transport_truck.set_completed(
                     distance_truck,
-                    source="Completed from name via gpu_specs.",
+                    source=f"Completed from name based on {source}.",
                 )
-            if distance_plane is not None and not self.transport_plane.is_set():
+            if distance_plane is not None and self.transport_plane.is_none():
                 self.transport_plane.set_completed(
                     distance_plane,
-                    source="Completed from name via gpu_specs.",
+                    source=f"Completed from name based on {source}.",
                 )
-            if mass_casing is not None and not self.casing_weight.is_set():
+            if mass_casing is not None and self.casing_weight.is_none():
                 self.casing_weight.set_completed(
                     mass_casing,
-                    source="Completed from name via gpu_specs.",
+                    source=f"Completed from name based on {source}.",
                 )
-            if mass_heatsink is not None and not self.heatsink_weight.is_set():
+            if mass_heatsink is not None and self.heatsink_weight.is_none():
                 self.heatsink_weight.set_completed(
                     mass_heatsink,
-                    source="Completed from name via gpu_specs.",
+                    source=f"Completed from name based on {source}.",
                 )
-            if mass is not None and not self.weight.is_set():
+            if mass is not None and self.weight.is_none():
                 self.weight.set_completed(
                     mass,
-                    source="Completed from name via gpu_specs.",
+                    source=f"Completed from name based on {source}.",
                 )
 
     def _complete_weight(self):

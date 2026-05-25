@@ -172,6 +172,7 @@ async def test_complete_gpu_from_name_detail():
                 },
             },
             "name": "NVIDIA H100 SXM 80GB",
+            "manufacturer": "NVIDIA",
             "weight": 1.69,
             "heatsink_weight": 0.90077,
             "pwb_surface": 296.37,

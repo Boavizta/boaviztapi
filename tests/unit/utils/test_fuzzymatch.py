@@ -220,11 +220,12 @@ def test_fuzzymatch_ram(ram_dataframe):
 
 
 @pytest.mark.parametrize(
-    "gpu_name_input, name, vram_dies, vram, die_surface, pwb_surface, distance_boat, distance_truck, distance_plane, mass_casing, mass_heatsink, mass",
+    "gpu_name_input, name, manufacturer, vram_dies, vram, die_surface, pwb_surface, distance_boat, distance_truck, distance_plane, mass_casing, mass_heatsink, mass, source",
     [
         (
             "H100 SXM 80GB",
             "NVIDIA H100 SXM 80GB",
+            "NVIDIA",
             6,
             80.0,
             2810.4,
@@ -235,10 +236,12 @@ def test_fuzzymatch_ram(ram_dataframe):
             0.78923,
             0.90077,
             1.69,
+            None,
         ),
         (
             "NVIDIA H100 SXM",
             "NVIDIA H100 SXM 80GB",
+            "NVIDIA",
             6,
             80.0,
             2810.4,
@@ -249,6 +252,7 @@ def test_fuzzymatch_ram(ram_dataframe):
             0.78923,
             0.90077,
             1.69,
+            None,
         ),
     ],
 )
@@ -256,6 +260,7 @@ def test_fuzzymatch_attr_from_gpu_name(
     gpu_specs_dataframe,
     gpu_name_input,
     name,
+    manufacturer,
     vram_dies,
     vram,
     die_surface,
@@ -266,9 +271,11 @@ def test_fuzzymatch_attr_from_gpu_name(
     mass_casing,
     mass_heatsink,
     mass,
+    source,
 ):
     assert (
         name,
+        manufacturer,
         vram_dies,
         vram,
         die_surface,
@@ -279,6 +286,7 @@ def test_fuzzymatch_attr_from_gpu_name(
         mass_casing,
         mass_heatsink,
         mass,
+        source,
     ) == fuzzymatch_attr_from_gpu_name(gpu_name_input, gpu_specs_dataframe)
 
 

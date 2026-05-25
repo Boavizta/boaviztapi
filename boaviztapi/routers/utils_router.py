@@ -127,6 +127,7 @@ async def utils_name_to_gpu(gpu_name: str = Query(examples=["NVIDIA A100 80GB SX
     if gpu_attributes is not None:
         (
             name,
+            manufacturer,
             vram_dies,
             vram,
             die_surface,
@@ -137,9 +138,11 @@ async def utils_name_to_gpu(gpu_name: str = Query(examples=["NVIDIA A100 80GB SX
             mass_casing,
             mass_heatsink,
             mass,
+            source,
         ) = gpu_attributes
         return GPU(
             name=name,
+            manufacturer=manufacturer,
             vram=int(vram) if vram is not None else None,
             vram_dies=int(vram_dies) if vram_dies is not None else None,
             gpu_surface=die_surface,
