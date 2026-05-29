@@ -1,8 +1,20 @@
 import math
-from boaviztapi import config
+import os
+
+import pandas as pd
+
+from boaviztapi import config, data_dir
 from boaviztapi.models.boattribute import Boattribute
 from boaviztapi.models.component.component import Component
 from boaviztapi.data.archetype import get_arch_value, get_component_archetype
+from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_gpu_name
+
+_gpu_specs = pd.read_csv(os.path.join(data_dir, "crowdsourcing/gpu_specs.csv"))
+
+
+def attributes_from_gpu_name(gpu_name: str):
+    return fuzzymatch_attr_from_gpu_name(gpu_name, _gpu_specs)
+
 
 _KERF = 0.2  # in mm
 _WAFER_DIAMETER = 300  # in mm
@@ -41,6 +53,7 @@ def _calculate_effective_area_on_circular_wafer(die_area: float | None) -> float
 class ComponentGPU(Component):
     NAME = "GPU"
     _default_archetype = get_component_archetype(config.default_gpu, "gpu")
+    name_completion = False
 
     def __init__(
         self, archetype=get_component_archetype(config.default_gpu, "gpu"), **kwargs
@@ -48,9 +61,16 @@ class ComponentGPU(Component):
         super().__init__(archetype=archetype, **kwargs)
 
         self.name = Boattribute(
+            complete_function=self._complete_from_name,
             default=get_arch_value(archetype, "name", "default"),
             min=get_arch_value(archetype, "name", "min"),
             max=get_arch_value(archetype, "name", "max"),
+        )
+
+        self.manufacturer = Boattribute(
+            default=get_arch_value(archetype, "manufacturer", "default"),
+            min=get_arch_value(archetype, "manufacturer", "min"),
+            max=get_arch_value(archetype, "manufacturer", "max"),
         )
 
         self.weight = Boattribute(
@@ -152,6 +172,102 @@ class ComponentGPU(Component):
             min=get_arch_value(archetype, "transport_plane", "min"),
             max=get_arch_value(archetype, "transport_plane", "max"),
         )
+
+    def _complete_from_name(self):
+        if self.name.has_value() and not self.name_completion:
+            gpu_attributes = attributes_from_gpu_name(self.name.value)
+            (
+                name,
+                manufacturer,
+                vram_dies,
+                vram,
+                die_surface,
+                pwb_surface,
+                distance_boat,
+                distance_truck,
+                distance_plane,
+                mass_casing,
+                mass_heatsink,
+                mass,
+                source,
+            ) = (
+                gpu_attributes
+                if gpu_attributes is not None
+                else (
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                )
+            )
+
+            if name is not None:
+                self.name.set_completed(name, source="fuzzy match")
+            if manufacturer is not None and self.manufacturer.is_none():
+                self.manufacturer.set_completed(
+                    manufacturer,
+                    source=f"Completed from name based on {source}.",
+                )
+            if vram is not None and self.vram.is_none():
+                self.vram.set_completed(
+                    int(vram),
+                    source=f"Completed from name based on {source}.",
+                )
+            if vram_dies is not None and self.vram_dies.is_none():
+                self.vram_dies.set_completed(
+                    int(vram_dies),
+                    source=f"Completed from name based on {source}.",
+                )
+            # die_surface already includes wafer losses — use directly
+            if die_surface is not None and self.gpu_surface.is_none():
+                self.gpu_surface.set_completed(
+                    die_surface,
+                    source=f"Completed from name based on {source}.",
+                )
+            if pwb_surface is not None and self.pwb_surface.is_none():
+                self.pwb_surface.set_completed(
+                    pwb_surface,
+                    source=f"Completed from name based on {source}.",
+                )
+            if distance_boat is not None and self.transport_boat.is_none():
+                self.transport_boat.set_completed(
+                    distance_boat,
+                    source=f"Completed from name based on {source}.",
+                )
+            if distance_truck is not None and self.transport_truck.is_none():
+                self.transport_truck.set_completed(
+                    distance_truck,
+                    source=f"Completed from name based on {source}.",
+                )
+            if distance_plane is not None and self.transport_plane.is_none():
+                self.transport_plane.set_completed(
+                    distance_plane,
+                    source=f"Completed from name based on {source}.",
+                )
+            if mass_casing is not None and self.casing_weight.is_none():
+                self.casing_weight.set_completed(
+                    mass_casing,
+                    source=f"Completed from name based on {source}.",
+                )
+            if mass_heatsink is not None and self.heatsink_weight.is_none():
+                self.heatsink_weight.set_completed(
+                    mass_heatsink,
+                    source=f"Completed from name based on {source}.",
+                )
+            if mass is not None and self.weight.is_none():
+                self.weight.set_completed(
+                    mass,
+                    source=f"Completed from name based on {source}.",
+                )
 
     def _complete_weight(self):
         if self.weight.is_set():

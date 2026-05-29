@@ -10,6 +10,7 @@ _running_e2e = "--rune2e" in sys.argv
 # Add overrides for non-E2E tests
 if not _running_e2e:
     bv_config.cpu_name_fuzzymatch_threshold = 60
+    bv_config.gpu_name_fuzzymatch_threshold = 60
     bv_config.default_case = "DEFAULT"
     bv_config.default_server = "DEFAULT"
 

@@ -5,9 +5,11 @@ from fastapi import APIRouter, Query
 
 from boaviztapi import data_dir
 from boaviztapi.dto.component.cpu import CPU
+from boaviztapi.dto.component.gpu import GPU
 from boaviztapi.models import impact
 from boaviztapi.models.component import ComponentCase
 from boaviztapi.models.component.cpu import attributes_from_cpu_name
+from boaviztapi.models.component.gpu import attributes_from_gpu_name
 from boaviztapi.routers.openapi_doc.descriptions import (
     country_code,
     cpu_family,
@@ -17,6 +19,8 @@ from boaviztapi.routers.openapi_doc.descriptions import (
     case_type,
     name_to_cpu,
     cpu_names,
+    name_to_gpu,
+    gpu_names,
     impacts_criteria,
     cloud_regions,
 )
@@ -27,6 +31,7 @@ from boaviztapi.utils.get_version import get_version_from_pyproject
 utils_router = APIRouter(prefix="/v1/utils", tags=["utils"])
 
 _cpu_specs = pd.read_csv(os.path.join(data_dir, "crowdsourcing/cpu_specs.csv"))
+_gpu_specs = pd.read_csv(os.path.join(data_dir, "crowdsourcing/gpu_specs.csv"))
 _ssd_manuf = pd.read_csv(os.path.join(data_dir, "crowdsourcing/ssd_manufacture.csv"))
 _ram_manuf = pd.read_csv(os.path.join(data_dir, "crowdsourcing/ram_manufacture.csv"))
 
@@ -113,6 +118,49 @@ async def name_to_cpu(cpu_name: str = Query(examples=["Intel Core i7-9700K"])):
 @utils_router.get("/cpu_name", description=cpu_names)
 async def utils_get_all_cpu_name():
     df = _cpu_specs[_cpu_specs["name"].notna()]
+    return [*df["name"].unique()]
+
+
+@utils_router.get("/name_to_gpu", description=name_to_gpu)
+async def utils_name_to_gpu(gpu_name: str = Query(examples=["NVIDIA A100 80GB SXM"])):
+    gpu_attributes = attributes_from_gpu_name(gpu_name)
+    if gpu_attributes is not None:
+        (
+            name,
+            manufacturer,
+            vram_dies,
+            vram,
+            die_surface,
+            pwb_surface,
+            distance_boat,
+            distance_truck,
+            distance_plane,
+            mass_casing,
+            mass_heatsink,
+            mass,
+            source,
+        ) = gpu_attributes
+        return GPU(
+            name=name,
+            manufacturer=manufacturer,
+            vram=int(vram) if vram is not None else None,
+            vram_dies=int(vram_dies) if vram_dies is not None else None,
+            gpu_surface=die_surface,
+            pwb_surface=pwb_surface,
+            weight=mass,
+            heatsink_weight=mass_heatsink,
+            casing_weight=mass_casing,
+            transport_boat=distance_boat,
+            transport_truck=distance_truck,
+            transport_plane=distance_plane,
+        )
+    else:
+        return f"GPU name {gpu_name} is not found in our database"
+
+
+@utils_router.get("/gpu_name", description=gpu_names)
+async def utils_get_all_gpu_name():
+    df = _gpu_specs[_gpu_specs["name"].notna()]
     return [*df["name"].unique()]
 
 

@@ -35,6 +35,55 @@ def fuzzymatch_attr_from_cpu_name(
         )
 
 
+def fuzzymatch_attr_from_gpu_name(
+    gpu_name: str, df: pd.DataFrame
+) -> Union[
+    Tuple[
+        str,
+        str,
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+        str,
+    ],
+    None,
+]:
+    gpu_name = gpu_name.lower()
+    score = df["name"].str.lower().apply(lambda x: fuzz.token_set_ratio(x, gpu_name))
+    max_score = score.max()
+    if max_score <= config.gpu_name_fuzzymatch_threshold:
+        return None
+    else:
+        best = df.iloc[score.idxmax()]
+        best = best.mask(best.isnull(), None)  # replace all NaN by None
+
+        def safe_float(x):
+            return x if x is None else float(x)
+
+        return (
+            best["name"],  # .name is reserved by pandas for indexes
+            best.manufacturer,
+            safe_float(best.number),  # number of VRAM dies
+            safe_float(best.vram),
+            safe_float(best.die_surface),  # effective area, already includes losses
+            safe_float(best.pwb_surface),
+            safe_float(best.distance_boat),
+            safe_float(best.distance_truck),
+            safe_float(best.distance_plane),
+            safe_float(best.mass_casing),
+            safe_float(best.mass_heatsink),
+            safe_float(best.mass),
+            best.source,
+        )
+
+
 def fuzzymatch_attr_from_pdf(name: str, attr: str, pdf: pd.DataFrame) -> str:
     name_list = list(pdf[attr].unique())
 
