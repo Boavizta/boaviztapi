@@ -157,19 +157,19 @@ def test_bottom_up_component_gpu_complete(complete_gpu_model):
     ) == {
         "adp": {
             "description": "Use of minerals and fossil ressources",
-            "embedded": {"max": 0.005819, "min": 0.005819, "value": 0.005819},
+            "embedded": {"max": 0.01164, "min": 0.01164, "value": 0.01164},
             "unit": "kgSbeq",
             "use": "not implemented",
         },
         "gwp": {
             "description": "Total climate change",
-            "embedded": {"max": 238.6, "min": 238.6, "value": 238.6},
+            "embedded": {"max": 477.2, "min": 477.2, "value": 477.2},
             "unit": "kgCO2eq",
             "use": "not implemented",
         },
         "pe": {
             "description": "Consumption of primary energy",
-            "embedded": {"max": 3424.0, "min": 3424.0, "value": 3424.0},
+            "embedded": {"max": 6848.0, "min": 6848.0, "value": 6848.0},
             "unit": "MJ",
             "use": "not implemented",
         },
