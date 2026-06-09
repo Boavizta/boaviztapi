@@ -206,9 +206,11 @@ class DeviceServer(Device):
         # the user explicitly provides an average power per GPU.
         conso_gpu = ImpactFactor(value=0, min=0, max=0)
         if self.gpu is not None and self.gpu.usage.avg_power.is_set():
+            # units is a deterministic count: scale all bounds by units.value so
+            # the uncertainty range only reflects the avg_power bounds.
             conso_gpu.value = self.gpu.usage.avg_power.value * self.gpu.units.value
-            conso_gpu.min = self.gpu.usage.avg_power.min * self.gpu.units.min
-            conso_gpu.max = self.gpu.usage.avg_power.max * self.gpu.units.max
+            conso_gpu.min = self.gpu.usage.avg_power.min * self.gpu.units.value
+            conso_gpu.max = self.gpu.usage.avg_power.max * self.gpu.units.value
 
         return ImpactFactor(
             value=(conso_cpu.value + conso_ram.value + conso_gpu.value)

@@ -298,7 +298,8 @@ def gpu_impact_embedded(
             + transport_plane_impact.min
             + end_of_life_impact.min
         )
-        * gpu.units.min,
+        # units is a deterministic count, not a source of uncertainty
+        * gpu.units.value,
         max=(
             casing_impact.max
             + heatsink_impact.max
@@ -311,7 +312,7 @@ def gpu_impact_embedded(
             + transport_plane_impact.max
             + end_of_life_impact.max
         )
-        * gpu.units.max,
+        * gpu.units.value,
     )
 
     impact.allocate(duration, gpu.usage.hours_life_time)
