@@ -202,12 +202,22 @@ class DeviceServer(Device):
                 value=conso_ram.value, min=conso_ram.min, max=conso_ram.max
             )
 
+        # The GPU component has no power model: only account for its power when
+        # the user explicitly provides an average power per GPU.
+        conso_gpu = ImpactFactor(value=0, min=0, max=0)
+        if self.gpu is not None and self.gpu.usage.avg_power.is_set():
+            # units is a deterministic count: scale all bounds by units.value so
+            # the uncertainty range only reflects the avg_power bounds.
+            conso_gpu.value = self.gpu.usage.avg_power.value * self.gpu.units.value
+            conso_gpu.min = self.gpu.usage.avg_power.min * self.gpu.units.value
+            conso_gpu.max = self.gpu.usage.avg_power.max * self.gpu.units.value
+
         return ImpactFactor(
-            value=(conso_cpu.value + conso_ram.value)
+            value=(conso_cpu.value + conso_ram.value + conso_gpu.value)
             * (1 + self.usage.other_consumption_ratio.value),
-            min=(conso_cpu.min + conso_ram.min)
+            min=(conso_cpu.min + conso_ram.min + conso_gpu.min)
             * (1 + self.usage.other_consumption_ratio.min),
-            max=(conso_cpu.max + conso_ram.max)
+            max=(conso_cpu.max + conso_ram.max + conso_gpu.max)
             * (1 + self.usage.other_consumption_ratio.max),
         )
 

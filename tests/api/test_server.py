@@ -34,9 +34,9 @@ async def test_complete_config_server():
             "adp": {
                 "description": "Use of minerals and fossil ressources",
                 "embedded": {
-                    "max": 0.2669,
-                    "min": 0.2594,
-                    "value": 0.2594,
+                    "max": 0.2727,
+                    "min": 0.2652,
+                    "value": 0.2652,
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgSbeq",
@@ -45,9 +45,9 @@ async def test_complete_config_server():
             "gwp": {
                 "description": "Total climate change",
                 "embedded": {
-                    "max": 1464.0,
-                    "min": 1400.0,
-                    "value": 1464.0,
+                    "max": 1791.0,
+                    "min": 1727.0,
+                    "value": 1791.0,
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgCO2eq",
@@ -56,9 +56,9 @@ async def test_complete_config_server():
             "pe": {
                 "description": "Consumption of primary energy",
                 "embedded": {
-                    "max": 20020.0,
-                    "min": 19050.0,
-                    "value": 20020.0,
+                    "max": 24620.0,
+                    "min": 23640.0,
+                    "value": 24620.0,
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",

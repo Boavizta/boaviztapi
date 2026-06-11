@@ -273,36 +273,46 @@ def gpu_impact_embedded(
     end_of_life_impact = _component_impact("end_of_life", "eol", gpu.weight)
 
     impact = Impact(
-        value=casing_impact.value
-        + heatsink_impact.value
-        + pwb_impact.value
-        + gpu_impact.value
-        + vram_impact.value
-        + upstream_transport_impact.value
-        + transport_boat_impact.value
-        + transport_truck_impact.value
-        + transport_plane_impact.value
-        + end_of_life_impact.value,
-        min=casing_impact.min
-        + heatsink_impact.min
-        + pwb_impact.min
-        + gpu_impact.min
-        + vram_impact.min
-        + upstream_transport_impact.min
-        + transport_boat_impact.min
-        + transport_truck_impact.min
-        + transport_plane_impact.min
-        + end_of_life_impact.min,
-        max=casing_impact.max
-        + heatsink_impact.max
-        + pwb_impact.max
-        + gpu_impact.max
-        + vram_impact.max
-        + upstream_transport_impact.max
-        + transport_boat_impact.max
-        + transport_truck_impact.max
-        + transport_plane_impact.max
-        + end_of_life_impact.max,
+        value=(
+            casing_impact.value
+            + heatsink_impact.value
+            + pwb_impact.value
+            + gpu_impact.value
+            + vram_impact.value
+            + upstream_transport_impact.value
+            + transport_boat_impact.value
+            + transport_truck_impact.value
+            + transport_plane_impact.value
+            + end_of_life_impact.value
+        )
+        * gpu.units.value,
+        min=(
+            casing_impact.min
+            + heatsink_impact.min
+            + pwb_impact.min
+            + gpu_impact.min
+            + vram_impact.min
+            + upstream_transport_impact.min
+            + transport_boat_impact.min
+            + transport_truck_impact.min
+            + transport_plane_impact.min
+            + end_of_life_impact.min
+        )
+        # units is a deterministic count, not a source of uncertainty
+        * gpu.units.value,
+        max=(
+            casing_impact.max
+            + heatsink_impact.max
+            + pwb_impact.max
+            + gpu_impact.max
+            + vram_impact.max
+            + upstream_transport_impact.max
+            + transport_boat_impact.max
+            + transport_truck_impact.max
+            + transport_plane_impact.max
+            + end_of_life_impact.max
+        )
+        * gpu.units.value,
     )
 
     impact.allocate(duration, gpu.usage.hours_life_time)
@@ -792,6 +802,8 @@ def server_impact_use(
     compute_single_impact(server.cpu, USE, impact_type, duration)
     for ram in server.ram:
         compute_single_impact(ram, USE, impact_type, duration)
+    if server.gpu is not None:
+        compute_single_impact(server.gpu, USE, impact_type, duration)
 
     impact = (
         impact_factor.value
