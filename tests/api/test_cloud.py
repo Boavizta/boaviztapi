@@ -162,7 +162,11 @@ async def test_fuzzy_match_variant_returns_200_with_warning():
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.post(
             "/v1/cloud/instance?verbose=false",
-            json={"provider": "azure", "instance_type": "Standard_E2ads_v5", "usage": {}},
+            json={
+                "provider": "azure",
+                "instance_type": "Standard_E2ads_v5",
+                "usage": {},
+            },
         )
     assert res.status_code == 200
     data = res.json()

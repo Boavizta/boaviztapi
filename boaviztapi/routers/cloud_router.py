@@ -26,7 +26,9 @@ from boaviztapi.compute.verbose import verbose_cloud
 cloud_router = APIRouter(prefix="/v1/cloud", tags=["cloud"])
 
 
-def resolve_instance_archetype(instance_type: str, provider: str) -> tuple[dict, str | None]:
+def resolve_instance_archetype(
+    instance_type: str, provider: str
+) -> tuple[dict, str | None]:
     """
     Returns (archetype, substitution_warning_or_None).
     Raises HTTPException 404 if no match is found even after fuzzy lookup.

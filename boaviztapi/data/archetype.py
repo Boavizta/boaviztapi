@@ -149,7 +149,9 @@ def set_list(obj: dict) -> dict:
     return obj
 
 
-def get_arch_value(archetype: dict, attribute: str, key: str, default: Any = None) -> Any:
+def get_arch_value(
+    archetype: dict, attribute: str, key: str, default: Any = None
+) -> Any:
     if not archetype:
         return default
     if archetype.get(attribute) is not None:
@@ -158,7 +160,9 @@ def get_arch_value(archetype: dict, attribute: str, key: str, default: Any = Non
     return default
 
 
-def get_arch_component(archetype: dict, component_name: str, default: Any = None) -> Any:
+def get_arch_component(
+    archetype: dict, component_name: str, default: Any = None
+) -> Any:
     if not archetype:
         return default
     if archetype.get(component_name) is not None:

@@ -300,16 +300,19 @@ def test_fuzzymatch_gpu_not_found(gpu_specs_dataframe):
 AZURE_CANDIDATES = ["d2ads_v5", "d4ads_v5", "d8ads_v5", "d2as_v4", "d4as_v4"]
 
 
-@pytest.mark.parametrize("variant", [
-    "D2ads_v5",
-    "D2ads-v5",
-    "D2ads V5",
-    "Standard_D2ads_v5",
-    "standard_d2ads_v5",
-    "d2ads_v5",
-    "d2adsv5",  # all separators removed
-    "D2ads-V5",
-])
+@pytest.mark.parametrize(
+    "variant",
+    [
+        "D2ads_v5",
+        "D2ads-v5",
+        "D2ads V5",
+        "Standard_D2ads_v5",
+        "standard_d2ads_v5",
+        "d2ads_v5",
+        "d2adsv5",  # all separators removed
+        "D2ads-V5",
+    ],
+)
 def test_fuzzymatch_cloud_instance_normalization(variant):
     """All separator/case variants match without distance computation."""
     assert fuzzymatch_cloud_instance_name(variant, AZURE_CANDIDATES) == "d2ads_v5"

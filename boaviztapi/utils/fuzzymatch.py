@@ -98,7 +98,7 @@ def _canonical_forms(name: str) -> set[str]:
     """All separator/case variants of a name for parallel normalization matching."""
     base = name.strip().lower()
     if base.startswith("standard_"):
-        base = base[len("standard_"):]
+        base = base[len("standard_") :]
     return {
         base,
         base.replace(" ", "_").replace("-", "_"),
@@ -124,7 +124,9 @@ def fuzzymatch_cloud_instance_name(
 
     threshold = config.cloud_instance_name_fuzzymatch_threshold / 100.0
     # One representative key per candidate (space/dash → underscore)
-    candidate_keys = {c.lower().replace(" ", "_").replace("-", "_"): c for c in candidates}
+    candidate_keys = {
+        c.lower().replace(" ", "_").replace("-", "_"): c for c in candidates
+    }
 
     # Stage 2: Hamming — try every request form, keep best equal-length hit
     best_cand: Union[str, None] = None
@@ -145,7 +147,9 @@ def fuzzymatch_cloud_instance_name(
     best_cand, best_score = None, 0.0
     for req_key in req_forms:
         hit = process.extractOne(
-            req_key, list(candidate_keys.keys()), scorer=Levenshtein.normalized_similarity
+            req_key,
+            list(candidate_keys.keys()),
+            scorer=Levenshtein.normalized_similarity,
         )
         if hit and hit[1] > best_score:
             best_cand, best_score = candidate_keys[hit[0]], hit[1]
