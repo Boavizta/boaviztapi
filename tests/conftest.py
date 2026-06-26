@@ -11,6 +11,7 @@ _running_e2e = "--rune2e" in sys.argv
 if not _running_e2e:
     bv_config.cpu_name_fuzzymatch_threshold = 60
     bv_config.gpu_name_fuzzymatch_threshold = 60
+    bv_config.cloud_instance_name_fuzzymatch_threshold = 80
     bv_config.default_case = "DEFAULT"
     bv_config.default_server = "DEFAULT"
 

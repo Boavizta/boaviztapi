@@ -6,6 +6,7 @@ from typing import Union
 import pandas as pd
 
 from boaviztapi import data_dir
+from boaviztapi.utils.fuzzymatch import fuzzymatch_cloud_instance_name
 
 
 def get_device_archetype_lst(path):
@@ -55,15 +56,38 @@ def get_user_terminal_archetype(archetype_name: str) -> Union[dict, bool]:
 def get_cloud_instance_archetype(
     archetype_name: str, provider: str
 ) -> Union[dict, bool]:
-    arch = False
-    if os.path.exists(data_dir + "/archetypes/cloud/" + provider + ".csv"):
-        arch = get_archetype(
-            archetype_name,
-            os.path.join(data_dir, "archetypes/cloud/" + provider + ".csv"),
-        )
+    csv_path = os.path.join(data_dir, "archetypes/cloud/" + provider + ".csv")
+    if not os.path.exists(csv_path):
+        return False
+    arch = get_archetype(archetype_name, csv_path)
     if not arch:
         return False
     return arch
+
+
+def fuzzy_get_cloud_instance_archetype(
+    archetype_name: str, provider: str
+) -> Union[tuple[dict, str], tuple[bool, None]]:
+    """
+    Try exact match first, then fuzzy-match the instance name against all
+    known ids for the provider.
+
+    Returns (archetype_dict, matched_name) on success, (False, None) on miss.
+    The caller can compare matched_name to the original request to detect substitution.
+    """
+    csv_path = os.path.join(data_dir, "archetypes/cloud/" + provider + ".csv")
+    if not os.path.exists(csv_path):
+        return False, None
+
+    arch = get_archetype(archetype_name, csv_path)
+    if arch:
+        return arch, archetype_name
+
+    candidates = get_device_archetype_lst(csv_path)
+    matched = fuzzymatch_cloud_instance_name(archetype_name, candidates)
+    if matched:
+        return get_archetype(matched, csv_path), matched
+    return False, None
 
 
 def get_archetype(archetype_name: str, csv_path: str) -> Union[dict, bool]:
