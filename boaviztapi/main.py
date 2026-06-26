@@ -4,7 +4,7 @@ import anyio
 import markdown
 from fastapi.middleware.cors import CORSMiddleware
 import os
-from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from mangum import Mangum
@@ -28,33 +28,36 @@ from boaviztapi.utils.get_version import get_version_from_pyproject
 
 from fastapi.responses import HTMLResponse
 
+# Serverless frameworks adds a 'stage' prefix to the route used to serve applications
+# We have to manage it to expose openapi doc on aws and generate proper links.
+stage = os.environ.get("STAGE", None)
+openapi_prefix = f"/{stage}" if stage else "/"
+app = FastAPI(root_path=openapi_prefix)
+version = get_version_from_pyproject()
+_logger = logging.getLogger(__name__)
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    # Startup
+
+def custom_openapi():
+    # Override FastAPI's openapi().
+    if app.openapi_schema:
+        return app.openapi_schema
+
     intro = open(
         os.path.join(os.path.dirname(__file__), "routers/openapi_doc/intro_openapi.md"),
         "r",
         encoding="utf-8",
     )
-    openapi_schema = get_openapi(
+    app.openapi_schema = get_openapi(
         title="BOAVIZTAPI - DEMO",
         version=version,
         description=markdown.markdown(intro.read()),
         routes=app.routes,
         servers=app.servers,
     )
-    app.openapi_schema = openapi_schema
-    yield
+    return app.openapi_schema
 
 
-# Serverless frameworks adds a 'stage' prefix to the route used to serve applications
-# We have to manage it to expose openapi doc on aws and generate proper links.
-stage = os.environ.get("STAGE", None)
-openapi_prefix = f"/{stage}" if stage else "/"
-app = FastAPI(root_path=openapi_prefix, lifespan=lifespan)
-version = get_version_from_pyproject()
-_logger = logging.getLogger(__name__)
+app.openapi = custom_openapi
 
 origins = config.allowed_origins
 
