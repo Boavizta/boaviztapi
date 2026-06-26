@@ -2,6 +2,7 @@ from boaviztapi.utils.fuzzymatch import (
     fuzzymatch_attr_from_pdf,
     fuzzymatch_attr_from_cpu_name,
     fuzzymatch_attr_from_gpu_name,
+    fuzzymatch_cloud_instance_name,
 )
 import pytest
 
@@ -292,3 +293,43 @@ def test_fuzzymatch_attr_from_gpu_name(
 
 def test_fuzzymatch_gpu_not_found(gpu_specs_dataframe):
     assert fuzzymatch_attr_from_gpu_name("xyznotgpu123", gpu_specs_dataframe) is None
+
+
+# --- fuzzymatch_cloud_instance_name ---
+
+AZURE_CANDIDATES = ["d2ads_v5", "d4ads_v5", "d8ads_v5", "d2as_v4", "d4as_v4"]
+
+
+@pytest.mark.parametrize(
+    "variant",
+    [
+        "D2ads_v5",
+        "D2ads-v5",
+        "D2ads V5",
+        "Standard_D2ads_v5",
+        "standard_d2ads_v5",
+        "d2ads_v5",
+        "d2adsv5",  # all separators removed
+        "D2ads-V5",
+    ],
+)
+def test_fuzzymatch_cloud_instance_normalization(variant):
+    """All separator/case variants match without distance computation."""
+    assert fuzzymatch_cloud_instance_name(variant, AZURE_CANDIDATES) == "d2ads_v5"
+
+
+def test_fuzzymatch_cloud_instance_hamming():
+    """Single-char substitution (equal length) resolves via Hamming."""
+    # d3ads_v5 vs d2ads_v5 — 1-char diff, same length
+    assert fuzzymatch_cloud_instance_name("d3ads_v5", AZURE_CANDIDATES) == "d2ads_v5"
+
+
+def test_fuzzymatch_cloud_instance_levenshtein():
+    """Length-differing typo resolves via Levenshtein."""
+    # d2adsv5 vs d2ads_v5 — 1 insertion
+    assert fuzzymatch_cloud_instance_name("d2adsv5", AZURE_CANDIDATES) == "d2ads_v5"
+
+
+def test_fuzzymatch_cloud_instance_not_found():
+    """Garbage name below threshold returns None."""
+    assert fuzzymatch_cloud_instance_name("xyz_garbage_123", AZURE_CANDIDATES) is None

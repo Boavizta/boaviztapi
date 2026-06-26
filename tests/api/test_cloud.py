@@ -156,6 +156,38 @@ async def test_wrong_input_1():
 
 
 @pytest.mark.asyncio
+async def test_fuzzy_match_variant_returns_200_with_warning():
+    """An Azure instance name variant resolves via fuzzy match and includes a warning."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.post(
+            "/v1/cloud/instance?verbose=false",
+            json={
+                "provider": "azure",
+                "instance_type": "Standard_E2ads_v5",
+                "usage": {},
+            },
+        )
+    assert res.status_code == 200
+    data = res.json()
+    assert "warnings" in data
+    assert any("e2ads_v5" in w for w in data["warnings"])
+
+
+@pytest.mark.asyncio
+async def test_exact_match_has_no_warnings():
+    """An exact Azure match returns no top-level warnings key."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.post(
+            "/v1/cloud/instance?verbose=false",
+            json={"provider": "azure", "instance_type": "e2ads_v5", "usage": {}},
+        )
+    assert res.status_code == 200
+    assert "warnings" not in res.json()
+
+
+@pytest.mark.asyncio
 async def test_usage_with_complex_time_workload():
     test = CloudTest(
         CloudInstanceRequest(

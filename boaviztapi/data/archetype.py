@@ -1,22 +1,23 @@
 import ast
 import csv
 import os
-from typing import Union
+from typing import Any, Union
 
 import pandas as pd
 
 from boaviztapi import data_dir
+from boaviztapi.utils.fuzzymatch import fuzzymatch_cloud_instance_name
 
 
-def get_device_archetype_lst(path):
+def get_device_archetype_lst(path: str) -> list[str]:
     df = pd.read_csv(path)
     return df["id"].tolist()
 
 
 def get_device_archetype_lst_with_type(
-    path,
+    path: str,
     name: str,
-) -> Union[dict, bool]:
+) -> list[str]:
     df = pd.read_csv(path)
     df = df[df["device_type"] == name]
     return df["id"].tolist()
@@ -55,15 +56,38 @@ def get_user_terminal_archetype(archetype_name: str) -> Union[dict, bool]:
 def get_cloud_instance_archetype(
     archetype_name: str, provider: str
 ) -> Union[dict, bool]:
-    arch = False
-    if os.path.exists(data_dir + "/archetypes/cloud/" + provider + ".csv"):
-        arch = get_archetype(
-            archetype_name,
-            os.path.join(data_dir, "archetypes/cloud/" + provider + ".csv"),
-        )
+    csv_path = os.path.join(data_dir, "archetypes/cloud/" + provider + ".csv")
+    if not os.path.exists(csv_path):
+        return False
+    arch = get_archetype(archetype_name, csv_path)
     if not arch:
         return False
     return arch
+
+
+def fuzzy_get_cloud_instance_archetype(
+    archetype_name: str, provider: str
+) -> Union[tuple[dict, str], tuple[bool, None]]:
+    """
+    Try exact match first, then fuzzy-match the instance name against all
+    known ids for the provider.
+
+    Returns (archetype_dict, matched_name) on success, (False, None) on miss.
+    The caller can compare matched_name to the original request to detect substitution.
+    """
+    csv_path = os.path.join(data_dir, "archetypes/cloud/" + provider + ".csv")
+    if not os.path.exists(csv_path):
+        return False, None
+
+    arch = get_archetype(archetype_name, csv_path)
+    if arch:
+        return arch, archetype_name
+
+    candidates = get_device_archetype_lst(csv_path)
+    matched = fuzzymatch_cloud_instance_name(archetype_name, candidates)
+    if matched:
+        return get_archetype(matched, csv_path), matched
+    return False, None
 
 
 def get_archetype(archetype_name: str, csv_path: str) -> Union[dict, bool]:
@@ -75,7 +99,7 @@ def get_archetype(archetype_name: str, csv_path: str) -> Union[dict, bool]:
     return False
 
 
-def parse_to_boattribute_json(value):
+def parse_to_boattribute_json(value: str) -> dict:
     json = {}
     if value == "" or value is None:
         return json
@@ -98,7 +122,7 @@ def parse_to_boattribute_json(value):
     return json
 
 
-def row2json(archetype):
+def row2json(archetype: dict) -> dict:
     obj = {}
     for attribute in archetype:
         if attribute == "id":
@@ -110,13 +134,13 @@ def row2json(archetype):
     return obj
 
 
-def nested_set(dic, keys, value):
+def nested_set(dic: dict, keys: list[str], value: Any) -> None:
     for key in keys[:-1]:
         dic = dic.setdefault(key, {})
     dic[keys[-1]] = value
 
 
-def set_list(obj):
+def set_list(obj: dict) -> dict:
     if obj.get("configuration") is not None:
         if obj.get("configuration").get("disk"):
             obj["configuration"]["disk"] = [obj["configuration"]["disk"]]
@@ -125,7 +149,9 @@ def set_list(obj):
     return obj
 
 
-def get_arch_value(archetype: dict, attribute: str, key: str, default=None):
+def get_arch_value(
+    archetype: dict, attribute: str, key: str, default: Any = None
+) -> Any:
     if not archetype:
         return default
     if archetype.get(attribute) is not None:
@@ -134,7 +160,9 @@ def get_arch_value(archetype: dict, attribute: str, key: str, default=None):
     return default
 
 
-def get_arch_component(archetype: dict, component_name: str, default=None):
+def get_arch_component(
+    archetype: dict, component_name: str, default: Any = None
+) -> Any:
     if not archetype:
         return default
     if archetype.get(component_name) is not None:
@@ -153,7 +181,7 @@ def get_iot_device_archetype(archetype_name: str) -> Union[dict, bool]:
     return arch
 
 
-def convert(value):
+def convert(value: str) -> float | dict | str:
     try:
         value_float = float(value)
         return value_float

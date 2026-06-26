@@ -40,7 +40,11 @@ all_user_terminal_subcategories = (
 all_default_usage_values = "# ✔️ Get all default usage values for a given user terminal category and subcategory\n"
 
 get_archetype_config_desc = "# ✔️ Get the configuration of a given archetype\n"
-get_instance_config = "# ✔️ Get the configuration of a given instance\n"
+get_instance_config = (
+    "# ✔️ Get the configuration of a given instance\n"
+    "Returns the archetype configuration for the requested instance. "
+    "Fuzzy matching is applied if the exact name is not found — see the instance impact endpoint for details.\n"
+)
 
 cpu_description = (
     "# ✔ ️CPU impacts from configuration\n"
@@ -164,6 +168,15 @@ cloud_provider_description = (
     "📋 Instance type \n\n"
     "Name of the chosen instance. You can retrieve the [list here]("
     "#/cloud/server_get_archetype_name_v1_cloud_all_aws_instances_get).\n\n"
+    "🔍 Fuzzy matching \n\n"
+    "If the instance type is not found exactly, the API applies a staged fuzzy-matching "
+    "algorithm to resolve near-miss names:\n\n"
+    "1. **Normalization** — all separator and capitalisation variants are tested in "
+    "parallel (`Standard_D2ads_v5`, `D2ads-v5`, `d2ads v5` all resolve to `d2ads_v5`).\n\n"
+    "2. **Hamming distance** — single-character substitutions on equal-length names.\n\n"
+    "3. **Levenshtein distance** — insertions / deletions for differing-length names.\n\n"
+    "When a substitution occurs, the response includes a top-level `warnings` field "
+    "identifying the matched instance.\n\n"
     "👄 Verbose\n\n"
     "🔨 Embedded\n\n"
     "🔌 Usage \n\n"

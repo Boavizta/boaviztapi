@@ -17,13 +17,34 @@ from boaviztapi.routers.openapi_doc.descriptions import (
 )
 from boaviztapi.routers.openapi_doc.examples import cloud_example
 from boaviztapi.data.archetype import (
-    get_cloud_instance_archetype,
+    fuzzy_get_cloud_instance_archetype,
     get_device_archetype_lst,
 )
 from boaviztapi.compute.impacts_computation import compute_impacts
 from boaviztapi.compute.verbose import verbose_cloud
 
 cloud_router = APIRouter(prefix="/v1/cloud", tags=["cloud"])
+
+
+def resolve_instance_archetype(
+    instance_type: str, provider: str
+) -> tuple[dict, str | None]:
+    """
+    Returns (archetype, substitution_warning_or_None).
+    Raises HTTPException 404 if no match is found even after fuzzy lookup.
+    """
+    arch, matched = fuzzy_get_cloud_instance_archetype(instance_type, provider)
+    if not arch:
+        raise HTTPException(
+            status_code=404, detail=f"{instance_type} at {provider} not found"
+        )
+    warning = None
+    if matched != instance_type:
+        warning = (
+            f"Instance '{instance_type}' not found; "
+            f"using closest match '{matched}' (fuzzy match)"
+        )
+    return arch, warning
 
 
 @cloud_router.get("/instance/instance_config", description=get_instance_config)
@@ -35,11 +56,7 @@ async def get_archetype_config(
         config.default_cloud_instance, examples=[config.default_cloud_instance]
     ),
 ):
-    result = get_cloud_instance_archetype(instance_type, provider)
-    if not result:
-        raise HTTPException(
-            status_code=404, detail=f"{instance_type} at {provider} not found"
-        )
+    result, _ = resolve_instance_archetype(instance_type, provider)
     return result
 
 
@@ -50,16 +67,9 @@ async def instance_cloud_impact_from_configuration(
     duration: Optional[float] = config.default_duration,
     criteria: List[str] = Query(config.default_criteria),
 ):
-    instance_archetype = get_cloud_instance_archetype(
+    instance_archetype, warning = resolve_instance_archetype(
         cloud_instance.instance_type, cloud_instance.provider
     )
-
-    if not instance_archetype:
-        raise HTTPException(
-            status_code=404,
-            detail=f"{cloud_instance.instance_type} at {cloud_instance.provider} not found",
-        )
-
     instance_model = mapper_cloud_instance(cloud_instance, archetype=instance_archetype)
 
     return await cloud_instance_impact(
@@ -67,6 +77,7 @@ async def instance_cloud_impact_from_configuration(
         verbose=verbose,
         duration=duration,
         criteria=criteria,
+        warning=warning,
     )
 
 
@@ -84,13 +95,7 @@ async def instance_cloud_impact_from_model(
 ):
     cloud_instance = Cloud()
     cloud_instance.usage = {}
-    instance_archetype = get_cloud_instance_archetype(instance_type, provider)
-
-    if not instance_archetype:
-        raise HTTPException(
-            status_code=404, detail=f"{instance_type} at {provider} not found"
-        )
-
+    instance_archetype, warning = resolve_instance_archetype(instance_type, provider)
     instance_model = mapper_cloud_instance(cloud_instance, archetype=instance_archetype)
 
     return await cloud_instance_impact(
@@ -98,6 +103,7 @@ async def instance_cloud_impact_from_model(
         verbose=verbose,
         duration=duration,
         criteria=criteria,
+        warning=warning,
     )
 
 
@@ -124,6 +130,7 @@ async def cloud_instance_impact(
     verbose: bool,
     duration: Optional[float] = config.default_duration,
     criteria: List[str] = Query(config.default_criteria),
+    warning: Optional[str] = None,
 ) -> dict:
     if duration is None:
         duration = cloud_instance.platform.usage.hours_life_time.value
@@ -132,11 +139,11 @@ async def cloud_instance_impact(
         model=cloud_instance, selected_criteria=criteria, duration=duration
     )
 
+    result: dict = {"impacts": impacts}
     if verbose:
-        return {
-            "impacts": impacts,
-            "verbose": verbose_cloud(
-                cloud_instance, selected_criteria=criteria, duration=duration
-            ),
-        }
-    return {"impacts": impacts}
+        result["verbose"] = verbose_cloud(
+            cloud_instance, selected_criteria=criteria, duration=duration
+        )
+    if warning:
+        result["warnings"] = [warning]
+    return result
