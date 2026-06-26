@@ -8,7 +8,7 @@
 
 ---
 
-See the [documentation](https://doc.api.boavizta.org/) for API usage and methodology.
+See the [documentation](https://boavizta.github.io/boaviztapi/) for API usage and methodology.
 
 [![Python tests](https://github.com/Boavizta/boaviztapi/actions/workflows/test.yml/badge.svg)](https://github.com/Boavizta/boaviztapi/actions/workflows/test.yml)
 
@@ -32,7 +32,7 @@ The system follows a bottom-up approach in its development, organized into layer
 
 * See the OpenAPI specification: <https://api.boavizta.org/docs>
 
-* [Documentation](https://doc.api.boavizta.org/)
+* [Documentation](https://boavizta.github.io/boaviztapi/)
 
 * Access the demo API: <https://api.boavizta.org>
 
@@ -94,6 +94,12 @@ You can run the tests with `pytest` via:
 
 - `make test` to run all unit tests (using test data)
 - `make test-e2e` to run end-to-end tests (using "real" data)
+
+### Work on docs
+
+API documentation is build with `mkdocs` and maintained under the `docs` directory.
+
+See [how to work on documentation](docs/README.md)
 
 ### Create your own docker image and run it
 

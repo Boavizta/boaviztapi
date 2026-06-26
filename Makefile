@@ -19,6 +19,9 @@ install: install_pip ## Install project dependencies
 install_pip: ## Install dependencies using Poetry
 		poetry install --with dev
 
+install_doc: ## Install doc dependencies using Poetry
+		poetry install --with docs
+
 check-csv: ## Validate CSV data files
 		poetry run python3 validate_csv.py
 
