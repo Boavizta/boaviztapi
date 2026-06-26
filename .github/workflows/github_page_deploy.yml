@@ -24,4 +24,4 @@ jobs:
         run: pip install -r docs/requirements.txt
 
       - name: Deploy
-        run: mkdocs gh-deploy --force --config-file docs/mkdocs.yml --cname doc.api.boavizta.org
+        run: mkdocs gh-deploy --force --config-file docs/mkdocs.yml
