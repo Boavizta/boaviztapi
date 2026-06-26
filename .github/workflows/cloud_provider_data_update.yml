@@ -1,0 +1,104 @@
+name: Cloud provider data update
+
+on:
+  schedule:
+    - cron: '0 0 1 * *' # every month on the 1st at midnight
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-aws-data:
+    name: Update AWS EC2 data
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Derive tracked instance families
+        id: families
+        run: |
+          families=$(python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          aws_csv = Path("boaviztapi/data/archetypes/cloud/aws.csv")
+          families = set()
+          with aws_csv.open(newline="") as f:
+              for row in csv.DictReader(f):
+                  iid = row["id"]
+                  families.add(iid.split(".")[0] if "." in iid else iid)
+
+          print(" ".join(sorted(families)))
+          PY
+          )
+          echo "Tracked families: $families"
+          echo "list=$families" >> "$GITHUB_OUTPUT"
+
+      - name: Update AWS instance data
+        run: |
+          python boaviztapi/data/utils/scripts/update_aws_instances.py \
+            ${{ steps.families.outputs.list }} \
+            --region us-east-1
+
+      - name: Generate coverage report
+        run: |
+          python boaviztapi/data/utils/scripts/compare_aws_instances.py \
+            --region us-east-1 \
+            --output report.csv
+
+      - name: Build pull request body
+        run: |
+          cat > pr_body.md <<'EOF'
+          ## Automated AWS EC2 data update
+
+          This PR was opened automatically by the **Cloud provider data update** workflow.
+
+          It refreshes the specs of the AWS instance families already tracked in
+          `boaviztapi/data/archetypes/cloud/aws.csv` and `server.csv`, using
+          `aws ec2 describe-instance-types` (region `us-east-1`).
+
+          ### Coverage report
+
+          New instance families detected in AWS but **not** added automatically
+          (they require manual review of `CPU.name`, RAM config, etc.):
+
+          ```csv
+          EOF
+          cat report.csv >> pr_body.md
+          cat >> pr_body.md <<'EOF'
+          ```
+
+          > New families are reported only. Add them manually with
+          > `update_aws_instances.py <family>` after reviewing the platform specs.
+          EOF
+
+      - name: Create or update pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          base: main
+          branch: chore/aws-data-update
+          delete-branch: true
+          commit-message: 'chore(data): monthly AWS EC2 instance data update'
+          title: 'chore(data): monthly AWS EC2 instance data update'
+          body-path: pr_body.md
+          labels: |
+            data
+            automated
+          add-paths: |
+            boaviztapi/data/archetypes/cloud/aws.csv
+            boaviztapi/data/archetypes/server.csv
