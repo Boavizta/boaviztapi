@@ -1,0 +1,10 @@
+{
+  "name": "Python Dev Environment",
+  // Build from the local Containerfile
+  "build": {
+    "dockerfile": "Containerfile",
+    "context": ".."
+  },
+  "remoteUser": "developer",
+  "forwardPorts": [5000]
+}
