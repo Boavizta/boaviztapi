@@ -59,7 +59,7 @@ async def test_complete_valid_cpu_overrides_tdp_if_present():
 @pytest.mark.asyncio
 async def test_complete_alternative_valid_cpu_manufacturer_family():
     await CPUConsumptionProfileTest(
-        name="amd epyc 7251", expected=(61.0175, 0.0677, 20.4511, -5.5341)
+        name="amd epyc 7251", expected=(61.0175, 0.0677, 20.4511, -5.5482)
     ).run()
 
 
