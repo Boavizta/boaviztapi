@@ -25,14 +25,3 @@ jobs:
 
       - name: Deploy
         run: mkdocs gh-deploy  --verbose --force --config-file docs/mkdocs.yml
-
-      - name: force CNAME # we don't understand why CNAME in docs is not copied in gh-pages
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin gh-pages
-          git checkout gh-pages
-          echo "doc.api.boavizta.org" > CNAME
-          git add CNAME
-          git commit --amend --no-edit --reset-author # to override empty author commit from mkdocs
-          git push origin gh-pages --force
