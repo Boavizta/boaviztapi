@@ -28,7 +28,7 @@ jobs:
 
       - name: force CNAME # we don't understand why CNAME in docs is not copied in gh-pages
         run: | 
-          git checkout gh-pages
+          git switch gh-pages
           echo "doc.api.boavizta.org" > CNAME
           git add CNAME
           git commit --amend --no-edit
