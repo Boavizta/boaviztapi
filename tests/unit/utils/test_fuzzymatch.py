@@ -297,7 +297,6 @@ def test_fuzzymatch_gpu_not_found(gpu_specs_dataframe):
 
 # --- fuzzymatch_cloud_instance_name ---
 
-AWS_CANDIDATES = ["a1.medium", "a1.large", "a1.xlarge", "c5.xlarge", "m5.2xlarge"]
 AZURE_CANDIDATES = ["d2ads_v5", "d4ads_v5", "d8ads_v5", "d2as_v4", "d4as_v4"]
 
 
@@ -318,8 +317,8 @@ def test_fuzzymatch_cloud_instance_normalization(variant):
 
 def test_fuzzymatch_cloud_instance_hamming():
     """Single-char substitution (equal length) resolves via Hamming."""
-    # a1.mediun vs a1.medium — 1-char diff, same length
-    assert fuzzymatch_cloud_instance_name("a1.mediun", AWS_CANDIDATES) == "a1.medium"
+    # d3ads_v5 vs d2ads_v5 — 1-char diff, same length
+    assert fuzzymatch_cloud_instance_name("d3ads_v5", AZURE_CANDIDATES) == "d2ads_v5"
 
 
 def test_fuzzymatch_cloud_instance_levenshtein():

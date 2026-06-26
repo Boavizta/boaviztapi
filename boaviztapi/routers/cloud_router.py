@@ -26,7 +26,7 @@ from boaviztapi.compute.verbose import verbose_cloud
 cloud_router = APIRouter(prefix="/v1/cloud", tags=["cloud"])
 
 
-def _resolve_instance_archetype(instance_type: str, provider: str) -> tuple:
+def resolve_instance_archetype(instance_type: str, provider: str) -> tuple[dict, str | None]:
     """
     Returns (archetype, substitution_warning_or_None).
     Raises HTTPException 404 if no match is found even after fuzzy lookup.
@@ -54,7 +54,7 @@ async def get_archetype_config(
         config.default_cloud_instance, examples=[config.default_cloud_instance]
     ),
 ):
-    result, _ = _resolve_instance_archetype(instance_type, provider)
+    result, _ = resolve_instance_archetype(instance_type, provider)
     return result
 
 
@@ -65,7 +65,7 @@ async def instance_cloud_impact_from_configuration(
     duration: Optional[float] = config.default_duration,
     criteria: List[str] = Query(config.default_criteria),
 ):
-    instance_archetype, warning = _resolve_instance_archetype(
+    instance_archetype, warning = resolve_instance_archetype(
         cloud_instance.instance_type, cloud_instance.provider
     )
     instance_model = mapper_cloud_instance(cloud_instance, archetype=instance_archetype)
@@ -93,7 +93,7 @@ async def instance_cloud_impact_from_model(
 ):
     cloud_instance = Cloud()
     cloud_instance.usage = {}
-    instance_archetype, warning = _resolve_instance_archetype(instance_type, provider)
+    instance_archetype, warning = resolve_instance_archetype(instance_type, provider)
     instance_model = mapper_cloud_instance(cloud_instance, archetype=instance_archetype)
 
     return await cloud_instance_impact(

@@ -2,7 +2,7 @@ import pandas as pd
 from pandas.core.series import Series
 from rapidfuzz import process, fuzz
 from rapidfuzz.distance import Hamming, Levenshtein
-from typing import List, Tuple, Union
+from typing import List, Optional, Tuple, Union
 
 from boaviztapi import config
 
@@ -19,8 +19,8 @@ def fuzzymatch_attr_from_cpu_name(
         best = df.iloc[score.idxmax()]
         best = best.mask(best.isnull(), None)  # replace all NaN by None
 
-        def safe_int(x):
-            return x if x is None else int(x)  # float to int but keep None
+        def safe_int(x: Optional[float]) -> Optional[int]:
+            return x if x is None else int(x)
 
         return (
             best["name"],  # .name is reserved by pandas for indexes
@@ -65,7 +65,7 @@ def fuzzymatch_attr_from_gpu_name(
         best = df.iloc[score.idxmax()]
         best = best.mask(best.isnull(), None)  # replace all NaN by None
 
-        def safe_float(x):
+        def safe_float(x: Optional[float]) -> Optional[float]:
             return x if x is None else float(x)
 
         return (
@@ -85,7 +85,7 @@ def fuzzymatch_attr_from_gpu_name(
         )
 
 
-def fuzzymatch_attr_from_pdf(name: str, attr: str, pdf: pd.DataFrame) -> str:
+def fuzzymatch_attr_from_pdf(name: str, attr: str, pdf: pd.DataFrame) -> Optional[str]:
     name_list = list(pdf[attr].unique())
 
     result = process.extractOne(name, name_list, scorer=fuzz.WRatio)
@@ -94,7 +94,7 @@ def fuzzymatch_attr_from_pdf(name: str, attr: str, pdf: pd.DataFrame) -> str:
     return result or None
 
 
-def _canonical_forms(name: str) -> set:
+def _canonical_forms(name: str) -> set[str]:
     """All separator/case variants of a name for parallel normalization matching."""
     base = name.strip().lower()
     if base.startswith("standard_"):
@@ -118,19 +118,19 @@ def fuzzymatch_cloud_instance_name(
     req_forms = _canonical_forms(instance_type)
 
     # Stage 1: any request form matches any candidate form exactly
-    for cand in candidates:
-        if req_forms & _canonical_forms(cand):
-            return cand
+    for candidate in candidates:
+        if req_forms & _canonical_forms(candidate):
+            return candidate
 
     threshold = config.cloud_instance_name_fuzzymatch_threshold / 100.0
     # One representative key per candidate (space/dash → underscore)
-    cand_keys = {c.lower().replace(" ", "_").replace("-", "_"): c for c in candidates}
+    candidate_keys = {c.lower().replace(" ", "_").replace("-", "_"): c for c in candidates}
 
     # Stage 2: Hamming — try every request form, keep best equal-length hit
     best_cand: Union[str, None] = None
     best_score = 0.0
     for req_key in req_forms:
-        same_len = {k: v for k, v in cand_keys.items() if len(k) == len(req_key)}
+        same_len = {k: v for k, v in candidate_keys.items() if len(k) == len(req_key)}
         if not same_len:
             continue
         hit = process.extractOne(
@@ -145,10 +145,10 @@ def fuzzymatch_cloud_instance_name(
     best_cand, best_score = None, 0.0
     for req_key in req_forms:
         hit = process.extractOne(
-            req_key, list(cand_keys.keys()), scorer=Levenshtein.normalized_similarity
+            req_key, list(candidate_keys.keys()), scorer=Levenshtein.normalized_similarity
         )
         if hit and hit[1] > best_score:
-            best_cand, best_score = cand_keys[hit[0]], hit[1]
+            best_cand, best_score = candidate_keys[hit[0]], hit[1]
     if best_cand and best_score >= threshold:
         return best_cand
     return None
