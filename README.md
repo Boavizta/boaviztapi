@@ -95,6 +95,12 @@ You can run the tests with `pytest` via:
 - `make test` to run all unit tests (using test data)
 - `make test-e2e` to run end-to-end tests (using "real" data)
 
+### Work on docs
+
+API documentation is build with `mkdocs` and maintained under the `docs` directory.
+
+See [how to work on documentation](docs/README.md)
+
 ### Create your own docker image and run it
 
 Build Docker image:

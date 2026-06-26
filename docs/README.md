@@ -18,6 +18,9 @@ Content:
 Documentation is generated from markdown using `mkdocs` with the `material` theme.
 
 ```bash
+# Install with make
+make install_doc
+
 # (preferred) Install mkdocs and its extensions
 poetry install --with docs
 
@@ -54,3 +57,9 @@ poetry run mkdocs build
 # Test validity of external links
 poetry run poetry run linkcheckMarkdown --recurse --verbose docs
 ```
+
+### Deploying the doc asw github pages
+
+The documentation is served as github pages attached to this repositoy and deployed using a github action.
+
+`.github\workflows\github_page_deploy.yml`
