@@ -60,6 +60,6 @@ poetry run poetry run linkcheckMarkdown --recurse --verbose docs
 
 ### Deploying the doc asw github pages
 
-The documentation is served as github pages attached to this repositoy and deployed using a github action.
+The documentation is served as github pages attached to this repositoy and deployed using a github action (See `.github\workflows\github_page_deploy.yml`).
 
-`.github\workflows\github_page_deploy.yml`
+The doc is exposed to <https://boavizta.github.io/boaviztapi/> .
