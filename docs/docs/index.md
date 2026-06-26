@@ -26,4 +26,4 @@ It also organizes the co-construction of expert and updated resources under open
 
 These digital "commons" cover digital infrastructures, equipment and services, and allow full life cycle / multi-criteria assessments.
 
-<https://boavizta.org/>
+https://boavizta.org/
