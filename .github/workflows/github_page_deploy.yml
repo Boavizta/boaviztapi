@@ -28,12 +28,12 @@ jobs:
 
       - name: force CNAME # we don't understand why CNAME in docs is not copied in gh-pages
         run: |
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
           sudo chown -R $(whoami) .git
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin gh-pages
           git checkout gh-pages
           echo "doc.api.boavizta.org" > CNAME
           git add CNAME
-          git commit --amend --no-edit
+          git commit --amend --no-edit --reset-author
           git push origin gh-pages --force
