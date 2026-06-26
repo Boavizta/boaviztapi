@@ -24,4 +24,4 @@ jobs:
         run: pip install -r docs/requirements.txt
 
       - name: Deploy
-        run: mkdocs gh-deploy --force --config-file docs/mkdocs.yml
+        run: mkdocs gh-deploy  --verbose --force --config-file docs/mkdocs.yml
