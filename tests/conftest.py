@@ -1,11 +1,17 @@
+import os
 import sys
 
 import pytest
 
-from boaviztapi import config as bv_config
-
 # Check if we're running end-to-end tests
 _running_e2e = "--rune2e" in sys.argv
+
+# Select BoaviztAPI's bundled test data for non-E2E runs. Must be set before
+# boaviztapi is first imported below (its __init__ resolves data_dir at import time).
+if not _running_e2e:
+    os.environ.setdefault("BOAVIZTAPI_USE_TEST_DATA", "1")
+
+from boaviztapi import config as bv_config  # noqa: E402  (must follow the env var above)
 
 # Add overrides for non-E2E tests
 if not _running_e2e:
