@@ -28,7 +28,7 @@ for csvprogram in $REQUIRED_CSVKIT; do
       exit 1
   fi
 done
- 
+
 # Sort both CSV files of Linux and Windows instances benchmarks, and making sure of getting 
 # unique values.
 sort <(tail -n +2 ${INSTANCES_LINUX_CSV}) >| tmp_instances_linux_sorted
@@ -60,7 +60,8 @@ while IFS="," read -r instance_name _ ;
   do
     printf "%s,\n" "$instance_name" | sed -e "s/^[[:space:]]*//"  >> tmp_instance_names.csv
   done < <(tail -n +1 ${INSTANCES_CSV})
- 
+
+
 # Join instance name column to instances' CSV file, remove M series instances treated in m_series_host_instances.csv, lowercase everything  
 paste -d "" tmp_instance_names.csv tmp_instances.csv | 
 sort |
@@ -84,7 +85,6 @@ sed "s/\(\".*\"\)/ram/" >| tmp_hosts_lowercased.csv
 while IFS="," read -r host _ _ host_cpu _;
   do
   host_family="$(printf "%s" "${host}" | cut -d "-" -f 1)"
-
   csvgrep -c instance_family -r "mseries|av2|bseries|${host_family}" tmp_instances_lowercased.csv | 
   csvgrep -c instance_cpu -r "${host_cpu}" | 
   csvformat -E |
@@ -100,6 +100,7 @@ cat tmp_instance_host_from_matching.csv m_series_host_instances.csv | sed "s/ /_
 # Generate file with unmatched instances from benchmarks based on instance_host.csv
 
 comm -2 -3  <(cut -d "," -f 1 tmp_instances_lowercased.csv | sed -e "s/^[[:space:]]*//" | sort -u) <(cut -d "," -f 1 instance_host.csv | sed -e "s/^[[:space:]]*//" | sort -u) >| tmp_instance_names_unique_in_benchmarks.csv 
+
 
  while IFS="," read -r unmatched_instance_name ;
    do
