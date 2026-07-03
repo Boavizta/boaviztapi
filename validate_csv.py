@@ -1,4 +1,5 @@
 import csv
+import json
 import subprocess
 import sys
 from collections import Counter
@@ -54,7 +55,9 @@ for csv_path, _ in PROVIDER_CSV_FILES:
     duplicates = check_duplicate_ids(csv_path)
     if duplicates:
         has_duplicates = True
-        print(f"\Duplicates in {csv_path.name}:")
+        print(f"Found {len(duplicates)} duplicate ID's in {csv_path.name}:")
+        print("Following entries needs to be verified ( duplicate id : number of occurences):")
+        print(json.dumps(duplicates, indent=1))
 
 if has_duplicates:
     print("ERROR: Duplicate IDs found in cloud CSV files!")
