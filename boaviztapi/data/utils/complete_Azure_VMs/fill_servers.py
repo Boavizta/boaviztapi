@@ -179,7 +179,7 @@ def get_instances_per_host(instances_host_mapping, host_name):
         from_vantage_by_api_name = vantage_data[
             vantage_data["API Name"].str.lower() == instance.replace("_", " ")
         ]
-        
+
         vcpus = from_vantage["vCPUs"]
 
         if len(vcpus.index) == 0:
@@ -192,7 +192,11 @@ def get_instances_per_host(instances_host_mapping, host_name):
             gpus = from_vantage_by_api_name["GPUs"].str.replace(r"", "", regex=True)
         ssd_sto = from_vantage["Storage"].str.replace(" GiB", "").astype("int32")
         if len(ssd_sto.index) == 0:
-            ssd_sto = from_vantage_by_api_name["Storage"].str.replace(" GiB", "").astype("int32")
+            ssd_sto = (
+                from_vantage_by_api_name["Storage"]
+                .str.replace(" GiB", "")
+                .astype("int32")
+            )
         if len(ssd_sto.index) > 0:
             ssd_sto_value = ssd_sto.values[0]
         else:
