@@ -56,7 +56,9 @@ for csv_path, _ in PROVIDER_CSV_FILES:
     if duplicates:
         has_duplicates = True
         print(f"Found {len(duplicates)} duplicate ID's in {csv_path.name}:")
-        print("Following entries needs to be verified ( duplicate id : number of occurences):")
+        print(
+            "Following entries needs to be verified ( duplicate id : number of occurences):"
+        )
         print(json.dumps(duplicates, indent=1))
 
 if has_duplicates:
