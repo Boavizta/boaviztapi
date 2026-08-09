@@ -1805,3 +1805,8 @@ AMD EPYC 9B14,,,,,2.6 GHz,,96.0,192.0,,,,,,,,AMD,EPYC,https://xmrig.com/benchmar
 AMD EPYC 7B13,,,,,2.45 GHz,,60.0,60.0,,,,,,,,AMD,EPYC,https://www.cpubenchmark.net/cpu.php?cpu=AMD+EPYC+7B13&id=4535
 AMD EPYC 7B12,,,,,2.25 GHz,240.0,64.0,128.0,,,,,,,,AMD,EPYC,https://www.cpubenchmark.net/cpu.php?cpu=AMD+EPYC+7B12&id=4398
 Google Axion,,,,,,,72.0,72.0,,,,,,,,Google,Axion,https://www.phoronix.com/review/google-axion-c4a
+Intel 8573B,Emerald Rapids,,,,2.3 GHz,,64.0,128.0,,,,,,,,Intel,Xeon Platinum,https://browser.geekbench.com/v5/cpu/23499778
+AMD EPYC 9V74,Genoa,,,2025-01-01,2.6 GHz,400,80.0,160.0,,,,,,,,AMD,EPYC,https://www.cpubenchmark.net/cpu.php?cpu=AMD+EPYC+9V74&id=6535
+Intel Xeon E5‑2673 v4 (Broadwell),Broadwell,,,2016-06-20,2.3 GHz,135,20.0,40.0,7200 million,,456.12 mm²,,,,,Intel,Xeon,https://www.cpubenchmark.net/cpu.php?cpu=AMD+EPYC+9V74&id=6535
+Intel Xeon 8171M (Skylake),Skylake,,,2018-01-01,2.6 GHz,165,26.0,52.0,,,,,,,,Intel,Xeon,https://www.cpubenchmark.net/cpu.php?cpu=Intel+Xeon+Platinum+8171M+%40+2.60GHz&id=3220
+Intel Xeon Platinum 8171M (Skylake),Skylake,,,2018-01-01,2.6 GHz,165,26.0,52.0,,,,,,,,Intel,Xeon,https://www.cpubenchmark.net/cpu.php?cpu=Intel+Xeon+Platinum+8171M+%40+2.60GHz&id=3220

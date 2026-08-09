@@ -29,33 +29,32 @@ m128m,msm-type1
 m128,msm-type1
 m128-32ms,msm-type1
 m128-64ms,msm-type1
-m32dms v2,mdmsv2medmem-type1
-m64ds v2,mdmsv2medmem-type1
-m64dms v2,mdmsv2medmem-type1
-m128ds v2,mdmsv2medmem-type1
-m128dms v2,mdmsv2medmem-type1
-m32dms v2,mdsv2medmem-type1
-m64ds v2,mdsv2medmem-type1
-m64dms v2,mdsv2medmem-type1
-m128ds v2,mdsv2medmem-type1
-m32ms v2,mmsv2medmem-type1
-m64s v2,mmsv2medmem-type1
-m64ms v2,mmsv2medmem-type1
-m128ms v2,mmsv2medmem-type1
-m128s v2,mmsv2medmem-type1
-m32ms v2,msv2medmem-type1
-m64s v2,msv2medmem-type1
-m64ms v2,msv2medmem-type1
-m128s v2,msv2medmem-type1
-m208ms v2,msmv2-type1
-m208s v2,msmv2-type1
-m416-208ms v2,msmv2-type1
-m416-208s v2,msmv2-type1
-m416ms v2,msmv2-type1
-m416s-8 v2,msmv2-type1
-m416s v2,msmv2-type1
-m208ms v2,msv2-type1
-m208s v2,msv2-type1
-m416-208s v2,msv2-type1
-m416s v2,msv2-type1
-m416s v2,msv2-type1
+m32dms_v2,mdmsv2medmem-type1
+m64ds_v2,mdmsv2medmem-type1
+m64dms_v2,mdmsv2medmem-type1
+m128ds_v2,mdmsv2medmem-type1
+m128dms_v2,mdmsv2medmem-type1
+m32dms_v2,mdsv2medmem-type1
+m64ds_v2,mdsv2medmem-type1
+m64dms_v2,mdsv2medmem-type1
+m128ds_v2,mdsv2medmem-type1
+m32ms_v2,mmsv2medmem-type1
+m64s_v2,mmsv2medmem-type1
+m64ms_v2,mmsv2medmem-type1
+m128ms_v2,mmsv2medmem-type1
+m128s_v2,mmsv2medmem-type1
+m32ms_v2,msv2medmem-type1
+m64s_v2,msv2medmem-type1
+m64ms_v2,msv2medmem-type1
+m128s_v2,msv2medmem-type1
+m208ms_v2,msmv2-type1
+m208s_v2,msmv2-type1
+m416-208ms_v2,msmv2-type1
+m416-208s_v2,msmv2-type1
+m416ms_v2,msmv2-type1
+m416s-8_v2,msmv2-type1
+m416s_v2,msmv2-type1
+m208ms_v2,msv2-type1
+m208s_v2,msv2-type1
+m416-208s_v2,msv2-type1
+m416s_v2,msv2-type1

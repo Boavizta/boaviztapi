@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
-import pandas as pd
 from pprint import pprint
 import re
 from math import ceil
+import pandas as pd
 
 target_data = pd.DataFrame(
     {
@@ -180,18 +180,23 @@ def get_instances_per_host(instances_host_mapping, host_name):
             vantage_data["API Name"].str.lower() == instance.replace("_", " ")
         ]
 
-        vcpus = from_vantage["vCPUs"].str.replace(" vCPUs", "")
+        vcpus = from_vantage["vCPUs"]
+
         if len(vcpus.index) == 0:
-            vcpus = from_vantage_by_api_name["vCPUs"].str.replace(" vCPUs", "")
+            vcpus = from_vantage_by_api_name["vCPUs"]
         mem = from_vantage["Instance Memory"].str.replace(" GiB", "")
         if len(mem.index) == 0:
             mem = from_vantage_by_api_name["Instance Memory"].str.replace(" GiB", "")
         gpus = from_vantage["GPUs"].str.replace(r"", "", regex=True)
         if len(gpus.index) == 0:
             gpus = from_vantage_by_api_name["GPUs"].str.replace(r"", "", regex=True)
-        ssd_sto = from_vantage["Instance Storage"]
+        ssd_sto = from_vantage["Storage"].str.replace(" GiB", "").astype("int32")
         if len(ssd_sto.index) == 0:
-            ssd_sto = from_vantage_by_api_name["Instance Storage"]
+            ssd_sto = (
+                from_vantage_by_api_name["Storage"]
+                .str.replace(" GiB", "")
+                .astype("int32")
+            )
         if len(ssd_sto.index) > 0:
             ssd_sto_value = ssd_sto.values[0]
         else:
