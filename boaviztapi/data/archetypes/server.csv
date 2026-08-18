@@ -62,6 +62,7 @@ u-6tb1.metal,AWS,rack,8,,,Intel Xeon Platinum 8176M,,96,256,0,0,0,0,0,,0,2;2;2,2
 u-9tb1.metal,AWS,rack,8,,,Intel Xeon Platinum 8176M,,96,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 x1.32xlarge,AWS,rack,4,,,Intel Xeon E7-8880 v3,,61,32,2,1920,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 x1e.32xlarge,AWS,rack,4,,,Intel Xeon E7-8880 v3,,61,64,2,1920,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+x2g.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton2,,16,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 x2gd.metal,AWS,rack,1,,,Annapurna Labs Graviton2,,16,64,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 z1d.metal,AWS,rack,2,,,Intel Xeon Platinum 8151,,12,32,2,900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 m6a.metal,AWS,rack,2,,,AMD EPYC 7R13,,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;111,1,52560,0.33;0.2;0.6,RAM configuration was not verified
