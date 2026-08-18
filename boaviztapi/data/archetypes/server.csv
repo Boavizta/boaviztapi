@@ -104,6 +104,7 @@ r7a.metal-48xl,AWS,rack,2,,,AMD EPYC 9R14,,48,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;
 r7g.metal,AWS,rack,1,,,Annapurna Labs Graviton3,,16,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r7gd.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton3,,16,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r7iz.32xlarge,AWS,rack,2,,,Intel Xeon Gold 6455B,,32,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r7i.metal-24xl,AWS,rack,1,,,Intel Xeon Platinum 8488C,,3,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r7i.metal-48xl,AWS,rack,2,,,Intel Xeon Platinum 8488C,,6,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 trn1.32xlarge,AWS,rack,2,,,Intel Xeon Platinum 8375C,,16,32,4,1900,0,0,16,AWS Inferentia,32,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 vt1.24xlarge,AWS,rack,2,,,Intel Xeon Platinum 8259CL,,6,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
@@ -209,6 +210,8 @@ platform_aws_t4g,AWS,rack,1,,,Annapurna Labs Graviton2,,8,32,0,0,0,0,0,,0,2;2;2,
 c8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 m8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 r8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
+m8g.metal-48xl,AWS,rack,2,,,Annapurna Labs Graviton4,,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
+r8g.metal-48xl,AWS,rack,2,,,Annapurna Labs Graviton4,,24,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 x8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,128,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 i8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,64,6,3750,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 c3-standard-192-metal,GCP,rack,2,,,Intel Xeon Platinum 8481C,,192,768,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
