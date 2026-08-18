@@ -211,6 +211,10 @@ m8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,32,0,0,0,0,0,,0,2;2;2,2
 r8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 x8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,128,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 i8g.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,64,6,3750,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
+m8i.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+m8i.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r8i.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,128,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r8i.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,128,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 c3-standard-192-metal,GCP,rack,2,,,Intel Xeon Platinum 8481C,,192,768,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
 c3-highcpu-192-metal,GCP,rack,2,,,Intel Xeon Platinum 8481C,,128,512,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
 c3-highmem-192-metal,GCP,rack,2,,,Intel Xeon Platinum 8481C,,384,1536,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
