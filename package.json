@@ -4,6 +4,6 @@
     "author": "<YOUR_NAME>",
     "dependencies": {
         "serverless-python-requirements": "^6.1.2",
-        "brace-expansion": "~5.0.8"
+        "brace-expansion": "~5.0.9"
     }
 }
