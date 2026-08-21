@@ -11,10 +11,14 @@ Reports:
 - Instance types in BoaviztAPI that no longer exist in AWS
 - Spec mismatches (vCPU, memory, storage, GPUs) for instances present in both
 
+Instance types found only in BoaviztAPI are counted but not listed by default;
+pass `--BoaviztaOnly` to list them (and include them in the CSV report).
+
 ```sh
 python3 compare_aws_instances.py
 python3 compare_aws_instances.py --region eu-west-1
 python3 compare_aws_instances.py --output report.csv
+python3 compare_aws_instances.py --BoaviztaOnly
 ```
 
 ## update_aws_instances.py
