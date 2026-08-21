@@ -8,6 +8,7 @@ Requires:
 
 Usage:
   python scripts/compare_aws_instances.py [--region us-east-1] [--output report.csv]
+                                          [--BoaviztaOnly]
 """
 
 import argparse
@@ -74,9 +75,16 @@ def fetch_aws_instance_types(region: str) -> dict:
                     elif disk.get("Type") == "hdd":
                         hdd_gb += total
 
+            # Third-party GPUs are reported under GpuInfo, but AWS' own Neuron
+            # silicon (Inferentia, Trainium) is only under NeuronInfo. Both map
+            # to gpu_units in aws.csv.
             gpu_count = 0
             if it.get("GpuInfo") and it["GpuInfo"].get("Gpus"):
                 gpu_count = sum(g.get("Count", 0) for g in it["GpuInfo"]["Gpus"])
+            elif it.get("NeuronInfo") and it["NeuronInfo"].get("NeuronDevices"):
+                gpu_count = sum(
+                    d.get("Count", 0) for d in it["NeuronInfo"]["NeuronDevices"]
+                )
 
             instances[instance_id] = {
                 "vcpu": it["VCpuInfo"]["DefaultVCpus"],
@@ -141,7 +149,7 @@ def compare(boavizta: dict, aws: dict) -> dict:
     }
 
 
-def print_report(result: dict, aws: dict):
+def print_report(result: dict, aws: dict, show_boavizta_only: bool = False):
     """Print a human-readable report."""
     print("=" * 70)
     print("AWS EC2 vs BoaviztAPI Instance Comparison Report")
@@ -166,11 +174,17 @@ def print_report(result: dict, aws: dict):
             print(f"  {family}: {', '.join(instances)}")
 
     if result["only_in_boavizta"]:
-        print(
-            f"\n--- Instances only in BoaviztAPI ({len(result['only_in_boavizta'])}) ---"
-        )
-        for iid in result["only_in_boavizta"]:
-            print(f"  {iid}")
+        if show_boavizta_only:
+            print(
+                f"\n--- Instances only in BoaviztAPI ({len(result['only_in_boavizta'])}) ---"
+            )
+            for iid in result["only_in_boavizta"]:
+                print(f"  {iid}")
+        else:
+            print(
+                f"\n(Use --BoaviztaOnly to list the {len(result['only_in_boavizta'])} "
+                "instances found only in BoaviztAPI)"
+            )
 
     if result["mismatches"]:
         print(f"\n--- Spec mismatches ({len(result['mismatches'])}) ---")
@@ -180,7 +194,9 @@ def print_report(result: dict, aws: dict):
                 print(f"    {field}: boavizta={vals['boavizta']}  aws={vals['aws']}")
 
 
-def write_csv_report(result: dict, aws: dict, output_path: str):
+def write_csv_report(
+    result: dict, aws: dict, output_path: str, show_boavizta_only: bool = False
+):
     """Write detailed CSV report of missing instances."""
     with open(output_path, "w", newline="") as f:
         writer = csv.writer(f)
@@ -218,23 +234,24 @@ def write_csv_report(result: dict, aws: dict, output_path: str):
                     "",
                 ]
             )
-        for iid in result["only_in_boavizta"]:
-            writer.writerow(
-                [
-                    "missing_from_aws",
-                    iid,
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                ]
-            )
+        if show_boavizta_only:
+            for iid in result["only_in_boavizta"]:
+                writer.writerow(
+                    [
+                        "missing_from_aws",
+                        iid,
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                    ]
+                )
         for m in result["mismatches"]:
             for field, vals in m["diffs"].items():
                 a = aws[m["id"]]
@@ -268,6 +285,13 @@ def main():
     parser.add_argument(
         "--csv-path", default=str(BOAVIZTA_AWS_CSV), help="Path to BoaviztAPI aws.csv"
     )
+    parser.add_argument(
+        "--BoaviztaOnly",
+        "--boavizta-only",
+        dest="boavizta_only",
+        action="store_true",
+        help="List the instances found only in BoaviztAPI (hidden by default)",
+    )
     args = parser.parse_args()
 
     csv_path = Path(args.csv_path)
@@ -294,10 +318,10 @@ def main():
     print(f"  Found {len(aws)} instances")
 
     result = compare(boavizta, aws)
-    print_report(result, aws)
+    print_report(result, aws, args.boavizta_only)
 
     if args.output:
-        write_csv_report(result, aws, args.output)
+        write_csv_report(result, aws, args.output, args.boavizta_only)
 
 
 if __name__ == "__main__":
