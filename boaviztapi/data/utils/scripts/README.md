@@ -1,6 +1,41 @@
 # Scripts
 
-Utilities for maintaining AWS EC2 instance data in BoaviztAPI. Both scripts use the AWS CLI (`aws ec2 describe-instance-types`) as their data source and require valid AWS credentials.
+Utilities for maintaining the BoaviztAPI data files.
+
+`check_references.py` works offline on the CSV files in `boaviztapi/data`. The two
+AWS scripts use the AWS CLI (`aws ec2 describe-instance-types`) as their data
+source and require valid AWS credentials.
+
+## check_references.py
+
+Checks that the cross-file references in the data files resolve. Nothing enforces
+these links at load time, so a typo silently degrades into a bad fuzzy match or a
+fallback to a default value.
+
+What it checks:
+
+- `CPU.name` in `server.csv` and `components/cpu.csv` against `crowdsourcing/cpu_specs.csv`
+- `family` in `components/cpu.csv` against the `code_name` column of `cpu_specs.csv`
+- `GPU.name` in `server.csv` and `components/gpu.csv` against `crowdsourcing/gpu_specs.csv`
+- `CASE.case_type` in `server.csv` against the case types in `components/case.csv`
+- `platform` in each cloud provider CSV against the ids in `server.csv`
+- provider CSV files against `cloud/providers.csv`, both ways, and the providers named in `cloud/regions.csv`
+- `usage_location` in `cloud/regions.csv` against the country columns of `crowdsourcing/electrical_mix.csv`
+- the consumption profile each server CPU resolves to, in `consumption_profile/cpu/cpu_profile.csv`
+- duplicate ids in the archetype, component and cloud CSVs
+
+The name-based checks call the API's own fuzzy matchers, so what is reported is
+what the API would actually resolve at runtime. Findings come at two levels:
+`ERROR` when a reference resolves to nothing, and `WARNING` when it only resolves
+inexactly -- stray whitespace, a case difference, or a fuzzy hit on a different
+name. The script exits non-zero when there is at least one error.
+
+```sh
+python3 check_references.py            # full report
+python3 check_references.py --quiet    # errors only
+python3 check_references.py --strict   # warnings fail the run too
+python3 check_references.py --unused   # also list unreferenced server platforms
+```
 
 ## compare_aws_instances.py
 
@@ -44,4 +79,5 @@ New platform entries in `server.csv` require manual review: the AWS API does not
 ## Prerequisites
 
 - Python 3.8+
-- AWS CLI installed and configured (`aws configure`)
+- The project dependencies, for `check_references.py` (run it through `poetry run`)
+- AWS CLI installed and configured (`aws configure`), for the two AWS scripts
