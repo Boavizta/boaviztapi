@@ -337,6 +337,21 @@ def _fetch(
     return instances
 
 
+def gpu_units(gpu: dict) -> float:
+    """Number of physical GPUs an instance gets, as a float.
+
+    Instances sharing a partitioned GPU (g6f, gr6f) are reported by AWS with a
+    fractional GpuPartitionSize -- "the size of each GPU as a fraction of a full
+    GPU" -- e.g. 0.125 of an L4, alongside LogicalGpuCount devices of that type.
+    """
+    partition = gpu.get("GpuPartitionSize")
+    if partition:
+        # Count is unreliable on partitioned GPUs, so the partition wins.
+        logical_count = gpu.get("LogicalGpuCount") or gpu.get("Count") or 1
+        return logical_count * float(partition)
+    return float(gpu.get("Count", 0) or 0)
+
+
 def _parse_instance(it: dict) -> dict:
     """Parse a single InstanceType entry from the AWS API."""
     # Storage
@@ -362,17 +377,30 @@ def _parse_instance(it: dict) -> dict:
                 hdd_disk_size = size
 
     # GPU
-    gpu_count = 0
+    gpu_count = 0.0
     gpu_name = ""
     gpu_memory_per_unit = 0
     gpu_info = it.get("GpuInfo")
     if gpu_info and gpu_info.get("Gpus"):
         gpus = gpu_info["Gpus"]
-        gpu_count = sum(g.get("Count", 0) for g in gpus)
+        gpu_count = sum(gpu_units(g) for g in gpus)
         gpu_name = gpus[0].get("Name", "")
         total_mem_mib = gpus[0].get("MemoryInfo", {}).get("SizeInMiB", 0)
+        # On a partitioned GPU the reported memory is only that partition's
+        # share, so scale it back up to the capacity of one whole GPU.
+        partition = gpus[0].get("GpuPartitionSize") or 1
         if gpu_count > 0 and total_mem_mib > 0:
-            gpu_memory_per_unit = total_mem_mib // 1024  # MiB -> GiB per unit
+            # MiB -> GiB per whole GPU
+            gpu_memory_per_unit = int(total_mem_mib / partition) // 1024
+    elif it.get("NeuronInfo") and it["NeuronInfo"].get("NeuronDevices"):
+        # AWS' own Neuron silicon (Inferentia, Trainium) is reported separately
+        # from third-party GPUs, but maps to the same gpu_units column.
+        devices = it["NeuronInfo"]["NeuronDevices"]
+        gpu_count = float(sum(d.get("Count", 0) for d in devices))
+        gpu_name = f"AWS {devices[0].get('Name', '')}".strip()
+        total_mem_mib = devices[0].get("MemoryInfo", {}).get("SizeInMiB", 0)
+        if gpu_count > 0 and total_mem_mib > 0:
+            gpu_memory_per_unit = total_mem_mib // 1024  # MiB -> GiB per device
 
     proc = it.get("ProcessorInfo", {})
 
@@ -466,7 +494,7 @@ def build_server_row(
     row["HDD.capacity"] = str(platform_data["hdd_disk_size"])
 
     # GPU
-    row["GPU.units"] = str(platform_data["gpu_units"])
+    row["GPU.units"] = format_number(platform_data["gpu_units"])
     row["GPU.name"] = platform_data.get("gpu_name", "")
     row["GPU.memory_capacity"] = str(platform_data.get("gpu_memory_per_unit", 0))
 

@@ -12,6 +12,7 @@ type=float
 [hdd_storage]
 type=float
 [gpu_units]
+# Fractional for instances sharing a partitioned GPU (g6f: 0.125 of an L4)
 type=float
 [platform]
 type=string
