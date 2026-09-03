@@ -12,7 +12,7 @@ type=float
 [hdd_storage]
 type=float
 [gpu_units]
-type=int
+type=float
 [platform]
 type=string
 [source]
