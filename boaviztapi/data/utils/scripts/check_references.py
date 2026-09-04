@@ -325,6 +325,63 @@ def check_cloud_platforms(report, server_ids):
             )
 
 
+def check_cloud_gpu_units(report, server_gpu_units):
+    """Cloud instance `gpu_units` against its platform's `GPU.units`.
+
+    `cloud_impact_embedded` allocates the platform's GPU embodied impacts by
+    `gpu_units / GPU.units`, so the two sides have to be coherent: an instance
+    cannot be sold more GPUs than its host has, and one that claims a GPU its
+    host does not declare silently reports no GPU impact at all.
+
+    chkcsv already enforces that `gpu_units` parses as a float, so this only
+    looks at how the two files line up.
+    """
+    check = "Cloud gpu_units -> archetypes/server.csv GPU.units"
+    for path in cloud_provider_files():
+        for lineno, row in read_rows(path):
+            platform = cell(row, "platform").strip()
+            if platform not in server_gpu_units:
+                # An unresolvable platform is check_cloud_platforms' finding.
+                continue
+
+            location = f"{path.name}:{lineno} ({row['id']})"
+            host_units = server_gpu_units[platform] or 0
+            units = as_float(cell(row, "gpu_units"))
+
+            if units is None or units == 0:
+                if host_units:
+                    report.warning(
+                        check,
+                        location,
+                        f"gpu_units is {cell(row, 'gpu_units').strip() or 'empty'} "
+                        f"but platform '{platform}' has GPU.units={host_units:g}; "
+                        "the instance is billed no GPU impact at all",
+                    )
+                continue
+
+            if units < 0:
+                report.error(check, location, f"gpu_units={units:g} is negative")
+                continue
+
+            if not host_units:
+                report.error(
+                    check,
+                    location,
+                    f"gpu_units={units:g} but platform '{platform}' declares no "
+                    "GPU, so the instance reports no GPU impact",
+                )
+                continue
+
+            if units > host_units:
+                report.error(
+                    check,
+                    location,
+                    f"gpu_units={units:g} exceeds the {host_units:g} GPU(s) of "
+                    f"platform '{platform}'; the instance is allocated "
+                    f"{units / host_units:.2f}x the host's whole GPU impact",
+                )
+
+
 def check_providers(report):
     """Provider CSV names and regions.csv providers against providers.csv."""
     check = "Cloud providers -> archetypes/cloud/providers.csv"
@@ -478,7 +535,12 @@ def main():
 
     cpu_specs = pd.read_csv(CPU_SPECS_CSV)
     gpu_specs = pd.read_csv(GPU_SPECS_CSV)
-    server_ids = {cell(row, "id").strip() for _, row in read_rows(SERVER_CSV)}
+    server_rows = read_rows(SERVER_CSV)
+    server_ids = {cell(row, "id").strip() for _, row in server_rows}
+    server_gpu_units = {
+        cell(row, "id").strip(): as_float(cell(row, "GPU.units"))
+        for _, row in server_rows
+    }
 
     report = Report()
     check_cpu_names(report, cpu_specs)
@@ -486,6 +548,7 @@ def main():
     check_gpu_names(report, gpu_specs)
     check_case_types(report)
     check_cloud_platforms(report, server_ids)
+    check_cloud_gpu_units(report, server_gpu_units)
     check_providers(report)
     check_regions(report)
     check_consumption_profiles(report, cpu_specs)
