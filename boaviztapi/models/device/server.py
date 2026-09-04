@@ -237,3 +237,8 @@ class DeviceServer(Device):
 
     def get_total_vcpu(self):
         return self.cpu.threads.value * self.cpu.units.value
+
+    def get_total_gpu(self):
+        if self.gpu is None or not self.gpu.units.has_value():
+            return 0
+        return self.gpu.units.value

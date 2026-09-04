@@ -868,6 +868,16 @@ def cloud_impact_embedded(
                     )
                 else:
                     continue
+            if component.NAME == "GPU":
+                total_gpu = cloud_instance.platform.get_total_gpu()
+                gpu_units = cloud_instance.gpu_units
+                if gpu_units.has_value() and gpu_units.value and total_gpu:
+                    # gpu_impact_embedded() already scales by the platform's
+                    # GPU units, so this allocates gpu_units whole GPUs -- or a
+                    # fraction of one for vGPU/MIG-partitioned instances.
+                    allocation = gpu_units.value / total_gpu
+                else:
+                    continue
 
             single_impact = compute_single_impact(
                 component, "embedded", impact_type, duration, allocation
