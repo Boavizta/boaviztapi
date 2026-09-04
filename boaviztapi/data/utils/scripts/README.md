@@ -30,12 +30,19 @@ what the API would actually resolve at runtime. Findings come at two levels:
 inexactly -- stray whitespace, a case difference, or a fuzzy hit on a different
 name. The script exits non-zero when there is at least one error.
 
+It imports `boaviztapi` itself to reuse the API's fuzzy matchers, so it needs the
+project dependencies and has to run inside the poetry environment:
+
 ```sh
-python3 check_references.py            # full report
-python3 check_references.py --quiet    # errors only
-python3 check_references.py --strict   # warnings fail the run too
-python3 check_references.py --unused   # also list unreferenced server platforms
+poetry run python3 check_references.py            # full report
+poetry run python3 check_references.py --quiet    # errors only
+poetry run python3 check_references.py --strict   # warnings fail the run too
+poetry run python3 check_references.py --unused   # also list unreferenced server platforms
 ```
+
+`poetry run` works from any directory inside the checkout. Note that poetry keys
+its virtualenv to the project directory, so a git worktree needs its own
+`poetry install`.
 
 ## compare_aws_instances.py
 
@@ -78,6 +85,8 @@ New platform entries in `server.csv` require manual review: the AWS API does not
 
 ## Prerequisites
 
-- Python 3.8+
-- The project dependencies, for `check_references.py` (run it through `poetry run`)
-- AWS CLI installed and configured (`aws configure`), for the two AWS scripts
+- Python 3.11+ (as required by `pyproject.toml`)
+- For `check_references.py`: the project dependencies (`poetry install`), and the
+  script invoked as `poetry run python3 check_references.py`
+- For the two AWS scripts: the AWS CLI, installed and configured (`aws configure`).
+  They do not import `boaviztapi`, so plain `python3` is enough.

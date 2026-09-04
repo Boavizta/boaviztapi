@@ -18,11 +18,11 @@ Findings come in two levels:
   WARNING  the reference resolves, but not on an exact match: stray whitespace,
            a case difference, or a fuzzy hit on a different name
 
-Usage:
-    python3 check_references.py             # full report
-    python3 check_references.py --strict    # warnings also fail the run
-    python3 check_references.py --quiet     # errors only
-    python3 check_references.py --unused    # also list unreferenced platforms
+Usage (needs the project dependencies, so run it through poetry):
+    poetry run python3 check_references.py            # full report
+    poetry run python3 check_references.py --strict   # warnings also fail the run
+    poetry run python3 check_references.py --quiet    # errors only
+    poetry run python3 check_references.py --unused   # also list unreferenced platforms
 """
 
 import argparse
