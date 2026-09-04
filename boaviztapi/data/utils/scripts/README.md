@@ -17,6 +17,7 @@ What it checks:
 - `CPU.name` in `server.csv` and `components/cpu.csv` against `crowdsourcing/cpu_specs.csv`
 - `family` in `components/cpu.csv` against the `code_name` column of `cpu_specs.csv`
 - `GPU.name` in `server.csv` and `components/gpu.csv` against `crowdsourcing/gpu_specs.csv`
+- `GPU.units` in `server.csv` is above 0 wherever `GPU.name` is set
 - `CASE.case_type` in `server.csv` against the case types in `components/case.csv`
 - `platform` in each cloud provider CSV against the ids in `server.csv`
 - provider CSV files against `cloud/providers.csv`, both ways, and the providers named in `cloud/regions.csv`

@@ -248,8 +248,8 @@ def check_gpu_names(report, gpu_specs):
                 continue
             location = f"{path.name}:{lineno} ({row['id']})"
             raw_name = cell(row, column)
+            units = as_float(cell(row, units_column)) if units_column else None
             if not raw_name.strip():
-                units = as_float(cell(row, units_column)) if units_column else None
                 if units:
                     report.warning(
                         check,
@@ -258,6 +258,16 @@ def check_gpu_names(report, gpu_specs):
                         "(falls back to the default GPU)",
                     )
                 continue
+            if units_column and (units is None or units <= 0):
+                raw_units = cell(row, units_column).strip() or "empty"
+                report.error(
+                    check,
+                    location,
+                    f"{column}='{raw_name.strip()}' but {units_column}="
+                    f"{raw_units}; DeviceServer.gpu drops the GPU entirely "
+                    "unless units is greater than 0, so the named GPU "
+                    "contributes no impact",
+                )
             check_name_reference(
                 report, check, location, raw_name, names, resolver, series
             )
