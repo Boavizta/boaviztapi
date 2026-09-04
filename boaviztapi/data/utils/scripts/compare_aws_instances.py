@@ -14,6 +14,7 @@ Usage:
 import argparse
 import csv
 import json
+import math
 import subprocess
 import sys
 from pathlib import Path
@@ -21,6 +22,13 @@ from pathlib import Path
 BOAVIZTA_AWS_CSV = (
     Path(__file__).resolve().parent.parent.parent / "archetypes" / "cloud" / "aws.csv"
 )
+
+
+def fmt_num(value) -> str:
+    """Render a number without a trailing .0 for whole values (0.125 stays 0.125)."""
+    if isinstance(value, float) and value.is_integer():
+        return str(int(value))
+    return str(value)
 
 
 def load_boavizta_instances(csv_path: Path) -> dict:
@@ -34,10 +42,26 @@ def load_boavizta_instances(csv_path: Path) -> dict:
                 "memory": float(row["memory"]),
                 "ssd_storage": float(row.get("ssd_storage", 0) or 0),
                 "hdd_storage": float(row.get("hdd_storage", 0) or 0),
-                "gpu_units": int(row.get("gpu_units", 0) or 0),
+                # Fractional GPU instances (e.g. g6f.large) hold values like 0.125
+                "gpu_units": float(row.get("gpu_units", 0) or 0),
                 "platform": row.get("platform", ""),
             }
     return instances
+
+
+def gpu_units(gpu: dict) -> float:
+    """Number of GPUs an instance gets, as a float.
+
+    Instances sharing a partitioned GPU (g6f, gr6f) are reported by AWS with a
+    fractional GpuPartitionSize -- "the size of each GPU as a fraction of a full
+    GPU" -- e.g. 0.125 of an L4, alongside LogicalGpuCount devices of that type.
+    """
+    partition = gpu.get("GpuPartitionSize")
+    if partition:
+        # Count is unreliable on partitioned GPUs, so the partition wins.
+        logical_count = gpu.get("LogicalGpuCount") or gpu.get("Count") or 1
+        return logical_count * float(partition)
+    return float(gpu.get("Count", 0) or 0)
 
 
 def fetch_aws_instance_types(region: str) -> dict:
@@ -78,12 +102,12 @@ def fetch_aws_instance_types(region: str) -> dict:
             # Third-party GPUs are reported under GpuInfo, but AWS' own Neuron
             # silicon (Inferentia, Trainium) is only under NeuronInfo. Both map
             # to gpu_units in aws.csv.
-            gpu_count = 0
+            gpu_count = 0.0
             if it.get("GpuInfo") and it["GpuInfo"].get("Gpus"):
-                gpu_count = sum(g.get("Count", 0) for g in it["GpuInfo"]["Gpus"])
+                gpu_count = sum(gpu_units(g) for g in it["GpuInfo"]["Gpus"])
             elif it.get("NeuronInfo") and it["NeuronInfo"].get("NeuronDevices"):
-                gpu_count = sum(
-                    d.get("Count", 0) for d in it["NeuronInfo"]["NeuronDevices"]
+                gpu_count = float(
+                    sum(d.get("Count", 0) for d in it["NeuronInfo"]["NeuronDevices"])
                 )
 
             instances[instance_id] = {
@@ -136,7 +160,7 @@ def compare(boavizta: dict, aws: dict) -> dict:
                 "boavizta": b["hdd_storage"],
                 "aws": a["hdd_storage"],
             }
-        if b["gpu_units"] != a["gpu_units"]:
+        if not math.isclose(b["gpu_units"], a["gpu_units"], rel_tol=1e-9, abs_tol=1e-9):
             diffs["gpu_units"] = {"boavizta": b["gpu_units"], "aws": a["gpu_units"]}
         if diffs:
             mismatches.append({"id": iid, "diffs": diffs})
@@ -191,7 +215,10 @@ def print_report(result: dict, aws: dict, show_boavizta_only: bool = False):
         for m in result["mismatches"]:
             print(f"  {m['id']}:")
             for field, vals in m["diffs"].items():
-                print(f"    {field}: boavizta={vals['boavizta']}  aws={vals['aws']}")
+                print(
+                    f"    {field}: boavizta={fmt_num(vals['boavizta'])}  "
+                    f"aws={fmt_num(vals['aws'])}"
+                )
 
 
 def write_csv_report(
@@ -226,7 +253,7 @@ def write_csv_report(
                     a["memory"],
                     a["ssd_storage"],
                     a["hdd_storage"],
-                    a["gpu_units"],
+                    fmt_num(a["gpu_units"]),
                     a["family"],
                     ";".join(a["arch"]),
                     "",
@@ -263,12 +290,12 @@ def write_csv_report(
                         a["memory"],
                         a["ssd_storage"],
                         a["hdd_storage"],
-                        a["gpu_units"],
+                        fmt_num(a["gpu_units"]),
                         a["family"],
                         ";".join(a["arch"]),
                         field,
-                        vals["boavizta"],
-                        vals["aws"],
+                        fmt_num(vals["boavizta"]),
+                        fmt_num(vals["aws"]),
                     ]
                 )
     print(f"\nCSV report written to: {output_path}")
