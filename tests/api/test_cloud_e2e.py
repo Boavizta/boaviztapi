@@ -60,3 +60,33 @@ async def test_all_instances(cloud_provider_url):
         assert res.status_code in [200, 201], (
             f"Http error status code {res.status_code}"
         )
+
+
+@pytest.mark.e2e
+@pytest.mark.asyncio
+async def test_fractional_gpu_instance_reports_gpu_impact():
+    """Azure's NVas_v4 family sells fractions of an MI25 (see issue #563)."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        embedded = {}
+        for instance_type in ("nv4as_v4", "nv8as_v4", "nv16as_v4", "nv32as_v4"):
+            url = CloudInstanceRequest(
+                "azure", instance_type, use_url_params=True
+            ).to_url()
+            res = await ac.get(f"{url}&verbose=true")
+            assert res.status_code in [200, 201]
+
+            gpu = res.json()["verbose"].get("GPU-1")
+            assert gpu is not None, f"{instance_type} reports no GPU at all"
+            embedded[instance_type] = gpu["impacts"]["gwp"]["embedded"]["value"]
+            assert embedded[instance_type] > 0
+
+        whole_card = embedded["nv32as_v4"]
+        for instance_type, fraction in (
+            ("nv4as_v4", 0.125),
+            ("nv8as_v4", 0.25),
+            ("nv16as_v4", 0.5),
+        ):
+            assert embedded[instance_type] == pytest.approx(
+                whole_card * fraction, rel=0.01
+            ), f"{instance_type} should get {fraction} of one MI25"

@@ -67,6 +67,11 @@ class ServiceCloudInstance(Service):
             min=get_arch_value(archetype, "ssd_storage", "min"),
             max=get_arch_value(archetype, "ssd_storage", "max"),
         )
+        self.gpu_units = Boattribute(
+            default=get_arch_value(archetype, "gpu_units", "default"),
+            min=get_arch_value(archetype, "gpu_units", "min"),
+            max=get_arch_value(archetype, "gpu_units", "max"),
+        )
 
         for attr, val in kwargs.items():
             if val is not None:

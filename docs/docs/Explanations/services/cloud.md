@@ -14,8 +14,12 @@ The API will complete the following characteristics depending on the cloud provi
 | memory      | GB    | RAM capacity                    | 32       |
 | ssd_storage | GB    | SSD storage capacity            | 500      |
 | hdd_storage | GB    | HDD storage capacity            | 0        |
+| gpu_units   | None  | Number of GPUs [^1]             | 1        |
 | platform    | None  | Bare metal hosting the instance | a1.metal |
 | usage       | None  | See usage                       |          |
+
+[^1]: May be fractional for instances that share a partitioned GPU (vGPU or MIG), for
+example `0.125` for an eighth of a card.
 
 To add a new cloud instance to the API please refer to the [cloud instance contribution guide](../../contributing/cloud_instance.md).
 
@@ -81,7 +85,18 @@ The API allocate a portion of the impacts of each component to the instance base
 * For RAM :  $\text{RAM}_{\text{instance}}^{\text{embedded}} = \text{RAM}_{\text{server}}^{\text{embedded}} \times \frac{\text{memory}_{\text{instance}}}{\text{RAM}_{\text{server}}}$
 * For SSD storage : $\text{SSD}_{\text{instance}}^{\text{embedded}} = \text{SSD}_{\text{server}}^{\text{embedded}} \times \frac{\text{ssd_storage}_{\text{instance}}}{\text{ssd_storage}_{\text{server}}}$
 * For HDD storage : $\text{HDD}_{\text{instance}}^{\text{embedded}} = \text{HDD}_{\text{server}}^{\text{embedded}} \times \frac{\text{hdd_storage}_{\text{instance}}}{\text{hdd_storage}_{\text{server}}}$
+* For GPU : $\text{GPU}_{\text{instance}}^{\text{embedded}} = \text{GPU}_{\text{server}}^{\text{embedded}} \times \frac{\text{gpu_units}_{\text{instance}}}{\text{GPU.units}_{\text{server}}}$
 * For CPU and all other components : $\text{Component}_{\text{instance}}^{\text{embedded}} = \text{Component}_{\text{server}}^{\text{embedded}} \times \frac{\text{vCPU}_{\text{instance}}}{\text{vCPU}_{\text{server}}}$
+
+!!!warning
+    Starting with v2.5, the GPU allocation for an instance type is based on the number of
+    gpu_units instead of its vCPU ratio.
+
+Because $\text{gpu_units}$ may be fractional, an instance sharing a partitioned card
+(vGPU or MIG) is allocated that fraction of a single GPU: an instance with
+$\text{gpu_units} = 0.125$ on a one-GPU platform gets an eighth of the die, VRAM, PWB,
+casing and heatsink impacts. An instance with no GPU, or hosted on a platform that
+declares none, is allocated no GPU impact at all.
 
 The API will sum the embedded impacts of each component to get the embedded impacts of the instance :
 

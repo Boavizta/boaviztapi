@@ -24,7 +24,7 @@ All available servers are stored in a CSV file named `servers.csv` located at `b
 | SSD.capacity                  |               | GB    | SSD storage quantity             | 0                       |
 | HDD.units                     | **Required**  | unit  | Number of HDD                    | 0                       |
 | HDD.capacity                  |               | GB    | HDD storage quantity             | 0                       |
-| GPU.units                     | **Required**  | unit  | GPU quantity                     | 0                       |
+| GPU.units                     | **Required**  | unit  | GPU quantity [^6]                | 0                       |
 | GPU.name                      |               |       | GPU name                         |                         |
 | GPU.vram                      |               | GB    | GPU memory capacity [^5]         |                         |
 | POWER_SUPPLY.units            | **Required**  | unit  | Number of power supply[^2]       | 2                       |
@@ -38,6 +38,8 @@ All available servers are stored in a CSV file named `servers.csv` located at `b
 [^1]: If CPU.name is set and the CPU is available in [cpu_specs.csv](./cpu.md), you do not need to fill in the other CPU attributes. The API will complete them based on the CPU.name.
 
 [^5]: GPU impacts are now calculated and included in the results. The GPU.vram field represents the video RAM capacity in GB.
+
+[^6]: GPU.units is the number of cards physically in the server, and must be greater than 0 for the GPU to be accounted for at all: a row with a GPU.name but GPU.units = 0 is treated as having no GPU. It is also the denominator used to allocate GPU impacts to the cloud instances hosted on this platform, so it must be at least the largest `gpu_units` of those instances. See [Add a new cloud instance](./cloud_instance.md#gpu-units).
 
 [^2]: (Usually power supply duplicated so POWER_SUPPLY.units = 2. Usually POWER_SUPPLY.unit_weight is unknown, in that case use a range such as 2.99;1;5)
 
