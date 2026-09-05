@@ -65,8 +65,7 @@ async def test_all_instances(cloud_provider_url):
 @pytest.mark.e2e
 @pytest.mark.asyncio
 async def test_fractional_gpu_instance_reports_gpu_impact():
-    """Azure's NVas_v4 family sells fractions of an MI25 (see issue #563).
-    """
+    """Azure's NVas_v4 family sells fractions of an MI25 (see issue #563)."""
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
         embedded = {}
