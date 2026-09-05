@@ -89,9 +89,8 @@ The API allocate a portion of the impacts of each component to the instance base
 * For CPU and all other components : $\text{Component}_{\text{instance}}^{\text{embedded}} = \text{Component}_{\text{server}}^{\text{embedded}} \times \frac{\text{vCPU}_{\text{instance}}}{\text{vCPU}_{\text{server}}}$
 
 !!!warning
-    Before v2.5, the GPU had no allocation of its own and fell through to the vCPU
-    ratio, so a GPU instance was billed a share of the host's cards proportional to
-    its vCPUs rather than to the GPUs it actually gets.
+    Starting with v2.5, the GPU allocation for an instance type is based on the number of
+    gpu_units instead of its vCPU ratio.
 
 Because $\text{gpu_units}$ may be fractional, an instance sharing a partitioned card
 (vGPU or MIG) is allocated that fraction of a single GPU: an instance with
