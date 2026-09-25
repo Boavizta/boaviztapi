@@ -7,3 +7,27 @@ NVIDIA L4,NVIDIA,1,12,24,390.96,93.13,19000,1000,0,0,0.0871,0.142,
 NVIDIA A100 PCIe 40GB,NVIDIA,1,6,40,1798.0,234.36,19000,1000,0,0.387,0.609,1.23,
 NVIDIA A100 SXM4 40GB,NVIDIA,1,6,40,1798.0,105.0,19000,1000,0,0.09,1.25,1.56,
 NVIDIA H100 SXM 80GB,NVIDIA,1,6,80,2810.4,296.37,19000,1000,0,0.789230,0.900770,1.690000,
+NVIDIA H100 PCIe 80GB,NVIDIA,1,6,80,2808.45,234.36,19000,1000,0,0.307,0.66,1.2,https://www.nvidia.com/content/dam/en-zz/Solutions/gtcs22/data-center/h100/PB-11133-001_v01.pdf;https://en.wikipedia.org/wiki/SXM_(socket)
+NVIDIA H100 NVL 94GB,NVIDIA,1,6,94,2808.45,234.36,19000,1000,0,0.311,0.668,1.214,https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/h100/PB-11773-001_v01.pdf;https://en.wikipedia.org/wiki/SXM_(socket)
+NVIDIA H200 SXM 141GB,NVIDIA,1,6,141,2808.45,296.37,19000,1000,0,0.78923,0.90077,1.69,https://en.wikipedia.org/wiki/SXM_(socket)
+NVIDIA A100 SXM4 80GB,NVIDIA,1,6,80,2876.29,105.0,19000,1000,0,0.09,1.25,1.56,https://en.wikipedia.org/wiki/SXM_(socket)
+NVIDIA A100 PCIe 80GB,NVIDIA,1,6,80,2876.29,234.36,19000,1000,0,0.3,0.643,1.17,https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/PB-10577-001_v02.pdf;https://en.wikipedia.org/wiki/Ampere_(microarchitecture)
+NVIDIA L40S 48GB,NVIDIA,1,24,48,1773.22,234.36,19000,1000,0,0.269,0.579,1.052,https://www.pny.com/File%20Library/Company/Support/product-briefs/data-center-gpus/NVIDIA-L40S-Product-Brief.pdf;https://locuza.substack.com/p/nvidias-ad102-officially-revealed
+NVIDIA Tesla V100 SXM2 16GB,NVIDIA,1,4,16,2814.07,109.2,19000,1000,0,,,,https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf;https://en.wikipedia.org/wiki/SXM_(socket)
+NVIDIA Tesla V100 SXM2 32GB,NVIDIA,1,4,32,2814.07,109.2,19000,1000,0,,,,https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf;https://en.wikipedia.org/wiki/SXM_(socket)
+NVIDIA Tesla V100 PCIe 16GB,NVIDIA,1,4,16,2814.07,234.36,19000,1000,0,0.306,0.658,1.196,https://images.nvidia.com/content/tesla/pdf/Tesla-V100-PCIe-Product-Brief.pdf;https://en.wikipedia.org/wiki/SXM_(socket)
+NVIDIA Tesla V100 PCIe 32GB,NVIDIA,1,4,32,2814.07,234.36,19000,1000,0,0.306,0.658,1.196,https://images.nvidia.com/content/tesla/pdf/Tesla-V100-PCIe-Product-Brief.pdf;https://en.wikipedia.org/wiki/SXM_(socket)
+NVIDIA Tesla V100S PCIe 32GB,NVIDIA,1,4,32,2814.07,234.36,19000,1000,0,0.306,0.658,1.196,https://expresscomputersystems.com/products/nvidia-tesla-v100s-32gb-pci-e-gpu-accelerator;https://images.nvidia.com/content/tesla/pdf/Tesla-V100-PCIe-Product-Brief.pdf
+NVIDIA T4,NVIDIA,1,8,16,1500.31,93.13,19000,1000,0,0.0,0.185,0.301,https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-t4/t4-tensor-core-product-brief.pdf;https://techpowerup.com/forums/goto/post?id=4841002
+NVIDIA A10,NVIDIA,1,12,24,1861.68,234.36,19000,1000,0,0.141,0.303,0.55,https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a10/pdf/A10-Product-Brief.pdf;https://en.wikipedia.org/wiki/Ampere_(microarchitecture)
+NVIDIA RTX PRO 6000 Blackwell Server Edition 96GB,NVIDIA,1,32,96,2460.69,234.36,19000,1000,0,,,,https://gpupoet.com/gpu/learn/card/nvidia-rtx-pro-6000-blackwell-server;https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu
+NVIDIA B200 180GB,NVIDIA,2,8,180,5460.7,,19000,1000,0,,,,https://en.wikipedia.org/wiki/Blackwell_(microarchitecture);https://wccftech.com/nvidia-blackwell-gpu-architecture-official-208-billion-transistors-5x-ai-performance-192-gb-hbm3e-memory/;https://www.thundercompute.com/blog/google-cloud-gpu-instances
+NVIDIA B300 288GB,NVIDIA,2,8,288,5460.7,,19000,1000,0,,,,https://en.wikipedia.org/wiki/Blackwell_(microarchitecture);https://www.runpod.io/articles/guides/nvidia-b200
+AMD Instinct MI300X 192GB,AMD,8,8,192,4923.7,168.3,19000,1000,0,,,,https://weekly.ascii.jp/elem/000/004/295/4295416/2/;https://chipsandcheese.com/p/testing-amds-giant-mi300x
+NVIDIA Quadro RTX 5000,NVIDIA,1,8,16,1500.31,234.36,19000,1000,0,,,,https://techpowerup.com/forums/goto/post?id=4841002
+NVIDIA Tesla P4,NVIDIA,1,8,8,681.02,93.13,19000,1000,0,0.0,0.147,0.24,https://www.Nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/Tesla-P4-Product-Brief.pdf
+AMD Radeon PRO V710,AMD,1,14,28,579.08,234.36,19000,1000,0,,,,https://videocardz.com/newz/amd-launches-single-slot-radeon-pro-v710-navi-32-and-28gb-vram;https://en.wikipedia.org/wiki/Radeon_RX_7000_series
+AMD Radeon PRO V520,AMD,1,2,8,503.64,234.36,19000,1000,0,,,,https://www.amd.com/en/products/accelerators/radeon-pro/amd-radeon-pro-v520.html
+AMD Radeon PRO V620,AMD,1,16,32,1398.56,234.36,19000,1000,0,,,,https://www.amd.com/en/products/accelerators/radeon-pro/amd-radeon-pro-v620.html;https://www.geektopia.es/es/product/amd/radeon-pro-v620/
+AMD Radeon Instinct MI25,AMD,1,2,16,1257.71,234.36,19000,1000,0,,,,https://techpowerup.com/news-tags/Die%20Size;https://www.tweaktown.com/news/58111/amd-details-radeon-instinct-mi25-16gb-hbm2/index.html
+NVIDIA Tesla M60,NVIDIA,2,32,16,1895.88,234.36,19000,1000,0,0.315,0.676,1.23,https://images.nvidia.com/content/pdf/tesla/PB-07864-001_v02_TeslaM60-Product-Brief_12-16.pdf
