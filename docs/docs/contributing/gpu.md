@@ -2,6 +2,9 @@
 
 This guide will help you add a new GPU into BoaviztAPI.
 
+See [GPU data sources](gpu_data_sources.md) for where to source the values
+below, and how `die_surface` relates to the raw die area.
+
 ## GPU specs CSV file
 
 All available GPUs are stored in a CSV file named `gpu_specs.csv` located at `boaviztapi/data/crowdsourcing/`.
@@ -9,6 +12,7 @@ All available GPUs are stored in a CSV file named `gpu_specs.csv` located at `bo
 | Column name      | Required         | Description                                                              | Example              |
 |------------------|------------------|--------------------------------------------------------------------------|----------------------|
 | name             | **Required**     | Full commercial name of the GPU                                          | NVIDIA H100 SXM 80GB |
+| manufacturer     |                  | Manufacturer of the GPU                                                  | NVIDIA               |
 | unit             |                  | Number of GPU compute dies on the package                                | 1                    |
 | number           |                  | Number of VRAM dies                                                      | 6                    |
 | vram             |                  | Total VRAM capacity (in GB)                                              | 80                   |
@@ -20,5 +24,6 @@ All available GPUs are stored in a CSV file named `gpu_specs.csv` located at `bo
 | mass_casing      |                  | Mass of the casing / shroud (in kg)                                     | 0.789230             |
 | mass_heatsink    |                  | Mass of the heatsink (in kg)                                            | 0.900770             |
 | mass             |                  | Total mass of the GPU card (in kg)                                      | 1.690000             |
+| source           |                  | Semicolon-separated URLs backing the row's values; prefer primary sources | datasheet URL;die-size URL |
 
 See on [GitHub](https://github.com/Boavizta/boaviztapi/blob/main/boaviztapi/data/crowdsourcing/gpu_specs.csv)
