@@ -86,6 +86,7 @@ nav:
         - 'Add a server': contributing/server.md
         - 'Add a CPU' : contributing/cpu.md
         - 'Add a GPU' : contributing/gpu.md
+        - 'GPU data sources' : contributing/gpu_data_sources.md
 
 theme: material
 

@@ -2,6 +2,9 @@
 
 This guide will help you add a new GPU into BoaviztAPI.
 
+See [GPU data sources](gpu_data_sources.md) for where to source the values
+below, and how `die_surface` relates to the raw die area.
+
 ## GPU specs CSV file
 
 All available GPUs are stored in a CSV file named `gpu_specs.csv` located at `boaviztapi/data/crowdsourcing/`.
