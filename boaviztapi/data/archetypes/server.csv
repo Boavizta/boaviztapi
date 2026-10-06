@@ -74,7 +74,7 @@ c7a.metal-48xl,AWS,rack,2,,,AMD EPYC 9R14,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;
 c7g.metal,AWS,rack,1,,,Annapurna Labs Graviton3,,4,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 c7gd.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton3,,4,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 c7gn.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton3E,,4,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
-c7i.48xlarge,AWS,rack,6,,,Intel Xeon Platinum 8488C,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+c7i.48xlarge,AWS,rack,2,,,Intel Xeon Platinum 8488C,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 g5.48xlarge,AWS,rack,2,,,AMD EPYC 7R32,,24,32,2,3800,0,0,8,NVIDIA A10,24,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 g5g.metal,AWS,rack,1,,,Annapurna Labs Graviton2,,4,32,0,0,0,0,2,NVIDIA T4,16,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 g6.48xlarge,AWS,rack,2,,,AMD EPYC 7R13,,24,32,8,940,0,0,8,NVIDIA L4,24,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM and PSU configuration were not verified
@@ -96,6 +96,7 @@ m7i.48xlarge,AWS,rack,2,,,Intel Xeon Platinum 8488C,,24,32,0,0,0,0,0,,0,2;2;2,2.
 mac2.metal,AWS,rack,1,,,Apple M1,,1,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 p4de.24xlarge,AWS,rack,2,,,Intel Xeon Platinum 8275CL,,36,32,8,1000,0,0,8,NVIDIA A100 SXM4 80GB,80,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 p5.48xlarge,AWS,rack,2,,,AMD EPYC 7R13,,64,32,8,3800,0,0,8,NVIDIA H100 SXM 80GB,80,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+p5en.48xlarge,AWS,rack,2,,,Intel Xeon Platinum 8488C,,64,32,8,3800,0,0,8,NVIDIA H200 SXM 141GB,141,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r6a.metal,AWS,rack,2,,,AMD EPYC 7R13,,48,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r6i.metal,AWS,rack,2,,,Intel Xeon Platinum 8375C,,32,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r6id.metal,AWS,rack,2,,,Intel Xeon Platinum 8375C,,32,32,4,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
