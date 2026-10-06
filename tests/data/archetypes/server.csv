@@ -74,7 +74,7 @@ c7a.metal-48xl,AWS,rack,2,,,AMD EPYC 9R14,,12,,32,0,0,,0,0,0,,0,2;2;2,2.99;1;5,5
 c7g.metal,AWS,rack,1,,,Annapurna Labs Graviton3,,4,,32,0,0,,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
 c7gd.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton3,,4,,32,2,1900,,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
 c7gn.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton3E,,4,,32,0,0,,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
-c7i.48xlarge,AWS,rack,6,,,Intel Xeon Platinum 8488C,,12,,32,0,0,,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
+c7i.48xlarge,AWS,rack,2,,,Intel Xeon Platinum 8488C,,12,,32,0,0,,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
 g5.48xlarge,AWS,rack,2,,,AMD EPYC 7R32,,24,,32,2,3800,,0,0,8,NVIDIA A10G,24,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
 g5g.metal,AWS,rack,1,,,Annapurna Labs Graviton2,,4,,32,0,0,,0,0,2,NVIDIA T4G Tensor Core,16,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
 hpc7g.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton3,,4,,32,0,0,,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,35040,0.33;0.2;0.6,RAM configuration was not verified
