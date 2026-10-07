@@ -96,6 +96,7 @@ m7i.48xlarge,AWS,rack,2,,,Intel Xeon Platinum 8488C,,24,32,0,0,0,0,0,,0,2;2;2,2.
 mac2.metal,AWS,rack,1,,,Apple M1,,1,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 p4de.24xlarge,AWS,rack,2,,,Intel Xeon Platinum 8275CL,,36,32,8,1000,0,0,8,NVIDIA A100 SXM4 80GB,80,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 p5.48xlarge,AWS,rack,2,,,AMD EPYC 7R13,,64,32,8,3800,0,0,8,NVIDIA H100 SXM 80GB,80,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+p5en.48xlarge,AWS,rack,2,,,Intel Xeon Platinum 8488C,,64,32,8,3800,0,0,8,NVIDIA H200 SXM 141GB,141,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r6a.metal,AWS,rack,2,,,AMD EPYC 7R13,,48,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r6i.metal,AWS,rack,2,,,Intel Xeon Platinum 8375C,,32,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r6id.metal,AWS,rack,2,,,Intel Xeon Platinum 8375C,,32,32,4,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
@@ -314,3 +315,33 @@ r8gd.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,64,3,1900,0,0,0,,0,2;2
 r8gd.metal-48xl,AWS,rack,2,,,Annapurna Labs Graviton4,,24,64,6,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 r8gn.metal-24xl,AWS,rack,1,,,Annapurna Labs Graviton4,,12,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
 r8gn.metal-48xl,AWS,rack,2,,,Annapurna Labs Graviton4,,24,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
+c8i.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+c8i.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+c8ib.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+c8ib.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+c8id.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,32,3,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+c8id.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,32,6,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+c8in.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+c8in.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+m8ib.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+m8ib.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+m8id.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,64,3,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+m8id.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,64,6,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+m8idb.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,64,3,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+m8idb.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,64,6,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+m8idn.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,64,3,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+m8idn.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,64,6,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+m8in.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+m8in.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,64,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r8ib.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,128,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r8ib.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,128,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r8id.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,128,3,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r8id.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,128,6,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r8idb.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,128,3,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r8idb.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,128,6,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r8idn.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,128,3,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r8idn.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,128,6,3800,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r8in.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,128,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+r8in.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,128,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+x8i.metal-48xl,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+x8i.metal-96xl,AWS,rack,2,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,24,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
