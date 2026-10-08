@@ -66,7 +66,7 @@ SERVER_CSV_FIELDS = [
     "HDD.capacity",
     "GPU.units",
     "GPU.name",
-    "GPU.memory_capacity",
+    "GPU.vram",
     "POWER_SUPPLY.units",
     "POWER_SUPPLY.unit_weight",
     "USAGE.time_workload",
@@ -103,6 +103,9 @@ PLATFORM_SIZE = {
     "c7gn": "16xlarge",
     "c7i": "48xlarge",
     "c8g": "metal-24xl",
+    "c8gb": "metal-24xl",
+    "c8gd": "metal-24xl",
+    "c8gn": "metal-24xl",
     "d3": "8xlarge",
     "d3en": "12xlarge",
     "f1": "16xlarge",
@@ -126,6 +129,7 @@ PLATFORM_SIZE = {
     "i4g": "16xlarge",
     "i4i": "metal",
     "i8g": "metal-24xl",
+    "i8ge": "metal-24xl",
     "im4gn": "16xlarge",
     "inf1": "24xlarge",
     "inf2": "48xlarge",
@@ -152,8 +156,10 @@ PLATFORM_SIZE = {
     "m7g": "metal",
     "m7gd": "metal",
     "m7i": "48xlarge",
-    "m7i-flex": "8xlarge",
     "m8g": "metal-24xl",
+    "m8gb": "metal-24xl",
+    "m8gd": "metal-24xl",
+    "m8gn": "metal-24xl",
     "mac1": "metal",
     "mac2": "metal",
     "mac2-m2pro": "metal",
@@ -185,6 +191,9 @@ PLATFORM_SIZE = {
     "r7i": "metal-48xl",
     "r7iz": "32xlarge",
     "r8g": "metal-24xl",
+    "r8gb": "metal-24xl",
+    "r8gd": "metal-24xl",
+    "r8gn": "metal-24xl",
     "ra3": "16xlarge",
     "t1": "micro",
     "t2": "2xlarge",
@@ -496,7 +505,7 @@ def build_server_row(
     # GPU
     row["GPU.units"] = format_number(platform_data["gpu_units"])
     row["GPU.name"] = platform_data.get("gpu_name", "")
-    row["GPU.memory_capacity"] = str(platform_data.get("gpu_memory_per_unit", 0))
+    row["GPU.vram"] = str(platform_data.get("gpu_memory_per_unit", 0))
 
     # Defaults matching existing AWS entries in server.csv
     row["POWER_SUPPLY.units"] = "2;2;2"
@@ -548,8 +557,11 @@ def resolve_platforms(
     """Resolve family -> platform_id mapping.
 
     1. If the family already has entries in aws.csv, reuse their platform.
-    2. Otherwise, use PLATFORM_SIZE map (from addData.go).
-    3. For completely unknown families, fall back to {family}.metal.
+    2. Flex families (e.g. c7i-flex) run on the same hosts as their non-flex
+       sibling and have no metal or large sizes of their own, so they share
+       the sibling's platform, resolved by rules 1 and 3.
+    3. Otherwise, use PLATFORM_SIZE map (from addData.go).
+    4. For completely unknown families, fall back to {family}.metal.
     """
     # Collect existing platform assignments per family
     existing = {}
@@ -561,10 +573,13 @@ def resolve_platforms(
     families = {get_family(iid) for iid in aws_instances}
     mapping = {}
     for fam in sorted(families):
+        base = fam.removesuffix("-flex")
         if fam in existing:
             mapping[fam] = existing[fam]
+        elif base in existing:
+            mapping[fam] = existing[base]
         else:
-            mapping[fam] = get_platform_id(fam)
+            mapping[fam] = get_platform_id(base)
     return mapping
 
 
@@ -612,7 +627,7 @@ def update_server_csv(
             print(
                 f"    GPU={new_row['GPU.units']}x "
                 f"{new_row['GPU.name']} "
-                f"({new_row['GPU.memory_capacity']}GB each)"
+                f"({new_row['GPU.vram']}GB each)"
             )
         print(
             "    ACTION REQUIRED: fill in CPU.name manually "
