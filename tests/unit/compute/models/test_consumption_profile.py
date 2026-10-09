@@ -234,16 +234,50 @@ def test_cpu_with_tdp_and_model_range(
 
 
 @pytest.mark.parametrize(
-    "capacity,expected_model_params",
+    "capacity,expected_full_load_power",
     [
-        (16, {"a": 4.544}),
-        (128, {"a": 36.352}),
-        (512, {"a": 145.408}),
+        (16, 3.88),
+        (128, 10.04),
+        (512, 31.16),
     ],
 )
-def test_ram_with_capacity(capacity: int, expected_model_params: Dict[str, float]):
+def test_ram_with_capacity(capacity: int, expected_full_load_power: float):
     ram_cp = RAMConsumptionProfileModel()
     ram_cp.compute_consumption_profile_model(capacity)
-    expected_model = RAMConsumptionProfileModel()
-    expected_model.params.value = expected_model_params
-    validate_models_approx(ram_cp, expected_model)
+    assert ram_cp.params.value["a"] == pytest.approx(expected_full_load_power)
+    assert ram_cp.apply_consumption_profile(100) == pytest.approx(
+        expected_full_load_power
+    )
+
+
+@pytest.mark.parametrize(
+    "load_percentage,expected_power_ratio",
+    [
+        (0, 0.7),
+        (50, 0.85),
+        (100, 1.0),
+    ],
+)
+def test_ram_power_depends_on_load(load_percentage: float, expected_power_ratio: float):
+    ram_cp = RAMConsumptionProfileModel()
+    ram_cp.compute_consumption_profile_model(64)
+    assert ram_cp.apply_consumption_profile(load_percentage) == pytest.approx(
+        6.52 * expected_power_ratio
+    )
+
+
+@pytest.mark.parametrize(
+    "cpu_family,expected_memory_type",
+    [
+        ("Ivy Bridge", "DDR3"),
+        ("Ice Lake", "DDR4"),
+        ("Graviton4", "DDR5"),
+        ("Unknown family", "DDR4"),
+        (None, "DDR4"),
+    ],
+)
+def test_ram_memory_type_from_cpu_family(cpu_family, expected_memory_type):
+    assert (
+        RAMConsumptionProfileModel.memory_type_from_cpu_family(cpu_family)
+        == expected_memory_type
+    )

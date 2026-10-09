@@ -19,6 +19,12 @@ _cpu_profile_consumption_df = pd.read_csv(
     os.path.join(data_dir, "consumption_profile/cpu/cpu_profile.csv")
 )
 
+_memory_type_by_cpu_family = (
+    pd.read_csv(os.path.join(data_dir, "consumption_profile/ram/memory_type.csv"))
+    .set_index("cpu_family")["memory_type"]
+    .to_dict()
+)
+
 MIN_POWER = 1  # Minimal power is 1 W
 
 
@@ -29,7 +35,18 @@ class ConsumptionProfileModel:
 
 
 class RAMConsumptionProfileModel(ConsumptionProfileModel):
-    ram_electrical_factor_per_go = 0.284
+    # Power of one DIMM at full load: base + per_gb * DIMM capacity. A DIMM draws
+    # roughly fixed power whatever its capacity, so W/GB falls as DIMMs get bigger.
+    # Fitted to datasheet and measured values: Micron 128GB DDR5 RDIMM 10 W,
+    # DDR5 64GB 5-6.5 W and DDR4 16GB ~4 W at saturated bandwidth (arXiv 2309.05373).
+    dimm_base_power = 3.0
+    dimm_power_per_gb = 0.055
+    # Share of the full-load power drawn at idle (refresh and static power),
+    # GreenDIMM (MICRO 2021).
+    idle_power_ratio = 0.7
+    # DIMM capacity assumed for a memory type when the real DIMM layout is unknown.
+    typical_dimm_capacity = {"DDR3": 16, "DDR4": 32, "DDR5": 64}
+    default_memory_type = "DDR4"
 
     def __init__(
         self,
@@ -40,17 +57,37 @@ class RAMConsumptionProfileModel(ConsumptionProfileModel):
         self.workloads = Boattribute(unit="workload_rate:W")
         self.params = Boattribute()
 
-    def compute_consumption_profile_model(self, ram_capacity) -> int:
-        self.params.value = {"a": self.ram_electrical_factor_per_go * ram_capacity}
+    @classmethod
+    def memory_type_from_cpu_family(cls, cpu_family: Optional[str]) -> str:
+        if not cpu_family:
+            return cls.default_memory_type
+        # Variants such as "Ice Lake-SP" or "Milan-X" share their base family's memory
+        return (
+            _memory_type_by_cpu_family.get(cpu_family)
+            or _memory_type_by_cpu_family.get(cpu_family.split("-")[0])
+            or cls.default_memory_type
+        )
+
+    def compute_consumption_profile_model(self, ram_capacity) -> Dict[str, float]:
+        self.params.value = {
+            "a": self.dimm_base_power + self.dimm_power_per_gb * ram_capacity,
+            "idle_ratio": self.idle_power_ratio,
+        }
         self.params.status = Status.COMPLETED
         self.params.source = (
-            f"(ram_electrical_factor_per_go : {self.ram_electrical_factor_per_go}) * ("
-            f"ram_capacity: {ram_capacity}) "
+            f"((dimm_base_power: {self.dimm_base_power}) + "
+            f"(dimm_power_per_gb: {self.dimm_power_per_gb}) * "
+            f"(ram_capacity: {ram_capacity})) * "
+            f"((idle_ratio: {self.idle_power_ratio}) + "
+            f"(1 - idle_ratio) * workload / 100)"
         )
         return self.params.value
 
     def apply_consumption_profile(self, load_percentage: float) -> float:
-        return self.params.value["a"]
+        idle_ratio = self.params.value["idle_ratio"]
+        return self.params.value["a"] * (
+            idle_ratio + (1 - idle_ratio) * load_percentage / 100
+        )
 
     def apply_multiple_workloads(self, time_workload: List[WorkloadTime]) -> float:
         total = 0
