@@ -35,27 +35,27 @@ def test_usage_server_empty_usage(empty_usage_dto):
     server.usage = usage
 
     assert compute_single_impact(server, "use", "pe", duration=365 * 24).to_json() == {
-        "max": 43670000.0,
-        "min": 5.085,
-        "value": 90000.0,
+        "max": 39120000.0,
+        "min": 4.429,
+        "value": 70000.0,
         "warnings": [
             "Uncertainty from technical characteristics is very important. Results should "
             "be interpreted with caution (see min and max values)"
         ],
     }
     assert compute_single_impact(server, "use", "adp", duration=365 * 24).to_json() == {
-        "max": 0.02477,
-        "min": 5.163e-06,
-        "value": 0.0004,
+        "max": 0.0222,
+        "min": 4.498e-06,
+        "value": 0.0003,
         "warnings": [
             "Uncertainty from technical characteristics is very important. Results should "
             "be interpreted with caution (see min and max values)"
         ],
     }
     assert compute_single_impact(server, "use", "gwp", duration=365 * 24).to_json() == {
-        "max": 83950.0,
-        "min": 8.996,
-        "value": 3000.0,
+        "max": 75210.0,
+        "min": 7.837,
+        "value": 2000.0,
     }
 
 

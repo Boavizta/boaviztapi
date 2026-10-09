@@ -1,5 +1,6 @@
 from boaviztapi import config
 from boaviztapi.models.boattribute import Boattribute
+from boaviztapi.models.consumption_profile import RAMConsumptionProfileModel
 from boaviztapi.models.device.server import DeviceServer
 from boaviztapi.models.impact import Assessable, ImpactFactor
 from boaviztapi.models.usage import ModelUsage
@@ -104,8 +105,15 @@ class ServiceCloudInstance(Service):
 
         total_conso_ram = ImpactFactor(value=0, min=0, max=0)
 
+        # The DIMM layout of cloud platforms is unknown: assume typical DIMMs
+        # for the memory type of the platform's CPU.
+        memory_type = RAMConsumptionProfileModel.memory_type_from_cpu_family(
+            self.platform.cpu.family.value
+        )
+        dimm_capacity = RAMConsumptionProfileModel.typical_dimm_capacity[memory_type]
+
         for ram in self.platform.ram:
-            ram_consumption = ram.model_power_consumption()
+            ram_consumption = ram.model_power_consumption(dimm_capacity=dimm_capacity)
 
             ram.usage.avg_power.set_completed(
                 value=ram_consumption.value * ram_allocation,
