@@ -1016,17 +1016,17 @@ curl -X 'GET' \
             "unit": "kgCO2eq",
             "description": "Total climate change",
             "embedded": {
-                "value": 5.4,
-                "min": 3.063,
-                "max": 9.26,
+                "value": 3.6,
+                "min": 2.04,
+                "max": 6.171,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
-                "value": 18.0,
-                "min": 0.9733,
-                "max": 63.85
+                "value": 12.0,
+                "min": 0.269,
+                "max": 56.82
             }
         }
     }
@@ -1068,44 +1068,38 @@ curl -X 'GET' \
             "unit": "kgCO2eq",
             "description": "Total climate change",
             "embedded": {
-                "value": 5.4,
-                "min": 3.063,
-                "max": 9.26,
+                "value": 3.6,
+                "min": 2.04,
+                "max": 6.171,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
-                "value": 18.0,
-                "min": 0.9733,
-                "max": 63.85
+                "value": 12.0,
+                "min": 0.269,
+                "max": 56.82
             }
         },
         "adp": {
             "unit": "kgSbeq",
             "description": "Use of minerals and fossil ressources",
             "embedded": {
-                "value": 0.00057,
-                "min": 0.0003965,
-                "max": 0.0008337,
+                "value": 0.00038,
+                "min": 0.0002644,
+                "max": 0.0005558,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
-                "value": 3e-06,
-                "min": 5.603e-07,
-                "max": 1.498e-05
+                "value": 2e-06,
+                "min": 1.548e-07,
+                "max": 1.334e-05
             }
         }
     },
     "verbose": {
-        "units": {
-            "value": 1,
-            "status": "ARCHETYPE",
-            "min": 1,
-            "max": 1
-        },
         "vcpu": {
             "value": 1.0,
             "status": "ARCHETYPE"
@@ -1116,11 +1110,11 @@ curl -X 'GET' \
             "unit": "GB"
         },
         "avg_power": {
-            "value": 5.354039687499999,
+            "value": 3.6775746875000004,
             "status": "COMPLETED",
             "unit": "W",
-            "min": 4.8307125,
-            "max": 6.44095
+            "min": 1.335,
+            "max": 5.7322500000000005
         },
         "duration": {
             "value": 8760.0,
@@ -1132,9 +1126,9 @@ curl -X 'GET' \
                     "unit": "kgCO2eq",
                     "description": "Total climate change",
                     "embedded": {
-                        "value": 0.02609,
-                        "min": 0.02609,
-                        "max": 0.02609,
+                        "value": 0.0174,
+                        "min": 0.0174,
+                        "max": 0.0174,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
@@ -1145,9 +1139,9 @@ curl -X 'GET' \
                     "unit": "kgSbeq",
                     "description": "Use of minerals and fossil ressources",
                     "embedded": {
-                        "value": 5.508e-09,
-                        "min": 5.508e-09,
-                        "max": 5.508e-09,
+                        "value": 3.672e-09,
+                        "min": 3.672e-09,
+                        "max": 3.672e-09,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
@@ -1172,34 +1166,34 @@ curl -X 'GET' \
                     "unit": "kgCO2eq",
                     "description": "Total climate change",
                     "embedded": {
-                        "value": 0.07465,
-                        "min": 0.07465,
-                        "max": 0.07465,
+                        "value": 0.04725,
+                        "min": 0.04725,
+                        "max": 0.04725,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
                     },
                     "use": {
                         "value": 6.0,
-                        "min": 0.3533,
-                        "max": 17.38
+                        "min": 0.05631,
+                        "max": 23.72
                     }
                 },
                 "adp": {
                     "unit": "kgSbeq",
                     "description": "Use of minerals and fossil ressources",
                     "embedded": {
-                        "value": 7.97e-05,
-                        "min": 7.97e-05,
-                        "max": 7.97e-05,
+                        "value": 5.313e-05,
+                        "min": 5.313e-05,
+                        "max": 5.313e-05,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
                     },
                     "use": {
                         "value": 1e-06,
-                        "min": 2.034e-07,
-                        "max": 4.08e-06
+                        "min": 3.242e-08,
+                        "max": 5.566e-06
                     }
                 }
             },
@@ -1275,8 +1269,8 @@ curl -X 'GET' \
                 "value": 1.75359375,
                 "status": "COMPLETED",
                 "unit": "W",
-                "min": 1.75359375,
-                "max": 1.75359375
+                "min": 0.2795,
+                "max": 2.39265625
             },
             "time_workload": {
                 "value": 50.0,
@@ -1298,12 +1292,12 @@ curl -X 'GET' \
                 "max": 1.0
             },
             "hours_life_time": {
-                "value": 35040.0,
+                "value": 52560.0,
                 "status": "COMPLETED",
                 "unit": "hours",
                 "source": "from device",
-                "min": 35040.0,
-                "max": 35040.0
+                "min": 52560.0,
+                "max": 52560.0
             },
             "workloads": {
                 "value": [
@@ -1349,7 +1343,7 @@ curl -X 'GET' \
                 "value": 6.42317e-08,
                 "status": "DEFAULT",
                 "unit": "kg Sbeq/kWh",
-                "source": "ADEME Base IMPACTS \u00ae",
+                "source": "ADEME Base IMPACTS ®",
                 "min": 1.324e-08,
                 "max": 2.65575e-07
             }
@@ -1360,34 +1354,34 @@ curl -X 'GET' \
                     "unit": "kgCO2eq",
                     "description": "Total climate change",
                     "embedded": {
-                        "value": 3.9,
-                        "min": 2.179,
-                        "max": 7.366,
+                        "value": 2.6,
+                        "min": 1.453,
+                        "max": 4.911,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
                     },
                     "use": {
-                        "value": 120.0,
-                        "min": 7.324,
-                        "max": 360.4
+                        "value": 3.0,
+                        "min": 0.1678,
+                        "max": 11.8
                     }
                 },
                 "adp": {
                     "unit": "kgSbeq",
                     "description": "Use of minerals and fossil ressources",
                     "embedded": {
-                        "value": 0.00021,
-                        "min": 0.0001587,
-                        "max": 0.0003072,
+                        "value": 0.000138,
+                        "min": 0.0001058,
+                        "max": 0.0002048,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
                     },
                     "use": {
-                        "value": 2e-05,
-                        "min": 4.216e-06,
-                        "max": 8.457e-05
+                        "value": 6e-07,
+                        "min": 9.661e-08,
+                        "max": 2.768e-06
                     }
                 }
             },
@@ -1417,11 +1411,11 @@ curl -X 'GET' \
                 "unit": "hours"
             },
             "avg_power": {
-                "value": 2.272,
+                "value": 1.0115,
                 "status": "COMPLETED",
                 "unit": "W",
-                "min": 2.272,
-                "max": 2.272
+                "min": 0.833,
+                "max": 1.19
             },
             "time_workload": {
                 "value": 50.0,
@@ -1443,19 +1437,20 @@ curl -X 'GET' \
                 "max": 1.0
             },
             "hours_life_time": {
-                "value": 35040.0,
+                "value": 52560.0,
                 "status": "COMPLETED",
                 "unit": "hours",
                 "source": "from device",
-                "min": 35040.0,
-                "max": 35040.0
+                "min": 52560.0,
+                "max": 52560.0
             },
             "params": {
                 "value": {
-                    "a": 9.088
+                    "a": 4.76,
+                    "idle_ratio": 0.7
                 },
                 "status": "COMPLETED",
-                "source": "(ram_electrical_factor_per_go : 0.284) * (ram_capacity: 32.0) "
+                "source": "((dimm_base_power: 3.0) + (dimm_power_per_gb: 0.055) * (ram_capacity: 32)) * ((idle_ratio: 0.7) + (1 - idle_ratio) * workload / 100)"
             },
             "gwp_factor": {
                 "value": 0.38,
@@ -1469,7 +1464,7 @@ curl -X 'GET' \
                 "value": 6.42317e-08,
                 "status": "DEFAULT",
                 "unit": "kg Sbeq/kWh",
-                "source": "ADEME Base IMPACTS \u00ae",
+                "source": "ADEME Base IMPACTS ®",
                 "min": 1.324e-08,
                 "max": 2.65575e-07
             }
@@ -1480,9 +1475,9 @@ curl -X 'GET' \
                     "unit": "kgCO2eq",
                     "description": "Total climate change",
                     "embedded": {
-                        "value": 0.57,
-                        "min": 0.1898,
-                        "max": 0.9492,
+                        "value": 0.38,
+                        "min": 0.1266,
+                        "max": 0.6328,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
@@ -1493,9 +1488,9 @@ curl -X 'GET' \
                     "unit": "kgSbeq",
                     "description": "Use of minerals and fossil ressources",
                     "embedded": {
-                        "value": 0.00019,
-                        "min": 6.484e-05,
-                        "max": 0.0003242,
+                        "value": 0.00013,
+                        "min": 4.323e-05,
+                        "max": 0.0002161,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
@@ -1527,9 +1522,9 @@ curl -X 'GET' \
                     "unit": "kgCO2eq",
                     "description": "Total climate change",
                     "embedded": {
-                        "value": 0.59,
-                        "min": 0.3355,
-                        "max": 0.5859,
+                        "value": 0.39,
+                        "min": 0.2237,
+                        "max": 0.3906,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
@@ -1540,9 +1535,9 @@ curl -X 'GET' \
                     "unit": "kgSbeq",
                     "description": "Use of minerals and fossil ressources",
                     "embedded": {
-                        "value": 7.9e-05,
-                        "min": 7.891e-05,
-                        "max": 0.0001081,
+                        "value": 5.3e-05,
+                        "min": 5.26e-05,
+                        "max": 7.206e-05,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
@@ -1571,9 +1566,9 @@ curl -X 'GET' \
                     "unit": "kgCO2eq",
                     "description": "Total climate change",
                     "embedded": {
-                        "value": 0.2582,
-                        "min": 0.2582,
-                        "max": 0.2582,
+                        "value": 0.1721,
+                        "min": 0.1721,
+                        "max": 0.1721,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
@@ -1584,9 +1579,9 @@ curl -X 'GET' \
                     "unit": "kgSbeq",
                     "description": "Use of minerals and fossil ressources",
                     "embedded": {
-                        "value": 1.441e-05,
-                        "min": 1.441e-05,
-                        "max": 1.441e-05,
+                        "value": 9.609e-06,
+                        "min": 9.609e-06,
+                        "max": 9.609e-06,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
@@ -1618,12 +1613,12 @@ curl -X 'GET' \
             "max": 1.0
         },
         "hours_life_time": {
-            "value": 35040.0,
+            "value": 52560.0,
             "status": "COMPLETED",
             "unit": "hours",
             "source": "from device",
-            "min": 35040.0,
-            "max": 35040.0
+            "min": 52560.0,
+            "max": 52560.0
         },
         "other_consumption_ratio": {
             "value": 0.33,
@@ -1644,7 +1639,7 @@ curl -X 'GET' \
             "value": 6.42317e-08,
             "status": "DEFAULT",
             "unit": "kg Sbeq/kWh",
-            "source": "ADEME Base IMPACTS \u00ae",
+            "source": "ADEME Base IMPACTS ®",
             "min": 1.324e-08,
             "max": 2.65575e-07
         }
@@ -1694,51 +1689,51 @@ curl -X 'POST' \
             "unit": "kgCO2eq",
             "description": "Total climate change",
             "embedded": {
-                "value": 0.0012,
-                "min": 0.0006994,
-                "max": 0.002114,
+                "value": 0.00082,
+                "min": 0.0004657,
+                "max": 0.001409,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
-                "value": 0.00086,
-                "min": 0.0007735,
-                "max": 0.001031
+                "value": 0.00051,
+                "min": 0.000456,
+                "max": 0.000608
             }
         },
         "adp": {
             "unit": "kgSbeq",
             "description": "Use of minerals and fossil ressources",
             "embedded": {
-                "value": 1.31e-07,
-                "min": 9.054e-08,
-                "max": 1.903e-07,
+                "value": 8.7e-08,
+                "min": 6.036e-08,
+                "max": 1.269e-07,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
-                "value": 4.2e-10,
-                "min": 3.834e-10,
-                "max": 5.112e-10
+                "value": 2.51e-10,
+                "min": 2.26e-10,
+                "max": 3.014e-10
             }
         },
         "pe": {
             "unit": "MJ",
             "description": "Consumption of primary energy",
             "embedded": {
-                "value": 0.016,
-                "min": 0.009094,
-                "max": 0.02717,
+                "value": 0.011,
+                "min": 0.006055,
+                "max": 0.0181,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
-                "value": 0.099,
-                "min": 0.0891,
-                "max": 0.1188
+                "value": 0.058,
+                "min": 0.05253,
+                "max": 0.07004
             }
         }
     }
