@@ -48,7 +48,14 @@ async def test_desktop():
                     "warnings": ["Generic data used for impact calculation."],
                 },
                 "unit": "No dimension",
-                "use": "not implemented",
+                "use": {
+                    "max": 0.0,
+                    "min": 0.0,
+                    "value": 0.0,
+                    "warnings": [
+                        "Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)"
+                    ],
+                },
             }
         }
     }

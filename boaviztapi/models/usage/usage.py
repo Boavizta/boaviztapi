@@ -160,13 +160,13 @@ class ModelUsage:
         self._complete_impact_factor("pe", "pe")
 
     def _complete_gwppb(self):
-        self._complete_impact_factor("gwppb", "gwppb")
+        self._complete_impact_factor("gwppb", "gwpb")
 
     def _complete_gwppf(self):
-        self._complete_impact_factor("gwppf", "gwppf")
+        self._complete_impact_factor("gwppf", "gwpf")
 
     def _complete_gwpplu(self):
-        self._complete_impact_factor("gwpplu", "gwpplu")
+        self._complete_impact_factor("gwpplu", "gwplu")
 
     def _complete_ir(self):
         self._complete_impact_factor("ir", "ir")
