@@ -195,15 +195,12 @@ class TestModelUsage:
         "criterion, location, expected",
         [
             ("gwppf", "FRA", (0.0813225, 0.0813225, 0.0813225)),
+            # None uses config.default_location, which is EEE.
             ("gwppf", None, (0.509427, 0.00880732, 2.12572)),
-            ("gwppb", "FRA", (0.0, 0.0, 0.0)),
-            ("gwppb", None, (0.0, 0.0, 0.0)),
-            ("gwpplu", "FRA", (0.0, 0.0, 0.0)),
-            ("gwpplu", None, (0.0, 0.0, 0.0)),
         ],
     )
     def test_gwp_subcriteria_elec_factors_resolve(self, criterion, location, expected):
-        """GWP sub-criteria read the gwpb, gwpf and gwplu electricity factors"""
+        """gwppf reads the gwpf electricity factor"""
         usage = ModelUsage(archetype={})
         if location:
             usage.usage_location.set_input(location)

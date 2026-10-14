@@ -47,4 +47,4 @@ def test_min_max_of_zero_is_returned(impact_type):
 
 def test_min_max_unknown_criterion_raises():
     with pytest.raises(NotImplementedError):
-        get_electrical_min_max("ctue", "min")
+        get_electrical_min_max("nonexistent", "min")
