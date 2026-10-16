@@ -329,7 +329,7 @@ a2-highgpu-1g,12,85,0,0,1,a2-highgpu,https://cloud.google.com/compute/docs/accel
 a2-highgpu-2g,24,170,0,0,2,a2-highgpu,https://cloud.google.com/compute/docs/accelerator-optimized-machines?hl=en#a2-standard-vms
 a2-highgpu-4g,48,340,0,0,4,a2-highgpu,https://cloud.google.com/compute/docs/accelerator-optimized-machines?hl=en#a2-standard-vms
 a2-highgpu-8g,96,680,0,0,8,a2-highgpu,https://cloud.google.com/compute/docs/accelerator-optimized-machines?hl=en#a2-standard-vms
-a2-highgpu-16g,96,1360,0,0,16,a2-highgpu,https://cloud.google.com/compute/docs/accelerator-optimized-machines?hl=en#a2-standard-vms
+a2-megagpu-16g,96,1360,0,0,16,a2-megagpu,https://cloud.google.com/compute/docs/accelerator-optimized-machines?hl=en#a2-standard-vms
 g2-standard-4,4,16,0,0,1,g2-standard,https://cloud.google.com/compute/docs/accelerator-optimized-machines?hl=en#g2-standard-vms
 g2-standard-8,8,32,0,0,1,g2-standard,https://cloud.google.com/compute/docs/accelerator-optimized-machines?hl=en#g2-standard-vms
 g2-standard-12,12,48,0,0,1,g2-standard,https://cloud.google.com/compute/docs/accelerator-optimized-machines?hl=en#g2-standard-vms
