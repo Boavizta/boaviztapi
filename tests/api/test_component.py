@@ -781,6 +781,7 @@ async def test_complete_gpu_verbose():
                     "use": "not implemented",
                 },
             },
+            "name": {"status": "ARCHETYPE", "value": "Large GPU"},
             "pwb_surface": {
                 "max": 296.0,
                 "min": 296.0,
