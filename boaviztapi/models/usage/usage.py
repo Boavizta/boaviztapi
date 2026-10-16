@@ -163,7 +163,7 @@ class ModelUsage:
         self._complete_impact_factor("gwppb", "gwppb")
 
     def _complete_gwppf(self):
-        self._complete_impact_factor("gwppf", "gwppf")
+        self._complete_impact_factor("gwppf", "gwpf")
 
     def _complete_gwpplu(self):
         self._complete_impact_factor("gwpplu", "gwpplu")

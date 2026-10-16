@@ -38,3 +38,13 @@ class TestWuElectricityFactors:
     def test_wu_min_max(self):
         assert get_electrical_min_max("wu", "min") == 0.0011184881
         assert get_electrical_min_max("wu", "max") == 0.018603389
+
+
+@pytest.mark.parametrize("impact_type", ["odp", "pm", "lu", "gwpb", "gwplu"])
+def test_min_max_of_zero_is_returned(impact_type):
+    assert get_electrical_min_max(impact_type, "min") == 0.0
+
+
+def test_min_max_unknown_criterion_raises():
+    with pytest.raises(NotImplementedError):
+        get_electrical_min_max("nonexistent", "min")

@@ -33,12 +33,11 @@ def get_electrical_impact_factor(usage_location, impact_type) -> dict:
 
 
 def get_electrical_min_max(impact_type, type) -> float:
-    if impact_factors["electricity"].get("min-max").get(impact_type):
-        if impact_factors["electricity"].get("min-max").get(impact_type).get(type):
-            return (
-                impact_factors["electricity"].get("min-max").get(impact_type).get(type)
-            )
-    raise NotImplementedError
+    # Test for None, not truth: several criteria have a bound of 0.0.
+    value = impact_factors["electricity"]["min-max"].get(impact_type, {}).get(type)
+    if value is None:
+        raise NotImplementedError
+    return value
 
 
 def get_available_countries(reverse=False):

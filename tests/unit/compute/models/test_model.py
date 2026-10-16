@@ -190,3 +190,20 @@ class TestModelUsage:
         assert actual_factors == expected_factors, (
             f"Impact factors mismatch. Expected: {expected_factors}, Got: {actual_factors}"
         )
+
+    @pytest.mark.parametrize(
+        "criterion, location, expected",
+        [
+            ("gwppf", "FRA", (0.0813225, 0.0813225, 0.0813225)),
+            # None uses config.default_location, which is EEE.
+            ("gwppf", None, (0.509427, 0.00880732, 2.12572)),
+        ],
+    )
+    def test_gwp_subcriteria_elec_factors_resolve(self, criterion, location, expected):
+        """gwppf reads the gwpf electricity factor"""
+        usage = ModelUsage(archetype={})
+        if location:
+            usage.usage_location.set_input(location)
+
+        factor = usage.elec_factors[criterion]
+        assert (factor.value, factor.min, factor.max) == pytest.approx(expected)
