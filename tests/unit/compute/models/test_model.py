@@ -89,6 +89,52 @@ class TestComponentGPU:
         raw_die_area = (raw_vram * VRAM_DIE_SURFACE_PER_GB) / raw_vram_dies
         assert gpu.vram_surface.value > raw_die_area
 
+    def test_archetype_name_completes_from_gpu_specs(self):
+        # Mirrors a server.csv GPU archetype: only units, name and vram are set
+        archetype = {
+            "units": {"default": 8},
+            "name": {"default": "NVIDIA A100 SXM4 40GB"},
+            "vram": {"default": 40},
+        }
+        gpu = ComponentGPU(archetype=archetype)
+
+        # Reading the name used to recurse forever
+        assert gpu.name.value == "NVIDIA A100 SXM4 40GB"
+        assert gpu.gpu_surface.value == pytest.approx(1798.0)
+        assert gpu.gpu_surface.is_completed()
+        assert gpu.pwb_surface.value == pytest.approx(105.0)
+        assert gpu.vram_dies.value == 6
+        assert gpu.weight.value == pytest.approx(1.56)
+
+    def test_input_name_completes_from_gpu_specs(self):
+        gpu = ComponentGPU()
+        gpu.name.set_input("NVIDIA L4")
+
+        assert gpu.gpu_surface.value == pytest.approx(390.96)
+        assert gpu.pwb_surface.value == pytest.approx(93.13)
+        assert gpu.vram.value == 24
+        assert gpu.manufacturer.value == "NVIDIA"
+
+    def test_input_values_win_over_gpu_specs(self):
+        gpu = ComponentGPU()
+        gpu.name.set_input("NVIDIA L4")
+        gpu.gpu_surface.set_input(1000)
+        gpu.vram.set_input(48)
+
+        assert gpu.gpu_surface.value == 1000
+        assert gpu.vram.value == 48
+        # Fields that were not input still come from gpu_specs
+        assert gpu.pwb_surface.value == pytest.approx(93.13)
+
+    def test_unknown_name_falls_back_to_default_archetype(self):
+        default = ComponentGPU()
+        gpu = ComponentGPU(
+            archetype={"units": {"default": 1}, "name": {"default": "Unknown GPU"}}
+        )
+
+        assert gpu.gpu_surface.value == default.gpu_surface.value
+        assert gpu.gpu_surface.is_archetype()
+
 
 class TestGPUEmbeddedImpact:
     def test_embedded_impact_scales_linearly_with_units(self):

@@ -61,13 +61,13 @@ class ComponentGPU(Component):
         super().__init__(archetype=archetype, **kwargs)
 
         self.name = Boattribute(
-            complete_function=self._complete_from_name,
             default=get_arch_value(archetype, "name", "default"),
             min=get_arch_value(archetype, "name", "min"),
             max=get_arch_value(archetype, "name", "max"),
         )
 
         self.manufacturer = Boattribute(
+            complete_function=self._complete_from_name,
             default=get_arch_value(archetype, "manufacturer", "default"),
             min=get_arch_value(archetype, "manufacturer", "min"),
             max=get_arch_value(archetype, "manufacturer", "max"),
@@ -128,6 +128,7 @@ class ComponentGPU(Component):
         )
 
         self.vram = Boattribute(
+            complete_function=self._complete_from_name,
             unit="gb",
             default=get_arch_value(archetype, "vram", "default"),
             min=get_arch_value(archetype, "vram", "min"),
@@ -175,6 +176,7 @@ class ComponentGPU(Component):
 
     def _complete_from_name(self):
         if self.name.has_value() and not self.name_completion:
+            self.name_completion = True
             gpu_attributes = attributes_from_gpu_name(self.name.value)
             (
                 name,
@@ -270,6 +272,7 @@ class ComponentGPU(Component):
                 )
 
     def _complete_weight(self):
+        self._complete_from_name()
         if self.weight.is_set():
             return
         self.weight.set_archetype(
@@ -277,6 +280,7 @@ class ComponentGPU(Component):
         )
 
     def _complete_heatsink_weight(self):
+        self._complete_from_name()
         if self.heatsink_weight.is_set():
             return
         self.heatsink_weight.set_archetype(
@@ -284,6 +288,7 @@ class ComponentGPU(Component):
         )
 
     def _complete_pwb_surface(self):
+        self._complete_from_name()
         if self.pwb_surface.is_set():
             return
         self.pwb_surface.set_archetype(
@@ -298,6 +303,7 @@ class ComponentGPU(Component):
         )
 
     def _complete_casing_weight(self):
+        self._complete_from_name()
         if self.casing_weight.is_set():
             return
         self.casing_weight.set_archetype(
@@ -305,6 +311,7 @@ class ComponentGPU(Component):
         )
 
     def _complete_gpu_surface(self):
+        self._complete_from_name()
         if self.gpu_surface.is_set():
             return
         self.gpu_surface.set_archetype(
@@ -314,6 +321,7 @@ class ComponentGPU(Component):
         )
 
     def _complete_vram_dies(self):
+        self._complete_from_name()
         if self.vram_dies.is_set():
             return
         self.vram_dies.set_archetype(
@@ -321,6 +329,7 @@ class ComponentGPU(Component):
         )
 
     def _complete_transport_boat(self):
+        self._complete_from_name()
         if self.transport_boat.is_set():
             return
         self.transport_boat.set_archetype(
@@ -328,6 +337,7 @@ class ComponentGPU(Component):
         )
 
     def _complete_transport_truck(self):
+        self._complete_from_name()
         if self.transport_truck.is_set():
             return
         self.transport_truck.set_archetype(
@@ -335,6 +345,7 @@ class ComponentGPU(Component):
         )
 
     def _complete_transport_plane(self):
+        self._complete_from_name()
         if self.transport_plane.is_set():
             return
         self.transport_plane.set_archetype(
