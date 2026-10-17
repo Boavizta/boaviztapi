@@ -30,16 +30,16 @@ curl -X 'GET' \
             "description": "Total climate change",
             "embedded": {
                 "value": 900.0,
-                "min": 461.8,
-                "max": 2089.0,
+                "min": 459.9,
+                "max": 2087.0,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
-                "value": 8000.0,
-                "min": 405.2,
-                "max": 28890.0
+                "value": 7000.0,
+                "min": 88.12,
+                "max": 36020.0
             }
         },
         "adp": {
@@ -54,9 +54,9 @@ curl -X 'GET' \
                 ]
             },
             "use": {
-                "value": 0.0013,
-                "min": 0.0002333,
-                "max": 0.00678
+                "value": 0.0012,
+                "min": 5.073e-05,
+                "max": 0.008453
             }
         },
         "pe": {
@@ -64,16 +64,16 @@ curl -X 'GET' \
             "description": "Consumption of primary energy",
             "embedded": {
                 "value": 13000.0,
-                "min": 6138.0,
-                "max": 27090.0,
+                "min": 6109.0,
+                "max": 27060.0,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
-                "value": 300000.0,
-                "min": 229.0,
-                "max": 11950000.0,
+                "value": 200000.0,
+                "min": 49.81,
+                "max": 14900000.0,
                 "warnings": [
                     "Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)"
                 ]
@@ -115,16 +115,16 @@ curl -X 'GET' \
             "description": "Total climate change",
             "embedded": {
                 "value": 900.0,
-                "min": 461.8,
-                "max": 2089.0,
+                "min": 459.9,
+                "max": 2087.0,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
-                "value": 8000.0,
-                "min": 405.2,
-                "max": 28890.0
+                "value": 7000.0,
+                "min": 88.12,
+                "max": 36020.0
             }
         }
     },
@@ -167,16 +167,16 @@ curl -X 'GET' \
                     "description": "Total climate change",
                     "embedded": {
                         "value": 40.0,
-                        "min": 21.84,
-                        "max": 163.6,
+                        "min": 19.9,
+                        "max": 161.7,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
                     },
                     "use": {
-                        "value": 10000.0,
-                        "min": 587.5,
-                        "max": 28900.0
+                        "value": 5000.0,
+                        "min": 57.32,
+                        "max": 20620.0
                     }
                 }
             },
@@ -187,7 +187,7 @@ curl -X 'GET' \
                 "max": 2.0
             },
             "die_size": {
-                "value": 521.0,
+                "value": 522.0,
                 "status": "COMPLETED",
                 "unit": "mm2",
                 "source": "Average value for all families",
@@ -202,8 +202,8 @@ curl -X 'GET' \
                 "value": 364.46,
                 "status": "COMPLETED",
                 "unit": "W",
-                "min": 364.46,
-                "max": 364.46
+                "min": 71.126,
+                "max": 520.1
             },
             "time_workload": {
                 "value": 50.0,
@@ -264,9 +264,9 @@ curl -X 'GET' \
                         ]
                     },
                     "use": {
-                        "value": 8000.0,
-                        "min": 263.7,
-                        "max": 36040.0
+                        "value": 400.0,
+                        "min": 16.11,
+                        "max": 1887.0
                     }
                 }
             },
@@ -296,11 +296,11 @@ curl -X 'GET' \
                 "unit": "hours"
             },
             "avg_power": {
-                "value": 72.704,
+                "value": 32.368,
                 "status": "COMPLETED",
                 "unit": "W",
-                "min": 54.52799999999999,
-                "max": 90.88
+                "min": 19.991999999999997,
+                "max": 47.599999999999994
             },
             "time_workload": {
                 "value": 50.0,
@@ -331,10 +331,11 @@ curl -X 'GET' \
             },
             "params": {
                 "value": {
-                    "a": 9.088
+                    "a": 4.76,
+                    "idle_ratio": 0.7
                 },
                 "status": "COMPLETED",
-                "source": "(ram_electrical_factor_per_go : 0.284) * (ram_capacity: 32.0) "
+                "source": "((dimm_base_power: 3.0) + (dimm_power_per_gb: 0.055) * (ram_capacity: 32.0)) * ((idle_ratio: 0.7) + (1 - idle_ratio) * workload / 100)"
             },
             "gwp_factor": {
                 "value": 0.38,
@@ -480,11 +481,11 @@ curl -X 'GET' \
             }
         },
         "avg_power": {
-            "value": 581.42812,
+            "value": 527.78124,
             "status": "COMPLETED",
             "unit": "W",
-            "min": 502.78559999999993,
-            "max": 728.544
+            "min": 109.34159999999999,
+            "max": 908.3200000000002
         },
         "usage_location": {
             "value": "EEE",
@@ -596,17 +597,17 @@ curl -X 'POST' \
             "unit": "kgCO2eq",
             "description": "Total climate change",
             "embedded": {
-                "value": 1606.0,
-                "min": 1606.0,
-                "max": 1606.0,
+                "value": 1604.0,
+                "min": 1604.0,
+                "max": 1604.0,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
-                "value": 10000.0,
-                "min": 563.4,
-                "max": 36960.0
+                "value": 8000.0,
+                "min": 121.8,
+                "max": 37960.0
             }
         },
         "adp": {
@@ -621,26 +622,26 @@ curl -X 'POST' \
                 ]
             },
             "use": {
-                "value": 0.0017,
-                "min": 0.0003243,
-                "max": 0.008674
+                "value": 0.0013,
+                "min": 7.009e-05,
+                "max": 0.008909
             }
         },
         "pe": {
             "unit": "MJ",
             "description": "Consumption of primary energy",
             "embedded": {
-                "value": 20880.0,
-                "min": 20880.0,
-                "max": 20880.0,
+                "value": 20840.0,
+                "min": 20840.0,
+                "max": 20840.0,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
                 "value": 300000.0,
-                "min": 318.4,
-                "max": 15290000.0,
+                "min": 68.82,
+                "max": 15700000.0,
                 "warnings": [
                     "Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)"
                 ]
@@ -692,8 +693,8 @@ curl -X 'POST' \
             "description": "Total climate change",
             "embedded": {
                 "value": 240.0,
-                "min": 115.5,
-                "max": 522.2,
+                "min": 115.0,
+                "max": 521.8,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
@@ -725,9 +726,9 @@ curl -X 'POST' \
             "unit": "MJ",
             "description": "Consumption of primary energy",
             "embedded": {
-                "value": 3200.0,
-                "min": 1535.0,
-                "max": 6773.0,
+                "value": 3100.0,
+                "min": 1527.0,
+                "max": 6765.0,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
@@ -804,16 +805,16 @@ curl -X 'POST' \
                     "description": "Total climate change",
                     "embedded": {
                         "value": 10.0,
-                        "min": 5.459,
-                        "max": 40.91,
+                        "min": 4.976,
+                        "max": 40.42,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
                     },
                     "use": {
-                        "value": 2400.0,
-                        "min": 146.9,
-                        "max": 7226.0
+                        "value": 1200.0,
+                        "min": 14.33,
+                        "max": 5156.0
                     }
                 },
                 "adp": {
@@ -828,9 +829,9 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 0.0004,
-                        "min": 8.454e-05,
-                        "max": 0.001696
+                        "value": 0.0002,
+                        "min": 8.249e-06,
+                        "max": 0.00121
                     }
                 },
                 "pe": {
@@ -838,16 +839,19 @@ curl -X 'POST' \
                     "description": "Consumption of primary energy",
                     "embedded": {
                         "value": 150.0,
-                        "min": 89.96,
-                        "max": 566.8,
+                        "min": 83.46,
+                        "max": 560.3,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
                     },
                     "use": {
-                        "value": 100000.0,
-                        "min": 83.01,
-                        "max": 2989000.0
+                        "value": 40000.0,
+                        "min": 8.1,
+                        "max": 2133000.0,
+                        "warnings": [
+                            "Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)"
+                        ]
                     }
                 }
             },
@@ -858,7 +862,7 @@ curl -X 'POST' \
                 "max": 2.0
             },
             "die_size": {
-                "value": 521.0,
+                "value": 522.0,
                 "status": "COMPLETED",
                 "unit": "mm2",
                 "source": "Average value for all families",
@@ -873,8 +877,8 @@ curl -X 'POST' \
                 "value": 364.46,
                 "status": "COMPLETED",
                 "unit": "W",
-                "min": 364.46,
-                "max": 364.46
+                "min": 71.126,
+                "max": 520.1
             },
             "time_workload": {
                 "value": 50.0,
@@ -924,7 +928,7 @@ curl -X 'POST' \
                 "value": 6.42317e-08,
                 "status": "DEFAULT",
                 "unit": "kg Sbeq/kWh",
-                "source": "ADEME Base IMPACTS \u00ae",
+                "source": "ADEME Base IMPACTS ®",
                 "min": 1.324e-08,
                 "max": 2.65575e-07
             },
@@ -951,9 +955,9 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 1900.0,
-                        "min": 65.92,
-                        "max": 9009.0
+                        "value": 110.0,
+                        "min": 4.028,
+                        "max": 471.9
                     }
                 },
                 "adp": {
@@ -968,9 +972,9 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 0.0003,
-                        "min": 3.795e-05,
-                        "max": 0.002114
+                        "value": 2e-05,
+                        "min": 2.319e-06,
+                        "max": 0.0001107
                     }
                 },
                 "pe": {
@@ -985,9 +989,12 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 100000.0,
-                        "min": 37.26,
-                        "max": 3727000.0
+                        "value": 4000.0,
+                        "min": 2.277,
+                        "max": 195200.0,
+                        "warnings": [
+                            "Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)"
+                        ]
                     }
                 }
             },
@@ -1017,11 +1024,11 @@ curl -X 'POST' \
                 "unit": "hours"
             },
             "avg_power": {
-                "value": 72.704,
+                "value": 32.368,
                 "status": "COMPLETED",
                 "unit": "W",
-                "min": 54.52799999999999,
-                "max": 90.88
+                "min": 19.991999999999997,
+                "max": 47.599999999999994
             },
             "time_workload": {
                 "value": 50.0,
@@ -1052,10 +1059,11 @@ curl -X 'POST' \
             },
             "params": {
                 "value": {
-                    "a": 9.088
+                    "a": 4.76,
+                    "idle_ratio": 0.7
                 },
                 "status": "COMPLETED",
-                "source": "(ram_electrical_factor_per_go : 0.284) * (ram_capacity: 32.0) "
+                "source": "((dimm_base_power: 3.0) + (dimm_power_per_gb: 0.055) * (ram_capacity: 32.0)) * ((idle_ratio: 0.7) + (1 - idle_ratio) * workload / 100)"
             },
             "gwp_factor": {
                 "value": 0.38,
@@ -1069,7 +1077,7 @@ curl -X 'POST' \
                 "value": 6.42317e-08,
                 "status": "DEFAULT",
                 "unit": "kg Sbeq/kWh",
-                "source": "ADEME Base IMPACTS \u00ae",
+                "source": "ADEME Base IMPACTS ®",
                 "min": 1.324e-08,
                 "max": 2.65575e-07
             },
@@ -1115,8 +1123,8 @@ curl -X 'POST' \
                     "description": "Consumption of primary energy",
                     "embedded": {
                         "value": 140.0,
-                        "min": 72.55,
-                        "max": 870.8,
+                        "min": 71.82,
+                        "max": 869.3,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
@@ -1357,7 +1365,7 @@ curl -X 'POST' \
             "value": 4.85798e-08,
             "status": "COMPLETED",
             "unit": "kg Sbeq/kWh",
-            "source": "ADEME Base IMPACTS \u00ae",
+            "source": "ADEME Base IMPACTS ®",
             "min": 4.85798e-08,
             "max": 4.85798e-08
         },
@@ -1419,16 +1427,16 @@ curl -X 'POST' \
             "description": "Total climate change",
             "embedded": {
                 "value": 240.0,
-                "min": 115.5,
-                "max": 522.2,
+                "min": 115.0,
+                "max": 521.8,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
-                "value": 650.0,
-                "min": 565.2,
-                "max": 803.5
+                "value": 610.0,
+                "min": 537.6,
+                "max": 742.1
             }
         },
         "adp": {
@@ -1443,26 +1451,26 @@ curl -X 'POST' \
                 ]
             },
             "use": {
-                "value": 0.00032,
-                "min": 0.0002802,
-                "max": 0.0003983
+                "value": 0.0003,
+                "min": 0.0002665,
+                "max": 0.0003679
             }
         },
         "pe": {
             "unit": "MJ",
             "description": "Consumption of primary energy",
             "embedded": {
-                "value": 3200.0,
-                "min": 1535.0,
-                "max": 6773.0,
+                "value": 3100.0,
+                "min": 1527.0,
+                "max": 6765.0,
                 "warnings": [
                     "End of life is not included in the calculation"
                 ]
             },
             "use": {
-                "value": 75000.0,
-                "min": 65110.0,
-                "max": 92560.0
+                "value": 70000.0,
+                "min": 61920.0,
+                "max": 85490.0
             }
         }
     },
@@ -1531,16 +1539,16 @@ curl -X 'POST' \
                     "description": "Total climate change",
                     "embedded": {
                         "value": 10.0,
-                        "min": 5.459,
-                        "max": 40.91,
+                        "min": 4.976,
+                        "max": 40.42,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
                     },
                     "use": {
-                        "value": 848.4,
-                        "min": 848.4,
-                        "max": 848.4
+                        "value": 424.2,
+                        "min": 424.2,
+                        "max": 424.2
                     }
                 },
                 "adp": {
@@ -1555,9 +1563,9 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 0.0004206,
-                        "min": 0.0004206,
-                        "max": 0.0004206
+                        "value": 0.0002103,
+                        "min": 0.0002103,
+                        "max": 0.0002103
                     }
                 },
                 "pe": {
@@ -1565,16 +1573,16 @@ curl -X 'POST' \
                     "description": "Consumption of primary energy",
                     "embedded": {
                         "value": 150.0,
-                        "min": 89.96,
-                        "max": 566.8,
+                        "min": 83.46,
+                        "max": 560.3,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
                     },
                     "use": {
-                        "value": 97730.0,
-                        "min": 97730.0,
-                        "max": 97730.0
+                        "value": 48860.0,
+                        "min": 48860.0,
+                        "max": 48860.0
                     }
                 }
             },
@@ -1585,7 +1593,7 @@ curl -X 'POST' \
                 "max": 2.0
             },
             "die_size": {
-                "value": 521.0,
+                "value": 522.0,
                 "status": "COMPLETED",
                 "unit": "mm2",
                 "source": "Average value for all families",
@@ -1649,7 +1657,7 @@ curl -X 'POST' \
                 "value": 4.85798e-08,
                 "status": "COMPLETED",
                 "unit": "kg Sbeq/kWh",
-                "source": "ADEME Base IMPACTS \u00ae",
+                "source": "ADEME Base IMPACTS ®",
                 "min": 4.85798e-08,
                 "max": 4.85798e-08
             },
@@ -1676,9 +1684,9 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 500.0,
-                        "min": 280.9,
-                        "max": 780.2
+                        "value": 32.0,
+                        "min": 23.78,
+                        "max": 39.64
                     }
                 },
                 "adp": {
@@ -1693,9 +1701,9 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 0.00025,
-                        "min": 0.0001392,
-                        "max": 0.0003867
+                        "value": 1.57e-05,
+                        "min": 1.179e-05,
+                        "max": 1.965e-05
                     }
                 },
                 "pe": {
@@ -1710,9 +1718,9 @@ curl -X 'POST' \
                         ]
                     },
                     "use": {
-                        "value": 58000.0,
-                        "min": 32350.0,
-                        "max": 89870.0
+                        "value": 3700.0,
+                        "min": 2740.0,
+                        "max": 4566.0
                     }
                 }
             },
@@ -1742,11 +1750,11 @@ curl -X 'POST' \
                 "unit": "hours"
             },
             "avg_power": {
-                "value": 72.704,
+                "value": 36.9376,
                 "status": "COMPLETED",
                 "unit": "W",
-                "min": 54.52799999999999,
-                "max": 90.88
+                "min": 27.703200000000002,
+                "max": 46.172000000000004
             },
             "time_workload": {
                 "value": 90.0,
@@ -1775,10 +1783,11 @@ curl -X 'POST' \
             },
             "params": {
                 "value": {
-                    "a": 9.088
+                    "a": 4.76,
+                    "idle_ratio": 0.7
                 },
                 "status": "COMPLETED",
-                "source": "(ram_electrical_factor_per_go : 0.284) * (ram_capacity: 32.0) "
+                "source": "((dimm_base_power: 3.0) + (dimm_power_per_gb: 0.055) * (ram_capacity: 32.0)) * ((idle_ratio: 0.7) + (1 - idle_ratio) * workload / 100)"
             },
             "gwp_factor": {
                 "value": 0.098,
@@ -1792,7 +1801,7 @@ curl -X 'POST' \
                 "value": 4.85798e-08,
                 "status": "COMPLETED",
                 "unit": "kg Sbeq/kWh",
-                "source": "ADEME Base IMPACTS \u00ae",
+                "source": "ADEME Base IMPACTS ®",
                 "min": 4.85798e-08,
                 "max": 4.85798e-08
             },
@@ -1838,8 +1847,8 @@ curl -X 'POST' \
                     "description": "Consumption of primary energy",
                     "embedded": {
                         "value": 140.0,
-                        "min": 72.55,
-                        "max": 870.8,
+                        "min": 71.82,
+                        "max": 869.3,
                         "warnings": [
                             "End of life is not included in the calculation"
                         ]
@@ -2044,11 +2053,11 @@ curl -X 'POST' \
             }
         },
         "avg_power": {
-            "value": 753.87592,
+            "value": 706.306608,
             "status": "COMPLETED",
             "unit": "W",
-            "min": 658.3776,
-            "max": 936.0
+            "min": 626.18784,
+            "max": 864.4672
         },
         "time_workload": {
             "value": 90.0,
@@ -2094,7 +2103,7 @@ curl -X 'POST' \
             "value": 4.85798e-08,
             "status": "COMPLETED",
             "unit": "kg Sbeq/kWh",
-            "source": "ADEME Base IMPACTS \u00ae",
+            "source": "ADEME Base IMPACTS ®",
             "min": 4.85798e-08,
             "max": 4.85798e-08
         },

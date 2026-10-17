@@ -144,6 +144,7 @@ $$
 $$
 
 $\text{CP}_{\text{CPU_server}}(\text{workload})$ and $\text{CP}_{\text{RAM_server}}(\text{workload})$ depend on the technical
-characteristics of the RAM and CPU.
+characteristics of the RAM and CPU. For the RAM, the capacity of the strips is assumed from the memory type of the
+platform's CPU (see [RAM consumption profile](../components/ram.md#cloud-instances)).
 $\text{other_consumption_ratio}$ is used to account for the electrical consumption of the other components (other than RAM
 and CPU).

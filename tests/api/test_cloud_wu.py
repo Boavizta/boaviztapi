@@ -28,7 +28,7 @@ async def test_cloud_wu_with_known_location():
 
     # Use phase should have numeric values (not "not implemented")
     assert isinstance(wu["use"], dict)
-    assert wu["use"]["value"] == 6.7
+    assert wu["use"]["value"] == 5.8
     assert wu["use"]["min"] > 0
     assert wu["use"]["max"] > wu["use"]["value"]
 
@@ -90,7 +90,7 @@ async def test_server_wu_with_known_location():
     wu = data["impacts"]["wu"]
 
     assert isinstance(wu["use"], dict)
-    assert wu["use"]["value"] == 50.0
+    assert wu["use"]["value"] == 40.0
     assert wu["use"]["min"] > 0
     assert wu["use"]["max"] > wu["use"]["value"]
 

@@ -116,7 +116,7 @@ def test_verbose_component_ram(complete_ram_model):
                 "warnings": ["End of life is not included in the calculation"],
             },
             "unit": "kgSbeq",
-            "use": {"max": 0.0007612, "min": 3.783e-05, "value": 0.00018},
+            "use": {"max": 0.0003987, "min": 1.387e-05, "value": 8e-05},
         },
         "gwp": {
             "description": "Total climate change",
@@ -127,7 +127,7 @@ def test_verbose_component_ram(complete_ram_model):
                 "warnings": ["End of life is not included in the calculation"],
             },
             "unit": "kgCO2eq",
-            "use": {"max": 2579.0, "min": 65.92, "value": 1100.0},
+            "use": {"max": 1351.0, "min": 24.17, "value": 500.0},
         },
         "pe": {
             "description": "Consumption of primary energy",
@@ -138,16 +138,7 @@ def test_verbose_component_ram(complete_ram_model):
                 "warnings": ["End of life is not included in the calculation"],
             },
             "unit": "MJ",
-            "use": {
-                "max": 1342000.0,
-                "min": 37.26,
-                "value": 40000.0,
-                "warnings": [
-                    "Uncertainty from technical characteristics is "
-                    "very important. Results should be interpreted "
-                    "with caution (see min and max values)"
-                ],
-            },
+            "use": {"max": 702700.0, "min": 13.66, "value": 20000.0},
         },
     }
 

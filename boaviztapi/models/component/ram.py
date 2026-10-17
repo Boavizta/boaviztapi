@@ -1,4 +1,5 @@
 import os
+from typing import Optional
 
 import pandas as pd
 
@@ -51,30 +52,43 @@ class ComponentRAM(Component):
     # IMPACT COMPUTATION
 
     def model_power_consumption(
-        self,
+        self, dimm_capacity: Optional[float] = None
     ) -> ImpactFactor:
+        """Power of all the units of this RAM bank.
+
+        dimm_capacity overrides the module capacity used by the per-DIMM model:
+        the bank's total capacity is then counted as modules of that size. Cloud
+        platforms use it because their real DIMM layout is unknown.
+        """
+        if dimm_capacity is None:
+            dimm_capacity = self.capacity.value
+        dimms_per_unit = self.capacity.value / dimm_capacity if dimm_capacity else 0
+
         self.usage.consumption_profile = RAMConsumptionProfileModel()
         self.usage.consumption_profile.compute_consumption_profile_model(
-            ram_capacity=self.capacity.value
+            ram_capacity=dimm_capacity
         )
 
         if type(self.usage.time_workload.value) in (float, int):
-            self.usage.avg_power.set_completed(
-                self.usage.consumption_profile.apply_consumption_profile(
-                    self.usage.time_workload.value
-                )
-            )
+            apply_workload = self.usage.consumption_profile.apply_consumption_profile
         else:
-            self.usage.avg_power.set_completed(
-                self.usage.consumption_profile.apply_multiple_workloads(
-                    self.usage.time_workload.value
-                )
-            )
+            apply_workload = self.usage.consumption_profile.apply_multiple_workloads
+        self.usage.avg_power.set_completed(
+            apply_workload(self.usage.time_workload.value),
+            min=apply_workload(self.usage.time_workload.min),
+            max=apply_workload(self.usage.time_workload.max),
+        )
 
         return ImpactFactor(
-            value=rd.round_to_sigfig(self.usage.avg_power.value, 5) * self.units.value,
-            min=rd.round_to_sigfig(self.usage.avg_power.min, 5) * self.units.min,
-            max=rd.round_to_sigfig(self.usage.avg_power.max, 5) * self.units.max,
+            value=rd.round_to_sigfig(self.usage.avg_power.value, 5)
+            * self.units.value
+            * dimms_per_unit,
+            min=rd.round_to_sigfig(self.usage.avg_power.min, 5)
+            * self.units.min
+            * dimms_per_unit,
+            max=rd.round_to_sigfig(self.usage.avg_power.max, 5)
+            * self.units.max
+            * dimms_per_unit,
         )
 
     # COMPLETION

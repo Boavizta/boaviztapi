@@ -1,0 +1,30 @@
+cpu_family,memory_type
+Sandy Bridge,DDR3
+Ivy Bridge,DDR3
+Haswell,DDR4
+Broadwell,DDR4
+Skylake,DDR4
+Kaby Lake,DDR4
+Coffee Lake,DDR4
+Comet Lake,DDR4
+Cascade Lake,DDR4
+Cooper Lake,DDR4
+Ice Lake,DDR4
+Rocket Lake,DDR4
+Naples,DDR4
+Snowy Owl,DDR4
+Rome,DDR4
+Milan,DDR4
+Graviton,DDR4
+Graviton2,DDR4
+Quicksilver,DDR4
+Mystique,DDR4
+Tonga,DDR4
+Sapphire Rapids,DDR5
+Sapphire Rapids HBM,DDR5
+Emerald Rapids,DDR5
+Granite Rapids,DDR5
+Genoa,DDR5
+Graviton3,DDR5
+Graviton3E,DDR5
+Graviton4,DDR5
