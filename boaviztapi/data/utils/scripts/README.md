@@ -98,8 +98,9 @@ Notes on the mapping:
 - Azure names sizes `Standard_D2ads_v5`; both sides are lowercased and stripped
   of the `standard_` prefix before matching.
 - `ssd_storage` is compared with the temporary disk (`MaxResourceVolumeMB`) plus
-  any local NVMe (`NvmeDiskSizeInMiB`), both in GiB, within a 5% tolerance
-  (`--storage-tolerance`).
+  any local NVMe (`NvmeDiskSizeInMiB`). The temporary disk is kept in GiB, as
+  Azure quotes it. The NVMe is converted to decimal GB, as the drives are
+  labelled. The comparison has a 5% tolerance (`--storage-tolerance`).
 - Azure reports `GPUs=1` for sizes that get a partition of a GPU (NVv4,
   NVadsA10_v5), so a fractional `gpu_units` is accepted against 1.
 - Constrained-vCPU sizes (`E4-2ds_v5`) and `_Promo` sizes are not listed as
