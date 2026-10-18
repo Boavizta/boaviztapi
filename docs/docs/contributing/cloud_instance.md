@@ -10,7 +10,7 @@ To add cloud instances for a cloud provider, you will need to create a new CSV f
 |-------------|--------------|-------|----------------------------------|-------------|
 | id          | **Required** |       | Instance identifier              | c5.12xlarge |
 | vcpu        | **Required** | unit  | Number of vCPU                   | 48          |
-| memory      | **Required** | GB    | RAM quantity                     | 96          |
+| memory      | **Required** | GiB   | RAM quantity                     | 96          |
 | ssd_storage |              | GB    | SSD storage quantity (can be 0)  | 0           |
 | hdd_storage |              | GB    | HDD storage quantity (can be 0)  | 0           |
 | gpu_units   |              | unit  | GPU quantity [^1]                | 1           |
@@ -18,6 +18,15 @@ To add cloud instances for a cloud provider, you will need to create a new CSV f
 
 [^1]: May be fractional (`0.125`) for instances that share a partitioned GPU.
 See [GPU units](#gpu-units).
+
+### Units
+
+Use the capacity as the provider or manufacturer labels it:
+
+* `memory` is in GiB. RAM is sized in GiB, and cloud providers quote it that way.
+* `ssd_storage` and `hdd_storage` are in decimal GB for drives, because drives are
+  sold that way, for example 1.92 TB is `1920`. When the provider quotes a disk in
+  GiB, such as an Azure temporary disk, keep the number as quoted.
 
 
 ### Platform

@@ -195,13 +195,19 @@ def load_azure_sizes(
     return sizes
 
 
+def nvme_gb(entry: dict) -> float:
+    """Local NVMe capacity in decimal GB, as the drives are labelled."""
+    return entry["nvme_disk_mib"] * 1024**2 / 1e9
+
+
 def azure_specs(entry: dict) -> dict:
     """Azure capabilities expressed in the units used by azure.csv."""
     return {
         "vcpu": float(entry["vcpu"]),
         "memory": entry["memory"],
-        # azure.csv records the temporary disk plus any local NVMe, in GiB
-        "ssd_storage": (entry["temp_disk_mib"] + entry["nvme_disk_mib"]) / 1024,
+        # azure.csv records the temporary disk in GiB plus any local NVMe in
+        # decimal GB, as the manufacturer labels it
+        "ssd_storage": entry["temp_disk_mib"] / 1024 + nvme_gb(entry),
         "hdd_storage": 0.0,
         "gpu_units": entry["gpus"],
     }
@@ -368,8 +374,8 @@ def print_report(
                 detail = ""
                 if field == "ssd_storage" and entry["nvme_disk_mib"]:
                     detail = (
-                        f"  (temp {fmt_num(entry['temp_disk_mib'] / 1024)}"
-                        f" + nvme {fmt_num(entry['nvme_disk_mib'] / 1024)} GiB)"
+                        f"  (temp {fmt_num(entry['temp_disk_mib'] / 1024)} GiB"
+                        f" + nvme {fmt_num(nvme_gb(entry))} GB)"
                     )
                 print(f"    {field}: boavizta={fmt_num(b)}  azure={fmt_num(a)}{detail}")
 
@@ -386,7 +392,7 @@ def write_csv_report(
             fmt_num(a["vcpu"]),
             fmt_num(a["memory"]),
             fmt_num(entry["temp_disk_mib"] / 1024),
-            fmt_num(entry["nvme_disk_mib"] / 1024),
+            fmt_num(nvme_gb(entry)),
             fmt_num(a["gpu_units"]),
             series(normalise(name)),
             entry["arch"],
@@ -402,7 +408,7 @@ def write_csv_report(
                 "vcpu",
                 "memory_gib",
                 "temp_disk_gib",
-                "nvme_disk_gib",
+                "nvme_disk_gb",
                 "gpu_units",
                 "series",
                 "architecture",
