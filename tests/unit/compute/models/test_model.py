@@ -211,6 +211,31 @@ class TestServerGPUPower:
         )
 
 
+class TestServerRAMPower:
+    @staticmethod
+    def _build_ram(units, capacity):
+        ram = ComponentRAM()
+        ram.units.set_input(units)
+        ram.capacity.set_input(capacity)
+        return ram
+
+    def test_each_ram_bank_gets_its_own_power(self):
+        """Each RAM entry of a server must report its own power, not the
+        running total of the RAM entries before it."""
+        server = DeviceServer()
+        server.ram = [self._build_ram(4, 32), self._build_ram(2, 64)]
+        server.usage = ModelUsageServer()
+
+        server.model_power_consumption()
+
+        for ram in server.ram:
+            expected = self._build_ram(ram.units.value, ram.capacity.value)
+            expected_power = expected.model_power_consumption()
+            assert ram.usage.avg_power.value == pytest.approx(expected_power.value)
+            assert ram.usage.avg_power.min == pytest.approx(expected_power.min)
+            assert ram.usage.avg_power.max == pytest.approx(expected_power.max)
+
+
 class TestModelUsage:
     def test_all_impact_criterias_available_in_elec_factors(self):
         """Test that all factors in IMPACT_CRITERIAS are available in ModelUsage.elec_factors"""
