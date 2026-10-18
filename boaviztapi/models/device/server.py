@@ -195,12 +195,15 @@ class DeviceServer(Device):
 
         conso_ram = ImpactFactor(value=0, min=0, max=0)
         for ram_unit in self.ram:
-            conso_ram.value = conso_ram.value + ram_unit.model_power_consumption().value
-            conso_ram.min = conso_ram.min + ram_unit.model_power_consumption().min
-            conso_ram.max = conso_ram.max + ram_unit.model_power_consumption().max
+            conso_ram_unit = ram_unit.model_power_consumption()
             ram_unit.usage.avg_power.set_completed(
-                value=conso_ram.value, min=conso_ram.min, max=conso_ram.max
+                value=conso_ram_unit.value,
+                min=conso_ram_unit.min,
+                max=conso_ram_unit.max,
             )
+            conso_ram.value = conso_ram.value + conso_ram_unit.value
+            conso_ram.min = conso_ram.min + conso_ram_unit.min
+            conso_ram.max = conso_ram.max + conso_ram_unit.max
 
         # The GPU component has no power model: only account for its power when
         # the user explicitly provides an average power per GPU.
