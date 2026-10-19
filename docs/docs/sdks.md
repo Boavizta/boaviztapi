@@ -1,7 +1,6 @@
 # SDKs
 
-You can call BoaviztAPI directly over HTTP (see [Routes](Reference/routes.md)). Client libraries
-also exist for some languages. They are maintained by the community, not by Boavizta: report
+Client libraries also exist for some languages. They are maintained by the community, not by Boavizta: report
 bugs to their own repositories.
 
 | Language | Library | Maintainer | Status |
