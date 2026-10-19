@@ -59,4 +59,6 @@ Only [power consumption](../usage/power.md) is implemented.
 
 When part of a [server](../devices/server.md) or a [cloud instance](../services/cloud.md), each drive is assumed to draw a constant 6.4 W (min 5.4 W, max 9.4 W), independently of the workload. HDD power is close to constant with load since the platters spin whether the drive is busy or not.
 
-Sources: [LBNL, 2024 United States Data Center Energy Usage Report](https://eta-publications.lbl.gov/sites/default/files/2024-12/lbnl-2024-united-states-data-center-energy-usage-report_1.pdf) (6.4 W per HDD in 2025), [Seagate Exos X20 review](https://www.kitguru.net/components/hard-drives/simon-crisp/seagate-exos-x20-20tb-hdd-review/) (5.4 W idle, 9.4 W random read).
+Sources: [LBNL, 2024 United States Data Center Energy Usage Report](https://eta-publications.lbl.gov/sites/default/files/2024-12/lbnl-2024-united-states-data-center-energy-usage-report_1.pdf) (6.4 W per HDD in 2025), [Seagate Exos X20 review](https://www.kitguru.net/components/hard-drives/simon-crisp/seagate-exos-x20-20tb-hdd-review/) (5.4 W idle, 9.4 W random read), [cloud-carbon-exporter](https://pkg.go.dev/github.com/superdango/cloud-carbon-exporter/model/primitives) (7.5 W per HDD).
+
+Power is modelled per drive rather than per TB because it does not grow with capacity: Toshiba's enterprise HDDs went from 6 TB at 11.3 W in 2013 to 16 TB at 7.7 W in 2019 ([Toshiba, 1 Petabyte of Online Storage white paper](https://www.toshiba-storage.com/wp-content/uploads/2020/09/Toshiba_WP_1Petabyte_of_Online_Storage_EN_final.pdf)).
