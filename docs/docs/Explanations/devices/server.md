@@ -20,7 +20,7 @@ In addition to the characteristics available for [usage](../usage/usage.md), you
 
 | Name                        | Unit           | Default value (default;min;max) | Description                                                         | Example |
 |-----------------------------|----------------|---------------------------------|---------------------------------------------------------------------|---------|
-| other_consumption_ratio     | None           | 0.33;0.2;0.6                    | Power consumption ratio of other components relative to RAM and CPU | 0.2     |
+| other_consumption_ratio     | None           | 0.33;0.2;0.6                    | Power consumption ratio of other components (except disks) relative to RAM and CPU | 0.2     |
 
 ## Complete
 
@@ -118,9 +118,13 @@ $$
 \text{CP}(\text{workload}) = (\text{CP}_{\text{CPU}}(\text{workload})
 + \text{CP}_{\text{RAM}}(\text{workload}))
 * (1 + \text{other_consumption_ratio})
++ \text{P}_{\text{disks}}
 $$
 
 $\text{CP}_{\text{CPU}}(\text{workload})$ and $\text{CP}_{\text{RAM}}(\text{workload})$ depend on the technical
 characteristics of the RAM and CPU.
-$\text{other_consumption_ratio}$ is used to account for the electrical consumption of the other components (other than RAM
-and CPU).
+$\text{P}_{\text{disks}}$ is the power of the local drives: a constant power per drive (see [SSD](../components/ssd.md#usage-impact)
+and [HDD](../components/hdd.md#usage-impact)) multiplied by the number of drives. It is added outside of
+$\text{other_consumption_ratio}$, so that the drives are not counted twice.
+$\text{other_consumption_ratio}$ is used to account for the electrical consumption of the other components (other than RAM,
+CPU and disks).

@@ -40,7 +40,7 @@ async def test_complete_config_server():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgSbeq",
-                "use": {"max": 0.01032, "min": 4.409e-05, "value": 0.001},
+                "use": {"max": 0.01087, "min": 5.093e-05, "value": 0.001},
             },
             "gwp": {
                 "description": "Total climate change",
@@ -51,7 +51,7 @@ async def test_complete_config_server():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 34980.0, "min": 76.82, "value": 7000.0},
+                "use": {"max": 36840.0, "min": 88.75, "value": 7000.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -63,8 +63,8 @@ async def test_complete_config_server():
                 },
                 "unit": "MJ",
                 "use": {
-                    "max": 18200000.0,
-                    "min": 43.42,
+                    "max": 19160000.0,
+                    "min": 50.16,
                     "value": 200000.0,
                     "warnings": [
                         "Uncertainty from technical characteristics is very important. "
@@ -100,7 +100,7 @@ async def test_empty_config_server():
                     ],
                 },
                 "unit": "kgSbeq",
-                "use": {"max": 0.08879, "min": 1.799e-05, "value": 0.001},
+                "use": {"max": 0.08897, "min": 1.892e-05, "value": 0.001},
             },
             "gwp": {
                 "description": "Total climate change",
@@ -118,7 +118,7 @@ async def test_empty_config_server():
                     ],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 300900.0, "min": 31.35, "value": 8000.0},
+                "use": {"max": 301500.0, "min": 32.96, "value": 8000.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -137,8 +137,8 @@ async def test_empty_config_server():
                 },
                 "unit": "MJ",
                 "use": {
-                    "max": 156500000.0,
-                    "min": 17.72,
+                    "max": 156800000.0,
+                    "min": 18.63,
                     "value": 300000.0,
                     "warnings": [
                         "Uncertainty from technical "
@@ -183,7 +183,7 @@ async def test_dell_r740_server():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgSbeq",
-                "use": {"max": 0.01074, "min": 5.139e-05, "value": 0.001},
+                "use": {"max": 0.01093, "min": 5.232e-05, "value": 0.001},
             },
             "gwp": {
                 "description": "Total climate change",
@@ -194,7 +194,7 @@ async def test_dell_r740_server():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 36410.0, "min": 89.55, "value": 7000.0},
+                "use": {"max": 37040.0, "min": 91.16, "value": 7000.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -206,9 +206,9 @@ async def test_dell_r740_server():
                 },
                 "unit": "MJ",
                 "use": {
-                    "max": 18940000.0,
-                    "min": 50.61,
-                    "value": 200000.0,
+                    "max": 19270000.0,
+                    "min": 51.52,
+                    "value": 300000.0,
                     "warnings": [
                         "Uncertainty from technical characteristics is very important. "
                         "Results should be interpreted with caution (see "
@@ -246,7 +246,7 @@ async def test_partial_server_1():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgSbeq",
-                "use": {"max": 0.01032, "min": 4.409e-05, "value": 0.001},
+                "use": {"max": 0.01087, "min": 5.093e-05, "value": 0.001},
             },
             "gwp": {
                 "description": "Total climate change",
@@ -262,7 +262,7 @@ async def test_partial_server_1():
                     ],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 34980.0, "min": 76.82, "value": 7000.0},
+                "use": {"max": 36840.0, "min": 88.75, "value": 7000.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -279,8 +279,8 @@ async def test_partial_server_1():
                 },
                 "unit": "MJ",
                 "use": {
-                    "max": 18200000.0,
-                    "min": 43.42,
+                    "max": 19160000.0,
+                    "min": 50.16,
                     "value": 200000.0,
                     "warnings": [
                         "Uncertainty from technical characteristics is very important. "
@@ -326,7 +326,7 @@ async def test_partial_server_2():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgSbeq",
-                "use": {"max": 0.01032, "min": 4.409e-05, "value": 0.001},
+                "use": {"max": 0.01087, "min": 5.093e-05, "value": 0.001},
             },
             "gwp": {
                 "description": "Total climate change",
@@ -337,7 +337,7 @@ async def test_partial_server_2():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 34980.0, "min": 76.82, "value": 7000.0},
+                "use": {"max": 36840.0, "min": 88.75, "value": 7000.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -349,8 +349,8 @@ async def test_partial_server_2():
                 },
                 "unit": "MJ",
                 "use": {
-                    "max": 18200000.0,
-                    "min": 43.42,
+                    "max": 19160000.0,
+                    "min": 50.16,
                     "value": 200000.0,
                     "warnings": [
                         "Uncertainty from technical characteristics is very important. "
@@ -395,7 +395,7 @@ async def test_partial_server_3():
                     ],
                 },
                 "unit": "kgSbeq",
-                "use": {"max": 0.07773, "min": 2.147e-05, "value": 0.001},
+                "use": {"max": 0.07792, "min": 2.24e-05, "value": 0.001},
             },
             "gwp": {
                 "description": "Total climate change",
@@ -413,7 +413,7 @@ async def test_partial_server_3():
                     ],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 263400.0, "min": 37.42, "value": 7000.0},
+                "use": {"max": 264000.0, "min": 39.03, "value": 7000.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -432,8 +432,8 @@ async def test_partial_server_3():
                 },
                 "unit": "MJ",
                 "use": {
-                    "max": 137000000.0,
-                    "min": 21.15,
+                    "max": 137300000.0,
+                    "min": 22.06,
                     "value": 200000.0,
                     "warnings": [
                         "Uncertainty from technical "
@@ -531,7 +531,7 @@ async def test_empty_config_server_generic_criteria():
                     "warnings": ["Generic data used for impact calculation."],
                 },
                 "unit": "MJ",
-                "use": {"max": 7789000.0, "min": 17.42, "value": 200000.0},
+                "use": {"max": 7805000.0, "min": 18.31, "value": 200000.0},
             }
         }
     }
@@ -581,7 +581,7 @@ async def test_dellR740_server():
                         "warnings": ["End of life is not included in the calculation"],
                     },
                     "unit": "kgCO2eq",
-                    "use": {"max": 18160.0, "min": 89.32, "value": 5000.0},
+                    "use": {"max": 18630.0, "min": 90.53, "value": 6000.0},
                 }
             }
         }

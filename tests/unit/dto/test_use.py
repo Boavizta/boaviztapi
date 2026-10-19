@@ -35,8 +35,8 @@ def test_usage_server_empty_usage(empty_usage_dto):
     server.usage = usage
 
     assert compute_single_impact(server, "use", "pe", duration=365 * 24).to_json() == {
-        "max": 39120000.0,
-        "min": 4.429,
+        "max": 39210000.0,
+        "min": 4.657,
         "value": 70000.0,
         "warnings": [
             "Uncertainty from technical characteristics is very important. Results should "
@@ -44,8 +44,8 @@ def test_usage_server_empty_usage(empty_usage_dto):
         ],
     }
     assert compute_single_impact(server, "use", "adp", duration=365 * 24).to_json() == {
-        "max": 0.0222,
-        "min": 4.498e-06,
+        "max": 0.02224,
+        "min": 4.729e-06,
         "value": 0.0003,
         "warnings": [
             "Uncertainty from technical characteristics is very important. Results should "
@@ -53,8 +53,8 @@ def test_usage_server_empty_usage(empty_usage_dto):
         ],
     }
     assert compute_single_impact(server, "use", "gwp", duration=365 * 24).to_json() == {
-        "max": 75210.0,
-        "min": 7.837,
+        "max": 75370.0,
+        "min": 8.24,
         "value": 2000.0,
     }
 

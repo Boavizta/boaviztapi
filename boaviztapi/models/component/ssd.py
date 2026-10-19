@@ -16,6 +16,12 @@ class ComponentSSD(Component):
 
     __DISK_TYPE = "ssd"
 
+    # Average power per drive in W (value, min, max), independent of workload.
+    # Enterprise NVMe drives idle at ~3.5-5 W and average ~8-14 W when active
+    # (Samsung PM9A3 datasheet), up to ~20 W; some idle below 2 W (Kanichai,
+    # Doekemeijer et al., IISWC 2026). LBNL 2024 uses ~11 W per NVMe drive.
+    POWER_PER_DRIVE = (8, 2, 20)
+
     def __init__(
         self, archetype=get_component_archetype(config.default_ssd, "ssd"), **kwargs
     ):

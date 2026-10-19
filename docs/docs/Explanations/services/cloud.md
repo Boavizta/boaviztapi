@@ -29,7 +29,7 @@ In addition to the characteristics available for [usage](../usage/usage.md), you
 
 | Name                        | Unit           | Default value (default;min;max) | Description                                                         | Example |
 |-----------------------------|----------------|---------------------------------|---------------------------------------------------------------------|---------|
-| other_consumption_ratio     | None           | 0.33;0.2;0.6                    | Power consumption ratio of other components relative to RAM and CPU | 0.2     |
+| other_consumption_ratio     | None           | 0.33;0.2;0.6                    | Power consumption ratio of other components (except disks) relative to RAM and CPU | 0.2     |
 
 ## Perimeter covered
 
@@ -141,10 +141,18 @@ $$
 + \text{CP}_{\text{RAM_server}}(\text{workload})
 * \frac{\text{memory}_{\text{instance}}}{\text{RAM}_{\text{server}}})
 * (1 + \text{other_consumption_ratio})
++ \text{P}_{\text{SSD_server}}
+* \frac{\text{ssd_storage}_{\text{instance}}}{\text{ssd_storage}_{\text{server}}}
++ \text{P}_{\text{HDD_server}}
+* \frac{\text{hdd_storage}_{\text{instance}}}{\text{hdd_storage}_{\text{server}}}
 $$
 
 $\text{CP}_{\text{CPU_server}}(\text{workload})$ and $\text{CP}_{\text{RAM_server}}(\text{workload})$ depend on the technical
 characteristics of the RAM and CPU. For the RAM, the capacity of the strips is assumed from the memory type of the
 platform's CPU (see [RAM consumption profile](../components/ram.md#cloud-instances)).
-$\text{other_consumption_ratio}$ is used to account for the electrical consumption of the other components (other than RAM
-and CPU).
+$\text{P}_{\text{SSD_server}}$ and $\text{P}_{\text{HDD_server}}$ are the power of the platform's local drives, from a constant
+power per drive (see [SSD](../components/ssd.md#usage-impact) and [HDD](../components/hdd.md#usage-impact)). They are
+allocated by storage, as for the embedded impacts, so an instance without local storage gets none of it. They are
+added outside of $\text{other_consumption_ratio}$, so that the drives are not counted twice.
+$\text{other_consumption_ratio}$ is used to account for the electrical consumption of the other components (other than RAM,
+CPU and disks).

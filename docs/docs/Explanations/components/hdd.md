@@ -56,3 +56,7 @@ The HDD disk manufacturing impact is considered as a constant.
 ## Usage impact
 
 Only [power consumption](../usage/power.md) is implemented.
+
+When part of a [server](../devices/server.md) or a [cloud instance](../services/cloud.md), each drive is assumed to draw a constant 6.4 W (min 5.4 W, max 9.4 W), independently of the workload. HDD power is close to constant with load since the platters spin whether the drive is busy or not.
+
+Sources: [LBNL, 2024 United States Data Center Energy Usage Report](https://eta-publications.lbl.gov/sites/default/files/2024-12/lbnl-2024-united-states-data-center-energy-usage-report_1.pdf) (6.4 W per HDD in 2025), [Seagate Exos X20 review](https://www.kitguru.net/components/hard-drives/simon-crisp/seagate-exos-x20-20tb-hdd-review/) (5.4 W idle, 9.4 W random read).
