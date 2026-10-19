@@ -38,3 +38,8 @@ An [open-source enrichment platform for GreenOps](https://opensourcegreenops.clo
 ## [Carenage](https://gitlab.com/hubblo/carenage)
 
 Carenage is a continuous integration tool meant to make environmental evaluation easier for software projects. Used in CI scripts, it queries needed metrics and metadata during the execution of a CI job to insert them into a database. Afterwards, the data is available as JSON objects through requests to a RESTful API and visualisable in a dashboard.
+
+
+## [RICO2](https://rico2.rice.re)
+
+A French SaaS platform for regulated GHG assessments (ISO 14064-1, BEGES decree 2022-982) designed for SMEs, local authorities, consulting firms and architecture practices. RICO2 calls BoaviztAPI's `/v1/cloud/instance`, `/v1/terminal`, `/v1/peripheral` and `/v1/server/archetype_config` endpoints directly from the "digital purchases" category of the 23 regulated emission posts, giving users an instant lifecycle carbon footprint of their IT and digital services (cloud instances, laptops, screens, servers, smartphones) instead of coarse monetary ratios. Published by R.I.C.E (Réunion Ingénierie Consultant Environnement), La Réunion, France.
