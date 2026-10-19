@@ -49,11 +49,11 @@ We use the consumption of fossil resources per kwh (APDf/kwh) per country and ex
 
 _Source_ :
 
-The FE impact factor is always **1** for every country. Since the use-phase impact is computed as `power * duration * impact_factor`, a factor of 1 yields the raw electricity consumption (final energy), independent of the country's energy mix.
+The FE impact factor is always **1** for every country. Since the use-phase impact is computed as `power * duration * impact_factor`, a factor of 1 yields the raw electricity consumption (final energy) in kWh, independent of the country's energy mix.
 
 This is useful when you need the actual electricity consumed by a device, without the primary-to-secondary energy conversion applied by the PE criterion.
 
-```FE/kWh = 1```
+```FE/kWh = 1 kWh/kWh```
 
 ### Other impact factors
 
