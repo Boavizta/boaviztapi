@@ -77,6 +77,7 @@ nav:
           - Components: Reference/format/component_route.md
           - End user devices: Reference/format/end_user_devices_route.md
           - IoT devices: Reference/format/iot_device_route.md
+    - SDKs: sdks.md
     - Deploy: deploy.md
     - Configuration: config.md
     - Release notes: https://github.com/Boavizta/boaviztapi/releases" target="_blank

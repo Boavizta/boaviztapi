@@ -151,6 +151,10 @@ Once API server is launched API swagger is available at [httsp://localhost:5000/
 
 BoaviztAPI is used by several open-source projects and tools. See [ADOPTERS.md](./ADOPTERS.md) for the full list.
 
+## :package: SDKs
+
+Community client libraries exist for other languages (PHP…). See [SDKs.md](./SDKs.md) for the list.
+
 ## :woman: Contributing
 
 See [contributing.md](./CONTRIBUTING.md).
