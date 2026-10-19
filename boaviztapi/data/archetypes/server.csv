@@ -44,7 +44,7 @@ m6g.metal,AWS,rack,1,,,Annapurna Labs Graviton2,,8,32,0,0,0,0,0,,0,2;2;2,2.99;1;
 m6gd.metal,AWS,rack,1,,,Annapurna Labs Graviton2,,8,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 mac1.metal,AWS,rack,1,,,Intel Core i7-8700B,,1,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 p3dn.24xlarge,AWS,rack,2,,,Intel Xeon Platinum 8175M,,24,32,2,900,0,0,8,NVIDIA Tesla V100 SXM2 32GB,32,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
-p4d.24xlarge,AWS,rack,2,,,Intel Xeon Platinum 8275CL,,36,32,1,8000,0,0,8,NVIDIA A100 SXM4 40GB,40,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+p4d.24xlarge,AWS,rack,2,,,Intel Xeon Platinum 8275CL,,36,32,8,1000,0,0,8,NVIDIA A100 SXM4 40GB,40,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r5.metal,AWS,rack,2,,,Intel Xeon Platinum 8175M,,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r5a.24xlarge,AWS,rack,2,,,AMD EPYC 7571,,24,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r5ad.24xlarge,AWS,rack,2,,,AMD EPYC 7571,,24,32,4,900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
@@ -275,11 +275,11 @@ m2-megamem,GCP,rack,8,,,Intel Xeon Platinum 8280L,448,1472,5888,0,0,0,0,0,,0,2;2
 m2-hypermem,GCP,rack,8,,,Intel Xeon Platinum 8280L,448,2208,8832,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
 m1-ultramem,GCP,rack,4,,,Intel Xeon E7-8880 V4,224,961,3844,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
 m1-megamem,GCP,rack,8,,,Intel Xeon Scalable Platinum 8173M,112,360,1440,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
-a3-ultragpu,GCP,rack,4,,,Intel Xeon Platinum 8581C,480,738,2952,1,12000,0,0,8,NVIDIA H200 SXM 141GB,1128,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
-a3-megagpu,GCP,rack,2,,,Intel Xeon Platinum 8581C,240,468,1872,1,6000,0,0,8,NVIDIA H100 SXM 80GB,640,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
-a3-highgpu,GCP,rack,2,,,Intel Xeon Platinum 8581C,240,468,1872,1,6000,0,0,8,NVIDIA H100 SXM 80GB,640,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
-a3-edgegpu,GCP,rack,2,,,Intel Xeon Platinum 8581C,240,468,1872,1,6000,0,0,8,NVIDIA H100 SXM 80GB,640,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
-a2-ultragpu,GCP,rack,2,,,Intel Xeon Platinum 8273CL,112,340,1360,1,3500,0,0,8,NVIDIA A100 SXM4 80GB,640,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+a3-ultragpu,GCP,rack,4,,,Intel Xeon Platinum 8581C,480,738,2952,32,375,0,0,8,NVIDIA H200 SXM 141GB,1128,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+a3-megagpu,GCP,rack,2,,,Intel Xeon Platinum 8581C,240,468,1872,16,375,0,0,8,NVIDIA H100 SXM 80GB,640,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+a3-highgpu,GCP,rack,2,,,Intel Xeon Platinum 8581C,240,468,1872,16,375,0,0,8,NVIDIA H100 SXM 80GB,640,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+a3-edgegpu,GCP,rack,2,,,Intel Xeon Platinum 8581C,240,468,1872,16,375,0,0,8,NVIDIA H100 SXM 80GB,640,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
+a2-ultragpu,GCP,rack,2,,,Intel Xeon Platinum 8273CL,112,340,1360,8,375,0,0,8,NVIDIA A100 SXM4 80GB,640,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
 a2-highgpu,GCP,rack,2,,,Intel Xeon Platinum 8273CL,112,340,1360,1,3500,0,0,8,NVIDIA A100 SXM4 40GB,640,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
 a2-megagpu,GCP,rack,2,,,Intel Xeon Platinum 8273CL,112,340,1360,1,3500,0,0,16,NVIDIA A100 SXM4 40GB,640,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
 g2-standard,GCP,rack,2,,,Intel Xeon Platinum 8273CL,112,96,384,1,3500,0,0,16,NVIDIA L4,192,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,"RAM configuration was not verified, Power supply not verified"
