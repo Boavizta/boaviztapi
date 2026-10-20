@@ -1791,6 +1791,7 @@ Intel Xeon 6455B,Sapphire Rapids,Xeon Scalable (Sapphire Rapids),Intel,2023-10-1
 Intel Xeon E5-2686 v4,Broadwell,,,,2.3 GHz,145.0,18.0,36.0,,14,,,,456,,,,https://www.x86-guide.net/fr/cpu/Intel-Xeon-E5-2686-v4-cpu-no5808.html
 Ampere Altra Q64-30,Quicksilver,,,,3.0 GHz,180.0,64.0,64.0,,,,,,,,Ampere,,https://www.cpu-world.com/CPUs/Ampere_Altra/Ampere%20Computing-Ampere%20Altra%20Q64-30.html
 Intel Xeon Platinum 8581C,Emerald Rapids,Xeon Scalable (Emerald Rapids),Intel,2023-12-14,,,60.0,120.0,,,,,,,,Intel,Xeon Platinum,https://www.mersenne.ca/benchmark/Intel/Xeon_Platinum/Xeon_Platinum_8581C
+Intel Xeon Platinum 8559C,Emerald Rapids,Xeon Scalable (Emerald Rapids),Intel,2023-12-14,2.4 GHz,385.0,48.0,96.0,,,2x 763 mm²,,,1526,Emerald Rapids XCC package = 2 compute dies x 763 mm²,Intel,Xeon Platinum,AWS custom part used by g7e; 48 cores / 96 threads per socket per https://docs.aws.amazon.com/ec2/latest/instancetypes/ac.html; TDP 385 W
 Intel Xeon Platinum 8481C,Sapphire Rapids,Xeon Scalable (Sapphire Rapids),Intel,2023-01-10,,,56.0,112.0,,,4x 477 mm²,,,,,Intel,Xeon Platinum,https://www.techpowerup.com/cpu-specs/xeon-platinum-8481c.c3992
 Intel Xeon Platinum 8373C,Ice Lake,Xeon Scalable (Ice Lake),Intel,,2.6 GHz,300.0,36.0,72.0,,,,,,,,Intel,Xeon Platinum,https://www.cpu-world.com/CPUs/Xeon/Intel-Xeon%208373C.html
 Intel Xeon Gold 6268CL,Cascade Lake,Xeon Scalable (Cascade Lake),Intel,,2.8 GHz,,24.0,48.0,,,,,,,,Intel,Xeon Gold,https://www.cpu-world.com/CPUs/Xeon/Intel-Xeon%206268CL.html
