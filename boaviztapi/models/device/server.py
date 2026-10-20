@@ -215,13 +215,25 @@ class DeviceServer(Device):
             conso_gpu.min = self.gpu.usage.avg_power.min * self.gpu.units.value
             conso_gpu.max = self.gpu.usage.avg_power.max * self.gpu.units.value
 
+        conso_disk = ImpactFactor(value=0, min=0, max=0)
+        for disk in self.disk:
+            conso_disk_unit = disk_power_consumption(disk)
+            conso_disk.value = conso_disk.value + conso_disk_unit.value
+            conso_disk.min = conso_disk.min + conso_disk_unit.min
+            conso_disk.max = conso_disk.max + conso_disk_unit.max
+
+        # Disks are added outside other_consumption_ratio, which used to stand
+        # in for them, so that their power is not counted twice.
         return ImpactFactor(
             value=(conso_cpu.value + conso_ram.value + conso_gpu.value)
-            * (1 + self.usage.other_consumption_ratio.value),
+            * (1 + self.usage.other_consumption_ratio.value)
+            + conso_disk.value,
             min=(conso_cpu.min + conso_ram.min + conso_gpu.min)
-            * (1 + self.usage.other_consumption_ratio.min),
+            * (1 + self.usage.other_consumption_ratio.min)
+            + conso_disk.min,
             max=(conso_cpu.max + conso_ram.max + conso_gpu.max)
-            * (1 + self.usage.other_consumption_ratio.max),
+            * (1 + self.usage.other_consumption_ratio.max)
+            + conso_disk.max,
         )
 
     def get_total_memory(self):
@@ -245,3 +257,12 @@ class DeviceServer(Device):
         if self.gpu is None or not self.gpu.units.has_value():
             return 0
         return self.gpu.units.value
+
+
+def disk_power_consumption(disk: Union[ComponentSSD, ComponentHDD]) -> ImpactFactor:
+    """Power of all the drives of a disk entry, from a fixed per-drive power."""
+    units = disk.units.value if disk.units.has_value() else 0
+    value, min_power, max_power = disk.POWER_PER_DRIVE
+    return ImpactFactor(
+        value=value * units, min=min_power * units, max=max_power * units
+    )

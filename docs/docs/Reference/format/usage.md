@@ -35,7 +35,7 @@ The feature is available for the following routes :
 
 ### POST ```/v1/server/```
 
-*```time_workload``` is given as a percentage at server level. The electrical consumption will be model for a load of 50% from RAM and CPU characteristics. The consumption of the other components are set relatively to the consumption of RAM and CPU with the ```other_consumption_ratio```*
+*```time_workload``` is given as a percentage at server level. The electrical consumption will be model for a load of 50% from RAM and CPU characteristics, plus a constant power per local disk (SSD or HDD). The consumption of the other components are set relatively to the consumption of RAM and CPU with the ```other_consumption_ratio```*
 
 ```json
 {
