@@ -79,6 +79,8 @@ g5.48xlarge,AWS,rack,2,,,AMD EPYC 7R32,,24,32,2,3800,0,0,8,NVIDIA A10,24,2;2;2,2
 g5g.metal,AWS,rack,1,,,Annapurna Labs Graviton2,,4,32,0,0,0,0,2,NVIDIA T4,16,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 g6.48xlarge,AWS,rack,2,,,AMD EPYC 7R13,,24,32,8,940,0,0,8,NVIDIA L4,24,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM and PSU configuration were not verified
 g6e.48xlarge,AWS,rack,2,,,AMD EPYC 7R13,,6,256,4,1900,0,0,8,NVIDIA L40S 48GB,48,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM and PSU configuration were not verified
+g7.48xlarge,AWS,rack,1,,,Intel Xeon 6 Granite Rapids-AP (AWS custom),,12,64,2,3800,0,0,8,NVIDIA RTX PRO 4500 Blackwell Server Edition 32GB,32,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM and PSU configuration were not verified
+g7e.48xlarge,AWS,rack,2,,,Intel Xeon Platinum 8559C,,16,128,4,3800,0,0,8,NVIDIA RTX PRO 6000 Blackwell Server Edition 96GB,96,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM and PSU configuration were not verified
 gr6.48xlarge,AWS,rack,2,,,AMD EPYC 7R32,,1,256,2,450,0,0,1,NVIDIA L4,24,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM and PSU configuration were not verified
 hpc7g.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton3,,4,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 i4g.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton2,,16,32,4,3750,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
