@@ -38,3 +38,4 @@ NVIDIA GRID K520,NVIDIA,2,,8,1245.19,,19000,1000,0,,,,225,2,https://www.techpowe
 AWS Inferentia,AWS,1,,,,,19000,1000,0,,,,35,1,https://mirrorfrog.com/en/docs/cards/aws/inferentia/
 AWS Inferentia2,AWS,1,,32,,,19000,1000,0,,,,150,1,https://mirrorfrog.com/en/docs/cards/aws/inferentia-2/
 AWS Trainium,AWS,1,,32,,,19000,1000,0,,,,350,1,https://mirrorfrog.com/en/docs/cards/aws/trainium/
+Intel Gaudi,Intel,1,,,,,19000,1000,0,,,,350,1,https://www.phoronix.com/news/Intel-Gaudi2-Linux-Driver;https://www.hpcwire.com/2022/05/10/intels-habana-labs-unveils-gaudi2-greco-ai-processors/
