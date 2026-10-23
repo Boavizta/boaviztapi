@@ -16,6 +16,7 @@ from boaviztapi.models.usage import ModelUsage
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_gpu_name
 
 _gpu_specs = pd.read_csv(os.path.join(data_dir, "crowdsourcing/gpu_specs.csv"))
+_default_gpu_archetype = get_component_archetype(config.default_gpu, "gpu")
 
 
 def attributes_from_gpu_name(gpu_name: str):
@@ -67,7 +68,7 @@ def gpu_usage_archetype(archetype) -> dict:
     workloads at cloud providers (https://www.tomshardware.com/pc-components/gpus/datacenter-gpu-service-life-can-be-surprisingly-short-only-one-to-three-years-is-expected-according-to-unnamed-google-architect).
     """
     usage = dict(get_arch_component(archetype, "USAGE") or {})
-    default_usage = get_component_archetype(config.default_gpu, "gpu").get("USAGE", {})
+    default_usage = _default_gpu_archetype.get("USAGE", {})
     if "time_workload" in default_usage:
         usage["time_workload"] = default_usage["time_workload"]
     return usage
@@ -75,7 +76,7 @@ def gpu_usage_archetype(archetype) -> dict:
 
 class ComponentGPU(Component):
     NAME = "GPU"
-    _default_archetype = get_component_archetype(config.default_gpu, "gpu")
+    _default_archetype = _default_gpu_archetype
     name_completion = False
 
     def __init__(

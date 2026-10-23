@@ -1,5 +1,7 @@
 from typing import Optional
 
+from pydantic import Field
+
 from boaviztapi import config
 from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.usage.usage import mapper_usage, Usage
@@ -20,8 +22,8 @@ class GPU(ComponentDTO):
     vram: Optional[int] = None
     vram_dies: Optional[int] = None
     vram_surface: Optional[float] = None
-    tdp: Optional[float] = None
-    gpus_per_card: Optional[int] = None
+    tdp: Optional[float] = Field(default=None, ge=0)
+    gpus_per_card: Optional[int] = Field(default=None, gt=0)
     transport_boat: Optional[float] = None
     transport_truck: Optional[float] = None
     transport_plane: Optional[float] = None

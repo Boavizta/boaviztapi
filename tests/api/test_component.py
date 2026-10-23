@@ -679,6 +679,19 @@ async def test_incomplete_cpu_verbose_2():
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "gpu",
+    [{"gpus_per_card": 0}, {"gpus_per_card": -1}, {"tdp": -1}],
+)
+async def test_gpu_rejects_invalid_power_attributes(gpu):
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.post("/v1/component/gpu?verbose=false", json=gpu)
+
+    assert res.status_code == 422
+
+
+@pytest.mark.asyncio
 async def test_empty_gpu():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
