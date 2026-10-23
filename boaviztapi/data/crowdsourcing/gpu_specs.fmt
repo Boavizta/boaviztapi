@@ -25,5 +25,9 @@ type=float
 type=float
 [mass]
 type=float
+[tdp]
+type=float
+[gpus_per_card]
+type=integer
 [source]
 type=string
