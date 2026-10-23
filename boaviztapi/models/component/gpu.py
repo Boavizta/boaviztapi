@@ -30,7 +30,7 @@ _WAFER_SURFACE = math.pi * math.pow(_WAFER_DIAMETER / 2, 2)
 VRAM_DIE_SURFACE_PER_GB = 15.5  # in mm2
 
 # Idle power as a share of TDP, in line with the idle/max ranges of the Cloud
-# Carbon Footprint GPU methodology (e.g. H100 60/700 W, L4 8/72 W)
+# Carbon Footprint GPU methodology (e.g. T4 8/71 W, A100 46/407 W)
 IDLE_POWER_RATIO = 0.1
 
 

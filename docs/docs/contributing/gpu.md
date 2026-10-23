@@ -15,7 +15,7 @@ All available GPUs are stored in a CSV file named `gpu_specs.csv` located at `bo
 | manufacturer     |                  | Manufacturer of the GPU                                                  | NVIDIA               |
 | unit             |                  | Number of GPU compute dies on the package                                | 1                    |
 | number           |                  | Number of VRAM dies                                                      | 6                    |
-| vram             |                  | Total VRAM capacity (in GB)                                              | 80                   |
+| vram             |                  | Total VRAM capacity of the card (in GB)                                  | 80                   |
 | die_surface      |                  | Effective GPU die area **including losses** (in mm²)               | 2810.4               |
 | pwb_surface      |                  | PCB (printed wiring board) surface area (in cm²)                        | 296.37               |
 | distance_boat    |                  | Transport distance by boat from manufacturing site to market (in km)    | 19000                |

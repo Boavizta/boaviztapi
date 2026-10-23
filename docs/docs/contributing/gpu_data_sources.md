@@ -45,14 +45,52 @@ Wikipedia architecture pages, useful when a SKU is not listed individually:
 
 ## VRAM capacity and die count → `vram`, `number`
 
-`vram` is the capacity **per GPU** in GB, never an instance or node total.
-`number` is the count of VRAM dies (HBM stacks, or GDDR packages).
+`vram` is the capacity **of one card** in GB, never an instance or node total. For
+a card that carries two GPUs, such as the Tesla K80, it is the card's total (24 GB),
+not the 12 GB each GPU sees. `number` is the count of VRAM dies (HBM stacks, or
+GDDR packages) on the card.
 
 | Source | Use for |
 |---|---|
 | NVIDIA product pages: [A100](https://www.nvidia.com/en-us/data-center/a100/), [H100](https://www.nvidia.com/en-us/data-center/h100/), [H200](https://www.nvidia.com/en-us/data-center/h200/), [L4](https://www.nvidia.com/en-us/data-center/l4/), [P100](https://www.nvidia.com/en-us/data-center/tesla-p100/), [DGX B200](https://www.nvidia.com/en-us/data-center/dgx-b200/) | Capacity, bandwidth and memory type per SKU |
 | [AMD Instinct](https://www.amd.com/en/products/accelerators/instinct.html) · [MI300X](https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html) · [Radeon PRO](https://www.amd.com/en/products/accelerators/radeon-pro.html) | Official AMD specifications |
 | [TechPowerUp GPU Database](https://www.techpowerup.com/gpu-specs/) | Memory bus width and chip count, from which `number` can be derived |
+
+## Board power → `tdp`
+
+`tdp` is the maximum board power of one card in W, as given by the vendor
+(often "max power consumption", "max TDP power" or "total board power"). The
+use phase models the power of one GPU from it (see
+[GPU usage impacts](../Explanations/components/gpu.md#usage-impacts)).
+
+| Source | Use for |
+|---|---|
+| Vendor product pages and datasheets, e.g. [L4](https://www.nvidia.com/en-us/data-center/l4/), [RTX PRO 4500 Server Edition](https://www.nvidia.com/en-us/data-center/rtx-pro-4500-blackwell-server-edition/), [A10G](https://d1.awsstatic.com/product-marketing/ec2/NVIDIA_AWS_A10G_DataSheet_FINAL_02_17_2022.pdf), [Tesla K80](https://nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) | Primary source for the board power |
+| [TechPowerUp GPU Database](https://www.techpowerup.com/gpu-specs/) | TDP per SKU, when the vendor page gives none |
+| [flopper.io](https://flopper.io/gpus) | Cross-check of TDPs across many datacentre GPUs |
+| [mirrorfrog](https://mirrorfrog.com/en/docs/cards/aws/inferentia/) | Accelerators for which the vendor publishes no TDP, such as AWS Inferentia and Trainium |
+
+!!! warning "Use the variant the provider runs"
+    Server, workstation and cloud-specific variants of a GPU can have very
+    different TDPs: the RTX PRO 4500 Server Edition is 165 W but the workstation
+    card is 200 W, and the A10G of AWS g5 instances is 300 W where the A10 is
+    150 W. Check which variant the instance uses before picking a TDP.
+
+!!! note
+    A row without `tdp` falls back to the 700 W of the `DEFAULT` row of
+    `boaviztapi/data/archetypes/components/gpu.csv`, a large datacentre GPU.
+
+## GPUs per card → `gpus_per_card`
+
+Most cards carry one GPU, and `gpus_per_card` is `1`. Some older cards carry two
+GPUs on one board, which the operating system and the cloud providers see as two
+GPUs: the Tesla M60, the Tesla K80 and the GRID K520. Set `gpus_per_card` to `2`
+for them, and describe the whole card in the other columns (its `tdp`, `vram`,
+masses, and `die_surface` as `effective_area(per_die_area) * unit`). The API then
+divides the card's power and embodied impacts by `gpus_per_card` for each GPU.
+
+A multi-die package that the providers count as one GPU, such as the B200 or the
+MI300X, has `gpus_per_card` = `1` and `unit` greater than 1.
 
 ## Mass → `mass`, `mass_heatsink`, `mass_casing`
 
@@ -89,7 +127,7 @@ For SXM and OAM module footprints:
 [OCP Accelerator Module (OAM)](https://www.opencompute.org/projects/ocp-accelerator-module-oam)
 
 !!! note
-    `234.36` currently appears on 16 of 32 rows. It functions as a default for
+    `234.36` currently appears on 18 of 40 rows. It functions as a default for
     generic full-size PCIe cards rather than a per-card measurement. Treat it as a
     modelling assumption, not sourced data.
 
@@ -97,7 +135,7 @@ For SXM and OAM module footprints:
 
 Not part of `gpu_specs.csv`, but these are the authority for which GPU SKU an
 archetype in `boaviztapi/data/archetypes/server.csv` should name, and for how
-much VRAM each instance exposes per GPU.
+many GPUs each instance has (`gpu_units`, counted the way the provider counts them).
 
 | Provider | Reference |
 |---|---|
@@ -110,7 +148,7 @@ much VRAM each instance exposes per GPU.
 Put one or more URLs in the `source` column, separated by `;`:
 
 ```csv
-NVIDIA A100 PCIe 80GB,NVIDIA,1,6,80,2876.29,234.36,19000,1000,0,0.3,0.643,1.17,https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/PB-10577-001_v02.pdf;https://en.wikipedia.org/wiki/Ampere_(microarchitecture)
+NVIDIA A100 PCIe 80GB,NVIDIA,1,6,80,2876.29,234.36,19000,1000,0,0.3,0.643,1.17,300,1,https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/PB-10577-001_v02.pdf;https://en.wikipedia.org/wiki/Ampere_(microarchitecture)
 ```
 
 The value is surfaced through the API in the completion message for each

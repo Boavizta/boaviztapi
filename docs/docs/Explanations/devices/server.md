@@ -119,7 +119,7 @@ $$
 + \text{CP}_{\text{RAM}}(\text{workload}))
 * (1 + \text{other_consumption_ratio})
 + \text{P}_{\text{disks}}
-+ \text{P}_{\text{GPU}}(\text{workload}) * \text{GPU.units}
++ \text{P}_{\text{GPU}}(\text{gpu_workload}) * \text{GPU.units}
 $$
 
 $\text{CP}_{\text{CPU}}(\text{workload})$ and $\text{CP}_{\text{RAM}}(\text{workload})$ depend on the technical
@@ -129,5 +129,6 @@ and [HDD](../components/hdd.md#usage-impact)) multiplied by the number of drives
 $\text{other_consumption_ratio}$, so that the drives are not counted twice.
 $\text{P}_{\text{GPU}}$ is the power of one GPU: its `avg_power` if given, otherwise modelled from its TDP
 (see [GPU](../components/gpu.md#usage-impacts)). It is also added outside of $\text{other_consumption_ratio}$.
+$\text{gpu_workload}$ is the GPU's own `time_workload`, 65% by default: it does not follow the server's `time_workload`.
 $\text{other_consumption_ratio}$ is used to account for the electrical consumption of the other components (other than RAM,
 CPU and disks).

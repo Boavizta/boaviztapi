@@ -11,7 +11,7 @@
 | heatsink_weight  | kg   | 0.90                       | Mass of the heatsink                                                 | 0.90                 |
 | casing_weight    | kg   | 0.79                       | Mass of the casing / shroud                                          | 0.79                 |
 | gpu_surface      | mm²  | 814 (effective)            | Effective GPU die area including wafer losses                        | 2810.4               |
-| vram             | GB   | 80                         | Total VRAM capacity                                                  | 80                   |
+| vram             | GB   | 80                         | Total VRAM capacity of the card                                      | 80                   |
 | vram_dies        | None | 6                          | Number of VRAM dies                                                  | 6                    |
 | vram_surface     | mm²  | computed                   | Total effective VRAM die area including wafer losses                 | 744.0                |
 | pwb_surface      | cm²  | 296                        | PCB surface area                                                     | 296.37               |
@@ -126,8 +126,9 @@ Each sub-component impact uses a dedicated impact factor from the factor databas
 
 Power consumption is based on the [usage](../usage/power.md) methodology. The GPU's workload and use time ratio are taken from the usage parameters.
 
-When `avg_power` is not given, the power of one GPU is modelled from its `tdp`, linearly from an idle power of 10% of
-the TDP to the full TDP, as in the [Cloud Carbon Footprint GPU methodology](https://www.cloudcarbonfootprint.org/docs/methodology/#graphic-processing-units-gpus):
+`avg_power` is the average power of one GPU. When it is not given, it is modelled from the `tdp`, linearly from an
+idle power of 10% of the TDP to the full TDP. The idle share is in line with the minimum and maximum powers of the
+[Cloud Carbon Footprint GPU methodology](https://www.cloudcarbonfootprint.org/docs/methodology/#graphic-processing-units-gpus):
 
 $$
 \text{P}_{\text{GPU}}(\text{workload}) = \frac{\text{tdp}}{\text{gpus_per_card}} \times (0.1 + 0.9 \times \frac{\text{workload}}{100})
