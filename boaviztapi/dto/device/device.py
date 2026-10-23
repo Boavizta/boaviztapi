@@ -60,9 +60,21 @@ def mapper_server(
         server_dto.usage or UsageServer(),
         archetype=get_arch_component(server_model.archetype, "USAGE"),
     )
+    set_gpu_time_workload(server_model, server_dto.usage)
     complete_components_usage(server_model, server_model.usage)
 
     return server_model
+
+
+def set_gpu_time_workload(model: DeviceServer, usage_dto: Optional[UsageServer]):
+    """Set the GPU load from `usage.gpu_time_workload`.
+
+    A load given in the GPU's own usage takes precedence.
+    """
+    if not usage_dto or usage_dto.gpu_time_workload is None or model.gpu is None:
+        return
+    if model.gpu.usage.time_workload.status != Status.INPUT:
+        model.gpu.usage.time_workload.set_input(usage_dto.gpu_time_workload)
 
 
 def complete_components_usage(model: DeviceServer, usage: ModelUsage):
@@ -121,12 +133,7 @@ def mapper_cloud_instance(
         archetype=get_arch_component(model_cloud_instance.archetype, "USAGE"),
     )
 
-    gpu_time_workload = cloud_dto.usage.gpu_time_workload if cloud_dto.usage else None
-    if gpu_time_workload is not None and model_cloud_instance.platform.gpu is not None:
-        model_cloud_instance.platform.gpu.usage.time_workload.set_input(
-            gpu_time_workload
-        )
-
+    set_gpu_time_workload(model_cloud_instance.platform, cloud_dto.usage)
     complete_components_usage(model_cloud_instance.platform, model_cloud_instance.usage)
     complete_usage(model_cloud_instance.platform.usage, model_cloud_instance.usage)
 

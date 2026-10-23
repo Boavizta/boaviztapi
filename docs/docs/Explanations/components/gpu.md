@@ -134,7 +134,10 @@ $$
 \text{P}_{\text{GPU}}(\text{workload}) = \frac{\text{tdp}}{\text{gpus_per_card}} \times (0.1 + 0.9 \times \frac{\text{workload}}{100})
 $$
 
-The workload is the GPU's own `time_workload`, 65% by default. It does not follow the `time_workload` of a server or
-cloud instance, which describes its CPU: GPUs for AI workloads run at 60 to 70% at cloud providers, according to
-[Tom's Hardware](https://www.tomshardware.com/pc-components/gpus/datacenter-gpu-service-life-can-be-surprisingly-short-only-one-to-three-years-is-expected-according-to-unnamed-google-architect).
+The workload is the GPU's own `time_workload`. It does not follow the `time_workload` of a server or cloud instance,
+which describes its CPU. By default, it is assumed to be 65%. This is an assumption, not a measurement: it sits in the
+60 to 70% utilization of AI datacentre GPUs that a Google architect is reported to have given in
+[Tom's Hardware](https://www.tomshardware.com/pc-components/gpus/datacenter-gpu-service-life-can-be-surprisingly-short-only-one-to-three-years-is-expected-according-to-unnamed-google-architect),
+in an article on GPU service life. When the actual load is known, set `gpu_time_workload` in the usage of the server or
+cloud instance, or `time_workload` in the GPU's own usage.
 Total power is $\text{P}_{\text{GPU}} \times \text{units}$.

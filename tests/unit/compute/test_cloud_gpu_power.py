@@ -5,11 +5,13 @@ instances got no electricity for their GPUs at all.
 """
 
 import pytest
+from pydantic import ValidationError
 
 from boaviztapi.data.archetype import get_cloud_instance_archetype
 from boaviztapi.dto.device.device import Cloud, mapper_cloud_instance
 from boaviztapi.dto.usage.usage import UsageCloud
 from boaviztapi.models.boattribute import Boattribute
+from boaviztapi.models.component.gpu import IDLE_POWER_RATIO
 from boaviztapi.models.services.cloud_instance import ServiceCloudInstance
 
 
@@ -64,7 +66,7 @@ def test_gpu_time_workload_sets_gpu_load_only():
 
     gpu = cloud_instance.platform.gpu
     # Idle GPU: 10% of its TDP
-    assert gpu.usage.avg_power.value == pytest.approx(0.1 * gpu.tdp.value)
+    assert gpu.usage.avg_power.value == pytest.approx(IDLE_POWER_RATIO * gpu.tdp.value)
     assert cloud_instance.platform.cpu.usage.time_workload.value == 80
 
 
@@ -84,5 +86,24 @@ def test_gpu_load_does_not_follow_time_workload():
     assert gpu.usage.time_workload.value == 65
     assert cloud_instance.platform.cpu.usage.time_workload.value == 100
     assert gpu.usage.avg_power.value == pytest.approx(
-        gpu.tdp.value / gpu.gpus_per_card.value * (0.1 + 0.9 * 0.65)
+        gpu.tdp.value
+        / gpu.gpus_per_card.value
+        * (IDLE_POWER_RATIO + (1 - IDLE_POWER_RATIO) * 0.65)
     )
+
+
+def test_given_gpu_avg_power_is_not_modelled():
+    without_gpu = instance("g5.xlarge", gpu_units=0).model_power_consumption().value
+    with_gpu = instance("g5.xlarge")
+    with_gpu.platform.gpu.usage.avg_power.set_input(100)
+
+    assert with_gpu.model_power_consumption().value == pytest.approx(
+        without_gpu + with_gpu.gpu_units.value * 100
+    )
+    assert with_gpu.platform.gpu.usage.avg_power.value == 100
+
+
+@pytest.mark.parametrize("gpu_time_workload", [-1, 101])
+def test_gpu_time_workload_out_of_range_is_rejected(gpu_time_workload):
+    with pytest.raises(ValidationError):
+        UsageCloud(gpu_time_workload=gpu_time_workload)

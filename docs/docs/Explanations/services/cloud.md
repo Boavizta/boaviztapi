@@ -30,7 +30,7 @@ In addition to the characteristics available for [usage](../usage/usage.md), you
 | Name                        | Unit           | Default value (default;min;max) | Description                                                         | Example |
 |-----------------------------|----------------|---------------------------------|---------------------------------------------------------------------|---------|
 | other_consumption_ratio     | None           | 0.33;0.2;0.6                    | Power consumption ratio of other components (except disks) relative to RAM and CPU | 0.2     |
-| gpu_time_workload           | %              | 65;0;100                        | Load of the instance's GPUs, as a percentage or a list of time/load pairs | 80      |
+| gpu_time_workload           | %              | 65;0;100                        | Load of the instance's GPUs, as a percentage between 0 and 100   | 80      |
 
 ## Perimeter covered
 

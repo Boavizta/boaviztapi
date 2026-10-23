@@ -3,7 +3,14 @@ import pytest
 from boaviztapi import config
 from boaviztapi.compute.impacts_computation import gpu_impact_embedded
 from boaviztapi.models.component import ComponentCPU, ComponentRAM
-from boaviztapi.models.component.gpu import ComponentGPU, VRAM_DIE_SURFACE_PER_GB
+from boaviztapi.dto.component.gpu import GPU
+from boaviztapi.dto.device.device import ConfigurationServer, Server, mapper_server
+from boaviztapi.dto.usage.usage import Usage, UsageServer
+from boaviztapi.models.component.gpu import (
+    ComponentGPU,
+    IDLE_POWER_RATIO,
+    VRAM_DIE_SURFACE_PER_GB,
+)
 from boaviztapi.models.device.server import DeviceServer
 from boaviztapi.models.impact import IMPACT_CRITERIAS
 from boaviztapi.models.usage import ModelUsage, ModelUsageServer
@@ -206,19 +213,56 @@ class TestServerGPUPower:
         gpu.tdp.set_input(700)
         server_with_gpu.gpu = gpu
 
-        # Default GPU load is 65%: 700 * (0.1 + 0.9 * 0.65) = 479.5 W per GPU
+        # Default GPU load is 65%
+        per_gpu = 700 * (IDLE_POWER_RATIO + (1 - IDLE_POWER_RATIO) * 0.65)
         power = server_with_gpu.model_power_consumption()
         assert gpu.usage.time_workload.value == 65
-        assert gpu.usage.avg_power.value == pytest.approx(479.5)
-        assert power.value == pytest.approx(baseline + 4 * 479.5)
+        assert gpu.usage.avg_power.value == pytest.approx(per_gpu)
+        assert power.value == pytest.approx(baseline + 4 * per_gpu)
 
-    def test_gpu_power_bounds_follow_load_range(self):
+    def test_server_time_workload_does_not_set_gpu_load(self):
+        server = mapper_server(
+            Server(
+                configuration=ConfigurationServer(gpu=GPU(units=4, tdp=700)),
+                usage=UsageServer(time_workload=100),
+            )
+        )
+        server.model_power_consumption()
+
+        assert server.cpu.usage.time_workload.value == 100
+        assert server.gpu.usage.time_workload.value == 65
+
+    def test_server_gpu_time_workload_sets_gpu_load(self):
+        server = mapper_server(
+            Server(
+                configuration=ConfigurationServer(gpu=GPU(units=4, tdp=700)),
+                usage=UsageServer(time_workload=100, gpu_time_workload=0),
+            )
+        )
+        server.model_power_consumption()
+
+        assert server.cpu.usage.time_workload.value == 100
+        assert server.gpu.usage.time_workload.value == 0
+        assert server.gpu.usage.avg_power.value == pytest.approx(IDLE_POWER_RATIO * 700)
+
+    def test_gpu_own_load_takes_precedence_over_gpu_time_workload(self):
+        server = mapper_server(
+            Server(
+                configuration=ConfigurationServer(
+                    gpu=GPU(units=4, tdp=700, usage=Usage(time_workload=100))
+                ),
+                usage=UsageServer(gpu_time_workload=0),
+            )
+        )
+
+        assert server.gpu.usage.time_workload.value == 100
+
+    @pytest.mark.parametrize("load, power", [(0, 70), (65, 479.5), (100, 700)])
+    def test_gpu_power_at_load(self, load, power):
         gpu = ComponentGPU()
         gpu.tdp.set_input(700)
-        gpu.usage.time_workload.set_input(0)
-        assert gpu.model_power_consumption().value == pytest.approx(70)
-        gpu.usage.time_workload.set_input(100)
-        assert gpu.model_power_consumption().value == pytest.approx(700)
+        gpu.usage.time_workload.set_input(load)
+        assert gpu.model_power_consumption().value == pytest.approx(power)
 
     def test_gpu_power_from_multiple_workloads(self):
         gpu = ComponentGPU()
@@ -237,6 +281,14 @@ class TestServerGPUPower:
         gpu.name.set_input("NVIDIA L4")
         assert gpu.tdp.value == 72
         assert gpu.gpus_per_card.value == 1
+
+    def test_dual_gpu_card_completed_from_name(self):
+        gpu = ComponentGPU()
+        gpu.name.set_input("NVIDIA Tesla M60")
+        gpu.usage.time_workload.set_input(100)
+        assert gpu.gpus_per_card.value == 2
+        # tdp is for the card, so each GPU gets half of it
+        assert gpu.model_power_consumption().value == pytest.approx(gpu.tdp.value / 2)
 
     def test_dual_gpu_card_power_is_per_gpu(self):
         """tdp is for the card; one unit of a two-GPU card gets half of it."""
