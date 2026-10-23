@@ -75,7 +75,7 @@ c7g.metal,AWS,rack,1,,,Annapurna Labs Graviton3,,4,32,0,0,0,0,0,,0,2;2;2,2.99;1;
 c7gd.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton3,,4,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 c7gn.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton3E,,4,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 c7i.48xlarge,AWS,rack,2,,,Intel Xeon Platinum 8488C,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
-g5.48xlarge,AWS,rack,2,,,AMD EPYC 7R32,,24,32,2,3800,0,0,8,NVIDIA A10,24,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+g5.48xlarge,AWS,rack,2,,,AMD EPYC 7R32,,24,32,2,3800,0,0,8,NVIDIA A10G,24,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 g5g.metal,AWS,rack,1,,,Annapurna Labs Graviton2,,4,32,0,0,0,0,2,NVIDIA T4,16,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 g6.48xlarge,AWS,rack,2,,,AMD EPYC 7R13,,24,32,8,940,0,0,8,NVIDIA L4,24,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM and PSU configuration were not verified
 g6e.48xlarge,AWS,rack,2,,,AMD EPYC 7R13,,6,256,4,1900,0,0,8,NVIDIA L40S 48GB,48,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM and PSU configuration were not verified
