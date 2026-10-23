@@ -206,10 +206,11 @@ class TestServerGPUPower:
         gpu.tdp.set_input(700)
         server_with_gpu.gpu = gpu
 
-        # Default GPU load is 50%: 700 * (0.1 + 0.9 * 0.5) = 385 W per GPU
+        # Default GPU load is 65%: 700 * (0.1 + 0.9 * 0.65) = 479.5 W per GPU
         power = server_with_gpu.model_power_consumption()
-        assert gpu.usage.avg_power.value == pytest.approx(385)
-        assert power.value == pytest.approx(baseline + 4 * 385)
+        assert gpu.usage.time_workload.value == 65
+        assert gpu.usage.avg_power.value == pytest.approx(479.5)
+        assert power.value == pytest.approx(baseline + 4 * 479.5)
 
     def test_gpu_power_bounds_follow_load_range(self):
         gpu = ComponentGPU()

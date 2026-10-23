@@ -4,6 +4,7 @@ from boaviztapi import config
 from boaviztapi.dto.component import ComponentDTO
 from boaviztapi.dto.usage.usage import mapper_usage, Usage
 from boaviztapi.models.component import ComponentGPU
+from boaviztapi.models.component.gpu import gpu_usage_archetype
 from boaviztapi.data.archetype import get_component_archetype
 
 
@@ -32,7 +33,7 @@ def mapper_gpu(
     gpu_component = ComponentGPU(archetype=archetype)
 
     gpu_component.usage = mapper_usage(
-        gpu_dto.usage or Usage(), archetype=archetype.get("USAGE")
+        gpu_dto.usage or Usage(), archetype=gpu_usage_archetype(archetype)
     )
 
     if gpu_dto.units is not None:

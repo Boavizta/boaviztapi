@@ -690,19 +690,19 @@ async def test_empty_gpu():
                 "description": "Use of minerals and fossil ressources",
                 "embedded": {"max": 0.005826, "min": 0.005826, "value": 0.005826},
                 "unit": "kgSbeq",
-                "use": {"max": 0.004886, "min": 2.428e-05, "value": 0.0006},
+                "use": {"max": 0.004886, "min": 2.428e-05, "value": 0.0008},
             },
             "gwp": {
                 "description": "Total climate change",
                 "embedded": {"max": 575.1, "min": 575.1, "value": 575.1},
                 "unit": "kgCO2eq",
-                "use": {"max": 16560.0, "min": 42.31, "value": 4000.0},
+                "use": {"max": 16560.0, "min": 42.31, "value": 5000.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
                 "embedded": {"max": 7912.0, "min": 7912.0, "value": 7912.0},
                 "unit": "MJ",
-                "use": {"max": 8612000.0, "min": 23.91, "value": 100000.0},
+                "use": {"max": 8612000.0, "min": 23.91, "value": 200000.0},
             },
         }
     }
@@ -723,13 +723,13 @@ async def test_complete_gpu_verbose():
                 "description": "Use of minerals and fossil ressources",
                 "embedded": {"max": 0.01164, "min": 0.01164, "value": 0.01164},
                 "unit": "kgSbeq",
-                "use": {"max": 0.009772, "min": 4.857e-05, "value": 0.0013},
+                "use": {"max": 0.009772, "min": 4.857e-05, "value": 0.0016},
             },
             "gwp": {
                 "description": "Total climate change",
                 "embedded": {"max": 477.2, "min": 477.2, "value": 477.2},
                 "unit": "kgCO2eq",
-                "use": {"max": 33110.0, "min": 84.62, "value": 8000.0},
+                "use": {"max": 33110.0, "min": 84.62, "value": 10000.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -759,7 +759,7 @@ async def test_complete_gpu_verbose():
                 "min": 70.0,
                 "status": "COMPLETED",
                 "unit": "W",
-                "value": 385.00000000000006,
+                "value": 479.49999999999994,
             },
             "casing_weight": {
                 "max": 0.79,
@@ -804,13 +804,13 @@ async def test_complete_gpu_verbose():
                     "description": "Use of minerals and fossil ressources",
                     "embedded": {"max": 0.01164, "min": 0.01164, "value": 0.01164},
                     "unit": "kgSbeq",
-                    "use": {"max": 0.009772, "min": 4.857e-05, "value": 0.0013},
+                    "use": {"max": 0.009772, "min": 4.857e-05, "value": 0.0016},
                 },
                 "gwp": {
                     "description": "Total climate change",
                     "embedded": {"max": 477.2, "min": 477.2, "value": 477.2},
                     "unit": "kgCO2eq",
-                    "use": {"max": 33110.0, "min": 84.62, "value": 8000.0},
+                    "use": {"max": 33110.0, "min": 84.62, "value": 10000.0},
                 },
                 "pe": {
                     "description": "Consumption of primary energy",
@@ -848,7 +848,7 @@ async def test_complete_gpu_verbose():
                 "min": 0.0,
                 "status": "ARCHETYPE",
                 "unit": "%",
-                "value": 50.0,
+                "value": 65.0,
             },
             "transport_boat": {
                 "max": 19000.0,

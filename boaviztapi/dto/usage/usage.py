@@ -61,7 +61,7 @@ class UsageServer(Usage):
 class UsageCloud(UsageServer):
     instance_per_server: Optional[int] = None
     region: Optional[str] = None
-    # Load of the instance's GPUs; falls back to time_workload when not given
+    # Load of the instance's GPUs, 65% by default (see gpu_usage_archetype)
     gpu_time_workload: Optional[Union[float, List[WorkloadTime]]] = None
 
 

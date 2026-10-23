@@ -7,7 +7,12 @@ from boaviztapi import config, data_dir
 from boaviztapi.models.boattribute import Boattribute
 from boaviztapi.models.component.component import Component
 from boaviztapi.models.impact import ImpactFactor
-from boaviztapi.data.archetype import get_arch_value, get_component_archetype
+from boaviztapi.data.archetype import (
+    get_arch_component,
+    get_arch_value,
+    get_component_archetype,
+)
+from boaviztapi.models.usage import ModelUsage
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_gpu_name
 
 _gpu_specs = pd.read_csv(os.path.join(data_dir, "crowdsourcing/gpu_specs.csv"))
@@ -53,6 +58,19 @@ def _calculate_effective_area_on_circular_wafer(die_area: float | None) -> float
     usable_ratio = math.exp(-math.sqrt((actual_die_area / 100) * 0.1))
 
     return effective_die_area / usable_ratio
+
+
+def gpu_usage_archetype(archetype) -> dict:
+    """Usage archetype of a GPU: its host's, with the GPU's own default load.
+
+    GPUs run at a different load than the CPU of their host: 60-70% for AI
+    workloads at cloud providers (https://www.tomshardware.com/pc-components/gpus/datacenter-gpu-service-life-can-be-surprisingly-short-only-one-to-three-years-is-expected-according-to-unnamed-google-architect).
+    """
+    usage = dict(get_arch_component(archetype, "USAGE") or {})
+    default_usage = get_component_archetype(config.default_gpu, "gpu").get("USAGE", {})
+    if "time_workload" in default_usage:
+        usage["time_workload"] = default_usage["time_workload"]
+    return usage
 
 
 class ComponentGPU(Component):
@@ -195,6 +213,16 @@ class ComponentGPU(Component):
             min=get_arch_value(archetype, "transport_plane", "min"),
             max=get_arch_value(archetype, "transport_plane", "max"),
         )
+
+    @property
+    def usage(self) -> ModelUsage:
+        if self._usage is None:
+            self._usage = ModelUsage(archetype=gpu_usage_archetype(self.archetype))
+        return self._usage
+
+    @usage.setter
+    def usage(self, value: ModelUsage) -> None:
+        self._usage = value
 
     def _complete_from_name(self):
         if self.name.has_value() and not self.name_completion:

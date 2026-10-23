@@ -30,7 +30,7 @@ In addition to the characteristics available for [usage](../usage/usage.md), you
 | Name                        | Unit           | Default value (default;min;max) | Description                                                         | Example |
 |-----------------------------|----------------|---------------------------------|---------------------------------------------------------------------|---------|
 | other_consumption_ratio     | None           | 0.33;0.2;0.6                    | Power consumption ratio of other components (except disks) relative to RAM and CPU | 0.2     |
-| gpu_time_workload           | %              | time_workload                   | Load of the instance's GPUs, as a percentage or a list of time/load pairs | 80      |
+| gpu_time_workload           | %              | 65;0;100                        | Load of the instance's GPUs, as a percentage or a list of time/load pairs | 80      |
 
 ## Perimeter covered
 
@@ -158,6 +158,7 @@ allocated by storage, as for the embedded impacts, so an instance without local 
 added outside of $\text{other_consumption_ratio}$, so that the drives are not counted twice.
 $\text{P}_{\text{GPU}}$ is the power of one GPU, modelled from its TDP (see [GPU](../components/gpu.md#usage-impacts)).
 It is allocated by $\text{gpu_units}$, as for the embedded impacts, and also added outside of
-$\text{other_consumption_ratio}$. The GPU workload is $\text{gpu_time_workload}$, or $\text{time_workload}$ if not given.
+$\text{other_consumption_ratio}$. The GPU workload is $\text{gpu_time_workload}$, 65% by default, independently of $\text{time_workload}$
+(see [GPU](../components/gpu.md#usage-impacts)).
 $\text{other_consumption_ratio}$ is used to account for the electrical consumption of the other components (other than RAM,
 CPU and disks).

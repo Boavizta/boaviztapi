@@ -68,7 +68,8 @@ def test_gpu_time_workload_sets_gpu_load_only():
     assert cloud_instance.platform.cpu.usage.time_workload.value == 80
 
 
-def test_gpu_load_falls_back_to_time_workload():
+def test_gpu_load_does_not_follow_time_workload():
+    """time_workload is the CPU load; the GPU keeps its own 65% default."""
     cloud_instance = mapper_cloud_instance(
         Cloud(
             provider="aws",
@@ -80,4 +81,8 @@ def test_gpu_load_falls_back_to_time_workload():
     cloud_instance.model_power_consumption()
 
     gpu = cloud_instance.platform.gpu
-    assert gpu.usage.avg_power.value == pytest.approx(gpu.tdp.value)
+    assert gpu.usage.time_workload.value == 65
+    assert cloud_instance.platform.cpu.usage.time_workload.value == 100
+    assert gpu.usage.avg_power.value == pytest.approx(
+        gpu.tdp.value / gpu.gpus_per_card.value * (0.1 + 0.9 * 0.65)
+    )

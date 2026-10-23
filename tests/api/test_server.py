@@ -51,7 +51,7 @@ async def test_complete_config_server():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "kgCO2eq",
-                "use": {"max": 80990.0, "min": 201.6, "value": 18000.0},
+                "use": {"max": 80990.0, "min": 201.6, "value": 20000.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
@@ -62,7 +62,7 @@ async def test_complete_config_server():
                     "warnings": ["End of life is not included in the calculation"],
                 },
                 "unit": "MJ",
-                "use": {"max": 42130000.0, "min": 113.9, "value": 600000.0},
+                "use": {"max": 42130000.0, "min": 113.9, "value": 700000.0},
             },
         }
     }

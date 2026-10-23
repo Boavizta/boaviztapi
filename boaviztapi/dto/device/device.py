@@ -73,15 +73,17 @@ def complete_components_usage(model: DeviceServer, usage: ModelUsage):
     for disk_unit in model.disk:
         complete_usage(disk_unit.usage, usage)
     if model.gpu is not None:
-        complete_usage(model.gpu.usage, usage)
+        # The GPU load has its own default (see gpu_usage_archetype)
+        complete_usage(model.gpu.usage, usage, exclude=("time_workload",))
 
 
-def complete_usage(usage_component, usage_device):
+def complete_usage(usage_component, usage_device, exclude=()):
     if usage_device.avg_power.is_set():
         return
     for attr, val in usage_component.__iter__():
         if (
-            isinstance(val, Boattribute)
+            attr not in exclude
+            and isinstance(val, Boattribute)
             and not val.is_set()
             and usage_device.__getattribute__(attr).is_set()
         ):
@@ -119,8 +121,6 @@ def mapper_cloud_instance(
         archetype=get_arch_component(model_cloud_instance.archetype, "USAGE"),
     )
 
-    # Set before complete_components_usage, which would otherwise make the GPU
-    # share the instance's time_workload attribute.
     gpu_time_workload = cloud_dto.usage.gpu_time_workload if cloud_dto.usage else None
     if gpu_time_workload is not None and model_cloud_instance.platform.gpu is not None:
         model_cloud_instance.platform.gpu.usage.time_workload.set_input(
