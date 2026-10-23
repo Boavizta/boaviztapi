@@ -690,19 +690,19 @@ async def test_empty_gpu():
                 "description": "Use of minerals and fossil ressources",
                 "embedded": {"max": 0.005826, "min": 0.005826, "value": 0.005826},
                 "unit": "kgSbeq",
-                "use": "not implemented",
+                "use": {"max": 0.004886, "min": 2.428e-05, "value": 0.0006},
             },
             "gwp": {
                 "description": "Total climate change",
                 "embedded": {"max": 575.1, "min": 575.1, "value": 575.1},
                 "unit": "kgCO2eq",
-                "use": "not implemented",
+                "use": {"max": 16560.0, "min": 42.31, "value": 4000.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
                 "embedded": {"max": 7912.0, "min": 7912.0, "value": 7912.0},
                 "unit": "MJ",
-                "use": "not implemented",
+                "use": {"max": 8612000.0, "min": 23.91, "value": 100000.0},
             },
         }
     }
@@ -723,22 +723,44 @@ async def test_complete_gpu_verbose():
                 "description": "Use of minerals and fossil ressources",
                 "embedded": {"max": 0.01164, "min": 0.01164, "value": 0.01164},
                 "unit": "kgSbeq",
-                "use": "not implemented",
+                "use": {"max": 0.009772, "min": 4.857e-05, "value": 0.0013},
             },
             "gwp": {
                 "description": "Total climate change",
                 "embedded": {"max": 477.2, "min": 477.2, "value": 477.2},
                 "unit": "kgCO2eq",
-                "use": "not implemented",
+                "use": {"max": 33110.0, "min": 84.62, "value": 8000.0},
             },
             "pe": {
                 "description": "Consumption of primary energy",
                 "embedded": {"max": 6848.0, "min": 6848.0, "value": 6848.0},
                 "unit": "MJ",
-                "use": "not implemented",
+                "use": {
+                    "max": 17220000.0,
+                    "min": 47.83,
+                    "value": 300000.0,
+                    "warnings": [
+                        "Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)"
+                    ],
+                },
             },
         },
         "verbose": {
+            "adp_factor": {
+                "max": 2.656e-07,
+                "min": 1.32e-08,
+                "source": "ADEME Base IMPACTS ®",
+                "status": "DEFAULT",
+                "unit": "kg Sbeq/kWh",
+                "value": 6.42e-08,
+            },
+            "avg_power": {
+                "max": 700.0,
+                "min": 70.0,
+                "status": "COMPLETED",
+                "unit": "W",
+                "value": 385.00000000000006,
+            },
             "casing_weight": {
                 "max": 0.79,
                 "min": 0.79,
@@ -754,6 +776,14 @@ async def test_complete_gpu_verbose():
                 "unit": "mm2",
                 "value": 2808.445102929598,
             },
+            "gwp_factor": {
+                "max": 0.9,
+                "min": 0.023,
+                "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149: \nAverage of 27 european countries",
+                "status": "DEFAULT",
+                "unit": "kg CO2eq/kWh",
+                "value": 0.38,
+            },
             "heatsink_weight": {
                 "max": 0.9,
                 "min": 0.9,
@@ -761,33 +791,63 @@ async def test_complete_gpu_verbose():
                 "unit": "kg",
                 "value": 0.9,
             },
+            "hours_life_time": {
+                "max": 26280.0,
+                "min": 26280.0,
+                "status": "ARCHETYPE",
+                "unit": "hours",
+                "value": 26280.0,
+            },
             "impacts": {
                 "adp": {
                     "description": "Use of minerals and fossil ressources",
                     "embedded": {"max": 0.01164, "min": 0.01164, "value": 0.01164},
                     "unit": "kgSbeq",
-                    "use": "not implemented",
+                    "use": {"max": 0.009772, "min": 4.857e-05, "value": 0.0013},
                 },
                 "gwp": {
                     "description": "Total climate change",
                     "embedded": {"max": 477.2, "min": 477.2, "value": 477.2},
                     "unit": "kgCO2eq",
-                    "use": "not implemented",
+                    "use": {"max": 33110.0, "min": 84.62, "value": 8000.0},
                 },
                 "pe": {
                     "description": "Consumption of primary energy",
                     "embedded": {"max": 6848.0, "min": 6848.0, "value": 6848.0},
                     "unit": "MJ",
-                    "use": "not implemented",
+                    "use": {
+                        "max": 17220000.0,
+                        "min": 47.83,
+                        "value": 300000.0,
+                        "warnings": [
+                            "Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)"
+                        ],
+                    },
                 },
             },
             "name": {"status": "ARCHETYPE", "value": "Large GPU"},
+            "pe_factor": {
+                "max": 468.15,
+                "min": 0.013,
+                "source": "ADPf / (1-%renewable_energy)",
+                "status": "DEFAULT",
+                "unit": "MJ/kWh",
+                "value": 12.874,
+            },
             "pwb_surface": {
                 "max": 296.0,
                 "min": 296.0,
                 "status": "ARCHETYPE",
                 "unit": "cm2",
                 "value": 296.0,
+            },
+            "tdp": {"status": "ARCHETYPE", "unit": "W", "value": 700.0},
+            "time_workload": {
+                "max": 100.0,
+                "min": 0.0,
+                "status": "ARCHETYPE",
+                "unit": "%",
+                "value": 50.0,
             },
             "transport_boat": {
                 "max": 19000.0,
@@ -811,6 +871,18 @@ async def test_complete_gpu_verbose():
                 "value": 1000.0,
             },
             "units": {"status": "INPUT", "value": 2},
+            "usage_location": {
+                "status": "DEFAULT",
+                "unit": "CodSP3 - NCS Country Codes - NATO",
+                "value": "EEE",
+            },
+            "use_time_ratio": {
+                "max": 1.0,
+                "min": 1.0,
+                "status": "ARCHETYPE",
+                "unit": "/1",
+                "value": 1.0,
+            },
             "vram": {"status": "INPUT", "unit": "gb", "value": 24},
             "vram_dies": {"status": "INPUT", "value": 12},
             "vram_surface": {

@@ -119,6 +119,14 @@ def mapper_cloud_instance(
         archetype=get_arch_component(model_cloud_instance.archetype, "USAGE"),
     )
 
+    # Set before complete_components_usage, which would otherwise make the GPU
+    # share the instance's time_workload attribute.
+    gpu_time_workload = cloud_dto.usage.gpu_time_workload if cloud_dto.usage else None
+    if gpu_time_workload is not None and model_cloud_instance.platform.gpu is not None:
+        model_cloud_instance.platform.gpu.usage.time_workload.set_input(
+            gpu_time_workload
+        )
+
     complete_components_usage(model_cloud_instance.platform, model_cloud_instance.usage)
     complete_usage(model_cloud_instance.platform.usage, model_cloud_instance.usage)
 

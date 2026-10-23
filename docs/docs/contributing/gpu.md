@@ -24,6 +24,7 @@ All available GPUs are stored in a CSV file named `gpu_specs.csv` located at `bo
 | mass_casing      |                  | Mass of the casing / shroud (in kg)                                     | 0.789230             |
 | mass_heatsink    |                  | Mass of the heatsink (in kg)                                            | 0.900770             |
 | mass             |                  | Total mass of the GPU card (in kg)                                      | 1.690000             |
+| tdp              |                  | Board power of the GPU card (TDP, in W), from the vendor datasheet      | 700                  |
 | source           |                  | Semicolon-separated URLs backing the row's values; prefer primary sources | datasheet URL;die-size URL |
 
 See on [GitHub](https://github.com/Boavizta/boaviztapi/blob/main/boaviztapi/data/crowdsourcing/gpu_specs.csv)

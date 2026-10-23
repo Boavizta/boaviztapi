@@ -6,6 +6,7 @@ import pandas as pd
 from boaviztapi import config, data_dir
 from boaviztapi.models.boattribute import Boattribute
 from boaviztapi.models.component.component import Component
+from boaviztapi.models.impact import ImpactFactor
 from boaviztapi.data.archetype import get_arch_value, get_component_archetype
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_gpu_name
 
@@ -22,6 +23,10 @@ _WAFER_SURFACE = math.pi * math.pow(_WAFER_DIAMETER / 2, 2)
 
 # Factor to determine the area of vram die based on vram capacity, based on average of studied GPUs
 VRAM_DIE_SURFACE_PER_GB = 15.5  # in mm2
+
+# Idle power as a share of TDP, in line with the idle/max ranges of the Cloud
+# Carbon Footprint GPU methodology (e.g. H100 60/700 W, L4 8/72 W)
+IDLE_POWER_RATIO = 0.1
 
 
 def _calculate_effective_area_on_circular_wafer(die_area: float | None) -> float | None:
@@ -150,6 +155,14 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, "vram_surface", "max"),
         )
 
+        self.tdp = Boattribute(
+            complete_function=self._complete_tdp,
+            unit="W",
+            default=get_arch_value(archetype, "tdp", "default"),
+            min=get_arch_value(archetype, "tdp", "min"),
+            max=get_arch_value(archetype, "tdp", "max"),
+        )
+
         self.transport_boat = Boattribute(
             complete_function=self._complete_transport_boat,
             unit="km",
@@ -191,11 +204,13 @@ class ComponentGPU(Component):
                 mass_casing,
                 mass_heatsink,
                 mass,
+                tdp,
                 source,
             ) = (
                 gpu_attributes
                 if gpu_attributes is not None
                 else (
+                    None,
                     None,
                     None,
                     None,
@@ -270,6 +285,11 @@ class ComponentGPU(Component):
                     mass,
                     source=f"Completed from name based on {source}.",
                 )
+            if tdp is not None and self.tdp.is_none():
+                self.tdp.set_completed(
+                    tdp,
+                    source=f"Completed from name based on {source}.",
+                )
 
     def _complete_weight(self):
         self._complete_from_name()
@@ -326,6 +346,46 @@ class ComponentGPU(Component):
             return
         self.vram_dies.set_archetype(
             get_arch_value(self._default_archetype, "vram_dies", "default")
+        )
+
+    def _complete_tdp(self):
+        self._complete_from_name()
+        if self.tdp.is_set():
+            return
+        self.tdp.set_archetype(
+            get_arch_value(self._default_archetype, "tdp", "default")
+        )
+
+    def _power_at_load(self, load: float) -> float:
+        """Power of one GPU (W) at a load (%), linear from idle to TDP."""
+        return self.tdp.value * (IDLE_POWER_RATIO + (1 - IDLE_POWER_RATIO) * load / 100)
+
+    def _power_at_workload(self, workload) -> float:
+        if type(workload) in (float, int):
+            return self._power_at_load(workload)
+        # The model is linear, so a list of (time, load) pairs is the same as
+        # running at their time-weighted average load.
+        return sum(
+            w.time_percentage / 100 * self._power_at_load(w.load_percentage)
+            for w in workload
+        )
+
+    def model_power_consumption(self) -> ImpactFactor:
+        """Power of one GPU (W) from its TDP and the GPU load."""
+        workload = self.usage.time_workload
+        return ImpactFactor(
+            value=self._power_at_workload(workload.value),
+            min=self._power_at_workload(workload.min),
+            max=self._power_at_workload(workload.max),
+        )
+
+    def complete_avg_power(self):
+        """Model avg_power (per GPU) from the TDP, unless it was given."""
+        if self.usage.avg_power.is_set():
+            return
+        consumption = self.model_power_consumption()
+        self.usage.avg_power.set_completed(
+            value=consumption.value, min=consumption.min, max=consumption.max
         )
 
     def _complete_transport_boat(self):

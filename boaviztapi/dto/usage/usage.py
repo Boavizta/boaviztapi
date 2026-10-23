@@ -61,6 +61,8 @@ class UsageServer(Usage):
 class UsageCloud(UsageServer):
     instance_per_server: Optional[int] = None
     region: Optional[str] = None
+    # Load of the instance's GPUs; falls back to time_workload when not given
+    gpu_time_workload: Optional[Union[float, List[WorkloadTime]]] = None
 
 
 def _reset_usage_dto_if_matches_config_defaults(usage_dto: Usage):

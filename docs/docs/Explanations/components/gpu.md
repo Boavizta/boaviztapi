@@ -16,6 +16,7 @@
 | vram_surface     | mm²  | computed                   | Total effective VRAM die area including wafer losses                 | 744.0                |
 | pwb_surface      | cm²  | 296                        | PCB surface area                                                     | 296.37               |
 | pwb_weight       | kg   | None                       | Mass of the PCB                                                      | 0.2                  |
+| tdp              | W    | 700                        | Board power of one GPU card (TDP)                                    | 700                  |
 | transport_boat   | km   | 19000                      | Distribution distance by boat                                        | 19000                |
 | transport_truck  | km   | 1000                       | Distribution distance by truck                                       | 1000                 |
 | transport_plane  | km   | 0                          | Distribution distance by plane                                       | 0                    |
@@ -33,6 +34,7 @@ If a GPU `name` is provided, the following attributes can be retrieved via fuzzy
 - `pwb_surface`
 - `weight`, `heatsink_weight`, `casing_weight`
 - `transport_boat`, `transport_truck`, `transport_plane`
+- `tdp`
 
 !!!warning
     The GPU name repository is not exhaustive, and the fuzzy match may return a different GPU than the one specified if the name is ambiguous or misspelled. The matching threshold is configurable via `BOAVIZTA_GPU_NAME_FUZZYMATCH_THRESHOLD` in the [config](../../config.md). You can contribute new GPU models by following the [contributing guide](../../contributing/gpu.md).
@@ -120,3 +122,13 @@ Each sub-component impact uses a dedicated impact factor from the factor databas
 ## Usage impacts
 
 Power consumption is based on the [usage](../usage/power.md) methodology. The GPU's workload and use time ratio are taken from the usage parameters.
+
+When `avg_power` is not given, the power of one GPU is modelled from its `tdp`, linearly from an idle power of 10% of
+the TDP to the full TDP, as in the [Cloud Carbon Footprint GPU methodology](https://www.cloudcarbonfootprint.org/docs/methodology/#graphic-processing-units-gpus):
+
+$$
+\text{P}_{\text{GPU}}(\text{workload}) = \text{tdp} \times (0.1 + 0.9 \times \frac{\text{workload}}{100})
+$$
+
+The workload is the GPU's `time_workload` (50% by default). In a server, it falls back to the server's `time_workload`.
+Total power is $\text{P}_{\text{GPU}} \times \text{units}$.

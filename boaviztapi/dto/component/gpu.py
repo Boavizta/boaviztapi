@@ -19,6 +19,7 @@ class GPU(ComponentDTO):
     vram: Optional[int] = None
     vram_dies: Optional[int] = None
     vram_surface: Optional[float] = None
+    tdp: Optional[float] = None
     transport_boat: Optional[float] = None
     transport_truck: Optional[float] = None
     transport_plane: Optional[float] = None
@@ -68,6 +69,9 @@ def mapper_gpu(
 
     if gpu_dto.vram_surface is not None:
         gpu_component.vram_surface.set_input(gpu_dto.vram_surface)
+
+    if gpu_dto.tdp is not None:
+        gpu_component.tdp.set_input(gpu_dto.tdp)
 
     if gpu_dto.transport_boat is not None:
         gpu_component.transport_boat.set_input(gpu_dto.transport_boat)

@@ -8,6 +8,7 @@ from boaviztapi.models.device.server import DeviceServer
 from boaviztapi.models.impact import IMPACT_CRITERIAS
 from boaviztapi.models.usage import ModelUsage, ModelUsageServer
 from boaviztapi.data.archetype import get_arch_value, get_component_archetype
+from boaviztapi.dto.usage.usage import WorkloadTime
 
 
 class TestComponentGPU:
@@ -191,24 +192,49 @@ class TestServerGPUPower:
         server_with_gpu = self._build_server(gpu_avg_power=400, gpu_units=4)
         with_gpu = server_with_gpu.model_power_consumption().value
 
-        # 4 GPUs * 400 W of extra power, scaled by the "other consumption" overhead.
-        overhead = 1 + server_with_gpu.usage.other_consumption_ratio.value
-        assert with_gpu > baseline
-        assert with_gpu == pytest.approx(baseline + 4 * 400 * overhead, rel=1e-6)
+        # 4 GPUs * 400 W, added outside the "other consumption" overhead.
+        assert with_gpu == pytest.approx(baseline + 4 * 400, rel=1e-6)
 
-    def test_gpu_power_ignored_when_avg_power_not_provided(self):
-        """Without a user-supplied avg_power the GPU has no power model, so the
-        server power must be unchanged (GPU embedded impact still applies)."""
+    def test_gpu_power_modelled_when_avg_power_not_provided(self):
+        """Without a user-supplied avg_power, the GPU power is modelled from
+        its TDP: 10% of it at idle, linear up to the TDP at full load."""
         baseline = self._build_server().model_power_consumption().value
 
         server_with_gpu = self._build_server()
         gpu = ComponentGPU()
         gpu.units.set_input(4)
+        gpu.tdp.set_input(700)
         server_with_gpu.gpu = gpu
 
-        assert server_with_gpu.model_power_consumption().value == pytest.approx(
-            baseline
+        # Default GPU load is 50%: 700 * (0.1 + 0.9 * 0.5) = 385 W per GPU
+        power = server_with_gpu.model_power_consumption()
+        assert gpu.usage.avg_power.value == pytest.approx(385)
+        assert power.value == pytest.approx(baseline + 4 * 385)
+
+    def test_gpu_power_bounds_follow_load_range(self):
+        gpu = ComponentGPU()
+        gpu.tdp.set_input(700)
+        gpu.usage.time_workload.set_input(0)
+        assert gpu.model_power_consumption().value == pytest.approx(70)
+        gpu.usage.time_workload.set_input(100)
+        assert gpu.model_power_consumption().value == pytest.approx(700)
+
+    def test_gpu_power_from_multiple_workloads(self):
+        gpu = ComponentGPU()
+        gpu.tdp.set_input(700)
+        gpu.usage.time_workload.set_input(
+            [
+                WorkloadTime(time_percentage=50, load_percentage=0),
+                WorkloadTime(time_percentage=50, load_percentage=100),
+            ]
         )
+        # Same as a constant 50% load, since the model is linear
+        assert gpu.model_power_consumption().value == pytest.approx(385)
+
+    def test_gpu_tdp_completed_from_name(self):
+        gpu = ComponentGPU()
+        gpu.name.set_input("NVIDIA L4")
+        assert gpu.tdp.value == 72
 
 
 class TestServerRAMPower:
