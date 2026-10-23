@@ -35,3 +35,6 @@ AMD Radeon Instinct MI25,AMD,1,2,16,1257.71,234.36,19000,1000,0,,,,300,1,https:/
 NVIDIA Tesla M60,NVIDIA,2,32,16,1895.88,234.36,19000,1000,0,0.315,0.676,1.23,300,2,https://images.nvidia.com/content/pdf/tesla/PB-07864-001_v02_TeslaM60-Product-Brief_12-16.pdf
 NVIDIA Tesla K80,NVIDIA,2,48,24,3134.27,,19000,1000,0,,,,300,2,https://nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf
 NVIDIA GRID K520,NVIDIA,2,,8,1245.19,,19000,1000,0,,,,225,2,https://www.techpowerup.com/gpu-specs/grid-k520.c2312
+AWS Inferentia,AWS,1,,,,,19000,1000,0,,,,35,1,https://mirrorfrog.com/en/docs/cards/aws/inferentia/
+AWS Inferentia2,AWS,1,,32,,,19000,1000,0,,,,150,1,https://mirrorfrog.com/en/docs/cards/aws/inferentia-2/
+AWS Trainium,AWS,1,,32,,,19000,1000,0,,,,350,1,https://mirrorfrog.com/en/docs/cards/aws/trainium/
