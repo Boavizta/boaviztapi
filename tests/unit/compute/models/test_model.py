@@ -235,6 +235,25 @@ class TestServerGPUPower:
         gpu = ComponentGPU()
         gpu.name.set_input("NVIDIA L4")
         assert gpu.tdp.value == 72
+        assert gpu.gpus_per_card.value == 1
+
+    def test_dual_gpu_card_power_is_per_gpu(self):
+        """tdp is for the card; one unit of a two-GPU card gets half of it."""
+        gpu = ComponentGPU()
+        gpu.tdp.set_input(300)
+        gpu.gpus_per_card.set_input(2)
+        gpu.usage.time_workload.set_input(100)
+        assert gpu.model_power_consumption().value == pytest.approx(150)
+
+    def test_dual_gpu_card_embedded_is_per_gpu(self):
+        def embedded(gpus_per_card):
+            gpu = ComponentGPU()
+            gpu.units.set_input(4)
+            gpu.gpus_per_card.set_input(gpus_per_card)
+            return gpu_impact_embedded("gwp", 1, gpu)[0]
+
+        # 4 GPUs on two-GPU cards are 2 cards
+        assert embedded(2) == pytest.approx(embedded(1) / 2)
 
 
 class TestServerRAMPower:

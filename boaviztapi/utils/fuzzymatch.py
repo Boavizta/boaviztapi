@@ -53,6 +53,7 @@ def fuzzymatch_attr_from_gpu_name(
         float,
         float,
         float,
+        float,
         str,
     ],
     None,
@@ -83,6 +84,7 @@ def fuzzymatch_attr_from_gpu_name(
             safe_float(best.mass_heatsink),
             safe_float(best.mass),
             safe_float(best.tdp),  # board power per card, in W
+            safe_float(best.gpus_per_card),
             best.source,
         )
 

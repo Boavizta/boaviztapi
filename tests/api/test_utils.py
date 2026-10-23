@@ -183,6 +183,7 @@ async def test_complete_gpu_from_name_detail():
             "vram_dies": 6,
             "vram_surface": None,
             "tdp": 700.0,
+            "gpus_per_card": 1,
             "transport_boat": 19000.0,
             "transport_truck": 1000.0,
             "transport_plane": 0.0,

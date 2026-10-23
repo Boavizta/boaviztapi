@@ -776,6 +776,7 @@ async def test_complete_gpu_verbose():
                 "unit": "mm2",
                 "value": 2808.445102929598,
             },
+            "gpus_per_card": {"status": "ARCHETYPE", "value": 1},
             "gwp_factor": {
                 "max": 0.9,
                 "min": 0.023,

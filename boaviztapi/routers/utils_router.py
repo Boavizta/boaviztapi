@@ -139,6 +139,7 @@ async def utils_name_to_gpu(gpu_name: str = Query(examples=["NVIDIA A100 80GB SX
             mass_heatsink,
             mass,
             tdp,
+            gpus_per_card,
             source,
         ) = gpu_attributes
         return GPU(
@@ -152,6 +153,7 @@ async def utils_name_to_gpu(gpu_name: str = Query(examples=["NVIDIA A100 80GB SX
             heatsink_weight=mass_heatsink,
             casing_weight=mass_casing,
             tdp=tdp,
+            gpus_per_card=int(gpus_per_card) if gpus_per_card is not None else None,
             transport_boat=distance_boat,
             transport_truck=distance_truck,
             transport_plane=distance_plane,

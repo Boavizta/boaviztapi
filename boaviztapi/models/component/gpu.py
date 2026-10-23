@@ -163,6 +163,15 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, "tdp", "max"),
         )
 
+        # Cards such as the Tesla M60 carry two GPUs and providers count GPUs,
+        # so one unit is then a share of the card
+        self.gpus_per_card = Boattribute(
+            complete_function=self._complete_gpus_per_card,
+            default=get_arch_value(archetype, "gpus_per_card", "default", default=1),
+            min=get_arch_value(archetype, "gpus_per_card", "min"),
+            max=get_arch_value(archetype, "gpus_per_card", "max"),
+        )
+
         self.transport_boat = Boattribute(
             complete_function=self._complete_transport_boat,
             unit="km",
@@ -205,11 +214,13 @@ class ComponentGPU(Component):
                 mass_heatsink,
                 mass,
                 tdp,
+                gpus_per_card,
                 source,
             ) = (
                 gpu_attributes
                 if gpu_attributes is not None
                 else (
+                    None,
                     None,
                     None,
                     None,
@@ -290,6 +301,11 @@ class ComponentGPU(Component):
                     tdp,
                     source=f"Completed from name based on {source}.",
                 )
+            if gpus_per_card is not None and self.gpus_per_card.is_none():
+                self.gpus_per_card.set_completed(
+                    int(gpus_per_card),
+                    source=f"Completed from name based on {source}.",
+                )
 
     def _complete_weight(self):
         self._complete_from_name()
@@ -356,9 +372,21 @@ class ComponentGPU(Component):
             get_arch_value(self._default_archetype, "tdp", "default")
         )
 
+    def _complete_gpus_per_card(self):
+        self._complete_from_name()
+        if self.gpus_per_card.is_set():
+            return
+        self.gpus_per_card.set_archetype(
+            get_arch_value(
+                self._default_archetype, "gpus_per_card", "default", default=1
+            )
+        )
+
     def _power_at_load(self, load: float) -> float:
         """Power of one GPU (W) at a load (%), linear from idle to TDP."""
-        return self.tdp.value * (IDLE_POWER_RATIO + (1 - IDLE_POWER_RATIO) * load / 100)
+        # tdp is for the whole card
+        tdp_per_gpu = self.tdp.value / self.gpus_per_card.value
+        return tdp_per_gpu * (IDLE_POWER_RATIO + (1 - IDLE_POWER_RATIO) * load / 100)
 
     def _power_at_workload(self, workload) -> float:
         if type(workload) in (float, int):

@@ -279,6 +279,9 @@ def gpu_impact_embedded(
     # End of life
     end_of_life_impact = _component_impact("end_of_life", "eol", gpu.weight)
 
+    # The impacts above are for a whole card, and units counts GPUs
+    cards = gpu.units.value / gpu.gpus_per_card.value
+
     impact = Impact(
         value=(
             casing_impact.value
@@ -292,7 +295,7 @@ def gpu_impact_embedded(
             + transport_plane_impact.value
             + end_of_life_impact.value
         )
-        * gpu.units.value,
+        * cards,
         min=(
             casing_impact.min
             + heatsink_impact.min
@@ -306,7 +309,7 @@ def gpu_impact_embedded(
             + end_of_life_impact.min
         )
         # units is a deterministic count, not a source of uncertainty
-        * gpu.units.value,
+        * cards,
         max=(
             casing_impact.max
             + heatsink_impact.max
@@ -319,7 +322,7 @@ def gpu_impact_embedded(
             + transport_plane_impact.max
             + end_of_life_impact.max
         )
-        * gpu.units.value,
+        * cards,
     )
 
     impact.allocate(duration, gpu.usage.hours_life_time)
