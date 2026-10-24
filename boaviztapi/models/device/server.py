@@ -205,15 +205,12 @@ class DeviceServer(Device):
             conso_ram.min = conso_ram.min + conso_ram_unit.min
             conso_ram.max = conso_ram.max + conso_ram_unit.max
 
-        # The GPU component has no power model: only account for its power when
-        # the user explicitly provides an average power per GPU.
         conso_gpu = ImpactFactor(value=0, min=0, max=0)
-        if self.gpu is not None and self.gpu.usage.avg_power.is_set():
+        if self.gpu is not None:
+            self.gpu.complete_avg_power()
             # units is a deterministic count: scale all bounds by units.value so
             # the uncertainty range only reflects the avg_power bounds.
-            conso_gpu.value = self.gpu.usage.avg_power.value * self.gpu.units.value
-            conso_gpu.min = self.gpu.usage.avg_power.min * self.gpu.units.value
-            conso_gpu.max = self.gpu.usage.avg_power.max * self.gpu.units.value
+            conso_gpu = gpu_power_consumption(self.gpu, self.gpu.units.value)
 
         conso_disk = ImpactFactor(value=0, min=0, max=0)
         for disk in self.disk:
@@ -223,17 +220,22 @@ class DeviceServer(Device):
             conso_disk.max = conso_disk.max + conso_disk_unit.max
 
         # Disks are added outside other_consumption_ratio, which used to stand
-        # in for them, so that their power is not counted twice.
+        # in for them, so that their power is not counted twice. GPUs are added
+        # outside it too: the ratio was sized for CPU servers and would inflate
+        # the board power of the GPUs, which can dominate the server, by a third.
         return ImpactFactor(
-            value=(conso_cpu.value + conso_ram.value + conso_gpu.value)
+            value=(conso_cpu.value + conso_ram.value)
             * (1 + self.usage.other_consumption_ratio.value)
-            + conso_disk.value,
-            min=(conso_cpu.min + conso_ram.min + conso_gpu.min)
+            + conso_disk.value
+            + conso_gpu.value,
+            min=(conso_cpu.min + conso_ram.min)
             * (1 + self.usage.other_consumption_ratio.min)
-            + conso_disk.min,
-            max=(conso_cpu.max + conso_ram.max + conso_gpu.max)
+            + conso_disk.min
+            + conso_gpu.min,
+            max=(conso_cpu.max + conso_ram.max)
             * (1 + self.usage.other_consumption_ratio.max)
-            + conso_disk.max,
+            + conso_disk.max
+            + conso_gpu.max,
         )
 
     def get_total_memory(self):
@@ -257,6 +259,15 @@ class DeviceServer(Device):
         if self.gpu is None or not self.gpu.units.has_value():
             return 0
         return self.gpu.units.value
+
+
+def gpu_power_consumption(gpu: ComponentGPU, units: float) -> ImpactFactor:
+    """Power of `units` GPUs (possibly fractional), from the power per GPU."""
+    return ImpactFactor(
+        value=gpu.usage.avg_power.value * units,
+        min=gpu.usage.avg_power.min * units,
+        max=gpu.usage.avg_power.max * units,
+    )
 
 
 def disk_power_consumption(disk: Union[ComponentSSD, ComponentHDD]) -> ImpactFactor:

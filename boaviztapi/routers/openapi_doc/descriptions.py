@@ -78,7 +78,8 @@ gpu_description = (
     "gpu<sub>transport_distance_truck</sub> x gpu<sub>impact_truck<sub><em>criteria</em></sub></sub> + "
     "gpu<sub>transport_distance_plane</sub> x gpu<sub>impact_plane<sub><em>criteria</em></sub></sub></h3> "
     "🔌 Usage\n\n"
-    "* ❌ Not implemented\n\n"
+    "* ⏺️  Given\n\n"
+    "* 📈 Modeled\n\n"
     "⏬ Allocation"
 )
 

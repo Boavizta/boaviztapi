@@ -15,7 +15,7 @@ All available GPUs are stored in a CSV file named `gpu_specs.csv` located at `bo
 | manufacturer     |                  | Manufacturer of the GPU                                                  | NVIDIA               |
 | unit             |                  | Number of GPU compute dies on the package                                | 1                    |
 | number           |                  | Number of VRAM dies                                                      | 6                    |
-| vram             |                  | Total VRAM capacity (in GB)                                              | 80                   |
+| vram             |                  | Total VRAM capacity of the card (in GB)                                  | 80                   |
 | die_surface      |                  | Effective GPU die area **including losses** (in mm²)               | 2810.4               |
 | pwb_surface      |                  | PCB (printed wiring board) surface area (in cm²)                        | 296.37               |
 | distance_boat    |                  | Transport distance by boat from manufacturing site to market (in km)    | 19000                |
@@ -24,6 +24,8 @@ All available GPUs are stored in a CSV file named `gpu_specs.csv` located at `bo
 | mass_casing      |                  | Mass of the casing / shroud (in kg)                                     | 0.789230             |
 | mass_heatsink    |                  | Mass of the heatsink (in kg)                                            | 0.900770             |
 | mass             |                  | Total mass of the GPU card (in kg)                                      | 1.690000             |
+| tdp              |                  | Board power of the GPU card (TDP, in W), from the vendor datasheet      | 700                  |
+| gpus_per_card    |                  | Number of GPUs on the card, as counted by cloud providers (2 for the Tesla M60, K80 and GRID K520) | 1 |
 | source           |                  | Semicolon-separated URLs backing the row's values; prefer primary sources | datasheet URL;die-size URL |
 
 See on [GitHub](https://github.com/Boavizta/boaviztapi/blob/main/boaviztapi/data/crowdsourcing/gpu_specs.csv)

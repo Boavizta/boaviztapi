@@ -27,7 +27,7 @@ c5n.metal,AWS,rack,2,,,Intel Xeon Platinum 8124M,,12,16,0,0,0,0,0,,0,2;2;2,2.99;
 c6g.metal,AWS,rack,1,,,Annapurna Labs Graviton2,,8,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 c6gd.metal,AWS,rack,1,,,Annapurna Labs Graviton2,,8,16,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 c6gn.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton2,,8,16,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
-g2.8xlarge,AWS,rack,2,,,Intel Xeon E5-2670,,15,4,2,120,0,0,4,K520,4,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+g2.8xlarge,AWS,rack,2,,,Intel Xeon E5-2670,,15,4,2,120,0,0,4,NVIDIA GRID K520,8,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 g4dn.metal,AWS,rack,2,,,Intel Xeon Platinum 8259CL,,12,32,2,900,0,0,8,NVIDIA T4,16,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 hs1.8xlarge,AWS,rack,2,,,Intel Xeon E5-2670,,61,4,0,0,2,2000,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 i3.metal,AWS,rack,2,,,Intel Xeon E5-2686 v4,,16,32,8,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
@@ -75,7 +75,7 @@ c7g.metal,AWS,rack,1,,,Annapurna Labs Graviton3,,4,32,0,0,0,0,0,,0,2;2;2,2.99;1;
 c7gd.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton3,,4,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 c7gn.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton3E,,4,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 c7i.48xlarge,AWS,rack,2,,,Intel Xeon Platinum 8488C,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
-g5.48xlarge,AWS,rack,2,,,AMD EPYC 7R32,,24,32,2,3800,0,0,8,NVIDIA A10,24,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+g5.48xlarge,AWS,rack,2,,,AMD EPYC 7R32,,24,32,2,3800,0,0,8,NVIDIA A10G,24,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 g5g.metal,AWS,rack,1,,,Annapurna Labs Graviton2,,4,32,0,0,0,0,2,NVIDIA T4,16,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 g6.48xlarge,AWS,rack,2,,,AMD EPYC 7R13,,24,32,8,940,0,0,8,NVIDIA L4,24,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM and PSU configuration were not verified
 g6e.48xlarge,AWS,rack,2,,,AMD EPYC 7R13,,6,256,4,1900,0,0,8,NVIDIA L40S 48GB,48,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM and PSU configuration were not verified
@@ -110,7 +110,7 @@ r7gd.16xlarge,AWS,rack,1,,,Annapurna Labs Graviton3,,16,32,2,1900,0,0,0,,0,2;2;2
 r7iz.32xlarge,AWS,rack,2,,,Intel Xeon 6455B,,32,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r7i.metal-24xl,AWS,rack,1,,,Intel Xeon Platinum 8488C,,3,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 r7i.metal-48xl,AWS,rack,2,,,Intel Xeon Platinum 8488C,,6,256,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,
-trn1.32xlarge,AWS,rack,2,,,Intel Xeon Platinum 8375C,,16,32,4,1900,0,0,16,AWS Inferentia,32,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+trn1.32xlarge,AWS,rack,2,,,Intel Xeon Platinum 8375C,,16,32,4,1900,0,0,16,AWS Trainium,32,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 vt1.24xlarge,AWS,rack,2,,,Intel Xeon Platinum 8259CL,,6,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 x2idn.metal,AWS,rack,2,,,Intel Xeon Platinum 8375C,,64,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 x2iedn.metal,AWS,rack,2,,,Intel Xeon Platinum 8375C,,128,32,2,1900,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
@@ -135,7 +135,7 @@ platform_aws_m3,AWS,rack,2,,,Intel Xeon E5-2670,,30,8,2,80,0,0,0,,0,2;2;2,2.99;1
 platform_aws_m4-a,AWS,rack,2,,,Intel Xeon E5-2686 v4,,8,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 platform_aws_m4-b,AWS,rack,2,,,Intel Xeon E5-2676 V3,,8,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 platform_aws_m5-b,AWS,rack,2,,,Intel Xeon Platinum 8259CL,,12,32,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
-platform_aws_p2,AWS,rack,2,,,Intel Xeon E5-2686 v4,,183,4,0,0,0,0,16,Tesla K80,24,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
+platform_aws_p2,AWS,rack,2,,,Intel Xeon E5-2686 v4,,183,4,0,0,0,0,16,NVIDIA Tesla K80,24,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 platform_aws_p3,AWS,rack,2,,,Intel Xeon E5-2686 v4,,24,32,0,0,0,0,8,NVIDIA Tesla V100 SXM2 16GB,32,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 platform_aws_r3,AWS,rack,2,,,Intel Xeon E5-2670 V2,,61,4,2,320,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
 platform_aws_r4,AWS,rack,2,,,Intel Xeon E5-2686 v4,,61,8,0,0,0,0,0,,0,2;2;2,2.99;1;5,50;0;100,1,52560,0.33;0.2;0.6,RAM configuration was not verified
@@ -193,8 +193,8 @@ Msmv2-Type1,Azure,rack,8.0,,,Intel Xeon Platinum 8180M,,178.125,64.0,4.0,2048.0,
 Msv2-Type1,Azure,rack,8.0,,,Intel Xeon Platinum 8180M,,89.0625,64.0,4.0,2048.0,0.0,0.0,0.0,,,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,"RAM units and per unit capacity not verified. RAM capacity from Azure docs was: 5,700 GiB"
 Msv2MedMem-Type1,Azure,rack,4.0,,,Intel Xeon Platinum 8280,,64.0,32.0,0.0,0.0,0.0,0.0,0.0,,,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,"RAM units and per unit capacity not verified. RAM capacity from Azure docs was: 2,048 GiB"
 NVasv4-Type1,Azure,rack,1.0,,,AMD EPYC 7V12,,56.0,8.0,2.0,2048.0,0.0,0.0,1.0,AMD Radeon Instinct MI25,16,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,RAM units and per unit capacity not verified. RAM capacity from Azure docs was: 448 GiB
-NVsv3-Type1,Azure,rack,2.0,,,Intel Xeon E5-2690 V4,,56.0,8.0,2.0,2048.0,0.0,0.0,4.0,NVIDIA Tesla M60,8,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,RAM units and per unit capacity not verified. RAM capacity from Azure docs was: 448 GiB
-platform_aws_g3,AWS,rack,2.0,,,Intel Xeon E5-2686 v4,,8,64,0.0,0.0,0.0,0.0,4.0,NVIDIA Tesla M60,32,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,RAM units and per unit capacity not verified.
+NVsv3-Type1,Azure,rack,2.0,,,Intel Xeon E5-2690 V4,,56.0,8.0,2.0,2048.0,0.0,0.0,4.0,NVIDIA Tesla M60,16,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,RAM units and per unit capacity not verified. RAM capacity from Azure docs was: 448 GiB
+platform_aws_g3,AWS,rack,2.0,,,Intel Xeon E5-2686 v4,,8,64,0.0,0.0,0.0,0.0,4.0,NVIDIA Tesla M60,16,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,RAM units and per unit capacity not verified.
 m7gd.metal,AWS,rack,1.0,,,Annapurna Labs Graviton3,,4,64,0.0,0.0,0.0,0.0,0.0,,0.0,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,RAM units and per unit capacity not verified.
 platform_aws_m1,AWS,rack,1.0,32,,,64,15,16,4.0,420,0.0,0.0,0.0,,0.0,2;2;2,2.99;1;5,50;0;100,1,52560.0,0.33;0.2;0.6,RAM units and per unit capacity not verified. CPU can be any Intel Xeon Family.
 scw_coparm1.base,Scaleway,rack,1,128,,Ampere Altra Max M128-30,256,16,64,2,937,0,0,0,,0,2,0,50;0;100,1,52560,0.33;0.2;0.6,

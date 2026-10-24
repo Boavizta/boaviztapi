@@ -6,10 +6,17 @@ import pandas as pd
 from boaviztapi import config, data_dir
 from boaviztapi.models.boattribute import Boattribute
 from boaviztapi.models.component.component import Component
-from boaviztapi.data.archetype import get_arch_value, get_component_archetype
+from boaviztapi.models.impact import ImpactFactor
+from boaviztapi.data.archetype import (
+    get_arch_component,
+    get_arch_value,
+    get_component_archetype,
+)
+from boaviztapi.models.usage import ModelUsage
 from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_gpu_name
 
 _gpu_specs = pd.read_csv(os.path.join(data_dir, "crowdsourcing/gpu_specs.csv"))
+_default_gpu_archetype = get_component_archetype(config.default_gpu, "gpu")
 
 
 def attributes_from_gpu_name(gpu_name: str):
@@ -22,6 +29,10 @@ _WAFER_SURFACE = math.pi * math.pow(_WAFER_DIAMETER / 2, 2)
 
 # Factor to determine the area of vram die based on vram capacity, based on average of studied GPUs
 VRAM_DIE_SURFACE_PER_GB = 15.5  # in mm2
+
+# Idle power as a share of TDP, in line with the idle/max ranges of the Cloud
+# Carbon Footprint GPU methodology (e.g. T4 8/71 W, A100 46/407 W)
+IDLE_POWER_RATIO = 0.1
 
 
 def _calculate_effective_area_on_circular_wafer(die_area: float | None) -> float | None:
@@ -50,9 +61,22 @@ def _calculate_effective_area_on_circular_wafer(die_area: float | None) -> float
     return effective_die_area / usable_ratio
 
 
+def gpu_usage_archetype(archetype) -> dict:
+    """Usage archetype of a GPU: its host's, with the GPU's own default load.
+
+    GPUs run at a different load than the CPU of their host: 60-70% for AI
+    workloads at cloud providers (https://www.tomshardware.com/pc-components/gpus/datacenter-gpu-service-life-can-be-surprisingly-short-only-one-to-three-years-is-expected-according-to-unnamed-google-architect).
+    """
+    usage = dict(get_arch_component(archetype, "USAGE") or {})
+    default_usage = _default_gpu_archetype.get("USAGE", {})
+    if "time_workload" in default_usage:
+        usage["time_workload"] = default_usage["time_workload"]
+    return usage
+
+
 class ComponentGPU(Component):
     NAME = "GPU"
-    _default_archetype = get_component_archetype(config.default_gpu, "gpu")
+    _default_archetype = _default_gpu_archetype
     name_completion = False
 
     def __init__(
@@ -150,6 +174,23 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, "vram_surface", "max"),
         )
 
+        self.tdp = Boattribute(
+            complete_function=self._complete_tdp,
+            unit="W",
+            default=get_arch_value(archetype, "tdp", "default"),
+            min=get_arch_value(archetype, "tdp", "min"),
+            max=get_arch_value(archetype, "tdp", "max"),
+        )
+
+        # Cards such as the Tesla M60 carry two GPUs and providers count GPUs,
+        # so one unit is then a share of the card
+        self.gpus_per_card = Boattribute(
+            complete_function=self._complete_gpus_per_card,
+            default=get_arch_value(archetype, "gpus_per_card", "default", default=1),
+            min=get_arch_value(archetype, "gpus_per_card", "min"),
+            max=get_arch_value(archetype, "gpus_per_card", "max"),
+        )
+
         self.transport_boat = Boattribute(
             complete_function=self._complete_transport_boat,
             unit="km",
@@ -174,6 +215,16 @@ class ComponentGPU(Component):
             max=get_arch_value(archetype, "transport_plane", "max"),
         )
 
+    @property
+    def usage(self) -> ModelUsage:
+        if self._usage is None:
+            self._usage = ModelUsage(archetype=gpu_usage_archetype(self.archetype))
+        return self._usage
+
+    @usage.setter
+    def usage(self, value: ModelUsage) -> None:
+        self._usage = value
+
     def _complete_from_name(self):
         if self.name.has_value() and not self.name_completion:
             self.name_completion = True
@@ -191,11 +242,15 @@ class ComponentGPU(Component):
                 mass_casing,
                 mass_heatsink,
                 mass,
+                tdp,
+                gpus_per_card,
                 source,
             ) = (
                 gpu_attributes
                 if gpu_attributes is not None
                 else (
+                    None,
+                    None,
                     None,
                     None,
                     None,
@@ -270,6 +325,18 @@ class ComponentGPU(Component):
                     mass,
                     source=f"Completed from name based on {source}.",
                 )
+            if tdp is not None and self.tdp.is_none():
+                self.tdp.set_completed(
+                    tdp,
+                    source=f"Completed from name based on {source}.",
+                    min=tdp,
+                    max=tdp,
+                )
+            if gpus_per_card is not None and self.gpus_per_card.is_none():
+                self.gpus_per_card.set_completed(
+                    int(gpus_per_card),
+                    source=f"Completed from name based on {source}.",
+                )
 
     def _complete_weight(self):
         self._complete_from_name()
@@ -326,6 +393,62 @@ class ComponentGPU(Component):
             return
         self.vram_dies.set_archetype(
             get_arch_value(self._default_archetype, "vram_dies", "default")
+        )
+
+    def _complete_tdp(self):
+        self._complete_from_name()
+        if self.tdp.is_set():
+            return
+        self.tdp.set_archetype(
+            get_arch_value(self._default_archetype, "tdp", "default")
+        )
+        # The default TDP is a guess, so it keeps the range of the default GPU
+        self.tdp.min = get_arch_value(self._default_archetype, "tdp", "min")
+        self.tdp.max = get_arch_value(self._default_archetype, "tdp", "max")
+
+    def _complete_gpus_per_card(self):
+        self._complete_from_name()
+        if self.gpus_per_card.is_set():
+            return
+        self.gpus_per_card.set_archetype(
+            get_arch_value(
+                self._default_archetype, "gpus_per_card", "default", default=1
+            )
+        )
+
+    def _power_at_load(self, tdp: float, load: float) -> float:
+        """Power of one GPU (W) at a load (%), linear from idle to the TDP of its card."""
+        tdp_per_gpu = tdp / self.gpus_per_card.value
+        return tdp_per_gpu * (IDLE_POWER_RATIO + (1 - IDLE_POWER_RATIO) * load / 100)
+
+    def _power_at_workload(self, tdp: float, workload) -> float:
+        """Power of one GPU (W) at a load (%) or a list of (time, load) pairs."""
+        if type(workload) in (float, int):
+            return self._power_at_load(tdp, workload)
+        # The model is linear, so a list of (time, load) pairs is the same as
+        # running at their time-weighted average load.
+        return sum(
+            w.time_percentage / 100 * self._power_at_load(tdp, w.load_percentage)
+            for w in workload
+        )
+
+    def model_power_consumption(self) -> ImpactFactor:
+        """Power of one GPU (W) from its TDP and the GPU load, with both ranges."""
+        tdp = self.tdp.value  # completes tdp, and its bounds, if needed
+        workload = self.usage.time_workload
+        return ImpactFactor(
+            value=self._power_at_workload(tdp, workload.value),
+            min=self._power_at_workload(self.tdp.min, workload.min),
+            max=self._power_at_workload(self.tdp.max, workload.max),
+        )
+
+    def complete_avg_power(self):
+        """Model avg_power (per GPU) from the TDP, unless it was given."""
+        if self.usage.avg_power.is_set():
+            return
+        consumption = self.model_power_consumption()
+        self.usage.avg_power.set_completed(
+            value=consumption.value, min=consumption.min, max=consumption.max
         )
 
     def _complete_transport_boat(self):

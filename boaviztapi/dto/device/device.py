@@ -60,9 +60,21 @@ def mapper_server(
         server_dto.usage or UsageServer(),
         archetype=get_arch_component(server_model.archetype, "USAGE"),
     )
+    set_gpu_time_workload(server_model, server_dto.usage)
     complete_components_usage(server_model, server_model.usage)
 
     return server_model
+
+
+def set_gpu_time_workload(model: DeviceServer, usage_dto: Optional[UsageServer]):
+    """Set the GPU load from `usage.gpu_time_workload`.
+
+    A load given in the GPU's own usage takes precedence.
+    """
+    if not usage_dto or usage_dto.gpu_time_workload is None or model.gpu is None:
+        return
+    if model.gpu.usage.time_workload.status != Status.INPUT:
+        model.gpu.usage.time_workload.set_input(usage_dto.gpu_time_workload)
 
 
 def complete_components_usage(model: DeviceServer, usage: ModelUsage):
@@ -73,15 +85,17 @@ def complete_components_usage(model: DeviceServer, usage: ModelUsage):
     for disk_unit in model.disk:
         complete_usage(disk_unit.usage, usage)
     if model.gpu is not None:
-        complete_usage(model.gpu.usage, usage)
+        # The GPU load has its own default (see gpu_usage_archetype)
+        complete_usage(model.gpu.usage, usage, exclude=("time_workload",))
 
 
-def complete_usage(usage_component, usage_device):
+def complete_usage(usage_component, usage_device, exclude=()):
     if usage_device.avg_power.is_set():
         return
     for attr, val in usage_component.__iter__():
         if (
-            isinstance(val, Boattribute)
+            attr not in exclude
+            and isinstance(val, Boattribute)
             and not val.is_set()
             and usage_device.__getattribute__(attr).is_set()
         ):
@@ -119,6 +133,7 @@ def mapper_cloud_instance(
         archetype=get_arch_component(model_cloud_instance.archetype, "USAGE"),
     )
 
+    set_gpu_time_workload(model_cloud_instance.platform, cloud_dto.usage)
     complete_components_usage(model_cloud_instance.platform, model_cloud_instance.usage)
     complete_usage(model_cloud_instance.platform.usage, model_cloud_instance.usage)
 
