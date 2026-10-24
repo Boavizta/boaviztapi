@@ -1,2 +1,2 @@
 id,name,weight,heatsink_weight,pwb_surface,pwb_weight,casing_weight,gpu_surface,vram,vram_dies,vram_surface,tdp,transport_boat,transport_truck,transport_plane,USAGE.time_workload,USAGE.use_time_ratio,USAGE.hours_life_time
-DEFAULT,Large GPU,1.69,0.90,296,,0.79,814,80,6,,700,19000,1000,0,65;0;100,1,26280
+DEFAULT,Large GPU,1.69,0.90,296,,0.79,814,80,6,,700;70;1100,19000,1000,0,65;0;100,1,26280

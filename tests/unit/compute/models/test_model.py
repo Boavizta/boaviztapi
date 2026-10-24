@@ -282,6 +282,27 @@ class TestServerGPUPower:
         assert gpu.tdp.value == 72
         assert gpu.gpus_per_card.value == 1
 
+    def test_default_tdp_range_widens_power_bounds(self):
+        """Without a known TDP, the bounds use the range of the default TDP."""
+        gpu = ComponentGPU()
+        gpu.usage.time_workload.set_input(65)
+        power = gpu.model_power_consumption()
+
+        assert (gpu.tdp.value, gpu.tdp.min, gpu.tdp.max) == (700, 70, 1100)
+        load = IDLE_POWER_RATIO + (1 - IDLE_POWER_RATIO) * 0.65
+        assert power.value == pytest.approx(700 * load)
+        assert power.min == pytest.approx(70 * load)
+        assert power.max == pytest.approx(1100 * load)
+
+    def test_tdp_from_name_has_no_range(self):
+        gpu = ComponentGPU()
+        gpu.name.set_input("NVIDIA L4")
+        gpu.usage.time_workload.set_input(100)
+        power = gpu.model_power_consumption()
+
+        assert (gpu.tdp.min, gpu.tdp.max) == (72, 72)
+        assert power.min == power.max == pytest.approx(72)
+
     def test_dual_gpu_card_completed_from_name(self):
         gpu = ComponentGPU()
         gpu.name.set_input("NVIDIA Tesla M60")

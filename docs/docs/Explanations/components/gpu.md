@@ -16,7 +16,7 @@
 | vram_surface     | mm²  | computed                   | Total effective VRAM die area including wafer losses                 | 744.0                |
 | pwb_surface      | cm²  | 296                        | PCB surface area                                                     | 296.37               |
 | pwb_weight       | kg   | None                       | Mass of the PCB                                                      | 0.2                  |
-| tdp              | W    | 700                        | Board power of one GPU card (TDP)                                    | 700                  |
+| tdp              | W    | 700;70;1100                | Board power of one GPU card (TDP)                                    | 700                  |
 | gpus_per_card    | None | 1                          | Number of GPUs on one card, e.g. 2 for a Tesla M60                   | 2                    |
 | transport_boat   | km   | 19000                      | Distribution distance by boat                                        | 19000                |
 | transport_truck  | km   | 1000                       | Distribution distance by truck                                       | 1000                 |

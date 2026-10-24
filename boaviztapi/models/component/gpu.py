@@ -329,6 +329,8 @@ class ComponentGPU(Component):
                 self.tdp.set_completed(
                     tdp,
                     source=f"Completed from name based on {source}.",
+                    min=tdp,
+                    max=tdp,
                 )
             if gpus_per_card is not None and self.gpus_per_card.is_none():
                 self.gpus_per_card.set_completed(
@@ -400,6 +402,9 @@ class ComponentGPU(Component):
         self.tdp.set_archetype(
             get_arch_value(self._default_archetype, "tdp", "default")
         )
+        # The default TDP is a guess, so it keeps the range of the default GPU
+        self.tdp.min = get_arch_value(self._default_archetype, "tdp", "min")
+        self.tdp.max = get_arch_value(self._default_archetype, "tdp", "max")
 
     def _complete_gpus_per_card(self):
         self._complete_from_name()
@@ -411,29 +416,30 @@ class ComponentGPU(Component):
             )
         )
 
-    def _power_at_load(self, load: float) -> float:
-        """Power of one GPU (W) at a load (%), linear from idle to TDP."""
-        # tdp is for the whole card
-        tdp_per_gpu = self.tdp.value / self.gpus_per_card.value
+    def _power_at_load(self, tdp: float, load: float) -> float:
+        """Power of one GPU (W) at a load (%), linear from idle to the TDP of its card."""
+        tdp_per_gpu = tdp / self.gpus_per_card.value
         return tdp_per_gpu * (IDLE_POWER_RATIO + (1 - IDLE_POWER_RATIO) * load / 100)
 
-    def _power_at_workload(self, workload) -> float:
+    def _power_at_workload(self, tdp: float, workload) -> float:
+        """Power of one GPU (W) at a load (%) or a list of (time, load) pairs."""
         if type(workload) in (float, int):
-            return self._power_at_load(workload)
+            return self._power_at_load(tdp, workload)
         # The model is linear, so a list of (time, load) pairs is the same as
         # running at their time-weighted average load.
         return sum(
-            w.time_percentage / 100 * self._power_at_load(w.load_percentage)
+            w.time_percentage / 100 * self._power_at_load(tdp, w.load_percentage)
             for w in workload
         )
 
     def model_power_consumption(self) -> ImpactFactor:
-        """Power of one GPU (W) from its TDP and the GPU load."""
+        """Power of one GPU (W) from its TDP and the GPU load, with both ranges."""
+        tdp = self.tdp.value  # completes tdp, and its bounds, if needed
         workload = self.usage.time_workload
         return ImpactFactor(
-            value=self._power_at_workload(workload.value),
-            min=self._power_at_workload(workload.min),
-            max=self._power_at_workload(workload.max),
+            value=self._power_at_workload(tdp, workload.value),
+            min=self._power_at_workload(self.tdp.min, workload.min),
+            max=self._power_at_workload(self.tdp.max, workload.max),
         )
 
     def complete_avg_power(self):

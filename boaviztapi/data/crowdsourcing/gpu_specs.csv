@@ -1,12 +1,12 @@
 name,manufacturer,unit,number,vram,die_surface,pwb_surface,distance_boat,distance_truck,distance_plane,mass_casing,mass_heatsink,mass,tdp,gpus_per_card,source
-NVIDIA GTX 1080 Ti,NVIDIA,1,11,11,1208.49,312.14,19000,1000,0,0.252,0.427,0.881,250,1,
-NVIDIA RTX A4500,NVIDIA,1,10,20,1861.68,230.04,19000,1000,0,0.1976,0.714,1.06,200,1,
-NVIDIA Titan RTX,NVIDIA,1,12,20,2481.73,309.72,19000,1000,0,0.682,0.0537,0.936,280,1,
-NVIDIA P100,NVIDIA,1,4,16,1780.2,295.26,19000,1000,0,0.175,0.538,0.888,250,1,
-NVIDIA L4,NVIDIA,1,12,24,624.03,93.13,19000,1000,0,0,0.0871,0.142,72,1,
-NVIDIA A100 PCIe 40GB,NVIDIA,1,6,40,2876.29,234.36,19000,1000,0,0.387,0.609,1.23,250,1,
-NVIDIA A100 SXM4 40GB,NVIDIA,1,6,40,2876.29,105.0,19000,1000,0,0.09,1.25,1.56,400,1,
-NVIDIA H100 SXM 80GB,NVIDIA,1,6,80,2808.45,296.37,19000,1000,0,0.789230,0.900770,1.690000,700,1,
+NVIDIA GTX 1080 Ti,NVIDIA,1,11,11,1208.49,312.14,19000,1000,0,0.252,0.427,0.881,250,1,https://www.pny.com/previous-generation-geforce/id-156/geforce_gtx_1080_ti_blower_edition
+NVIDIA RTX A4500,NVIDIA,1,10,20,1861.68,230.04,19000,1000,0,0.1976,0.714,1.06,200,1,https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/rtx/nvidia-rtx-a4500-datasheet.pdf
+NVIDIA Titan RTX,NVIDIA,1,12,20,2481.73,309.72,19000,1000,0,0.682,0.0537,0.936,280,1,https://www.nvidia.com/content/dam/en-zz/Solutions/titan/documents/titan-rtx-for-creators-us-nvidia-1011126-r6-web.pdf
+NVIDIA P100,NVIDIA,1,4,16,1780.2,295.26,19000,1000,0,0.175,0.538,0.888,250,1,https://images.nvidia.com/content/tesla/pdf/NV-tesla-p100-pcie-PB-08248-001-v01.pdf
+NVIDIA L4,NVIDIA,1,12,24,624.03,93.13,19000,1000,0,0,0.0871,0.142,72,1,https://www.nvidia.com/en-us/data-center/l4/
+NVIDIA A100 PCIe 40GB,NVIDIA,1,6,40,2876.29,234.36,19000,1000,0,0.387,0.609,1.23,250,1,https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet-us-nvidia-1758950-r4-web.pdf
+NVIDIA A100 SXM4 40GB,NVIDIA,1,6,40,2876.29,105.0,19000,1000,0,0.09,1.25,1.56,400,1,https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet-us-nvidia-1758950-r4-web.pdf
+NVIDIA H100 SXM 80GB,NVIDIA,1,6,80,2808.45,296.37,19000,1000,0,0.789230,0.900770,1.690000,700,1,https://www.nvidia.com/en-us/data-center/h100/
 NVIDIA H100 PCIe 80GB,NVIDIA,1,6,80,2808.45,234.36,19000,1000,0,0.307,0.66,1.2,350,1,https://www.nvidia.com/content/dam/en-zz/Solutions/gtcs22/data-center/h100/PB-11133-001_v01.pdf;https://en.wikipedia.org/wiki/SXM_(socket)
 NVIDIA H100 NVL 94GB,NVIDIA,1,6,94,2808.45,234.36,19000,1000,0,0.311,0.668,1.214,400,1,https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/h100/PB-11773-001_v01.pdf;https://en.wikipedia.org/wiki/SXM_(socket)
 NVIDIA H200 SXM 141GB,NVIDIA,1,6,141,2808.45,296.37,19000,1000,0,0.78923,0.90077,1.69,700,1,https://en.wikipedia.org/wiki/SXM_(socket)
@@ -38,4 +38,4 @@ NVIDIA GRID K520,NVIDIA,2,,8,1245.19,,19000,1000,0,,,,225,2,https://www.techpowe
 AWS Inferentia,AWS,1,,,,,19000,1000,0,,,,35,1,https://mirrorfrog.com/en/docs/cards/aws/inferentia/
 AWS Inferentia2,AWS,1,,32,,,19000,1000,0,,,,150,1,https://mirrorfrog.com/en/docs/cards/aws/inferentia-2/
 AWS Trainium,AWS,1,,32,,,19000,1000,0,,,,350,1,https://mirrorfrog.com/en/docs/cards/aws/trainium/
-Intel Gaudi,Intel,1,,,,,19000,1000,0,,,,350,1,https://www.phoronix.com/news/Intel-Gaudi2-Linux-Driver;https://www.hpcwire.com/2022/05/10/intels-habana-labs-unveils-gaudi2-greco-ai-processors/
+Intel Gaudi,Intel,1,,,,,19000,1000,0,,,,300,1,https://old.hotchips.org/hc31/HC31_1.14_HabanaLabs.Eitan_Medina.v9.pdf

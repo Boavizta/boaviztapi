@@ -77,7 +77,7 @@ use phase models the power of one GPU from it (see
     150 W. Check which variant the instance uses before picking a TDP.
 
 !!! note
-    A row without `tdp` falls back to the 700 W of the `DEFAULT` row of
+    A row without `tdp` falls back to the 700 W (range 70-1100 W) of the `DEFAULT` row of
     `boaviztapi/data/archetypes/components/gpu.csv`, a large datacentre GPU.
 
 ## GPUs per card → `gpus_per_card`
