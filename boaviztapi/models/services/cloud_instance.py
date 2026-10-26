@@ -1,7 +1,11 @@
 from boaviztapi import config
 from boaviztapi.models.boattribute import Boattribute
 from boaviztapi.models.consumption_profile import RAMConsumptionProfileModel
-from boaviztapi.models.device.server import DeviceServer, disk_power_consumption
+from boaviztapi.models.device.server import (
+    DeviceServer,
+    disk_power_consumption,
+    gpu_power_consumption,
+)
 from boaviztapi.models.impact import Assessable, ImpactFactor
 from boaviztapi.models.usage import ModelUsage
 from boaviztapi.data.archetype import (
@@ -138,19 +142,39 @@ class ServiceCloudInstance(Service):
             total_conso_disk.min += disk_consumption.min * disk_allocation
             total_conso_disk.max += disk_consumption.max * disk_allocation
 
-        # Disks are added outside other_consumption_ratio, which used to stand
-        # in for them, so that their power is not counted twice.
+        # GPUs are allocated by GPU count, as for embedded impacts.
+        total_conso_gpu = ImpactFactor(value=0, min=0, max=0)
+        gpu_allocation = self.gpu_allocation()
+        if gpu_allocation:
+            self.platform.gpu.complete_avg_power()
+            total_conso_gpu = gpu_power_consumption(
+                self.platform.gpu, self.gpu_units.value
+            )
+
+        # Disks and GPUs are added outside other_consumption_ratio, as for
+        # servers (see DeviceServer.model_power_consumption).
         return ImpactFactor(
             value=(self.platform.cpu.usage.avg_power.value + total_conso_ram.value)
             * (1 + self.platform.usage.other_consumption_ratio.value)
-            + total_conso_disk.value,
+            + total_conso_disk.value
+            + total_conso_gpu.value,
             min=(self.platform.cpu.usage.avg_power.min + total_conso_ram.min)
             * (1 + self.platform.usage.other_consumption_ratio.min)
-            + total_conso_disk.min,
+            + total_conso_disk.min
+            + total_conso_gpu.min,
             max=(self.platform.cpu.usage.avg_power.max + total_conso_ram.max)
             * (1 + self.platform.usage.other_consumption_ratio.max)
-            + total_conso_disk.max,
+            + total_conso_disk.max
+            + total_conso_gpu.max,
         )
+
+    def gpu_allocation(self) -> float:
+        """Share of the platform's GPUs used by the instance, 0 without GPU."""
+        total_gpu = self.platform.get_total_gpu()
+        if not total_gpu or not self.gpu_units.has_value() or not self.gpu_units.value:
+            return 0
+        # Fractional for vGPU/MIG-partitioned instances
+        return self.gpu_units.value / total_gpu
 
     def __iter__(self):
         for attr, value in self.__dict__.items():

@@ -231,6 +231,13 @@ def cpu_impact_embedded(
     )
 
 
+def gpu_impact_use(
+    impact_type: str, duration: int, gpu: ComponentGPU
+) -> ComputedImpacts:
+    gpu.complete_avg_power()
+    return simple_impact_use(impact_type, duration, gpu)
+
+
 def gpu_impact_embedded(
     impact_type: str, duration: int, gpu: ComponentGPU
 ) -> ComputedImpacts:
@@ -272,6 +279,9 @@ def gpu_impact_embedded(
     # End of life
     end_of_life_impact = _component_impact("end_of_life", "eol", gpu.weight)
 
+    # The impacts above are for a whole card, and units counts GPUs
+    cards = gpu.units.value / gpu.gpus_per_card.value
+
     impact = Impact(
         value=(
             casing_impact.value
@@ -285,7 +295,7 @@ def gpu_impact_embedded(
             + transport_plane_impact.value
             + end_of_life_impact.value
         )
-        * gpu.units.value,
+        * cards,
         min=(
             casing_impact.min
             + heatsink_impact.min
@@ -299,7 +309,7 @@ def gpu_impact_embedded(
             + end_of_life_impact.min
         )
         # units is a deterministic count, not a source of uncertainty
-        * gpu.units.value,
+        * cards,
         max=(
             casing_impact.max
             + heatsink_impact.max
@@ -312,7 +322,7 @@ def gpu_impact_embedded(
             + transport_plane_impact.max
             + end_of_life_impact.max
         )
-        * gpu.units.value,
+        * cards,
     )
 
     impact.allocate(duration, gpu.usage.hours_life_time)
@@ -869,14 +879,11 @@ def cloud_impact_embedded(
                 else:
                     continue
             if component.NAME == "GPU":
-                total_gpu = cloud_instance.platform.get_total_gpu()
-                gpu_units = cloud_instance.gpu_units
-                if gpu_units.has_value() and gpu_units.value and total_gpu:
-                    # gpu_impact_embedded() already scales by the platform's
-                    # GPU units, so this allocates gpu_units whole GPUs -- or a
-                    # fraction of one for vGPU/MIG-partitioned instances.
-                    allocation = gpu_units.value / total_gpu
-                else:
+                # gpu_impact_embedded() already scales by the platform's GPU
+                # units, so this allocates gpu_units whole GPUs -- or a
+                # fraction of one for vGPU/MIG-partitioned instances.
+                allocation = cloud_instance.gpu_allocation()
+                if not allocation:
                     continue
 
             single_impact = compute_single_impact(
@@ -929,6 +936,9 @@ def cloud_impact_use(
     compute_single_impact(platform.cpu, USE, impact_type, duration)
     for ram in platform.ram:
         compute_single_impact(ram, USE, impact_type, duration)
+    gpu_allocation = cloud_instance.gpu_allocation()
+    if gpu_allocation:
+        compute_single_impact(platform.gpu, USE, impact_type, duration, gpu_allocation)
 
     impact = (
         impact_factor.value
@@ -954,7 +964,7 @@ def cloud_impact_use(
 
 impacts_functions = {
     "CPU": {"use": cpu_impact_use, "embedded": cpu_impact_embedded},
-    "GPU": {"use": simple_impact_use, "embedded": gpu_impact_embedded},
+    "GPU": {"use": gpu_impact_use, "embedded": gpu_impact_embedded},
     "RAM": {"use": ram_impact_use, "embedded": ram_impact_embedded},
     "SSD": {"use": simple_impact_use, "embedded": ssd_impact_embedded},
     "HDD": {"use": simple_impact_use, "embedded": hdd_impact_embedded},

@@ -12,6 +12,7 @@ You will find the details of each of the consumption profiles in the respective 
 
 * [CPU](components/cpu.md)
 * [RAM](components/ram.md)
+* [GPU](components/gpu.md#usage-impacts)
 * [Server](devices/server.md)
 * [Cloud instances](services/cloud.md)
 

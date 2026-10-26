@@ -44,9 +44,9 @@ The `platform` field must match one of the `id` of the available server archetyp
 
 ### GPU units
 
-`gpu_units` is the number of GPUs the instance is sold with. The API allocates the
-platform's GPU embedded impacts by `gpu_units / GPU.units`, so the two files have to
-agree:
+`gpu_units` is the number of GPUs the instance is sold with, as the provider counts them. The
+API allocates the platform's GPU embedded impacts and GPU power by `gpu_units / GPU.units`, so
+the two files have to agree:
 
 * `gpu_units` must not exceed the `GPU.units` of the platform, otherwise the instance
   is allocated more than the whole host's GPU impact.
@@ -56,8 +56,9 @@ agree:
 * Leave it at `0` for an instance sold without a GPU, even when the platform has some.
 
 Fractional values are allowed, for instances that share a GPU partitioned with vGPU or
-MIG. Use the fraction of a whole card, not a count of slices: an instance getting an
-eighth of one GPU is `0.125`. The commercial description of the slice belongs on the
+MIG. Use the fraction of a whole GPU, not a count of slices: an instance getting an
+eighth of one GPU is `0.125`. Count GPUs, not cards: a g3.16xlarge has 4 GPUs on two
+Tesla M60 cards, so its `gpu_units` is 4. The commercial description of the slice belongs on the
 platform row, in `GPU.name` and `GPU.vram`.
 
 You can check `gpu_units` against the platforms with:

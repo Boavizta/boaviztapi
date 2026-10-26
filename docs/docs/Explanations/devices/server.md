@@ -21,6 +21,7 @@ In addition to the characteristics available for [usage](../usage/usage.md), you
 | Name                        | Unit           | Default value (default;min;max) | Description                                                         | Example |
 |-----------------------------|----------------|---------------------------------|---------------------------------------------------------------------|---------|
 | other_consumption_ratio     | None           | 0.33;0.2;0.6                    | Power consumption ratio of other components (except disks) relative to RAM and CPU | 0.2     |
+| gpu_time_workload           | %              | 65;0;100                        | Load of the server's GPUs, as a percentage between 0 and 100     | 80      |
 
 ## Complete
 
@@ -119,6 +120,7 @@ $$
 + \text{CP}_{\text{RAM}}(\text{workload}))
 * (1 + \text{other_consumption_ratio})
 + \text{P}_{\text{disks}}
++ \text{P}_{\text{GPU}}(\text{gpu_workload}) * \text{GPU.units}
 $$
 
 $\text{CP}_{\text{CPU}}(\text{workload})$ and $\text{CP}_{\text{RAM}}(\text{workload})$ depend on the technical
@@ -126,5 +128,8 @@ characteristics of the RAM and CPU.
 $\text{P}_{\text{disks}}$ is the power of the local drives: a constant power per drive (see [SSD](../components/ssd.md#usage-impact)
 and [HDD](../components/hdd.md#usage-impact)) multiplied by the number of drives. It is added outside of
 $\text{other_consumption_ratio}$, so that the drives are not counted twice.
+$\text{P}_{\text{GPU}}$ is the power of one GPU: its `avg_power` if given, otherwise modelled from its TDP
+(see [GPU](../components/gpu.md#usage-impacts)). It is also added outside of $\text{other_consumption_ratio}$.
+$\text{gpu_workload}$ is `gpu_time_workload`, 65% by default: it does not follow the server's `time_workload`. A `time_workload` set in the GPU's own usage takes precedence.
 $\text{other_consumption_ratio}$ is used to account for the electrical consumption of the other components (other than RAM,
 CPU and disks).

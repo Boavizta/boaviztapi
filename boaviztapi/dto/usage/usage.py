@@ -1,5 +1,7 @@
 from typing import Optional, List, Union
 
+from pydantic import Field
+
 from boaviztapi import config
 from boaviztapi.dto import BaseDTO
 from boaviztapi.models.boattribute import Status
@@ -56,6 +58,8 @@ class Usage(BaseDTO):
 
 class UsageServer(Usage):
     other_consumption_ratio: Optional[float] = None
+    # Load of the GPUs in %, 65% by default (see gpu_usage_archetype)
+    gpu_time_workload: Optional[float] = Field(default=None, ge=0, le=100)
 
 
 class UsageCloud(UsageServer):

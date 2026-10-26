@@ -132,19 +132,26 @@ def test_bottom_up_component_gpu_empty(empty_gpu_model):
             "description": "Use of minerals and fossil ressources",
             "embedded": {"max": 0.005826, "min": 0.005826, "value": 0.005826},
             "unit": "kgSbeq",
-            "use": "not implemented",
+            "use": {"max": 0.007678, "min": 2.428e-06, "value": 0.0008},
         },
         "gwp": {
             "description": "Total climate change",
             "embedded": {"max": 575.1, "min": 575.1, "value": 575.1},
             "unit": "kgCO2eq",
-            "use": "not implemented",
+            "use": {"max": 26020.0, "min": 4.231, "value": 5000.0},
         },
         "pe": {
             "description": "Consumption of primary energy",
             "embedded": {"max": 7912.0, "min": 7912.0, "value": 7912.0},
             "unit": "MJ",
-            "use": "not implemented",
+            "use": {
+                "max": 13530000.0,
+                "min": 2.391,
+                "value": 200000.0,
+                "warnings": [
+                    "Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)"
+                ],
+            },
         },
     }
 
@@ -159,19 +166,26 @@ def test_bottom_up_component_gpu_complete(complete_gpu_model):
             "description": "Use of minerals and fossil ressources",
             "embedded": {"max": 0.01164, "min": 0.01164, "value": 0.01164},
             "unit": "kgSbeq",
-            "use": "not implemented",
+            "use": {"max": 0.01536, "min": 4.857e-06, "value": 0.002},
         },
         "gwp": {
             "description": "Total climate change",
             "embedded": {"max": 477.2, "min": 477.2, "value": 477.2},
             "unit": "kgCO2eq",
-            "use": "not implemented",
+            "use": {"max": 52030.0, "min": 8.462, "value": 10000.0},
         },
         "pe": {
             "description": "Consumption of primary energy",
             "embedded": {"max": 6848.0, "min": 6848.0, "value": 6848.0},
             "unit": "MJ",
-            "use": "not implemented",
+            "use": {
+                "max": 27070000.0,
+                "min": 4.783,
+                "value": 300000.0,
+                "warnings": [
+                    "Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)"
+                ],
+            },
         },
     }
 
@@ -194,19 +208,26 @@ def test_bottom_up_component_gpu_incomplete(incomplete_gpu_model):
             "description": "Use of minerals and fossil ressources",
             "embedded": {"max": 0.005818, "min": 0.005818, "value": 0.005818},
             "unit": "kgSbeq",
-            "use": "not implemented",
+            "use": {"max": 0.007678, "min": 2.428e-06, "value": 0.0008},
         },
         "gwp": {
             "description": "Total climate change",
             "embedded": {"max": 284.4, "min": 284.4, "value": 284.4},
             "unit": "kgCO2eq",
-            "use": "not implemented",
+            "use": {"max": 26020.0, "min": 4.231, "value": 5000.0},
         },
         "pe": {
             "description": "Consumption of primary energy",
             "embedded": {"max": 4034.0, "min": 4034.0, "value": 4034.0},
             "unit": "MJ",
-            "use": "not implemented",
+            "use": {
+                "max": 13530000.0,
+                "min": 2.391,
+                "value": 200000.0,
+                "warnings": [
+                    "Uncertainty from technical characteristics is very important. Results should be interpreted with caution (see min and max values)"
+                ],
+            },
         },
     }
 

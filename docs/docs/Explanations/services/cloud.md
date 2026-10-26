@@ -30,6 +30,7 @@ In addition to the characteristics available for [usage](../usage/usage.md), you
 | Name                        | Unit           | Default value (default;min;max) | Description                                                         | Example |
 |-----------------------------|----------------|---------------------------------|---------------------------------------------------------------------|---------|
 | other_consumption_ratio     | None           | 0.33;0.2;0.6                    | Power consumption ratio of other components (except disks) relative to RAM and CPU | 0.2     |
+| gpu_time_workload           | %              | 65;0;100                        | Load of the instance's GPUs, as a percentage between 0 and 100   | 80      |
 
 ## Perimeter covered
 
@@ -145,6 +146,7 @@ $$
 * \frac{\text{ssd_storage}_{\text{instance}}}{\text{ssd_storage}_{\text{server}}}
 + \text{P}_{\text{HDD_server}}
 * \frac{\text{hdd_storage}_{\text{instance}}}{\text{hdd_storage}_{\text{server}}}
++ \text{P}_{\text{GPU}}(\text{gpu_workload}) * \text{gpu_units}_{\text{instance}}
 $$
 
 $\text{CP}_{\text{CPU_server}}(\text{workload})$ and $\text{CP}_{\text{RAM_server}}(\text{workload})$ depend on the technical
@@ -154,5 +156,9 @@ $\text{P}_{\text{SSD_server}}$ and $\text{P}_{\text{HDD_server}}$ are the power 
 power per drive (see [SSD](../components/ssd.md#usage-impact) and [HDD](../components/hdd.md#usage-impact)). They are
 allocated by storage, as for the embedded impacts, so an instance without local storage gets none of it. They are
 added outside of $\text{other_consumption_ratio}$, so that the drives are not counted twice.
+$\text{P}_{\text{GPU}}$ is the power of one GPU, modelled from its TDP (see [GPU](../components/gpu.md#usage-impacts)).
+It is allocated by $\text{gpu_units}$, as for the embedded impacts, and also added outside of
+$\text{other_consumption_ratio}$. The GPU workload is $\text{gpu_time_workload}$, 65% by default, independently of $\text{time_workload}$
+(see [GPU](../components/gpu.md#usage-impacts)).
 $\text{other_consumption_ratio}$ is used to account for the electrical consumption of the other components (other than RAM,
 CPU and disks).
