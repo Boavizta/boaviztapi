@@ -147,8 +147,8 @@
     "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
   },
   "wu": {
-    "impact": -3.71e+03,
-    "source": "https://base-impacts.ademe.fr/documents/negaoctet.zip"
+    "impact": 284,
+    "source": "'Serveur rack de taille moyenne (2023)' in Ademe Base Empreinte: https://base-empreinte.ademe.fr/donnees/jeu-donnees"
   },
   "mips": {
     "impact": 1.06e+04,
@@ -19377,4 +19377,3 @@
     "United Arab Emirates": "ARE"
   }
 }
-
