@@ -12,7 +12,7 @@ The official interactive front-end for BoaviztAPI. Datavizta provides a web dash
 
 A CLI tool and service that scans an AWS account, inventories running EC2 instances, and returns real-time environmental impact estimates (GWP, ADP, PE). CloudScanner calls BoaviztAPI's `/v1/cloud/instance` endpoint, passing instance type and usage data to retrieve per-instance impact figures.
 
-### [Boagent](https://github.com/Boaviztapi/boagent)
+### [Boagent](https://github.com/Boavizta/boagent)
 
 A monitoring agent modeling the environmental footprint of the local machine it is installed on. This is done by:
 1. Scanning the hardware visible on the machine, producing a Bill Of Material
