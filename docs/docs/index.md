@@ -20,10 +20,10 @@ The group federates and connects stakeholders of the "ICT/digital environmental 
 
 It also organizes the co-construction of expert and updated resources under open / free licenses:
 
-* Methodologies for the assessment of ICT/digital environmental impacts. See https://boavizta.org/methodologie.
-* Environmental data repositories. See https://boavizta.org/donnees.
-* Tools to implement ICT/digital environmental impacts assessment (such as this API). See https://boavizta.org/tools.
+* Methodologies for the assessment of ICT/digital environmental impacts. See [boavizta.org/methodologies](https://boavizta.org/methodologies).
+* Environmental data repositories. See [boavizta.org/donnees](https://boavizta.org/donnees).
+* Tools to implement ICT/digital environmental impacts assessment (such as this API). See [boavizta.org/tools](https://boavizta.org/tools).
 
 These digital "commons" cover digital infrastructures, equipment and services, and allow full life cycle / multi-criteria assessments.
 
-https://boavizta.org/
+[boavizta.org](https://boavizta.org/)

@@ -124,7 +124,7 @@ brief. Common form factors:
 
 For SXM and OAM module footprints:
 [SXM socket](https://en.wikipedia.org/wiki/SXM_(socket)) ·
-[OCP Accelerator Module (OAM)](https://www.opencompute.org/projects/ocp-accelerator-module-oam)
+[OCP Accelerator Module (OAM)](https://www.opencompute.org/documents/ocp-accelerator-module-design-specification-v1p5-final-20220223-docx-1-pdf)
 
 !!! note
     `234.36` currently appears on 18 of 40 rows. It functions as a default for

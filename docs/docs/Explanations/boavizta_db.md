@@ -22,7 +22,7 @@ The data is gathered from :
 
 * [Apple](https://www.apple.com/environment/#reports-product)
 * [Dell](https://corporate.delltechnologies.com/fr-fr/social-impact/advancing-sustainability/sustainable-products-and-services/product-carbon-footprints.htm#tab0=0)
-* [HP](https://h22235.www2.hp.com/hpinfo/globalcitizenship/environment/productdata/ProductCarbonFootprintnotebooks.html)
+* [HP](https://www.hp.com/us-en/sustainability-progress/empower-customer-sustainability/product-carbon-footprint.html)
 * [Lenovo](https://www.lenovo.com/ca/en/social_responsibility/datasheets_systemx/?orgRef=https%253A%252F%252Fwww.google.com%252F)
-* [Lexmark](https://csr.lexmark.com)
+* [Lexmark](https://www.lexmark.com/en_us/about-us/sustainability.html)
 * [Seagate](https://www.seagate.com/fr/fr/global-citizenship/product-sustainability/)

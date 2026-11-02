@@ -66,5 +66,5 @@ $ make run
 
 You can also use BoaviztaAPI directly in code with the SDKs:
 
-- **python-sdk** : [https://pypi.org/project/boaviztapi-sdk/](https://pypi.org/project/boaviztapi-sdk/)
-- **rust-sdk** : [https://github.com/Boavizta/boaviztapi-sdk-rust](https://github.com/Boavizta/boaviztapi-sdk-rust)
+- **python-sdk** : [boaviztapi-sdk on PyPI](https://pypi.org/project/boaviztapi-sdk/)
+- **rust-sdk** : [boaviztapi-sdk-rust on GitHub](https://github.com/Boavizta/boaviztapi-sdk-rust)

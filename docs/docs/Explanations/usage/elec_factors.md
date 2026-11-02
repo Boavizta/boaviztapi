@@ -43,7 +43,7 @@ We use the consumption of fossil resources per kwh (APDf/kwh) per country and ex
 ```PE/kwh = ADPf/kwh / (1-%RenewableEnergyInMix)```
 
 * `%RenewableEnergyInMix` (2016): [List of countries by renewable electricity production](https://en.wikipedia.org/wiki/List_of_countries_by_renewable_electricity_production) from IRENA
-* `ADPf` (2011): [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/) 
+* `ADPf` (2011): [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/) 
 
 ### FE - Final energy factor
 
@@ -59,26 +59,26 @@ This is useful when you need the actual electricity consumed by a device, withou
 
 | Criteria | Implemented | Source                                                   | 
 |----------|-------------|----------------------------------------------------------|
-| adp      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| gwppb    | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| gwppf    | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| gwpplu   | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| ir       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| lu       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| odp      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| pm       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| pocp     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| wu       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| mips     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| adpe     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| adpf     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| ap       | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| ctue     | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| ctuh_c   | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| ctuh_nc  | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| epf      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| epm      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
-| ept      | yes         | [Base IMPACTS® ADEME](https://base-impacts.ademe.fr/)    |
+| adp      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| gwppb    | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| gwppf    | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| gwpplu   | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| ir       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| lu       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| odp      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| pm       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| pocp     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| wu       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| mips     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| adpe     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| adpf     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| ap       | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| ctue     | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| ctuh_c   | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| ctuh_nc  | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| epf      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| epm      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
+| ept      | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)    |
 | fe       | yes         | [OurWorldInData](https://ourworldindata.org/energy-definitions) |
 
 ## Electricity map integration
