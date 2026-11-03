@@ -6,7 +6,7 @@ VALID_INSTANCE_TYPE = "dev1-l"
 
 
 def main():
-    resp = requests.get(PROVIDERS_URL)
+    resp = requests.get(PROVIDERS_URL, timeout=30)
 
     if not resp.ok:
         print(f"Providers request failed: {resp.json()}")
@@ -25,7 +25,7 @@ def main():
         "duration": "100",
     }
 
-    resp = requests.get(CLOUD_URL, params=url_params)
+    resp = requests.get(CLOUD_URL, params=url_params, timeout=30)
     if resp.ok:
         print(f"Got response to impact request for type {VALID_INSTANCE_TYPE}")
     else:
