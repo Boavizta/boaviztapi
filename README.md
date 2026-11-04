@@ -26,16 +26,12 @@ The system follows a bottom-up approach in its development, organised into layer
 
 ## :gear: What it does
 
-BoaviztAPI estimates the environmental impacts of digital equipment or services. You describe a piece of
-hardware (a server, a cloud instance, a laptop, a single component such as a CPU or an SSD) and
-the API returns its impacts for two phases of its life:
+BoaviztAPI estimates the environmental impacts of digital equipment or services. You describe a piece of hardware (a server, a cloud instance, a laptop, a single component such as a CPU or an SSD) and the API returns its impacts for two phases of its life:
 
 * **embedded**: manufacturing, transport and end of life, spread over the equipment's lifetime
-* **use**: the electricity it consumes, multiplied by the impact factors of the electricity mix
-  where it runs
+* **use**: the electricity it consumes, multiplied by the impact factors of the electricity mix where it runs
 
-By default the results cover global warming potential (`gwp`, in kgCO2eq), abiotic resource
-depletion (`adp`, in kgSbeq) and primary energy (`pe`, in MJ). Other criteria can be requested.
+By default the results cover global warming potential (`gwp`, in kgCO2eq), abiotic resource depletion (`adp`, in kgSbeq) and primary energy (`pe`, in MJ). Other criteria can be requested.
 
 For example, the impacts of an AWS `m5.xlarge` over 8,760 hours (one year) of use:
 
