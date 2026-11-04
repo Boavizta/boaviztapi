@@ -16,15 +16,28 @@ See the [documentation](https://boavizta.github.io/boaviztapi/) for API usage an
 
 ## :dart: Objective
 
-Boavizta aims to enhance the assessment of environmental impacts induced by ICTs in organizations by providing widespread access to our work in an automated and efficient manner.
+Boavizta aims to enhance the assessment of environmental impacts induced by ICTs in organisations by providing widespread access to our work in an automated and efficient manner.
 
 Boavizta integrates various data and methodologies, which are combined and made accessible through this API.
 
-Transparency and the popularization of scientific knowledge are of utmost importance in this project, and key aspects include open-sourcing the code, versioning the impact factors, and thoroughly documenting the project.
+Transparency and the popularisation of scientific knowledge are of utmost importance in this project, and key aspects include open-sourcing the code, versioning the impact factors, and thoroughly documenting the project.
 
-In the interest of transparency and scientific popularization, the opening of the code, the versioning of the impact factors and the documentation of the project are critical points.
+The system follows a bottom-up approach in its development, organised into layers. The initial layer focuses on equipment. The second layer focuses on the impacts of digital services (e.g. cloud instances) or systems. However, assessing the overall global impact of ICT is currently beyond the project's scope.
 
-The system follows a bottom-up approach in its development, organized into layers. The initial layer focuses on equipment. The second layer focues on the impacts of digital services (e.g. cloud instances) or systems. However, assessing the overall global impact of ICT is currently beyond the project's scope.
+## :gear: What it does
+
+BoaviztAPI estimates the environmental impacts of digital equipment or services. You describe a piece of hardware (a server, a cloud instance, a laptop, a single component such as a CPU or an SSD) and the API returns its impacts for two phases of its life:
+
+* **embedded**: manufacturing, transport and end of life, spread over the equipment's lifetime
+* **use**: the electricity it consumes, multiplied by the impact factors of the electricity mix where it runs
+
+By default the results cover global warming potential (`gwp`, in kgCO2eq), abiotic resource depletion (`adp`, in kgSbeq) and primary energy (`pe`, in MJ). Other criteria can be requested.
+
+For example, the impacts of an AWS `m5.xlarge` over 8,760 hours (one year) of use:
+
+```bash
+curl "https://api.boavizta.org/v1/cloud/instance?provider=aws&instance_type=m5.xlarge&duration=8760"
+```
 
 ## :fast_forward: Test it yourself (no installation)
 
@@ -175,6 +188,7 @@ We use [Semantic Versioning 2.0.0](https://semver.org/)
 
 See the [Release Process wiki](https://github.com/Boavizta/boaviztapi/wiki/Release-Process).
 
-## :scroll: License
+## :scroll: Licence
 
 GNU Affero General Public License v3.0
+
