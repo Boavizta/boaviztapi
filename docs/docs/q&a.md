@@ -59,13 +59,13 @@ The API returns impacts regardless of the level of detail given by the user. To 
 
 There are many ways to use the API :
 
-* You can use our test endpoint : https://api.boavizta.org 
+* You can use our test endpoint : <https://api.boavizta.org>
 * You can deploy it yourself : 
     * With docker : ```docker run ghcr.io/boavizta/boaviztapi:latest```
-    * From the source code : https://github.com/boavizta/boaviztapi/
+    * From the source code : [Boavizta/boaviztapi on GitHub](https://github.com/Boavizta/boaviztapi)
 * You can use it through our SDK
-    * Python : https://pypi.org/project/boaviztapi-sdk/
-    * Rust : https://github.com/Boavizta/boaviztapi-sdk-rust
+    * Python : [boaviztapi-sdk on PyPI](https://pypi.org/project/boaviztapi-sdk/)
+    * Rust : [boaviztapi-sdk-rust on GitHub](https://github.com/Boavizta/boaviztapi-sdk-rust)
 
 See: [Deploy](deploy.md)
 
@@ -85,4 +85,4 @@ Several contributions are possible :
 
 * Code: Contribute to the [open issues](https://github.com/Boavizta/boaviztapi/issues)
 * Methodology: Open issues on our [GitHub](https://github.com/Boavizta/boaviztapi/) to criticize, propose improvements, or extend the scope of our methodology.
-* Crowdsourcing: Help us collect missing data. See contribution section in the documentation.
+* Crowdsourcing: Help us collect missing data. See the contributing guides for [servers](contributing/server.md), [CPUs](contributing/cpu.md), [GPUs](contributing/gpu.md) and [cloud instances](contributing/cloud_instance.md).

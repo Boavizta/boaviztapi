@@ -1,6 +1,6 @@
 # Getting started (5 min)
 
-This page presents basic queries that can be used to retrieve impacts of a CPU. See the detailed documentation for the other components.
+This page presents basic queries that can be used to retrieve impacts of a CPU. See the [detailed documentation](../Explanations/components/component.md) for the other components.
 
 You use `curl` in command line to query Boavizta demo (public) API.
 

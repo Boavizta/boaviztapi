@@ -40,9 +40,9 @@ The following components are [completed](../auto_complete.md) with the character
 
 | Criteria | Implemented | Source                                                                                                                                                                                     | 
 |----------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| gwp      | yes         | Bottom-up approach based on [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
-| adp      | yes         | Bottom-up approach based on [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
-| pe       | yes         | Bottom-up approach based on [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf) |
+| gwp      | yes         | Bottom-up approach based on [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/en/publikationen/green-cloud-computing) |
+| adp      | yes         | Bottom-up approach based on [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/en/publikationen/green-cloud-computing) |
+| pe       | yes         | Bottom-up approach based on [Green Cloud Computing, 2021](https://www.umweltbundesamt.de/en/publikationen/green-cloud-computing) |
 | gwppb    | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
 | gwppf    | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
 | gwpplu   | yes         | [Base IMPACTS® ADEME](https://base-empreinte.ademe.fr/)                                                                                                               |
