@@ -67,9 +67,9 @@ If `gpu_surface` is not set and not completed from name, the archetype default v
 | gwp       | yes         |
 | adp       | yes         |
 | pe        | yes         |
-| gwppb     | no          |
-| gwppf     | no          |
-| gwpplu    | no          |
+| gwppb     | yes         |
+| gwppf     | yes         |
+| gwpplu    | yes         |
 | ir        | yes         |
 | lu        | yes         |
 | odp       | yes         |
@@ -83,8 +83,8 @@ If `gpu_surface` is not set and not completed from name, the archetype default v
 | ctue      | yes         |
 | ctuh_c    | no          |
 | ctuh_nc   | no          |
-| epf       | no          |
-| epm       | no          |
+| epf       | yes         |
+| epm       | yes         |
 | ept       | yes         |
 | fw        | no          |
 | fe        | no          |
