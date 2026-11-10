@@ -925,6 +925,24 @@ async def test_complete_gpu_verbose():
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("method", ["get", "post"])
+async def test_gpu_criteria_without_factor_are_not_implemented(method):
+    # Regression test for #593: these criteria used to return a 500
+    url = "/v1/component/gpu?verbose=false&criteria=adpe&criteria=fw&criteria=fe"
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        if method == "get":
+            res = await ac.get(url)
+        else:
+            res = await ac.post(url, json={})
+
+    assert res.status_code == 200
+    impacts = res.json()["impacts"]
+    for criterion in ["adpe", "fw", "fe"]:
+        assert impacts[criterion]["embedded"] == "not implemented"
+
+
+@pytest.mark.asyncio
 async def test_complete_ram():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:

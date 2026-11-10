@@ -19,9 +19,11 @@ def get_gpu_impact_factor(component, phase, impact_type) -> dict:
     if impact_factors.get("gpu"):
         if impact_factors.get("gpu").get(component):
             if impact_factors.get("gpu").get(component).get(phase):
-                return (
+                factor = (
                     impact_factors.get("gpu").get(component).get(phase).get(impact_type)
                 )
+                if factor is not None:
+                    return factor
     raise NotImplementedError
 
 
