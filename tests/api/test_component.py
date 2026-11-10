@@ -943,6 +943,29 @@ async def test_gpu_criteria_without_factor_are_not_implemented(method):
 
 
 @pytest.mark.asyncio
+async def test_gpu_criteria_named_differently_in_factors():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.get(
+            "/v1/component/gpu?verbose=false&criteria=gwppb&criteria=gwppf"
+            "&criteria=gwpplu&criteria=epf&criteria=epm"
+        )
+
+    assert res.status_code == 200
+    embedded = {
+        criterion: impact["embedded"]["value"]
+        for criterion, impact in res.json()["impacts"].items()
+    }
+    assert embedded == {
+        "gwppb": 0.8166,
+        "gwppf": 574.3,
+        "gwpplu": 0.000138,
+        "epf": 0.003179,
+        "epm": 0.4234,
+    }
+
+
+@pytest.mark.asyncio
 async def test_complete_ram():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
