@@ -26,12 +26,15 @@ GPU_CRITERIA_KEYS = {
 
 
 def get_gpu_impact_factor(component, phase, impact_type) -> dict:
-    impact_type = GPU_CRITERIA_KEYS.get(impact_type, impact_type)
+    gpu_impact_type = GPU_CRITERIA_KEYS.get(impact_type, impact_type)
     if impact_factors.get("gpu"):
         if impact_factors.get("gpu").get(component):
             if impact_factors.get("gpu").get(component).get(phase):
                 factor = (
-                    impact_factors.get("gpu").get(component).get(phase).get(impact_type)
+                    impact_factors.get("gpu")
+                    .get(component)
+                    .get(phase)
+                    .get(gpu_impact_type)
                 )
                 if factor is not None:
                     return factor
