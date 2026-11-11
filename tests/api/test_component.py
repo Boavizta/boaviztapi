@@ -966,6 +966,29 @@ async def test_gpu_criteria_named_differently_in_factors():
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("method", ["get", "post"])
+async def test_gpu_mix_of_implemented_and_not_implemented_criteria(method):
+    url = (
+        "/v1/component/gpu?verbose=false&criteria=gwp&criteria=gwppb"
+        "&criteria=adpe&criteria=fw"
+    )
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        if method == "get":
+            res = await ac.get(url)
+        else:
+            res = await ac.post(url, json={})
+
+    assert res.status_code == 200
+    impacts = res.json()["impacts"]
+    assert set(impacts) == {"gwp", "gwppb", "adpe", "fw"}
+    assert impacts["gwp"]["embedded"]["value"] > 0
+    assert impacts["gwppb"]["embedded"]["value"] == 0.8166
+    for criterion in ["adpe", "fw"]:
+        assert impacts[criterion]["embedded"] == "not implemented"
+
+
+@pytest.mark.asyncio
 async def test_complete_ram():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
