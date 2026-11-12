@@ -925,6 +925,70 @@ async def test_complete_gpu_verbose():
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("method", ["get", "post"])
+async def test_gpu_criteria_without_factor_are_not_implemented(method):
+    # Regression test for #593: these criteria used to return a 500
+    url = "/v1/component/gpu?verbose=false&criteria=adpe&criteria=fw&criteria=fe"
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        if method == "get":
+            res = await ac.get(url)
+        else:
+            res = await ac.post(url, json={})
+
+    assert res.status_code == 200
+    impacts = res.json()["impacts"]
+    for criterion in ["adpe", "fw", "fe"]:
+        assert impacts[criterion]["embedded"] == "not implemented"
+
+
+@pytest.mark.asyncio
+async def test_gpu_criteria_named_differently_in_factors():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.get(
+            "/v1/component/gpu?verbose=false&criteria=gwppb&criteria=gwppf"
+            "&criteria=gwpplu&criteria=epf&criteria=epm"
+        )
+
+    assert res.status_code == 200
+    embedded = {
+        criterion: impact["embedded"]["value"]
+        for criterion, impact in res.json()["impacts"].items()
+    }
+    assert embedded == {
+        "gwppb": 0.8166,
+        "gwppf": 574.3,
+        "gwpplu": 0.000138,
+        "epf": 0.003179,
+        "epm": 0.4234,
+    }
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("method", ["get", "post"])
+async def test_gpu_mix_of_implemented_and_not_implemented_criteria(method):
+    url = (
+        "/v1/component/gpu?verbose=false&criteria=gwp&criteria=gwppb"
+        "&criteria=adpe&criteria=fw"
+    )
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        if method == "get":
+            res = await ac.get(url)
+        else:
+            res = await ac.post(url, json={})
+
+    assert res.status_code == 200
+    impacts = res.json()["impacts"]
+    assert set(impacts) == {"gwp", "gwppb", "adpe", "fw"}
+    assert impacts["gwp"]["embedded"]["value"] > 0
+    assert impacts["gwppb"]["embedded"]["value"] == 0.8166
+    for criterion in ["adpe", "fw"]:
+        assert impacts[criterion]["embedded"] == "not implemented"
+
+
+@pytest.mark.asyncio
 async def test_complete_ram():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:

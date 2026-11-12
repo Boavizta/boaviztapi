@@ -15,13 +15,29 @@ def get_impact_factor(item, impact_type) -> dict:
     raise NotImplementedError
 
 
+# The gpu section of factors.yml names these criteria differently from the API
+GPU_CRITERIA_KEYS = {
+    "gwppb": "gwpb",
+    "gwppf": "gwpf",
+    "gwpplu": "gwplu",
+    "epf": "efp",
+    "epm": "efm",
+}
+
+
 def get_gpu_impact_factor(component, phase, impact_type) -> dict:
+    gpu_impact_type = GPU_CRITERIA_KEYS.get(impact_type, impact_type)
     if impact_factors.get("gpu"):
         if impact_factors.get("gpu").get(component):
             if impact_factors.get("gpu").get(component).get(phase):
-                return (
-                    impact_factors.get("gpu").get(component).get(phase).get(impact_type)
+                factor = (
+                    impact_factors.get("gpu")
+                    .get(component)
+                    .get(phase)
+                    .get(gpu_impact_type)
                 )
+                if factor is not None:
+                    return factor
     raise NotImplementedError
 
 
