@@ -1,5 +1,7 @@
 from typing import Tuple, Union, Optional
 
+from fastapi import HTTPException
+
 from boaviztapi import config
 from boaviztapi.models import ComputedImpacts
 from boaviztapi.models.boattribute import Boattribute
@@ -23,9 +25,9 @@ from boaviztapi.models.device.iot import DeviceIoT
 from boaviztapi.models.impact import (
     ImpactFactor,
     IMPACT_PHASES,
-    IMPACT_CRITERIAS,
     Impact,
     USE,
+    resolve_criteria,
 )
 from boaviztapi.data.factor_provider import (
     get_impact_factor,
@@ -68,15 +70,25 @@ def compute_impacts(
     selected_criteria=config.default_criteria,
     duration=config.default_duration,
 ) -> dict:
-    for c in IMPACT_CRITERIAS.keys():
-        criteria = IMPACT_CRITERIAS[c]
-        if "all" not in selected_criteria:
-            if criteria.name not in selected_criteria:
-                continue
+    try:
+        criteria_names = resolve_criteria(selected_criteria)
+    except ValueError as error:
+        raise HTTPException(
+            status_code=422,
+            detail=[
+                {
+                    "type": "value_error",
+                    "loc": ["query", "criteria"],
+                    "msg": str(error),
+                    "input": list(selected_criteria),
+                }
+            ],
+        )
+    for criteria in criteria_names:
         for phase in IMPACT_PHASES:
-            compute_single_impact(model, phase, criteria.name, duration)
+            compute_single_impact(model, phase, criteria, duration)
 
-    return model.get_impacts(selected_criteria)
+    return model.get_impacts(criteria_names)
 
 
 def get_impact_function(model: Union[Component, Device, Service], phase: str):
