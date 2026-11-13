@@ -61,7 +61,10 @@ async def test_complete_cpu_from_name():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get("/v1/utils/name_to_cpu?cpu_name=deijeijdiejdzij")
-        assert res.json() == "CPU name deijeijdiejdzij is not found in our database"
+        assert res.status_code == 404
+        assert res.json() == {
+            "detail": "CPU name deijeijdiejdzij is not found in our database"
+        }
 
 
 @pytest.mark.asyncio
@@ -195,7 +198,10 @@ async def test_complete_gpu_from_name_not_found():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get("/v1/utils/name_to_gpu?gpu_name=xyznotgpu123")
-        assert res.json() == "GPU name xyznotgpu123 is not found in our database"
+        assert res.status_code == 404
+        assert res.json() == {
+            "detail": "GPU name xyznotgpu123 is not found in our database"
+        }
 
 
 @pytest.mark.asyncio

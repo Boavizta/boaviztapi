@@ -1,7 +1,7 @@
 import os
 
 import pandas as pd
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, HTTPException, Query
 
 from boaviztapi import data_dir
 from boaviztapi.dto.component.cpu import CPU
@@ -112,7 +112,9 @@ async def name_to_cpu(cpu_name: str = Query(examples=["Intel Core i7-9700K"])):
             manufacturer=manufacturer,
         )
     else:
-        return f"CPU name {cpu_name} is not found in our database"
+        raise HTTPException(
+            status_code=404, detail=f"CPU name {cpu_name} is not found in our database"
+        )
 
 
 @utils_router.get("/cpu_name", description=cpu_names)
@@ -159,7 +161,9 @@ async def utils_name_to_gpu(gpu_name: str = Query(examples=["NVIDIA A100 80GB SX
             transport_plane=distance_plane,
         )
     else:
-        return f"GPU name {gpu_name} is not found in our database"
+        raise HTTPException(
+            status_code=404, detail=f"GPU name {gpu_name} is not found in our database"
+        )
 
 
 @utils_router.get("/gpu_name", description=gpu_names)
