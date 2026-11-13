@@ -1,6 +1,6 @@
 
 Here is the list of impacts criteria implemented in the API.
-You can select the list of criteria you want to request to the API in the query.
+You can select the list of criteria you want to request to the API in the query. Use `criteria=all` to get every criterion. An unknown criterion returns a 422 error that lists the valid ones.
 
 !!!info
     Depending on the asset you want to assess, some criteria might not be available.
