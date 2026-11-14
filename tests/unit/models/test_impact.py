@@ -1,6 +1,13 @@
 """Tests for Impact.rounded_value() method branch coverage"""
 
-from boaviztapi.models.impact import Impact, WARNING_IMPORTANT_UNCERTAINTY
+import pytest
+
+from boaviztapi.models.impact import (
+    IMPACT_CRITERIAS,
+    Impact,
+    WARNING_IMPORTANT_UNCERTAINTY,
+    resolve_criteria,
+)
 from boaviztapi import config
 
 
@@ -72,3 +79,17 @@ def test_rounded_value_with_default_values():
     result = impact.rounded_value()
     # Should handle default value=0, min=0, max=0 gracefully
     assert isinstance(result, float)
+
+
+def test_resolve_criteria_keeps_the_requested_criteria():
+    assert resolve_criteria(["gwp", "pe"]) == ["gwp", "pe"]
+
+
+def test_resolve_criteria_expands_all():
+    assert resolve_criteria(["all"]) == list(IMPACT_CRITERIAS)
+    assert resolve_criteria(["gwp", "all"]) == list(IMPACT_CRITERIAS)
+
+
+def test_resolve_criteria_rejects_unknown_criteria():
+    with pytest.raises(ValueError, match="Unknown impact criteria: bogus, nope"):
+        resolve_criteria(["gwp", "bogus", "nope"])

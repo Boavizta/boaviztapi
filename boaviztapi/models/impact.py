@@ -223,6 +223,25 @@ IMPACT_CRITERIAS = {
     "fe": FE,
 }
 
+ALL_CRITERIA = "all"
+
+
+def resolve_criteria(selected_criteria) -> list:
+    """Return the criteria to compute: "all" expands to every criterion.
+
+    Raises ValueError naming the criteria that do not exist.
+    """
+    if ALL_CRITERIA in selected_criteria:
+        return list(IMPACT_CRITERIAS)
+    unknown = [c for c in selected_criteria if c not in IMPACT_CRITERIAS]
+    if unknown:
+        raise ValueError(
+            f"Unknown impact criteria: {', '.join(unknown)}. Valid criteria are "
+            f"{ALL_CRITERIA}, {', '.join(IMPACT_CRITERIAS)}."
+        )
+    return list(selected_criteria)
+
+
 EMBEDDED = "embedded"
 USE = "use"
 
@@ -245,7 +264,7 @@ class Assessable:
 
     def get_impacts(self, selected_criteria):
         result = {}
-        for criteria in selected_criteria:
+        for criteria in resolve_criteria(selected_criteria):
             result[criteria] = {}
             result[criteria]["unit"] = IMPACT_CRITERIAS[criteria].unit
             result[criteria]["description"] = IMPACT_CRITERIAS[criteria].description
