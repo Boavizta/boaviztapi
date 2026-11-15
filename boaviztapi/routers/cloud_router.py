@@ -5,6 +5,7 @@ import pandas as pd
 
 from fastapi import APIRouter, Query, Body, HTTPException
 
+from boaviztapi.models.impact import CriteriaName
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device import Cloud
 from boaviztapi.dto.device.device import mapper_cloud_instance
@@ -65,7 +66,7 @@ async def instance_cloud_impact_from_configuration(
     cloud_instance: Cloud = Body(None, examples=[cloud_example]),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[CriteriaName] = Query(config.default_criteria),
 ):
     instance_archetype, warning = resolve_instance_archetype(
         cloud_instance.instance_type, cloud_instance.provider
@@ -91,7 +92,7 @@ async def instance_cloud_impact_from_model(
     ),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[CriteriaName] = Query(config.default_criteria),
 ):
     cloud_instance = Cloud()
     cloud_instance.usage = {}
@@ -129,7 +130,7 @@ async def cloud_instance_impact(
     cloud_instance: ServiceCloudInstance,
     verbose: bool,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[CriteriaName] = Query(config.default_criteria),
     warning: Optional[str] = None,
 ) -> dict:
     if duration is None:

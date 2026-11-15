@@ -1,9 +1,11 @@
 """Tests for Impact.rounded_value() method branch coverage"""
 
-import pytest
+from typing import get_args
+
 
 from boaviztapi.models.impact import (
     IMPACT_CRITERIAS,
+    CriteriaName,
     Impact,
     WARNING_IMPORTANT_UNCERTAINTY,
     resolve_criteria,
@@ -90,6 +92,5 @@ def test_resolve_criteria_expands_all():
     assert resolve_criteria(["gwp", "all"]) == list(IMPACT_CRITERIAS)
 
 
-def test_resolve_criteria_rejects_unknown_criteria():
-    with pytest.raises(ValueError, match="Unknown impact criteria: bogus, nope"):
-        resolve_criteria(["gwp", "bogus", "nope"])
+def test_criteria_name_accepts_all_and_every_criterion():
+    assert get_args(CriteriaName) == ("all", *IMPACT_CRITERIAS)

@@ -1,6 +1,5 @@
 from typing import Tuple, Union, Optional
 
-from fastapi import HTTPException
 
 from boaviztapi import config
 from boaviztapi.models import ComputedImpacts
@@ -70,20 +69,7 @@ def compute_impacts(
     selected_criteria=config.default_criteria,
     duration=config.default_duration,
 ) -> dict:
-    try:
-        criteria_names = resolve_criteria(selected_criteria)
-    except ValueError as error:
-        raise HTTPException(
-            status_code=422,
-            detail=[
-                {
-                    "type": "value_error",
-                    "loc": ["query", "criteria"],
-                    "msg": str(error),
-                    "input": list(selected_criteria),
-                }
-            ],
-        )
+    criteria_names = resolve_criteria(selected_criteria)
     for criteria in criteria_names:
         for phase in IMPACT_PHASES:
             compute_single_impact(model, phase, criteria, duration)

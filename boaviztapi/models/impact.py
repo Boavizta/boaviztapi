@@ -1,6 +1,6 @@
 import math
 from dataclasses import dataclass
-from typing import Optional
+from typing import Literal, Optional
 
 import boaviztapi.utils.roundit as rd
 from boaviztapi import config
@@ -225,20 +225,18 @@ IMPACT_CRITERIAS = {
 
 ALL_CRITERIA = "all"
 
+# Values accepted by the ``criteria`` query parameter. FastAPI rejects anything
+# else with a 422 that lists these values, before the endpoint runs.
+CriteriaName = Literal[tuple([ALL_CRITERIA, *IMPACT_CRITERIAS])]
+
 
 def resolve_criteria(selected_criteria) -> list:
     """Return the criteria to compute: "all" expands to every criterion.
 
-    Raises ValueError naming the criteria that do not exist.
+    The names are already validated at the endpoint (see ``CriteriaName``).
     """
     if ALL_CRITERIA in selected_criteria:
         return list(IMPACT_CRITERIAS)
-    unknown = [c for c in selected_criteria if c not in IMPACT_CRITERIAS]
-    if unknown:
-        raise ValueError(
-            f"Unknown impact criteria: {', '.join(unknown)}. Valid criteria are "
-            f"{ALL_CRITERIA}, {', '.join(IMPACT_CRITERIAS)}."
-        )
     return list(selected_criteria)
 
 

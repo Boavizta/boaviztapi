@@ -3,6 +3,7 @@ from typing import List, Optional
 
 from fastapi import APIRouter, Body, HTTPException, Query
 
+from boaviztapi.models.impact import CriteriaName
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device import Server
 from boaviztapi.dto.device.device import mapper_server
@@ -44,7 +45,7 @@ async def server_impact_from_model(
     archetype: str = config.default_server,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[CriteriaName] = Query(config.default_criteria),
 ):
     archetype_config = get_server_archetype(archetype)
 
@@ -64,7 +65,7 @@ async def server_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_server,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[CriteriaName] = Query(config.default_criteria),
 ):
     archetype_config = get_server_archetype(archetype)
 
@@ -82,7 +83,7 @@ async def server_impact(
     device: Device,
     verbose: bool,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[CriteriaName] = Query(config.default_criteria),
 ) -> dict:
     if duration is None:
         duration = device.usage.hours_life_time.value

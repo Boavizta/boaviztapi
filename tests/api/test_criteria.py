@@ -38,9 +38,22 @@ async def test_unknown_criterion_is_a_422(method, url, body):
 
     assert res.status_code == 422
     (error,) = res.json()["detail"]
-    assert error["loc"] == ["query", "criteria"]
-    assert "Unknown impact criteria: bogus" in error["msg"]
-    assert "gwp" in error["msg"]
+    assert error["loc"] == ["query", "criteria", 1]
+    assert error["input"] == "bogus"
+    assert "'all'" in error["msg"]
+    assert "'gwp'" in error["msg"]
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(("method", "url", "body"), ROUTES)
+async def test_all_does_not_hide_an_unknown_criterion(method, url, body):
+    res = await call(
+        method, with_query(url, "verbose=false&criteria=all&criteria=bogus"), body
+    )
+
+    assert res.status_code == 422
+    (error,) = res.json()["detail"]
+    assert error["input"] == "bogus"
 
 
 @pytest.mark.asyncio
