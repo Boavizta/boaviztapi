@@ -186,6 +186,21 @@ cloud_provider_description = (
     "⏬ Allocation"
 )
 
+storage_description = (
+    "# ✔ ️Storage as a service impacts from configuration and usage\n"
+    "Retrieve the impacts of storing `usage.storage` GB on a reference SSD or HDD.\n\n"
+    "### Features\n\n"
+    "👄 Verbose\n\n"
+    "🔃 Auto-complete : `configuration` defaults to the default SSD archetype\n\n"
+    "🔨 Embedded : impacts of the reference disk\n\n"
+    "🔌 Usage\n\n"
+    "* ⏺️  Given : `avg_power` is the power of the whole reference disk\n\n"
+    "* 📈 Modeled : `hours_electrical_consumption` hours per day sets "
+    "`use_time_ratio = hours / 24`\n\n"
+    "⏬ Allocation : embedded and usage impacts of the reference disk are multiplied "
+    "by `storage * replication / capacity`"
+)
+
 all_default_cloud_instances = (
     "# ✔ ️Get all the available instances for a given Cloud provider\n"
     "📜 Return the name of all pre-registered instances for the Cloud provider"

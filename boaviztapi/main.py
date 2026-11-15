@@ -22,6 +22,7 @@ from boaviztapi.routers.iot_router import iot
 from boaviztapi.routers.peripheral_router import peripheral_router
 from boaviztapi.routers.server_router import server_router
 from boaviztapi.routers.cloud_router import cloud_router
+from boaviztapi.routers.storage_router import storage_router
 from boaviztapi.routers.terminal_router import terminal_router
 from boaviztapi.routers.utils_router import utils_router
 from boaviztapi.utils.get_version import get_version_from_pyproject
@@ -86,6 +87,7 @@ app.add_middleware(
 
 app.include_router(server_router)
 app.include_router(cloud_router)
+app.include_router(storage_router)
 app.include_router(terminal_router)
 app.include_router(peripheral_router)
 app.include_router(component_router)
