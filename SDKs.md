@@ -7,6 +7,7 @@ They are maintained by the community, not by Boavizta. Report bugs to their own 
 | Language | Library | Maintainer | Status |
 |----------|---------|------------|--------|
 | PHP | [boaviztapi-php](https://github.com/DavidJLN/boavizta-api-php) | [@DavidJLN](https://github.com/DavidJLN) | Community, unofficial |
+| Python (MCP server) | [boaviztapi-mcp](https://github.com/malikmalikayesha/boaviztapi-mcp) | [@malikmalikayesha](https://github.com/malikmalikayesha) | Community, unofficial |
 
 ## Add your SDK
 
