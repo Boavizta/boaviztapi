@@ -31,14 +31,19 @@ An open-source and mutualized platform for evaluate impact of information system
 
 Scaleway use the BoaviztAPI for their [environmental footprint calculator](https://www.scaleway.com/en/docs/environmental-footprint/additional-content/environmental-footprint-calculator/).
 
-## [SPRUCE](https://github.com/DigitalPebble/spruce)
+## [DigitalPebble](https://DigitalPebble.com)
+
+### [Aspen](https://github.com/DigitalPebble/aspen)
+
+Aspen estimates the energy use and carbon emissions of GitHub Actions for a repository or an organisation. It reads either the jobs of your workflow runs or the GitHub billing report, applies a carbon estimation model based on data from the BoaviztAPI and writes a JSON report, a markdown summary and an optional badge.
+
+### [SPRUCE](https://github.com/DigitalPebble/spruce)
 
 An [open-source enrichment platform for GreenOps](https://opensourcegreenops.cloud/) which helps measure and reduce the environmental impact of cloud computing. SPRUCE uses BoaviztAPI to retrieve hardware impact data for the servers powering cloud workloads.
 
 ## [Carenage](https://gitlab.com/hubblo/carenage)
 
 Carenage is a continuous integration tool meant to make environmental evaluation easier for software projects. Used in CI scripts, it queries needed metrics and metadata during the execution of a CI job to insert them into a database. Afterwards, the data is available as JSON objects through requests to a RESTful API and visualisable in a dashboard.
-
 
 ## [RICO2](https://rico2.rice.re)
 
