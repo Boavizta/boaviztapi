@@ -1,7 +1,7 @@
 from typing import List, Optional
 from fastapi import APIRouter, Query, Body
 
-from boaviztapi.models.impact import CriteriaName
+from boaviztapi.models.impact import Criteria
 from boaviztapi import config
 from boaviztapi.dto.device.user_terminal import (
     Monitor,
@@ -57,7 +57,7 @@ async def monitor_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_monitor,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=monitor,
@@ -73,7 +73,7 @@ async def monitor_impact_from_model(
     archetype: str = config.default_monitor,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=Monitor(),
@@ -106,7 +106,7 @@ async def usb_stick_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_usb_stick,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=usb_stick,
@@ -122,7 +122,7 @@ async def usb_stick_impact_from_model(
     archetype: str = config.default_usb_stick,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=UsbStick(),
@@ -155,7 +155,7 @@ async def external_ssd_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_external_ssd,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=external_ssd,
@@ -171,7 +171,7 @@ async def external_ssd_impact_from_model(
     archetype: str = config.default_external_ssd,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=ExternalSSD(),
@@ -204,7 +204,7 @@ async def external_hdd_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_external_hdd,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=external_hdd,
@@ -220,7 +220,7 @@ async def external_hdd_impact_from_model(
     archetype: str = config.default_external_hdd,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=ExternalHDD(),
@@ -253,7 +253,7 @@ async def vr_controller_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_vr_controller,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=vr_controller,
@@ -269,7 +269,7 @@ async def vr_controller_impact_from_model(
     archetype: str = config.default_vr_controller,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=VrController(),

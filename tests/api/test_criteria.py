@@ -6,6 +6,9 @@ from boaviztapi.models.impact import IMPACT_CRITERIAS
 
 pytest_plugins = ("pytest_asyncio",)
 
+ACCEPTED = [f"'{name}'" for name in ("all", *IMPACT_CRITERIAS)]
+EXPECTED_MSG = f"Input should be {', '.join(ACCEPTED[:-1])} or {ACCEPTED[-1]}"
+
 ROUTES = [
     ("post", "/v1/component/cpu", {}),
     ("post", "/v1/component/ram", {}),
@@ -37,11 +40,10 @@ async def test_unknown_criterion_is_a_422(method, url, body):
     )
 
     assert res.status_code == 422
-    (error,) = res.json()["detail"]
+    error = res.json()["detail"][0]
     assert error["loc"] == ["query", "criteria", 1]
     assert error["input"] == "bogus"
-    assert "'all'" in error["msg"]
-    assert "'gwp'" in error["msg"]
+    assert error["msg"] == EXPECTED_MSG
 
 
 @pytest.mark.asyncio
@@ -52,7 +54,7 @@ async def test_all_does_not_hide_an_unknown_criterion(method, url, body):
     )
 
     assert res.status_code == 422
-    (error,) = res.json()["detail"]
+    error = res.json()["detail"][0]
     assert error["input"] == "bogus"
 
 

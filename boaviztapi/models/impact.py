@@ -1,6 +1,6 @@
 import math
 from dataclasses import dataclass
-from typing import Literal, Optional
+from typing import Iterable, Literal, Optional
 
 import boaviztapi.utils.roundit as rd
 from boaviztapi import config
@@ -227,13 +227,13 @@ ALL_CRITERIA = "all"
 
 # Values accepted by the ``criteria`` query parameter. FastAPI rejects anything
 # else with a 422 that lists these values, before the endpoint runs.
-CriteriaName = Literal[tuple([ALL_CRITERIA, *IMPACT_CRITERIAS])]
+Criteria = Literal[tuple([ALL_CRITERIA, *IMPACT_CRITERIAS])]
 
 
-def resolve_criteria(selected_criteria) -> list:
+def resolve_criteria(selected_criteria: Iterable[str]) -> list[str]:
     """Return the criteria to compute: "all" expands to every criterion.
 
-    The names are already validated at the endpoint (see ``CriteriaName``).
+    The names are already validated at the endpoint (see ``Criteria``).
     """
     if ALL_CRITERIA in selected_criteria:
         return list(IMPACT_CRITERIAS)

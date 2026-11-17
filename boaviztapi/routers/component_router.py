@@ -3,7 +3,7 @@ from typing import List, Optional
 
 from fastapi import APIRouter, Body, HTTPException, Query
 
-from boaviztapi.models.impact import CriteriaName
+from boaviztapi.models.impact import Criteria
 from boaviztapi import config, data_dir
 from boaviztapi.dto.component import CPU, GPU, RAM, Disk, PowerSupply, Motherboard, Case
 from boaviztapi.dto.component.cpu import mapper_cpu
@@ -71,7 +71,7 @@ async def cpu_impact_bottom_up_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_cpu,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "cpu")
 
@@ -90,7 +90,7 @@ async def cpu_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_cpu,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "cpu")
 
@@ -122,7 +122,7 @@ async def gpu_impact_bottom_up_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_gpu,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "gpu")
 
@@ -141,7 +141,7 @@ async def gpu_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_gpu,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "gpu")
 
@@ -175,7 +175,7 @@ async def ram_impact_bottom_up_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_ram,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "ram")
 
@@ -194,7 +194,7 @@ async def ram_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_ram,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "ram")
 
@@ -228,7 +228,7 @@ async def ssd_disk_impact_bottom_up_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_ssd,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     disk.type = "ssd"
     archetype_config = get_component_archetype(archetype, "ssd")
@@ -248,7 +248,7 @@ async def ssd_disk_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_ssd,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     disk = Disk()
     disk.type = "ssd"
@@ -284,7 +284,7 @@ async def hdd_disk_impact_bottom_up_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_hdd,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     disk.type = "hdd"
     archetype_config = get_component_archetype(archetype, "hdd")
@@ -304,7 +304,7 @@ async def hdd_disk_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_hdd,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     disk = Disk()
     disk.type = "hdd"
@@ -343,7 +343,7 @@ async def motherboard_impact_bottom_up_from_configuration(
     ),
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     completed_motherboard = mapper_motherboard(motherboard)
 
@@ -359,7 +359,7 @@ async def motherboard_impact_bottom_up_from_configuration(
 async def motherboard_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     completed_motherboard = mapper_motherboard(Motherboard())
 
@@ -395,7 +395,7 @@ async def power_supply_impact_bottom_up_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_power_supply,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "power_supply")
 
@@ -417,7 +417,7 @@ async def power_supply_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_power_supply,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "power_supply")
 
@@ -454,7 +454,7 @@ async def case_impact_bottom_up_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_case,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "case")
 
@@ -473,7 +473,7 @@ async def case_impact_bottom_up_from_model(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_case,
-    criteria: List[CriteriaName] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     archetype_config = get_component_archetype(archetype, "case")
 

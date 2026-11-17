@@ -5,7 +5,7 @@ from typing import get_args
 
 from boaviztapi.models.impact import (
     IMPACT_CRITERIAS,
-    CriteriaName,
+    Criteria,
     Impact,
     WARNING_IMPORTANT_UNCERTAINTY,
     resolve_criteria,
@@ -93,4 +93,4 @@ def test_resolve_criteria_expands_all():
 
 
 def test_criteria_name_accepts_all_and_every_criterion():
-    assert get_args(CriteriaName) == ("all", *IMPACT_CRITERIAS)
+    assert get_args(Criteria) == ("all", *IMPACT_CRITERIAS)
