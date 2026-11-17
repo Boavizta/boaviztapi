@@ -4,6 +4,7 @@ from typing import Optional, List
 import pandas as pd
 from fastapi import APIRouter, Body, Query, HTTPException
 
+from boaviztapi.models.impact import Criteria
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device.iot import IoT, mapper_iot_device
 from boaviztapi.data.archetype import get_iot_device_archetype
@@ -35,7 +36,7 @@ async def iot_device_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_iot_device,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await device_iot_impact(
         iot_dto=iot,
@@ -51,7 +52,7 @@ async def iot_device_impact_from_model(
     archetype: str = config.default_iot_device,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await device_iot_impact(
         iot_dto=IoT(),
@@ -67,7 +68,7 @@ async def device_iot_impact(
     archetype: str,
     verbose: bool,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ) -> dict:
     archetype_config = get_iot_device_archetype(archetype)
 

@@ -3,6 +3,7 @@ from typing import List, Optional
 
 from fastapi import APIRouter, Query, Body, HTTPException
 
+from boaviztapi.models.impact import Criteria
 from boaviztapi import config, data_dir
 from boaviztapi.dto.device.user_terminal import (
     UserTerminal,
@@ -63,7 +64,7 @@ async def laptop_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_laptop,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=laptop,
@@ -79,7 +80,7 @@ async def laptop_impact_from_model(
     archetype: str = config.default_laptop,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=Laptop(),
@@ -108,7 +109,7 @@ async def desktop_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_desktop,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=desktop,
@@ -124,7 +125,7 @@ async def desktop_impact_from_model(
     archetype: str = config.default_desktop,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=Desktop(),
@@ -155,7 +156,7 @@ async def smartphone_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_smartphone,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=smartphone,
@@ -171,7 +172,7 @@ async def smartphone_impact_from_model(
     archetype: str = config.default_smartphone,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=Smartphone(),
@@ -200,7 +201,7 @@ async def tablet_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_tablet,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=tablet,
@@ -216,7 +217,7 @@ async def tablet_impact_from_model(
     archetype: str = config.default_tablet,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=Tablet(),
@@ -247,7 +248,7 @@ async def television_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_television,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=television,
@@ -263,7 +264,7 @@ async def television_impact_from_model(
     archetype: str = config.default_television,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=Television(),
@@ -292,7 +293,7 @@ async def box_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_box,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=box,
@@ -308,7 +309,7 @@ async def box_impact_from_model(
     archetype: str = config.default_box,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=Box(),
@@ -339,7 +340,7 @@ async def vr_headset_impact_from_configuration(
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
     archetype: str = config.default_vr_headset,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=vr_headset,
@@ -355,7 +356,7 @@ async def vr_headset_impact_from_model(
     archetype: str = config.default_vr_headset,
     verbose: bool = True,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ):
     return await user_terminal_impact(
         user_terminal_dto=VrHeadset(),
@@ -371,7 +372,7 @@ async def user_terminal_impact(
     archetype: str,
     verbose: bool,
     duration: Optional[float] = config.default_duration,
-    criteria: List[str] = Query(config.default_criteria),
+    criteria: List[Criteria] = Query(config.default_criteria),
 ) -> dict:
     archetype_config = get_user_terminal_archetype(archetype)
 
