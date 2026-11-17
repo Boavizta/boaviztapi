@@ -11,6 +11,7 @@
 See the [documentation](https://boavizta.github.io/boaviztapi/) for API usage and methodology.
 
 [![Python tests](https://github.com/Boavizta/boaviztapi/actions/workflows/test.yml/badge.svg)](https://github.com/Boavizta/boaviztapi/actions/workflows/test.yml)
+[![CI CO2eq](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Boavizta/boaviztapi/badges/badge.json)](https://github.com/DigitalPebble/aspen)
 
 💬 [Join us on our public chat](https://chat.boavizta.org/signup_user_complete/?id=97a1cpe35by49jdc66ej7ktrjc)
 
