@@ -13,31 +13,13 @@ jobs:
   estimate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - name: Aspen - GitHub Actions Carbon Estimator
         id: aspen
-        uses: DigitalPebble/aspen@v1.0.0
+        uses: DigitalPebble/aspen@v1
+        with:
+          publish_badge: true
       - uses: actions/upload-artifact@v4
         with:
           name: carbon-estimate
           path: ${{ steps.aspen.outputs.report-path }}
-      # Only runs if the previous steps succeeded
-      - name: Publish badge
-        env:
-          BADGE_PATH: ${{ steps.aspen.outputs.badge-path }}
-        run: |
-          set -euo pipefail
-          cp "$BADGE_PATH" "$RUNNER_TEMP/badge.json"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git ls-remote --exit-code --heads origin badges >/dev/null; then
-            git fetch --depth=1 origin badges
-            git checkout -f -B badges FETCH_HEAD
-          else
-            git checkout --orphan badges
-            git rm -rf --quiet .
-          fi
-          cp "$RUNNER_TEMP/badge.json" badge.json
-          git add badge.json
-          git diff --cached --quiet || git commit -m "Update carbon badge"
-          git push origin badges
+
