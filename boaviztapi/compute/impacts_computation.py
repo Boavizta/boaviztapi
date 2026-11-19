@@ -48,6 +48,9 @@ def compute_single_impact(
         impact, min_impact, max_impact, warnings = impact_function(
             criteria, duration, model
         )
+        if phase == USE:
+            # e.g. an unknown location: the default electricity mix was used
+            warnings = [*warnings, *usage_location_warnings(model)]
 
         result = Impact(
             value=impact * allocation,
@@ -62,6 +65,12 @@ def compute_single_impact(
     except (AttributeError, NotImplementedError):
         model.add_impacts(None, criteria, phase)
         return None
+
+
+def usage_location_warnings(model: Union[Component, Device, Service]) -> list:
+    usage = getattr(model, "usage", None)
+    usage_location = getattr(usage, "usage_location", None)
+    return list(getattr(usage_location, "warnings", []))
 
 
 def compute_impacts(
