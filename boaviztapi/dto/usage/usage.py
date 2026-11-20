@@ -182,8 +182,6 @@ def mapper_usage_cloud(
                 f"Region '{usage_dto.region}' not found for provider '{provider}'. Falling back to usage_location if provided."
             )
             if usage_dto.usage_location is None:
-                # Set the default here, so the warning stays with the location
-                # the impacts are computed with
                 usage_model_cloud.usage_location.set_changed(
                     usage_model_cloud.usage_location.default
                 )

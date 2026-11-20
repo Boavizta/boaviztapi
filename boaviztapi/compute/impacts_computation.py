@@ -1,4 +1,4 @@
-from typing import Tuple, Union, Optional
+from typing import List, Tuple, Union, Optional
 
 
 from boaviztapi import config
@@ -67,10 +67,14 @@ def compute_single_impact(
         return None
 
 
-def usage_location_warnings(model: Union[Component, Device, Service]) -> list:
+def usage_location_warnings(model: Union[Component, Device, Service]) -> List[str]:
     usage = getattr(model, "usage", None)
-    usage_location = getattr(usage, "usage_location", None)
-    return list(getattr(usage_location, "warnings", []))
+    if usage is None:
+        return []
+    usage_location: Optional[Boattribute] = getattr(usage, "usage_location", None)
+    if usage_location is None:
+        return []
+    return list(getattr(usage_location, "warnings", None) or [])
 
 
 def compute_impacts(
