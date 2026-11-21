@@ -4,8 +4,9 @@ from typing import List, Tuple, Union, Optional
 from boaviztapi import config
 from boaviztapi.models import ComputedImpacts
 from boaviztapi.models.boattribute import Boattribute
-from boaviztapi.models.device.server import DeviceServer
+from boaviztapi.models.device.server import DeviceServer, disk_power_consumption
 from boaviztapi.models.services.cloud_instance import Service, ServiceCloudInstance
+from boaviztapi.models.services.storage import ServiceStorage
 from boaviztapi.models.component import (
     ComponentCPU,
     ComponentGPU,
@@ -978,6 +979,39 @@ def cloud_impact_use(
     return impact, min_impact, max_impact, []
 
 
+def storage_impact_embedded(
+    impact_type: str, duration: int, storage: ServiceStorage
+) -> ComputedImpacts:
+    allocation = storage.allocation()
+    disk = storage.reference_disk()
+    impact = compute_single_impact(disk, "embedded", impact_type, duration, allocation)
+    if impact is None:
+        raise NotImplementedError
+    warnings = impact.warnings
+    if disk.NAME == "HDD":
+        warnings = warnings + [
+            "The HDD impact factor does not depend on capacity: the impact per GB "
+            "depends on the reference disk capacity."
+        ]
+    return impact.value, impact.min, impact.max, warnings
+
+
+def storage_impact_use(
+    impact_type: str, duration: int, storage: ServiceStorage
+) -> ComputedImpacts:
+    allocation = storage.allocation()
+    disk = storage.reference_disk()
+    # The usage is shared with the reference disk: avg_power is the power of the
+    # whole reference disk, and the allocation scales it to the stored share.
+    if not storage.usage.avg_power.has_value():
+        power = disk_power_consumption(disk)
+        storage.usage.avg_power.set_completed(power.value, min=power.min, max=power.max)
+    impact = compute_single_impact(disk, USE, impact_type, duration, allocation)
+    if impact is None:
+        raise NotImplementedError
+    return impact.value, impact.min, impact.max, impact.warnings
+
+
 impacts_functions = {
     "CPU": {"use": cpu_impact_use, "embedded": cpu_impact_embedded},
     "GPU": {"use": gpu_impact_use, "embedded": gpu_impact_embedded},
@@ -1005,6 +1039,10 @@ impacts_functions = {
     "EXTERNAL_HDD": {"use": simple_impact_use, "embedded": simple_embedded},
     "MONITOR": {"use": simple_impact_use, "embedded": simple_embedded},
     "CLOUD_INSTANCE": {"use": cloud_impact_use, "embedded": cloud_impact_embedded},
+    "STORAGE_AS_A_SERVICE": {
+        "use": storage_impact_use,
+        "embedded": storage_impact_embedded,
+    },
     "ACTUATORS": {
         "use": simple_impact_use,
         "embedded": iot_functional_blocks_impact_embedded,
