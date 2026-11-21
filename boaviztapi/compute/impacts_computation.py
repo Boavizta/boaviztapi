@@ -695,6 +695,11 @@ def ssd_impact_embedded(
 def iot_impact_embedded(
     impact_type: str, duration: int, iot_device: DeviceIoT
 ) -> ComputedImpacts:
+    # Without any functional block (the default archetype sets no HSL level) there is
+    # nothing to compute, so report it as not implemented rather than as 0
+    if not iot_device.components:
+        raise NotImplementedError
+
     impacts = []
     min_impacts = []
     max_impacts = []
