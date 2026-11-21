@@ -10,6 +10,7 @@ from boaviztapi.models.consumption_profile import CPUConsumptionProfileModel
 from boaviztapi.models.impact import ImpactFactor
 from boaviztapi.data.archetype import get_component_archetype, get_arch_value
 from boaviztapi.utils.fuzzymatch import (
+    ambiguous_name_warning,
     fuzzymatch_attr_from_cpu_name,
     fuzzymatch_attr_from_pdf,
 )
@@ -19,6 +20,12 @@ _cpu_specs = pd.read_csv(os.path.join(data_dir, "crowdsourcing/cpu_specs.csv"))
 
 def attributes_from_cpu_name(cpu_name: str):
     return fuzzymatch_attr_from_cpu_name(cpu_name, _cpu_specs)
+
+
+def ambiguous_cpu_name_warning(cpu_name: str):
+    return ambiguous_name_warning(
+        cpu_name, _cpu_specs, config.cpu_name_fuzzymatch_threshold, "CPU"
+    )
 
 
 class ComponentCPU(Component):
@@ -155,7 +162,8 @@ class ComponentCPU(Component):
             if self.name.min != self.name.value or self.name.max != self.name.value:
                 compute_min_max = True
 
-            cpu_attributes = attributes_from_cpu_name(self.name.value)
+            requested_name = self.name.value
+            cpu_attributes = attributes_from_cpu_name(requested_name)
             (
                 name,
                 manufacturer,
@@ -260,6 +268,9 @@ class ComponentCPU(Component):
                 self.name.set_completed(
                     name, min=name_min, max=name_max, source="fuzzy match"
                 )
+                warning = ambiguous_cpu_name_warning(requested_name)
+                if warning:
+                    self.name.add_warning(warning)
             if manufacturer is not None:
                 self.manufacturer.set_completed(
                     manufacturer,

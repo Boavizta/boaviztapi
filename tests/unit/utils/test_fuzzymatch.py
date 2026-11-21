@@ -1,4 +1,6 @@
 from boaviztapi.utils.fuzzymatch import (
+    ambiguous_name_warning,
+    best_name_matches,
     fuzzymatch_attr_from_pdf,
     fuzzymatch_attr_from_cpu_name,
     fuzzymatch_attr_from_gpu_name,
@@ -301,6 +303,34 @@ def test_fuzzymatch_attr_from_gpu_name(
 
 def test_fuzzymatch_gpu_not_found(gpu_specs_dataframe):
     assert fuzzymatch_attr_from_gpu_name("xyznotgpu123", gpu_specs_dataframe) is None
+
+
+def test_best_name_matches_returns_every_tie(gpu_specs_dataframe):
+    matches = best_name_matches("a100", gpu_specs_dataframe, 60)
+    assert list(matches["name"]) == ["NVIDIA A100 PCIe 40GB", "NVIDIA A100 SXM4 40GB"]
+    # The attribute lookup still picks the first tie, as before.
+    assert fuzzymatch_attr_from_gpu_name("a100", gpu_specs_dataframe)[0] == (
+        "NVIDIA A100 PCIe 40GB"
+    )
+
+
+def test_ambiguous_name_warning_lists_the_candidates(gpu_specs_dataframe):
+    assert ambiguous_name_warning("a100", gpu_specs_dataframe, 60, "GPU") == (
+        "'a100' matches 2 GPUs equally well (NVIDIA A100 PCIe 40GB, "
+        "NVIDIA A100 SXM4 40GB). "
+        "Used 'NVIDIA A100 PCIe 40GB'; give the full name to choose another."
+    )
+
+
+@pytest.mark.parametrize("gpu_name", ["NVIDIA A100 SXM4 40GB", "h100", "xyznotgpu123"])
+def test_ambiguous_name_warning_none_without_ties(gpu_specs_dataframe, gpu_name):
+    assert ambiguous_name_warning(gpu_name, gpu_specs_dataframe, 60, "GPU") is None
+
+
+def test_ambiguous_name_warning_shortens_long_lists(cpu_dataframe):
+    warning = ambiguous_name_warning("ryzen 9", cpu_dataframe, 60, "CPU")
+    assert warning.startswith("'ryzen 9' matches 24 CPUs equally well (")
+    assert "and 19 more)" in warning
 
 
 # --- fuzzymatch_cloud_instance_name ---

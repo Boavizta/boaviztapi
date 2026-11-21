@@ -1348,3 +1348,32 @@ async def test_empty_blade():
             },
         }
     }
+
+
+@pytest.mark.asyncio
+async def test_gpu_ambiguous_name_is_flagged():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.post(
+            "/v1/component/gpu?verbose=true&criteria=gwp", json={"name": "a100"}
+        )
+
+    name = res.json()["verbose"]["name"]
+    assert name["value"] == "NVIDIA A100 PCIe 40GB"
+    assert name["warnings"] == [
+        "'a100' matches 2 GPUs equally well (NVIDIA A100 PCIe 40GB, "
+        "NVIDIA A100 SXM4 40GB). "
+        "Used 'NVIDIA A100 PCIe 40GB'; give the full name to choose another."
+    ]
+
+
+@pytest.mark.asyncio
+async def test_gpu_exact_name_has_no_ambiguity_warning():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.post(
+            "/v1/component/gpu?verbose=true&criteria=gwp",
+            json={"name": "NVIDIA A100 SXM4 40GB"},
+        )
+
+    assert "warnings" not in res.json()["verbose"]["name"]
