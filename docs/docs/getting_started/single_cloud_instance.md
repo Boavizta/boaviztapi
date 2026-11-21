@@ -1746,6 +1746,6 @@ curl -X 'POST' \
   gwp).
 * Since duration is set at 2 and time_workload is provided, the query usage can be translated as such :
 
-```I used a r6g.medium in a french data center for 2 hours half of the time in IDLE mode and half of the time at 50% of workload```
+```I used a r6g.medium in a french data centre for 2 hours half of the time in IDLE mode and half of the time at 50% of workload```
 
 For further information see : [The explanation page on cloud](../Explanations/services/cloud.md)

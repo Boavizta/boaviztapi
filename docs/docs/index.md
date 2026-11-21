@@ -14,11 +14,11 @@ Have a look at the [reference](Reference/format/component_route.md) section to g
 
 ![Boavizta earth](assets/boavizta-logo-4.png){ align=left width="60" }
 
-**Boavizta** is a working group with a mission to make the environmental impacts assessment of ICT/digital technologies in organizations more reliable, easier and faster.
+**Boavizta** is a working group with a mission to make the environmental impacts assessment of ICT/digital technologies in organisations more reliable, easier and faster.
 
 The group federates and connects stakeholders of the "ICT/digital environmental impacts evaluation" ecosystem (companies, associations, researcher - 150+ members) and facilitates peer-to-peer help.
 
-It also organizes the co-construction of expert and updated resources under open / free licenses:
+It also organises the co-construction of expert and updated resources under open / free licences:
 
 * Methodologies for the assessment of ICT/digital environmental impacts. See [boavizta.org/methodologies](https://boavizta.org/methodologies).
 * Environmental data repositories. See [boavizta.org/donnees](https://boavizta.org/donnees).

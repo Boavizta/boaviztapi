@@ -521,7 +521,7 @@ curl -X 'POST' \
 
 ## Get the impacts from custom cpu usage using a workload
 
-In this query we set a custom usage to an ```intel xeon gold 6134``` with a TDP of 130 Watt. The average electrical consumption is modeled by the API.
+In this query we set a custom usage to an ```intel xeon gold 6134``` with a TDP of 130 Watt. The average electrical consumption is modelled by the API.
 
 ```bash
 curl -X 'POST' \

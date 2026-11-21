@@ -11,9 +11,9 @@ Check this points if you want to do a pull request :
 
 Using AI ? We are following an [AI_POLICY.md](AI_POLICY.md) to ensure that human always stays in the loop.
 
-## Code organization
+## Code organisation
 
-We tried to keep the code organization as simple as possible. Here is an overview of the main folders:
+We tried to keep the code organisation as simple as possible. Here is an overview of the main folders:
 
 ```mermaid
 flowchart TD
@@ -31,7 +31,7 @@ flowchart TD
  F --> F1[computation orchestration and verbose result formatting]
 ```
 
-## Tests organization
+## Tests organisation
 
 The test tree mirrors the source tree. Add new tests in the matching folder so navigation stays predictable.
 
@@ -61,6 +61,6 @@ Some rules:
 
 * Add as many tests as possible when contributing. For example, if you are fixing a bug, add the bug report as a new test case.
 * For a source module under `boaviztapi/<area>/...`, create tests under `tests/unit/<area>/...`.
-* API behavior for routers belongs in `tests/api/`.
+* API behaviour for routers belongs in `tests/api/`.
 * Test-only datasets and fixtures go in `tests/data/`.
-* Keep test filenames aligned with source behavior (for example `test_<feature>.py`).
+* Keep test filenames aligned with source behaviour (for example `test_<feature>.py`).

@@ -20,7 +20,7 @@ server_impact_by_config_description = (
     "🔨 Embedded\n\n"
     "🔌 Usage\n\n"
     "* ⏺️  Given\n\n"
-    "* 📈 Modeled\n\n"
+    "* 📈 Modelled\n\n"
     "📋 Archetype\n\n"
     "⏬ Allocation"
 )
@@ -58,7 +58,7 @@ cpu_description = (
     "cpu<sub>manuf_base<sub><em>criteria</em></sub></sub></h3> "
     "🔌 Usage\n\n"
     "* ⏺️  Given\n\n"
-    "* 📈 Modeled\n\n"
+    "* 📈 Modelled\n\n"
     "⏬ Allocation"
 )
 
@@ -79,7 +79,7 @@ gpu_description = (
     "gpu<sub>transport_distance_plane</sub> x gpu<sub>impact_plane<sub><em>criteria</em></sub></sub></h3> "
     "🔌 Usage\n\n"
     "* ⏺️  Given\n\n"
-    "* 📈 Modeled\n\n"
+    "* 📈 Modelled\n\n"
     "⏬ Allocation"
 )
 
@@ -120,7 +120,7 @@ ram_description = (
     "ram<sub>manuf_base<sub><em>criteria</em></sub></sub> </h3> "
     "🔌 Usage\n\n"
     "* ⏺️  Given\n\n"
-    "* 📈 Modeled\n\n"
+    "* 📈 Modelled\n\n"
     "⏬ Allocation"
 )
 
@@ -172,7 +172,7 @@ cloud_provider_description = (
     "🔍 Fuzzy matching \n\n"
     "If the instance type is not found exactly, the API applies a staged fuzzy-matching "
     "algorithm to resolve near-miss names:\n\n"
-    "1. **Normalization** — all separator and capitalisation variants are tested in "
+    "1. **Normalisation** — all separator and capitalisation variants are tested in "
     "parallel (`Standard_D2ads_v5`, `D2ads-v5`, `d2ads v5` all resolve to `d2ads_v5`).\n\n"
     "2. **Hamming distance** — single-character substitutions on equal-length names.\n\n"
     "3. **Levenshtein distance** — insertions / deletions for differing-length names.\n\n"
@@ -181,7 +181,7 @@ cloud_provider_description = (
     "👄 Verbose\n\n"
     "🔨 Embedded\n\n"
     "🔌 Usage \n\n"
-    "* 📈 Modeled\n\n"
+    "* 📈 Modelled\n\n"
     "📋 Archetype : The configuration is set by the API, only usage is given by the user\n\n"
     "⏬ Allocation"
 )

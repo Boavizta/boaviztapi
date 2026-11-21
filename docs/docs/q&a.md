@@ -30,20 +30,20 @@ See: [Usage methodology](Explanations/usage/usage.md)
 
 #### How does the API handle electrical consumption?
 
-Electrical consumption can either be given by the user or modeled according to the context of use and the technical configuration of the asset. 
+Electrical consumption can either be given by the user or modelled according to the context of use and the technical configuration of the asset. 
 
 See: [Electricity methodology](Explanations/usage/power.md)
 
 #### How do we compute the impacts of cloud instances?
 
 The technical configuration of cloud instances are pre-recorded in the API.
-Their impacts are computed through the bottom-up process. The electricity is modeled from the technical configuration and the context of usage given by the user.
+Their impacts are computed through the bottom-up process. The electricity is modelled from the technical configuration and the context of usage given by the user.
 
 See: [Cloud methodology](Explanations/services/cloud.md)
 
-#### How does the API amortize embedded impacts?
-The API implements two methods to amortize embedded impacts.
-Either the total embedded impact is given or a linear amortization over the life cycle of the assets can be applied.
+#### How does the API amortise embedded impacts?
+The API implements two methods to amortise embedded impacts.
+Either the total embedded impact is given or a linear amortisation over the life cycle of the assets can be applied.
 
 See: [Allocation methodology](Explanations/embedded_methodology.md#allocation)
 
@@ -84,5 +84,5 @@ You can either [open an issues](https://github.com/Boavizta/boaviztapi/issues) o
 Several contributions are possible :
 
 * Code: Contribute to the [open issues](https://github.com/Boavizta/boaviztapi/issues)
-* Methodology: Open issues on our [GitHub](https://github.com/Boavizta/boaviztapi/) to criticize, propose improvements, or extend the scope of our methodology.
+* Methodology: Open issues on our [GitHub](https://github.com/Boavizta/boaviztapi/) to criticise, propose improvements, or extend the scope of our methodology.
 * Crowdsourcing: Help us collect missing data. See the contributing guides for [servers](contributing/server.md), [CPUs](contributing/cpu.md), [GPUs](contributing/gpu.md) and [cloud instances](contributing/cloud_instance.md).
