@@ -12,68 +12,24 @@ async def test_empty_iot_device():
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
         res = await ac.get("/v1/iot/iot_device?verbose=false")
 
+        # The default archetype has no functional block, so neither phase can be computed
         assert res.json() == {
             "impacts": {
                 "adp": {
                     "description": "Use of minerals and fossil ressources",
-                    "embedded": {
-                        "max": 0.0,
-                        "min": 0.0,
-                        "value": 0.0,
-                        "warnings": [
-                            "Connected object, not including associated "
-                            "digital services (use of network, "
-                            "datacenter, virtual machines or other "
-                            "terminals not included)",
-                            "Do not include the impact of distribution",
-                            "Uncertainty from technical characteristics "
-                            "is very important. Results should be "
-                            "interpreted with caution (see min and max "
-                            "values)",
-                        ],
-                    },
+                    "embedded": "not implemented",
                     "unit": "kgSbeq",
                     "use": "not implemented",
                 },
                 "gwp": {
                     "description": "Total climate change",
-                    "embedded": {
-                        "max": 0.0,
-                        "min": 0.0,
-                        "value": 0.0,
-                        "warnings": [
-                            "Connected object, not including associated "
-                            "digital services (use of network, "
-                            "datacenter, virtual machines or other "
-                            "terminals not included)",
-                            "Do not include the impact of distribution",
-                            "Uncertainty from technical characteristics "
-                            "is very important. Results should be "
-                            "interpreted with caution (see min and max "
-                            "values)",
-                        ],
-                    },
+                    "embedded": "not implemented",
                     "unit": "kgCO2eq",
                     "use": "not implemented",
                 },
                 "pe": {
                     "description": "Consumption of primary energy",
-                    "embedded": {
-                        "max": 0.0,
-                        "min": 0.0,
-                        "value": 0.0,
-                        "warnings": [
-                            "Connected object, not including associated "
-                            "digital services (use of network, "
-                            "datacenter, virtual machines or other "
-                            "terminals not included)",
-                            "Do not include the impact of distribution",
-                            "Uncertainty from technical characteristics "
-                            "is very important. Results should be "
-                            "interpreted with caution (see min and max "
-                            "values)",
-                        ],
-                    },
+                    "embedded": "not implemented",
                     "unit": "MJ",
                     "use": "not implemented",
                 },
