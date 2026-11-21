@@ -14,10 +14,10 @@ assignees: ''
 ## To Reproduce
 
 <!--
-Input data and route to reproduce the behavior.
+Input data and route to reproduce the behaviour.
 -->
 
-## Expected behavior
+## Expected behaviour
 
 <!-- A clear and concise description of what you expected to happen. -->
 

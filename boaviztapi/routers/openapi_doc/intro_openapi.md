@@ -49,7 +49,7 @@ If no duration is given, **the impact is assess for the all life duration of the
 ##### ⏺️ Given
 * Electrical consumption can be given for one hour (average) *"usage":{"avg_power": 1}*.
 
-##### 📈 Modeled
+##### 📈 Modelled
 * Electrical consumption can be retrieved from consumption profile using *usage:{time_workload: 50}*.
 
 ##### 📋 Archetype

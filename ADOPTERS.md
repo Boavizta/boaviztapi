@@ -1,12 +1,12 @@
 # Adopters
 
-This page lists projects and organizations that use BoaviztAPI.
+This page lists projects and organisations that use BoaviztAPI.
 
 ## [Boavizta](https://boavizta.org)
 
 ### [Datavizta](https://datavizta.boavizta.org)
 
-The official interactive front-end for BoaviztAPI. Datavizta provides a web dashboard for exploring and visualizing the environmental impacts of servers, cloud instances, and end-user devices. It is a direct consumer of the BoaviztAPI REST endpoints (`/v1/server`, `/v1/cloud/instance`, etc.).
+The official interactive front-end for BoaviztAPI. Datavizta provides a web dashboard for exploring and visualising the environmental impacts of servers, cloud instances, and end-user devices. It is a direct consumer of the BoaviztAPI REST endpoints (`/v1/server`, `/v1/cloud/instance`, etc.).
 
 ### [CloudScanner](https://github.com/Boavizta/cloud-scanner)
 
@@ -14,7 +14,7 @@ A CLI tool and service that scans an AWS account, inventories running EC2 instan
 
 ### [Boagent](https://github.com/Boavizta/boagent)
 
-A monitoring agent modeling the environmental footprint of the local machine it is installed on. This is done by:
+A monitoring agent modelling the environmental footprint of the local machine it is installed on. This is done by:
 1. Scanning the hardware visible on the machine, producing a Bill Of Material
 2. Collecting power usage metrics from Scaphandre
 3. Asking BoaviztAPI to compute the full lifecycle environmental footprint of the machine and its usage.
@@ -25,7 +25,7 @@ A Python library that tracks the energy consumption and environmental impacts of
 
 ## [G4IT](https://saas-g4it.com/documentation)
 
-An open-source and mutualized platform for evaluate impact of information system and digital services, which permit to deploy at a large scale environmental assessment of IT.
+An open-source and mutualised platform for evaluate impact of information system and digital services, which permit to deploy at a large scale environmental assessment of IT.
 
 ## [Scaleway](https://www.scaleway.com/)
 

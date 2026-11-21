@@ -12,7 +12,7 @@ Since the power will be extrapolated on the all duration, the power given should
 
 If available, the API will complete the missing power by the one taken from the archetype of the asset.
 
-## Modeling
+## Modelling
 
 Sometime user doesn't have access to the power of their asset, and we don't want to use a default value taken from an archetype.
 

@@ -67,9 +67,9 @@ __Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.eur
 __Unit__ : kg CO2 eq.
 
 
-## ir - Emissions of radionizing substances 
+## ir - Emissions of radionising substances 
 
-__what__ : Emissions of radionizing substances 
+__what__ : Emissions of radionising substances 
 
 __Source__ : [Life Cycle Assessment & the EF methods](https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/life-cycle-assessment-ef-methods_en)
 

@@ -24,7 +24,7 @@
 If CPU ```name``` is given, ```model_range```, ```tdp```, ```die_size``` and ```family``` can be retrieved from a fuzzy matching on our cpu name repository. 
 
 !!!warning
-    Note that the cpu name repository is not complete and the completion can return a different cpu than the one given by the user. You can set a threshold for the fuzzy matching in the [config file](../../config.md) to control the behavior of the fuzzy matching. You can contribute to the cpu name repository by following the instructions in the [documentation](../../contributing/cpu.md).
+    Note that the cpu name repository is not complete and the completion can return a different cpu than the one given by the user. You can set a threshold for the fuzzy matching in the [config file](../../config.md) to control the behaviour of the fuzzy matching. You can contribute to the cpu name repository by following the instructions in the [documentation](../../contributing/cpu.md).
 
 ### Completion of the ```die_size``` from ```family``` and/or ```core_units```
 
@@ -104,7 +104,7 @@ PowerConsumption(workload) = a * \ln(b * (workload + c)) + d
 $$
 
 !!!warning
-    We apply a log regression to fit data points $(workload, power)$ starting from a default consumption profile that can be found using the CPU `model_range`. This process can (in some cases) yield very low or negative power values due to wrong input data or model initialization. **That is why there is a minimum power consumption limit set to 1W for any input workload**.
+    We apply a log regression to fit data points $(workload, power)$ starting from a default consumption profile that can be found using the CPU `model_range`. This process can (in some cases) yield very low or negative power values due to wrong input data or model initialisation. **That is why there is a minimum power consumption limit set to 1W for any input workload**.
 
 ### Determining the parameters
 
