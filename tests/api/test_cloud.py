@@ -1117,3 +1117,41 @@ async def test_cloud_region_fallback_to_usage_location():
         "Region 'invalid-region' not found" in warning
         for warning in data["verbose"]["usage_location"].get("warnings", [])
     )
+
+
+@pytest.mark.asyncio
+async def test_cloud_unknown_region_warns_in_use_impacts():
+    """An unknown region without usage_location uses the default mix and says so (#624)"""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.post(
+            "/v1/cloud/instance?criteria=gwp&verbose=true",
+            json={
+                "provider": "aws",
+                "instance_type": "a1.medium",
+                "usage": {"region": "mars-1"},
+            },
+        )
+
+    assert res.status_code == 200
+    data = res.json()
+    warning = "Region 'mars-1' not found for provider 'aws'. Falling back to usage_location if provided."
+    assert warning in data["impacts"]["gwp"]["use"]["warnings"]
+    assert warning in data["verbose"]["usage_location"]["warnings"]
+
+
+@pytest.mark.asyncio
+async def test_unknown_usage_location_warns_without_verbose():
+    """An unknown usage_location is visible in the use impacts with verbose=false (#624)"""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        res = await ac.post(
+            "/v1/component/cpu?criteria=gwp&verbose=false",
+            json={"usage": {"usage_location": "XXX"}},
+        )
+
+    assert res.status_code == 200
+    assert (
+        "Location not found. Default value used."
+        in (res.json()["impacts"]["gwp"]["use"]["warnings"])
+    )
