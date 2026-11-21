@@ -31,6 +31,10 @@ class Service(Assessable):
     def usage(self, value: int) -> None:
         self._usage = value
 
+    def __iter__(self):
+        for attr, value in self.__dict__.items():
+            yield attr, value
+
 
 class ServiceCloudInstance(Service):
     NAME = "CLOUD_INSTANCE"
@@ -175,7 +179,3 @@ class ServiceCloudInstance(Service):
             return 0
         # Fractional for vGPU/MIG-partitioned instances
         return self.gpu_units.value / total_gpu
-
-    def __iter__(self):
-        for attr, value in self.__dict__.items():
-            yield attr, value

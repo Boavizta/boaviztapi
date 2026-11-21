@@ -3,6 +3,7 @@ from boaviztapi.models.boattribute import Boattribute
 from boaviztapi.models.device import Device
 from boaviztapi.models.component import Component
 from boaviztapi.models.services.cloud_instance import ServiceCloudInstance, Service
+from boaviztapi.models.services.storage import ServiceStorage
 
 
 def verbose_cloud(
@@ -20,6 +21,14 @@ def verbose_cloud(
         ),
     }
     return json_output
+
+
+def verbose_storage(storage: ServiceStorage, duration=config.default_duration):
+    return {
+        **iter_boattribute(storage),
+        **verbose_usage(storage),
+        "duration": {"value": duration, "unit": "hours"},
+    }
 
 
 def verbose_device(
