@@ -12,3 +12,8 @@ We do not prevent usage of AI-assisted in this repo. Just remember a few things.
 * Please write issues, pull request descriptions and replies to maintainers in your own words. We prefer to talk to you rather than to a chatbot.
 * Keep descriptions and commit messages short and readable. AI tends to produce far more text than people can reasonably review.
 * If it's useful to share something from an AI conversation, put it in a quote block (`>`), say that it comes from an AI, and add a few words about why it matters.
+
+## Disclosure
+
+* Make it clear in the description of your PR that you were assisted by AI
+* When possible, disclose the environmental impacts of your AI session, for instance by using `/carbon-pr` with [claude-carbon](https://github.com/gwittebolle/claude-carbon).
