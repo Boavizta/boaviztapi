@@ -1,4 +1,4 @@
-from typing import Optional, List, Union
+from typing import Annotated, Optional, List, Union
 
 from pydantic import Field
 
@@ -54,6 +54,25 @@ class Usage(BaseDTO):
 
     usage_location: Optional[str] = None
     elec_factors: Optional[ElecFactors] = ElecFactors()
+
+
+class UsageStorage(Usage):
+    storage: Annotated[float, Field(ge=0, description="Stored data in GB")]
+    hours_electrical_consumption: Annotated[
+        Optional[float],
+        Field(
+            ge=0,
+            le=24,
+            description="Hours per day the disk is powered on (use_time_ratio = hours / 24)",
+        ),
+    ] = None
+    avg_power: Annotated[
+        Optional[float],
+        Field(
+            ge=0,
+            description="Power in W of the whole reference disk, scaled by the allocation",
+        ),
+    ] = None
 
 
 class UsageServer(Usage):

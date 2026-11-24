@@ -100,6 +100,20 @@ cloud_example = {
     },
 }
 
+storage_example = {
+    "configuration": {
+        "capacity": 1000,
+        "type": "SSD",
+        "manufacturer": "Samsung",
+        "replication": 1,
+    },
+    "usage": {
+        "hours_electrical_consumption": 12,
+        "usage_location": "FRA",
+        "storage": 2000,
+    },
+}
+
 cpu_consumption_profiles = {
     "cpu": {"name": "intel xeon gold 6134"},
     "workload": [
