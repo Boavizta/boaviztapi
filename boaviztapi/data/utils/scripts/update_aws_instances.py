@@ -254,7 +254,7 @@ def write_csv(csv_path: Path, fieldnames: list[str], rows: list[dict]):
     writer = csv.DictWriter(buf, fieldnames=fieldnames, extrasaction="ignore")
     writer.writeheader()
     writer.writerows(rows)
-    # csv module uses \r\n internally; normalize to \n
+    # csv module uses \r\n internally; normalise to \n
     text = buf.getvalue().replace("\r\n", "\n")
     csv_path.write_text(text, newline="")
 

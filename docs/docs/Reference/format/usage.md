@@ -27,10 +27,10 @@ Usage impacts can be measured at device or component level from usage configurat
 }
 ```
 
-## Modeled
+## Modelled
 
 When ```avg_power``` is unknown, it can be retrieved from ```time_workload```.
-We refer to this as modeled electrical consumption.
+We refer to this as modelled electrical consumption.
 The feature is available for the following routes :
 
 ### POST ```/v1/server/```

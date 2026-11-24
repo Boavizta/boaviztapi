@@ -136,7 +136,7 @@ $$
 
 The workload is the GPU's own `time_workload`. It does not follow the `time_workload` of a server or cloud instance,
 which describes its CPU. By default, it is assumed to be 65%. This is an assumption, not a measurement: it sits in the
-60 to 70% utilization of AI datacentre GPUs that a Google architect is reported to have given in
+60 to 70% utilisation of AI datacentre GPUs that a Google architect is reported to have given in
 [Tom's Hardware](https://www.tomshardware.com/pc-components/gpus/datacenter-gpu-service-life-can-be-surprisingly-short-only-one-to-three-years-is-expected-according-to-unnamed-google-architect),
 in an article on GPU service life. When the actual load is known, set `gpu_time_workload` in the usage of the server or
 cloud instance, or `time_workload` in the GPU's own usage.

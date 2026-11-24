@@ -99,7 +99,7 @@ def fuzzymatch_attr_from_pdf(name: str, attr: str, pdf: pd.DataFrame) -> Optiona
 
 
 def _canonical_forms(name: str) -> set[str]:
-    """All separator/case variants of a name for parallel normalization matching."""
+    """All separator/case variants of a name for parallel normalisation matching."""
     base = name.strip().lower()
     if base.startswith("standard_"):
         base = base[len("standard_") :]

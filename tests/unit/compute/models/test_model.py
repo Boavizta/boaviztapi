@@ -74,7 +74,7 @@ class TestComponentGPU:
     def test_gpu_surface_computed_at_init(self):
         gpu = ComponentGPU()
 
-        # Computed at initialization (no completion)
+        # Computed at initialisation (no completion)
         assert gpu.gpu_surface.has_value()
 
         # Value is transformed from archetype via wafer calculation

@@ -1,6 +1,6 @@
 # Device
 
-A device is characterized by zero to many component(s) and a usage. Its impacts can be assessed.
+A device is characterised by zero to many component(s) and a usage. Its impacts can be assessed.
 
 ## Available devices
 

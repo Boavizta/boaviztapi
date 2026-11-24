@@ -22,7 +22,7 @@ For example: `BOAVIZTA_ALLOWED_ORIGINS='["https://datavizta.boavizta.org","https
 
 ## Special message
 
-You can customize the home page with a special message by setting the environment variable `BOAVIZTA_SPECIAL_MESSAGE` in HTML format.
+You can customise the home page with a special message by setting the environment variable `BOAVIZTA_SPECIAL_MESSAGE` in HTML format.
 
 For example: `BOAVIZTA_SPECIAL_MESSAGE="<p>my welcome message in HTML format</p>"`
 

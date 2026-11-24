@@ -5,7 +5,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    """Centralized configuration for BoaviztAPI."""
+    """Centralised configuration for BoaviztAPI."""
 
     model_config = SettingsConfigDict(
         env_prefix="BOAVIZTA_",

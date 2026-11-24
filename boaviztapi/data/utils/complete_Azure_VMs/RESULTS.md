@@ -36,7 +36,7 @@ For example:
 
 BoaviztAPI, as of now, only accounts for the share of impacts related to the underlying hardware platform, dedicated to the service (in our case the bare metal hosts supporting the cloud instances).
 
-In a life cycle approach, a share of the mutualized infrastructure, necessary for this service to be proposed, should be accounted for as well.
+In a life cycle approach, a share of the mutualised infrastructure, necessary for this service to be proposed, should be accounted for as well.
 
 The drawing below shows what parts of the perimeter are included in the API calculation (in black and plain lines) and what parts are not (in grey and dotted lines). Those parts should be implemented in the API in near to middle future, stay tuned and update the generate_azure_impacts scritp if needed, as well as this documentaiton.
 

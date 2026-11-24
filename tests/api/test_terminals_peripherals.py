@@ -16,7 +16,7 @@ async def test_laptop():
     assert res.json() == {
         "impacts": {
             "ir": {
-                "description": "Emissions of radionizing substances",
+                "description": "Emissions of radionising substances",
                 "embedded": {
                     "max": 73.6,
                     "min": 73.6,

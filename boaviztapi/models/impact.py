@@ -117,7 +117,7 @@ IR = ImpactCriteria(
     name="ir",
     unit="kg U235 eq.",
     method="PEF",
-    description="Emissions of radionizing substances",
+    description="Emissions of radionising substances",
 )
 LU = ImpactCriteria(
     name="lu", unit="No dimension", method="PEF", description="Land use"

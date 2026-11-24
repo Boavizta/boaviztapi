@@ -138,7 +138,7 @@ class CPUConsumptionProfileModel(ConsumptionProfileModel):
         if power < MIN_POWER:
             self.params.add_warning(
                 "Fitted CPU consumption profile model yielded very low or negative power values, "
-                "this can be caused by wrong input data or model initialization. Power consumption "
+                "this can be caused by wrong input data or model initialisation. Power consumption "
                 "and usage impacts of the CPU might be false."
             )
         return max(power, MIN_POWER)
