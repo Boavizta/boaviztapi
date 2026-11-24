@@ -7,16 +7,40 @@ from typing import List, Optional, Tuple, Union
 from boaviztapi import config
 
 
+def best_name_matches(name: str, df: pd.DataFrame, threshold: int) -> pd.DataFrame:
+    """Rows whose name ties for the best fuzzy score, or no rows if none passes the threshold."""
+    name = name.lower()
+    score = df["name"].str.lower().apply(lambda x: fuzz.token_set_ratio(x, name))
+    max_score = score.max()
+    if max_score <= threshold:
+        return df.iloc[:0]
+    return df[score == max_score]
+
+
+def ambiguous_name_warning(
+    name: str, df: pd.DataFrame, threshold: int, kind: str
+) -> Optional[str]:
+    """Warning for a name that matches several rows equally well, or None if the match is unique."""
+    names = list(best_name_matches(name, df, threshold)["name"])
+    if len(names) < 2:
+        return None
+    shown = ", ".join(names[:5])
+    if len(names) > 5:
+        shown += f" and {len(names) - 5} more"
+    return (
+        f"'{name}' matches {len(names)} {kind}s equally well ({shown}). "
+        f"Used '{names[0]}'; give the full name to choose another."
+    )
+
+
 def fuzzymatch_attr_from_cpu_name(
     cpu_name: str, df: pd.DataFrame
 ) -> Union[Tuple[str, str, str, str, int, int, int, int, str, str], None]:
-    cpu_name = cpu_name.lower()
-    score = df["name"].str.lower().apply(lambda x: fuzz.token_set_ratio(x, cpu_name))
-    max_score = score.max()
-    if max_score <= config.cpu_name_fuzzymatch_threshold:
+    matches = best_name_matches(cpu_name, df, config.cpu_name_fuzzymatch_threshold)
+    if matches.empty:
         return None
     else:
-        best = df.iloc[score.idxmax()]
+        best = matches.iloc[0]
         best = best.mask(best.isnull(), None)  # replace all NaN by None
 
         def safe_int(x: Optional[float]) -> Optional[int]:
@@ -58,13 +82,11 @@ def fuzzymatch_attr_from_gpu_name(
     ],
     None,
 ]:
-    gpu_name = gpu_name.lower()
-    score = df["name"].str.lower().apply(lambda x: fuzz.token_set_ratio(x, gpu_name))
-    max_score = score.max()
-    if max_score <= config.gpu_name_fuzzymatch_threshold:
+    matches = best_name_matches(gpu_name, df, config.gpu_name_fuzzymatch_threshold)
+    if matches.empty:
         return None
     else:
-        best = df.iloc[score.idxmax()]
+        best = matches.iloc[0]
         best = best.mask(best.isnull(), None)  # replace all NaN by None
 
         def safe_float(x: Optional[float]) -> Optional[float]:

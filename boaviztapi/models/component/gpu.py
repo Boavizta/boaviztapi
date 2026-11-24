@@ -13,7 +13,10 @@ from boaviztapi.data.archetype import (
     get_component_archetype,
 )
 from boaviztapi.models.usage import ModelUsage
-from boaviztapi.utils.fuzzymatch import fuzzymatch_attr_from_gpu_name
+from boaviztapi.utils.fuzzymatch import (
+    ambiguous_name_warning,
+    fuzzymatch_attr_from_gpu_name,
+)
 
 _gpu_specs = pd.read_csv(os.path.join(data_dir, "crowdsourcing/gpu_specs.csv"))
 _default_gpu_archetype = get_component_archetype(config.default_gpu, "gpu")
@@ -21,6 +24,12 @@ _default_gpu_archetype = get_component_archetype(config.default_gpu, "gpu")
 
 def attributes_from_gpu_name(gpu_name: str):
     return fuzzymatch_attr_from_gpu_name(gpu_name, _gpu_specs)
+
+
+def ambiguous_gpu_name_warning(gpu_name: str):
+    return ambiguous_name_warning(
+        gpu_name, _gpu_specs, config.gpu_name_fuzzymatch_threshold, "GPU"
+    )
 
 
 _KERF = 0.2  # in mm
@@ -228,7 +237,8 @@ class ComponentGPU(Component):
     def _complete_from_name(self):
         if self.name.has_value() and not self.name_completion:
             self.name_completion = True
-            gpu_attributes = attributes_from_gpu_name(self.name.value)
+            requested_name = self.name.value
+            gpu_attributes = attributes_from_gpu_name(requested_name)
             (
                 name,
                 manufacturer,
@@ -269,6 +279,9 @@ class ComponentGPU(Component):
 
             if name is not None:
                 self.name.set_completed(name, source="fuzzy match")
+                warning = ambiguous_gpu_name_warning(requested_name)
+                if warning:
+                    self.name.add_warning(warning)
             if manufacturer is not None and self.manufacturer.is_none():
                 self.manufacturer.set_completed(
                     manufacturer,
